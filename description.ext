@@ -1,0 +1,27 @@
+author = "Your_Name";
+onLoadName = "Mission_name";
+OnLoadMission = "Short_description";
+
+#include "description\definitions.hpp"
+#include "description\cfgNotifications.hpp"
+#include "description\cfgParams.hpp"
+#include "description\cfgRespawnTemplates.hpp"
+#include "description\cfgEventHandlers.hpp"
+#include "description\cfgSounds.hpp"
+
+class CfgFunctions {
+  #include "description\cfgFunctions.hpp"
+	class F {
+        class safeStart {
+            file = "f\safeStart";
+            class safety{};
+            class serverEndSafe{};
+        };
+    };
+    class PHX {
+        #include "f\functions.hpp"
+    };
+};
+#include "f\display.hpp"
+
+cba_settings_hasSettingsFile = 1;

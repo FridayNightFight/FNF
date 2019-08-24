@@ -1,0 +1,50 @@
+
+comment "Exported from Arsenal by Martin";
+
+comment "[!] UNIT MUST BE LOCAL [!]";
+if (!local this) exitWith {};
+
+comment "Remove existing items";
+removeAllWeapons this;
+removeAllItems this;
+removeAllAssignedItems this;
+removeUniform this;
+removeVest this;
+removeBackpack this;
+removeHeadgear this;
+removeGoggles this;
+
+comment "Add weapons";
+this addWeapon "rhs_weap_m4a1_blockII_bk";
+this addPrimaryWeaponItem "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
+
+comment "Add containers";
+this forceAddUniform "rhs_uniform_FROG01_wd";
+this addVest "rhsusf_spc_light";
+this addBackpack "B_Kitbag_rgr";
+
+comment "Add items to containers";
+this addItemToUniform "ACE_DefusalKit";
+this addItemToUniform "ACE_M26_Clacker";
+for "_i" from 1 to 2 do {this addItemToUniform "ACE_CableTie";};
+for "_i" from 1 to 6 do {this addItemToUniform "ACE_fieldDressing";};
+for "_i" from 1 to 3 do {this addItemToUniform "ACE_morphine";};
+for "_i" from 1 to 4 do {this addItemToUniform "SmokeShell";};
+for "_i" from 1 to 3 do {this addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";};
+for "_i" from 1 to 2 do {this addItemToVest "HandGrenade";};
+for "_i" from 1 to 5 do {this addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
+this addItemToBackpack "SatchelCharge_Remote_Mag";
+for "_i" from 1 to 2 do {this addItemToBackpack "SLAMDirectionalMine_Wire_Mag";};
+for "_i" from 1 to 2 do {this addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
+this addItemToBackpack "ATMine_Range_Mag";
+this addHeadgear "rhsusf_lwh_helmet_marpatwd";
+
+comment "Add items";
+this linkItem "ItemMap";
+this linkItem "ItemCompass";
+this linkItem "tf_microdagr";
+this linkItem "tf_anprc152_1";
+this linkItem "ItemGPS";
+
+comment "Set identity";
+[this,"AfricanHead_02","novoice"] call BIS_fnc_setIdentity;
