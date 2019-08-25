@@ -13,6 +13,9 @@ phx_alertSoon1 = 0; //10 minute warning
 phx_alertSoon2 = 0; //5 minute warning
 gameEnd = false;
 
+//Set INDFOR friends
+call phx_fnc_init_setIndforFriends;
+
 // Start check ending conditions
 phx_end_checkTime = [phx_fnc_end_checkTime, 10, []] call CBA_fnc_addPerFrameHandler;
 

@@ -5,17 +5,17 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=473;
+		nextID=474;
 	};
 	class Camera
 	{
-		pos[]={429.9693,31.166937,662.88037};
-		dir[]={0.026582444,-0.38769376,0.92140764};
-		up[]={0.011180275,0.92178822,0.38753459};
-		aside[]={0.99958646,8.0945028e-008,-0.0288374};
+		pos[]={557.97375,49.839596,621.85803};
+		dir[]={-0.18491404,-0.34339321,0.92081815};
+		up[]={-0.067610115,0.93919003,0.33667752};
+		aside[]={0.98043513,-4.7119102e-008,0.19688633};
 	};
 };
 binarizationWanted=0;
@@ -167,8 +167,125 @@ class CustomAttributes
 {
 	class Category0
 	{
+		name="Multiplayer";
+		class Attribute0
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+					class value
+					{
+						items=1;
+						class Item0
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"STRING"
+									};
+								};
+								value="None";
+							};
+						};
+					};
+				};
+			};
+		};
+		nAttributes=1;
+	};
+	class Category1
+	{
 		name="Scenario";
 		class Attribute0
+		{
+			property="Enh_ambientFlyby_speed";
+			expression="missionNamespace setVariable ['Enh_AmbientFlyby_Speed',_value]";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"STRING"
+						};
+					};
+					value="normal";
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="Enh_Airdrop_Condition";
+			expression="if (isServer) then {missionNamespace setVariable ['Enh_Airdrop_Condition',_value]}";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"STRING"
+						};
+					};
+					value="false";
+				};
+			};
+		};
+		class Attribute2
+		{
+			property="Enh_Airdrop_Side";
+			expression="if (isServer) then {missionNamespace setVariable ['Enh_Airdrop_Side',_value]}";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"STRING"
+						};
+					};
+					value="WEST";
+				};
+			};
+		};
+		class Attribute3
+		{
+			property="Enh_dynamicGroups";
+			expression="		if (!is3DEN && isServer && _value && !(allCurators isEqualTo [])) then		{			[] spawn			{				while {true} do				{					{						 _x addCuratorEditableObjects						 [						 	entities [[],['Logic'],true],						  	true						 ];					} count allCurators;					sleep 60;				};			};		}";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"BOOL"
+						};
+					};
+					value=1;
+				};
+			};
+		};
+		class Attribute4
 		{
 			property="cba_settings_hasSettingsFile";
 			expression="false";
@@ -187,13 +304,14 @@ class CustomAttributes
 				};
 			};
 		};
-		nAttributes=1;
+		nAttributes=5;
 	};
 };
 class Mission
 {
 	class Intel
 	{
+		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0;
 		startWind=0.1;

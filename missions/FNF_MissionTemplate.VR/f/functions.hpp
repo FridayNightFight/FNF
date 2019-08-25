@@ -7,6 +7,7 @@ class init {
     class init_postBriefing{};
     class init_vehicleLocks_server{};
     class init_vars{preInit = 1;};
+    class init_setIndforFriends{};
 };
 class radios {
     file = "f\radios";
@@ -32,6 +33,8 @@ class loadout {
     class loadout_handleClothing{};
     class loadout_handleGear{};
     class loadout_checkLoadout{postInit = 1;};
+    class loadout_handleNV{};
+    class loadout_handleCECharges{};
     class addArsenal{};
 };
 class misc {

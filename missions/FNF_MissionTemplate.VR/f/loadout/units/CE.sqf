@@ -1,6 +1,9 @@
 // Add clothing
 call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 
+//CE charges
+call phx_fnc_loadout_handleCECharges;
+
 // Add gear
 [phx_loadout_rifle_mag_tracer, "vest"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_rifle_weapon;

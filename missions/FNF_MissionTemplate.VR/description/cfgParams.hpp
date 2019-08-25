@@ -57,10 +57,28 @@ class Params {
       texts[] = {"Mission default","Nobody","Everyone","OPFOR","BLUFOR","INDFOR"};
       default = -1;
     };
-    class phx_loadout_CECharges {
-      title = "Combat Engineer Charge Type:";
-      values[] = {-1,0,1,2};
-      texts[] = {"2x Satchel (default)","4x Demo block","2x Demo, 1x Trip Mine","1x Satchel, 2x SLAM, 1x M15 AT Mine"};
+    class spacer19 {
+      title = "====================================================================================================================================================================================";
+      values[] = {0};
+      texts[] = {""};
+      default = 0;
+    };
+    class phx_loadout_BLUFORCharges {
+      title = "BLUFOR CE Charge Loadout:";
+      values[] = {-1,0,1,2,3};
+      texts[] = {"2x Satchel (default)","4x Demo block","2x Demo, 1x Trip Mine","2x Trip Mine","1x Satchel, 2x SLAM, 1x M15 AT Mine"};
+      default = -1;
+    };
+    class phx_loadout_OPFORCharges {
+      title = "OPFOR CE Charge Loadout:";
+      values[] = {-1,0,1,2,3};
+      texts[] = {"2x Satchel (default)","4x Demo block","2x Demo, 1x Trip Mine","2x Trip Mine","1x Satchel, 2x SLAM, 1x M15 AT Mine"};
+      default = -1;
+    };
+    class phx_loadout_INDFORCharges {
+      title = "INDFOR CE Charge Loadout:";
+      values[] = {-1,0,1,2,3};
+      texts[] = {"2x Satchel (default)","4x Demo block","2x Demo, 1x Trip Mine","2x Trip Mine","1x Satchel, 2x SLAM, 1x M15 AT Mine"};
       default = -1;
     };
     class spacer2 {
@@ -176,6 +194,12 @@ class Params {
       title = "Vehicle Locking";
       values[] = {-1,0,1};
       texts[] = {"None","Lock to side","Lock to side and crewman"};
+      default = -1;
+    };
+    class phx_indforFriends {
+      title = "Side INDFOR is friendly to:";
+      values[] = {-1,0,1};
+      texts[] = {"Nobody (default)","BLUFOR","OPFOR"};
       default = -1;
     };
     class spacer5 {

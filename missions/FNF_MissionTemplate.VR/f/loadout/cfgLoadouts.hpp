@@ -167,7 +167,7 @@ WEAPONS_UNARMED}
 #define UNIT_INDFOR_AR "I_Soldier_AR_F"
 #define UNIT_INDFOR_AAR "I_Soldier_AAR_F"
 #define UNIT_INDFOR_RAT "I_Soldier_LAT_F"
-#define UNIT_INDFOR_CE "I_engineer_F"
+#define UNIT_INDFOR_CE "I_Soldier_exp_F"
 #define UNIT_INDFOR_R "I_soldier_F"
 #define UNIT_INDFOR_MG "I_support_MG_F"
 #define UNIT_INDFOR_AM "I_Soldier_A_F"

@@ -23,6 +23,7 @@ phx_loadout_explosives_1 = "";
 phx_loadout_explosives_2 = "";
 phx_loadout_defusalkit = "ACE_DefusalKit";
 phx_loadout_trigger = "ACE_M26_Clacker";
+phx_loadout_PAK = "ACE_personalAidKit";
 phx_loadout_bandage = "ACE_fieldDressing:32";
 phx_loadout_morphine = "ACE_morphine:16";
 phx_loadout_epinephrine = "ACE_epinephrine:8";
@@ -30,24 +31,8 @@ phx_loadout_blood = "ACE_bloodIV:3";
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_entrenching = "ACE_EntrenchingTool";
 
-_explosives = "phx_loadout_CECharges" call BIS_fnc_getParamValue;
-
-if !(_explosives isEqualTo -1) then {
-  switch (_explosives) do {
-    case 0: {
-      phx_loadout_explosives = "DemoCharge_Remote_Mag:4";
-    };
-    case 1: {
-      phx_loadout_explosives = "DemoCharge_Remote_Mag:2";
-      phx_loadout_explosives_1 = "APERSTripMine_Wire_Mag";
-    };
-    case 2: {
-      phx_loadout_explosives = "SatchelCharge_Remote_Mag";
-      phx_loadout_explosives_1 = "SLAMDirectionalMine_Wire_Mag:2";
-      phx_loadout_explosives_2 = "ATMine_Range_Mag";
-    };
-  };
-};
+//CE charge loadout (configured via mission params)
+call phx_fnc_handleCECharges;
 
 /*
     Acceptable Values for unit level:
