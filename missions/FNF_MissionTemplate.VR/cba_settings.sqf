@@ -207,11 +207,12 @@ force acex_viewrestriction_modeSelectiveLand = 0;
 force acex_viewrestriction_modeSelectiveAir = 0;
 force acex_viewrestriction_modeSelectiveSea = 0;
 
-force ace_advanced_fatigue_enabled = false;
+force ace_advanced_fatigue_enabled = true;
 force ace_advanced_fatigue_loadFactor = 1;
 force ace_advanced_fatigue_performanceFactor = 6;
 force ace_advanced_fatigue_recoveryFactor = 2;
 force ace_advanced_fatigue_terrainGradientFactor = 1;
+
 force ace_advanced_throwing_enablePickUp = true;
 force ace_advanced_throwing_enablePickUpAttached = true;
 
