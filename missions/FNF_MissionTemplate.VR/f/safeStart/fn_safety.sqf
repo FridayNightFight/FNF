@@ -12,10 +12,6 @@ switch (_this select 0) do
     {
         phx_safeStartEnabled = true;
 
-        if !(pRole == 16) then {
-          call phx_fnc_addArsenal;
-        };
-
         // Delete bullets from fired weapons
         if (isNil "f_eh_safetyMan") then {
             f_eh_safetyMan = player addEventHandler["Fired", {
@@ -71,29 +67,24 @@ switch (_this select 0) do
     // Turn safety off
     case false;
     default {
-        // Allow player to fire weapons
-        if !(isNil "f_eh_safetyMan") then {
-            player removeEventhandler ["Fired", f_eh_safetyMan];
-            f_eh_safetyMan = nil;
-        };
+      call phx_fnc_removeSelector;
 
-        if !(pRole == 16) then {
-          [typeOf player, 1, ["ACE_SelfActions", "ACE_Equipment","Arsenal"]] call ace_interact_menu_fnc_removeActionFromClass;
-          [typeOf player, 1, ["ACE_SelfActions", "ACE_Equipment","Arsenal Reset"]] call ace_interact_menu_fnc_removeActionFromClass;
-          [typeOf player, 1, ["ACE_SelfActions", "ACE_Equipment","Optics"]] call ace_interact_menu_fnc_removeActionFromClass;
-          [typeOf player, 1, ["ACE_SelfActions", "ACE_Equipment","Grenades"]] call ace_interact_menu_fnc_removeActionFromClass;
-        };
+      // Allow player to fire weapons
+      if !(isNil "f_eh_safetyMan") then {
+          player removeEventhandler ["Fired", f_eh_safetyMan];
+          f_eh_safetyMan = nil;
+      };
 
-        // Re-enable guns and damage for vehicles if they were disabled
-        if !(isNull(player getVariable ["f_var_safetyVeh",objnull])) then {
-            (player getVariable "f_var_safetyVeh") allowDamage true;
+      // Re-enable guns and damage for vehicles if they were disabled
+      if !(isNull(player getVariable ["f_var_safetyVeh",objnull])) then {
+          (player getVariable "f_var_safetyVeh") allowDamage true;
 
-            if !(isNil "f_eh_safetyVeh") then {
-                (player getVariable "f_var_safetyVeh") removeeventhandler ["Fired", f_eh_safetyVeh];
-                f_eh_safetyVeh = nil;
-            };
-            player setVariable ["f_var_safetyVeh",nil];
-        };
+          if !(isNil "f_eh_safetyVeh") then {
+              (player getVariable "f_var_safetyVeh") removeeventhandler ["Fired", f_eh_safetyVeh];
+              f_eh_safetyVeh = nil;
+          };
+          player setVariable ["f_var_safetyVeh",nil];
+      };
 
 		//Enable ACE advanced throwing
     if !(isNil "disableAdvancedThrowing") then {

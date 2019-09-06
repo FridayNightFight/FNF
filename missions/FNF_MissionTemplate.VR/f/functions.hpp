@@ -50,3 +50,10 @@ class misc {
     class setTimeOfDay{};
     class setWeather{};
 };
+class ui {
+  file = "f\ui";
+  class gearSelector{};
+  class removeSelectorHandlers{};
+  class gearSelectorAdds{};
+  class removeSelector{};
+};

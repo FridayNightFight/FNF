@@ -47,4 +47,4 @@ safeStartZonePFH = [{
     [] spawn notInStart;
     safeZoneWarning = true;
   };
-  }, 0.25, []] call CBA_fnc_addPerFrameHandler;
+  }, 0.5, []] call CBA_fnc_addPerFrameHandler;

@@ -34,7 +34,7 @@ giveBLUFORLoadout = {
   if (pRole == ROLE_AT) then {
     phx_loadout_mediumantitank_weapon = "rhs_weap_maaws";
     phx_loadout_mediumantitank_optic = "rhs_optic_maaws";
-    phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT";
+    phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT:1";
   };
   if (pRole == ROLE_AAT) then {
     phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT";
@@ -84,7 +84,7 @@ giveOPFORLoadout = {
   };
   if (pRole == ROLE_AT) then {
     phx_loadout_mediumantitank_weapon = "launch_RPG32_green_F";
-    phx_loadout_mediumantitank_mag = "RPG32_F";
+    phx_loadout_mediumantitank_mag = "RPG32_F:1";
   };
   if (pRole == ROLE_AAT) then {
     phx_loadout_mediumantitank_mag = "RPG32_F";
@@ -194,7 +194,7 @@ switch (pWeapons) do {
       };
       if (pRole == ROLE_AT) then {
         phx_loadout_mediumantitank_weapon = "launch_I_Titan_short_F";
-        phx_loadout_mediumantitank_mag = "Titan_AT";
+        phx_loadout_mediumantitank_mag = "Titan_AT:1";
       };
       if (pRole == ROLE_AAT) then {
         phx_loadout_mediumantitank_mag = "Titan_AT";
@@ -239,7 +239,7 @@ switch (pWeapons) do {
       };
       if (pRole == ROLE_AT) then {
         phx_loadout_mediumantitank_weapon = "launch_O_Titan_short_F";
-        phx_loadout_mediumantitank_mag = "Titan_AT";
+        phx_loadout_mediumantitank_mag = "Titan_AT:1";
       };
       if (pRole == ROLE_AAT) then {
         phx_loadout_mediumantitank_mag = "Titan_AT";
@@ -325,7 +325,7 @@ switch (pWeapons) do {
       if (pRole == ROLE_AT) then {
         phx_loadout_mediumantitank_weapon = "rhs_weap_maaws";
         phx_loadout_mediumantitank_optic = "rhs_optic_maaws";
-        phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT";
+        phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT:1";
       };
       if (pRole == ROLE_AAT) then {
         phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT";

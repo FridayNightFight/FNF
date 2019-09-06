@@ -30,6 +30,9 @@ phx_end_clientWait = [phx_fnc_end_clientWait, 5, []] call CBA_fnc_addPerFrameHan
 //Marker System
 [] execVM "QS_icons.sqf";
 
+//Gear selector UI
+[] spawn phx_fnc_gearSelector;
+
 //====================================================================================================
 phx_clientInitFinished = true;
 

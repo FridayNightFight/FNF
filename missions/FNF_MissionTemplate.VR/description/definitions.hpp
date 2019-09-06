@@ -15,7 +15,5 @@ respawndelay = 999999;
 respawnOnStart = -1;
 respawnTemplates[] = {"Spectator"};
 
-disableChannels[]={{0,true,true},{2,true,true}};
-
 corpseManagerMode = 0;
 wreckManagerMode = 0;

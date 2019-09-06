@@ -1,25 +1,28 @@
 _sleepTime = ("f_param_mission_timer" call BIS_fnc_getParamValue) * 60;
+
 sleep _sleepTime;
 
+_bluforInMission = false;
+_opforInMission = false;
+_indforInMission = false;
+
+_bluforEliminated = false;
+_opforEliminated = false;
+_indforEliminated = false;
+
 if (({(side _x == west)}count playableUnits) > 0) then {
-  bluforInMission = true;
+  _bluforInMission = true;
 };
 if (({(side _x == east)}count playableUnits) > 0) then {
-  opforInMission = true;
+  _opforInMission = true;
 };
 if (({(side _x == independent)}count playableUnits) > 0) then {
-  indforInMission = true;
+  _indforInMission = true;
 };
-
-
-bluforEliminated = false;
-opforEliminated = false;
-indforEliminated = false;
 
 _endAliveEH = addMissionEventHandler ["EntityKilled", {
   params ["_unit", "_killer", "_instigator", "_useEffects"];
-  if !(_unit isKindOf "Man") exitWith {};
-  if (bluforInMission && !bluforEliminated && (({(alive _x) and (side _x == west)}count playableUnits) < 1)) then {
+  if (_bluforInMission && !bluforEliminated && (({(alive _x) and (side _x == west)}count playableUnits) < 1)) then {
     bluforEliminated = true;
     ["BLUFOR eliminated!"] remoteExec ["hint"];
   };
@@ -34,23 +37,3 @@ _endAliveEH = addMissionEventHandler ["EntityKilled", {
     ["INDFOR eliminated!"] remoteExec ["hint"];
   };
 }];
-
-aliveCounter = {
-  aliveCount = true;
-
-  waitUntil {!(alive player)};
-
-  while {aliveCount} do {
-     if !(alive player) then {
-  	     _bluforAlive = ({(alive _x) and (side _x == west)} count playableUnits);
-         _opforAlive = ({(alive _x) and (side _x == east)} count playableUnits);
-         _indforAlive = ({(alive _x) and (side _x == east)} count playableUnits);
-
-         hint format ["BLUFOR alive: %1\nOPFOR alive: %2\nINDFOR alive: %3", _bluforAlive, _opforAlive, _indforAlive];
-
-     };
-     sleep 5;
-  };
-};
-
-remoteExec ["aliveCounter",0,true]

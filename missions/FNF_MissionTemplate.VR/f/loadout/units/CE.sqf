@@ -7,9 +7,9 @@ call phx_fnc_loadout_handleCECharges;
 // Add gear
 [phx_loadout_rifle_mag_tracer, "vest"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_rifle_weapon;
-[phx_loadout_explosives, "backpack"] call phx_fnc_loadout_handleGear;
+/*[phx_loadout_explosives, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_explosives_1, "backpack"] call phx_fnc_loadout_handleGear;
-[phx_loadout_explosives_2, "backpack"] call phx_fnc_loadout_handleGear;
+[phx_loadout_explosives_2, "backpack"] call phx_fnc_loadout_handleGear;*/
 [phx_loadout_aid, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_smoke, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_defusalkit, "uniform"] call phx_fnc_loadout_handleGear;

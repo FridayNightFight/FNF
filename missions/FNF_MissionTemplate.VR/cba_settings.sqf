@@ -41,7 +41,7 @@ force ace_map_BFT_Interval = 1;
 force ace_map_BFT_Enabled = false;
 force ace_map_BFT_HideAiGroups = false;
 force ace_map_BFT_ShowPlayerNames = false;
-force ace_map_mapIllumination = true;
+force ace_map_mapIllumination = false;
 force ace_map_mapGlow = true;
 force ace_map_mapShake = false;
 force ace_map_mapLimitZoom = false;
@@ -207,14 +207,14 @@ force acex_viewrestriction_modeSelectiveLand = 0;
 force acex_viewrestriction_modeSelectiveAir = 0;
 force acex_viewrestriction_modeSelectiveSea = 0;
 
+// ACE Advanced Fatigue
 force ace_advanced_fatigue_enabled = true;
+force ace_advanced_fatigue_enableStaminaBar = true;
 force ace_advanced_fatigue_loadFactor = 1;
-force ace_advanced_fatigue_performanceFactor = 6;
-force ace_advanced_fatigue_recoveryFactor = 2;
+force ace_advanced_fatigue_performanceFactor = 1.5;
+force ace_advanced_fatigue_recoveryFactor = 1.5;
+force ace_advanced_fatigue_swayFactor = 1;
 force ace_advanced_fatigue_terrainGradientFactor = 1;
-
-force ace_advanced_throwing_enablePickUp = true;
-force ace_advanced_throwing_enablePickUpAttached = true;
 
 force ace_captives_allowHandcuffOwnSide = false;
 force ace_captives_requireSurrender = 0;

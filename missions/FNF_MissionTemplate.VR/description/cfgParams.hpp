@@ -81,6 +81,12 @@ class Params {
       texts[] = {"2x Satchel (default)","4x Demo block","2x Demo, 1x Trip Mine","2x Trip Mine","1x Satchel, 2x SLAM, 1x M15 AT Mine"};
       default = -1;
     };
+    class phx_loadout_allowCESelector {
+      title = "CE Explosives Selector UI";
+      values[] = {0,1};
+      texts[] = {"Enabled (default)","disabled"};
+      default = 0;
+    };
     class spacer2 {
       title = "====================================================================================================================================================================================";
       values[] = {0};

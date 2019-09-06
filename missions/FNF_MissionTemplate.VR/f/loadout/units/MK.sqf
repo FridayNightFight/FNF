@@ -9,7 +9,7 @@ call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 [phx_loadout_rifle_mag, "vest"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_rifle_weapon;
 player addPrimaryWeaponItem phx_loadout_rifle_optic;
-player addItemToUniform "ACE_RangeCard";
+player addItem "ACE_RangeCard";
 
 // Add items
 phx_loadout_addBinocular = "ACE_VectorDay";
