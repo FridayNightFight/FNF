@@ -5,9 +5,7 @@ publicVariable "gameEnd";
 
 _zoneRestriction = "phx_zoneRestriction" call BIS_fnc_getParamValue;
 
-if !(_zoneRestriction isEqualTo 0) then {
-  [[],"f\misc\zoneRestriction_client.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
-} else {
+if (_zoneRestriction isEqualTo 0) then {
   deleteVehicle zoneTrigger;
 };
 

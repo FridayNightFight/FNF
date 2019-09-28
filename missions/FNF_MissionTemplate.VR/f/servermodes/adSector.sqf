@@ -9,17 +9,16 @@ if (isNil "objectivesNumber") then {
 if ((defendingSide == attackingSide) || !((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)) || (isNil "defendingSide") || (isNil "attackingSide"))
 exitWith {["Game mode not configured correctly, check 'varSelection.sqf'"] remoteExec ["hint"];};
 
-/*
-if !(isNil "sector1") then {
+
+if !(isNull sector1) then {
   sector1 setVariable ["owner",defendingSide];
 };
-if !(isNil "sector2") then {
+if !(isNull sector2) then {
   sector2 setVariable ["owner",defendingSide];
 };
-if !(isNil "sector3") then {
+if !(isNull sector3) then {
   sector3 setVariable ["owner",defendingSide];
 };
-*/
 
 switch (defendingSide) do {
   //east defense

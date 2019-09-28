@@ -50,6 +50,11 @@ if (phx_loadout_compass <= phx_loadout_unitLevel) then {
     player unlinkItem "ItemCompass";
 };
 
+//Give MicroDAGR to Vector dudes
+if ((missionNamespace getVariable ["phx_loadout_addBinocular",false]) isEqualTo "ACE_VectorDay") then {
+  player addItem "ACE_microDAGR";
+};
+
 // Binocular
 phx_loadout_binocularArray = ["Binocular", "Laserdesignator_02", "Laserdesignator_03","Laserdesignator", "lerca_1200_black", "lerca_1200_tan", "Leupold_Mk4", "rhs_pdu4", "Rangefinder", "rhs_tr8_periscope", "rhs_tr8_periscope_pip"]; // An array of all binocular classnames in the modset
 if ((missionNamespace getVariable ["phx_loadout_addBinocular",false]) isEqualType "") then {

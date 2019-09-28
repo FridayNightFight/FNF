@@ -89,7 +89,7 @@ force ace_medical_moveUnitsFromGroupOnUnconscious = false;
 force ace_medical_painCoefficient = 0.7;
 ace_medical_painEffectType = 1;
 force ace_medical_painIsOnlySuppressed = false;
-force ace_medical_playerDamageThreshold = 2.5;
+force ace_medical_playerDamageThreshold = 2;
 force ace_medical_preventInstaDeath = false;
 force ace_medical_remoteControlledAI = true;
 force ace_medical_useCondition_PAK = 0;
@@ -210,11 +210,11 @@ force acex_viewrestriction_modeSelectiveSea = 0;
 // ACE Advanced Fatigue
 force ace_advanced_fatigue_enabled = true;
 force ace_advanced_fatigue_enableStaminaBar = true;
-force ace_advanced_fatigue_loadFactor = 1;
-force ace_advanced_fatigue_performanceFactor = 1.5;
-force ace_advanced_fatigue_recoveryFactor = 1.5;
-force ace_advanced_fatigue_swayFactor = 1;
-force ace_advanced_fatigue_terrainGradientFactor = 1;
+force ace_advanced_fatigue_loadFactor = 0.65;
+force ace_advanced_fatigue_performanceFactor = 3;
+force ace_advanced_fatigue_recoveryFactor = 3;
+force ace_advanced_fatigue_swayFactor = 0.8;
+force ace_advanced_fatigue_terrainGradientFactor = 0.8;
 
 force ace_captives_allowHandcuffOwnSide = false;
 force ace_captives_requireSurrender = 0;

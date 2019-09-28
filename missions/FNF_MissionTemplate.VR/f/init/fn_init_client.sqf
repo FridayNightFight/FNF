@@ -21,6 +21,13 @@ phx_end_clientWait = [phx_fnc_end_clientWait, 5, []] call CBA_fnc_addPerFrameHan
 //Make sure player stays within safe start markers
 [] execVM "f\safeStart\f_playerInStart.sqf";
 
+//Make sure player stays within mission boundary if present
+_zoneRestriction = "phx_zoneRestriction" call BIS_fnc_getParamValue;
+
+if !(_zoneRestriction isEqualTo 0) then {
+  [] execVM "f\misc\zoneRestriction_client.sqf";
+};
+
 // Create briefing
 [] execVM "briefing.sqf";
 

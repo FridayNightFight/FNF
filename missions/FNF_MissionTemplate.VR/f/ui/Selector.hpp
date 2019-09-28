@@ -47,7 +47,7 @@ class GearSelector
 			soundExpand[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.1,1.0};
 			soundSelect[] = {"\A3\ui_f\data\sound\RscCombo\soundSelect",0.1,1.0};
 			wholeHeight = 0.3;
-			tooltip = "Choose between a flash or incendiary grenade";
+			tooltip = "Choose between flash or incendiary grenades";
 			class ComboScrollBar
 			{
 				color[] = {1,1,1,1};
