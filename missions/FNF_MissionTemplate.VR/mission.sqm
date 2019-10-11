@@ -12,10 +12,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={437.86493,18.78853,689.11987};
-		dir[]={0.10012864,-0.30721423,0.94637036};
-		up[]={0.032325741,0.95163423,0.30553156};
-		aside[]={0.99445915,2.4028122e-007,-0.10521657};
+		pos[]={428.97028,31.219856,682.37109};
+		dir[]={-0.025283556,-0.41639054,0.90886784};
+		up[]={-0.011580027,0.90916461,0.41627595};
+		aside[]={0.9996379,-3.461173e-008,0.027806727};
 	};
 };
 binarizationWanted=0;
@@ -211,8 +211,8 @@ class CustomAttributes
 		name="Scenario";
 		class Attribute0
 		{
-			property="Enh_ambientFlyby_speed";
-			expression="missionNamespace setVariable ['Enh_AmbientFlyby_Speed',_value]";
+			property="cba_settings_hasSettingsFile";
+			expression="false";
 			class Value
 			{
 				class data
@@ -221,52 +221,14 @@ class CustomAttributes
 					{
 						type[]=
 						{
-							"STRING"
+							"BOOL"
 						};
 					};
-					value="normal";
+					value=1;
 				};
 			};
 		};
 		class Attribute1
-		{
-			property="Enh_Airdrop_Condition";
-			expression="if (isServer) then {missionNamespace setVariable ['Enh_Airdrop_Condition',_value]}";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"STRING"
-						};
-					};
-					value="false";
-				};
-			};
-		};
-		class Attribute2
-		{
-			property="Enh_Airdrop_Side";
-			expression="if (isServer) then {missionNamespace setVariable ['Enh_Airdrop_Side',_value]}";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"STRING"
-						};
-					};
-					value="WEST";
-				};
-			};
-		};
-		class Attribute3
 		{
 			property="Enh_dynamicGroups";
 			expression="		if (!is3DEN && isServer && _value && !(allCurators isEqualTo [])) then		{			[] spawn			{				while {true} do				{					{						 _x addCuratorEditableObjects						 [						 	entities [[],['Logic'],true],						  	true						 ];					} count allCurators;					sleep 60;				};			};		}";
@@ -285,26 +247,7 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute4
-		{
-			property="cba_settings_hasSettingsFile";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"BOOL"
-						};
-					};
-					value=1;
-				};
-			};
-		};
-		nAttributes=5;
+		nAttributes=2;
 	};
 };
 class Mission
@@ -333,27 +276,8 @@ class Mission
 			name="Intel";
 			class Attribute0
 			{
-				property="Enh_disableGrass";
-				expression="if (((parseNumber _value) > 0) && !is3DEN && hasInterface) then {setTerrainGrid (parseNumber _value)}";
-				class Value
-				{
-					class data
-					{
-						class type
-						{
-							type[]=
-							{
-								"STRING"
-							};
-						};
-						value="-1";
-					};
-				};
-			};
-			class Attribute1
-			{
 				property="Enh_timeMultiplier";
-				expression="if (!is3DEN && isServer) then {setTimeMultiplier _value}";
+				expression="if (!is3DEN && isServer && _value != 1) then {setTimeMultiplier _value}";
 				class Value
 				{
 					class data
@@ -369,7 +293,7 @@ class Mission
 					};
 				};
 			};
-			nAttributes=2;
+			nAttributes=1;
 		};
 	};
 	class Entities

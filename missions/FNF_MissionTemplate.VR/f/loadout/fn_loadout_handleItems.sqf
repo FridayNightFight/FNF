@@ -86,3 +86,8 @@ call phx_fnc_loadout_handleNV;
 if ((missionNamespace getVariable ["phx_loadout_addAttachment",false]) isEqualType "") then {
     player addPrimaryWeaponItem phx_loadout_addAttachment;
 };
+
+//E-Tool
+if (pRole == ROLE_CE) then {
+  player addItem "ACE_EntrenchingTool";
+};
