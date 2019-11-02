@@ -54,7 +54,7 @@ if (phx_hasSW) then {
     phx_curSettings set [5,phx_altChan];
     //Set stero mode for alternate channel
     phx_curSettings set [6,2];
-    
+
     [(call TFAR_fnc_activeSwRadio), phx_curSettings] call TFAR_fnc_setSwSettings;
 };
 

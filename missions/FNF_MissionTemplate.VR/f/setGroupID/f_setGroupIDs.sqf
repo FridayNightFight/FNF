@@ -109,37 +109,37 @@ _groups = [
 
     ["Green_Pilot","P","Pilots",0, [1, 6, [1, 2, 3, 4, .1]] ],
 
-    ["Green_I","I","India Squad",1, [2, 1, [1, 1.1, 1.2]] ],
-    ["Green_I1","I1","India One",0, [3, 2, [1, 1.1, 1.2]] ],
-    ["Green_I2","I2","India Two",0, [4, 2, [1, 1.1, 1.2]] ],
+    ["Green_A","A","Alpha Squad",1, [2, 1, [1, 1.1, 1.2]] ],
+    ["Green_A1","A1","Alpha One",0, [3, 2, [1, 1.1, 1.2]] ],
+    ["Green_A2","A2","Alpha Two",0, [4, 2, [1, 1.1, 1.2]] ],
 
-    ["Green_J","J","Juliet Squad",1, [2, 1, [2, 2.1, 2.2]] ],
-    ["Green_J1","J1","Juliet One",0, [3, 2, [2, 2.1, 2.2]] ],
-    ["Green_J2","J2","Juliet Two",0, [4, 2, [2, 2.1, 2.2]] ],
+    ["Green_B","B","Bravo Squad",1, [2, 1, [2, 2.1, 2.2]] ],
+    ["Green_B1","B1","Bravo One",0, [3, 2, [2, 2.1, 2.2]] ],
+    ["Green_B2","B2","Bravo Two",0, [4, 2, [2, 2.1, 2.2]] ],
 
-    ["Green_K","K","Kilo Squad",1, [2, 1, [3, 3.1, 3.2]] ],
-    ["Green_K1","K1","Kilo One",0, [3, 2, [3, 3.1, 3.2]] ],
-    ["Green_K2","K2","Kilo Two",0, [4, 2, [3, 3.1, 3.2]] ],
+    ["Green_C","C","Charlie Squad",1, [2, 1, [3, 3.1, 3.2]] ],
+    ["Green_C1","C1","Charlie One",0, [3, 2, [3, 3.1, 3.2]] ],
+    ["Green_C2","C2","Charlie Two",0, [4, 2, [3, 3.1, 3.2]] ],
 
-    ["Green_L","L","Lima Squad",1, [2, 1, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_L1","L1","Lima One",0, [3, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_L2","L2","Lima Two",0, [4, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_L3","L3","Lima Three",0, [5, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_L4","L4","Lima Four",0, [6, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    ["Green_D","D","Delta Squad",1, [2, 1, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    ["Green_D1","L1","Delta One",0, [3, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    ["Green_D2","L2","Delta Two",0, [4, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    ["Green_D3","L3","Delta Three",0, [5, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    ["Green_D4","L4","Delta Four",0, [6, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
 
     ["Green_P2HQ","P2HQ","2nd Platoon",2, [1, 5, [5, 6, 7, .1]] ],
 
-    ["Green_M","M","Mike Squad",1, [2, 1, [5, 5.1, 5.2]] ],
-    ["Green_M1","M1","Mike One",0, [3, 2, [5, 5.1, 5.2]] ],
-    ["Green_M2","M2","Mike Two",0, [4, 2, [5, 5.1, 5.2]] ],
+    ["Green_E","E","Echo Squad",1, [2, 1, [5, 5.1, 5.2]] ],
+    ["Green_E1","E1","Echo One",0, [3, 2, [5, 5.1, 5.2]] ],
+    ["Green_E2","E2","Echo Two",0, [4, 2, [5, 5.1, 5.2]] ],
 
-    ["Green_N","N","November Squad",1, [2, 1, [6, 6.1, 6.2]] ],
-    ["Green_N1","N1","November One",0, [3, 2, [6, 6.1, 6.2]] ],
-    ["Green_N2","N2","November Two",0, [4, 2, [6, 6.1, 6.2]] ],
+    ["Green_F","F","Foxtrot Squad",1, [2, 1, [6, 6.1, 6.2]] ],
+    ["Green_F1","F1","Foxtrot One",0, [3, 2, [6, 6.1, 6.2]] ],
+    ["Green_F2","F2","Foxtrot Two",0, [4, 2, [6, 6.1, 6.2]] ],
 
-    ["Green_O","O","Oscar Squad",1, [2, 1, [7, 7.1, 7.2]] ],
-    ["Green_O1","O1","Oscar One",0, [3, 2, [7, 7.1, 7.2]] ],
-    ["Green_O2","O2","Oscar Two",0, [4, 2, [7, 7.1, 7.2]] ]
+    ["Green_G","G","Golf Squad",1, [2, 1, [7, 7.1, 7.2]] ],
+    ["Green_G1","G1","Golf One",0, [3, 2, [7, 7.1, 7.2]] ],
+    ["Green_G2","G2","Golf Two",0, [4, 2, [7, 7.1, 7.2]] ]
 ];
 
 private ["_grp"];

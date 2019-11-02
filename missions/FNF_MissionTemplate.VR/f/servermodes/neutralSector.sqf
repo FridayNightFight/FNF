@@ -6,7 +6,7 @@ if (isNil "controlTime") then {
   controlTime = 900; //15 Minutes
 };
 
-sleepTime = controlTime / 60;
+sleepTime = (controlTime / 60);
 
 [west, 0] call BIS_fnc_respawnTickets;
 [east, 0] call BIS_fnc_respawnTickets;
@@ -14,7 +14,6 @@ sleepTime = controlTime / 60;
 waitUntil {(controllingSide != resistance)};
 
 while {!gameEnd} do {
-  sleep sleepTime;
   [controllingSide, 1] call BIS_fnc_respawnTickets;
   if (([controllingSide] call BIS_fnc_respawnTickets >= 100) && !gameEnd) then {
     gameEnd = true;
@@ -25,4 +24,5 @@ while {!gameEnd} do {
     sleep 20;
     "end1" call BIS_fnc_endMissionServer;
   };
+  sleep sleepTime;
 };

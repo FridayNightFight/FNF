@@ -35,7 +35,6 @@ class loadout {
     class loadout_checkLoadout{postInit = 1;};
     class loadout_handleNV{};
     class loadout_handleCECharges{};
-    class addArsenal{};
 };
 class misc {
     file = "f\misc";

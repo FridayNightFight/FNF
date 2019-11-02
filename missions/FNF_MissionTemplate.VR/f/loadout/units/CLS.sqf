@@ -7,14 +7,18 @@ call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 [phx_loadout_cuffs, "item"] call phx_fnc_loadout_handleGear;
 [phx_loadout_rifle_mag_tracer, "vest"] call phx_fnc_loadout_handleGear;
 [phx_loadout_rifle_mag, "vest"] call phx_fnc_loadout_handleGear;
+[phx_loadout_sidearm_mag, "vest"] call phx_fnc_loadout_handleGear;
 [phx_loadout_PAK, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_bandage, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_morphine, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_epinephrine, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_blood, "backpack"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_rifle_weapon;
+player addWeapon phx_loadout_sidearm_weapon;
 
 // Add items
 call phx_fnc_loadout_handleItems; // Add binocular/nvg variables above this line!
+
+player setVariable ["ace_medical_medicClass", 1, true];
 
 missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

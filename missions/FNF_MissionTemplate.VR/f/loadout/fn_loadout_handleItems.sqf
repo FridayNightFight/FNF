@@ -35,10 +35,10 @@ if (phx_loadout_gps <= phx_loadout_unitLevel) then {
 // Watch
 if (phx_loadout_watch <= phx_loadout_unitLevel) then {
     if !("ItemWatch" in (assignedItems player)) then {
-        player linkItem "ItemWatch";
+        //player linkItem "ItemWatch";
     };
 } else {
-    player unlinkItem "ItemWatch";
+    //player unlinkItem "ItemWatch";
 };
 
 // Compass
@@ -85,9 +85,4 @@ call phx_fnc_loadout_handleNV;
 // Flashlight
 if ((missionNamespace getVariable ["phx_loadout_addAttachment",false]) isEqualType "") then {
     player addPrimaryWeaponItem phx_loadout_addAttachment;
-};
-
-//E-Tool
-if (pRole == ROLE_CE) then {
-  player addItem "ACE_EntrenchingTool";
 };

@@ -3,6 +3,8 @@
 giveBLUFORLoadout = {
   phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4";
   phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:7";
+  phx_loadout_sidearm_weapon = "rhsusf_weap_glock17g4";
+  phx_loadout_sidearm_mag = "rhsusf_mag_17Rnd_9x19_JHP:3";
   if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
     phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_M203_bk";
     phx_loadout_rifle_gl_he = "1Rnd_HE_Grenade_shell:6";
@@ -50,6 +52,8 @@ giveBLUFORLoadout = {
 giveOPFORLoadout = {
   phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_green:4";
   phx_loadout_rifle_mag = "rhs_30Rnd_545x39_AK:7";
+  phx_loadout_sidearm_weapon = "rhs_weap_pya";
+  phx_loadout_sidearm_mag = "rhs_mag_9x19_17:3";
   if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
     phx_loadout_rifle_weapon = "rhs_weap_ak74m_gp25";
     phx_loadout_rifle_gl_he = "rhs_VOG25:6";
@@ -100,6 +104,8 @@ giveOPFORLoadout = {
 giveINDFORLoadout = {
   phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_green:4";
   phx_loadout_rifle_mag = "rhs_30Rnd_545x39_AK:7";
+  phx_loadout_sidearm_weapon = "hgun_P07_F";
+  phx_loadout_sidearm_mag = "16Rnd_9x21_Mag:3";
   if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
     phx_loadout_rifle_weapon = "rhs_weap_ak74m_gp25";
     phx_loadout_rifle_gl_he = "rhs_VOG25:6";
@@ -170,6 +176,7 @@ switch (pWeapons) do {
         [] call giveOPFORLoadout;
     };
     case WEAPONS_AKMN_PKM_PKP_RPG7_RPG32: {
+      [] call giveOPFORLoadout;
       phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_bakelite_tracer:4";
       phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_bakelite:7";
       if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
@@ -215,6 +222,7 @@ switch (pWeapons) do {
       phx_loadout_flare = "rhs_weap_rsp30_white:3";
     };
     case WEAPONS_MX_STONER_MXSW_RPG32_TITAN: {
+      [] call giveINDFORLoadout;
       phx_loadout_rifle_mag_tracer = "30Rnd_65x39_caseless_mag_Tracer:4";
       phx_loadout_rifle_mag = "30Rnd_65x39_caseless_mag:7";
       if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
@@ -260,6 +268,7 @@ switch (pWeapons) do {
       phx_loadout_flare = "ACE_HandFlare_White:3";
     };
     case WEAPONS_KATIBA_ZAFIR_LYNX_RPG32_TITAN:{
+      [] call giveINDFORLoadout;
       phx_loadout_rifle_mag_tracer = "30Rnd_65x39_caseless_green_mag_Tracer:4";
       phx_loadout_rifle_mag = "30Rnd_65x39_caseless_green:7";
       if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
@@ -305,6 +314,7 @@ switch (pWeapons) do {
       phx_loadout_flare = "ACE_HandFlare_White:3";
     };
     case WEAPONS_KAR98K_PKM_MG42_RPG26_RPG7: {
+      [] call giveOPFORLoadout;
       phx_loadout_rifle_mag_tracer = "";
       phx_loadout_rifle_mag = "rhsgref_5Rnd_792x57_kar98k:10";
       phx_loadout_rifle_weapon = "rhs_weap_kar98k";
@@ -345,6 +355,7 @@ switch (pWeapons) do {
       phx_loadout_flare = "ACE_HandFlare_White:3";
     };
     case WEAPONS_SCARH_MK18320_SAW_M240_M136_GUST:{
+      [] call giveBLUFORLoadout;
       phx_loadout_rifle_mag_tracer = "rhs_mag_20Rnd_SCAR_762x51_m62_tracer_bk:4";
       phx_loadout_rifle_mag = "rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk:7";
       if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {

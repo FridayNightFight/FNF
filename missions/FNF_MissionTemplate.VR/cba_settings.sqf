@@ -248,3 +248,8 @@ force ace_advanced_ballistics_bulletTraceEnabled = true;
 force ace_advanced_ballistics_simulationInterval = 0.05;
 
 force ace_overpressure_distanceCoefficient = 1;
+/*
+//TFAR
+force TF_give_microdagr_to_soldier = true;
+force TF_give_personal_radio_to_regular_soldier = true;
+*/

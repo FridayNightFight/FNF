@@ -8,8 +8,10 @@ call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 [phx_loadout_cuffs, "item"] call phx_fnc_loadout_handleGear;
 [phx_loadout_rifle_mag_tracer, "vest"] call phx_fnc_loadout_handleGear;
 [phx_loadout_rifle_mag, "vest"] call phx_fnc_loadout_handleGear;
+[phx_loadout_sidearm_mag, "vest"] call phx_fnc_loadout_handleGear;
 [phx_loadout_mediumantitank_mag, "backpack"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_rifle_weapon;
+player addWeapon phx_loadout_sidearm_weapon;
 
 // Add items
 phx_loadout_addBinocular = "Binocular";
