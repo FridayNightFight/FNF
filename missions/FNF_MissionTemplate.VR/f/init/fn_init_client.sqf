@@ -40,6 +40,15 @@ if !(_zoneRestriction isEqualTo 0) then {
 //Gear selector UI
 [] spawn phx_fnc_gearSelector;
 
+//ORBAT updater
+[] spawn {
+  sleep 15;
+
+  orbatUpdatePFH = [{
+    [] execVM "f\briefing\f_updateOrbat.sqf";
+  }, 60, []] call CBA_fnc_addPerFrameHandler;
+};
+
 //====================================================================================================
 phx_clientInitFinished = true;
 

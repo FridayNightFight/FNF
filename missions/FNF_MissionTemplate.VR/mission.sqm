@@ -12,10 +12,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={485.97195,11.321848,694.46381};
-		dir[]={0.26209283,-0.55897868,0.78667474};
-		up[]={0.17668515,0.82918084,0.53032339};
-		aside[]={0.94873351,-7.2934199e-008,-0.31608522};
+		pos[]={439.53024,22.56068,662.06177};
+		dir[]={0.11910481,-0.41323352,0.90281224};
+		up[]={0.054048497,0.91062433,0.40969107};
+		aside[]={0.99141914,-1.2200326e-007,-0.13079421};
 	};
 };
 binarizationWanted=0;
@@ -238,7 +238,7 @@ class AddonsMetaData
 randomSeed=615564;
 class ScenarioData
 {
-	author="Martin";
+	disabledAI=1;
 };
 class CustomAttributes
 {
@@ -492,8 +492,8 @@ class CustomAttributes
 		name="Scenario";
 		class Attribute0
 		{
-			property="cba_settings_hasSettingsFile";
-			expression="false";
+			property="Enh_Airdrop";
+			expression="				if (!is3DEN && !((_value # 0) isEqualTo '') && isServer) then				{					_value spawn					{						params ['_classes','_center','_condition','_alt','_r','_side'];						_condition = compile _condition;						waitUntil {sleep 1; call _condition};						private _group = createGroup _side;						playSound3D ['A3\Data_F_Warlords\sfx\flyby.wss',objNull,false,_center vectorAdd [0,0,100],2.5];						Enh_Airdrop_Units = [];						{							_center set [2,_center # 2 + random [-20,0,20]];							private _unit = _group createUnit [_x,_center,[],0,'NONE'];							private _para = createVehicle ['Steerable_Parachute_F',_center getPos [_r * sqrt random 1,random 360],[],0,'FLY'];							_unit moveInDriver _para;							Enh_Airdrop_Units pushBack _unit;						} forEach _classes;					};				}";
 			class Value
 			{
 				class data
@@ -502,14 +502,373 @@ class CustomAttributes
 					{
 						type[]=
 						{
-							"BOOL"
+							"ARRAY"
+						};
+					};
+					class value
+					{
+						items=6;
+						class Item0
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"ARRAY"
+									};
+								};
+							};
+						};
+						class Item1
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"ARRAY"
+									};
+								};
+								class value
+								{
+									items=3;
+									class Item0
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+									class Item1
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+									class Item2
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+								};
+							};
+						};
+						class Item2
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"STRING"
+									};
+								};
+								value="false";
+							};
+						};
+						class Item3
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"SCALAR"
+									};
+								};
+								value=500;
+							};
+						};
+						class Item4
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"SCALAR"
+									};
+								};
+								value=200;
+							};
+						};
+						class Item5
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"SIDE"
+									};
+								};
+								value="WEST";
+							};
+						};
+					};
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="Enh_ambientFlyby";
+			expression="			if (isServer && !is3DEN && !((_value # 0) isEqualTo '')) then			{				Enh_AmbientFlyby_Enabled = true;				_value spawn				{					params ['_classes','_startPos','_endPos','_alt','_speed','_side','_delay'];					while {Enh_AmbientFlyby_Enabled} do					{						sleep _delay;						[_startPos,_endPos,_alt,_speed,selectRandom _classes,_side] call BIS_fnc_ambientFlyby;					};				};			}";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
+					class value
+					{
+						items=7;
+						class Item0
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"ARRAY"
+									};
+								};
+							};
+						};
+						class Item1
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"ARRAY"
+									};
+								};
+								class value
+								{
+									items=3;
+									class Item0
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+									class Item1
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+									class Item2
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=500;
+										};
+									};
+								};
+							};
+						};
+						class Item2
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"ARRAY"
+									};
+								};
+								class value
+								{
+									items=3;
+									class Item0
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+									class Item1
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+									class Item2
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"SCALAR"
+												};
+											};
+											value=0;
+										};
+									};
+								};
+							};
+						};
+						class Item3
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"SCALAR"
+									};
+								};
+								value=500;
+							};
+						};
+						class Item4
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"STRING"
+									};
+								};
+								value="normal";
+							};
+						};
+						class Item5
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"SIDE"
+									};
+								};
+								value="WEST";
+							};
+						};
+						class Item6
+						{
+							class data
+							{
+								class type
+								{
+									type[]=
+									{
+										"SCALAR"
+									};
+								};
+								value=300;
+							};
+						};
+					};
+				};
+			};
+		};
+		class Attribute2
+		{
+			property="EnableDebugConsole";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
 						};
 					};
 					value=1;
 				};
 			};
 		};
-		class Attribute1
+		class Attribute3
 		{
 			property="Enh_dynamicGroups";
 			expression="		if (!is3DEN && isServer && _value && !(allCurators isEqualTo [])) then		{			[] spawn			{				while {true} do				{					{						 _x addCuratorEditableObjects						 [						 	entities [[],['Logic'],true],						  	true						 ];					} count allCurators;					sleep 60;				};			};		}";
@@ -528,7 +887,26 @@ class CustomAttributes
 				};
 			};
 		};
-		nAttributes=2;
+		class Attribute4
+		{
+			property="cba_settings_hasSettingsFile";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"BOOL"
+						};
+					};
+					value=1;
+				};
+			};
+		};
+		nAttributes=5;
 	};
 };
 class Mission
@@ -548,8 +926,8 @@ class Mission
 		windForced=1;
 		year=2035;
 		day=28;
-		hour=13;
-		minute=37;
+		hour=12;
+		minute=0;
 		startFogDecay=0.014;
 		forecastFogDecay=0.014;
 		class CustomAttributes

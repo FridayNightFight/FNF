@@ -160,7 +160,7 @@ _generateORBAT = {
 
 //----------------------------------------------------------------------------------------------------
 private _side = side group player;
-private _orbatText = "<br />NOTE: The ORBAT below is only accurate at mission start.<br />
+private _orbatText = "<br />NOTE: This ORBAT updates every 60 seconds. If you see any issues with the ORBAT below, please let the FNF mission devs know.<br />
 <br />";
 
 waitUntil { !isNil "phx_groupIDset" };
@@ -232,5 +232,5 @@ if !(_groupText isEqualTo "") then {
 
 waitUntil {!isNil "ORBAT_Diary"};
 // Insert final result into subsection ORBAT of section Notes
-player createDiaryRecord ["ORBAT_Diary", ["Team ORBAT", _orbatText]];
+playerORBATRecord = player createDiaryRecord ["ORBAT_Diary", ["Team ORBAT", _orbatText]];
 phx_writtenORBAT = true;

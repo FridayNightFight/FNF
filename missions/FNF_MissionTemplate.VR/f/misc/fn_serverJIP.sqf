@@ -11,10 +11,10 @@ publicVariable "phx_hasGameStarted";
 // Add PFH that checks for game start
 [{
     params ["_args","_handle"];
-    
+
     if (isNil "f_var_mission_timer") exitWith {};
     if (isNil "CBA_missionTime") exitWith {};
-    
+
     private _safestartTime = ["f_param_mission_timer",10] call BIS_fnc_getParamValue;
     _safestartTime = _safestartTime * 60;
     if (f_var_mission_timer <= 0 && {(CBA_missionTime > 0)}) then {
@@ -37,7 +37,7 @@ addMissionEventHandler ["HandleDisconnect",{
 // Add EH for JIP player connect
 "phx_JIP_playerConnected" addPublicVariableEventHandler {
 	params ["_varName", "_jipPlayer"];
-    
+
     phx_JIP_latestJIPplayer = _jipPlayer;
     if (isNil "phx_spect_spectatorList") then {phx_spect_spectatorList = [];};
     [{
@@ -48,7 +48,7 @@ addMissionEventHandler ["HandleDisconnect",{
 // Add EH for spectator list
 "phx_spectatorPV" addPublicVariableEventHandler {
 	params ["_varName", "_spectator"];
-    
+
     if (isNil "phx_spect_spectatorList") then {phx_spect_spectatorList = [];};
     phx_spect_spectatorList pushBack _spectator;
 };
