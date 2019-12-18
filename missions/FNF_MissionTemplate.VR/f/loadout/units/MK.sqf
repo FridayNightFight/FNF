@@ -1,6 +1,12 @@
 // Add clothing
 call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 
+sunriseSunsetTime = date call BIS_fnc_sunriseSunsetTime;
+
+if ((daytime < sunriseSunsetTime select 0) || (dayTime > sunriseSunsetTime select 1)) then {
+  phx_loadout_rifle_optic = "optic_NVS";
+};
+
 // Add gear
 [phx_loadout_aid, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_smoke, "uniform"] call phx_fnc_loadout_handleGear;

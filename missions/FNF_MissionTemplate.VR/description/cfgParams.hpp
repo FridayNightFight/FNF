@@ -37,7 +37,7 @@ class Params {
       title = "INDFOR Uniform:";
       values[] = UNIFORM_VALUES;
       texts[] = UNIFORM_TEXTS;
-      default = UNIFORM_AAF;
+      default = UNIFORM_COLDWAR_ERA_1;
     };
     class phx_loadout_civ_uniform {
       title = "CIV Uniform:";
@@ -109,7 +109,7 @@ class Params {
       title = "INDFOR Weapons (R, LMG, HMG, AT):";
       values[] = WEAPON_VALUES;
       texts[] = WEAPON_TEXTS;
-      default = WEAPONS_MX_STONER_MXSW_RPG32_TITAN;
+      default = WEAPONS_AKMN_PKM_PKP_RPG7_RPG32;
     };
     class phx_loadout_civ_weapons {
       title = "CIV Weapons (R, LMG, HMG, AT):";

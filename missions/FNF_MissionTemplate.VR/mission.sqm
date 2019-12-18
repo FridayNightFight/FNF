@@ -8,14 +8,14 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=513;
+		nextID=514;
 	};
 	class Camera
 	{
-		pos[]={439.53024,22.56068,662.06177};
-		dir[]={0.11910481,-0.41323352,0.90281224};
-		up[]={0.054048497,0.91062433,0.40969107};
-		aside[]={0.99141914,-1.2200326e-007,-0.13079421};
+		pos[]={432.46524,46.425835,666.00592};
+		dir[]={2.2521242e-005,-0.47819635,0.87826604};
+		up[]={1.1264463e-005,0.87824917,0.47820821};
+		aside[]={1.0000108,8.0449627e-007,-2.4955487e-005};
 	};
 };
 binarizationWanted=0;
@@ -927,7 +927,7 @@ class Mission
 		year=2035;
 		day=28;
 		hour=12;
-		minute=0;
+		minute=23;
 		startFogDecay=0.014;
 		forecastFogDecay=0.014;
 		class CustomAttributes

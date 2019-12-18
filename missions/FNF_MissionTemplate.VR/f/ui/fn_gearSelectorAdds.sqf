@@ -8,18 +8,27 @@ _grenadeListboxControl = _display displayCtrl 2002;
 _opticListboxControl lbAdd "Iron Sights";
 
 _optics = [];
+_allowedOptics = [];
+opticsIndexes = [];
+opticArraySelectedIndex = 0;
+_index = 1;
 
-switch (side player) do {
-  case west:{
-    _optics = ["optic_Holosight_blk_F","rhsusf_acc_eotech_552","rhsusf_acc_compm4","rhsusf_acc_T1_high"];
-  };
-  case east: {
-    _optics = ["rhs_acc_1p63","rhs_acc_ekp1","rhs_acc_ekp8_02","rhs_acc_pkas"];
-  };
-  case independent: {
-    _optics = ["optic_Holosight_blk_F","rhsusf_acc_eotech_552","optic_ACO_grn","rhsusf_acc_compm4","rhsusf_acc_T1_high","rhs_acc_ekp1","rhs_acc_ekp8_02","rhs_acc_pkas"];
+_configClasses = "true" configClasses (configfile >> "CfgWeapons") apply {configName _x};
+_configClasses apply {
+  if (((configName (configfile >> "CfgWeapons" >> _x) call BIS_fnc_itemType) select 1) isEqualTo "AccessorySights" && !isNull (configfile >> "CfgWeapons" >> _x >> "ItemInfo" >> "OpticsModes" >> "ACO")) then {
+    _allowedOptics pushBack _x;
   };
 };
+
+_compatibleOptics = [primaryWeapon player, "optic"] call CBA_fnc_compatibleItems;
+
+{
+  if (_x in _compatibleOptics) then {
+    _optics pushBack _x;
+    opticsIndexes pushBack [_x, _index];
+    _index = _index + 1;
+  };
+} forEach _allowedOptics;
 
 {
   _opticListboxControl lbAdd _x;
@@ -32,92 +41,23 @@ if !(opticFirstSel) then {
   lbSetCurSel [2001, opticSelected];
 };
 
-switch (side player) do {
-  case west: {
-    _opticListboxSelect =  _opticListboxControl ctrlAddEventHandler  ["LBSelChanged",{
-      params ["_control", "_selectedIndex"];
-      switch (_selectedIndex) do {
-        case 1:{
-          player addPrimaryWeaponItem "optic_Holosight_blk_F";
-        };
-        case 2:{
-          player addPrimaryWeaponItem "rhsusf_acc_eotech_552";
-        };
-        case 3:{
-          player addPrimaryWeaponItem "rhsusf_acc_compm4";
-        };
-        case 4:{
-          player addPrimaryWeaponItem "rhsusf_acc_T1_high";
-        };
-        case 0: {
-          _optic = primaryWeaponItems player select 2;
-          player removePrimaryWeaponItem _optic;
-        };
-      };
-       opticSelected = _selectedIndex;
-    }];
+_opticListboxSelect =  _opticListboxControl ctrlAddEventHandler  ["LBSelChanged",{
+  params ["_control", "_selectedIndex"];
+  {
+    if !(_x find _selectedIndex == -1) then {
+    opticArraySelectedIndex = _x;
+    };
+  } forEach opticsIndexes;
+
+  player addPrimaryWeaponItem (opticArraySelectedIndex select 0);
+
+  if (_selectedIndex == 0) then {
+    _optic = primaryWeaponItems player select 2;
+    player removePrimaryWeaponItem _optic;
   };
-  case east: {
-    _opticListboxSelect =  _opticListboxControl ctrlAddEventHandler  ["LBSelChanged",{
-      params ["_control", "_selectedIndex"];
-      switch (_selectedIndex) do {
-        case 1:{
-          player addPrimaryWeaponItem "rhs_acc_1p63";
-        };
-        case 2:{
-          player addPrimaryWeaponItem "rhs_acc_ekp1";
-        };
-        case 3:{
-          player addPrimaryWeaponItem "rhs_acc_ekp8_02";
-        };
-        case 4:{
-          player addPrimaryWeaponItem "rhs_acc_pkas";
-        };
-        case 0: {
-          _optic = primaryWeaponItems player select 2;
-          player removePrimaryWeaponItem _optic;
-        };
-      };
-       opticSelected = _selectedIndex;
-    }];
-  };
-  case independent: {
-    _opticListboxSelect =  _opticListboxControl ctrlAddEventHandler  ["LBSelChanged",{
-      params ["_control", "_selectedIndex"];
-      switch (_selectedIndex) do {
-        case 1:{
-          player addPrimaryWeaponItem "optic_Holosight_blk_F";
-        };
-        case 2:{
-          player addPrimaryWeaponItem "rhsusf_acc_eotech_552";
-        };
-        case 3:{
-          player addPrimaryWeaponItem "optic_ACO_grn";
-        };
-        case 4:{
-          player addPrimaryWeaponItem "rhsusf_acc_compm4";
-        };
-        case 5: {
-          player addPrimaryWeaponItem "rhsusf_acc_T1_high";
-        };
-        case 6: {
-          player addPrimaryWeaponItem "rhs_acc_ekp1";
-        };
-        case 7: {
-          player addPrimaryWeaponItem "rhs_acc_ekp8_02";
-        };
-        case 8: {
-          player addPrimaryWeaponItem "rhs_acc_pkas";
-        };
-        case 0: {
-          _optic = primaryWeaponItems player select 2;
-          player removePrimaryWeaponItem _optic;
-        };
-      };
-       opticSelected = _selectedIndex;
-    }];
-  };
-};
+
+  opticSelected = _selectedIndex;
+}];
 
 _grenadeListboxControl lbAdd "None";
 _grenadeListboxControl lbAdd "M84 Flash Grenade";
