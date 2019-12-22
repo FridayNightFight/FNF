@@ -11,18 +11,14 @@ if (_zoneRestriction isEqualTo 0) then {
 
 switch (activeMode) do {
   case "adUplink": {
-    modeParams execVM "f\servermodes\adUplink.sqf";
-    [[],"f\clientmodes\adUplink.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
+    execVM "f\modes\adUplink.sqf";
   };
   case "adDestroy": {
-    modeParams execVM "f\servermodes\adDestroy.sqf";
+    execVM "f\modes\adDestroy.sqf";
   };
   case "adCaptureTheFlag": {
     modeParams execVM "f\servermodes\adCaptureTheFlag.sqf";
     [[],"f\clientmodes\adCaptureTheFlag.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
-  };
-  case "adVIP": {
-    modeParams execVM "f\servermodes\adVIP.sqf";
   };
   case "neutralUplink": {
     [] execVM "f\servermodes\neutralUplink.sqf";
@@ -66,38 +62,6 @@ if (activeMode isEqualTo "adUplink") then {
     deleteVehicle uplinkSound2;
     "term2Mark" remoteExec ["deleteMarker",0,true];
   };
-};
-
-//VIP
-if !(activeMode isEqualTo "adVIP") then {
-  _markers = ["vip1Mark","vip2Mark"];
-  {
-    if (!(getMarkerColor _x isEqualTo "")) then {
-      [_x] remoteExec ["deleteMarker",0,true];
-    };
-  } forEach _markers;
-  _vips =[vip1,vip2];
-  {
-    if (!isNull _x) then {
-      deleteVehicle _x;
-    };
-  } forEach _vips;
-};
-
-//Destroy
-if !(activeMode isEqualTo "adDestroy") then {
-  _objs = [obj1,obj2];
-  {
-    if (!isNull _x) then {
-      deleteVehicle _x;
-    };
-  } forEach _objs;
-  _markers = ["obj1Mark","obj2Mark"];
-  {
-    if (!(getMarkerColor _x isEqualTo "")) then {
-      [_x] remoteExec ["deleteMarker",0,true];
-    };
-  } forEach _markers;
 };
 
 //CTF

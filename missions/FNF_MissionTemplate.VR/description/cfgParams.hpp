@@ -117,6 +117,24 @@ class Params {
       texts[] = WEAPON_TEXTS;
       default = WEAPONS_UNARMED;
     };
+    class phx_loadout_blufor_optics {
+      title = "BLUFOR Optic Magnification:";
+      values[] = {0,1,2};
+      texts[] = {"No optics","1x","1x-6x"};
+      default = 1;
+    };
+    class phx_loadout_opfor_optics {
+      title = "OPFOR Optic Magnification:";
+      values[] = {0,1,2};
+      texts[] = {"No optics","1x","1x-6x"};
+      default = 1;
+    };
+    class phx_loadout_indfor_optics {
+      title = "INDFOR Optic Magnification:";
+      values[] = {0,1,2};
+      texts[] = {"No optics","1x","1x-6x"};
+      default = 1;
+    };
     class phx_loadout_blufor_attachments {
       title = "BLUFOR Attachments:";
       values[] = ATTACHMENT_VALUES;

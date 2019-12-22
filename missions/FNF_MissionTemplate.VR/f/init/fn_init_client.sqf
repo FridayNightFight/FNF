@@ -49,6 +49,11 @@ if !(_zoneRestriction isEqualTo 0) then {
   }, 60, []] call CBA_fnc_addPerFrameHandler;
 };
 
+//TFAR set to whisper
+5 call TFAR_fnc_setVoiceVolume;
+TF_speak_volume_level = "whispering";
+TF_speak_volume_meters = 5;
+
 //====================================================================================================
 phx_clientInitFinished = true;
 
