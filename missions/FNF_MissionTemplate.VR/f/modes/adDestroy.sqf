@@ -1,7 +1,7 @@
 //Config lines
 defendingSide = west; //east/west/independent
 attackingSide = independent; //east/west/independent
-objectives = [[obj1,"carmark","CAR",false], [obj2,"cratemark","Ammo Crate",false]];
+objectives = [[], []];
 /*
 -variable name of objective (object name)
 -corresponding marker name (string)
