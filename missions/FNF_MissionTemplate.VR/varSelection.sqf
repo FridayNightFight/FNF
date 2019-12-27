@@ -13,8 +13,7 @@ To Do:
 1. Create at least one object in the editor that can be destroyed, give the object a variable name (double-click, at the top)
 2. Create a marker for the objective you created in step 1. The marker can be an icon or an area marker.
 -The marker can be placed directly on the objective, or near it, just make sure the objective is in the marker area
-3. Configure the objectives array at the top of this file.
--
+3. Configure the objectives array at the top of this file. There are examples below, with the params listed with descriptions
 
 Params:
 -variable name of objective (object name)
