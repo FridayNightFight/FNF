@@ -22,7 +22,7 @@ class GearSelector
 			colorBackground[] = {0.102,0.102,0.102,1};
 			colorText[] = {1,0,0,1};
 			font = "PuristaMedium";
-			sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 2);
+			sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 2.5);
 		};
 		class FlashOrIncenCombo
 		{
@@ -64,7 +64,7 @@ class GearSelector
 			type = 0;
 			idc = -1;
 			x = safeZoneX + safeZoneW * 0.29375;
-			y = safeZoneY + safeZoneH * 0.30555556;
+			y = safeZoneY + safeZoneH * 0.45222223;
 			w = safeZoneW * 0.16;
 			h = safeZoneH * 0.05333334;
 			style = 2;
@@ -224,7 +224,7 @@ class GearSelector
 			type = 4;
 			idc = 2001;
 			x = safeZoneX + safeZoneW * 0.29375;
-			y = safeZoneY + safeZoneH * 0.35888889;
+			y = safeZoneY + safeZoneH * 0.50555556;
 			w = safeZoneW * 0.16;
 			h = safeZoneH * 0.05333334;
 			style = 16;
@@ -333,7 +333,7 @@ class GearSelector
 			type = 0;
 			idc = -1;
 			x = safeZoneX + safeZoneW * 0.29375;
-			y = safeZoneY + safeZoneH * 0.46555556;
+			y = safeZoneY + safeZoneH * 0.59777778;
 			w = safeZoneW * 0.16;
 			h = safeZoneH * 0.05333334;
 			style = 2;
@@ -349,7 +349,7 @@ class GearSelector
 			type = 4;
 			idc = 2003;
 			x = safeZoneX + safeZoneW * 0.29375;
-			y = safeZoneY + safeZoneH * 0.51888889;
+			y = safeZoneY + safeZoneH * 0.65111112;
 			w = safeZoneW * 0.16;
 			h = safeZoneH * 0.05333334;
 			style = 16;
@@ -368,6 +368,55 @@ class GearSelector
 			soundSelect[] = {"\A3\ui_f\data\sound\RscCombo\soundSelect",0.1,1.0};
 			wholeHeight = 0.3;
 			tooltip = "Choose explosives (CE Only)";
+			class ComboScrollBar
+			{
+				color[] = {1,1,1,1};
+				thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+				arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+				arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+				border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+			};
+		};
+		class WeaponsTitle
+		{
+			type = 0;
+			idc = -1;
+			x = safeZoneX + safeZoneW * 0.29375;
+			y = safeZoneY + safeZoneH * 0.30555556;
+			w = safeZoneW * 0.16;
+			h = safeZoneH * 0.05333334;
+			style = 2;
+			text = "Weapon Selection";
+			colorBackground[] = {0.102,0.102,0.102,1};
+			colorText[] = {1,1,1,1};
+			font = "PuristaMedium";
+			sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.75);
+
+		};
+		class WeaponsCombo
+		{
+			type = 4;
+			idc = 2004;
+			x = safeZoneX + safeZoneW * 0.29375;
+			y = safeZoneY + safeZoneH * 0.35888889;
+			w = safeZoneW * 0.16;
+			h = safeZoneH * 0.05333334;
+			style = 16;
+			arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\RscCombo\arrow_combo_ca.paa";
+			arrowFull = "\A3\ui_f\data\GUI\RscCommon\RscCombo\arrow_combo_active_ca.paa";
+			colorBackground[] = {0.102,0.102,0.102,1};
+			colorDisabled[] = {0.2,0.2,0.2,1};
+			colorSelect[] = {1,1,1,1};
+			colorSelectBackground[] = {0,0,0,1};
+			colorText[] = {1,1,1,1};
+			font = "PuristaMedium";
+			maxHistoryDelay = 0;
+			sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.5);
+			soundCollapse[] = {"\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1,1.0};
+			soundExpand[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.1,1.0};
+			soundSelect[] = {"\A3\ui_f\data\sound\RscCombo\soundSelect",0.1,1.0};
+			wholeHeight = 0.3;
+			tooltip = "Choose a weapon";
 			class ComboScrollBar
 			{
 				color[] = {1,1,1,1};

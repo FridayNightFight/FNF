@@ -10,10 +10,15 @@ giveBLUFORLoadout = {
     phx_loadout_rifle_gl_flare = "UGL_FlareWhite_F:3";
     phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:7";
     phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:4";
-  } else { phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_bk"; };
+    allowedWeapons = ["rhs_weap_m4a1_blockII_M203_d","rhs_weap_m4a1_blockII_M203_wd","rhs_weap_mk18_m320","rhs_weap_hk416d10_m320","rhs_weap_hk416d145_m320"];
+  } else {
+    phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_bk";
+    allowedWeapons = ["rhs_weap_m4_carryhandle","rhs_weap_m4a1_carryhandle","rhs_weap_m4a1_blockII_bk","rhs_weap_m4a1_blockII_d","rhs_weap_m4a1_blockII_wd","rhs_weap_mk18_bk","rhs_weap_mk18_d","rhs_weap_mk18_wd","rhs_weap_hk416d10_LMT","rhs_weap_hk416d10_LMT_d","rhs_weap_hk416d10_LMT_wd","rhs_weap_hk416d145","rhs_weap_hk416d145_d","rhs_weap_hk416d145_wd"];
+};
   if (pRole == ROLE_AR) then {
     phx_loadout_automaticrifle_weapon = "rhs_weap_m249_pip_L";
     phx_loadout_automaticrifle_mag = "rhsusf_200rnd_556x45_mixed_box:4";
+    allowedWeapons = [phx_loadout_automaticrifle_weapon];
   };
   if (pRole == ROLE_AAR) then {
     phx_loadout_automaticrifle_mag = "rhsusf_200rnd_556x45_mixed_box:2";
@@ -21,6 +26,7 @@ giveBLUFORLoadout = {
   if (pRole == ROLE_MG) then {
     phx_loadout_mmg_weapon = "rhs_weap_m240G";
     phx_loadout_mmg_mag = "rhsusf_100Rnd_762x51_m80a1epr:4";
+    allowedWeapons = [phx_loadout_mmg_weapon];
   };
   if (pRole == ROLE_AM) then {
     phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:5";
@@ -43,6 +49,7 @@ giveBLUFORLoadout = {
     phx_loadout_rifle_weapon = "rhs_weap_sr25";
     phx_loadout_rifle_mag = "rhsusf_20Rnd_762x51_SR25_m62_Mag:4";
     phx_loadout_rifle_optic = "optic_SOS";
+    allowedWeapons = [phx_loadout_rifle_weapon];
   };
   phx_loadout_flare = "rhs_weap_rsp30_white:3";
 };

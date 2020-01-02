@@ -40,6 +40,9 @@ switch (pWeapons) do {
       [] call giveBLUFORLoadout;
       #include "weaponloadouts\WEAPONS_SCARH_MK18320_SAW_M240_M136_GUST.sqf"
     };
+    case WEAPONS_RANDOM: {
+      #include "weaponloadouts\WEAPONS_RANDOM.sqf"
+    };
     case WEAPONS_UNARMED: {
       #include "weaponloadouts\WEAPONS_UNARMED.sqf"
     };

@@ -117,6 +117,30 @@ class Params {
       texts[] = WEAPON_TEXTS;
       default = WEAPONS_UNARMED;
     };
+    class spacer44 {
+      title = "====================================================================================================================================================================================";
+      values[] = {0};
+      texts[] = {""};
+      default = 0;
+    };
+    class phx_loadout_blufor_weaponSelector {
+      title = "BLUFOR weapon selector:";
+      values[] = {0,1};
+      texts[] = {"Disabled","Enabled"};
+      default = 1;
+    };
+    class phx_loadout_opfor_weaponSelector {
+      title = "OPFOR weapon selector:";
+      values[] = {0,1};
+      texts[] = {"Disabled","Enabled"};
+      default = 1;
+    };
+    class spacer67 {
+      title = "====================================================================================================================================================================================";
+      values[] = {0};
+      texts[] = {""};
+      default = 0;
+    };
     class phx_loadout_blufor_optics {
       title = "BLUFOR Optic Magnification:";
       values[] = {0,1,2};

@@ -8,9 +8,17 @@ if (pRole == 7 && !("phx_loadout_allowCESelector" call BIS_fnc_getParamValue isE
 
 explosivesSelectorEnabled = true;
 opticSelected = 0;
+weaponSelected = 0;
 grenadeSelected = 0;
 opticFirstSel = false;
+weaponFirstSel = false;
 grenadeFirstSel = false;
+
+waitUntil {phx_loadoutAssigned};
+
+defaultWeapon = [primaryWeapon player];
+
+#include "weaponChoices.sqf"
 
 selectorEnabled = true;
 

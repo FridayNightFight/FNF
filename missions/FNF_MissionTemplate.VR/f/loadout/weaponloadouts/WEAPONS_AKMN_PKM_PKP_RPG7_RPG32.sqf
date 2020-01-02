@@ -1,16 +1,21 @@
-phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_bakelite_tracer:4";
-phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_bakelite:7";
+phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_polymer_tracer:4";
+phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_polymer:7";
 if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_rifle_weapon = "rhs_weap_akmn_gp25";
   phx_loadout_rifle_gl_he = "rhs_VOG25:6";
   phx_loadout_rifle_gl_smoke = "rhs_GRD40_White:3";
   phx_loadout_rifle_gl_flare = "rhs_VG40OP_white:3";
-  phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_bakelite:7";
-  phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_bakelite_tracer:4";
-} else { phx_loadout_rifle_weapon = "rhs_weap_akmn"; };
+  phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_polymer_tracer:7";
+  phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_polymer:4";
+  allowedWeapons = ["rhs_weap_ak103_gp25","rhs_weap_ak103_gp25_npz","arifle_AK12_GL_F","arifle_AK12_GL_arid_F","arifle_AK12_GL_lush_F"];
+} else {
+  phx_loadout_rifle_weapon = "rhs_weap_akmn";
+  allowedWeapons = ["rhs_weap_ak103","rhs_weap_ak103_npz","rhs_weap_ak104","rhs_weap_ak104_npz","arifle_AK12_F","arifle_AK12_arid_F","arifle_AK12_lush_F","arifle_AK12U_F","arifle_AK12U_arid_F","arifle_AK12U_lush_F"];
+};
 if (pRole == ROLE_AR) then {
   phx_loadout_automaticrifle_weapon = "rhs_weap_pkm";
   phx_loadout_automaticrifle_mag = "rhs_100Rnd_762x54mmR_green:5";
+  allowedWeapons = [phx_loadout_automaticrifle_weapon];
 };
 if (pRole == ROLE_AAR) then {
   phx_loadout_automaticrifle_mag = "rhs_100Rnd_762x54mmR_green:4";
@@ -18,10 +23,11 @@ if (pRole == ROLE_AAR) then {
 if (pRole == ROLE_MG) then {
   phx_loadout_mmg_weapon = "rhs_weap_pkp";
   phx_loadout_mmg_mag = "rhs_100Rnd_762x54mmR_green:4";
+  allowedWeapons = [phx_loadout_mmg_weapon];
 };
 if (pRole == ROLE_AM) then {
-  phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_bakelite_tracer:5";
-  phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_bakelite:4";
+  phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_polymer_tracer:5";
+  phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_polymer:4";
   phx_loadout_mmg_mag = "rhs_100Rnd_762x54mmR_green:4";
 };
 if (pRole == ROLE_RAT) then {
@@ -39,5 +45,6 @@ if (pRole == ROLE_MK) then {
   phx_loadout_rifle_weapon = "rhs_weap_svdp_npz";
   phx_loadout_rifle_mag = "ACE_10Rnd_762x54_Tracer_mag:9";
   phx_loadout_rifle_optic = "optic_SOS";
+  allowedWeapons = [phx_loadout_rifle_weapon];
 };
 phx_loadout_flare = "rhs_weap_rsp30_white:3";

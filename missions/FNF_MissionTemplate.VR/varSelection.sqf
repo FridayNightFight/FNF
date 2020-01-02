@@ -22,7 +22,6 @@ Params:
 -whether or not the exact objective location is visible to attackers (boolean), true = visible
 -whether or not the objective can move (vehicles, units, etc.), (boolean), true = the objective is expected to move
 
-
 Examples:
 objectives = [[cache1,"Cache_Marker","wepaons cache",false,true]]; - 1 objective, object named cache1, marker named "Cache_Marker", name for task title "weapons cache",
 objective location not visible to attackers (no task marker), objective able to be moved (marker will update for attackers)
