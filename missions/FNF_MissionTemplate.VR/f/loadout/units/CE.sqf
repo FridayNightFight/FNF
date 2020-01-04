@@ -10,6 +10,7 @@ call phx_fnc_loadout_handleCECharges;
 [phx_loadout_explosives_1, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_explosives_2, "backpack"] call phx_fnc_loadout_handleGear;*/
 [phx_loadout_aid, "uniform"] call phx_fnc_loadout_handleGear;
+[phx_loadout_splint, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_smoke, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_defusalkit, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_trigger, "uniform"] call phx_fnc_loadout_handleGear;

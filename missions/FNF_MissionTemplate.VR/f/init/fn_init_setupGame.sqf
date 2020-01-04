@@ -1,3 +1,5 @@
+#include "..\..\varSelection.sqf"
+
 waitUntil {!isNil "serverVarsSetup"};
 
 gameEnd = false;
@@ -15,6 +17,9 @@ switch (activeMode) do {
   };
   case "adDestroy": {
     execVM "f\modes\adDestroy.sqf";
+  };
+  case "adRush": {
+    execVM "f\modes\adRush.sqf";
   };
   case "adCaptureTheFlag": {
     modeParams execVM "f\servermodes\adCaptureTheFlag.sqf";
@@ -36,31 +41,6 @@ switch (activeMode) do {
   case "0": {};
   default {
     ["Game mode not configured correctly, check 'varSelection.sqf'"] remoteExec ["hint"];
-  };
-};
-
-//Uplink
-if (!(activeMode isEqualTo "adUplink")) then {
-  _objs = [term1,term2,uplinkSpeaker1,uplinkSpeaker2,uplinkSound1,uplinkSound2];
-  _markers = ["term1Mark","term2Mark"];
-  {
-    if (!isNull _x) then {
-      deleteVehicle _x;
-    };
-  } forEach _objs;
-  {
-    if (!(getMarkerColor _x isEqualTo "")) then {
-      [_x] remoteExec ["deleteMarker",0,true];
-    };
-  } forEach _markers;
-};
-
-if (activeMode isEqualTo "adUplink") then {
-  if (modeParams select 1 == 1) then {
-    deleteVehicle term2;
-    deleteVehicle uplinkSpeaker2;
-    deleteVehicle uplinkSound2;
-    "term2Mark" remoteExec ["deleteMarker",0,true];
   };
 };
 

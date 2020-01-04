@@ -51,6 +51,47 @@ force ace_map_gestures_enabled = true;
 force ace_map_gestures_maxRange = 7;
 force ace_map_gestures_interval = 0.03;
 
+// ACE Medical
+force ace_medical_ai_enabledFor = 0;
+force ace_medical_bleedingCoefficient = 0.6;
+force ace_medical_blood_bloodLifetime = 900;
+force ace_medical_blood_enabledFor = 2;
+force ace_medical_blood_maxBloodObjects = 500;
+force ace_medical_fatalDamageSource = 0;
+force ace_medical_fractures = 2;
+force ace_medical_gui_maxDistance = 3.00913;
+force ace_medical_ivFlowRate = 1.5;
+force ace_medical_limping = 1;
+force ace_medical_painCoefficient = 0.7;
+force ace_medical_playerDamageThreshold = 2;
+force ace_medical_spontaneousWakeUpChance = 0.1;
+force ace_medical_spontaneousWakeUpEpinephrineBoost = 2.45;
+force ace_medical_statemachine_cardiacArrestTime = 600;
+force ace_medical_statemachine_fatalInjuriesPlayer = 0;
+force ace_medical_treatment_advancedBandages = false;
+force ace_medical_treatment_advancedDiagnose = false;
+force ace_medical_treatment_advancedMedication = false;
+force ace_medical_treatment_allowLitterCreation = true;
+force ace_medical_treatment_allowSelfIV = 1;
+force ace_medical_treatment_allowSelfStitch = 1;
+force ace_medical_treatment_allowSharedEquipment = 1;
+force ace_medical_treatment_clearTraumaAfterBandage = true;
+force ace_medical_treatment_consumePAK = 0;
+force ace_medical_treatment_consumeSurgicalKit = 0;
+force ace_medical_treatment_convertItems = 0;
+force ace_medical_treatment_cprSuccessChance = 0.4;
+force ace_medical_treatment_holsterRequired = 0;
+force ace_medical_treatment_litterCleanupDelay = 600;
+force ace_medical_treatment_locationEpinephrine = 0;
+force ace_medical_treatment_locationPAK = 0;
+force ace_medical_treatment_locationSurgicalKit = 0;
+force ace_medical_treatment_maxLitterObjects = 500;
+force ace_medical_treatment_medicEpinephrine = 0;
+force ace_medical_treatment_medicPAK = 1;
+force ace_medical_treatment_medicSurgicalKit = 1;
+force ace_medical_treatment_timeCoefficientPAK = 0.75;
+force ace_medical_treatment_woundReopening = false;
+
 
 force ace_microdagr_mapDataAvailable = 2;
 

@@ -1,4 +1,5 @@
 gearAction = player addaction ["<t size='1.5'><t color='#ff0a0a'>Gear Selector</t>",{createdialog "GearSelector";},nil,1.5,false,false,"","_this == _target"];
+//adminAction = player addaction ["<t size='1.5'><t color='#ff0a0a'>Admin Menu</t>",{createdialog "FNFAdminMenu";},nil,1.5,false,false,"","_this == _target"];
 
 if (pRole == 7 && !("phx_loadout_allowCESelector" call BIS_fnc_getParamValue isEqualTo 1)) then {
   explosiveSelected = 0;
@@ -21,11 +22,26 @@ defaultWeapon = [primaryWeapon player];
 #include "weaponChoices.sqf"
 
 selectorEnabled = true;
+menu = true;
 
-while {selectorEnabled} do {
-  waitUntil {!isNull findDisplay 2000};
+[] spawn {
+  while {selectorEnabled} do {
+    waitUntil {!isNull findDisplay 2000};
 
-  call phx_fnc_gearSelectorAdds;
+    call phx_fnc_gearSelectorAdds;
 
-  waitUntil {isNull findDisplay 2000};
+    waitUntil {isNull findDisplay 2000};
+  };
 };
+
+/*
+[] spawn {
+  while {menu} do {
+    waitUntil {!isNull findDisplay 2100};
+
+    call phx_fnc_adminMenuAdds;
+
+    waitUntil {isNull findDisplay 2100};
+  };
+};
+*/

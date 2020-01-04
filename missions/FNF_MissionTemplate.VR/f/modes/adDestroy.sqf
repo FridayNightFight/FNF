@@ -5,7 +5,6 @@ if (defendingSide isEqualTo attackingSide) exitWith {systemChat "You have not co
 if (!(defendingSide isEqualTo west) && !(defendingSide isEqualTo east) && !(defendingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The defending side is not a valid side. east/west/independent"};
 if (!(attackingSide isEqualTo west) && !(attackingSide isEqualTo east) && !(attackingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The attacking side is not a valid side. east/west/independent"};
 if (count objectives < 1) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to create at least one objective."};
-if (isNil "objectives select 0") exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to create at least one objective."};
 
 //Init vars
 _taskCount = 1;
@@ -24,8 +23,8 @@ aliveObjectives = count objectives;
   _defendTaskID = "defendTask" + str _taskCount;
   _attackTaskID = "attackTask" + str _taskCount;
 
-  [defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-  [attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],if ((_x select 3) && !(_x select 4)) then {_x select 0} else {getMarkerPos (_x select 1)},"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+  [defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+  [attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],if ((_x select 3) && !(_x select 4)) then {_x select 0} else {getMarkerPos (_x select 1)},"CREATED"] call BIS_fnc_taskCreate;
 
   [_x select 1,0] remoteExec ["setMarkerAlphaLocal",defendingSide,true];
 
@@ -58,7 +57,7 @@ aliveObjectives = count objectives;
         if !(_obj inArea _marker) then {
           //Move the objective marker to a random position around the objective, while keeping the objective inside the marker's area
           _marker setMarkerPos ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
-          [_attackTaskID, getMarkerPos _marker] call BIS_fnc_taskSetDestination;
+          [_attackTaskID, _marker] call BIS_fnc_taskSetDestination;
         };
         sleep _objMarkerUpdateTime;
       };

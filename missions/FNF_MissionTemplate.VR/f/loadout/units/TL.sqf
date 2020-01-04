@@ -5,6 +5,7 @@ call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 
 // Add gear
 [phx_loadout_aid, "uniform"] call phx_fnc_loadout_handleGear;
+[phx_loadout_splint, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_smoke, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_grenade, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_cuffs, "item"] call phx_fnc_loadout_handleGear;

@@ -1,5 +1,5 @@
-activeMode = "adDestroy"; //Change this string to whatever game mode you want (listed below)
-objectives = [[]];
+activeMode = ""; //Change this string to whatever game mode you want (listed below)
+objectives = [];
 
 defendingSide = west; //east/west/independent
 attackingSide = east; //east/west/independent
@@ -9,7 +9,7 @@ attackingSide = east; //east/west/independent
 =========================Modes=========================
 adDestroy
 
-To Do:
+Usage:
 1. Create at least one object in the editor that can be destroyed, give the object a variable name (double-click, at the top)
 2. Create a marker for the objective you created in step 1. The marker can be an icon or an area marker.
 -The marker can be placed directly on the objective, or near it, just make sure the objective is in the marker area
@@ -32,8 +32,22 @@ objectives = [[cache,"Cache_Marker","wepaons cache",false,true], [tank,"Tank_Mar
 
 The game will end if all objectives are destroyed
 ====================================================================================================
+adRush
 
-adUplink
+Usage:
+1.
 
+Params:
+-data terminal name (object name)
+-hack time for terminal (integer, seconds)
 
+Examples:
+objectives = [[cache1,"Cache_Marker","wepaons cache",false,true]]; - 1 objective, object named cache1, marker named "Cache_Marker", name for task title "weapons cache",
+objective location not visible to attackers (no task marker), objective able to be moved (marker will update for attackers)
+
+objectives = [[cache,"Cache_Marker","wepaons cache",false,true], [tank,"Tank_Marker","prototype tank",true,false]]; - 2 objectives
+
+*There can be an infinite number of objectives*
+
+The game will end if all objectives are destroyed
 */

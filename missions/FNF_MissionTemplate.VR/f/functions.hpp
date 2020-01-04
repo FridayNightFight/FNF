@@ -55,4 +55,5 @@ class ui {
   class removeSelectorHandlers{};
   class gearSelectorAdds{};
   class removeSelector{};
+  class adminMenuAdds{};
 };

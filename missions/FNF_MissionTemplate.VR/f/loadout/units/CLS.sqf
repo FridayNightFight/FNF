@@ -10,6 +10,7 @@ call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 [phx_loadout_sidearm_mag, "vest"] call phx_fnc_loadout_handleGear;
 [phx_loadout_PAK, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_bandage, "backpack"] call phx_fnc_loadout_handleGear;
+[phx_loadout_splint, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_morphine, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_epinephrine, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_blood, "backpack"] call phx_fnc_loadout_handleGear;

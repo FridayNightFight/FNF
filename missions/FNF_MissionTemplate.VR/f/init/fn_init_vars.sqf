@@ -1,5 +1,3 @@
-#include "..\..\varSelection.sqf"
-
 bluVics = [];
 opfVics = [];
 indVics = [];
