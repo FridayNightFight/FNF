@@ -53,7 +53,7 @@ force ace_map_gestures_interval = 0.03;
 
 // ACE Medical
 force ace_medical_ai_enabledFor = 0;
-force ace_medical_bleedingCoefficient = 0.6;
+force ace_medical_bleedingCoefficient = 0.4;
 force ace_medical_blood_bloodLifetime = 900;
 force ace_medical_blood_enabledFor = 2;
 force ace_medical_blood_maxBloodObjects = 500;
@@ -62,7 +62,7 @@ force ace_medical_fractures = 2;
 force ace_medical_gui_maxDistance = 3.00913;
 force ace_medical_ivFlowRate = 1.5;
 force ace_medical_limping = 1;
-force ace_medical_painCoefficient = 0.7;
+force ace_medical_painCoefficient = 0.5;
 force ace_medical_playerDamageThreshold = 2;
 force ace_medical_spontaneousWakeUpChance = 0.1;
 force ace_medical_spontaneousWakeUpEpinephrineBoost = 2.45;
@@ -89,7 +89,7 @@ force ace_medical_treatment_maxLitterObjects = 500;
 force ace_medical_treatment_medicEpinephrine = 0;
 force ace_medical_treatment_medicPAK = 1;
 force ace_medical_treatment_medicSurgicalKit = 1;
-force ace_medical_treatment_timeCoefficientPAK = 0.75;
+force ace_medical_treatment_timeCoefficientPAK = 0.5;
 force ace_medical_treatment_woundReopening = false;
 
 

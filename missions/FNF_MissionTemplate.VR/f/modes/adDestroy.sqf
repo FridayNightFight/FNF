@@ -24,9 +24,9 @@ aliveObjectives = count objectives;
   _attackTaskID = "attackTask" + str _taskCount;
 
   [defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
-  [attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],if ((_x select 3) && !(_x select 4)) then {_x select 0} else {getMarkerPos (_x select 1)},"CREATED"] call BIS_fnc_taskCreate;
+  [attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],if (_x select 3) then {_x select 0} else {getMarkerPos (_x select 1)},"CREATED"] call BIS_fnc_taskCreate;
 
-  [_x select 1,0] remoteExec ["setMarkerAlphaLocal",defendingSide,true];
+  [(_x select 1),0] remoteExec ["setMarkerAlphaLocal",defendingSide,true];
 
   //Check for alive objective
   [_x select 0, _x select 1, _defendTaskID, _attackTaskID] spawn {
@@ -42,12 +42,12 @@ aliveObjectives = count objectives;
   };
 
   //Handle moving objective
-  if (_x select 4) then {
+  if (_x select 4 && !(_x select 3)) then {
     [_x select 0,_x select 1,_attackTaskID] spawn {
       _obj = _this select 0;
       _marker = _this select 1;
       _attackTaskID = _this select 2;
-      _objMarkerUpdateTime = 30; //Change this value if to however often you want the objective marker to update (seconds)
+      _objMarkerUpdateTime = 30; //Change this value to however often you want the objective markers to update (seconds)
       _objMaxDistance = selectMin (getMarkerSize _marker);
       //Wait until safe start is over so attackers don't know where obj will be
       waitUntil {!phx_safeStartEnabled};

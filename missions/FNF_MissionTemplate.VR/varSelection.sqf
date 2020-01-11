@@ -3,6 +3,8 @@ objectives = [];
 
 defendingSide = west; //east/west/independent
 attackingSide = east; //east/west/independent
+publicVariable "defendingSide";
+publicVariable "attackingSide";
 //Not needed if objective is neutral
 
 /*
