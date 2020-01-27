@@ -1,6 +1,7 @@
 class init {
     file = "f\init";
     class init_server{};
+    class init_server_preInitVars{preInit = 1;};
     class init_client{};
     class init_setupGame{};
     class init_shared{};

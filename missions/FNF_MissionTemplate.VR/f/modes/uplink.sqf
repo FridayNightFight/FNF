@@ -1,29 +1,15 @@
-//Config lines
-defendingSide = west; //east/west/independent
-attackingSide = east; //east/west/independent
-objectives = [[term1,"term1Mark",120,false], [term2,"term2Mark",180,false]];
-/*
--variable name of the terminal (object name)
--corresponding marker name (string)
--hack time (integer)
--whether or not the exact objective location is visible to attackers (boolean), true = visible
-
-Examples:
-COMING SOON
-*/
-publicVariable "defendingSide";
-publicVariable "attackingSide";
-
 //Make sure game is set correctly
-if (isNil "defendingSide") exitWith {systemChat "You have not configured 'adUplink.sqf' properly! You need to choose a defending side."};
-if (isNil "attackingSide") exitWith {systemChat "You have not configured 'adUplink.sqf' properly! You need to choose an attacking side."};
-if (defendingSide isEqualTo attackingSide) exitWith {systemChat "You have not configured 'adUplink.sqf' properly! You cannot set the same side to attack and defend."};
-if (!(defendingSide isEqualTo west) && !(defendingSide isEqualTo east) && !(defendingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'adUplink.sqf' properly! The defending side is not a valid side. east/west/independent"};
-if (!(attackingSide isEqualTo west) && !(attackingSide isEqualTo east) && !(attackingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'adUplink.sqf' properly! The attacking side is not a valid side. east/west/independent"};
-if (count objectives < 1) exitWith {systemChat "You have not configured 'adUplink.sqf' properly! You need to create at least one objective."};
+if (isNil "defendingSide") exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to choose a defending side."};
+if (isNil "attackingSide") exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to choose an attacking side."};
+if (defendingSide isEqualTo attackingSide) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You cannot set the same side to attack and defend."};
+if (!(defendingSide isEqualTo west) && !(defendingSide isEqualTo east) && !(defendingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The defending side is not a valid side. east/west/independent"};
+if (!(attackingSide isEqualTo west) && !(attackingSide isEqualTo east) && !(attackingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The attacking side is not a valid side. east/west/independent"};
+if (count objectives < 1) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to create at least one objective."};
+
+numObjs = objectives select 0;
+_hackTime = objectives select 1;
 
 //Init vars
-_taskCount = 1;
 hackedObjectives = 0;
 term1Counted = false;
 term2Counted = false;
@@ -31,39 +17,57 @@ term1Hacking = false;
 term2Hacking = false;
 publicVariable "term1Hacking";
 publicVariable "term2Hacking";
-term1Time = objectives select 0 select 2;
-term2Time = objectives select 1 select 2;
+term1Time = _hackTime;
+term2Time = _hackTime;
+
+//Delete term2 if mission makers only selected 1
+switch (numObjs) do {
+  case 1: {
+    "term1Mark" setMarkerPos (getPos term1);
+    deleteVehicle term2;
+    deleteMarker "term2Mark";
+  };
+  case 2: {
+    "term1Mark" setMarkerPos (getPos term1);
+    "term2Mark" setMarkerPos (getPos term2);
+  };
+};
 
 //Tasks and task handlers
-{
-  _attackersTaskText =
-  if (_x select 3) then {
-    "Hack the data terminal"
-  } else {
-    "Search for and hack the data terminal"
+switch (numObjs) do {
+  case 1: {
+    [defendingSide,"defendTask1",[format ["%1 second hack time",objectives select 1],"Defend the data terminal","term1Mark"],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+    [attackingSide,"attackTask1",[format ["%1 second hack time",objectives select 1],"Hack the data terminal","term1Mark"],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+
+    [] spawn {
+      waitUntil {isNull term1};
+      ["defendTask1", "FAILED", true] call BIS_fnc_taskSetState;
+      ["attackTask1", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+      deleteMarker term1Mark;
+    };
   };
+  case 2: {
+    [defendingSide,"defendTask1",[format ["%1 second hack time",objectives select 1],"Defend the data terminal","term1Mark"],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+    [attackingSide,"attackTask1",[format ["%1 second hack time",objectives select 1],"Hack the data terminal","term1Mark"],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 
-  _defendTaskID = "defendTask" + str _taskCount;
-  _attackTaskID = "attackTask" + str _taskCount;
+    [defendingSide,"defendTask2",[format ["%1 second hack time",objectives select 1],"Defend the data terminal","term2Mark"],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+    [attackingSide,"attackTask2",[format ["%1 second hack time",objectives select 1],"Hack the data terminal","term2Mark"],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 
-  [defendingSide,_defendTaskID,["","Defend the data terminal",_x select 1],_x select 0,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-  [attackingSide,_attackTaskID,["",_attackersTaskText,_x select 1],if (_x select 3) then {_x select 0} else {getMarkerPos (_x select 1)},"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-
-  [_x select 0, _x select 1, _defendTaskID, _attackTaskID] spawn {
-    params ["_object","_markerName","_defendTaskID","_attackTaskID"];
-
-    waitUntil {isNull _object};
-
-    [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
-    [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
-
-    deleteMarker _markerName;
+    //Wait until the terminals are hacked, then set the tasks to their appropriate states
+    [] spawn {
+      waitUntil {isNull term1};
+      ["defendTask1", "FAILED", true] call BIS_fnc_taskSetState;
+      ["attackTask1", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+      deleteMarker "term1Mark";
+    };
+    [] spawn {
+      waitUntil {isNull term2};
+      ["defendTask2", "FAILED", true] call BIS_fnc_taskSetState;
+      ["attackTask2", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+      deleteMarker "term2Mark";
+    };
   };
-
-  _taskCount = _taskCount + 1;
-
-  _x select 0 allowDamage false;
-} forEach objectives;
+};
 
 //Terminal actions
 //Terminal 1 hack action
@@ -89,32 +93,34 @@ term2Time = objectives select 1 select 2;
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", attackingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 //Terminal 2 hack action
-[
-  term2,
-  "Start Hack",
-  "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && (side player == attackingSide) && !term2Hacking",
-  "_caller distance _target < 3",
-  {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
-  {},
-  {
-    ["Terminal", "Hack Started"] call BIS_fnc_showSubtitle;
-    [term2,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
-    term2Hacking = true;
-    publicVariable "term2Hacking";
-    ["Terminal 2 hack started!"] remoteExec ["hint"]
-  },
-  {["Terminal", ""] call BIS_fnc_showSubtitle},
-  [],
-  5,
-  0,
-  false,
-  false
-] remoteExec ["BIS_fnc_holdActionAdd", attackingSide, true];
+if !(isNull term2) then {
+  [
+    term2,
+    "Start Hack",
+    "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+    "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+    "(_this distance _target < 3) && (side player == attackingSide) && !term2Hacking",
+    "_caller distance _target < 3",
+    {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
+    {},
+    {
+      ["Terminal", "Hack Started"] call BIS_fnc_showSubtitle;
+      [term2,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+      term2Hacking = true;
+      publicVariable "term2Hacking";
+      ["Terminal 2 hack started!"] remoteExec ["hint"]
+    },
+    {["Terminal", ""] call BIS_fnc_showSubtitle},
+    [],
+    5,
+    0,
+    false,
+    false
+  ] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
+};
 
 //Terminal 1 stop hack action
 [
@@ -139,10 +145,10 @@ term2Time = objectives select 1 select 2;
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", defendingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 //Terminal 2 stop hack action
-[
+if !(isNull term2) then {[
   term2,
   "Stop Hack",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
@@ -164,7 +170,8 @@ term2Time = objectives select 1 select 2;
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", defendingSide, true];
+  ] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
+};
 
 hacking = {
   waitUntil {term1Hacking || term2Hacking};
@@ -258,7 +265,8 @@ checkEnd = {
       term2Counted = true;
       [term2] spawn handleBomb;
     };
-    if (hackedObjectives >= count objectives) then {
+    if (hackedObjectives >= numObjs) then {
+      sleep 12;
       [format ["All objectives have been hacked.\n%1 wins!",
       switch (attackingSide) do {
         case east: {"OPFOR"};

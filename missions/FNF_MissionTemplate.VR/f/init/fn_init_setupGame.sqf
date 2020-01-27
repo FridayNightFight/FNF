@@ -1,5 +1,3 @@
-#include "..\..\varSelection.sqf"
-
 waitUntil {!isNil "serverVarsSetup"};
 
 gameEnd = false;
@@ -12,24 +10,27 @@ if (_zoneRestriction isEqualTo 0) then {
 };
 
 switch (activeMode) do {
-  case "adUplink": {
-    execVM "f\modes\adUplink.sqf";
+  case "uplink": {
+    execVM "f\modes\uplink.sqf";
   };
-  case "adDestroy": {
-    execVM "f\modes\adDestroy.sqf";
+  case "destroy": {
+    execVM "f\modes\destroy.sqf";
   };
-  case "adRush": {
-    execVM "f\modes\adRush.sqf";
+  case "destroy_ez": {
+    execVM "f\modes\destroy_ez.sqf";
   };
-  case "adCaptureTheFlag": {
-    modeParams execVM "f\servermodes\adCaptureTheFlag.sqf";
-    [[],"f\clientmodes\adCaptureTheFlag.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
+  case "rush": {
+    execVM "f\modes\rush.sqf";
+  };
+  case "ctf": {
+    execVM "f\modes\ctf.sqf";
+    [[],"f\clientmodes\ctf.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
   };
   case "neutralUplink": {
     [] execVM "f\servermodes\neutralUplink.sqf";
   };
   case "neutralSector": {
-    modeParams execVM "f\servermodes\neutralSector.sqf";
+    execVM "f\modes\neutralSector.sqf";
   };
   case "neutralCaptureTheFlag": {
     modeParams execVM "f\servermodes\neutralCaptureTheFlag.sqf";
@@ -44,51 +45,23 @@ switch (activeMode) do {
   };
 };
 
-//CTF
-if (!(activeMode isEqualTo "neutralCaptureTheFlag") && !(activeMode isEqualTo "adCaptureTheFlag")) then {
-  if (!isNull flagObj) then {
-    deleteVehicle flagObj;
-  };
-  if (!isNull flagPole) then {
-    deleteVehicle flagPole;
-  };
-  if (!isNull flagBanner) then {
-    deleteVehicle flagBanner;
-  };
-  if (!(getMarkerColor "flagMark" isEqualTo "")) then {
-    ["flagMark"] remoteExec ["deleteMarker",0,true];
-  };
-  if (!isNull bluFlagTrig) then {
-    deleteVehicle bluFlagTrig;
-  };
-  if (!isNull opfFlagTrig) then {
-    deleteVehicle opfFlagTrig;
-  };
+if !(activeMode isEqualTo "rush" || activeMode isEqualTo "uplink") then {
+  deleteMarker "term1Mark";
+  deleteMarker "term2Mark";
+  deleteMarker "term3Mark";
 };
 
-//AD CTF
-if (activeMode isEqualTo "adCaptureTheFlag") then {
-  _defendingSide = modeParams select 0;
-  switch (_defendingSide) do {
-    case east: {
-      if (!isNull opfFlagTrig) then {
-        deleteVehicle opfFlagTrig;
-        defendingSide = east;
-      };
-    };
-    case west: {
-      if (!isNull bluFlagTrig) then {
-        deleteVehicle bluFlagTrig;
-        defendingSide = west;
-      };
-    };
-  };
-  publicVariable "defendingSide";
+if !(activeMode isEqualTo "rush") then {
+  deleteMarker "term3Mark";
 };
 
-//Neutral Sector Control
-if !(activeMode isEqualTo "neutralSector") then {
-  deleteVehicle sector;
-  deleteVehicle sectorSideBlu;
-  deleteVehicle sectorSideOpf;
+if !(activeMode isEqualTo "destroy_ez") then {
+  deleteMarker "cache1Mark";
+  deleteMarker "cache2Mark";
+};
+
+//Delete ctf trigger if mode is not active
+if !(activeMode isEqualTo "ctf") then {
+  deleteVehicle attackFlagTrig;
+  deleteMarker "flagMark";
 };

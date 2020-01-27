@@ -18,7 +18,7 @@ notInZone = {
 };
 
 zonePFH = [{
-  if !(vehicle player inArea zoneTrigger) then {
+  if (!(vehicle player inArea zoneTrigger) && !(vehicle player isKindOf "Air")) then {
     playerInZone = false;
   };
   if (!playerInZone && !zoneWarning) then {

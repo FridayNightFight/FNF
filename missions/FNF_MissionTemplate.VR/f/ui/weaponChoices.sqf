@@ -52,4 +52,5 @@ switch (opticMag) do {
 
 if (pRole == 16) then {
   allowedOptics pushBack "optic_SOS";
+  allowedOptics pushBack "optic_NVS";
 };

@@ -21,6 +21,7 @@ call phx_fnc_loadout_handleCECharges;
 player addWeapon phx_loadout_rifle_weapon;
 player addWeapon phx_loadout_sidearm_weapon;
 player addItem phx_loadout_entrenching;
+player addItem "MineDetector";
 
 // Add items
 call phx_fnc_loadout_handleItems; // Add binocular/nvg variables above this line!

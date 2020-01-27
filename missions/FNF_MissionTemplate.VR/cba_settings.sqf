@@ -6,10 +6,12 @@ force ace_common_checkPBOsAction = 0;
 force ace_common_checkPBOsCheckAll = false;
 force ace_common_checkPBOsWhitelist = "[]";
 
-force ace_cookoff_enable = false;
+// ACE Cook off
+force ace_cookoff_ammoCookoffDuration = 0.5;
+force ace_cookoff_enable = 1;
 force ace_cookoff_enableAmmobox = false;
 force ace_cookoff_enableAmmoCookoff = false;
-force ace_cookoff_ammoCookoffDuration = 1;
+force ace_cookoff_probabilityCoef = 5;
 
 force ace_finger_enabled = true;
 force ace_finger_maxRange = 4;
@@ -57,7 +59,7 @@ force ace_medical_bleedingCoefficient = 0.4;
 force ace_medical_blood_bloodLifetime = 900;
 force ace_medical_blood_enabledFor = 2;
 force ace_medical_blood_maxBloodObjects = 500;
-force ace_medical_fatalDamageSource = 0;
+force ace_medical_fatalDamageSource = 2;
 force ace_medical_fractures = 2;
 force ace_medical_gui_maxDistance = 3.00913;
 force ace_medical_ivFlowRate = 1.5;
@@ -203,9 +205,9 @@ force acex_viewrestriction_modeSelectiveSea = 0;
 // ACE Advanced Fatigue
 force ace_advanced_fatigue_enabled = true;
 force ace_advanced_fatigue_enableStaminaBar = true;
-force ace_advanced_fatigue_loadFactor = 0.65;
+force ace_advanced_fatigue_loadFactor = 0.6;
 force ace_advanced_fatigue_performanceFactor = 3;
-force ace_advanced_fatigue_recoveryFactor = 3;
+force ace_advanced_fatigue_recoveryFactor = 5;
 force ace_advanced_fatigue_swayFactor = 0.8;
 force ace_advanced_fatigue_terrainGradientFactor = 0.8;
 
