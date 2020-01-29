@@ -9,7 +9,7 @@ flagPoleAction = {
       {},                       // Code executed when action starts
       {},                                                                                  // Code executed on every progress tick
       {
-        call grabFlag; remoteExec ["removePoleAction",2,false]
+        call grabFlag; remoteExec ["removePoleAction",2,false]; "attackCapMarker" setMarkerAlpha 1; "capMarkerText" setMarkerAlpha 1
         },                             // Code executed on completion
       {},                                                                                  // Code executed on interrupted
       [],                                                                                  // Arguments passed to the scripts as _this select 3

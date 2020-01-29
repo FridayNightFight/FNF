@@ -14,6 +14,7 @@ grenadeSelected = 0;
 opticFirstSel = false;
 weaponFirstSel = false;
 grenadeFirstSel = false;
+grenadesAdded = false;
 
 waitUntil {phx_loadoutAssigned};
 

@@ -97,6 +97,18 @@ switch (attackingSide) do {
 
 "attackCapMarker" setMarkerDir (_attackCapArea select 2);
 
+capMarkerVisibility = {
+  if (side player == defendingSide) then {
+    "attackCapMarker" setMarkerAlphaLocal 0;
+    "capMarkerText" setMarkerAlphaLocal 0;
+  } else {
+    "attackCapMarker" setMarkerAlphaLocal 1;
+    "capMarkerText" setMarkerAlphaLocal 1;
+  };
+};
+
+remoteExec ["capMarkerVisibility",0,true];
+
 //Setup marker for return area
 _returnMarkerArea = triggerArea returnTrigger;
 createMarker ["returnMarker", getPos returnTrigger];

@@ -4,7 +4,7 @@ if (isNil "attackingSide") exitWith {systemChat "You have not configured 'varSel
 if (defendingSide isEqualTo attackingSide) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You cannot set the same side to attack and defend."};
 if (!(defendingSide isEqualTo west) && !(defendingSide isEqualTo east) && !(defendingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The defending side is not a valid side. east/west/independent"};
 if (!(attackingSide isEqualTo west) && !(attackingSide isEqualTo east) && !(attackingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The attacking side is not a valid side. east/west/independent"};
-if (count objectives < 3) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to create 3 terminal objectives"};
+if (count objectives < 3) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to se the hack time for each objective"};
 
 //Init vars
 objectivesCount = count objectives;
@@ -29,9 +29,9 @@ _obj3Mark setMarkerText "Terminal 3 - Inactive";
 [attackingSide,"attackTask1",["","Hack Terminal 1",_obj1Mark],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 
 //Hack vars
-term1Time = objectives select 0 select 1;
-term2Time = objectives select 1 select 1;
-term3Time = objectives select 2 select 1;
+term1Time = objectives select 0;
+term2Time = objectives select 1;
+term3Time = objectives select 2;
 term1Hacked = false;
 publicVariable "term1Hacked";
 term2Hacked = false;
@@ -65,7 +65,7 @@ publicVariable "term1Hacking";
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", attackingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 //Defend action 1
 [
@@ -86,11 +86,11 @@ publicVariable "term1Hacking";
   },
   {["Terminal", ""] call BIS_fnc_showSubtitle},
   [],
-  2,
+  1,
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", defendingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 //Hack Actions 2
 term2Hacking = false;
@@ -118,7 +118,7 @@ publicVariable "term2Hacking";
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", attackingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 //Defend action 2
 [
@@ -139,11 +139,11 @@ publicVariable "term2Hacking";
   },
   {["Terminal", ""] call BIS_fnc_showSubtitle},
   [],
-  2,
+  1,
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", defendingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 //Hack Actions 3
 term3Hacking = false;
@@ -171,7 +171,7 @@ publicVariable "term3Hacking";
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", attackingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 //Defend action 3
 [
@@ -192,11 +192,11 @@ publicVariable "term3Hacking";
   },
   {["Terminal", ""] call BIS_fnc_showSubtitle},
   [],
-  2,
+  1,
   0,
   false,
   false
-] remoteExec ["BIS_fnc_holdActionAdd", defendingSide, true];
+] remoteExec ["BIS_fnc_holdActionAdd", 0, true];
 
 terminalHacked = {
   params["_term","_termMark","_defendTask","_attackTask","_termHacked"];
@@ -314,9 +314,9 @@ _obj2Mark setMarkerText "Terminal 2 - Active";
 
 waitUntil {term2Hacked};
 
-[defendingSide,"defendTask3",["","Defend Terminal 3",_obj2Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-[attackingSide,"attackTask3",["","Hack Terminal 3",_obj2Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-_obj2Mark setMarkerText "Terminal 3 - Active";
+[defendingSide,"defendTask3",["","Defend Terminal 3",_obj3Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+[attackingSide,"attackTask3",["","Hack Terminal 3",_obj3Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+_obj3Mark setMarkerText "Terminal 3 - Active";
 
 [] spawn fn_term3Time;
 

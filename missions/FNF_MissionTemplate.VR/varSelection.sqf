@@ -1,15 +1,18 @@
-activeMode = "destroy_ez"; //Change this string to whatever game mode you want (listed below)
+activeMode = ""; //Change this string to whatever game mode you want (listed below)
 objectives = [];
 
 defendingSide = west; //east/west/independent
 attackingSide = east; //east/west/independent
 publicVariable "defendingSide";
 publicVariable "attackingSide";
-//Not needed if objective is neutral
+//Not used if mode is neutral
 
 /*
 =========================Modes=========================
-destroy
+destroy - ATK/DEF
+
+Description:
+Classic "blow thing up to win" mode. Attackers need to destroy some objects that the defenders need to protect.
 
 Usage:
 1. Create at least one object in the editor that can be destroyed, give the object a variable name (double-click, at the top)
@@ -34,19 +37,23 @@ objectives = [[cache,"Cache_Marker","weapons cache",false,true], [tank,"Tank_Mar
 
 The game will end if all objectives are destroyed
 ====================================================================================================
-destroy_ez
+destroy_ez - ATK/DEF
 
 Quick-setup version of destroy mode with pre-configured objectives.
 
 Usage:
 1. Move 'cache1' and 'cache2' to new locations.
-2. Move 'cache1Mark' so cache1 is somewhere inside the marker
-3. Move 'cache2Mark' so cache2 is somewhere inside the marker
+2. Move 'cache1Mark' so cache1 is somewhere inside the marker.
+3. Move 'cache2Mark' so cache2 is somewhere inside the marker.
+-Feel free to adjust the size/shape of the markers.
 
 Params:
 None. The mode is configured so the location of the caches is unknown to the attackers. They need to search the cache markers to find them.
 ====================================================================================================
-uplink
+uplink - ATK/DEF
+
+Description:
+Attackers need to hack 1 or 2 data terminals to win.
 
 Usage:
 1. Choose if you want 1 or 2 terminals.
@@ -60,7 +67,12 @@ Examples:
 objectives = [1,120]; //1 terminal (term1) with a hack time of 2 minutes
 objectives = [2,180]; //2 terminals (term1 & term2) with hack times of 3 minutes
 ====================================================================================================
-ctf
+ctf - ATK/DEF
+
+Description:
+Classic capture the flag. The attackers need to grab the flag from the defending side's flagpole and bring it back to a capture zone and hold it there.
+The defenders are able to pick the flag up and return it by moving close to the flag pole.
+The capture zone is not revealed to the defenders until the flag is in possession of the attackers.
 
 Usage:
 1. Move all the objects around the flagpole(named 'flagPole' in editor) to a new destination
@@ -71,27 +83,42 @@ None.
 Default capture time is 5 mins. You can go into the file "f\modes\ctf.sqf" and change the 'captureTime' variable to a new time.
 You can also change the update time of the flag marker from 10s(default) by changing the variable 'flagMarkerUpdateTime' to a new time;
 ====================================================================================================
-rush
+rush - ATK/DEF
+
+Description:
+This is a classic advancing attack/defend mode. The attackers need to hack terminal 1 to unlock terminal 2, and hack 2 to unlock 3.
+Try to design the mission in a linear way so the attackers have a clear path to each terminal.
 
 Usage:
-1.
+1. Move term1, term2 and term3 to wherever you want. All three terminals are needed for this mode.
+2. Configure the 'objectives' array above. Three elements are needed, each represents the hack time for the corresponding terminals.
 
 Params:
--data terminal name (object name)
 -hack time for terminal (integer, seconds)
 
 Examples:
-objectives = [[cache1,"Cache_Marker","wepaons cache",false,true]]; - 1 objective, object named cache1, marker named "Cache_Marker", name for task title "weapons cache",
-objective location not visible to attackers (no task marker), objective able to be moved (marker will update for attackers)
-
-objectives = [[cache,"Cache_Marker","wepaons cache",false,true], [tank,"Tank_Marker","prototype tank",true,false]]; - 2 objectives
-
-*There can be an infinite number of objectives*
-
-The game will end if all objectives are destroyed
+objectives = [120,90,60]; term1 hack time = 120 seconds - term2 hack time = 90 seconds - term3 hack time = 60 seconds
 
 ====================================================================================================
-neutralSector
+adSector - ATK/DEF
+
+Description:
+Attack/defend sector control mode. Attackers attempt to secure all sectors to win. Sector amount is configurable from 1-3.
+When a sector is captured, it is deleted, and the attackers can move on to the next one.
+
+Usage:
+1. Move 'sector1', 'sector2' and 'sector3' to wherever you want.
+2. Configure 'objectives' array with the number of sectors you want.
+- If 1 is chosen, then 'sector1' sector object will be used. 2 = 'sector1' and 'sector2' being used. 3 = 'sector1', 'sector2' and 'sector3' being used.
+
+Params:
+-Number of sectors to defend/attack
+====================================================================================================
+neutralSector - neutral
+
+Description:
+This is a classic sector control mode. The first team to reach 100 points wins.
+Supports 3 sides competing.
 
 Usage:
 1. Move the 'sector' sector object to wherever to want. Adjust the size to whatever to want.
@@ -101,4 +128,18 @@ Params:
 
 Examples:
 objectives = [10]; //10 minute control time
+
+====================================================================================================
+connection - neutral
+
+Description:
+A Mode where there are three terminals present on the map, each side attempts to hack each terminal.
+Every 20 seconds, each side is awarded 1 point for each terminal they have controlled. First side to 100 points wins.
+Supports 3 sides competing.
+
+Usage:
+1. Move term1, term2 and term3 to wherever you want.
+
+Params:
+None
 */

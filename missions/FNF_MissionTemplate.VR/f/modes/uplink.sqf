@@ -43,7 +43,7 @@ switch (numObjs) do {
       waitUntil {isNull term1};
       ["defendTask1", "FAILED", true] call BIS_fnc_taskSetState;
       ["attackTask1", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-      deleteMarker term1Mark;
+      deleteMarker "term1Mark";
     };
   };
   case 2: {

@@ -1,6 +1,4 @@
-defendingSide = _this select 0;
-attackingSide = _this select 1;
-objectivesNumber = _this select 2;
+objectivesNumber = objectives select 0;
 
 if (isNil "objectivesNumber") then {
   objectivesNumber = 3;
@@ -8,7 +6,6 @@ if (isNil "objectivesNumber") then {
 
 if ((defendingSide == attackingSide) || !((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)) || (isNil "defendingSide") || (isNil "attackingSide"))
 exitWith {["Game mode not configured correctly, check 'varSelection.sqf'"] remoteExec ["hint"];};
-
 
 if !(isNull sector1) then {
   sector1 setVariable ["owner",defendingSide];

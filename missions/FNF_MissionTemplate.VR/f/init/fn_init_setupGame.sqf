@@ -26,8 +26,8 @@ switch (activeMode) do {
     execVM "f\modes\ctf.sqf";
     [[],"f\clientmodes\ctf.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
   };
-  case "neutralUplink": {
-    [] execVM "f\servermodes\neutralUplink.sqf";
+  case "connection": {
+    execVM "f\modes\connection.sqf";
   };
   case "neutralSector": {
     execVM "f\modes\neutralSector.sqf";
@@ -37,7 +37,7 @@ switch (activeMode) do {
     [[],"f\clientmodes\neutralCaptureTheFlag.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
   };
   case "adSector": {
-    modeParams execVM "f\servermodes\adSector.sqf";
+    execVM "f\modes\adSector.sqf";
   };
   case "0": {};
   default {
@@ -45,13 +45,13 @@ switch (activeMode) do {
   };
 };
 
-if !(activeMode isEqualTo "rush" || activeMode isEqualTo "uplink") then {
+if !(activeMode isEqualTo "uplink" || activeMode isEqualTo "connection") then {
   deleteMarker "term1Mark";
   deleteMarker "term2Mark";
   deleteMarker "term3Mark";
 };
 
-if !(activeMode isEqualTo "rush") then {
+if !(activeMode isEqualTo "connection") then {
   deleteMarker "term3Mark";
 };
 
