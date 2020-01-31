@@ -18243,12 +18243,12 @@ class Mission
 		class Item42
 		{
 			dataType="Trigger";
-			position[]={452.936,5,678.586};
+			position[]={508.763,5,616.40503};
 			class Attributes
 			{
 				name="zoneTrigger";
-				sizeA=1000;
-				sizeB=1000;
+				sizeA=0;
+				sizeB=0;
 				isRectangle=1;
 			};
 			id=221;
