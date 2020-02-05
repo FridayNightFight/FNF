@@ -170,7 +170,7 @@ _grenadeListboxSelect =  _grenadeListboxControl ctrlAddEventHandler  ["LBSelChan
 
   //CE Only
 
-  if (pRole == 7 && !("phx_loadout_allowCESelector" call BIS_fnc_getParamValue isEqualTo 1) && explosivesSelectorEnabled) then {
+  if (((typeOf player isEqualTo "B_soldier_exp_F") || (typeOf player isEqualTo "O_soldier_exp_F") || (typeOf player isEqualTo "I_Soldier_exp_F")) && !("phx_loadout_allowCESelector" call BIS_fnc_getParamValue isEqualTo 1) && explosivesSelectorEnabled) then {
 
     _explosivesListboxControl = _display displayCtrl 2003;
 

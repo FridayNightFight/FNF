@@ -15,7 +15,7 @@ aliveObjectives = count objectives;
 {
   _attackersTaskText =
   if (_x select 3) then {
-    deleteMarker (_x select 1);
+    [_x select 1] remoteExec ["deleteMarkerLocal",0,true];
     "Destroy the "
   } else {
     "Search for and destroy the "
@@ -39,7 +39,7 @@ aliveObjectives = count objectives;
     [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
     aliveObjectives = aliveObjectives - 1;
-    deleteMarker _markerName;
+    [_markerName] remoteExec ["deleteMarkerLocal",0,true];
   };
 
   //Handle moving objective

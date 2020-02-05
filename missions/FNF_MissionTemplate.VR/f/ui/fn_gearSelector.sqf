@@ -1,7 +1,7 @@
 gearAction = player addaction ["<t size='1.5'><t color='#ff0a0a'>Gear Selector</t>",{createdialog "GearSelector";},nil,1.5,false,false,"","_this == _target"];
 //adminAction = player addaction ["<t size='1.5'><t color='#ff0a0a'>Admin Menu</t>",{createdialog "FNFAdminMenu";},nil,1.5,false,false,"","_this == _target"];
 
-if (pRole == 7 && !("phx_loadout_allowCESelector" call BIS_fnc_getParamValue isEqualTo 1)) then {
+if (((typeOf player isEqualTo "B_soldier_exp_F") || (typeOf player isEqualTo "O_soldier_exp_F") || (typeOf player isEqualTo "I_Soldier_exp_F")) && !("phx_loadout_allowCESelector" call BIS_fnc_getParamValue isEqualTo 1)) then {
   explosiveSelected = 0;
   explosiveFirstSel = false;
   explosivesClasses = ["SatchelCharge_Remote_Mag","DemoCharge_Remote_Mag","APERSTripMine_Wire_Mag","SLAMDirectionalMine_Wire_Mag","ATMine_Range_Mag"];

@@ -20,12 +20,21 @@ publicVariable "term2Hacking";
 term1Time = _hackTime;
 term2Time = _hackTime;
 
+switch (numObjs) do {
+  case 1: {
+    _obj1Mark = createMarker ["term1Mark",getPos term1];
+  };
+  case 2: {
+    _obj1Mark = createMarker ["term1Mark",getPos term1];
+    _obj2Mark = createMarker ["term2Mark",getPos term2];
+  };
+};
+
 //Delete term2 if mission makers only selected 1
 switch (numObjs) do {
   case 1: {
     "term1Mark" setMarkerPos (getPos term1);
     deleteVehicle term2;
-    deleteMarker "term2Mark";
   };
   case 2: {
     "term1Mark" setMarkerPos (getPos term1);
@@ -43,7 +52,7 @@ switch (numObjs) do {
       waitUntil {isNull term1};
       ["defendTask1", "FAILED", true] call BIS_fnc_taskSetState;
       ["attackTask1", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-      deleteMarker "term1Mark";
+      ["term1Mark"] remoteExec ["deleteMarkerLocal",0,true];
     };
   };
   case 2: {
@@ -58,13 +67,13 @@ switch (numObjs) do {
       waitUntil {isNull term1};
       ["defendTask1", "FAILED", true] call BIS_fnc_taskSetState;
       ["attackTask1", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-      deleteMarker "term1Mark";
+      ["term1Mark"] remoteExec ["deleteMarkerLocal",0,true];
     };
     [] spawn {
       waitUntil {isNull term2};
       ["defendTask2", "FAILED", true] call BIS_fnc_taskSetState;
       ["attackTask2", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-      deleteMarker "term2Mark";
+      ["term2Mark"] remoteExec ["deleteMarkerLocal",0,true];
     };
   };
 };

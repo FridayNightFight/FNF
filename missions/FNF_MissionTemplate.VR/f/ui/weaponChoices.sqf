@@ -50,7 +50,7 @@ switch (opticMag) do {
   };
 };
 
-if (pRole == 16) then {
+if (typeOf player isEqualTo "B_soldier_M_F" || typeOf player isEqualTo "O_soldier_M_F" || typeOf player isEqualTo "I_Soldier_M_F") then {
   allowedOptics pushBack "optic_SOS";
   allowedOptics pushBack "optic_NVS";
 };

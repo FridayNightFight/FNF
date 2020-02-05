@@ -1,5 +1,27 @@
 if (!hasInterface) exitWith {};
 
+_bluforCustomLoadouts = false;
+_opforCustomLoadouts = false;
+_indforCustomLoadouts = false;
+
+switch (side player) do {
+  case east: {
+    if (_opforCustomLoadouts) then {
+      phx_loadoutAssigned = true;
+    };
+  };
+  case west: {
+    if (_bluforCustomLoadouts) then {
+      phx_loadoutAssigned = true;
+    };
+  };
+  case independent: {
+    if (_indforCustomLoadouts) then {
+      phx_loadoutAssigned = true;
+    };
+  };
+};
+
 // Ensure script is run only once.
 if (!isNil "phx_loadoutAssigned") exitWith {};
 phx_loadoutAssigned = false;

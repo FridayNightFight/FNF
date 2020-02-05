@@ -207,7 +207,7 @@ terminalHacked = {
 
   "Bo_GBU12_LGB" createVehicle (getposATL _term);
   deleteVehicle _term;
-  deleteMarker _termMark;
+  [_termMark] remoteExec ["deleteMarkerLocal",0,true];
   [_defendTask,"FAILED"] call BIS_fnc_taskSetState;
   [_attackTask,"SUCCEEDED"] call BIS_fnc_taskSetState;
 

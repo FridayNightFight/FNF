@@ -8,6 +8,10 @@ term1HackingSide = civilian;
 term2HackingSide = civilian;
 term3HackingSide = civilian;
 
+_obj1Mark = createMarker ["term1Mark",getPos term1];
+_obj2Mark = createMarker ["term2Mark",getPos term2];
+_obj3Mark = createMarker ["term3Mark",getPos term3];
+
 [west, 0] call BIS_fnc_respawnTickets;
 [east, 0] call BIS_fnc_respawnTickets;
 [independent, 0] call BIS_fnc_respawnTickets;

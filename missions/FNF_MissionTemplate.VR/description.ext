@@ -25,5 +25,3 @@ class CfgFunctions {
 #include "f\display.hpp"
 #include "f\ui\Selector.hpp"
 #include "f\ui\FNFAdminMenu.hpp"
-
-cba_settings_hasSettingsFile = 1;

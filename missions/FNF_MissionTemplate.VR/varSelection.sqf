@@ -142,4 +142,24 @@ Usage:
 
 Params:
 None
+
+====================================================================================================
+neutralCTF - neutral
+
+Description:
+Classic capture the flag, neutral objective, supports 3 sides competing. Opposing capture zones are not shown to the player until that side picks up the flag.
+i.e., The OPFOR capture zone is not shown to BLUFOR players until an OPFOR player picks up the flag.
+
+Usage:
+1. Move the trigger 'eastFlagTrig' to wherever you want the OPFOR capture zone to be. Set the trigger size/shape to whatever you want.
+2. Move the trigger 'westFlagTrig' to wherever you want the BLUFOR capture zone to be. Set the trigger size/shape to whatever you want.
+3. Move the trigger 'indFlagTrig' to wherever you want the INDFOR capture zone to be. Set the trigger size/shape to whatever you want.
+4. Move the flag pole to wherever you want.
+
+Params:
+-sides competing (east, west, independent)
+
+Examples:
+objectives = [east,west]; //BLUFOR and OPFOR competing for the flag
+objectives = [east,west,independent] //BLUFOR, OPFOR and INDFOR competing for the flag
 */

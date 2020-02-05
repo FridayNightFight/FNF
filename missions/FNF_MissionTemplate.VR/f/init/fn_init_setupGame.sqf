@@ -26,15 +26,15 @@ switch (activeMode) do {
     execVM "f\modes\ctf.sqf";
     [[],"f\clientmodes\ctf.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
   };
+  case "neutralCTF": {
+    execVM "f\modes\neutralCTF.sqf";
+    [[],"f\clientmodes\neutralCTF.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
+  };
   case "connection": {
     execVM "f\modes\connection.sqf";
   };
   case "neutralSector": {
     execVM "f\modes\neutralSector.sqf";
-  };
-  case "neutralCaptureTheFlag": {
-    modeParams execVM "f\servermodes\neutralCaptureTheFlag.sqf";
-    [[],"f\clientmodes\neutralCaptureTheFlag.sqf"] remoteExec ["BIS_fnc_execVM",0,true];
   };
   case "adSector": {
     execVM "f\modes\adSector.sqf";
@@ -45,23 +45,18 @@ switch (activeMode) do {
   };
 };
 
-if !(activeMode isEqualTo "uplink" || activeMode isEqualTo "connection") then {
-  deleteMarker "term1Mark";
-  deleteMarker "term2Mark";
-  deleteMarker "term3Mark";
-};
-
-if !(activeMode isEqualTo "connection") then {
-  deleteMarker "term3Mark";
-};
-
 if !(activeMode isEqualTo "destroy_ez") then {
-  deleteMarker "cache1Mark";
-  deleteMarker "cache2Mark";
+  ["cache1Mark"] remoteExec ["deleteMarkerLocal",0,true];
+  ["cache2Mark"] remoteExec ["deleteMarkerLocal",0,true];
 };
 
-//Delete ctf trigger if mode is not active
-if !(activeMode isEqualTo "ctf") then {
+if !(activeMode isEqualTo "ctf" || activeMode isEqualTo "neutralCTF") then {
   deleteVehicle attackFlagTrig;
-  deleteMarker "flagMark";
+  ["flagMark"] remoteExec ["deleteMarkerLocal",0,true];
+};
+
+if !(activeMode isEqualTo "neutralCTF") then {
+  deleteVehicle eastFlagTrig;
+  deleteVehicle westFlagTrig;
+  deleteVehicle indFlagTrig;
 };
