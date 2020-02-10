@@ -20,7 +20,7 @@ notInStart = {
   _timeAllowed = 15;
   while {!playerInStart && alive player && phx_safeStartEnabled} do {
     for [{_i=_timeAllowed}, {_i>0}, {_i=_i-1}] do {
-      if (playerInStart || !phx_safeStartEnabled) exitWith {safeZoneWarning = false; hintSilent ""};
+      if (playerInStart || !phx_safeStartEnabled) exitWith {safeZoneWarning = false; hintSilent "sad"};
       hintSilent format ["You have %1 seconds to get back into the safe zone.", _i];
       sleep 1;
     };

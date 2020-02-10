@@ -86,13 +86,16 @@ switch (_this select 0) do
           player setVariable ["f_var_safetyVeh",nil];
       };
 
-		//Enable ACE advanced throwing
-    if !(isNil "disableAdvancedThrowing") then {
-      ["ace_firedPlayer",disableAdvancedThrowing] call CBA_fnc_removeEventHandler;
-      disableAdvancedThrowing = nil;
-    };
-        // Make player vulnerable
-        player allowDamage true;
-        phx_safeStartEnabled = false;
+  		//Enable ACE advanced throwing
+      if !(isNil "disableAdvancedThrowing") then {
+        ["ace_firedPlayer",disableAdvancedThrowing] call CBA_fnc_removeEventHandler;
+        disableAdvancedThrowing = nil;
+      };
+
+      call phx_fnc_init_removeClientHandlers;
+
+      // Make player vulnerable
+      player allowDamage true;
+      phx_safeStartEnabled = false;
     };
 };

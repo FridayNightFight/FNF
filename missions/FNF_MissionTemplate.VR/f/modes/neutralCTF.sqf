@@ -268,10 +268,10 @@ dropFlagServer = {
     flagObj setFlagTexture "\A3\Data_F\Flags\flag_red_co.paa";
   };
   if (flagObj inArea westFlagTrig) then {
-    flagObj setFlagTexture "\A3\Data_F\Flags\flag_red_co.paa";
+    flagObj setFlagTexture "\A3\Data_F\Flags\flag_blue_co.paa";
   };
   if (flagObj inArea indFlagTrig) then {
-    flagObj setFlagTexture "\A3\Data_F\Flags\flag_red_co.paa";
+    flagObj setFlagTexture "\A3\Data_F\Flags\flag_green_co.paa";
   };
 };
 
@@ -427,7 +427,7 @@ flagOutVehicle = {
 //Function called when the flag enters the capture zone. Capture timer starts.
 flagInZone = {
   params ["_side"];
-  if (flagInCapZone) exitWith {};
+  if !(flagInCapZone) exitWith {};
 
   _captureTimeLeft = captureTime;
 
