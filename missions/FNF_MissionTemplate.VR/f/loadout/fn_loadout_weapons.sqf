@@ -43,6 +43,15 @@ switch (pWeapons) do {
     case WEAPONS_RANDOM: {
       #include "weaponloadouts\WEAPONS_RANDOM.sqf"
     };
+    case WEAPONS_CUSTOM_1: {
+      #include "weaponloadouts\WEAPONS_CUSTOM_1.sqf"
+    };
+    case WEAPONS_CUSTOM_2: {
+      #include "weaponloadouts\WEAPONS_CUSTOM_2.sqf"
+    };
+    case WEAPONS_CUSTOM_3: {
+      #include "weaponloadouts\WEAPONS_CUSTOM_3.sqf"
+    };
     case WEAPONS_UNARMED: {
       #include "weaponloadouts\WEAPONS_UNARMED.sqf"
     };

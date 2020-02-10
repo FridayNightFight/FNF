@@ -57,6 +57,15 @@ switch (pUniform) do {
     case UNIFORM_WETSUIT: {
       #include "uniformloadouts\UNIFORM_WETSUIT.sqf"
     };
+    case UNIFORM_CUSTOM_1: {
+      #include "uniformloadouts\UNIFORM_CUSTOM_1.sqf"
+    };
+    case UNIFORM_CUSTOM_2: {
+      #include "uniformloadouts\UNIFORM_CUSTOM_2.sqf"
+    };
+    case UNIFORM_CUSTOM_3: {
+      #include "uniformloadouts\UNIFORM_CUSTOM_3.sqf"
+    };
     case UNIFORM_CIVILIAN_TANOA: {
       #include "uniformloadouts\UNIFORM_CIVILIAN_TANOA.sqf"
     };
