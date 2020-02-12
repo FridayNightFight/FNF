@@ -12,6 +12,8 @@ _indPart = false;
 bluforZoneShown = false;
 opforZoneShown = false;
 indforZoneShown = false;
+//10 min capture time
+captureTime = 600;
 
 if (east in objectives) then {
   _eastPart = true;
@@ -22,9 +24,6 @@ if (west in objectives) then {
 if (independent in objectives) then {
   _indPart = true;
 };
-
-//5 min capture time
-captureTime = 300;
 
 //Make sure flag marker is in correct position
 "flagMark" setMarkerPos (getPos flagObj);
@@ -141,8 +140,8 @@ onPlayerDisconnected {
       "eastCapMarker" setMarkerColor "ColorRed";
       "eastCapMarker" setMarkerDir (_attackCapArea select 2);
 
-      "eastCapMarker" setMarkerAlpha 0;
-      "eastCapMarkerText" setMarkerAlpha 0;
+      ["eastCapMarker",0] remoteExec ["setMarkerAlphaLocal",0,true];
+      ["eastCapMarkerText",0] remoteExec ["setMarkerAlphaLocal",0,true];
     };
     case west: {
       _attackCapArea = triggerArea westFlagTrig;
@@ -163,8 +162,8 @@ onPlayerDisconnected {
       "westCapMarker" setMarkerColor "ColorBlue";
       "westCapMarker" setMarkerDir (_attackCapArea select 2);
 
-      "westCapMarker" setMarkerAlpha 0;
-      "westCapMarkerText" setMarkerAlpha 0;
+      ["westCapMarker",0] remoteExec ["setMarkerAlphaLocal",0,true];
+      ["westCapMarkerText",0] remoteExec ["setMarkerAlphaLocal",0,true];
     };
     case independent: {
       _attackCapArea = triggerArea indFlagTrig;
@@ -185,8 +184,8 @@ onPlayerDisconnected {
       "indCapMarker" setMarkerColor "ColorGreen";
       "indCapMarker" setMarkerDir (_attackCapArea select 2);
 
-      "indCapMarker" setMarkerAlpha 0;
-      "indCapMarkerText" setMarkerAlpha 0;
+      ["indCapMarker",0] remoteExec ["setMarkerAlphaLocal",0,true];
+      ["indCapMarkerText",0] remoteExec ["setMarkerAlphaLocal",0,true];
     };
   };
 } forEach _sidesPart;
@@ -288,8 +287,8 @@ flagControlled = {
   switch (_side) do {
     case east: {
       if !(opforZoneShown) then {
-        "eastCapMarker" setMarkerAlpha 1;
-        "eastCapMarkerText" setMarkerAlpha 1;
+        ["eastCapMarker",1] remoteExec ["setMarkerAlphaLocal",0,true];
+        ["eastCapMarkerText",1] remoteExec ["setMarkerAlphaLocal",0,true];
         opforZoneShown = true;
       };
       if !(flagObj inArea eastFlagTrig) then {
@@ -300,8 +299,8 @@ flagControlled = {
     };
     case west: {
       if !(bluforZoneShown) then {
-        "westCapMarker" setMarkerAlpha 1;
-        "westCapMarkerText" setMarkerAlpha 1;
+        ["westCapMarker",1] remoteExec ["setMarkerAlphaLocal",0,true];
+        ["westCapMarkerText",1] remoteExec ["setMarkerAlphaLocal",0,true];
         bluforZoneShown = true;
       };
       if !(flagObj inArea westFlagTrig) then {
@@ -312,8 +311,8 @@ flagControlled = {
     };
     case independent: {
       if !(indforZoneShown) then {
-        "indCapMarker" setMarkerAlpha 1;
-        "indCapMarkerText" setMarkerAlpha 1;
+        ["indCapMarker",1] remoteExec ["setMarkerAlphaLocal",0,true];
+        ["indCapMarkerText",1] remoteExec ["setMarkerAlphaLocal",0,true];
         indforZoneShown = true;
       };
       if !(flagObj inArea indFlagTrig) then {

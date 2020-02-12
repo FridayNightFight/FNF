@@ -16,6 +16,49 @@ switch (_side) do {
   };
 };
 
+if !(typeName startSelectionSide == "BOOL") then {
+  if (_side == startSelectionSide) then {
+    _defaultStartMarkers = ["startSelectionMarker_1","startSelectionMarker_2","startSelectionMarker_3"];
+
+    {
+      if !(getMarkerColor _x == "") then {
+        startMarkers pushBack _x;
+      };
+    } forEach _defaultStartMarkers;
+
+    startActions = ["startLocations","Select start location","",{},{true}] call ace_interact_menu_fnc_createAction;
+
+    startSelectAction = ["Tele","Go to main start","",{
+      switch (side player) do {
+        case east: {
+          "opforSafeMarker" execVM "f\safeStart\teleport.sqf";
+        };
+        case west: {
+          "bluforSafeMarker" execVM "f\safeStart\teleport.sqf";
+        };
+        case independent: {
+          "indforSafeMarker" execVM "f\safeStart\teleport.sqf";
+        };
+      };
+    },{true}] call ace_interact_menu_fnc_createAction;
+    startSelectAction_1 = ["Tele1","Go to start 1","",{
+      "startSelectionMarker_1" execVM "f\safeStart\teleport.sqf"
+    },{true}] call ace_interact_menu_fnc_createAction;
+    startSelectAction_2 = ["Tele2","Go to start 2","",{
+      "startSelectionMarker_2" execVM "f\safeStart\teleport.sqf"
+    },{true}] call ace_interact_menu_fnc_createAction;
+    startSelectAction_3 = ["Tele3","Go to start 3","",{
+      "startSelectionMarker_3" execVM "f\safeStart\teleport.sqf"
+    },{true}] call ace_interact_menu_fnc_createAction;
+
+    [(typeOf player), 1, ["ACE_SelfActions"],startActions] call ace_interact_menu_fnc_addActionToClass;
+    [(typeOf player), 1, ["ACE_SelfActions","startLocations"],startSelectAction] call ace_interact_menu_fnc_addActionToClass;
+    [(typeOf player), 1, ["ACE_SelfActions","startLocations"],startSelectAction_1] call ace_interact_menu_fnc_addActionToClass;
+    [(typeOf player), 1, ["ACE_SelfActions","startLocations"],startSelectAction_2] call ace_interact_menu_fnc_addActionToClass;
+    [(typeOf player), 1, ["ACE_SelfActions","startLocations"],startSelectAction_3] call ace_interact_menu_fnc_addActionToClass;
+  };
+};
+
 notInStart = {
   _timeAllowed = 15;
   while {!playerInStart && alive player && phx_safeStartEnabled} do {

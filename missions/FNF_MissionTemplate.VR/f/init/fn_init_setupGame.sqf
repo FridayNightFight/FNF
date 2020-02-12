@@ -9,6 +9,27 @@ if (_zoneRestriction isEqualTo 0) then {
   deleteVehicle zoneTrigger;
 };
 
+//Start selection markers
+_activeStartMarkers = [];
+_defaultStartMarkers = ["startSelectionMarker_1","startSelectionMarker_2","startSelectionMarker_3","start1Text","start2Text","start3Text"];
+
+{
+  [_x, 0] remoteExec ["setMarkerAlphaLocal", 0, true];
+} forEach _defaultStartMarkers;
+
+if (typeName startSelectionSide == "BOOL") then {
+  {
+    [_x] remoteExec ["deleteMarkerLocal",0,true];
+  } forEach _defaultStartMarkers;
+} else {
+  if (typeName startSelectionSide == "SIDE") then {
+    {
+      [_x, 1] remoteExec ["setMarkerAlphaLocal", startSelectionSide, true];
+    } forEach _defaultStartMarkers;
+  };
+};
+
+//Create mode
 switch (activeMode) do {
   case "uplink": {
     execVM "f\modes\uplink.sqf";

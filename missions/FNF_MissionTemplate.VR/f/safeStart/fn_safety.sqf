@@ -69,6 +69,10 @@ switch (_this select 0) do
     default {
       call phx_fnc_removeSelector;
 
+      if (!isNil "startActions") then {
+        [(typeOf player), 1, ["ACE_SelfActions","startLocations"]] call ace_interact_menu_fnc_removeActionFromClass;
+      };
+
       // Allow player to fire weapons
       if !(isNil "f_eh_safetyMan") then {
           player removeEventhandler ["Fired", f_eh_safetyMan];

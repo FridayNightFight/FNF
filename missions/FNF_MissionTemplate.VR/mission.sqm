@@ -8,15 +8,15 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=638;
+		nextID=648;
 	};
 	class MarkerIDProvider
 	{
-		nextID=17;
+		nextID=20;
 	};
 	class Camera
 	{
-		pos[]={1205.4186,23.810595,188.46136};
+		pos[]={1206.4567,37.045673,210.33202};
 		dir[]={0.042417869,-0.44812283,0.89298177};
 		up[]={0.021262724,0.89395934,0.44762686};
 		aside[]={0.99888742,-3.1999662e-008,-0.04744909};
@@ -949,7 +949,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=108;
+		items=115;
 		class Item0
 		{
 			dataType="Logic";
@@ -36782,6 +36782,82 @@ class Mission
 			};
 			id=637;
 			type="EmptyDetector";
+		};
+		class Item108
+		{
+			dataType="Marker";
+			position[]={1200,5,600};
+			name="startSelectionMarker_1";
+			markerType="ELLIPSE";
+			type="ellipse";
+			fillName="Border";
+			a=50;
+			b=50;
+			drawBorder=1;
+			id=638;
+		};
+		class Item109
+		{
+			dataType="Marker";
+			position[]={1300,5,600};
+			name="startSelectionMarker_2";
+			markerType="ELLIPSE";
+			type="ellipse";
+			fillName="Border";
+			a=50;
+			b=50;
+			drawBorder=1;
+			id=639;
+		};
+		class Item110
+		{
+			dataType="Marker";
+			position[]={1400,5,600};
+			name="startSelectionMarker_3";
+			markerType="ELLIPSE";
+			type="ellipse";
+			fillName="Border";
+			a=50;
+			b=50;
+			drawBorder=1;
+			id=640;
+		};
+		class Item111
+		{
+			dataType="Marker";
+			position[]={1200,5,600};
+			name="start1Text";
+			text="Start 1";
+			type="mil_dot";
+			id=644;
+		};
+		class Item112
+		{
+			dataType="Marker";
+			position[]={1300,5,600};
+			name="start2Text";
+			text="Start 2";
+			type="mil_dot";
+			id=645;
+		};
+		class Item113
+		{
+			dataType="Marker";
+			position[]={1400,5,600};
+			name="start3Text";
+			text="Start 3";
+			type="mil_dot";
+			id=646;
+		};
+		class Item114
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={1190,5,600};
+			};
+			description="Start selection markers. Side that can use these defined in varSelection.sqf";
+			id=647;
 		};
 	};
 	class Connections
