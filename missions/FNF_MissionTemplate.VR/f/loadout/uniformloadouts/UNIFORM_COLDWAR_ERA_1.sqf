@@ -11,6 +11,9 @@ if (pRole == ROLE_P) then {
   phx_loadout_headgear = "H_PilotHelmetHeli_O";
   phx_loadout_backpack = _lrRadio;
 };
+if (pRole == ROLE_CLS) then {
+  phx_loadout_backpack = "B_Kitbag_rgr";
+};
 if (pRole == ROLE_CR) then {
   phx_loadout_headgear = "rhs_gssh18";
   phx_loadout_backpack = "B_FieldPack_oli";

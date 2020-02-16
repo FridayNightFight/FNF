@@ -59,3 +59,8 @@ class ui {
   class removeSelector{};
   class adminMenuAdds{};
 };
+class unflip {
+	file = "f\misc\unflip";
+	class unflipVehicle {};
+	class unflipVehicleAddAction {};
+};

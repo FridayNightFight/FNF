@@ -4,6 +4,9 @@
 //Set marker visibility
 side player execVM "f\init\clientMarkerVisibilty.sqf";
 
+//Unflip - made by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
+[] spawn phx_fnc_unflipVehicleAddAction;
+
 // Set loadouts
 call phx_fnc_loadout_set;
 

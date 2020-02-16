@@ -10,7 +10,6 @@ if (_zoneRestriction isEqualTo 0) then {
 };
 
 //Start selection markers
-_activeStartMarkers = [];
 _defaultStartMarkers = ["startSelectionMarker_1","startSelectionMarker_2","startSelectionMarker_3","start1Text","start2Text","start3Text"];
 
 {

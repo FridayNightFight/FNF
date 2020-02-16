@@ -4,11 +4,11 @@ call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 phx_loadout_bandage = "ACE_fieldDressing:8";
 phx_loadout_morphine = "ACE_morphine:3";
 phx_loadout_epinephrine = "ACE_epinephrine:2";
-phx_loadout_splint = "ACE_splint:4";
+phx_loadout_splint = "ACE_splint:2";
 
 // Add gear
 [phx_loadout_aid, "uniform"] call phx_fnc_loadout_handleGear;
-[phx_loadout_splint, "uniform"] call phx_fnc_loadout_handleGear;
+//[phx_loadout_splint, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_smoke, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_grenade, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_cuffs, "item"] call phx_fnc_loadout_handleGear;

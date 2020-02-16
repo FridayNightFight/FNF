@@ -12,6 +12,9 @@ if (pRole == ROLE_P) then {
   phx_loadout_vest = "rhsgref_6b23_ttsko_forest";
   phx_loadout_backpack = _lrRadio;
 };
+if (pRole == ROLE_CLS) then {
+  //phx_loadout_backpack = "B_Kitbag_sgg"
+};
 if (pRole == ROLE_AR || pRole == ROLE_AAR) then {
   phx_loadout_backpack = "B_Kitbag_rgr";
 };
