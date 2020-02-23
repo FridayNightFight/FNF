@@ -50,6 +50,7 @@ class misc {
     class disableCollisions{};
     class setTimeOfDay{};
     class setWeather{};
+    class leadActions{};
 };
 class ui {
   file = "f\ui";

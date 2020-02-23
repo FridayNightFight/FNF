@@ -23,5 +23,3 @@ player addWeapon phx_loadout_sidearm_weapon;
 call phx_fnc_loadout_handleItems; // Add binocular/nvg variables above this line!
 
 missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.
-
-execVM "heal.sqf";

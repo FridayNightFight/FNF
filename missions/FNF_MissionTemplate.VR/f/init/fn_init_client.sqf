@@ -53,9 +53,26 @@ if !(_zoneRestriction isEqualTo 0) then {
 };
 
 //TFAR set to whisper
-5 call TFAR_fnc_setVoiceVolume;
-TF_speak_volume_level = "whispering";
-TF_speak_volume_meters = 5;
+[] spawn {
+  sleep 1;
+  5 call TFAR_fnc_setVoiceVolume;
+  TF_speak_volume_level = "whispering";
+  TF_speak_volume_meters = 5;
+};
+
+//Set weapon safety on
+[] spawn {
+  waitUntil {phx_loadoutAssigned};
+  safetyWeapons = [];
+  [ACE_player, currentWeapon ACE_player, true] call ace_safemode_fnc_setWeaponSafety;
+  safetyWeapons pushBack (currentWeapon ACE_player);
+};
+
+//Add leadership self-actions
+_group = group player;
+if ((_group == Red_P1HQ) || (_group == Blue_P1HQ) || (_group == Green_P1HQ)) then {
+  call phx_fnc_leadActions;
+};
 
 //====================================================================================================
 phx_clientInitFinished = true;

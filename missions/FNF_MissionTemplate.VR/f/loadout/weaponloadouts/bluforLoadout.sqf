@@ -40,7 +40,7 @@ giveBLUFORLoadout = {
   if (pRole == ROLE_AT) then {
     phx_loadout_mediumantitank_weapon = "rhs_weap_maaws";
     phx_loadout_mediumantitank_optic = "rhs_optic_maaws";
-    phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT:1";
+    phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT:2";
   };
   if (pRole == ROLE_AAT) then {
     phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT";

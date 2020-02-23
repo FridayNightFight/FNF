@@ -8,7 +8,7 @@ publicVariable "defendingSide";
 publicVariable "attackingSide";
 //Not used if mode is neutral
 
-//Set side you want to be able to change their starting zone, if any - uses the startSelectionMarkers alrady placed in the editor
+//Set side you want to be able to change their starting zone, if any - uses the startSelection markers alrady placed in the editor
 startSelectionSide = false; //east/west/independent - false to disable
 publicVariable "startSelectionSide";
 

@@ -2,7 +2,7 @@ zoneWarning = false;
 playerInZone = true;
 
 notInZone = {
-  _timeAllowed = 15;
+  _timeAllowed = 20;
   while {!playerInZone && alive player} do {
     for [{_i=_timeAllowed}, {_i>0}, {_i=_i-1}] do {
       if (vehicle player inArea zoneTrigger) exitWith {playerInZone = true; zoneWarning = false; hintSilent ""};

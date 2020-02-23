@@ -30,13 +30,13 @@ class Params {
       title = "OPFOR Uniform:";
       values[] = UNIFORM_VALUES;
       texts[] = UNIFORM_TEXTS;
-      default = UNIFORM_TTSKO_FOREST;
+      default = UNIFORM_EMR_SUMMER;
     };
     class phx_loadout_indfor_uniform {
       title = "INDFOR Uniform:";
       values[] = UNIFORM_VALUES;
       texts[] = UNIFORM_TEXTS;
-      default = UNIFORM_COLDWAR_ERA_1;
+      default = UNIFORM_M93_OAKLEAF;
     };
     class phx_loadout_civ_uniform {
       title = "CIV Uniform:";

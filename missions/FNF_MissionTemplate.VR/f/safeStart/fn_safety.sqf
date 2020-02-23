@@ -69,6 +69,12 @@ switch (_this select 0) do
     default {
       call phx_fnc_removeSelector;
 
+      //Turn safety off on all weapons
+      {
+        [ACE_player, _x, false] call ace_safemode_fnc_setWeaponSafety;
+      } forEach safetyWeapons;
+      safetyWeapons = [];
+
       if (!isNil "startActions") then {
         [(typeOf player), 1, ["ACE_SelfActions","startLocations"]] call ace_interact_menu_fnc_removeActionFromClass;
       };
