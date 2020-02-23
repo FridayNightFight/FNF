@@ -34,6 +34,16 @@ phx_loadout_flare = "";
 
 allowedWeapons = []; //Weapons that can be selected in the gear selector. Leave blank for none.
 
+/*
+//Uncomment this block to add optics that players can select from.
+//Either leave it in this scope for it to be applied to every player, or move it to the switch cases below to apply to a specific class.
+
+[] spawn {
+  waitUntil {!isNil "allowedOptics"};
+  allowedOptics pushBack "OPTIC_CLASSNAME";
+};
+*/
+
 //Use if you want to customize more
 switch (pRole) do {
   case ROLE_PL: {}; //Platoon leader
