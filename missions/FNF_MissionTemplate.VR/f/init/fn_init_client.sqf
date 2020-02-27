@@ -54,7 +54,7 @@ if !(_zoneRestriction isEqualTo 0) then {
 
 //TFAR set to whisper
 [] spawn {
-  sleep 1;
+  sleep 2;
   5 call TFAR_fnc_setVoiceVolume;
   TF_speak_volume_level = "whispering";
   TF_speak_volume_meters = 5;
@@ -69,9 +69,24 @@ if !(_zoneRestriction isEqualTo 0) then {
 };
 
 //Add leadership self-actions
-_group = group player;
-if ((_group == Red_P1HQ) || (_group == Blue_P1HQ) || (_group == Green_P1HQ)) then {
-  call phx_fnc_leadActions;
+if ((typeOf player == "B_officer_F") || (typeOf player == "O_officer_F") || (typeOf player == "I_officer_F")) then {
+  switch (side player) do {
+    case east: {
+      if (count opforAssetList > 0) then {
+        call phx_fnc_leadActions;
+      };
+    };
+    case west: {
+      if (count bluforAssetList > 0) then {
+        call phx_fnc_leadActions;
+      };
+    };
+    case independent: {
+      if (count indforAssetList > 0) then {
+        call phx_fnc_leadActions;
+      };
+    };
+  };
 };
 
 //====================================================================================================

@@ -59,6 +59,10 @@ class ui {
   class gearSelectorAdds{};
   class removeSelector{};
   class adminMenuAdds{};
+  class leadAdds{};
+  class createAsset{};
+  class removeAsset{};
+  class createKeyPressed{};
 };
 class unflip {
 	file = "f\misc\unflip";

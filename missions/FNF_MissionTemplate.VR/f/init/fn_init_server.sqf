@@ -44,6 +44,15 @@ if ("phx_vehicleLocks" call BIS_fnc_getParamValue > 0) then {
   call phx_fnc_init_vehicleLocks_server;
 };
 
+//Set all vehicles invincible during safe start
+[] spawn {
+  waitUntil {!isNil "phx_safeStartEnabled"};
+  while {phx_safeStartEnabled} do {
+    {_x allowDamage false;} forEach vehicles;
+    sleep 10;
+  };
+  {_x allowDamage true;} forEach vehicles;
+};
 //====================================================================================================
 phx_serverInitFinished = true;
 

@@ -25,3 +25,5 @@ class CfgFunctions {
 #include "f\display.hpp"
 #include "f\ui\Selector.hpp"
 #include "f\ui\FNFAdminMenu.hpp"
+#include "f\ui\FNFLeaderMenu.hpp"
+#include "f\ui\FNFAssetMenu.hpp"

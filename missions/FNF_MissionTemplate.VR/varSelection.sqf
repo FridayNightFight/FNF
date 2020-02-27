@@ -12,6 +12,30 @@ publicVariable "attackingSide";
 startSelectionSide = false; //east/west/independent - false to disable
 publicVariable "startSelectionSide";
 
+//Asset selector
+bluforAssetList = [];
+opforAssetList = [];
+indforAssetList = [];
+
+bluforPointPool = 20;
+opforPointPool = 20;
+indforPointPool = 20;
+
+currentAssetsBlu = [];
+currentAssetsOpf = [];
+currentAssetsInd = [];
+publicVariable "bluforAssetList";
+publicVariable "opforAssetList";
+publicVariable "indforAssetList";
+
+publicVariable "currentAssetsBlu";
+publicVariable "currentAssetsOpf";
+publicVariable "currentAssetsInd";
+
+publicVariable "bluforPointPool";
+publicVariable "opforPointPool";
+publicVariable "indforPointPool";
+
 /*
 =========================Modes=========================
 destroy - ATK/DEF
