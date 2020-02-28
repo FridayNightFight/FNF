@@ -64,17 +64,18 @@ _spawnedAssetsControl = _display displayCtrl 6002;
 switch (side player) do {
   case east: {
     {
-        _spawnedAssetsControl lbAdd (typeOf _x);
+        _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsOpf;
   };
   case west: {
     {
-        _spawnedAssetsControl lbAdd (typeOf _x);
+        //_spawnedAssetsControl lbAdd (typeOf _x);
+        _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsBlu;
   };
   case independent: {
     {
-        _spawnedAssetsControl lbAdd (typeOf _x);
+        _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsInd;
   };
 };

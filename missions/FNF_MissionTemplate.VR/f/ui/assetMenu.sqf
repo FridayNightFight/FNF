@@ -2,7 +2,7 @@ _displayToClose = findDisplay 5000; _displayToClose closeDisplay 1;
 
 createDialog "FNFAssetMenu";
 
-hintSilent "Asset Spawn Controls:\n\nWASD or Right Mouse = Move\nQ&E = Rotate\n\nSpace = Place";
+hintSilent "Asset Spawn Controls:\n\nWASD or Right Mouse = Move\nQ&E = Rotate\n\nSpace = Place\n\nESC = Exit";
 
 assetSelected = nil;
 removeAssetSelected = nil;
@@ -15,11 +15,12 @@ _spawnedAssetsControl = _display displayCtrl 6002;
 switch (side player) do {
   case west: {
     {
-      _assetsControl lbAdd (_x select 0) + " - " + str(_x select 1) + " points";
+      _assetsControl lbAdd getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str(_x select 1) + " points";
     } forEach bluforAssetList;
 
     {
-        _spawnedAssetsControl lbAdd (typeOf _x);
+        //_spawnedAssetsControl lbAdd (typeOf _x);
+        _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsBlu;
   };
   case east: {
@@ -28,7 +29,7 @@ switch (side player) do {
     } forEach opforAssetList;
 
     {
-        _spawnedAssetsControl lbAdd (typeOf _x);
+        _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsOpf;
   };
   case independent: {
@@ -37,7 +38,7 @@ switch (side player) do {
     } forEach indforAssetList;
 
     {
-        _spawnedAssetsControl lbAdd (typeOf _x);
+        _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsInd;
   };
 };
