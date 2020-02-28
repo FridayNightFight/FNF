@@ -8,7 +8,7 @@ class EditorData
 	toggles=522;
 	class ItemIDProvider
 	{
-		nextID=860;
+		nextID=862;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={664.93463,34.156292,593.27313};
-		dir[]={0.23343229,-0.2799482,0.93133491};
-		up[]={0.068106838,0.95996875,0.27172709};
-		aside[]={0.97010034,-4.178728e-007,-0.24314459};
+		pos[]={482.67255,12.907216,711.14575};
+		dir[]={0.074581943,-0.58422375,0.80816174};
+		up[]={0.053687684,0.81159115,0.58175385};
+		aside[]={0.99577051,-1.3242243e-008,-0.091895573};
 	};
 };
 binarizationWanted=0;
@@ -58,13 +58,15 @@ addons[]=
 	"ace_parachute",
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"Desert",
-	"A3_Props_F_Exp_A_Military_Equipment"
+	"A3_Props_F_Exp_A_Military_Equipment",
+	"A3_Static_F",
+	"rhs_c_heavyweapons"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=26;
+		items=28;
 		class Item0
 		{
 			className="task_force_radio_items";
@@ -242,6 +244,20 @@ class AddonsMetaData
 			name="Arma 3 Nexus Update - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item26
+		{
+			className="A3_Static_F";
+			name="Arma 3 Alpha - Turrets";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item27
+		{
+			className="rhs_c_heavyweapons";
+			name="Heavy weapons pack";
+			author="Red Hammer Studios";
+			url="http://www.rhsmods.org/";
 		};
 	};
 };
@@ -949,7 +965,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=116;
+		items=118;
 		class Item0
 		{
 			dataType="Logic";
@@ -37869,6 +37885,36 @@ class Mission
 			};
 			description="Zone boundary trigger";
 			id=656;
+		};
+		class Item116
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={490.93561,6.6602917,719.98212};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=860;
+			type="O_HMG_01_high_F";
+		};
+		class Item117
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={484.1553,5.5275326,721.27448};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=861;
+			type="rhs_Kornet_9M133_2_msv";
 		};
 	};
 	class Connections

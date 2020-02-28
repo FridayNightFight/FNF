@@ -14,6 +14,9 @@ class Extended_InitPost_EventHandlers {
   class Helicopter {
     class PHX_DisableThermals { init = "(_this select 0) disableTIEquipment true;"; };
   };
+  class StaticWeapon {
+    class PHX_DisableThermals { init = "(_this select 0) disableTIEquipment true;"; };
+  };
   class Plane {
     class PHX_DisableThermals { init = "(_this select 0) disableTIEquipment true;"; };
   };
