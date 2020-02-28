@@ -13,9 +13,9 @@ startSelectionSide = false; //east/west/independent - false to disable
 publicVariable "startSelectionSide";
 
 //Asset selector
-bluforAssetList = [];
+bluforAssetList = [["B_T_Quadbike_01_F",1],["rhsgref_hidf_rhib",2],["rhsusf_m1240a1_m2_usarmy_wd",8],["RHS_CH_47F",14]];
 opforAssetList = [];
-indforAssetList = [];
+indforAssetList = [["rhsgref_ins_g_bmp1",10],["I_E_Quadbike_01_F",1],["rhsgref_cdf_btr70",7]];
 
 bluforPointPool = 20;
 opforPointPool = 20;

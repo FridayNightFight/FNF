@@ -47,6 +47,7 @@ _camHeight = 25;
     _cam setPos [_camPos select 0, _camPos select 1, _camHeight];
   };
 
+  /*
   _nearVics = _vehPos nearObjects ["AllVehicles", _vicSize];
   if (count _nearVics > 1) then {
     _veh setPos vehSpawnLastGoodPosVics;
@@ -54,7 +55,8 @@ _camHeight = 25;
   if (count _nearVics <= 1) then {
     vehSpawnLastGoodPosVics = _vehPos;
   };
-
+  */
+  
   switch (side player) do {
     case east: {
       if (_vehPos inArea "opforSafeMarker") then {
