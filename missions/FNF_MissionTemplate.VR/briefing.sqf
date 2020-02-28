@@ -21,7 +21,7 @@ _indforAssetsString = "<font size='18'>INDFOR Assets:</font><br/>";
   _indforAssetsString = _indforAssetsString + getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str (_x select 1) + "<br/>";
 } forEach indforAssetList;
 
-player createDiaryRecord ["PHX_Assets", ["Assets", "NOTE: These are the assets available to spawn, not necessarily the assets that will be spawned.<br/><br/>" +
+player createDiaryRecord ["PHX_Assets", ["Assets", "NOTE: These are the assets available to spawn.<br/>ASSET_NAME - POINTS_TO_SPAWN<br/><br/>" +
 format ["OPFOR Points: %1", opforPointPool] + "<br/>" + format ["BLUFOR Points: %1", bluforPointPool] + "<br/>" + format ["INDFOR Points: %1", indforPointPool] + "<br/><br/>" +
 _opforAssetsString + "<br/><br/>" +
 _bluforAssetsString + "<br/><br/>" +
