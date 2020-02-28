@@ -58,15 +58,13 @@ addons[]=
 	"ace_parachute",
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"Desert",
-	"A3_Props_F_Exp_A_Military_Equipment",
-	"A3_Static_F",
-	"rhs_c_heavyweapons"
+	"A3_Props_F_Exp_A_Military_Equipment"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=28;
+		items=26;
 		class Item0
 		{
 			className="task_force_radio_items";
@@ -244,20 +242,6 @@ class AddonsMetaData
 			name="Arma 3 Nexus Update - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
-		};
-		class Item26
-		{
-			className="A3_Static_F";
-			name="Arma 3 Alpha - Turrets";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item27
-		{
-			className="rhs_c_heavyweapons";
-			name="Heavy weapons pack";
-			author="Red Hammer Studios";
-			url="http://www.rhsmods.org/";
 		};
 	};
 };
@@ -965,7 +949,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=118;
+		items=116;
 		class Item0
 		{
 			dataType="Logic";
@@ -37885,36 +37869,6 @@ class Mission
 			};
 			description="Zone boundary trigger";
 			id=656;
-		};
-		class Item116
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={490.93561,6.6602917,719.98212};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=860;
-			type="O_HMG_01_high_F";
-		};
-		class Item117
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={484.1553,5.5275326,721.27448};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=861;
-			type="rhs_Kornet_9M133_2_msv";
 		};
 	};
 	class Connections
