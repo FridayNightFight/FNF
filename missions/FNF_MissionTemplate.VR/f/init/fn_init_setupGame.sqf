@@ -1,5 +1,7 @@
 waitUntil {!isNil "serverVarsSetup"};
 
+#include "..\..\varSelection.sqf"
+
 gameEnd = false;
 publicVariable "gameEnd";
 
