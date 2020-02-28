@@ -2,6 +2,8 @@ _displayToClose = findDisplay 5000; _displayToClose closeDisplay 1;
 
 createDialog "FNFAssetMenu";
 
+hintSilent "Asset Spawn Controls:\n\nWASD or Right Mouse = Move\nQ&E = Rotate\n\nSpace = Place";
+
 assetSelected = nil;
 removeAssetSelected = nil;
 

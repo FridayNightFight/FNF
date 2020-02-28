@@ -240,6 +240,38 @@ class FNFAssetMenu
 			sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.75);
 
 		};
+		class PLMenuButton
+		{
+			type = 1;
+			idc = -1;
+			x = safeZoneX + safeZoneW * 0.29394532;
+			y = safeZoneY + safeZoneH * 0.71180556;
+			w = safeZoneW * 0.11914063;
+			h = safeZoneH * 0.0625;
+			style = 2;
+			text = "PL Menu";
+			borderSize = 0;
+			colorBackground[] = {0,0,0,1};
+			colorBackgroundActive[] = {0.302,0.302,0.302,1};
+			colorBackgroundDisabled[] = {0.2,0.2,0.2,1};
+			colorBorder[] = {0,0,0,0};
+			colorDisabled[] = {0.2,0.2,0.2,1};
+			colorFocused[] = {0.2,0.2,0.2,1};
+			colorShadow[] = {0,0,0,0};
+			colorText[] = {1,1,1,1};
+			font = "PuristaMedium";
+			offsetPressedX = 0.01;
+			offsetPressedY = 0.01;
+			offsetX = 0.01;
+			offsetY = 0.01;
+			sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.75);
+			soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.09,1.0};
+			soundEnter[] = {"\A3\ui_f\data\sound\RscButton\soundEnter",0.09,1.0};
+			soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape",0.09,1.0};
+			soundPush[] = {"\A3\ui_f\data\sound\RscButton\soundPush",0.09,1.0};
+			onButtonClick = "[] spawn {  closeDialog 1;  waitUntil {isNull (findDisplay 6000)};  createdialog 'FNFLeaderMenu';  call phx_fnc_leadAdds;};";
+
+		};
 
 	};
 

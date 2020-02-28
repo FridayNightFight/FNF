@@ -18,7 +18,7 @@ _vicSize = round (sizeOf _class);
 
 
 _veh = _class createVehicleLocal [0,0,0];
-_spawnPos = _pos findEmptyPosition [20, 125, _class];
+_spawnPos = _pos findEmptyPosition [10, 125, _class];
 _veh setPos _spawnPos;
 vehSpawnLastGoodPosVics = _spawnPos;
 _veh enableSimulation false;
@@ -29,8 +29,6 @@ _cam setVectorUp [0,0.75,0.01];
 _cam switchCamera "INTERNAL";
 
 player enableSimulation false;
-
-hint "Controls:\nWASD or Right Mouse = Move\nSpace = Place\nQ&E = Rotate";
 
 _camHeight = 25;
 
@@ -50,7 +48,6 @@ _camHeight = 25;
   };
 
   _nearVics = _vehPos nearObjects ["AllVehicles", _vicSize];
-  systemChat str _nearVics;
   if (count _nearVics > 1) then {
     _veh setPos vehSpawnLastGoodPosVics;
   };

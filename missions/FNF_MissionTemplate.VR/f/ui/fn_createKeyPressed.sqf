@@ -26,10 +26,12 @@ if (_key == 57) then {
   (findDisplay 46) displayRemoveEventHandler ["KeyDown",vehKeyEH];
   _pos = position _veh;
   _class = typeOf _veh;
+  _dir = getDir _veh;
   deleteVehicle _veh;
   _cam cameraEffect ["terminate","back"];
   camDestroy _cam;
-  _veh = createVehicle [_class, _pos];
+  _veh = createVehicle [_class, [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];
+  _veh setDir _dir;
 
   clearItemCargoGlobal _veh;
   clearMagazineCargoGlobal _veh;
@@ -66,4 +68,6 @@ if (_key == 57) then {
   player enableSimulation true;
   ["vehSpawnEH", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
   player switchCamera "INTERNAL";
+
+  execVM "f\ui\assetMenu.sqf";
 };
