@@ -7,7 +7,9 @@ ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT"];
 PHX_Diary = player createDiarySubject ["PHX_Diary", "Misc Info"];
 Assets_Diary = player createDiarySubject ["PHX_Assets", "Assets"];
 
-
+waitUntil {!isNil "opforPointPool"};
+waitUntil {!isNil "bluforPointPool"};
+waitUntil {!isNil "indforPointPool"};
 _opforAssetsString = "<font size='18'>OPFOR Assets:</font><br/>";
 _bluforAssetsString = "<font size='18'>BLUFOR Assets:</font><br/>";
 _indforAssetsString = "<font size='18'>INDFOR Assets:</font><br/>";

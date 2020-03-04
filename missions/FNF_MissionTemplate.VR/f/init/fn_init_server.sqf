@@ -53,6 +53,13 @@ if ("phx_vehicleLocks" call BIS_fnc_getParamValue > 0) then {
   };
   {_x allowDamage true;} forEach vehicles;
 };
+
+bluforPointPool = 20;
+opforPointPool = 20;
+indforPointPool = 20;
+publicVariable "bluforPointPool";
+publicVariable "opforPointPool";
+publicVariable "indforPointPool";
 //====================================================================================================
 phx_serverInitFinished = true;
 

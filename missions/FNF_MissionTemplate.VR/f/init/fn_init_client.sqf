@@ -4,6 +4,9 @@
 //Set marker visibility
 side player execVM "f\init\clientMarkerVisibilty.sqf";
 
+//Disable global chat channel
+0 enableChannel false;
+
 //Unflip - made by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
 [] spawn phx_fnc_unflipVehicleAddAction;
 

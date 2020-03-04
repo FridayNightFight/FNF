@@ -69,6 +69,9 @@ switch (_this select 0) do
     default {
       call phx_fnc_removeSelector;
 
+      //Make typing in chat not possible after safe start ends
+      (findDisplay 46) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
+
       //Turn safety off on all weapons
       {
         [ACE_player, _x, false] call ace_safemode_fnc_setWeaponSafety;

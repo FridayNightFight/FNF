@@ -1,9 +1,11 @@
+_sidePoints = 0;
+
 switch (side player) do {
-  case east: {sidePoints = opforPointPool;};
-  case west: {sidePoints = bluforPointPool;};
-  case independent: {sidePoints = indforPointPool;};
+  case east: {_sidePoints = opforPointPool;};
+  case west: {_sidePoints = bluforPointPool;};
+  case independent: {_sidePoints = indforPointPool;};
 };
-if (assetSelected select 1 > sidePoints) exitwith {hint "Not enough points."};
+if ((assetSelected select 1) > _sidePoints) exitwith {hint "Not enough points"};
 
 _dum = assetSelected select 1;
 if (isNil "_dum") exitwith {};

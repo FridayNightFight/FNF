@@ -2,6 +2,8 @@ author = "Your_Name";
 onLoadName = "Mission_name";
 OnLoadMission = "Short_description";
 
+disableChannels[] = {0};
+
 #include "description\definitions.hpp"
 #include "description\cfgNotifications.hpp"
 #include "description\cfgParams.hpp"

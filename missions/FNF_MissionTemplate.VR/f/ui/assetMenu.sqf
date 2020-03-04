@@ -25,7 +25,7 @@ switch (side player) do {
   };
   case east: {
     {
-      _assetsControl lbAdd (_x select 0) + " - " + str(_x select 1) + " points";
+      _assetsControl lbAdd getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str(_x select 1) + " points";
     } forEach opforAssetList;
 
     {
@@ -34,7 +34,8 @@ switch (side player) do {
   };
   case independent: {
     {
-      _assetsControl lbAdd (_x select 0) + " - " + str(_x select 1) + " points";
+      //_assetsControl lbAdd (_x select 0) + " - " + str(_x select 1) + " points";
+      _assetsControl lbAdd getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str(_x select 1) + " points";
     } forEach indforAssetList;
 
     {
@@ -78,14 +79,11 @@ _assetRemove =  _spawnedAssetsControl ctrlAddEventHandler  ["LBSelChanged",{
 switch (side player) do {
   case east: {
     ctrlSetText [6100, format["Points Remaining: %1", opforPointPool]];
-    sidePoints = opforPointPool;
   };
   case west: {
     ctrlSetText [6100, format["Points Remaining: %1", bluforPointPool]];
-    sidePoints = bluforPointPool;
   };
   case independent: {
     ctrlSetText [6100, format["Points Remaining: %1", indforPointPool]];
-    sidePoints = indforPointPool;
   };
 };

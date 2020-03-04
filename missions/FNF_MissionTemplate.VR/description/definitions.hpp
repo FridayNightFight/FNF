@@ -10,5 +10,3 @@ respawnOnStart = -1;
 
 corpseManagerMode = 0;
 wreckManagerMode = 0;
-
-disableChannels[] = {0};

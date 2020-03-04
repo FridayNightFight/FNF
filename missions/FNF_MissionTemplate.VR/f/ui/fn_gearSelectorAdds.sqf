@@ -37,11 +37,13 @@ _compatibleOptics = [primaryWeapon player, "optic"] call CBA_fnc_compatibleItems
 } forEach allowedWeapons;
 
 {
-  _weaponListboxControl lbAdd _x;
+  //_weaponListboxControl lbAdd _x;
+  _weaponListboxControl lbAdd getText (configFile >> "cfgWeapons" >> _x >> "displayName");
 } forEach allowedWeapons;
 
 {
-  _opticListboxControl lbAdd _x;
+  //_opticListboxControl lbAdd _x;
+  _opticListboxControl lbAdd getText (configFile >> "cfgWeapons" >> _x >> "displayName");
 } forEach _optics;
 
 if !(opticFirstSel) then {
