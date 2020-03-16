@@ -7,7 +7,7 @@ class init {
     class init_shared{};
     class init_postBriefing{};
     class init_vehicleLocks_server{};
-    class init_vars{preInit = 1;};
+    class init_vars{};
     class init_setIndforFriends{};
     class init_removeClientHandlers{};
 };

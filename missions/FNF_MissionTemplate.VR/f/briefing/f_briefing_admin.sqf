@@ -29,6 +29,8 @@ Begin Safe Start timer</execute><br/>
 |- <execute expression=""f_var_mission_timer = -1; publicVariable 'f_var_mission_timer';
 [['SafeStartMissionStarting',['Mission starting now!']],'bis_fnc_showNotification',true] call BIS_fnc_MP;
 [] remoteExec ['f_fnc_serverEndSafe', 2, false];
+phx_safeStartEnabled = false;
+publicVariable 'phx_safeStartEnabled';
 [[false],'f_fnc_safety',playableUnits + switchableUnits] call BIS_fnc_MP;
 hintsilent 'Safe Start ended!';"">
 End Safe Start timer</execute><br/>

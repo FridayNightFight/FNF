@@ -30,7 +30,7 @@ if (_key == 57) then {
   deleteVehicle _veh;
   _cam cameraEffect ["terminate","back"];
   camDestroy _cam;
-  _veh = createVehicle [_class, [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];
+  _veh = createVehicle [_class, [_pos select 0, _pos select 1, 0]];
   _veh setDir _dir;
 
   clearItemCargoGlobal _veh;

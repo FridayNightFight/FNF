@@ -12,6 +12,13 @@ phx_alertSoon = 0; // 15 minute warning
 phx_alertSoon1 = 0; //10 minute warning
 phx_alertSoon2 = 0; //5 minute warning
 gameEnd = false;
+call phx_fnc_init_vars;
+
+waitUntil {!isNil "serverVarsSetup"};
+waitUntil {serverVarsSetup};
+
+//Set up the game
+call phx_fnc_init_setupGame;
 
 //Set INDFOR friends
 call phx_fnc_init_setIndforFriends;
@@ -36,9 +43,6 @@ if (f_param_radios isEqualTo 1) then {
 } forEach ["respawn", "respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 */
 
-//Set up the game
-call phx_fnc_init_setupGame;
-
 //Vehicle locking
 if ("phx_vehicleLocks" call BIS_fnc_getParamValue > 0) then {
   call phx_fnc_init_vehicleLocks_server;
@@ -49,17 +53,10 @@ if ("phx_vehicleLocks" call BIS_fnc_getParamValue > 0) then {
   waitUntil {!isNil "phx_safeStartEnabled"};
   while {phx_safeStartEnabled} do {
     {_x allowDamage false;} forEach vehicles;
-    sleep 10;
+    sleep 5;
   };
   {_x allowDamage true;} forEach vehicles;
 };
-
-bluforPointPool = 20;
-opforPointPool = 20;
-indforPointPool = 20;
-publicVariable "bluforPointPool";
-publicVariable "opforPointPool";
-publicVariable "indforPointPool";
 //====================================================================================================
 phx_serverInitFinished = true;
 

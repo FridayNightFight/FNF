@@ -37,7 +37,7 @@ _camHeight = 25;
 ["vehSpawnEH", "onEachFrame", {
   params ["_veh","_cam","_camHeight","_vicSize"];
 
-  _veh setPos (screenToWorld [0.5,0.5]);
+  _veh setPos ([screenToWorld [0.5,0.5] select 0, screenToWorld [0.5,0.5] select 1, 0.5]);
   _camPos = position _cam;
   _camZ = _camPos select 2;
   _vehPos = position _veh;
@@ -47,14 +47,6 @@ _camHeight = 25;
   };
   if (_camZ < _camHeight) then {
     _cam setPos [_camPos select 0, _camPos select 1, _camHeight];
-  };
-
-  _nearVics = _vehPos nearObjects ["AllVehicles", _vicSize];
-  if (count _nearVics > 1) then {
-    _veh setPos vehSpawnLastGoodPosVics;
-  };
-  if (count _nearVics <= 1) then {
-    vehSpawnLastGoodPosVics = _vehPos;
   };
 
   switch (side player) do {

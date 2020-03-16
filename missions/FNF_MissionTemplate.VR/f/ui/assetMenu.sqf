@@ -1,3 +1,7 @@
+if (side player == east && count opforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
+if (side player == west && count bluforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
+if (side player == independent && count indforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
+
 _displayToClose = findDisplay 5000; _displayToClose closeDisplay 1;
 
 createDialog "FNFAssetMenu";

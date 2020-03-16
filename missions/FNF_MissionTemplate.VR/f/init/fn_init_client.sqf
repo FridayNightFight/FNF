@@ -73,23 +73,7 @@ if !(_zoneRestriction isEqualTo 0) then {
 
 //Add leadership self-actions
 if ((typeOf player == "B_officer_F") || (typeOf player == "O_officer_F") || (typeOf player == "I_officer_F")) then {
-  switch (side player) do {
-    case east: {
-      if (count opforAssetList > 0) then {
-        call phx_fnc_leadActions;
-      };
-    };
-    case west: {
-      if (count bluforAssetList > 0) then {
-        call phx_fnc_leadActions;
-      };
-    };
-    case independent: {
-      if (count indforAssetList > 0) then {
-        call phx_fnc_leadActions;
-      };
-    };
-  };
+  call phx_fnc_leadActions;
 };
 
 //====================================================================================================

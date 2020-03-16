@@ -1,32 +1,33 @@
 activeMode = ""; //Change this string to whatever game mode you want (listed below)
 objectives = [];
 
-defendingSide = west; //east/west/independent
-attackingSide = east; //east/west/independent
-
-publicVariable "defendingSide";
-publicVariable "attackingSide";
+defendingSide = east; //east/west/independent
+attackingSide = west; //east/west/independent
 //Not used if mode is neutral
 
 //Set side you want to be able to change their starting zone, if any - uses the startSelection markers alrady placed in the editor
 startSelectionSide = false; //east/west/independent - false to disable
-publicVariable "startSelectionSide";
 
 //Asset selector
+/*
+Disclaimer:
+It is recommended that you only use the asset selector once you get some experience with mission-making for FNF, or keep the assets simple.
+If you are new to mission-making, it is likely best to just place assets down in the editor for each side and ignore this selector.
+*/
+//Assets
 bluforAssetList = [];
 opforAssetList = [];
 indforAssetList = [];
+//Side points
+bluforPointPool = 20;
+opforPointPool = 20;
+indforPointPool = 20;
+/*
+Example:
 
-currentAssetsBlu = [];
-currentAssetsOpf = [];
-currentAssetsInd = [];
-publicVariable "bluforAssetList";
-publicVariable "opforAssetList";
-publicVariable "indforAssetList";
-
-publicVariable "currentAssetsBlu";
-publicVariable "currentAssetsOpf";
-publicVariable "currentAssetsInd";
+bluforAssetList = [["B_MRAP_01_F",5],["B_Truck_01_mover_F",3],["B_MRAP_01_gmg_F",10]];
+2D array with each element containing an array with the class of a vehicle/asset, and the point value for that asset.
+*/
 
 /*
 =========================Modes=========================

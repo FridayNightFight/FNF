@@ -11,7 +11,10 @@ if !(getMarkerColor "indforSafeMarker" isEqualTo "") then {
 _defaultStartMarkers = ["startSelectionMarker_1","startSelectionMarker_2","startSelectionMarker_3","start1Text","start2Text","start3Text"];
 
 {
-  [_x] remoteExec ["deleteMarker", 0, true];
+  if !(getMarkerColor _x isEqualTo "") then {
+    [_x] remoteExec ["deleteMarkerLocal", 0, true];
+  };
 } forEach _defaultStartMarkers;
 
 phx_safeStartEnabled = false;
+publicVariable "phx_safeStartEnabled";

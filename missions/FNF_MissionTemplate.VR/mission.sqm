@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=522;
+	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=868;
+		nextID=1034;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={484.32782,26.324097,715.02246};
-		dir[]={0.212108,-0.624461,0.75170386};
-		up[]={0.16958196,0.78105599,0.60099375};
-		aside[]={0.96241999,1.7881393e-007,-0.27156556};
+		pos[]={280.64355,9.1843109,731.42145};
+		dir[]={-0.32518944,-0.32793826,-0.88707215};
+		up[]={-0.11289386,0.94468087,-0.30796206};
+		aside[]={-0.93898255,4.429603e-008,0.34421569};
 	};
 };
 binarizationWanted=0;
@@ -258,7 +258,7 @@ class CustomAttributes
 		class Attribute0
 		{
 			property="ENH_dynamicSkill";
-			expression="if (_value # 0 && !is3DEN && isServer) then			{				_value params				[					'_enable',					'_skillMinBLUFOR',					'_skillAimMinBLUFOR',					'_skillMaxBLUFOR',					'_skillAimMaxBlUFOR',					'_skillMinOPFOR',					'_skillAimMinOPFOR',					'_skillMaxOPFOR',					'_skillAimMaxOPFOR',					'_skillMinINDFOR',					'_skillAimMinINDFOR',					'_skillMaxINDFOR',					'_skillAimMaxINDFOR'				];				[					true,					[						[WEST,_skillMinBLUFOR,_skillAimMinBLUFOR,_skillMaxBLUFOR,_skillAimMaxBlUFOR],						[EAST,_skillMinOPFOR,_skillAimMinOPFOR,_skillMaxOPFOR,_skillAimMaxOPFOR],						[INDEPENDENT,_skillMinINDFOR,_skillAimMinINDFOR,_skillMaxINDFOR,_skillAimMaxINDFOR]					]				] call BIS_fnc_EXP_camp_dynamicAISkill;			}";
+			expression="if (!is3DEN && {_value # 0 && {isServer}}) then			{				_value params				[					'_enable',					'_skillMinBLUFOR',					'_skillAimMinBLUFOR',					'_skillMaxBLUFOR',					'_skillAimMaxBlUFOR',					'_skillMinOPFOR',					'_skillAimMinOPFOR',					'_skillMaxOPFOR',					'_skillAimMaxOPFOR',					'_skillMinINDFOR',					'_skillAimMinINDFOR',					'_skillMaxINDFOR',					'_skillAimMaxINDFOR'				];				[					true,					[						[WEST,_skillMinBLUFOR,_skillAimMinBLUFOR,_skillMaxBLUFOR,_skillAimMaxBlUFOR],						[EAST,_skillMinOPFOR,_skillAimMinOPFOR,_skillMaxOPFOR,_skillAimMaxOPFOR],						[INDEPENDENT,_skillMinINDFOR,_skillAimMinINDFOR,_skillMaxINDFOR,_skillAimMaxINDFOR]					]				] call BIS_fnc_EXP_camp_dynamicAISkill;			}";
 			class Value
 			{
 				class data
@@ -485,7 +485,7 @@ class CustomAttributes
 		class Attribute0
 		{
 			property="ENH_Airdrop";
-			expression="				if (!is3DEN && !((_value # 0) isEqualTo '') && isServer) then				{					_value spawn					{						params ['_classes','_center','_condition','_alt','_r','_side'];						_condition = compile _condition;						waitUntil {sleep 1; call _condition};						private _group = createGroup _side;						playSound3D ['A3\Data_F_Warlords\sfx\flyby.wss',objNull,false,_center vectorAdd [0,0,100],2.5];						ENH_Airdrop_Units = [];						{							_center set [2,_center # 2 + random [-20,0,20]];							private _unit = _group createUnit [_x,_center,[],0,'NONE'];							private _para = createVehicle ['Steerable_Parachute_F',_center getPos [_r * sqrt random 1,random 360],[],0,'FLY'];							_unit moveInDriver _para;							ENH_Airdrop_Units pushBack _unit;						} forEach _classes;					};				}";
+			expression="				if (!is3DEN && {!((_value # 0) isEqualTo []) && {isServer}}) then				{					_value spawn					{						params ['_classes','_center','_condition','_alt','_r','_side'];						_condition = compile _condition;						waitUntil {sleep 1; call _condition};						private _group = createGroup _side;						playSound3D ['A3\Data_F_Warlords\sfx\flyby.wss',objNull,false,_center vectorAdd [0,0,100],2.5];						ENH_Airdrop_Units = [];						{							_center set [2,_center # 2 + random [-20,0,20]];							private _unit = _group createUnit [_x,_center,[],0,'NONE'];							private _para = createVehicle ['Steerable_Parachute_F',_center getPos [_r * sqrt random 1,random 360],[],0,'FLY'];							_unit moveInDriver _para;							ENH_Airdrop_Units pushBack _unit;						} forEach _classes;					};				}";
 			class Value
 			{
 				class data
@@ -635,7 +635,7 @@ class CustomAttributes
 		class Attribute1
 		{
 			property="ENH_ambientFlyby";
-			expression="			if (isServer && !is3DEN && !((_value # 0) isEqualTo '')) then			{				ENH_AmbientFlyby_Enabled = true;				_value spawn				{					params ['_classes','_startPos','_endPos','_alt','_speed','_side','_delay'];					while {ENH_AmbientFlyby_Enabled} do					{						sleep _delay;						[_startPos,_endPos,_alt,_speed,selectRandom _classes,_side] call BIS_fnc_ambientFlyby;					};				};			}";
+			expression="			if (isServer && {!is3DEN && {!((_value # 0) isEqualTo [])}}) then			{				ENH_AmbientFlyby_Enabled = true;				_value spawn				{					params ['_classes','_startPos','_endPos','_alt','_speed','_side','_delay'];					while {ENH_AmbientFlyby_Enabled} do					{						sleep _delay;						[_startPos,_endPos,_alt,_speed,selectRandom _classes,_side] call BIS_fnc_ambientFlyby;					};				};			}";
 			class Value
 			{
 				class data
@@ -863,7 +863,7 @@ class CustomAttributes
 		class Attribute3
 		{
 			property="ENH_dynamicGroups";
-			expression="		if (!is3DEN && isServer && _value && !(allCurators isEqualTo [])) then		{			[] spawn			{				while {true} do				{					{						 _x addCuratorEditableObjects						 [						 	entities [[],['Logic'],true],						  	true						 ];					} count allCurators;					sleep 60;				};			};		}";
+			expression="		if (!is3DEN && {isServer && {_value && {!(allCurators isEqualTo [])}}}) then		{			[] spawn			{				while {true} do				{					{						 _x addCuratorEditableObjects						 [						 	entities [[],['Logic'],true],						  	true						 ];					} count allCurators;					sleep 60;				};			};		}";
 			class Value
 			{
 				class data
@@ -928,7 +928,7 @@ class Mission
 			class Attribute0
 			{
 				property="ENH_timeMultiplier";
-				expression="if (!is3DEN && isServer && _value != 1) then {setTimeMultiplier _value}";
+				expression="if (!is3DEN && {isServer && {_value != 1}}) then {setTimeMultiplier _value}";
 				class Value
 				{
 					class data
@@ -17963,12 +17963,12 @@ class Mission
 		class Item32
 		{
 			dataType="Marker";
-			position[]={278.22647,66.900002,700.70496};
+			position[]={278.22601,66.900002,700.70502};
 			name="opforSafeMarker";
 			markerType="ELLIPSE";
 			type="mil_start";
 			colorName="ColorEAST";
-			fillName="Border";
+			fillName="SolidBorder";
 			a=75;
 			b=75;
 			drawBorder=1;
@@ -17983,7 +17983,7 @@ class Mission
 			markerType="ELLIPSE";
 			type="mil_start";
 			colorName="ColorWEST";
-			fillName="Border";
+			fillName="SolidBorder";
 			a=75;
 			b=75;
 			drawBorder=1;
@@ -19107,7 +19107,7 @@ class Mission
 		class Item42
 		{
 			dataType="Trigger";
-			position[]={479.19745,5,417.32031};
+			position[]={499.37015,5,497.90967};
 			class Attributes
 			{
 				name="zoneTrigger";
@@ -27333,12 +27333,12 @@ class Mission
 		class Item56
 		{
 			dataType="Marker";
-			position[]={703.92157,66.900002,697.0481};
+			position[]={703.922,66.900002,697.04797};
 			name="indforSafeMarker";
 			markerType="ELLIPSE";
 			type="mil_start";
 			colorName="ColorGUER";
-			fillName="Border";
+			fillName="SolidBorder";
 			a=75;
 			b=75;
 			drawBorder=1;
@@ -32112,7 +32112,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={1190,5,400};
+				position[]={1101.3911,5,400.70654};
 			};
 			description="atk/def destroy_ez mode";
 			id=549;
@@ -32122,7 +32122,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={1190,5,300};
+				position[]={1099.3312,5,300.2876};
 			};
 			description="atk/def CTF and neutral CTF modes";
 			id=552;
@@ -32132,7 +32132,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={1190,5,200};
+				position[]={1100.3612,5,202.44336};
 			};
 			description="neutral sector control mode";
 			id=553;
@@ -32153,7 +32153,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={1190,5,100};
+				position[]={1100.3613,5,101.50977};
 			};
 			description="atk/def sector control mode";
 			id=555;
@@ -32937,7 +32937,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={1190,5,500};
+				position[]={1100.8762,5,501.64063};
 			};
 			description="atk/def uplink, connection and rush modes";
 			id=560;
@@ -37791,7 +37791,7 @@ class Mission
 			name="startSelectionMarker_1";
 			markerType="ELLIPSE";
 			type="ellipse";
-			fillName="Border";
+			fillName="SolidBorder";
 			a=50;
 			b=50;
 			drawBorder=1;
@@ -37804,7 +37804,7 @@ class Mission
 			name="startSelectionMarker_2";
 			markerType="ELLIPSE";
 			type="ellipse";
-			fillName="Border";
+			fillName="SolidBorder";
 			a=50;
 			b=50;
 			drawBorder=1;
@@ -37817,7 +37817,7 @@ class Mission
 			name="startSelectionMarker_3";
 			markerType="ELLIPSE";
 			type="ellipse";
-			fillName="Border";
+			fillName="SolidBorder";
 			a=50;
 			b=50;
 			drawBorder=1;
@@ -37855,7 +37855,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={1190,5,600};
+				position[]={1100.2773,5,600.74805};
 			};
 			description="Start selection markers. Side that can use these defined in varSelection.sqf";
 			id=647;
@@ -37865,7 +37865,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={459.3761,5,416.25049};
+				position[]={400.84488,5,500.7251};
 			};
 			description="Zone boundary trigger";
 			id=656;
