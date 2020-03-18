@@ -461,6 +461,25 @@ class CustomAttributes
 		};
 		class Attribute1
 		{
+			property="ENH_dynamicGroups";
+			expression="				if (!is3DEN && {isMultiplayer && {_value}}) then				{					if (isServer) then {['Initialize'] call BIS_fnc_dynamicGroups};					if (hasInterface) then					{						[] spawn						{							waitUntil {!isNull player};							['InitializePlayer', [player]] call BIS_fnc_dynamicGroups;						};					};				};			";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"BOOL"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		class Attribute2
+		{
 			property="RespawnTemplates";
 			expression="true";
 			class Value
@@ -477,7 +496,7 @@ class CustomAttributes
 				};
 			};
 		};
-		nAttributes=2;
+		nAttributes=3;
 	};
 	class Category1
 	{

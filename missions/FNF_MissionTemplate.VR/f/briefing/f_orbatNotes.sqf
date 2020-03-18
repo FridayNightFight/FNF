@@ -160,7 +160,7 @@ _generateORBAT = {
 
 //----------------------------------------------------------------------------------------------------
 private _side = side group player;
-private _orbatText = "<br />NOTE: This ORBAT updates every 60 seconds. If you see any issues with the ORBAT below, please let the FNF mission devs know.<br />
+private _orbatText = "<br />NOTE: This ORBAT is only valid at mission start.<br />
 <br />";
 
 waitUntil { !isNil "phx_groupIDset" };
