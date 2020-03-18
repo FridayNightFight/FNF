@@ -25,9 +25,9 @@ bluforAttackList = [
 ["rhsusf_m113d_usarmy",10],
 ["RHS_UH60M",12],
 ["RHS_CH_47F",12],
+["RHS_MELB_AH6M",14],
 ["rhsusf_m1a1aimwd_usarmy",18],
-["rhsusf_m1a1aimd_usarmy",18],
-["RHS_MELB_AH6M",18]
+["rhsusf_m1a1aimd_usarmy",18]
 ];
 
 bluforDefenseList = [
@@ -44,8 +44,8 @@ bluforDefenseList = [
 ["rhsusf_m1043_d_m2",8],
 ["rhsusf_m1240a1_m2_usarmy_wd",12],
 ["rhsusf_m1240a1_m2_usarmy_d",12],
-["rhsusf_m113_usarmy",12],
-["rhsusf_m113d_usarmy",12]
+["rhsusf_m113_usarmy",14],
+["rhsusf_m113d_usarmy",14]
 ];
 
 opforAttackList = [

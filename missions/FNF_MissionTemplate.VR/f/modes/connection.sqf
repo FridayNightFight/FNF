@@ -1,5 +1,5 @@
 //vars
-pointAddTime = 20;
+pointAddTime = 15;
 
 term1Hacking = false;
 term2Hacking = false;

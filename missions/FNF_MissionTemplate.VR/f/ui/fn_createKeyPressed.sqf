@@ -30,40 +30,35 @@ if (_key == 57) then {
   deleteVehicle _veh;
   _cam cameraEffect ["terminate","back"];
   camDestroy _cam;
-  _veh = createVehicle [_class, [_pos select 0, _pos select 1, 0]];
-  _veh setDir _dir;
 
-  clearItemCargoGlobal _veh;
-  clearMagazineCargoGlobal _veh;
-  clearBackpackCargoGlobal _veh;
-  clearWeaponCargoGlobal _veh;
-  _veh addItemCargoGlobal ["Toolkit", 1];
+  [[_class,[_pos select 0, _pos select 1, 0],_dir,side player,assetSelected],{
+    params ["_class","_pos","_dir","_side","_assetSelected"];
 
-  _veh allowDamage false;
+    _veh = createVehicle [_class, _pos];
+    _veh setDir _dir;
+    _veh execVM "f\ui\vicSpawnInit.sqf";
 
-  switch (side player) do {
-    case east: {
-      opforPointPool = opforPointPool - (assetSelected select 1);
-      publicVariable "opforPointPool";
-      currentAssetsOpf pushBack _veh;
-      publicVariable "currentAssetsOpf";
-      hint format ["Asset Created\nPoints Remaining: %1", opforPointPool];
+    switch (_side) do {
+      case east: {
+        opforPointPool = opforPointPool - (_assetSelected select 1);
+        publicVariable "opforPointPool";
+        currentAssetsOpf pushBack _veh;
+        publicVariable "currentAssetsOpf";
+      };
+      case west: {
+        bluforPointPool = bluforPointPool - (_assetSelected select 1);
+        publicVariable "bluforPointPool";
+        currentAssetsBlu pushBack _veh;
+        publicVariable "currentAssetsBlu";
+      };
+      case independent: {
+        indforPointPool = indforPointPool - (_assetSelected select 1);
+        publicVariable "indforPointPool";
+        currentAssetsInd pushBack _veh;
+        publicVariable "currentAssetsInd";
+      };
     };
-    case west: {
-      bluforPointPool = bluforPointPool - (assetSelected select 1);
-      publicVariable "bluforPointPool";
-      currentAssetsBlu pushBack _veh;
-      publicVariable "currentAssetsBlu";
-      hint format ["Asset Created\nPoints Remaining: %1", bluforPointPool];
-    };
-    case independent: {
-      indforPointPool = indforPointPool - (assetSelected select 1);
-      publicVariable "indforPointPool";
-      currentAssetsInd pushBack _veh;
-      publicVariable "currentAssetsInd";
-      hint format ["Asset Created\nPoints Remaining: %1", indforPointPool];
-    };
-  };
+  }] remoteExec ["BIS_fnc_call", 2, false];
 
   player enableSimulation true;
   ["vehSpawnEH", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;

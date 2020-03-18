@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1034;
+		nextID=1038;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={280.64355,9.1843109,731.42145};
-		dir[]={-0.32518944,-0.32793826,-0.88707215};
-		up[]={-0.11289386,0.94468087,-0.30796206};
-		aside[]={-0.93898255,4.429603e-008,0.34421569};
+		pos[]={472.11176,29.757423,652.09888};
+		dir[]={-0.42879051,-0.3511554,0.83236885};
+		up[]={-0.16081406,0.93631661,0.31217256};
+		aside[]={0.88898021,-5.3900294e-008,0.45795357};
 	};
 };
 binarizationWanted=0;
@@ -955,7 +955,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={901.06281,5,100.51709};
+				position[]={901.06299,5,100.517};
 			};
 			id=9;
 			type="tfar_ModuleTaskForceRadioEnforceUsage";
@@ -995,7 +995,7 @@ class Mission
 									"BOOL"
 								};
 							};
-							value=0;
+							value=1;
 						};
 					};
 				};
@@ -1090,7 +1090,7 @@ class Mission
 									"SCALAR"
 								};
 							};
-							value=7;
+							value=5;
 						};
 					};
 				};
@@ -31648,6 +31648,25 @@ class Mission
 			{
 				class Attribute0
 				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
 					property="ENH_HoldAction";
 					expression="			_value params ['_name','_iconIdle','_iconProgress','_conditionShow','_conditionProgress','_codeStart','_codeProgress','_codeCompletion','_codeInterrupt','_duration','_priority','_showUnconscious','_showWindow'];			if (!is3DEN && !(_name isEqualTo '')) then			{				[					_this,					_name,					_iconIdle,					_iconProgress,					_conditionShow,					_conditionProgress,					compile _codeStart,					compile _codeProgress,					compile format ['%1 %2','[_this select 0,_this select 2] remoteExecCall [''removeAction'',0]; remoteExecCall ['''',_this select 0];',_codeCompletion],					compile _codeInterrupt,					nil,					_duration,					_priority,					true,					_showUnconscious,					_showWindow				] remoteExecCall ['BIS_fnc_holdActionAdd',0,_this];			};";
 					class Value
@@ -31663,7 +31682,7 @@ class Mission
 							};
 							class value
 							{
-								items=14;
+								items=13;
 								class Item0
 								{
 									class data
@@ -31846,25 +31865,11 @@ class Mission
 										value=1;
 									};
 								};
-								class Item13
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
 							};
 						};
 					};
 				};
-				nAttributes=1;
+				nAttributes=2;
 			};
 		};
 		class Item80
@@ -31888,6 +31893,25 @@ class Mission
 			{
 				class Attribute0
 				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
 					property="ENH_HoldAction";
 					expression="			_value params ['_name','_iconIdle','_iconProgress','_conditionShow','_conditionProgress','_codeStart','_codeProgress','_codeCompletion','_codeInterrupt','_duration','_priority','_showUnconscious','_showWindow'];			if (!is3DEN && !(_name isEqualTo '')) then			{				[					_this,					_name,					_iconIdle,					_iconProgress,					_conditionShow,					_conditionProgress,					compile _codeStart,					compile _codeProgress,					compile format ['%1 %2','[_this select 0,_this select 2] remoteExecCall [''removeAction'',0]; remoteExecCall ['''',_this select 0];',_codeCompletion],					compile _codeInterrupt,					nil,					_duration,					_priority,					true,					_showUnconscious,					_showWindow				] remoteExecCall ['BIS_fnc_holdActionAdd',0,_this];			};";
 					class Value
@@ -31903,7 +31927,7 @@ class Mission
 							};
 							class value
 							{
-								items=14;
+								items=13;
 								class Item0
 								{
 									class data
@@ -32086,25 +32110,11 @@ class Mission
 										value=1;
 									};
 								};
-								class Item13
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
 							};
 						};
 					};
 				};
-				nAttributes=1;
+				nAttributes=2;
 			};
 		};
 		class Item81

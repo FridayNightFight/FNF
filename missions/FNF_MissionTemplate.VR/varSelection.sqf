@@ -11,8 +11,9 @@ startSelectionSide = false; //east/west/independent - false to disable
 //Asset selector
 /*
 Disclaimer:
-It is recommended that you only use the asset selector once you get some experience with mission-making for FNF, or keep the assets simple.
-If you are new to mission-making, it is likely best to just place assets down in the editor for each side and ignore this selector.
+There are default asset lists for OPFOR (atk/def) and BLUFOR (atk/def). This is for creating your own lists.
+It is recommended that you only customize the asset selector once you get some experience with mission-making for FNF, or keep the assets simple.
+If you are new to mission-making, it is likely best to just place assets down in the editor for each side or use the default lists.
 */
 //Assets
 bluforAssetList = [];

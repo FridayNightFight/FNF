@@ -196,7 +196,7 @@ ace_medical_gui_openAfterTreatment = true;
 force ace_medical_ivFlowRate = 3;
 force ace_medical_limping = 1;
 force ace_medical_painCoefficient = 0.5;
-force ace_medical_playerDamageThreshold = 1.8;
+force ace_medical_playerDamageThreshold = 2;
 force ace_medical_spontaneousWakeUpChance = 1;
 force ace_medical_spontaneousWakeUpEpinephrineBoost = 2;
 force ace_medical_statemachine_AIUnconsciousness = false;
@@ -329,43 +329,6 @@ ace_optionsmenu_showNewsOnMainMenu = true;
 force ace_overpressure_distanceCoefficient = 1;
 ace_tagging_quickTag = 1;
 
-// ACE User Interface
-force ace_ui_allowSelectiveUI = true;
-ace_ui_ammoCount = false;
-ace_ui_ammoType = true;
-ace_ui_commandMenu = true;
-ace_ui_firingMode = true;
-ace_ui_groupBar = false;
-ace_ui_gunnerAmmoCount = true;
-ace_ui_gunnerAmmoType = true;
-ace_ui_gunnerFiringMode = true;
-ace_ui_gunnerLaunchableCount = true;
-ace_ui_gunnerLaunchableName = true;
-ace_ui_gunnerMagCount = true;
-ace_ui_gunnerWeaponLowerInfoBackground = true;
-ace_ui_gunnerWeaponName = true;
-ace_ui_gunnerWeaponNameBackground = true;
-ace_ui_gunnerZeroing = true;
-ace_ui_magCount = true;
-ace_ui_soldierVehicleWeaponInfo = true;
-ace_ui_staminaBar = true;
-ace_ui_stance = true;
-ace_ui_throwableCount = true;
-ace_ui_throwableName = true;
-ace_ui_vehicleAltitude = true;
-ace_ui_vehicleCompass = true;
-ace_ui_vehicleDamage = true;
-ace_ui_vehicleFuelBar = true;
-ace_ui_vehicleInfoBackground = true;
-ace_ui_vehicleName = true;
-ace_ui_vehicleNameBackground = true;
-ace_ui_vehicleRadar = true;
-ace_ui_vehicleSpeed = true;
-ace_ui_weaponLowerInfoBackground = true;
-ace_ui_weaponName = true;
-ace_ui_weaponNameBackground = true;
-ace_ui_zeroing = true;
-
 // ACE Vehicle Lock
 force ace_vehiclelock_defaultLockpickStrength = 10;
 force ace_vehiclelock_lockVehicleInventory = false;
@@ -400,23 +363,3 @@ force ace_weather_windSimulation = true;
 force ace_winddeflection_enabled = true;
 force ace_winddeflection_simulationInterval = 0.05;
 force ace_winddeflection_vehicleEnabled = true;
-
-// ACE Zeus
-force ace_zeus_autoAddObjects = false;
-force ace_zeus_canCreateZeus = -1;
-force ace_zeus_radioOrdnance = false;
-force ace_zeus_remoteWind = false;
-force ace_zeus_revealMines = 0;
-force ace_zeus_zeusAscension = false;
-force ace_zeus_zeusBird = false;
-
-// CBA Weapons
-force cba_disposable_replaceDisposableLauncher = true;
-
-// Task Force Arrowhead Radio
-force TF_give_microdagr_to_soldier = true;
-force TF_give_personal_radio_to_regular_soldier = false;
-force TF_no_auto_long_range_radio = true;
-force TF_same_dd_frequencies_for_side = false;
-force TF_same_lr_frequencies_for_side = false;
-force TF_same_sw_frequencies_for_side = false;

@@ -21,7 +21,7 @@ switch (side player) do {
     {
       _assetsControl lbAdd getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str(_x select 1) + " points";
     } forEach bluforAssetList;
-
+    sleep 0.5;
     {
         //_spawnedAssetsControl lbAdd (typeOf _x);
         _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
@@ -31,7 +31,7 @@ switch (side player) do {
     {
       _assetsControl lbAdd getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str(_x select 1) + " points";
     } forEach opforAssetList;
-
+    sleep 0.5;
     {
         _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsOpf;
@@ -41,7 +41,7 @@ switch (side player) do {
       //_assetsControl lbAdd (_x select 0) + " - " + str(_x select 1) + " points";
       _assetsControl lbAdd getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str(_x select 1) + " points";
     } forEach indforAssetList;
-
+    sleep 0.5;
     {
         _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
     } forEach currentAssetsInd;
