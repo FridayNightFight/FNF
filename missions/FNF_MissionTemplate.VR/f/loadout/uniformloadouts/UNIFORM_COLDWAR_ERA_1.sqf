@@ -22,7 +22,7 @@ if (pRole == ROLE_CE) then {
   phx_loadout_backpack = "rhssaf_kitbag_md2camo";
 };
 if (pRole == ROLE_AR || pRole == ROLE_AAR) then {
-  phx_loadout_backpack = "rhssaf_kitbag_md2camo";
+  phx_loadout_backpack = "B_Carryall_oli";
 };
 if (pRole == ROLE_MG || pRole == ROLE_AM) then {
   phx_loadout_backpack = "B_Carryall_oli";

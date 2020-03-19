@@ -4,6 +4,7 @@ phx_loadout_backpack = "rhs_assault_umbts";
 phx_loadout_headgear = "rhs_6b27m_digi_ess";
 if (pRole == ROLE_CLS) then {
   phx_loadout_vest = "rhs_6b23_digi_medic";
+  phx_loadout_backpack = "B_FieldPack_oli"
 };
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   phx_loadout_vest = "rhs_6b23_digi_6sh92_headset_mapcase";
@@ -21,6 +22,9 @@ if (pRole == ROLE_CE) then {
 if (pRole == ROLE_AR || pRole == ROLE_AAR) then {
   phx_loadout_backpack = "B_Kitbag_rgr";
 };
+if (pRole == ROLE_AAR) then {
+  phx_loadout_backpack = "B_Carryall_oli";
+};
 if (pRole == ROLE_MG || pRole == ROLE_AM) then {
   phx_loadout_backpack = "B_Carryall_oli";
 };
@@ -36,4 +40,7 @@ if (pRole == ROLE_CR) then {
 };
 if (pRole == ROLE_MK) then {
   phx_loadout_vest = "rhs_6b23_digi_sniper";
+};
+if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
+  phx_loadout_backpack = "B_FieldPack_oli";
 };

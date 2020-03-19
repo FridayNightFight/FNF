@@ -18,8 +18,11 @@ if (pRole == ROLE_CE) then {
   phx_loadout_vest = "rhsgref_6b23_khaki";
   phx_loadout_backpack = "B_Kitbag_tan";
 };
-if (pRole == ROLE_AR || pRole == ROLE_AAR) then {
+if (pRole == ROLE_AR) then {
   phx_loadout_backpack = "B_Kitbag_tan";
+};
+if (pRole == ROLE_AAR) then {
+  phx_loadout_backpack = "B_Carryall_cbr";
 };
 if (pRole == ROLE_MG || pRole == ROLE_AM) then {
   phx_loadout_backpack = "B_Carryall_cbr";

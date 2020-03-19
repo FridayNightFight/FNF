@@ -39,3 +39,6 @@ if (pRole == ROLE_CR) then {
 if (pRole == ROLE_MK) then {
   phx_loadout_vest = "rhsusf_spc_marksman";
 };
+if (pRole == ROLE_AT) then {
+  phx_loadout_backpack = "B_FieldPack_khk";
+};

@@ -2,11 +2,13 @@ phx_loadout_uniform = selectRandom ["rhsgref_uniform_flecktarn", "rhsgref_unifor
 phx_loadout_vest = "rhs_6b23_6sh116_od";
 phx_loadout_backpack = "rhs_assault_umbts";
 phx_loadout_headgear = "rhsgref_helmet_pasgt_flecktarn";
-phx_loadout_vest = "rhs_6b23_6sh116_vog_od";
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   if (!(_lrRadio isEqualTo "")) then {
     phx_loadout_backpack = _lrRadio;
   };
+};
+if (pRole == ROLE_CLS) then {
+  phx_loadout_backpack = "B_FieldPack_oli";
 };
 if (pRole == ROLE_P) then {
   phx_loadout_headgear = "H_PilotHelmetHeli_O";
