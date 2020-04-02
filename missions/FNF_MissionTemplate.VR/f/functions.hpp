@@ -1,13 +1,12 @@
 class init {
     file = "f\init";
     class init_server{};
-    class init_server_preInitVars{preInit = 1;};
     class init_client{};
     class init_setupGame{};
     class init_shared{};
     class init_postBriefing{};
     class init_vehicleLocks_server{};
-    class init_vars{};
+    class init_vars{preInit = 1;};
     class init_setIndforFriends{};
     class init_removeClientHandlers{};
 };

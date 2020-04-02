@@ -74,37 +74,3 @@ switch (pUniform) do {
     };
     default {};
 };
-
-if (pRole == ROLE_P) then {
-  phx_loadout_uniform = "U_I_pilotCoveralls";
-  phx_loadout_backpack = "B_Parachute";
-  phx_loadout_vest = "V_Chestrig_oli";
-  switch ("phx_loadout_pilot_uniform" call BIS_fnc_getParamValue) do {
-    case 0: { //rotary
-      switch (side player) do {
-        case east: {
-          phx_loadout_headgear = "rhs_zsh7a_mike_green";
-        };
-        case west: {
-          phx_loadout_headgear = "rhsusf_hgu56p_green";
-        };
-        case independent: {
-        phx_loadout_headgear = "H_PilotHelmetHeli_O";
-        };
-      };
-    };
-    case 1: { //fixed
-      switch (side player) do {
-        case east: {
-          phx_loadout_headgear = "rhs_zsh7a";
-        };
-        case west: {
-          phx_loadout_headgear = "RHS_jetpilot_usaf";
-        };
-        case independent: {
-        phx_loadout_headgear = "H_PilotHelmetFighter_I";
-        };
-      };
-    };
-  };
-};

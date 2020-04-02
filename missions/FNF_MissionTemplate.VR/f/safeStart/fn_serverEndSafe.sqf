@@ -16,5 +16,7 @@ _defaultStartMarkers = ["startSelectionMarker_1","startSelectionMarker_2","start
   };
 } forEach _defaultStartMarkers;
 
+["off"] call acex_fortify_fnc_handleChatCommand;
+
 phx_safeStartEnabled = false;
 publicVariable "phx_safeStartEnabled";

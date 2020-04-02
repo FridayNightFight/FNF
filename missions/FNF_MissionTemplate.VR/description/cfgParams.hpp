@@ -44,12 +44,6 @@ class Params {
       texts[] = UNIFORM_TEXTS;
       default = UNIFORM_CIVILIAN;
     };
-    class phx_loadout_pilot_uniform {
-      title = "Pilot Uniform:";
-      values[] = {0,1};
-      texts[] = {"Rotary","Fixed"};
-      default = 0;
-    };
     class phx_loadout_nightvision {
       title = "Nightvision:";
       values[] = {-1,0,1,2,3,4};

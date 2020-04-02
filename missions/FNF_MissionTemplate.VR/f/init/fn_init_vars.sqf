@@ -1,6 +1,7 @@
 if (!isServer) exitwith {};
 
 #include "..\..\varSelection.sqf"
+#include "defaultAssets.sqf"
 
 publicVariable "defendingSide";
 publicVariable "attackingSide";
@@ -8,16 +9,6 @@ publicVariable "attackingSide";
 currentAssetsBlu = [];
 currentAssetsOpf = [];
 currentAssetsInd = [];
-
-if (count bluforAssetList == 0) then {
-  bluforAssetList execVM "f\init\defaultAssets.sqf";
-};
-if (count opforAssetList == 0) then {
-  opforAssetList execVM "f\init\defaultAssets.sqf";
-};
-if (count indforAssetList == 0) then {
-  indforAssetList execVM "f\init\defaultAssets.sqf";
-};
 
 publicVariable "bluforAssetList";
 publicVariable "opforAssetList";
@@ -33,6 +24,8 @@ publicVariable "indforPointPool";
 
 publicVariable "startSelectionSide";
 
+publicVariable "allowFortify";
+
 bluVics = [];
 opfVics = [];
 indVics = [];
@@ -40,6 +33,9 @@ indVics = [];
 if (activeMode isEqualTo "adSector") then {
     objectivesNumber = (objectives select 0);
 };
+
+phx_safeStartEnabled = true;
+publicVariable "phx_safeStartEnabled";
 
 serverVarsSetup = true;
 publicVariable "serverVarsSetup";

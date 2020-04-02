@@ -5,6 +5,8 @@ if (hasInterface && (isNull player)) then {
 
 ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT"];
 PHX_Diary = player createDiarySubject ["PHX_Diary", "Misc Info"];
+/*
+
 Assets_Diary = player createDiarySubject ["PHX_Assets", "Assets"];
 
 waitUntil {!isNil "opforPointPool"};
@@ -65,6 +67,7 @@ _bluforAssetsString + "<br/" + _bluforMissionAssetsString + "<br/><br/>" +
 _indforAssetsString + "<br/" + _indforMissionAssetsString
 ]];
 
+*/
 
 // The following block of code executes only if the player is the current host
 if (isMultiplayer) then {

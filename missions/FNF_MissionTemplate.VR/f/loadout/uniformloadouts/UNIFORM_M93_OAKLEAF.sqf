@@ -1,4 +1,4 @@
-phx_loadout_uniform = "rhssaf_uniform_m93_oakleaf_summer";
+phx_loadout_uniform = "rhssaf_uniform_m93_oakleaf";
 phx_loadout_vest = "rhssaf_vest_md99_woodland_rifleman";
 phx_loadout_backpack = "rhssaf_kitbag_smb";
 phx_loadout_headgear = "rhssaf_helmet_m97_oakleaf";

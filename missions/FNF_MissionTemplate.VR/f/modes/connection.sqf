@@ -1,5 +1,5 @@
 //vars
-pointAddTime = 15;
+pointAddTime = 30;
 
 term1Hacking = false;
 term2Hacking = false;
@@ -7,6 +7,9 @@ term3Hacking = false;
 term1HackingSide = civilian;
 term2HackingSide = civilian;
 term3HackingSide = civilian;
+publicVariable "term1HackingSide";
+publicVariable "term2HackingSide";
+publicVariable "term3HackingSide";
 
 _obj1Mark = createMarker ["term1Mark",getPos term1];
 _obj2Mark = createMarker ["term2Mark",getPos term2];
@@ -19,6 +22,12 @@ _obj3Mark = createMarker ["term3Mark",getPos term3];
 "term1Mark" setMarkerPos (getPos term1);
 "term2Mark" setMarkerPos (getPos term2);
 "term3Mark" setMarkerPos (getPos term3);
+"term1Mark" setMarkerType "mil_dot";
+"term2Mark" setMarkerType "mil_dot";
+"term3Mark" setMarkerType "mil_dot";
+"term1Mark" setMarkerText "Terminal 1";
+"term2Mark" setMarkerText "Terminal 2";
+"term3Mark" setMarkerText "Terminal 3";
 
 //Create terminals actions
 //Terminal 1 upload action

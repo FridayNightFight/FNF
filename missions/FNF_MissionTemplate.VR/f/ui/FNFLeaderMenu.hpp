@@ -192,6 +192,7 @@ class FNFLeaderMenu
 			onButtonClick = "execVM 'f\ui\groupLeadSelected.sqf';";
 
 		};
+		/*
 		class VehicleMenuButton
 		{
 			type = 1;
@@ -224,6 +225,7 @@ class FNFLeaderMenu
 			onButtonClick = "execVM 'f\ui\assetMenu.sqf';";
 
 		};
+		*/
 
 	};
 

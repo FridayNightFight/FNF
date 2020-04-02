@@ -4,6 +4,7 @@ call phx_fnc_loadout_handleClothing; // Add clothing variables above this line!
 // Add gear
 [phx_loadout_antitank_mag, "backpack"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_antitank_weapon;
+[phx_loadout_antitank_mag_1, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_aid, "uniform"] call phx_fnc_loadout_handleGear;
 //[phx_loadout_splint, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_smoke, "uniform"] call phx_fnc_loadout_handleGear;
@@ -11,8 +12,8 @@ player addWeapon phx_loadout_antitank_weapon;
 [phx_loadout_cuffs, "item"] call phx_fnc_loadout_handleGear;
 [phx_loadout_rifle_mag_tracer, "vest"] call phx_fnc_loadout_handleGear;
 [phx_loadout_rifle_mag, "vest"] call phx_fnc_loadout_handleGear;
-[phx_loadout_sidearm_mag, "vest"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_rifle_weapon;
+[phx_loadout_sidearm_mag, "vest"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_sidearm_weapon;
 
 // Add items

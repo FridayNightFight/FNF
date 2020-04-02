@@ -328,6 +328,7 @@ class GearSelector
 		};
 
 		//CE Only
+		/*
 		class ExplosivesTitle
 		{
 			type = 0;
@@ -377,6 +378,7 @@ class GearSelector
 				border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
 			};
 		};
+		*/
 		class WeaponsTitle
 		{
 			type = 0;

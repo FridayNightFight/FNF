@@ -57,8 +57,3 @@ switch (pWeapons) do {
     };
     default {};
 };
-
-if (pRole == ROLE_P) then {
-  phx_loadout_rifle_weapon = "hgun_PDW2000_F";
-  phx_loadout_rifle_mag = "30Rnd_9x21_Mag:3";
-};

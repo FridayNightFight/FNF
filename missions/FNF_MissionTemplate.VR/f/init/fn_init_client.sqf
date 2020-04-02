@@ -2,7 +2,7 @@
 // Client init - Player is not null by this point
 
 //Set marker visibility
-side player execVM "f\init\clientMarkerVisibilty.sqf";
+playerSide execVM "f\init\clientMarkerVisibilty.sqf";
 
 //Disable global chat channel
 0 enableChannel false;
@@ -67,6 +67,12 @@ if ((typeOf player == "B_officer_F") || (typeOf player == "O_officer_F") || (typ
   call phx_fnc_leadActions;
 };
 
+//Fortify
+if (playerSide == defendingSide && allowFortify) then {
+  if (pRole == 7) then {
+    execVM "f\init\fortify_client.sqf";
+  };
+};
 //====================================================================================================
 phx_clientInitFinished = true;
 

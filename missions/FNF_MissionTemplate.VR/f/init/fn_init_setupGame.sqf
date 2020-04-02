@@ -34,9 +34,6 @@ switch (activeMode) do {
   case "destroy": {
     execVM "f\modes\destroy.sqf";
   };
-  case "destroy_ez": {
-    execVM "f\modes\destroy_ez.sqf";
-  };
   case "rush": {
     execVM "f\modes\rush.sqf";
   };
@@ -63,11 +60,6 @@ switch (activeMode) do {
   };
 };
 
-if !(activeMode isEqualTo "destroy_ez") then {
-  ["cache1Mark"] remoteExec ["deleteMarkerLocal",0,true];
-  ["cache2Mark"] remoteExec ["deleteMarkerLocal",0,true];
-};
-
 if !(activeMode isEqualTo "ctf" || activeMode isEqualTo "neutralCTF") then {
   deleteVehicle attackFlagTrig;
   ["flagMark"] remoteExec ["deleteMarkerLocal",0,true];
@@ -77,4 +69,9 @@ if !(activeMode isEqualTo "neutralCTF") then {
   deleteVehicle eastFlagTrig;
   deleteVehicle westFlagTrig;
   deleteVehicle indFlagTrig;
+};
+
+if !(activeMode isEqualTo "destroy") then {
+  ["ez_cache1Mark"] remoteExec ["deleteMarkerLocal",0,true];
+  ["ez_cache2Mark"] remoteExec ["deleteMarkerLocal",0,true];
 };

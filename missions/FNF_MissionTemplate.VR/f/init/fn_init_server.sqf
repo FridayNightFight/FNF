@@ -29,6 +29,11 @@ phx_end_checkTime = [phx_fnc_end_checkTime, 10, []] call CBA_fnc_addPerFrameHand
 //Run check to see if side is eliminated
 [] spawn phx_fnc_end_checkAlive;
 
+//Fortify Sets
+if (allowFortify) then {
+  execVM "f\init\fortify_server.sqf";
+};
+
 f_param_radios = ["phx_param_radios",0] call BIS_fnc_getParamValue;
 if (f_param_radios isEqualTo 1) then {
   // Generate frequencies for preset radios

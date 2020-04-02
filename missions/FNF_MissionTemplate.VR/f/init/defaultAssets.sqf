@@ -1,5 +1,3 @@
-_list = _this;
-
 bluforAttackList = [
 ["B_Quadbike_01_F",1],
 ["rhsusf_M1078A1P2_WD_fmtv_usarmy",2],
@@ -80,21 +78,36 @@ opforDefenseList = [
 ["rhs_btr80_msv",12]
 ];
 
-switch (_list) do {
-  case bluforAssetList: {
-    if (attackingSide == west) then {
-      bluforAssetList = bluforAttackList;
-    } else {
-      bluforAssetList = bluforDefenseList;
-    };
-    publicVariable "bluforAssetList";
+if (count bluforAssetList == 0) then {
+  if (attackingSide == west) then {
+    bluforAssetList = bluforAttackList;
+  } else {
+    bluforAssetList = bluforDefenseList;
   };
-  case opforAssetList: {
-    if (attackingSide == east) then {
-      opforAssetList = opforAttackList;
-    } else {
-      opforAssetList = opforDefenseList;
-    };
-    publicVariable "opforAssetList";
+};
+
+if (count opforAssetList == 0) then {
+  if (attackingSide == east) then {
+    opforAssetList = opforAttackList;
+  } else {
+    opforAssetList = opforDefenseList;
+  };
+};
+
+if (activeMode isEqualTo "connection" || activeMode isEqualTo "neutralSector") then {
+  if (count opforAssetList == 0) then {
+    opforAssetList = opforAttackList;
+  };
+  if (count bluforAssetList == 0) then {
+    bluforAssetList = bluforAttackList;
+  };
+};
+
+if (activeMode isEqualTo "ctf") then {
+  if (count opforAssetList == 0) then {
+    opforAssetList = opforDefenseList;
+  };
+  if (count bluforAssetList == 0) then {
+    bluforAssetList = bluforDefenseList;
   };
 };

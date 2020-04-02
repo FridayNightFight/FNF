@@ -6,9 +6,7 @@ call phx_fnc_loadout_handleCECharges;
 
 // Add gear
 [phx_loadout_rifle_mag_tracer, "vest"] call phx_fnc_loadout_handleGear;
-/*[phx_loadout_explosives, "backpack"] call phx_fnc_loadout_handleGear;
-[phx_loadout_explosives_1, "backpack"] call phx_fnc_loadout_handleGear;
-[phx_loadout_explosives_2, "backpack"] call phx_fnc_loadout_handleGear;*/
+[phx_loadout_explosives, "backpack"] call phx_fnc_loadout_handleGear;
 [phx_loadout_aid, "uniform"] call phx_fnc_loadout_handleGear;
 //[phx_loadout_splint, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_smoke, "uniform"] call phx_fnc_loadout_handleGear;
@@ -17,8 +15,8 @@ call phx_fnc_loadout_handleCECharges;
 [phx_loadout_grenade, "uniform"] call phx_fnc_loadout_handleGear;
 [phx_loadout_cuffs, "item"] call phx_fnc_loadout_handleGear;
 [phx_loadout_rifle_mag, "vest"] call phx_fnc_loadout_handleGear;
-[phx_loadout_sidearm_mag, "vest"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_rifle_weapon;
+[phx_loadout_sidearm_mag, "vest"] call phx_fnc_loadout_handleGear;
 player addWeapon phx_loadout_sidearm_weapon;
 player addItem phx_loadout_entrenching;
 player addItem "MineDetector";

@@ -1,34 +1,16 @@
 activeMode = ""; //Change this string to whatever game mode you want (listed below)
 objectives = [];
 
-defendingSide = east; //east/west/independent
-attackingSide = west; //east/west/independent
+defendingSide = west; //east/west/independent
+attackingSide = east; //east/west/independent
 //Not used if mode is neutral
+
+allowFortify = true; //Allow the defending side to use ACEX Fortify
+fortifyPoints = 100; //Starting currency for fortify side
+fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 //Set side you want to be able to change their starting zone, if any - uses the startSelection markers alrady placed in the editor
 startSelectionSide = false; //east/west/independent - false to disable
-
-//Asset selector
-/*
-Disclaimer:
-There are default asset lists for OPFOR (atk/def) and BLUFOR (atk/def). This is for creating your own lists.
-It is recommended that you only customize the asset selector once you get some experience with mission-making for FNF, or keep the assets simple.
-If you are new to mission-making, it is likely best to just place assets down in the editor for each side or use the default lists.
-*/
-//Assets
-bluforAssetList = [];
-opforAssetList = [];
-indforAssetList = [];
-//Side points
-bluforPointPool = 20;
-opforPointPool = 20;
-indforPointPool = 20;
-/*
-Example:
-
-bluforAssetList = [["B_MRAP_01_F",5],["B_Truck_01_mover_F",3],["B_MRAP_01_gmg_F",10]];
-2D array with each element containing an array with the class of a vehicle/asset, and the point value for that asset.
-*/
 
 /*
 =========================Modes=========================
@@ -37,58 +19,7 @@ destroy - ATK/DEF
 Description:
 Classic "blow thing up to win" mode. Attackers need to destroy some objects that the defenders need to protect.
 
-Usage:
-1. Create at least one object in the editor that can be destroyed, give the object a variable name (double-click, at the top)
-2. Create a marker for the objective you created in step 1. The marker can be an icon or an area marker.
--The marker can be placed directly on the objective, or near it, just make sure the objective is in the marker area
-3. Configure the objectives array at the top of this file. There are examples below, with the params listed with descriptions
-
-Params:
--variable name of objective (object name)
--corresponding marker name (string)
--object description - used for task name (string)
--whether or not the exact objective location is visible to attackers (boolean), true = visible
--whether or not the objective can move (vehicles, units, etc.), (boolean), true = the objective is expected to move
-
-Examples:
-objectives = [[cache1,"Cache_Marker","weapons cache",false,true]]; - 1 objective, object named cache1, marker named "Cache_Marker", name for task title "weapons cache",
-objective location not visible to attackers (no task marker), objective able to be moved (marker will update for attackers)
-
-objectives = [[cache,"Cache_Marker","weapons cache",false,true], [tank,"Tank_Marker","prototype tank",true,false]]; - 2 objectives
-
-*There can be an infinite number of objectives*
-
-The game will end if all objectives are destroyed
-====================================================================================================
-destroy_ez - ATK/DEF
-
-Quick-setup version of destroy mode with pre-configured objectives.
-
-Usage:
-1. Move 'cache1' and 'cache2' to new locations.
-2. Move 'cache1Mark' so cache1 is somewhere inside the marker.
-3. Move 'cache2Mark' so cache2 is somewhere inside the marker.
--Feel free to adjust the size/shape of the markers.
-
-Params:
-None. The mode is configured so the location of the caches is unknown to the attackers. They need to search the cache markers to find them.
-====================================================================================================
-uplink - ATK/DEF
-
-Description:
-Attackers need to hack 1 or 2 data terminals to win.
-
-Usage:
-1. Choose if you want 1 or 2 terminals.
-2. Move term1 and/or term2 to new locations
-
-Params:
--number of terminals (1 or 2)
--hack time of terminals (in seconds)
-
-Examples:
-objectives = [1,120]; //1 terminal (term1) with a hack time of 2 minutes
-objectives = [2,180]; //2 terminals (term1 & term2) with hack times of 3 minutes
+The game will end if all objectives are destroyed.
 ====================================================================================================
 ctf - ATK/DEF
 
