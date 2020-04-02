@@ -1,8 +1,8 @@
 activeMode = ""; //Change this string to whatever game mode you want (listed below)
 objectives = [];
 
-defendingSide = west; //east/west/independent
-attackingSide = east; //east/west/independent
+defendingSide = east; //east/west/independent
+attackingSide = west; //east/west/independent
 //Not used if mode is neutral
 
 allowFortify = true; //Allow the defending side to use ACEX Fortify

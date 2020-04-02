@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={577.99493,82.710701,766.02014};
-		dir[]={-0.83725387,-0.46621126,-0.28602603};
-		up[]={-0.4412173,0.88464504,-0.150732};
-		aside[]={-0.32330209,-5.941838e-007,0.94636911};
+		pos[]={578.64502,144.77621,849.73041};
+		dir[]={-0.0039350889,-0.78335547,-0.62168962};
+		up[]={-0.0049565006,0.62157685,-0.78333187};
+		aside[]={-1.0000492,-4.2583815e-007,0.0063304682};
 	};
 };
 binarizationWanted=0;
@@ -43,14 +43,13 @@ addons[]=
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"ace_chemlights",
 	"Desert",
-	"A3_Props_F_Exp_A_Military_Equipment",
-	"acex_fortify"
+	"A3_Props_F_Exp_A_Military_Equipment"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=17;
+		items=16;
 		class Item0
 		{
 			className="task_force_radio_items";
@@ -158,13 +157,6 @@ class AddonsMetaData
 			name="Arma 3 Nexus Update - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
-		};
-		class Item16
-		{
-			className="acex_fortify";
-			name="acex_fortify";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
 		};
 	};
 };
@@ -891,7 +883,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=117;
+		items=116;
 		class Item0
 		{
 			dataType="Logic";
@@ -8721,7 +8713,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={269.41379,5.0014391,724.3446};
-						angles[]={-0,3.1442454,0};
+						angles[]={0,3.1442454,0};
 					};
 					side="East";
 					flags=6;
@@ -9097,7 +9089,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={267.41681,5.0014391,724.26758};
-						angles[]={-0,3.1442454,0};
+						angles[]={0,3.1442454,0};
 					};
 					side="East";
 					flags=4;
@@ -9473,7 +9465,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={269.38287,5.0014391,726.35382};
-						angles[]={-0,3.1442523,0};
+						angles[]={0,3.1442523,0};
 					};
 					side="East";
 					flags=4;
@@ -36148,96 +36140,6 @@ class Mission
 			};
 			description="Zone boundary trigger";
 			id=656;
-		};
-		class Item116
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={620.14807,5,99.803711};
-			};
-			id=1070;
-			type="acex_fortify_setupModule";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="acex_fortify_setupModule_AddToolItem";
-					expression="_this setVariable ['AddToolItem',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="acex_fortify_setupModule_Budget";
-					expression="_this setVariable ['Budget',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=-1;
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="acex_fortify_setupModule_Side";
-					expression="_this setVariable ['Side',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=1;
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="acex_fortify_setupModule_Preset";
-					expression="_this setVariable ['Preset',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=1;
-						};
-					};
-				};
-				nAttributes=4;
-			};
 		};
 	};
 	class Connections
