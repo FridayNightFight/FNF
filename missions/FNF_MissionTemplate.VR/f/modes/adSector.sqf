@@ -4,23 +4,23 @@ if (isNil "objectivesNumber") then {
   objectivesNumber = 3;
 };
 
-if ((defendingSide == attackingSide) || !((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)) || (isNil "defendingSide") || (isNil "attackingSide"))
+if ((phx_defendingSide == phx_attackingSide) || !((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)) || (isNil "phx_defendingSide") || (isNil "phx_attackingSide"))
 exitWith {["Game mode not configured correctly, check 'varSelection.sqf'"] remoteExec ["hint"];};
 
 if !(isNull sector1) then {
-  sector1 setVariable ["owner",defendingSide];
+  sector1 setVariable ["owner",phx_defendingSide];
 };
 if !(isNull sector2) then {
-  sector2 setVariable ["owner",defendingSide];
+  sector2 setVariable ["owner",phx_defendingSide];
 };
 if !(isNull sector3) then {
-  sector3 setVariable ["owner",defendingSide];
+  sector3 setVariable ["owner",phx_defendingSide];
 };
 
-switch (defendingSide) do {
+switch (phx_defendingSide) do {
   //east defense
   case east: {
-    switch (attackingSide) do {
+    switch (phx_attackingSide) do {
       //east defense - west attack
       case west: {
         if (objectivesNumber == 1) then {
@@ -78,7 +78,7 @@ switch (defendingSide) do {
 
   //west defense
   case west: {
-    switch (attackingSide) do {
+    switch (phx_attackingSide) do {
       //west defense - east attack
       case east: {
         if (objectivesNumber == 1) then {
@@ -135,7 +135,7 @@ switch (defendingSide) do {
 
   //ind defense
   case independent: {
-    switch (attackingSide) do {
+    switch (phx_attackingSide) do {
       //ind defense - west attack
       case west: {
         if (objectivesNumber == 1) then {
@@ -191,19 +191,19 @@ switch (defendingSide) do {
   };
 };
 
-controllingSideSector1 = defendingSide;
-controllingSideSector2 = defendingSide;
-controllingSideSector3 = defendingSide;
-gameEnd = false;
+controllingSideSector1 = phx_defendingSide;
+controllingSideSector2 = phx_defendingSide;
+controllingSideSector3 = phx_defendingSide;
+phx_gameEnd = false;
 
-waitUntil {(controllingSideSector1 != defendingSide) || (controllingSideSector2 != defendingSide) || (controllingSideSector3 != defendingSide)};
+waitUntil {(controllingSideSector1 != phx_defendingSide) || (controllingSideSector2 != phx_defendingSide) || (controllingSideSector3 != phx_defendingSide)};
 
 switch (objectivesNumber) do {
   case 1: {
     [] spawn {
-      while {!gameEnd} do {
-        if (controllingSideSector1 == attackingSide) then {
-          gameEnd = true;
+      while {!phx_gameEnd} do {
+        if (controllingSideSector1 == phx_attackingSide) then {
+          phx_gameEnd = true;
           ["The zone has been captured.\nAttackers wins!"] remoteExec ["hint"];
           sleep 15;
           "end1" call bis_fnc_endMissionServer;
@@ -214,9 +214,9 @@ switch (objectivesNumber) do {
   };
   case 2: {
     [] spawn {
-      while {!gameEnd} do {
-        if ((controllingSideSector1 == attackingSide) && (controllingSideSector2 == attackingSide)) then {
-          gameEnd = true;
+      while {!phx_gameEnd} do {
+        if ((controllingSideSector1 == phx_attackingSide) && (controllingSideSector2 == phx_attackingSide)) then {
+          phx_gameEnd = true;
           ["All zones have been captured.\nAttackers wins!"] remoteExec ["hint"];
           sleep 15;
           "end1" call bis_fnc_endMissionServer;
@@ -227,9 +227,9 @@ switch (objectivesNumber) do {
   };
   case 3: {
     [] spawn {
-      while {!gameEnd} do {
-        if ((controllingSideSector1 == attackingSide) && (controllingSideSector2 == attackingSide) && (controllingSideSector3 == attackingSide)) then {
-          gameEnd = true;
+      while {!phx_gameEnd} do {
+        if ((controllingSideSector1 == phx_attackingSide) && (controllingSideSector2 == phx_attackingSide) && (controllingSideSector3 == phx_attackingSide)) then {
+          phx_gameEnd = true;
           ["All zones have been captured.\nAttackers wins!"] remoteExec ["hint"];
           sleep 15;
           "end1" call bis_fnc_endMissionServer;
@@ -241,17 +241,17 @@ switch (objectivesNumber) do {
 };
 
 [] spawn {
-  waitUntil {controllingSideSector1 == attackingSide};
+  waitUntil {controllingSideSector1 == phx_attackingSide};
   ["attackTask_1","SUCCEEDED"] call BIS_fnc_taskSetState;
   ["defendTask_1","FAILED"] call BIS_fnc_taskSetState;
 };
 [] spawn {
-  waitUntil {controllingSideSector2 == attackingSide};
+  waitUntil {controllingSideSector2 == phx_attackingSide};
   ["attackTask_2","SUCCEEDED"] call BIS_fnc_taskSetState;
   ["defendTask_2","FAILED"] call BIS_fnc_taskSetState;
 };
 [] spawn {
-  waitUntil {controllingSideSector3 == attackingSide};
+  waitUntil {controllingSideSector3 == phx_attackingSide};
   ["attackTask_3","SUCCEEDED"] call BIS_fnc_taskSetState;
   ["defendTask_3","FAILED"] call BIS_fnc_taskSetState;
 };
@@ -259,7 +259,7 @@ switch (objectivesNumber) do {
 /*
 if (isServer) then {
   controllingSideSector1 = _this select 1;
-  if ((!isNil "balls") && (controllingSideSector1 == attackingSide)) then {
+  if ((!isNil "balls") && (controllingSideSector1 == phx_attackingSide)) then {
     deleteVehicle (_this select 0);
   };
   balls = true;
@@ -267,7 +267,7 @@ if (isServer) then {
 
 if (isServer) then {
   controllingSideSector2 = _this select 1;
-  if ((!isNil "balls1") && (controllingSideSector2 == attackingSide)) then {
+  if ((!isNil "balls1") && (controllingSideSector2 == phx_attackingSide)) then {
     deleteVehicle (_this select 0);
   };
   balls1 = true;
@@ -275,7 +275,7 @@ if (isServer) then {
 
 if (isServer) then {
   controllingSideSector3 = _this select 1;
-  if ((!isNil "balls2") && (controllingSideSector3 == attackingSide)) then {
+  if ((!isNil "balls2") && (controllingSideSector3 == phx_attackingSide)) then {
     deleteVehicle (_this select 0);
   };
   balls2 = true;

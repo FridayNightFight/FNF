@@ -79,7 +79,7 @@ opforDefenseList = [
 ];
 
 if (count bluforAssetList == 0) then {
-  if (attackingSide == west) then {
+  if (phx_attackingSide == west) then {
     bluforAssetList = bluforAttackList;
   } else {
     bluforAssetList = bluforDefenseList;
@@ -87,14 +87,14 @@ if (count bluforAssetList == 0) then {
 };
 
 if (count opforAssetList == 0) then {
-  if (attackingSide == east) then {
+  if (phx_attackingSide == east) then {
     opforAssetList = opforAttackList;
   } else {
     opforAssetList = opforDefenseList;
   };
 };
 
-if (activeMode isEqualTo "connection" || activeMode isEqualTo "neutralSector") then {
+if (phx_gameMode isEqualTo "connection" || phx_gameMode isEqualTo "neutralSector") then {
   if (count opforAssetList == 0) then {
     opforAssetList = opforAttackList;
   };
@@ -103,7 +103,7 @@ if (activeMode isEqualTo "connection" || activeMode isEqualTo "neutralSector") t
   };
 };
 
-if (activeMode isEqualTo "ctf") then {
+if (phx_gameMode isEqualTo "ctf") then {
   if (count opforAssetList == 0) then {
     opforAssetList = opforDefenseList;
   };

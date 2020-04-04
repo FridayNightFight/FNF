@@ -35,7 +35,7 @@ switch (actionSelected) do {
       player setDir (player getDir (_this select 2));
       sleep 0.5;
       cutText ["","BLACK IN"];
-    }] remoteExec ["BIS_fnc_spawn", side player, false];
+    }] remoteExec ["BIS_fnc_spawn", playerSide, false];
   };//Teleport group leaders to you
   case 3: {
     [[name player,getPosATL player,player],{
@@ -50,6 +50,6 @@ switch (actionSelected) do {
       ["Voice volume set to whisper"] call phx_fnc__hintThenClear;
       sleep 0.5;
       cutText ["","BLACK IN"];
-    }] remoteExec ["BIS_fnc_spawn", side player, false];
+    }] remoteExec ["BIS_fnc_spawn", playerSide, false];
   };//Teleport all players to you
 };

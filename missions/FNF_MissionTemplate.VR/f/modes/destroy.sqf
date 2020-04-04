@@ -2,23 +2,33 @@
 
 //Init vars
 _taskCount = 1;
-aliveObjectives = 0;
+phx_aliveObjectives = 0;
 
 if (_ez_mode) then {
   _obj1 = [ez_cache1,"ez_cache1Mark","weapons cache"];
   _obj2 = [ez_cache2,"ez_cache2Mark","weapons cache"];
+  {
+    waitUntil {!isNull player};
+
+    if (playerSide == phx_defendingSide) then {
+      "ez_cache1Mark" setMarkerAlphaLocal 0;
+      "ez_cache2Mark" setMarkerAlphaLocal 0;
+    };
+  } remoteExec ["spawn",0,true];
 } else {
   deleteVehicle ez_cache1;
   deleteVehicle ez_cache2;
-  "cache1Mark" remoteExec ["deleteMarkerLocal",0,true];
-  "cache2Mark" remoteExec ["deleteMarkerLocal",0,true];
+  "ez_cache1Mark" remoteExec ["deleteMarkerLocal",0,true];
+  "ez_cache2Mark" remoteExec ["deleteMarkerLocal",0,true];
 };
 
 _objArr = [_obj1,_obj2,_obj3];
+phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
+publicVariable "phx_destroyObjs";
 
 {
   if !(isNull (_x select 0)) then {
-    aliveObjectives = aliveObjectives + 1;
+    phx_aliveObjectives = phx_aliveObjectives + 1;
   };
 } forEach _objArr;
 
@@ -31,10 +41,10 @@ _objArr = [_obj1,_obj2,_obj3];
   _defendTaskID = "defendTask" + str _taskCount;
   _attackTaskID = "attackTask" + str _taskCount;
 
-  [defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
-  [attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
+  [phx_defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+  [phx_attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
 
-  [(_x select 1),0] remoteExec ["setMarkerAlphaLocal",defendingSide,true];
+  [(_x select 1),0] remoteExec ["setMarkerAlphaLocal",phx_defendingSide,true];
 
   //Check for alive objective
   [_x select 0, _x select 1, _defendTaskID, _attackTaskID] spawn {
@@ -45,7 +55,7 @@ _objArr = [_obj1,_obj2,_obj3];
     [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
     [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-    aliveObjectives = aliveObjectives - 1;
+    phx_aliveObjectives = phx_aliveObjectives - 1;
     [_markerName] remoteExec ["deleteMarkerLocal",0,true];
   };
 
@@ -75,18 +85,18 @@ _objArr = [_obj1,_obj2,_obj3];
 
 //Check for win condition and end game if all objectives are destroyed
 [] spawn {
-  waitUntil {aliveObjectives < 1};
+  waitUntil {phx_aliveObjectives < 1};
 
   [format ["All objectives have been destroyed.\n%1 wins!",
-  switch (attackingSide) do {
+  switch (phx_attackingSide) do {
     case east: {"OPFOR"};
     case west: {"BLUFOR"};
     case independent: {"INDFOR"};
   }]] remoteExec ["hint"];
 
   //Send var to other scripts and clients to signal that the game has ended
-  gameEnd = true;
-  publicVariable "gameEnd";
+  phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
 
   sleep 20;
 

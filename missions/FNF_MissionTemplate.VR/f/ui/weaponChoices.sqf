@@ -1,7 +1,7 @@
 western_modern_556 = ["rhs_weap_m4","rhs_weap_m4a1_carryhandle","rhs_weap_m4a1_blockII","rhs_weap_m4a1_blockII_d","rhs_weap_m4a1_blockII_wd","rhs_weap_mk18","rhs_weap_mk18_d","rhs_weap_mk18_wd","rhs_weap_m16a4_carryhandle","rhs_weap_hk416d10_LMT","rhs_weap_hk416d10_LMT_d","rhs_weap_hk416d10_LMT_wd","rhs_weap_hk416d145","rhs_weap_hk416d145_d","rhs_weap_hk416d145_wd"];
 
 //Optic choices param
-switch (side player) do {
+switch (playerSide) do {
   case east: {
     opticMag = ["phx_loadout_opfor_optics",1] call BIS_fnc_getParamValue;
   };
@@ -14,7 +14,7 @@ switch (side player) do {
 };
 
 //Weapon choices param
-switch (side player) do {
+switch (playerSide) do {
   case east: {
     weaponChoices = ["phx_loadout_opfor_weaponSelector",0] call BIS_fnc_getParamValue;
   };

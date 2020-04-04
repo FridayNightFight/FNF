@@ -5,7 +5,7 @@ _vehDelete = removeAssetSelected;
 
 _points = 0;
 
-switch (side player) do {
+switch (playerSide) do {
   case east: {
     currentAssetsOpf deleteAt (currentAssetsOpf find removeAssetSelected);
     publicVariable "currentAssetsOpf";
@@ -61,7 +61,7 @@ lbClear 6002;
 _display = findDisplay 6000;
 _spawnedAssetsControl = _display displayCtrl 6002;
 
-switch (side player) do {
+switch (playerSide) do {
   case east: {
     {
         _spawnedAssetsControl lbAdd getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");

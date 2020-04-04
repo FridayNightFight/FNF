@@ -8,18 +8,22 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1135;
+		nextID=1230;
 	};
 	class MarkerIDProvider
 	{
 		nextID=22;
 	};
+	class LayerIndexProvider
+	{
+		nextID=3;
+	};
 	class Camera
 	{
-		pos[]={578.64502,144.77621,849.73041};
-		dir[]={-0.0039350889,-0.78335547,-0.62168962};
-		up[]={-0.0049565006,0.62157685,-0.78333187};
-		aside[]={-1.0000492,-4.2583815e-007,0.0063304682};
+		pos[]={658.45142,16.940914,693.698};
+		dir[]={0.7225011,-0.65268379,0.22807752};
+		up[]={0.62241226,0.75762576,0.19648159};
+		aside[]={0.30103701,2.469169e-007,-0.95362377};
 	};
 };
 binarizationWanted=0;
@@ -848,8 +852,6 @@ class Mission
 		forecastWind=0.1;
 		forecastWaves=0.1;
 		forecastLightnings=0.1;
-		wavesForced=1;
-		windForced=1;
 		year=2020;
 		day=28;
 		hour=12;
@@ -883,7 +885,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=116;
+		items=117;
 		class Item0
 		{
 			dataType="Logic";
@@ -16980,7 +16982,7 @@ class Mission
 			{
 				init="call{if (isServer) then {" \n "this setFlagTexture ""\A3\Data_F\Flags\flag_white_co.paa"";" \n "this hideObjectGlobal true;" \n "this setPosATL (getPosATL flagPole);" \n "};}";
 				name="flagObj";
-				presenceCondition="activeMode isEqualTo ""ctf"" || activeMode isEqualTo ""neutralCTF""";
+				presenceCondition="phx_gameMode isEqualTo ""ctf"" || phx_gameMode isEqualTo ""neutralCTF""";
 			};
 			id=206;
 			type="rhs_Flag_chdkz";
@@ -17246,7 +17248,7 @@ class Mission
 			{
 				init="call{if (isServer) then {" \n "this attachTo [pole, [0.8,-0.385,2.4]];" \n "};}";
 				name="flagBanner";
-				presenceCondition="activeMode isEqualTo ""ctf"" || activeMode isEqualTo ""neutralCTF""";
+				presenceCondition="phx_gameMode isEqualTo ""ctf"" || phx_gameMode isEqualTo ""neutralCTF""";
 				disableSimulation=1;
 			};
 			id=212;
@@ -17506,7 +17508,7 @@ class Mission
 			class Attributes
 			{
 				name="flagPole";
-				presenceCondition="activeMode isEqualTo ""ctf"" || activeMode isEqualTo ""neutralCTF""";
+				presenceCondition="phx_gameMode isEqualTo ""ctf"" || phx_gameMode isEqualTo ""neutralCTF""";
 				disableSimulation=1;
 			};
 			id=213;
@@ -17762,7 +17764,7 @@ class Mission
 			};
 			name="sector";
 			areaSize[]={50,0,50};
-			presenceCondition="activeMode == ""neutralSector""";
+			presenceCondition="phx_gameMode == ""neutralSector""";
 			flags=1;
 			id=218;
 			type="ModuleSector_F";
@@ -18064,7 +18066,7 @@ class Mission
 				position[]={1225,5,200};
 			};
 			name="sectorSideOpf";
-			presenceCondition="activeMode == ""neutralSector""";
+			presenceCondition="phx_gameMode == ""neutralSector""";
 			id=219;
 			type="SideOPFOR_F";
 		};
@@ -18077,7 +18079,7 @@ class Mission
 				angles[]={0,0.41336378,0};
 			};
 			name="sectorSideBlu";
-			presenceCondition="activeMode == ""neutralSector""";
+			presenceCondition="phx_gameMode == ""neutralSector""";
 			id=220;
 			type="SideBLUFOR_F";
 		};
@@ -25657,7 +25659,7 @@ class Mission
 			};
 			name="sector1";
 			areaSize[]={50,-1,50};
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
 			flags=1;
 			id=304;
 			type="ModuleSector_F";
@@ -25716,7 +25718,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="if (isServer) then {    controllingSideSector1 = _this select 1;    if ((!isNil ""balls"") && (controllingSideSector1 == attackingSide)) then {      deleteVehicle (_this select 0);    };    balls = true;  };";
+							value="if (isServer) then {    controllingSideSector1 = _this select 1;    if ((!isNil ""balls"") && (controllingSideSector1 == phx_attackingSide)) then {      deleteVehicle (_this select 0);    };    balls = true;  };";
 						};
 					};
 				};
@@ -25960,7 +25962,7 @@ class Mission
 			};
 			name="sector2";
 			areaSize[]={50,-1,50};
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
 			flags=1;
 			id=305;
 			type="ModuleSector_F";
@@ -26019,7 +26021,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="if (isServer) then {    controllingSideSector2 = _this select 1;    if ((!isNil ""balls1"") && (controllingSideSector2 == attackingSide)) then {      deleteVehicle (_this select 0);    };    balls1 = true;  };";
+							value="if (isServer) then {    controllingSideSector2 = _this select 1;    if ((!isNil ""balls1"") && (controllingSideSector2 == phx_attackingSide)) then {      deleteVehicle (_this select 0);    };    balls1 = true;  };";
 						};
 					};
 				};
@@ -26263,7 +26265,7 @@ class Mission
 			};
 			name="sector3";
 			areaSize[]={50,-1,50};
-			presenceCondition="((activeMode == ""adSector"") && (objectivesNumber == 3))";
+			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
 			flags=1;
 			id=306;
 			type="ModuleSector_F";
@@ -26322,7 +26324,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="if (isServer) then {    controllingSideSector3 = _this select 1;    if ((!isNil ""balls2"") && (controllingSideSector3 == attackingSide)) then {      deleteVehicle (_this select 0);    };    balls2 = true;  };";
+							value="if (isServer) then {    controllingSideSector3 = _this select 1;    if ((!isNil ""balls2"") && (controllingSideSector3 == phx_attackingSide)) then {      deleteVehicle (_this select 0);    };    balls2 = true;  };";
 						};
 					};
 				};
@@ -26566,7 +26568,7 @@ class Mission
 				angles[]={0,0.41336378,0};
 			};
 			name="sector1SideBlu";
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
 			id=307;
 			type="SideBLUFOR_F";
 		};
@@ -26578,7 +26580,7 @@ class Mission
 				position[]={1225.6705,5,100.13498};
 			};
 			name="sector1SideOpf";
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
 			id=308;
 			type="SideOPFOR_F";
 		};
@@ -26590,7 +26592,7 @@ class Mission
 				position[]={1325.1625,5,100.13397};
 			};
 			name="sector2SideOpf";
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
 			id=309;
 			type="SideOPFOR_F";
 		};
@@ -26603,7 +26605,7 @@ class Mission
 				angles[]={0,0.41336378,0};
 			};
 			name="sector2SideBlu";
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
 			id=310;
 			type="SideBLUFOR_F";
 		};
@@ -26615,7 +26617,7 @@ class Mission
 				position[]={1425.3925,5,100.38098};
 			};
 			name="sector3SideOpf";
-			presenceCondition="((activeMode == ""adSector"") && (objectivesNumber == 3))";
+			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
 			id=311;
 			type="SideOPFOR_F";
 		};
@@ -26628,7 +26630,7 @@ class Mission
 				angles[]={0,0.41336378,0};
 			};
 			name="sector3SideBlu";
-			presenceCondition="((activeMode == ""adSector"") && (objectivesNumber == 3))";
+			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
 			id=312;
 			type="SideBLUFOR_F";
 		};
@@ -26639,7 +26641,7 @@ class Mission
 			{
 				position[]={1221.4535,5,79.051971};
 			};
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
 			id=313;
 			type="SideResistance_F";
 		};
@@ -26650,7 +26652,7 @@ class Mission
 			{
 				position[]={1320.8085,5,78.595978};
 			};
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
 			id=314;
 			type="SideResistance_F";
 		};
@@ -26661,7 +26663,7 @@ class Mission
 			{
 				position[]={1420.4554,5,79.601974};
 			};
-			presenceCondition="((activeMode == ""adSector"") && (objectivesNumber == 3))";
+			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
 			id=315;
 			type="SideResistance_F";
 		};
@@ -29935,7 +29937,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1200,6.3607702,400};
+				position[]={1200.1138,6.3607702,400.15088};
 			};
 			side="Empty";
 			flags=4;
@@ -29943,7 +29945,7 @@ class Mission
 			{
 				init="call{if (isServer) then { " \n "  this addEventHandler [""HandleDamage"", { " \n "    _unit = _this select 0; " \n "    _selection = _this select 1; " \n "    _damage = _this select 2; " \n " " \n "    if (_selection == ""?"") exitWith {}; " \n " " \n "    _curDamage = damage _unit; " \n "    if (_selection != """") then {_curDamage = _unit getHit _selection}; " \n "    _newDamage = _damage - _curDamage; " \n " " \n "    _damage - _newDamage * 0.8; " \n "  }]; " \n "};}";
 				name="ez_cache1";
-				presenceCondition="activeMode isEqualTo ""destroy""";
+				presenceCondition="phx_gameMode isEqualTo ""destroy""";
 			};
 			id=547;
 			type="Box_FIA_Ammo_F";
@@ -30180,7 +30182,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1225,6.3607702,400};
+				position[]={1225.1599,6.3607702,399.99219};
 			};
 			side="Empty";
 			flags=4;
@@ -30188,7 +30190,7 @@ class Mission
 			{
 				init="call{if (isServer) then { " \n "  this addEventHandler [""HandleDamage"", { " \n "    _unit = _this select 0; " \n "    _selection = _this select 1; " \n "    _damage = _this select 2; " \n " " \n "    if (_selection == ""?"") exitWith {}; " \n " " \n "    _curDamage = damage _unit; " \n "    if (_selection != """") then {_curDamage = _unit getHit _selection}; " \n "    _newDamage = _damage - _curDamage; " \n " " \n "    _damage - _newDamage * 0.8; " \n "  }]; " \n "};}";
 				name="ez_cache2";
-				presenceCondition="activeMode isEqualTo ""destroy""";
+				presenceCondition="phx_gameMode isEqualTo ""destroy""";
 			};
 			id=548;
 			type="Box_FIA_Ammo_F";
@@ -30457,7 +30459,7 @@ class Mission
 			{
 				position[]={1224.7814,5,175.40918};
 			};
-			presenceCondition="((activeMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
+			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
 			id=554;
 			type="SideResistance_F";
 		};
@@ -30476,14 +30478,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1200,5.0108399,500};
+				position[]={1200.0148,5.0108399,500.10791};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				name="term1";
-				presenceCondition="(activeMode isEqualTo ""uplink"" || activeMode isEqualTo ""rush"" || activeMode isEqualTo ""connection"")";
+				presenceCondition="(phx_gameMode isEqualTo ""uplink"" || phx_gameMode isEqualTo ""rush"" || phx_gameMode isEqualTo ""connection"")";
 			};
 			id=556;
 			type="Land_DataTerminal_01_F";
@@ -30720,14 +30722,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1225,5.0108399,500};
+				position[]={1226.429,5.0108399,499.97607};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				name="term2";
-				presenceCondition="(activeMode isEqualTo ""uplink"" || activeMode isEqualTo ""rush"" || activeMode isEqualTo ""connection"")";
+				presenceCondition="(phx_gameMode isEqualTo ""uplink"" || phx_gameMode isEqualTo ""rush"" || phx_gameMode isEqualTo ""connection"")";
 			};
 			id=558;
 			type="Land_DataTerminal_01_F";
@@ -30971,7 +30973,7 @@ class Mission
 			class Attributes
 			{
 				name="term3";
-				presenceCondition="(activeMode isEqualTo ""uplink"" || activeMode isEqualTo ""rush"" || activeMode isEqualTo ""connection"")";
+				presenceCondition="(phx_gameMode isEqualTo ""uplink"" || phx_gameMode isEqualTo ""rush"" || phx_gameMode isEqualTo ""connection"")";
 			};
 			id=559;
 			type="Land_DataTerminal_01_F";
@@ -31247,7 +31249,7 @@ class Mission
 				position[]={-9930.752,5,-5574.0708};
 			};
 			areaSize[]={50,-1,50};
-			presenceCondition="activeMode isEqualTo ""connection""";
+			presenceCondition="phx_gameMode isEqualTo ""connection""";
 			id=584;
 			type="ModuleSectorDummy_F";
 			class CustomAttributes
@@ -36140,6 +36142,13 @@ class Mission
 			};
 			description="Zone boundary trigger";
 			id=656;
+		};
+		class Item116
+		{
+			dataType="Layer";
+			name="Headquarters #O";
+			id=1225;
+			atlOffset=-5;
 		};
 	};
 	class Connections

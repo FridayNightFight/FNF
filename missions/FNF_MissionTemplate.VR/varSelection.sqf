@@ -1,16 +1,15 @@
-activeMode = ""; //Change this string to whatever game mode you want (listed below)
-objectives = [];
+phx_gameMode = ""; //Change this string to whatever game mode you want (listed below)
 
-defendingSide = east; //east/west/independent
-attackingSide = west; //east/west/independent
+phx_defendingSide = east; //east/west/independent
+phx_attackingSide = west; //east/west/independent
 //Not used if mode is neutral
 
-allowFortify = true; //Allow the defending side to use ACEX Fortify
-fortifyPoints = 100; //Starting currency for fortify side
-fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
+phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
+phx_fortifyPoints = 150; //Starting currency for fortify side
+phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 //Set side you want to be able to change their starting zone, if any - uses the startSelection markers alrady placed in the editor
-startSelectionSide = false; //east/west/independent - false to disable
+phx_startSelectionSide = false; //east/west/independent - false to disable
 
 /*
 =========================Modes=========================

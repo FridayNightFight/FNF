@@ -4,5 +4,5 @@ if (isServer) then {
 
 if (hasInterface) then {
     // Make sure init isn't called until player is ready
-    [{(!isNull player) && serverVarsSetup}, {call phx_fnc_init_client;}, []] call CBA_fnc_waitUntilAndExecute;
+    [{(!isNull player) && (!isNil "phx_serverInitFinished")}, {call phx_fnc_init_client;}, []] call CBA_fnc_waitUntilAndExecute;
 };

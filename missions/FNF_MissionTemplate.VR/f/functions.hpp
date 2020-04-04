@@ -5,8 +5,9 @@ class init {
     class init_setupGame{};
     class init_shared{};
     class init_postBriefing{};
-    class init_vehicleLocks_server{};
+    class init_client_vehicleLocks{};
     class init_vars{preInit = 1;};
+    class init_client_vars{preInit = 1;};
     class init_setIndforFriends{};
     class init_removeClientHandlers{};
 };

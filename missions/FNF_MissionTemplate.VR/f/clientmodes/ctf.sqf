@@ -4,7 +4,7 @@ flagPoleAction = {
       "Take Flag",                                                                       // Title of the action
       "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_loadDevice_ca",                      // Idle icon shown on screen
       "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_loadDevice_ca",                      // Progress icon shown on screen
-      "(_this distance _target < 5) && (side player isEqualTo attackingSide)",                                                        // Condition for the action to be shown
+      "(_this distance _target < 5) && (playerSide isEqualTo phx_attackingSide)",                                                        // Condition for the action to be shown
       "_caller distance _target < 5",                                                      // Condition for the action to progress
       {},                       // Code executed when action starts
       {},                                                                                  // Code executed on every progress tick
@@ -83,9 +83,9 @@ grabFlag = {
   };
   hasFlag = true;
   publicVariableServer "flagPlayerID";
-  [side player,player] remoteExec ["flagControlled",2,false];
+  [playerSide,player] remoteExec ["flagControlled",2,false];
   [] spawn flagLoop;
-  dropAction = player addAction ["Drop Flag", {[side player] remoteExec ["dropFlagServer",2,false]; call dropFlag},nil,1.5,false,true,"","player == _target"];
+  dropAction = player addAction ["Drop Flag", {[playerSide] remoteExec ["dropFlagServer",2,false]; call dropFlag},nil,1.5,false,true,"","player == _target"];
 };
 
 dropFlag = {

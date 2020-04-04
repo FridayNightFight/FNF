@@ -31,7 +31,7 @@ if (_key == 57) then {
   _cam cameraEffect ["terminate","back"];
   camDestroy _cam;
 
-  [[_class,[_pos select 0, _pos select 1, 0],_dir,side player,assetSelected],{
+  [[_class,[_pos select 0, _pos select 1, 0],_dir,playerSide,assetSelected],{
     params ["_class","_pos","_dir","_side","_assetSelected"];
 
     _veh = createVehicle [_class, _pos];

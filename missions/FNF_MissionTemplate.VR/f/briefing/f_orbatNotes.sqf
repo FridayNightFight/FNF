@@ -100,7 +100,7 @@ _generateORBAT = {
 
                 // Get group's radio frequency
                 private _radioFreqs = nil;
-                switch (side player) do {
+                switch (playerSide) do {
                   case west: {
                     _radioFreqs = f_radios_settings_acre2_sr_groups_blufor;
                   };

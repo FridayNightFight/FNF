@@ -4,7 +4,7 @@ _bluforCustomLoadouts = false;
 _opforCustomLoadouts = false;
 _indforCustomLoadouts = false;
 
-switch (side player) do {
+switch (playerSide) do {
   case east: {
     if (_opforCustomLoadouts) then {
       phx_loadoutAssigned = true;

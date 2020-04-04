@@ -1,6 +1,6 @@
-if (side player == east && count opforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
-if (side player == west && count bluforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
-if (side player == independent && count indforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
+if (playerSide == east && count opforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
+if (playerSide == west && count bluforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
+if (playerSide == independent && count indforAssetList == 0) exitwith {hintSilent "Asset selector not enabled"};
 
 _displayToClose = findDisplay 5000; _displayToClose closeDisplay 1;
 
@@ -16,7 +16,7 @@ _display = findDisplay 6000;
 _assetsControl = _display displayCtrl 6001;
 _spawnedAssetsControl = _display displayCtrl 6002;
 
-switch (side player) do {
+switch (playerSide) do {
   case west: {
     {
       _assetsControl lbAdd getText (configFile >> "cfgVehicles" >> (_x select 0) >> "displayName") + " - " + str(_x select 1) + " points";
@@ -51,7 +51,7 @@ switch (side player) do {
 _assetsSelect =  _assetsControl ctrlAddEventHandler  ["LBSelChanged",{
   params ["_control", "_selectedIndex"];
 
-  switch (side player) do {
+  switch (playerSide) do {
     case east: {
       assetSelected = (opforAssetList select _selectedIndex);
     };
@@ -67,7 +67,7 @@ _assetsSelect =  _assetsControl ctrlAddEventHandler  ["LBSelChanged",{
 _assetRemove =  _spawnedAssetsControl ctrlAddEventHandler  ["LBSelChanged",{
   params ["_control", "_selectedIndex"];
 
-  switch (side player) do {
+  switch (playerSide) do {
     case east: {
       removeAssetSelected = (currentAssetsOpf select _selectedIndex);
     };
@@ -80,7 +80,7 @@ _assetRemove =  _spawnedAssetsControl ctrlAddEventHandler  ["LBSelChanged",{
   };
 }];
 
-switch (side player) do {
+switch (playerSide) do {
   case east: {
     ctrlSetText [6100, format["Points Remaining: %1", opforPointPool]];
   };

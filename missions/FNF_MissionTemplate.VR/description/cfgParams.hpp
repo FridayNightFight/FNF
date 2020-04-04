@@ -235,7 +235,7 @@ class Params {
       title = "Vehicle Locking";
       values[] = {-1,0,1};
       texts[] = {"None","Lock to side","Lock to side and crewman"};
-      default = -1;
+      default = 1;
     };
     class phx_indforFriends {
       title = "Side INDFOR is friendly to:";
@@ -285,7 +285,7 @@ class Params {
         title = "Safe Start (Minutes)";
         values[] = {0,1,2,3,4,5,6,7,8,9,10,12,15,20};
         texts[] = {"Off","1","2","3","4","5","6","7","8","9","10","12","15","20"};
-        default = 10;
+        default = 15;
         code = "f_param_mission_timer = %1";
     };
   //Mission Timer

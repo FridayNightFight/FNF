@@ -68,13 +68,17 @@ if ((typeOf player == "B_officer_F") || (typeOf player == "O_officer_F") || (typ
 };
 
 //Fortify
-if (playerSide == defendingSide && allowFortify) then {
-  if (pRole == 7) then {
-    execVM "f\init\fortify_client.sqf";
-  };
+if ((playerSide == phx_defendingSide) && phx_allowFortify && ((typeOf player == "B_soldier_exp_F") || (typeOf player == "O_soldier_exp_F") || (typeOf player == "I_Soldier_exp_F"))) then {
+  execVM "f\init\fortify_client.sqf";
+};
+
+//Vehicle locking
+_locking = "phx_vehicleLocks" call BIS_fnc_getParamValue;
+if (_locking > -1) then {
+  _locking call phx_fnc_init_client_vehicleLocks;
 };
 //====================================================================================================
 phx_clientInitFinished = true;
 
 // Call init function for scripts that are shared between clients and server
-call phX_fnc_init_shared;
+call phx_fnc_init_shared;

@@ -1,4 +1,4 @@
-switch (side player) do {
+switch (playerSide) do {
   case west: {
     _explosives = "phx_loadout_BLUFORCharges" call BIS_fnc_getParamValue;
     if !(_explosives isEqualTo -1) then {

@@ -3,8 +3,8 @@ if (!isServer) exitwith {};
 #include "..\..\varSelection.sqf"
 #include "defaultAssets.sqf"
 
-publicVariable "defendingSide";
-publicVariable "attackingSide";
+publicVariable "phx_defendingSide";
+publicVariable "phx_attackingSide";
 
 currentAssetsBlu = [];
 currentAssetsOpf = [];
@@ -22,20 +22,16 @@ publicVariable "bluforPointPool";
 publicVariable "opforPointPool";
 publicVariable "indforPointPool";
 
-publicVariable "startSelectionSide";
+publicVariable "phx_startSelectionSide";
 
-publicVariable "allowFortify";
+publicVariable "phx_allowFortify";
 
-bluVics = [];
-opfVics = [];
-indVics = [];
-
-if (activeMode isEqualTo "adSector") then {
+if (phx_gameMode isEqualTo "adSector") then {
     objectivesNumber = (objectives select 0);
 };
 
 phx_safeStartEnabled = true;
 publicVariable "phx_safeStartEnabled";
 
-serverVarsSetup = true;
-publicVariable "serverVarsSetup";
+phx_serverVarsSetup = true;
+publicVariable "phx_serverVarsSetup";

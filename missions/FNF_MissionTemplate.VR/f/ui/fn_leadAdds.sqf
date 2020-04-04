@@ -14,7 +14,7 @@ _actionsListboxControl lbAdd "Teleport all group leaders to you";
 _actionsListboxControl lbAdd "Teleport all players to you for briefing";
 
 unitsOnSide = [];
-{if ((side _x) == side player) then {unitsOnSide pushBack _x}} forEach allUnits;
+{if ((side _x) == playerSide) then {unitsOnSide pushBack _x}} forEach allUnits;
 unitsOnSide deleteAt (unitsOnSide find player);
 
 _unitNames = [];

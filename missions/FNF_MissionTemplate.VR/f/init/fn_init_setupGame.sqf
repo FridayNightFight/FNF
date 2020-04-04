@@ -1,5 +1,5 @@
-gameEnd = false;
-publicVariable "gameEnd";
+phx_gameEnd = false;
+publicVariable "phx_gameEnd";
 
 _zoneRestriction = "phx_zoneRestriction" call BIS_fnc_getParamValue;
 
@@ -14,20 +14,20 @@ _defaultStartMarkers = ["startSelectionMarker_1","startSelectionMarker_2","start
   [_x, 0] remoteExec ["setMarkerAlphaLocal", 0, true];
 } forEach _defaultStartMarkers;
 
-if (typeName startSelectionSide == "BOOL") then {
+if (typeName phx_startSelectionSide == "BOOL") then {
   {
     [_x] remoteExec ["deleteMarkerLocal",0,true];
   } forEach _defaultStartMarkers;
 } else {
-  if (typeName startSelectionSide == "SIDE") then {
+  if (typeName phx_startSelectionSide == "SIDE") then {
     {
-      [_x, 1] remoteExec ["setMarkerAlphaLocal", startSelectionSide, true];
+      [_x, 1] remoteExec ["setMarkerAlphaLocal", phx_startSelectionSide, true];
     } forEach _defaultStartMarkers;
   };
 };
 
 //Create mode
-switch (activeMode) do {
+switch (phx_gameMode) do {
   case "uplink": {
     execVM "f\modes\uplink.sqf";
   };
@@ -60,18 +60,18 @@ switch (activeMode) do {
   };
 };
 
-if !(activeMode isEqualTo "ctf" || activeMode isEqualTo "neutralCTF") then {
+if !(phx_gameMode isEqualTo "ctf" || phx_gameMode isEqualTo "neutralCTF") then {
   deleteVehicle attackFlagTrig;
   ["flagMark"] remoteExec ["deleteMarkerLocal",0,true];
 };
 
-if !(activeMode isEqualTo "neutralCTF") then {
+if !(phx_gameMode isEqualTo "neutralCTF") then {
   deleteVehicle eastFlagTrig;
   deleteVehicle westFlagTrig;
   deleteVehicle indFlagTrig;
 };
 
-if !(activeMode isEqualTo "destroy") then {
+if !(phx_gameMode isEqualTo "destroy") then {
   ["ez_cache1Mark"] remoteExec ["deleteMarkerLocal",0,true];
   ["ez_cache2Mark"] remoteExec ["deleteMarkerLocal",0,true];
 };

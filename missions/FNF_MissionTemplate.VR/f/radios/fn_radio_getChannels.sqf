@@ -1,5 +1,5 @@
 //Figure out which side the player is on.
-_side = side player;
+_side = playerSide;
 switch (_side) do {
     case east: { phx_playerBaseChannel = phx_opforBaseChannel; };
     case west: { phx_playerBaseChannel = phx_bluforBaseChannel; };

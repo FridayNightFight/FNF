@@ -1,9 +1,9 @@
 //Make sure game is set correctly
-if (isNil "defendingSide") exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to choose a defending side."};
-if (isNil "attackingSide") exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to choose an attacking side."};
-if (defendingSide isEqualTo attackingSide) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You cannot set the same side to attack and defend."};
-if (!(defendingSide isEqualTo west) && !(defendingSide isEqualTo east) && !(defendingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The defending side is not a valid side. east/west/independent"};
-if (!(attackingSide isEqualTo west) && !(attackingSide isEqualTo east) && !(attackingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The attacking side is not a valid side. east/west/independent"};
+if (isNil "phx_defendingSide") exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to choose a defending side."};
+if (isNil "phx_attackingSide") exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to choose an attacking side."};
+if (phx_defendingSide isEqualTo phx_attackingSide) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You cannot set the same side to attack and defend."};
+if (!(phx_defendingSide isEqualTo west) && !(phx_defendingSide isEqualTo east) && !(phx_defendingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The defending side is not a valid side. east/west/independent"};
+if (!(phx_attackingSide isEqualTo west) && !(phx_attackingSide isEqualTo east) && !(phx_attackingSide isEqualTo independent)) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! The attacking side is not a valid side. east/west/independent"};
 if (count objectives < 3) exitWith {systemChat "You have not configured 'varSelection.sqf' properly! You need to se the hack time for each objective"};
 
 //Init vars
@@ -25,8 +25,8 @@ _obj1Mark setMarkerText "Terminal 1 - Active";
 _obj2Mark setMarkerText "Terminal 2 - Inactive";
 _obj3Mark setMarkerText "Terminal 3 - Inactive";
 
-[defendingSide,"defendTask1",["","Defend Terminal 1",_obj1Mark],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-[attackingSide,"attackTask1",["","Hack Terminal 1",_obj1Mark],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+[phx_defendingSide,"defendTask1",["","Defend Terminal 1",_obj1Mark],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+[phx_attackingSide,"attackTask1",["","Hack Terminal 1",_obj1Mark],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 
 //Hack vars
 term1Time = objectives select 0;
@@ -48,7 +48,7 @@ publicVariable "term1Hacking";
   "Start Hack",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && (side player == attackingSide) && !term1Hacking",
+  "(_this distance _target < 3) && (playerSide == phx_attackingSide) && !term1Hacking",
   "_caller distance _target < 3",
   {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
   {},
@@ -73,7 +73,7 @@ publicVariable "term1Hacking";
   "Stop Hack",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && (side player == defendingSide) && term1Hacking",
+  "(_this distance _target < 3) && (playerSide == phx_defendingSide) && term1Hacking",
   "_caller distance _target < 3",
   {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
   {},
@@ -101,7 +101,7 @@ publicVariable "term2Hacking";
   "Start Hack",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && (side player == attackingSide) && !term2Hacking && term1Hacked",
+  "(_this distance _target < 3) && (playerSide == phx_attackingSide) && !term2Hacking && term1Hacked",
   "_caller distance _target < 3",
   {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
   {},
@@ -126,7 +126,7 @@ publicVariable "term2Hacking";
   "Stop Hack",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && (side player == defendingSide) && term2Hacking",
+  "(_this distance _target < 3) && (playerSide == phx_defendingSide) && term2Hacking",
   "_caller distance _target < 3",
   {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
   {},
@@ -154,7 +154,7 @@ publicVariable "term3Hacking";
   "Start Hack",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && (side player == attackingSide) && !term3Hacking && term2Hacked",
+  "(_this distance _target < 3) && (playerSide == phx_attackingSide) && !term3Hacking && term2Hacked",
   "_caller distance _target < 3",
   {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
   {},
@@ -179,7 +179,7 @@ publicVariable "term3Hacking";
   "Stop Hack",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && (side player == defendingSide) && term3Hacking",
+  "(_this distance _target < 3) && (playerSide == phx_defendingSide) && term3Hacking",
   "_caller distance _target < 3",
   {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
   {},
@@ -306,34 +306,34 @@ fn_term3Time = {
 
 waitUntil {term1Hacked};
 
-[defendingSide,"defendTask2",["","Defend Terminal 2",_obj2Mark],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-[attackingSide,"attackTask2",["","Hack Terminal 2",_obj2Mark],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+[phx_defendingSide,"defendTask2",["","Defend Terminal 2",_obj2Mark],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+[phx_attackingSide,"attackTask2",["","Hack Terminal 2",_obj2Mark],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 _obj2Mark setMarkerText "Terminal 2 - Active";
 
 [] spawn fn_term2Time;
 
 waitUntil {term2Hacked};
 
-[defendingSide,"defendTask3",["","Defend Terminal 3",_obj3Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
-[attackingSide,"attackTask3",["","Hack Terminal 3",_obj3Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+[phx_defendingSide,"defendTask3",["","Defend Terminal 3",_obj3Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
+[phx_attackingSide,"attackTask3",["","Hack Terminal 3",_obj3Mark],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 _obj3Mark setMarkerText "Terminal 3 - Active";
 
 [] spawn fn_term3Time;
 
-while {!gameEnd} do {
+while {!phx_gameEnd} do {
   if (term3Hacked) then {
     sleep 3;
 
     [format ["All terminals have been hacked.\n%1 wins!",
-    switch (attackingSide) do {
+    switch (phx_attackingSide) do {
       case east: {"OPFOR"};
       case west: {"BLUFOR"};
       case independent: {"INDFOR"};
     }]] remoteExec ["hint"];
 
     //Send var to other scripts and clients to signal that the game has ended
-    gameEnd = true;
-    publicVariable "gameEnd";
+    phx_gameEnd = true;
+    publicVariable "phx_gameEnd";
 
     sleep 20;
 

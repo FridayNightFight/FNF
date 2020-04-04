@@ -36,7 +36,7 @@ _obj3Mark = createMarker ["term3Mark",getPos term3];
   "Start Upload",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && !(side player == term1HackingSide)",
+  "(_this distance _target < 3) && !(playerSide == term1HackingSide)",
   "_caller distance _target < 3",
   {["Terminal", "Configuring Upload"] call BIS_fnc_showSubtitle},
   {},
@@ -45,9 +45,9 @@ _obj3Mark = createMarker ["term3Mark",getPos term3];
     [term1,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
     term1Hacking = true;
     publicVariable "term1Hacking";
-    term1HackingSide = side player;
+    term1HackingSide = playerSide;
     publicVariable "term1HackingSide";
-    switch (side player) do {
+    switch (playerSide) do {
       case east: {
         "term1Mark" setMarkerType "Faction_OPFOR_EP1";
         "term1Mark" setMarkerText "Uploading - OPFOR";
@@ -77,7 +77,7 @@ _obj3Mark = createMarker ["term3Mark",getPos term3];
   "Start Upload",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && !(side player == term2HackingSide)",
+  "(_this distance _target < 3) && !(playerSide == term2HackingSide)",
   "_caller distance _target < 3",
   {["Terminal", "Configuring Upload"] call BIS_fnc_showSubtitle},
   {},
@@ -86,9 +86,9 @@ _obj3Mark = createMarker ["term3Mark",getPos term3];
     [term2,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
     term2Hacking = true;
     publicVariable "term2Hacking";
-    term2HackingSide = side player;
+    term2HackingSide = playerSide;
     publicVariable "term2HackingSide";
-    switch (side player) do {
+    switch (playerSide) do {
       case east: {
         "term2Mark" setMarkerType "Faction_OPFOR_EP1";
         "term2Mark" setMarkerText "Uploading - OPFOR";
@@ -118,7 +118,7 @@ _obj3Mark = createMarker ["term3Mark",getPos term3];
   "Start Upload",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
   "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-  "(_this distance _target < 3) && !(side player == term3HackingSide)",
+  "(_this distance _target < 3) && !(playerSide == term3HackingSide)",
   "_caller distance _target < 3",
   {["Terminal", "Configuring Upload"] call BIS_fnc_showSubtitle},
   {},
@@ -127,9 +127,9 @@ _obj3Mark = createMarker ["term3Mark",getPos term3];
     [term3,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
     term3Hacking = true;
     publicVariable "term3Hacking";
-    term3HackingSide = side player;
+    term3HackingSide = playerSide;
     publicVariable "term3HackingSide";
-    switch (side player) do {
+    switch (playerSide) do {
       case east: {
         "term3Mark" setMarkerType "Faction_OPFOR_EP1";
         "term3Mark" setMarkerText "Uploading - OPFOR";
@@ -163,7 +163,7 @@ removeActions = {
 };
 
 //add points every pointAddTime and check for win condition
-while {!gameEnd} do {
+while {!phx_gameEnd} do {
   if (term1Hacking) then {
     [term1HackingSide, 1] call BIS_fnc_respawnTickets;
   };
@@ -175,21 +175,21 @@ while {!gameEnd} do {
   };
 
   if ([west] call BIS_fnc_respawnTickets >= 100) then {
-    gameEnd = true;
+    phx_gameEnd = true;
     call removeActions;
     ["BLUFOR has reached 100 points.\nBLUFOR wins!"] remoteExec ["hint"];
     sleep 15;
     "end1" call BIS_fnc_endMissionServer;
   };
   if ([east] call BIS_fnc_respawnTickets >= 100) then {
-    gameEnd = true;
+    phx_gameEnd = true;
     call removeActions;
     ["OPFOR has reached 100 points.\nOPFOR wins!"] remoteExec ["hint"];
     sleep 15;
     "end1" call BIS_fnc_endMissionServer;
   };
   if ([independent] call BIS_fnc_respawnTickets >= 100) then {
-    gameEnd = true;
+    phx_gameEnd = true;
     call removeActions;
     ["INDFOR has reached 100 points.\nINDFOR wins!"] remoteExec ["hint"];
     sleep 15;

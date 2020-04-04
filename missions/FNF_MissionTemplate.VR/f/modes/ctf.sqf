@@ -12,17 +12,17 @@ captureTime = 300;
 "flagMark" setMarkerPos (getPos flagObj);
 
 //create tasks
-[defendingSide,"defendTask",["","Defend the flag","flagMark"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
-[attackingSide,"attackTask",["","Capture the flag","flagMark"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
+[phx_defendingSide,"defendTask",["","Defend the flag","flagMark"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
+[phx_attackingSide,"attackTask",["","Capture the flag","flagMark"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
 
 //create capture triggers
 attackFlagTrig setTriggerActivation ["NONE", "PRESENT", true];
-attackFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !gameEnd", "
+attackFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !phx_gameEnd", "
 ['Attackers have the flag in their capture zone!'] remoteExec ['hint'];
 flagInCapZone = true;
 [] spawn flagInZone;
 ","
-if (!gameEnd) then {
+if (!phx_gameEnd) then {
   flagInCapZone = false;
   ['The flag has left the capture zone!'] remoteExec ['hint'];
   [] spawn {sleep 5; [''] remoteExec ['hintSilent']};
@@ -47,7 +47,7 @@ onPlayerDisconnected {
 };
 
 //Set flag pole flag to color of defending side
-switch (defendingSide) do {
+switch (phx_defendingSide) do {
   case east: {
     flagBanner setObjectTextureGlobal [0,"\A3\Data_F\Flags\flag_red_co.paa"];
   };
@@ -63,7 +63,7 @@ switch (defendingSide) do {
 returnTrigger = createTrigger ["EmptyDetector", (getPos flagPole), false];
 returnTrigger setTriggerActivation ["NONE", "PRESENT", true];
 returnTrigger setTriggerArea [5, 5, 0, false];
-returnTrigger setTriggerStatements  ["(flagObj inArea thisTrigger) && (flagControllingSide isEqualTo defendingSide) && !gameEnd", "
+returnTrigger setTriggerStatements  ["(flagObj inArea thisTrigger) && (flagControllingSide isEqualTo phx_defendingSide) && !phx_gameEnd", "
 call flagReturn;
 ",""];
 
@@ -83,7 +83,7 @@ if (_attackCapArea select 3) then {
   "attackCapMarker" setMarkerShape "ELLIPSE";
 };
 
-switch (attackingSide) do {
+switch (phx_attackingSide) do {
   case east: {
     "attackCapMarker" setMarkerColor "ColorRed";
   };
@@ -98,7 +98,7 @@ switch (attackingSide) do {
 "attackCapMarker" setMarkerDir (_attackCapArea select 2);
 
 capMarkerVisibility = {
-  if (side player == defendingSide) then {
+  if (playerSide == phx_defendingSide) then {
     "attackCapMarker" setMarkerAlphaLocal 0;
     "capMarkerText" setMarkerAlphaLocal 0;
   } else {
@@ -148,7 +148,7 @@ flagReturn = {
 
 //Update flag marker position every 10 seconds
 [] spawn {
-  while {!gameEnd} do {
+  while {!phx_gameEnd} do {
     "flagMark" setMarkerPos (getPos flagObj);
     sleep flagMarkerUpdateTime;
   };
@@ -311,9 +311,9 @@ flagInZone = {
 
   _captureTimeLeft = _captureTimeLeft - 3;
 
-  while {flagInCapZone && !gameEnd} do {
+  while {flagInCapZone && !phx_gameEnd} do {
     if (_captureTimeLeft <= 0) then {
-      gameEnd = true;
+      phx_gameEnd = true;
       ["Attackers have successfully held the flag.\nAttackers wins!"] remoteExec ["hint"];
       sleep 15;
       "end1" call bis_fnc_endMissionServer;

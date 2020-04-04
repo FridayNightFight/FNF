@@ -35,13 +35,13 @@ if (_eastPart) then {
   _sidesPart pushBack east;
 
   eastFlagTrig setTriggerActivation ["NONE", "PRESENT", true];
-  eastFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !gameEnd", "
+  eastFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !phx_gameEnd", "
   ['OPFOR has the flag in their capture zone!'] remoteExec ['hint'];
   flagInCapZone = true;
   sideCapturing = east;
   [east] spawn flagInZone;
   ","
-  if (!gameEnd) then {
+  if (!phx_gameEnd) then {
     flagInCapZone = false;
     sideCapturing = nil;
     ['The flag has left the OPFOR capture zone!'] remoteExec ['hint'];
@@ -61,13 +61,13 @@ if (_westPart) then {
   _sidesPart pushBack west;
 
   westFlagTrig setTriggerActivation ["NONE", "PRESENT", true];
-  westFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !gameEnd", "
+  westFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !phx_gameEnd", "
   ['BLUFOR has the flag in their capture zone!'] remoteExec ['hint'];
   flagInCapZone = true;
   sideCapturing = west;
   [west] spawn flagInZone;
   ","
-  if (!gameEnd) then {
+  if (!phx_gameEnd) then {
     flagInCapZone = false;
     sideCapturing = nil;
     ['The flag has left the BLUFOR capture zone!'] remoteExec ['hint'];
@@ -87,13 +87,13 @@ if (_indPart) then {
   _sidesPart pushBack independent;
 
   indFlagTrig setTriggerActivation ["NONE", "PRESENT", true];
-  indFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !gameEnd", "
+  indFlagTrig setTriggerStatements ["flagObj inArea thisTrigger && !phx_gameEnd", "
   ['INDFOR has the flag in their capture zone!'] remoteExec ['hint'];
   flagInCapZone = true;
   sideCapturing = independent;
   [independent] spawn flagInZone;
   ","
-  if (!gameEnd) then {
+  if (!phx_gameEnd) then {
     flagInCapZone = false;
     sideCapturing = nil;
     ['The flag has left the INDFOR capture zone!'] remoteExec ['hint'];
@@ -191,7 +191,7 @@ onPlayerDisconnected {
 } forEach _sidesPart;
 
 capMarkerVisibility = {
-  switch (side player) do {
+  switch (playerSide) do {
     case east: {
       "eastCapMarker" setMarkerAlphaLocal 1;
       "eastCapMarkerText" setMarkerAlphaLocal 1;
@@ -211,7 +211,7 @@ remoteExec ["capMarkerVisibility",0,true];
 
 //Update flag marker position every 10 seconds
 [] spawn {
-  while {!gameEnd} do {
+  while {!phx_gameEnd} do {
     "flagMark" setMarkerPos (getPos flagObj);
     sleep flagMarkerUpdateTime;
   };
@@ -434,9 +434,9 @@ flagInZone = {
 
   _captureTimeLeft = _captureTimeLeft - 3;
 
-  while {flagInCapZone && !gameEnd} do {
+  while {flagInCapZone && !phx_gameEnd} do {
     if (_captureTimeLeft <= 0) then {
-      gameEnd = true;
+      phx_gameEnd = true;
       [format["%1 has successfully held the flag.\n%1 wins!", _capTimeSideText]] remoteExec ["hint"];
       sleep 15;
       "end1" call bis_fnc_endMissionServer;

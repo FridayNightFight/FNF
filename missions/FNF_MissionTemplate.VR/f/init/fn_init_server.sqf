@@ -11,11 +11,11 @@ phx_alertEnd = 0; // Time elapsed warning
 phx_alertSoon = 0; // 15 minute warning
 phx_alertSoon1 = 0; //10 minute warning
 phx_alertSoon2 = 0; //5 minute warning
-gameEnd = false;
+phx_gameEnd = false;
 call phx_fnc_init_vars;
 
-waitUntil {!isNil "serverVarsSetup"};
-waitUntil {serverVarsSetup};
+waitUntil {!isNil "phx_serverVarsSetup"};
+waitUntil {phx_serverVarsSetup};
 
 //Set up the game
 call phx_fnc_init_setupGame;
@@ -30,7 +30,7 @@ phx_end_checkTime = [phx_fnc_end_checkTime, 10, []] call CBA_fnc_addPerFrameHand
 [] spawn phx_fnc_end_checkAlive;
 
 //Fortify Sets
-if (allowFortify) then {
+if (phx_allowFortify) then {
   execVM "f\init\fortify_server.sqf";
 };
 
@@ -48,11 +48,6 @@ if (f_param_radios isEqualTo 1) then {
 } forEach ["respawn", "respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 */
 
-//Vehicle locking
-if ("phx_vehicleLocks" call BIS_fnc_getParamValue > 0) then {
-  call phx_fnc_init_vehicleLocks_server;
-};
-
 //Set all vehicles invincible during safe start
 [] spawn {
   waitUntil {!isNil "phx_safeStartEnabled"};
@@ -64,6 +59,7 @@ if ("phx_vehicleLocks" call BIS_fnc_getParamValue > 0) then {
 };
 //====================================================================================================
 phx_serverInitFinished = true;
+publicVariable "phx_serverInitFinished";
 
 // Call mixed scripts, but only if server is not a player
 if !(hasInterface) then {

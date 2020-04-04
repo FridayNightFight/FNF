@@ -1,6 +1,6 @@
 _sidePoints = 0;
 
-switch (side player) do {
+switch (playerSide) do {
   case east: {_sidePoints = opforPointPool;};
   case west: {_sidePoints = bluforPointPool;};
   case independent: {_sidePoints = indforPointPool;};
@@ -49,7 +49,7 @@ _camHeight = 25;
     _cam setPos [_camPos select 0, _camPos select 1, _camHeight];
   };
 
-  switch (side player) do {
+  switch (playerSide) do {
     case east: {
       if (_vehPos inArea "opforSafeMarker") then {
         vehSpawnLastGoodPos = _vehPos;
@@ -83,7 +83,7 @@ vehKeyEH = findDisplay 46 displayAddEventHandler ["KeyDown", {
   [_this, veh, cam] call phx_fnc_createKeyPressed;
 }];
 
-switch (side player) do {
+switch (playerSide) do {
   case east: {
     sideSafeMarker = "opforSafeMarker";
   };

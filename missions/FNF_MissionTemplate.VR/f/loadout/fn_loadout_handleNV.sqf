@@ -13,7 +13,7 @@ if !(_nightvision isEqualTo -1) then {
     };
     case 1: {
       player linkItem "ACE_NVG_Gen4";
-      switch (side player) do {
+      switch (playerSide) do {
         case east: {
           phx_loadout_nvgAttachment = "rhs_acc_perst1ik";
           if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
@@ -29,7 +29,7 @@ if !(_nightvision isEqualTo -1) then {
       };
     };
     case 2: {
-      if (side player == east) then {
+      if (playerSide == east) then {
         player linkItem "ACE_NVG_Gen4";
         phx_loadout_nvgAttachment = "rhs_acc_perst1ik";
         if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
@@ -38,13 +38,13 @@ if !(_nightvision isEqualTo -1) then {
       };
     };
     case 3: {
-      if (side player == west) then {
+      if (playerSide == west) then {
         player linkItem "ACE_NVG_Gen4";
         phx_loadout_nvgAttachment = "ACE_acc_pointer_green";
       };
     };
     case 4: {
-      if (side player == independent) then {
+      if (playerSide == independent) then {
         player linkItem "ACE_NVG_Gen4";
         phx_loadout_nvgAttachment =  "acc_pointer_IR";
       };

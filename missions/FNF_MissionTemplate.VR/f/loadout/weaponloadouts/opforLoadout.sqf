@@ -17,8 +17,7 @@ giveOPFORLoadout = {
     allowedWeapons = ["rhs_weap_ak74m_gp25_npz","rhs_weap_ak74mr_gp25"];
   } else {
     phx_loadout_rifle_weapon = "rhs_weap_ak74m";
-    allowedWeapons = ["rhs_weap_ak74m_npz","rhs_weap_ak74m_camo","rhs_weap_ak74m_desert","rhs_weap_ak74m_zenitco01","rhs_weap_ak74m_zenitco01_b33","rhs_weap_ak105","rhs_weap_ak105_npz",
-    "rhs_weap_ak105_zenitco01","rhs_weap_ak105_zenitco01_b33"];
+    allowedWeapons = ["rhs_weap_ak74m_npz","rhs_weap_ak74m_camo","rhs_weap_ak74m_desert","rhs_weap_ak74m_zenitco01","rhs_weap_ak74m_zenitco01_b33"];
   };
   if (pRole == ROLE_AR) then {
     phx_loadout_automaticrifle_weapon = "rhs_weap_pkm";

@@ -1,6 +1,6 @@
-author = "Your_Name";
-onLoadName = "Mission_name";
-OnLoadMission = "Short_description";
+author = "AUTHOR";
+onLoadName = "MISSION_NAME";
+OnLoadMission = "SHORT_DESCRIPTION";
 
 disableChannels[] = {0};
 
