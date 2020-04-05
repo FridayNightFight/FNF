@@ -14,12 +14,6 @@ phx_alertSoon2 = 0; //5 minute warning
 phx_gameEnd = false;
 call phx_fnc_init_vars;
 
-waitUntil {!isNil "phx_serverVarsSetup"};
-waitUntil {phx_serverVarsSetup};
-
-//Set up the game
-call phx_fnc_init_setupGame;
-
 //Set INDFOR friends
 call phx_fnc_init_setIndforFriends;
 
@@ -57,6 +51,9 @@ if (f_param_radios isEqualTo 1) then {
   };
   {_x allowDamage true;} forEach vehicles;
 };
+
+//Setup the game
+call phx_fnc_init_setupGame;
 //====================================================================================================
 phx_serverInitFinished = true;
 publicVariable "phx_serverInitFinished";
