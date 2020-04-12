@@ -299,6 +299,6 @@ class Params {
       title = "Zone Restriction:";
       values[] = {0,1};
       texts[] = {"Off (default)","On"};
-      default = 0;
+      default = 1;
     };
 };

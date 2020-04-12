@@ -84,9 +84,9 @@ _weaponListboxSelect =  _weaponListboxControl ctrlAddEventHandler  ["LBSelChange
 
   weaponSelected = _selectedIndex;
   _weapon = currentWeapon ACE_player;
-  if !(_weapon in safetyWeapons) then {
+  if !(_weapon in phx_safetyWeapons) then {
     [ACE_player, currentWeapon ACE_player, true] call ace_safemode_fnc_setWeaponSafety;
-    safetyWeapons pushBack (currentWeapon ACE_player);
+    phx_safetyWeapons pushBack (currentWeapon ACE_player);
   };
 }];
 

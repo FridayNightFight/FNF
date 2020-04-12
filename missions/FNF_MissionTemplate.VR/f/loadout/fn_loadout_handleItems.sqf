@@ -5,6 +5,7 @@ if (isNil "phx_loadout_unitLevel") then {
 };
 
 // Radio
+/*
 if (phx_loadout_radio <= phx_loadout_unitLevel) then {
     if !("ItemRadio" in (assignedItems player)) then {
         player linkItem "ItemRadio";
@@ -12,6 +13,7 @@ if (phx_loadout_radio <= phx_loadout_unitLevel) then {
 } else {
     player unlinkItem "ItemRadio";
 };
+*/
 
 // Map
 if (phx_loadout_map <= phx_loadout_unitLevel) then {

@@ -29,7 +29,7 @@ switch (playerSide) do {
     private _canPlace = true;
     private _type = typeOf _object;
     private _pos = position _object;
-    private _minDistance = 10;
+    private _minDistance = 15;
     private _errorStr = "";
 
     if !((typeOf _unit == "O_soldier_exp_F") || (typeOf _unit == "B_soldier_exp_F") || (typeOf _unit == "I_Soldier_exp_F")) then {
@@ -59,7 +59,17 @@ switch (playerSide) do {
     hintSilent _errorStr;
 
     if (_canPlace) then {
-      missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+      switch (playerSide) do {
+        case east: {
+          missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+        };
+        case west: {
+          missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
+        };
+        case independent: {
+          missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
+        };
+      };
       phx_fortifyPoints = phx_fortifyPoints - _cost;
 
       hintSilent format ["Fortify Budget: $%1", phx_fortifyPoints];
@@ -101,9 +111,21 @@ switch (playerSide) do {
 
 ["ace_interactMenuOpened", {
   if ((_this select 0) == 0) exitWith {};
-  missionNamespace setVariable ["acex_fortify_budget_east", phx_fortifyPoints, false];
+
+  switch (playerSide) do {
+    case east: {
+      missionNamespace setVariable ["acex_fortify_budget_east", phx_fortifyPoints, false];
+    };
+    case west: {
+      missionNamespace setVariable ["acex_fortify_budget_west", phx_fortifyPoints, false];
+    };
+    case independent: {
+      missionNamespace setVariable ["acex_fortify_budget_guer", phx_fortifyPoints, false];
+    };
+  };
 }] call CBA_fnc_addEventHandler;
 
-sleep 1;
+waitUntil {!isNil "phx_loadoutAssigned"};
+waitUntil {phx_loadoutAssigned};
 
 player addItem "ACE_Fortify";

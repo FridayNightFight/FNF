@@ -33,6 +33,7 @@ if (f_param_radios isEqualTo 1) then {
   // Generate frequencies for preset radios
   call phx_fnc_radio_genFreqs;
 };
+
 /*
 // Create respawn markers in bottom left corner of map
 {
@@ -41,6 +42,9 @@ if (f_param_radios isEqualTo 1) then {
     _marker setMarkerType "Empty";
 } forEach ["respawn", "respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 */
+
+//Set maximum client view distance
+setViewDistance 3000;
 
 //Set all vehicles invincible during safe start
 [] spawn {

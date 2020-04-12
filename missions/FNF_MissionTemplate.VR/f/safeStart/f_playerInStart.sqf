@@ -26,7 +26,7 @@ if !(typeName phx_startSelectionSide == "BOOL") then {
       };
     } forEach _defaultStartMarkers;
 
-    _startActions = ["startLocations","Select start location","",{},{true}] call ace_interact_menu_fnc_createAction;
+    startActions = ["startLocations","Select start location","",{},{true}] call ace_interact_menu_fnc_createAction;
 
     _startSelectAction = ["Tele","Go to main start","",{
       switch (playerSide) do {
@@ -51,7 +51,7 @@ if !(typeName phx_startSelectionSide == "BOOL") then {
       "startSelectionMarker_3" execVM "f\safeStart\teleport.sqf"
     },{true}] call ace_interact_menu_fnc_createAction;
 
-    [(typeOf player), 1, ["ACE_SelfActions"],_startActions] call ace_interact_menu_fnc_addActionToClass;
+    [(typeOf player), 1, ["ACE_SelfActions"],startActions] call ace_interact_menu_fnc_addActionToClass;
     [(typeOf player), 1, ["ACE_SelfActions","startLocations"],_startSelectAction] call ace_interact_menu_fnc_addActionToClass;
     [(typeOf player), 1, ["ACE_SelfActions","startLocations"],_startSelectAction_1] call ace_interact_menu_fnc_addActionToClass;
     [(typeOf player), 1, ["ACE_SelfActions","startLocations"],_startSelectAction_2] call ace_interact_menu_fnc_addActionToClass;

@@ -5,7 +5,7 @@ phx_attackingSide = west; //east/west/independent
 //Not used if mode is neutral
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
-phx_fortifyPoints = 50; //Currency for fortify
+phx_fortifyPoints = 50; //Currency for fortify - individual to each Combat Engineer
 phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 //Set side you want to be able to change their starting zone, if any - uses the startSelection markers alrady placed in the editor

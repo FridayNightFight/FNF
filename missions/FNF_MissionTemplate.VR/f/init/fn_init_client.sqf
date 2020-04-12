@@ -57,9 +57,9 @@ if !(_zoneRestriction isEqualTo 0) then {
 //Set weapon safety on
 [] spawn {
   waitUntil {phx_loadoutAssigned};
-  safetyWeapons = [];
+  phx_safetyWeapons = [];
   [ACE_player, currentWeapon ACE_player, true] call ace_safemode_fnc_setWeaponSafety;
-  safetyWeapons pushBack (currentWeapon ACE_player);
+  phx_safetyWeapons pushBack (currentWeapon ACE_player);
 };
 
 //Add leadership self-actions

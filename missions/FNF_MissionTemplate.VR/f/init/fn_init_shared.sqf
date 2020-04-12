@@ -8,8 +8,10 @@
 [] execVM "f\radios\radio_init.sqf";
 
 //Time of day/weather
+/*
 call phx_fnc_setTimeOfDay;
 call phx_fnc_setWeather;
+*/
 
 //====================================================================================================
 phx_sharedInitFinished = true;
