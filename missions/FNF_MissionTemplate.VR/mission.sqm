@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=19;
+		nextID=20;
 	};
 	class Camera
 	{
-		pos[]={500.73282,20.414927,651.85638};
-		dir[]={0.013009517,-0.32089341,0.94703078};
-		up[]={0.0044078236,0.94711322,0.32086685};
-		aside[]={0.99990922,-1.2965756e-008,-0.01373609};
+		pos[]={1216.6254,37.320377,358.68771};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -27783,7 +27783,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{if (isServer) then { " \n "  this addEventHandler [""HandleDamage"", { " \n "    _unit = _this select 0; " \n "    _selection = _this select 1; " \n "    _damage = _this select 2; " \n " " \n "    if (_selection == ""?"") exitWith {}; " \n " " \n "    _curDamage = damage _unit; " \n "    if (_selection != """") then {_curDamage = _unit getHit _selection}; " \n "    _newDamage = _damage - _curDamage; " \n " " \n "    _damage - _newDamage * 0.8; " \n "  }]; " \n "};}";
 				name="destroy_obj1";
 			};
 			id=547;
@@ -28027,7 +28026,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{if (isServer) then { " \n "  this addEventHandler [""HandleDamage"", { " \n "    _unit = _this select 0; " \n "    _selection = _this select 1; " \n "    _damage = _this select 2; " \n " " \n "    if (_selection == ""?"") exitWith {}; " \n " " \n "    _curDamage = damage _unit; " \n "    if (_selection != """") then {_curDamage = _unit getHit _selection}; " \n "    _newDamage = _damage - _curDamage; " \n " " \n "    _damage - _newDamage * 0.8; " \n "  }]; " \n "};}";
 				name="destroy_obj2";
 			};
 			id=548;

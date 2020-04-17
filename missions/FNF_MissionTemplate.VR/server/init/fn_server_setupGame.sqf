@@ -1,10 +1,12 @@
+if (!isServer) exitWith {};
+
 #include "..\..\shared\definitions.hpp"
 
 missionNamespace setVariable ["phx_gameEnd", false, true];
 
 switch (phx_gameMode) do {
   case destroy: {
-    execVM "shared\modes\destroy.sqf";
+    execVM "shared\modes\destroy_server.sqf";
   };
   case uplink: {
     execVM "shared\modes\uplink_server.sqf";

@@ -13,6 +13,22 @@ missionNamespace setVariable ["phx_destroyObjs", [_obj1 select 0, _obj2 select 0
 {
   if !(isNull (_x select 0)) then {
     phx_aliveObjectives = phx_aliveObjectives + 1;
+
+    if (typeOf (_x select 0) isEqualTo "Box_FIA_Ammo_F") then {
+      (_x select 0) addEventHandler ["HandleDamage", {
+        _unit = _this select 0;
+        _selection = _this select 1;
+        _damage = _this select 2;
+
+        if (_selection == "?") exitWith {};
+
+        _curDamage = damage _unit;
+        if (_selection != "") then {_curDamage = _unit getHit _selection};
+        _newDamage = _damage - _curDamage;
+
+        _damage - _newDamage * 0.9;
+      }];
+    };
   };
 } forEach _objArr;
 
@@ -27,8 +43,6 @@ missionNamespace setVariable ["phx_destroyObjs", [_obj1 select 0, _obj2 select 0
 
   [phx_defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
   [phx_attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
-
-  [(_x select 1),0] remoteExec ["setMarkerAlphaLocal",phx_defendingSide,true];
 
   //Check for alive objective
   [_x select 0, _x select 1, _defendTaskID, _attackTaskID] spawn {
