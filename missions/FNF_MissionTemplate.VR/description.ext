@@ -1,31 +1,12 @@
-author = "AUTHOR";
+author = "YOUR_NAME";
 onLoadName = "MISSION_NAME";
 OnLoadMission = "SHORT_DESCRIPTION";
 
-disableChannels[] = {0};
-
 #include "description\definitions.hpp"
+#include "description\cfgEventHandlers.hpp"
 #include "description\cfgNotifications.hpp"
 #include "description\cfgParams.hpp"
-#include "description\cfgRespawnTemplates.hpp"
-#include "description\cfgEventHandlers.hpp"
 #include "description\cfgSounds.hpp"
-
-class CfgFunctions {
-  #include "description\cfgFunctions.hpp"
-	class F {
-        class safeStart {
-            file = "f\safeStart";
-            class safety{};
-            class serverEndSafe{};
-        };
-    };
-    class PHX {
-        #include "f\functions.hpp"
-    };
-};
-#include "f\display.hpp"
-#include "f\ui\Selector.hpp"
-#include "f\ui\FNFAdminMenu.hpp"
-#include "f\ui\FNFLeaderMenu.hpp"
-#include "f\ui\FNFAssetMenu.hpp"
+#include "description\cfgFunctions.hpp"
+#include "client\ui\FNFLeaderMenu.hpp"
+#include "client\ui\TimeDisplay.hpp"

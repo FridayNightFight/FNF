@@ -1,4 +1,4 @@
-//Extended Event Handlers:
+//CBA Extended Event Handlers
 class Extended_InitPost_EventHandlers {
   class CAManBase {
     class PHX_FixFriendlyFire { init = "if (local (_this select 0)) then {(_this select 0) addRating 100000;};";};

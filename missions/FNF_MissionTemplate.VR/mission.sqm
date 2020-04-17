@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1232;
+		nextID=1239;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=9;
+		nextID=19;
 	};
 	class Camera
 	{
-		pos[]={490.37561,11.667346,681.21704};
-		dir[]={-0.033738375,-0.2972078,0.95422214};
-		up[]={-0.010502008,0.9548111,0.29702598};
-		aside[]={0.99937969,6.9987436e-008,0.035335187};
+		pos[]={500.73282,20.414927,651.85638};
+		dir[]={0.013009517,-0.32089341,0.94703078};
+		up[]={0.0044078236,0.94711322,0.32086685};
+		aside[]={0.99990922,-1.2965756e-008,-0.01373609};
 	};
 };
 binarizationWanted=0;
@@ -35,11 +35,6 @@ addons[]=
 	"ace_explosives",
 	"A3_Characters_F_Mark",
 	"A3_Ui_F",
-	"rhs_cti_insurgents",
-	"rhsgref_main",
-	"A3_Structures_F_Orange_Humanitarian_Flags",
-	"A3_Structures_F_Mil_Flags",
-	"A3_Modules_F_Multiplayer",
 	"A3_Modules_F",
 	"A3_Modules_F_Curator_Misc",
 	"ace_gforces",
@@ -47,13 +42,14 @@ addons[]=
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"ace_chemlights",
 	"Desert",
-	"A3_Props_F_Exp_A_Military_Equipment"
+	"A3_Props_F_Exp_A_Military_Equipment",
+	"A3_Modules_F_Multiplayer"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=16;
+		items=12;
 		class Item0
 		{
 			className="task_force_radio_items";
@@ -98,64 +94,38 @@ class AddonsMetaData
 		};
 		class Item6
 		{
-			className="rhs_cti_insurgents";
-			name="rhs_cti_insurgents";
-		};
-		class Item7
-		{
-			className="rhsgref_main";
-			name="rhsgref_main";
-			author="Red Hammer Studios";
-			url="http://www.rhsmods.org/";
-		};
-		class Item8
-		{
-			className="A3_Structures_F_Orange";
-			name="Arma 3 Orange - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item9
-		{
-			className="A3_Structures_F_Mil";
-			name="Arma 3 - Military Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item10
-		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item11
+		class Item7
 		{
 			className="ace_parachute";
 			name="ACE3 - Parachute";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item12
+		class Item8
 		{
 			className="A3_Weapons_F_Bootcamp";
 			name="Arma 3 Bootcamp Update - Weapons and Accessories";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
+		class Item9
 		{
 			className="ace_chemlights";
 			name="ace_chemlights";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item14
+		class Item10
 		{
 			className="Desert";
 			name="Desert";
 		};
-		class Item15
+		class Item11
 		{
 			className="A3_Props_F_Exp_A";
 			name="Arma 3 Nexus Update - Decorative and Mission Objects";
@@ -168,6 +138,7 @@ randomSeed=615564;
 class ScenarioData
 {
 	disabledAI=1;
+	respawn=3;
 };
 class CustomAttributes
 {
@@ -852,6 +823,8 @@ class Mission
 		forecastWind=0.1;
 		forecastWaves=0.1;
 		forecastLightnings=0.1;
+		wavesForced=1;
+		windForced=1;
 		year=2020;
 		day=28;
 		hour=12;
@@ -885,7 +858,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=117;
+		items=83;
 		class Item0
 		{
 			dataType="Logic";
@@ -16971,1120 +16944,6 @@ class Mission
 		};
 		class Item34
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1200,6.5344448,300};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				init="call{if (isServer) then {" \n "this setFlagTexture ""\A3\Data_F\Flags\flag_white_co.paa"";" \n "this hideObjectGlobal true;" \n "this setPosATL (getPosATL flagPole);" \n "};}";
-				name="flagObj";
-				presenceCondition="phx_gameMode isEqualTo ""ctf"" || phx_gameMode isEqualTo ""neutralCTF""";
-			};
-			id=206;
-			type="rhs_Flag_chdkz";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ENH_HoldAction";
-					expression="			_value params ['_name','_iconIdle','_iconProgress','_conditionShow','_conditionProgress','_codeStart','_codeProgress','_codeCompletion','_codeInterrupt','_duration','_priority','_showUnconscious','_showWindow'];			if (!is3DEN && {!(_name isEqualTo '')}) then			{				[					_this,					_name,					_iconIdle,					_iconProgress,					_conditionShow,					_conditionProgress,					compile _codeStart,					compile _codeProgress,					compile format ['%1 %2','[_this select 0,_this select 2] remoteExecCall [''removeAction'',0]; remoteExecCall ['''',_this select 0];',_codeCompletion],					compile _codeInterrupt,					nil,					_duration,					_priority,					true,					_showUnconscious,					_showWindow				] remoteExecCall ['BIS_fnc_holdActionAdd',0,_this];			};";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"ARRAY"
-								};
-							};
-							class value
-							{
-								items=14;
-								class Item0
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item1
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
-									};
-								};
-								class Item2
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
-									};
-								};
-								class Item3
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="true";
-									};
-								};
-								class Item4
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="true";
-									};
-								};
-								class Item5
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item6
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item7
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item8
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item9
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"SCALAR"
-											};
-										};
-										value=10;
-									};
-								};
-								class Item10
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"SCALAR"
-											};
-										};
-										value=1000;
-									};
-								};
-								class Item11
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"BOOL"
-											};
-										};
-										value=0;
-									};
-								};
-								class Item12
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"BOOL"
-											};
-										};
-										value=1;
-									};
-								};
-								class Item13
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-							};
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item35
-		{
-			dataType="Marker";
-			position[]={1200,5,300};
-			name="flagMark";
-			text="Flag";
-			type="hd_flag";
-			id=207;
-		};
-		class Item36
-		{
-			dataType="Trigger";
-			position[]={1225,5,300};
-			class Attributes
-			{
-				name="attackFlagTrig";
-				condition="";
-				sizeA=5;
-				sizeB=5;
-				sizeC=10;
-				isRectangle=1;
-				isServerOnly=1;
-			};
-			id=208;
-			type="EmptyDetector";
-		};
-		class Item37
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1200.8101,11.419488,299.61301};
-			};
-			side="Empty";
-			flags=1;
-			class Attributes
-			{
-				init="call{if (isServer) then {" \n "this attachTo [pole, [0.8,-0.385,2.4]];" \n "};}";
-				name="flagBanner";
-				presenceCondition="phx_gameMode isEqualTo ""ctf"" || phx_gameMode isEqualTo ""neutralCTF""";
-				disableSimulation=1;
-			};
-			id=212;
-			type="Banner_01_F";
-			atlOffset=5.9499998;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="allowDamage";
-					expression="_this allowdamage _value;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ENH_HoldAction";
-					expression="			_value params ['_name','_iconIdle','_iconProgress','_conditionShow','_conditionProgress','_codeStart','_codeProgress','_codeCompletion','_codeInterrupt','_duration','_priority','_showUnconscious','_showWindow'];			if (!is3DEN && {!(_name isEqualTo '')}) then			{				[					_this,					_name,					_iconIdle,					_iconProgress,					_conditionShow,					_conditionProgress,					compile _codeStart,					compile _codeProgress,					compile format ['%1 %2','[_this select 0,_this select 2] remoteExecCall [''removeAction'',0]; remoteExecCall ['''',_this select 0];',_codeCompletion],					compile _codeInterrupt,					nil,					_duration,					_priority,					true,					_showUnconscious,					_showWindow				] remoteExecCall ['BIS_fnc_holdActionAdd',0,_this];			};";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"ARRAY"
-								};
-							};
-							class value
-							{
-								items=14;
-								class Item0
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item1
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
-									};
-								};
-								class Item2
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
-									};
-								};
-								class Item3
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="true";
-									};
-								};
-								class Item4
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="true";
-									};
-								};
-								class Item5
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item6
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item7
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item8
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item9
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"SCALAR"
-											};
-										};
-										value=10;
-									};
-								};
-								class Item10
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"SCALAR"
-											};
-										};
-										value=1000;
-									};
-								};
-								class Item11
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"BOOL"
-											};
-										};
-										value=0;
-									};
-								};
-								class Item12
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"BOOL"
-											};
-										};
-										value=1;
-									};
-								};
-								class Item13
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-							};
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item38
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1200,8.9768047,300};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="flagPole";
-				presenceCondition="phx_gameMode isEqualTo ""ctf"" || phx_gameMode isEqualTo ""neutralCTF""";
-				disableSimulation=1;
-			};
-			id=213;
-			type="FlagPole_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="allowDamage";
-					expression="_this allowdamage _value;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ENH_HoldAction";
-					expression="			_value params ['_name','_iconIdle','_iconProgress','_conditionShow','_conditionProgress','_codeStart','_codeProgress','_codeCompletion','_codeInterrupt','_duration','_priority','_showUnconscious','_showWindow'];			if (!is3DEN && {!(_name isEqualTo '')}) then			{				[					_this,					_name,					_iconIdle,					_iconProgress,					_conditionShow,					_conditionProgress,					compile _codeStart,					compile _codeProgress,					compile format ['%1 %2','[_this select 0,_this select 2] remoteExecCall [''removeAction'',0]; remoteExecCall ['''',_this select 0];',_codeCompletion],					compile _codeInterrupt,					nil,					_duration,					_priority,					true,					_showUnconscious,					_showWindow				] remoteExecCall ['BIS_fnc_holdActionAdd',0,_this];			};";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"ARRAY"
-								};
-							};
-							class value
-							{
-								items=14;
-								class Item0
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item1
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
-									};
-								};
-								class Item2
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="\a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa";
-									};
-								};
-								class Item3
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="true";
-									};
-								};
-								class Item4
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="true";
-									};
-								};
-								class Item5
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item6
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item7
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item8
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-								class Item9
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"SCALAR"
-											};
-										};
-										value=10;
-									};
-								};
-								class Item10
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"SCALAR"
-											};
-										};
-										value=1000;
-									};
-								};
-								class Item11
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"BOOL"
-											};
-										};
-										value=0;
-									};
-								};
-								class Item12
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"BOOL"
-											};
-										};
-										value=1;
-									};
-								};
-								class Item13
-								{
-									class data
-									{
-										class type
-										{
-											type[]=
-											{
-												"STRING"
-											};
-										};
-										value="";
-									};
-								};
-							};
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item39
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1200,5,200};
-			};
-			name="sector";
-			areaSize[]={50,0,50};
-			presenceCondition="phx_gameMode == ""neutralSector""";
-			flags=1;
-			id=218;
-			type="ModuleSector_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleSector_F_DefaultOwner";
-					expression="_this setVariable ['DefaultOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleSector_F_CostInfantry";
-					expression="_this setVariable ['CostInfantry',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ModuleSector_F_OnOwnerChange";
-					expression="_this setVariable ['OnOwnerChange',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="if (isServer) then {controllingSide = _this select 1;};";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="ModuleSector_F_ScoreReward";
-					expression="_this setVariable ['ScoreReward',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="ModuleSector_F_CostWheeled";
-					expression="_this setVariable ['CostWheeled',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="ModuleSector_F_OwnerLimit";
-					expression="_this setVariable ['OwnerLimit',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="ModuleSector_F_TaskTitle";
-					expression="_this setVariable ['TaskTitle',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="ModuleSector_F_Designation";
-					expression="_this setVariable ['Designation',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="ModuleSector_F_TaskOwner";
-					expression="_this setVariable ['TaskOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute9
-				{
-					property="ModuleSector_F_CostAir";
-					expression="_this setVariable ['CostAir',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute10
-				{
-					property="ModuleSector_F_CostPlayers";
-					expression="_this setVariable ['CostPlayers',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.1";
-						};
-					};
-				};
-				class Attribute11
-				{
-					property="ModuleSector_F_CostTracked";
-					expression="_this setVariable ['CostTracked',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute12
-				{
-					property="ModuleSector_F_TaskDescription";
-					expression="_this setVariable ['TaskDescription',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute13
-				{
-					property="ModuleSector_F_CostWater";
-					expression="_this setVariable ['CostWater',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute14
-				{
-					property="ModuleSector_F_Name";
-					expression="_this setVariable ['Name',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="Sector";
-						};
-					};
-				};
-				nAttributes=15;
-			};
-		};
-		class Item40
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1225,5,200};
-			};
-			name="sectorSideOpf";
-			presenceCondition="phx_gameMode == ""neutralSector""";
-			id=219;
-			type="SideOPFOR_F";
-		};
-		class Item41
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1200,5,175};
-				angles[]={0,0.41336378,0};
-			};
-			name="sectorSideBlu";
-			presenceCondition="phx_gameMode == ""neutralSector""";
-			id=220;
-			type="SideBLUFOR_F";
-		};
-		class Item42
-		{
 			dataType="Trigger";
 			position[]={499.37,5,497.91};
 			class Attributes
@@ -18097,31 +16956,29 @@ class Mission
 			id=221;
 			type="EmptyDetector";
 		};
-		class Item43
+		class Item35
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={419.8129,5,100.51709};
+				position[]={419.81299,5,100.517};
 			};
-			presenceCondition="!(""phx_zoneRestriction"" call BIS_fnc_getParamValue isEqualTo 0)";
 			id=222;
 			type="LocationArea_F";
 		};
-		class Item44
+		class Item36
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={481.13852,5,100.51709};
+				position[]={481.13901,5,100.517};
 			};
 			areaIsRectangle=1;
-			presenceCondition="!(""phx_zoneRestriction"" call BIS_fnc_getParamValue isEqualTo 0)";
 			flags=1;
 			id=223;
 			type="ModuleCoverMap_F";
 		};
-		class Item45
+		class Item37
 		{
 			dataType="Group";
 			side="Independent";
@@ -18672,7 +17529,7 @@ class Mission
 			};
 			id=224;
 		};
-		class Item46
+		class Item38
 		{
 			dataType="Group";
 			side="Independent";
@@ -19200,7 +18057,7 @@ class Mission
 			};
 			id=229;
 		};
-		class Item47
+		class Item39
 		{
 			dataType="Group";
 			side="Independent";
@@ -19990,7 +18847,7 @@ class Mission
 			};
 			id=233;
 		};
-		class Item48
+		class Item40
 		{
 			dataType="Group";
 			side="Independent";
@@ -21074,7 +19931,7 @@ class Mission
 			};
 			id=240;
 		};
-		class Item49
+		class Item41
 		{
 			dataType="Group";
 			side="Independent";
@@ -21542,7 +20399,7 @@ class Mission
 			};
 			id=247;
 		};
-		class Item50
+		class Item42
 		{
 			dataType="Group";
 			side="Independent";
@@ -22331,7 +21188,7 @@ class Mission
 			};
 			id=250;
 		};
-		class Item51
+		class Item43
 		{
 			dataType="Group";
 			side="Independent";
@@ -23120,7 +21977,7 @@ class Mission
 			};
 			id=257;
 		};
-		class Item52
+		class Item44
 		{
 			dataType="Group";
 			side="Independent";
@@ -23588,7 +22445,7 @@ class Mission
 			};
 			id=264;
 		};
-		class Item53
+		class Item45
 		{
 			dataType="Group";
 			side="Independent";
@@ -24378,7 +23235,7 @@ class Mission
 			};
 			id=267;
 		};
-		class Item54
+		class Item46
 		{
 			dataType="Group";
 			side="Independent";
@@ -25167,7 +24024,7 @@ class Mission
 			};
 			id=274;
 		};
-		class Item55
+		class Item47
 		{
 			dataType="Group";
 			side="Independent";
@@ -25635,7 +24492,7 @@ class Mission
 			};
 			id=281;
 		};
-		class Item56
+		class Item48
 		{
 			dataType="Marker";
 			position[]={703.922,66.900002,697.04797};
@@ -25650,1024 +24507,7 @@ class Mission
 			id=303;
 			atlOffset=61.900002;
 		};
-		class Item57
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1200,5,100};
-			};
-			name="sector1";
-			areaSize[]={50,-1,50};
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
-			flags=1;
-			id=304;
-			type="ModuleSector_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleSector_F_DefaultOwner";
-					expression="_this setVariable ['DefaultOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleSector_F_CostInfantry";
-					expression="_this setVariable ['CostInfantry',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.8";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ModuleSector_F_OnOwnerChange";
-					expression="_this setVariable ['OnOwnerChange',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="if (isServer) then {    controllingSideSector1 = _this select 1;    if ((!isNil ""balls"") && (controllingSideSector1 == phx_attackingSide)) then {      deleteVehicle (_this select 0);    };    balls = true;  };";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="ModuleSector_F_ScoreReward";
-					expression="_this setVariable ['ScoreReward',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="ModuleSector_F_CostWheeled";
-					expression="_this setVariable ['CostWheeled',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.75";
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="ModuleSector_F_OwnerLimit";
-					expression="_this setVariable ['OwnerLimit',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="ModuleSector_F_TaskTitle";
-					expression="_this setVariable ['TaskTitle',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="ModuleSector_F_Designation";
-					expression="_this setVariable ['Designation',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="ModuleSector_F_TaskOwner";
-					expression="_this setVariable ['TaskOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute9
-				{
-					property="ModuleSector_F_CostAir";
-					expression="_this setVariable ['CostAir',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="2";
-						};
-					};
-				};
-				class Attribute10
-				{
-					property="ModuleSector_F_CostPlayers";
-					expression="_this setVariable ['CostPlayers',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.05";
-						};
-					};
-				};
-				class Attribute11
-				{
-					property="ModuleSector_F_CostTracked";
-					expression="_this setVariable ['CostTracked',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.5";
-						};
-					};
-				};
-				class Attribute12
-				{
-					property="ModuleSector_F_TaskDescription";
-					expression="_this setVariable ['TaskDescription',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute13
-				{
-					property="ModuleSector_F_CostWater";
-					expression="_this setVariable ['CostWater',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute14
-				{
-					property="ModuleSector_F_Name";
-					expression="_this setVariable ['Name',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="Alpha";
-						};
-					};
-				};
-				nAttributes=15;
-			};
-		};
-		class Item58
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1300,5,100};
-			};
-			name="sector2";
-			areaSize[]={50,-1,50};
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
-			flags=1;
-			id=305;
-			type="ModuleSector_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleSector_F_DefaultOwner";
-					expression="_this setVariable ['DefaultOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleSector_F_CostInfantry";
-					expression="_this setVariable ['CostInfantry',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.8";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ModuleSector_F_OnOwnerChange";
-					expression="_this setVariable ['OnOwnerChange',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="if (isServer) then {    controllingSideSector2 = _this select 1;    if ((!isNil ""balls1"") && (controllingSideSector2 == phx_attackingSide)) then {      deleteVehicle (_this select 0);    };    balls1 = true;  };";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="ModuleSector_F_ScoreReward";
-					expression="_this setVariable ['ScoreReward',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="ModuleSector_F_CostWheeled";
-					expression="_this setVariable ['CostWheeled',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.75";
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="ModuleSector_F_OwnerLimit";
-					expression="_this setVariable ['OwnerLimit',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="ModuleSector_F_TaskTitle";
-					expression="_this setVariable ['TaskTitle',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="ModuleSector_F_Designation";
-					expression="_this setVariable ['Designation',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="ModuleSector_F_TaskOwner";
-					expression="_this setVariable ['TaskOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute9
-				{
-					property="ModuleSector_F_CostAir";
-					expression="_this setVariable ['CostAir',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="2";
-						};
-					};
-				};
-				class Attribute10
-				{
-					property="ModuleSector_F_CostPlayers";
-					expression="_this setVariable ['CostPlayers',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.05";
-						};
-					};
-				};
-				class Attribute11
-				{
-					property="ModuleSector_F_CostTracked";
-					expression="_this setVariable ['CostTracked',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.5";
-						};
-					};
-				};
-				class Attribute12
-				{
-					property="ModuleSector_F_TaskDescription";
-					expression="_this setVariable ['TaskDescription',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute13
-				{
-					property="ModuleSector_F_CostWater";
-					expression="_this setVariable ['CostWater',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute14
-				{
-					property="ModuleSector_F_Name";
-					expression="_this setVariable ['Name',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="Bravo";
-						};
-					};
-				};
-				nAttributes=15;
-			};
-		};
-		class Item59
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1399.651,5,100.624};
-			};
-			name="sector3";
-			areaSize[]={50,-1,50};
-			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
-			flags=1;
-			id=306;
-			type="ModuleSector_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleSector_F_DefaultOwner";
-					expression="_this setVariable ['DefaultOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleSector_F_CostInfantry";
-					expression="_this setVariable ['CostInfantry',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.8";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ModuleSector_F_OnOwnerChange";
-					expression="_this setVariable ['OnOwnerChange',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="if (isServer) then {    controllingSideSector3 = _this select 1;    if ((!isNil ""balls2"") && (controllingSideSector3 == phx_attackingSide)) then {      deleteVehicle (_this select 0);    };    balls2 = true;  };";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="ModuleSector_F_ScoreReward";
-					expression="_this setVariable ['ScoreReward',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="ModuleSector_F_CostWheeled";
-					expression="_this setVariable ['CostWheeled',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.75";
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="ModuleSector_F_OwnerLimit";
-					expression="_this setVariable ['OwnerLimit',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="ModuleSector_F_TaskTitle";
-					expression="_this setVariable ['TaskTitle',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="ModuleSector_F_Designation";
-					expression="_this setVariable ['Designation',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="ModuleSector_F_TaskOwner";
-					expression="_this setVariable ['TaskOwner',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="1";
-						};
-					};
-				};
-				class Attribute9
-				{
-					property="ModuleSector_F_CostAir";
-					expression="_this setVariable ['CostAir',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="2";
-						};
-					};
-				};
-				class Attribute10
-				{
-					property="ModuleSector_F_CostPlayers";
-					expression="_this setVariable ['CostPlayers',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.05";
-						};
-					};
-				};
-				class Attribute11
-				{
-					property="ModuleSector_F_CostTracked";
-					expression="_this setVariable ['CostTracked',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0.5";
-						};
-					};
-				};
-				class Attribute12
-				{
-					property="ModuleSector_F_TaskDescription";
-					expression="_this setVariable ['TaskDescription',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute13
-				{
-					property="ModuleSector_F_CostWater";
-					expression="_this setVariable ['CostWater',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				class Attribute14
-				{
-					property="ModuleSector_F_Name";
-					expression="_this setVariable ['Name',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="Charlie";
-						};
-					};
-				};
-				nAttributes=15;
-			};
-		};
-		class Item60
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1200.2615,5,75.152969};
-				angles[]={0,0.41336378,0};
-			};
-			name="sector1SideBlu";
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
-			id=307;
-			type="SideBLUFOR_F";
-		};
-		class Item61
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1225.6705,5,100.13498};
-			};
-			name="sector1SideOpf";
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
-			id=308;
-			type="SideOPFOR_F";
-		};
-		class Item62
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1325.1625,5,100.13397};
-			};
-			name="sector2SideOpf";
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
-			id=309;
-			type="SideOPFOR_F";
-		};
-		class Item63
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1300.2894,5,74.029984};
-				angles[]={0,0.41336378,0};
-			};
-			name="sector2SideBlu";
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
-			id=310;
-			type="SideBLUFOR_F";
-		};
-		class Item64
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1425.3925,5,100.38098};
-			};
-			name="sector3SideOpf";
-			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
-			id=311;
-			type="SideOPFOR_F";
-		};
-		class Item65
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1399.9835,5,75.398972};
-				angles[]={0,0.41336378,0};
-			};
-			name="sector3SideBlu";
-			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
-			id=312;
-			type="SideBLUFOR_F";
-		};
-		class Item66
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1221.4535,5,79.051971};
-			};
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
-			id=313;
-			type="SideResistance_F";
-		};
-		class Item67
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1320.8085,5,78.595978};
-			};
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 2) || (objectivesNumber == 3)))";
-			id=314;
-			type="SideResistance_F";
-		};
-		class Item68
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1420.4554,5,79.601974};
-			};
-			presenceCondition="((phx_gameMode == ""adSector"") && (objectivesNumber == 3))";
-			id=315;
-			type="SideResistance_F";
-		};
-		class Item69
+		class Item49
 		{
 			dataType="Group";
 			side="East";
@@ -27135,7 +24975,7 @@ class Mission
 			};
 			id=380;
 		};
-		class Item70
+		class Item50
 		{
 			dataType="Group";
 			side="West";
@@ -27308,7 +25148,7 @@ class Mission
 			};
 			id=384;
 		};
-		class Item71
+		class Item51
 		{
 			dataType="Group";
 			side="West";
@@ -27621,7 +25461,7 @@ class Mission
 			};
 			id=389;
 		};
-		class Item72
+		class Item52
 		{
 			dataType="Group";
 			side="West";
@@ -27934,7 +25774,7 @@ class Mission
 			};
 			id=398;
 		};
-		class Item73
+		class Item53
 		{
 			dataType="Group";
 			side="West";
@@ -28247,7 +26087,7 @@ class Mission
 			};
 			id=404;
 		};
-		class Item74
+		class Item54
 		{
 			dataType="Group";
 			side="West";
@@ -28620,7 +26460,7 @@ class Mission
 			};
 			id=411;
 		};
-		class Item75
+		class Item55
 		{
 			dataType="Group";
 			side="East";
@@ -28933,7 +26773,7 @@ class Mission
 			};
 			id=475;
 		};
-		class Item76
+		class Item56
 		{
 			dataType="Group";
 			side="East";
@@ -29246,7 +27086,7 @@ class Mission
 			};
 			id=481;
 		};
-		class Item77
+		class Item57
 		{
 			dataType="Group";
 			side="East";
@@ -29559,7 +27399,7 @@ class Mission
 			};
 			id=487;
 		};
-		class Item78
+		class Item58
 		{
 			dataType="Group";
 			side="East";
@@ -29932,20 +27772,19 @@ class Mission
 			};
 			id=493;
 		};
-		class Item79
+		class Item59
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1200.1138,6.3607702,400.15088};
+				position[]={1200.114,6.3607702,400.151};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				init="call{if (isServer) then { " \n "  this addEventHandler [""HandleDamage"", { " \n "    _unit = _this select 0; " \n "    _selection = _this select 1; " \n "    _damage = _this select 2; " \n " " \n "    if (_selection == ""?"") exitWith {}; " \n " " \n "    _curDamage = damage _unit; " \n "    if (_selection != """") then {_curDamage = _unit getHit _selection}; " \n "    _newDamage = _damage - _curDamage; " \n " " \n "    _damage - _newDamage * 0.8; " \n "  }]; " \n "};}";
-				name="ez_cache1";
-				presenceCondition="phx_gameMode isEqualTo ""destroy""";
+				name="destroy_obj1";
 			};
 			id=547;
 			type="Box_FIA_Ammo_F";
@@ -30177,20 +28016,19 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item80
+		class Item60
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1225.1599,6.3607702,399.99219};
+				position[]={1225.16,6.3607702,399.992};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				init="call{if (isServer) then { " \n "  this addEventHandler [""HandleDamage"", { " \n "    _unit = _this select 0; " \n "    _selection = _this select 1; " \n "    _damage = _this select 2; " \n " " \n "    if (_selection == ""?"") exitWith {}; " \n " " \n "    _curDamage = damage _unit; " \n "    if (_selection != """") then {_curDamage = _unit getHit _selection}; " \n "    _newDamage = _damage - _curDamage; " \n " " \n "    _damage - _newDamage * 0.8; " \n "  }]; " \n "};}";
-				name="ez_cache2";
-				presenceCondition="phx_gameMode isEqualTo ""destroy""";
+				name="destroy_obj2";
 			};
 			id=548;
 			type="Box_FIA_Ammo_F";
@@ -30422,7 +28260,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item81
+		class Item61
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -30432,60 +28270,18 @@ class Mission
 			description="atk/def destroy ez mode";
 			id=549;
 		};
-		class Item82
-		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={1099.3312,5,300.2876};
-			};
-			description="atk/def CTF and neutral CTF modes";
-			id=552;
-		};
-		class Item83
-		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={1100.3612,5,202.44336};
-			};
-			description="neutral sector control mode";
-			id=553;
-		};
-		class Item84
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={1224.7814,5,175.40918};
-			};
-			presenceCondition="((phx_gameMode == ""adSector"") && ((objectivesNumber == 1) || (objectivesNumber == 2) || (objectivesNumber == 3)))";
-			id=554;
-			type="SideResistance_F";
-		};
-		class Item85
-		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={1100.3613,5,101.50977};
-			};
-			description="atk/def sector control mode";
-			id=555;
-		};
-		class Item86
+		class Item62
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1200.0148,5.0108399,500.10791};
+				position[]={1200.015,5.0108399,500.108};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				name="term1";
-				presenceCondition="(phx_gameMode isEqualTo ""uplink"" || phx_gameMode isEqualTo ""rush"" || phx_gameMode isEqualTo ""connection"")";
 			};
 			id=556;
 			type="Land_DataTerminal_01_F";
@@ -30679,7 +28475,7 @@ class Mission
 												"SCALAR"
 											};
 										};
-										value=1000;
+										value=991;
 									};
 								};
 								class Item11
@@ -30717,19 +28513,18 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item87
+		class Item63
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1226.429,5.0108399,499.97607};
+				position[]={1226.429,5.0108399,499.97601};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				name="term2";
-				presenceCondition="(phx_gameMode isEqualTo ""uplink"" || phx_gameMode isEqualTo ""rush"" || phx_gameMode isEqualTo ""connection"")";
 			};
 			id=558;
 			type="Land_DataTerminal_01_F";
@@ -30923,7 +28718,7 @@ class Mission
 												"SCALAR"
 											};
 										};
-										value=1000;
+										value=991;
 									};
 								};
 								class Item11
@@ -30961,7 +28756,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item88
+		class Item64
 		{
 			dataType="Object";
 			class PositionInfo
@@ -30973,7 +28768,6 @@ class Mission
 			class Attributes
 			{
 				name="term3";
-				presenceCondition="(phx_gameMode isEqualTo ""uplink"" || phx_gameMode isEqualTo ""rush"" || phx_gameMode isEqualTo ""connection"")";
 			};
 			id=559;
 			type="Land_DataTerminal_01_F";
@@ -31167,7 +28961,7 @@ class Mission
 												"SCALAR"
 											};
 										};
-										value=1000;
+										value=991;
 									};
 								};
 								class Item11
@@ -31205,7 +28999,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item89
+		class Item65
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -31215,11 +29009,11 @@ class Mission
 			description="atk/def uplink, connection and rush modes";
 			id=560;
 		};
-		class Item90
+		class Item66
 		{
 			dataType="Marker";
-			position[]={1200,5,415};
-			name="ez_cache1Mark";
+			position[]={1200.248,5,400.151};
+			name="destroy_obj1Mark";
 			markerType="ELLIPSE";
 			type="ellipse";
 			fillName="SolidBorder";
@@ -31228,11 +29022,11 @@ class Mission
 			drawBorder=1;
 			id=566;
 		};
-		class Item91
+		class Item67
 		{
 			dataType="Marker";
-			position[]={1225,5,415};
-			name="ez_cache2Mark";
+			position[]={1225.1899,5,400.07001};
+			name="destroy_obj2Mark";
 			markerType="ELLIPSE";
 			type="ellipse";
 			fillName="SolidBorder";
@@ -31241,7 +29035,7 @@ class Mission
 			drawBorder=1;
 			id=567;
 		};
-		class Item92
+		class Item68
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -31295,7 +29089,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item93
+		class Item69
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -31306,7 +29100,7 @@ class Mission
 			id=585;
 			type="SideBLUFOR_F";
 		};
-		class Item94
+		class Item70
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -31317,7 +29111,7 @@ class Mission
 			id=586;
 			type="SideResistance_F";
 		};
-		class Item95
+		class Item71
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -31328,7 +29122,7 @@ class Mission
 			id=587;
 			type="SideOPFOR_F";
 		};
-		class Item96
+		class Item72
 		{
 			dataType="Group";
 			side="Independent";
@@ -32209,7 +30003,7 @@ class Mission
 			};
 			id=588;
 		};
-		class Item97
+		class Item73
 		{
 			dataType="Group";
 			side="Independent";
@@ -33090,7 +30884,7 @@ class Mission
 			};
 			id=593;
 		};
-		class Item98
+		class Item74
 		{
 			dataType="Group";
 			side="Independent";
@@ -33971,7 +31765,7 @@ class Mission
 			};
 			id=598;
 		};
-		class Item99
+		class Item75
 		{
 			dataType="Group";
 			side="Independent";
@@ -34203,7 +31997,7 @@ class Mission
 			};
 			id=603;
 		};
-		class Item100
+		class Item76
 		{
 			dataType="Group";
 			side="Independent";
@@ -34673,7 +32467,7 @@ class Mission
 			};
 			id=607;
 		};
-		class Item101
+		class Item77
 		{
 			dataType="Group";
 			side="Independent";
@@ -34991,7 +32785,7 @@ class Mission
 			};
 			id=610;
 		};
-		class Item102
+		class Item78
 		{
 			dataType="Group";
 			side="Independent";
@@ -35309,7 +33103,7 @@ class Mission
 			};
 			id=616;
 		};
-		class Item103
+		class Item79
 		{
 			dataType="Group";
 			side="Independent";
@@ -35627,7 +33421,7 @@ class Mission
 			};
 			id=622;
 		};
-		class Item104
+		class Item80
 		{
 			dataType="Group";
 			side="Independent";
@@ -36006,134 +33800,7 @@ class Mission
 			};
 			id=628;
 		};
-		class Item105
-		{
-			dataType="Trigger";
-			position[]={1250,5,300};
-			class Attributes
-			{
-				name="eastFlagTrig";
-				condition="";
-				sizeA=5;
-				sizeB=5;
-				sizeC=10;
-				isRectangle=1;
-				isServerOnly=1;
-			};
-			id=635;
-			type="EmptyDetector";
-		};
-		class Item106
-		{
-			dataType="Trigger";
-			position[]={1265,5,300};
-			class Attributes
-			{
-				name="westFlagTrig";
-				condition="";
-				sizeA=5;
-				sizeB=5;
-				sizeC=10;
-				isRectangle=1;
-				isServerOnly=1;
-			};
-			id=636;
-			type="EmptyDetector";
-		};
-		class Item107
-		{
-			dataType="Trigger";
-			position[]={1280,5,300};
-			class Attributes
-			{
-				name="indFlagTrig";
-				condition="";
-				sizeA=5;
-				sizeB=5;
-				sizeC=10;
-				isRectangle=1;
-				isServerOnly=1;
-			};
-			id=637;
-			type="EmptyDetector";
-		};
-		class Item108
-		{
-			dataType="Marker";
-			position[]={1200,5,600};
-			name="startSelectionMarker_1";
-			markerType="ELLIPSE";
-			type="ellipse";
-			fillName="SolidBorder";
-			a=50;
-			b=50;
-			drawBorder=1;
-			id=638;
-		};
-		class Item109
-		{
-			dataType="Marker";
-			position[]={1300,5,600};
-			name="startSelectionMarker_2";
-			markerType="ELLIPSE";
-			type="ellipse";
-			fillName="SolidBorder";
-			a=50;
-			b=50;
-			drawBorder=1;
-			id=639;
-		};
-		class Item110
-		{
-			dataType="Marker";
-			position[]={1400,5,600};
-			name="startSelectionMarker_3";
-			markerType="ELLIPSE";
-			type="ellipse";
-			fillName="SolidBorder";
-			a=50;
-			b=50;
-			drawBorder=1;
-			id=640;
-		};
-		class Item111
-		{
-			dataType="Marker";
-			position[]={1200,5,600};
-			name="start1Text";
-			text="Start 1";
-			type="mil_dot";
-			id=644;
-		};
-		class Item112
-		{
-			dataType="Marker";
-			position[]={1300,5,600};
-			name="start2Text";
-			text="Start 2";
-			type="mil_dot";
-			id=645;
-		};
-		class Item113
-		{
-			dataType="Marker";
-			position[]={1400,5,600};
-			name="start3Text";
-			text="Start 3";
-			type="mil_dot";
-			id=646;
-		};
-		class Item114
-		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={1100.2773,5,600.74805};
-			};
-			description="Start selection markers. Side that can use these defined in varSelection.sqf";
-			id=647;
-		};
-		class Item115
+		class Item81
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -36143,7 +33810,7 @@ class Mission
 			description="Zone boundary trigger";
 			id=656;
 		};
-		class Item116
+		class Item82
 		{
 			dataType="Layer";
 			name="Headquarters #O";
@@ -36155,16 +33822,16 @@ class Mission
 	{
 		class LinkIDProvider
 		{
-			nextID=17;
+			nextID=5;
 		};
 		class Links
 		{
-			items=17;
+			items=5;
 			class Item0
 			{
 				linkID=0;
-				item0=219;
-				item1=218;
+				item0=222;
+				item1=221;
 				class CustomData
 				{
 					type="Sync";
@@ -36173,8 +33840,8 @@ class Mission
 			class Item1
 			{
 				linkID=1;
-				item0=220;
-				item1=218;
+				item0=223;
+				item1=222;
 				class CustomData
 				{
 					type="Sync";
@@ -36183,8 +33850,8 @@ class Mission
 			class Item2
 			{
 				linkID=2;
-				item0=222;
-				item1=221;
+				item0=585;
+				item1=584;
 				class CustomData
 				{
 					type="Sync";
@@ -36193,8 +33860,8 @@ class Mission
 			class Item3
 			{
 				linkID=3;
-				item0=308;
-				item1=304;
+				item0=586;
+				item1=584;
 				class CustomData
 				{
 					type="Sync";
@@ -36203,126 +33870,6 @@ class Mission
 			class Item4
 			{
 				linkID=4;
-				item0=307;
-				item1=304;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item5
-			{
-				linkID=5;
-				item0=309;
-				item1=305;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item6
-			{
-				linkID=6;
-				item0=310;
-				item1=305;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item7
-			{
-				linkID=7;
-				item0=312;
-				item1=306;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item8
-			{
-				linkID=8;
-				item0=311;
-				item1=306;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item9
-			{
-				linkID=9;
-				item0=313;
-				item1=304;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item10
-			{
-				linkID=10;
-				item0=314;
-				item1=305;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item11
-			{
-				linkID=11;
-				item0=315;
-				item1=306;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item12
-			{
-				linkID=12;
-				item0=223;
-				item1=222;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item13
-			{
-				linkID=13;
-				item0=554;
-				item1=218;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item14
-			{
-				linkID=14;
-				item0=585;
-				item1=584;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item15
-			{
-				linkID=15;
-				item0=586;
-				item1=584;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item16
-			{
-				linkID=16;
 				item0=587;
 				item1=584;
 				class CustomData
