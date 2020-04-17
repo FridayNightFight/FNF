@@ -12,4 +12,4 @@ phx_fortifyPoints = 50; //Currency for fortify - individual to each Combat Engin
 phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 phx_missionBoundaryRestriction = true; //Set to false to disable the mission boundary
-phx_opticMagnification = false; //Set to true to allow players to use magnified optics
+phx_opticMagnification = false; //Set to true to allow players to use magnified optics - Not used currently
