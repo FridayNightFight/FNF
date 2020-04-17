@@ -44,7 +44,7 @@ call phx_fnc_client_setupGame;
 call phx_fnc_platoonActions;
 
 //Marker System
-[] execVM "QS_icons.sqf";
+[] execVM "client\QS_icons.sqf";
 
 // Create briefing
 [] execVM "client\briefing\briefing.sqf";
