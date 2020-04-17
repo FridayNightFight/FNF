@@ -1,3 +1,3 @@
-# Mission files for FNF
+# Mission file for FNF
 
-Instructions can be found in "varSelection.sqf"
+Configure "config.hpp" and the respective file for your chosen game mode in "mode_config" directory.
