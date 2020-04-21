@@ -17,7 +17,6 @@ phx_loadout_compass = ["phx_loadout_compass",0] call BIS_fnc_getParamValue;
 phx_loadout_aid = "FirstAidKit:4";
 phx_loadout_smoke = "SmokeShell:4";
 phx_loadout_grenade = "HandGrenade:2";
-phx_loadout_cuffs = "ACE_CableTie:2";
 phx_loadout_explosives = "SatchelCharge_Remote_Mag:2";
 phx_loadout_defusalkit = "ACE_DefusalKit";
 phx_loadout_trigger = "ACE_M26_Clacker";

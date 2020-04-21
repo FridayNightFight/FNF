@@ -11,6 +11,9 @@ switch (phx_gameMode) do {
   case uplink: {
     execVM "shared\modes\uplink_server.sqf";
   };
+  case rush: {
+    execVM "shared\modes\rush_server.sqf";
+  };
 };
 
 if !(phx_gameMode isEqualTo destroy) then {
@@ -18,6 +21,8 @@ if !(phx_gameMode isEqualTo destroy) then {
   {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]};} forEach ["destroy_obj1Mark","destroy_obj2Mark"];
 };
 
-if !(phx_gameMode isEqualTo uplink) then {
+if !(phx_gameMode isEqualTo uplink || phx_gameMode isEqualTo rush) then {
   {if (!isNull _x) then {deleteVehicle _x};} forEach [term1,term2,term3];
 };
+
+missionNamespace setVariable ["phx_serverGameSetup",true,true];

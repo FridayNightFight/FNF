@@ -23,21 +23,21 @@ switch (_locking) do {
       switch (playerSide) do {
         case east: {
           if (_vic in phx_bluVics || _vic in phx_indVics) then {
-            'Cannot enter enemy vehicle' call phx_fnc__hintThenClear;
+            'Cannot enter enemy vehicle' call phx_fnc_hintThenClear;
             true
           };
         };
 
         case west: {
           if (_vic in phx_opfVics || _vic in phx_indVics) then {
-            'Cannot enter enemy vehicle' call phx_fnc__hintThenClear;
+            'Cannot enter enemy vehicle' call phx_fnc_hintThenClear;
             true
           };
         };
 
         case independent: {
           if (_vic in phx_opfVics || _vic in phx_bluVics) then {
-            'Cannot enter enemy vehicle' call phx_fnc__hintThenClear;
+            'Cannot enter enemy vehicle' call phx_fnc_hintThenClear;
             true
           };
         };
@@ -52,12 +52,12 @@ switch (_locking) do {
       switch (playerSide) do {
         case east: {
           if (_vic in phx_bluVics || _vic in phx_indVics) then {
-            'Cannot enter enemy vehicle' call phx_fnc__hintThenClear;
+            'Cannot enter enemy vehicle' call phx_fnc_hintThenClear;
             true
           } else {
             if (_vic in phx_opfVics) then {
               if ((_actionName isEqualTo 'GetInDriver' || _actionName isEqualTo 'GetInTurret' || _actionName isEqualTo 'MoveToDriver' || _actionName isEqualTo 'MoveToTurret') && (_actionText find 'Passenger' == -1)  && !(pRole == 15 || pRole == 14)) then {
-                'Crewman required' call phx_fnc__hintThenClear;
+                'Crewman required' call phx_fnc_hintThenClear;
                 true
               };
             };
@@ -66,12 +66,12 @@ switch (_locking) do {
 
         case west: {
           if (_vic in phx_opfVics || _vic in phx_indVics) then {
-            'Cannot enter enemy vehicle' call phx_fnc__hintThenClear;
+            'Cannot enter enemy vehicle' call phx_fnc_hintThenClear;
             true
           } else {
             if (_vic in phx_bluVics) then {
               if ((_actionName isEqualTo 'GetInDriver' || _actionName isEqualTo 'GetInTurret' || _actionName isEqualTo 'MoveToDriver' || _actionName isEqualTo 'MoveToTurret') && (_actionText find 'Passenger' == -1)  && !(pRole == 15 || pRole == 14)) then {
-                'Crewman required' call phx_fnc__hintThenClear;
+                'Crewman required' call phx_fnc_hintThenClear;
                 true
               };
             };
@@ -80,12 +80,12 @@ switch (_locking) do {
 
         case independent: {
           if (_vic in phx_opfVics || _vic in phx_bluVics) then {
-            'Cannot enter enemy vehicle' call phx_fnc__hintThenClear;
+            'Cannot enter enemy vehicle' call phx_fnc_hintThenClear;
             true
           } else {
             if (_vic in phx_indVics) then {
               if ((_actionName isEqualTo 'GetInDriver' || _actionName isEqualTo 'GetInTurret' || _actionName isEqualTo 'MoveToDriver' || _actionName isEqualTo 'MoveToTurret') && (_actionText find 'Passenger' == -1)  && !(pRole == 15 || pRole == 14)) then {
-                'Crewman required' call phx_fnc__hintThenClear;
+                'Crewman required' call phx_fnc_hintThenClear;
                 true
               };
             };

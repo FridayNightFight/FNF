@@ -9,4 +9,7 @@ switch (phx_gameMode) do {
   case uplink: {
     execVM "shared\modes\uplink_client.sqf"
   };
+  case rush: {
+    execVM "shared\modes\rush_client.sqf";
+  };
 };

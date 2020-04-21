@@ -1,8 +1,8 @@
+[true] spawn phx_fnc_serverSafety;
+
 call phx_fnc_radio_genFreqs;
 
 call phx_fnc_server_setupGame;
-
-true spawn phx_fnc_serverSafety;
 
 call phx_fnc_fortifyServer;
 

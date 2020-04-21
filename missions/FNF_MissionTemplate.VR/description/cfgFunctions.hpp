@@ -13,7 +13,7 @@ class CfgFunctions {
       class vehicleLocks{};
       class client_setupGame{};
       class platoonActions{};
-      class weaponSelection{};
+      class gearSelection{};
     };
     class clientSafety {
       file = "client\safety";
@@ -28,7 +28,7 @@ class CfgFunctions {
       class handleItems{};
       class handleGear{};
       class handleClothing{};
-      class checkLoadout{postInit = 1;};
+      class checkLoadout{};
     };
     class misc {
       file = "client\misc";

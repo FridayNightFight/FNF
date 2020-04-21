@@ -15,7 +15,7 @@ phx_ch1 = phx_playerBaseChannel; //All players will be able to switch to channel
 //     mainChannel: Which channel the radio will start on. (1-8)
 //     altChannel: Which channel the radio will have as an alternate by default (1-8)
 //     [channelArray]: An array of channels to set on the radio. (float)
-//        channelArray is expressed as numbers which are added to playerBaseChannel (ch1) to determine which channel the radio will be on. 
+//        channelArray is expressed as numbers which are added to playerBaseChannel (ch1) to determine which channel the radio will be on.
 //        Try to keep offsets single digit or the channel may not be set if playerBaseChannel is a high number.
 //        Frequencies can only have one decimal place.
 //     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.

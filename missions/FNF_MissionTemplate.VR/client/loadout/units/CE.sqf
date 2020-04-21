@@ -13,7 +13,6 @@ call phx_fnc_loadout_handleCECharges;
 [phx_loadout_defusalkit, "uniform"] call phx_fnc_handleGear;
 [phx_loadout_trigger, "uniform"] call phx_fnc_handleGear;
 [phx_loadout_grenade, "uniform"] call phx_fnc_handleGear;
-[phx_loadout_cuffs, "item"] call phx_fnc_handleGear;
 [phx_loadout_rifle_mag, "vest"] call phx_fnc_handleGear;
 player addWeapon phx_loadout_rifle_weapon;
 [phx_loadout_sidearm_mag, "vest"] call phx_fnc_handleGear;

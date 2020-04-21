@@ -13,7 +13,6 @@ phx_loadout_antitank_weapon = "";
 phx_loadout_antitank_mag = "";
 phx_loadout_mediumantitank_weapon = "";
 phx_loadout_mediumantitank_mag = "";
-phx_loadout_cuffs = "";
 phx_loadout_smoke = "";
 phx_loadout_flare = "";
 phx_loadout_defusalkit = "";
