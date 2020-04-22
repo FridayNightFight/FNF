@@ -10,7 +10,6 @@ class CfgFunctions {
       class postBriefing{};
       class setGroupIDs{};
       class fortifyClient{};
-      class vehicleLocks{};
       class client_setupGame{};
       class platoonActions{};
       class gearSelection{};

@@ -36,9 +36,6 @@ phx_radHandle1 = [phx_fnc_radio_waitGear, 0.1, []] call CBA_fnc_addPerFrameHandl
 //Client-side fortify
 call phx_fnc_fortifyClient;
 
-//Client-side vehicle locks - see the function for instructions
-//call phx_fnc_vehicleLocks;
-
 //Wait for the server to finish setting up the game then call client setup
 [{!isNil "phx_serverGameSetup"}, {call phx_fnc_client_setupGame}] call CBA_fnc_waitUntilAndExecute;
 

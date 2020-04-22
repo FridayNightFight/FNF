@@ -87,12 +87,6 @@ class Params {
         texts[] = {"All Players (default)","Team Leaders and above","Squad Leaders and above","No Radios"};
         default = 0;
     };
-    class phx_vehicleLocks {
-      title = "Vehicle Locking";
-      values[] = {-1,0,1};
-      texts[] = {"None","Lock to side","Lock to side and crewman"};
-      default = 1;
-    };
     class spacer5 {
       title = "====================================================================================================================================================================================";
       values[] = {0};
