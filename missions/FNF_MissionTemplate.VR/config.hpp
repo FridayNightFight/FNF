@@ -1,6 +1,8 @@
 phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
 /*
-destroy or uplink
+destroy
+uplink
+rush
 */
 
 phx_defendingSide = east; //east/west/independent

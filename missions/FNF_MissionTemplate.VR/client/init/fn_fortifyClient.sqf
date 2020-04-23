@@ -134,20 +134,3 @@ switch (playerSide) do {
     };
   };
 }] call CBA_fnc_addEventHandler;
-
-phx_fortifyPlacing = [{
-  if (acex_fortify_isPlacing == -1) then {
-    if (!isNil "phx_safeStartNoFire") then {
-      player removeAction phx_safeStartNoFire;
-      phx_safeStartNoFire = nil;
-    };
-  } else {
-    if (isNil "phx_safeStartNoFire") then {
-      phx_safeStartNoFire = player addAction ["", {}, nil, 0, false, true, "defaultAction", "
-      {
-        _this setWeaponReloadingTime [_this, _x, 1];
-      } forEach phx_safetyMuzzles;
-      "];
-    };
-  };
-} , 0.25, []] call CBA_fnc_addPerFrameHandler;

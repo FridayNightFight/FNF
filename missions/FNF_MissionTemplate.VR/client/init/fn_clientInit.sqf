@@ -4,13 +4,13 @@
 //Hide markers player shouldn't see
 call phx_fnc_markerVisibility;
 
-player addEventHandler ["Killed", {
-  call phx_fnc_playerKilled;
-}];
-
 //Call safety if mission hasn't started yet. If mission has started, call JIP function
 if (phx_safetyEnabled) then {[] spawn phx_fnc_safety};
 if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
+
+player addEventHandler ["Killed", {
+  call phx_fnc_playerKilled;
+}];
 
 //Set loadout
 call phx_fnc_setLoadout;
@@ -57,6 +57,8 @@ call phx_fnc_platoonActions;
   5 call TFAR_fnc_setVoiceVolume;
   TF_speak_volume_level = "whispering";
 };
+
+[] spawn phx_fnc_getKeys;
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;

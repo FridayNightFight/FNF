@@ -22,8 +22,27 @@ phx_safeStartNoRespawn = [{
   ace_advanced_throwing_enabled = false;
 };
 
+//Allow ACE placing
+phx_acePlacing = [{
+  if ((missionNamespace getVariable ["explosives_placeaction",0] == -1) || (missionNamespace getVariable ["acex_fortify_isPlacing",0] == -1) || (player getVariable ["ace_dragging_iscarrying",false]) || (player getVariable ["ace_dragging_isdragging",false])) then {
+    if (!isNil "phx_safeStartNoFire") then {
+      player removeAction phx_safeStartNoFire;
+      phx_safeStartNoFire = nil;
+    };
+  } else {
+    if (isNil "phx_safeStartNoFire") then {
+      phx_safeStartNoFire = player addAction ["", {}, nil, 0, false, true, "defaultAction", "
+      {
+        _this setWeaponReloadingTime [_this, _x, 1];
+      } forEach phx_safetyMuzzles;
+      "];
+    };
+  };
+} , 0.1, []] call CBA_fnc_addPerFrameHandler;
+
 waitUntil {!phx_safetyEnabled};
 
+[phx_acePlacing] call CBA_fnc_removePerFrameHandler;
 player removeAction phx_safeStartNoFire;
 ace_advanced_throwing_enabled = true;
 player allowDamage true;

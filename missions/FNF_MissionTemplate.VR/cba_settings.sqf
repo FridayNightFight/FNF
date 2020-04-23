@@ -136,14 +136,14 @@ force ace_repair_addSpareParts = true;
 force ace_repair_autoShutOffEngineWhenStartingRepair = false;
 force ace_repair_consumeItem_toolKit = 0;
 ace_repair_displayTextOnRepair = true;
-force ace_repair_engineerSetting_fullRepair = 2;
-force ace_repair_engineerSetting_repair = 0;
+force ace_repair_engineerSetting_fullRepair = 1;
+force ace_repair_engineerSetting_repair = 1;
 force ace_repair_engineerSetting_wheel = 0;
-force ace_repair_fullRepairLocation = 4;
-force ace_repair_fullRepairRequiredItems = ["ToolKit"];
+force ace_repair_fullRepairLocation = 2;
+force ace_repair_fullRepairRequiredItems = [];
 force ace_repair_miscRepairRequiredItems = [];
-force ace_repair_repairDamageThreshold = 0.7;
-force ace_repair_repairDamageThreshold_engineer = 0.4;
+force ace_repair_repairDamageThreshold = 1;
+force ace_repair_repairDamageThreshold_engineer = 0.5;
 force ace_repair_wheelRepairRequiredItems = [];
 
 // ACE Magazine Repack
@@ -303,7 +303,7 @@ force ace_scopes_zeroReferenceHumidity = 0;
 force ace_scopes_zeroReferenceTemperature = 15;
 
 // ACE Spectator
-force ace_spectator_enableAI = false;
+force ace_spectator_enableAI = true;
 ace_spectator_maxFollowDistance = 5;
 force ace_spectator_restrictModes = 0;
 force ace_spectator_restrictVisions = 0;
@@ -331,8 +331,8 @@ ace_tagging_quickTag = 1;
 
 // ACE Vehicle Lock
 force ace_vehiclelock_defaultLockpickStrength = 10;
-force ace_vehiclelock_lockVehicleInventory = false;
-force ace_vehiclelock_vehicleStartingLockState = -1;
+force ace_vehiclelock_lockVehicleInventory = true;
+force ace_vehiclelock_vehicleStartingLockState = 1;
 
 // ACE Vehicles
 ace_vehicles_hideEjectAction = true;

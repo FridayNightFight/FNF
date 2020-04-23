@@ -21,3 +21,20 @@ setViewDistance 3000;
     _marker setMarkerShape "ICON";
     _marker setMarkerType "Empty";
 } forEach ["respawn", "respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
+
+{
+  _type = ((_x call BIS_fnc_objectType) select 1);
+  if !(_type isEqualTo "Helicopter" || _type isEqualTo "Plane" || _type isEqualTo "TrackedAPC" || _type isEqualTo "WheeledAPC" || _type isEqualTo "Tank") then {
+    if (_x inArea "bluforSafeMarker") then {
+      _x setVariable ["ace_vehiclelock_lockSide", west, true];
+    };
+    if (_x inArea "opforSafeMarker") then {
+      _x setVariable ["ace_vehiclelock_lockSide", east, true];
+    };
+    if (_x inArea "indforSafeMarker") then {
+      _x setVariable ["ace_vehiclelock_lockSide", independent, true];
+    };
+  } else {
+    _x setVariable ["ace_vehiclelock_lockSide", sideUnknown, true];
+  };
+} forEach vehicles;

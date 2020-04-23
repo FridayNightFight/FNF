@@ -27,6 +27,7 @@ if (pRole == ROLE_P) then {
 if (pRole == ROLE_CR) then {
   phx_loadout_vest = "rhsusf_spc_crewman";
   phx_loadout_headgear = "rhsusf_cvc_green_ess";
+  phx_loadout_backpack = "";
 };
 if (pRole == ROLE_MK) then {
   phx_loadout_vest = "rhsusf_spc_marksman";

@@ -10,7 +10,7 @@ switch (_this select 0) do {
       deleteVehicle _unit;
     }];
 
-    {_x allowDamage false} forEach vehicles;
+    {_x allowDamage false; _x setFuel 0;} forEach vehicles;
 
     sleep 2;
 
@@ -39,7 +39,7 @@ switch (_this select 0) do {
     publicVariable "phx_safetyEnabled";
     removeMissionEventHandler ["HandleDisconnect", phx_safetyBodiesEH];
 
-    {_x allowDamage true} forEach vehicles;
+    {_x allowDamage true; _x setFuel 1;} forEach vehicles;
 
     //Delete start markers
     {
@@ -50,5 +50,14 @@ switch (_this select 0) do {
 
     //Disable fortify
     ["off"] call acex_fortify_fnc_handleChatCommand;
+
+    //Keep player bodies on disconnect
+    addMissionEventHandler ["HandleDisconnect", {
+      params ["_unit", "_id", "_uid", "_name"];
+      _unit setOwner 2;
+      if (alive _unit) then {
+        _unit setDamage 1;
+      };
+    }];
   };
 };

@@ -13,6 +13,7 @@ class CfgFunctions {
       class client_setupGame{};
       class platoonActions{};
       class gearSelection{};
+      class getKeys{};
     };
     class clientSafety {
       file = "client\safety";
