@@ -14,7 +14,7 @@ Steps:
 8. Configure mission start time, weather, etc.
 9. Configure the play boundary trigger (zoneTrigger).
 10. Set the Lobby Summary (Attributes > Multiplayer > Lobby > Summary )to include the attacking & defending sides, the player-count ratio for the mission, and the assets available to each side. You don't need to worry about including transport vehicles. Example: ATK:DEF OPF:BLU - 25% OPF adv - OPF: 1x BTR-80, 1x UAZ DShKM - BLU: 1x M113 M2, 1x UH-60M
-# Do not change any other Multiplayer settings
+* Do not change any other Multiplayer settings
 11. Do a quick play-through of your mission from all sides to make sure that there are no weird bugs or interactions not visible in 3den editor.
 12. Export your mission to MP to create a mission .pbo and send that file over to FNF Staff (default export location is in MPMissions folder in root Arma directory).
 
