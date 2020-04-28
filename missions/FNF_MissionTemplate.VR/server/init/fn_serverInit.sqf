@@ -37,4 +37,7 @@ setViewDistance 3000;
   } else {
     _x setVariable ["ace_vehiclelock_lockSide", sideUnknown, true];
   };
+
+  clearWeaponCargoGlobal _x;
+  clearMagazineCargoGlobal _x;
 } forEach vehicles;

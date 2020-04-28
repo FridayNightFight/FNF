@@ -1,8 +1,8 @@
 if (!hasInterface) exitWith {};
 [] spawn {
   disableSerialization;
-  _missionSafeTime = ["f_param_mission_timer",0] call BIS_fnc_getParamValue; //Default - 0 minute safestart
-  _missionRunTimeMins = ["phx_missionTimelimit",45] call BIS_fnc_getParamValue; //Default - 45 minute battle phase
+  _missionSafeTime = phx_safeStartTime; //Default - 15 minute safestart
+  _missionRunTimeMins = phx_missionTimelimit; //Default - 60 minute battle phase
   _missionTime = _missionRuntimeMins + _missionSafeTime;
   //Create displays in bottom left
   ("timeRsc" call BIS_fnc_rscLayer) cutRsc ["timeleftStructText", "PLAIN"];

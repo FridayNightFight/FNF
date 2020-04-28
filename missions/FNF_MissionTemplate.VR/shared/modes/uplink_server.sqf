@@ -74,13 +74,14 @@ _termTaskSetup = {
 switch (_numberOfTerminals) do {
   case 1: {
     term1 call _termMarkSetup;
+     [term1] call phx_fnc_objBuildingDamage;
     {deleteVehicle _x} forEach [term2,term3];
 
     [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
     [term1, phx_defendingSide, "defendTask1"] call _termTaskSetup;
   };
   case 2: {
-    {_x call _termMarkSetup} forEach [term1,term2];
+    {_x call _termMarkSetup; [_x] call phx_fnc_objBuildingDamage;} forEach [term1,term2];
     deleteVehicle term3;
 
     [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
@@ -89,7 +90,7 @@ switch (_numberOfTerminals) do {
     [term2, phx_defendingSide, "defendTask2"] call _termTaskSetup;
   };
   case 3: {
-    {_x call _termMarkSetup} forEach [term1,term2,term3];
+    {_x call _termMarkSetup; [_x] call phx_fnc_objBuildingDamage;} forEach [term1,term2,term3];
 
     [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
     [term1, phx_defendingSide, "defendTask1"] call _termTaskSetup;
@@ -138,6 +139,51 @@ _hackComplete = {
 
   "Bo_GBU12_LGB" createVehicle (getposATL _term);
   deleteVehicle _term;
+};
+
+phx_serverTerminalAction = {
+  _term = _this select 0;
+  _hacking = _this select 1;
+  _message = "";
+
+  switch (_term) do {
+    case term1: {_message = "Terminal 1"};
+    case term2: {_message = "Terminal 2"};
+    case term3: {_message = "Terminal 3"};
+  };
+
+  switch (_hacking) do {
+    case true: {
+      [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+      switch (_term) do {
+        case term1: {
+          missionNamespace setVariable ["phx_term1Hacking", true, false];
+        };
+        case term2: {
+          missionNamespace setVariable ["phx_term2Hacking", true, false];
+        };
+        case term3: {
+          missionNamespace setVariable ["phx_term3Hacking", true, false];
+        };
+      };
+      format ["%1 hack started!", _message] remoteExec ["hintSilent", 0];
+    };
+    case false: {
+      [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+      switch (_term) do {
+        case term1: {
+          missionNamespace setVariable ["phx_term1Hacking", false, false];
+        };
+        case term2: {
+          missionNamespace setVariable ["phx_term2Hacking", false, false];
+        };
+        case term3: {
+          missionNamespace setVariable ["phx_term3Hacking", false, false];
+        };
+      };
+      format ["%1 hack paused!", _message] remoteExec ["hintSilent", 0];
+    };
+  };
 };
 
 waitUntil {phx_term1Hacking || phx_term2Hacking || phx_term3Hacking};

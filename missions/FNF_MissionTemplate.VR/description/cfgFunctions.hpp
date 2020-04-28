@@ -41,6 +41,7 @@ class CfgFunctions {
       class serverSafety{};
       class fortifyServer{};
       class server_setupGame{};
+      class objBuildingDamage{};
     };
     class unflip {
       file = "client\unflip";

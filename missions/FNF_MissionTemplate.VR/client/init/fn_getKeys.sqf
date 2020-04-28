@@ -15,18 +15,7 @@ if (phx_loadout_unitLevel > 0) then {
   };
 };
 
-if !(pRole == 14 || pRole == 15) exitWith {};
-
-private _vic = objNull;
-switch (pRole) do {
-  case 14: {
-    _vic = position player nearestObject "Air";
-  };
-  case 15: {
-    _vic = position player nearestObject "LandVehicle";
-  };
-};
-
-if !(isNull _vic) then {
-  [player, _vic, true] call ace_vehiclelock_fnc_addKeyForVehicle;
+_vics = synchronizedObjects player;
+if (!isNil "_vics") then {
+  {[player, _x, true] call ace_vehiclelock_fnc_addKeyForVehicle;} forEach _vics;
 };

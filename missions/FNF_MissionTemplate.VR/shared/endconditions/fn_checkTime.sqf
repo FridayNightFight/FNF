@@ -1,5 +1,5 @@
-phx_missionSafeTime = ["f_param_mission_timer",15] call BIS_fnc_getParamValue;
-phx_missionRunTime = ["phx_missionTimelimit",60] call BIS_fnc_getParamValue;
+phx_missionSafeTime = phx_safeStartTime;
+phx_missionRunTime = phx_missionTimelimit;
 phx_missionRuntimeMins = phx_missionRunTime + phx_missionSafeTime;
 phx_alertEnd = false;
 phx_alert1 = false;

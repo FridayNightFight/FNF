@@ -48,20 +48,20 @@ _loadout = switch (_loadout) do {
 // Get the default gear settings for each side
 switch (playerSide) do {
     case west: {
-      pUniform = ["phx_loadout_blufor_uniform",0] call BIS_fnc_getParamValue;
-      pWeapons = ["phx_loadout_blufor_weapons",0] call BIS_fnc_getParamValue;
+      pUniform = phx_bluforUniform;
+      pWeapons = phx_bluforWeapons;
     };
     case east: {
-      pUniform = ["phx_loadout_opfor_uniform",0] call BIS_fnc_getParamValue;
-      pWeapons = ["phx_loadout_opfor_weapons",0] call BIS_fnc_getParamValue;
+      pUniform = phx_opforUniform;
+      pWeapons = phx_opforWeapons;
     };
     case independent: {
-      pUniform = ["phx_loadout_indfor_uniform",0] call BIS_fnc_getParamValue;
-      pWeapons = ["phx_loadout_indfor_weapons",0] call BIS_fnc_getParamValue;
+      pUniform = phx_indforUniform;
+      pWeapons = phx_indforWeapons;
     };
     case civilian: {
-      pUniform = ["phx_loadout_civ_uniform",0] call BIS_fnc_getParamValue;
-      pWeapons = ["phx_loadout_civ_weapons",0] call BIS_fnc_getParamValue;
+      pUniform = phx_civUniform;
+      pWeapons = phx_civWeapons;
       phx_loadout_radio = 3; // Don't give civs radios
     };
     default {

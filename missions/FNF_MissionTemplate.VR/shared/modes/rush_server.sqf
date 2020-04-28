@@ -57,7 +57,7 @@ _termMarkSetup = {
   _mark setMarkerType "mil_dot";
 };
 
-{_x call _termMarkSetup} forEach _terminals;
+{_x call _termMarkSetup; [_x] call phx_fnc_objBuildingDamage;} forEach _terminals;
 
 _terminalHackComplete = {
   _term = _this select 0;

@@ -2,7 +2,7 @@ switch (_this select 0) do {
   case true: {
     phx_safetyEnabled = true;
     publicVariable "phx_safetyEnabled";
-    f_var_mission_timer = ["f_param_mission_timer",15] call BIS_fnc_getParamValue;
+    f_var_mission_timer = phx_safeStartTime;
 
     //Delete player bodies during safestart
     phx_safetyBodiesEH = addMissionEventHandler ["HandleDisconnect", {
@@ -10,7 +10,7 @@ switch (_this select 0) do {
       deleteVehicle _unit;
     }];
 
-    {_x allowDamage false; _x setFuel 0;} forEach vehicles;
+    {_x allowDamage false;} forEach vehicles;
 
     sleep 2;
 
@@ -39,7 +39,7 @@ switch (_this select 0) do {
     publicVariable "phx_safetyEnabled";
     removeMissionEventHandler ["HandleDisconnect", phx_safetyBodiesEH];
 
-    {_x allowDamage true; _x setFuel 1;} forEach vehicles;
+    {_x allowDamage true;} forEach vehicles;
 
     //Delete start markers
     {

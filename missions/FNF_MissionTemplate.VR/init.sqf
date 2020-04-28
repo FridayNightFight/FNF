@@ -6,9 +6,6 @@ if (isServer) then {
 };
 
 if (hasInterface) then {
-  waitUntil {!isNull player};
-  player allowDamage false;
-  removeAllWeapons player;
   waitUntil {!isNil "phx_safetyEnabled"};
   call phx_fnc_clientInit;
 };

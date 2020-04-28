@@ -1,6 +1,9 @@
 //Make player invincible
 player allowDamage false;
 
+//Heal player if they were damaged on start
+[objNull, player] call ace_medical_treatment_fnc_fullHeal;
+
 //Stop player from being able to fire weapon and throw grenades
 phx_safetyMuzzles = getArray (configFile >> "CfgWeapons" >> "Throw" >> "muzzles");
 phx_safeStartNoFire = player addAction ["", {}, nil, 0, false, true, "defaultAction", "
@@ -24,7 +27,7 @@ phx_safeStartNoRespawn = [{
 
 //Allow ACE placing
 phx_acePlacing = [{
-  if ((missionNamespace getVariable ["explosives_placeaction",0] == -1) || (missionNamespace getVariable ["acex_fortify_isPlacing",0] == -1) || (player getVariable ["ace_dragging_iscarrying",false]) || (player getVariable ["ace_dragging_isdragging",false])) then {
+  if ((missionNamespace getVariable ["ace_explosives_placeaction",0] == -1) || (missionNamespace getVariable ["acex_fortify_isPlacing",0] == -1) || (player getVariable ["ace_dragging_iscarrying",false]) || (player getVariable ["ace_dragging_isdragging",false])) then {
     if (!isNil "phx_safeStartNoFire") then {
       player removeAction phx_safeStartNoFire;
       phx_safeStartNoFire = nil;
