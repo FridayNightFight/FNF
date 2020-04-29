@@ -12,11 +12,12 @@ switch (playerSide) do {
 
 phx_startZoneMaxTime = 5;
 phx_startZoneTimer = phx_startZoneMaxTime;
+phx_startLastGoodPos = position vehicle player;
 
 phx_startPFH = [{
   if (!phx_safetyEnabled || !(alive player)) exitWith {phx_startPFH call CBA_fnc_removePerFrameHandler; hintSilent ""};
   if !(vehicle player inArea phx_startZoneMarker) then {
-    if (phx_startZoneTimer == 0) exitWith {vehicle player setPos (getMarkerPos phx_startZoneMarker findEmptyPosition [0, 100, typeOf vehicle player]); phx_startZoneTimer = phx_startZoneMaxTime; hintSilent ""};
+    if (phx_startZoneTimer == 0) exitWith {vehicle player setPos (phx_startLastGoodPos findEmptyPosition [0, 100, typeOf vehicle player]); phx_startZoneTimer = phx_startZoneMaxTime; hintSilent ""};
     hintSilent format ["You have %1 seconds to get back into the starting zone.", phx_startZoneTimer];
     phx_startZoneTimer = phx_startZoneTimer - 1;
   } else {
@@ -24,5 +25,6 @@ phx_startPFH = [{
       phx_startZoneTimer = phx_startZoneMaxTime;
       hintSilent "";
     };
+    phx_startLastGoodPos = position vehicle player;
   };
 }, 1, []] call CBA_fnc_addPerFrameHandler;

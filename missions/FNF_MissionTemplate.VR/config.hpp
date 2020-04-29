@@ -1,3 +1,5 @@
+#include "client\loadout\cfgLoadouts.hpp"
+
 phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
 /*
 destroy
@@ -10,8 +12,6 @@ phx_attackingSide = west; //east/west/independent
 //Not used if mode is neutral
 
 ////////////////////////////////////////////////////////////
-
-#include "client\loadout\cfgLoadouts.hpp"
 
 //Uniforms
 phx_bluforUniform = UNIFORM_MARPAT_WD;

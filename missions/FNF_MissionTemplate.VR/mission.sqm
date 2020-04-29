@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1283;
+		nextID=1286;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=37;
+		nextID=38;
 	};
 	class Camera
 	{
-		pos[]={291.80142,19.408606,667.93799};
-		dir[]={0.40035483,-0.7299307,0.55400878};
-		up[]={0.42753503,0.68352157,0.59162062};
-		aside[]={0.81051803,-1.9441359e-008,-0.58572108};
+		pos[]={288.32111,19.408606,659.04327};
+		dir[]={0.13365363,-0.4549728,0.88042438};
+		up[]={0.068285763,0.89050406,0.4498232};
+		aside[]={0.98867804,1.5704427e-007,-0.15008673};
 	};
 };
 binarizationWanted=0;
@@ -877,7 +877,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=86;
+		items=89;
 		class Item0
 		{
 			dataType="Logic";
@@ -49000,6 +49000,36 @@ class Mission
 			};
 			description="OPFOR, delete if not using";
 			id=1282;
+		};
+		class Item86
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={514.2962,5,675.61963};
+			};
+			description="Sync crewman/pilots to a vehicle to give them a key";
+			id=1283;
+		};
+		class Item87
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={310.30786,5,677.28271};
+			};
+			description="Sync crewman/pilots to a vehicle to give them a key";
+			id=1284;
+		};
+		class Item88
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={698.80237,5,675.44141};
+			};
+			description="Sync crewman/pilots to a vehicle to give them a key";
+			id=1285;
 		};
 	};
 	class Connections
