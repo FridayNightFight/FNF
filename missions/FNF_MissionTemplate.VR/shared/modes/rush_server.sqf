@@ -88,24 +88,30 @@ _terminalHacking = {
       while {_timer > 0 && phx_term1Hacking} do {
         _termTimeText = "Terminal 1 hack timer: " + ([_timer,"MM:SS"] call BIS_fnc_secondsToString);
         _termTimeText remoteExec ["hintSilent",0,false];
-        uiSleep 2;
-        _timer = _timer - 2;
+        uiSleep 1;
+        if (phx_term1Hacking) then {
+          _timer = _timer - 1;
+        };
       };
     };
     case term2: {
       while {_timer > 0 && phx_term2Hacking} do {
         _termTimeText = "Terminal 2 hack timer: " + ([_timer,"MM:SS"] call BIS_fnc_secondsToString);
         _termTimeText remoteExec ["hintSilent",0,false];
-        uiSleep 2;
-        _timer = _timer - 2;
+        uiSleep 1;
+        if (phx_term2Hacking) then {
+          _timer = _timer - 1;
+        };
       };
     };
     case term3: {
       while {_timer > 0 && phx_term3Hacking} do {
         _termTimeText = "Terminal 3 hack timer: " + ([_timer,"MM:SS"] call BIS_fnc_secondsToString);
         _termTimeText remoteExec ["hintSilent",0,false];
-        uiSleep 2;
-        _timer = _timer - 2;
+        uiSleep 1;
+        if (phx_term3Hacking) then {
+          _timer = _timer - 1;
+        };
       };
     };
   };
@@ -120,6 +126,41 @@ _terminalHacking = {
     };
   } else {
     _this call _terminalHacking;
+  };
+};
+
+phx_serverTerminalAction = {
+  _term = _this select 0;
+  _hacking = _this select 1;
+  _message = "";
+
+  switch (_term) do {
+    case term1: {_message = "Terminal 1"};
+    case term2: {_message = "Terminal 2"};
+    case term3: {_message = "Terminal 3"};
+  };
+
+  switch (_hacking) do {
+    case true: {
+      switch (_term) do {
+        case term1: {missionNamespace setVariable ["phx_term1Hacking", true, true];};
+        case term2: {missionNamespace setVariable ["phx_term2Hacking", true, true];};
+        case term3: {missionNamespace setVariable ["phx_term3Hacking", true, true];};
+      };
+
+      format ["%1 hack started!", _message] remoteExec ["hintSilent", 0];
+      [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+    };
+    case false: {
+      switch (_term) do {
+        case term1: {missionNamespace setVariable ["phx_term1Hacking", false, true];};
+        case term2: {missionNamespace setVariable ["phx_term2Hacking", false, true];};
+        case term3: {missionNamespace setVariable ["phx_term3Hacking", false, true];};
+      };
+
+      format ["%1 hack stopped!", _message] remoteExec ["hintSilent", 0];
+      [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+    };
   };
 };
 
@@ -143,12 +184,16 @@ _win = {
 waitUntil {phx_term1Hacking};
 [term1, phx_term1Time] call _terminalHacking;
 
+sleep 1;
+
 [phx_defendingSide,"defendTask2",[format ["%1 second hack time",phx_term2Time],"Defend the data terminal","term2Mark"],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 [phx_attackingSide,"attackTask2",[format ["%1 second hack time",phx_term2Time],"Hack the data terminal","term2Mark"],term2,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 "term2Mark" setMarkerText "Terminal 2 - Active";
 
 waitUntil {phx_term2Hacking};
 [term2, phx_term2Time] call _terminalHacking;
+
+sleep 1;
 
 if (!isNull term3) then {
   [phx_defendingSide,"defendTask3",[format ["%1 second hack time",phx_term3Time],"Defend the data terminal","term3Mark"],term3,"AUTOASSIGNED"] call BIS_fnc_taskCreate;

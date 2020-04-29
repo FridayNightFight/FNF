@@ -42,7 +42,7 @@ if !(isNull term1) then {
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
     [],
-    1,
+    0,
     0,
     false,
     false
@@ -91,7 +91,7 @@ if !(isNull term2) then {
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
     [],
-    1,
+    0,
     0,
     false,
     false
@@ -140,7 +140,7 @@ if !(isNull term3) then {
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
     [],
-    1,
+    0,
     0,
     false,
     false

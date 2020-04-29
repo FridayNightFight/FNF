@@ -194,15 +194,15 @@ while {!phx_gameEnd} do {
   _hackString = "";
 
   if (phx_term1Hacking) then {
-    phx_term1Time = phx_term1Time - 2;
+    phx_term1Time = phx_term1Time - 1;
     playSound3D ["A3\Sounds_F\sfx\alarm.wss", term1];
   };
   if (phx_term2Hacking) then {
-    phx_term2Time = phx_term2Time - 2;
+    phx_term2Time = phx_term2Time - 1;
     playSound3D ["A3\Sounds_F\sfx\alarm.wss", term2];
   };
   if (phx_term3Hacking) then {
-    phx_term3Time = phx_term3Time - 2;
+    phx_term3Time = phx_term3Time - 1;
     playSound3D ["A3\Sounds_F\sfx\alarm.wss", term3];
   };
 
@@ -238,7 +238,7 @@ while {!phx_gameEnd} do {
   if (phx_term2Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term2 spawn _hackComplete};
   if (phx_term3Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term3 spawn _hackComplete};
 
-  uiSleep 2;
+  uiSleep 1;
 
   if (_hackedObjectives >= _numberOfTerminals) then {
     uiSleep 10;
