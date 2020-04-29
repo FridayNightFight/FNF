@@ -230,7 +230,9 @@ while {!phx_gameEnd} do {
     };
   };
 
-  _hackString remoteExec ["hintSilent"];
+  if !(_hackString isEqualTo "") then {
+    _hackString remoteExec ["hintSilent"];
+  };
 
   if (phx_term1Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term1 spawn _hackComplete};
   if (phx_term2Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term2 spawn _hackComplete};
