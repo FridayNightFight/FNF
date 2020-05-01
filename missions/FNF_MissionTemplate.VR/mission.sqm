@@ -8,22 +8,22 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1286;
+		nextID=1289;
 	};
 	class MarkerIDProvider
 	{
-		nextID=22;
+		nextID=25;
 	};
 	class LayerIndexProvider
 	{
-		nextID=40;
+		nextID=41;
 	};
 	class Camera
 	{
-		pos[]={311.88953,22.370501,639.15802};
-		dir[]={0.13655923,-0.28591406,0.94848472};
-		up[]={0.040745553,0.9582532,0.28300327};
-		aside[]={0.98980272,3.2331445e-007,-0.14250743};
+		pos[]={1196.2932,30,461.11267};
+		dir[]={0.023672638,-0.45057824,0.89242476};
+		up[]={0.011947965,0.89273691,0.45042101};
+		aside[]={0.99964911,1.7025741e-009,-0.026516924};
 	};
 };
 binarizationWanted=0;
@@ -39513,8 +39513,8 @@ class Mission
 			{
 				position[]={-9930.752,5,-5574.0708};
 			};
+			name="dummySector";
 			areaSize[]={50,-1,50};
-			presenceCondition="phx_gameMode isEqualTo ""connection""";
 			id=584;
 			type="ModuleSectorDummy_F";
 			class CustomAttributes
@@ -39565,7 +39565,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={-9929.6973,5,-5575.1133};
+				position[]={-9929.6973,5,-5575.1128};
 			};
 			name="dummyblu";
 			id=585;
@@ -39576,7 +39576,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={-9931.0986,5,-5575.2764};
+				position[]={-9931.0986,5,-5575.2759};
 			};
 			name="dummyind";
 			id=586;

@@ -12,4 +12,7 @@ switch (phx_gameMode) do {
   case rush: {
     execVM "shared\modes\rush_client.sqf";
   };
+  case connection: {
+    execVM "shared\modes\connection_client.sqf";
+  };
 };
