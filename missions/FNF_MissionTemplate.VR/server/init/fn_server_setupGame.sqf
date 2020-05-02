@@ -29,7 +29,7 @@ if !(phx_gameMode isEqualTo uplink || phx_gameMode isEqualTo rush || phx_gameMod
 };
 
 if !(phx_gameEnd isEqualTo connection) then {
-  {deleteVehicle _x;} forEach [dummySector, dummyind, dummyblu, dummyopf];
+  {deleteVehicle _x} forEach [dummySector, dummyind, dummyblu, dummyopf];
 };
 
 missionNamespace setVariable ["phx_serverGameSetup",true,true];

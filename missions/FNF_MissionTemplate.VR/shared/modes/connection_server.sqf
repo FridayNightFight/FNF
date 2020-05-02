@@ -13,6 +13,8 @@ _markerSetup = {
   _mark = createMarker [format ["%1Mark",_term],getPos _term];
   _mark setMarkerType "mil_dot";
   _mark setMarkerText format ["Terminal %1", [str _term, 4, 4] call BIS_fnc_trimString];
+
+  [_term] call phx_fnc_objBuildingDamage;
 };
 
 switch (_numberOfTerminals) do {
@@ -80,7 +82,7 @@ phx_serverTerminalAction = {
   _sideWon = sideUnknown;
   waitUntil {phx_term1HackingSide != sideUnknown || phx_term2HackingSide != sideUnknown || phx_term3HackingSide != sideUnknown};
 
-  while {!phx_gameEnd} do {
+  while {!(missionNamespace getVariable ["phx_gameEnd",false])} do {
     sleep _pointAddTime;
 
     [phx_term1HackingSide, 1] call BIS_fnc_respawnTickets;
@@ -91,35 +93,53 @@ phx_serverTerminalAction = {
     if (count _sideWon == 1) then {
       _sideWon = (_sideWon select 0) select 0;
       missionNamespace setVariable ["phx_gameEnd", true, true];
-    };
-    if (count _sideWon > 1) then {
-      _points = 0;
-      _largeSide = sideUnknown;
+
+      [format ["%1 has reached 100 points.\n%1 wins!",
+      switch (_sideWon) do {
+        case east: {"OPFOR"};
+        case west: {"BLUFOR"};
+        case independent: {"INDFOR"};
+      }]] remoteExec ["hint"];
+
       {
-        if (_x select 1 > _points) then {
-          _points = _x select 1;
-          _largeSide = _x select 0
+        if (!isNull _x) then {
+          _x remoteExec ["removeAllActions"];
         };
-      } forEach _sideWon;
-      _sideWon = _largeSide;
-      missionNamespace setVariable ["phx_gameEnd", true, true];
+      } forEach [term1,term2,term3];
+
+      sleep 15;
+
+      "end1" call BIS_fnc_endMissionServer;
+    } else {
+      if (count _sideWon > 1) then {
+        _points = 0;
+        _largeSide = sideUnknown;
+        {
+          if (_x select 1 > _points) then {
+            _points = _x select 1;
+            _largeSide = _x select 0
+          };
+        } forEach _sideWon;
+        _sideWon = _largeSide;
+        missionNamespace setVariable ["phx_gameEnd", true, true];
+
+        [format ["%1 has reached 100 points.\n%1 wins!",
+        switch (_sideWon) do {
+          case east: {"OPFOR"};
+          case west: {"BLUFOR"};
+          case independent: {"INDFOR"};
+        }]] remoteExec ["hint"];
+
+        {
+          if (!isNull _x) then {
+            _x remoteExec ["removeAllActions"];
+          };
+        } forEach [term1,term2,term3];
+
+        sleep 15;
+
+        "end1" call BIS_fnc_endMissionServer;
+      };
     };
   };
-
-  [format ["%1 has reached 100 points.\n%1 wins!",
-  switch (_sideWon) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
-    case independent: {"INDFOR"};
-  }]] remoteExec ["hint"];
-
-  {
-    if (!isNull _x) then {
-      _x remoteExec ["removeAllActions"];
-    };
-  } forEach [term1,term2,term3];
-
-  sleep 15;
-
-  "end1" call BIS_fnc_endMissionServer;
 };
