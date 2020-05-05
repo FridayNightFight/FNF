@@ -3,9 +3,7 @@ phx_loadout_vest = "rhssaf_vest_md99_woodland_rifleman";
 phx_loadout_backpack = "rhssaf_kitbag_smb";
 phx_loadout_headgear = "rhssaf_helmet_m97_oakleaf";
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
-  if (!(_lrRadio isEqualTo "")) then {
-    phx_loadout_backpack = _lrRadio;
-  };
+  phx_loadout_backpack = _lrRadio;
 };
 if (pRole == ROLE_CLS) then {
   phx_loadout_backpack = "B_FieldPack_oli";

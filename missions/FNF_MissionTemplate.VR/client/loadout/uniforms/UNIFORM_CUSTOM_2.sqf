@@ -25,9 +25,6 @@ switch (pRole) do {
   case ROLE_MK: {}; //Marksman
 };
 
-//This will give Platoon and Squad leaders radio backpacks. Remove this if you don't want that.
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
-  if (!(_lrRadio isEqualTo "")) then {
-    phx_loadout_backpack = _lrRadio;
-  };
+  phx_loadout_backpack = _lrRadio;
 };

@@ -20,15 +20,15 @@ giveOPFORLoadout = {
     phx_loadout_rifle_weapon = "rhs_weap_ak74m";
   };
   if (pRole == ROLE_AR) then {
-    phx_loadout_automaticrifle_weapon = "rhs_weap_pkm";
-    phx_loadout_automaticrifle_mag = "rhs_100Rnd_762x54mmR_green:5";
+    phx_loadout_rifle_weapon = "rhs_weap_pkm";
+    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:5";
   };
   if (pRole == ROLE_AAR) then {
-    phx_loadout_automaticrifle_mag = "rhs_100Rnd_762x54mmR_green:4";
+    phx_loadout_automaticrifle_mag = "rhs_100Rnd_762x54mmR_green:3";
   };
   if (pRole == ROLE_MG) then {
-    phx_loadout_mmg_weapon = "rhs_weap_pkp";
-    phx_loadout_mmg_mag = "rhs_100Rnd_762x54mmR_green:4";
+    phx_loadout_rifle_weapon = "rhs_weap_pkp";
+    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:4";
   };
   if (pRole == ROLE_AM) then {
     phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_plum_green:5";

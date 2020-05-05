@@ -62,8 +62,9 @@ call phx_fnc_platoonActions;
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Wait for mission to start, then execute post briefing init
 [{CBA_missionTime > 0}, {
-    call phx_fnc_init_postBriefing;
+    call phx_fnc_postBriefing;
 }, []] call CBA_fnc_waitUntilAndExecute;

@@ -1,4 +1,5 @@
 #include "client\loadout\cfgLoadouts.hpp"
+#include "shared\definitions.hpp"
 
 phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
 /*
@@ -8,9 +9,9 @@ rush - atk/def
 connection - neutral
 */
 
-phx_defendingSide = east; //east/west/independent
-phx_attackingSide = west; //east/west/independent
-//Not used if mode is neutral
+phx_defendingSide = sideEmpty; //east/west/independent
+phx_attackingSide = sideEmpty; //east/west/independent
+//Leave it as sideEmpty if chosen mode is neutral
 
 ////////////////////////////////////////////////////////////
 

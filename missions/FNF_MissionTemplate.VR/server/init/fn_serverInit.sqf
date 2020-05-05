@@ -22,6 +22,7 @@ setViewDistance 3000;
     _marker setMarkerType "Empty";
 } forEach ["respawn", "respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 
+//Set global vehicle locks
 {
   _type = ((_x call BIS_fnc_objectType) select 1);
   if !(_type isEqualTo "Helicopter" || _type isEqualTo "Plane" || _type isEqualTo "TrackedAPC" || _type isEqualTo "WheeledAPC" || _type isEqualTo "Tank") then {
@@ -34,10 +35,17 @@ setViewDistance 3000;
     if (_x inArea "indforSafeMarker") then {
       _x setVariable ["ace_vehiclelock_lockSide", independent, true];
     };
+    if (_x inArea "bluforSafeMarker" || _x inArea "opforSafeMarker" || _x inArea "indforSafeMarker") then {
+      _x setVehicleLock "LOCKED";
+    };
   } else {
     _x setVariable ["ace_vehiclelock_lockSide", sideUnknown, true];
   };
-
-  clearWeaponCargoGlobal _x;
-  clearMagazineCargoGlobal _x;
+  if (((_x call BIS_fnc_objectType) select 0) isEqualTo "Vehicle") then {
+    clearWeaponCargoGlobal _x;
+    clearMagazineCargoGlobal _x;
+  };
 } forEach vehicles;
+
+//Disable zeus ping
+missionnamespace setvariable ["bis_fnc_curatorPinged_time", 999999, true];

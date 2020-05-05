@@ -1,14 +1,6 @@
 if !((playerSide == phx_defendingSide) && phx_allowFortify && ((typeOf player == "B_soldier_exp_F") || (typeOf player == "O_soldier_exp_F") || (typeOf player == "I_Soldier_exp_F"))) exitWith {};
 
-phx_fortifyNoFire = player addEventHandler ["FiredMan", {
-   params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
-
-   deleteVehicle _projectile;
-
-   if (_muzzle in phx_safetyMuzzles) then {
-     player addItem _magazine;
-   };
-}];
+player addItem "ACE_Fortify";
 
 phx_fortify_objArr = [];
 
@@ -49,9 +41,9 @@ switch (playerSide) do {
     };
 
     if (_type != "Land_Plank_01_4m_F" && _type != "Land_Plank_01_8m_F" && (_type find "BagFence" == -1)) then {
-      if !(isTouchingGround _object) then {
+      if (_pos select 2 > 0.25) then {
         _canPlace = false;
-        _errorStr = "Cannot place object. Object must be touching a surface."
+        _errorStr = "Cannot place object. Object must be on the ground."
       };
     };
 
@@ -64,7 +56,7 @@ switch (playerSide) do {
 
     if !(_pos inArea phx_fortifyMarker) then {
       _canPlace = false;
-      _errorStr = "Cannot place object. Object needs to be within safestart boundary."
+      _errorStr = "Cannot place object. Object needs to be within start zone boundary."
     };
 
     hintSilent _errorStr;
@@ -97,12 +89,15 @@ switch (playerSide) do {
   switch (playerSide) do {
     case east: {
       _fortifyVarStr = "acex_fortify_objects_east";
+      missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
     };
     case west: {
       _fortifyVarStr = "acex_fortify_objects_west";
+      missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
     };
     case independent: {
       _fortifyVarStr = "acex_fortify_objects_guer";
+      missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
     };
   };
 

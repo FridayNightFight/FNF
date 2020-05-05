@@ -1,7 +1,6 @@
 switch (_this select 0) do {
   case true: {
-    phx_safetyEnabled = true;
-    publicVariable "phx_safetyEnabled";
+    missionNamespace setVariable ["phx_safetyEnabled",true,true];
     f_var_mission_timer = phx_safeStartTime;
 
     //Delete player bodies during safestart
@@ -35,8 +34,7 @@ switch (_this select 0) do {
     //Start the mission. Remove safety from players, allow vehicles to be damaged and delete start zone markers
     ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
 
-    phx_safetyEnabled = false;
-    publicVariable "phx_safetyEnabled";
+    missionNamespace setVariable ["phx_safetyEnabled",false,true];
     removeMissionEventHandler ["HandleDisconnect", phx_safetyBodiesEH];
 
     {_x allowDamage true;} forEach vehicles;

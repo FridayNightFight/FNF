@@ -332,7 +332,7 @@ ace_tagging_quickTag = 1;
 // ACE Vehicle Lock
 force ace_vehiclelock_defaultLockpickStrength = 10;
 force ace_vehiclelock_lockVehicleInventory = true;
-force ace_vehiclelock_vehicleStartingLockState = 1;
+force ace_vehiclelock_vehicleStartingLockState = -1;
 
 // ACE Vehicles
 ace_vehicles_hideEjectAction = true;

@@ -2,7 +2,7 @@
 
 //Terminal 1 actions
 if !(isNull term1) then {
-  phx_term1HackingSide = sideUnknown;
+  phx_term1HackingSide = sideEmpty;
 
   [
     term1,
@@ -27,7 +27,7 @@ if !(isNull term1) then {
 
 //Terminal 2 actions
 if !(isNull term2) then {
-  phx_term2HackingSide = sideUnknown;
+  phx_term2HackingSide = sideEmpty;
 
   [
     term2,
@@ -52,7 +52,7 @@ if !(isNull term2) then {
 
 //Terminal 3 actions
 if !(isNull term3) then {
-  phx_term3HackingSide = sideUnknown;
+  phx_term3HackingSide = sideEmpty;
 
   [
     term3,

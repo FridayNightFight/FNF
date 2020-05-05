@@ -18,16 +18,16 @@ giveBLUFORLoadout = {
     phx_allowedWeapons = ["rhs_weap_m16a4_carryhandle"];
   };
   if (pRole == ROLE_AR) then {
-    phx_loadout_automaticrifle_weapon = "rhs_weap_m249_pip_L";
-    phx_loadout_automaticrifle_mag = "rhsusf_200rnd_556x45_mixed_box:4";
+    phx_loadout_rifle_weapon = "rhs_weap_m249_pip_L";
+    phx_loadout_rifle_mag = "rhsusf_200rnd_556x45_mixed_box:4";
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AAR) then {
     phx_loadout_automaticrifle_mag = "rhsusf_200rnd_556x45_mixed_box:2";
   };
   if (pRole == ROLE_MG) then {
-    phx_loadout_mmg_weapon = "rhs_weap_m240G";
-    phx_loadout_mmg_mag = "rhsusf_100Rnd_762x51_m80a1epr:4";
+    phx_loadout_rifle_weapon = "rhs_weap_m240G";
+    phx_loadout_rifle_mag = "rhsusf_100Rnd_762x51_m80a1epr:4";
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AM) then {

@@ -16,6 +16,7 @@ switch (phx_gameMode) do {
   };
   case connection: {
     [] call compile preprocessFileLineNumbers format ["shared\modes\connection_server.sqf"];
+    ["off"] call acex_fortify_fnc_handleChatCommand;
   };
 };
 
@@ -28,7 +29,7 @@ if !(phx_gameMode isEqualTo uplink || phx_gameMode isEqualTo rush || phx_gameMod
   {if (!isNull _x) then {deleteVehicle _x};} forEach [term1,term2,term3];
 };
 
-if !(phx_gameEnd isEqualTo connection) then {
+if !(phx_gameMode isEqualTo connection) then {
   {deleteVehicle _x} forEach [dummySector, dummyind, dummyblu, dummyopf];
 };
 

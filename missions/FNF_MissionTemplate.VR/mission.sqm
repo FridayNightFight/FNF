@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1298;
+		nextID=1301;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=42;
+		nextID=46;
 	};
 	class Camera
 	{
-		pos[]={471.10785,36.934406,678.94958};
-		dir[]={0.00052344147,-0.61692864,0.78703976};
-		up[]={0.00041098497,0.78701782,0.61693436};
-		aside[]={1.0000125,5.3920758e-007,-0.0006671045};
+		pos[]={272.04211,40.365139,636.9859};
+		dir[]={0.15765926,-0.44962567,0.87920034};
+		up[]={0.079361305,0.89321709,0.44256806};
+		aside[]={0.9843064,2.0227162e-008,-0.17650642};
 	};
 };
 binarizationWanted=0;
@@ -20812,6 +20812,7 @@ class Mission
 				position[]={481.13901,5,100.517};
 			};
 			areaIsRectangle=1;
+			presenceCondition="phx_missionBoundaryRestriction";
 			flags=1;
 			id=223;
 			type="ModuleCoverMap_F";
@@ -43525,7 +43526,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={-9930.752,5,-5574.0708};
+				position[]={-10000,5,-10000};
 			};
 			name="dummySector";
 			areaSize[]={50,-1,50};

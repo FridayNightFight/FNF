@@ -14,6 +14,7 @@ class CfgFunctions {
       class platoonActions{};
       class gearSelection{};
       class getKeys{};
+      class handlePauseRespawn{};
     };
     class clientSafety {
       file = "client\safety";
@@ -22,12 +23,12 @@ class CfgFunctions {
     };
     class loadout {
       file = "client\loadout";
+      class removeGear{};
       class setLoadout{};
       class setWeapons{};
       class setUniform{};
-      class handleItems{};
-      class handleGear{};
-      class handleClothing{};
+      class addUniform{};
+      class addGear{};
       class checkLoadout{};
     };
     class misc {

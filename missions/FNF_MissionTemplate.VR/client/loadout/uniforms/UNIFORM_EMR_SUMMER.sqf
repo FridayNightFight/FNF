@@ -7,9 +7,7 @@ if (pRole == ROLE_CLS) then {
 };
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   phx_loadout_vest = "rhs_6b23_digi_6sh92_vog_headset";
-  if (!(_lrRadio isEqualTo "")) then {
-    phx_loadout_backpack = _lrRadio;
-  };
+  phx_loadout_backpack = _lrRadio;
 };
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_vest = "rhs_6b23_digi_6sh92_vog_headset";
@@ -30,14 +28,13 @@ if (pRole == ROLE_P) then {
 };
 if (pRole == ROLE_CR) then {
   phx_loadout_vest = "rhs_6b23_digi_crew";
-  phx_loadout_backpack = "";
 };
 if (pRole == ROLE_MK) then {
   phx_loadout_vest = "rhs_6b23_digi_sniper";
 };
-if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
-  phx_loadout_backpack = "B_FieldPack_oli";
+if (pRole == ROLE_AT) then {
+  phx_loadout_backpack = "B_TacticalPack_oli";
 };
 if (pRole == ROLE_CE) then {
-  phx_loadout_backpack = "B_FieldPack_oli";
+  phx_loadout_backpack = "B_Kitbag_rgr";
 };

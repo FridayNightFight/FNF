@@ -1,22 +1,18 @@
-// Add clothing
-call phx_fnc_handleClothing; // Add clothing variables above this line!
+// Add gear - you can also re-define gear here
+phx_loadout_aid call phx_fnc_addGear;
+phx_loadout_smoke call phx_fnc_addGear;
+phx_loadout_grenade call phx_fnc_addGear;
+phx_loadout_maptools call phx_fnc_addGear;
 
-// Add gear
-[phx_loadout_aid, "uniform"] call phx_fnc_handleGear;
-[phx_loadout_smoke, "uniform"] call phx_fnc_handleGear;
-[phx_loadout_grenade, "uniform"] call phx_fnc_handleGear;
-[phx_loadout_maptools, "item"] call phx_fnc_handleGear;
-[phx_loadout_rifle_mag_tracer, "vest"] call phx_fnc_handleGear;
-[phx_loadout_rifle_mag, "vest"] call phx_fnc_handleGear;
-player addWeapon phx_loadout_rifle_weapon;
-[phx_loadout_mediumantitank_mag, "backpack"] call phx_fnc_handleGear;
+phx_loadout_mediumantitank_mag call phx_fnc_addGear;
+if (!isNil "phx_loadout_mediumantitank_mag_1" && phx_loadout_mediumantitank_mag_1 != "") then {phx_loadout_mediumantitank_mag_1 call phx_fnc_addGear};
 player addWeapon phx_loadout_mediumantitank_weapon;
-[phx_loadout_mediumantitank_mag_1, "backpack"] call phx_fnc_handleGear;
 player addSecondaryWeaponItem phx_loadout_mediumantitank_optic;
-[phx_loadout_sidearm_mag, "uniform"] call phx_fnc_handleGear;
-player addWeapon phx_loadout_sidearm_weapon;
 
-// Add items
-call phx_fnc_handleItems; // Add binocular/nvg variables above this line!
+phx_loadout_rifle_mag call phx_fnc_addGear;
+phx_loadout_rifle_mag_tracer call phx_fnc_addGear;
+player addWeapon phx_loadout_rifle_weapon;
+phx_loadout_sidearm_mag call phx_fnc_addGear;
+player addWeapon phx_loadout_sidearm_weapon;
 
 missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

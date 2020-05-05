@@ -4,41 +4,22 @@
 #include "weapons\opforLoadout.sqf"
 #include "weapons\indforLoadout.sqf"
 
+switch (playerSide) do {
+  case east: {pWeapons = phx_opforWeapons};
+  case west: {pWeapons = phx_bluforWeapons};
+  case independent: {pWeapons = phx_indforWeapons};
+  case civilian: {pWeapons = phx_civWepaons};
+};
+
+switch (playerSide) do {
+  case east: {call giveOPFORLoadout};
+  case west: {call giveBLUFORLoadout};
+  case independent: {call giveINDFORLoadout};
+};
 
 switch (pWeapons) do {
-    case WEAPONS_M4A1_BLOCK_M249_M240G_M136_GUST: {
-      [] call giveBLUFORLoadout;
-    };
-    case WEAPONS_AK74M_PKM_PKP_RPG7_RPG32: {
-      [] call giveOPFORLoadout;
-    };
-    case WEAPONS_M16A4_M249_M240G_M136_GUST: {
-      [] call giveBLUFORLoadout;
-      #include "weapons\WEAPONS_M16A4_M249_M240G_M136_GUST.sqf"
-    };
-    case WEAPONS_G36KV_M249_M240G_M136_GUST: {
-      [] call giveBLUFORLoadout;
-      #include "weapons\WEAPONS_G36KV_M249_M240G_M136_GUST.sqf"
-    };
     case WEAPONS_AKMN_PKM_PKP_RPG7_RPG32: {
-      [] call giveOPFORLoadout;
       #include "weapons\WEAPONS_AKMN_PKM_PKP_RPG7_RPG32.sqf"
-    };
-    case WEAPONS_MX_STONER_MXSW_RPG32_TITAN: {
-      [] call giveINDFORLoadout;
-      #include "weapons\WEAPONS_MX_STONER_MXSW_RPG32_TITAN.sqf"
-    };
-    case WEAPONS_KATIBA_ZAFIR_LYNX_RPG32_TITAN:{
-      [] call giveINDFORLoadout;
-      #include "weapons\WEAPONS_KATIBA_ZAFIR_LYNX_RPG32_TITAN.sqf"
-    };
-    case WEAPONS_KAR98K_PKM_MG42_RPG26_RPG7: {
-      [] call giveOPFORLoadout;
-      #include "weapons\WEAPONS_KAR98K_PKM_MG42_RPG26_RPG7.sqf"
-    };
-    case WEAPONS_SCARH_MK18320_SAW_M240_M136_GUST:{
-      [] call giveBLUFORLoadout;
-      #include "weapons\WEAPONS_SCARH_MK18320_SAW_M240_M136_GUST.sqf"
     };
     case WEAPONS_RANDOM: {
       #include "weapons\WEAPONS_RANDOM.sqf"

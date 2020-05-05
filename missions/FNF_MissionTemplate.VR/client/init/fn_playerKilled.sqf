@@ -9,9 +9,3 @@
     (findDisplay 60000) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
   };
 };
-
-//Remove respawn button
-phx_killedNoRespawnButton = [{
-  _ctrl = (findDisplay 49) displayCtrl 1010;
-  _ctrl ctrlEnable false;
-} , 0.25, []] call CBA_fnc_addPerFrameHandler;

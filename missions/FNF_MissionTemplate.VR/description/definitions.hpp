@@ -10,3 +10,5 @@ respawnOnStart = -1;
 
 corpseManagerMode = 0;
 wreckManagerMode = 0;
+
+onPauseScript[] = {phx_fnc_handlePauseRespawn};

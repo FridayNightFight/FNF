@@ -117,7 +117,7 @@ _terminalHacking = {
   };
 
   if (_timer <= 0) then {
-    _termTimeText = "Terminal hack complete";
+    _termTimeText = format ["Terminal %1 hack complete",[str _term, 4, 4] call BIS_fnc_trimString];
     _termTimeText remoteExec ["hintSilent",0,false];
     switch (_term) do {
       case term1: {[_term, "defendTask1", "attackTask1", "term1Mark"] spawn _terminalHackComplete};
