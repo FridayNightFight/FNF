@@ -4,7 +4,7 @@ Note: If this is your first mission, or one of your first, it is recommended tha
 
 Steps:
 
-1. Configure "config.hpp" in the root mission directory and the respective file for your chosen game mode in the "mode_config" directory.
+1. Configure "config.sqf" in the root mission directory and the respective file for your chosen game mode in the "mode_config" directory.
 2. Move the objectives to your wanted locations.
 3. Move your wanted sides to their starting location and configure their start zone marker.
 4. Delete any unwanted sides and their start zone marker.
