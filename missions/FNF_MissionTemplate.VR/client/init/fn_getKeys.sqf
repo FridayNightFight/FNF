@@ -1,7 +1,7 @@
 waitUntil {missionNamespace getVariable ["phx_loadoutAssigned",false]};
 sleep 0.5;
 
-if (phx_loadout_unitLevel > 0) then {
+_giveKeys = {
   switch (playerSide) do {
     case east: {
       player addItem "ACE_key_east";
@@ -12,6 +12,14 @@ if (phx_loadout_unitLevel > 0) then {
     case independent: {
       player addItem "ACE_key_indp";
     };
+  };
+};
+
+if (isNil "phx_loadout_unitLevel") then {
+  call _giveKeys;
+} else {
+  if (phx_loadout_unitLevel > 0) then {
+    call _giveKeys;
   };
 };
 

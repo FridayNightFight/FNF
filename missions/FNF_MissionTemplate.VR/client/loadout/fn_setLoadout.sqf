@@ -1,3 +1,5 @@
+if (phx_customLoadouts) exitWith {missionNamespace setVariable ["phx_loadoutAssigned", true]};
+
 #include "cfgLoadouts.hpp"
 
 //Set player role from class of their unit

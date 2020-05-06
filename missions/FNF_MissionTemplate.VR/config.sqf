@@ -37,7 +37,7 @@ phx_missionBoundaryRestriction = true; //Set to false to disable the mission bou
 phx_safeStartTime = 15; //Safestart time in minutes
 phx_missionTimeLimit = 60; //Mission time limit in minutes
 phx_opticMagnification = false; //Set to true to allow players to use magnified optics
-
+phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system
 ////////////////////////////////////////////////////////////
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
