@@ -15,10 +15,7 @@ phx_loadout_rifle_gl_he = "";
 phx_loadout_rifle_gl_smoke = "";
 phx_loadout_rifle_gl_flare = "";
 
-phx_loadout_automaticrifle_weapon = "";
 phx_loadout_automaticrifle_mag = "";
-
-phx_loadout_mmg_weapon = "";
 phx_loadout_mmg_mag = "";
 
 phx_loadout_antitank_weapon = "";
@@ -32,17 +29,7 @@ phx_loadout_rifle_optic = ""; //Only used by marksman role
 
 phx_loadout_flare = "";
 
-allowedWeapons = []; //Weapons that can be selected in the gear selector. Leave blank for none.
-
-/*
-//Uncomment this block to add optics that players can select from.
-//Either leave it in this scope for it to be applied to every player, or move it to the switch cases below to apply to a specific class.
-
-[] spawn {
-  waitUntil {!isNil "allowedOptics"};
-  allowedOptics pushBack "OPTIC_CLASSNAME";
-};
-*/
+phx_allowedWeapons = []; //Weapons that can be selected in the gear selector. Leave blank for none.
 
 //Use if you want to customize more
 switch (pRole) do {

@@ -23,14 +23,14 @@ if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MG
 
 if (pRole == ROLE_AR) then {
   phx_loadout_automaticrifle_weapon = selectRandom ["rhs_weap_m249_pip_ris","rhs_weap_mg42","rhs_weap_m84","rhs_weap_pkm","rhs_weap_pkp","rhs_weap_m240G","LMG_Zafir_F","LMG_Mk200_F"];
-  phx_loadout_automaticrifle_mag = selectRandom ([phx_loadout_automaticrifle_weapon] call CBA_fnc_compatibleMagazines) + ":9";
+  phx_loadout_rifle_mag = selectRandom ([phx_loadout_automaticrifle_weapon] call CBA_fnc_compatibleMagazines) + ":9";
 };
 if (pRole == ROLE_AAR) then {
   phx_loadout_automaticrifle_mag = "";
 };
 if (pRole == ROLE_MG) then {
   phx_loadout_mmg_weapon = selectRandom ["rhs_weap_m249_pip_ris","rhs_weap_mg42","rhs_weap_m84","rhs_weap_pkm","rhs_weap_pkp","rhs_weap_m240G","LMG_Zafir_F","LMG_Mk200_F"];
-  phx_loadout_mmg_mag = selectRandom ([phx_loadout_mmg_weapon] call CBA_fnc_compatibleMagazines) + ":9";
+  phx_loadout_rifle_mag = selectRandom ([phx_loadout_mmg_weapon] call CBA_fnc_compatibleMagazines) + ":9";
 };
 if (pRole == ROLE_AM) then {
   phx_loadout_mmg_mag = "";
