@@ -9,8 +9,8 @@ rush - atk/def
 connection - neutral
 */
 
-phx_defendingSide = sideEmpty; //east/west/independent
-phx_attackingSide = sideEmpty; //east/west/independent
+phx_defendingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
+phx_attackingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
 //Leave it as sideEmpty if chosen mode is neutral
 
 ////////////////////////////////////////////////////////////
@@ -37,7 +37,8 @@ phx_missionBoundaryRestriction = true; //Set to false to disable the mission bou
 phx_safeStartTime = 15; //Safestart time in minutes
 phx_missionTimeLimit = 60; //Mission time limit in minutes
 phx_opticMagnification = false; //Set to true to allow players to use magnified optics
-phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system
+
+phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system - radios will still be preset
 ////////////////////////////////////////////////////////////
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========

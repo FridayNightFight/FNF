@@ -1,6 +1,8 @@
 //Disable global chat
 0 enableChannel false;
 
+if (typeOf player == "ace_spectator_virtual") exitWith {{_x setMarkerAlphaLocal 0;} forEach allMapMarkers; call phx_fnc_playerKilled};
+
 //Hide markers player shouldn't see
 call phx_fnc_markerVisibility;
 

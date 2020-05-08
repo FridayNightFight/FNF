@@ -20,6 +20,8 @@ switch (phx_gameMode) do {
   };
 };
 
+//To do: allow objectives to be deleted w/o throwing error
+
 if !(phx_gameMode isEqualTo destroy) then {
   {if (!isNull _x) then {deleteVehicle _x};} forEach [destroy_obj1,destroy_obj2];
   {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]};} forEach ["destroy_obj1Mark","destroy_obj2Mark"];

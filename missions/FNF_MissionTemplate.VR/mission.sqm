@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1301;
+		nextID=1307;
 	};
 	class MarkerIDProvider
 	{
@@ -16,11 +16,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=46;
+		nextID=47;
 	};
 	class Camera
 	{
-		pos[]={272.04211,40.365139,636.9859};
+		pos[]={270.18445,40.365139,626.62543};
 		dir[]={0.15765926,-0.44962567,0.87920034};
 		up[]={0.079361305,0.89321709,0.44256806};
 		aside[]={0.9843064,2.0227162e-008,-0.17650642};
@@ -43,13 +43,14 @@ addons[]=
 	"ace_chemlights",
 	"Desert",
 	"A3_Props_F_Exp_A_Military_Equipment",
-	"A3_Modules_F_Multiplayer"
+	"A3_Modules_F_Multiplayer",
+	"ace_spectator"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			className="task_force_radio_items";
@@ -131,6 +132,13 @@ class AddonsMetaData
 			name="Arma 3 Nexus Update - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item12
+		{
+			className="ace_spectator";
+			name="ACE3 - Spectator";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 	};
 };
@@ -877,7 +885,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=89;
+		items=95;
 		class Item0
 		{
 			dataType="Logic";
@@ -53045,6 +53053,78 @@ class Mission
 			};
 			description="Sync crewman/pilots to a vehicle to give them a key";
 			id=1285;
+		};
+		class Item89
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={600,5,100};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1301;
+			type="ace_spectator_virtual";
+		};
+		class Item90
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={610,5,100};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1302;
+			type="ace_spectator_virtual";
+		};
+		class Item91
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={620,5,100};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1303;
+			type="ace_spectator_virtual";
+		};
+		class Item92
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={630,5,100};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1304;
+			type="ace_spectator_virtual";
+		};
+		class Item93
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={640,5,100};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1305;
+			type="ace_spectator_virtual";
+		};
+		class Item94
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={650,5,100};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1306;
+			type="ace_spectator_virtual";
 		};
 	};
 	class Connections

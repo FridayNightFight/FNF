@@ -48,4 +48,4 @@ setViewDistance 3000;
 } forEach vehicles;
 
 //Disable zeus ping
-missionnamespace setvariable ["bis_fnc_curatorPinged_time", 999999, true];
+missionnamespace setvariable ["bis_fnc_curatorPinged_time", 9999999, true];

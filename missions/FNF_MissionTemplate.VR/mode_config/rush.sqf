@@ -12,7 +12,7 @@ Alt value = [90, 60] - allows you to set a different hack timer for each termina
 rush - ATK/DEF
 
 Description:
-Attackers need to hack the data terminals in order to win.
+Attackers need to hack the data terminals in sequential order to win.
 
 Usage:
 1. Choose if you want 2 or 3 terminals
