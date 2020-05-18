@@ -76,3 +76,7 @@ switch (pRole) do {
   case ROLE_MK: {call compile preprocessFileLineNumbers format["client\loadout\units\MK.sqf"]};
   case ROLE_P: {call compile preprocessFileLineNumbers format["client\loadout\units\P.sqf"]};
 };
+
+if (phx_loadout_unitLevel > 0) then {
+  player addItem "ACE_microDAGR";
+};

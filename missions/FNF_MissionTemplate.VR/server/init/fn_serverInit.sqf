@@ -35,11 +35,11 @@ setViewDistance 3000;
     if (_x inArea "indforSafeMarker") then {
       _x setVariable ["ace_vehiclelock_lockSide", independent, true];
     };
+  } else {
+    _x setVariable ["ace_vehiclelock_lockSide", sideUnknown, true];
     if (_x inArea "bluforSafeMarker" || _x inArea "opforSafeMarker" || _x inArea "indforSafeMarker") then {
       _x setVehicleLock "LOCKED";
     };
-  } else {
-    _x setVariable ["ace_vehiclelock_lockSide", sideUnknown, true];
   };
   if (((_x call BIS_fnc_objectType) select 0) isEqualTo "Vehicle") then {
     clearWeaponCargoGlobal _x;

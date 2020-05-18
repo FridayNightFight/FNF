@@ -1,18 +1,14 @@
 //Disable global chat
 0 enableChannel false;
 
-if (typeOf player == "ace_spectator_virtual") exitWith {{_x setMarkerAlphaLocal 0;} forEach allMapMarkers; call phx_fnc_playerKilled};
+if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};
 
 //Hide markers player shouldn't see
 call phx_fnc_markerVisibility;
 
 //Call safety if mission hasn't started yet. If mission has started, call JIP function
 if (phx_safetyEnabled) then {[] spawn phx_fnc_safety};
-if (!phx_safetyEnabled) exitWith {[] spawn phx_fnc_clientJIP};
-
-player addEventHandler ["Killed", {
-  call phx_fnc_playerKilled;
-}];
+if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
 
 //Set loadout
 call phx_fnc_setLoadout;

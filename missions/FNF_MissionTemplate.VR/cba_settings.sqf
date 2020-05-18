@@ -142,7 +142,7 @@ force ace_repair_engineerSetting_wheel = 0;
 force ace_repair_fullRepairLocation = 2;
 force ace_repair_fullRepairRequiredItems = [];
 force ace_repair_miscRepairRequiredItems = [];
-force ace_repair_repairDamageThreshold = 1;
+force ace_repair_repairDamageThreshold = 0.3;
 force ace_repair_repairDamageThreshold_engineer = 0.5;
 force ace_repair_wheelRepairRequiredItems = [];
 

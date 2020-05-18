@@ -6,7 +6,6 @@ class CfgFunctions {
       class clientInit{};
       class markerVisibility{};
       class clientJIP{};
-      class playerKilled{};
       class postBriefing{};
       class setGroupIDs{};
       class fortifyClient{};
@@ -35,6 +34,10 @@ class CfgFunctions {
       file = "client\misc";
       class hintThenClear{};
       class zoneBoundary{};
+    };
+    class spectator {
+      file = "client\spectator";
+      class spectatorInit{};
     };
     class serverInit {
       file = "server\init";

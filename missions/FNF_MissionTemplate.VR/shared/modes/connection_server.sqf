@@ -80,7 +80,7 @@ phx_serverTerminalAction = {
 
 phx_connectionWin = {
   missionNamespace setVariable ["phx_gameEnd", true, true];
-  
+
   _side = _this;
 
   [format ["%1 has reached 100 points.\n%1 wins!",

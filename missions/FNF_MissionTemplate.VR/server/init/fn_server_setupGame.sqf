@@ -22,17 +22,25 @@ switch (phx_gameMode) do {
 
 //To do: allow objectives to be deleted w/o throwing error
 
+_deleteObj = {
+  params ["_obj"];
+
+  if (!isNil "_obj") then {
+    if (!isNull _obj) then {deleteVehicle _obj};
+  };
+};
+
 if !(phx_gameMode isEqualTo destroy) then {
-  {if (!isNull _x) then {deleteVehicle _x};} forEach [destroy_obj1,destroy_obj2];
+  {_x call _deleteObj} forEach [destroy_obj1,destroy_obj2];
   {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]};} forEach ["destroy_obj1Mark","destroy_obj2Mark"];
 };
 
 if !(phx_gameMode isEqualTo uplink || phx_gameMode isEqualTo rush || phx_gameMode isEqualTo connection) then {
-  {if (!isNull _x) then {deleteVehicle _x};} forEach [term1,term2,term3];
+  {_x call _deleteObj} forEach [term1,term2,term3];
 };
 
 if !(phx_gameMode isEqualTo connection) then {
-  {deleteVehicle _x} forEach [dummySector, dummyind, dummyblu, dummyopf];
+  {_x call _deleteObj} forEach [dummySector, dummyind, dummyblu, dummyopf];
 };
 
 missionNamespace setVariable ["phx_serverGameSetup",true,true];
