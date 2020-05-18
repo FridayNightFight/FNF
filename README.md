@@ -6,6 +6,7 @@ Steps:
 
 1. Configure "config.sqf" in the root mission directory and the respective file for your chosen game mode in the "mode_config" directory.
 2. Move the objectives to your wanted locations.
+- Do not delete any objective objects in the editor. Unused ones will be deleted by the server.
 3. Move your wanted sides to their starting location and configure their start zone marker.
 4. Delete any unwanted sides and their start zone marker.
 5. Place vehicles and other assets if you wish.
