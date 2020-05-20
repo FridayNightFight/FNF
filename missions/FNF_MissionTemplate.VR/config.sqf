@@ -2,11 +2,13 @@
 #include "shared\definitions.hpp"
 
 phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
+//If you don't want to use one of the template modes, you can set phx_gameMode = "";
 /*
 destroy - atk/def
 uplink - atk/def
 rush - atk/def
 connection - neutral
+captureTheFlag - atk/def
 */
 
 phx_defendingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR

@@ -35,6 +35,10 @@ if (phx_gameMode == "destroy") then {
   phx_specObjectives = phx_specObjectives + phx_destroyObjs;
 };
 
+if (phx_gameMode == "captureTheFlag") then {
+  phx_specObjectives pushBack ctf_flag;
+};
+
 //Wait for ACE spectator display
 phx_specListenEnabled = true;
 waitUntil {!isNull findDisplay 60000};

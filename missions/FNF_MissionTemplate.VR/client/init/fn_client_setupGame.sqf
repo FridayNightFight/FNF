@@ -15,4 +15,7 @@ switch (phx_gameMode) do {
   case connection: {
     execVM "shared\modes\connection_client.sqf";
   };
+  case captureTheFlag: {
+    [] call compile preprocessFileLineNumbers format ["shared\modes\ctf_client.sqf"];
+  };
 };

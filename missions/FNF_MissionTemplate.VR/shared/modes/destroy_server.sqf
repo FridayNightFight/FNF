@@ -8,28 +8,17 @@ _taskCount = 1;
 phx_aliveObjectives = 0;
 
 //Delete pre-made objectives if not using
-if (isNil {_obj1 select 0}) then {
-  _obj1 set [0, objNull];
-  if !(getMarkerColor "destroy_obj1Mark" isEqualTo "") then {deleteMarker "destroy_obj1Mark";};
-} else {
-  if (!isNil "destroy_obj1") then {
-    if ((_obj1 select 0) != destroy_obj1) then {
-      deleteVehicle destroy_obj1;
-      if !(getMarkerColor "destroy_obj1Mark" isEqualTo "") then {deleteMarker "destroy_obj1Mark";};
-    };
-  };
+if ((_obj1 select 0) != destroy_obj1) then {
+  deleteVehicle destroy_obj1;
+  deleteMarker "destroy_obj1Mark";
 };
-if (isNil {_obj2 select 0}) then {
-  _obj2 set [0, objNull];
-  if !(getMarkerColor "destroy_obj2Mark" isEqualTo "") then {deleteMarker "destroy_obj2Mark";};
-} else {
-  if (!isNil "destroy_obj2") then {
-    if ((_obj2 select 0) != destroy_obj2) then {
-      deleteVehicle destroy_obj2;
-      if !(getMarkerColor "destroy_obj2Mark" isEqualTo "") then {deleteMarker "destroy_obj2Mark";};
-    };
+
+{
+  if !(_x in _obj1 || _x in _obj2 || _x in _obj3) then {
+    deleteVehicle _x;
+    deleteMarker ((str _x) + "Mark");
   };
-};
+} forEach [destroy_obj1, destroy_obj2];
 
 _objArr = [_obj1,_obj2,_obj3];
 missionNamespace setVariable ["phx_destroyObjs", [_obj1 select 0, _obj2 select 0, _obj3 select 0], true];
