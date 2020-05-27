@@ -1,3 +1,5 @@
+//Base loadout function call for BLUFOR players - other weapon sets overwrite this
+
 giveBLUFORLoadout = {
   phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4";
   phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:7";
@@ -10,8 +12,6 @@ giveBLUFORLoadout = {
     phx_loadout_rifle_gl_he = "1Rnd_HE_Grenade_shell:6";
     phx_loadout_rifle_gl_smoke = "1Rnd_Smoke_Grenade_shell:3";
     phx_loadout_rifle_gl_flare = "UGL_FlareWhite_F:3";
-    phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:7";
-    phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:4";
     phx_allowedWeapons = ["rhs_weap_m16a4_carryhandle_M203"];
   } else {
     phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_bk";
@@ -23,7 +23,7 @@ giveBLUFORLoadout = {
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AAR) then {
-    phx_loadout_automaticrifle_mag = "rhsusf_200rnd_556x45_mixed_box:2";
+    phx_loadout_aar_mag = "rhsusf_200rnd_556x45_mixed_box:2";
   };
   if (pRole == ROLE_MG) then {
     phx_loadout_rifle_weapon = "rhs_weap_m240G";
@@ -33,7 +33,7 @@ giveBLUFORLoadout = {
   if (pRole == ROLE_AM) then {
     phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:5";
     phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:4";
-    phx_loadout_mmg_mag = "rhsusf_100Rnd_762x51_m80a1epr:4";
+    phx_loadout_am_mag = "rhsusf_100Rnd_762x51_m80a1epr:4";
   };
   if (pRole == ROLE_RAT) then {
     phx_loadout_antitank_weapon = "rhs_weap_M136";
@@ -61,5 +61,4 @@ giveBLUFORLoadout = {
     phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:4";
     phx_allowedWeapons = [];
   };
-  phx_loadout_flare = "rhs_weap_rsp30_white:3";
 };

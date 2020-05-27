@@ -3,11 +3,11 @@ enableItemsDropping = 0;
 disabledAI = 1;
 enableDebugConsole = 1;
 
-respawn = 2;
+respawn = 3;
 respawnDialog = 0;
-respawndelay = 3;
+respawndelay = 2;
 respawnOnStart = -1;
-//respawnTemplates[] = {"ace_spectator"};
+respawnTemplates[] = {};
 joinUnassigned = 1;
 
 corpseManagerMode = 0;

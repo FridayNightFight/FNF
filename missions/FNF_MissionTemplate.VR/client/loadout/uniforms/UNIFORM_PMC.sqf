@@ -1,10 +1,15 @@
 #include "..\cfgLoadouts.hpp"
 
 //Global customization
-phx_loadout_uniform = "";
-phx_loadout_vest = "";
-phx_loadout_backpack = "";
-phx_loadout_headgear = "";
+phx_loadout_uniform = selectRandom ["U_I_G_resistanceLeader_F", "U_B_CombatUniform_mcam_tshirt", "rhs_uniform_g3_rgr", "rhs_uniform_g3_m81"];
+phx_loadout_vest = selectRandom ["rhsusf_plateframe_light", "rhsusf_plateframe_rifleman", "rhsusf_plateframe_rifleman", "rhsusf_mbav_light", "V_PlateCarrier1_blk", "V_PlateCarrier2_blk"];
+phx_loadout_backpack = selectRandom ["B_AssaultPack_cbr", "B_AssaultPack_rgr", "B_FieldPack_cbr", "B_FieldPack_khk", "B_TacticalPack_blk", "B_Kitbag_cbr", "B_Kitbag_rgr"];
+
+if (pRole == ROLE_AAR || pRole == ROLE_AM || pRole == ROLE_AAT || pRole == ROLE_CLS || pRole == ROLE_CE) then {
+  phx_loadout_backpack = selectRandom ["B_Kitbag_cbr", "B_Kitbag_rgr"];
+};
+
+phx_loadout_headgear = selectRandom ["rhsusf_opscore_bk", "rhsusf_opscore_fg", "rhsusf_opscore_ut"];
 
 //Use if you want to customize more
 switch (pRole) do {

@@ -1,3 +1,5 @@
+#include "..\cfgLoadouts.hpp"
+
 phx_loadout_uniform = "rhs_uniform_emr_patchless";
 phx_loadout_vest = "rhs_6b23_digi_6sh92";
 phx_loadout_backpack = "rhs_assault_umbts";
@@ -7,7 +9,7 @@ if (pRole == ROLE_CLS) then {
 };
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   phx_loadout_vest = "rhs_6b23_digi_6sh92_vog_headset";
-  phx_loadout_backpack = _lrRadio;
+  phx_loadout_backpack = phx_loadout_lrRadio;
 };
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_vest = "rhs_6b23_digi_6sh92_vog_headset";
@@ -24,7 +26,7 @@ if (pRole == ROLE_AM) then {
 if (pRole == ROLE_P) then {
   phx_loadout_headgear = "H_PilotHelmetHeli_O";
   phx_loadout_vest = "rhs_6b23_digi";
-  phx_loadout_backpack = _lrRadio;
+  phx_loadout_backpack = phx_loadout_lrRadio;
 };
 if (pRole == ROLE_CR) then {
   phx_loadout_vest = "rhs_6b23_digi_crew";

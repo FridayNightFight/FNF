@@ -1,3 +1,5 @@
+//Base loadout function call for OPFOR players - other weapon sets overwrite this
+
 giveOPFORLoadout = {
   phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_plum_green:4";
   phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:7";
@@ -10,30 +12,26 @@ giveOPFORLoadout = {
     phx_loadout_rifle_gl_he = "rhs_VOG25:6";
     phx_loadout_rifle_gl_smoke = "rhs_GRD40_White:3";
     phx_loadout_rifle_gl_flare = "rhs_VG40OP_white:3";
-    phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_plum_green:7";
-    phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:4";
-    _nightvision = "phx_loadout_nightvision" call BIS_fnc_getParamValue;
-    if (_nightvision isEqualTo 1 || _nightvision isEqualTo 2) then {
-      phx_loadout_rifle_weapon = "rhs_weap_ak74mr_gp25";
-    };
   } else {
     phx_loadout_rifle_weapon = "rhs_weap_ak74m";
   };
   if (pRole == ROLE_AR) then {
     phx_loadout_rifle_weapon = "rhs_weap_pkm";
     phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:5";
+    phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AAR) then {
-    phx_loadout_automaticrifle_mag = "rhs_100Rnd_762x54mmR_green:3";
+    phx_loadout_aar_mag = "rhs_100Rnd_762x54mmR_green:3";
   };
   if (pRole == ROLE_MG) then {
     phx_loadout_rifle_weapon = "rhs_weap_pkp";
-    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:4";
+    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:5";
+    phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AM) then {
     phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_plum_green:5";
     phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:4";
-    phx_loadout_mmg_mag = "rhs_100Rnd_762x54mmR_green:4";
+    phx_loadout_am_mag = "rhs_100Rnd_762x54mmR_green:4";
   };
   if (pRole == ROLE_RAT) then {
     phx_loadout_antitank_weapon = "rhs_weap_rpg7";
@@ -62,5 +60,4 @@ giveOPFORLoadout = {
     phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:4";
     phx_allowedWeapons = [];
   };
-  phx_loadout_flare = "rhs_weap_rsp30_white:3";
 };

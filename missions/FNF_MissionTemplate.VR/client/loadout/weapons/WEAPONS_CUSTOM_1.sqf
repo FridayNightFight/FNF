@@ -3,6 +3,9 @@ For magazines, use the format "MAGAZINE_CLASSNAME:NUMBER_OF_MAGS"
 example:
 phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:9"; //mag classname of "rhs_mag_30Rnd_556x45_M855A1_Stanag", with 9 magazines
 */
+#include "..\cfgLoadouts.hpp"
+
+//You can leave any of the variables in this file as an empty string
 
 phx_loadout_rifle_weapon = "";
 phx_loadout_rifle_mag_tracer = "";
@@ -15,19 +18,20 @@ phx_loadout_rifle_gl_he = "";
 phx_loadout_rifle_gl_smoke = "";
 phx_loadout_rifle_gl_flare = "";
 
-phx_loadout_automaticrifle_mag = "";
-phx_loadout_mmg_mag = "";
+//Magazine classnames for assistant AR and ammo man roles
+phx_loadout_aar_mag = "";
+phx_loadout_am_mag = "";
 
+//Light AT
 phx_loadout_antitank_weapon = "";
 phx_loadout_antitank_mag = "";
 
+//Medium AT
 phx_loadout_mediumantitank_weapon = "";
 phx_loadout_mediumantitank_optic = "";
 phx_loadout_mediumantitank_mag = "";
 
 phx_loadout_rifle_optic = ""; //Only used by marksman role
-
-phx_loadout_flare = "";
 
 phx_allowedWeapons = []; //Weapons that can be selected in the gear selector. Leave blank for none.
 

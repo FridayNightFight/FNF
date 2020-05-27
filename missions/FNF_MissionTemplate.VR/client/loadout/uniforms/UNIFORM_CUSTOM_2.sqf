@@ -1,3 +1,5 @@
+#include "..\cfgLoadouts.hpp"
+
 //Global customization
 phx_loadout_uniform = "";
 phx_loadout_vest = "";
@@ -26,5 +28,5 @@ switch (pRole) do {
 };
 
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
-  phx_loadout_backpack = _lrRadio;
+  phx_loadout_backpack = phx_loadout_lrRadio;
 };

@@ -56,7 +56,7 @@ call phx_fnc_platoonActions;
   TF_speak_volume_level = "whispering";
 };
 
-[] spawn phx_fnc_getKeys;
+//[] spawn phx_fnc_getKeys;
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;

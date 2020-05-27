@@ -11,9 +11,7 @@ phx_flagDropAction = {
       player removeAction phx_client_dropFlagAction;
       player setVariable ["phx_flagUnit",false,true];
       [_handle] call CBA_fnc_removePerFrameHandler;
-      player setAnimSpeedCoef 1;
     };
-    player setAnimSpeedCoef 0.7;
   }, 0.1] call CBA_fnc_addPerFrameHandler;
 
   phx_client_dropFlagAction = player addaction ["Drop Flag",{
@@ -21,7 +19,6 @@ phx_flagDropAction = {
     player removeAction phx_client_dropFlagAction;
     player setVariable ["phx_flagUnit",false,true];
     [phx_client_flagCarrierPFH] call CBA_fnc_removePerFrameHandler;
-    player setAnimSpeedCoef 1;
   },nil,1.5,false,false,"","_this == _target"];
 };
 

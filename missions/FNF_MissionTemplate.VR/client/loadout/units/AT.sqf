@@ -10,8 +10,8 @@ player addWeapon phx_loadout_mediumantitank_weapon;
 player addSecondaryWeaponItem phx_loadout_mediumantitank_optic;
 
 phx_loadout_rifle_mag call phx_fnc_addGear;
-phx_loadout_rifle_mag_tracer call phx_fnc_addGear;
 player addWeapon phx_loadout_rifle_weapon;
+phx_loadout_rifle_mag_tracer call phx_fnc_addGear;
 phx_loadout_sidearm_mag call phx_fnc_addGear;
 player addWeapon phx_loadout_sidearm_weapon;
 

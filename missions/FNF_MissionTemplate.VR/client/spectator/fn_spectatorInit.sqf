@@ -3,6 +3,9 @@
 [player, true] call TFAR_fnc_forceSpectator;
 waitUntil {alive player};
 
+player enableSimulation false;
+player allowDamage false;
+
 //Join player to a dummy side so they don't show on map with QSIcons
 if (playerSide != sideLogic) then {
   _dummySide = createGroup sideLogic;
@@ -15,8 +18,6 @@ if !(isObjectHidden player) then {
   [player,true] remoteExec ["hideObject",0,true];
 };
 phx_specEnabled = true;
-player enableSimulation false;
-player allowDamage false;
 
 //Set camera position to player camera position @ time of death if not nil
 if (!isNil "phx_playerDeathPos") then {
@@ -78,7 +79,6 @@ phx_specDisplayKeydownEH = _specDisplay displayAddEventHandler ["KeyDown", {
         [phx_spectatorMovePFH] call CBA_fnc_removePerFrameHandler;
         player setVariable ["tf_unable_to_use_radio", false, true];
         player setVariable ["tf_voiceVolume", 1.0, true];
-        player setPos [-1000,-1000,0];
 
         systemChat "Spectator listening disabled";
       };

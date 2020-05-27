@@ -20,10 +20,11 @@ setViewDistance 3000;
     private _marker = createMarker [_x, [-1000,-1000,0]];
     _marker setMarkerShape "ICON";
     _marker setMarkerType "Empty";
-} forEach ["respawn", "respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
+} forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 
-//Set global vehicle locks
+//Set vehicle locks
 {
+  /*
   _type = ((_x call BIS_fnc_objectType) select 1);
   if !(_type isEqualTo "Helicopter" || _type isEqualTo "Plane" || _type isEqualTo "TrackedAPC" || _type isEqualTo "WheeledAPC" || _type isEqualTo "Tank") then {
     if (_x inArea "bluforSafeMarker") then {
@@ -41,6 +42,7 @@ setViewDistance 3000;
       _x setVehicleLock "LOCKED";
     };
   };
+  */
   if (((_x call BIS_fnc_objectType) select 0) isEqualTo "Vehicle") then {
     clearWeaponCargoGlobal _x;
     clearMagazineCargoGlobal _x;

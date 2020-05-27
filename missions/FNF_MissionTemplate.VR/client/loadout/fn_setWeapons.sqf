@@ -17,24 +17,8 @@ switch (playerSide) do {
   case independent: {call giveINDFORLoadout};
 };
 
-switch (pWeapons) do {
-    case WEAPONS_AKMN_PKM_PKP_RPG7_RPG32: {
-      #include "weapons\WEAPONS_AKMN_PKM_PKP_RPG7_RPG32.sqf"
-    };
-    case WEAPONS_RANDOM: {
-      #include "weapons\WEAPONS_RANDOM.sqf"
-    };
-    case WEAPONS_CUSTOM_1: {
-      #include "weapons\WEAPONS_CUSTOM_1.sqf"
-    };
-    case WEAPONS_CUSTOM_2: {
-      #include "weapons\WEAPONS_CUSTOM_2.sqf"
-    };
-    case WEAPONS_CUSTOM_3: {
-      #include "weapons\WEAPONS_CUSTOM_3.sqf"
-    };
-    case WEAPONS_UNARMED: {
-      #include "weapons\WEAPONS_UNARMED.sqf"
-    };
-    default {};
+if !(pWeapons in ["WEAPONS_M4A1_BLOCK_M249_M240G_M136_GUST", "WEAPONS_AK74M_PKM_PKP_RPG7_RPG32", "WEAPONS_AKMN_PKM_PKP_RPG7_RPG32"]) then {
+  _incStr = "client\loadout\weapons\" + pWeapons + ".sqf";
+
+  call compile preprocessFileLineNumbers _incStr;
 };

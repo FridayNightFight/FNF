@@ -7,8 +7,10 @@ phx_firstFlag = false;
 phx_flagCaptureTime = _flagCaptureTime;
 
 ctf_flag = createVehicle ["rhs_Flag_chdkz", getPosATL ctf_flagPole, [], 0, "CAN_COLLIDE"];
+publicVariable "ctf_flag";
 ctf_banner = "Banner_01_F" createVehicle [0,0,0];
 ctf_flag hideObjectGlobal true;
+ctf_flag enableSimulation false;
 
 {_x allowDamage false;} forEach [ctf_flag, ctf_flagPole, ctf_banner];
 
@@ -20,7 +22,7 @@ switch (phx_defendingSide) do {
   case independent: {ctf_banner setObjectTextureGlobal [0,"\A3\Data_F\Flags\flag_green_co.paa"]};
 };
 
-ctf_attackTrig setTriggerStatements ["ctf_flag inArea thisTrigger", "[] spawn phx_server_flagInZone", "call phx_server_flagOutZone"];
+ctf_attackTrig setTriggerStatements ["ctf_flag inArea thisTrigger", "", "call phx_server_flagOutZone"];
 
 createMarker ["capZoneMark", position ctf_attackTrig];
 _trigProps = triggerArea ctf_attackTrig;
@@ -70,9 +72,9 @@ phx_server_flagTaken = {
   };
 
   switch (_side) do {
-    case east: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_red_co.paa"};
-    case west: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_blue_co.paa"};
-    case independent: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_green_co.paa"};
+    case east: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_red_co.paa"; "flagMark" setMarkerColor "colorRed";};
+    case west: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_blue_co.paa"; "flagMark" setMarkerColor "colorBlue";};
+    case independent: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_green_co.paa"; "flagMark" setMarkerColor "colorGreen";};
   };
 
   ctf_flag attachTo [_player, [0,0.4,1.3], "aiming_axis"];
@@ -96,7 +98,7 @@ phx_server_dropFlag = {
 
   _dummy = objNull;
 
-  _pos = ASLtoATL (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0,(getPosASL ctf_flag) select 1,0], _player]) select 0) select 0);
+  _pos = ASLtoATL (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0,(getPosASL ctf_flag) select 1,0], vehicle _player]) select 0) select 0);
 
   if (vehicle _player != _player) then {
     _dummy = createVehicle ["Land_HelipadEmpty_F", _pos, [], 0, "NONE"];
@@ -110,38 +112,44 @@ phx_server_dropFlag = {
 
   if !(ctf_flag inArea ctf_attackTrig) then {
     ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_white_co.paa";
+    "flagMark" setMarkerColor "colorBlack";
     ["The flag has been dropped!"] remoteExec ["phx_fnc_hintThenClear"];
   };
 };
 
-phx_server_flagInZone = {
-  while {phx_flagCaptureTime > 0 && ctf_flag inArea ctf_attackTrig} do {
-    _timer = format ["Flag capture time remaining: %1", [phx_flagCaptureTime,"MM:SS"] call BIS_fnc_secondsToString];
-    _timer remoteExec ["hintSilent"];
+[] spawn {
+  while {!phx_gameEnd} do {
+    if (phx_flagCaptureTime <= 0) then {
+      missionNamespace setVariable ["phx_gameEnd",true,true];
+
+      deleteVehicle ctf_flag;
+      deleteMarker "flagMark";
+
+      [format ["%1 has successfully held the flag.\n%1 wins!",
+      switch (phx_attackingSide) do {
+        case east: {"OPFOR"};
+        case west: {"BLUFOR"};
+        case independent: {"INDFOR"};
+      }]] remoteExec ["hint"];
+
+      sleep 15;
+
+      "end1" call bis_fnc_endmissionserver;
+    };
+
+    if (phx_flagCaptureTime > 0 && (ctf_flag inArea ctf_attackTrig) && (isNull attachedTo ctf_flag)) then {
+      _timer = format ["Flag capture time remaining: %1", [phx_flagCaptureTime,"MM:SS"] call BIS_fnc_secondsToString];
+      _timer remoteExec ["hintSilent"];
+
+      phx_flagCaptureTime = phx_flagCaptureTime - 1;
+    };
 
     sleep 1;
-    phx_flagCaptureTime = phx_flagCaptureTime - 1;
-  };
-  if (phx_flagCaptureTime <= 0) then {
-    missionNamespace setVariable ["phx_gameEnd",true,true];
-
-    deleteVehicle ctf_flag;
-
-    [format ["%1 has successfully held the flag.\n%1 wins!",
-    switch (phx_attackingSide) do {
-      case east: {"OPFOR"};
-      case west: {"BLUFOR"};
-      case independent: {"INDFOR"};
-    }]] remoteExec ["hint"];
-
-    sleep 15;
-
-    "end1" call bis_fnc_endmissionserver;
   };
 };
 
 phx_server_flagOutZone = {
-  if (!isNull ctf_flag) then {
+  if (!isNull ctf_flag && !(ctf_flag inArea ctf_attackTrig)) then {
     ["The flag has left the capture zone!"] remoteExec ["phx_fnc_hintThenClear"];
   };
 };
@@ -172,7 +180,7 @@ addMissionEventHandler ["EntityKilled", {
       params ["_unit", "_role", "_vehicle", "_turret"];
 
       if (_unit getVariable ["phx_flagUnit",false]) then {
-        ctf_flag attachTo [_vehicle, [0,0,1.5]];
+        ctf_flag attachTo [_vehicle, [0,0,1.3]];
       };
     }];
 

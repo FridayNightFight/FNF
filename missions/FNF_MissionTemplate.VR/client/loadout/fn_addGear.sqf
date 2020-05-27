@@ -6,6 +6,7 @@ if (isNil "phx_addGearErrorStr") then {
 
 _err = {
   params ["_item"];
+  if (!isNil "phx_noGearAddError") exitWith {};
   phx_addGearErrorStr = phx_addGearErrorStr + _item + "\n";
   _msg = format ["Error adding \n %1", phx_addGearErrorStr];
   titleText [_msg, "PLAIN"];
