@@ -18,5 +18,3 @@ Steps:
 - Do not change any other Multiplayer settings
 11. Do a quick play-through of your mission from all sides to make sure that there are no weird bugs or interactions not visible in 3den editor.
 12. Export your mission to MP to create a mission .pbo and send that file over to FNF Staff (default export location is in MPMissions folder in root Arma directory).
-
--To give a unit the key for a vehicle, sync that unit to the chosen vehicle. This is required for helicopters, planes, tracked APCs, wheeled APCs and tanks.
