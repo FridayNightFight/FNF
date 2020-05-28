@@ -1,5 +1,7 @@
 _itemStr = _this;
 
+if (_itemStr == "") exitWith {};
+
 if (isNil "phx_addGearErrorStr") then {
   phx_addGearErrorStr = "";
 };
