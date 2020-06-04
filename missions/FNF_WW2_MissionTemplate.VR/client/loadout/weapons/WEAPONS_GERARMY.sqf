@@ -39,11 +39,11 @@ phx_loadout_sidearm_mag = "LIB_8Rnd_9x19:2";
 
 //Magazine classnames for AR and MMG
 phx_loadout_ar_mag = "LIB_30Rnd_792x33:10";
-phx_loadout_mmg_mag = "LIB_50Rnd_792x57:10";
+phx_loadout_mmg_mag = "LIB_50Rnd_792x57:9";
 
 //Magazine classnames for assistant AR and MMG ammo man roles
 phx_loadout_aar_mag = "LIB_30rnd_792x33_t:5";
-phx_loadout_am_mag = "LIB_50Rnd_792x57:5";
+phx_loadout_am_mag = "LIB_50Rnd_792x57:3";
 
 //Light AT
 phx_loadout_antitank_weapon = "LIB_PzFaust_30m";
@@ -79,7 +79,7 @@ switch (pRole) do {
   case ROLE_AT: {}; //Anti-tank
   case ROLE_AAT: {phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB:3"}; //Assistant anti-tank
   case ROLE_P: {}; //Pilot
-  case ROLE_CR: {}; //Crewman
+  case ROLE_CR: {phx_loadout_grenade = "";}; //Crewman
   case ROLE_MK: {
     phx_loadout_rifle_weapon = "LIB_K98ZF39";
     phx_loadout_rifle_mag = "LIB_5Rnd_792x57_t:10";

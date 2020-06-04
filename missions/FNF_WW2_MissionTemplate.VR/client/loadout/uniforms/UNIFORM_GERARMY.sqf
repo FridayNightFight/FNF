@@ -2,17 +2,18 @@
 
 //Global customization - will be applied to every role
 phx_loadout_uniform = "U_LIB_GER_Recruit";
-phx_loadout_vest = "fow_v_heer_k98";
+phx_loadout_vest = "V_LIB_GER_VestKar98";
 phx_loadout_backpack = "B_LIB_GER_A_frame";
 phx_loadout_headgear = "H_LIB_GER_Helmet";
 
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   phx_loadout_uniform = "U_LIB_GER_Unterofficer";
-  phx_loadout_vest = "V_LIB_GER_FieldOfficer";
+  phx_loadout_vest = "V_LIB_GER_VestMP40";
 };
 
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_uniform = "U_LIB_GER_Schutze";
+  phx_loadout_vest = "V_LIB_GER_VestG43";
 };
 
 if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_GER_VestSTG"};
@@ -27,7 +28,7 @@ switch (pRole) do {
   case ROLE_AR: {}; //Automatic rifleman
   case ROLE_AAR: {}; //Assistant automatic rifleman
   case ROLE_RAT: {}; //Rifleman (LAT)
-  case ROLE_CE: {phx_loadout_vest = "V_LIB_GER_PioneerVest"}; //Combat engineer
+  case ROLE_CE: {phx_loadout_vest = "V_LIB_GER_PioneerVest"; phx_loadout_backpack = "B_LIB_GER_SapperBackpack_empty"}; //Combat engineer
   case ROLE_R: {}; //Rifleman
   case ROLE_MG: {}; //Machinegunner
   case ROLE_AM: {}; //Ammo man

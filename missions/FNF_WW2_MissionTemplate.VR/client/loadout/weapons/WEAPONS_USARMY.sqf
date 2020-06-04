@@ -9,7 +9,7 @@ phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:9"; //mag classname 
 
 //Global primary weapon and magazine classes
 phx_loadout_rifle_weapon = "LIB_M1_Carbine";
-phx_loadout_rifle_mag_tracer = "LIB_15Rnd_762x33_t:5";
+phx_loadout_rifle_mag_tracer = "LIB_15Rnd_762x33_t:3";
 phx_loadout_rifle_mag = "LIB_15Rnd_762x33:10";
 
 phx_loadout_smoke = "SmokeShell:4";
@@ -55,7 +55,7 @@ phx_loadout_antitank_mag = "";
 
 //Medium AT
 phx_loadout_mediumantitank_weapon = "LIB_M1A1_Bazooka";
-phx_loadout_mediumantitank_mag = "LIB_1Rnd_60mm_M6:3";
+phx_loadout_mediumantitank_mag = "LIB_1Rnd_60mm_M6:2";
 
 //Marksman optic
 phx_loadout_rifle_optic = "";
