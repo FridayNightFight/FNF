@@ -9,7 +9,7 @@ if (!isNil "phx_isSpectator" || !isNil {player getVariable ["phx_isUnitSpectator
 if (!isNil "_loadout" && {!isNil "phx_bluforBaseChannel"} && {!isNil "phx_opforBaseChannel"} && {!isNil "phx_indforBaseChannel"} && {isNil "phx_hasSWitem"} && {!isNil "phx_groupIDset"} && {isNil "phx_isSpectator"} && {isNil {player getVariable ["phx_isUnitSpectator",nil]}}) then {
     phx_hasSWitem = false;
     phx_hasLRitem = false;
-    _LRlist = ["tf_rt1523g","tf_rt1523g_big","tf_rt1523g_black","tf_rt1523g_fabric","tf_rt1523g_green","tf_rt1523g_rhs","tf_rt1523g_sage","tf_anarc210","tf_rt1523g_big_bwmod","tf_rt1523g_big_bwmod_tropen","tf_rt1523g_bwmod","tf_rt1523g_big_rhs","tf_mr3000","tf_mr3000_multicam","tf_mr3000_rhs","tf_mr6000l","tf_mr3000_bwmod","tf_mr3000_bwmod_tropen","tf_anprc155","tf_anprc155_coyote","tf_anarc164","B_LIB_US_Radio","B_LIB_GER_Radio"];
+    _LRlist = ["tf_rt1523g","tf_rt1523g_big","tf_rt1523g_black","tf_rt1523g_fabric","tf_rt1523g_green","tf_rt1523g_rhs","tf_rt1523g_sage","tf_anarc210","tf_rt1523g_big_bwmod","tf_rt1523g_big_bwmod_tropen","tf_rt1523g_bwmod","tf_rt1523g_big_rhs","tf_mr3000","tf_mr3000_multicam","tf_mr3000_rhs","tf_mr6000l","tf_mr3000_bwmod","tf_mr3000_bwmod_tropen","tf_anprc155","tf_anprc155_coyote","tf_anarc164","B_LIB_US_Radio","B_LIB_GER_Radio","B_LIB_SOV_RA_Radio"];
     _SWlist = ["ItemRadio","tf_anprc152","tf_anprc148jem","tf_fadak","tf_pnr100a","tf_anprc154","tf_rf7800str"];
 
     //Check to see if player has any items matching the lists above.

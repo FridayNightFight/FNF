@@ -21,13 +21,13 @@ phx_attackingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
 
 //Uniforms
 phx_bluforUniform = "UNIFORM_GERARMY";
-phx_opforUniform = "";
+phx_opforUniform = "UNIFORM_SOVARMY";
 phx_indforUniform = "UNIFORM_USARMY";
 phx_civUniform = "UNIFORM_CIVILIAN";
 
 //Weapons
 phx_bluforWeapons = "WEAPONS_GERARMY";
-phx_opforWeapons = "";
+phx_opforWeapons = "WEAPONS_SOVARMY";
 phx_indforWeapons = "WEAPONS_USARMY";
 phx_civWeapons = "";
 
@@ -48,6 +48,7 @@ phx_antiGammaDoping = false; //Set to true for certain night missions where gamm
 ////////////////////////////////////////////////////////////
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
-
+UNIFORM_USARMY                     -- WEAPONS_USARMY
+UNIFORM_GERARMY                    -- WEAPONS_GERARMY
 
 */

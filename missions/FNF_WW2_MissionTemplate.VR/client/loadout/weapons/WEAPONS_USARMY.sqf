@@ -12,6 +12,9 @@ phx_loadout_rifle_weapon = "LIB_M1_Carbine";
 phx_loadout_rifle_mag_tracer = "LIB_15Rnd_762x33_t:5";
 phx_loadout_rifle_mag = "LIB_15Rnd_762x33:10";
 
+phx_loadout_smoke = "SmokeShell:4";
+phx_loadout_grenade = "LIB_US_Mk_2:2";
+
 if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
   phx_loadout_rifle_weapon = "LIB_M1928A1_Thompson";
   phx_loadout_rifle_mag_tracer = "LIB_30Rnd_45ACP_t:2";
