@@ -8,7 +8,7 @@ call phx_fnc_markerVisibility;
 
 //Call safety if mission hasn't started yet. If mission has started, call JIP function
 if (phx_safetyEnabled) then {[] spawn phx_fnc_safety};
-if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
+if (!phx_safetyEnabled) exitWith {[] spawn phx_fnc_clientJIP};
 
 //Set loadout
 call phx_fnc_setLoadout;
@@ -41,7 +41,7 @@ phx_radHandle1 = [phx_fnc_radio_waitGear, 0.1, []] call CBA_fnc_addPerFrameHandl
 call phx_fnc_platoonActions;
 
 //Marker System
-//[] execVM "client\QS_icons.sqf";
+[] execVM "client\QS_icons.sqf";
 
 // Generate ORBAT page
 [] execVM "client\briefing\f_orbatNotes.sqf";

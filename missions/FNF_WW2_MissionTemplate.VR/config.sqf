@@ -3,18 +3,20 @@
 
 ////////////////////////////////////////////////////////////
 
-phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
+phx_gameMode = adSector; //Change this to whatever game mode you want and configure the respective file in mode_config
 //If you don't want to use one of the template modes, you can set phx_gameMode = "";
 /*
 destroy - atk/def
 uplink - atk/def
 rush - atk/def
-connection - neutral
 captureTheFlag - atk/def
+adSector - atk/def
+
+connection - neutral
 */
 
-phx_defendingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
-phx_attackingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
+phx_defendingSide = east; //west/east/independent - BLUFOR/OPFOR/INDFOR
+phx_attackingSide = west; //west/east/independent - BLUFOR/OPFOR/INDFOR
 //Leave it as sideEmpty if chosen mode is neutral
 
 ////////////////////////////////////////////////////////////

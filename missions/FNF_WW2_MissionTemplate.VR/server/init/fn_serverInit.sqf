@@ -6,9 +6,6 @@ call phx_fnc_server_setupGame;
 
 //call phx_fnc_fortifyServer;
 
-//Set maximum client view distance
-setViewDistance 3000;
-
 //Run checks to see if side is eliminated
 [] spawn phx_fnc_checkAlive;
 

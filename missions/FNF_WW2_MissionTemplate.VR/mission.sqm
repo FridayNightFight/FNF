@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1240.0934,25.311256,382.98373};
-		dir[]={-0.89831382,-0.33115461,0.28882077};
-		up[]={-0.3152698,0.94356447,0.10136402};
-		aside[]={0.30609068,-1.4429679e-007,0.95202309};
+		pos[]={1145.0953,130.87115,31.457989};
+		dir[]={0.47012961,-0.45347163,0.75719506};
+		up[]={0.23919894,0.89126951,0.38525602};
+		aside[]={0.84956807,-1.6298145e-009,-0.52748173};
 	};
 };
 binarizationWanted=0;
@@ -20453,6 +20453,7 @@ class Mission
 				position[]={1201.1219,5,199.989};
 			};
 			name="phx_sector1";
+			init="call{if (isServer) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
 			presenceCondition="phx_gameMode isEqualTo ""adSector""";
 			flags=1;
@@ -20665,7 +20666,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0.2";
+							value="0.15";
 						};
 					};
 				};
@@ -20756,6 +20757,7 @@ class Mission
 				position[]={1300.309,5,199.68201};
 			};
 			name="phx_sector2";
+			init="call{if (isServer) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
 			presenceCondition="phx_gameMode isEqualTo ""adSector""";
 			flags=1;
@@ -20968,7 +20970,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0.2";
+							value="0.15";
 						};
 					};
 				};
@@ -21059,6 +21061,7 @@ class Mission
 				position[]={1400.792,5,198.76801};
 			};
 			name="phx_sector3";
+			init="call{if (isServer) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
 			presenceCondition="phx_gameMode isEqualTo ""adSector""";
 			flags=1;
@@ -21271,7 +21274,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0.2";
+							value="0.15";
 						};
 					};
 				};

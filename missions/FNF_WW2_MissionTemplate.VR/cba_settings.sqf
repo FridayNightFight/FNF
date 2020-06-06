@@ -59,11 +59,11 @@ force ace_noradio_enabled = true;
 ace_parachute_hideAltimeter = true;
 
 // ACE Cook off
-force ace_cookoff_ammoCookoffDuration = 0.25;
+force ace_cookoff_ammoCookoffDuration = 0.2;
 force ace_cookoff_enable = 1;
 force ace_cookoff_enableAmmobox = false;
-force ace_cookoff_enableAmmoCookoff = true;
-force ace_cookoff_probabilityCoef = 4;
+force ace_cookoff_enableAmmoCookoff = false;
+force ace_cookoff_probabilityCoef = 4.2;
 
 // ACE Crew Served Weapons
 force ace_csw_ammoHandling = 0;
@@ -179,7 +179,7 @@ ace_maptools_rotateModifierKey = 1;
 // ACE Medical
 force ace_medical_ai_enabledFor = 0;
 force ace_medical_AIDamageThreshold = 1;
-force ace_medical_bleedingCoefficient = 0.2;
+force ace_medical_bleedingCoefficient = 0.3;
 force ace_medical_blood_bloodLifetime = 1200;
 force ace_medical_blood_enabledFor = 1;
 force ace_medical_blood_maxBloodObjects = 100;
@@ -195,12 +195,12 @@ force ace_medical_gui_maxDistance = 3;
 ace_medical_gui_openAfterTreatment = true;
 force ace_medical_ivFlowRate = 3;
 force ace_medical_limping = 1;
-force ace_medical_painCoefficient = 0.75;
-force ace_medical_playerDamageThreshold = 1.3;
+force ace_medical_painCoefficient = 0.3;
+force ace_medical_playerDamageThreshold = 1;
 force ace_medical_spontaneousWakeUpChance = 0.4;
 force ace_medical_spontaneousWakeUpEpinephrineBoost = 5;
 force ace_medical_statemachine_AIUnconsciousness = false;
-force ace_medical_statemachine_cardiacArrestTime = 600;
+force ace_medical_statemachine_cardiacArrestTime = 300;
 force ace_medical_statemachine_fatalInjuriesAI = 0;
 force ace_medical_statemachine_fatalInjuriesPlayer = 0;
 force ace_medical_treatment_advancedBandages = 0;

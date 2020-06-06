@@ -13,12 +13,6 @@ if (_numberOfSectors == 2) then {
   deleteVehicle phx_sector3;
 };
 
-{
-  if (!isNull _x) then {
-    _x setVariable ["owner", phx_defendingSide];
-  };
-} forEach [phx_sector1, phx_sector2, phx_sector3];
-
 _phx_server_sectorWin = {
   [format ["%1 has captured all sectors.\n%1 wins!",
   switch (phx_attackingSide) do {

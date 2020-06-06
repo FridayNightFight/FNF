@@ -47,7 +47,7 @@ switch (pRole) do {
   case ROLE_P: {
     phx_loadout_uniform = "U_LIB_US_Pilot";
     phx_loadout_vest = "V_LIB_US_LifeVest";
-    phx_loadout_backpack = "";
+    phx_loadout_backpack = "fow_b_parachute";
     phx_loadout_headgear = "H_LIB_US_Helmet_Pilot";
     }; //Pilot
   case ROLE_CR: {
@@ -59,7 +59,7 @@ switch (pRole) do {
 };
 
 //This will give PLs and SLs radio backpacks, remove if wanted
-if (pRole == ROLE_PL || pRole == ROLE_SL || pROLE == ROLE_MGTL || pRole == ROLE_TL || pRole == ROLE_P) then {
+if (pRole == ROLE_PL || pRole == ROLE_SL || pROLE == ROLE_MGTL || pRole == ROLE_TL) then {
   phx_loadout_backpack = "B_LIB_US_Radio";
 };
 

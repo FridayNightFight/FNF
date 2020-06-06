@@ -122,17 +122,17 @@ _QS_ST_colorInjured = [0.75,0.55,0,0.75];						// ARRAY (NUMBER). RGBA color cod
 //=========================== CONFIGURE MAP (UNIT/VEHICLE) ICONS ===================//
 //==================================================================================//
 
-_QS_ST_showFactionOnly = FALSE;									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
+_QS_ST_showFactionOnly = TRUE;									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
 _QS_ST_showAI = TRUE;											// BOOL. FALSE = players only, TRUE = players and AI. Default TRUE.
 _QS_ST_AINames = FALSE;											// BOOL. Set TRUE to show human names for AI with the map/vehicle icons. Set FALSE and will be named 'AI'. Default FALSE.
 _QS_ST_showCivilianIcons = FALSE;								// BOOL. Set TRUE to allow showing of civilians, only works if Dynamic Diplomacy is enabled above. Default FALSE.
 _QS_ST_iconMapText = TRUE;										// BOOL. TRUE to show unit/vehicle icon text on the map. FALSE to only show the icon and NO text (name/class). Default TRUE.
 _QS_ST_showMOS = TRUE;											// BOOL. TRUE = show Military Occupational Specialty text(unit/vehicle class/role display name), FALSE = disable and only show icons and names. Default FALSE.
 _QS_ST_showMOS_range = 3500;									// NUMBER. Range in distance to show MOS on the map. Default 3500.
-_QS_ST_showGroupOnly = FALSE;									// BOOL. Set TRUE to show ONLY the unit icons of THE PLAYERS GROUP MEMBERS on the MAP, FALSE to show ALL your factions units. May override other config. Default TRUE.
+_QS_ST_showGroupOnly = TRUE;									// BOOL. Set TRUE to show ONLY the unit icons of THE PLAYERS GROUP MEMBERS on the MAP, FALSE to show ALL your factions units. May override other config. Default TRUE.
 _QS_ST_showOnlyVehicles = FALSE;								// BOOL. Set TRUE to show ONLY vehicles, no foot-soldier units will be shown. May override other config. Default TRUE.
 _QS_ST_iconMapClickShowDetail = TRUE;							// BOOL. Set TRUE to show unit/vehicle detail when player clicks on their map near the vehicle. Only works for shown vehicles. Default TRUE.
-_QS_ST_iconUpdatePulseDelay = 1;								// NUMBER. How often should location of unit on the MAP be updated? 0 = as fast as possible, else if > 0 then it = time in seconds. Default 0.
+_QS_ST_iconUpdatePulseDelay = 0.25;								// NUMBER. How often should location of unit on the MAP be updated? 0 = as fast as possible, else if > 0 then it = time in seconds. Default 0.
 _QS_ST_iconShadowMap = 1;										// NUMBER. Icon Shadow on MAP. 0 = no shadow. 1 = shadow. 2 = outline. Must be 0, 1, or 2. Default 1.
 _QS_ST_iconTextSize_Map = 0.05;									// NUMBER. Icon Text Size on MAP display. Default is 0.05.
 _QS_ST_iconTextOffset = 'right';								// STRING. Icon Text Offset. Can be 'left' or 'center' or 'right'. Default is 'right'
