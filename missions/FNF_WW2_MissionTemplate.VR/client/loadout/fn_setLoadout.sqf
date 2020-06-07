@@ -1,4 +1,4 @@
-if (phx_customLoadouts) exitWith {missionNamespace setVariable ["phx_loadoutAssigned", true]};
+//if (phx_customLoadouts) exitWith {missionNamespace setVariable ["phx_loadoutAssigned", true]};
 
 #include "cfgLoadouts.hpp"
 
