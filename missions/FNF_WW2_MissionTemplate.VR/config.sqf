@@ -13,6 +13,7 @@ captureTheFlag - atk/def
 adSector - atk/def
 
 connection - neutral
+neutralSector - neutral
 */
 
 phx_defendingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR

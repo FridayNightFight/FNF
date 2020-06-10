@@ -4,3 +4,4 @@
 #define connection "connection"
 #define captureTheFlag "captureTheFlag"
 #define adSector "adSector"
+#define neutralSector "neutralSector"

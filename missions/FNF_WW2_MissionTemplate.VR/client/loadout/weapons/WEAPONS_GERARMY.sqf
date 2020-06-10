@@ -12,13 +12,13 @@ phx_loadout_rifle_weapon = "LIB_K98";
 phx_loadout_rifle_mag_tracer = "LIB_5Rnd_792x57_t:5";
 phx_loadout_rifle_mag = "LIB_5Rnd_792x57:10";
 
-phx_loadout_smoke = "LIB_NB39:4";
+phx_loadout_smoke = "SmokeShell:4";
 phx_loadout_grenade = "LIB_Shg24:2";
 
 if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
   phx_loadout_rifle_weapon = "LIB_MP40";
   phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:2";
-  phx_loadout_rifle_mag = "LIB_32Rnd_9x19:6";
+  phx_loadout_rifle_mag = "LIB_32Rnd_9x19:3";
 };
 
 if (pRole == ROLE_GR) then {

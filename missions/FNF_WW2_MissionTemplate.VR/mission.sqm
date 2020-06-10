@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1687;
+		nextID=1691;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1145.0953,130.87115,31.457989};
-		dir[]={0.47012961,-0.45347163,0.75719506};
-		up[]={0.23919894,0.89126951,0.38525602};
-		aside[]={0.84956807,-1.6298145e-009,-0.52748173};
+		pos[]={1197.5515,283.23553,30.50676};
+		dir[]={0.019042663,-0.99921781,0.034992613};
+		up[]={0.47761807,0.039785791,0.87766582};
+		aside[]={0.87837034,-3.8463622e-007,-0.47800151};
 	};
 };
 binarizationWanted=0;
@@ -20453,9 +20453,9 @@ class Mission
 				position[]={1201.1219,5,199.989};
 			};
 			name="phx_sector1";
-			init="call{if (isServer) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
+			init="call{if (isServer && (phx_gameMode isEqualTo ""adSector"")) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
-			presenceCondition="phx_gameMode isEqualTo ""adSector""";
+			presenceCondition="phx_gameMode isEqualTo ""adSector"" || phx_gameMode isEqualTo ""neutralSector""";
 			flags=1;
 			id=1669;
 			type="ModuleSector_F";
@@ -20628,7 +20628,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0";
+							value="1";
 						};
 					};
 				};
@@ -20757,9 +20757,9 @@ class Mission
 				position[]={1300.309,5,199.68201};
 			};
 			name="phx_sector2";
-			init="call{if (isServer) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
+			init="call{if (isServer && (phx_gameMode isEqualTo ""adSector"")) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
-			presenceCondition="phx_gameMode isEqualTo ""adSector""";
+			presenceCondition="phx_gameMode isEqualTo ""adSector"" || phx_gameMode isEqualTo ""neutralSector""";
 			flags=1;
 			id=1670;
 			type="ModuleSector_F";
@@ -20932,7 +20932,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0";
+							value="1";
 						};
 					};
 				};
@@ -21061,9 +21061,9 @@ class Mission
 				position[]={1400.792,5,198.76801};
 			};
 			name="phx_sector3";
-			init="call{if (isServer) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
+			init="call{if (isServer && (phx_gameMode isEqualTo ""adSector"")) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
-			presenceCondition="phx_gameMode isEqualTo ""adSector""";
+			presenceCondition="phx_gameMode isEqualTo ""adSector"" || phx_gameMode isEqualTo ""neutralSector""";
 			flags=1;
 			id=1671;
 			type="ModuleSector_F";
@@ -21236,7 +21236,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0";
+							value="1";
 						};
 					};
 				};

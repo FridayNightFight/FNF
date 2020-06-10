@@ -21,11 +21,13 @@ _phx_server_sectorWin = {
     case independent: {"INDFOR"};
   }]] remoteExec ["hint"];
 
+  missionNamespace setVariable ["phx_gameEnd", true, true];
+
   sleep 20;
 
   "end1" call bis_fnc_endmissionserver;
 };
-
+/*
 [phx_defendingSide, ["dtask1"], ["Defend sector Alpha", "Defend Alpha", ""], phx_sector1, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
 [phx_attackingSide, ["atask1"], ["Capture sector Alpha", "Capture Alpha", ""], phx_sector1, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
 
@@ -34,7 +36,7 @@ _phx_server_sectorWin = {
 
 [phx_defendingSide, ["dtask3"], ["Defend sector Charlie", "Defend Charlie", ""], phx_sector3, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
 [phx_attackingSide, ["atask3"], ["Capture sector Charlie", "Capture Charlie", ""], phx_sector3, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
-
+*/
 [] spawn {
   waitUntil {(phx_sector1 getVariable "owner") == phx_attackingSide};
 
