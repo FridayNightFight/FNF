@@ -47,27 +47,31 @@ _phx_server_sectorWin = {
   phx_capNum = phx_capNum + 1;
 };
 
-[] spawn {
-  waitUntil {(phx_sector2 getVariable "owner") == phx_attackingSide};
+if (!isNull phx_sector2) then {
+  [] spawn {
+    waitUntil {(phx_sector2 getVariable "owner") == phx_attackingSide};
 
-  ["dtask2", "FAILED", true] call BIS_fnc_taskSetState;
-  ["atask2", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+    ["dtask2", "FAILED", true] call BIS_fnc_taskSetState;
+    ["atask2", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-  deleteVehicle phx_sector2;
+    deleteVehicle phx_sector2;
 
-  phx_capNum = phx_capNum + 1;
+    phx_capNum = phx_capNum + 1;
+  };
 };
 
 
-[] spawn {
-  waitUntil {(phx_sector3 getVariable "owner") == phx_attackingSide};
+if (!isNull phx_sector3) then {
+  [] spawn {
+    waitUntil {(phx_sector3 getVariable "owner") == phx_attackingSide};
 
-  ["dtask3", "FAILED", true] call BIS_fnc_taskSetState;
-  ["atask3", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+    ["dtask3", "FAILED", true] call BIS_fnc_taskSetState;
+    ["atask3", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-  deleteVehicle phx_sector3;
+    deleteVehicle phx_sector3;
 
-  phx_capNum = phx_capNum + 1;
+    phx_capNum = phx_capNum + 1;
+  };
 };
 
 waitUntil {phx_capNum >= _numberOfSectors};
