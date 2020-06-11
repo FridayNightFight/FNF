@@ -3,12 +3,12 @@ _numberOfSectors = 1; //Number of active sectors (1-3)
 _pointAddTime = 12; //How often points are added (seconds)
 
 switch (_numberOfSectors) do {
-  case 2: {_pointAddTime = _pointAddTime * 1.8};
-  case 3: {_pointAddTime = _pointAddTime * 2.3};
+  case 2: {_pointAddTime = _pointAddTime * 0.8};
+  case 3: {_pointAddTime = _pointAddTime * 0.6};
 };
 
 /*
-Neutral sector control mode. Can choose between 1-3 sectors.
+Neutral sector control mode. Can choose between 1-3 sectors. First team to 100 points wins.
 Only infantry can capture sectors.
 
 1 sector = phx_sector1
