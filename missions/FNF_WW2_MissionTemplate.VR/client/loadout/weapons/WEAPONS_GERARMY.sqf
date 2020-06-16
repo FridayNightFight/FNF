@@ -17,8 +17,8 @@ phx_loadout_grenade = "LIB_Shg24:2";
 
 if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
   phx_loadout_rifle_weapon = "LIB_MP40";
-  phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:2";
-  phx_loadout_rifle_mag = "LIB_32Rnd_9x19:3";
+  phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:3";
+  phx_loadout_rifle_mag = "LIB_32Rnd_9x19:7";
 };
 
 if (pRole == ROLE_GR) then {

@@ -338,14 +338,6 @@ force ace_vehiclelock_vehicleStartingLockState = -1;
 ace_vehicles_hideEjectAction = true;
 force ace_vehicles_keepEngineRunning = false;
 
-// ACEX View Restriction
-acex_viewrestriction_mode = 0;
-acex_viewrestriction_modeSelectiveAir = 0;
-acex_viewrestriction_modeSelectiveFoot = 0;
-acex_viewrestriction_modeSelectiveLand = 0;
-acex_viewrestriction_modeSelectiveSea = 0;
-acex_viewrestriction_preserveView = false;
-
 // ACE Weapons
 ace_common_persistentLaserEnabled = false;
 force ace_laserpointer_enabled = true;

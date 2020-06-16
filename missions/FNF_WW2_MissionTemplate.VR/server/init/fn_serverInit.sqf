@@ -48,3 +48,12 @@ call phx_fnc_server_setupGame;
 
 //Disable zeus ping
 missionnamespace setvariable ["bis_fnc_curatorPinged_time", 9999999, true];
+
+/*
+addMissionEventHandler ["PlayerConnected",
+{
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+
+
+}];
+*/

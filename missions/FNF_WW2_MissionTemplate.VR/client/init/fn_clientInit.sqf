@@ -8,7 +8,7 @@ call phx_fnc_markerVisibility;
 
 //Call safety if mission hasn't started yet. If mission has started, call JIP function
 if (phx_safetyEnabled) then {[] spawn phx_fnc_safety};
-if (!phx_safetyEnabled) exitWith {[] spawn phx_fnc_clientJIP};
+if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
 
 //Set loadout
 call phx_fnc_setLoadout;
