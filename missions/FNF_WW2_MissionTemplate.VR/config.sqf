@@ -54,4 +54,5 @@ phx_antiGammaDoping = false; //Set to true for certain night missions where gamm
 UNIFORM_USARMY                     -- WEAPONS_USARMY
 UNIFORM_GERARMY                    -- WEAPONS_GERARMY
 UNIFORM_SOVARMY                    -- WEAPONS_SOVARMY
+UNIFORM_BRITARMY                   -- WEAPONS_BRITARMY
 */
