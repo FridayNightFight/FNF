@@ -9,6 +9,7 @@ removeUniform player;
 removeVest player;
 removeBackpack player;
 removeHeadgear player;
+removeGoggles player;
 {
   player unassignItem _x;
   player removeItem _x;

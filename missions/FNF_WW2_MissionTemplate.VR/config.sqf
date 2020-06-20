@@ -55,4 +55,5 @@ UNIFORM_USARMY                     -- WEAPONS_USARMY
 UNIFORM_GERARMY                    -- WEAPONS_GERARMY
 UNIFORM_SOVARMY                    -- WEAPONS_SOVARMY
 UNIFORM_BRITARMY                   -- WEAPONS_BRITARMY
+UNIFORM_JAPARMY                    -- WEAPONS_JAPARMY
 */
