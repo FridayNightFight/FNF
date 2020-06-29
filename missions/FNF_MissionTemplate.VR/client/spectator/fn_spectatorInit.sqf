@@ -1,22 +1,3 @@
-//Init ACE spectator once player respawns
-//To do: don't break things if player is killed while spectating (somehow)
-[player, true] call TFAR_fnc_forceSpectator;
-waitUntil {alive player};
-
-player enableSimulation false;
-player allowDamage false;
-
-//Join player to a dummy side so they don't show on map with QSIcons
-if (playerSide != sideLogic) then {
-  _dummySide = createGroup sideLogic;
-  [player] joinSilent _dummySide;
-};
-
-//call ace spectator and make sure player is hidden
-[true] call ace_spectator_fnc_setSpectator;
-if !(isObjectHidden player) then {
-  [player,true] remoteExec ["hideObject",0,true];
-};
 phx_specEnabled = true;
 
 //Set camera position to player camera position @ time of death if not nil
@@ -41,7 +22,6 @@ if (phx_gameMode == "captureTheFlag") then {
 };
 
 //Wait for ACE spectator display
-phx_specListenEnabled = true;
 waitUntil {!isNull findDisplay 60000};
 _specDisplay = findDisplay 60000;
 
@@ -49,44 +29,6 @@ _specDisplay = findDisplay 60000;
 if !(serverCommandAvailable "#kick") then {
   _specDisplay displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
 };
-
-//Spectator listening - Key = ] (right bracket)
-phx_specDisplayKeydownEH = _specDisplay displayAddEventHandler ["KeyDown", {
-  params ["_displayorcontrol", "_key", "_shift", "_ctrl", "_alt"];
-  if (_key == 27) then {
-    if (isNil "phx_specNextVoiceChange" || {diag_tickTime > phx_specNextVoiceChange}) then {
-      phx_specNextVoiceChange = diag_tickTime + 2;
-
-      phx_specListenEnabled = !phx_specListenEnabled;
-
-      if !(phx_specListenEnabled) then {
-        [player, false] call TFAR_fnc_forceSpectator;
-      } else {
-        [player, true] call TFAR_fnc_forceSpectator;
-      };
-
-      if !(phx_specListenEnabled) then {
-        player setVariable ["tf_voiceVolume", 0.0, true];
-        player setVariable ["tf_unable_to_use_radio", true, true];
-
-        phx_spectatorMovePFH = [{
-          player setPos (position ace_spectator_camera);
-          player setDir (getDir ace_spectator_camera);
-        }, 0.5] call CBA_fnc_addPerFrameHandler;
-
-        systemChat "Spectator listening enabled";
-      } else {
-        [phx_spectatorMovePFH] call CBA_fnc_removePerFrameHandler;
-        player setVariable ["tf_unable_to_use_radio", false, true];
-        player setVariable ["tf_voiceVolume", 1.0, true];
-
-        systemChat "Spectator listening disabled";
-      };
-      } else {
-        systemChat "You must wait to change voice mode";
-      };
-  };
-}];
 
 //Returns true if obj can be drawn
 _showObj = {

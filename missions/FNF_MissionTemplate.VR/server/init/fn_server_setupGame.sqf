@@ -21,6 +21,12 @@ switch (phx_gameMode) do {
   case captureTheFlag: {
     [] call compile preprocessFileLineNumbers format ["shared\modes\ctf_server.sqf"];
   };
+  case adSector: {
+    [] spawn compile preprocessFileLineNumbers format ["shared\modes\adSector.sqf"];
+  };
+  case neutralSector: {
+    [] spawn compile preprocessFileLineNumbers format ["shared\modes\neutralSector.sqf"];
+  };
 };
 
 //To do: allow objectives to be deleted w/o throwing error

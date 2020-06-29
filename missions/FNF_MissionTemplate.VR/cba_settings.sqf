@@ -59,11 +59,11 @@ force ace_noradio_enabled = true;
 ace_parachute_hideAltimeter = true;
 
 // ACE Cook off
-force ace_cookoff_ammoCookoffDuration = 0.25;
+force ace_cookoff_ammoCookoffDuration = 0.2;
 force ace_cookoff_enable = 1;
 force ace_cookoff_enableAmmobox = false;
-force ace_cookoff_enableAmmoCookoff = true;
-force ace_cookoff_probabilityCoef = 4;
+force ace_cookoff_enableAmmoCookoff = false;
+force ace_cookoff_probabilityCoef = 4.2;
 
 // ACE Crew Served Weapons
 force ace_csw_ammoHandling = 0;
@@ -179,7 +179,7 @@ ace_maptools_rotateModifierKey = 1;
 // ACE Medical
 force ace_medical_ai_enabledFor = 0;
 force ace_medical_AIDamageThreshold = 1;
-force ace_medical_bleedingCoefficient = 0.2;
+force ace_medical_bleedingCoefficient = 0.3;
 force ace_medical_blood_bloodLifetime = 1200;
 force ace_medical_blood_enabledFor = 1;
 force ace_medical_blood_maxBloodObjects = 100;
@@ -195,12 +195,12 @@ force ace_medical_gui_maxDistance = 3;
 ace_medical_gui_openAfterTreatment = true;
 force ace_medical_ivFlowRate = 3;
 force ace_medical_limping = 1;
-force ace_medical_painCoefficient = 0.75;
-force ace_medical_playerDamageThreshold = 1.3;
+force ace_medical_painCoefficient = 0.3;
+force ace_medical_playerDamageThreshold = 1;
 force ace_medical_spontaneousWakeUpChance = 0.4;
 force ace_medical_spontaneousWakeUpEpinephrineBoost = 5;
 force ace_medical_statemachine_AIUnconsciousness = false;
-force ace_medical_statemachine_cardiacArrestTime = 600;
+force ace_medical_statemachine_cardiacArrestTime = 300;
 force ace_medical_statemachine_fatalInjuriesAI = 0;
 force ace_medical_statemachine_fatalInjuriesPlayer = 0;
 force ace_medical_treatment_advancedBandages = 0;
@@ -338,14 +338,6 @@ force ace_vehiclelock_vehicleStartingLockState = -1;
 ace_vehicles_hideEjectAction = true;
 force ace_vehicles_keepEngineRunning = false;
 
-// ACEX View Restriction
-acex_viewrestriction_mode = 0;
-acex_viewrestriction_modeSelectiveAir = 0;
-acex_viewrestriction_modeSelectiveFoot = 0;
-acex_viewrestriction_modeSelectiveLand = 0;
-acex_viewrestriction_modeSelectiveSea = 0;
-acex_viewrestriction_preserveView = false;
-
 // ACE Weapons
 ace_common_persistentLaserEnabled = false;
 force ace_laserpointer_enabled = true;
@@ -363,3 +355,52 @@ force ace_weather_windSimulation = true;
 force ace_winddeflection_enabled = true;
 force ace_winddeflection_simulationInterval = 0.05;
 force ace_winddeflection_vehicleEnabled = true;
+
+// TFAR - Global settings
+TFAR_AICanHearPlayer = false;
+TFAR_AICanHearSpeaker = false;
+TFAR_allowDebugging = true;
+force TFAR_curatorCamEars = true;
+TFAR_defaultIntercomSlot = 0;
+force TFAR_enableIntercom = true;
+TFAR_experimentalVehicleIsolation = true;
+force TFAR_fullDuplex = true;
+force TFAR_giveLongRangeRadioToGroupLeaders = false;
+force TFAR_giveMicroDagrToSoldier = false;
+force TFAR_givePersonalRadioToRegularSoldier = false;
+force TFAR_globalRadioRangeCoef = 1.4995;
+TFAR_instantiate_instantiateAtBriefing = false;
+TFAR_noAutomoveSpectator = false;
+force TFAR_objectInterceptionEnabled = true;
+force TFAR_objectInterceptionStrength = 300;
+tfar_radiocode_east = "_opfor";
+tfar_radiocode_independent = "_independent";
+tfar_radiocode_west = "_bluefor";
+force tfar_radioCodesDisabled = false;
+force TFAR_SameLRFrequenciesForSide = false;
+force TFAR_SameSRFrequenciesForSide = false;
+force TFAR_setting_defaultFrequencies_lr_east = "";
+force TFAR_setting_defaultFrequencies_lr_independent = "";
+force TFAR_setting_defaultFrequencies_lr_west = "";
+force TFAR_setting_defaultFrequencies_sr_east = "";
+force TFAR_setting_defaultFrequencies_sr_independent = "";
+force TFAR_setting_defaultFrequencies_sr_west = "";
+force TFAR_setting_DefaultRadio_Airborne_east = "";
+force TFAR_setting_DefaultRadio_Airborne_Independent = "";
+force TFAR_setting_DefaultRadio_Airborne_West = "";
+force TFAR_setting_DefaultRadio_Backpack_east = "";
+force TFAR_setting_DefaultRadio_Backpack_Independent = "";
+force TFAR_setting_DefaultRadio_Backpack_west = "";
+force TFAR_setting_DefaultRadio_Personal_east = "";
+force TFAR_setting_DefaultRadio_Personal_Independent = "";
+force TFAR_setting_DefaultRadio_Personal_West = "";
+force TFAR_setting_DefaultRadio_Rifleman_East = "";
+force TFAR_setting_DefaultRadio_Rifleman_Independent = "";
+force TFAR_setting_DefaultRadio_Rifleman_West = "";
+TFAR_spectatorCanHearEnemyUnits = true;
+TFAR_spectatorCanHearFriendlies = true;
+force TFAR_takingRadio = 2;
+force TFAR_Teamspeak_Channel_Name = "TaskForceRadio";
+force TFAR_Teamspeak_Channel_Password = "123";
+force tfar_terrain_interception_coefficient = 4;
+TFAR_voiceCone = true;

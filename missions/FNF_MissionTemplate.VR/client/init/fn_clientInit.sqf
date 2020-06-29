@@ -58,6 +58,24 @@ call phx_fnc_platoonActions;
 
 //[] spawn phx_fnc_getKeys;
 
+//Stop high gamma setting if phx_antiGammaDoping = true in config
+phx_gammaWarn = false;
+if (phx_antiGammaDoping) then {
+  [{
+    if (isNull findDisplay 5) exitWith {};
+    _gamma = parseNumber (ctrlText (findDisplay 5 displayCtrl 109));
+    if (_gamma > 1.3 && !phx_gammaWarn) then {
+      cutText ["Gamma setting cannot exceed 1.3 for this mission", "BLACK"];
+      phx_gammaWarn = true;
+    } else {
+      if (_gamma <= 1.3 && phx_gammaWarn) then {
+        cutText ["", "BLACK IN"];
+        phx_gammaWarn = false;
+      };
+    };
+  } , 0.1] call CBA_fnc_addPerFrameHandler;
+};
+
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
 

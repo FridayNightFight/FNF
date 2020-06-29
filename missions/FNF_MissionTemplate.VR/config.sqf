@@ -1,7 +1,8 @@
 #include "client\loadout\cfgLoadouts.hpp"
 #include "shared\definitions.hpp"
 
-////////////////////////////////////////////////////////////
+/* MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF */
+/* DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS */
 
 phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
 //If you don't want to use one of the template modes, you can set phx_gameMode = "";
@@ -9,8 +10,11 @@ phx_gameMode = destroy; //Change this to whatever game mode you want and configu
 destroy - atk/def
 uplink - atk/def
 rush - atk/def
-connection - neutral
 captureTheFlag - atk/def
+adSector - atk/def
+
+connection - neutral
+neutralSector - neutral
 */
 
 phx_defendingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
@@ -43,6 +47,7 @@ phx_missionTimeLimit = 60; //Mission time limit in minutes
 phx_opticMagnification = false; //Set to true to allow players to use magnified optics
 
 phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system - radios will still be preset
+phx_antiGammaDoping = false; //Set to true for certain night missions where gamma abuse may happen
 
 ////////////////////////////////////////////////////////////
 /*

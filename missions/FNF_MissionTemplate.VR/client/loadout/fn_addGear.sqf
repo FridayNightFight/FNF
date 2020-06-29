@@ -1,6 +1,6 @@
 _itemStr = _this;
 
-if (_itemStr == "") exitWith {};
+if (_itemStr isEqualTo "") exitWith {};
 
 if (isNil "phx_addGearErrorStr") then {
   phx_addGearErrorStr = "";

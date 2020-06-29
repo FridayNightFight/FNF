@@ -5,6 +5,9 @@ phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:9"; //mag classname 
 */
 #include "..\cfgLoadouts.hpp"
 
+//Create a base for the loadout, delete 2 of the functions here
+call giveBLUFORLoadout giveOPFORLoadout giveINDFORLoadout;
+
 //You can leave any of the variables in this file as an empty string
 
 //Global primary weapon and magazine classes
