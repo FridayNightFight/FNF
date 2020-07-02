@@ -5,9 +5,9 @@ enableDebugConsole = 1;
 
 respawn = 3;
 respawnDialog = 0;
-respawndelay = 2;
+respawndelay = 9999999;
 respawnOnStart = -1;
-respawnTemplates[] = {};
+respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;
 
 corpseManagerMode = 0;
