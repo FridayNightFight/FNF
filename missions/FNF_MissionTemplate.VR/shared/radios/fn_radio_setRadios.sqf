@@ -27,7 +27,7 @@ if (phx_hasLR) then {
     phx_curSettings set [5,phx_altChan];
     //Set stero mode for alternate channel
     phx_curSettings set [6,2];
-    [(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, phx_curSettings] call TFAR_fnc_setLrSettings;
+    [(call TFAR_fnc_activeLrRadio), phx_curSettings] call TFAR_fnc_setLrSettings;
 };
 
 //Only setup short wave channels if player has one
