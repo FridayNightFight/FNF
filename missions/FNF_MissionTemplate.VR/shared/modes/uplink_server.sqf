@@ -157,13 +157,13 @@ phx_serverTerminalAction = {
       [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
       switch (_term) do {
         case term1: {
-          missionNamespace setVariable ["phx_term1Hacking", true, false];
+          missionNamespace setVariable ["phx_term1Hacking", true, true];
         };
         case term2: {
-          missionNamespace setVariable ["phx_term2Hacking", true, false];
+          missionNamespace setVariable ["phx_term2Hacking", true, true];
         };
         case term3: {
-          missionNamespace setVariable ["phx_term3Hacking", true, false];
+          missionNamespace setVariable ["phx_term3Hacking", true, true];
         };
       };
       format ["%1 hack started!", _message] remoteExec ["hintSilent", 0];
@@ -172,13 +172,13 @@ phx_serverTerminalAction = {
       [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
       switch (_term) do {
         case term1: {
-          missionNamespace setVariable ["phx_term1Hacking", false, false];
+          missionNamespace setVariable ["phx_term1Hacking", false, true];
         };
         case term2: {
-          missionNamespace setVariable ["phx_term2Hacking", false, false];
+          missionNamespace setVariable ["phx_term2Hacking", false, true];
         };
         case term3: {
-          missionNamespace setVariable ["phx_term3Hacking", false, false];
+          missionNamespace setVariable ["phx_term3Hacking", false, true];
         };
       };
       format ["%1 hack paused!", _message] remoteExec ["hintSilent", 0];

@@ -21,7 +21,7 @@ phx_safeStartNoFire = player addAction ["", {}, nil, 0, false, true, "defaultAct
 
 //Allow ACE placing
 phx_acePlacing = [{
-  if ((missionNamespace getVariable ["ace_explosives_placeaction",0] == -1) || (missionNamespace getVariable ["acex_fortify_isPlacing",0] == -1) || (player getVariable ["ace_dragging_iscarrying",false]) || (player getVariable ["ace_dragging_isdragging",false])) then {
+  if ((missionNamespace getVariable ["ace_explosives_placeaction",0] == -1) || (missionNamespace getVariable ["acex_fortify_isPlacing",0] == -1) || (player getVariable ["ace_dragging_iscarrying",false]) || (player getVariable ["ace_dragging_isdragging",false]) || (player getVariable ["ace_trenches_isplacing",false])) then {
     if (!isNil "phx_safeStartNoFire") then {
       player removeAction phx_safeStartNoFire;
       phx_safeStartNoFire = nil;

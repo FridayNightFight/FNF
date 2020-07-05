@@ -47,6 +47,8 @@ _phx_server_sectorWin = {
   phx_capNum = phx_capNum + 1;
 };
 
+sleep 1;
+
 if (!isNull phx_sector2) then {
   [] spawn {
     waitUntil {(phx_sector2 getVariable "owner") == phx_attackingSide};

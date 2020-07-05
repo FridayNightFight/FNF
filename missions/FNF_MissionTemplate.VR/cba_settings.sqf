@@ -197,7 +197,7 @@ force ace_medical_ivFlowRate = 3;
 force ace_medical_limping = 1;
 force ace_medical_painCoefficient = 0.3;
 force ace_medical_playerDamageThreshold = 1;
-force ace_medical_spontaneousWakeUpChance = 0.4;
+force ace_medical_spontaneousWakeUpChance = 0.5;
 force ace_medical_spontaneousWakeUpEpinephrineBoost = 5;
 force ace_medical_statemachine_AIUnconsciousness = false;
 force ace_medical_statemachine_cardiacArrestTime = 300;
@@ -224,10 +224,12 @@ force ace_medical_treatment_locationsBoostTraining = false;
 force ace_medical_treatment_locationSurgicalKit = 0;
 force ace_medical_treatment_maxLitterObjects = 100;
 force ace_medical_treatment_medicEpinephrine = 0;
-force ace_medical_treatment_medicIV = 1;
+force ace_medical_treatment_medicIV = 0;
 force ace_medical_treatment_medicPAK = 1;
 force ace_medical_treatment_medicSurgicalKit = 1;
 force ace_medical_treatment_timeCoefficientPAK = 0.5;
+ace_medical_treatment_woundReopenChance = 0;
+
 
 // ACE Name Tags
 ace_nametags_defaultNametagColor = [0.77,0.51,0.08,1];
@@ -366,8 +368,8 @@ force TFAR_enableIntercom = true;
 TFAR_experimentalVehicleIsolation = true;
 force TFAR_fullDuplex = true;
 force TFAR_giveLongRangeRadioToGroupLeaders = false;
-force TFAR_giveMicroDagrToSoldier = false;
-force TFAR_givePersonalRadioToRegularSoldier = false;
+force TFAR_giveMicroDagrToSoldier = true;
+force TFAR_givePersonalRadioToRegularSoldier = true;
 force TFAR_globalRadioRangeCoef = 1.4995;
 TFAR_instantiate_instantiateAtBriefing = false;
 TFAR_noAutomoveSpectator = false;

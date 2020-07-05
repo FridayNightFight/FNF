@@ -65,7 +65,7 @@ if (phx_antiGammaDoping) then {
     if (isNull findDisplay 5) exitWith {};
     _gamma = parseNumber (ctrlText (findDisplay 5 displayCtrl 109));
     if (_gamma > 1.3 && !phx_gammaWarn) then {
-      cutText ["Gamma setting cannot exceed 1.3 for this mission", "BLACK"];
+      cutText ["Gamma setting cannot exceed 1.3 for this mission, please go into settings and lower the value", "BLACK"];
       phx_gammaWarn = true;
     } else {
       if (_gamma <= 1.3 && phx_gammaWarn) then {

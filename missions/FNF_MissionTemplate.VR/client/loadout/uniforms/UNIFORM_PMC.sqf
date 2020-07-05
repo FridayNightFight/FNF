@@ -27,7 +27,11 @@ switch (pRole) do {
   case ROLE_MGTL: {}; //Machine gun team leader
   case ROLE_AT: {}; //Anti-tank
   case ROLE_AAT: {}; //Assistant anti-tank
-  case ROLE_P: {}; //Pilot
+  case ROLE_P: {
+    phx_loadout_headgear = "H_PilotHelmetHeli_B";
+    phx_loadout_vest = "rhsusf_plateframe_light";
+    phx_loadout_backpack = phx_loadout_lrRadio;
+  }; //Pilot
   case ROLE_CR: {}; //Crewman
   case ROLE_MK: {}; //Marksman
 };

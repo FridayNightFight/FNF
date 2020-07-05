@@ -3,8 +3,8 @@ _numberOfSectors = 1; //Number of active sectors (1-3)
 _pointAddTime = 12; //How often points are added (seconds)
 
 switch (_numberOfSectors) do {
-  case 2: {_pointAddTime = _pointAddTime * 0.8};
-  case 3: {_pointAddTime = _pointAddTime * 0.6};
+  case 2: {_pointAddTime = _pointAddTime * 1.3};
+  case 3: {_pointAddTime = _pointAddTime * 1.7};
 };
 
 /*

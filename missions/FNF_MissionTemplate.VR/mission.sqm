@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1353;
+		nextID=1356;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={858.55902,251.22717,141.23213};
-		dir[]={-0.25434351,-0.49779379,0.82916707};
-		up[]={-0.14598374,0.86729121,0.47591141};
-		aside[]={0.95603698,-5.2619725e-008,0.29325977};
+		pos[]={335.36298,35.046894,631.09656};
+		dir[]={-0.12096738,-0.38448492,0.91520351};
+		up[]={-0.05038565,0.92311734,0.38119853};
+		aside[]={0.99140614,-4.0439772e-007,0.13104118};
 	};
 };
 binarizationWanted=0;
@@ -1617,7 +1617,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={502.94934,5.0014391,728.94031};
+						position[]={502.94901,5.0014391,728.94};
 						angles[]={0,3.1594648,0};
 					};
 					side="West";
@@ -1916,6 +1916,25 @@ class Mission
 						};
 						class Attribute2
 						{
+							property="ace_isMedic";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						class Attribute3
+						{
 							property="ace_advanced_fatigue_performanceFactor";
 							expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"",_value,true]";
 							class Value
@@ -1933,7 +1952,7 @@ class Mission
 								};
 							};
 						};
-						class Attribute3
+						class Attribute4
 						{
 							property="speaker";
 							expression="_this setspeaker _value;";
@@ -1952,7 +1971,7 @@ class Mission
 								};
 							};
 						};
-						class Attribute4
+						class Attribute5
 						{
 							property="pitch";
 							expression="_this setpitch _value;";
@@ -1971,7 +1990,7 @@ class Mission
 								};
 							};
 						};
-						nAttributes=5;
+						nAttributes=6;
 					};
 				};
 				class Item3
@@ -53058,36 +53077,6 @@ class Mission
 		};
 		class Item84
 		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={514.2962,5,675.61963};
-			};
-			description="Sync crewman/pilots to a vehicle to give them a key";
-			id=1283;
-		};
-		class Item85
-		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={310.30786,5,677.28271};
-			};
-			description="Sync crewman/pilots to a vehicle to give them a key";
-			id=1284;
-		};
-		class Item86
-		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={698.80237,5,675.44141};
-			};
-			description="Sync crewman/pilots to a vehicle to give them a key";
-			id=1285;
-		};
-		class Item87
-		{
 			dataType="Logic";
 			class PositionInfo
 			{
@@ -53098,7 +53087,7 @@ class Mission
 			id=1301;
 			type="ace_spectator_virtual";
 		};
-		class Item88
+		class Item85
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53110,7 +53099,7 @@ class Mission
 			id=1302;
 			type="ace_spectator_virtual";
 		};
-		class Item89
+		class Item86
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53122,7 +53111,7 @@ class Mission
 			id=1303;
 			type="ace_spectator_virtual";
 		};
-		class Item90
+		class Item87
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53134,7 +53123,7 @@ class Mission
 			id=1304;
 			type="ace_spectator_virtual";
 		};
-		class Item91
+		class Item88
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53146,7 +53135,7 @@ class Mission
 			id=1305;
 			type="ace_spectator_virtual";
 		};
-		class Item92
+		class Item89
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53158,7 +53147,7 @@ class Mission
 			id=1306;
 			type="ace_spectator_virtual";
 		};
-		class Item93
+		class Item90
 		{
 			dataType="Object";
 			class PositionInfo
@@ -53382,7 +53371,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item94
+		class Item91
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -53392,7 +53381,7 @@ class Mission
 			description="atk/def ctf mode";
 			id=1334;
 		};
-		class Item95
+		class Item92
 		{
 			dataType="Trigger";
 			position[]={1250,5,300};
@@ -53410,7 +53399,7 @@ class Mission
 			id=1337;
 			type="EmptyDetector";
 		};
-		class Item96
+		class Item93
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53714,7 +53703,7 @@ class Mission
 				nAttributes=15;
 			};
 		};
-		class Item97
+		class Item94
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54018,7 +54007,7 @@ class Mission
 				nAttributes=15;
 			};
 		};
-		class Item98
+		class Item95
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54322,7 +54311,7 @@ class Mission
 				nAttributes=15;
 			};
 		};
-		class Item99
+		class Item96
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54332,7 +54321,7 @@ class Mission
 			id=1343;
 			type="SideBLUFOR_F";
 		};
-		class Item100
+		class Item97
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54342,7 +54331,7 @@ class Mission
 			id=1344;
 			type="SideResistance_F";
 		};
-		class Item101
+		class Item98
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54352,7 +54341,7 @@ class Mission
 			id=1345;
 			type="SideOPFOR_F";
 		};
-		class Item102
+		class Item99
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54362,7 +54351,7 @@ class Mission
 			id=1346;
 			type="SideBLUFOR_F";
 		};
-		class Item103
+		class Item100
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54372,7 +54361,7 @@ class Mission
 			id=1347;
 			type="SideResistance_F";
 		};
-		class Item104
+		class Item101
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54382,7 +54371,7 @@ class Mission
 			id=1348;
 			type="SideOPFOR_F";
 		};
-		class Item105
+		class Item102
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54392,7 +54381,7 @@ class Mission
 			id=1349;
 			type="SideBLUFOR_F";
 		};
-		class Item106
+		class Item103
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54402,7 +54391,7 @@ class Mission
 			id=1350;
 			type="SideResistance_F";
 		};
-		class Item107
+		class Item104
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54412,7 +54401,7 @@ class Mission
 			id=1351;
 			type="SideOPFOR_F";
 		};
-		class Item108
+		class Item105
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -54421,6 +54410,36 @@ class Mission
 			};
 			description="atk/def & neutral sector control modes";
 			id=1352;
+		};
+		class Item106
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={512.46899,5,674.95599};
+			};
+			description="You can delete these crewman and pilots if not needed";
+			id=1353;
+		};
+		class Item107
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={698.33191,5,672.45905};
+			};
+			description="You can delete these crewman and pilots if not needed";
+			id=1354;
+		};
+		class Item108
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={311.71631,5,677.66595};
+			};
+			description="You can delete these crewman and pilots if not needed";
+			id=1355;
 		};
 	};
 	class Connections

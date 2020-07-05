@@ -55,6 +55,7 @@ player linkItem "ItemGPS";
 player linkItem "ItemMap";
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
+player linkItem "TFAR_microdagr";
 
 switch (pRole) do {
   case ROLE_PL: {call compile preprocessFileLineNumbers format["client\loadout\units\PL.sqf"]};
