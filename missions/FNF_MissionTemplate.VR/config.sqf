@@ -17,7 +17,7 @@ connection - neutral
 neutralSector - neutral
 */
 
-phx_defendingSide = west; //west/east/independent - BLUFOR/OPFOR/INDFOR
+phx_defendingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
 phx_attackingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
 //Leave it as sideEmpty if chosen mode is neutral
 
