@@ -76,6 +76,17 @@ if (phx_antiGammaDoping) then {
   } , 0.1] call CBA_fnc_addPerFrameHandler;
 };
 
+//Force grass on if player setting is too low
+[{
+  if (getTerrainGrid > 25) then {
+    setTerrainGrid 25;
+  };
+} , 3] call CBA_fnc_addPerFrameHandler;
+
+if (getTerrainGrid > 25) then {
+  setTerrainGrid 25;
+};
+
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
 

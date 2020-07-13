@@ -45,9 +45,9 @@ switch (playerSide) do {
     };
 
     if (_type != "Land_Plank_01_4m_F" && _type != "Land_Plank_01_8m_F" && (_type find "BagFence" == -1)) then {
-      if (_pos select 2 > 0.25) then {
+      if (_pos select 2 > 0.35) then {
         _canPlace = false;
-        _errorStr = "Cannot place object. Object must be on the ground."
+        _errorStr = "Cannot place object. Object must be on a surface."
       };
     };
 

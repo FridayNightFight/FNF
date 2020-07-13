@@ -29,8 +29,6 @@ giveINDFORLoadout = {
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AM) then {
-    phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_plum_green:5";
-    phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:4";
     phx_loadout_am_mag = "rhs_100Rnd_762x54mmR_green:4";
   };
   if (pRole == ROLE_RAT) then {

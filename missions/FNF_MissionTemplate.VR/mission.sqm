@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1356;
+		nextID=1361;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={335.36298,35.046894,631.09656};
-		dir[]={-0.12096738,-0.38448492,0.91520351};
-		up[]={-0.05038565,0.92311734,0.38119853};
-		aside[]={0.99140614,-4.0439772e-007,0.13104118};
+		pos[]={639.37329,122.9219,525.10236};
+		dir[]={0.076687448,-0.53741831,0.83987224};
+		up[]={0.048869625,0.84329689,0.53521818};
+		aside[]={0.99590099,-9.998621e-007,-0.09093228};
 	};
 };
 binarizationWanted=0;
@@ -24675,7 +24675,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={687.49243,5.0014391,707.56769};
+						position[]={687.492,5.0014391,707.56799};
 					};
 					side="Independent";
 					flags=7;
@@ -24683,7 +24683,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="Green_B = group this;";
-						description="Bravo - Squad Leader@Bravo";
+						description="Squad Leader@Bravo";
 						isPlayable=1;
 					};
 					id=248;
