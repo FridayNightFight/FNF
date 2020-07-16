@@ -83,10 +83,6 @@ if (phx_antiGammaDoping) then {
   };
 } , 3] call CBA_fnc_addPerFrameHandler;
 
-if (getTerrainGrid > 25) then {
-  setTerrainGrid 25;
-};
-
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
 

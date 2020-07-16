@@ -1,5 +1,11 @@
-if !((playerSide == phx_defendingSide) && phx_allowFortify && ((typeOf player == "B_soldier_exp_F") || (typeOf player == "O_soldier_exp_F") || (typeOf player == "I_Soldier_exp_F"))) exitWith {};
-if (phx_gameMode == "connection") exitWith {};
+if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
+if (!(playerSide == phx_defendingSide) || !phx_allowFortify) exitWith {};
+if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F") && !(typeOf player == "I_Soldier_exp_F")) exitWith {
+  _handle = [{
+    if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
+    if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
+  }, 0.5] call CBA_fnc_addPerFrameHandler;
+};
 
 player addItem "ACE_Fortify";
 
