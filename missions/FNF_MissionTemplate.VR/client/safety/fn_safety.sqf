@@ -6,11 +6,6 @@ player allowDamage false;
 
 //Stop player from being able to fire weapon and throw grenades
 phx_safetyMuzzles = getArray (configFile >> "CfgWeapons" >> "Throw" >> "muzzles");
-phx_safeStartNoFire = player addAction ["", {}, nil, 0, false, true, "defaultAction", "
-{
-  _this setWeaponReloadingTime [_this, _x, 1];
-} forEach phx_safetyMuzzles;
-"];
 
 //Disable ACE advanced throwing
 [] spawn {
@@ -35,7 +30,9 @@ phx_acePlacing = [{
       "];
     };
   };
-} , 0.1, []] call CBA_fnc_addPerFrameHandler;
+
+  if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
+} , 0.1] call CBA_fnc_addPerFrameHandler;
 
 waitUntil {!phx_safetyEnabled};
 
