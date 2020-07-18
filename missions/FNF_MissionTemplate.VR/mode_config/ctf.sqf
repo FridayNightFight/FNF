@@ -1,4 +1,4 @@
-_flagCaptureTime = 720; //How long the attackers need to hold the flag in their capture zone (seconds)
+_flagCaptureTime = 600; //How long the attackers need to hold the flag in their capture zone (seconds)
 
 _flagMarkUpdateTime = 15; //How often the flag marker updates (seconds)
 

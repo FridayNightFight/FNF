@@ -40,13 +40,13 @@ giveBLUFORLoadout = {
     phx_loadout_antitank_mag = "rhs_m136_mag";
   };
   if (pRole == ROLE_AT) then {
-    phx_loadout_mediumantitank_weapon = "rhs_weap_maaws";
-    phx_loadout_mediumantitank_optic = "rhs_optic_maaws";
-    phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT:2";
+    phx_loadout_mediumantitank_weapon = "rhs_weap_fgm148";
+    phx_loadout_mediumantitank_optic = "";
+    phx_loadout_mediumantitank_mag = "rhs_fgm148_magazine_AT";
     phx_loadout_mediumantitank_mag_1 = "";
   };
   if (pRole == ROLE_AAT) then {
-    phx_loadout_mediumantitank_mag = "rhs_mag_maaws_HEAT";
+    phx_loadout_mediumantitank_mag = "rhs_fgm148_magazine_AT";
   };
   if (pRole == ROLE_MK) then {
     phx_loadout_rifle_weapon = "rhs_weap_sr25";

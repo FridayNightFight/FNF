@@ -42,7 +42,7 @@ switch (playerSide) do {
     private _canPlace = true;
     private _type = typeOf _object;
     private _pos = position _object;
-    private _minDistance = 30;
+    private _minDistance = 20;
     private _errorStr = "";
 
     if !((typeOf _unit == "O_soldier_exp_F") || (typeOf _unit == "B_soldier_exp_F") || (typeOf _unit == "I_Soldier_exp_F")) then {

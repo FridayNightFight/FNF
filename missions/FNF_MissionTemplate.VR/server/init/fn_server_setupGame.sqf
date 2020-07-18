@@ -48,12 +48,12 @@ if !(phx_gameMode isEqualTo uplink || phx_gameMode isEqualTo rush || phx_gameMod
   {_x call _deleteObj} forEach [term1,term2,term3];
 };
 
-if !(phx_gameMode isEqualTo connection) then {
-  {_x call _deleteObj} forEach [dummySector, dummyind, dummyblu, dummyopf];
-};
-
 if !(phx_gamEMode isEqualTo captureTheFlag) then {
   {_x call _deleteObj} forEach [ctf_flagPole, ctf_attackTrig];
+};
+
+if !(phx_gameMode isEqualTo adSector) then {
+  {_x call _deleteObj} forEach [phx_sec1,phx_sec2,phx_sec3];
 };
 
 missionNamespace setVariable ["phx_serverGameSetup",true,true];

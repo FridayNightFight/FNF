@@ -21,7 +21,7 @@ Examples:
 params ["_hintStr","_delay"];
 hint _hintStr;
 if (isNil "_delay") then {
-    _delay = 15;
+    _delay = 10;
 };
 _delayedTime = diag_tickTime + _delay;
 [{

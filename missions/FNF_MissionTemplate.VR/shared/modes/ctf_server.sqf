@@ -118,6 +118,8 @@ phx_server_dropFlag = {
 };
 
 [] spawn {
+  _flagInZoneTex = false;
+  
   while {!phx_gameEnd} do {
     if (phx_flagCaptureTime <= 0) then {
       missionNamespace setVariable ["phx_gameEnd",true,true];
@@ -141,7 +143,19 @@ phx_server_dropFlag = {
       _timer = format ["Flag capture time remaining: %1", [phx_flagCaptureTime,"MM:SS"] call BIS_fnc_secondsToString];
       _timer remoteExec ["hintSilent"];
 
+      if (!_flagInZoneTex) then {
+        switch (phx_attackingSide) do {
+          case east: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_red_co.paa"};
+          case west: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_blue_co.paa"};
+          case independent: {ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_green_co.paa"};
+        };
+
+        _flagInZoneTex = true;
+      };
+
       phx_flagCaptureTime = phx_flagCaptureTime - 1;
+    } else {
+      if (_flagInZoneTex) then {_flagInZoneTex = false};
     };
 
     sleep 1;

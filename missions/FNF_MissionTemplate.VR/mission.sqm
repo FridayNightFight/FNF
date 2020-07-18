@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1362;
+		nextID=1367;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={521.55518,31.667118,657.50623};
-		dir[]={-0.038299665,-0.42603332,0.90394551};
-		up[]={-0.018036352,0.90468836,0.42568594};
-		aside[]={0.99914783,-7.3932461e-007,0.042335432};
+		pos[]={514.70245,41.472748,694.49384};
+		dir[]={-0.089141987,-0.63486654,0.76746982};
+		up[]={-0.073247403,0.77260995,0.63063306};
+		aside[]={0.99332738,6.9034286e-008,0.11537411};
 	};
 };
 binarizationWanted=0;
@@ -42,9 +42,9 @@ addons[]=
 	"ace_chemlights",
 	"Desert",
 	"A3_Props_F_Exp_A_Military_Equipment",
-	"A3_Modules_F_Multiplayer",
 	"ace_spectator",
-	"A3_Structures_F_Mil_Flags"
+	"A3_Structures_F_Mil_Flags",
+	"A3_Modules_F_Multiplayer"
 };
 class AddonsMetaData
 {
@@ -43589,93 +43589,6 @@ class Mission
 		};
 		class Item67
 		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={-9931.6455,5,-5571.3311};
-			};
-			name="dummySector";
-			areaSize[]={50,-1,50};
-			id=584;
-			type="ModuleSectorDummy_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleSectorDummy_F_Name";
-					expression="_this setVariable ['Name',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleSectorDummy_F_Designation";
-					expression="_this setVariable ['Designation',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item68
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={-9929.6973,5,-5575.1128};
-			};
-			name="dummyblu";
-			id=585;
-			type="SideBLUFOR_F";
-		};
-		class Item69
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={-9931.0986,5,-5575.2759};
-			};
-			name="dummyind";
-			id=586;
-			type="SideResistance_F";
-		};
-		class Item70
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={-9929.502,5,-5574.0371};
-			};
-			name="dummyopf";
-			id=587;
-			type="SideOPFOR_F";
-		};
-		class Item71
-		{
 			dataType="Group";
 			side="Independent";
 			class Entities
@@ -44555,7 +44468,7 @@ class Mission
 			};
 			id=588;
 		};
-		class Item72
+		class Item68
 		{
 			dataType="Group";
 			side="Independent";
@@ -45436,7 +45349,7 @@ class Mission
 			};
 			id=593;
 		};
-		class Item73
+		class Item69
 		{
 			dataType="Group";
 			side="Independent";
@@ -46317,7 +46230,7 @@ class Mission
 			};
 			id=598;
 		};
-		class Item74
+		class Item70
 		{
 			dataType="Group";
 			side="Independent";
@@ -46549,7 +46462,7 @@ class Mission
 			};
 			id=603;
 		};
-		class Item75
+		class Item71
 		{
 			dataType="Group";
 			side="Independent";
@@ -47019,7 +46932,7 @@ class Mission
 			};
 			id=607;
 		};
-		class Item76
+		class Item72
 		{
 			dataType="Group";
 			side="Independent";
@@ -48452,7 +48365,7 @@ class Mission
 			};
 			id=610;
 		};
-		class Item77
+		class Item73
 		{
 			dataType="Group";
 			side="Independent";
@@ -49885,7 +49798,7 @@ class Mission
 			};
 			id=616;
 		};
-		class Item78
+		class Item74
 		{
 			dataType="Group";
 			side="Independent";
@@ -51318,7 +51231,7 @@ class Mission
 			};
 			id=622;
 		};
-		class Item79
+		class Item75
 		{
 			dataType="Group";
 			side="Independent";
@@ -53035,7 +52948,7 @@ class Mission
 			};
 			id=628;
 		};
-		class Item80
+		class Item76
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -53045,7 +52958,7 @@ class Mission
 			description="Zone boundary trigger";
 			id=656;
 		};
-		class Item81
+		class Item77
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -53055,7 +52968,7 @@ class Mission
 			description="INDFOR, delete if not using";
 			id=1280;
 		};
-		class Item82
+		class Item78
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -53065,7 +52978,7 @@ class Mission
 			description="BLUFOR, delete if not using";
 			id=1281;
 		};
-		class Item83
+		class Item79
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -53075,7 +52988,7 @@ class Mission
 			description="OPFOR, delete if not using";
 			id=1282;
 		};
-		class Item84
+		class Item80
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53087,7 +53000,7 @@ class Mission
 			id=1301;
 			type="ace_spectator_virtual";
 		};
-		class Item85
+		class Item81
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53099,7 +53012,7 @@ class Mission
 			id=1302;
 			type="ace_spectator_virtual";
 		};
-		class Item86
+		class Item82
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53111,7 +53024,7 @@ class Mission
 			id=1303;
 			type="ace_spectator_virtual";
 		};
-		class Item87
+		class Item83
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53123,7 +53036,7 @@ class Mission
 			id=1304;
 			type="ace_spectator_virtual";
 		};
-		class Item88
+		class Item84
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53135,7 +53048,7 @@ class Mission
 			id=1305;
 			type="ace_spectator_virtual";
 		};
-		class Item89
+		class Item85
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -53147,7 +53060,7 @@ class Mission
 			id=1306;
 			type="ace_spectator_virtual";
 		};
-		class Item90
+		class Item86
 		{
 			dataType="Object";
 			class PositionInfo
@@ -53371,7 +53284,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item91
+		class Item87
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -53381,7 +53294,7 @@ class Mission
 			description="atk/def ctf mode";
 			id=1334;
 		};
-		class Item92
+		class Item88
 		{
 			dataType="Trigger";
 			position[]={1250,5,300};
@@ -53399,17 +53312,16 @@ class Mission
 			id=1337;
 			type="EmptyDetector";
 		};
-		class Item93
+		class Item89
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1199.9362,5,199.93457};
+				position[]={1199.936,5,199.935};
 			};
 			name="phx_sector1";
-			init="call{if (isServer && (phx_gameMode isEqualTo ""adSector"")) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
-			presenceCondition="phx_gameMode isEqualTo ""adSector"" || phx_gameMode isEqualTo ""neutralSector""";
+			presenceCondition="phx_gameMode isEqualTo ""neutralSector""";
 			flags=1;
 			id=1340;
 			type="ModuleSector_F";
@@ -53449,7 +53361,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="1";
+							value="0.1";
 						};
 					};
 				};
@@ -53582,7 +53494,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="1";
+							value="0";
 						};
 					};
 				};
@@ -53620,7 +53532,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0.15";
+							value="1";
 						};
 					};
 				};
@@ -53703,17 +53615,16 @@ class Mission
 				nAttributes=15;
 			};
 		};
-		class Item94
+		class Item90
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1299.1232,5,199.62758};
+				position[]={1299.123,5,199.62801};
 			};
 			name="phx_sector2";
-			init="call{if (isServer && (phx_gameMode isEqualTo ""adSector"")) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
-			presenceCondition="phx_gameMode isEqualTo ""adSector"" || phx_gameMode isEqualTo ""neutralSector""";
+			presenceCondition="phx_gameMode isEqualTo ""neutralSector""";
 			flags=1;
 			id=1341;
 			type="ModuleSector_F";
@@ -53753,7 +53664,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="1";
+							value="0.1";
 						};
 					};
 				};
@@ -53924,7 +53835,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0.15";
+							value="1";
 						};
 					};
 				};
@@ -54007,17 +53918,16 @@ class Mission
 				nAttributes=15;
 			};
 		};
-		class Item95
+		class Item91
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={1399.6062,5,198.71358};
+				position[]={1399.606,5,198.714};
 			};
 			name="phx_sector3";
-			init="call{if (isServer && (phx_gameMode isEqualTo ""adSector"")) then {" \n "this setVariable [""owner"", phx_defendingSide, true];" \n "};}";
 			areaSize[]={50,-1,50};
-			presenceCondition="phx_gameMode isEqualTo ""adSector"" || phx_gameMode isEqualTo ""neutralSector""";
+			presenceCondition="phx_gameMode isEqualTo ""neutralSector""";
 			flags=1;
 			id=1342;
 			type="ModuleSector_F";
@@ -54057,7 +53967,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="1";
+							value="0.1";
 						};
 					};
 				};
@@ -54228,7 +54138,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="0.15";
+							value="1";
 						};
 					};
 				};
@@ -54311,7 +54221,7 @@ class Mission
 				nAttributes=15;
 			};
 		};
-		class Item96
+		class Item92
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54321,7 +54231,7 @@ class Mission
 			id=1343;
 			type="SideBLUFOR_F";
 		};
-		class Item97
+		class Item93
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54331,7 +54241,7 @@ class Mission
 			id=1344;
 			type="SideResistance_F";
 		};
-		class Item98
+		class Item94
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54341,7 +54251,7 @@ class Mission
 			id=1345;
 			type="SideOPFOR_F";
 		};
-		class Item99
+		class Item95
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54351,7 +54261,7 @@ class Mission
 			id=1346;
 			type="SideBLUFOR_F";
 		};
-		class Item100
+		class Item96
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54361,7 +54271,7 @@ class Mission
 			id=1347;
 			type="SideResistance_F";
 		};
-		class Item101
+		class Item97
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54371,7 +54281,7 @@ class Mission
 			id=1348;
 			type="SideOPFOR_F";
 		};
-		class Item102
+		class Item98
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54381,7 +54291,7 @@ class Mission
 			id=1349;
 			type="SideBLUFOR_F";
 		};
-		class Item103
+		class Item99
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54391,7 +54301,7 @@ class Mission
 			id=1350;
 			type="SideResistance_F";
 		};
-		class Item104
+		class Item100
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -54401,17 +54311,17 @@ class Mission
 			id=1351;
 			type="SideOPFOR_F";
 		};
-		class Item105
+		class Item101
 		{
 			dataType="Comment";
 			class PositionInfo
 			{
 				position[]={1098.98,5,202.382};
 			};
-			description="atk/def & neutral sector control modes";
+			description="neutral sector control mode";
 			id=1352;
 		};
-		class Item106
+		class Item102
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -54421,7 +54331,7 @@ class Mission
 			description="You can delete these crewman and pilots if not needed";
 			id=1353;
 		};
-		class Item107
+		class Item103
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -54431,7 +54341,7 @@ class Mission
 			description="You can delete these crewman and pilots if not needed";
 			id=1354;
 		};
-		class Item108
+		class Item104
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -54441,16 +54351,59 @@ class Mission
 			description="You can delete these crewman and pilots if not needed";
 			id=1355;
 		};
+		class Item105
+		{
+			dataType="Trigger";
+			position[]={1199.816,5,99.439003};
+			class Attributes
+			{
+				name="phx_sec1";
+			};
+			id=1363;
+			type="EmptyDetector";
+		};
+		class Item106
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={1100.024,5,101.756};
+			};
+			description="atk/def sector control mode";
+			id=1364;
+		};
+		class Item107
+		{
+			dataType="Trigger";
+			position[]={1300.377,5,99.834};
+			class Attributes
+			{
+				name="phx_sec2";
+			};
+			id=1365;
+			type="EmptyDetector";
+		};
+		class Item108
+		{
+			dataType="Trigger";
+			position[]={1400.833,5,98.888};
+			class Attributes
+			{
+				name="phx_sec3";
+			};
+			id=1366;
+			type="EmptyDetector";
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=14;
+			nextID=11;
 		};
 		class Links
 		{
-			items=14;
+			items=11;
 			class Item0
 			{
 				linkID=0;
@@ -54474,8 +54427,8 @@ class Mission
 			class Item2
 			{
 				linkID=2;
-				item0=585;
-				item1=584;
+				item0=1349;
+				item1=1342;
 				class CustomData
 				{
 					type="Sync";
@@ -54484,8 +54437,8 @@ class Mission
 			class Item3
 			{
 				linkID=3;
-				item0=586;
-				item1=584;
+				item0=1350;
+				item1=1342;
 				class CustomData
 				{
 					type="Sync";
@@ -54494,8 +54447,8 @@ class Mission
 			class Item4
 			{
 				linkID=4;
-				item0=587;
-				item1=584;
+				item0=1351;
+				item1=1342;
 				class CustomData
 				{
 					type="Sync";
@@ -54504,8 +54457,8 @@ class Mission
 			class Item5
 			{
 				linkID=5;
-				item0=1349;
-				item1=1342;
+				item0=1347;
+				item1=1341;
 				class CustomData
 				{
 					type="Sync";
@@ -54514,8 +54467,8 @@ class Mission
 			class Item6
 			{
 				linkID=6;
-				item0=1350;
-				item1=1342;
+				item0=1346;
+				item1=1341;
 				class CustomData
 				{
 					type="Sync";
@@ -54524,8 +54477,8 @@ class Mission
 			class Item7
 			{
 				linkID=7;
-				item0=1351;
-				item1=1342;
+				item0=1348;
+				item1=1341;
 				class CustomData
 				{
 					type="Sync";
@@ -54534,8 +54487,8 @@ class Mission
 			class Item8
 			{
 				linkID=8;
-				item0=1347;
-				item1=1341;
+				item0=1343;
+				item1=1340;
 				class CustomData
 				{
 					type="Sync";
@@ -54544,8 +54497,8 @@ class Mission
 			class Item9
 			{
 				linkID=9;
-				item0=1346;
-				item1=1341;
+				item0=1344;
+				item1=1340;
 				class CustomData
 				{
 					type="Sync";
@@ -54554,36 +54507,6 @@ class Mission
 			class Item10
 			{
 				linkID=10;
-				item0=1348;
-				item1=1341;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item11
-			{
-				linkID=11;
-				item0=1343;
-				item1=1340;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item12
-			{
-				linkID=12;
-				item0=1344;
-				item1=1340;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item13
-			{
-				linkID=13;
 				item0=1345;
 				item1=1340;
 				class CustomData

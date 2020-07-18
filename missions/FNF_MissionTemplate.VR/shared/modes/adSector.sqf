@@ -3,17 +3,17 @@ if (!isServer) exitWith {};
 #include "..\..\mode_config\adSector.sqf"
 
 phx_capNum = 0;
+phx_sectorNum = _numberOfSectors;
+phx_sectorInOrder = _inOrder;
+_sectors = [];
 
-if (_numberOfSectors == 1) then {
-  deleteVehicle phx_sector2;
-  deleteVehicle phx_sector3;
+switch (_numberOfSectors) do {
+  case 1: {_sectors pushBack phx_sec1};
+  case 2: {_sectors pushBack phx_sec1; _sectors pushBack phx_sec2};
+  case 3: {_sectors pushBack phx_sec1; _sectors pushBack phx_sec2; _sectors pushBack phx_sec3};
 };
 
-if (_numberOfSectors == 2) then {
-  deleteVehicle phx_sector3;
-};
-
-_phx_server_sectorWin = {
+phx_server_sectorWin = {
   [format ["%1 has captured all sectors.\n%1 wins!",
   switch (phx_attackingSide) do {
     case east: {"OPFOR"};
@@ -27,55 +27,80 @@ _phx_server_sectorWin = {
 
   "end1" call bis_fnc_endmissionserver;
 };
-/*
-[phx_defendingSide, ["dtask1"], ["Defend sector Alpha", "Defend Alpha", ""], phx_sector1, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
-[phx_attackingSide, ["atask1"], ["Capture sector Alpha", "Capture Alpha", ""], phx_sector1, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
 
-[phx_defendingSide, ["dtask2"], ["Defend sector Bravo", "Defend Bravo", ""], phx_sector2, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
-[phx_attackingSide, ["atask2"], ["Capture sector Bravo", "Capture Bravo", ""], phx_sector2, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
+_sectorNum = 0;
+{
+  _area = triggerArea _x;
 
-[phx_defendingSide, ["dtask3"], ["Defend sector Charlie", "Defend Charlie", ""], phx_sector3, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
-[phx_attackingSide, ["atask3"], ["Capture sector Charlie", "Capture Charlie", ""], phx_sector3, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
-*/
-[] spawn {
-  waitUntil {(phx_sector1 getVariable "owner") == phx_attackingSide};
+  _mark = createMarker [(str _x) + "Mark", getPos _x];
 
-  ["dtask1", "FAILED", true] call BIS_fnc_taskSetState;
-  ["atask1", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-  deleteVehicle phx_sector1;
+  _mark setMarkerShape (if (_area select 3) then {"RECTANGLE"} else {"ELLIPSE"});
 
-  phx_capNum = phx_capNum + 1;
-};
+  _mark setMarkerSize [_area select 0, _area select 1];
 
-sleep 1;
+  _mark setMarkerBrush "SolidBorder";
 
-if (!isNull phx_sector2) then {
-  [] spawn {
-    waitUntil {(phx_sector2 getVariable "owner") == phx_attackingSide};
+  _mark setMarkerColor "ColorBlack";
 
-    ["dtask2", "FAILED", true] call BIS_fnc_taskSetState;
-    ["atask2", "SUCCEEDED", true] call BIS_fnc_taskSetState;
+  _textMark = createMarker [(str _x) + "TextMark", getPos _x];
+  _textMark setMarkerType "mil_dot";
+  _sectorNum = _sectorNum + 1;
+  _textMark setMarkerText ("Sector " + str _sectorNum);
 
-    deleteVehicle phx_sector2;
+  [_x,_mark,_textMark,_sectorNum] spawn {
+    params ["_sector","_mark","_textMark","_sectorNum","_dTask","_aTask"];
 
-    phx_capNum = phx_capNum + 1;
+    if (phx_sectorInOrder) then {
+      waitUntil {phx_capNum == (_sectorNum - 1)};
+    };
+
+    switch (phx_defendingSide) do {
+      case east: {_mark setMarkerColor "ColorRed"};
+      case west: {_mark setMarkerColor "ColorBlue"};
+      case independent: {_mark setMarkerColor "ColorGreen"};
+    };
+
+    _dTask = "dtask" + str(_sectorNum);
+    _aTask = "atask" + str(_sectorNum);
+    _dTaskTitle = "Defend Sector " + str(_sectorNum);
+    _aTaskTitle = "Capture Sector " + str(_sectorNum);
+
+    [phx_defendingSide, [_dTask], [_dTaskTitle, _dTaskTitle, ""], getPos _sector, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
+    [phx_attackingSide, [_aTask], [_aTaskTitle, _aTaskTitle, ""], getPos _sector, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
+
+    _units = [];
+
+    while {alive _sector} do {
+      _dPresent = false;
+      _aPresent = false;
+
+      _units = allUnits inAreaArray _sector;
+
+      {
+        if (_x call BIS_fnc_objectSide == phx_defendingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED") then {
+          _dPresent = true;
+        };
+        if (_x call BIS_fnc_objectSide == phx_attackingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED") then {
+          _aPresent = true;
+        };
+      } forEach _units;
+
+      if (_aPresent && !_dPresent) then {
+        phx_capNum = phx_capNum + 1;
+
+        deleteVehicle _sector;
+        deleteMarker _mark;
+        deleteMarker _textMark;
+
+        [_dTask,"FAILED"] call BIS_fnc_taskSetState;
+        [_aTask,"SUCCEEDED"] call BIS_fnc_taskSetState;
+
+        if (phx_capNum >= phx_sectorNum) then {call phx_server_sectorWin} else {
+          ["Attackers have captured Sector " + (str _sectorNum)]  remoteExec ["phx_fnc_hintThenClear",0,false];
+        };
+      };
+
+      sleep 2;
+    };
   };
-};
-
-
-if (!isNull phx_sector3) then {
-  [] spawn {
-    waitUntil {(phx_sector3 getVariable "owner") == phx_attackingSide};
-
-    ["dtask3", "FAILED", true] call BIS_fnc_taskSetState;
-    ["atask3", "SUCCEEDED", true] call BIS_fnc_taskSetState;
-
-    deleteVehicle phx_sector3;
-
-    phx_capNum = phx_capNum + 1;
-  };
-};
-
-waitUntil {phx_capNum >= _numberOfSectors};
-
-call _phx_server_sectorWin;
+} forEach _sectors;

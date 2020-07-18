@@ -36,6 +36,10 @@ switch (pRole) do {
   case ROLE_MK: {}; //Marksman
 };
 
+if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
+  phx_loadout_backpack = "B_Carryall_cbr";
+};
+
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   phx_loadout_backpack = phx_loadout_lrRadio;
 };

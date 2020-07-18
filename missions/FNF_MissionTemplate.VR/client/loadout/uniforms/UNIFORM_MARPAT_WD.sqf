@@ -39,5 +39,5 @@ if (pRole == ROLE_CE) then {
   phx_loadout_backpack = "B_Kitbag_cbr";
 };
 if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
-  phx_loadout_backpack = "B_Kitbag_cbr";
+  phx_loadout_backpack = "B_Carryall_cbr";
 };

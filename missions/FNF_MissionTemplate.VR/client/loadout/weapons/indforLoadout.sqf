@@ -37,13 +37,13 @@ giveINDFORLoadout = {
     phx_loadout_antitank_mag_1 = "rhs_rpg7_PG7VR_mag";
   };
   if (pRole == ROLE_AT) then {
-    phx_loadout_mediumantitank_weapon = "rhs_weap_rpg7";
-    phx_loadout_mediumantitank_mag = "rhs_rpg7_PG7VR_mag:2";
-    phx_loadout_mediumantitank_mag_1 = "rhs_rpg7_PG7VL_mag:2";
-    phx_loadout_mediumantitank_optic = "rhs_acc_pgo7v3";
+    phx_loadout_mediumantitank_weapon = "launch_I_Titan_short_F";
+    phx_loadout_mediumantitank_mag = "Titan_AT";
+    phx_loadout_mediumantitank_mag_1 = "";
+    phx_loadout_mediumantitank_optic = "";
   };
   if (pRole == ROLE_AAT) then {
-    phx_loadout_mediumantitank_mag = "rhs_rpg7_PG7V_mag:2";
+    phx_loadout_mediumantitank_mag = "Titan_AT";
   };
   if (pRole == ROLE_MK) then {
     phx_loadout_rifle_weapon = "rhs_weap_svdp_npz";
