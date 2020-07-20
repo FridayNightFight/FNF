@@ -81,7 +81,10 @@ if (phx_antiGammaDoping) then {
   if (getTerrainGrid > 25) then {
     setTerrainGrid 25;
   };
-} , 3] call CBA_fnc_addPerFrameHandler;
+  if (viewDistance > 3000) then {
+    setViewDistance 3000;
+  };
+} , 2] call CBA_fnc_addPerFrameHandler;
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
