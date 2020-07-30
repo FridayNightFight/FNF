@@ -1,6 +1,13 @@
 //Disable global chat
 0 enableChannel false;
 
+//Force view distance < 3000m
+[{
+  if (viewDistance > 3000) then {
+    setViewDistance 3000;
+  };
+} , 1] call CBA_fnc_addPerFrameHandler;
+
 if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};
 
 //Hide markers player shouldn't see
@@ -81,10 +88,7 @@ if (phx_antiGammaDoping) then {
   if (getTerrainGrid > 25) then {
     setTerrainGrid 25;
   };
-  if (viewDistance > 3000) then {
-    setViewDistance 3000;
-  };
-} , 2] call CBA_fnc_addPerFrameHandler;
+} , 1] call CBA_fnc_addPerFrameHandler;
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;

@@ -7,6 +7,9 @@ phx_term1Animate = false;
 phx_term2Animate = false;
 phx_term3Animate = false;
 
+//Show ticket counter
+[] remoteExec ["BIS_fnc_showMissionStatus",0,true];
+
 _markerSetup = {
   _term = _this;
 
