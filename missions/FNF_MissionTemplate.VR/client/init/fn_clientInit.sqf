@@ -1,7 +1,7 @@
 //Disable global chat
 0 enableChannel false;
 
-//Force view distance < 3000m
+//Force view distance <= 3000m
 [{
   if (viewDistance > 3000) then {
     setViewDistance 3000;
@@ -14,7 +14,7 @@ if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorIn
 call phx_fnc_markerVisibility;
 
 //Call safety if mission hasn't started yet. If mission has started, call JIP function
-if (phx_safetyEnabled) then {[] spawn phx_fnc_safety};
+if (phx_safetyEnabled) then {call phx_fnc_safety};
 if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
 
 //Set loadout

@@ -34,20 +34,23 @@ phx_acePlacing = [{
   if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
 } , 0.1] call CBA_fnc_addPerFrameHandler;
 
-waitUntil {!phx_safetyEnabled};
 
-[phx_acePlacing] call CBA_fnc_removePerFrameHandler;
-player removeAction phx_safeStartNoFire;
-ace_advanced_throwing_enabled = true;
-player allowDamage true;
+[] spawn {
+  waitUntil {!phx_safetyEnabled};
 
-if (!isNil "leadAction") then {
-  player removeAction leadAction;
+  [phx_acePlacing] call CBA_fnc_removePerFrameHandler;
+  player removeAction phx_safeStartNoFire;
+  ace_advanced_throwing_enabled = true;
+  player allowDamage true;
+
+  if (!isNil "leadAction") then {
+    player removeAction leadAction;
+  };
+
+  //Make typing in chat not possible after safe start ends unless player is logged-in admin
+  if !(serverCommandAvailable "#kick") then {
+    (findDisplay 46) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
+  };
+
+  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
 };
-
-//Make typing in chat not possible after safe start ends unless player is logged-in admin
-if !(serverCommandAvailable "#kick") then {
-  (findDisplay 46) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
-};
-
-[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;

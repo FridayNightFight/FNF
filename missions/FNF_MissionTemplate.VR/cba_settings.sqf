@@ -370,7 +370,7 @@ force ace_winddeflection_vehicleEnabled = false;
 force TFAR_AICanHearPlayer = false;
 force TFAR_AICanHearSpeaker = false;
 force TFAR_allowDebugging = true;
-TFAR_curatorCamEars = true;
+TFAR_curatorCamEars = false;
 force TFAR_defaultIntercomSlot = 0;
 force TFAR_enableIntercom = true;
 force TFAR_experimentalVehicleIsolation = false;
@@ -380,7 +380,7 @@ force TFAR_giveMicroDagrToSoldier = true;
 force TFAR_givePersonalRadioToRegularSoldier = true;
 force TFAR_globalRadioRangeCoef = 1;
 force TFAR_instantiate_instantiateAtBriefing = false;
-TFAR_noAutomoveSpectator = true;
+TFAR_noAutomoveSpectator = false;
 force TFAR_objectInterceptionEnabled = false;
 force TFAR_objectInterceptionStrength = 400;
 force tfar_radiocode_east = "_opfor";
@@ -412,7 +412,7 @@ force TFAR_spectatorCanHearFriendlies = true;
 force TFAR_takingRadio = 2;
 force TFAR_Teamspeak_Channel_Name = "TaskForceRadio";
 force TFAR_Teamspeak_Channel_Password = "123";
-force tfar_terrain_interception_coefficient = 3;
+force tfar_terrain_interception_coefficient = 4;
 force TFAR_voiceCone = false;
 
 // Enhanced Movement Rework
