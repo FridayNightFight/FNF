@@ -11,5 +11,3 @@ player addWeapon phx_loadout_sidearm_weapon;
 phx_loadout_aar_mag call phx_fnc_addGear;
 
 player addWeapon phx_loadout_binocular;
-
-missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

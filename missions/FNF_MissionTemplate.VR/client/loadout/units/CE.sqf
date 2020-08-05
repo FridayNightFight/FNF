@@ -14,5 +14,3 @@ phx_loadout_defusalkit call phx_fnc_addGear;
 phx_loadout_trigger call phx_fnc_addGear;
 phx_loadout_entrenching call phx_fnc_addGear;
 phx_loadout_detector call phx_fnc_addGear;
-
-missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

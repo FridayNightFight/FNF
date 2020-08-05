@@ -18,10 +18,12 @@ if ((west countSide _units) > 0) then {
   _bluforInMission = true;
   _activeSides = _activeSides + 1;
 };
+
 if ((east countSide _units) > 0) then {
   _opforInMission = true;
   _activeSides = _activeSides + 1;
 };
+
 if ((independent countSide _units) > 0) then {
   _indforInMission = true;
   _activeSides = _activeSides + 1;

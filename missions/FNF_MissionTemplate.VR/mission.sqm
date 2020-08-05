@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={494.68652,42.955082,664.22314};
-		dir[]={0.017678613,-0.43949351,0.898081};
-		up[]={0.0086508589,0.89823329,0.43941975};
-		aside[]={0.9998129,-2.4105248e-007,-0.019682525};
+		pos[]={451.57538,42.955082,526.18842};
+		dir[]={0.54335505,-0.42003316,0.72688109};
+		up[]={0.25149244,0.90749586,0.33643633};
+		aside[]={0.80095923,-2.4330802e-007,-0.59873074};
 	};
 };
 binarizationWanted=0;
@@ -147,6 +147,8 @@ class ScenarioData
 {
 	disabledAI=1;
 	wreckRemovalMaxTime=3600;
+	corpseManagerMode=1;
+	corpseLimit=45;
 };
 class CustomAttributes
 {
@@ -873,7 +875,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={799.89435,5,100.40674};
+				position[]={799.89398,5,100.407};
 			};
 			id=10;
 			type="ModuleCurator_F";

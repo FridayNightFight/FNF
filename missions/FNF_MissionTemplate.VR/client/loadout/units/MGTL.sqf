@@ -20,5 +20,3 @@ player addWeapon phx_loadout_sidearm_weapon;
 player addWeapon phx_loadout_vector;
 
 phx_loadout_entrenching call phx_fnc_addGear;
-
-missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

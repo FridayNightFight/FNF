@@ -81,3 +81,6 @@ switch (pRole) do {
 if (phx_loadout_unitLevel > 0) then {
   player addItem "ACE_microDAGR";
 };
+
+phx_loadout_uniform = nil;
+missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

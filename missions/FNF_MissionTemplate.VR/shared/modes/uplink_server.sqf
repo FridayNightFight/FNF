@@ -133,7 +133,7 @@ _hackComplete = {
     };
   };
 
-  [_term,["bomb_alarm", 100, 1]] remoteExec ["say3D",0,false];
+  playSound3D [getMissionPath "sound\bomb_alarm.ogg", _term];
 
   uiSleep 12;
 

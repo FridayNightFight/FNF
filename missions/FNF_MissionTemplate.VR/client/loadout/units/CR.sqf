@@ -9,5 +9,3 @@ phx_loadout_sidearm_mag call phx_fnc_addGear;
 player addWeapon phx_loadout_sidearm_weapon;
 
 player setVariable ["ACE_IsEngineer", 1, true];
-
-missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

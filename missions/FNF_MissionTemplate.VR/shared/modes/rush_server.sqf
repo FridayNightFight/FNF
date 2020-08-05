@@ -69,7 +69,7 @@ _terminalHackComplete = {
   _mark setMarkerText "Terminal - Hack Complete";
   [_defendTask,"FAILED"] call BIS_fnc_taskSetState;
   [_attackTask,"SUCCEEDED"] call BIS_fnc_taskSetState;
-  [_term,["bomb_alarm", 100, 1]] remoteExec ["say3D",0,false];
+  playSound3D [getMissionPath "sound\bomb_alarm.ogg", _term];
 
   uiSleep 12;
 
