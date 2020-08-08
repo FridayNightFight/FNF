@@ -8,11 +8,11 @@ if (serverCommandAvailable "#kick") then {
   player createDiaryRecord ["PHX_Diary", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer""; [false] remoteExec [""phx_fnc_serverSafety"",2,false];'>End Safe Start</execute>"]];
 };
 
-sleep 1;
+sleep 3;
 
 PHX_Diary_Uniforms = player createDiarySubject ["PHX_Diary_Uniforms", "Uniforms"];
 
-_units = allPlayers;
+_units = allUnits;
 
 if ((west countSide _units) > 0) then {
   _incStr = "client\loadout\uniforms\" + phx_bluforUniform + ".sqf";

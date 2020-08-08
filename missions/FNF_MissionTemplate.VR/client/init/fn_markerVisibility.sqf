@@ -10,6 +10,8 @@ _handleMarker = {
   };
 };
 
+if (phx_gameMode != "connection" && phx_gameMode != "neutralSector") exitWith {};
+
 switch (playerSide) do {
   case west: {
     _opforMark call _handleMarker;

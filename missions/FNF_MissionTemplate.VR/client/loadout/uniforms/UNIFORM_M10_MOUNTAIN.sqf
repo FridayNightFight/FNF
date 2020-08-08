@@ -5,14 +5,13 @@
 phx_loadout_uniform = "rhsgref_uniform_para_ttsko_mountain";
 phx_loadout_headgear = "rhsgref_ssh68_ttsko_mountain";
 phx_loadout_vest = "rhsgref_6b23_ttsko_mountain_rifleman";
-phx_loadout_backpack = "B_AssaultPack_rgr";
 
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {phx_loadout_vest = "rhsgref_6b23_ttsko_mountain_officer";}; //PL, SL
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {phx_loadout_vest = "rhsgref_6b23_ttsko_mountain_nco";};
 
 if (pRole == ROLE_AR || pRole == ROLE_MG) then {phx_loadout_backpack = "B_Kitbag_rgr";}; //AR & MG
 
-if (pRole == ROLE_AAR || pRole == ROLE_AM) then {phx_loadout_backpack = "B_Kitbag_rgr";}; // AAR & MG Ammo man
+if (pRole == ROLE_AAR || pRole == ROLE_AM || pRole == ROLE_AAT) then {phx_loadout_backpack = "B_Kitbag_rgr";}; // AAR & MG Ammo man
 
 //Use if you want to customize more
 switch (pRole) do {
