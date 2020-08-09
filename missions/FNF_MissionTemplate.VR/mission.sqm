@@ -10249,7 +10249,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="Blue_D4 = group this;";
-						description="MAT Team Leader@Delta 4";
+						description="HAT Team Leader@Delta 4";
 						isPlayable=1;
 					};
 					id=87;
@@ -20381,7 +20381,7 @@ class Mission
 					class Attributes
 					{
 						init="call{Red_D4 = group this;}";
-						description="MAT Team Leader@Delta 4";
+						description="HAT Team Leader@Delta 4";
 						isPlayable=1;
 					};
 					id=166;
@@ -46251,7 +46251,7 @@ class Mission
 					class Attributes
 					{
 						init="call{Green_D4 = group this;}";
-						description="MAT Team Leader@Delta 4";
+						description="HAT Team Leader@Delta 4";
 						isPlayable=1;
 					};
 					id=604;
