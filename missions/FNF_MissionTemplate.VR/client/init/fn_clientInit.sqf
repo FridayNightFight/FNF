@@ -1,10 +1,10 @@
 //Disable global chat
 0 enableChannel false;
 
-//Force view distance <= 3000m
+//Force view distance <= phx_maxViewDistance
 [{
-  if (viewDistance > 3000) then {
-    setViewDistance 3000;
+  if (viewDistance > phx_maxViewDistance) then {
+    setViewDistance phx_maxViewDistance;
   };
 } , 1] call CBA_fnc_addPerFrameHandler;
 

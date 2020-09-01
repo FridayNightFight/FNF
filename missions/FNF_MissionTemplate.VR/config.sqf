@@ -17,8 +17,8 @@ connection - neutral
 neutralSector - neutral
 */
 
-phx_defendingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
-phx_attackingSide = sideEmpty; //west/east/independent - BLUFOR/OPFOR/INDFOR
+phx_defendingSide = sideEmpty; //west/east/independent
+phx_attackingSide = sideEmpty; //west/east/independent
 //Leave it as sideEmpty if chosen mode is neutral
 
 ////////////////////////////////////////////////////////////
@@ -35,6 +35,22 @@ phx_opforWeapons = "WEAPONS_AK74M_PKM_PKP_RPG7_RPG32";
 phx_indforWeapons = "WEAPONS_AKMN_PKM_PKP_RPG7_RPG32";
 phx_civWeapons = "WEAPONS_UNARMED";
 
+phx_bluAT = CARLG;
+phx_redAT = RPG32;
+phx_grnAT = RPG32;
+
+/*
+Values:
+
+CARLG
+RPG32
+RPG7
+TITAN
+NLAW
+METIS - requires tanks DLC
+STINGER
+IGLA
+*/
 ////////////////////////////////////////////////////////////
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
@@ -43,8 +59,9 @@ phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 phx_missionBoundaryRestriction = true; //Set to false to disable the mission boundary
 phx_safeStartTime = 15; //Safestart time in minutes
-phx_missionTimeLimit = 60; //Mission time limit in minutes
+phx_missionTimeLimit = 50; //Mission time limit in minutes
 phx_opticMagnification = false; //Set to true to allow players to use magnified optics
+phx_maxViewDistance = 2000; //Maximum client view distance (meters)
 
 phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system - radios will still be preset if units have them
 phx_antiGammaDoping = false; //Set to true for certain night missions where gamma abuse may happen

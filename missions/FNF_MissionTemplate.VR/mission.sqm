@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1367;
+		nextID=1373;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={451.57538,42.955082,526.18842};
-		dir[]={0.54335505,-0.42003316,0.72688109};
-		up[]={0.25149244,0.90749586,0.33643633};
-		aside[]={0.80095923,-2.4330802e-007,-0.59873074};
+		pos[]={509.50183,148.84119,392.89853};
+		dir[]={0.0133915,-0.54226542,0.84011263};
+		up[]={0.0086422674,0.84020334,0.54219997};
+		aside[]={0.99988252,-8.4346539e-008,-0.015939374};
 	};
 };
 binarizationWanted=0;
@@ -869,7 +869,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=109;
+		items=115;
 		class Item0
 		{
 			dataType="Logic";
@@ -54395,6 +54395,78 @@ class Mission
 			};
 			id=1366;
 			type="EmptyDetector";
+		};
+		class Item109
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={599.93549,5,95.486328};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1367;
+			type="ace_spectator_virtual";
+		};
+		class Item110
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={609.93549,5,95.486328};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1368;
+			type="ace_spectator_virtual";
+		};
+		class Item111
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={619.93549,5,95.486328};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1369;
+			type="ace_spectator_virtual";
+		};
+		class Item112
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={629.93549,5,95.486328};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1370;
+			type="ace_spectator_virtual";
+		};
+		class Item113
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={639.93549,5,95.486328};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1371;
+			type="ace_spectator_virtual";
+		};
+		class Item114
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={649.93549,5,95.486328};
+			};
+			isPlayable=1;
+			description="Spectator";
+			id=1372;
+			type="ace_spectator_virtual";
 		};
 	};
 	class Connections
