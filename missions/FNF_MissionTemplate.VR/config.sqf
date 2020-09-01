@@ -35,9 +35,10 @@ phx_opforWeapons = "WEAPONS_AK74M_PKM_PKP_RPG7_RPG32";
 phx_indforWeapons = "WEAPONS_AKMN_PKM_PKP_RPG7_RPG32";
 phx_civWeapons = "WEAPONS_UNARMED";
 
-phx_bluAT = CARLG;
-phx_redAT = RPG32;
-phx_grnAT = RPG32;
+//MAT launcher weapon
+phx_bluAT = CARLG; //BLUFOR
+phx_redAT = RPG32; //OPFOR
+phx_grnAT = RPG32; //INDFOR
 
 /*
 Values:
