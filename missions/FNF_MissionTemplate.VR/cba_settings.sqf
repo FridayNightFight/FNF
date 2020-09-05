@@ -11,9 +11,9 @@ force ace_advanced_fatigue_enabled = true;
 force ace_advanced_fatigue_enableStaminaBar = true;
 ace_advanced_fatigue_fadeStaminaBar = true;
 force ace_advanced_fatigue_loadFactor = 0.5;
-force ace_advanced_fatigue_performanceFactor = 3.5;
-force ace_advanced_fatigue_recoveryFactor = 4;
-force ace_advanced_fatigue_swayFactor = 1;
+force ace_advanced_fatigue_performanceFactor = 4;
+force ace_advanced_fatigue_recoveryFactor = 5;
+force ace_advanced_fatigue_swayFactor = 0.8;
 force ace_advanced_fatigue_terrainGradientFactor = 0.7;
 
 // ACE Advanced Throwing

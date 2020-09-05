@@ -63,7 +63,13 @@ if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
   };
 };
 
-if !(pWeapons in ["WEAPONS_M4A1_BLOCK_M249_M240G_M136_GUST", "WEAPONS_AK74M_PKM_PKP_RPG7_RPG32", "WEAPONS_AKMN_PKM_PKP_RPG7_RPG32"]) then {
+switch (pWeapons) do {
+  case "WEAPONS_M4A1_BLOCK_M249_M240G_M136": {call giveBLUFORLoadout};
+  case "WEAPONS_AK74M_PKM_PKP_RPG7": {call giveOPFORLoadout};
+  case "WEAPONS_AKMN_PKM_PKP_RPG7": {call giveINDFORLoadout};
+};
+
+if !(pWeapons in ["WEAPONS_M4A1_BLOCK_M249_M240G_M136", "WEAPONS_AK74M_PKM_PKP_RPG7", "WEAPONS_AKMN_PKM_PKP_RPG7"]) then {
   _incStr = "client\loadout\weapons\" + pWeapons + ".sqf";
 
   call compile preprocessFileLineNumbers _incStr;

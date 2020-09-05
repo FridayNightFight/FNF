@@ -30,9 +30,9 @@ phx_indforUniform = "UNIFORM_M93_OAKLEAF";
 phx_civUniform = "UNIFORM_CIVILIAN";
 
 //Weapons
-phx_bluforWeapons = "WEAPONS_M4A1_BLOCK_M249_M240G_M136_GUST";
-phx_opforWeapons = "WEAPONS_AK74M_PKM_PKP_RPG7_RPG32";
-phx_indforWeapons = "WEAPONS_AKMN_PKM_PKP_RPG7_RPG32";
+phx_bluforWeapons = "WEAPONS_M4A1_BLOCK_M249_M240G_M136";
+phx_opforWeapons = "WEAPONS_AK74M_PKM_PKP_RPG7";
+phx_indforWeapons = "WEAPONS_AKMN_PKM_PKP_RPG7";
 phx_civWeapons = "WEAPONS_UNARMED";
 
 //MAT launcher weapon
@@ -55,7 +55,7 @@ IGLA
 ////////////////////////////////////////////////////////////
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
-phx_fortifyPoints = 50; //Currency for fortify - individual to each Combat Engineer
+phx_fortifyPoints = 75; //Currency for fortify - individual to each Combat Engineer
 phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 phx_missionBoundaryRestriction = true; //Set to false to disable the mission boundary
@@ -71,9 +71,9 @@ phx_antiGammaDoping = false; //Set to true for certain night missions where gamm
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
 
-UNIFORM_MARPAT_WD                  --   WEAPONS_M4A1_BLOCK_M249_M240G_M136_GUST
-UNIFORM_MARPAT_D                   --   WEAPONS_AK74M_PKM_PKP_RPG7_RPG32
-UNIFORM_EMR_DESERT                 --   WEAPONS_AKMN_PKM_PKP_RPG7_RPG32
+UNIFORM_MARPAT_WD                  --   WEAPONS_M4A1_BLOCK_M249_M240G_M136
+UNIFORM_MARPAT_D                   --   WEAPONS_AK74M_PKM_PKP_RPG7
+UNIFORM_EMR_DESERT                 --   WEAPONS_AKMN_PKM_PKP_RPG7
 UNIFORM_EMR_SUMMER                 --   WEAPONS_SCAR
 UNIFORM_M93_OAKLEAF                --   WEAPONS_G36
 UNIFORM_GUERRILLA                  --   WEAPONS_GUERRILLA
