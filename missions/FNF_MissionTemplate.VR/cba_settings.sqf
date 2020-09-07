@@ -82,7 +82,7 @@ force ace_frag_enabled = true;
 force ace_frag_maxTrack = 10;
 force ace_frag_maxTrackPerFrame = 10;
 force ace_frag_reflectionsEnabled = false;
-force ace_frag_spallEnabled = true;
+force ace_frag_spallEnabled = false;
 
 // ACE Goggles
 ace_goggles_effects = 0;
