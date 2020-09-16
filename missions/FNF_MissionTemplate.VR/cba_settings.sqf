@@ -38,7 +38,7 @@ force ace_artillerytables_disableArtilleryComputer = true;
 force ace_mk6mortar_airResistanceEnabled = true;
 force ace_mk6mortar_allowCompass = true;
 force ace_mk6mortar_allowComputerRangefinder = false;
-force ace_mk6mortar_useAmmoHandling = false;
+force ace_mk6mortar_useAmmoHandling = true;
 
 // ACE Captives
 force ace_captives_allowHandcuffOwnSide = true;
@@ -66,7 +66,7 @@ force ace_cookoff_enableAmmoCookoff = false;
 force ace_cookoff_probabilityCoef = 4.2;
 
 // ACE Crew Served Weapons
-force ace_csw_ammoHandling = 0;
+force ace_csw_ammoHandling = 1;
 force ace_csw_defaultAssemblyMode = false;
 ace_csw_dragAfterDeploy = false;
 force ace_csw_handleExtraMagazines = true;
