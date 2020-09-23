@@ -8,8 +8,9 @@ switch (_side) do {
 };
 //Error message
 if (isNil "phx_playerBaseChannel") exitWith {titleText ["Error! Default radio channels will not be set!","PLAIN DOWN",0.5];};
-
+/*
 phx_ch1 = phx_playerBaseChannel; //All players will be able to switch to channel 1 to get on platoon net.
+*/
 
 // phx_radioSettings: Tells radio script which channels to set for group. [altChannel,mainChannel,[channelArray]] (array)
 //     mainChannel: Which channel the radio will start on. (1-8)
@@ -23,14 +24,14 @@ _radioSettings = (group player) getVariable ["phx_radioSettings",[1,2,[0]]];
 phx_curChan = _radioSettings select 0;
 phx_altChan = _radioSettings select 1;
 _channelArray = _radioSettings select 2;
-if (count _channelArray >= 0) then {phx_ch2 = phx_playerBaseChannel + (_channelArray select 0)};
-if (count _channelArray >= 1) then {phx_ch3 = phx_playerBaseChannel + (_channelArray select 1)};
-if (count _channelArray >= 2) then {phx_ch4 = phx_playerBaseChannel + (_channelArray select 2)};
-if (count _channelArray >= 3) then {phx_ch5 = phx_playerBaseChannel + (_channelArray select 3)};
-if (count _channelArray >= 4) then {phx_ch6 = phx_playerBaseChannel + (_channelArray select 4)};
-if (count _channelArray >= 5) then {phx_ch7 = phx_playerBaseChannel + (_channelArray select 5)};
-if (count _channelArray >= 6) then {phx_ch8 = phx_playerBaseChannel + (_channelArray select 6)};
-if (count _channelArray >= 7) then {phx_ch9 = phx_playerBaseChannel + (_channelArray select 7)};
+if (count _channelArray > 0) then {phx_ch1 = phx_playerBaseChannel + (_channelArray select 0)};
+if (count _channelArray > 1) then {phx_ch2 = phx_playerBaseChannel + (_channelArray select 1)};
+if (count _channelArray > 2) then {phx_ch3 = phx_playerBaseChannel + (_channelArray select 2)};
+if (count _channelArray > 3) then {phx_ch4 = phx_playerBaseChannel + (_channelArray select 3)};
+if (count _channelArray > 4) then {phx_ch5 = phx_playerBaseChannel + (_channelArray select 4)};
+if (count _channelArray > 5) then {phx_ch6 = phx_playerBaseChannel + (_channelArray select 5)};
+if (count _channelArray > 6) then {phx_ch7 = phx_playerBaseChannel + (_channelArray select 6)};
+if (count _channelArray > 7) then {phx_ch8 = phx_playerBaseChannel + (_channelArray select 7)};
 
 //player isn't part of any template group
 if (isNil "phx_curChan") then {

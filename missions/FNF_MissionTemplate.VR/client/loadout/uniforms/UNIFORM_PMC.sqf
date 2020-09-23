@@ -37,7 +37,7 @@ switch (pRole) do {
 };
 
 if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
-  phx_loadout_backpack = "B_Carryall_cbr";
+  phx_loadout_backpack = "B_Kitbag_tan";
 };
 
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {

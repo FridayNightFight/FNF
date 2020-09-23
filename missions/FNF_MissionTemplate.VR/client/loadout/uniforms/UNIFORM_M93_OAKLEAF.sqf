@@ -25,5 +25,5 @@ if (pRole == ROLE_AR || pRole == ROLE_AAR) then {
   phx_loadout_backpack = "B_Kitbag_rgr";
 };
 if (pRole == ROLE_MG || pRole == ROLE_AM) then {
-  phx_loadout_backpack = "B_Carryall_oli";
+  phx_loadout_backpack = "B_Kitbag_rgr";
 };

@@ -22,17 +22,17 @@ phx_loadout_rifle_mag = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagaz
 
 if (pRole == ROLE_AR) then {
   phx_loadout_rifle_weapon = "rhs_weap_pkm";
-  phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:4";
+  phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:5";
 };
 if (pRole == ROLE_AAR) then {
-  phx_loadout_aar_mag = "rhs_100Rnd_762x54mmR_green:3";
+  phx_loadout_aar_mag = "rhs_100Rnd_762x54mmR_green:4";
 };
 if (pRole == ROLE_MG) then {
   phx_loadout_rifle_weapon = "rhs_weap_pkp";
-  phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:4";
+  phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:5";
 };
 if (pRole == ROLE_AM) then {
-  phx_loadout_am_mag = "rhs_100Rnd_762x54mmR_green:3";
+  phx_loadout_am_mag = "rhs_100Rnd_762x54mmR_green:4";
 };
 
 phx_loadout_sidearm_weapon = selectRandom ["hgun_Rook40_F", "hgun_P07_F", "hgun_ACPC2_F", "rhs_weap_makarov_pm", "rhsusf_weap_glock17g4", "rhsusf_weap_m1911a1", "rhs_weap_tt33", "rhs_weap_cz99", "rhs_weap_savz61_folded"];

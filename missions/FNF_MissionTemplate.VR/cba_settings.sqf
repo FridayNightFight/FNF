@@ -10,7 +10,7 @@ force ace_advanced_ballistics_simulationInterval = 0.05;
 force ace_advanced_fatigue_enabled = true;
 force ace_advanced_fatigue_enableStaminaBar = true;
 ace_advanced_fatigue_fadeStaminaBar = true;
-force ace_advanced_fatigue_loadFactor = 0.5;
+force ace_advanced_fatigue_loadFactor = 0.4;
 force ace_advanced_fatigue_performanceFactor = 4;
 force ace_advanced_fatigue_recoveryFactor = 5;
 force ace_advanced_fatigue_swayFactor = 0.8;
@@ -79,10 +79,10 @@ force ace_explosives_requireSpecialist = false;
 
 // ACE Fragmentation Simulation
 force ace_frag_enabled = true;
-force ace_frag_maxTrack = 10;
-force ace_frag_maxTrackPerFrame = 10;
+force ace_frag_maxTrack = 20;
+force ace_frag_maxTrackPerFrame = 20;
 force ace_frag_reflectionsEnabled = false;
-force ace_frag_spallEnabled = false;
+force ace_frag_spallEnabled = true;
 
 // ACE Goggles
 ace_goggles_effects = 0;
@@ -142,7 +142,7 @@ force ace_repair_engineerSetting_wheel = 0;
 force ace_repair_fullRepairLocation = 2;
 force ace_repair_fullRepairRequiredItems = [];
 force ace_repair_miscRepairRequiredItems = [];
-force ace_repair_repairDamageThreshold = 0.3;
+force ace_repair_repairDamageThreshold = 0.7;
 force ace_repair_repairDamageThreshold_engineer = 0.5;
 force ace_repair_wheelRepairRequiredItems = [];
 
@@ -436,3 +436,22 @@ EMR_main_maxWeightClimb3 = 60;
 EMR_main_maxWeightJump = 100;
 force EMR_main_preventHighVaulting = false;
 force EMR_main_staminaCoefficient = 1;
+
+// GRAD Trenches
+force grad_trenches_functions_allowBigEnvelope = true;
+force grad_trenches_functions_allowCamouflage = true;
+force grad_trenches_functions_allowDigging = true;
+force grad_trenches_functions_allowGiantEnvelope = true;
+force grad_trenches_functions_allowLongEnvelope = true;
+force grad_trenches_functions_allowShortEnvelope = true;
+force grad_trenches_functions_allowSmallEnvelope = true;
+force grad_trenches_functions_allowVehicleEnvelope = true;
+force grad_trenches_functions_bigEnvelopeDigTime = 45;
+force grad_trenches_functions_buildFatigueFactor = 0;
+force grad_trenches_functions_camouflageRequireEntrenchmentTool = false;
+force grad_trenches_functions_giantEnvelopeDigTime = 90;
+force grad_trenches_functions_LongEnvelopeDigTime = 100;
+force grad_trenches_functions_shortEnvelopeDigTime = 15;
+force grad_trenches_functions_smallEnvelopeDigTime = 30;
+force grad_trenches_functions_stopBuildingAtFatigueMax = true;
+force grad_trenches_functions_vehicleEnvelopeDigTime = 120;

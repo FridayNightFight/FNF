@@ -40,10 +40,10 @@ if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
     };
     case RPG7: {
       phx_loadout_mediumantitank_optic = "rhs_acc_pgo7v3";
-      phx_loadout_mediumantitank_mag = "rhs_rpg7_PG7VL_mag:4";
+      phx_loadout_mediumantitank_mag = "rhs_rpg7_PG7VL_mag:5";
     };
     case TITAN: {
-      phx_loadout_mediumantitank_mag = "Titan_AT";
+      phx_loadout_mediumantitank_mag = "Titan_AT:2";
     };
     case NLAW: {
       phx_loadout_mediumantitank_mag = "NLAW_F";
@@ -52,7 +52,7 @@ if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
       };
     };
     case METIS: {
-      phx_loadout_mediumantitank_mag = "Vorona_HEAT:2";
+      phx_loadout_mediumantitank_mag = "Vorona_HEAT:3";
     };
     case STINGER: {
       phx_loadout_mediumantitank_mag = "rhs_fim92_mag";

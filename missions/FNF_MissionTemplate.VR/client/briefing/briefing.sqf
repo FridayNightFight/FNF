@@ -1,3 +1,5 @@
+waitUntil {missionNamespace getVariable ["phx_loadoutAssigned",false]};
+
 ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT"];
 
 //Admin end start trigger
@@ -28,7 +30,7 @@ if ((west countSide _units) > 0) then {
   ", _uniformImg, _helmetImg]
   ]];
 
-  _varStr = _varStr + format ["BLFUOR Weapons: %1", phx_bluforWeapons select [8, count phx_bluforWeapons]] + "<br/>";
+  _varStr = _varStr + format ["BLUFOR Weapons: %1", phx_bluforWeapons select [8, count phx_bluforWeapons]] + "<br/>";
   _varStr = _varStr + format ["BLUFOR MAT: %1", phx_bluAT] + "<br/>";
 };
 

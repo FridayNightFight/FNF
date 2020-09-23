@@ -25,127 +25,151 @@ _groups = [
     //     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.
 
     // BLUFOR
-    ["Blue_CC","CMD","Company Command",3, [1, 6, [1, 2, 3, 4, .1]] ],
+    ["Blue_CC","CMD","Company Command",3, [1, 8, [0, 1, 2, 3, 4, 5, 6, .1]] ],
 
-    ["Blue_P1HQ","P1HQ","1st Platoon",2, [1, 6, [1, 2, 3, 4, .1]] ],
+    //1st Platoon
+    ["Blue_P1HQ","P1HQ","1st Platoon",2, [2, 1, [0, 1, 2, 3, 4]] ],
 
-    ["Blue_Pilot","P","Pilots",0, [1, 6, [1, 2, 3, 4, .1]] ],
+    //not used
+    ["Blue_Pilot","P","Pilots",0, [1, 2, [1, 2, 3, 4, .1]] ],
 
-    ["Blue_A","A","Alpha Squad",1, [2, 1, [1, 1.1, 1.2]] ],
-    ["Blue_A1","A1","Alpha One",0, [3, 2, [1, 1.1, 1.2]] ],
-    ["Blue_A2","A2","Alpha Two",0, [4, 2, [1, 1.1, 1.2]] ],
+    ["Blue_A","A","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2]] ],
+    ["Blue_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2]] ],
+    ["Blue_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2]] ],
 
-    ["Blue_B","B","Bravo Squad",1, [2, 1, [2, 2.1, 2.2]] ],
-    ["Blue_B1","B1","Bravo One",0, [3, 2, [2, 2.1, 2.2]] ],
-    ["Blue_B2","B2","Bravo Two",0, [4, 2, [2, 2.1, 2.2]] ],
+    ["Blue_B","B","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2]] ],
+    ["Blue_B1","B1","Bravo One",0, [2, 1, [3, 3.1, 3.2]] ],
+    ["Blue_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2]] ],
 
-    ["Blue_C","C","Charlie Squad",1, [2, 1, [3, 3.1, 3.2]] ],
-    ["Blue_C1","C1","Charlie One",0, [3, 2, [3, 3.1, 3.2]] ],
-    ["Blue_C2","C2","Charlie Two",0, [4, 2, [3, 3.1, 3.2]] ],
+    ["Blue_C","C","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2]] ],
+    ["Blue_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2]] ],
+    ["Blue_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2]] ],
 
-    ["Blue_D","D","Delta Squad",1, [2, 1, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Blue_D1","D1","Delta One",0, [3, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Blue_D2","D2","Delta Two",0, [4, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Blue_D3","D3","Delta Three",0, [5, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Blue_D4","D4","Delta Four",0, [6, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    //2nd Platoon
+    ["Blue_P2HQ","P2HQ","2nd Platoon",2, [2, 1, [0, 5, 6, 7, 8]] ],
 
-    ["Blue_P2HQ","P2HQ","2nd Platoon",2, [1, 5, [5, 6, 7, .1]] ],
+    ["Blue_D","D","Delta Squad",1, [2, 1, [5, 6, 6.1, 6.2]] ],
+    ["Blue_D1","D1","Delta One",0, [2, 1, [6, 6.1, 6.2]] ],
+    ["Blue_D2","D2","Delta Two",0, [3, 1, [6, 6.1, 6.2]] ],
 
-    ["Blue_E","E","Echo Squad",1, [2, 1, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Blue_E1","E1","Echo One",0, [3, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Blue_E2","E2","Echo Two",0, [4, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Blue_E3","E3","Echo Three",0, [5, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Blue_E4","E4","Echo Four",0, [6, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
+    ["Blue_E","E","Echo Squad",1, [2, 1, [5, 7, 7.1, 7.2]] ],
+    ["Blue_E1","E1","Echo One",0, [2, 1, [7, 7.1, 7.2]] ],
+    ["Blue_E2","E2","Echo Two",0, [3, 1, [7, 7.1, 7.2]] ],
 
-    ["Blue_F","F","Foxtrot Squad",1, [2, 1, [6, 6.1, 6.2]] ],
-    ["Blue_F1","F1","Foxtrot One",0, [3, 2, [6, 6.1, 6.2]] ],
-    ["Blue_F2","F2","Foxtrot Two",0, [4, 2, [6, 6.1, 6.2]] ],
+    ["Blue_F","F","Foxtrot Squad",1, [2, 1, [5, 8, 8.1, 8.2]] ],
+    ["Blue_F1","F1","Foxtrot One",0, [2, 1, [8, 8.1, 8.2]] ],
+    ["Blue_F2","F2","Foxtrot Two",0, [3, 1, [8, 8.1, 8.2]] ],
 
-    ["Blue_G","G","Golf Squad",1, [2, 1, [7, 7.1, 7.2]] ],
-    ["Blue_G1","G1","Golf One",0, [3, 2, [7, 7.1, 7.2]] ],
-    ["Blue_G2","G2","Golf Two",0, [4, 2, [7, 7.1, 7.2]] ],
+    //Vehicle teams - under Company
+    ["Blue_G","G","Golf Squad",1, [2, 1, [0, 9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G1","G1","Golf One",0, [2, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G2","G2","Golf Two",0, [3, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G3","G3","Golf Three",0, [4, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G4","G4","Golf Four",0, [5, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+
+    //Pilot teams - under Company
+    ["Blue_H","H","Hotel Squad (Air)",1, [2, 1, [0, 10, 10.1, 10.2, 10.3]] ],
+    ["Blue_H1","H1","Hotel One (Air)",0, [2, 1, [10, 10.1, 10.2, 10.3]] ],
+    ["Blue_H2","H2","Hotel Two (Air)",0, [3, 1, [10, 10.1, 10.2, 10.3]] ],
+    ["Blue_H3","H3","Hotel Three (Air)",0, [4, 1, [10, 10.1, 10.2, 10.3]] ],
 
     // REDFOR
-    ["Red_CC","CMD","Company Command",3, [1, 6, [1, 2, 3, 4, .1]] ],
+    ["Red_CC","CMD","Company Command",3, [1, 8, [0, 1, 2, 3, 4, 5, 6, .1]] ],
 
-    ["Red_P1HQ","P1HQ","1st Platoon",2, [1, 6, [1, 2, 3, 4, .1]] ],
+    //1st Platoon
+    ["Red_P1HQ","P1HQ","1st Platoon",2, [2, 1, [0, 1, 2, 3, 4]] ],
 
-    ["Red_Pilot","P","Pilots",0, [1, 6, [1, 2, 3, 4, .1]] ],
+    //not used
+    ["Red_Pilot","P","Pilots",0, [1, 2, [1, 2, 3, 4, .1]] ],
 
-    ["Red_A","A","Alpha Squad",1, [2, 1, [1, 1.1, 1.2]] ],
-    ["Red_A1","A1","Alpha One",0, [3, 2, [1, 1.1, 1.2]] ],
-    ["Red_A2","A2","Alpha Two",0, [4, 2, [1, 1.1, 1.2]] ],
+    ["Red_A","A","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2]] ],
+    ["Red_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2]] ],
+    ["Red_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2]] ],
 
-    ["Red_B","B","Bravo Squad",1, [2, 1, [2, 2.1, 2.2]] ],
-    ["Red_B1","B1","Bravo One",0, [3, 2, [2, 2.1, 2.2]] ],
-    ["Red_B2","B2","Bravo Two",0, [4, 2, [2, 2.1, 2.2]] ],
+    ["Red_B","B","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2]] ],
+    ["Red_B1","B1","Bravo One",0, [2, 1, [3, 3.1, 3.2]] ],
+    ["Red_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2]] ],
 
-    ["Red_C","C","Charlie Squad",1, [2, 1, [3, 3.1, 3.2]] ],
-    ["Red_C1","C1","Charlie One",0, [3, 2, [3, 3.1, 3.2]] ],
-    ["Red_C2","C2","Charlie Two",0, [4, 2, [3, 3.1, 3.2]] ],
+    ["Red_C","C","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2]] ],
+    ["Red_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2]] ],
+    ["Red_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2]] ],
 
-    ["Red_D","D","Delta Squad",1, [2, 1, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Red_D1","D1","Delta One",0, [3, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Red_D2","D2","Delta Two",0, [4, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Red_D3","D3","Delta Three",0, [5, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Red_D4","D4","Delta Four",0, [6, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    //2nd Platoon
+    ["Red_P2HQ","P2HQ","2nd Platoon",2, [2, 1, [0, 5, 6, 7, 8]] ],
 
-    ["Red_P2HQ","P2HQ","2nd Platoon",2, [1, 5, [5, 6, 7, .1]] ],
+    ["Red_D","D","Delta Squad",1, [2, 1, [5, 6, 6.1, 6.2]] ],
+    ["Red_D1","D1","Delta One",0, [2, 1, [6, 6.1, 6.2]] ],
+    ["Red_D2","D2","Delta Two",0, [3, 1, [6, 6.1, 6.2]] ],
 
-    ["Red_E","E","Echo Squad",1, [2, 1, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Red_E1","E1","Echo One",0, [3, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Red_E2","E2","Echo Two",0, [4, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Red_E3","E3","Echo Three",0, [5, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Red_E4","E4","Echo Four",0, [6, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
+    ["Red_E","E","Echo Squad",1, [2, 1, [5, 7, 7.1, 7.2]] ],
+    ["Red_E1","E1","Echo One",0, [2, 1, [7, 7.1, 7.2]] ],
+    ["Red_E2","E2","Echo Two",0, [3, 1, [7, 7.1, 7.2]] ],
 
-    ["Red_F","F","Foxtrot Squad",1, [2, 1, [6, 6.1, 6.2]] ],
-    ["Red_F1","F1","Foxtrot One",0, [3, 2, [6, 6.1, 6.2]] ],
-    ["Red_F2","F2","Foxtrot Two",0, [4, 2, [6, 6.1, 6.2]] ],
+    ["Red_F","F","Foxtrot Squad",1, [2, 1, [5, 8, 8.1, 8.2]] ],
+    ["Red_F1","F1","Foxtrot One",0, [2, 1, [8, 8.1, 8.2]] ],
+    ["Red_F2","F2","Foxtrot Two",0, [3, 1, [8, 8.1, 8.2]] ],
 
-    ["Red_G","G","Golf Squad",1, [2, 1, [7, 7.1, 7.2]] ],
-    ["Red_G1","G1","Golf One",0, [3, 2, [7, 7.1, 7.2]] ],
-    ["Red_G2","G2","Golf Two",0, [4, 2, [7, 7.1, 7.2]] ],
+    //Vehicle teams - under Company
+    ["Red_G","G","Golf Squad",1, [2, 1, [0, 9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Red_G1","G1","Golf One",0, [2, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Red_G2","G2","Golf Two",0, [3, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Red_G3","G3","Golf Three",0, [4, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Red_G4","G4","Golf Four",0, [5, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+
+    //Pilot teams - under Company
+    ["Red_H","H","Hotel Squad (Air)",1, [2, 1, [0, 10, 10.1, 10.2, 10.3]] ],
+    ["Red_H1","H1","Hotel One (Air)",0, [2, 1, [10, 10.1, 10.2, 10.3]] ],
+    ["Red_H2","H2","Hotel Two (Air)",0, [3, 1, [10, 10.1, 10.2, 10.3]] ],
+    ["Red_H3","H3","Hotel Three (Air)",0, [4, 1, [10, 10.1, 10.2, 10.3]] ],
 
     // INDFOR
-    ["Green_CC","CMD","Company Command",3, [1, 6, [1, 2, 3, 4, .1]] ],
+    ["Green_CC","CMD","Company Command",3, [1, 8, [0, 1, 2, 3, 4, 5, 6, .1]] ],
 
-    ["Green_P1HQ","P1HQ","1st Platoon",2, [1, 6, [1, 2, 3, 4, .1]] ],
+    //1st Platoon
+    ["Green_P1HQ","P1HQ","1st Platoon",2, [2, 1, [0, 1, 2, 3, 4]] ],
 
-    ["Green_Pilot","P","Pilots",0, [1, 6, [1, 2, 3, 4, .1]] ],
+    //not used
+    ["Green_Pilot","P","Pilots",0, [1, 2, [1, 2, 3, 4, .1]] ],
 
-    ["Green_A","A","Alpha Squad",1, [2, 1, [1, 1.1, 1.2]] ],
-    ["Green_A1","A1","Alpha One",0, [3, 2, [1, 1.1, 1.2]] ],
-    ["Green_A2","A2","Alpha Two",0, [4, 2, [1, 1.1, 1.2]] ],
+    ["Green_A","A","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2]] ],
+    ["Green_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2]] ],
+    ["Green_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2]] ],
 
-    ["Green_B","B","Bravo Squad",1, [2, 1, [2, 2.1, 2.2]] ],
-    ["Green_B1","B1","Bravo One",0, [3, 2, [2, 2.1, 2.2]] ],
-    ["Green_B2","B2","Bravo Two",0, [4, 2, [2, 2.1, 2.2]] ],
+    ["Green_B","B","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2]] ],
+    ["Green_B1","B1","Bravo One",0, [2, 1, [3, 3.1, 3.2]] ],
+    ["Green_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2]] ],
 
-    ["Green_C","C","Charlie Squad",1, [2, 1, [3, 3.1, 3.2]] ],
-    ["Green_C1","C1","Charlie One",0, [3, 2, [3, 3.1, 3.2]] ],
-    ["Green_C2","C2","Charlie Two",0, [4, 2, [3, 3.1, 3.2]] ],
+    ["Green_C","C","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2]] ],
+    ["Green_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2]] ],
+    ["Green_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2]] ],
 
-    ["Green_D","D","Delta Squad",1, [2, 1, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_D1","D1","Delta One",0, [3, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_D2","D2","Delta Two",0, [4, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_D3","D3","Delta Three",0, [5, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
-    ["Green_D4","D4","Delta Four",0, [6, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
+    //2nd Platoon
+    ["Green_P2HQ","P2HQ","2nd Platoon",2, [2, 1, [0, 5, 6, 7, 8]] ],
 
-    ["Green_P2HQ","P2HQ","2nd Platoon",2, [1, 5, [5, 6, 7, .1]] ],
+    ["Green_D","D","Delta Squad",1, [2, 1, [5, 6, 6.1, 6.2]] ],
+    ["Green_D1","D1","Delta One",0, [2, 1, [6, 6.1, 6.2]] ],
+    ["Green_D2","D2","Delta Two",0, [3, 1, [6, 6.1, 6.2]] ],
 
-    ["Green_E","E","Echo Squad",1, [2, 1, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Green_E1","E1","Echo One",0, [3, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Green_E2","E2","Echo Two",0, [4, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Green_E3","E3","Echo Three",0, [5, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
-    ["Green_E4","E4","Echo Four",0, [6, 2, [5, 5.1, 5.2, 5.3, 5.4]] ],
+    ["Green_E","E","Echo Squad",1, [2, 1, [5, 7, 7.1, 7.2]] ],
+    ["Green_E1","E1","Echo One",0, [2, 1, [7, 7.1, 7.2]] ],
+    ["Green_E2","E2","Echo Two",0, [3, 1, [7, 7.1, 7.2]] ],
 
-    ["Green_F","F","Foxtrot Squad",1, [2, 1, [6, 6.1, 6.2]] ],
-    ["Green_F1","F1","Foxtrot One",0, [3, 2, [6, 6.1, 6.2]] ],
-    ["Green_F2","F2","Foxtrot Two",0, [4, 2, [6, 6.1, 6.2]] ],
+    ["Green_F","F","Foxtrot Squad",1, [2, 1, [5, 8, 8.1, 8.2]] ],
+    ["Green_F1","F1","Foxtrot One",0, [2, 1, [8, 8.1, 8.2]] ],
+    ["Green_F2","F2","Foxtrot Two",0, [3, 1, [8, 8.1, 8.2]] ],
 
-    ["Green_G","G","Golf Squad",1, [2, 1, [7, 7.1, 7.2]] ],
-    ["Green_G1","G1","Golf One",0, [3, 2, [7, 7.1, 7.2]] ],
-    ["Green_G2","G2","Golf Two",0, [4, 2, [7, 7.1, 7.2]] ]
+    //Vehicle teams - under Company
+    ["Green_G","G","Golf Squad",1, [2, 1, [0, 9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Green_G1","G1","Golf One",0, [2, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Green_G2","G2","Golf Two",0, [3, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Green_G3","G3","Golf Three",0, [4, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Green_G4","G4","Golf Four",0, [5, 1, [9, 9.1, 9.2, 9.3, 9.4]] ],
+
+    //Pilot teams - under Company
+    ["Green_H","H","Hotel Squad (Air)",1, [2, 1, [0, 10, 10.1, 10.2, 10.3]] ],
+    ["Green_H1","H1","Hotel One (Air)",0, [2, 1, [10, 10.1, 10.2, 10.3]] ],
+    ["Green_H2","H2","Hotel Two (Air)",0, [3, 1, [10, 10.1, 10.2, 10.3]] ],
+    ["Green_H3","H3","Hotel Three (Air)",0, [4, 1, [10, 10.1, 10.2, 10.3]] ]
 ];
 
 private ["_grp"];

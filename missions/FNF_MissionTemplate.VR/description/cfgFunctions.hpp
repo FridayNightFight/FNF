@@ -14,6 +14,7 @@ class CfgFunctions {
       class gearSelection{};
       class getKeys{};
       class handlePauseRespawn{};
+      class restrictUniform{};
     };
     class clientSafety {
       file = "client\safety";

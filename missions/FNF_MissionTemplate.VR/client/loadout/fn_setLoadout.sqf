@@ -28,7 +28,7 @@ phx_loadout_unitLevel = 0;
 //Shared
 phx_loadout_aid = "FirstAidKit:4";
 phx_loadout_smoke = "SmokeShell:4";
-phx_loadout_grenade = "HandGrenade:2";
+phx_loadout_grenade = "rhs_mag_m67:2";
 phx_loadout_maptools = "ACE_MapTools";
 //CE
 phx_loadout_explosives = "SatchelCharge_Remote_Mag:2";
@@ -82,5 +82,4 @@ if (phx_loadout_unitLevel > 0) then {
   player addItem "ACE_microDAGR";
 };
 
-phx_loadout_uniform = nil;
 missionNamespace setVariable ["phx_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

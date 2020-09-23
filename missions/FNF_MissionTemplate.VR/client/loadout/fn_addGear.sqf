@@ -2,9 +2,7 @@ _itemStr = _this;
 
 if (_itemStr isEqualTo "") exitWith {};
 
-if (isNil "phx_addGearErrorStr") then {
-  phx_addGearErrorStr = "";
-};
+phx_addGearErrorStr = "";
 
 _err = {
   params ["_item"];

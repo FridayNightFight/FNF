@@ -16,3 +16,9 @@ if !(hasInterface) exitWith {};
         [_handle] call CBA_fnc_removePerFrameHandler;
     };
 }, 0, [diag_tickTime]] call CBA_fnc_addPerFrameHandler;
+
+if !(phx_allowUniformSwap) then {
+  [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
+      call phx_fnc_restrictUniform;
+  }] call CBA_fnc_waitUntilAndExecute;
+};

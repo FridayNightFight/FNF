@@ -17,19 +17,19 @@ giveINDFORLoadout = {
   };
   if (pRole == ROLE_AR) then {
     phx_loadout_rifle_weapon = "rhs_weap_pkm";
-    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:5";
+    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:8";
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AAR) then {
-    phx_loadout_aar_mag = "rhs_100Rnd_762x54mmR_green:3";
+    phx_loadout_aar_mag = "rhs_100Rnd_762x54mmR_green:4";
   };
   if (pRole == ROLE_MG) then {
     phx_loadout_rifle_weapon = "rhs_weap_pkp";
-    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:5";
+    phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:8";
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AM) then {
-    phx_loadout_am_mag = "rhs_100Rnd_762x54mmR_green:4";
+    phx_loadout_am_mag = "rhs_100Rnd_762x54mmR_green:7";
   };
   if (pRole == ROLE_RAT) then {
     phx_loadout_antitank_weapon = "rhs_weap_rpg7";

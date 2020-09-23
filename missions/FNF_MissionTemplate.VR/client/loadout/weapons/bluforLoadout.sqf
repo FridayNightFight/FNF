@@ -19,21 +19,19 @@ giveBLUFORLoadout = {
   };
   if (pRole == ROLE_AR) then {
     phx_loadout_rifle_weapon = "rhs_weap_m249_pip_L";
-    phx_loadout_rifle_mag = "rhsusf_200rnd_556x45_mixed_box:4";
+    phx_loadout_rifle_mag = "rhsusf_200rnd_556x45_mixed_box:6";
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AAR) then {
-    phx_loadout_aar_mag = "rhsusf_200rnd_556x45_mixed_box:2";
+    phx_loadout_aar_mag = "rhsusf_200rnd_556x45_mixed_box:5";
   };
   if (pRole == ROLE_MG) then {
     phx_loadout_rifle_weapon = "rhs_weap_m240G";
-    phx_loadout_rifle_mag = "rhsusf_100Rnd_762x51_m80a1epr:4";
+    phx_loadout_rifle_mag = "rhsusf_100Rnd_762x51_m80a1epr:8";
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_AM) then {
-    phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:5";
-    phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:4";
-    phx_loadout_am_mag = "rhsusf_100Rnd_762x51_m80a1epr:4";
+    phx_loadout_am_mag = "rhsusf_100Rnd_762x51_m80a1epr:6";
   };
   if (pRole == ROLE_RAT) then {
     phx_loadout_antitank_weapon = "rhs_weap_M136";

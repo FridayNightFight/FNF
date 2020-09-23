@@ -39,15 +39,20 @@ switch (actionSelected) do {
   };//Teleport group leaders to you
   case 3: {
     [[name player,getPosATL player,player],{
-      if (pRole == 0 || (player distance (_this select 1) <= 10)) exitWith {if !(pRole == 0) then {5 call TFAR_fnc_setVoiceVolume;TF_speak_volume_level = "whispering";TF_speak_volume_meters = 5;["Voice volume set to whisper"] call phx_fnc__hintThenClear;}};
+      if (pRole == 0 || (player distance (_this select 1) <= 10)) exitWith {
+        if !(pRole == 0) then {
+          5 call TFAR_fnc_setVoiceVolume;
+          TF_speak_volume_level = "whispering";
+          "Voice volume set to whisper" call phx_fnc_hintThenClear;
+        }
+      };
       cutText [format["Teleporting all players to %1 for briefing", _this select 0],"BLACK OUT"];
       sleep 5;
       5 call TFAR_fnc_setVoiceVolume;
       TF_speak_volume_level = "whispering";
-      TF_speak_volume_meters = 5;
+      "Voice volume set to whisper" call phx_fnc_hintThenClear;
       player setPos ((_this select 1) findEmptyPosition [5,100,typeOf player]);
       player setDir (player getDir (_this select 2));
-      ["Voice volume set to whisper"] call phx_fnc__hintThenClear;
       sleep 0.5;
       cutText ["","BLACK IN"];
     }] remoteExec ["BIS_fnc_spawn", playerSide, false];

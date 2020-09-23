@@ -58,7 +58,7 @@ call phx_fnc_platoonActions;
 
 //TFAR set volume to whisper
 [] spawn {
-  waitUntil {sleep 0.25; !isNil "TF_speak_volume_meters"};
+  waitUntil {sleep 1; !isNil "TF_speak_volume_meters"};
   5 call TFAR_fnc_setVoiceVolume;
   TF_speak_volume_level = "whispering";
 };
