@@ -13,7 +13,7 @@ ace_advanced_fatigue_fadeStaminaBar = true;
 force ace_advanced_fatigue_loadFactor = 0.4;
 force ace_advanced_fatigue_performanceFactor = 4;
 force ace_advanced_fatigue_recoveryFactor = 5;
-force ace_advanced_fatigue_swayFactor = 0.8;
+force ace_advanced_fatigue_swayFactor = 0.4;
 force ace_advanced_fatigue_terrainGradientFactor = 0.7;
 
 // ACE Advanced Throwing
@@ -78,11 +78,11 @@ force ace_explosives_punishNonSpecialists = false;
 force ace_explosives_requireSpecialist = false;
 
 // ACE Fragmentation Simulation
-force ace_frag_enabled = true;
-force ace_frag_maxTrack = 20;
-force ace_frag_maxTrackPerFrame = 20;
+force ace_frag_enabled = false;
+force ace_frag_maxTrack = 10;
+force ace_frag_maxTrackPerFrame = 10;
 force ace_frag_reflectionsEnabled = false;
-force ace_frag_spallEnabled = true;
+force ace_frag_spallEnabled = false;
 
 // ACE Goggles
 ace_goggles_effects = 0;
@@ -178,7 +178,7 @@ ace_maptools_rotateModifierKey = 1;
 
 // ACE Medical
 force ace_medical_ai_enabledFor = 0;
-force ace_medical_AIDamageThreshold = 1;
+force ace_medical_AIDamageThreshold = 0.6;
 force ace_medical_bleedingCoefficient = 0.3;
 force ace_medical_blood_bloodLifetime = 1200;
 force ace_medical_blood_enabledFor = 1;

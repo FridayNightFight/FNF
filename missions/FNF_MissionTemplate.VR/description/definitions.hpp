@@ -10,7 +10,12 @@ respawnOnStart = -1;
 respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;
 
-corpseManagerMode = 0;
+corpseManagerMode = 1;
+corpseLimit = 40;
+corpseRemovalMinTime = 60;
+corpseRemovalMaxTime = 3600;
 wreckManagerMode = 0;
+
+disableChannels[] = {6};
 
 onPauseScript[] = {phx_fnc_handlePauseRespawn};

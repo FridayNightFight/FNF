@@ -77,6 +77,8 @@ if ((independent countSide _units) > 0) then {
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
 _varStr = _varStr + "<br/>";
+_varStr = _varStr + format ["Safe start time: %1 minutes", phx_safeStartTime];
+_varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Defenders fortify allowed: %1", phx_allowFortify];
 
 player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];

@@ -17,7 +17,7 @@ class FNFLeaderMenu
 			w = safeZoneW * 0.411875;
 			h = safeZoneH * 0.06;
 			style = 2;
-			text = "FNF Platoon Leader Menu";
+			text = "FNF Lead Menu";
 			colorBackground[] = {0.102,0.102,0.102,1};
 			colorText[] = {1,0,0,1};
 			font = "PuristaMedium";
