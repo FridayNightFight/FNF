@@ -10,6 +10,7 @@
 #define RPG32 "launch_RPG32_green_F"
 #define RPG7 "rhs_weap_rpg7"
 #define TITAN "launch_I_Titan_short_F"
+#define JAVELIN "rhs_weap_fgm148"
 #define NLAW "ACE_launch_NLAW_ready_F"
 #define METIS "launch_O_Vorona_green_F"
 #define STINGER "rhs_weap_fim92"

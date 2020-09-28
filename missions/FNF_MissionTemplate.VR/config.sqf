@@ -48,6 +48,7 @@ CARLG
 RPG32
 RPG7
 TITAN
+JAVELIN
 METIS
 NLAW
 STINGER
@@ -60,8 +61,10 @@ phx_fortifyPoints = 75; //Currency for fortify - individual to each Combat Engin
 phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 phx_missionBoundaryRestriction = true; //Set to false to disable the mission boundary
-phx_safeStartTime = 20; //Safestart time in minutes
+phx_safeStartTime = 15; //Safestart time in minutes
 phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
+
+phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_opticMagnification = false; //Set to true to allow players to use magnified optics
 phx_maxViewDistance = 2000; //Maximum client view distance (meters), strongly recommended to keep it <= 2000 for client and server performance
 
@@ -79,8 +82,8 @@ UNIFORM_EMR_DESERT                 --   WEAPONS_AKMN_PKM_PKP_RPG7
 UNIFORM_EMR_SUMMER                 --   WEAPONS_SCAR
 UNIFORM_M93_OAKLEAF                --   WEAPONS_G36
 UNIFORM_GUERRILLA                  --   WEAPONS_GUERRILLA
-UNIFORM_PMC                        --
-UNIFORM_MOUNTAIN_FLORA             --
+UNIFORM_PMC                        --   WEAPONS_M21
+UNIFORM_MOUNTAIN_FLORA             --   WEAPONS_VHS
 UNIFORM_FLORA                      --
 UNIFORM_OEF_CP                     --
 UNIFORM_M10_DESERT                 --

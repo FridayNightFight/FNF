@@ -1,5 +1,9 @@
-//Hides markers the client shouldn't be able to see.
+if (isNil "phx_enemyStartVisible") exitWith {};
+//Ensure that players don't see start zone markers in neutral objective types, regardless of setting in config
+if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") then {phx_enemyStartVisible = false};
+if (phx_enemyStartVisible) exitWith {};
 
+//Hides markers the client shouldn't be able to see.
 _opforMark = "opforSafeMarker";
 _bluforMark = "bluforSafeMarker";
 _indforMark = "indforSafeMarker";
@@ -9,9 +13,6 @@ _handleMarker = {
     _this setMarkerAlphaLocal 0;
   };
 };
-
-if (phx_gameMode != "connection" && phx_gameMode != "neutralSector") exitWith {};
-
 switch (playerSide) do {
   case west: {
     _opforMark call _handleMarker;

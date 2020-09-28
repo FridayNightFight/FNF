@@ -48,12 +48,6 @@ if (pRole == ROLE_RAT) then {
   phx_loadout_antitank_mag_1 = "rhs_rpg7_PG7VR_mag";
 };
 
-if (pRole == ROLE_AT) then {
-  phx_loadout_mediumantitank_weapon = "rhs_weap_rpg7";
-  phx_loadout_mediumantitank_mag = "rhs_rpg7_PG7VR_mag:2";
-  phx_loadout_mediumantitank_mag_1 = "rhs_rpg7_PG7VL_mag:2";
-  phx_loadout_mediumantitank_optic = "rhs_acc_pgo7v3";
-};
 if (pRole == ROLE_AAT) then {
   phx_loadout_mediumantitank_mag = "rhs_rpg7_PG7V_mag:2";
 };

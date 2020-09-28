@@ -27,7 +27,7 @@ if (isNil "pRole") exitWith {hint "Player role not set correctly. Alert the miss
 phx_loadout_unitLevel = 0;
 //Shared
 phx_loadout_aid = "FirstAidKit:4";
-phx_loadout_smoke = "SmokeShell:4";
+phx_loadout_smoke = "SmokeShell:2";
 phx_loadout_grenade = "rhs_mag_m67:2";
 phx_loadout_maptools = "ACE_MapTools";
 //CE
