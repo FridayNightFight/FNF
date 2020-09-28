@@ -60,7 +60,7 @@ phx_fortifyPoints = 75; //Currency for fortify - individual to each Combat Engin
 phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
 
 phx_missionBoundaryRestriction = true; //Set to false to disable the mission boundary
-phx_safeStartTime = 15; //Safestart time in minutes
+phx_safeStartTime = 20; //Safestart time in minutes
 phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
 phx_opticMagnification = false; //Set to true to allow players to use magnified optics
 phx_maxViewDistance = 2000; //Maximum client view distance (meters), strongly recommended to keep it <= 2000 for client and server performance
