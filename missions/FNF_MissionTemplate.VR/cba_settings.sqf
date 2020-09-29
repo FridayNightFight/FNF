@@ -416,26 +416,27 @@ force tfar_terrain_interception_coefficient = 4;
 force TFAR_voiceCone = false;
 
 // Enhanced Movement Rework
-force EMR_main_allowMidairClimbing = true;
-force EMR_main_blacklist = "Land_WiredFence_01_16m_F,Land_WiredFence_01_4m_F,Land_WiredFence_01_8m_F,Land_Mil_WiredFenceD_F,Land_Mil_WiredFence_F,Land_New_WiredFence_10m_Dam_F,Land_New_WiredFence_10m_F,Land_New_WiredFence_5m_F,Land_NetFence_03_m_9m_F,Land_IndFnc_9_F,Land_IndFnc_3_Hole_F,Land_NetFence_03_m_3m_hole_F,Land_NetFence_03_m_3m_d_F,Land_IndFnc_3_D_F,Land_NetFence_03_m_3m_corner_F,Land_IndFnc_Corner_F,Land_NetFence_03_m_3m_F,Land_IndFnc_3_F,Land_Razorwire_F,Fort_RazorWire,Wire,WireFence";
-force EMR_main_climbingEnabled = true;
-force EMR_main_climbOnDuty = 3.4;
-force EMR_main_climbOverDuty = 3;
-force EMR_main_dropDuty = 0.7;
-force EMR_main_enableWalkableSurface = true;
-force EMR_main_enableWeightCheck = false;
-force EMR_main_jumpDuty = 1;
-force EMR_main_jumpingEnabled = true;
-force EMR_main_jumpingLoadCoefficient = 0;
-force EMR_main_jumpVelocity = 3.4;
-force EMR_main_maxClimbHeight = 2.6;
-force EMR_main_maxDropHeight = 5;
-EMR_main_maxWeightClimb1 = 100;
-EMR_main_maxWeightClimb2 = 85;
-EMR_main_maxWeightClimb3 = 60;
-EMR_main_maxWeightJump = 100;
-force EMR_main_preventHighVaulting = false;
-force EMR_main_staminaCoefficient = 1;
+force emr_main_allowMidairClimbing = true;
+force emr_main_blacklistStr = "Land_WiredFence_01_16m_F,Land_WiredFence_01_4m_F,Land_WiredFence_01_8m_F,Land_Mil_WiredFenceD_F,Land_Mil_WiredFence_F,Land_New_WiredFence_10m_Dam_F,Land_New_WiredFence_10m_F,Land_New_WiredFence_5m_F,Land_NetFence_03_m_9m_F,Land_IndFnc_9_F,Land_IndFnc_3_Hole_F,Land_NetFence_03_m_3m_hole_F,Land_NetFence_03_m_3m_d_F,Land_IndFnc_3_D_F,Land_NetFence_03_m_3m_corner_F,Land_IndFnc_Corner_F,Land_NetFence_03_m_3m_F,Land_IndFnc_3_F,Land_Razorwire_F,Fort_RazorWire,Wire,WireFence";
+force emr_main_climbingEnabled = true;
+force emr_main_climbOnDuty = 3.4;
+force emr_main_climbOverDuty = 3;
+force emr_main_dropDuty = 0.7;
+force emr_main_enableWalkableSurface = true;
+force emr_main_enableWeightCheck = false;
+force emr_main_jumpDuty = 1;
+force emr_main_jumpingEnabled = true;
+force emr_main_jumpingLoadCoefficient = 0;
+force emr_main_jumpVelocity = 3.4;
+force emr_main_maxClimbHeight = 2.6;
+force emr_main_maxDropHeight = 5;
+emr_main_maxWeightClimb1 = 200;
+emr_main_maxWeightClimb2 = 200;
+emr_main_maxWeightClimb3 = 200;
+emr_main_maxWeightJump = 200;
+force emr_main_preventHighVaulting = false;
+force emr_main_staminaCoefficient = 1;
+force emr_main_whitelistStr = "";
 
 // GRAD Trenches
 force grad_trenches_functions_allowBigEnvelope = true;
