@@ -10,11 +10,12 @@ respawnOnStart = -1;
 respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;
 
-corpseManagerMode = 1;
+corpseManagerMode = 2;
 corpseLimit = 40;
 corpseRemovalMinTime = 60;
 corpseRemovalMaxTime = 3600;
 wreckManagerMode = 0;
+minPlayerDistance = 0;
 
 disableChannels[] = {6};
 

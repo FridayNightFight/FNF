@@ -133,9 +133,9 @@ phx_colorArrayBase = [
     "#FFFF80", // light yellow
     "#FF80FF", // light pink
     "#00FFE5", //turquoise
-    "#8E008E", //purple
     "#FFC080", // light orange
     "#00FF87", //aquamarine
+    "#B960FF", //light purple
     "#FF8181" //beige red
 ];
 phx_colorArray = [];

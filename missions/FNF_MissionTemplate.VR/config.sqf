@@ -7,14 +7,16 @@
 phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
 //If you don't want to use one of the template modes, you can set phx_gameMode = "";
 /*
-destroy - atk/def
-uplink - atk/def
-rush - atk/def
-captureTheFlag - atk/def
-adSector - atk/def
+===ATK/DEF===
+destroy
+uplink
+rush
+captureTheFlag
+adSector
 
-connection - neutral
-neutralSector - neutral
+===NEUTRAL===
+connection
+neutralSector
 */
 
 /************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/

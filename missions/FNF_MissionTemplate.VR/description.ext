@@ -1,6 +1,6 @@
 author = "YOUR_NAME";
 onLoadName = "MISSION_NAME";
-OnLoadMission = "SHORT_DESCRIPTION";
+onLoadMission = "SHORT_DESCRIPTION";
 
 #include "description\definitions.hpp"
 #include "description\cfgEventHandlers.hpp"

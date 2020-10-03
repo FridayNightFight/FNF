@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=2557;
+		nextID=2560;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={306.85175,34.540325,677.57532};
-		dir[]={0.0033962619,-0.99142885,0.13139579};
-		up[]={0.02561651,0.13114046,0.99103677};
-		aside[]={0.99974805,2.0188745e-006,-0.025840951};
+		pos[]={299.61832,30,656.85352};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -812,7 +812,7 @@ class CustomAttributes
 							"BOOL"
 						};
 					};
-					value=1;
+					value=0;
 				};
 			};
 		};
@@ -43745,13 +43745,13 @@ class Mission
 			side="Independent";
 			class Entities
 			{
-				items=3;
+				items=4;
 				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={693.92926,5.0014391,700.82385};
+						position[]={693.94275,5.0014391,701.2218};
 					};
 					side="Independent";
 					flags=7;
@@ -43811,7 +43811,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={693.99725,5.0014391,698.57788};
+						position[]={694.02692,5.0014391,699.55212};
 					};
 					side="Independent";
 					flags=4;
@@ -43891,7 +43891,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={694.02826,5.0014391,696.57886};
+						position[]={694.073,5.0014391,697.85199};
 					};
 					side="Independent";
 					flags=4;
@@ -43963,6 +43963,66 @@ class Mission
 							};
 						};
 						nAttributes=3;
+					};
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={694.01001,5.0014391,695.82898};
+					};
+					side="Independent";
+					flags=5;
+					class Attributes
+					{
+						init="call{Green_C2 = group this;}";
+						description="Rifleman@Charlie 2";
+						isPlayable=1;
+					};
+					id=2559;
+					type="I_soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male05GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.95999998;
+								};
+							};
+						};
+						nAttributes=2;
 					};
 				};
 			};
@@ -52314,7 +52374,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={302.66687,5.0014391,686.8194};
-						angles[]={-0,0.015132004,0};
+						angles[]={0,0.015132004,0};
 					};
 					side="East";
 					flags=6;
@@ -52395,7 +52455,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={304.56564,5.0014391,686.77509};
-						angles[]={-0,0.015132004,0};
+						angles[]={0,0.015132004,0};
 					};
 					side="East";
 					flags=4;
