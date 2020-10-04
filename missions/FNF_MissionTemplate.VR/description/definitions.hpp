@@ -11,8 +11,8 @@ respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;
 
 corpseManagerMode = 2;
-corpseLimit = 40;
-corpseRemovalMinTime = 60;
+corpseLimit = 30;
+corpseRemovalMinTime = 120;
 corpseRemovalMaxTime = 3600;
 wreckManagerMode = 0;
 minPlayerDistance = 0;

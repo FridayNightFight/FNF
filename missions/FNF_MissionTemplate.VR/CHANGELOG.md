@@ -1,3 +1,6 @@
+# v1.0.1a
+1. corpse manager tweaks
+
 # v1.0.1
 1. changed color of 1 orbat squad
 2. corpse manager min distance = 0
