@@ -1,4 +1,6 @@
 if (!hasInterface) exitWith {};
+
+phx_updateTimeLeftUI = true;
 [] spawn {
   disableSerialization;
   _missionSafeTime = phx_safeStartTime; //Default - 15 minute safestart
@@ -9,7 +11,7 @@ if (!hasInterface) exitWith {};
   //If displays weren't created then exit the script
   if (uiNameSpace getVariable "timeleftStructText" isEqualTo displayNull) exitWith {hint "TIMELEFT display not defined in description.ext"};
 
-  while {!phx_gameEnd} do {
+  while {phx_updateTimeLeftUI} do {
     //Update text in the displays to match the points markers
     _display = uiNameSpace getVariable "timeleftStructText";
     _setText = _display displayCtrl 1003;
@@ -26,7 +28,7 @@ if (!hasInterface) exitWith {};
                 _secs = "0" + str(60-floor(CBA_missionTime%60));
             };
         };
-        _setText ctrlSetStructuredText (parseText format ["Approximate Time Remaining: %1:%2",_mins,_secs]);
+        _setText ctrlSetStructuredText (parseText format ["Mission Time Remaining: %1:%2",_mins,_secs]);
     } else {
       _mins = floor((CBA_missionTime-(_missionTime*60))/60);
       _secs = floor((CBA_missionTime-(_missionTime*60))%60);
@@ -37,7 +39,7 @@ if (!hasInterface) exitWith {};
         };
         _secs = "0" + str(floor((CBA_missionTime-(_missionTime*60))%60));
       };
-      _setText ctrlSetStructuredText (parseText format ["Approximate Overtime: + %1:%2",_mins,_secs]);
+      _setText ctrlSetStructuredText (parseText format ["Mission Overtime: + %1:%2",_mins,_secs]);
     };
 
     uiSleep 1;

@@ -1,12 +1,12 @@
-//Disable global chat
-0 enableChannel false;
-
 //Force view distance <= phx_maxViewDistance
 [{
   if (viewDistance > phx_maxViewDistance) then {
     setViewDistance phx_maxViewDistance;
   };
 } , 1] call CBA_fnc_addPerFrameHandler;
+
+//Disable global chat
+0 enableChannel false;
 
 if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};
 

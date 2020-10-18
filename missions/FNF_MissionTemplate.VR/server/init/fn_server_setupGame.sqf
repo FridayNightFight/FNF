@@ -4,30 +4,42 @@ if (!isServer) exitWith {};
 
 missionNamespace setVariable ["phx_gameEnd", false, true];
 
+phx_overTimeConStr = "N/A";
+
 switch (phx_gameMode) do {
   case destroy: {
     execVM "shared\modes\destroy_server.sqf";
+    phx_overTimeConStr = "The mission will go into overtime if there is only 1 alive objective remaining and attackers stay near the objective.";
   };
   case uplink: {
     execVM "shared\modes\uplink_server.sqf";
+    phx_overTimeConStr = "The mission will go into overtime if any terminal is being hacked.";
   };
   case rush: {
     execVM "shared\modes\rush_server.sqf";
+    phx_overTimeConStr = "The mission will go into overtime if the final terminal is being hacked.";
   };
   case connection: {
     [] call compile preprocessFileLineNumbers format ["shared\modes\connection_server.sqf"];
     ["off"] call acex_fortify_fnc_handleChatCommand;
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 25 points of the highest side. The first side to 100 points will still win.";
   };
   case captureTheFlag: {
     [] call compile preprocessFileLineNumbers format ["shared\modes\ctf_server.sqf"];
+    phx_overTimeConStr = "The mission will go into overtime if the flag stays within the capture zone.";
   };
   case adSector: {
     [] spawn compile preprocessFileLineNumbers format ["shared\modes\adSector.sqf"];
+    phx_overTimeConStr = "The mission will go into overtime if there is only 1 active sector remaining and attackers stay inside it.";
   };
   case neutralSector: {
     [] spawn compile preprocessFileLineNumbers format ["shared\modes\neutralSector.sqf"];
+    ["off"] call acex_fortify_fnc_handleChatCommand;
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 25 points of the highest side. The first side to 100 points will still win.";
   };
 };
+
+publicVariable "phx_overTimeConStr";
 
 //To do: allow objectives to be deleted w/o throwing error
 

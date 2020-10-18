@@ -73,6 +73,7 @@ phx_maxViewDistance = 2000; //Maximum client view distance (meters), strongly re
 phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system - radios will still be preset if units have them
 phx_allowUniformSwap = false; //Set to true if you want players to be able to take off / change their uniform and helmet
 phx_antiGammaDoping = false; //Set to true for certain night missions where gamma abuse may happen - this prevents clients from setting gamma > 1.3 in video settings
+phx_idleKill = true; //Set to false to disable to idle timer kill (10 minutes idle) if you need to for some reason
 
 ////////////////////////////////////////////////////////////
 /*

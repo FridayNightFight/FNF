@@ -23,12 +23,9 @@ if (phx_gameMode == "captureTheFlag") then {
 
 //Wait for ACE spectator display
 waitUntil {!isNull findDisplay 60000};
-_specDisplay = findDisplay 60000;
 
 //Stop typing in chat if player is not logged-in admin
-if !(serverCommandAvailable "#kick") then {
-  _specDisplay displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
-};
+60000 call phx_fnc_disableTyping;
 
 //Returns true if obj can be drawn
 _showObj = {

@@ -2,7 +2,7 @@
 player allowDamage false;
 
 //Heal player if they were damaged on start
-[objNull, player] call ace_medical_treatment_fnc_fullHeal;
+[player] call ace_medical_treatment_fnc_fullHealLocal;
 
 //Stop player from being able to fire weapon and throw grenades
 phx_safetyMuzzles = getArray (configFile >> "CfgWeapons" >> "Throw" >> "muzzles");
@@ -32,7 +32,7 @@ phx_acePlacing = [{
   };
 
   if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
-} , 0.1] call CBA_fnc_addPerFrameHandler;
+} , 0] call CBA_fnc_addPerFrameHandler;
 
 
 [] spawn {
@@ -47,10 +47,16 @@ phx_acePlacing = [{
     player removeAction leadAction;
   };
 
-  //Make typing in chat not possible after safe start ends unless player is logged-in admin
-  if !(serverCommandAvailable "#kick") then {
-    (findDisplay 46) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
-  };
+  //Make typing in chat not possible after safe start ends unless player is logged-in admin or staff
+  46 call phx_fnc_disableTyping;
 
+  //Remove gear selector
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+
+  //Check if player goes afk during mission
+  if (!isNil "phx_idleKill") then {
+    if (phx_idleKill) then {
+      [] spawn phx_fnc_afkCheck;
+    };
+  };
 };

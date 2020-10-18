@@ -35,6 +35,8 @@ class CfgFunctions {
       file = "client\misc";
       class hintThenClear{};
       class zoneBoundary{};
+      class disableTyping{};
+      class afkCheck{};
     };
     class spectator {
       file = "client\spectator";
@@ -67,6 +69,7 @@ class CfgFunctions {
       class checkAlive{};
       class checkTime{};
       class clientTime{};
+      class overTimeEnd{};
     };
     //////////
   };

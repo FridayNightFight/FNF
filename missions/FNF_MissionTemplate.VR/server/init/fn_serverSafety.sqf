@@ -15,6 +15,7 @@ switch (_this select 0) do {
 
     while {f_var_mission_timer > 0} do {
       ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
+      ["f_var_mission_timer", f_var_mission_timer] call CBA_fnc_publicVariable;
 
       uisleep 60;
 
@@ -52,7 +53,7 @@ switch (_this select 0) do {
     //Keep player bodies on disconnect
     addMissionEventHandler ["HandleDisconnect", {
       params ["_unit", "_id", "_uid", "_name"];
-      _unit setOwner 2;
+      group _unit setGroupOwner 2;
       if (alive _unit) then {
         _unit setDamage 1;
       };

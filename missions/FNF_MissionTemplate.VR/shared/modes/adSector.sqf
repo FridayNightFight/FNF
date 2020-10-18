@@ -70,7 +70,7 @@ _sectorNum = 0;
 
     _units = [];
 
-    while {alive _sector} do {
+    while {alive _sector && !phx_gameEnd} do {
       _dPresent = false;
       _aPresent = false;
 

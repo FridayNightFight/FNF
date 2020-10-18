@@ -1,3 +1,15 @@
+# v1.0.2
+1. Added diary record for admin to increase/decrease safe start time
+2. BLUFOR default LAT weapon changed to LAW
+3. OPFOR/INDFOR default LAT weapon changed to RPG-26
+4. Added AFK check and config value to enable/disable it. If player doesn't press a key for 10 minutes a warning will be displayed. After 30 seconds the player will be killed if they don't press a key
+5. Added FNF staff to whitelist of players that can always use the chat
+6. Increased QS icons update time from 1 second to 2 seconds to improve map/gps performance
+7. Made all vehicle team members engineers (mission.sqm update)
+8. Added overtime win conditions for each game mode
+9. Client mission time left value will sync with the server every minute
+10. Increased GRAD trenched placement time
+
 # v1.0.1a
 1. corpse manager tweaks
 

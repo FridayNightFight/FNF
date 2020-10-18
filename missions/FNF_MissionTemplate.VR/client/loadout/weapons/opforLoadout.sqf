@@ -32,9 +32,9 @@ giveOPFORLoadout = {
     phx_loadout_am_mag = "rhs_100Rnd_762x54mmR_green:7";
   };
   if (pRole == ROLE_RAT) then {
-    phx_loadout_antitank_weapon = "rhs_weap_rpg7";
-    phx_loadout_antitank_mag = "rhs_rpg7_PG7VL_mag";
-    phx_loadout_antitank_mag_1 = "rhs_rpg7_PG7VR_mag";
+    phx_loadout_antitank_weapon = "rhs_weap_rpg26";
+    phx_loadout_antitank_mag = "";
+    phx_loadout_antitank_mag_1 = "";
   };
   if (pRole == ROLE_MK) then {
     phx_loadout_rifle_weapon = "rhs_weap_svdp_npz";
