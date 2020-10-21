@@ -6,7 +6,13 @@ ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT"];
 if (serverCommandAvailable "#kick") then {
   PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin"];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer""; [false] remoteExec [""phx_fnc_serverSafety"",2,false];'>End Safe Start</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = f_var_mission_timer - 1; publicVariableServer ""f_var_mission_timer""; format [""New safe start time: %1 mins"", f_var_mission_timer] call phx_fnc_hintThenClear;'>-1 Minute to Safe Start</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
+  if !(f_var_mission_timer <= 1) then {
+    f_var_mission_timer = f_var_mission_timer - 1;
+    publicVariableServer ""f_var_mission_timer"";
+  };
+  format [""New safe start time: %1 mins"", f_var_mission_timer] call phx_fnc_hintThenClear;
+  '>-1 Minute to Safe Start</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = f_var_mission_timer + 1; publicVariableServer ""f_var_mission_timer""; format [""New safe start time: %1 mins"", f_var_mission_timer] call phx_fnc_hintThenClear;'>+1 Minute to Safe Start</execute>"]];
 
   [] spawn {

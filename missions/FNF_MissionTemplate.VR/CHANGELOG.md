@@ -1,3 +1,6 @@
+# v1.0.2b
+1. Prevent game admin from accidently setting safe start time too low
+
 # v1.0.2a
 1. Fix for aircraft being able to get out of the start zone if over water
 
