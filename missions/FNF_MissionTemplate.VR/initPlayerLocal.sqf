@@ -1,3 +1,7 @@
+if ("ItemRadio" in (assignedItems player)) then {
+  player unlinkItem "ItemRadio";
+};
+
 waitUntil {!isNil "phx_serverGameSetup" && !isNil "phx_safetyEnabled"};
 
 if (phx_safetyEnabled && !(typeOf player == "ace_spectator_virtual")) then {
