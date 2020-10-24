@@ -46,5 +46,23 @@ call phx_fnc_fortifyServer;
   };
 } forEach vehicles;
 
+//Keep player bodies on disconnect after safe start, remove during safe start
+phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
+  params ["_unit", "_id", "_uid", "_name"];
+
+  if (phx_safetyEnabled) then {
+    if (alive _unit) then {
+      _unit setDamage 1;
+    };
+    group _unit setGroupOwner 2;
+    deleteVehicle _unit;
+  } else {
+    if (alive _unit) then {
+      _unit setDamage 1;
+    };
+    group _unit setGroupOwner 2;
+  };
+}];
+
 //Disable zeus ping
 missionnamespace setvariable ["bis_fnc_curatorPinged_time", 9999999, true];

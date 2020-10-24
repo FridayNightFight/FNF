@@ -13,6 +13,7 @@ ctf_flag hideObjectGlobal true;
 ctf_flag enableSimulation false;
 
 {_x allowDamage false;} forEach [ctf_flag, ctf_flagPole, ctf_banner];
+[ctf_flagPole] call phx_fnc_objBuildingDamage;
 
 ctf_banner attachTo [ctf_flagPole, [0.82,-0.38,2.45]];
 
@@ -119,7 +120,7 @@ phx_server_dropFlag = {
 
 [] spawn {
   _flagInZoneTex = false;
-  
+
   while {!phx_gameEnd} do {
     if (phx_flagCaptureTime <= 0) then {
       missionNamespace setVariable ["phx_gameEnd",true,true];

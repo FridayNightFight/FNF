@@ -17,6 +17,4 @@ corpseRemovalMaxTime = 3600;
 wreckManagerMode = 0;
 minPlayerDistance = 0;
 
-disableChannels[] = {0};
-
 onPauseScript[] = {phx_fnc_handlePauseRespawn};

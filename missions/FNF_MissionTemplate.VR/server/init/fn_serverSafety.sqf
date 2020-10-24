@@ -49,14 +49,5 @@ switch (_this select 0) do {
 
     //Disable fortify
     ["off"] call acex_fortify_fnc_handleChatCommand;
-
-    //Keep player bodies on disconnect
-    addMissionEventHandler ["HandleDisconnect", {
-      params ["_unit", "_id", "_uid", "_name"];
-      group _unit setGroupOwner 2;
-      if (alive _unit) then {
-        _unit setDamage 1;
-      };
-    }];
   };
 };

@@ -68,7 +68,7 @@ phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe s
 
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_opticMagnification = false; //Set to true to allow players to use magnified optics
-phx_maxViewDistance = 2000; //Maximum client view distance (meters), strongly recommended to keep it <= 2000 for client and server performance
+phx_maxViewDistance = 1750; //Maximum client view distance (meters), strongly recommended to keep it <= 2000 for client and server performance
 
 phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system - radios will still be preset if units have them
 phx_allowUniformSwap = false; //Set to true if you want players to be able to take off / change their uniform and helmet

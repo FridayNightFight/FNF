@@ -14,8 +14,8 @@ if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorIn
 call phx_fnc_markerVisibility;
 
 //Call safety if mission hasn't started yet. If mission has started, call JIP function
-if (phx_safetyEnabled) then {call phx_fnc_safety};
-if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
+if (phx_safetyEnabled || missionNamespace getVariable ["phx_clientJoinedSafe",false]) then {call phx_fnc_safety};
+if (!phx_safetyEnabled && !(missionNamespace getVariable ["phx_clientJoinedSafe",false])) exitWith {call phx_fnc_clientJIP};
 
 //Set loadout
 call phx_fnc_setLoadout;
@@ -98,3 +98,6 @@ call phx_fnc_checkLoadout;
 [{CBA_missionTime > 0}, {
     call phx_fnc_postBriefing;
 }, []] call CBA_fnc_waitUntilAndExecute;
+
+player enableSimulation true;
+cutText ["", "BLACK IN"];

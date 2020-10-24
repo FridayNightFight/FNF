@@ -1,3 +1,8 @@
+# v1.0.2c
+1. Added a staggered client script load to reduce initial network traffic and server load
+2. Few misc fixes
+3. Removed all weapons, nvg, and radios from editor units
+
 # v1.0.2b
 1. Prevent game admin from accidently setting safe start time too low
 

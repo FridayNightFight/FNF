@@ -1,10 +1,5 @@
 phx_specEnabled = true;
 
-//Set camera position to player camera position @ time of death if not nil
-if (!isNil "phx_playerDeathPos") then {
-  ace_spectator_camera setPos phx_playerDeathPos;
-};
-
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];
 
@@ -23,6 +18,11 @@ if (phx_gameMode == "captureTheFlag") then {
 
 //Wait for ACE spectator display
 waitUntil {!isNull findDisplay 60000};
+
+//Set camera position to player camera position @ time of death if not nil
+if (!isNil "phx_playerDeathPos") then {
+  ace_spectator_camera setPos phx_playerDeathPos;
+};
 
 //Stop typing in chat if player is not logged-in admin
 60000 call phx_fnc_disableTyping;
