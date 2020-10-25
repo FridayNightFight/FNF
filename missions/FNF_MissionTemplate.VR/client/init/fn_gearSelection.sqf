@@ -1,4 +1,5 @@
 //Exit if no optics or weapons are available
+waitUntil {missionNamespace getVariable ["phx_loadoutAssigned",false]};
 if (isNil "phx_allowedOptics" && isNil "phx_allowedMagOptics" && isNil "phx_allowedWeapons") exitWith {};
 
 if (!isNil "phx_opticMagnification") then {

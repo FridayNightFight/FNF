@@ -1,19 +1,6 @@
-# v1.0.2f
-1. Removed superfluous radio preset code
-2. misc tweaks
-
-# v1.0.2e
-1. Optimized radio preset functions
-2. Removed staggered script load, added staggered radio load as that is probably causing the most strain on the server at start
-
-# v1.0.2d
-1. Client sync CBA_missionTime on init
-2. Few tweaks
-
-# v1.0.2c
-1. Added a staggered client script load to reduce initial network traffic and server load
-2. Few misc fixes
-3. Removed all weapons, nvg, and radios from editor units
+# v1.0.3
+1. Better staggered load. Only functions that cause network load will be staggered (loadout, radios).
+2. Player check for staggered load. Will occur with player count > 50.
 
 # v1.0.2b
 1. Prevent game admin from accidently setting safe start time too low

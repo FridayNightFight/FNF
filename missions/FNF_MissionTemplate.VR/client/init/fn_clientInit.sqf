@@ -13,9 +13,6 @@ call phx_fnc_markerVisibility;
 if (phx_safetyEnabled) then {call phx_fnc_safety};
 if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
 
-//Set loadout
-call phx_fnc_setLoadout;
-
 // Set the group IDs
 call phx_fnc_setGroupIDs;
 
@@ -48,9 +45,6 @@ call phx_fnc_platoonActions;
 
 // Generate ORBAT page
 [] execVM "client\briefing\f_orbatNotes.sqf";
-
-//Weapon selector
-[] spawn phx_fnc_gearSelection;
 
 //TFAR set volume to whisper
 [] spawn {
@@ -86,9 +80,6 @@ if (phx_antiGammaDoping) then {
   };
 } , 1] call CBA_fnc_addPerFrameHandler;
 
-//Make sure player gets assigned gear, if not then kick back to lobby
-call phx_fnc_checkLoadout;
-
 //Force view distance <= phx_maxViewDistance
 [{
   if (viewDistance > phx_maxViewDistance) then {
@@ -96,8 +87,24 @@ call phx_fnc_checkLoadout;
   };
 } , 1] call CBA_fnc_addPerFrameHandler;
 
-//////////////////////////////////////////////////////////////////////////////////////////
 // Wait for mission to start, then execute post briefing init
 [{CBA_missionTime > 0}, {
     call phx_fnc_postBriefing;
 }, []] call CBA_fnc_waitUntilAndExecute;
+
+//Set loadout
+call phx_fnc_setLoadout;
+
+//Reenable simulation if it was disabled
+player enableSimulation true;
+player playMove "amovpercmstpslowwrfldnon";
+[] spawn {
+  sleep 2;
+  cutText ["", "PLAIN"];
+};
+
+//Weapon selector
+[] spawn phx_fnc_gearSelection;
+
+//Make sure player gets assigned gear, if not then kick back to lobby
+call phx_fnc_checkLoadout;
