@@ -26,6 +26,5 @@ if (phx_hasSWitem) then {
 };
 
 if (phx_SWsetup && phx_LRsetup && (CBA_missionTime > 0)) then {
-    [phx_radHandle2] call CBA_fnc_removePerFrameHandler;
     call phx_fnc_radio_setRadios;
 };

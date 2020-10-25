@@ -2,7 +2,7 @@
 if (!isServer) exitWith {};
 
 _enablePreset = ["phx_param_enableRadioPreset",1] call BIS_fnc_getParamValue;
-if (_enablePreset isEqualTo 0) exitWith {[phx_radHandle1] call CBA_fnc_removePerFrameHandler;};
+if (_enablePreset isEqualTo 0) exitWith {};
 
 _opforBaseChannel = floor(random 50) + 30;
 _indforBaseChannel = floor(random 50) + 30;
