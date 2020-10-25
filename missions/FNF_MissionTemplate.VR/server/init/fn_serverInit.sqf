@@ -1,5 +1,10 @@
 [true] spawn phx_fnc_serverSafety;
 
+phx_server_updateMissionTime = {
+  _id = _this select 0;
+  _id publicVariableClient "CBA_missionTime";
+};
+
 call phx_fnc_radio_genFreqs;
 
 call phx_fnc_server_setupGame;

@@ -51,6 +51,10 @@ call phx_fnc_setUniform;
 call phx_fnc_setWeapons;
 call phx_fnc_addUniform;
 
+[] spawn {
+  sleep (random 10);
+  player linkItem "ItemRadio";
+};
 player linkItem "ItemGPS";
 player linkItem "ItemMap";
 player linkItem "ItemCompass";

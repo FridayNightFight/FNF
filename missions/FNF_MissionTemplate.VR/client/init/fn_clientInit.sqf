@@ -1,12 +1,8 @@
-//Force view distance <= phx_maxViewDistance
-[{
-  if (viewDistance > phx_maxViewDistance) then {
-    setViewDistance phx_maxViewDistance;
-  };
-} , 1] call CBA_fnc_addPerFrameHandler;
-
 //Disable global chat
 0 enableChannel false;
+
+//Make sure client mission time is synced with server
+[clientOwner] remoteExec ["phx_server_updateMissionTime", 2];
 
 if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};
 
@@ -14,8 +10,8 @@ if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorIn
 call phx_fnc_markerVisibility;
 
 //Call safety if mission hasn't started yet. If mission has started, call JIP function
-if (phx_safetyEnabled || missionNamespace getVariable ["phx_clientJoinedSafe",false]) then {call phx_fnc_safety};
-if (!phx_safetyEnabled && !(missionNamespace getVariable ["phx_clientJoinedSafe",false])) exitWith {call phx_fnc_clientJIP};
+if (phx_safetyEnabled) then {call phx_fnc_safety};
+if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
 
 //Set loadout
 call phx_fnc_setLoadout;
@@ -36,7 +32,7 @@ call phx_fnc_zoneBoundary;
 [] spawn phx_fnc_unflipVehicleAddAction;
 
 //Preset radios
-phx_radHandle1 = [phx_fnc_radio_waitGear, 0.1, []] call CBA_fnc_addPerFrameHandler;
+call phx_fnc_radio_waitGear;
 
 //Client-side fortify
 call phx_fnc_fortifyClient;
@@ -93,11 +89,15 @@ if (phx_antiGammaDoping) then {
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
 
+//Force view distance <= phx_maxViewDistance
+[{
+  if (viewDistance > phx_maxViewDistance) then {
+    setViewDistance phx_maxViewDistance;
+  };
+} , 1] call CBA_fnc_addPerFrameHandler;
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Wait for mission to start, then execute post briefing init
 [{CBA_missionTime > 0}, {
     call phx_fnc_postBriefing;
 }, []] call CBA_fnc_waitUntilAndExecute;
-
-player enableSimulation true;
-cutText ["", "BLACK IN"];

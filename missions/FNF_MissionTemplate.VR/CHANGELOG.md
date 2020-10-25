@@ -1,3 +1,11 @@
+# v1.0.2e
+1. Optimized radio preset functions
+2. Removed staggered script load, added staggered radio load as that is probably causing the most strain on the server at start
+
+# v1.0.2d
+1. Client sync CBA_missionTime on init
+2. Few tweaks
+
 # v1.0.2c
 1. Added a staggered client script load to reduce initial network traffic and server load
 2. Few misc fixes

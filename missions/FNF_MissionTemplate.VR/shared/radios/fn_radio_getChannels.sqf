@@ -55,4 +55,6 @@ phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font
 player createDiaryRecord ["PHX_Diary", ["Radio Settings", phx_radioNoteString]];
 
 //Next step
-phx_radHandle2 = [phx_fnc_radio_waitRadios, 0, []] call CBA_fnc_addPerFrameHandler;
+[{
+  call TFAR_fnc_haveSWRadio
+}, {call phx_fnc_radio_waitRadios}] call CBA_fnc_waitUntilAndExecute;

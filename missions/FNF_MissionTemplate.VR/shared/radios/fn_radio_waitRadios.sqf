@@ -1,4 +1,7 @@
 //Get initial values from TFAR and see if they match with what the player had on him.
+phx_hasLRitem = call TFAR_fnc_haveLRRadio;
+phx_hasSWitem = call TFAR_fnc_haveSWRadio;
+
 phx_hasLR = call TFAR_fnc_haveLRRadio;
 phx_hasSW = call TFAR_fnc_haveSWRadio;
 
@@ -22,7 +25,7 @@ if (phx_hasSWitem) then {
     phx_SWsetup = true;
 };
 
-if (phx_SWsetup && {phx_LRsetup} && {(CBA_missionTime > 0)}) then {
+if (phx_SWsetup && phx_LRsetup && (CBA_missionTime > 0)) then {
     [phx_radHandle2] call CBA_fnc_removePerFrameHandler;
     call phx_fnc_radio_setRadios;
 };
