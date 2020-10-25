@@ -22,7 +22,7 @@ if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_IND
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
 
-if (isNil "pRole") exitWith {hint "Player role not set correctly. Alert the mission maker and join another slot."; [] spawn {player enableSimulation false; sleep 5; endMission "END1"}};
+if (isNil "pRole") exitWith {hint "Player role not set correctly. Alert the mission maker and join another slot."; [] spawn {player enableSimulation false; sleep 10; endMission "END1"}};
 
 phx_loadout_unitLevel = 0;
 //Shared
@@ -51,10 +51,7 @@ call phx_fnc_setUniform;
 call phx_fnc_setWeapons;
 call phx_fnc_addUniform;
 
-[] spawn {
-  sleep (random 10);
-  player linkItem "ItemRadio";
-};
+[{player linkItem "ItemRadio";}, [], (random 10) + 2] call CBA_fnc_waitAndExecute;
 player linkItem "ItemGPS";
 player linkItem "ItemMap";
 player linkItem "ItemCompass";

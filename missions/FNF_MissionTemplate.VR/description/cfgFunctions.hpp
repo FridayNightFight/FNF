@@ -60,7 +60,6 @@ class CfgFunctions {
       class radio_genFreqs{};
       class radio_waitGear{};
       class radio_getChannels{};
-      class radio_waitRadios{};
       class radio_setRadios{};
       class radio_cleanup{};
     };

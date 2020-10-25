@@ -51,10 +51,11 @@ if (!isNil "phx_ch8") then {phx_radioNoteString = phx_radioNoteString + "Channel
 if (!isNil "phx_ch9") then {phx_radioNoteString = phx_radioNoteString + "Channel 9: " + str(phx_ch9) + " MHz<br/>";};
 
 //Let player know what channels he starts on.
+PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset"];
 phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
-player createDiaryRecord ["PHX_Diary", ["Radio Settings", phx_radioNoteString]];
+player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteString]];
 
 //Next step
-[{
-  call TFAR_fnc_haveSWRadio
-}, {call phx_fnc_radio_waitRadios}] call CBA_fnc_waitUntilAndExecute;
+[{call TFAR_fnc_haveSWRadio}, {phx_hasSW = true;}, [], 20, {phx_hasSW = false;}] call CBA_fnc_waitUntilAndExecute;
+[{call TFAR_fnc_haveLRRadio}, {phx_hasLR = true;}, [], 20, {phx_hasLR = false;}] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {call phx_fnc_radio_setRadios;}, [], 60, {systemChat "Radio preset timeout";}] call CBA_fnc_waitUntilAndExecute;

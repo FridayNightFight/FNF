@@ -4,9 +4,9 @@ if (!isServer) exitWith {};
 _enablePreset = ["phx_param_enableRadioPreset",1] call BIS_fnc_getParamValue;
 if (_enablePreset isEqualTo 0) exitWith {};
 
-_opforBaseChannel = floor(random 50) + 30;
-_indforBaseChannel = floor(random 50) + 30;
-_bluforBaseChannel = floor(random 50) + 30;
+_opforBaseChannel = floor(random 40) + 30;
+_indforBaseChannel = floor(random 40) + 30;
+_bluforBaseChannel = floor(random 40) + 30;
 _broadcasted1 = ["phx_bluforBaseChannel", _bluforBaseChannel] call CBA_fnc_publicVariable;
 _broadcasted2 = ["phx_opforBaseChannel", _opforBaseChannel] call CBA_fnc_publicVariable;
 _broadcasted3 = ["phx_indforBaseChannel", _indforBaseChannel] call CBA_fnc_publicVariable;

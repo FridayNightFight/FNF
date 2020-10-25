@@ -1,3 +1,7 @@
+# v1.0.2f
+1. Removed superfluous radio preset code
+2. misc tweaks
+
 # v1.0.2e
 1. Optimized radio preset functions
 2. Removed staggered script load, added staggered radio load as that is probably causing the most strain on the server at start

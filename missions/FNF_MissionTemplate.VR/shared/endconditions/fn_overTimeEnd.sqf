@@ -116,7 +116,7 @@ switch (true) do {
       if (_attackersInside == 0) then {
         "The sectors have been defended." call _endGame;
       };
-      sleep 2;
+      sleep 3;
     };
   };
   //ATK/DEF SECTOR END
@@ -202,7 +202,7 @@ switch (true) do {
           _overTimeAlert = true;
         };
       };
-      sleep 2;
+      sleep 3;
     };
   };
   //END NEUTRAL SECTOR & CONNECTION
