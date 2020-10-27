@@ -1,5 +1,6 @@
 # v1.0.3a
 1. Fix for fortify tool not being in CE inventory after loadout set
+2. Added some more fortifications
 
 # v1.0.3
 1. Better staggered load. Only functions that cause network load will be staggered (loadout, radios).
