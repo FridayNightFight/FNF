@@ -17,7 +17,7 @@ if (!isNil "term1") then {
 if (!isNil "term2") then {
  phx_fortify_objArr append [term2];
 };
-if (!isNil "term1") then {
+if (!isNil "term3") then {
  phx_fortify_objArr append [term3];
 };
 if (!isNil "phx_destroyObjs") then {

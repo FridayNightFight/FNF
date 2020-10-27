@@ -4,6 +4,7 @@
 //Make sure client mission time is synced with server
 [clientOwner] remoteExec ["phx_server_updateMissionTime", 2];
 
+//Exit if player is spectator
 if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};
 
 //Hide markers player shouldn't see
@@ -19,10 +20,8 @@ call phx_fnc_setGroupIDs;
 // Create briefing
 [] execVM "client\briefing\briefing.sqf";
 
-//Make sure player stays inside start marker
+//Make sure player stays within boundaries
 call phx_fnc_startBoundary;
-
-//Make sure player stays within mission zone
 call phx_fnc_zoneBoundary;
 
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
@@ -30,9 +29,6 @@ call phx_fnc_zoneBoundary;
 
 //Preset radios
 call phx_fnc_radio_waitGear;
-
-//Client-side fortify
-call phx_fnc_fortifyClient;
 
 //Wait for the server to finish setting up the game then call client setup
 [{!isNil "phx_serverGameSetup"}, {call phx_fnc_client_setupGame}] call CBA_fnc_waitUntilAndExecute;
@@ -94,6 +90,9 @@ if (phx_antiGammaDoping) then {
 
 //Set loadout
 call phx_fnc_setLoadout;
+
+//Client-side fortify
+[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient}] call CBA_fnc_waitUntilAndExecute;
 
 //Reenable simulation if it was disabled
 player enableSimulation true;

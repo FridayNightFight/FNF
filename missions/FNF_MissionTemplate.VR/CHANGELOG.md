@@ -1,6 +1,9 @@
+# v1.0.3a
+1. Fix for fortify tool not being in CE inventory after loadout set
+
 # v1.0.3
 1. Better staggered load. Only functions that cause network load will be staggered (loadout, radios).
-2. Player check for staggered load. Will occur with player count > 50.
+2. Player check for staggered load. Will occur with player count > 50. May help prevent uniform/vest rendering bug as well.
 
 # v1.0.2b
 1. Prevent game admin from accidently setting safe start time too low
