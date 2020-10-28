@@ -1,3 +1,6 @@
+# v1.0.3b
+1. Fix for fortify remove refunding money on remote clients
+
 # v1.0.3a
 1. Fix for fortify tool not being in CE inventory after loadout set
 2. Added some more fortifications

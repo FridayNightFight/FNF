@@ -51,7 +51,7 @@ switch (playerSide) do {
     };
 
     if (_type != "Land_Plank_01_4m_F" && _type != "Land_Plank_01_8m_F" && (_type find "BagFence" == -1)) then {
-      if (_pos select 2 > 0.35) then {
+      if ((_pos select 2) > 0.35) then {
         _canPlace = false;
         _errorStr = "Cannot place object. Object must be on a surface."
       };
@@ -91,6 +91,7 @@ switch (playerSide) do {
 }] call acex_fortify_fnc_addDeployHandler;
 
 ["acex_fortify_objectDeleted", {
+  if !((_this select 0) == player) exitWith {};
   private _type = typeOf (_this select 2);
   private _fortifyObjsArr = [];
   private _fortifyVarStr = "";
