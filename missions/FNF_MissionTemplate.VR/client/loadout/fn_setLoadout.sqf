@@ -46,7 +46,7 @@ phx_loadout_blood = "ACE_bloodIV:6";
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
 
-if (count allPlayers > 50) then {
+if (count (call BIS_fnc_listPlayers) > 50) then {
   waitUntil {!isNull findDisplay 46};
   player enableSimulation false;
   cutText ["Please Wait", "BLACK FADED", 99];

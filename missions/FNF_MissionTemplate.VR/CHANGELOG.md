@@ -1,3 +1,6 @@
+# v1.0.3c
+1. Fix for allPlayers command not able to be used until mission start. Using BIS_fnc_listPlayers instead.
+
 # v1.0.3b
 1. Fix for fortify remove refunding money on remote clients
 

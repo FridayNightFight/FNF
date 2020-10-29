@@ -2,7 +2,9 @@
 0 enableChannel false;
 
 //Make sure client mission time is synced with server
-[clientOwner] remoteExec ["phx_server_updateMissionTime", 2];
+[{CBA_missionTime > 5}, {
+    [clientOwner] remoteExec ["phx_server_updateMissionTime", 2];
+}] call CBA_fnc_waitUntilAndExecute;
 
 //Exit if player is spectator
 if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};

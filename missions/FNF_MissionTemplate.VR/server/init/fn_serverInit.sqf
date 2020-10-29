@@ -59,13 +59,13 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
     if (alive _unit) then {
       _unit setDamage 1;
     };
-    group _unit setGroupOwner 2;
+    (group _unit) setGroupOwner 2;
     deleteVehicle _unit;
   } else {
     if (alive _unit) then {
       _unit setDamage 1;
     };
-    group _unit setGroupOwner 2;
+    (group _unit) setGroupOwner 2;
   };
 }];
 
