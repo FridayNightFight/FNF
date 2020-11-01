@@ -51,6 +51,7 @@ class CfgFunctions {
       class server_setupGame{};
       class objBuildingDamage{};
       class handleNoLoadout{};
+      class sendUniforms{};
     };
     class unflip {
       file = "client\unflip";

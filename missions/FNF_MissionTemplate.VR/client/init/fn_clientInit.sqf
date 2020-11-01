@@ -100,7 +100,7 @@ call phx_fnc_setLoadout;
 //Reenable simulation if it was disabled
 player enableSimulation true;
 [] spawn {
-  player playMove "amovpercmstpslowwrfldnon";
+  if (!isServer) then {player playMove "amovpercmstpslowwrfldnon";};
   uisleep 2;
   cutText ["", "PLAIN"];
 };

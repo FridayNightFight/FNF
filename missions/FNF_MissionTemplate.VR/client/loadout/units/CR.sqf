@@ -8,5 +8,3 @@ player addWeapon phx_loadout_rifle_weapon;
 phx_loadout_sidearm_mag call phx_fnc_addGear;
 player addWeapon phx_loadout_sidearm_weapon;
 player addWeapon phx_loadout_binocular;
-
-player setVariable ["ACE_IsEngineer", 1, true];

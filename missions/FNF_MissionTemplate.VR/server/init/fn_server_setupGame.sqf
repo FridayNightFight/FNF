@@ -35,7 +35,7 @@ switch (phx_gameMode) do {
   case neutralSector: {
     [] spawn compile preprocessFileLineNumbers format ["shared\modes\neutralSector.sqf"];
     ["off"] call acex_fortify_fnc_handleChatCommand;
-    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 25 points of the highest side. The first side to 100 points will still win.";
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 25 points of the highest side.";
   };
 };
 

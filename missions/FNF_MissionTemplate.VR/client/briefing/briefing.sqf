@@ -17,7 +17,6 @@ if (serverCommandAvailable "#kick") then {
 
   [] spawn {
     waitUntil {!phx_safetyEnabled};
-
     player removeDiarySubject "PHX_Diary_Admin_Safestart";
   };
 };
@@ -27,16 +26,11 @@ PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Det
 waitUntil {!isNil "phx_overTimeConStr"};
 player createDiaryRecord ["PHX_Diary_Details",["Overtime Condition",phx_overTimeConStr]];
 
-_units = allUnits;
-
 _varStr = "";
 
-if ((west countSide _units) > 0) then {
-  _incStr = "client\loadout\uniforms\" + phx_bluforUniform + ".sqf";
-  call compile preprocessFileLineNumbers _incStr;
-
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_loadout_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_loadout_headgear >> "picture");
+if (!(phx_briefing_west_uniform isEqualTo "") || !(phx_briefing_west_headgear isEqualTo "")) then {
+  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_uniform >> "picture");
+  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_headgear >> "picture");
 
   player createDiaryRecord ["PHX_Diary_Details",["BLUFOR Uniform",
   format ["BLUFOR Helmet:<br/><br/>
@@ -51,12 +45,9 @@ if ((west countSide _units) > 0) then {
   _varStr = _varStr + format ["BLUFOR MAT: %1", phx_bluAT] + "<br/>";
 };
 
-if ((east countSide _units) > 0) then {
-  _incStr = "client\loadout\uniforms\" + phx_opforUniform + ".sqf";
-  call compile preprocessFileLineNumbers _incStr;
-
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_loadout_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_loadout_headgear >> "picture");
+if (!(phx_briefing_east_uniform isEqualTo "") || !(phx_briefing_east_headgear isEqualTo "")) then {
+  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_uniform >> "picture");
+  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_headgear >> "picture");
 
   player createDiaryRecord ["PHX_Diary_Details",["OPFOR Uniform",
   format ["OPFOR Helmet:<br/><br/>
@@ -71,12 +62,9 @@ if ((east countSide _units) > 0) then {
   _varStr = _varStr + format ["OPFOR MAT: %1", phx_redAT] + "<br/>";
 };
 
-if ((independent countSide _units) > 0) then {
-  _incStr = "client\loadout\uniforms\" + phx_indforUniform + ".sqf";
-  call compile preprocessFileLineNumbers _incStr;
-
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_loadout_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_loadout_headgear >> "picture");
+if (!(phx_briefing_ind_uniform isEqualTo "") || !(phx_briefing_ind_headgear isEqualTo "")) then {
+  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_uniform >> "picture");
+  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_headgear >> "picture");
 
   player createDiaryRecord ["PHX_Diary_Details",["INDFOR Uniform",
   format ["INDFOR Helmet:<br/><br/>
@@ -99,6 +87,3 @@ _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Defenders fortify allowed: %1", phx_allowFortify];
 
 player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
-
-phx_loadout_uniform = nil;
-phx_loadout_headgear = nil;

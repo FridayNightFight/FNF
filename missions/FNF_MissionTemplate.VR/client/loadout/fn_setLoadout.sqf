@@ -48,11 +48,11 @@ phx_loadout_vector = "ACE_VectorDay";
 
 player linkItem "ItemMap";
 
-if (count (call BIS_fnc_listPlayers) > 50) then {
+if (count (call BIS_fnc_listPlayers) > 30) then {
   waitUntil {!isNull findDisplay 46};
   player enableSimulation false;
   cutText ["Please Wait", "BLACK FADED", 99];
-  uisleep ((random 12) + 6);
+  uisleep ((random 12) + 8);
 };
 
 call phx_fnc_removeGear;

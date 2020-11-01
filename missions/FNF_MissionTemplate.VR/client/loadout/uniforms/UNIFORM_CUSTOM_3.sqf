@@ -1,6 +1,7 @@
 #include "..\cfgLoadouts.hpp"
 
 //Global customization - will be applied to every role
+//Must have a uniform and/or helmet defined here to make the uniform diary record appear
 phx_loadout_uniform = "";
 phx_loadout_vest = "";
 phx_loadout_backpack = "";

@@ -1,3 +1,9 @@
+# v1.1.0a
+1. Fix repair issues
+2. Better uniform/helmet brief vars
+3. Disable leader actions until further testing
+4. Many tweaks
+
 # v1.1.0
 1. Increased engineer repair threshold
 2. Better typing restriction
@@ -5,6 +11,7 @@
 4. Few fixes and tweaks
 5. Fix admin safe time change causing server var to be nil
 6. Likely fix for some players not having radios preset
+7. Removed everything from editor units but uniforms
 
 # v1.0.3c
 1. Fix for allPlayers command not able to be used until mission start. Using BIS_fnc_listPlayers instead.

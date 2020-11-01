@@ -1,5 +1,6 @@
 if !((typeOf player == "B_officer_F") || (typeOf player == "O_officer_F") || (typeOf player == "I_officer_F")) exitWith {};
 if !(groupID group player == "CMD") exitWith {};
+if (true) exitWith {};
 
 phx_fnc_leadAdds = {
   actionSelected = 0;
