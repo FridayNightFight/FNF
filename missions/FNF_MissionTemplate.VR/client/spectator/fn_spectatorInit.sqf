@@ -1,4 +1,5 @@
 phx_specEnabled = true;
+phx_loadoutAssigned = true;
 
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];
@@ -25,7 +26,7 @@ if (!isNil "phx_playerDeathPos") then {
 };
 
 //Stop typing in chat if player is not logged-in admin
-60000 call phx_fnc_disableTyping;
+60000 spawn phx_fnc_disableTyping;
 
 //Returns true if obj can be drawn
 _showObj = {

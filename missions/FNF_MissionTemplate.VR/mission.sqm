@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=2570;
+		nextID=2584;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={533.38733,121.32065,514.42218};
-		dir[]={0.35661185,-0.48947453,0.79580855};
-		up[]={0.20016767,0.87201023,0.44669053};
-		aside[]={0.91259378,4.2968895e-007,-0.40894473};
+		pos[]={302.22925,31.847412,641.26001};
+		dir[]={-0.012830201,-0.54112947,0.84097791};
+		up[]={-0.0082556931,0.84081113,0.54124278};
+		aside[]={0.99996805,-5.181937e-007,0.015252536};
 	};
 };
 binarizationWanted=0;
@@ -41,15 +41,8 @@ addons[]=
 	"A3_Structures_F_Mil_Flags",
 	"A3_Modules_F_Multiplayer",
 	"A3_Characters_F",
-	"A3_Weapons_F",
-	"ace_goggles",
-	"A3_Characters_F_Mark",
-	"rhsusf_c_troops",
-	"ace_compat_rhs_usf3",
-	"A3_Characters_F_Heads",
-	"A3_Characters_F_Orange_Facewear",
-	"ace_hearing",
 	"ace_explosives",
+	"A3_Characters_F_Mark",
 	"ace_gforces",
 	"ace_parachute"
 };
@@ -57,7 +50,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=19;
+		items=13;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -128,61 +121,19 @@ class AddonsMetaData
 		};
 		class Item10
 		{
-			className="A3_Weapons_F";
-			name="Arma 3 Alpha - Weapons and Accessories";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item11
-		{
-			className="ace_goggles";
-			name="ACE3 - Goggles";
+			className="ace_explosives";
+			name="ACE3 - Explosives";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item12
+		class Item11
 		{
 			className="A3_Characters_F_Mark";
 			name="Arma 3 Marksmen - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
-		{
-			className="rhsusf_c_troops";
-			name="RHSUSF Infantry & Equipment";
-			author="Red Hammer Studios";
-			url="http://www.rhsmods.org/";
-		};
-		class Item14
-		{
-			className="ace_compat_rhs_usf3";
-			name="ACE3 - RHS USF Compatibility";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item15
-		{
-			className="A3_Characters_F_Orange";
-			name="Arma 3 Orange - Characters and Clothing";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item16
-		{
-			className="ace_hearing";
-			name="ACE3 - Hearing";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item17
-		{
-			className="ace_explosives";
-			name="ACE3 - Explosives";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item18
+		class Item12
 		{
 			className="ace_parachute";
 			name="ACE3 - Parachute";
@@ -196,6 +147,7 @@ class ScenarioData
 {
 	disabledAI=1;
 	wreckRemovalMaxTime=3600;
+	corpseManagerMode=1;
 	corpseLimit=40;
 };
 class CustomAttributes
@@ -3897,19 +3849,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_MilCap_mcamo";
 						};
 					};
 					id=1485;
@@ -4280,17 +4222,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Combat";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1486;
@@ -4584,17 +4515,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1487;
@@ -4885,24 +4805,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1644;
@@ -5206,20 +5111,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Aviator";
-							headgear="H_MilCap_mcamo";
 						};
 					};
 					id=1490;
@@ -5590,17 +5484,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1491;
@@ -5891,24 +5774,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1492;
@@ -6294,19 +6162,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1493;
@@ -6593,17 +6451,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1495;
@@ -6689,23 +6536,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1496;
@@ -6807,17 +6640,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1498;
@@ -6903,19 +6725,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1499;
@@ -7000,24 +6812,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1500;
@@ -7102,24 +6899,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1501;
@@ -7428,24 +7210,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1502;
@@ -7530,24 +7297,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1503;
@@ -7949,17 +7701,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1505;
@@ -8045,19 +7786,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1506;
@@ -8142,24 +7873,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1507;
@@ -8244,23 +7960,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1508;
@@ -8568,24 +8270,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1509;
@@ -8670,24 +8357,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1510;
@@ -9089,16 +8761,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1512;
@@ -9184,24 +8846,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1513;
@@ -9303,17 +8950,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1515;
@@ -9399,19 +9035,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1516;
@@ -9496,24 +9122,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1517;
@@ -9598,24 +9209,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1518;
@@ -9923,23 +9519,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1519;
@@ -10024,24 +9606,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1520;
@@ -10443,17 +10010,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Combat";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1522;
@@ -10539,19 +10095,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1523;
@@ -10636,23 +10182,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1524;
@@ -10737,24 +10269,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1525;
@@ -11062,24 +10579,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1526;
@@ -11164,24 +10666,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1527;
@@ -11583,17 +11070,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1529;
@@ -11679,24 +11155,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1530;
@@ -11999,24 +11460,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1532;
@@ -12102,18 +11548,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1533;
@@ -12198,18 +11635,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1534;
@@ -12294,18 +11722,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1535;
@@ -12404,24 +11823,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1537;
@@ -12507,24 +11911,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_mcamo_AT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1538;
@@ -12609,24 +11998,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_mcamo_AAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1539;
@@ -12711,19 +12085,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1540;
@@ -12804,19 +12168,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_MilCap_mcamo";
 						};
 					};
 					id=1542;
@@ -13187,17 +12541,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1543;
@@ -13488,24 +12831,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1544;
@@ -13891,18 +13219,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1545;
@@ -14189,17 +13508,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1547;
@@ -14285,24 +13593,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1548;
@@ -14404,17 +13697,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Combat";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1550;
@@ -14500,19 +13782,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1551;
@@ -14597,24 +13869,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1552;
@@ -14699,24 +13956,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1553;
@@ -15025,23 +14267,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1554;
@@ -15126,24 +14354,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1555;
@@ -15545,17 +14758,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1557;
@@ -15641,19 +14843,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1558;
@@ -15738,24 +14930,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1559;
@@ -15840,24 +15017,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1560;
@@ -16165,23 +15327,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1561;
@@ -16266,24 +15414,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1562;
@@ -16685,17 +15818,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Combat";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1564;
@@ -16781,24 +15903,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1565;
@@ -16900,17 +16007,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1567;
@@ -16996,19 +16092,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1568;
@@ -17093,23 +16179,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1569;
@@ -17194,24 +16266,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1570;
@@ -17519,24 +16576,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1571;
@@ -17621,24 +16663,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1572;
@@ -18040,17 +17067,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1574;
@@ -18136,18 +17152,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_grass";
 						};
 					};
 					id=1575;
@@ -18232,23 +17239,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_light";
 						};
 					};
 					id=1576;
@@ -18333,24 +17326,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Kitbag_rgr_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetSpecB";
 						};
 					};
 					id=1577;
@@ -18658,23 +17636,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier2_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_sand";
 						};
 					};
 					id=1578;
@@ -18759,24 +17723,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1579;
@@ -19178,17 +18127,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=1581;
@@ -19274,23 +18212,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=1582;
@@ -19593,23 +18517,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1584;
@@ -19695,19 +18605,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1585;
@@ -19792,19 +18692,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1586;
@@ -19889,19 +18779,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1587;
@@ -20000,24 +18880,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1589;
@@ -20103,19 +18968,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1590;
@@ -20200,19 +19055,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1591;
@@ -20297,19 +19142,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrier1_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB";
 						};
 					};
 					id=1592;
@@ -20412,16 +19247,6 @@ class Mission
 								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_Beret_ocamo";
 						};
 					};
 					id=1885;
@@ -20789,19 +19614,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1886;
@@ -21169,19 +19984,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1888;
@@ -21549,23 +20354,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1887;
@@ -21949,17 +20740,6 @@ class Mission
 								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Aviator";
-							headgear="H_Beret_ocamo";
 						};
 					};
 					id=1890;
@@ -22327,19 +21107,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1891;
@@ -22707,23 +21477,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1892;
@@ -23090,18 +21846,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1893;
@@ -23405,19 +22152,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1895;
@@ -23523,23 +22260,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1896;
@@ -23920,19 +22643,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1898;
@@ -24020,18 +22733,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1899;
@@ -24118,23 +22822,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1900;
@@ -24221,23 +22911,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1901;
@@ -24547,23 +23223,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1902;
@@ -24650,23 +23312,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1903;
@@ -25066,19 +23714,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1905;
@@ -25166,18 +23804,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1906;
@@ -25264,23 +23893,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1907;
@@ -25367,23 +23982,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1908;
@@ -25693,23 +24294,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1909;
@@ -25796,23 +24383,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1910;
@@ -26212,19 +24785,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1912;
@@ -26311,23 +24874,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1913;
@@ -26631,19 +25180,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1915;
@@ -26731,18 +25270,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1916;
@@ -26829,23 +25359,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1917;
@@ -26932,23 +25448,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1918;
@@ -27258,23 +25760,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1919;
@@ -27361,23 +25849,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1920;
@@ -27777,19 +26251,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1922;
@@ -27877,18 +26341,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1927;
@@ -27975,23 +26430,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1923;
@@ -28078,23 +26519,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1924;
@@ -28404,23 +26831,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1925;
@@ -28507,23 +26920,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1926;
@@ -28923,19 +27322,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1929;
@@ -29022,23 +27411,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1930;
@@ -29341,23 +27716,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1932;
@@ -29444,18 +27805,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1934;
@@ -29542,18 +27894,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1933;
@@ -29640,18 +27983,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1935;
@@ -29750,23 +28084,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1937;
@@ -29853,23 +28173,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_AT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1938;
@@ -29956,23 +28262,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_cbr_AAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1939;
@@ -30057,18 +28349,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1940;
@@ -30152,17 +28435,6 @@ class Mission
 								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Aviator";
-							headgear="H_Beret_ocamo";
 						};
 					};
 					id=1942;
@@ -30530,19 +28802,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1943;
@@ -30910,23 +29172,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1944;
@@ -31293,18 +29541,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1945;
@@ -31608,19 +29847,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1947;
@@ -31726,23 +29955,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1948;
@@ -32123,19 +30338,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1950;
@@ -32223,18 +30428,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1951;
@@ -32321,23 +30517,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1952;
@@ -32424,23 +30606,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1953;
@@ -32750,23 +30918,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1954;
@@ -32853,23 +31007,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1955;
@@ -33269,19 +31409,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1957;
@@ -33369,18 +31499,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1958;
@@ -33467,23 +31588,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1959;
@@ -33570,23 +31677,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1960;
@@ -33896,23 +31989,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1961;
@@ -33999,23 +32078,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1962;
@@ -34415,19 +32480,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1964;
@@ -34514,23 +32569,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1965;
@@ -34834,19 +32875,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1967;
@@ -34934,18 +32965,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1968;
@@ -35032,23 +33054,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1969;
@@ -35135,23 +33143,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1970;
@@ -35461,23 +33455,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1971;
@@ -35564,23 +33544,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1972;
@@ -35980,19 +33946,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessOGL_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1974;
@@ -36080,18 +34036,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1975;
@@ -36178,23 +34125,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1976;
@@ -36281,23 +34214,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Carryall_ocamo_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1977;
@@ -36607,23 +34526,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_cbr_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1978;
@@ -36710,23 +34615,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1979;
@@ -37126,19 +35017,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=1981;
@@ -37225,23 +35106,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1982;
@@ -37544,23 +35411,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1984;
@@ -37647,18 +35500,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1985;
@@ -37745,18 +35589,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1987;
@@ -37843,18 +35678,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1986;
@@ -37953,23 +35779,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_Parachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1989;
@@ -38056,18 +35868,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1990;
@@ -38154,18 +35957,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1991;
@@ -38252,18 +36046,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_HarnessO_brn";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=1992;
@@ -38363,20 +36148,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_OfficerUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Aviator";
-							headgear="H_MilCap_dgtl";
 						};
 					};
 					id=2107;
@@ -38670,17 +36444,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Shades_Blue";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2108;
@@ -38974,16 +36737,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2109;
@@ -39277,21 +37030,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2110;
@@ -39672,20 +37410,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_OfficerUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Aviator";
-							headgear="H_MilCap_dgtl";
 						};
 					};
 					id=2112;
@@ -39979,17 +37706,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2113;
@@ -40283,20 +37999,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2114;
@@ -40663,19 +38365,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Sport_Blackred";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2115;
@@ -40962,16 +38654,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2117;
@@ -41060,21 +38742,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2118;
@@ -41454,20 +39121,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Shades_Blue";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2120;
@@ -41556,15 +39212,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2121;
@@ -41649,23 +39296,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2122;
@@ -41753,21 +39386,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2123;
@@ -42076,24 +39694,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Red";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2124;
@@ -42181,21 +39784,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2125;
@@ -42594,19 +40182,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2127;
@@ -42695,15 +40273,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2128;
@@ -42788,23 +40357,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2129;
@@ -43187,20 +40742,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2130;
@@ -43508,24 +41049,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Spectacles";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2131;
@@ -43613,20 +41139,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2132;
@@ -44028,17 +41540,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2134;
@@ -44127,21 +41628,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2135;
@@ -44535,19 +42021,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2137;
@@ -44636,15 +42112,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2138;
@@ -44729,24 +42196,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2139;
@@ -44834,20 +42286,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2140;
@@ -45155,23 +42593,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2141;
@@ -45259,21 +42683,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2142;
@@ -45672,20 +43081,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2144;
@@ -45774,15 +43172,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2145;
@@ -45867,24 +43256,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2146;
@@ -45972,20 +43346,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2147;
@@ -46293,23 +43653,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2148;
@@ -46397,21 +43743,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2149;
@@ -46813,17 +44144,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Shades_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2151;
@@ -46912,20 +44232,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2152;
@@ -47321,16 +44627,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Aviator";
-							headgear="H_MilCap_dgtl";
 						};
 					};
 					id=2154;
@@ -47396,23 +44692,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_HMG_01_weapon_F";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2155;
@@ -47481,21 +44763,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_HelmetIA_net";
 						};
 					};
 					id=2156;
@@ -47864,21 +45131,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Red";
-							headgear="H_HelmetIA_net";
 						};
 					};
 					id=2157;
@@ -48260,16 +45512,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Spectacles";
-							headgear="H_MilCap_dgtl";
 						};
 					};
 					id=2159;
@@ -48336,24 +45578,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_AT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Squares";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2160;
@@ -48438,24 +45665,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_AAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2161;
@@ -48540,19 +45752,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2559;
@@ -48633,20 +45835,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_OfficerUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Aviator";
-							headgear="H_MilCap_dgtl";
 						};
 					};
 					id=2163;
@@ -48940,16 +46131,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2164;
@@ -49243,20 +46424,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2165;
@@ -49623,19 +46790,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2166;
@@ -49922,16 +47079,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2168;
@@ -50020,21 +47167,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2169;
@@ -50414,20 +47546,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Shades_Red";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2171;
@@ -50516,15 +47637,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2172;
@@ -50609,23 +47721,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2173;
@@ -50713,21 +47811,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Aviator";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2174;
@@ -51036,23 +48119,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2175;
@@ -51140,21 +48209,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2176;
@@ -51553,20 +48607,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Combat";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2178;
@@ -51655,15 +48698,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2179;
@@ -51748,24 +48782,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2180;
@@ -51853,20 +48872,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2181;
@@ -52175,24 +49180,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2182;
@@ -52280,21 +49270,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2183;
@@ -52696,16 +49671,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2185;
@@ -52794,21 +49759,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2186;
@@ -53188,19 +50138,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2188;
@@ -53289,15 +50229,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2189;
@@ -53382,24 +50313,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2190;
@@ -53487,20 +50403,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2191;
@@ -53809,23 +50711,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2192;
@@ -53913,20 +50801,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2193;
@@ -54325,20 +51199,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="G_Spectacles";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2195;
@@ -54427,15 +51290,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_camo";
 						};
 					};
 					id=2196;
@@ -54520,23 +51374,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_TacticalPack_oli_AAR";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2197;
@@ -54624,21 +51464,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIAGL_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Carryall_oli_Exp";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2198;
@@ -54947,24 +51772,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_LAT";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2199;
@@ -55052,21 +51862,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2200;
@@ -55468,16 +52263,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2202;
@@ -55566,21 +52351,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2203;
@@ -55962,16 +52732,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Spectacles_Tinted";
-							headgear="H_MilCap_dgtl";
 						};
 					};
 					id=2205;
@@ -56037,24 +52797,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_HMG_01_weapon_F";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2206;
@@ -56123,21 +52868,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Blue";
-							headgear="H_HelmetIA_net";
 						};
 					};
 					id=2207;
@@ -56506,21 +53236,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Sport_BlackWhite";
-							headgear="H_HelmetIA_net";
 						};
 					};
 					id=2208;
@@ -56902,15 +53617,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_MilCap_dgtl";
 						};
 					};
 					id=2210;
@@ -56976,23 +53682,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform_tshirt";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_Chestrig_oli";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_HMG_01_weapon_F";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2211;
@@ -57061,21 +53753,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_HelmetIA_net";
 						};
 					};
 					id=2212;
@@ -57444,20 +54121,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA1_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Ammo";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetIA_net";
 						};
 					};
 					id=2213;
@@ -57838,19 +54501,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetLeaderO_ocamo";
 						};
 					};
 					id=2374;
@@ -57956,23 +54609,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_CombatUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_TacVest_khk";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_FieldPack_ocamo_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetO_ocamo";
 						};
 					};
 					id=2375;
@@ -58357,18 +54996,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2554;
@@ -58453,18 +55083,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2556;
@@ -58562,18 +55183,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2377;
@@ -58658,18 +55270,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2378;
@@ -58754,18 +55357,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2379;
@@ -58850,18 +55444,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2380;
@@ -58959,18 +55544,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2382;
@@ -59055,18 +55631,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2383;
@@ -59151,18 +55718,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2384;
@@ -59247,18 +55805,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2385;
@@ -59356,18 +55905,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2387;
@@ -59452,18 +55992,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2388;
@@ -59548,18 +56079,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2389;
@@ -59644,18 +56166,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2390;
@@ -59753,18 +56266,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2392;
@@ -59849,18 +56353,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2393;
@@ -59945,18 +56440,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2394;
@@ -60041,18 +56527,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_SpecopsUniform_ocamo";
+								typeName="U_O_OfficerUniform_ocamo";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_khk";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_O";
 						};
 					};
 					id=2395;
@@ -60154,15 +56631,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2397;
@@ -60455,15 +56923,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2398;
@@ -60769,15 +57228,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2400;
@@ -61070,15 +57520,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2401;
@@ -61371,15 +57812,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2402;
@@ -61685,15 +58117,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2404;
@@ -61986,15 +58409,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2405;
@@ -62287,15 +58701,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2406;
@@ -62601,15 +59006,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2408;
@@ -62902,15 +59298,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2409;
@@ -63203,15 +59590,6 @@ class Mission
 								typeName="U_O_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_O";
 						};
 					};
 					id=2410;
@@ -63517,17 +59895,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierGL_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetB_desert";
 						};
 					};
 					id=2443;
@@ -63632,24 +59999,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_B_CombatUniform_mcam_tshirt";
+								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierSpec_rgr";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="B_AssaultPack_rgr_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetB_light_desert";
 						};
 					};
 					id=2444;
@@ -63756,15 +60108,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2550;
@@ -63852,16 +60195,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2552;
@@ -63962,16 +60295,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2446;
@@ -64059,16 +60382,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2447;
@@ -64156,16 +60469,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2448;
@@ -64253,15 +60556,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2449;
@@ -64362,16 +60656,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2451;
@@ -64459,16 +60743,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2452;
@@ -64556,16 +60830,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2453;
@@ -64653,16 +60917,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2454;
@@ -64763,16 +61017,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2456;
@@ -64860,16 +61104,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2457;
@@ -64957,16 +61191,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2458;
@@ -65054,15 +61278,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2459;
@@ -65163,16 +61378,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2461;
@@ -65260,16 +61465,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2462;
@@ -65357,16 +61552,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2463;
@@ -65454,16 +61639,6 @@ class Mission
 								typeName="U_B_CombatUniform_mcam_vest";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_rgr";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetCrew_B";
 						};
 					};
 					id=2464;
@@ -65564,16 +61739,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2466;
@@ -65865,16 +62030,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2467;
@@ -66179,16 +62334,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2469;
@@ -66480,16 +62625,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2470;
@@ -66781,16 +62916,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2471;
@@ -67095,16 +63220,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2473;
@@ -67396,15 +63511,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2474;
@@ -67696,16 +63802,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2475;
@@ -68010,16 +64106,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_orange";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2477;
@@ -68311,16 +64397,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2478;
@@ -68612,16 +64688,6 @@ class Mission
 								typeName="U_B_PilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_PilotHelmetFighter_B";
 						};
 					};
 					id=2479;
@@ -68928,16 +64994,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							gps="ItemGPS";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2508;
@@ -69046,21 +65102,6 @@ class Mission
 								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_PlateCarrierIA2_dgtl";
-								isBackpack=0;
-							};
-							class backpack
-							{
-								typeName="I_Fieldpack_oli_Medic";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetIA";
 						};
 					};
 					id=2509;
@@ -69446,19 +65487,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2546;
@@ -69748,19 +65779,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2548;
@@ -70063,19 +66084,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2511;
@@ -70365,18 +66376,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2512;
@@ -70666,19 +66668,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Clear";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2513;
@@ -70968,18 +66960,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2514;
@@ -71282,19 +67265,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Red";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2516;
@@ -71584,19 +67557,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2517;
@@ -71886,18 +67849,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2518;
@@ -72187,19 +68141,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2519;
@@ -72502,19 +68446,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2521;
@@ -72804,18 +68738,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2522;
@@ -73105,18 +69030,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2523;
@@ -73406,18 +69322,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2524;
@@ -73720,19 +69627,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Combat";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2526;
@@ -74022,18 +69919,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2527;
@@ -74323,18 +70211,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2528;
@@ -74624,19 +70503,9 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_I_CombatUniform";
+								typeName="U_I_CombatUniform_shortsleeve";
 								isBackpack=0;
 							};
-							class vest
-							{
-								typeName="V_BandollierB_oli";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_HelmetCrew_I";
 						};
 					};
 					id=2529;
@@ -74942,15 +70811,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2531;
@@ -75243,15 +71103,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2532;
@@ -75557,16 +71408,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Black";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2534;
@@ -75859,15 +71700,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2535;
@@ -76160,16 +71992,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2536;
@@ -76475,15 +72297,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2538;
@@ -76776,16 +72589,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Shades_Blue";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2539;
@@ -77078,16 +72881,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="rhs_googles_yellow";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2540;
@@ -77393,15 +73186,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2542;
@@ -77694,16 +73478,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Tactical_Black";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2543;
@@ -77996,16 +73770,6 @@ class Mission
 								typeName="U_I_pilotCoveralls";
 								isBackpack=0;
 							};
-							class backpack
-							{
-								typeName="ACE_NonSteerableParachute";
-								isBackpack=1;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Lowprofile";
-							headgear="H_PilotHelmetFighter_I";
 						};
 					};
 					id=2544;

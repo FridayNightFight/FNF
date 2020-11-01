@@ -10,7 +10,7 @@ phx_safetyMuzzles = getArray (configFile >> "CfgWeapons" >> "Throw" >> "muzzles"
 //Disable ACE advanced throwing
 [] spawn {
   waitUntil {!isNil "ace_advanced_throwing_enabled"};
-  sleep 2;
+  uisleep 2;
   ace_advanced_throwing_enabled = false;
 };
 
@@ -46,9 +46,6 @@ phx_acePlacing = [{
   if (!isNil "leadAction") then {
     player removeAction leadAction;
   };
-
-  //Make typing in chat not possible after safe start ends unless player is logged-in admin or staff
-  46 call phx_fnc_disableTyping;
 
   //Remove gear selector
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;

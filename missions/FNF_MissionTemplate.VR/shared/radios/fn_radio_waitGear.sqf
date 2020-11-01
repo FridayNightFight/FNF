@@ -7,4 +7,4 @@ if (_enablePreset isEqualTo 0) exitWith {};
   {!isNil "phx_opforBaseChannel"} &&
   {!isNil "phx_indforBaseChannel"} &&
   {!isNil "phx_groupIDset"}
-}, {call phx_fnc_radio_getChannels}, [], 30] call CBA_fnc_waitUntilAndExecute;
+}, {call phx_fnc_radio_getChannels}, [], 60] call CBA_fnc_waitUntilAndExecute;

@@ -21,7 +21,7 @@ phx_afkCheck_idle = {
     (findDisplay 46) displayRemoveEventHandler ['keyDown', phx_idleKeyEH];
   "];
 
-  sleep 30; //give player 30 seconds to press a key
+  uisleep 30; //give player 30 seconds to press a key
 
   //Kill player if still idle
   if (phx_idleTime < diag_tickTime) then {

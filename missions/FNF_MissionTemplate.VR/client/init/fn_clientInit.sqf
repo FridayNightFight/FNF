@@ -1,10 +1,11 @@
-//Disable global chat
-0 enableChannel false;
-
 //Make sure client mission time is synced with server
-[{CBA_missionTime > 5}, {
-    [clientOwner] remoteExec ["phx_server_updateMissionTime", 2];
+[{(CBA_missionTime > 1)}, {
+  46 spawn phx_fnc_disableTyping;
+  [clientOwner] remoteExec ["phx_server_updateMissionTime", 2];
 }] call CBA_fnc_waitUntilAndExecute;
+
+//Remove player from server kick list once loadout is set
+[] spawn phx_fnc_removeKick;
 
 //Exit if player is spectator
 if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};
@@ -98,9 +99,9 @@ call phx_fnc_setLoadout;
 
 //Reenable simulation if it was disabled
 player enableSimulation true;
-player playMove "amovpercmstpslowwrfldnon";
 [] spawn {
-  sleep 2;
+  player playMove "amovpercmstpslowwrfldnon";
+  uisleep 2;
   cutText ["", "PLAIN"];
 };
 

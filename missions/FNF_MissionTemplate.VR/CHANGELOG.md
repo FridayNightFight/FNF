@@ -1,3 +1,11 @@
+# v1.1.0
+1. Increased engineer repair threshold
+2. Better typing restriction
+3. Added server-side kick for players without loadout set
+4. Few fixes and tweaks
+5. Fix admin safe time change causing server var to be nil
+6. Likely fix for some players not having radios preset
+
 # v1.0.3c
 1. Fix for allPlayers command not able to be used until mission start. Using BIS_fnc_listPlayers instead.
 

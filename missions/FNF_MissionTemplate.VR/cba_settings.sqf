@@ -145,7 +145,7 @@ force force ace_repair_fullRepairLocation = 2;
 force force ace_repair_fullRepairRequiredItems = [];
 force force ace_repair_miscRepairRequiredItems = [];
 force force ace_repair_repairDamageThreshold = 0.7;
-force force ace_repair_repairDamageThreshold_engineer = 0.5;
+force force ace_repair_repairDamageThreshold_engineer = 0.6;
 force force ace_repair_wheelRepairRequiredItems = [];
 
 // ACE Magazine Repack

@@ -1,4 +1,4 @@
-waitUntil {!phx_safetyEnabled};
+waitUntil {!(missionNamespace getVariable ["phx_safetyEnabled",false])};
 
 _bluforInMission = false;
 _opforInMission = false;

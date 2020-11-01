@@ -16,7 +16,7 @@ if (!isNil "phx_loadout_mediumantitank_mag_1" && phx_loadout_mediumantitank_mag_
 
 //Sleep to avoid weird issue where game thinks there is no room in backpack after adding launcher
 [] spawn {
-  sleep 1;
+  uisleep 1;
   player addWeapon phx_loadout_mediumantitank_weapon;
   player addSecondaryWeaponItem phx_loadout_mediumantitank_optic;
 };

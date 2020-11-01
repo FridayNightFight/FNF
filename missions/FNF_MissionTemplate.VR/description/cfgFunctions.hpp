@@ -30,6 +30,7 @@ class CfgFunctions {
       class addUniform{};
       class addGear{};
       class checkLoadout{};
+      class removeKick{};
     };
     class misc {
       file = "client\misc";
@@ -49,6 +50,7 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class objBuildingDamage{};
+      class handleNoLoadout{};
     };
     class unflip {
       file = "client\unflip";

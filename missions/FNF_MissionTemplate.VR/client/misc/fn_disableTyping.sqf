@@ -1,6 +1,10 @@
 //Disables typing in chat if player is not admin or staff
 _display = _this;
 
+sleep 1;
+
+waitUntil {!(isNull findDisplay _display) && !(isNull player)};
+
 _ids = [
 "76561197961336958", //arkor
 "76561197991996737", //indigo
@@ -13,10 +17,12 @@ _ids = [
 "76561198068436818" //bridges
 ];
 
-if !(serverCommandAvailable "#kick" || (getPlayerUID player) in _ids) then {
+if !((getPlayerUID player) in _ids) then {
   (findDisplay _display) displayAddEventHandler ["KeyDown", "if (_this select 1 in actionKeys 'Chat') then { true } else { false };"];
 };
 
 if ((getPlayerUID player) in _ids) then {
   0 enableChannel true;
+} else {
+  0 enableChannel false;
 };

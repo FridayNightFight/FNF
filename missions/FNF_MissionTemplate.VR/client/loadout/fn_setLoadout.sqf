@@ -22,7 +22,7 @@ if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_IND
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
 
-if (isNil "pRole") exitWith {hint "Player role not set correctly. Alert the mission maker and join another slot."; [] spawn {player enableSimulation false; sleep 10; endMission "END1"}};
+if (isNil "pRole") exitWith {hint "Player role not set correctly. Alert the mission maker and join another slot."; [] spawn {player enableSimulation false; uisleep 10; endMission "END1"}};
 
 phx_loadout_unitLevel = 0;
 //Shared
@@ -46,11 +46,13 @@ phx_loadout_blood = "ACE_bloodIV:6";
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
 
+player linkItem "ItemMap";
+
 if (count (call BIS_fnc_listPlayers) > 50) then {
   waitUntil {!isNull findDisplay 46};
   player enableSimulation false;
   cutText ["Please Wait", "BLACK FADED", 99];
-  sleep ((random 10) + 5);
+  uisleep ((random 12) + 6);
 };
 
 call phx_fnc_removeGear;
@@ -58,11 +60,11 @@ call phx_fnc_setUniform;
 call phx_fnc_setWeapons;
 call phx_fnc_addUniform;
 
-[{player linkItem "ItemRadio";}, [], (random 10) + 2] call CBA_fnc_waitAndExecute;
+[{player linkItem "ItemRadio";}, [], (random 10) + 3] call CBA_fnc_waitAndExecute;
 player linkItem "ItemGPS";
 player linkItem "ItemMap";
 player linkItem "ItemCompass";
-player linkItem "ItemWatch";
+//player linkItem "ItemWatch";
 player linkItem "TFAR_microdagr";
 
 switch (pRole) do {

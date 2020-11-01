@@ -2,12 +2,7 @@ switch (_this select 0) do {
   case true: {
     missionNamespace setVariable ["phx_safetyEnabled",true,true];
     f_var_mission_timer = phx_safeStartTime;
-
-    //Delete player bodies during safestart
-    phx_safetyBodiesEH = addMissionEventHandler ["HandleDisconnect", {
-    	params ["_unit", "_id", "_uid", "_name"];
-      deleteVehicle _unit;
-    }];
+    publicVariable "f_var_mission_timer";
 
     {_x allowDamage false;} forEach vehicles;
 
@@ -15,7 +10,6 @@ switch (_this select 0) do {
 
     while {f_var_mission_timer > 0} do {
       ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
-      ["f_var_mission_timer", f_var_mission_timer] call CBA_fnc_publicVariable;
 
       uisleep 60;
 
@@ -24,6 +18,7 @@ switch (_this select 0) do {
 
       // Reduce the mission timer by one
       f_var_mission_timer = f_var_mission_timer - 1;
+      publicVariable "f_var_mission_timer";
     };
 
     if (f_var_mission_timer == 0) then {
@@ -36,14 +31,13 @@ switch (_this select 0) do {
     ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
 
     missionNamespace setVariable ["phx_safetyEnabled",false,true];
-    removeMissionEventHandler ["HandleDisconnect", phx_safetyBodiesEH];
 
     {_x allowDamage true;} forEach vehicles;
 
     //Delete start markers
     {
       if !(getMarkerColor _x isEqualTo "") then {
-        _x remoteExec ["deleteMarkerLocal",0,true];
+        [_x] remoteExec ["deleteMarkerLocal",0,true];
       };
     } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
 
