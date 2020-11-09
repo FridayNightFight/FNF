@@ -1,5 +1,5 @@
 /*
-Make sure players have lodout assigned after 60 seconds, if not, kick player
+Make sure players have lodout assigned after 75 seconds, if not, kick player
 When player loadout is assigned, the client will run phx_fnc_removeKick to remove itself from the server's noloadout kick list
 */
 
@@ -21,7 +21,7 @@ phx_server_loadout_connectedEH = addMissionEventHandler ["PlayerConnected", {
   if (!isNil "_del") then {diag_log format ["ERROR: Player UID was already in loadout array when player joined %1", _this];};
 
   if (_owner != 2) then {
-    phx_server_noLoadout pushBackUnique [_uid, CBA_missionTime + 60];
+    phx_server_noLoadout pushBackUnique [_uid, CBA_missionTime + 75];
   };
 }];
 

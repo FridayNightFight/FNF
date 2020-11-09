@@ -28,6 +28,8 @@ if (!isNil "phx_playerDeathPos") then {
 //Stop typing in chat if player is not logged-in admin
 60000 spawn phx_fnc_disableTyping;
 
+call BIS_fnc_showMissionStatus;
+
 //Returns true if obj can be drawn
 _showObj = {
   params ["_obj"];

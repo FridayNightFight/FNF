@@ -95,7 +95,7 @@ if (phx_antiGammaDoping) then {
 call phx_fnc_setLoadout;
 
 //Client-side fortify
-[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient}] call CBA_fnc_waitUntilAndExecute;
+[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient; call phx_fnc_restrictETool;}] call CBA_fnc_waitUntilAndExecute;
 
 //Reenable simulation if it was disabled
 player enableSimulation true;

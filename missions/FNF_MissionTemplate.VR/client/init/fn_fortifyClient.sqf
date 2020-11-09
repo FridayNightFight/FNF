@@ -1,14 +1,3 @@
-if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
-if (!(playerSide == phx_defendingSide) || !phx_allowFortify) exitWith {};
-if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F") && !(typeOf player == "I_Soldier_exp_F")) exitWith {
-  _handle = [{
-    if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
-    if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
-  }, 0.5] call CBA_fnc_addPerFrameHandler;
-};
-
-player addItem "ACE_Fortify";
-
 phx_fortify_objArr = [];
 
 if (!isNil "term1") then {
@@ -25,7 +14,19 @@ if (!isNil "phx_destroyObjs") then {
 };
 if (!isNil "ctf_flagPole") then {
   phx_fortify_objArr append [ctf_flagPole];
+  phx_fortify_objArr append [ctf_flag];
 };
+
+if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
+if (!(playerSide == phx_defendingSide) || !phx_allowFortify) exitWith {};
+if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F") && !(typeOf player == "I_Soldier_exp_F")) exitWith {
+  _handle = [{
+    if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
+    if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
+  }, 0.5] call CBA_fnc_addPerFrameHandler;
+};
+
+player addItem "ACE_Fortify";
 
 switch (playerSide) do {
   case east: {phx_fortifyMarker = "opforSafeMarker";};

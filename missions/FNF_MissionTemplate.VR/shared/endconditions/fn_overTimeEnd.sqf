@@ -12,10 +12,11 @@ _endGame = {
   format [_msg + "\n" + _defendSide + " wins!"] remoteExec ["hint"];
 
   missionNamespace setVariable ["phx_gameEnd", true, true];
-  /*
-  sleep 20;
-  "end1" call bis_fnc_endmissionserver;
-  */
+
+  if (phx_gameMode == "destroy") then {
+    sleep 20;
+    "end1" call bis_fnc_endmissionserver;
+  };
 };
 
 switch (true) do {

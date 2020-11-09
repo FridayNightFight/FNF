@@ -28,7 +28,7 @@ player createDiaryRecord ["PHX_Diary_Details",["Overtime Condition",phx_overTime
 
 _varStr = "";
 
-if (!(phx_briefing_west_uniform isEqualTo "") || !(phx_briefing_west_headgear isEqualTo "")) then {
+if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") then {
   _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_uniform >> "picture");
   _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_headgear >> "picture");
 
@@ -45,7 +45,7 @@ if (!(phx_briefing_west_uniform isEqualTo "") || !(phx_briefing_west_headgear is
   _varStr = _varStr + format ["BLUFOR MAT: %1", phx_bluAT] + "<br/>";
 };
 
-if (!(phx_briefing_east_uniform isEqualTo "") || !(phx_briefing_east_headgear isEqualTo "")) then {
+if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
   _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_uniform >> "picture");
   _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_headgear >> "picture");
 
@@ -62,7 +62,7 @@ if (!(phx_briefing_east_uniform isEqualTo "") || !(phx_briefing_east_headgear is
   _varStr = _varStr + format ["OPFOR MAT: %1", phx_redAT] + "<br/>";
 };
 
-if (!(phx_briefing_ind_uniform isEqualTo "") || !(phx_briefing_ind_headgear isEqualTo "")) then {
+if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") then {
   _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_uniform >> "picture");
   _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_headgear >> "picture");
 

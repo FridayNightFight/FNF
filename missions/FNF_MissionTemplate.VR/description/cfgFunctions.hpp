@@ -38,6 +38,7 @@ class CfgFunctions {
       class zoneBoundary{};
       class disableTyping{};
       class afkCheck{};
+      class restrictETool{};
     };
     class spectator {
       file = "client\spectator";

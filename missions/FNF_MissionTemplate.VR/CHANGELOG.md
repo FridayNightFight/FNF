@@ -1,3 +1,12 @@
+# v1.1.1
+1. Fix briefing uniforms not showing
+2. Restrict trench placement when near objectives and near roads (20m from objs)
+3. Make it clear in ORBAT that Golf squad is a vehicle squad
+4. Show mission status to spectators - i.e., sector control score
+5. Slightly raised allowed number of character corpses to 50
+6. Allow destroy game mode to automatically end to overtime condition
+7. Don't move destroy objective markers at mission start if objectives are already inside markers
+
 # v1.1.0a
 1. Fix repair issues
 2. Better uniform/helmet brief vars

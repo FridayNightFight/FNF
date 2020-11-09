@@ -78,11 +78,13 @@ missionNamespace setVariable ["phx_destroyObjs", [_obj1 select 0, _obj2 select 0
     _obj = _this select 0;
     _marker = _this select 1;
     _attackTaskID = _this select 2;
-    _objMarkerUpdateTime = 20; //Change this value to however often you want the objective markers to update (seconds)
+    _objMarkerUpdateTime = 10; //Change this value to however often you want the objective markers to update (seconds)
     _objMaxDistance = selectMin (getMarkerSize _marker);
 
     //Sets marker position to a random area around the objective, keeping the objective inside the marker
-    _marker setMarkerPos ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
+    if !(_obj inArea _marker) then {
+      _marker setMarkerPos ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
+    };
     [_attackTaskID, _marker] call BIS_fnc_taskSetDestination;
 
     //Loop over objective position every _objMarkerUpdateTime
@@ -90,7 +92,10 @@ missionNamespace setVariable ["phx_destroyObjs", [_obj1 select 0, _obj2 select 0
     while {alive _obj} do {
       if !(_obj inArea _marker) then {
         //Move the objective marker to a random position around the objective, while keeping the objective inside the marker's area
-        _marker setMarkerPos ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
+        _newPos = ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
+        _marker setMarkerPosLocal _newPos;
+
+        [_marker,_newPos] remoteExec ["setMarkerPosLocal",phx_attackingSide,_obj];
         [_attackTaskID, _marker] call BIS_fnc_taskSetDestination;
       };
       sleep _objMarkerUpdateTime;
