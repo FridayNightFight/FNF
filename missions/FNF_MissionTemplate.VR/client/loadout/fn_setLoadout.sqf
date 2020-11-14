@@ -52,16 +52,16 @@ if (count (call BIS_fnc_listPlayers) > 30 && (CBA_missionTime < 60)) then {
   waitUntil {!isNull findDisplay 46};
   player enableSimulation false;
   cutText ["Please Wait", "BLACK FADED", 99];
-  uisleep ((random 14) + 8);
+  uisleep ((random 16) + 4);
 };
 
-call phx_fnc_removeGear;
+//call phx_fnc_removeGear;
 call phx_fnc_setUniform;
 call phx_fnc_setWeapons;
 uiSleep 1;
 call phx_fnc_addUniform;
 
-[{player linkItem "ItemRadio";}, [], (random 11) + 3] call CBA_fnc_waitAndExecute;
+[{player linkItem "ItemRadio";}, [], (random 15) + 1] call CBA_fnc_waitAndExecute;
 player linkItem "ItemGPS";
 player linkItem "ItemMap";
 player linkItem "ItemCompass";
