@@ -32,28 +32,30 @@ phx_server_loadout_disconnectedEH = addMissionEventHandler ["PlayerDisconnected"
   phx_server_noLoadout deleteAt (phx_server_noLoadout findIf {(_x select 0) == _uid});
 }];
 
-waitUntil {(missionNamespace getVariable ["phx_safetyEnabled",false]) && (CBA_missionTime > 1)};
-sleep 1;
+[] spawn {
+  waitUntil {(missionNamespace getVariable ["phx_safetyEnabled",false]) && (CBA_missionTime > 1)};
+  sleep 1;
 
-phx_server_commandPass = "";
-if (isDedicated) then {
-  phx_server_commandPass = call compile preprocessFileLineNumbers "\userconfig\pass.hpp";
-};
-
-[{
-  if (!phx_safetyEnabled || !phx_server_kickNoLoadout) exitWith {
-    [_handle] call CBA_fnc_removePerFrameHandler;
-    removeMissionEventHandler ["PlayerConnected", phx_server_loadout_connectedEH];
-    removeMissionEventHandler ["PlayerDisconnected", phx_server_loadout_disconnectedEH];
-    phx_server_noLoadout = [];
+  phx_server_commandPass = "";
+  if (isDedicated) then {
+    phx_server_commandPass = call compile preprocessFileLineNumbers "\userconfig\pass.hpp";
   };
 
-  {
-    _uid = _x select 0;
-    _time = _x select 1;
-
-    if (_time < CBA_missionTime) then {
-      phx_server_commandPass serverCommand format ["#kick %1", _uid];
+  [{
+    if (!phx_safetyEnabled || !phx_server_kickNoLoadout) exitWith {
+      [_handle] call CBA_fnc_removePerFrameHandler;
+      removeMissionEventHandler ["PlayerConnected", phx_server_loadout_connectedEH];
+      removeMissionEventHandler ["PlayerDisconnected", phx_server_loadout_disconnectedEH];
+      phx_server_noLoadout = [];
     };
-  } forEach phx_server_noLoadout;
-}, 3] call CBA_fnc_addPerFrameHandler;
+
+    {
+      _uid = _x select 0;
+      _time = _x select 1;
+
+      if (_time < CBA_missionTime) then {
+        phx_server_commandPass serverCommand format ["#kick %1", _uid];
+      };
+    } forEach phx_server_noLoadout;
+  }, 3] call CBA_fnc_addPerFrameHandler;
+};

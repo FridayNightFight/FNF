@@ -38,6 +38,8 @@ _sectorNum = 0;
 
   _mark setMarkerSize [_area select 0, _area select 1];
 
+  _mark setMarkerDir (_area select 2);
+
   _mark setMarkerBrush "SolidBorder";
 
   _mark setMarkerColor "ColorBlack";

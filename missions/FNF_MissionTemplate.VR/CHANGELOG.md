@@ -1,3 +1,8 @@
+# v1.1.1a
+1. Fix uniforms not showing in diary
+2. Fix clients being able to sometimes destroy the building an obj is inside of
+3. adSector sector markers will rotate with the trigger
+
 # v1.1.1
 1. Fix briefing uniforms not showing
 2. Restrict trench placement when near objectives and near roads (20m from objs)

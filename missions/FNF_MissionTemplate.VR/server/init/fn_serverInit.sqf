@@ -1,15 +1,15 @@
-[true] spawn phx_fnc_serverSafety;
-
-[] spawn phx_fnc_handleNoLoadout;
-
 phx_server_updateMissionTime = {
   private _id = _this select 0;
   _id publicVariableClient "CBA_missionTime";
 };
 
-call phx_fnc_radio_genFreqs;
+[true] call phx_fnc_serverSafety;
+
+call phx_fnc_handleNoLoadout;
 
 call phx_fnc_sendUniforms;
+
+call phx_fnc_radio_genFreqs;
 
 call phx_fnc_server_setupGame;
 

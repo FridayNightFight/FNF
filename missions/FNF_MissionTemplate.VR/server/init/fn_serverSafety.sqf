@@ -2,27 +2,30 @@ switch (_this select 0) do {
   case true: {
     missionNamespace setVariable ["phx_safetyEnabled",true,true];
     f_var_mission_timer = phx_safeStartTime;
-    publicVariable "f_var_mission_timer";
+    missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
     {_x allowDamage false;} forEach vehicles;
 
-    sleep 2;
+    [] spawn {
 
-    while {f_var_mission_timer > 0} do {
-      ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
+      sleep 0.1;
 
-      uisleep 60;
+      while {f_var_mission_timer > 0} do {
+        ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
 
-      // If mission timer has been terminated by admin briefing, simply exit
-      if (f_var_mission_timer < 0) exitWith {};
+        uisleep 60;
 
-      // Reduce the mission timer by one
-      f_var_mission_timer = f_var_mission_timer - 1;
-      publicVariable "f_var_mission_timer";
-    };
+        // If mission timer has been terminated by admin briefing, simply exit
+        if (f_var_mission_timer < 0) exitWith {};
 
-    if (f_var_mission_timer == 0) then {
-      [false] call phx_fnc_serverSafety;
+        // Reduce the mission timer by one
+        f_var_mission_timer = f_var_mission_timer - 1;
+        missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
+      };
+
+      if (f_var_mission_timer == 0) then {
+        [false] call phx_fnc_serverSafety;
+      };
     };
   };
 

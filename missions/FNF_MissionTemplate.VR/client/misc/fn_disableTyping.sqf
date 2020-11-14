@@ -6,6 +6,7 @@ sleep 1;
 waitUntil {!(isNull findDisplay _display) && !(isNull player)};
 
 _ids = [
+"76561198011678508", //muniz
 "76561197961336958", //arkor
 "76561197991996737", //indigo
 "76561198142848471", //dingo

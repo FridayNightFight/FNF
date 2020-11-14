@@ -23,7 +23,8 @@ if (serverCommandAvailable "#kick") then {
 
 PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details"];
 
-waitUntil {!isNil "phx_overTimeConStr"};
+waitUntil {!isNil "phx_serverGameSetup"};
+uiSleep 1;
 player createDiaryRecord ["PHX_Diary_Details",["Overtime Condition",phx_overTimeConStr]];
 
 _varStr = "";
