@@ -53,7 +53,7 @@ phx_server_loadout_disconnectedEH = addMissionEventHandler ["PlayerDisconnected"
       _uid = _x select 0;
       _time = _x select 1;
 
-      if (_time < CBA_missionTime) then {
+      if ((_time < CBA_missionTime) && (primaryWeapon (_uid call BIS_fnc_getUnitByUID) == "")) then {
         phx_server_commandPass serverCommand format ["#kick %1", _uid];
       };
     } forEach phx_server_noLoadout;
