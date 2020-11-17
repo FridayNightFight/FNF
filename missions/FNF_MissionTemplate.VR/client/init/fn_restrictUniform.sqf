@@ -8,7 +8,10 @@ phx_playerVest = vest player;
     player forceAddUniform phx_playerUniform;
   };
 
-  if !(headgear player isEqualTo phx_playerHead) then {removeHeadgear player; player addHeadgear phx_playerHead};
+  if !(headgear player isEqualTo phx_playerHead) then {
+    removeHeadgear player;
+    player addHeadgear phx_playerHead;
+  };
   /*
   if !(vest player isEqualTo phx_playerVest) then {
     _items = vestItems player;
@@ -19,7 +22,7 @@ phx_playerVest = vest player;
   */
 } , 1] call CBA_fnc_addPerFrameHandler;
 
-//Stop playing from being able to take off gear
+//Stop player from being able to take off gear
 player addEventHandler ["inventoryOpened",{
   params ["_unit", "_container"];
   [] spawn {

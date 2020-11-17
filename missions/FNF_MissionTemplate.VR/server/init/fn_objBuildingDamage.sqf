@@ -1,6 +1,4 @@
 //disallow damage for whatever building objects the objective is under or over
-
-sleep 0.001;
 private _obj = _this select 0;
 private _pos = getPosASL _obj;
 private _invinc = [];

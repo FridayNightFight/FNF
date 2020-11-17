@@ -69,7 +69,7 @@ if (phx_antiGammaDoping) then {
         phx_gammaWarn = false;
       };
     };
-  } , 0.1] call CBA_fnc_addPerFrameHandler;
+  } , 0.2] call CBA_fnc_addPerFrameHandler;
 };
 
 //Force grass on if player setting is too low

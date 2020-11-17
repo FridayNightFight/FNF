@@ -57,5 +57,5 @@ phx_server_loadout_disconnectedEH = addMissionEventHandler ["PlayerDisconnected"
         phx_server_commandPass serverCommand format ["#kick %1", _uid];
       };
     } forEach phx_server_noLoadout;
-  }, 3] call CBA_fnc_addPerFrameHandler;
+  }, 10] call CBA_fnc_addPerFrameHandler;
 };

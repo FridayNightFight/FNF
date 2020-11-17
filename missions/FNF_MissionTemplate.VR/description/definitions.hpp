@@ -5,7 +5,7 @@ enableDebugConsole = 1;
 
 respawn = 3;
 respawnDialog = 0;
-respawndelay = 9999999;
+respawndelay = 99999;
 respawnOnStart = -1;
 respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;

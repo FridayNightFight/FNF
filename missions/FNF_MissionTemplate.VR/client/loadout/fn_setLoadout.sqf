@@ -52,7 +52,7 @@ if (count (call BIS_fnc_listPlayers) > 30 && (CBA_missionTime < 60)) then {
   waitUntil {!isNull findDisplay 46};
   player enableSimulation false;
   cutText ["Please Wait", "BLACK FADED", 99];
-  uisleep ((random 16) + 4);
+  uisleep ((random 17) + 4);
 };
 
 //call phx_fnc_removeGear;

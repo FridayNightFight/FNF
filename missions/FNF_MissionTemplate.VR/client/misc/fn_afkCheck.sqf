@@ -7,11 +7,12 @@ waitUntil {!isNull (findDisplay 46)};
 phx_allowedIdle = 600; //Time in seconds allowed for player idle
 
 phx_idleTime = diag_tickTime + phx_allowedIdle;
-(findDisplay 46) displayAddEventHandler ["keyDown", "call phx_afkCheck_keypress"];
 
 phx_afkCheck_keypress = {
   phx_idleTime = diag_tickTime + phx_allowedIdle;
 };
+
+(findDisplay 46) displayAddEventHandler ["keyDown", "call phx_afkCheck_keypress"];
 
 phx_afkCheck_idle = {
   //display warning message

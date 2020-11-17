@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={488.21158,47.787067,599.41052};
-		dir[]={-0.042522158,-0.37572142,0.92575848};
-		up[]={-0.017239612,0.92673218,0.37532693};
-		aside[]={0.99894702,-2.7212081e-009,0.045883916};
+		pos[]={503.73846,72.086319,535.03571};
+		dir[]={-0.0022583744,-0.41121653,0.91156828};
+		up[]={-0.0010180925,0.91150892,0.41127542};
+		aside[]={1.0000254,-4.4526678e-007,0.0024775611};
 	};
 };
 binarizationWanted=0;
@@ -148,7 +148,9 @@ class ScenarioData
 	disabledAI=1;
 	wreckRemovalMaxTime=3600;
 	corpseManagerMode=1;
-	corpseLimit=50;
+	corpseLimit=45;
+	corpseRemovalMinTime=5;
+	minPlayerDistance=15;
 };
 class CustomAttributes
 {
@@ -9593,7 +9595,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={486.31332,5.0014391,689.39648};
+						position[]={486.36945,5.0014391,689.2204};
 					};
 					side="West";
 					flags=4;
