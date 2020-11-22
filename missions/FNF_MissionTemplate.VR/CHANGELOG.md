@@ -1,3 +1,7 @@
+# v1.1.1c
+1. Fix Guerilla weapon set forcing MAT assistant to have RPG rounds regardless of config setting
+2. Make custom weapons sets a bit easier to make
+
 # v1.1.1b
 1. Few bug fixes and tweaks
 
