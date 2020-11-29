@@ -1,8 +1,3 @@
-phx_server_updateMissionTime = {
-  private _id = _this select 0;
-  _id publicVariableClient "CBA_missionTime";
-};
-
 [true] call phx_fnc_serverSafety;
 
 call phx_fnc_handleNoLoadout;

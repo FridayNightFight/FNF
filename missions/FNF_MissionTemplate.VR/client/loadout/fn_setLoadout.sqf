@@ -49,7 +49,7 @@ phx_loadout_vector = "ACE_VectorDay";
 player linkItem "ItemMap"; //Make sure player has map to see the map during briefing phase
 
 if (count (call BIS_fnc_listPlayers) > 30 && (CBA_missionTime < 60)) then {
-  waitUntil {!isNull findDisplay 46};
+  waitUntil {!isNull player && time > 0};
   player enableSimulation false;
   cutText ["Please Wait", "BLACK FADED", 99];
   uisleep ((random 17) + 4);
@@ -58,7 +58,6 @@ if (count (call BIS_fnc_listPlayers) > 30 && (CBA_missionTime < 60)) then {
 //call phx_fnc_removeGear;
 call phx_fnc_setUniform;
 call phx_fnc_setWeapons;
-uiSleep 1;
 call phx_fnc_addUniform;
 
 [{player linkItem "ItemRadio";}, [], (random 15) + 1] call CBA_fnc_waitAndExecute;

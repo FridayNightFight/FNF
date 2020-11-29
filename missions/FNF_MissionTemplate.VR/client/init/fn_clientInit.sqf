@@ -1,8 +1,4 @@
-//Make sure client mission time is synced with server
-[{(CBA_missionTime > 1)}, {
-  46 spawn phx_fnc_disableTyping;
-  [clientOwner] remoteExec ["phx_server_updateMissionTime", 2];
-}] call CBA_fnc_waitUntilAndExecute;
+46 spawn phx_fnc_disableTyping;
 
 //Remove player from server kick list once loadout is set
 [] spawn phx_fnc_removeKick;
@@ -100,13 +96,14 @@ call phx_fnc_setLoadout;
 //Reenable simulation if it was disabled
 player enableSimulation true;
 [] spawn {
-  if (!isServer) then {player playMove "amovpercmstpslowwrfldnon";};
-  uisleep 2;
+  //if (!isServer) then {player playMove "amovpercmstpslowwrfldnon";};
+  //uisleep 2;
   cutText ["", "PLAIN"];
 };
 
 //Weapon selector
 [] spawn phx_fnc_gearSelection;
+//[] spawn phx_fnc_backpackOnChest;
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;

@@ -21,10 +21,10 @@ _endGame = {
 
 switch (true) do {
   case (phx_gameMode == "destroy"): {
+    _defMsg = "The objectives have been defended.";
     if (phx_aliveObjectives == 1) then {
       _obj = [];
       _alert = false;
-      _defMsg = "The objectives have been defended.";
       {
         if (alive _x) then {_obj = _x};
       } forEach phx_destroyObjs;

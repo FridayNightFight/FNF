@@ -1,3 +1,9 @@
+# v1.1.1d
+1. Allow for tabbed-out load in
+2. Fix bug with destroy overtime end message
+3. Started work on a backpack-on-chest feature
+4. Tweakz
+
 # v1.1.1c
 1. Fix Guerilla weapon set forcing MAT assistant to have RPG rounds regardless of config setting
 2. Make custom weapons sets a bit easier to make

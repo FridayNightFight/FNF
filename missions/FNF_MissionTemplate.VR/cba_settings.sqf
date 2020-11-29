@@ -1,5 +1,3 @@
-/****This file may not be perfectly up-to-date with the server, but will be close enough for testing****/
-
 // ACE Advanced Ballistics
 force force ace_advanced_ballistics_ammoTemperatureEnabled = false;
 force force ace_advanced_ballistics_barrelLengthInfluenceEnabled = false;
@@ -449,12 +447,12 @@ force force grad_trenches_functions_allowLongEnvelope = true;
 force force grad_trenches_functions_allowShortEnvelope = true;
 force force grad_trenches_functions_allowSmallEnvelope = true;
 force force grad_trenches_functions_allowVehicleEnvelope = true;
-force force grad_trenches_functions_bigEnvelopeDigTime = 90;
+force force grad_trenches_functions_bigEnvelopeDigTime = 70;
 force force grad_trenches_functions_buildFatigueFactor = 0;
 force force grad_trenches_functions_camouflageRequireEntrenchmentTool = false;
-force force grad_trenches_functions_giantEnvelopeDigTime = 180;
-force force grad_trenches_functions_LongEnvelopeDigTime = 200;
-force force grad_trenches_functions_shortEnvelopeDigTime = 30;
-force force grad_trenches_functions_smallEnvelopeDigTime = 60;
+force force grad_trenches_functions_giantEnvelopeDigTime = 140;
+force force grad_trenches_functions_LongEnvelopeDigTime = 140;
+force force grad_trenches_functions_shortEnvelopeDigTime = 45;
+force force grad_trenches_functions_smallEnvelopeDigTime = 20;
 force force grad_trenches_functions_stopBuildingAtFatigueMax = true;
-force force grad_trenches_functions_vehicleEnvelopeDigTime = 200;
+force force grad_trenches_functions_vehicleEnvelopeDigTime = 140;

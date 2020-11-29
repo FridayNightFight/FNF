@@ -28,7 +28,7 @@ phx_updateTimeLeftUI = true;
                 _secs = "0" + str(60-floor(CBA_missionTime%60));
             };
         };
-        _setText ctrlSetStructuredText (parseText format ["Mission Time Remaining: %1:%2",_mins,_secs]);
+        _setText ctrlSetStructuredText (parseText format ["Approximate Mission Time Remaining: %1:%2",_mins,_secs]);
     } else {
       _mins = floor((CBA_missionTime-(_missionTime*60))/60);
       _secs = floor((CBA_missionTime-(_missionTime*60))%60);

@@ -1,8 +1,6 @@
 //Disables typing in chat if player is not admin or staff
 _display = _this;
 
-sleep 1;
-
 waitUntil {!(isNull findDisplay _display) && !(isNull player)};
 
 _ids = [
@@ -15,7 +13,9 @@ _ids = [
 "76561197989932191", //anderson
 "76561198058373929", //fire
 "76561198136175919", //strac
-"76561198068436818" //bridges
+"76561198068436818", //bridges
+"76561197960285643", //nemesis
+"76561197977759652" //drake
 ];
 
 if !((getPlayerUID player) in _ids) then {

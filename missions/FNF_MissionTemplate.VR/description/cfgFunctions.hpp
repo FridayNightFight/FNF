@@ -39,6 +39,7 @@ class CfgFunctions {
       class disableTyping{};
       class afkCheck{};
       class restrictETool{};
+      class backpackOnChest{};
     };
     class spectator {
       file = "client\spectator";
