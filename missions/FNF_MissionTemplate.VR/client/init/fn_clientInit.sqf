@@ -103,7 +103,7 @@ player enableSimulation true;
 
 //Weapon selector
 [] spawn phx_fnc_gearSelection;
-//[] spawn phx_fnc_backpackOnChest;
+[] spawn phx_fnc_backpackOnChest;
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
