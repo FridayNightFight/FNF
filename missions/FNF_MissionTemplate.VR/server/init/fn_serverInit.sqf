@@ -57,6 +57,3 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
     deleteVehicle _unit;
   };
 }];
-
-//Disable zeus ping
-missionnamespace setvariable ["bis_fnc_curatorPinged_time", 99999, true];

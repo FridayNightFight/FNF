@@ -42,7 +42,7 @@ _action = ["phx_boc_onChest","Put backpack on chest","",{
           phx_bagFallSet = false;
         };
       };
-      sleep 0.25;
+      uiSleep 1;
     };
   };
 

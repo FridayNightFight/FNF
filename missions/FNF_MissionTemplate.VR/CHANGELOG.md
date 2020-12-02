@@ -1,3 +1,6 @@
+# v1.1.1e
+1. Changed 1 server-side public variable that was an array to client-side. Per BI Feedback Tracker discussion this may cause network issues.
+
 # v1.1.1d
 1. Allow for tabbed-out load in
 2. Fix bug with destroy overtime end message

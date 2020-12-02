@@ -4,7 +4,7 @@ if (!hasInterface) exitWith {};
 
 switch (phx_gameMode) do {
   case destroy: {
-    execVM "shared\modes\destroy_client.sqf"
+    call compile preprocessFileLineNumbers format ["shared\modes\destroy_client.sqf"];
   };
   case uplink: {
     execVM "shared\modes\uplink_client.sqf"

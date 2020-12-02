@@ -29,8 +29,8 @@ call phx_fnc_zoneBoundary;
 //Preset radios
 call phx_fnc_radio_waitGear;
 
-//Wait for the server to finish setting up the game then call client setup
-[{!isNil "phx_serverGameSetup"}, {call phx_fnc_client_setupGame}] call CBA_fnc_waitUntilAndExecute;
+//Setup client game
+call phx_fnc_client_setupGame;
 
 //Platoon lead menu
 call phx_fnc_platoonActions;
@@ -103,7 +103,10 @@ player enableSimulation true;
 
 //Weapon selector
 [] spawn phx_fnc_gearSelection;
-[] spawn phx_fnc_backpackOnChest;
+//[] spawn phx_fnc_backpackOnChest;
+
+//Disable zeus ping
+missionnamespace setvariable ["bis_fnc_curatorPinged_time", 9999, false];
 
 //Make sure player gets assigned gear, if not then kick back to lobby
 call phx_fnc_checkLoadout;
