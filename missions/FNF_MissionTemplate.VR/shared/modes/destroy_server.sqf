@@ -21,6 +21,7 @@ if ((_obj1 select 0) != destroy_obj1) then {
 } forEach [destroy_obj1, destroy_obj2];
 
 _objArr = [_obj1,_obj2,_obj3];
+phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 
 //Reduce damage if obj is default cache
 {
