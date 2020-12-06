@@ -8,6 +8,10 @@ if (!isNil "phx_opticMagnification") then {
   };
 };
 
+if (pRole == 16) then {
+  phx_allowedOptics = [];
+};
+
 _action = ["Gear_Selector","Gear Selector","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions"],_action] call ace_interact_menu_fnc_addActionToClass;
 

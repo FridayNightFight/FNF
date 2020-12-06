@@ -87,7 +87,7 @@ UNIFORM_M93_OAKLEAF                --   WEAPONS_G36
 UNIFORM_GUERRILLA                  --   WEAPONS_GUERRILLA
 UNIFORM_PMC                        --   WEAPONS_M21
 UNIFORM_MOUNTAIN_FLORA             --   WEAPONS_VHS
-UNIFORM_FLORA                      --
+UNIFORM_FLORA                      --   WEAPONS_PLA
 UNIFORM_OEF_CP                     --
 UNIFORM_M10_DESERT                 --
 UNIFORM_M10_MOUNTAIN               --
@@ -97,6 +97,11 @@ UNIFORM_M93_GREEN                  --
 UNIFORM_M93_FLECKTARN              --
 UNIFORM_GORKA_GREEN                --
 UNIFORM_GORKA_BEREZKA              --
+UNIFORM_PLA_MTN                    --
+UNIFORM_PLA_URBAN                  --
+UNIFORM_PLA_WD                     --
+UNIFORM_PLA_WINTER                 --
+=========================================================================================================================
 UNIFORM_CUSTOM_1                   --  WEAPONS_CUSTOM_1 - configurable via respective file in "client\loadout\weapons"
 UNIFORM_CUSTOM_2                   --  WEAPONS_CUSTOM_2
 UNIFORM_CUSTOM_3                   --  WEAPONS_CUSTOM_3

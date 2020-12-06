@@ -52,7 +52,7 @@ if (count (call BIS_fnc_listPlayers) > 30 && (CBA_missionTime < 60)) then {
   waitUntil {!isNull player && time > 0};
   player enableSimulation false;
   cutText ["Please Wait", "BLACK FADED", 99];
-  uisleep ((random 17) + 4);
+  uisleep ((random 16) + 10);
 };
 
 //call phx_fnc_removeGear;
@@ -66,6 +66,9 @@ player linkItem "ItemMap";
 player linkItem "ItemCompass";
 //player linkItem "ItemWatch";
 player linkItem "TFAR_microdagr";
+
+player addItem "ACE_CableTie";
+player addItem "ACE_CableTie";
 
 switch (pRole) do {
   case ROLE_PL: {call compile preprocessFileLineNumbers format["client\loadout\units\PL.sqf"]};

@@ -9,8 +9,10 @@ if (!isNil "term2") then {phx_specObjectives pushBack term2};
 if (!isNil "term3") then {phx_specObjectives pushBack term3};
 
 if (phx_gameMode == "destroy") then {
-  waitUntil {!isNil "phx_destroyObjs"};
-  phx_specObjectives = phx_specObjectives + phx_destroyObjs;
+  #include "..\..\mode_config\destroy.sqf"
+  {
+    phx_specObjectives pushBack _x;
+  } forEach [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 };
 
 if (phx_gameMode == "captureTheFlag") then {

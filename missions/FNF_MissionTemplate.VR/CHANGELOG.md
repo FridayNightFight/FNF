@@ -1,3 +1,9 @@
+# v1.1.2
+1. Added cable ties to loadouts
+2. Added PLA uniform sets and 1 weapon set
+3. Fix spectator not seeing destroy obj 3d icons
+4. Few tweaks
+
 # v1.1.1e
 1. Changed 1 server-side public variable that was an array to client-side. Per BI Feedback Tracker discussion this may cause network issues.
 

@@ -133,7 +133,7 @@ _hackComplete = {
     };
   };
 
-  playSound3D [getMissionPath "sound\bomb_alarm.ogg", _term];
+  playSound3D [getMissionPath "sound\bomb_alarm.ogg", _term, false, getposasl _term, 1, 1, 300];
 
   uiSleep 12;
 
@@ -200,7 +200,7 @@ while {!phx_gameEnd} do {
   if (phx_term1Hacking) then {
     phx_term1Time = phx_term1Time - 1;
     if (_term1SoundAlarm) then {
-      playSound3D ["A3\Sounds_F\sfx\alarm.wss", term1];
+      playSound3D ["A3\Sounds_F\sfx\alarm.wss", term1, false, getposasl term1, 0.6, 1, 175];
       _term1SoundAlarm = false;
     } else {
       _term1SoundAlarm = true;
@@ -209,7 +209,7 @@ while {!phx_gameEnd} do {
   if (phx_term2Hacking) then {
     phx_term2Time = phx_term2Time - 1;
     if (_term2SoundAlarm) then {
-      playSound3D ["A3\Sounds_F\sfx\alarm.wss", term2];
+      playSound3D ["A3\Sounds_F\sfx\alarm.wss", term2, false, getposasl term2, 0.6, 1, 175];
       _term2SoundAlarm = false;
     } else {
       _term2SoundAlarm = true;
@@ -218,7 +218,7 @@ while {!phx_gameEnd} do {
   if (phx_term3Hacking) then {
     phx_term3Time = phx_term3Time - 1;
     if (_term3SoundAlarm) then {
-      playSound3D ["A3\Sounds_F\sfx\alarm.wss", term3];
+      playSound3D ["A3\Sounds_F\sfx\alarm.wss", term3, false, getposasl term3, 0.6, 1, 175];
       _term3SoundAlarm = false;
     } else {
       _term3SoundAlarm = true;

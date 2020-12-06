@@ -41,7 +41,7 @@ force force ace_mk6mortar_allowComputerRangefinder = false;
 force force ace_mk6mortar_useAmmoHandling = true;
 
 // ACE Captives
-force force ace_captives_allowHandcuffOwnSide = true;
+force force ace_captives_allowHandcuffOwnSide = false;
 force force ace_captives_allowSurrender = true;
 force force ace_captives_requireSurrender = 0;
 force force ace_captives_requireSurrenderAi = false;
@@ -417,7 +417,7 @@ force force TFAR_voiceCone = false;
 
 // Enhanced Movement Rework
 force force emr_main_allowMidairClimbing = true;
-force force emr_main_blacklistStr = "Land_WiredFence_01_16m_F,Land_WiredFence_01_4m_F,Land_WiredFence_01_8m_F,Land_Mil_WiredFenceD_F,Land_Mil_WiredFence_F,Land_New_WiredFence_10m_Dam_F,Land_New_WiredFence_10m_F,Land_New_WiredFence_5m_F,Land_NetFence_03_m_9m_F,Land_IndFnc_9_F,Land_IndFnc_3_Hole_F,Land_NetFence_03_m_3m_hole_F,Land_NetFence_03_m_3m_d_F,Land_IndFnc_3_D_F,Land_NetFence_03_m_3m_corner_F,Land_IndFnc_Corner_F,Land_NetFence_03_m_3m_F,Land_IndFnc_3_F,Land_Razorwire_F,Fort_RazorWire,Wire,WireFence";
+force force emr_main_blacklistStr = "";
 force force emr_main_climbingEnabled = true;
 force force emr_main_climbOnDuty = 3.4;
 force force emr_main_climbOverDuty = 3;
@@ -437,6 +437,7 @@ emr_main_maxWeightJump = 200;
 force force emr_main_preventHighVaulting = false;
 force force emr_main_staminaCoefficient = 1;
 force force emr_main_whitelistStr = "";
+
 
 // GRAD Trenches
 force force grad_trenches_functions_allowBigEnvelope = true;

@@ -74,12 +74,15 @@ phx_boc_getOutEH = player addEventHandler ["GetOutMan", {
 }];
 
 phx_boc_killedEH = player addEventHandler ["Killed", {
-  phx_boc_bagHolder setposasl getposasl player;
-  phx_boc_bagHolder hideObjectGlobal false;
-  deleteVehicle phx_boc_dummyBag;
+  if (!isNull phx_boc_dummyBag) then {deleteVehicle phx_boc_dummyBag;};
 
-  if ((position phx_boc_bagHolder) select 2 > 2) then {
-    deleteVehicle phx_boc_bagHolder;
+  if !(isNull (missionNamespace getVariable ["phx_boc_bagHolder", objNull])) then {
+    phx_boc_bagHolder setposasl getposasl player;
+    phx_boc_bagHolder hideObjectGlobal false;
+
+    if ((position phx_boc_bagHolder) select 2 > 2) then {
+      deleteVehicle phx_boc_bagHolder;
+    };
   };
 
   phx_bagOnChest = false;
