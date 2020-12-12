@@ -1,3 +1,6 @@
+# v1.1.2a
+1. small tweaks
+
 # v1.1.2
 1. Added cable ties to loadouts
 2. Added PLA uniform sets and 1 weapon set

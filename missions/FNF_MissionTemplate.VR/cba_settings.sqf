@@ -249,12 +249,12 @@ ace_nametags_showVehicleCrewInfo = true;
 ace_nametags_tagSize = 2;
 
 // ACE Nightvision
-force force ace_nightvision_aimDownSightsBlur = 1;
-force force ace_nightvision_disableNVGsWithSights = false;
-force force ace_nightvision_effectScaling = 0.7;
-force force ace_nightvision_fogScaling = 1.2;
-force force ace_nightvision_noiseScaling = 0.5;
-ace_nightvision_shutterEffects = true;
+force ace_nightvision_aimDownSightsBlur = 1;
+force ace_nightvision_disableNVGsWithSights = false;
+force ace_nightvision_effectScaling = 0.7;
+force ace_nightvision_fogScaling = 1.2;
+force ace_nightvision_noiseScaling = 0.5;
+force ace_nightvision_shutterEffects = true;
 
 // ACE Overheating
 ace_overheating_displayTextOnJam = true;

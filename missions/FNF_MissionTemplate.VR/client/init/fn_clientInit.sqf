@@ -1,7 +1,7 @@
 46 spawn phx_fnc_disableTyping;
 
 //Remove player from server kick list once loadout is set
-[] spawn phx_fnc_removeKick;
+//[] spawn phx_fnc_removeKick;
 
 //Exit if player is spectator
 if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorInit};
@@ -9,7 +9,7 @@ if (typeOf player == "ace_spectator_virtual") exitWith {call phx_fnc_spectatorIn
 //Hide markers player shouldn't see
 call phx_fnc_markerVisibility;
 
-//Call safety if mission hasn't started yet. If mission has started, call JIP function
+//Call safety if mission hasn't started yet. If mission has started, call JIP function and exit
 if (phx_safetyEnabled) then {call phx_fnc_safety};
 if (!phx_safetyEnabled) exitWith {call phx_fnc_clientJIP};
 

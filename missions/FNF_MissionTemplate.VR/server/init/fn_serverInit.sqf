@@ -1,6 +1,6 @@
 [true] call phx_fnc_serverSafety;
 
-call phx_fnc_handleNoLoadout;
+//call phx_fnc_handleNoLoadout;
 
 call phx_fnc_sendUniforms;
 
@@ -55,5 +55,14 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 
   if (phx_safetyEnabled) then {
     deleteVehicle _unit;
+  };
+}];
+
+phx_server_playerJIPHide = addMissionEventHandler ["PlayerConnected", {
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+
+  if (!phx_safetyEnabled) then {
+    _unit = _uid call BIS_fnc_getUnitByUID;
+    hideObjectGlobal _unit;
   };
 }];
