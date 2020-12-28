@@ -37,15 +37,5 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
   };
 }];
 
-//Hide JIP players
-phx_server_playerJIPHide = addMissionEventHandler ["PlayerConnected", {
-	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-
-  if (!phx_safetyEnabled) then {
-    _unit = _uid call BIS_fnc_getUnitByUID;
-    hideObjectGlobal _unit;
-  };
-}];
-
 //Let clients know that server is done setting up
 missionNamespace setVariable ["phx_serverGameSetup",true,true];
