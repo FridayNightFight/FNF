@@ -3,7 +3,7 @@ ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT"];
 //Admin end start trigger
 if (serverCommandAvailable "#kick") then {
   PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin"];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer"";'>End Safe Start</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer""; systemChat ""Ending Safe Start"";'>End Safe Start</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
   if !(f_var_mission_timer <= 1) then {
     f_var_mission_timer = f_var_mission_timer - 1;
