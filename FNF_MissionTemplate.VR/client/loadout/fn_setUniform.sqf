@@ -9,7 +9,6 @@ switch (playerSide) do {
   case civilian: {pUniform = phx_civUniform};
 };
 
-
 _incStr = "client\loadout\uniforms\" + pUniform + ".sqf";
 
 call compile preprocessFileLineNumbers _incStr;

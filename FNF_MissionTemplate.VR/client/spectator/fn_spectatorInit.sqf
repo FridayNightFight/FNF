@@ -1,5 +1,9 @@
-phx_specEnabled = true;
-phx_loadoutAssigned = true;
+/*
+Sets player as ACE spectator if not already.
+Draws 3D icons on alive objectives.
+*/
+
+if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {[true, true, true] call ace_spectator_fnc_setSpectator;};
 
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];
@@ -8,29 +12,16 @@ if (!isNil "term1") then {phx_specObjectives pushBack term1};
 if (!isNil "term2") then {phx_specObjectives pushBack term2};
 if (!isNil "term3") then {phx_specObjectives pushBack term3};
 
-if (phx_gameMode == "destroy") then {
-  #include "..\..\mode_config\destroy.sqf"
-  {
-    phx_specObjectives pushBack _x;
-  } forEach [_obj1 select 0, _obj2 select 0, _obj3 select 0];
-};
+if (!isNil "destroy_obj1") then {phx_specObjectives pushBack destroy_obj1};
+if (!isNil "destroy_obj2") then {phx_specObjectives pushBack destroy_obj2};
+if (!isNil "destroy_obj3") then {phx_specObjectives pushBack destroy_obj3};
 
-if (phx_gameMode == "captureTheFlag") then {
-  phx_specObjectives pushBack ctf_flag;
-};
+if (!isNil "ctf_flag") then {phx_specObjectives pushBack ctf_flag};
 
-//Wait for ACE spectator display
-waitUntil {!isNull findDisplay 60000};
+call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
-//Set camera position to player camera position @ time of death if not nil
-if (!isNil "phx_playerDeathPos") then {
-  ace_spectator_camera setPos phx_playerDeathPos;
-};
-
-//Stop typing in chat if player is not logged-in admin
-60000 spawn phx_fnc_disableTyping;
-
-call BIS_fnc_showMissionStatus;
+//Wait for ACE spectator display and disable typing
+[{!isNull findDisplay 60000}, {60000 spawn phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
 //Returns true if obj can be drawn
 _showObj = {

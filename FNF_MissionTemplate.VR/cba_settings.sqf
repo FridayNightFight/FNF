@@ -183,7 +183,7 @@ force force ace_medical_bleedingCoefficient = 0.3;
 force force ace_medical_blood_bloodLifetime = 1200;
 force force ace_medical_blood_enabledFor = 1;
 force force ace_medical_blood_maxBloodObjects = 100;
-force force ace_medical_fatalDamageSource = 0;
+force force ace_medical_fatalDamageSource = 2;
 ace_medical_feedback_bloodVolumeEffectType = 0;
 ace_medical_feedback_painEffectType = 3;
 force force ace_medical_fractureChance = 0.8;
@@ -196,11 +196,12 @@ ace_medical_gui_openAfterTreatment = true;
 force force ace_medical_ivFlowRate = 3;
 force force ace_medical_limping = 1;
 force force ace_medical_painCoefficient = 0.3;
-force force ace_medical_playerDamageThreshold = 1;
+force force ace_medical_playerDamageThreshold = 1.3;
 force force ace_medical_spontaneousWakeUpChance = 0.5;
 force force ace_medical_spontaneousWakeUpEpinephrineBoost = 5;
 force force ace_medical_statemachine_AIUnconsciousness = false;
-force force ace_medical_statemachine_cardiacArrestTime = 300;
+force force ace_medical_statemachine_cardiacArrestBleedoutEnabled = true;
+force force ace_medical_statemachine_cardiacArrestTime = 420;
 force force ace_medical_statemachine_fatalInjuriesAI = 0;
 force force ace_medical_statemachine_fatalInjuriesPlayer = 0;
 force force ace_medical_treatment_advancedBandages = 0;
@@ -228,8 +229,15 @@ force force ace_medical_treatment_medicIV = 0;
 force force ace_medical_treatment_medicPAK = 1;
 force force ace_medical_treatment_medicSurgicalKit = 1;
 force force ace_medical_treatment_timeCoefficientPAK = 0.5;
-ace_medical_treatment_woundReopenChance = 0;
-
+force force ace_medical_treatment_treatmentTimeAutoinjector = 5;
+force force ace_medical_treatment_treatmentTimeBodyBag = 15;
+force force ace_medical_treatment_treatmentTimeSplint = 7;
+force force ace_medical_treatment_treatmentTimeTourniquet = 7;
+force force ace_medical_treatment_woundStitchTime = 5;
+force force ace_medical_treatment_treatmentTimeIV = 8;
+force force ace_medical_treatment_treatmentTimeCPR = 12;
+force force ace_medical_treatment_allowBodyBagUnconscious = false;
+force force ace_medical_treatment_woundReopenChance = 0;
 
 // ACE Name Tags
 ace_nametags_defaultNametagColor = [0.77,0.51,0.08,1];
@@ -362,7 +370,7 @@ force force ace_weather_updateInterval = 60;
 force force ace_weather_windSimulation = false;
 
 // ACE Wind Deflection
-force force ace_winddeflection_enabled = true;
+force force ace_winddeflection_enabled = false;
 force force ace_winddeflection_simulationInterval = 0.05;
 force force ace_winddeflection_vehicleEnabled = false;
 

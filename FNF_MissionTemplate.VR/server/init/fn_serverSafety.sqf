@@ -1,50 +1,44 @@
-switch (_this select 0) do {
-  case true: {
-    missionNamespace setVariable ["phx_safetyEnabled",true,true];
-    f_var_mission_timer = phx_safeStartTime;
-    missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
+/*
+Server component to the safety system
+*/
 
-    {_x allowDamage false;} forEach vehicles;
+missionNamespace setVariable ["phx_safetyEnabled",true,true];
+f_var_mission_timer = phx_safeStartTime;
+missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
-    [] spawn {
+{_x allowDamage false;} forEach vehicles;
 
-      sleep 0.1;
+waitUntil {time > 2};
 
-      while {f_var_mission_timer > 0} do {
-        ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
+private _timer = f_var_mission_timer * 60;
 
-        uisleep 60;
-
-        // If mission timer has been terminated by admin briefing, simply exit
-        if (f_var_mission_timer < 0) exitWith {};
-
-        // Reduce the mission timer by one
-        f_var_mission_timer = f_var_mission_timer - 1;
-        missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
-      };
-
-      if (f_var_mission_timer == 0) then {
-        [false] call phx_fnc_serverSafety;
-      };
+while {f_var_mission_timer >= 0} do {
+  if ((_timer % 60) == 0) then {
+    if !(f_var_mission_timer == 0) then {
+      ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
     };
+
+    f_var_mission_timer = f_var_mission_timer - 1;
+    missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
   };
 
-  case false: {
-    //Start the mission. Remove safety from players, allow vehicles to be damaged and delete start zone markers
-    ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
-
-    missionNamespace setVariable ["phx_safetyEnabled",false,true];
-
-    {_x allowDamage true;} forEach vehicles;
-
-    //Delete start markers
-    {
-      if !(getMarkerColor _x isEqualTo "") then {
-        [_x] remoteExec ["deleteMarkerLocal",0,true];
-      };
-    } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
-
-    //Disable fortify
-    ["off"] call acex_fortify_fnc_handleChatCommand;
-  };
+  uisleep 1;
+  _timer = _timer - 1;
 };
+
+//Start the mission. Remove safety from players, allow vehicles to be damaged and delete start zone markers
+["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
+
+missionNamespace setVariable ["phx_safetyEnabled",false,true];
+
+{_x allowDamage true;} forEach vehicles;
+
+//Delete start markers
+{
+  if !(getMarkerColor _x isEqualTo "") then {
+    [_x] remoteExec ["deleteMarkerLocal",0,true];
+  };
+} forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+
+//Disable fortify
+["off"] call acex_fortify_fnc_handleChatCommand;

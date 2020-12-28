@@ -1,21 +1,23 @@
+/*
+Calls the client-portion of the game modes
+*/
+
 if (!hasInterface) exitWith {};
 
-#include "..\..\shared\definitions.hpp"
-
 switch (phx_gameMode) do {
-  case destroy: {
-    call compile preprocessFileLineNumbers format ["shared\modes\destroy_client.sqf"];
+  case "destroy": {
+    execVM "modes\destroy\destroy_client.sqf";
   };
-  case uplink: {
-    execVM "shared\modes\uplink_client.sqf"
+  case "uplink": {
+    execVM "modes\uplink\uplink_client.sqf"
   };
-  case rush: {
-    execVM "shared\modes\rush_client.sqf";
+  case "rush": {
+    execVM "modes\rush\rush_client.sqf";
   };
-  case connection: {
-    execVM "shared\modes\connection_client.sqf";
+  case "connection": {
+    execVM "modes\connection\connection_client.sqf";
   };
-  case captureTheFlag: {
-    call compile preprocessFileLineNumbers format ["shared\modes\ctf_client.sqf"];
+  case "captureTheFlag": {
+    execVM "modes\ctf\ctf_client.sqf";
   };
 };

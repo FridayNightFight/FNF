@@ -10,4 +10,4 @@ respawnOnStart = -1;
 respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;
 
-onPauseScript[] = {phx_fnc_handlePauseRespawn};
+onPauseScript[] = {phx_fnc_removeRespawnButton};

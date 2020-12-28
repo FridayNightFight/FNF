@@ -5,8 +5,6 @@ giveBLUFORLoadout = {
   phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:7";
   phx_loadout_sidearm_weapon = "rhsusf_weap_glock17g4";
   phx_loadout_sidearm_mag = "rhsusf_mag_17Rnd_9x19_JHP:2";
-  phx_allowedOptics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high"];
-  phx_allowedMagOptics = ["rhsusf_acc_g33_T1", "rhsusf_acc_g33_xps3", "rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230a", "rhsusf_acc_ELCAN"];
   if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
     phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_M203_bk";
     phx_loadout_rifle_gl_he = "1Rnd_HE_Grenade_shell:6";
@@ -35,15 +33,11 @@ giveBLUFORLoadout = {
   };
   if (pRole == ROLE_RAT) then {
     phx_loadout_antitank_weapon = "rhs_weap_m72a7";
-    phx_loadout_antitank_mag = "";
   };
   if (pRole == ROLE_MK) then {
     phx_loadout_rifle_weapon = "rhs_weap_sr25";
     phx_loadout_rifle_mag = "rhsusf_20Rnd_762x51_SR25_m62_Mag:4";
-    phx_loadout_rifle_optic = "optic_SOS";
     phx_allowedWeapons = [];
-    phx_allowedOptics = [];
-    phx_allowedMagOptics = [];
   };
   if (pRole == ROLE_P) then {
     phx_loadout_rifle_weapon = "rhs_weap_hk416d10";

@@ -1,5 +1,4 @@
-#include "client\loadout\cfgLoadouts.hpp"
-#include "shared\definitions.hpp"
+#include "description\configDefs.hpp"
 
 /* MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF */
 /* DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS - they will be deleted automatically if not in use */
@@ -59,50 +58,45 @@ IGLA
 ////////////////////////////////////////////////////////////
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
-phx_fortifyPoints = 75; //Currency for fortify - individual to each Combat Engineer
-phx_fortifyColor = 0; //Color of fortifications. 0 = green, 1 = tan
-
-phx_missionBoundaryRestriction = true; //Set to false to disable the mission boundary
-phx_safeStartTime = 15; //Safestart time in minutes
-phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
-
+phx_fortifyPoints = 80; //Currency for fortify - individual to each Combat Engineer
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
-phx_opticMagnification = false; //Set to true to allow players to use magnified optics
-phx_maxViewDistance = 1750; //Maximum client view distance (meters), strongly recommended to keep it <= 2000 for client and server performance
-
-phx_customLoadouts = false; //Set to true if you don't want to use this template's loadout system - radios will still be preset if units have them
-phx_allowUniformSwap = false; //Set to true if you want players to be able to take off / change their uniform and helmet
-phx_antiGammaDoping = false; //Set to true for certain night missions where gamma abuse may happen - this prevents clients from setting gamma > 1.3 in video settings
-phx_idleKill = true; //Set to false to disable the idle timer kill (10 minutes idle) if you need to for some reason
+phx_maxViewDistance = 1750; //Maximum client object view distance (meters), strongly recommended to keep it <= 2000 for client and server performance
 
 ////////////////////////////////////////////////////////////
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
 
+=====BLUFOR=====                                =====ANY=====
 UNIFORM_MARPAT_WD                  --   WEAPONS_M4A1_BLOCK_M249_M240G_M136
 UNIFORM_MARPAT_D                   --   WEAPONS_AK74M_PKM_PKP_RPG7
-UNIFORM_EMR_DESERT                 --   WEAPONS_AKMN_PKM_PKP_RPG7
-UNIFORM_EMR_SUMMER                 --   WEAPONS_SCAR
-UNIFORM_M93_OAKLEAF                --   WEAPONS_G36
-UNIFORM_GUERRILLA                  --   WEAPONS_GUERRILLA
-UNIFORM_PMC                        --   WEAPONS_M21
-UNIFORM_MOUNTAIN_FLORA             --   WEAPONS_VHS
-UNIFORM_FLORA                      --   WEAPONS_PLA
-UNIFORM_OEF_CP                     --
-UNIFORM_M10_DESERT                 --
-UNIFORM_M10_MOUNTAIN               --
-UNIFORM_M93_DESERT                 --
-UNIFORM_M93_TIGER                  --
-UNIFORM_M93_GREEN                  --
-UNIFORM_M93_FLECKTARN              --
-UNIFORM_GORKA_GREEN                --
-UNIFORM_GORKA_BEREZKA              --
-UNIFORM_PLA_MTN                    --
-UNIFORM_PLA_URBAN                  --
-UNIFORM_PLA_WD                     --
-UNIFORM_PLA_WINTER                 --
+UNIFORM_OEF_CP                     --   WEAPONS_AKMN_PKM_PKP_RPG7
+UNIFORM_PMC                        --   WEAPONS_G36
+UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
+UNIFORM_M93_WOODLAND               --   WEAPONS_M21
+UNIFORM_ARMY_OCP                   --   WEAPONS_FRENCH
+UNIFORM_UCP                        --   WEAPONS_PLA
+UNIFORM_FRENCH_ARCTIC              --   WEAPONS_SCAR
+UNIFORM_FRENCH_WD                  --   WEAPONS_VHS
+UNIFORM_FRENCH_D
+
+=====OPFOR=====
+UNIFORM_EMR_SUMMER
+UNIFORM_EMR_DESERT
+UNIFORM_FLORA
+UNIFORM_MOUNTAIN_FLORA
+UNIFORM_GORKA_GREEN
+UNIFORM_GORKA_BEREZKA
+UNIFORM_PLA_MTN
+UNIFORM_PLA_URBAN
+UNIFORM_PLA_WD
+UNIFORM_PLA_WINTER
+
+=====INDFOR=====
+UNIFORM_M93_OAKLEAF
+UNIFORM_GUERRILLA
+UNIFORM_M10_DESERT
+UNIFORM_M10_MOUNTAIN
+UNIFORM_M93_TIGER
+UNIFORM_M93_GREEN
 =========================================================================================================================
-UNIFORM_CUSTOM_1                   --  WEAPONS_CUSTOM_1 - configurable via respective file in "client\loadout\weapons"
-UNIFORM_CUSTOM_2                   --  WEAPONS_CUSTOM_2
-UNIFORM_CUSTOM_3                   --  WEAPONS_CUSTOM_3
 */

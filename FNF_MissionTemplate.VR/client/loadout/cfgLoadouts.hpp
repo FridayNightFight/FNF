@@ -17,6 +17,7 @@
 #define ROLE_P 14
 #define ROLE_CR 15
 #define ROLE_MK 16
+#define ROLE_SP 17
 
 #define UNIT_SPECTATOR "VirtualMan_F"
 
@@ -37,6 +38,7 @@
 #define UNIT_OPFOR_P "O_pilot_F"
 #define UNIT_OPFOR_CR "O_crew_f"
 #define UNIT_OPFOR_MK "O_soldier_M_F"
+#define UNIT_OPFOR_SP "O_Sharpshooter_F"
 
 #define UNIT_BLUFOR_PL "B_officer_F"
 #define UNIT_BLUFOR_CLS "B_medic_F"
@@ -55,6 +57,7 @@
 #define UNIT_BLUFOR_P "B_pilot_F"
 #define UNIT_BLUFOR_CR "B_crew_F"
 #define UNIT_BLUFOR_MK "B_soldier_M_F"
+#define UNIT_BLUFOR_SP "B_RangeMaster_F"
 
 #define UNIT_INDFOR_PL "I_officer_F"
 #define UNIT_INDFOR_CLS "I_medic_F"
@@ -73,5 +76,6 @@
 #define UNIT_INDFOR_P "I_pilot_F"
 #define UNIT_INDFOR_CR "I_crew_F"
 #define UNIT_INDFOR_MK "I_Soldier_M_F"
+#define UNIT_INDFOR_SP "I_Survivor_F"
 
 #define UNIT_CIV_R "C_man_1_1_F"

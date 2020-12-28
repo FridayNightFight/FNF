@@ -1,5 +1,5 @@
 #include "..\cfgLoadouts.hpp"
-#include "UNIFORM_EMR_DESERT.sqf";
+#include "UNIFORM_MARPAT_D.sqf";
 
 //Global customization - will be applied to every role
 phx_loadout_uniform = "rhsgref_uniform_3color_desert";
@@ -33,7 +33,7 @@ switch (pRole) do {
 };
 
 if (pRole == ROLE_P) then {
-  phx_loadout_headgear = "H_PilotHelmetHeli_O";
+  phx_loadout_headgear = "H_PilotHelmetHeli_B";
   phx_loadout_backpack = phx_loadout_lrRadio;
 };
 

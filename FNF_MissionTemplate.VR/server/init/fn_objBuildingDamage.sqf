@@ -1,4 +1,6 @@
-//disallow damage for whatever building objects the objective is under or over
+/*
+Disallow damage for whatever building objects the objective is under or over
+*/
 private _obj = _this select 0;
 private _pos = getPosASL _obj;
 private _invinc = [];

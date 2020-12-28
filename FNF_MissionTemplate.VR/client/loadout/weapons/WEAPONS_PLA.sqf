@@ -23,13 +23,12 @@ if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MG
 
 //AR and MG weapon and magazine classes
 if (pRole == ROLE_AR) then {
-  phx_loadout_rifle_weapon = "LMG_Zafir_F";
-  phx_loadout_rifle_mag = "150Rnd_762x54_Box_Tracer:8";
+  phx_loadout_rifle_weapon = "rhs_weap_pkm";
+  phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:8";
 };
 if (pRole == ROLE_MG) then {
   phx_loadout_rifle_weapon = "rhs_weap_pkp";
   phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:8";
-  phx_allowedWeapons = ["rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 };
 
 //Magazine classnames for assistant AR and MMG ammo man roles (these are the extra mags for the machinegunner)
@@ -46,19 +45,13 @@ if (pRole == ROLE_P) then {
 if (pRole == ROLE_MK) then {
     phx_loadout_rifle_weapon = "srifle_DMR_01_F";
     phx_loadout_rifle_mag = "ACE_10Rnd_762x54_Tracer_mag:8";
-    phx_loadout_rifle_optic = "optic_SOS";
-    phx_allowedWeapons = [];
-    phx_allowedOptics = [];
-    phx_allowedMagOptics = [];
-  };
+};
 
 //Light AT
 phx_loadout_antitank_weapon = "rhs_weap_rpg26";
-phx_loadout_antitank_mag = "";
 
 //Optic classnames (array of strings) that can be selected in the gear selector
 phx_allowedOptics    = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high"];
-phx_allowedMagOptics = ["rhsusf_acc_g33_T1", "rhsusf_acc_g33_xps3", "rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230a", "rhsusf_acc_ELCAN"];
 
 //Weapon classnames (array of strings) that can be selected
 phx_allowedWeapons = [];

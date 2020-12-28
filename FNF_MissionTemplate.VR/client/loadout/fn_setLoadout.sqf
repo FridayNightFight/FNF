@@ -1,5 +1,3 @@
-if (phx_customLoadouts) exitWith {missionNamespace setVariable ["phx_loadoutAssigned", true]};
-
 #include "cfgLoadouts.hpp"
 
 //Set player role from class of their unit
@@ -20,6 +18,7 @@ if (_pClass == UNIT_OPFOR_AAT || _pClass == UNIT_BLUFOR_AAT || _pClass == UNIT_I
 if (_pClass == UNIT_OPFOR_R || _pClass == UNIT_BLUFOR_R || _pClass == UNIT_INDFOR_R) then {pRole = ROLE_R};
 if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_INDFOR_CR) then {pRole = ROLE_CR};
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
+if (_pClass == UNIT_OPFOR_SP || _pClass == UNIT_BLUFOR_SP || _pClass == UNIT_INDFOR_SP) then {pRole = ROLE_SP};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
 
 if (isNil "pRole") exitWith {hint "Player role not set correctly. Alert the mission maker and join another slot."; [] spawn {player enableSimulation false; uisleep 10; endMission "END1"}};
@@ -42,25 +41,26 @@ phx_loadout_bandage = "ACE_fieldDressing:32";
 phx_loadout_morphine = "ACE_morphine:16";
 phx_loadout_epinephrine = "ACE_epinephrine:8";
 phx_loadout_blood = "ACE_bloodIV:6";
-//Binos
+//Range
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
+phx_loadout_sswt = "ACE_Tripod";
+phx_loadout_rifle_optic = "optic_LRPS";
 
 player linkItem "ItemMap"; //Make sure player has map to see the map during briefing phase
 
-if (count (call BIS_fnc_listPlayers) > 30 && (CBA_missionTime < 60)) then {
-  waitUntil {!isNull player && time > 0};
-  player enableSimulation false;
-  cutText ["Please Wait", "BLACK FADED", 99];
-  uisleep ((random 16) + 10);
-};
-
-//call phx_fnc_removeGear;
 call phx_fnc_setUniform;
 call phx_fnc_setWeapons;
 call phx_fnc_addUniform;
+call phx_fnc_addMagazines;
+call phx_fnc_addWeapons;
+call phx_fnc_addItems;
 
-[{player linkItem "ItemRadio";}, [], (random 15) + 1] call CBA_fnc_waitAndExecute;
+if (isServer && hasInterface) then {
+  player linkItem "ItemRadio";
+} else {
+  [{player linkItem "ItemRadio";}, [], (random 10) + 2] call CBA_fnc_waitAndExecute;
+};
 player linkItem "ItemGPS";
 player linkItem "ItemMap";
 player linkItem "ItemCompass";
@@ -70,29 +70,10 @@ player linkItem "TFAR_microdagr";
 player addItem "ACE_CableTie";
 player addItem "ACE_CableTie";
 
-switch (pRole) do {
-  case ROLE_PL: {call compile preprocessFileLineNumbers format["client\loadout\units\PL.sqf"]};
-  case ROLE_SL: {call compile preprocessFileLineNumbers format["client\loadout\units\SL.sqf"]};
-  case ROLE_TL: {call compile preprocessFileLineNumbers format["client\loadout\units\TL.sqf"]};
-  case ROLE_MGTL: {call compile preprocessFileLineNumbers format["client\loadout\units\MGTL.sqf"]};
-  case ROLE_TL: {call compile preprocessFileLineNumbers format["client\loadout\units\TL.sqf"]};
-  case ROLE_CLS: {call compile preprocessFileLineNumbers format["client\loadout\units\CLS.sqf"]};
-  case ROLE_AR: {call compile preprocessFileLineNumbers format["client\loadout\units\AR.sqf"]};
-  case ROLE_AAR: {call compile preprocessFileLineNumbers format["client\loadout\units\AAR.sqf"]};
-  case ROLE_MG: {call compile preprocessFileLineNumbers format["client\loadout\units\MG.sqf"]};
-  case ROLE_AM: {call compile preprocessFileLineNumbers format["client\loadout\units\AM.sqf"]};
-  case ROLE_RAT: {call compile preprocessFileLineNumbers format["client\loadout\units\RAT.sqf"]};
-  case ROLE_CE: {call compile preprocessFileLineNumbers format["client\loadout\units\CE.sqf"]};
-  case ROLE_AT: {call compile preprocessFileLineNumbers format["client\loadout\units\AT.sqf"]};
-  case ROLE_AAT: {call compile preprocessFileLineNumbers format["client\loadout\units\AAT.sqf"]};
-  case ROLE_R: {call compile preprocessFileLineNumbers format["client\loadout\units\R.sqf"]};
-  case ROLE_CR: {call compile preprocessFileLineNumbers format["client\loadout\units\CR.sqf"]};
-  case ROLE_MK: {call compile preprocessFileLineNumbers format["client\loadout\units\MK.sqf"]};
-  case ROLE_P: {call compile preprocessFileLineNumbers format["client\loadout\units\P.sqf"]};
-};
-
 if (phx_loadout_unitLevel > 0) then {
   player addItem "ACE_microDAGR";
 };
+
+phx_allowedOptics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 
 missionNamespace setVariable ["phx_loadoutAssigned",true];
