@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={499.96817,24.993086,663.69275};
-		dir[]={0.024484586,-0.49614164,0.86790526};
-		up[]={0.013991568,0.86824,0.49594611};
-		aside[]={0.99960929,1.8320134e-007,-0.028200256};
+		pos[]={493.94098,24.993086,651.78131};
+		dir[]={0.0067979754,-0.53208715,0.84667784};
+		up[]={0.0042719068,0.8466863,0.53207421};
+		aside[]={0.99998105,3.1503805e-007,-0.0080286814};
 	};
 };
 binarizationWanted=0;
@@ -401,7 +401,6 @@ class Mission
 				position[]={481.13901,5,100.517};
 			};
 			areaIsRectangle=1;
-			presenceCondition="phx_missionBoundaryRestriction";
 			flags=1;
 			id=223;
 			type="ModuleCoverMap_F";
@@ -942,7 +941,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="111";
+							value="1";
 						};
 					};
 				};
@@ -1155,7 +1154,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="111";
+							value="1";
 						};
 					};
 				};
@@ -1368,7 +1367,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="111";
+							value="1";
 						};
 					};
 				};
