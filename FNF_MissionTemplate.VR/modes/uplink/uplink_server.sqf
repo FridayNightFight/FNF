@@ -133,7 +133,7 @@ _hackComplete = {
     };
   };
 
-  playSound3D [getMissionPath "sound\bomb_alarm.ogg", _term, false, getposasl _term, 1, 1, 300];
+  playSound3D [getMissionPath "description\sound\bomb_alarm.ogg", _term, false, getposasl _term, 1, 1, 250];
 
   uiSleep 12;
 

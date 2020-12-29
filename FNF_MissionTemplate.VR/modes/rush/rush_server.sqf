@@ -69,7 +69,8 @@ _terminalHackComplete = {
   _mark setMarkerText "Terminal - Hack Complete";
   [_defendTask,"FAILED"] call BIS_fnc_taskSetState;
   [_attackTask,"SUCCEEDED"] call BIS_fnc_taskSetState;
-  playSound3D [getMissionPath "sound\bomb_alarm.ogg", _term];
+
+  playSound3D [getMissionPath "description\sound\bomb_alarm.ogg", _term, false, getposasl _term, 1, 1, 250];
 
   uiSleep 12;
 

@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={493.94098,24.993086,651.78131};
-		dir[]={0.0067979754,-0.53208715,0.84667784};
-		up[]={0.0042719068,0.8466863,0.53207421};
-		aside[]={0.99998105,3.1503805e-007,-0.0080286814};
+		pos[]={514.77362,79.856628,601.86346};
+		dir[]={-0.049546324,-0.64342356,0.76404524};
+		up[]={-0.041636776,0.76551414,0.64207};
+		aside[]={0.99800736,2.017201e-006,0.064717852};
 	};
 };
 binarizationWanted=0;
@@ -44,18 +44,13 @@ addons[]=
 	"ace_explosives",
 	"A3_Characters_F_Mark",
 	"ace_gforces",
-	"ace_parachute",
-	"A3_Weapons_F",
-	"ace_realisticnames",
-	"A3_Weapons_F_Items",
-	"ace_medical_engine",
-	"ace_medical_treatment"
+	"ace_parachute"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=16;
+		items=13;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -142,27 +137,6 @@ class AddonsMetaData
 		{
 			className="ace_parachute";
 			name="ACE3 - Parachute";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item13
-		{
-			className="A3_Weapons_F";
-			name="Arma 3 Alpha - Weapons and Accessories";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item14
-		{
-			className="ace_medical_engine";
-			name="ACE3 - Medical Engine";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item15
-		{
-			className="ace_medical_treatment";
-			name="ACE3 - Medical Treatment";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
@@ -10725,7 +10699,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -10796,7 +10770,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -10867,7 +10841,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -10938,7 +10912,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11022,7 +10996,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11092,7 +11066,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11162,27 +11136,8 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
-								class MagazineCargo
-								{
-									items=1;
-									class Item0
-									{
-										name="SmokeShell";
-										count=1;
-										ammoLeft=1;
-									};
-								};
-								class ItemCargo
-								{
-									items=1;
-									class Item0
-									{
-										name="FirstAidKit";
-										count=1;
-									};
-								};
 							};
 						};
 					};
@@ -11239,7 +11194,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11323,7 +11278,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11394,7 +11349,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11465,7 +11420,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11549,7 +11504,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11633,7 +11588,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11717,7 +11672,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11789,7 +11744,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11860,7 +11815,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -11931,7 +11886,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12015,7 +11970,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12086,7 +12041,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12183,7 +12138,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12255,7 +12210,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12326,7 +12281,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12397,7 +12352,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12481,7 +12436,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12552,7 +12507,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12649,7 +12604,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12720,7 +12675,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12804,7 +12759,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12876,7 +12831,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -12947,7 +12902,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13018,7 +12973,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13102,7 +13057,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13173,7 +13128,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13270,7 +13225,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13342,7 +13297,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13413,7 +13368,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13484,7 +13439,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13568,7 +13523,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13639,7 +13594,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13736,7 +13691,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13807,7 +13762,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13890,7 +13845,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -13961,7 +13916,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14032,7 +13987,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14103,7 +14058,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14186,7 +14141,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14257,7 +14212,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14328,7 +14283,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14397,7 +14352,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14468,7 +14423,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14539,7 +14494,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14610,7 +14565,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14694,7 +14649,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14778,7 +14733,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14862,7 +14817,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -14934,7 +14889,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15005,7 +14960,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15076,7 +15031,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15160,7 +15115,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15231,7 +15186,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15328,7 +15283,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15400,7 +15355,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15471,7 +15426,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15542,7 +15497,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15626,7 +15581,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15697,7 +15652,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15794,7 +15749,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15865,7 +15820,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -15949,7 +15904,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16021,7 +15976,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16092,7 +16047,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16163,7 +16118,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16247,7 +16202,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16318,7 +16273,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16415,7 +16370,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16487,7 +16442,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16558,7 +16513,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16629,7 +16584,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16713,7 +16668,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16784,7 +16739,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16881,7 +16836,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -16952,7 +16907,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17035,7 +16990,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17106,7 +17061,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17177,7 +17132,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17248,7 +17203,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17331,7 +17286,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17402,7 +17357,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17473,7 +17428,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17544,7 +17499,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17628,7 +17583,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17712,7 +17667,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17794,7 +17749,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17863,7 +17818,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -17945,7 +17900,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18014,7 +17969,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18083,7 +18038,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18152,7 +18107,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18234,7 +18189,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18303,7 +18258,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18372,7 +18327,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18441,7 +18396,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18523,7 +18478,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18592,7 +18547,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18661,7 +18616,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18730,7 +18685,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18812,7 +18767,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18881,7 +18836,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -18950,7 +18905,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};
@@ -19019,7 +18974,7 @@ class Mission
 						{
 							class uniform
 							{
-								typeName="U_O_OfficerUniform_ocamo";
+								typeName="U_O_CombatUniform_ocamo";
 								isBackpack=0;
 							};
 						};

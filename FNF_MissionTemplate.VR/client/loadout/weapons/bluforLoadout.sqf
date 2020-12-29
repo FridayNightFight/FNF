@@ -40,8 +40,8 @@ giveBLUFORLoadout = {
     phx_allowedWeapons = [];
   };
   if (pRole == ROLE_P) then {
-    phx_loadout_rifle_weapon = "rhs_weap_hk416d10";
-    phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:4";
+    phx_loadout_rifle_weapon = "rhsusf_weap_MP7A2";
+    phx_loadout_rifle_mag = "rhsusf_mag_40Rnd_46x30_FMJ:4";
     phx_allowedWeapons = [];
   };
 };
