@@ -10,7 +10,7 @@ Steps:
 3. Move your wanted sides to their starting location and configure their start zone marker.
 4. Delete any unwanted sides and their start zone marker.
 5. Place vehicles and other assets if you wish.
-6. Set the role description for crewable vehicles in order to have those roles selectable from the game lobby. For example, if you place a BTR-80 for OPFOR, name one of the OPFOR Echo teams something like: BTR-80 Commander, BTR-80 Driver, BTR-80 Gunner, and delete the unused units. This isn't required for something like a Humvee or UAZ.
+6. Set the role description for crewable vehicles in order to have those roles selectable from the game lobby. For example, if you place a BTR-80 for OPFOR, name one of the OPFOR Echo teams something like: BTR-80 Commander, BTR-80 Driver, BTR-80 Gunner, and delete the unused units. Humvees and UAZs are not crewed vehicles and should not have dedicated crews present.
 7. Delete the crew/pilot units for roles not present in your mission.
 8. Configure mission start time, weather, etc.
 9. Configure the play boundary trigger (zoneTrigger).
