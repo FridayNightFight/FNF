@@ -50,9 +50,6 @@ if (pRole == ROLE_MK) then {
 //Light AT
 phx_loadout_antitank_weapon = "rhs_weap_rpg26";
 
-//Optic classnames (array of strings) that can be selected in the gear selector
-phx_allowedOptics    = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high"];
-
 //Weapon classnames (array of strings) that can be selected
 phx_allowedWeapons = [];
 

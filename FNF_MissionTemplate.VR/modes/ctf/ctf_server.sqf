@@ -42,6 +42,10 @@ createMarker ["capZoneMarkText", position ctf_attackTrig];
 "capZoneMark" setMarkerAlpha 0;
 "capZoneMarkText" setMarkerAlpha 0;
 
+//Show flag zone to spectators
+["capZoneMark",1] remoteExec ["setMarkerAlphaLocal", sideLogic, true];
+["capZoneMarkText",1] remoteExec ["setMarkerAlphaLocal", sideLogic, true];
+
 switch (phx_attackingSide) do {
   case east: {"capZoneMark" setMarkerColor "colorRed"};
   case west: {"capZoneMark" setMarkerColor "colorBlue"};

@@ -76,7 +76,8 @@ _varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Safe start time: %1 minutes", phx_safeStartTime];
 _varStr = _varStr + "<br/>";
-_varStr = _varStr + format ["Defenders fortify allowed: %1", phx_allowFortify];
+_varStr = _varStr + "<br/>";
+_varStr = _varStr + format ["Maximum view distance: %1m", phx_maxViewDistance];
 
 player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
 [{!isNil "phx_overTimeConStr"}, {

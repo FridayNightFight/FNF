@@ -13,6 +13,11 @@ call phx_fnc_server_setupGame;
 [] spawn phx_fnc_checkTime;
 [] spawn phx_fnc_checkAlive;
 
+//Create map cover for zone boundary
+private _zoneArea = triggerArea zoneTrigger;
+zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
+[zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
+
 // Create respawn markers in bottom left corner of map
 {
     private _marker = createMarker [_x, [-1000,-1000,0]];

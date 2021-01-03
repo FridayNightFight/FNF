@@ -27,4 +27,6 @@ switch (pRole) do {
 
 if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_rifle_gl_he call phx_fnc_addGear;
+  phx_loadout_rifle_gl_smoke call phx_fnc_addGear;
+  phx_loadout_rifle_gl_flare call phx_fnc_addGear;
 };

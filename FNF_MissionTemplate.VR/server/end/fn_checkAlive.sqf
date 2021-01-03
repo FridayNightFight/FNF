@@ -56,5 +56,5 @@ while {!(missionNamespace getVariable ["phx_gameEnd",false])} do {
     _aliveSides = _aliveSides - 1;
     ["INDFOR eliminated!"] remoteExec ["hint"];
   };
-  sleep 10;
+  uisleep 10;
 };

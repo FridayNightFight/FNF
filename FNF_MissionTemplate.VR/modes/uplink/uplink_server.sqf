@@ -190,59 +190,52 @@ waitUntil {phx_term1Hacking || phx_term2Hacking || phx_term3Hacking};
 
 sleep 3;
 
-_term1SoundAlarm = true;
-_term2SoundAlarm = true;
-_term3SoundAlarm = true;
-
 while {!phx_gameEnd} do {
   _hackString = "";
 
   if (phx_term1Hacking) then {
     phx_term1Time = phx_term1Time - 1;
-    if (_term1SoundAlarm) then {
+    if ((phx_term1Time % 5 == 0 || phx_term1Time <= 10) && phx_term1Time > 0) then {
       playSound3D ["A3\Sounds_F\sfx\alarm.wss", term1, false, getposasl term1, 0.6, 1, 175];
-      _term1SoundAlarm = false;
-    } else {
-      _term1SoundAlarm = true;
     };
   };
   if (phx_term2Hacking) then {
     phx_term2Time = phx_term2Time - 1;
-    if (_term2SoundAlarm) then {
+    if ((phx_term2Time % 5 == 0 || phx_term2Time <= 10) && phx_term2Time > 0) then {
       playSound3D ["A3\Sounds_F\sfx\alarm.wss", term2, false, getposasl term2, 0.6, 1, 175];
-      _term2SoundAlarm = false;
-    } else {
-      _term2SoundAlarm = true;
     };
   };
   if (phx_term3Hacking) then {
     phx_term3Time = phx_term3Time - 1;
-    if (_term3SoundAlarm) then {
+    if ((phx_term3Time % 5 == 0 || phx_term3Time <= 10) && phx_term3Time > 0) then {
       playSound3D ["A3\Sounds_F\sfx\alarm.wss", term3, false, getposasl term3, 0.6, 1, 175];
-      _term3SoundAlarm = false;
-    } else {
-      _term3SoundAlarm = true;
     };
   };
 
   if (phx_term1Hacking || phx_term2Hacking || phx_term3Hacking) then {
     if (phx_term1Hacking) then {
       if (phx_term1Time > 0) then {
-        _hackString = _hackString + "Terminal 1 time remaining: " + ([phx_term1Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+        if (phx_term1Time % 5 == 0 || phx_term1Time <= 10) then {
+          _hackString = _hackString + "Terminal 1 time remaining: " + ([phx_term1Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+        };
       } else {
         _hackString = _hackString + "Terminal 1 hack complete" + "\n";
       };
     };
     if (phx_term2Hacking) then {
       if (phx_term2Time > 0) then {
-        _hackString = _hackString + "Terminal 2 time remaining: " + ([phx_term2Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+        if (phx_term2Time % 5 == 0 || phx_term2Time <= 10) then {
+          _hackString = _hackString + "Terminal 2 time remaining: " + ([phx_term2Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+        };
       } else {
         _hackString = _hackString + "Terminal 2 hack complete" + "\n";
       };
     };
     if (phx_term3Hacking) then {
       if (phx_term3Time > 0) then {
-        _hackString = _hackString + "Terminal 3 time remaining: " + ([phx_term3Time, "MM:SS"] call BIS_fnc_secondsToString);
+        if (phx_term3Time % 5 == 0 || phx_term3Time <= 10) then {
+          _hackString = _hackString + "Terminal 3 time remaining: " + ([phx_term3Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+        };
       } else {
         _hackString = _hackString + "Terminal 3 hack complete";
       };
@@ -260,7 +253,7 @@ while {!phx_gameEnd} do {
   uiSleep 1;
 
   if (_hackedObjectives >= _numberOfTerminals) then {
-    uiSleep 10;
+    uiSleep 13;
     [format ["All objectives have been hacked.\n%1 wins!",
     switch (phx_attackingSide) do {
       case east: {"OPFOR"};

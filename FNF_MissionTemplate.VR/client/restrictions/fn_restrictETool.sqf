@@ -18,4 +18,4 @@ phx_restrictETool_PFH = [{
       phx_restrictEToolAction = nil;
     };
   };
-}, 0] call CBA_fnc_addPerFrameHandler;
+}, 0.1] call CBA_fnc_addPerFrameHandler;

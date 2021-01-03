@@ -14,6 +14,7 @@ while {!phx_gameEnd} do {
   if ((phx_missionRuntimeMins - 15) <= (CBA_missionTime/60) && !phx_alert1) then {
       "15 minutes remaining" remoteExec ["phx_fnc_hintThenClear", 0, false];
       phx_alert1 = true;
+      missionNamespace setVariable ["phx_timeLeftShown",true,true];
       remoteExec ["phx_fnc_clientTime", 0, true];
   };
 

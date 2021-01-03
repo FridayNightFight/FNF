@@ -2,7 +2,10 @@
 Prevents player from going into video settings to increase gamma beyond a certain threshold (1.3) during night missions.
 Not a perfect solution, but best that can be done via scripting, afaik.
 */
-if (sunOrMoon == 1) exitWith {};
+private _sunrise = (date call BIS_fnc_sunriseSunsetTime) select 0;
+private _sunset = (date call BIS_fnc_sunriseSunsetTime) select 1;
+
+if (dayTime > _sunrise && dayTime < _sunset) exitWith {};
 
 phx_gammaWarn = false;
 phx_gammaMax = 1.3;
@@ -19,4 +22,4 @@ phx_gammaMax = 1.3;
       phx_gammaWarn = false;
     };
   };
-} , 0.2] call CBA_fnc_addPerFrameHandler;
+} , 0.3] call CBA_fnc_addPerFrameHandler;

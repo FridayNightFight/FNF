@@ -35,7 +35,7 @@ if !(isNull term1) then {
     {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      ["Terminal", "Hack Stopped"] call BIS_fnc_showSubtitle;
+      ["Terminal", "Hack Paused"] call BIS_fnc_showSubtitle;
       [term1, false] remoteExec ["phx_serverTerminalAction", 2, false];
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
@@ -86,7 +86,7 @@ if !(isNull term2) then {
     {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      ["Terminal", "Hack Stopped"] call BIS_fnc_showSubtitle;
+      ["Terminal", "Hack Paused"] call BIS_fnc_showSubtitle;
       [term2, false] remoteExec ["phx_serverTerminalAction", 2, false];
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
@@ -137,7 +137,7 @@ if !(isNull term3) then {
     {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      ["Terminal", "Hack Stopped"] call BIS_fnc_showSubtitle;
+      ["Terminal", "Hack Paused"] call BIS_fnc_showSubtitle;
       [term3, false] remoteExec ["phx_serverTerminalAction", 2, false];
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},

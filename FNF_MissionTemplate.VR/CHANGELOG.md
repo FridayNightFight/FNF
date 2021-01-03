@@ -1,3 +1,5 @@
+# v2.1.0
+
 # v2.0.0
 1. Rewrite/restructure of backend
 2. Many other small tweaks and changes, too many to list here
