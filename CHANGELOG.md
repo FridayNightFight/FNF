@@ -1,4 +1,4 @@
-# v2.1.0
+# v2.1.0_dev
 1. Added view distance cap to vars diary record
 2. Renamed client init function
 3. Renamed client game setup function
@@ -18,6 +18,11 @@
 17. Changed the rush game mode terminal timers to pause, rather than restart
 18. Terminal times will now only be updated every 5 seconds, rather than 1 second to reduce net traffic. Will update every second once timer is less than 10
 19. Removed cover map and area modules from mission.sqm that were used for the mission boundary. That is being handled via script now
+20. Changed almost all server and client code to run unscheduled
+21. Added 12 new uniform sets
+22. Added an M27-based USCM weapon set
+23. Increased time you have to get back into the starting zone if you exit
+24. Made sure that there is space for the player vehicle before teleporting back into the start zone
 
 # v2.0.0
 1. Rewrite/restructure of backend
