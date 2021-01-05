@@ -1,6 +1,7 @@
 /*
 Prevents player from going into video settings to increase gamma beyond a certain threshold (1.3) during night missions.
 Not a perfect solution, but best that can be done via scripting, afaik.
+Only takes into account the daytime at mission start.
 */
 private _sunrise = (date call BIS_fnc_sunriseSunsetTime) select 0;
 private _sunset = (date call BIS_fnc_sunriseSunsetTime) select 1;

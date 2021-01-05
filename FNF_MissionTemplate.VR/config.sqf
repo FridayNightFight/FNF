@@ -60,7 +60,7 @@ IGLA
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
 phx_fortifyPoints = 80; //Currency for fortify - individual to each Combat Engineer
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
-phx_maxViewDistance = 1750; //Maximum client object view distance (meters), strongly recommended to keep it <= 2000 for client and server performance
+phx_maxViewDistance = 1750; //Maximum client view distance (meters)
 
 ////////////////////////////////////////////////////////////
 /*
@@ -77,7 +77,18 @@ UNIFORM_ARMY_OCP                   --   WEAPONS_FRENCH
 UNIFORM_UCP                        --   WEAPONS_PLA
 UNIFORM_FRENCH_ARCTIC              --   WEAPONS_SCAR
 UNIFORM_FRENCH_WD                  --   WEAPONS_VHS
-UNIFORM_FRENCH_D
+UNIFORM_FRENCH_D                   --   WEAPONS_USMC_M27
+UNIFORM_CTRG_WD
+UNIFORM_ION_BK
+UNIFORM_ION_WD
+UNIFORM_ISRAEL_TAN
+UNIFORM_NOR_DESERT
+UNIFORM_NOR_MULTI
+UNIFORM_NOR_WD
+UNIFORM_NOR_WINT
+UNIFORM_UK_DESERT
+UNIFORM_UK_MULTI
+UNIFORM_UK_WD
 
 =====OPFOR=====
 UNIFORM_EMR_SUMMER
@@ -93,10 +104,11 @@ UNIFORM_PLA_WINTER
 
 =====INDFOR=====
 UNIFORM_M93_OAKLEAF
-UNIFORM_GUERRILLA
-UNIFORM_M10_DESERT
-UNIFORM_M10_MOUNTAIN
 UNIFORM_M93_TIGER
 UNIFORM_M93_GREEN
+UNIFORM_M10_DESERT
+UNIFORM_M10_MOUNTAIN
+UNIFORM_GUERRILLA
+UNIFORM_AAF
 =========================================================================================================================
 */

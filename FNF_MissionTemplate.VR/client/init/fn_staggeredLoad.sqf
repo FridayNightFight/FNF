@@ -1,3 +1,9 @@
+/*
+Creates a timer that controls when the player's loadout is equipped
+Prevents the player from moving or seeing until the timer is finished
+*/
+
+//Don't stagger for local testing
 if (isServer && hasInterface) exitWith {phx_staggeredLoaded = true};
 
 phx_staggeredLoaded = false;

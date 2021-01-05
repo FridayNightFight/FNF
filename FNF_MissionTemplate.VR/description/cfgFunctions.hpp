@@ -1,13 +1,18 @@
 class CfgFunctions {
   class PHX {
-    class init {
+    class vars {
       class varsInit{file = "config.sqf"; preInit = 1;};
       class sekritVars{file = "description\sekrit.sqf"; preInit = 1;};
-      class serverInit{file = "server\init\serverInit.sqf"; postInit = 1;};
+    };
+    class serverInit {
+      file = "server\init";
+      class serverInitCall{postInit = 1;};
+      class serverInit{};
     };
     class clientInit {
       file = "client\init";
-      class clientInit{postInit = 1;};
+      class clientInitCall{postInit = 1;};
+      class clientInit{};
       class clientCanPlay{};
       class clientSetupGame{};
       class staggeredLoad{};

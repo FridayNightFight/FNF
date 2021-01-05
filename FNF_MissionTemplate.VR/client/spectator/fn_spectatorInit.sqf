@@ -21,7 +21,7 @@ if (!isNil "ctf_flag") then {phx_specObjectives pushBack ctf_flag};
 call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
 //Wait for ACE spectator display and disable typing
-[{!isNull findDisplay 60000}, {60000 spawn phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
+[{!isNull findDisplay 60000}, {60000 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
 //Returns true if obj can be drawn
 _showObj = {

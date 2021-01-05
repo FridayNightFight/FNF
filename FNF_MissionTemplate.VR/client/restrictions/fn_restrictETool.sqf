@@ -1,5 +1,5 @@
 /*
-Prevents player from placing trenches on/near road and near objectives
+Prevents player from placing trenches on/near roads and near objectives
 */
 
 phx_trenchObjDist = 30;

@@ -14,14 +14,18 @@ switch (playerSide) do {
   };
 };
 
-phx_startZoneMaxTime = 5;
+phx_startZoneMaxTime = 10;
 phx_startZoneTimer = phx_startZoneMaxTime;
 phx_startLastGoodPos = position vehicle player;
 
 phx_startPFH = [{
   if (!phx_safetyEnabled || !(alive player)) exitWith {phx_startPFH call CBA_fnc_removePerFrameHandler; titleText ["", "PLAIN"]};
   if !(vehicle player inArea phx_startZoneMarker) then {
-    if (phx_startZoneTimer == 0) exitWith {(vehicle player) setPosASL phx_startLastGoodPos; phx_startZoneTimer = phx_startZoneMaxTime; titleText ["", "PLAIN"]};
+    if (phx_startZoneTimer == 0) exitWith {
+      (vehicle player) setPosASL (phx_startLastGoodPos findEmptyPosition [0, 50, typeof (vehicle player)]);
+      phx_startZoneTimer = phx_startZoneMaxTime;
+      titleText ["", "PLAIN"]
+    };
     _msg = format ["You have %1 seconds to get back into the starting zone.", phx_startZoneTimer];
     titleText [_msg, "PLAIN"];
     phx_startZoneTimer = phx_startZoneTimer - 1;

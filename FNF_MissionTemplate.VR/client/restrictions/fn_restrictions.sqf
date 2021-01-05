@@ -1,13 +1,10 @@
 call phx_fnc_disableMisc;
-
 call phx_fnc_zoneBoundary;
-
 call phx_fnc_startBoundary;
+call phx_fnc_restrictGamma;
 
 //Uniform and etool restrictions
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_restrictUniform; call phx_fnc_restrictETool;}] call CBA_fnc_waitUntilAndExecute;
-
-call phx_fnc_restrictGamma;
 
 //[{!phx_safetyEnabled && !isNull (findDisplay 46)}, {call phx_fnc_afkCheck}] call CBA_fnc_waitUntilAndExecute;
 
@@ -26,7 +23,7 @@ TF_speak_volume_level = "whispering";
 } , 1] call CBA_fnc_addPerFrameHandler;
 
 //Hide server chat messages (connect, disconnect, etc.)
-addMissionEventHandler ["HandleChatMessage", {
+phx_hideServerChatEH = addMissionEventHandler ["HandleChatMessage", {
   params ["_channel", "_owner", "_from", "_text", "_person", "_name", "_strID", "_forcedDisplay", "_isPlayerMessage", "_sentenceType", "_chatMessageType"];
 
   private _msg = ["connecting", "connected", "disconnected", "modified data", "timed out"];
