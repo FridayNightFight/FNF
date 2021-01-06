@@ -24,7 +24,8 @@ switch (_numberOfSectors) do {
 };
 
 _win = {
-  missionNamespace setVariable ["phx_gameEnd", true, true];
+  phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
 
   _side = _this;
 

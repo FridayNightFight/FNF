@@ -127,7 +127,8 @@ phx_server_dropFlag = {
 
   while {!phx_gameEnd} do {
     if (phx_flagCaptureTime <= 0) then {
-      missionNamespace setVariable ["phx_gameEnd",true,true];
+      phx_gameEnd = true;
+      publicVariable "phx_gameEnd";
 
       deleteVehicle ctf_flag;
       deleteMarker "flagMark";

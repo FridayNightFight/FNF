@@ -6,16 +6,16 @@ class CfgFunctions {
     };
     class serverInit {
       file = "server\init";
-      class serverInitCall{postInit = 1;};
       class serverInit{};
+      class serverInitCall{postInit = 1;};
     };
     class clientInit {
       file = "client\init";
-      class clientInitCall{postInit = 1;};
       class clientInit{};
       class clientCanPlay{};
       class clientSetupGame{};
       class staggeredLoad{};
+      class clientInitCall{postInit = 1;};
     };
     class briefing {
       file = "client\briefing";

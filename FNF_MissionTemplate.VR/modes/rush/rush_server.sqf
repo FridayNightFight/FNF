@@ -185,7 +185,8 @@ _win = {
   }]] remoteExec ["hint"];
 
   //Send var to other scripts and clients to signal that the game has ended
-  missionNamespace setVariable ["phx_gameEnd", true, true];
+  phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
   uiSleep 20;
   "end1" call bis_fnc_endMissionServer;
 };

@@ -4,14 +4,15 @@ Prevents the player from moving or seeing until the timer is finished
 */
 
 //Don't stagger for local testing
-if (isServer && hasInterface) exitWith {phx_staggeredLoaded = true};
+if ((isServer && hasInterface) || CBA_missionTime > 30) exitWith {phx_staggeredLoaded = true};
 
 phx_staggeredLoaded = false;
-private _time = (random 15) + 5;
+phx_screenBlack = false;
+private _time = diag_tickTime + 5 + (random 15);
 player enableSimulation false;
 
-[{time > 0 && !isNull findDisplay 46}, {cutText ["Please Wait", "BLACK FADED", 99];}] call CBA_fnc_waitUntilAndExecute;
-[{time > _this}, {
+[{time > 0 && !isNull findDisplay 46}, {cutText ["Please Wait", "BLACK FADED", 99]; phx_screenBlack = true}] call CBA_fnc_waitUntilAndExecute;
+[{(diag_tickTime > _this) && phx_screenBlack}, {
   cutText ["", "PLAIN"];
   player enableSimulation true;
   phx_staggeredLoaded = true;

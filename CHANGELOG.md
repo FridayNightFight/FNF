@@ -1,28 +1,35 @@
-# v2.1.0_dev
+# v2.1.0_rc1
+Added:
 1. Added view distance cap to vars diary record
-2. Renamed client init function
-3. Renamed client game setup function
-4. Readded staggered load, new function
-5. Fix MGTL not having ETool
-6. Fix TLs not having smoke and flare GLs
-7. Separated main loadout function into two, phx_initLoadout sets vars, phx_setLoadout adds gear
-8. Removed bandolier vest from Guerilla uniform set
-9. Rewrote client time left UI function to use CBA PFH rather than spawn
-10. Added the mission time remaining to the map UI. Opening the map after safe start ends will show the mission time left display. Time left display still forced on at 15 mins left.
-11. Better method for figuring out if the auto-gamma restriction should run
-12. Changed view distance restriction back to view distance, rather than object view distance
-13. Added a HandleChatMessage EH to stop displaying player connect, disconnect, time out, etc. messages. Will add option to enable/disable this feature soon.
-14. Started transitioning to running as much as possible unscheduled
-15. CTF flag capture zone will now be shown to spectators
-16. Added a 5 minute timer for the neutral sector mode until points will be added after the first sector is captured. Will help prevent sector rushing.
-17. Changed the rush game mode terminal timers to pause, rather than restart
-18. Terminal times will now only be updated every 5 seconds, rather than 1 second to reduce net traffic. Will update every second once timer is less than 10
-19. Removed cover map and area modules from mission.sqm that were used for the mission boundary. That is being handled via script now
-20. Changed almost all server and client code to run unscheduled
-21. Added 12 new uniform sets
-22. Added an M27-based USCM weapon set
-23. Increased time you have to get back into the starting zone if you exit
-24. Made sure that there is space for the player vehicle before teleporting back into the start zone
+2. Readded staggered load, new function
+3. Added the mission time remaining to the map UI. Opening the map after safe start ends will show the mission time left display. Time left display still forced on at 15 mins left.
+4. Added a HandleChatMessage event handler to stop displaying player connect, disconnect, time out, etc. messages. Will add option to enable/disable this feature soon.
+5. Added a 5 minute timer for the neutral sector mode until points will be added after the first sector is captured. Will help prevent sector rushing.
+6. Added 12 new uniform sets
+7. Added an M27-based USCM weapon set
+
+Changed:
+1. Renamed client init function
+2. Renamed client game setup function
+3. Separated main loadout function into two, phx_initLoadout sets vars, phx_setLoadout adds gear
+4. Rewrote client time left UI function to use CBA PFH rather than spawn
+5. Better method for figuring out if the auto-gamma restriction should run
+6. Changed view distance restriction back to view distance, rather than object view distance
+7. Changed almost all server and client code to run unscheduled
+8. CTF flag capture zone will now be shown to spectators
+9. Changed the rush game mode terminal timers to pause, rather than restart
+10. Terminal times will now only be updated every 5 seconds, rather than 1 second to reduce net traffic. Will update every second once timer is less than 10
+11. Increased time you have to get back into the starting zone if you exit
+12. Made sure that there is space for the player vehicle before teleporting back into the start zone
+
+Removed:
+1. Removed bandolier vest from Guerilla uniform set
+2. Removed cover map and area modules from mission.sqm that were used for the mission boundary. Handled via server script now
+3. Removed extra INDFOR marksmen
+
+Fixed:
+1. Fix MGTL not having ETool
+2. Fix TLs not having smoke and flare GLs
 
 # v2.0.0
 1. Rewrite/restructure of backend

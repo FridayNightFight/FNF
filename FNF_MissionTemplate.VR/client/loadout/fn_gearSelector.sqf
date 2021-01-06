@@ -1,5 +1,4 @@
 //Exit if no optics or weapons are available
-waitUntil {missionNamespace getVariable ["phx_loadoutAssigned",false]};
 if (isNil "phx_allowedOptics" && isNil "phx_allowedWeapons") exitWith {};
 
 if (pRole == 16) then {
@@ -16,6 +15,7 @@ _action = ["Weapon_Selector","Weapon","",{},{true}] call ace_interact_menu_fnc_c
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
 //Optics
+private "_compatibleOptics";
 if !(isNil "phx_allowedOptics") then {
   _compatibleOptics = [primaryWeapon player, "optic"] call CBA_fnc_compatibleItems;
 

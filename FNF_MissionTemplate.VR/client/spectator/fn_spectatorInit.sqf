@@ -3,7 +3,9 @@ Sets player as ACE spectator if not already.
 Draws 3D icons on alive objectives.
 */
 
-if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {[true, true, true] call ace_spectator_fnc_setSpectator;};
+if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {
+  [true, true, true] call ace_spectator_fnc_setSpectator;
+};
 
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];
