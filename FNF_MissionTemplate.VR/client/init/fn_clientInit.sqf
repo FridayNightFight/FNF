@@ -16,7 +16,7 @@ call phx_fnc_radio_waitGear; //Start radio preset functions
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {call phx_fnc_setLoadout}] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
-[{time > 0}, {call phx_fnc_restrictions; call phx_fnc_checkLoadout}] call CBA_fnc_waitUntilAndExecute;
+[{time > 0}, {call phx_fnc_restrictions; call phx_fnc_checkLoadout;}] call CBA_fnc_waitUntilAndExecute;
 //Client-side fortify, and gear selector
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient; call phx_fnc_gearSelector;}] call CBA_fnc_waitUntilAndExecute;
 
