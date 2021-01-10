@@ -1,3 +1,6 @@
+# v2.1.0_rc2
+1. Fixed remove respawn button function
+
 # v2.1.0_rc1
 Added:
 1. Added view distance cap to vars diary record
