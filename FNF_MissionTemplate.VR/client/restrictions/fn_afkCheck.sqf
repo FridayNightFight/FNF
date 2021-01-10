@@ -3,18 +3,11 @@ Check if player is idle for 10 mins, if so, display a message and allow them to 
 Not active during safe start
 */
 
-waitUntil {!phx_safetyEnabled};
-waitUntil {!isNull (findDisplay 46)};
-
 phx_allowedIdle = 600; //Time in seconds allowed for player idle
 
 phx_idleTime = diag_tickTime + phx_allowedIdle;
 
-phx_afkCheck_keypress = {
-  phx_idleTime = diag_tickTime + phx_allowedIdle;
-};
-
-(findDisplay 46) displayAddEventHandler ["keyDown", "call phx_afkCheck_keypress"];
+(findDisplay 46) displayAddEventHandler ["keyDown", "phx_idleTime = diag_tickTime + phx_allowedIdle;"];
 
 phx_afkCheck_idle = {
   //display warning message

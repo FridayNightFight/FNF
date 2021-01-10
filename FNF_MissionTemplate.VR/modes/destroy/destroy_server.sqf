@@ -107,7 +107,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 } forEach _objArr;
 
 //Check for win condition and end game if all objectives are destroyed
-waitUntil {phx_aliveObjectives < 1};
+waitUntil {uiSleep 1; phx_aliveObjectives < 1 && !phx_gameEnd};
 
 [format ["All objectives have been destroyed.\n%1 wins!",
 switch (phx_attackingSide) do {
@@ -117,7 +117,8 @@ switch (phx_attackingSide) do {
 }]] remoteExec ["hint"];
 
 //Send var to other scripts and clients to signal that the game has ended
-missionNamespace setVariable ["phx_gameEnd", true, true];
+phx_gameEnd = true;
+publicVariable "phx_gameEnd";
 
 uisleep 20;
 

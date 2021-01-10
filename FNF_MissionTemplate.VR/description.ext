@@ -4,10 +4,11 @@ onLoadMission = "SHORT_DESCRIPTION";
 
 class Header
 {
-	gameType =  TDM;
-	minPlayers =  1;
+	gameType = TDM;
+	minPlayers = 1;
 	maxPlayers = 200;
 };
+
 #include "description\definitions.hpp"
 #include "description\cfgEventHandlers.hpp"
 #include "description\cfgNotifications.hpp"

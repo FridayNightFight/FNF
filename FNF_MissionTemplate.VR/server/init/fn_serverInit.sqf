@@ -1,17 +1,18 @@
 if (!isServer) exitWith {};
 
-[] spawn phx_fnc_serverSafety;
-
+call phx_fnc_serverSafety;
 call phx_fnc_radio_genFreqs;
-
 call phx_fnc_sendUniforms;
-
 call phx_fnc_fortifyServer;
-
 call phx_fnc_server_setupGame;
+call phx_fnc_checkTime;
 
-[] spawn phx_fnc_checkTime;
-[] spawn phx_fnc_checkAlive;
+[{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+
+//Create map cover for zone boundary
+private _zoneArea = triggerArea zoneTrigger;
+zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
+[zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
 
 // Create respawn markers in bottom left corner of map
 {

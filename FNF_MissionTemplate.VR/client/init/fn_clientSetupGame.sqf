@@ -9,7 +9,7 @@ switch (phx_gameMode) do {
     execVM "modes\destroy\destroy_client.sqf";
   };
   case "uplink": {
-    execVM "modes\uplink\uplink_client.sqf"
+    execVM "modes\uplink\uplink_client.sqf";
   };
   case "rush": {
     execVM "modes\rush\rush_client.sqf";

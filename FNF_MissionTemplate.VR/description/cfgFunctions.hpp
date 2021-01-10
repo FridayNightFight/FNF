@@ -1,12 +1,21 @@
 class CfgFunctions {
   class PHX {
-    class init {
+    class vars {
       class varsInit{file = "config.sqf"; preInit = 1;};
       class sekritVars{file = "description\sekrit.sqf"; preInit = 1;};
-      class serverInit{file = "server\init\serverInit.sqf"; postInit = 1;};
-      class clientInit{file = "client\init\clientInit.sqf"; postInit = 1;};
-      class clientCanPlay{file = "client\init\fn_clientCanPlay.sqf"};
-      class clientSetup{file = "client\init\fn_client_setupGame.sqf"};
+    };
+    class serverInit {
+      file = "server\init";
+      class serverInit{};
+      class serverInitCall{postInit = 1;};
+    };
+    class clientInit {
+      file = "client\init";
+      class clientInit{};
+      class clientCanPlay{};
+      class clientSetupGame{};
+      class staggeredLoad{};
+      class clientInitCall{postInit = 1;};
     };
     class briefing {
       file = "client\briefing";
@@ -38,6 +47,7 @@ class CfgFunctions {
       class addItems{};
       class checkLoadout{};
       class gearSelector{};
+      class initLoadout{};
     };
     class restrictions {
       file = "client\restrictions";
@@ -62,6 +72,7 @@ class CfgFunctions {
       class hintThenClear{};
       class fortifyClient{};
       class clientTime{};
+      class showTimeOnMap{};
     };
     class unflip {
       file = "client\misc\unflip";

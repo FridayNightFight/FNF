@@ -1,5 +1,5 @@
 /*
-Prevents player from placing trenches on/near road and near objectives
+Prevents player from placing trenches on/near roads and near objectives
 */
 
 phx_trenchObjDist = 30;
@@ -18,4 +18,4 @@ phx_restrictETool_PFH = [{
       phx_restrictEToolAction = nil;
     };
   };
-}, 0] call CBA_fnc_addPerFrameHandler;
+}, 0.1] call CBA_fnc_addPerFrameHandler;

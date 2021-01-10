@@ -42,6 +42,10 @@ createMarker ["capZoneMarkText", position ctf_attackTrig];
 "capZoneMark" setMarkerAlpha 0;
 "capZoneMarkText" setMarkerAlpha 0;
 
+//Show flag zone to spectators and attackers
+["capZoneMark",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, phx_attackingSide], true];
+["capZoneMarkText",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, phx_attackingSide], true];
+
 switch (phx_attackingSide) do {
   case east: {"capZoneMark" setMarkerColor "colorRed"};
   case west: {"capZoneMark" setMarkerColor "colorBlue"};
@@ -123,7 +127,8 @@ phx_server_dropFlag = {
 
   while {!phx_gameEnd} do {
     if (phx_flagCaptureTime <= 0) then {
-      missionNamespace setVariable ["phx_gameEnd",true,true];
+      phx_gameEnd = true;
+      publicVariable "phx_gameEnd";
 
       deleteVehicle ctf_flag;
       deleteMarker "flagMark";

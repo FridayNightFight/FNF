@@ -21,7 +21,8 @@ phx_server_sectorWin = {
     case independent: {"INDFOR"};
   }]] remoteExec ["hint"];
 
-  missionNamespace setVariable ["phx_gameEnd", true, true];
+  phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
 
   sleep 20;
 

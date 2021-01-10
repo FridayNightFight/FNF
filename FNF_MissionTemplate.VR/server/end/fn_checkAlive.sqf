@@ -1,60 +1,44 @@
 /*
 Announces when a side present in the mission is dead
+Doesn't run until safe start ends
 */
 
-waitUntil {!(missionNamespace getVariable ["phx_safetyEnabled",true])};
+phx_bluforInMission = false;
+phx_opforInMission = false;
+phx_indforInMission = false;
 
-_bluforInMission = false;
-_opforInMission = false;
-_indforInMission = false;
+phx_playersInMission = call BIS_fnc_listPlayers;
 
-_bluforEliminated = false;
-_opforEliminated = false;
-_indforEliminated = false;
+if (west countSide phx_playersInMission > 0) then {phx_bluforInMission = true};
+if (east countSide phx_playersInMission > 0) then {phx_opforInMission = true};
+if (independent countSide phx_playersInMission > 0) then {phx_indforInMission = true};
 
-_activeSides = 0;
-_aliveSides = 0;
+phx_checkAlive_count = {
+  params ["_side"];
 
-_units = allPlayers;
-_cfg = configFile >> "cfgVehicles";
-
-if ((west countSide _units) > 0) then {
-  _bluforInMission = true;
-  _activeSides = _activeSides + 1;
+  private _count = {side group _x == _side} count phx_playersInMission;
+  _count;
 };
 
-if ((east countSide _units) > 0) then {
-  _opforInMission = true;
-  _activeSides = _activeSides + 1;
-};
+[{
+  if (phx_gameEnd) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
+  
+  private _phx_currentSpectators = call ace_spectator_fnc_players;
+  phx_playersInMission = [phx_playersInMission, {_this in _phx_currentSpectators}] call CBA_fnc_reject;;
+  phx_playersInMission = [phx_playersInMission, {!(alive _this)}] call CBA_fnc_reject;;
 
-if ((independent countSide _units) > 0) then {
-  _indforInMission = true;
-  _activeSides = _activeSides + 1;
-};
-
-_aliveSides = _activeSides; //To do: trigger game end
-
-while {!(missionNamespace getVariable ["phx_gameEnd",false])} do {
-  _bluforCount = {getNumber (_cfg >> typeOf _x >> "side") == 1 && alive _x} count _units;
-  if (_bluforInMission && !_bluforEliminated && (_bluforCount < 1)) then {
-    _bluforEliminated = true;
-    _aliveSides = _aliveSides - 1;
-    ["BLUFOR eliminated!"] remoteExec ["hint"];
+  if (phx_bluforInMission) then {
+    _bluCount = west call phx_checkAlive_count;
+    if (_bluCount < 1) then {phx_bluforInMission = false; "BLUFOR eliminated!" remoteExec ["hint"]};
   };
 
-  _opforCount = {getNumber (_cfg >> typeOf _x >> "side") == 0 && alive _x} count _units;
-  if (_opforInMission && !_opforEliminated && (_opforCount < 1)) then {
-    _opforEliminated = true;
-    _aliveSides = _aliveSides - 1;
-    ["OPFOR eliminated!"] remoteExec ["hint"];
+  if (phx_opforInMission) then {
+    _opfCount = east call phx_checkAlive_count;
+    if (_opfCount < 1) then {phx_opforInMission = false; "OPFOR eliminated!" remoteExec ["hint"]};
   };
 
-  _indforCount = {getNumber (_cfg >> typeOf _x >> "side") == 2 && alive _x} count _units;
-  if (_indforInMission && !_indforEliminated && (_indforCount < 1)) then {
-    _indforEliminated = true;
-    _aliveSides = _aliveSides - 1;
-    ["INDFOR eliminated!"] remoteExec ["hint"];
+  if (phx_indforInMission) then {
+    _indCount = independent call phx_checkAlive_count;
+    if (_indCount < 1) then {phx_indforInMission = false; "INDFOR eliminated!" remoteExec ["hint"]};
   };
-  sleep 10;
-};
+}, 10] call CBA_fnc_addPerFrameHandler;

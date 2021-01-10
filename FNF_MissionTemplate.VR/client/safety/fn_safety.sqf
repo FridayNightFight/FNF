@@ -12,12 +12,7 @@ player allowDamage false;
 //Stop player from being able to fire weapon and throw grenades
 phx_safetyMuzzles = getArray (configFile >> "CfgWeapons" >> "Throw" >> "muzzles");
 
-//Disable ACE advanced throwing
-[] spawn {
-  waitUntil {!isNil "ace_advanced_throwing_enabled"};
-  uisleep 2;
-  ace_advanced_throwing_enabled = false;
-};
+[{missionNamespace getVariable ["ace_advanced_throwing_enabled",false]}, {ace_advanced_throwing_enabled = false}] call CBA_fnc_waitUntilAndExecute;
 
 //Allow ACE placing and other actions that rely on left mouse button
 phx_acePlacing = [{
@@ -46,19 +41,14 @@ phx_acePlacing = [{
   if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
 } , 0] call CBA_fnc_addPerFrameHandler;
 
-
-[] spawn {
-  waitUntil {!phx_safetyEnabled};
-
+[{!phx_safetyEnabled}, {
   [phx_acePlacing] call CBA_fnc_removePerFrameHandler;
   player removeAction phx_safeStartNoFire;
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
 
-  if (!isNil "leadAction") then {
-    player removeAction leadAction;
-  };
-
   //Remove gear selector
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-};
+
+  call phx_fnc_showTimeOnMap; //Show time left on map after safety ends
+}] call CBA_fnc_waitUntilAndExecute;

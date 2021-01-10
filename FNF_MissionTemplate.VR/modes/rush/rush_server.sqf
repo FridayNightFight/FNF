@@ -80,38 +80,50 @@ _terminalHackComplete = {
 };
 
 _terminalHacking = {
-  _term = _this select 0;
-  _timer = _this select 1;
-  _termTimeText = "";
+  private _term = _this select 0;
+  private _timer = _this select 1;
+  private _termTimeText = "";
 
   switch (_term) do {
     case term1: {
-      while {_timer > 0 && phx_term1Hacking} do {
-        _termTimeText = "Terminal 1 hack timer: " + ([_timer,"MM:SS"] call BIS_fnc_secondsToString);
-        _termTimeText remoteExec ["hintSilent",0,false];
+      while {phx_term1Time > 0 && phx_term1Hacking} do {
+        if (phx_term1Time % 5 == 0 || phx_term1Time <= 10) then {
+          _termTimeText = "Terminal 1 hack timer: " + ([phx_term1Time,"MM:SS"] call BIS_fnc_secondsToString);
+          _termTimeText remoteExec ["hintSilent",0,false];
+          playSound3D ["A3\Sounds_F\sfx\alarm.wss", term1, false, getposasl term1, 0.6, 1, 175];
+        };
         uiSleep 1;
         if (phx_term1Hacking) then {
-          _timer = _timer - 1;
+          phx_term1Time = phx_term1Time - 1;
+          _timer = phx_term1Time;
         };
       };
     };
     case term2: {
-      while {_timer > 0 && phx_term2Hacking} do {
-        _termTimeText = "Terminal 2 hack timer: " + ([_timer,"MM:SS"] call BIS_fnc_secondsToString);
-        _termTimeText remoteExec ["hintSilent",0,false];
+      while {phx_term2Time > 0 && phx_term2Hacking} do {
+        if (phx_term2Time % 5 == 0 || phx_term2Time <= 10) then {
+          _termTimeText = "Terminal 2 hack timer: " + ([phx_term2Time,"MM:SS"] call BIS_fnc_secondsToString);
+          _termTimeText remoteExec ["hintSilent",0,false];
+          playSound3D ["A3\Sounds_F\sfx\alarm.wss", term2, false, getposasl term2, 0.6, 1, 175];
+        };
         uiSleep 1;
         if (phx_term2Hacking) then {
-          _timer = _timer - 1;
+          phx_term2Time = phx_term2Time - 1;
+          _timer = phx_term2Time;
         };
       };
     };
     case term3: {
-      while {_timer > 0 && phx_term3Hacking} do {
-        _termTimeText = "Terminal 3 hack timer: " + ([_timer,"MM:SS"] call BIS_fnc_secondsToString);
-        _termTimeText remoteExec ["hintSilent",0,false];
+      while {phx_term3Time > 0 && phx_term3Hacking} do {
+        if (phx_term3Time % 5 == 0 || phx_term3Time <= 10) then {
+          _termTimeText = "Terminal 3 hack timer: " + ([phx_term3Time,"MM:SS"] call BIS_fnc_secondsToString);
+          _termTimeText remoteExec ["hintSilent",0,false];
+          playSound3D ["A3\Sounds_F\sfx\alarm.wss", term3, false, getposasl term3, 0.6, 1, 175];
+        };
         uiSleep 1;
         if (phx_term3Hacking) then {
-          _timer = _timer - 1;
+          phx_term3Time = phx_term3Time - 1;
+          _timer = phx_term3Time;
         };
       };
     };
@@ -149,7 +161,6 @@ phx_serverTerminalAction = {
         case term3: {missionNamespace setVariable ["phx_term3Hacking", true, true];};
       };
 
-      format ["%1 hack started!", _message] remoteExec ["hintSilent", 0];
       [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
     };
     case false: {
@@ -159,7 +170,7 @@ phx_serverTerminalAction = {
         case term3: {missionNamespace setVariable ["phx_term3Hacking", false, true];};
       };
 
-      format ["%1 hack stopped!", _message] remoteExec ["hintSilent", 0];
+      [{format ["%1 hack paused!", _this] remoteExec ["hintSilent", 0]}, _message, 1] call CBA_fnc_waitAndExecute;
       [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
     };
   };
@@ -174,7 +185,8 @@ _win = {
   }]] remoteExec ["hint"];
 
   //Send var to other scripts and clients to signal that the game has ended
-  missionNamespace setVariable ["phx_gameEnd", true, true];
+  phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
   uiSleep 20;
   "end1" call bis_fnc_endMissionServer;
 };

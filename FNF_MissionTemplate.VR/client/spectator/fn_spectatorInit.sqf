@@ -3,7 +3,9 @@ Sets player as ACE spectator if not already.
 Draws 3D icons on alive objectives.
 */
 
-if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {[true, true, true] call ace_spectator_fnc_setSpectator;};
+if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {
+  [true, true, true] call ace_spectator_fnc_setSpectator;
+};
 
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];
@@ -21,7 +23,7 @@ if (!isNil "ctf_flag") then {phx_specObjectives pushBack ctf_flag};
 call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
 //Wait for ACE spectator display and disable typing
-[{!isNull findDisplay 60000}, {60000 spawn phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
+[{!isNull findDisplay 60000}, {60000 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
 //Returns true if obj can be drawn
 _showObj = {

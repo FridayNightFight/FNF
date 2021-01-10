@@ -55,7 +55,9 @@ PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset"];
 phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
 player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteString]];
 
-//Next step
-[{call TFAR_fnc_haveSWRadio}, {phx_hasSW = true;}, [], 30, {phx_hasSW = false;}] call CBA_fnc_waitUntilAndExecute;
-[{call TFAR_fnc_haveLRRadio}, {phx_hasLR = true;}, [], 5, {phx_hasLR = false;}] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {call phx_fnc_radio_setRadios}, [], 60, {systemChat "Radio preset timeout";}] call CBA_fnc_waitUntilAndExecute;
+//Next step - wait for loadout
+[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
+  [{call TFAR_fnc_haveSWRadio}, {phx_hasSW = true;}, [], 10, {phx_hasSW = false;}] call CBA_fnc_waitUntilAndExecute;
+  [{call TFAR_fnc_haveLRRadio}, {phx_hasLR = true;}, [], 3, {phx_hasLR = false;}] call CBA_fnc_waitUntilAndExecute;
+  [{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {call phx_fnc_radio_setRadios}, [], 60, {systemChat "Radio preset timeout";}] call CBA_fnc_waitUntilAndExecute;
+}] call CBA_fnc_waitUntilAndExecute;
