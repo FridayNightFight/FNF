@@ -1,6 +1,7 @@
 /*
 Disallow damage for whatever building objects the objective is under or over
 */
+
 private _obj = _this select 0;
 private _pos = getPosASL _obj;
 private _invinc = [];
@@ -11,7 +12,7 @@ _buildings = _buildings + (lineIntersectsObjs [_pos, [_pos select 0, _pos select
 if (count _buildings > 0) then {
   {
     if (!(_x == _obj) && !(_x in _invinc)) then {
-      [_x,false] remoteExec ["allowDamage",0,_x];
+      [_x,false] remoteExec ["allowDamage",0,true];
       _invinc pushBack _x;
     };
   } forEach _buildings;

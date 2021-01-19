@@ -44,11 +44,11 @@ phx_loadout_PAK = "ACE_personalAidKit";
 phx_loadout_bandage = "ACE_fieldDressing:32";
 phx_loadout_morphine = "ACE_morphine:16";
 phx_loadout_epinephrine = "ACE_epinephrine:8";
-phx_loadout_blood = "ACE_bloodIV:6";
+phx_loadout_blood_1 = "ACE_bloodIV_500:12";
+phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 //Range
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
-phx_loadout_sswt = "ACE_Tripod";
 phx_loadout_rifle_optic = "optic_DMS";
 phx_allowedOptics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 

@@ -143,7 +143,7 @@ switch (true) do {
 
   case (phx_gameMode == "neutralSector" || phx_gameMode == "connection"): {
     _overTimeAlert = false;
-    _pointLead = 25;
+    _pointLead = 20;
     while {!phx_gameEnd} do {
       _overtime = false;
       _highSide = sideEmpty;
@@ -201,10 +201,11 @@ switch (true) do {
         };
 
         format ["The mission time limit has been reached.\n%1 wins!", _sideText] remoteExec ["hint"];
-        missionNamespace setVariable ["phx_gameEnd", true, true];
+        phx_gameEnd = true;
+        publicVariable "phx_gameEnd";
       } else {
         if (!_overTimeAlert) then {
-          "Overtime enabled! \n The first side to hit 100 points or a 25 point lead will win." remoteExec ["hint"];
+          "Overtime enabled! \n The first side to hit 100 points or a 20 point lead will win." remoteExec ["hint"];
           _overTimeAlert = true;
         };
       };

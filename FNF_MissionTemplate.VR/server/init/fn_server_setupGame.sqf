@@ -36,7 +36,7 @@ switch (phx_gameMode) do {
   };
   case "neutralSector": {
     execVM "modes\neutralsector\neutralSector.sqf";
-    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 25 points of the highest side.";
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side.";
   };
 };
 

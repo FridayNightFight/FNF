@@ -1,3 +1,18 @@
+# v2.1.0
+Added:
+1. Added rangecard to marksman
+2. Added road restriction for ACEX fortify placements
+3. Added tasks to CTF game mode, task lists flag capture time
+
+Changed:
+1. Changed medic blood loadout to 12x 500ml & 4x 250ml
+2. Reduced neutral sector mode overtime condition point lead from 25 to 20
+
+Fixed:
+1. Fixed staggered load function running too quickly causing all players to get gear at same time
+2. Fix TFAR speak volume UI not updating to whisper at mission start
+3. Fix server nil var, unimportant
+
 # v2.1.0_rc2
 1. Fixed remove respawn button function
 

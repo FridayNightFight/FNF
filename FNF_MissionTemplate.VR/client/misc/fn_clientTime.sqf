@@ -2,7 +2,7 @@
 Creates and update mission time remaining display
 */
 
-if (!hasInterface || phx_mapTimeShown) exitWith {};
+if (!hasInterface || missionNamespace getVariable ["phx_mapTimeShown",false]) exitWith {};
 
 disableSerialization;
 _missionSafeTime = phx_safeStartTime;

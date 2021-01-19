@@ -55,6 +55,9 @@ switch (phx_attackingSide) do {
 createMarker ["flagMark", position ctf_flagPole];
 "flagMark" setMarkerType "hd_flag";
 
+[phx_defendingSide,"ctfDefendID",[format ["Flag capture time: %1",([phx_flagCaptureTime, "MM:SS"] call BIS_fnc_secondsToString)], "Defend The Flag"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
+[phx_attackingSide,"ctfAttackID",[format ["Flag capture time: %1",([phx_flagCaptureTime, "MM:SS"] call BIS_fnc_secondsToString)], "Capture The Flag"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
+
 [_flagMarkUpdateTime] spawn {
   params ["_updateTime"];
   while {!isNull ctf_flag} do {
@@ -132,6 +135,9 @@ phx_server_dropFlag = {
 
       deleteVehicle ctf_flag;
       deleteMarker "flagMark";
+
+      ["ctfDefendID", "FAILED", true] call BIS_fnc_taskSetState;
+      ["ctfAttackID", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
       [format ["%1 has successfully held the flag.\n%1 wins!",
       switch (phx_attackingSide) do {
