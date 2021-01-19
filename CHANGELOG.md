@@ -1,3 +1,6 @@
+# v2.1.0a
+Fixed missing '('
+
 # v2.1.0
 Added:
 1. Added rangecard to marksman

@@ -64,7 +64,7 @@ switch (playerSide) do {
       };
     } forEach phx_fortify_objArr;
 
-    if (count (_object nearRoads 12) > 0) || (isOnRoad _object)) then {
+    if ((count (_object nearRoads 12) > 0) || (isOnRoad _object)) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Object cannot be near a road";
     };
