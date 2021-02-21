@@ -2,11 +2,7 @@
 Creates and update mission time remaining display
 */
 
-<<<<<<< Updated upstream
-if (!hasInterface || phx_mapTimeShown) exitWith {};
-=======
 if (!hasInterface || missionNamespace getVariable ["phx_mapTimeShown",false] || isNil "phx_safetyEndTime") exitWith {};
->>>>>>> Stashed changes
 
 disableSerialization;
 private _missionTime = (phx_missionTimelimit * 60) + phx_safetyEndTime;
