@@ -17,10 +17,10 @@ class RscTitles {
         idc = 1003;
         style = 0x00;
         lineSpacing = 1;
-        x = safeZoneX + safeZoneW - 0.5 * 3 / 4;
+        x = safeZoneX + safeZoneW - 0.36 * 3 / 4;
         y = safeZoneY + safeZoneH - 0.033;
         h = 0.033;
-        w = 0.5 * 3 / 4; //w == h
+        w = 0.36 * 3 / 4; //w == h
         size = 0.020;
         colorBackground[] = {0,0,0,0.85};
         colorText[] = {1,1,1,1};
@@ -29,7 +29,7 @@ class RscTitles {
         class Attributes {
             font = "TahomaB";
             color = "#FFFFFF";
-            align = "RIGHT";
+            align = "CENTER";
             valign = "bottom";
             shadow = true;
             shadowColor = "#000000";

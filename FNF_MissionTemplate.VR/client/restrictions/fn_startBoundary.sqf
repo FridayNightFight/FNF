@@ -2,38 +2,41 @@
 Forces the player to stay within their starting zone until safe start ends.
 */
 
+private "_marker";
+private _maxTime = 10;
+phx_startTimer = 10;
+phx_startGoodPos = getpos vehicle player;
+
 switch (playerSide) do {
   case east: {
-    phx_startZoneMarker = "opforSafeMarker";
+    _marker = "opforSafeMarker";
   };
   case west: {
-    phx_startZoneMarker = "bluforSafeMarker";
+    _marker = "bluforSafeMarker";
   };
   case independent: {
-    phx_startZoneMarker = "indforSafeMarker";
+    _marker = "indforSafeMarker";
   };
 };
 
-phx_startZoneMaxTime = 10;
-phx_startZoneTimer = phx_startZoneMaxTime;
-phx_startLastGoodPos = position vehicle player;
 
-phx_startPFH = [{
-  if (!phx_safetyEnabled || !(alive player)) exitWith {phx_startPFH call CBA_fnc_removePerFrameHandler; titleText ["", "PLAIN"]};
-  if !(vehicle player inArea phx_startZoneMarker) then {
-    if (phx_startZoneTimer == 0) exitWith {
-      (vehicle player) setPosASL (phx_startLastGoodPos findEmptyPosition [0, 50, typeof (vehicle player)]);
-      phx_startZoneTimer = phx_startZoneMaxTime;
-      titleText ["", "PLAIN"]
-    };
-    _msg = format ["You have %1 seconds to get back into the starting zone.", phx_startZoneTimer];
-    titleText [_msg, "PLAIN"];
-    phx_startZoneTimer = phx_startZoneTimer - 1;
+[{
+  _this select 0 params ["_marker","_maxTime"];
+  if (!phx_safetyEnabled || !alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler; hintSilent ""};
+
+  if (vehicle player inArea _marker) then {
+    phx_startGoodPos = getpos vehicle player;
+
+    if (phx_startTimer != _maxTime) then {phx_startTimer = _maxTime; hintSilent ""};
   } else {
-    if (phx_startZoneTimer != phx_startZoneMaxTime) then {
-      phx_startZoneTimer = phx_startZoneMaxTime;
-      titleText ["", "PLAIN"];
+    if (phx_startTimer <= 0) then {
+      if (phx_startGoodPos select 2 > 0.2) then {vehicle player setpos phx_startGoodPos} else {
+        vehicle player setpos (phx_startGoodPos findEmptyPosition [0, 50, typeOf vehicle player]);
+      };
+      hintSilent "";
+    } else {
+      hint format ["You have %1 seconds to get back to the starting area", phx_startTimer];
+      phx_startTimer = phx_startTimer - 1;
     };
-    phx_startLastGoodPos = getPosASL vehicle player;
   };
-}, 1, []] call CBA_fnc_addPerFrameHandler;
+}, 1, [_marker,_maxTime]] call CBA_fnc_addPerFrameHandler;

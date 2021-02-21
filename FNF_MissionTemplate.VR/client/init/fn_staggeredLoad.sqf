@@ -4,7 +4,7 @@ Prevents the player from moving or seeing until the timer is finished
 */
 
 //Don't stagger for local testing
-if ((isServer && hasInterface) || CBA_missionTime > 30) exitWith {phx_staggeredLoaded = true};
+if ((isServer && hasInterface) || CBA_missionTime > 30 || count (call BIS_fnc_listPlayers) < 50) exitWith {phx_staggeredLoaded = true};
 
 phx_staggeredLoaded = false;
 phx_screenBlack = false;

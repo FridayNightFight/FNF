@@ -19,7 +19,7 @@ _endGame = {
   publicVariable "phx_gameEnd";
 
   if (phx_gameMode == "destroy") then {
-    sleep 20;
+    sleep 15;
     "end1" call bis_fnc_endmissionserver;
   };
 };

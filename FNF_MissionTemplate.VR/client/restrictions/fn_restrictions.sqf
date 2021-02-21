@@ -26,7 +26,7 @@ TF_speak_volume_level = "whispering";
 phx_hideServerChatEH = addMissionEventHandler ["HandleChatMessage", {
   params ["_channel", "_owner", "_from", "_text", "_person", "_name", "_strID", "_forcedDisplay", "_isPlayerMessage", "_sentenceType", "_chatMessageType"];
 
-  private _msg = ["connecting", "connected", "disconnected", "modified data", "timed out"];
+  private _msg = ["connecting", "connected", "disconnected", "modified data", "timed out", "authentication failed"];
   private _word = false;
   private _serv = false;
 

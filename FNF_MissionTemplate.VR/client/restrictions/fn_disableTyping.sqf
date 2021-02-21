@@ -4,6 +4,7 @@ Disables typing in chat if player is not staff
 
 _display = _this;
 
+//to do: add dream
 _ids = [
 "76561198011678508", //muniz
 "76561197961336958", //arkor
@@ -16,7 +17,8 @@ _ids = [
 "76561198136175919", //strac
 "76561198068436818", //bridges
 "76561197960285643", //nemesis
-"76561197977759652" //drake
+"76561197977759652", //drake
+"76561198097983515" //dream
 ];
 
 if !((getPlayerUID player) in _ids) then {

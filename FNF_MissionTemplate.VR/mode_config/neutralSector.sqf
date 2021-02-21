@@ -1,6 +1,6 @@
 _numberOfSectors = 1; //Number of active sectors (1-3)
 
-_pointAddTime = 12; //How often points are added (seconds)
+_pointAddTime = 11; //How often points are added (seconds)
 
 //Points will be added more slowly if there are more sectors to control
 switch (_numberOfSectors) do {

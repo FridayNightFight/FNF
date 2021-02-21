@@ -1,5 +1,7 @@
-_fortifyColor = 0; //0 = green, 1 = tan
-_world = worldName;
+private _fortifyColor = 0; //0 = green, 1 = tan
+
+//Automatically choose fotyify color based on terrain name
+private _world = worldName;
 {
   if (_x == _world) then {_fortifyColor = 1};
 } forEach ["Desert_E","pja319","tem_kujari","porto","intro","Shapur_BAF","takistan","Mountains_ACR","torabora","zargabad"];

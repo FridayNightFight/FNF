@@ -5,9 +5,9 @@ call phx_fnc_radio_genFreqs;
 call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
 call phx_fnc_server_setupGame;
-call phx_fnc_checkTime;
 
 [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;

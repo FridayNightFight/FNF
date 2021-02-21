@@ -58,9 +58,9 @@ IGLA
 ////////////////////////////////////////////////////////////
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
-phx_fortifyPoints = 80; //Currency for fortify - individual to each Combat Engineer
+phx_fortifyPoints = 90; //Currency for fortify - individual to each Combat Engineer
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
-phx_maxViewDistance = 1750; //Maximum client view distance (meters)
+phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 
 ////////////////////////////////////////////////////////////
 /*
