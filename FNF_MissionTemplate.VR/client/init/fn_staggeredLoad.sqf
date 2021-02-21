@@ -8,12 +8,13 @@ if ((isServer && hasInterface) || CBA_missionTime > 30 || count (call BIS_fnc_li
 
 phx_staggeredLoaded = false;
 phx_screenBlack = false;
-private _time = diag_tickTime + 5 + (random 15);
+private _time = 8 + (random 20);
 player enableSimulation false;
 
 [{time > 0 && !isNull findDisplay 46}, {cutText ["Please Wait", "BLACK FADED", 99]; phx_screenBlack = true}] call CBA_fnc_waitUntilAndExecute;
-[{(diag_tickTime > _this) && phx_screenBlack}, {
+[{(time > _this) && phx_screenBlack}, {
   cutText ["", "PLAIN"];
   player enableSimulation true;
   phx_staggeredLoaded = true;
+  phx_screenBlack = false;
 }, _time] call CBA_fnc_waitUntilAndExecute;

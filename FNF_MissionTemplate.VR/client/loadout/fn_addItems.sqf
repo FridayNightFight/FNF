@@ -21,7 +21,8 @@ switch (pRole) do {
     [phx_loadout_bandage, "backpack"] call phx_fnc_addGear;
     [phx_loadout_morphine, "backpack"] call phx_fnc_addGear;
     [phx_loadout_epinephrine, "backpack"] call phx_fnc_addGear;
-    [phx_loadout_blood, "backpack"] call phx_fnc_addGear;
+    [phx_loadout_blood_1, "backpack"] call phx_fnc_addGear;
+    [phx_loadout_blood_2, "backpack"] call phx_fnc_addGear;
   };
 };
 
@@ -33,7 +34,10 @@ if (pRole == ROLE_AAR || pRole == ROLE_AAT || pRole == ROLE_AM || pRole == ROLE_
   player addWeapon phx_loadout_binocular;
 };
 
-if (pRole == ROLE_MK) then {phx_loadout_sswt call phx_fnc_addGear;};
+if (pRole == ROLE_MK) then {
+  "ACE_Tripod" call phx_fnc_addGear;
+  "ACE_RangeCard" call phx_fnc_addGear;
+};
 
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   phx_loadout_unitLevel = 2;
