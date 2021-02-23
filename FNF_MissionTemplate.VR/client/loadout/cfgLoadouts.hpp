@@ -1,5 +1,7 @@
 //Roles
+#define ROLE_CIV 100
 #define ROLE_SPECTATOR 99
+
 #define ROLE_PL 0
 #define ROLE_CLS 1
 #define ROLE_SL 2
@@ -78,4 +80,4 @@
 #define UNIT_INDFOR_MK "I_Soldier_M_F"
 #define UNIT_INDFOR_SP "I_Survivor_F"
 
-#define UNIT_CIV_R "C_man_1_1_F"
+#define UNIT_CIV_R "C_man_1"

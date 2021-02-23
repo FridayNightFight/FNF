@@ -20,12 +20,17 @@ if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_IND
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
 if (_pClass == UNIT_OPFOR_SP || _pClass == UNIT_BLUFOR_SP || _pClass == UNIT_INDFOR_SP) then {pRole = ROLE_SP};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
+if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
 
 if (isNil "pRole") exitWith {
   hint "Player role not set correctly. Alert the mission maker and join another slot.";
   player enableSimulation false;
   endMission "END1"
 };
+
+if (pRole == ROLE_CIV) exitWith {};
+
+player linkItem "ItemMap";
 
 phx_loadout_unitLevel = 0;
 //Shared

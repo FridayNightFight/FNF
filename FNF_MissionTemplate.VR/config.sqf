@@ -29,40 +29,33 @@ phx_attackingSide = sideEmpty; //west/east/independent
 phx_bluforUniform = "UNIFORM_MARPAT_WD";
 phx_opforUniform = "UNIFORM_EMR_SUMMER";
 phx_indforUniform = "UNIFORM_M93_OAKLEAF";
-phx_civUniform = "UNIFORM_CIVILIAN";
 
 //Weapons
 phx_bluforWeapons = "WEAPONS_M4A1_BLOCK_M249_M240G_M136";
 phx_opforWeapons = "WEAPONS_AK74M_PKM_PKP_RPG7";
 phx_indforWeapons = "WEAPONS_AKMN_PKM_PKP_RPG7";
-phx_civWeapons = "WEAPONS_UNARMED";
+
+/*
+You can also use the civilian unit 'C_man_1'
+Those units will not be touched by the tempalte loadout system, so they will keep their editor loadout
+If they have a radio, they will all be preset to the same frequency
+*/
 
 //MAT launcher weapon
 phx_bluAT = CARLG; //BLUFOR
 phx_redAT = RPG32; //OPFOR
 phx_grnAT = RPG32; //INDFOR
-
 /*
 Values:
-
-CARLG
-RPG32
-RPG7
-TITAN
-JAVELIN
-METIS
-NLAW
-STINGER
-IGLA
+CARLG, RPG32, RPG7, TITAN, JAVELIN
+METIS, NLAW, STINGER, IGLA
 */
-////////////////////////////////////////////////////////////
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
 phx_fortifyPoints = 90; //Currency for fortify - individual to each Combat Engineer
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 
-////////////////////////////////////////////////////////////
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
 

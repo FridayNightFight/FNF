@@ -5,6 +5,9 @@ phx_loadout_smoke call phx_fnc_addGear;
 phx_loadout_grenade call phx_fnc_addGear;
 phx_loadout_maptools call phx_fnc_addGear;
 
+player addItem "ACE_CableTie";
+player addItem "ACE_CableTie";
+
 switch (pRole) do {
   case ROLE_CE: {
     phx_loadout_explosives call phx_fnc_addGear;

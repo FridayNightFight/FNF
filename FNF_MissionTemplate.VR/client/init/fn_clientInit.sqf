@@ -1,8 +1,6 @@
 //Determine if client can play the round, if not, spectate
 if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
 
-player linkItem "ItemMap";
-
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes

@@ -12,7 +12,7 @@ _buildings = _buildings + (lineIntersectsObjs [_pos, [_pos select 0, _pos select
 if (count _buildings > 0) then {
   {
     if (!(_x == _obj) && !(_x in _invinc)) then {
-      [_x,false] remoteExec ["allowDamage",0,true];
+      _x allowDamage false;
       _invinc pushBack _x;
     };
   } forEach _buildings;
