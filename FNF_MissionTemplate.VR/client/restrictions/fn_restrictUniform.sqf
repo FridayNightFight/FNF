@@ -30,7 +30,7 @@ private _playerVest = vest player;
 }, 5, [_playerUniform, _playerHead, _playerVest]] call CBA_fnc_addPerFrameHandler;
 
 //Stop player from being able to take off gear
-player addEventHandler ["inventoryOpened",{
+player addEventHandler ["InventoryOpened",{
   [{!(isNull (findDisplay 602))}, {
     //Uniform
     ((findDisplay 602) displayCtrl 6331) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6331, false];"];

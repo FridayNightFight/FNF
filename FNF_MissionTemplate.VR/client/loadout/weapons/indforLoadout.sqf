@@ -5,7 +5,6 @@ giveINDFORLoadout = {
   phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_polymer:7";
   phx_loadout_sidearm_weapon = "hgun_P07_F";
   phx_loadout_sidearm_mag = "16Rnd_9x21_Mag:2";
-  phx_allowedWeapons = [];
   if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
     phx_loadout_rifle_weapon = "rhs_weap_akmn_gp25";
     phx_loadout_rifle_gl_he = "rhs_VOG25:6";

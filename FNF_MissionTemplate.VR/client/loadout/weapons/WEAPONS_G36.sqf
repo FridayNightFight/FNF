@@ -12,5 +12,3 @@ if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MG
   phx_loadout_rifle_mag = "rhssaf_30rnd_556x45_EPR_G36:7";
   phx_loadout_rifle_mag_tracer = "rhssaf_30rnd_556x45_Tracers_G36:4";
 };
-
-phx_allowedWeapons = [];

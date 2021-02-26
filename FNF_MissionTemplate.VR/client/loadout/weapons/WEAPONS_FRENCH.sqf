@@ -9,8 +9,6 @@ phx_loadout_rifle_mag        = "rhs_mag_30Rnd_556x45_M855A1_PMAG:7";
 phx_loadout_sidearm_weapon = "rhsusf_weap_glock17g4";
 phx_loadout_sidearm_mag    = "rhsusf_mag_17Rnd_9x19_JHP:2";
 
-phx_allowedWeapons = [];
-
 //Leadership roles - can delete this if you don't want leaders to have GLs or different primary weapons
 if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_rifle_weapon   = "arifle_mas_fra_FAMAS_GL_F";

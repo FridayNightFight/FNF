@@ -50,9 +50,6 @@ if (pRole == ROLE_MK) then {
 //Light AT
 phx_loadout_antitank_weapon = "rhs_weap_rpg26";
 
-//Weapon classnames (array of strings) that can be selected
-phx_allowedWeapons = [];
-
 //**Currently requires that selectable weapons use the same magazines**
 
 //Use if you want to customize more

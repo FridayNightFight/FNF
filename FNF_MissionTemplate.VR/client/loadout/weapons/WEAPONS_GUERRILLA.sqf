@@ -7,8 +7,6 @@ if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MG
   phx_loadout_rifle_weapon = selectRandom ["rhs_weap_ak103_gp25", "rhs_weap_ak74_gp25", "rhs_weap_ak74m_gp25", "rhs_weap_ak74n_gp25", "rhs_weap_ak74n_2_gp25", "rhs_weap_akm_gp25", "rhs_weap_akmn_gp25", "rhs_weap_akms_gp25", "rhs_weap_aks74_gp25", "rhs_weap_aks74n_gp25"];
 };
 
-phx_allowedWeapons = [];
-
 if (pRole == ROLE_MK) then {
   phx_loadout_rifle_weapon = selectRandom ["rhs_weap_svds_npz", "rhs_weap_m14_rail", "rhs_weap_m24sws", "rhs_weap_SCARH_LB"];
 };

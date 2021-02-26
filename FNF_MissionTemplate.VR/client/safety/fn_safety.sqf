@@ -47,8 +47,5 @@ phx_acePlacing = [{
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
 
-  //Remove gear selector
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-
   call phx_fnc_showTimeOnMap; //Show time left on map after safety ends
 }] call CBA_fnc_waitUntilAndExecute;

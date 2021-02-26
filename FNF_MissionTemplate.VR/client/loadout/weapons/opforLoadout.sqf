@@ -5,7 +5,6 @@ giveOPFORLoadout = {
   phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:7";
   phx_loadout_sidearm_weapon = "rhs_weap_pya";
   phx_loadout_sidearm_mag = "rhs_mag_9x19_17:2";
-  phx_allowedWeapons = [];
   if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
     phx_loadout_rifle_weapon = "rhs_weap_ak74m_gp25";
     phx_loadout_rifle_gl_he = "rhs_VOG25:6";
