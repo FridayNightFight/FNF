@@ -84,7 +84,6 @@ class CfgFunctions {
       class serverSafety{};
       class sendUniforms{};
       class fortifyServer{};
-      class objBuildingDamage{};
       class server_setupGame{};
       class radio_genFreqs{};
     };

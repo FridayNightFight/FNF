@@ -13,7 +13,6 @@ ctf_flag hideObjectGlobal true;
 ctf_flag enableSimulation false;
 
 {_x allowDamage false;} forEach [ctf_flag, ctf_flagPole, ctf_banner];
-[ctf_flagPole] call phx_fnc_objBuildingDamage;
 
 ctf_banner attachTo [ctf_flagPole, [0.82,-0.38,2.45]];
 

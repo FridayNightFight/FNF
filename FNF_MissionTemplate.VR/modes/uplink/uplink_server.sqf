@@ -74,14 +74,13 @@ _termTaskSetup = {
 switch (_numberOfTerminals) do {
   case 1: {
     term1 call _termMarkSetup;
-    [term1] call phx_fnc_objBuildingDamage;
     {deleteVehicle _x} forEach [term2,term3];
 
     [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
     [term1, phx_defendingSide, "defendTask1"] call _termTaskSetup;
   };
   case 2: {
-    {_x call _termMarkSetup; [_x] call phx_fnc_objBuildingDamage;} forEach [term1,term2];
+    {_x call _termMarkSetup;} forEach [term1,term2];
     deleteVehicle term3;
 
     [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
@@ -90,7 +89,7 @@ switch (_numberOfTerminals) do {
     [term2, phx_defendingSide, "defendTask2"] call _termTaskSetup;
   };
   case 3: {
-    {_x call _termMarkSetup; [_x] call phx_fnc_objBuildingDamage;} forEach [term1,term2,term3];
+    {_x call _termMarkSetup;} forEach [term1,term2,term3];
 
     [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
     [term1, phx_defendingSide, "defendTask1"] call _termTaskSetup;

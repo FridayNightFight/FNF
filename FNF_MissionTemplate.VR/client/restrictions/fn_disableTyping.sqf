@@ -4,7 +4,6 @@ Disables typing in chat if player is not staff
 
 _display = _this;
 
-//to do: add dream
 _ids = [
 "76561198011678508", //muniz
 "76561197961336958", //arkor

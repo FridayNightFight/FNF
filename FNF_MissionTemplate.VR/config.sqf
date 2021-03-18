@@ -51,6 +51,10 @@ CARLG, RPG32, RPG7, TITAN, JAVELIN
 METIS, NLAW, STINGER, IGLA
 */
 
+phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
+phx_addNVG = false; //Automatically add NVGs to players (Gen3, Black) - true for global add or side or array of sides
+//Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
+
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
 phx_fortifyPoints = 90; //Currency for fortify - individual to each Combat Engineer
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
