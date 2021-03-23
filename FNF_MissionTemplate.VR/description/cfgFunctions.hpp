@@ -46,8 +46,15 @@ class CfgFunctions {
       class addMagazines{};
       class addItems{};
       class checkLoadout{};
-      class gearSelector{};
       class initLoadout{};
+      class loadout_vars{};
+    };
+    class selector {
+      file = "client\loadout\selector";
+      class selector_init{};
+      class selector_optics{};
+      class selector_weapons{};
+      class selector_charges{};
     };
     class restrictions {
       file = "client\restrictions";

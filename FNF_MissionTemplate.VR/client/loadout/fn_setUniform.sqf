@@ -1,5 +1,3 @@
-#include "cfgLoadouts.hpp"
-
 phx_loadout_lrRadio = "";
 
 switch (playerSide) do {
@@ -11,3 +9,7 @@ switch (playerSide) do {
 _incStr = "client\loadout\uniforms\" + pUniform + ".sqf";
 
 call compile preprocessFileLineNumbers _incStr;
+
+if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_P) then {
+  phx_loadout_backpack = phx_loadout_lrRadio;
+};

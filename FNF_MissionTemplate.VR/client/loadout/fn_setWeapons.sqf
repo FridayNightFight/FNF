@@ -1,8 +1,3 @@
-#include "cfgLoadouts.hpp"
-#include "weapons\bluforLoadout.sqf"
-#include "weapons\opforLoadout.sqf"
-#include "weapons\indforLoadout.sqf"
-
 switch (playerSide) do {
   case east: {pWeapons = phx_opforWeapons};
   case west: {pWeapons = phx_bluforWeapons};
@@ -10,9 +5,9 @@ switch (playerSide) do {
 };
 
 switch (playerSide) do {
-  case east: {call giveOPFORLoadout};
-  case west: {call giveBLUFORLoadout};
-  case independent: {call giveINDFORLoadout};
+  case east: {call compile preprocessFileLineNumbers "client\loadout\weapons\base\EAST.sqf"};
+  case west: {call compile preprocessFileLineNumbers "client\loadout\weapons\base\WEST.sqf"};
+  case independent: {call compile preprocessFileLineNumbers "client\loadout\weapons\base\IND.sqf"};
 };
 
 if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
@@ -64,13 +59,7 @@ if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
   };
 };
 
-switch (pWeapons) do {
-  case "WEAPONS_M4A1_BLOCK_M249_M240G_M136": {call giveBLUFORLoadout};
-  case "WEAPONS_AK74M_PKM_PKP_RPG7": {call giveOPFORLoadout};
-  case "WEAPONS_AKMN_PKM_PKP_RPG7": {call giveINDFORLoadout};
-};
-
-if !(pWeapons in ["WEAPONS_M4A1_BLOCK_M249_M240G_M136", "WEAPONS_AK74M_PKM_PKP_RPG7", "WEAPONS_AKMN_PKM_PKP_RPG7"]) then {
+if !(pWeapons in ["WEAPONS_US", "WEAPONS_RU", "WEAPONS_IND"]) then {
   _incStr = "client\loadout\weapons\" + pWeapons + ".sqf";
 
   call compile preprocessFileLineNumbers _incStr;

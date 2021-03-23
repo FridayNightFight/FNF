@@ -33,7 +33,6 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
   ", _uniformImg, _helmetImg]
   ]];
 
-  _varStr = _varStr + format ["BLUFOR Weapons: %1", phx_bluforWeapons select [8, count phx_bluforWeapons]] + "<br/>";
   _varStr = _varStr + format ["BLUFOR MAT: %1", phx_bluAT] + "<br/>";
 };
 
@@ -50,7 +49,6 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
   ", _uniformImg, _helmetImg]
   ]];
 
-  _varStr = _varStr + format ["OPFOR Weapons: %1", phx_opforWeapons select [8, count phx_opforWeapons]] + "<br/>";
   _varStr = _varStr + format ["OPFOR MAT: %1", phx_redAT] + "<br/>";
 };
 
@@ -67,7 +65,6 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
   ", _uniformImg, _helmetImg]
   ]];
 
-  _varStr = _varStr + format ["INDFOR Weapons: %1", phx_indforWeapons select [8, count phx_indforWeapons]] + "<br/>";
   _varStr = _varStr + format ["INDFOR MAT: %1", phx_grnAT] + "<br/>";
 };
 

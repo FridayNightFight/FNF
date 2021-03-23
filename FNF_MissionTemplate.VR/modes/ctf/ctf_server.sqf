@@ -105,7 +105,11 @@ phx_server_dropFlag = {
 
   _dummy = objNull;
 
-  _pos = ASLtoATL (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0,(getPosASL ctf_flag) select 1,0], vehicle _player]) select 0) select 0);
+  _pos = ASLtoATL (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0,(getPosASL ctf_flag) select 1,-200], vehicle _player]) select 0) select 0);
+
+  if (surfaceIsWater _pos) then {
+    _pos = [_pos select 0, _pos select 1, abs getTerrainHeightASL _pos];
+  };
 
   if (vehicle _player != _player) then {
     _dummy = createVehicle ["Land_HelipadEmpty_F", _pos, [], 0, "NONE"];

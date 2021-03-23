@@ -1,5 +1,3 @@
-#include "cfgLoadouts.hpp"
-
 phx_loadout_rifle_mag call phx_fnc_addGear;
 phx_loadout_sidearm_mag call phx_fnc_addGear;
 

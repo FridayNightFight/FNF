@@ -9,5 +9,3 @@ switch (typeName phx_addNVG) do {
   case "SIDE": {if (playerSide == phx_addNVG) then {call _giveNVG};};
   case "ARRAY": {if (playerSide in phx_addNVG) then {call _giveNVG};};
 };
-
-clearAllItemsFromBackpack player; //Some Massi backpacks add items that we dont want

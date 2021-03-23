@@ -1,51 +1,28 @@
-#include "..\cfgLoadouts.hpp"
-
-//Global customization - will be applied to every role
 phx_loadout_uniform = "rhs_uniform_cu_ucp";
 phx_loadout_vest = "rhsusf_iotv_ucp_Rifleman";
-phx_loadout_backpack = "rhsusf_assault_eagleaiii_ucp";
 phx_loadout_headgear = "rhsusf_ach_helmet_headset_ess_ucp_alt";
 
-if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then
-  {
+if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_headgear = "rhsusf_ach_helmet_headset_ucp";
   phx_loadout_vest = "rhsusf_iotv_ucp_Squadleader";
-  }; //PL, SL, TL, MGTL
+}; //PL, SL, TL, MGTL
 
-if (pRole == ROLE_AR || pRole == ROLE_MG) then
-  {
-    phx_loadout_headgear = "rhsusf_ach_helmet_headset_ess_ucp";
-    phx_loadout_vest = "rhsusf_iotv_ucp_Saw";
-  }; //AR & MG
+if (pRole == ROLE_AR || pRole == ROLE_MG) then {
+  phx_loadout_headgear = "rhsusf_ach_helmet_headset_ess_ucp";
+  phx_loadout_vest = "rhsusf_iotv_ucp_Saw";
+}; //AR & MG
 
-if (pRole == ROLE_AAR || pRole == ROLE_AM) then
-  {
-    phx_loadout_vest = "rhsusf_iotv_ucp_Repair";
-     phx_loadout_headgear = "rhsusf_ach_helmet_headset_ess_ucp"
-   }; // AAR & MG Ammo man
+if (pRole == ROLE_AAR || pRole == ROLE_AM) then {
+  phx_loadout_vest = "rhsusf_iotv_ucp_Repair";
+  phx_loadout_headgear = "rhsusf_ach_helmet_headset_ess_ucp"
+}; // AAR & MG Ammo man
 
-//Use if you want to customize more
-switch (pRole) do {
-  case ROLE_PL: {}; //Platoon leader
-  case ROLE_CLS: {phx_loadout_vest = "rhsusf_iotv_ucp_Medic";}; //Medic
-  case ROLE_SL: {}; //Squad leader
-  case ROLE_TL: {}; //Team leader
-  case ROLE_AR: {}; //Automatic rifleman
-  case ROLE_AAR: {}; //Assistant automatic rifleman
-  case ROLE_RAT: {}; //Rifleman (LAT)
-  case ROLE_CE: {}; //Combat engineer
-  case ROLE_R: {}; //Rifleman
-  case ROLE_MG: {}; //Machinegunner
-  case ROLE_AM: {}; //Ammo man
-  case ROLE_MGTL: {}; //Machine gun team leader
-  case ROLE_AT: {}; //Medium Anti-tank
-  case ROLE_AAT: {}; //Assistant anti-tank
-  case ROLE_P: {phx_loadout_headgear = "h_pilotHelmetheli_b"; phx_loadout_vest = "rhsusf_iotv_ucp";}; //Pilot
-  case ROLE_CR: {}; //Crewman
-  case ROLE_MK: {phx_loadout_vest = "rhsusf_spcs_ucp_sniper"; phx_loadout_headgear = "rhsusf_ach_helmet_ucp_alt"; }; //Marksman
+if (pRole == ROLE_CLS) then {
+  phx_loadout_vest = "rhsusf_iotv_ucp_Medic";
+};
+if (pRole == ROLE_MK) then {
+  phx_loadout_vest = "rhsusf_spcs_ucp_sniper";
+  phx_loadout_headgear = "rhsusf_ach_helmet_ucp_alt";
 };
 
-//This will give PLs and SLs radio backpacks, remove if wanted
-if (pRole == ROLE_PL || pRole == ROLE_SL) then {
-  phx_loadout_backpack = phx_loadout_lrRadio;
-};
+#include "base\WEST_WD.sqf"

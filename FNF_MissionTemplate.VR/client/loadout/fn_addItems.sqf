@@ -1,5 +1,3 @@
-#include "cfgLoadouts.hpp"
-
 phx_loadout_aid call phx_fnc_addGear;
 phx_loadout_smoke call phx_fnc_addGear;
 if (pRole != ROLE_CE) then {
@@ -12,7 +10,9 @@ player addItem "ACE_CableTie";
 
 switch (pRole) do {
   case ROLE_CE: {
-    phx_loadout_explosives call phx_fnc_addGear;
+    {
+      if (_forEachIndex != 0) then {_x call phx_fnc_addGear};
+    } forEach phx_loadout_explosives;
     phx_loadout_defusalkit call phx_fnc_addGear;
     phx_loadout_trigger call phx_fnc_addGear;
     phx_loadout_entrenching call phx_fnc_addGear;

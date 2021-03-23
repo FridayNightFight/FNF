@@ -1,4 +1,3 @@
-#include "cfgLoadouts.hpp"
 if (pRole == ROLE_CIV) exitWith {phx_loadoutAssigned = true};
 
 call phx_fnc_addUniform;

@@ -31,9 +31,9 @@ phx_opforUniform = "UNIFORM_EMR_SUMMER";
 phx_indforUniform = "UNIFORM_M93_OAKLEAF";
 
 //Weapons
-phx_bluforWeapons = "WEAPONS_M4A1_BLOCK_M249_M240G_M136";
-phx_opforWeapons = "WEAPONS_AK74M_PKM_PKP_RPG7";
-phx_indforWeapons = "WEAPONS_AKMN_PKM_PKP_RPG7";
+phx_bluforWeapons = "WEAPONS_US";
+phx_opforWeapons = "WEAPONS_RU";
+phx_indforWeapons = "WEAPONS_IND";
 
 /*
 You can also use the civilian unit 'C_man_1'
@@ -56,7 +56,7 @@ phx_addNVG = false; //Automatically add NVGs to players (Gen3, Black) - true for
 //Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
-phx_fortifyPoints = 90; //Currency for fortify - individual to each Combat Engineer
+phx_fortifyPoints = 100; //Currency for fortify - individual to each Combat Engineer
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 
@@ -64,17 +64,17 @@ phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
 
 =====BLUFOR=====                                =====ANY=====
-UNIFORM_MARPAT_WD                  --   WEAPONS_M4A1_BLOCK_M249_M240G_M136
-UNIFORM_MARPAT_D                   --   WEAPONS_AK74M_PKM_PKP_RPG7
-UNIFORM_OEF_CP                     --   WEAPONS_AKMN_PKM_PKP_RPG7
+UNIFORM_MARPAT_WD                  --   WEAPONS_US
+UNIFORM_MARPAT_D                   --   WEAPONS_RU
+UNIFORM_OEF_CP                     --   WEAPONS_IND
 UNIFORM_PMC                        --   WEAPONS_G36
 UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
 UNIFORM_M93_WOODLAND               --   WEAPONS_M21
-UNIFORM_ARMY_OCP                   --   WEAPONS_FRENCH
-UNIFORM_UCP                        --   WEAPONS_PLA
-UNIFORM_FRENCH_ARCTIC              --   WEAPONS_SCAR
-UNIFORM_FRENCH_WD                  --   WEAPONS_VHS
-UNIFORM_FRENCH_D                   --   WEAPONS_USMC_M27
+UNIFORM_ARMY_OCP                   --   WEAPONS_SCAR
+UNIFORM_UCP                        --   WEAPONS_VHS
+UNIFORM_FRENCH_ARCTIC              --   WEAPONS_USMC_M27
+UNIFORM_FRENCH_WD                  --
+UNIFORM_FRENCH_D                   --
 UNIFORM_CTRG_WD
 UNIFORM_ION_BK
 UNIFORM_ION_WD

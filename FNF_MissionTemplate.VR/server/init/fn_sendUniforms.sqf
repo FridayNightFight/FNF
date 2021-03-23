@@ -2,7 +2,7 @@
 Sends base uniform and helmet classes to clients for each present side
 */
 
-pRole = 99999;
+if (isNil "pRole") then {pRole = 99999;};
 
 _sidePresent = {
   _this countSide (call BIS_fnc_listPlayers) > 0

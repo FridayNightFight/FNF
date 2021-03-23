@@ -57,8 +57,8 @@ if (playerSide == phx_attackingSide) then {
     "Take flag",
     "",
     "",
-    "(player distance ctf_flag < 3) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole)",
-    "player distance ctf_flag < 3",
+    "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole)",
+    "player distance ctf_flag < 3.5",
     {},
     {},
     {
