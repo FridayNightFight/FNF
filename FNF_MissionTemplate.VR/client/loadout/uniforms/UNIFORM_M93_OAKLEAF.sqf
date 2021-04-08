@@ -6,4 +6,4 @@ if (pRole == ROLE_CR) then {
   phx_loadout_headgear = "rhs_gssh18";
 };
 
-#include "base\EAST_WD.sqf"
+#include "base\IND_WD.sqf"

@@ -2,12 +2,12 @@ _itemStr = _this;
 
 if (_itemStr isEqualTo "") exitWith {};
 
-phx_addGearErrorStr = "";
+private _addGearErrorStr = "";
 
 _err = {
   params ["_item"];
-  phx_addGearErrorStr = phx_addGearErrorStr + _item + "\n";
-  _msg = format ["Error adding \n %1", phx_addGearErrorStr];
+  _addGearErrorStr = _addGearErrorStr + _item + "\n";
+  _msg = format ["Error adding \n %1", _addGearErrorStr];
   titleText [_msg, "PLAIN"];
   titleFadeOut 20;
   systemChat ("Error adding " + _item);

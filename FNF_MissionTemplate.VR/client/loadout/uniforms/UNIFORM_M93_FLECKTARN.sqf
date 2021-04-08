@@ -6,4 +6,4 @@ if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MG
 
 if (pRole == ROLE_AR || pRole == ROLE_MG) then {phx_loadout_vest = "rhsgref_chicom";}; //AR & MG
 
-#include "base\EAST_WD.sqf"
+#include "base\IND_WD.sqf"

@@ -21,14 +21,6 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
     _marker setMarkerType "Empty";
 } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 
-//Clear vic inventory
-{
-  if (((_x call BIS_fnc_objectType) select 0) isEqualTo "Vehicle") then {
-    clearWeaponCargoGlobal _x;
-    clearMagazineCargoGlobal _x;
-  };
-} forEach vehicles;
-
 //Delete player bodies during safe start
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];

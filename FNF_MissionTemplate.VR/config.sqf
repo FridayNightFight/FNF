@@ -52,7 +52,7 @@ METIS, NLAW, STINGER, IGLA
 */
 
 phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
-phx_addNVG = false; //Automatically add NVGs to players (Gen3, Black) - true for global add or side or array of sides
+phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
 //Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
 
 phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
@@ -72,20 +72,10 @@ UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
 UNIFORM_M93_WOODLAND               --   WEAPONS_M21
 UNIFORM_ARMY_OCP                   --   WEAPONS_SCAR
 UNIFORM_UCP                        --   WEAPONS_VHS
-UNIFORM_FRENCH_ARCTIC              --   WEAPONS_USMC_M27
-UNIFORM_FRENCH_WD                  --
-UNIFORM_FRENCH_D                   --
-UNIFORM_CTRG_WD
+UNIFORM_CTRG_WD                    --   WEAPONS_USMC_M27
 UNIFORM_ION_BK
 UNIFORM_ION_WD
 UNIFORM_ISRAEL_TAN
-UNIFORM_NOR_DESERT
-UNIFORM_NOR_MULTI
-UNIFORM_NOR_WD
-UNIFORM_NOR_WINT
-UNIFORM_UK_DESERT
-UNIFORM_UK_MULTI
-UNIFORM_UK_WD
 
 =====OPFOR=====
 UNIFORM_EMR_SUMMER
@@ -94,15 +84,12 @@ UNIFORM_FLORA
 UNIFORM_MOUNTAIN_FLORA
 UNIFORM_GORKA_GREEN
 UNIFORM_GORKA_BEREZKA
-UNIFORM_PLA_MTN
-UNIFORM_PLA_URBAN
-UNIFORM_PLA_WD
-UNIFORM_PLA_WINTER
 
 =====INDFOR=====
 UNIFORM_M93_OAKLEAF
 UNIFORM_M93_TIGER
 UNIFORM_M93_GREEN
+UNIFORM_M93_FLECKTARN
 UNIFORM_M10_DESERT
 UNIFORM_M10_MOUNTAIN
 UNIFORM_GUERRILLA

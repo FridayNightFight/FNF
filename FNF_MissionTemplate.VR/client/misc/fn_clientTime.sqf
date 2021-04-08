@@ -18,7 +18,7 @@ phx_missionTimeUI_PFH = [{
   _display = uiNameSpace getVariable "timeleftStructText";
   _setText = _display displayCtrl 1003;
   if !(missionNamespace getVariable ["phx_overTime",false]) then {
-      _setText ctrlSetStructuredText parseText (format ["Mission Time Remaining: %1", [_missionTime - CBA_missionTime, "MM:SS"] call BIS_fnc_secondsToString]);
+    _setText ctrlSetStructuredText parseText (format ["Mission Time Remaining: %1", [_missionTime - CBA_missionTime, "MM:SS"] call BIS_fnc_secondsToString]);
   } else {
     _setText ctrlSetStructuredText parseText (format ["Mission Overtime: +%1", [CBA_missionTime - _missionTime, "MM:SS"] call BIS_fnc_secondsToString]);
   };

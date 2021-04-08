@@ -12,4 +12,4 @@ if (pRole == ROLE_MK) then {
   phx_loadout_vest = "rhsgref_6b23_ttsko_mountain_sniper";
 };
 
-#include "base\EAST_WD.sqf"
+#include "base\IND_WD.sqf"

@@ -1,4 +1,4 @@
-if (typeOf player isEqualTo "C_man_1") exitWith {};
+if (pRole == ROLE_CIV) exitWith {};
 
 call phx_fnc_setGroupIDs;
 call phx_fnc_createBrief;
