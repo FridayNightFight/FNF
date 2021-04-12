@@ -17,10 +17,10 @@ class RscTitles {
         idc = 1003;
         style = 0x00;
         lineSpacing = 1;
-        x = safeZoneX + safeZoneW - 0.36 * 3 / 4;
-        y = safeZoneY + safeZoneH - 0.033;
-        h = 0.033;
-        w = 0.36 * 3 / 4; //w == h
+        x = 0.83 * safezoneW + safezoneX;
+        y = 0.980 * safezoneH + safezoneY;
+        h = 0.020 * safezoneH;
+        w = 0.17 * safezoneW; //w == h
         size = 0.020;
         colorBackground[] = {0,0,0,0.85};
         colorText[] = {1,1,1,1};
@@ -34,7 +34,7 @@ class RscTitles {
             shadow = true;
             shadowColor = "#000000";
             underline = false;
-            size = "1.4";
+            size = "1.7";
         };
       };
     };
