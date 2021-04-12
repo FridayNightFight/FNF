@@ -90,6 +90,7 @@ class CfgFunctions {
       file = "server\init";
       class serverSafety{};
       class sendUniforms{};
+      class markCustomObjs{};
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
