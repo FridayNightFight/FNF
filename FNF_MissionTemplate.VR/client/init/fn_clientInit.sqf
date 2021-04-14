@@ -20,6 +20,7 @@ call phx_fnc_radio_waitGear; //Start radio preset functions
 
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
+[] execVM "client\patch\addPatch.sqf";
 
 //Start spectator fnc when player is killed
 player addEventHandler ["Killed", {
