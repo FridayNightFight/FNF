@@ -2,7 +2,7 @@
 name: Testing required
 about: This feature needs to be tested
 title: ''
-labels: 'dedi testing', 'local testing'
+labels: 'dedi testing, local testing'
 assignees: ''
 ---
 
