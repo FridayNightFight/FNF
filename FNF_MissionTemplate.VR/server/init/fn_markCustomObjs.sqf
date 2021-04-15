@@ -3,8 +3,7 @@ private _notBuilding = ["CUP_A2_Road_PMC_bridge_asf_PMC", "CUP_A2_Road_Bridge_wo
 
 //Function to check if object is large enough to deserve a marker
 _isBigEnough = {
-  private _box = boundingBox _this;
-  _box select 2 > 8;
+  (boundingBox _this) select 2 > 8;
 };
 
 //get buildings to create markers for - only include objects large enough
