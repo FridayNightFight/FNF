@@ -1,4 +1,4 @@
-private _baseClasses = ["Building"]; //anything that is a subtype of these classes and is big enough will be marked
+private _baseClasses = ["Static"]; //anything that is a subtype of these classes and is big enough will be marked
 private _blacklist = ["Land_DataTerminal_01_F","Wreck_Base"]; //blacklist of item or parent classes to never mark
 
 //checks bounding sphere value to see if object is large enough to mark and also not in the blacklist
@@ -32,7 +32,9 @@ _createMarker = {
   // format marker and set direction
   _marker setMarkerShapeLocal "Rectangle";
   _marker setMarkerBrushLocal "SolidFull";
-  _marker setMarkerColorLocal "ColorGrey";
+  //_marker setMarkerColorLocal "ColorGrey";
+  _marker setMarkerColorLocal "ColorBlack";
+  //_marker setMarkerAlphaLocal 0.5;
   _marker setMarkerDirLocal getDir _obj;
 
   // Grab dimensions of bounding box of the object
