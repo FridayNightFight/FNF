@@ -1,5 +1,5 @@
-private _baseClasses = ["Static"]; //anything that is a subtype of these classes and is big enough will be marked
-private _blacklist = ["Land_DataTerminal_01_F"]; //blacklist of item or parent classes to never mark
+private _baseClasses = ["Building"]; //anything that is a subtype of these classes and is big enough will be marked
+private _blacklist = ["Land_DataTerminal_01_F","Wreck_Base"]; //blacklist of item or parent classes to never mark
 
 //checks 'mapSize' config value to see if object is large enough to mark and also not in the blacklist
 _canMark = {
