@@ -4,7 +4,7 @@ class CfgUnitInsignia
     {
         displayName = "FNF Patch - Admin";
         author = "Friday Night Fight";
-        texture = "client\patch\fnfadmin.paa";
+        texture = "client\patch\staffPatch.paa";
         textureVehicle = "";
     };
 };
