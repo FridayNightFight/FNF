@@ -1,15 +1,21 @@
-//objects that don't inherit from buildings class that still need a mark
-private _notBuilding = ["CUP_A2_Road_PMC_bridge_asf_PMC", "CUP_A2_Road_Bridge_wood_25", "CUP_A2_Road_bridge_asf1_25"];
+private _baseClasses = ["Static"]; //anything that is a subtype of these classes and is big enough will be marked
+private _blacklist = ["Land_DataTerminal_01_F"]; //blacklist of item or parent classes to never mark
 
-//Function to check if object is large enough to deserve a marker
-_isBigEnough = {
-  (boundingBox _this) select 2 > 8;
+//checks 'mapSize' config value to see if object is large enough to mark and also not in the blacklist
+_canMark = {
+  params ["_obj"];
+  //private _size = getNumber (configFile >> "CfgVehicles" >> typeOf _obj >> "mapSize");
+  private _size = (boundingBox _x) select 2;
+
+  _size > 1.5
+  &&
+  {if (_obj isKindOf _x) exitWith {false}; true} forEach _blacklist;
 };
 
 //get buildings to create markers for - only include objects large enough
-private _objectsToMark = allMissionObjects "Building";
-_objectsToMark append ((allMissionObjects "Base_CUP_A2_Road") select {(typeOf _x) in _notBuilding});
-_objectsToMark = _objectsToMark select {_x call _isBigEnough};
+private _objectsToMark = [];
+{_objectsToMark append allMissionObjects _x} forEach _baseClasses;
+_objectsToMark = _objectsToMark select {_x call _canMark};
 
 // Used for unique marker names
 private _markerNum = 0;
@@ -26,8 +32,7 @@ _createMarker = {
   // format marker and set direction
   _marker setMarkerShapeLocal "Rectangle";
   _marker setMarkerBrushLocal "SolidFull";
-  _marker setMarkerColorLocal "ColorBlack";
-  _marker setMarkerAlphaLocal 0.5;
+  _marker setMarkerColorLocal "ColorGrey";
   _marker setMarkerDirLocal getDir _obj;
 
   // Grab dimensions of bounding box of the object
