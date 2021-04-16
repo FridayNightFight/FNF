@@ -1,7 +1,7 @@
 private _baseClasses = ["Building"]; //anything that is a subtype of these classes and is big enough will be marked
 private _blacklist = ["Land_DataTerminal_01_F","Wreck_Base"]; //blacklist of item or parent classes to never mark
 
-//checks 'mapSize' config value to see if object is large enough to mark and also not in the blacklist
+//checks bounding sphere value to see if object is large enough to mark and also not in the blacklist
 _canMark = {
   params ["_obj"];
   //private _size = getNumber (configFile >> "CfgVehicles" >> typeOf _obj >> "mapSize");
