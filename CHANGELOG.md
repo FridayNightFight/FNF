@@ -1,3 +1,9 @@
+# v2.1.0c
+Fixed Army OCP uniform set having raven backpacks.
+
+# v2.1.0b
+Removed old uniform and weapons sets.
+
 # v2.1.0a
 Fixed missing '('
 
