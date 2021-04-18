@@ -83,6 +83,7 @@ class CfgFunctions {
       file = "server\init";
       class serverSafety{};
       class sendUniforms{};
+      class markCustomObjs{};
       class fortifyServer{};
       class objBuildingDamage{};
       class server_setupGame{};
