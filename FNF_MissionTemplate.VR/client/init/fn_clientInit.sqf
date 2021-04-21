@@ -21,9 +21,10 @@ call phx_fnc_radio_waitGear; //Start radio preset functions
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
 
-//Start spectator fnc when player is killed
+//Start spectator fnc and kill counter fnc when player is killed
 player addEventHandler ["Killed", {
   call phx_fnc_spectatorInit;
+  call PHX_fnc_killCountUpdate;
 }];
 
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
