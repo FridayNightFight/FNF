@@ -19,6 +19,9 @@ _endGame = {
   publicVariable "phx_gameEnd";
 
   if (phx_gameMode == "destroy") then {
+
+    remoteExec ["PHX_fnc_killCountUpdate", 0, false];
+
     sleep 15;
     "end1" call bis_fnc_endmissionserver;
   };

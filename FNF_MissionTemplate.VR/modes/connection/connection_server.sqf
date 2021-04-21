@@ -100,6 +100,8 @@ phx_connectionWin = {
     };
   } forEach [term1,term2,term3];
 
+  remoteExec ["PHX_fnc_killCountUpdate", 0, false];
+
   sleep 15;
 
   "end1" call BIS_fnc_endMissionServer;

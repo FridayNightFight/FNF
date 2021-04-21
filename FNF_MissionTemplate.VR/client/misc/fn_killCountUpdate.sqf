@@ -2,7 +2,7 @@
 Creates and update kill count display
 */
 
-if (!hasInterface || missionNamespace getVariable ["phx_mapTimeShown",false] || isNil "phx_safetyEndTime") exitWith {};
+if (!hasInterface) exitWith {};
 
 disableSerialization;
 
