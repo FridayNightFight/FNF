@@ -8,6 +8,7 @@ call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
 call phx_fnc_initLoadout; //Loadout vars
 call phx_fnc_radio_waitGear; //Start radio preset functions
+call PHX_fnc_killTracker; //Starts tracking kills of players
 
 //Disable chat typing for mission display
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;

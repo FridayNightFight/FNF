@@ -80,6 +80,7 @@ class CfgFunctions {
       class fortifyClient{};
       class clientTime{};
       class killCountUpdate{};
+      class killTracker{};
       class showTimeOnMap{};
     };
     class unflip {
