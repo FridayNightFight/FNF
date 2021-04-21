@@ -149,7 +149,7 @@ phx_server_dropFlag = {
         case independent: {"INDFOR"};
       }]] remoteExec ["hint"];
 
-      remoteExec ["PHX_fnc_killCountUpdate", 0, false];
+      
 
       sleep 15;
 

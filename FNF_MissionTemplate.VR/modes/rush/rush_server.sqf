@@ -188,7 +188,7 @@ _win = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  remoteExec ["PHX_fnc_killCountUpdate", 0, false];
+  
 
   uiSleep 20;
   "end1" call bis_fnc_endMissionServer;

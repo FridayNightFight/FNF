@@ -24,7 +24,7 @@ phx_server_sectorWin = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  remoteExec ["PHX_fnc_killCountUpdate", 0, false];
+  
 
   sleep 20;
 

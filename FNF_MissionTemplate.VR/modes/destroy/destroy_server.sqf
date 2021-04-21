@@ -119,7 +119,7 @@ switch (phx_attackingSide) do {
 phx_gameEnd = true;
 publicVariable "phx_gameEnd";
 
-remoteExec ["PHX_fnc_killCountUpdate", 0, false];
+
 
 uisleep 20;
 

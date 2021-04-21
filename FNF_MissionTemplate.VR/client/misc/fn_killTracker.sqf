@@ -43,3 +43,8 @@
     };
 
 }] call CBA_fnc_addEventHandler;
+
+[] spawn {
+    waitUntil { phx_gameEnd };
+    call PHX_fnc_killCountUpdate;
+}

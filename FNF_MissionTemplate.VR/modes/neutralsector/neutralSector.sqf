@@ -38,7 +38,7 @@ _win = {
 
   sleep 20;
 
-  remoteExec ["PHX_fnc_killCountUpdate", 0, false];
+  
 
   "end1" call BIS_fnc_endMissionServer;
 };
