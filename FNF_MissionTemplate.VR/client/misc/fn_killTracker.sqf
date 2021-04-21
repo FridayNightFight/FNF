@@ -44,7 +44,4 @@
 
 }] call CBA_fnc_addEventHandler;
 
-[] spawn {
-    waitUntil { phx_gameEnd };
-    call PHX_fnc_killCountUpdate;
-}
+[{phx_gameEnd},{call PHX_fnc_killCountUpdate;}] call CBA_fnc_waitUntilAndExecute;
