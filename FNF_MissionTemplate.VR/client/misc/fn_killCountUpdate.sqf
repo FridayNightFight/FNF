@@ -17,7 +17,17 @@ phx_killCountUI_PFH = [{
   //Update text in the displays to match the points markers
   _display = uiNameSpace getVariable "killcountStructText";
   _setText = _display displayCtrl 1004;
-  _killInt = player getVariable ["Killcount", 0];
-  _kills = str _killInt;
-  _setText ctrlSetStructuredText parseText (format ["Round Kills: %1", _kills]);
+  _killInt = acex_killtracker_killcount;
+  _friendlyFires = 0;
+  _forEachIndex = 0;
+  while {_forEachIndex < count acex_killtracker_eventsarray} do {
+    (_array select _forEachIndex) call code;
+    if ((acex_killtracker_eventsarray select _forEachIndex) find "Friendly Fire" != -1) then {
+      _friendlyFires = _friendlyFires + 1;
+    };
+    _forEachIndex = _forEachIndex + 1;
+  };
+
+  _killInt = _killInt - _friendlyFires;
+  _setText ctrlSetStructuredText parseText (format ["Round Kills: %1",str _killInt]);
 }, 1] call CBA_fnc_addPerFrameHandler;

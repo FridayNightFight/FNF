@@ -105,3 +105,11 @@ class CfgFunctions {
     };
   };
 };
+
+//Debrief extras
+class CfgDebriefingSections {
+    class acex_killTracker {
+        title = "ACEX Killed Events";
+        variable = "acex_killTracker_outputText";
+    };
+};
