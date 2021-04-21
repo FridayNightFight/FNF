@@ -14,7 +14,7 @@ if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MG
   phx_loadout_rifle_weapon = "rhs_weap_ak74m";
 };
 if (pRole == ROLE_AR) then {
-  phx_loadout_rifle_weapon = "rhs_weap_pkm";
+  phx_loadout_rifle_weapon = "rhs_weap_rpk74m";
   phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:8";
 };
 if (pRole == ROLE_AAR) then {

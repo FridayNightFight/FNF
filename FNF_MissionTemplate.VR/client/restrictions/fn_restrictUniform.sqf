@@ -2,6 +2,8 @@
 Disables access to removing helmet and uniform. Ensures that the player has the helmet and uniform that they started the game with.
 */
 
+if (isServer) exitWith {}; //Don't need to run this function for local testing
+
 private _playerUniform = uniform player;
 private _playerHead = headgear player;
 private _playerVest = vest player;
