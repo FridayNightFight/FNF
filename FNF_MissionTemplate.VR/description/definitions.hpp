@@ -11,3 +11,10 @@ respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;
 
 onPauseScript[] = {phx_fnc_removeRespawnButton};
+
+class CfgDebriefingSections {
+    class acex_killTracker {
+        title = "ACEX Killed Events";
+        variable = "acex_killTracker_outputText";
+    };
+};

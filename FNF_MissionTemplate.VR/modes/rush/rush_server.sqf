@@ -188,8 +188,6 @@ _win = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  
-
   uiSleep 20;
   "end1" call bis_fnc_endMissionServer;
 };

@@ -8,7 +8,6 @@ call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
 call phx_fnc_initLoadout; //Loadout vars
 call phx_fnc_radio_waitGear; //Start radio preset functions
-call PHX_fnc_killTracker; //Starts tracking kills of players
 
 //Disable chat typing for mission display
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
@@ -19,14 +18,12 @@ call PHX_fnc_killTracker; //Starts tracking kills of players
 //Client-side fortify, and gear selector
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient; call phx_fnc_selector_init;}] call CBA_fnc_waitUntilAndExecute;
 
+//Start kill counter when game ends or player is dead
+[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
+//Start spectator fnc when player is killed
+player addEventHandler ["Killed", {call phx_fnc_spectatorInit;}];
+
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
-
-//Start spectator fnc and kill counter fnc when player is killed
-player addEventHandler ["Killed", {
-  call phx_fnc_spectatorInit;
-  call PHX_fnc_killCountUpdate;
-}];
-
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
 [] spawn phx_fnc_unflipVehicleAddAction;

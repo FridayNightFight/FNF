@@ -257,10 +257,7 @@ while {!phx_gameEnd} do {
     phx_gameEnd = true;
     publicVariable "phx_gameEnd";
 
-    
-
     uiSleep 15;
-
     "end1" call bis_fnc_endMissionServer;
   };
 };

@@ -79,8 +79,7 @@ class CfgFunctions {
       class hintThenClear{};
       class fortifyClient{};
       class clientTime{};
-      class killCountUpdate{};
-      class killTracker{};
+      class killCounter{};
       class showTimeOnMap{};
     };
     class unflip {
@@ -104,12 +103,4 @@ class CfgFunctions {
       class overTimeEnd{};
     };
   };
-};
-
-//Debrief extras
-class CfgDebriefingSections {
-    class acex_killTracker {
-        title = "ACEX Killed Events";
-        variable = "acex_killTracker_outputText";
-    };
 };

@@ -149,10 +149,7 @@ phx_server_dropFlag = {
         case independent: {"INDFOR"};
       }]] remoteExec ["hint"];
 
-      
-
       sleep 15;
-
       "end1" call bis_fnc_endmissionserver;
     };
 

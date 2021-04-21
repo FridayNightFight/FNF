@@ -37,9 +37,6 @@ _win = {
   }]] remoteExec ["hint"];
 
   sleep 20;
-
-  
-
   "end1" call BIS_fnc_endMissionServer;
 };
 
