@@ -18,13 +18,12 @@ call phx_fnc_radio_waitGear; //Start radio preset functions
 //Client-side fortify, and gear selector
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient; call phx_fnc_selector_init;}] call CBA_fnc_waitUntilAndExecute;
 
+//Start kill counter when game ends or player is dead
+[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
+//Start spectator fnc when player is killed
+player addEventHandler ["Killed", {call phx_fnc_spectatorInit;}];
+
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
-
-//Start spectator fnc when player is killed
-player addEventHandler ["Killed", {
-  call phx_fnc_spectatorInit;
-}];
-
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
 [] spawn phx_fnc_unflipVehicleAddAction;

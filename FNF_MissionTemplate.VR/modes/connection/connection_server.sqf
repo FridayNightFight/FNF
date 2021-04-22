@@ -101,7 +101,6 @@ phx_connectionWin = {
   } forEach [term1,term2,term3];
 
   sleep 15;
-
   "end1" call BIS_fnc_endMissionServer;
 };
 

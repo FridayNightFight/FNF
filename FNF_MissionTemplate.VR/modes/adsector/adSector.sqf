@@ -25,7 +25,6 @@ phx_server_sectorWin = {
   publicVariable "phx_gameEnd";
 
   sleep 20;
-
   "end1" call bis_fnc_endmissionserver;
 };
 

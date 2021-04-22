@@ -187,6 +187,7 @@ _win = {
   //Send var to other scripts and clients to signal that the game has ended
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
+
   uiSleep 20;
   "end1" call bis_fnc_endMissionServer;
 };

@@ -79,6 +79,7 @@ class CfgFunctions {
       class hintThenClear{};
       class fortifyClient{};
       class clientTime{};
+      class killCounter{};
       class showTimeOnMap{};
     };
     class unflip {
