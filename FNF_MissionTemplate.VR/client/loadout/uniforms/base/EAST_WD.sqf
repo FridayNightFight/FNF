@@ -14,3 +14,6 @@ if (pRole == ROLE_P) then {
   phx_loadout_headgear = "H_PilotHelmetHeli_O";
   phx_loadout_vest = "V_TacVest_oli";
 };
+if (pRole == ROLE_CR) then {
+  phx_loadout_headgear = "rhs_tsh4";
+};
