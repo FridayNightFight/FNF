@@ -8,7 +8,7 @@ phx_loadout_rifle_gl_he = "1Rnd_HE_Grenade_shell:6";
 phx_loadout_rifle_gl_smoke = "1Rnd_Smoke_Grenade_shell:3";
 phx_loadout_rifle_gl_flare = "UGL_FlareWhite_F:3";
 
-if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL) then {
+if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_M203_bk";
   phx_selector_weapons = [["rhs_weap_m16a4_carryhandle_M203"]];
 } else {
@@ -41,7 +41,7 @@ if (pRole == ROLE_P) then {
   phx_loadout_rifle_mag = "rhsusf_mag_40Rnd_46x30_FMJ:4";
 };
 
-//Don't allow these classes to switch weapon
-if (pRole == ROLE_AR || pRole == ROLE_MG || pRole == ROLE_MK || pRole == ROLE_P) then {
+//Don't allow classes with non-rifleman weapon to switch weapons
+if (phx_loadout_hasSpecial) then {
   phx_selector_weapons = [];
 };

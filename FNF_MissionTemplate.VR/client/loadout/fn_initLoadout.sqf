@@ -26,10 +26,12 @@ if (isNil "pRole") exitWith {
   player enableSimulation false;
   endMission "END1"
 };
+player linkItem "ItemMap";
+
+if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL]) then {phx_loadout_hasUGL = true} else {phx_loadout_hasUGL = false};
+if (pRole in [ROLE_AR,ROLE_MG,ROLE_MK,ROLE_P]) then {phx_loadout_hasSpecial = true} else {phx_loadout_hasSpecial = false};
 
 if (pRole == ROLE_CIV) exitWith {};
-
-player linkItem "ItemMap";
 
 phx_loadout_unitLevel = 0;
 //Shared
