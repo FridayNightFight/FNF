@@ -51,16 +51,16 @@ class RscTitles {
     onLoad = "uiNamespace setVariable ['killcountStructText', _this select 0];";
     onUnLoad = "uiNamespace setVariable ['killcountStructText', nil]";
     class controls {
-      class structuredText3 {
+      class structuredText4 {
         access = 0;
         type = 13;
         idc = 1004;
         style = 0x00;
         lineSpacing = 1;
-        x = 0.83 * safezoneW + safezoneX;
-        y = 0.0001 * safezoneH + safezoneY;
-        h = 0.020 * safezoneH;
-        w = 0.17 * safezoneW; //w == h
+        x = 0.95375 * safezoneW + safezoneX;
+        y = 0.027 * safezoneH + safezoneY;
+        h = 0.040 * safezoneH;
+        w = 0.04125 * safezoneW; //w == h
         size = 0.020;
         colorBackground[] = {0,0,0,0.85};
         colorText[] = {1,1,1,1};
@@ -69,8 +69,8 @@ class RscTitles {
         class Attributes {
             font = "TahomaB";
             color = "#FFFFFF";
-            align = "CENTER";
-            valign = "bottom";
+            // align = "center";
+            // valign = "middle";
             shadow = true;
             shadowColor = "#000000";
             underline = false;

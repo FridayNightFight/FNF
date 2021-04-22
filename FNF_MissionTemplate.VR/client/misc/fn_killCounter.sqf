@@ -23,5 +23,5 @@ phx_killCountUI_PFH = [{
     };
   } forEach acex_killtracker_eventsarray;
 
-  _setText ctrlSetStructuredText parseText (format ["Round Kills: %1", _kills]);
+  _setText ctrlSetStructuredText parseText (format ["<t valign='middle' align='center'>My Kills<br/>%1</t>", _kills]);
 }, 1] call CBA_fnc_addPerFrameHandler;
