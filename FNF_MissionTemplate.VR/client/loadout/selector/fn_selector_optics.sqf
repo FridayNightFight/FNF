@@ -1,4 +1,4 @@
-if (pRole == ROLE_MK) exitWith {};
+if (pRole == ROLE_MK) exitWith {}; //don't want marksman to change optic
 
 //Add magnified optics if enabled
 if (phx_magnifiedOptics) then {

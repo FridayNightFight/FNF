@@ -32,7 +32,7 @@ switch (pRole) do {
   };
 };
 
-if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL || pRole == ROLE_MK || pRole == ROLE_SP) then {
+if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL || pRole == ROLE_MK) then {
   player addWeapon phx_loadout_vector;
 };
 
