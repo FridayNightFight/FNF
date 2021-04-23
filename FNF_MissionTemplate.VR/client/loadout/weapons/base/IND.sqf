@@ -4,10 +4,6 @@ phx_loadout_sidearm_mag = "16Rnd_9x21_Mag:2";
 phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_polymer_tracer:4";
 phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_polymer:7";
 
-phx_loadout_rifle_gl_he = "rhs_VOG25:6";
-phx_loadout_rifle_gl_smoke = "rhs_GRD40_White:3";
-phx_loadout_rifle_gl_flare = "rhs_VG40OP_white:3";
-
 if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_akmn_gp25";
 } else {

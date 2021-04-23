@@ -4,10 +4,6 @@ phx_loadout_sidearm_mag = "rhs_mag_9x19_17:2";
 phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_plum_green:4";
 phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:7";
 
-phx_loadout_rifle_gl_he = "rhs_VOG25:6";
-phx_loadout_rifle_gl_smoke = "rhs_GRD40_White:3";
-phx_loadout_rifle_gl_flare = "rhs_VG40OP_white:3";
-
 if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_ak74m_gp25";
 } else {

@@ -24,7 +24,5 @@ switch (pRole) do {
 };
 
 if (phx_loadout_hasUGL) then {
-  phx_loadout_rifle_gl_he call phx_fnc_addGear;
-  phx_loadout_rifle_gl_smoke call phx_fnc_addGear;
-  phx_loadout_rifle_gl_flare call phx_fnc_addGear;
+  {_x call phx_fnc_addGear} forEach phx_loadout_uglAmmo;
 };

@@ -51,25 +51,23 @@ if (playerSide == phx_attackingSide) then {
   "capZoneMarkText" setMarkerAlphaLocal 0;
 };
 
-if (playerSide == phx_attackingSide) then {
-  phx_clientFlagAction = [
-    player,
-    "Take flag",
-    "",
-    "",
-    "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole)",
-    "player distance ctf_flag < 3.5",
-    {},
-    {},
-    {
-      [player,playerSide] remoteExec ["phx_server_flagTaken",2,false];
-      call phx_flagDropAction
-    },
-    {},
-    [],
-    1,
-    0,
-    false,
-    false
-  ] call BIS_fnc_holdActionAdd;
-};
+phx_clientFlagAction = [
+  player,
+  "Take flag",
+  "",
+  "",
+  "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole)",
+  "player distance ctf_flag < 3.5",
+  {},
+  {},
+  {
+    [player,playerSide] remoteExec ["phx_server_flagTaken",2,false];
+    call phx_flagDropAction
+  },
+  {},
+  [],
+  1,
+  0,
+  false,
+  false
+] call BIS_fnc_holdActionAdd;

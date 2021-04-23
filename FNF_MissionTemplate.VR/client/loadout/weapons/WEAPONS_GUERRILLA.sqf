@@ -30,10 +30,6 @@ if (pRole == ROLE_AM) then {
 phx_loadout_sidearm_weapon = selectRandom ["hgun_Rook40_F", "hgun_P07_F", "hgun_ACPC2_F", "rhs_weap_makarov_pm", "rhsusf_weap_glock17g4", "rhsusf_weap_m1911a1", "rhs_weap_tt33", "rhs_weap_cz99", "rhs_weap_savz61_folded"];
 phx_loadout_sidearm_mag = ([phx_loadout_sidearm_weapon] call CBA_fnc_compatibleMagazines select 0) + ":2";
 
-phx_loadout_rifle_gl_he = "rhs_VOG25:6";
-phx_loadout_rifle_gl_smoke = "rhs_GRD40_White:3";
-phx_loadout_rifle_gl_flare = "rhs_VG40OP_white:3";
-
 if (pRole == ROLE_RAT) then {
   phx_loadout_antitank_weapon = "rhs_weap_rpg7";
   phx_loadout_antitank_mag = "rhs_rpg7_PG7VL_mag:3";

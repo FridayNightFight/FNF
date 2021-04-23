@@ -4,10 +4,6 @@ phx_loadout_sidearm_mag = "rhsusf_mag_17Rnd_9x19_JHP:2";
 phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4";
 phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:7";
 
-phx_loadout_rifle_gl_he = "1Rnd_HE_Grenade_shell:6";
-phx_loadout_rifle_gl_smoke = "1Rnd_Smoke_Grenade_shell:3";
-phx_loadout_rifle_gl_flare = "UGL_FlareWhite_F:3";
-
 if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_M203_bk";
   phx_selector_weapons = [["rhs_weap_m16a4_carryhandle_M203"]];

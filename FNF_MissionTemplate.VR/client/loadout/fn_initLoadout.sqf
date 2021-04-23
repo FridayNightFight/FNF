@@ -41,6 +41,8 @@ phx_loadout_grenade = "rhs_mag_m67:2";
 phx_loadout_thermite = "ACE_M14:2";
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_nvg = "NVGoggles_OPFOR";
+phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
+phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 //CE
 phx_loadout_explosives = ["2x Satchel","SatchelCharge_Remote_Mag:2"];
 phx_loadout_defusalkit = "ACE_DefusalKit";
