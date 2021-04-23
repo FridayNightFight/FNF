@@ -57,10 +57,10 @@ class RscTitles {
         idc = 1004;
         style = 0x00;
         lineSpacing = 1;
-        x = 0.95375 * safezoneW + safezoneX;
-        y = 0.027 * safezoneH + safezoneY;
-        h = 0.040 * safezoneH;
-        w = 0.04125 * safezoneW; //w == h
+        x = 0.933125 * safezoneW + safezoneX;
+        y = 0.104 * safezoneH + safezoneY;
+        h = 0.055 * safezoneH;
+        w = 0.06 * safezoneW; //w == h
         size = 0.020;
         colorBackground[] = {0,0,0,0.85};
         colorText[] = {1,1,1,1};
