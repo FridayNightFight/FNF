@@ -23,6 +23,9 @@ switch (_numberOfSectors) do {
   };
 };
 
+//Show ticket counter
+[] call BIS_fnc_showMissionStatus;
+
 _win = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
