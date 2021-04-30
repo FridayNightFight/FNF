@@ -1,4 +1,4 @@
-#include "cfgLoadouts.hpp"
+call phx_fnc_loadout_vars;
 
 //Set player role from class of their unit
 _pClass = typeOf player;
@@ -18,23 +18,33 @@ if (_pClass == UNIT_OPFOR_AAT || _pClass == UNIT_BLUFOR_AAT || _pClass == UNIT_I
 if (_pClass == UNIT_OPFOR_R || _pClass == UNIT_BLUFOR_R || _pClass == UNIT_INDFOR_R) then {pRole = ROLE_R};
 if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_INDFOR_CR) then {pRole = ROLE_CR};
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
-if (_pClass == UNIT_OPFOR_SP || _pClass == UNIT_BLUFOR_SP || _pClass == UNIT_INDFOR_SP) then {pRole = ROLE_SP};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
+if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
 
 if (isNil "pRole") exitWith {
   hint "Player role not set correctly. Alert the mission maker and join another slot.";
   player enableSimulation false;
   endMission "END1"
 };
+player linkItem "ItemMap";
+
+if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL]) then {phx_loadout_hasUGL = true} else {phx_loadout_hasUGL = false};
+if (pRole in [ROLE_AR,ROLE_MG,ROLE_MK,ROLE_P]) then {phx_loadout_hasSpecial = true} else {phx_loadout_hasSpecial = false};
+
+if (pRole == ROLE_CIV) exitWith {};
 
 phx_loadout_unitLevel = 0;
 //Shared
 phx_loadout_aid = "FirstAidKit:4";
 phx_loadout_smoke = "SmokeShell:2";
 phx_loadout_grenade = "rhs_mag_m67:2";
+phx_loadout_thermite = "ACE_M14:2";
 phx_loadout_maptools = "ACE_MapTools";
+phx_loadout_nvg = "NVGoggles_OPFOR";
+phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
+phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 //CE
-phx_loadout_explosives = "SatchelCharge_Remote_Mag:2";
+phx_loadout_explosives = ["2x Satchel","SatchelCharge_Remote_Mag:2"];
 phx_loadout_defusalkit = "ACE_DefusalKit";
 phx_loadout_trigger = "ACE_M26_Clacker";
 phx_loadout_entrenching = "ACE_EntrenchingTool";
@@ -50,7 +60,14 @@ phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 phx_loadout_binocular = "Binocular";
 phx_loadout_vector = "ACE_VectorDay";
 phx_loadout_rifle_optic = "optic_DMS";
-phx_allowedOptics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
+phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
+phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
+phx_selector_explosives = [
+phx_loadout_explosives,
+["2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"],
+["2x AT mine", "ATMine_Range_Mag:2"],
+["4x Demo charge", "DemoCharge_Remote_Mag:4"]
+];
 
 call phx_fnc_setUniform;
 call phx_fnc_setWeapons;

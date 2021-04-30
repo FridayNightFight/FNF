@@ -13,7 +13,7 @@ ace_advanced_fatigue_fadeStaminaBar = true;
 force force ace_advanced_fatigue_loadFactor = 0.4;
 force force ace_advanced_fatigue_performanceFactor = 4;
 force force ace_advanced_fatigue_recoveryFactor = 5;
-force force ace_advanced_fatigue_swayFactor = 0.4;
+force force ace_advanced_fatigue_swayFactor = 0.25;
 force force ace_advanced_fatigue_terrainGradientFactor = 0.7;
 
 // ACE Advanced Throwing
@@ -180,7 +180,7 @@ ace_maptools_rotateModifierKey = 1;
 force force ace_medical_ai_enabledFor = 0;
 force force ace_medical_AIDamageThreshold = 0.6;
 force force ace_medical_bleedingCoefficient = 0.3;
-force force ace_medical_blood_bloodLifetime = 1200;
+force force ace_medical_blood_bloodLifetime = 900;
 force force ace_medical_blood_enabledFor = 1;
 force force ace_medical_blood_maxBloodObjects = 100;
 force force ace_medical_fatalDamageSource = 2;
@@ -195,9 +195,9 @@ force force ace_medical_gui_maxDistance = 3;
 ace_medical_gui_openAfterTreatment = true;
 force force ace_medical_ivFlowRate = 3;
 force force ace_medical_limping = 1;
-force force ace_medical_painCoefficient = 0.3;
+force force ace_medical_painCoefficient = 0.5;
 force force ace_medical_playerDamageThreshold = 1.3;
-force force ace_medical_spontaneousWakeUpChance = 0.5;
+force force ace_medical_spontaneousWakeUpChance = 0.75;
 force force ace_medical_spontaneousWakeUpEpinephrineBoost = 5;
 force force ace_medical_statemachine_AIUnconsciousness = false;
 force force ace_medical_statemachine_cardiacArrestBleedoutEnabled = true;
@@ -229,13 +229,13 @@ force force ace_medical_treatment_medicIV = 0;
 force force ace_medical_treatment_medicPAK = 1;
 force force ace_medical_treatment_medicSurgicalKit = 1;
 force force ace_medical_treatment_timeCoefficientPAK = 0.5;
-force force ace_medical_treatment_treatmentTimeAutoinjector = 5;
+force force ace_medical_treatment_treatmentTimeAutoinjector = 4;
 force force ace_medical_treatment_treatmentTimeBodyBag = 15;
 force force ace_medical_treatment_treatmentTimeSplint = 7;
-force force ace_medical_treatment_treatmentTimeTourniquet = 7;
+force force ace_medical_treatment_treatmentTimeTourniquet = 5;
 force force ace_medical_treatment_woundStitchTime = 5;
-force force ace_medical_treatment_treatmentTimeIV = 8;
-force force ace_medical_treatment_treatmentTimeCPR = 12;
+force force ace_medical_treatment_treatmentTimeIV = 6;
+force force ace_medical_treatment_treatmentTimeCPR = 10;
 force force ace_medical_treatment_allowBodyBagUnconscious = false;
 force force ace_medical_treatment_woundReopenChance = 0;
 
@@ -257,7 +257,7 @@ ace_nametags_showVehicleCrewInfo = true;
 ace_nametags_tagSize = 2;
 
 // ACE Nightvision
-force ace_nightvision_aimDownSightsBlur = 1;
+force ace_nightvision_aimDownSightsBlur = 0;
 force ace_nightvision_disableNVGsWithSights = false;
 force ace_nightvision_effectScaling = 0.7;
 force ace_nightvision_fogScaling = 1.2;
@@ -296,7 +296,7 @@ ace_quickmount_priority = 0;
 force force ace_quickmount_speed = 18;
 
 // ACE Respawn
-force force ace_respawn_removeDeadBodiesDisconnected = true;
+force force ace_respawn_removeDeadBodiesDisconnected = false;
 force force ace_respawn_savePreDeathGear = false;
 
 // ACE Scopes
@@ -425,6 +425,8 @@ force force TFAR_voiceCone = false;
 
 // Enhanced Movement Rework
 force force emr_main_allowMidairClimbing = true;
+force force emr_main_animSpeedCoef = 1;
+force force emr_main_animSpeedStaminaCoef = 0.4;
 force force emr_main_blacklistStr = "";
 force force emr_main_climbingEnabled = true;
 force force emr_main_climbOnDuty = 3.4;
@@ -432,20 +434,20 @@ force force emr_main_climbOverDuty = 3;
 force force emr_main_dropDuty = 0.7;
 force force emr_main_enableWalkableSurface = true;
 force force emr_main_enableWeightCheck = false;
+emr_main_hintType = 2;
 force force emr_main_jumpDuty = 1;
 force force emr_main_jumpingEnabled = true;
 force force emr_main_jumpingLoadCoefficient = 0;
 force force emr_main_jumpVelocity = 3.4;
 force force emr_main_maxClimbHeight = 2.6;
 force force emr_main_maxDropHeight = 5;
-emr_main_maxWeightClimb1 = 200;
-emr_main_maxWeightClimb2 = 200;
-emr_main_maxWeightClimb3 = 200;
-emr_main_maxWeightJump = 200;
+force force emr_main_maxWeightClimb1 = 200;
+force force emr_main_maxWeightClimb2 = 200;
+force force emr_main_maxWeightClimb3 = 200;
+force force emr_main_maxWeightJump = 200;
 force force emr_main_preventHighVaulting = false;
 force force emr_main_staminaCoefficient = 1;
 force force emr_main_whitelistStr = "";
-
 
 // GRAD Trenches
 force force grad_trenches_functions_allowBigEnvelope = true;

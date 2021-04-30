@@ -13,7 +13,6 @@ ctf_flag hideObjectGlobal true;
 ctf_flag enableSimulation false;
 
 {_x allowDamage false;} forEach [ctf_flag, ctf_flagPole, ctf_banner];
-[ctf_flagPole] call phx_fnc_objBuildingDamage;
 
 ctf_banner attachTo [ctf_flagPole, [0.82,-0.38,2.45]];
 
@@ -106,7 +105,11 @@ phx_server_dropFlag = {
 
   _dummy = objNull;
 
-  _pos = ASLtoATL (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0,(getPosASL ctf_flag) select 1,0], vehicle _player]) select 0) select 0);
+  _pos = ASLtoATL (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0,(getPosASL ctf_flag) select 1,-200], vehicle _player]) select 0) select 0);
+
+  if (surfaceIsWater _pos) then {
+    _pos = [_pos select 0, _pos select 1, abs getTerrainHeightASL _pos];
+  };
 
   if (vehicle _player != _player) then {
     _dummy = createVehicle ["Land_HelipadEmpty_F", _pos, [], 0, "NONE"];
@@ -147,7 +150,6 @@ phx_server_dropFlag = {
       }]] remoteExec ["hint"];
 
       sleep 15;
-
       "end1" call bis_fnc_endmissionserver;
     };
 

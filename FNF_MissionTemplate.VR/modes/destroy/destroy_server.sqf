@@ -58,7 +58,6 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
   [phx_defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
   [phx_attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
 
-  [_x select 0] spawn phx_fnc_objBuildingDamage;
   [(_x select 0), -1] call ace_cargo_fnc_setSize;
 
   //Check for alive objective
@@ -121,5 +120,4 @@ phx_gameEnd = true;
 publicVariable "phx_gameEnd";
 
 uisleep 20;
-
 "end1" call bis_fnc_endMissionServer;

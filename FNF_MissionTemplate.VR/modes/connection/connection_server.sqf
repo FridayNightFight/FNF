@@ -18,8 +18,6 @@ _markerSetup = {
   _mark = createMarker [format ["%1Mark",_term],getPos _term];
   _mark setMarkerType "mil_dot";
   _mark setMarkerText format ["Terminal %1", [str _term, 4, 4] call BIS_fnc_trimString];
-
-  [_term] call phx_fnc_objBuildingDamage;
 };
 
 switch (_numberOfTerminals) do {
@@ -103,7 +101,6 @@ phx_connectionWin = {
   } forEach [term1,term2,term3];
 
   sleep 15;
-
   "end1" call BIS_fnc_endMissionServer;
 };
 

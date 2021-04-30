@@ -57,7 +57,7 @@ _termMarkSetup = {
   _mark setMarkerType "mil_dot";
 };
 
-{_x call _termMarkSetup; [_x] call phx_fnc_objBuildingDamage;} forEach _terminals;
+{_x call _termMarkSetup;} forEach _terminals;
 
 _terminalHackComplete = {
   _term = _this select 0;
@@ -187,6 +187,7 @@ _win = {
   //Send var to other scripts and clients to signal that the game has ended
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
+
   uiSleep 20;
   "end1" call bis_fnc_endMissionServer;
 };

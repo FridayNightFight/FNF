@@ -4,6 +4,7 @@ switch (_side) do {
     case east: { phx_playerBaseChannel = phx_opforBaseChannel; };
     case west: { phx_playerBaseChannel = phx_bluforBaseChannel; };
     case independent: { phx_playerBaseChannel = phx_indforBaseChannel; };
+    case civilian: {phx_playerBaseChannel = phx_civilianBaseChannel; };
     default { titleText ["The game thinks you aren't one of the three teams!","PLAIN"]; };
 };
 //Error message

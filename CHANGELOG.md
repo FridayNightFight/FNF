@@ -1,3 +1,36 @@
+# v2.2.0-rc2
+Added:
+1. Support for custom civilian units. Using the class "C_man_1". The loadout of the civilian role will remain whatever it is in the editor. If the unit has a radio, the frequency will be preset to one used by all civilians.
+2. Kill counter that will be displayed when you die or the game ends. Uses the last damage source of a unit to figure out the killer.
+3. Config variable for adding NVGs to units. Also adds laser to player's weapon if compatible.
+4. Config variable for allowing players to select magnified optics.
+5. Combat engineers can now select between different charge loadouts. Currently 2x satchels or 4x m112 demo blocks or 2 AP mines and 2 flare mines or 2 M15 AT mines.
+6. Added a system to automatically mark mission-placed objects if they are large enough.
+
+Changed:
+1. Staggered load (black screen loadout stagger) won't run if fewer than 60 players on server.
+2. Player loadout roles are now accessible via global variables.
+3. Combat engineers are given thermite grenades instead of frags
+4. Rewrite of gear selector system. Allows player to choose between different weapons with different compatible magazines if defined in the used weapons loadout.
+5. Streamlined the uniform and weapon sets. Each uniform set has a base where backpacks, pilot and crew helmets are defined, so very few things need to be defined when creating a new uniform set. Player now has a base weapon set that is always called depending on their side. Other weapon sets overwrite the base, so very few things need to be defined when creating a new weapon set.
+6. Mission time remaining now accounts for admin changes in the safe start time.
+7. Function for restricting uniform changes won't run when testing the mission locally.
+8. Time allowed outside of the start boundary towards the end of safestart is now maximum 1 second.
+9. Renamed the default weapon sets in the mission config.
+10. Accounted for CTF flag being dropped over water. Will now sit at water surface at location it was dropped.
+11. Added new terrains to automatic fortification color function.
+12. Automatic selection of UGL ammo type so it doesn't need to be defined in the weapons loadouts.
+13. MAT classes in the briefing tab will show the display name of the class, rather than the classname.
+14. Increased default fortify currency to 100.
+
+Fixed:
+1. Misc small fixes.
+
+Removed:
+1. Old weapon and uniform sets from mods no longer used.
+2. USMC weapon set with M27 for the AR as it was never used.
+3. Automatic invincibility of objective buildings. Mission maker will have to set the building invincible if they want it to be or account for the different damage states of the building to make sure access to the objective is still possible.
+
 # v2.1.0c-hotfix.1
 1. Fixes mission timer on all display sizes
 2. Custom objects placed by mission makers are now automatically marked.

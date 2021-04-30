@@ -1,17 +1,23 @@
-#include "cfgLoadouts.hpp"
-
 phx_loadout_aid call phx_fnc_addGear;
 phx_loadout_smoke call phx_fnc_addGear;
-phx_loadout_grenade call phx_fnc_addGear;
+if (pRole != ROLE_CE) then {
+  phx_loadout_grenade call phx_fnc_addGear;
+};
 phx_loadout_maptools call phx_fnc_addGear;
+
+player addItem "ACE_CableTie";
+player addItem "ACE_CableTie";
 
 switch (pRole) do {
   case ROLE_CE: {
-    phx_loadout_explosives call phx_fnc_addGear;
+    {
+      if (_forEachIndex != 0) then {_x call phx_fnc_addGear};
+    } forEach phx_loadout_explosives;
     phx_loadout_defusalkit call phx_fnc_addGear;
     phx_loadout_trigger call phx_fnc_addGear;
     phx_loadout_entrenching call phx_fnc_addGear;
     phx_loadout_detector call phx_fnc_addGear;
+    phx_loadout_thermite call phx_fnc_addGear;
   };
   case ROLE_MGTL: {
     phx_loadout_entrenching call phx_fnc_addGear;
@@ -26,7 +32,7 @@ switch (pRole) do {
   };
 };
 
-if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL || pRole == ROLE_MK || pRole == ROLE_SP) then {
+if (pRole == ROLE_PL || pRole == ROLE_SL || pRole == ROLE_TL || pRole == ROLE_MGTL || pRole == ROLE_MK) then {
   player addWeapon phx_loadout_vector;
 };
 

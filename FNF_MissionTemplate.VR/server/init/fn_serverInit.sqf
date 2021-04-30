@@ -6,9 +6,9 @@ call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
 call phx_fnc_markCustomObjs;
 call phx_fnc_server_setupGame;
-call phx_fnc_checkTime;
 
 [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;
@@ -21,14 +21,6 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
     _marker setMarkerShape "ICON";
     _marker setMarkerType "Empty";
 } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
-
-//Clear vic inventory
-{
-  if (((_x call BIS_fnc_objectType) select 0) isEqualTo "Vehicle") then {
-    clearWeaponCargoGlobal _x;
-    clearMagazineCargoGlobal _x;
-  };
-} forEach vehicles;
 
 //Delete player bodies during safe start
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {

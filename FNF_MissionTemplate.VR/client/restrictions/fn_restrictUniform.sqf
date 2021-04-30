@@ -2,6 +2,8 @@
 Disables access to removing helmet and uniform. Ensures that the player has the helmet and uniform that they started the game with.
 */
 
+if (isServer) exitWith {}; //Don't need to run this function for local testing
+
 private _playerUniform = uniform player;
 private _playerHead = headgear player;
 private _playerVest = vest player;
@@ -30,7 +32,7 @@ private _playerVest = vest player;
 }, 5, [_playerUniform, _playerHead, _playerVest]] call CBA_fnc_addPerFrameHandler;
 
 //Stop player from being able to take off gear
-player addEventHandler ["inventoryOpened",{
+player addEventHandler ["InventoryOpened",{
   [{!(isNull (findDisplay 602))}, {
     //Uniform
     ((findDisplay 602) displayCtrl 6331) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6331, false];"];

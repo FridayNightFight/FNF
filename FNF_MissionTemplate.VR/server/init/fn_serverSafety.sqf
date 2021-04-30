@@ -23,6 +23,7 @@ missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
 [{f_var_mission_timer < 0}, {
   missionNamespace setVariable ["phx_safetyEnabled",false,true];
+  missionNamespace setVariable ["phx_safetyEndTime", round CBA_missionTime, true];
   ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
   ["off"] call acex_fortify_fnc_handleChatCommand;
 

@@ -46,8 +46,15 @@ class CfgFunctions {
       class addMagazines{};
       class addItems{};
       class checkLoadout{};
-      class gearSelector{};
       class initLoadout{};
+      class loadout_vars{};
+    };
+    class selector {
+      file = "client\loadout\selector";
+      class selector_init{};
+      class selector_optics{};
+      class selector_weapons{};
+      class selector_charges{};
     };
     class restrictions {
       file = "client\restrictions";
@@ -72,6 +79,7 @@ class CfgFunctions {
       class hintThenClear{};
       class fortifyClient{};
       class clientTime{};
+      class killCounter{};
       class showTimeOnMap{};
     };
     class unflip {
@@ -85,7 +93,6 @@ class CfgFunctions {
       class sendUniforms{};
       class markCustomObjs{};
       class fortifyServer{};
-      class objBuildingDamage{};
       class server_setupGame{};
       class radio_genFreqs{};
     };

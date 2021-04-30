@@ -22,10 +22,10 @@ phx_checkAlive_count = {
 
 [{
   if (phx_gameEnd) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
-  
+
   private _phx_currentSpectators = call ace_spectator_fnc_players;
-  phx_playersInMission = [phx_playersInMission, {_this in _phx_currentSpectators}] call CBA_fnc_reject;;
-  phx_playersInMission = [phx_playersInMission, {!(alive _this)}] call CBA_fnc_reject;;
+  phx_playersInMission = [phx_playersInMission, {_this in _phx_currentSpectators}] call CBA_fnc_reject;
+  phx_playersInMission = [phx_playersInMission, {!(alive _this)}] call CBA_fnc_reject;
 
   if (phx_bluforInMission) then {
     _bluCount = west call phx_checkAlive_count;
