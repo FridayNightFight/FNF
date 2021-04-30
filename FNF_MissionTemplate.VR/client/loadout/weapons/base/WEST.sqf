@@ -36,8 +36,3 @@ if (pRole == ROLE_P) then {
   phx_loadout_rifle_weapon = "rhsusf_weap_MP7A2";
   phx_loadout_rifle_mag = "rhsusf_mag_40Rnd_46x30_FMJ:4";
 };
-
-//Don't allow classes with non-rifleman weapon to switch weapons
-if (phx_loadout_hasSpecial) then {
-  phx_selector_weapons = [];
-};

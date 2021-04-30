@@ -24,6 +24,8 @@ switch (playerSide) do {
   _this select 0 params ["_marker","_maxTime"];
   if (!phx_safetyEnabled || !alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler; hintSilent ""};
 
+  if (missionNamespace getVariable ["f_var_mission_timer",10] < 1) then {_maxTime = 0};
+
   if (vehicle player inArea _marker) then {
     phx_startGoodPos = getpos vehicle player;
 

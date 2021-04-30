@@ -1,5 +1,5 @@
 private _baseClasses = ["Static"]; //anything that is a subtype of these classes and is big enough will be marked
-private _blacklist = ["Land_DataTerminal_01_F","Wreck_Base"]; //blacklist of item or parent classes to never mark
+private _blacklist = ["Land_DataTerminal_01_F","Wreck_Base","FlagCarrierCore"]; //blacklist of item or parent classes to never mark
 
 //checks bounding sphere value to see if object is large enough to mark and also not in the blacklist
 _canMark = {

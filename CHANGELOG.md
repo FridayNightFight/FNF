@@ -1,3 +1,5 @@
+# v2.2.0-rc2 
+
 # v2.1.0c-hotfix.1
 1. Fixes mission timer on all display sizes
 2. Custom objects placed by mission makers are now automatically marked.
