@@ -15,8 +15,3 @@ class Header
 #include "description\cfgSounds.hpp"
 #include "description\cfgFunctions.hpp"
 #include "client\ui\RscTitlesDisplay.hpp"
-
-class MissionSQM
-{
-	#include "mission.sqm"
-};
