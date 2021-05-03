@@ -4,12 +4,6 @@ switch (playerSide) do {
   case independent: {pWeapons = phx_indforWeapons};
 };
 
-switch (playerSide) do {
-  case east: {call compile preprocessFileLineNumbers "client\loadout\weapons\WEAPONS_RU.sqf"};
-  case west: {call compile preprocessFileLineNumbers "client\loadout\weapons\WEAPONS_US.sqf"};
-  case independent: {call compile preprocessFileLineNumbers "client\loadout\weapons\WEAPONS_IND.sqf"};
-};
-
 if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
   _at = "";
   switch (playerSide) do {

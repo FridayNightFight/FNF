@@ -1,5 +1,4 @@
-/*This is a base weapon set. This will be called for players on OPFOR before any other weapon set*/
-
+/*This is a base weapon set. Standard Russian military loadout. Other sets can use this as a base.*/
 
 phx_loadout_sidearm_weapon = "rhs_weap_pya";
 phx_loadout_sidearm_mag = "rhs_mag_9x19_17:2";
@@ -13,7 +12,7 @@ if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_ak74m";
 };
 if (pRole == ROLE_AR) then {
-  phx_loadout_rifle_weapon = "rhs_weap_rpk74m";
+  phx_loadout_rifle_weapon = "rhs_weap_pkm";
   phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR_green:8";
 };
 if (pRole == ROLE_AAR) then {

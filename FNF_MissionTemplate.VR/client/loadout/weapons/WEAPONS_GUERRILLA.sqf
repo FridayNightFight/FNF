@@ -1,3 +1,5 @@
+#include "WEAPONS_IND.sqf"
+
 //Random guerrilla-style weapons
 phx_loadout_rifle_weapon = selectRandom ["rhs_weap_MP44", "rhs_weap_asval", "arifle_TRG20_F", "SMG_03C_black", "rhs_weap_akmn", "rhs_weap_ak103", "rhs_weap_ak74n", "rhs_weap_ak74_2", "rhs_weap_ak74m", "rhs_weap_aks74n", "rhs_weap_m16a4_carryhandle", "rhs_weap_m14", "rhs_weap_m4_carryhandle", "rhs_weap_l1a1_wood", "rhs_weap_m21s", "rhs_weap_m70b1", "rhs_weap_savz58p", "rhs_weap_savz58v_black", "rhs_weap_m70b3n", "rhs_weap_SCARH_STD"];
 if (random 100 > 99) then {phx_loadout_rifle_weapon = "rhs_weap_t5000"};
