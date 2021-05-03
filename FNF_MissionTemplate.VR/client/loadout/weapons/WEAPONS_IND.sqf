@@ -1,13 +1,15 @@
-phx_loadout_sidearm_weapon = "rhs_weap_pya";
-phx_loadout_sidearm_mag = "rhs_mag_9x19_17:2";
+/*This is a base weapon set. This will be called for players on INDFOR before any other weapon set*/
 
-phx_loadout_rifle_mag_tracer = "rhs_30Rnd_545x39_AK_plum_green:4";
-phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:7";
+phx_loadout_sidearm_weapon = "hgun_P07_F";
+phx_loadout_sidearm_mag = "16Rnd_9x21_Mag:2";
+
+phx_loadout_rifle_mag_tracer = "rhs_30Rnd_762x39mm_polymer_tracer:4";
+phx_loadout_rifle_mag = "rhs_30Rnd_762x39mm_polymer:7";
 
 if (phx_loadout_hasUGL) then {
-  phx_loadout_rifle_weapon = "rhs_weap_ak74m_gp25";
+  phx_loadout_rifle_weapon = "rhs_weap_akmn_gp25";
 } else {
-  phx_loadout_rifle_weapon = "rhs_weap_ak74m";
+  phx_loadout_rifle_weapon = "rhs_weap_akmn";
 };
 if (pRole == ROLE_AR) then {
   phx_loadout_rifle_weapon = "rhs_weap_rpk74m";

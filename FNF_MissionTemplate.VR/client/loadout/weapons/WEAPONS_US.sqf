@@ -1,3 +1,5 @@
+/*This is a base weapon set. This will be called for players on BLUFOR before any other weapon set*/
+
 phx_loadout_sidearm_weapon = "rhsusf_weap_glock17g4";
 phx_loadout_sidearm_mag = "rhsusf_mag_17Rnd_9x19_JHP:2";
 

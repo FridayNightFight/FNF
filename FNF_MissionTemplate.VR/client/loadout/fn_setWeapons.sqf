@@ -5,9 +5,9 @@ switch (playerSide) do {
 };
 
 switch (playerSide) do {
-  case east: {call compile preprocessFileLineNumbers "client\loadout\weapons\base\EAST.sqf"};
-  case west: {call compile preprocessFileLineNumbers "client\loadout\weapons\base\WEST.sqf"};
-  case independent: {call compile preprocessFileLineNumbers "client\loadout\weapons\base\IND.sqf"};
+  case east: {call compile preprocessFileLineNumbers "client\loadout\weapons\WEAPONS_RU.sqf"};
+  case west: {call compile preprocessFileLineNumbers "client\loadout\weapons\WEAPONS_US.sqf"};
+  case independent: {call compile preprocessFileLineNumbers "client\loadout\weapons\WEAPONS_IND.sqf"};
 };
 
 if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
@@ -59,8 +59,5 @@ if (pRole == ROLE_AT || pRole == ROLE_AAT) then {
   };
 };
 
-if !(pWeapons in ["WEAPONS_US", "WEAPONS_RU", "WEAPONS_IND"]) then {
-  _incStr = "client\loadout\weapons\" + pWeapons + ".sqf";
-
-  call compile preprocessFileLineNumbers _incStr;
-};
+_incStr = "client\loadout\weapons\" + pWeapons + ".sqf";
+call compile preprocessFileLineNumbers _incStr;
