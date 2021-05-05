@@ -49,6 +49,12 @@ class CfgFunctions {
       class initLoadout{};
       class loadout_vars{};
     };
+    class loadout_misc {
+      file = "client\loadout\misc";
+      class giveNVG{};
+      class setMAT{};
+      class setUGLAmmo{};
+    };
     class selector {
       file = "client\loadout\selector";
       class selector_init{};

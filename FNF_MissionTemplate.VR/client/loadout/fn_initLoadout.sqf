@@ -1,4 +1,4 @@
-call phx_fnc_loadout_vars;
+call phx_fnc_loadout_vars; //sets the variable the loadout system uses
 
 //Set player role from class of their unit
 _pClass = typeOf player;
@@ -34,12 +34,15 @@ if (pRole in [ROLE_AR,ROLE_MG,ROLE_MK,ROLE_P]) then {phx_loadout_hasSpecial = tr
 if (pRole == ROLE_CIV) exitWith {};
 
 phx_loadout_unitLevel = 0;
+if (pRole in [ROLE_PL,ROLE_SL]) then {phx_loadout_unitLevel = 2};
+if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
 phx_loadout_aid = "FirstAidKit:4";
 phx_loadout_smoke = "SmokeShell:2";
 phx_loadout_grenade = "rhs_mag_m67:2";
 phx_loadout_thermite = "ACE_M14:2";
 phx_loadout_maptools = "ACE_MapTools";
+phx_loadout_cableTie = "ACE_CableTie:2";
 phx_loadout_nvg = "NVGoggles_OPFOR";
 phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
 phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];

@@ -16,10 +16,6 @@ if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
 if (pRole == ROLE_AR || pRole == ROLE_MG) then {
   phx_loadout_vest = "rhsusf_spc_mg";
 };
-if (pRole == ROLE_CR) then {
-  phx_loadout_vest = "rhsusf_spc_crewman";
-  phx_loadout_headgear = "rhsusf_cvc_green_ess";
-};
 if (pRole == ROLE_MK) then {
   phx_loadout_vest = "rhsusf_spc_marksman";
 };
