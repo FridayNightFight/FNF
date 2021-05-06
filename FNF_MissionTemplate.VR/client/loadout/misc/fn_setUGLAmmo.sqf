@@ -1,4 +1,4 @@
-/*Returns the UGL ammo type to be used for the player's weapon*/
+/*Sets the UGL ammo type to be used for the player's weapon*/
 
 private _mags = [phx_loadout_rifle_weapon,true] call CBA_fnc_compatibleMagazines;
 

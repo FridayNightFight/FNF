@@ -1,4 +1,4 @@
-call phx_fnc_loadout_vars; //sets the variable the loadout system uses
+call phx_fnc_loadout_vars; //sets the variables the loadout system uses
 
 //Set player role from class of their unit
 _pClass = typeOf player;
