@@ -1,3 +1,7 @@
+# v2.2.0
+1. Cleaned up some loadout fncs and loadout sets.
+2. Weapon sets can now be freely assigned as there is not a forced base set anymore.
+
 # v2.2.0-rc2
 Added:
 1. Support for custom civilian units. Using the class "C_man_1". The loadout of the civilian role will remain whatever it is in the editor. If the unit has a radio, the frequency will be preset to one used by all civilians.
