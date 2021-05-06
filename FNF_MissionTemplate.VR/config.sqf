@@ -72,7 +72,7 @@ UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
 UNIFORM_M93_WOODLAND               --   WEAPONS_M21
 UNIFORM_ARMY_OCP                   --   WEAPONS_SCAR
 UNIFORM_UCP                        --   WEAPONS_VHS
-UNIFORM_CTRG_WD                    --   
+UNIFORM_CTRG_WD                    --
 UNIFORM_ION_BK
 UNIFORM_ION_WD
 UNIFORM_ISRAEL_TAN

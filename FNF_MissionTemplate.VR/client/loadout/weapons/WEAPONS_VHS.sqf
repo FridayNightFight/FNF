@@ -1,3 +1,5 @@
+#include "WEAPONS_IND.sqf"
+
 if (!phx_loadout_hasSpecial) then {
   phx_loadout_rifle_weapon = "rhs_weap_vhsd2";
   phx_loadout_rifle_mag = "rhsgref_30rnd_556x45_vhs2:7";
