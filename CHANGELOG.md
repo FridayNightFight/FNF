@@ -1,3 +1,8 @@
+# v2.2.1
+1. Fixed recon team rifleman role not being defined, causing the role to be unplayable
+2. Kill counter display moved to not block point display
+3. Mission-placed objects marking system won't mark objects within the attacker's start zone or any start zone if game mode is neutral
+
 # v2.2.0
 1. Cleaned up some loadout fncs and loadout sets.
 2. Weapon sets can now be freely assigned as there is not a forced base set anymore.
