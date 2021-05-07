@@ -39,7 +39,6 @@ UNIT_OPFOR_AAT = "O_Soldier_AAT_F";
 UNIT_OPFOR_P = "O_pilot_F";
 UNIT_OPFOR_CR = "O_crew_f";
 UNIT_OPFOR_MK = "O_soldier_M_F";
-UNIT_OPFOR_SP = "O_Sharpshooter_F";
 
 UNIT_BLUFOR_PL = "B_officer_F";
 UNIT_BLUFOR_CLS = "B_medic_F";
@@ -58,7 +57,6 @@ UNIT_BLUFOR_AAT = "B_Soldier_AAT_F";
 UNIT_BLUFOR_P = "B_pilot_F";
 UNIT_BLUFOR_CR = "B_crew_F";
 UNIT_BLUFOR_MK = "B_soldier_M_F";
-UNIT_BLUFOR_SP = "B_RangeMaster_F";
 
 UNIT_INDFOR_PL = "I_officer_F";
 UNIT_INDFOR_CLS = "I_medic_F";
@@ -77,6 +75,5 @@ UNIT_INDFOR_AAT = "I_Soldier_AAT_F";
 UNIT_INDFOR_P = "I_pilot_F";
 UNIT_INDFOR_CR = "I_crew_F";
 UNIT_INDFOR_MK = "I_Soldier_M_F";
-UNIT_INDFOR_SP = "I_Survivor_F";
 
 UNIT_CIV_R = "C_man_1";
