@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=3094;
+		nextID=3097;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={497.28763,35.657578,622.44238};
-		dir[]={0.0016362027,-0.36691505,0.93025303};
-		up[]={0.00064535823,0.93025446,0.36691445};
-		aside[]={0.99999845,0,-0.0017588765};
+		pos[]={507.72565,27.806253,689.76666};
+		dir[]={-0.14737949,-0.42349806,0.89390546};
+		up[]={-0.068896703,0.90590268,0.41788611};
+		aside[]={0.9867326,3.3288961e-007,0.16268408};
 	};
 };
 binarizationWanted=0;
@@ -142,6 +142,10 @@ class AddonsMetaData
 		};
 	};
 };
+dlcs[]=
+{
+	"Mark"
+};
 randomSeed=615564;
 class ScenarioData
 {
@@ -249,7 +253,7 @@ class Mission
 			class Attribute0
 			{
 				property="ENH_timeMultiplier";
-				expression="if (!is3DEN && {isServer && {_value != 1}}) then {setTimeMultiplier _value}";
+				expression="if (!is3DEN && isServer && _value != 1) then {setTimeMultiplier _value}";
 				class Value
 				{
 					class data
@@ -2370,7 +2374,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={503.87659,5.0014391,720.70911};
+						position[]={503.99289,5.0014391,721.48053};
 						angles[]={0,3.1152556,0};
 					};
 					side="West";
@@ -2439,58 +2443,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={503.83801,5.0014391,718.92902};
-						angles[]={0,3.1384861,0};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						init="call{Blue_CR = group this;}";
-						description="Rifleman@Company Recon";
-						isPlayable=1;
-						class Inventory
-						{
-							class uniform
-							{
-								typeName="U_B_CombatUniform_mcam";
-								isBackpack=0;
-							};
-						};
-					};
-					id=2613;
-					type="B_RangeMaster_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.04;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={502.13977,5.0014391,720.77588};
-						angles[]={0,3.1603549,0};
+						position[]={504.05573,5.0014391,719.11267};
+						angles[]={-0,3.1603549,0};
 					};
 					side="West";
 					flags=4;
@@ -2571,6 +2525,56 @@ class Mission
 							};
 						};
 						nAttributes=3;
+					};
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={502.03961,5.0014391,721.56519};
+						angles[]={-0,3.1384861,0};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						init="call{Blue_CR = group this;}";
+						description="Rifleman@Company Recon";
+						isPlayable=1;
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="U_B_CombatUniform_mcam_vest";
+								isBackpack=0;
+							};
+						};
+					};
+					id=3094;
+					type="B_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=1;
 					};
 				};
 			};
@@ -13758,75 +13762,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={303.53,5.0014391,720.88599};
-						angles[]={0,3.1157269,0};
-					};
-					side="East";
-					flags=5;
-					class Attributes
-					{
-						init="call{Red_CR = group this;}";
-						description="Rifleman@Company Recon";
-						isPlayable=1;
-						class Inventory
-						{
-							class uniform
-							{
-								typeName="U_O_CombatUniform_ocamo";
-								isBackpack=0;
-							};
-						};
-					};
-					id=2780;
-					type="O_Sharpshooter_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male02PER";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={303.41299,5.0014391,718.591};
 						angles[]={0,3.142221,0};
 					};
@@ -13909,6 +13844,75 @@ class Mission
 							};
 						};
 						nAttributes=3;
+					};
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={303.53,5.0014391,720.88599};
+						angles[]={0,3.1157269,0};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						init="call{Red_CR = group this;}";
+						description="Rifleman@Company Recon";
+						isPlayable=1;
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="U_O_CombatUniform_ocamo";
+								isBackpack=0;
+							};
+						};
+					};
+					id=3096;
+					type="O_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
 					};
 				};
 			};
@@ -25206,67 +25210,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={703.45209,5.0014391,717.54901};
-						angles[]={0,3.1867793,0};
-					};
-					side="Independent";
-					flags=4;
-					class Attributes
-					{
-						init="call{Green_CR = group this;}";
-						description="Rifleman@Company Recon";
-						isPlayable=1;
-					};
-					id=2941;
-					type="I_Survivor_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male08ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.04;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={703.52625,5.0014391,715.42303};
 						angles[]={0,3.147614,0};
 					};
@@ -25349,6 +25292,75 @@ class Mission
 							};
 						};
 						nAttributes=3;
+					};
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={703.45203,5.0014391,717.54901};
+						angles[]={0,3.1867793,0};
+					};
+					side="Independent";
+					flags=4;
+					class Attributes
+					{
+						init="call{Green_CR = group this;}";
+						description="Rifleman@Company Recon";
+						isPlayable=1;
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="U_I_CombatUniform_shortsleeve";
+								isBackpack=0;
+							};
+						};
+					};
+					id=3095;
+					type="I_soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male08ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
 					};
 				};
 			};

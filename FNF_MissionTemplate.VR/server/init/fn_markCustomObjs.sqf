@@ -1,7 +1,13 @@
 private _baseClasses = ["Static"]; //anything that is a subtype of these classes and is big enough will be marked
-private _blacklist = ["Land_DataTerminal_01_F","Wreck_Base","FlagCarrierCore"]; //blacklist of item or parent classes to never mark
+private _classBlacklist = ["Land_DataTerminal_01_F","Wreck_Base","FlagCarrierCore"]; //blacklist of item or parent classes to never mark
+private _markerBlacklist = switch (phx_attackingSide) do {
+  case west: {["bluforSafeMarker"]};
+  case east: {["opforSafeMarker"]};
+  case independent: {["indforSafeMarker"]};
+  case sideEmpty: {["bluforSafeMarker", "opforSafeMarker","indforSafeMarker"]};
+};
 
-//checks bounding sphere value to see if object is large enough to mark and also not in the blacklist
+//checks bounding sphere value to see if object is large enough, not in the blacklist, and not in an excluded start zone
 _canMark = {
   params ["_obj"];
   //private _size = getNumber (configFile >> "CfgVehicles" >> typeOf _obj >> "mapSize");
@@ -9,7 +15,9 @@ _canMark = {
 
   _size > 1.5
   &&
-  {if (_obj isKindOf _x) exitWith {false}; true} forEach _blacklist;
+  {if (_obj inArea _x) exitWith {false}; true} forEach _markerBlacklist
+  &&
+  {if (_obj isKindOf _x) exitWith {false}; true} forEach _classBlacklist
 };
 
 //get buildings to create markers for - only include objects large enough
