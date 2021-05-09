@@ -72,6 +72,10 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
   _varStr = _varStr + format ["INDFOR MAT: %1", phx_grnAT call _getName] + "<br/>";
 };
 
+if (phx_defendingSide != sideEmpty) then {
+  _varStr = _varStr + "<br/>";
+  _varStr = _varStr + format ["Defender fortify points: %1", phx_fortifyPoints];
+};
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
 _varStr = _varStr + "<br/>";

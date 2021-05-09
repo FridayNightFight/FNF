@@ -84,6 +84,7 @@ UNIFORM_FLORA
 UNIFORM_MOUNTAIN_FLORA
 UNIFORM_GORKA_GREEN
 UNIFORM_GORKA_BEREZKA
+UNIFORM_SOVIET_CSAT
 
 =====INDFOR=====
 UNIFORM_M93_OAKLEAF
@@ -94,5 +95,6 @@ UNIFORM_M10_DESERT
 UNIFORM_M10_MOUNTAIN
 UNIFORM_GUERRILLA
 UNIFORM_AAF
+UNIFORM_ALTIS_LIZARD
 =========================================================================================================================
 */
