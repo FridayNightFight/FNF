@@ -1,9 +1,9 @@
 # v2.2.2
-1. Fixed UNIFORM_OEF_CP and UNIFORM_M93_WOODLAND uniform sets not having a vest.
-2. Added READMEs for the uniform and weapon sets.
-3. Added 2 uniform sets, SOVIET_CSAT and ALTIS_LIZARD.
-4. Added defender fortify points to the briefing vars.
-5. Increased the cost of most fortify objects.
+1. Fixed UNIFORM_OEF_CP and UNIFORM_M93_WOODLAND uniform sets not having a vest
+2. Added READMEs for the uniform and weapon sets
+3. Added 2 uniform sets, SOVIET_CSAT and ALTIS_LIZARD
+4. Added defender fortify points to the briefing vars
+5. Increased the cost of most fortify objects
 6. Set ACE role specialty attributes via template script rather than unit attributes
 
 # v2.2.1
