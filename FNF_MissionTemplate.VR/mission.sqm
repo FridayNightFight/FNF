@@ -20,22 +20,22 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={473.0874,19.899044,685.94446};
-		dir[]={0.45606267,-0.77893627,0.43043602};
-		up[]={0.56647867,0.62710464,0.53464764};
-		aside[]={0.68638349,9.1968104e-009,-0.72724891};
+		pos[]={457.22595,67.154793,632.30164};
+		dir[]={0.10267944,-0.46244398,0.88069612};
+		up[]={0.053553849,0.88664794,0.45934135};
+		aside[]={0.99328357,9.9767931e-008,-0.11580595};
 	};
 };
 binarizationWanted=0;
-sourceName="fnf_missiontemplate";
+sourceName="FNF_MissionTemplate_WW2";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
 	"A3_Ui_F",
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"ace_chemlights",
-	"Desert",
 	"A3_Props_F_Exp_A_Military_Equipment",
+	"WW2_Core_c_IF_Gui_c",
 	"ace_spectator",
 	"A3_Structures_F_Mil_Flags",
 	"A3_Modules_F_Multiplayer",
@@ -81,15 +81,15 @@ class AddonsMetaData
 		};
 		class Item4
 		{
-			className="Desert";
-			name="Desert";
-		};
-		class Item5
-		{
 			className="A3_Props_F_Exp_A";
 			name="Arma 3 Nexus Update - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item5
+		{
+			className="WW2_Core_c_IF_Gui_c";
+			name="WW2_Core_c_IF_Gui_c";
 		};
 		class Item6
 		{
