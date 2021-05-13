@@ -4,6 +4,7 @@
 3. Added 2 uniform sets, SOVIET_CSAT and ALTIS_LIZARD.
 4. Added defender fortify points to the briefing vars.
 5. Increased the cost of most fortify objects.
+6. Set ACE role specialty attributes via template script rather than unit attributes
 
 # v2.2.1
 1. Fixed recon team rifleman role not being defined, causing the role to be unplayable

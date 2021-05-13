@@ -54,6 +54,7 @@ class CfgFunctions {
       class giveNVG{};
       class setMAT{};
       class setUGLAmmo{};
+      class setAttributes{};
     };
     class selector {
       file = "client\loadout\selector";

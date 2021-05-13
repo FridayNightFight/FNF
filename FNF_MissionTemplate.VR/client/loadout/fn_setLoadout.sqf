@@ -5,6 +5,7 @@ call phx_fnc_addItems;
 call phx_fnc_addMagazines;
 call phx_fnc_addWeapons;
 call phx_fnc_giveNVG;
+call phx_fnc_setAttributes;
 
 player linkItem "ItemRadio";
 player linkItem "ItemGPS";
