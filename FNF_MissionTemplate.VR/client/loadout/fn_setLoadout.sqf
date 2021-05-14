@@ -10,7 +10,7 @@ call phx_fnc_setAttributes;
 //player linkItem "ItemRadio";
 //player linkItem "ItemGPS";
 player linkItem "ItemCompass";
-//player linkItem "ItemWatch";
+player linkItem "ItemWatch";
 //player linkItem "TFAR_microdagr";
 
 if (phx_loadout_unitLevel > 0) then {
