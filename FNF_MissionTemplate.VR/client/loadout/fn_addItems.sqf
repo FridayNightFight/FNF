@@ -3,7 +3,7 @@ phx_loadout_smoke call phx_fnc_addGear;
 phx_loadout_maptools call phx_fnc_addGear;
 phx_loadout_cableTie call phx_fnc_addGear;
 
-if (pRole != ROLE_CE) then {phx_loadout_grenade call phx_fnc_addGear};
+phx_loadout_grenade call phx_fnc_addGear;
 
 switch (pRole) do {
   case ROLE_CE: {
@@ -12,9 +12,9 @@ switch (pRole) do {
     } forEach phx_loadout_explosives;
     phx_loadout_defusalkit call phx_fnc_addGear;
     phx_loadout_trigger call phx_fnc_addGear;
+    phx_loadout_fuse call phx_fnc_addGear;
     phx_loadout_entrenching call phx_fnc_addGear;
     phx_loadout_detector call phx_fnc_addGear;
-    phx_loadout_thermite call phx_fnc_addGear;
   };
   case ROLE_MGTL: {phx_loadout_entrenching call phx_fnc_addGear};
   case ROLE_CLS: {
@@ -31,4 +31,4 @@ if (phx_loadout_hasUGL || pRole == ROLE_MK) then {player addWeapon phx_loadout_v
 
 if (pRole in [ROLE_AAR,ROLE_AAT,ROLE_AM,ROLE_CR]) then {player addWeapon phx_loadout_binocular};
 
-if (pRole == ROLE_MK) then {"ACE_Tripod" call phx_fnc_addGear; "ACE_RangeCard" call phx_fnc_addGear;};
+if (pRole == ROLE_MK) then {/*"ACE_Tripod" call phx_fnc_addGear;*/ "ACE_RangeCard" call phx_fnc_addGear;};

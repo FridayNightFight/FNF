@@ -1,7 +1,7 @@
 phx_loadout_lrRadio = "";
 
 switch (playerSide) do {
-  case east: {pUniform = phx_opforUniform; phx_loadout_lrRadio = "TFAR_mr3000_rhs"};
+  case east: {pUniform = phx_opforUniform; phx_loadout_lrRadio = "B_LIB_SOV_RA_Radio"};
   case west: {pUniform = phx_bluforUniform; phx_loadout_lrRadio = "TFAR_rt1523g_black"};
   case independent: {pUniform = phx_indforUniform; phx_loadout_lrRadio = "TFAR_anprc155_coyote"};
 };
