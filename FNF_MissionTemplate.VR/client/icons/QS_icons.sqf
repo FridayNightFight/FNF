@@ -123,7 +123,7 @@ _QS_ST_colorInjured = [0.75,0.55,0,0.75];						// ARRAY (NUMBER). RGBA color cod
 //==================================================================================//
 
 _QS_ST_showFactionOnly = FALSE;									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
-_QS_ST_showAI = FALSE;											// BOOL. FALSE = players only, TRUE = players and AI. Default TRUE.
+_QS_ST_showAI = TRUE;											// BOOL. FALSE = players only, TRUE = players and AI. Default TRUE.
 _QS_ST_AINames = FALSE;											// BOOL. Set TRUE to show human names for AI with the map/vehicle icons. Set FALSE and will be named 'AI'. Default FALSE.
 _QS_ST_showCivilianIcons = FALSE;								// BOOL. Set TRUE to allow showing of civilians, only works if Dynamic Diplomacy is enabled above. Default FALSE.
 _QS_ST_iconMapText = TRUE;										// BOOL. TRUE to show unit/vehicle icon text on the map. FALSE to only show the icon and NO text (name/class). Default TRUE.
@@ -952,7 +952,7 @@ _QS_fnc_iconDrawMap = {
 		{
 			if (!isNull _x) then {
 				_ve = vehicle _x;
-				if (alive _ve) then {
+				if (alive _ve && !(isObjectHidden _ve)) then {
 					_po = [_ve,1,_de] call (_QS_ST_X select 44);
 					_is = [_ve,1,_QS_ST_X] call (_QS_ST_X select 43);
 					if (_ve isEqualTo (vehicle _player)) then {
@@ -1020,7 +1020,7 @@ _QS_fnc_iconDrawGPS = {
 		{
 			if (!isNull _x) then {
 				_ve = vehicle _x;
-				if (alive _ve) then {
+				if (alive _ve && !(isObjectHidden _ve)) then {
 					_po = [_ve,2,_de] call (_QS_ST_X select 44);
 					_is = [_ve,2,_QS_ST_X] call (_QS_ST_X select 43);
 					_m drawIcon [

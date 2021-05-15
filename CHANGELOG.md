@@ -5,6 +5,9 @@
 4. Added defender fortify points to the briefing vars
 5. Increased the cost of most fortify objects
 6. Set ACE role specialty attributes via template script rather than unit attributes
+7. Fixed spectating units spawning in sector area being counted towards the sector defense
+8. Fixed medic slot error. Wrong variable type for ACE medic class
+9. Fixed hidden spectating units appearing on BFT
 
 # v2.2.1
 1. Fixed recon team rifleman role not being defined, causing the role to be unplayable
