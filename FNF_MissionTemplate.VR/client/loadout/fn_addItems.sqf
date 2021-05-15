@@ -27,8 +27,6 @@ switch (pRole) do {
   };
 };
 
-if (phx_loadout_hasUGL || pRole == ROLE_MK) then {player addWeapon phx_loadout_vector};
-
-if (pRole in [ROLE_AAR,ROLE_AAT,ROLE_AM,ROLE_CR]) then {player addWeapon phx_loadout_binocular};
+if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL,ROLE_AAR,ROLE_AAT,ROLE_AM,ROLE_CR]) then {player addWeapon phx_loadout_binocular};
 
 if (pRole == ROLE_MK) then {/*"ACE_Tripod" call phx_fnc_addGear;*/ "ACE_RangeCard" call phx_fnc_addGear;};

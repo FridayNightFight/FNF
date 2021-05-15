@@ -9,4 +9,4 @@ switch (playerSide) do {
 _incStr = "client\loadout\uniforms\" + pUniform + ".sqf";
 call compile preprocessFileLineNumbers _incStr;
 
-if (pRole in [ROLE_PL,ROLE_SL,ROLE_P]) then {phx_loadout_backpack = phx_loadout_lrRadio};
+if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL]) then {phx_loadout_backpack = phx_loadout_lrRadio};

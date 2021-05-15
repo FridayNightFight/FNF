@@ -43,9 +43,6 @@ phx_loadout_smoke = "";
 phx_loadout_grenade = "";
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
-//phx_loadout_nvg = "NVGoggles_OPFOR";
-phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
-phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 //CE
 phx_loadout_explosives = ["2x TNT, 4 lb","LIB_US_TNT_4pound_mag:2"];
 phx_loadout_APMines = ["2x AP mine","LIB_US_M3_MINE_mag:2"];
@@ -64,7 +61,6 @@ phx_loadout_blood_1 = "ACE_bloodIV_500:12";
 phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 //Range
 phx_loadout_binocular = "Binocular";
-phx_loadout_vector = "ACE_VectorDay";
 phx_loadout_rifle_optic = "optic_DMS";
 phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
