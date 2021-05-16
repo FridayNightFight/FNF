@@ -19,7 +19,7 @@ if (_pClass == UNIT_OPFOR_R || _pClass == UNIT_BLUFOR_R || _pClass == UNIT_INDFO
 if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_INDFOR_CR) then {pRole = ROLE_CR};
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
-if (_pClass in [UNIT_OPFOR_GL,UNIT_BLUFOR_GL,UNIT_INDFOR_GL]) then {pRole = ROLE_GL};
+if (_pClass in [UNIT_OPFOR_GL,UNIT_BLUFOR_GL,UNIT_INDFOR_GL]) then {pRole = ROLE_GR};
 if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
 
 if (isNil "pRole") exitWith {
@@ -61,7 +61,7 @@ phx_loadout_blood_1 = "ACE_bloodIV_500:12";
 phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 //Range
 phx_loadout_binocular = "Binocular";
-phx_loadout_rifle_optic = "optic_DMS";
+phx_loadout_rifle_optic = "";
 phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
 phx_selector_explosives = [

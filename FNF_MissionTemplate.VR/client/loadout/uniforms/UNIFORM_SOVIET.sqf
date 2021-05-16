@@ -19,7 +19,7 @@ if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
 if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_SOV_RA_PPShBelt"};
 if (pRole == ROLE_MG) then {phx_loadout_vest = "V_LIB_SOV_RA_MGBelt_Kit"};
 
-if (pRole == ROLE_CLS) then {phx_loadout_backpack = "B_LIB_SOV_RA_MedicalBag_Empty"};
+if (pRole == ROLE_CLS) then {phx_loadout_backpack = "B_LIB_SOV_RA_MedicalBag_Big_Empty"};
 
 //Use if you want to customize more
 switch (pRole) do {
@@ -49,12 +49,8 @@ switch (pRole) do {
   case ROLE_CR: {
     phx_loadout_uniform = "U_LIB_SOV_Tank_ryadovoi";
     phx_loadout_backpack = "";
-    phx_loadout_vest = "";
+    phx_loadout_vest = "V_LIB_SOV_RAZV_MGBelt";
     phx_loadout_headgear = "H_LIB_SOV_TankHelmet";
     }; //Crewman
   case ROLE_MK: {}; //Marksman
-};
-
-if (pRole == ROLE_CR && ((leader group player) == player)) then {
-  phx_loadout_backpack = phx_loadout_lrRadio;
 };

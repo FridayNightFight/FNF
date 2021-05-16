@@ -19,7 +19,7 @@ ROLE_AAT = 13; //Assistant anti-tank
 ROLE_P = 14; //Pilot
 ROLE_CR = 15; //Crewman
 ROLE_MK = 16; //Marksman
-ROLE_GL = 17;
+ROLE_GR = 17;
 
 UNIT_SPECTATOR = "VirtualMan_F";
 
