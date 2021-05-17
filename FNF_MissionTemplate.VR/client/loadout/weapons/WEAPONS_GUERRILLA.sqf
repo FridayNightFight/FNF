@@ -33,7 +33,7 @@ phx_loadout_sidearm_weapon = selectRandom ["hgun_Rook40_F", "hgun_P07_F", "hgun_
 phx_loadout_sidearm_mag = ([phx_loadout_sidearm_weapon] call CBA_fnc_compatibleMagazines select 0) + ":2";
 
 if (pRole == ROLE_RAT) then {
-  phx_loadout_antitank_weapon = "rhs_weap_rpg26";
+  phx_loadout_antitank_weapon = "rhs_weap_rpg26"; // switched to single shot AT
   phx_loadout_antitank_mag = "rhs_rpg26_mag";
 };
 
