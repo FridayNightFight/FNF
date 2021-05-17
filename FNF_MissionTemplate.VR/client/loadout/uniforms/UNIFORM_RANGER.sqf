@@ -17,5 +17,5 @@ phx_loadout_headgear = "rhsusf_opscore_ut_pelt_nsw"; // per req
   if (pRole == ROLE_CR) then  {phx_loadout_vest = "rhsusf_spcs_ocp_crewman";}; //Crewman
 
   if (pRole == ROLE_MK) then  {phx_loadout_vest = "rhsusf_spcs_ocp_sniper";}; //Marksman
-  
+
 #include "base\WEST_WD.sqf"
