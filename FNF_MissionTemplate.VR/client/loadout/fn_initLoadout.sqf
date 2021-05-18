@@ -68,7 +68,7 @@ phx_selector_explosives = [
 phx_loadout_explosives,
 phx_loadout_APMines,
 phx_loadout_ATMines,
-["4x Demo charge", "LIB_Ladung_Small_MINE_mag:4"]
+["4x 250g charge", "LIB_Ladung_Small_MINE_mag:4"]
 ];
 
 call phx_fnc_setUniform;
