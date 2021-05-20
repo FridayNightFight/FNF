@@ -23,7 +23,7 @@ switch (pRole) do {
     [phx_loadout_morphine, "backpack"] call phx_fnc_addGear;
     [phx_loadout_epinephrine, "backpack"] call phx_fnc_addGear;
     [phx_loadout_blood_1, "backpack"] call phx_fnc_addGear;
-    [phx_loadout_blood_2, "backpack"] call phx_fnc_addGear;
+    //[phx_loadout_blood_2, "backpack"] call phx_fnc_addGear;
   };
 };
 

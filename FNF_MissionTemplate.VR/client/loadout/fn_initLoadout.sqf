@@ -38,7 +38,7 @@ phx_loadout_unitLevel = 0;
 if (pRole in [ROLE_PL,ROLE_SL]) then {phx_loadout_unitLevel = 2};
 if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
-phx_loadout_aid = "FirstAidKit:4";
+phx_loadout_aid = "FirstAidKit:3";
 phx_loadout_smoke = "";
 phx_loadout_grenade = "";
 phx_loadout_maptools = "ACE_MapTools";
@@ -54,11 +54,11 @@ phx_loadout_detector = "MineDetector";
 phx_loadout_fuse = "ACE_LIB_FireCord";
 //Medic
 phx_loadout_PAK = "ACE_personalAidKit";
-phx_loadout_bandage = "ACE_fieldDressing:30";
+phx_loadout_bandage = "ACE_fieldDressing:28";
 phx_loadout_morphine = "ACE_morphine:12";
-phx_loadout_epinephrine = "ACE_epinephrine:6";
+phx_loadout_epinephrine = "ACE_epinephrine:5";
 phx_loadout_blood_1 = "ACE_bloodIV_500:10";
-phx_loadout_blood_2 = "ACE_bloodIV_250:4";
+phx_loadout_blood_2 = "";
 //Range
 phx_loadout_binocular = "Binocular";
 phx_loadout_rifle_optic = "";

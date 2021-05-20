@@ -1,10 +1,5 @@
 if (pRole == ROLE_MK) exitWith {}; //don't want marksman to change optic
 
-//Add magnified optics if enabled
-if (phx_magnifiedOptics) then {
-  phx_selector_optics append phx_selector_magOptics;
-};
-
 //optics actions
 {
   _action = ["Optic_Selector",getText (configFile >> "cfgWeapons" >> _x >> "displayName"),"",{

@@ -1,3 +1,6 @@
+# WW2 v1-beta-1
+1. Initial push
+
 # v2.2.2
 1. Fixed UNIFORM_OEF_CP and UNIFORM_M93_WOODLAND uniform sets not having a vest
 2. Added READMEs for the uniform and weapon sets
