@@ -41,7 +41,7 @@ _action = ["Explosives_Selector","Explosives","",{},{true}] call ace_interact_me
 //Add actions if there are items to select from
 if (count (missionNamespace getVariable ["phx_selector_optics",[]]) > 0) then {call phx_fnc_selector_optics};
 if (count (missionNamespace getVariable ["phx_selector_weapons",[]]) > 0) then {call phx_fnc_selector_weapons};
-if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_charges};
+//if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_charges};
 
 //Remove selector when safe start ends
 [{!phx_safetyEnabled}, {

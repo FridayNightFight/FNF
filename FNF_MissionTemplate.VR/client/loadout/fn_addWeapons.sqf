@@ -8,4 +8,5 @@ switch (pRole) do {
       player addSecondaryWeaponItem phx_loadout_mediumantitank_optic;
   };
   case ROLE_MK: {player addPrimaryWeaponItem phx_loadout_rifle_optic};
+  case ROLE_GR: {if (!isNil "phx_loadout_gr_adapter") then {player addPrimaryWeaponItem phx_loadout_gr_adapter}};
 };

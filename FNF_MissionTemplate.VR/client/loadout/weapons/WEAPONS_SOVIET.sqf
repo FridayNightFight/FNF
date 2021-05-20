@@ -41,7 +41,7 @@ if (pRole == ROLE_MG) then {
 };
 
 //Magazine classnames for assistant AR and MMG ammo man roles
-phx_loadout_aar_mag = "";
+phx_loadout_aar_mag = "LIB_71Rnd_762x25_t:6";
 phx_loadout_am_mag = "LIB_47Rnd_762x54d:6";
 
 //Light AT
@@ -49,13 +49,10 @@ phx_loadout_antitank_weapon = "LIB_PzFaust_30m";
 
 //Medium AT
 phx_loadout_mediumantitank_weapon = "LIB_RPzB";
-phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB:2";
+phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB";
 
 //Marksman optic
 phx_loadout_rifle_optic = "";
-
-phx_allowedWeapons = []; //Weapons that can be selected in the gear selector. Leave blank for none.
-//**Currently requires that selectable weapons use the same magazines**
 
 //Use if you want to customize more
 switch (pRole) do {
@@ -71,7 +68,7 @@ switch (pRole) do {
   case ROLE_MG: {}; //Machinegunner
   case ROLE_AM: {}; //Ammo man
   case ROLE_AT: {}; //Anti-tank
-  case ROLE_AAT: {phx_loadout_mediumantitank_mag = "LIB_1Rnd_60mm_M6"}; //Assistant anti-tank
+  case ROLE_AAT: {}; //Assistant anti-tank
   case ROLE_P: {
     phx_loadout_grenade = ""; phx_loadout_smoke = "";
     phx_loadout_rifle_weapon = "";
@@ -79,7 +76,7 @@ switch (pRole) do {
     phx_loadout_rifle_mag_tracer = "";
     phx_loadout_sidearm_mag = "LIB_8Rnd_762x25:3";
   }; //Pilot
-  case ROLE_CR: {phx_loadout_grenade = ""}; //Crewman
+  case ROLE_CR: {}; //Crewman
   case ROLE_MK: {
     phx_loadout_rifle_weapon = "LIB_M9130PU";
     phx_loadout_rifle_mag = "LIB_5Rnd_762x54_t46:10";

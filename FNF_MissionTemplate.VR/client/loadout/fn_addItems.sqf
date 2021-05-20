@@ -14,11 +14,11 @@ switch (pRole) do {
     phx_loadout_trigger call phx_fnc_addGear;
     phx_loadout_fuse call phx_fnc_addGear;
     phx_loadout_entrenching call phx_fnc_addGear;
-    phx_loadout_detector call phx_fnc_addGear;
+    //phx_loadout_detector call phx_fnc_addGear;
   };
   case ROLE_MGTL: {phx_loadout_entrenching call phx_fnc_addGear};
   case ROLE_CLS: {
-    [phx_loadout_PAK, "backpack"] call phx_fnc_addGear;
+    //[phx_loadout_PAK, "backpack"] call phx_fnc_addGear;
     [phx_loadout_bandage, "backpack"] call phx_fnc_addGear;
     [phx_loadout_morphine, "backpack"] call phx_fnc_addGear;
     [phx_loadout_epinephrine, "backpack"] call phx_fnc_addGear;

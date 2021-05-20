@@ -4,6 +4,19 @@ private _fortifyColor = 0; //0 = green, 1 = tan
 private _desert = ["Desert_E","pja319","tem_kujari","porto","intro","Shapur_BAF","takistan","Mountains_ACR","zargabad","pja310","lythium"];
 if (worldName in _desert) then {_fortifyColor = 1};
 
+_planks = [
+["Land_Plank_01_4m_F",5],
+["Land_Plank_01_8m_F",5]
+];
+
+_ww2 = [
+["fow_p_defenceposition_02",15],
+["fow_p_logbunker02",22],
+["Land_Fort_Bagfence_Bunker",30],
+["Land_WW2_Bunker_Mg",50],
+["fow_p_defenceposition_04",50]
+];
+
 _greenBags = [
 ["Land_BagFence_01_short_green_F",3],
 ["Land_BagFence_01_long_green_F",4],
@@ -14,11 +27,6 @@ _tanBags = [
 ["Land_BagFence_Short_F",3],
 ["Land_BagFence_Long_F",4],
 ["Land_BagFence_Round_F",4]
-];
-
-_planks = [
-["Land_Plank_01_4m_F",5],
-["Land_Plank_01_8m_F",5]
 ];
 
 _tanBunkers = [
@@ -33,26 +41,12 @@ _greenBunkers = [
 switch (_fortifyColor) do {
   case 0: {
     [phx_defendingSide, phx_fortifyPoints,
-    _greenBags + _planks + _greenBunkers
+    _greenBags + _planks + _greenBunkers + _ww2
     ] call acex_fortify_fnc_registerObjects;
   };
   case 1: {
     [phx_defendingSide, phx_fortifyPoints, [
-    ["Land_BagFence_Short_F",3],
-    ["Land_BagFence_Long_F",4],
-    ["Land_BagFence_Round_F",4],
-    ["Land_Plank_01_4m_F",5],
-    ["Land_Plank_01_8m_F",5],
-    ["Land_HBarrierWall4_F",12],
-    ["Land_HBarrierWall_corner_F",12],
-    ["Land_HBarrierWall6_F",18],
-    ["Land_BagBunker_Small_F",22],
-    ["Land_BagBunker_Tower_F",35],
-    ["Land_BagBunker_Large_F",50],
-    ["Land_Bunker_01_small_F",75],
-    ["Land_Bunker_01_big_F",100],
-    ["Land_Bunker_01_HQ_F",100],
-    ["Land_Bunker_01_tall_F",130]
+    _tanBags + _planks + _tanBunkers + _ww2
     ]] call acex_fortify_fnc_registerObjects;
   };
 };

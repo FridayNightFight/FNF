@@ -19,7 +19,7 @@ neutralSector
 */
 
 /************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/
-phx_defendingSide = east; //west/east/independent
+phx_defendingSide = sideEmpty; //west/east/independent
 phx_attackingSide = sideEmpty; //west/east/independent
 //Leave it as sideEmpty if chosen mode is neutral
 
@@ -31,9 +31,9 @@ phx_opforUniform = "UNIFORM_SOVIET";
 phx_indforUniform = "UNIFORM_USA";
 
 //Weapons
-phx_bluforWeapons = "WEAPONS_USA";
+phx_bluforWeapons = "WEAPONS_GERMANY";
 phx_opforWeapons = "WEAPONS_SOVIET";
-phx_indforWeapons = "WEAPONS_BRITAIN";
+phx_indforWeapons = "WEAPONS_USA";
 
 /*
 You can also use the civilian unit 'C_man_1'
@@ -63,13 +63,15 @@ phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
 
-=====BLUFOR=====                                =====ANY=====
-UNIFORM_GER
+=====BLUFOR=====
+UNIFORM_GERMANY                    -- WEAPONS_GERMANY
+UNIFORM_JAPAN                      -- WEAPONS_JAPAN
 
 =====OPFOR=====
-UNIFORM_SOV
+UNIFORM_SOVIET                     -- WEAPONS_SOVIET
 
 =====INDFOR=====
-UNIFORM_USA
+UNIFORM_USA                        -- WEAPONS_USA
+UNIFORM_BRITAIN                    -- WEAPONS_BRITAIN
 =========================================================================================================================
 */

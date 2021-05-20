@@ -19,7 +19,7 @@ if (_pClass == UNIT_OPFOR_R || _pClass == UNIT_BLUFOR_R || _pClass == UNIT_INDFO
 if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_INDFOR_CR) then {pRole = ROLE_CR};
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
-if (_pClass in [UNIT_OPFOR_GL,UNIT_BLUFOR_GL,UNIT_INDFOR_GL]) then {pRole = ROLE_GR};
+if (_pClass in [UNIT_OPFOR_GR,UNIT_BLUFOR_GR,UNIT_INDFOR_GR]) then {pRole = ROLE_GR};
 if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
 
 if (isNil "pRole") exitWith {
@@ -54,10 +54,10 @@ phx_loadout_detector = "MineDetector";
 phx_loadout_fuse = "ACE_LIB_FireCord";
 //Medic
 phx_loadout_PAK = "ACE_personalAidKit";
-phx_loadout_bandage = "ACE_fieldDressing:32";
-phx_loadout_morphine = "ACE_morphine:16";
-phx_loadout_epinephrine = "ACE_epinephrine:8";
-phx_loadout_blood_1 = "ACE_bloodIV_500:12";
+phx_loadout_bandage = "ACE_fieldDressing:30";
+phx_loadout_morphine = "ACE_morphine:12";
+phx_loadout_epinephrine = "ACE_epinephrine:6";
+phx_loadout_blood_1 = "ACE_bloodIV_500:10";
 phx_loadout_blood_2 = "ACE_bloodIV_250:4";
 //Range
 phx_loadout_binocular = "Binocular";
