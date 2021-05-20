@@ -6,10 +6,6 @@ class EditorData
 	scaleGridStep=1;
 	autoGroupingDist=10;
 	toggles=513;
-	mods[]=
-	{
-		"3denEnhanced"
-	};
 	class ItemIDProvider
 	{
 		nextID=5057;
@@ -20,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=74;
+		nextID=77;
 	};
 	class Camera
 	{
-		pos[]={643.67126,79.468704,613.85919};
-		dir[]={0.52354723,-0.56628013,0.63657826};
-		up[]={0.35970649,0.82421279,0.43736517};
-		aside[]={0.77234536,-8.3819032e-009,-0.63520771};
+		pos[]={623.32996,79.468704,562.00208};
+		dir[]={0.29917634,-0.53216904,0.79202187};
+		up[]={0.18805268,0.8466379,0.49783975};
+		aside[]={0.93548834,-6.8219379e-008,-0.35336912};
 	};
 };
 binarizationWanted=0;
@@ -17318,7 +17314,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={694.07947,5.0014391,723.5235};
-						angles[]={-0,3.147614,0};
+						angles[]={0,3.147614,0};
 					};
 					side="Independent";
 					flags=4;
@@ -17445,7 +17441,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={696.15265,5.0014391,725.49377};
-						angles[]={-0,3.147614,0};
+						angles[]={0,3.147614,0};
 					};
 					side="Independent";
 					flags=4;
@@ -17712,7 +17708,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={699.64673,5.0014391,723.75641};
-						angles[]={-0,3.147614,0};
+						angles[]={0,3.147614,0};
 					};
 					side="Independent";
 					flags=6;
@@ -18073,7 +18069,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={701.32349,5.0014391,726.0224};
-						angles[]={-0,3.1867793,0};
+						angles[]={0,3.1867793,0};
 					};
 					side="Independent";
 					flags=4;
@@ -18320,7 +18316,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={688.58765,5.0014391,723.46649};
-						angles[]={-0,3.147614,0};
+						angles[]={0,3.147614,0};
 					};
 					side="Independent";
 					flags=4;
@@ -26978,7 +26974,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={704.54742,5.0014391,723.70538};
-						angles[]={-0,3.147614,0};
+						angles[]={0,3.147614,0};
 					};
 					side="Independent";
 					flags=4;
