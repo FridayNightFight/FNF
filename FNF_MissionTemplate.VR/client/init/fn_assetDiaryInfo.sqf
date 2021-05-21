@@ -343,9 +343,9 @@ _getVehicleData = {
 
 
 
-player createDiarySubject ["BLUAssets","BLUFOR Assets"];
-player createDiarySubject ["OPFAssets","OPFOR Assets"];
-player createDiarySubject ["INDAssets","INDFOR Assets"];
+player createDiarySubject ["BLUAssets", "BLU Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+player createDiarySubject ["OPFAssets", "OPF Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 
 _vehiclesToProcess = createHashMap;
 {
