@@ -15,6 +15,8 @@ class CfgFunctions {
       class clientCanPlay{};
       class clientSetupGame{};
       class staggeredLoad{};
+      class drawStaffIcons{};
+      class assetDiaryInfo{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -102,6 +104,7 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
+      class defineStaff{};
     };
     class end {
       file = "server\end";
