@@ -23,9 +23,9 @@ staffIconHelper = [{
 		_pos = visiblePosition _x;
 
 		if (player distance _x >= 15) then {
-			drawIcon3D[getMissionPath "fnf.paa", [1, 1, 1, 0.3], [(_pos select 0), (_pos select 1), 3], 0.6, 0.6, 0, "", true, 0.05, "PuristaBold", "center"];
+			drawIcon3D[getMissionPath "fnfsmall.paa", [1, 1, 1, 0.3], [(_pos select 0), (_pos select 1), 3], 0.6, 0.6, 0, "", true, 0.05, "PuristaBold", "center"];
 		} else {
-			drawIcon3D[getMissionPath "fnf.paa", [1, 1, 1, 1], [(_pos select 0), (_pos select 1), 3], 1, 1, 0, _text, true, 0.05, "PuristaBold", "center"];
+			drawIcon3D[getMissionPath "fnfsmall.paa", [1, 1, 1, 1], [(_pos select 0), (_pos select 1), 3], 1, 1, 0, _text, true, 0.05, "PuristaBold", "center"];
 		};
 	} forEach(units playerSide);
 }, 0] call CBA_fnc_addPerFrameHandler;
