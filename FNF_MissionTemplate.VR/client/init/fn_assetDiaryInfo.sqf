@@ -241,8 +241,8 @@ _getVehicleData = {
 	[_commanderSeats apply {_x # 3}, "COMMANDER", _outArr] call _getWeaponry;
 
 	// TURRETS
-	// "debug_console" callExtension ("GUNNER" + "#1100");
-	[_turretSeats apply {_x # 3}, "COMMANDER", _outArr] call _getWeaponry;
+	// "debug_console" callExtension ("TURRET" + "#1100");
+	[_turretSeats apply {_x # 3}, "TURRET", _outArr] call _getWeaponry;
 
 
 	_outArr pushBack lineBreak;

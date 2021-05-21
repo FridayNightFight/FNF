@@ -16,6 +16,7 @@ class CfgFunctions {
       class clientSetupGame{};
       class staggeredLoad{};
       class drawStaffIcons{};
+      class drawCmdIcons{};
       class assetDiaryInfo{};
       class clientInitCall{postInit = 1;};
     };
