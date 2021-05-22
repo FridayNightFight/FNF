@@ -105,7 +105,7 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
-      class defineStaff{};
+      class defineStaff{postInit = 1;};
     };
     class end {
       file = "server\end";
