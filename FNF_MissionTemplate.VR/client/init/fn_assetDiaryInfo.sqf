@@ -27,18 +27,18 @@ _getWeaponry = {
 					}
 				} forEach _wepMags;
 			};
-		} else {
+		};// else {
 			// "debug_console" callExtension (format["Running Mags Only."] + "#1100");
 			// "debug_console" callExtension (format["Vic: %1",_vic] + "#1100");
 			// "debug_console" callExtension (format["Path: %1", _path] + "#1100");
-			_mags = ([_vic, _path] call _getMags);
+		// 	_mags = ([_vic, _path] call _getMags);
 
-			if (count _mags > 0) then {
-				{
-					_thisArr pushBack _x;
-				} forEach _mags;
-			};
-		};
+		// 	if (count _mags > 0) then {
+		// 		{
+		// 			_thisArr pushBack _x;
+		// 		} forEach _mags;
+		// 	};
+		// };
 
 		if (count _thisArr > 0) then {
 			_outArr pushBack format["    <font color='#f6dcbf' face='PuristaSemiBold'>%1</font>", _seatCategory];
@@ -166,6 +166,73 @@ _getMags = {
 	} forEach (_vic magazinesTurret _path);
 	_thisArr;
 };
+
+
+_getInventory = { 
+	params ["_vic"]; 
+
+
+	_vicDispName = configOf _vic call BIS_fnc_displayName;
+	private _thisArr = [];
+
+	// _thisArr pushBack getItemCargo _vic; 
+	// _thisArr pushBack getBackpackCargo _vic; 
+	// _thisArr pushBack getMagazineCargo _vic; 
+	// _thisArr pushBack getWeaponCargo _vic; 
+
+	private _rawItems = [];
+
+	{
+		_rawItems pushBack [
+			getText (configFile >> "CfgVehicles" >> _x >> "displayName"),
+			getText (configFile >> "CfgVehicles" >> _x >> "picture"),
+			"mItems"
+		];
+	} forEach ItemCargo _vic;
+	{
+		_rawItems pushBack [
+			getText (configFile >> "CfgMagazines" >> _x  >> "displayName"),
+			getText (configFile >> "CfgMagazines" >> _x >> "picture"),
+			"nMagazines"
+		];
+	} forEach MagazineCargo _vic;
+	{
+		_rawItems pushBack [
+			getText (configFile >> "CfgWeapons" >> _x >> "displayName"),
+			getText (configFile >> "CfgWeapons" >> _x >> "picture"),
+			"oWeapons"
+		];
+	} forEach WeaponCargo _vic;
+	{
+		_rawItems pushBack [
+			getText (configFile >> "CfgVehicles" >> _x >> "displayName"),
+			getText (configFile >> "CfgVehicles" >> _x >> "picture"),
+			"pBackpacks"
+		];
+	} forEach BackpackCargo _vic;
+
+	// "debug_console" callExtension(str _rawItems + "~0000");
+
+	_items = _rawItems call BIS_fnc_consolidateArray;
+	// "debug_console" callExtension(str _items + "~0100");
+	_sortedItems = [_items, [], {format["%1%2", _x # 0 # 2, _x # 0 # 0]}] call BIS_fnc_sortBy;
+	// "debug_console" callExtension(str _sortedItems + "~0100");
+
+	{
+		private _name = _x # 0 # 0;
+		private _pic = _x # 0 # 1;
+		private _count = _x # 1;
+		// "debug_console" callExtension(_pic + "~0000");
+		if !(_name isEqualTo "") then {
+			_thisArr pushBack format["<img width='30' height='30' image='%1'/><font color='#ffffff' size='12' face='PuristaMedium'>x%2 %3</font>", _pic, _count, _name];
+		};
+	} forEach _sortedItems;
+	// "debug_console" callExtension(str _thisArr + "~0000");
+
+	_thisArr;
+};
+
+
 
 _getVehicleData = {
 	params ["_vic", "_typeCount"];
@@ -295,6 +362,13 @@ _getVehicleData = {
 			// "debug_console" callExtension (format["Other %1",_x]+ "~0000");
 		} forEach _otherWeps;
 	};
+
+
+
+	_outArr pushBack lineBreak;
+
+	_outArr pushBack format["<font size='14' color='#e1701a' face='PuristaBold'>INVENTORY</font>"];
+	_outArr append ([_x] call _getInventory);
 
 
 	_outArr pushBack lineBreak;
