@@ -180,55 +180,117 @@ _getInventory = {
 	// _thisArr pushBack getMagazineCargo _vic; 
 	// _thisArr pushBack getWeaponCargo _vic; 
 
-	private _rawItems = [];
+	private _ItemCargo = [];
+	private _MagazineCargo = [];
+	private _WeaponCargo = [];
+	private _BackpackCargo = [];
 
 	{
-		_rawItems pushBack [
-			getText (configFile >> "CfgVehicles" >> _x >> "displayName"),
-			getText (configFile >> "CfgVehicles" >> _x >> "picture"),
-			"mItems"
+		private _config = _x call CBA_fnc_getItemConfig;
+		_ItemCargo pushBack [
+			getText (_config >> "displayName"),
+			getText (_config >> "picture")
 		];
 	} forEach ItemCargo _vic;
 	{
-		_rawItems pushBack [
-			getText (configFile >> "CfgMagazines" >> _x  >> "displayName"),
-			getText (configFile >> "CfgMagazines" >> _x >> "picture"),
-			"nMagazines"
+		private _config = _x call CBA_fnc_getItemConfig;
+		_MagazineCargo pushBack [
+			getText (_config >> "displayName"),
+			getText (_config >> "picture")
 		];
 	} forEach MagazineCargo _vic;
 	{
-		_rawItems pushBack [
+		// private _config = _x call CBA_fnc_getObjectConfig;
+		_WeaponCargo pushBack [
 			getText (configFile >> "CfgWeapons" >> _x >> "displayName"),
-			getText (configFile >> "CfgWeapons" >> _x >> "picture"),
-			"oWeapons"
+			getText (configFile >> "CfgWeapons" >> _x >> "picture")
 		];
 	} forEach WeaponCargo _vic;
 	{
-		_rawItems pushBack [
-			getText (configFile >> "CfgVehicles" >> _x >> "displayName"),
-			getText (configFile >> "CfgVehicles" >> _x >> "picture"),
-			"pBackpacks"
+		private _config = _x call CBA_fnc_getObjectConfig;
+		_BackpackCargo pushBack [
+			getText (_config >> "displayName"),
+			getText (_config >> "picture")
 		];
 	} forEach BackpackCargo _vic;
 
-	// "debug_console" callExtension(str _rawItems + "~0000");
+	private _sortedItemCargo = ([_ItemCargo call BIS_fnc_consolidateArray, [], {_x # 0 # 0}] call BIS_fnc_sortBy) select {!(_x # 0 # 0 isEqualTo "")};
+	private _sortedMagazineCargo = ([_MagazineCargo call BIS_fnc_consolidateArray, [], {_x # 0 # 0}] call BIS_fnc_sortBy) select {!(_x # 0 # 0 isEqualTo "")};
+	private _sortedWeaponCargo = ([_WeaponCargo call BIS_fnc_consolidateArray, [], {_x # 0 # 0}] call BIS_fnc_sortBy) select {!(_x # 0 # 0 isEqualTo "")};
+	private _sortedBackpackCargo = ([_BackpackCargo call BIS_fnc_consolidateArray, [], {_x # 0 # 0}] call BIS_fnc_sortBy) select {!(_x # 0 # 0 isEqualTo "")};
+	
+	// "debug_console" callExtension(str _sortedItemCargo + "~0100");
+	// "debug_console" callExtension(str _sortedMagazineCargo + "~0100");
+	// "debug_console" callExtension(str _sortedWeaponCargo + "~0100");
+	// "debug_console" callExtension(str _sortedBackpackCargo + "~0100");
 
-	_items = _rawItems call BIS_fnc_consolidateArray;
-	// "debug_console" callExtension(str _items + "~0100");
-	_sortedItems = [_items, [], {format["%1%2", _x # 0 # 2, _x # 0 # 0]}] call BIS_fnc_sortBy;
-	// "debug_console" callExtension(str _sortedItems + "~0100");
+	if (count _sortedItemCargo > 0) then {
+		_thisArr pushBack format["<font color='#ffffff' size='12' face='PuristaMedium'>Items:</font>"];
+		private _itemCargoOut = [];
+		{
+			private _name = _x # 0 # 0;
+			private _pic = _x # 0 # 1;
+			private _count = _x # 1;
+			if (_pic == "") then {
+				_itemCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
+			} else {
+				_itemCargoOut pushBack format["<img width='30' height='30' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+			};
+			if ((_forEachIndex + 1) mod 6 == 0) then {_itemCargoOut pushBack "<br/>"};
+		} forEach _sortedItemCargo;
+		_thisArr pushBack (_itemCargoOut joinString "");
+	};
+	if (count _sortedMagazineCargo > 0) then {
+		_thisArr pushBack format["<font color='#ffffff' size='12' face='PuristaMedium'>Magazines:</font>"];
+		private _magCargoOut = [];
+		{
+			private _name = _x # 0 # 0;
+			private _pic = _x # 0 # 1;
+			private _count = _x # 1;
+			if (_pic == "") then {
+				_magCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
+			} else {
+				_magCargoOut pushBack format["<img width='30' height='30' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+			};
+			if ((_forEachIndex + 1) mod 6 == 0) then {_magCargoOut pushBack "<br/>"};
+		} forEach _sortedMagazineCargo;
+		_thisArr pushBack (_magCargoOut joinString "");
+	};
+	if (count _sortedWeaponCargo > 0) then {
+		_thisArr pushBack format["<font color='#ffffff' size='12' face='PuristaMedium'>Weapons:</font>"];
+		private _weaponCargoOut = [];
+		{
+			private _name = _x # 0 # 0;
+			private _pic = _x # 0 # 1;
+			private _count = _x # 1;
+			if (_pic == "") then {
+				_weaponCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
+			} else {
+				_weaponCargoOut pushBack format["<img width='75' height='50' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+			};
+			if ((_forEachIndex + 1) mod 3 == 0) then {_weaponCargoOut pushBack "<br/>"};
+		} forEach _sortedWeaponCargo;
+		_thisArr pushBack (_weaponCargoOut joinString "");
+	};
+	if (count _sortedBackpackCargo > 0) then {
+		_thisArr pushBack format["<font color='#ffffff' size='12' face='PuristaMedium'>Backpacks:</font>"];
+		private _backpackCargoOut = [];
+		{
+			private _name = _x # 0 # 0;
+			private _pic = _x # 0 # 1;
+			private _count = _x # 1;
+			if (_pic == "") then {
+				_backpackCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
+			} else {
+				_backpackCargoOut pushBack format["<img width='50' height='50' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+			};
+			if ((_forEachIndex + 1) mod 4 == 0) then {_backpackCargoOut pushBack "<br/>"};
+		} forEach _sortedBackpackCargo;
+		_thisArr pushBack (_backpackCargoOut joinString "");
+		// "debug_console" callExtension(str _backpackCargoOut + "~0100");
+	};
 
-	{
-		private _name = _x # 0 # 0;
-		private _pic = _x # 0 # 1;
-		private _count = _x # 1;
-		// "debug_console" callExtension(_pic + "~0000");
-		if !(_name isEqualTo "") then {
-			_thisArr pushBack format["<img width='30' height='30' image='%1'/><font color='#ffffff' size='12' face='PuristaMedium'>x%2 %3</font>", _pic, _count, _name];
-		};
-	} forEach _sortedItems;
-	// "debug_console" callExtension(str _thisArr + "~0000");
-
+	// "debug_console" callExtension(str _thisArr + "~1100");
 	_thisArr;
 };
 
@@ -364,16 +426,39 @@ _getVehicleData = {
 	};
 
 
+	_invLines = [_x] call _getInventory;
 
-	_outArr pushBack lineBreak;
+	if (count _invLines > 0) then {
+		_outArr pushBack format["<font size='14' color='#e1701a' face='PuristaBold'>INVENTORY</font>"];
+		_outArr append _invLines;
+	};
 
-	_outArr pushBack format["<font size='14' color='#e1701a' face='PuristaBold'>INVENTORY</font>"];
-	_outArr append ([_x] call _getInventory);
+	// add to admin section if has inventory
+	// add to admin section if has inventory
+	if (count _invLines > 0 && ((getPlayerUID player) in (missionNamespace getVariable "staffInfo"))) then {
+		player createDiarySubject ["VicHasInv", "VicsWithInventory", "\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa"];
+		_marker = createMarkerLocal [format["VicWithInvMark_%1", round (random 2000)], getPos _x];
+		_invOutArr = +_outArr;
+		_invOutArr pushBack format["<marker name='%1'>Go to vehicle</marker>", _marker];
 
-
+		player createDiaryRecord [
+			"VicHasInv",
+			[
+				format["%1", _dispName],
+				_invOutArr joinString "<br/>"
+			],
+			taskNull,
+			"?",
+			false
+		];
+	};
+	
+	// "debug_console" callExtension (str _invLines + "~0000");
+	
 	_outArr pushBack lineBreak;
 	_outArr pushBack "-------------------------------------------------------------";
-	_outArr;
+
+
 
 	if (_x inArea "bluforSafeMarker") then {
 		player createDiaryRecord [
@@ -420,6 +505,7 @@ _getVehicleData = {
 player createDiarySubject ["BLUAssets", "BLU Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 player createDiarySubject ["OPFAssets", "OPF Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+
 
 _vehiclesToProcess = createHashMap;
 {
