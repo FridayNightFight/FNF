@@ -1,7 +1,8 @@
 private _fortifyColor = 0; //0 = green, 1 = tan
 
 //Automatically choose fotyify color based on terrain name
-private _desert = ["Desert_E","pja319","tem_kujari","porto","intro","Shapur_BAF","takistan","Mountains_ACR","zargabad","pja310","lythium"];
+private _desert = ["Desert_E","pja319","tem_kujari","porto","intro","Shapur_BAF","takistan","Mountains_ACR","zargabad",
+"pja310","lythium","fow_map_tarawa","SWU_Egypt_El_Alamein","iron_excelsior_Tobruk"];
 if (worldName in _desert) then {_fortifyColor = 1};
 
 _planks = [
@@ -13,6 +14,7 @@ _ww2 = [
 ["fow_p_defenceposition_02",15],
 ["fow_p_logbunker02",22],
 ["Land_Fort_Bagfence_Bunker",30],
+["Fortress2",50],
 ["Land_WW2_Bunker_Mg",50],
 ["fow_p_defenceposition_04",50]
 ];
@@ -31,22 +33,29 @@ _tanBags = [
 
 _tanBunkers = [
 ["Land_BagBunker_Small_F",22],
-["Land_BagBunker_Large_F",50]
+["Land_BagBunker_Large_F",60]
 ];
 _greenBunkers = [
 ["Land_BagBunker_01_small_green_F",22],
-["Land_BagBunker_01_large_green_F",50]
+["Land_BagBunker_01_large_green_F",60]
+];
+
+_vanillaBunkers = [
+["Land_Bunker_01_small_F",75],
+["Land_Bunker_01_big_F",100],
+["Land_Bunker_01_HQ_F",100],
+["Land_Bunker_01_tall_F",130]
 ];
 
 switch (_fortifyColor) do {
   case 0: {
     [phx_defendingSide, phx_fortifyPoints,
-    _greenBags + _planks + _greenBunkers + _ww2
+    _greenBags + _planks + _greenBunkers + _ww2 + _vanillaBunkers
     ] call acex_fortify_fnc_registerObjects;
   };
   case 1: {
     [phx_defendingSide, phx_fortifyPoints, [
-    _tanBags + _planks + _tanBunkers + _ww2
+    _tanBags + _planks + _tanBunkers + _ww2 + _vanillaBunkers
     ]] call acex_fortify_fnc_registerObjects;
   };
 };
