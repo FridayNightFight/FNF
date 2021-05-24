@@ -1,3 +1,6 @@
+# WW2 v1
+1. First release version of WW2 template.
+
 # WW2 v1-beta-1
 1. Initial push
 
