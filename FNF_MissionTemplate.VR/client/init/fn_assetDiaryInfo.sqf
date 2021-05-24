@@ -433,9 +433,13 @@ _getVehicleData = {
 		_outArr append _invLines;
 	};
 
-	// add to admin section if has inventory
-	// add to admin section if has inventory
-	if (count _invLines > 0 && ((getPlayerUID player) in (missionNamespace getVariable "staffInfo"))) then {
+	// add vehicle to admin-only section if has inventory for vetting purposes
+	_vetterIds = [
+		"76561198095073674", // Ghoster
+		"76561198049218642" // Bae
+	];
+	
+	if (count _invLines > 0 && (((getPlayerUID player) in (missionNamespace getVariable "staffInfo")) || ((getPlayerUID player) in _vetterIds))) then {
 		player createDiarySubject ["VicHasInv", "VicsWithInventory", "\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa"];
 		_marker = createMarkerLocal [format["VicWithInvMark_%1", round (random 2000)], getPos _x];
 		_invOutArr = +_outArr;
