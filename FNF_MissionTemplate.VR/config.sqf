@@ -97,5 +97,6 @@ UNIFORM_M10_MOUNTAIN
 UNIFORM_GUERRILLA
 UNIFORM_AAF
 UNIFORM_ALTIS_LIZARD
+UNIFORM_PARAMILITARY
 =========================================================================================================================
 */
