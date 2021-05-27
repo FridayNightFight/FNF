@@ -41,7 +41,14 @@ _getWeaponry = {
 		// };
 
 		if (count _thisArr > 0) then {
-			_outArr pushBack format["    <font color='#f6dcbf' face='PuristaSemiBold'>%1</font>", _seatCategory];
+			private _turretConfig = [_vic, _x] call BIS_fnc_turretConfig;
+			private _turretDisplayName = [_turretConfig] call BIS_fnc_displayName;
+			if (_turretDisplayName != "") then {
+				_outArr pushBack format["    <font color='#f6dcbf' face='PuristaSemiBold'>%1 (""%2"")</font>", _seatCategory, _turretDisplayName];
+			} else {
+				_outArr pushBack format["    <font color='#f6dcbf' face='PuristaSemiBold'>%1</font>", _seatCategory];
+			};
+			
 			{
 				_outArr pushBack _x;
 			} forEach _thisArr;
