@@ -1,4 +1,4 @@
-[{!(isNull findDisplay 46) && !(isNil (missionNamespace getVariable ["staffInfo", nil])) && phx_staggeredLoaded == true}, {
+[{!(isNull findDisplay 46) && (!isNil {missionNamespace getVariable ["staffInfo", nil]}) && phx_staggeredLoaded == true}, {
 	staffIconHelper = [{
 		{
 			

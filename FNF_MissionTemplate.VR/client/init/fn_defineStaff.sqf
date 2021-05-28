@@ -24,4 +24,4 @@ _staffArr = [
 ]; 
  
 staffHash = createHashMapFromArray _staffArr;
-missionNamespace setVariable ["staffInfo", staffHash, true];
+missionNamespace setVariable ["staffInfo", staffHash];

@@ -527,6 +527,8 @@ _vehiclesToProcess = createHashMap;
 
 
 {
-	[_x, _vehiclesToProcess get (typeOf _x)] call _getVehicleData;
+	if (!((configOf _x) call BIS_fnc_displayName in ["Helicopter"])) then {
+		[_x, _vehiclesToProcess get (typeOf _x)] call _getVehicleData;
+	};
 
 } forEach ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle" && (locked _x) in [0,1]}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy);
