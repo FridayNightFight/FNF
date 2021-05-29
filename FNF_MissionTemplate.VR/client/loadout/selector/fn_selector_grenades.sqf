@@ -1,7 +1,7 @@
 //set current grenades to default from laodout init
 phx_selector_currentGrenades = phx_selector_grenades select 0;
 
-phx_selector_fnc_explosives = {
+phx_selector_fnc_grenades = {
   private _expArr = _this;
 
   if (_expArr isEqualTo phx_selector_currentGrenades) exitWith {};
@@ -50,7 +50,7 @@ phx_selector_fnc_explosives = {
 //grenades actions
 {
   _action = ["Grenades_Selector",_x select 0,"",{
-    (_this select 2) call phx_selector_fnc_explosives;
+    (_this select 2) call phx_selector_fnc_grenades;
   },{true}, {}, _x] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Grenades_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_grenades;
