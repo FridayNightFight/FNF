@@ -1,17 +1,17 @@
-//set current charges to default from laodout init
-phx_selector_currentExplosives = phx_selector_explosives select 0;
+//set current grenades to default from laodout init
+phx_selector_currentGrenades = phx_selector_grenades select 0;
 
 phx_selector_fnc_explosives = {
   private _expArr = _this;
 
-  if (_expArr isEqualTo phx_selector_currentExplosives) exitWith {};
+  if (_expArr isEqualTo phx_selector_currentGrenades) exitWith {};
 
   private _missing = false;
 
   {
     private ["_expClass","_expCount"];
 
-    //make sure player has all old charges to be able to add new ones
+    //make sure player has all old grenades to be able to add new ones
     if (_forEachIndex != 0) then {
       if (_x find ":" != -1) then {
         _expClass = _x splitString ":" select 0;
@@ -25,13 +25,13 @@ phx_selector_fnc_explosives = {
         _missing = true;
       };
     };
-  } forEach phx_selector_currentExplosives;
+  } forEach phx_selector_currentGrenades;
 
-  //removes old charges and adds new ones if player still has old ones
+  //removes old grenades and adds new ones if player still has old ones
   if (!_missing) then {
     {
       player removeMagazines (_x splitString ":" select 0);
-    } forEach phx_selector_currentExplosives;
+    } forEach phx_selector_currentGrenades;
 
     {
       if (_forEachIndex != 0) then {
@@ -39,18 +39,18 @@ phx_selector_fnc_explosives = {
       };
     } forEach _expArr;
 
-    format ["Charge loadout changed to:\n %1", _expArr select 0] call phx_fnc_hintThenClear;
+    format ["Grenade loadout changed to:\n %1", _expArr select 0] call phx_fnc_hintThenClear;
 
-    phx_selector_currentExplosives = _expArr;
+    phx_selector_currentGrenades = _expArr;
   } else {
     "Missing items" call phx_fnc_hintThenClear;
   };
 };
 
-//charges actions
+//grenades actions
 {
-  _action = ["Explosives_Selector",_x select 0,"",{
+  _action = ["Grenades_Selector",_x select 0,"",{
     (_this select 2) call phx_selector_fnc_explosives;
   },{true}, {}, _x] call ace_interact_menu_fnc_createAction;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Explosives_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
-} forEach phx_selector_explosives;
+  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Grenades_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
+} forEach phx_selector_grenades;

@@ -7,9 +7,7 @@ if (pRole != ROLE_CE) then {phx_loadout_grenade call phx_fnc_addGear};
 
 switch (pRole) do {
   case ROLE_CE: {
-    {
-      if (_forEachIndex != 0) then {_x call phx_fnc_addGear};
-    } forEach phx_loadout_explosives;
+    phx_loadout_explosives call phx_fnc_addGear;
     phx_loadout_defusalkit call phx_fnc_addGear;
     phx_loadout_trigger call phx_fnc_addGear;
     phx_loadout_entrenching call phx_fnc_addGear;

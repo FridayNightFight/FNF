@@ -47,7 +47,7 @@ phx_loadout_nvg = "NVGoggles_OPFOR";
 phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
 phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 //CE
-phx_loadout_explosives = ["2x Satchel","SatchelCharge_Remote_Mag:2"];
+phx_loadout_explosives = "SatchelCharge_Remote_Mag:2";
 phx_loadout_defusalkit = "ACE_DefusalKit";
 phx_loadout_trigger = "ACE_M26_Clacker";
 phx_loadout_entrenching = "ACE_EntrenchingTool";
@@ -66,10 +66,14 @@ phx_loadout_rifle_optic = "optic_DMS";
 phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
 phx_selector_explosives = [
-phx_loadout_explosives,
+["2x Satchel", phx_loadout_explosives],
 ["2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"],
 ["2x AT mine", "ATMine_Range_Mag:2"],
 ["4x Demo charge", "DemoCharge_Remote_Mag:4"]
+];
+phx_selector_grenades = [
+  ["2x Thermite grenades", phx_loadout_thermite],
+  ["2x Frag grenades", phx_loadout_grenade]
 ];
 
 call phx_fnc_setUniform;
