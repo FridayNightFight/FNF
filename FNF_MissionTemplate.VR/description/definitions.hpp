@@ -5,9 +5,9 @@ enableDebugConsole = 1;
 
 respawn = 3;
 respawnDialog = 0;
-respawndelay = 99999;
+respawndelay = 1;
 respawnOnStart = -1;
-respawnTemplates[] = {"ace_spectator"};
+//respawnTemplates[] = {"ace_spectator"};
 joinUnassigned = 1;
 
 onPauseScript[] = {phx_fnc_removeRespawnButton};

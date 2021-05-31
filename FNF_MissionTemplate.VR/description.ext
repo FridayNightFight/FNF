@@ -12,6 +12,4 @@ class Header
 #include "description\definitions.hpp"
 #include "description\cfgEventHandlers.hpp"
 #include "description\cfgNotifications.hpp"
-#include "description\cfgSounds.hpp"
 #include "description\cfgFunctions.hpp"
-#include "client\ui\RscTitlesDisplay.hpp"

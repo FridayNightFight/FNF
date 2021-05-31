@@ -7,7 +7,7 @@ private _maxTime = 10;
 phx_startTimer = 10;
 phx_startGoodPos = getpos vehicle player;
 
-switch (playerSide) do {
+switch (phx_playerSide) do {
   case east: {
     _marker = "opforSafeMarker";
   };

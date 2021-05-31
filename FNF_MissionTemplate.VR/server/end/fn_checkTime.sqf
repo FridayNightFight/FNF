@@ -3,7 +3,7 @@ Checks remaining game time. Warns at 15 minutes and will trigger a client-side t
 Activates overtime function when time limit is reached.
 */
 
-private _missionRuntimeSecs = (phx_missionTimelimit * 60) + phx_safetyEndTime;
+private _missionRuntimeSecs = 600 + phx_safetyEndTime;
 phx_alert15 = false;
 phx_alertEnd = false;
 
@@ -12,10 +12,11 @@ phx_alertEnd = false;
 
   if (phx_gameEnd) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
 
+  _missionRuntimeSecs = 0;
   _missionRuntimeSecs = _this select 0;
 
-  if ((_missionRuntimeSecs - (15 * 60)) <= CBA_missionTime && !phx_alert15) then {
-      "15 minutes remaining" remoteExec ["phx_fnc_hintThenClear", 0, false];
+  if (_missionRuntimeSecs - 300 <= CBA_missionTime && !phx_alert15) then {
+      "5 minutes remaining" remoteExec ["phx_fnc_hintThenClear", 0, false];
       phx_alert15 = true;
       missionNamespace setVariable ["phx_timeLeftShown",true,true];
       remoteExec ["phx_fnc_clientTime", 0, true];

@@ -3,6 +3,8 @@ Creates a safety for the player. Restricts shooting and throwing grenades.
 Removed at safe start end.
 */
 
+phx_safeStartNoFire = nil;
+
 //Make player invincible
 player allowDamage false;
 
@@ -46,6 +48,7 @@ phx_acePlacing = [{
   player removeAction phx_safeStartNoFire;
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
+  call PHX_fnc_selector_remove;
 
-  call phx_fnc_showTimeOnMap; //Show time left on map after safety ends
+  [{missionNamespace getVariable "newRound"},{call PHX_fnc_newRoundClient}] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;

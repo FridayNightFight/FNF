@@ -6,13 +6,6 @@ call phx_fnc_restrictGamma;
 //Uniform and etool restrictions
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_restrictUniform; call phx_fnc_restrictETool;}] call CBA_fnc_waitUntilAndExecute;
 
-//[{!phx_safetyEnabled && !isNull (findDisplay 46)}, {call phx_fnc_afkCheck}] call CBA_fnc_waitUntilAndExecute;
-
-//Set TFAR volume to whisper
-TF_speak_volume_level = "whispering";
-TF_speak_volume_meters = 5;
-call TFAR_fnc_updateSpeakVolumeUI;
-
 //View distance and terrain grid force
 [{
   if (viewDistance > phx_maxViewDistance) then {

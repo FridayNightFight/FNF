@@ -2,38 +2,31 @@ class CfgFunctions {
   class PHX {
     class vars {
       class varsInit{file = "config.sqf"; preInit = 1;};
-      class sekritVars{file = "description\sekrit.sqf"; preInit = 1;};
     };
     class serverInit {
-      file = "server\init";
+      file = "server";
       class serverInit{};
       class serverInitCall{postInit = 1;};
+      class markCustomObjs{};
+      class serverSafety{};
+      class serverMidInit{};
     };
     class clientInit {
-      file = "client\init";
+      file = "client";
       class clientInit{};
-      class clientCanPlay{};
-      class clientSetupGame{};
-      class staggeredLoad{};
+      class clientMidInit{};
       class clientInitCall{postInit = 1;};
+      class clientCanPlay{};
     };
-    class briefing {
-      file = "client\briefing";
-      class briefInit{};
-      class setGroupIDs{};
-      class createBrief{};
-      class createOrbat{};
+    class gui {
+      file = "client\gui";
+      class loadoutGUI{};
+      class adminDiary{};
     };
-    class radio {
-      file = "client\radio";
-      class radio_waitGear{};
-      class radio_getChannels{};
-      class radio_setRadios{};
-      class radio_cleanup{};
-    };
-    class spectator {
-      file = "client\spectator";
-      class spectatorInit{};
+    class roleselect {
+      file = "client\roleselect";
+      class spawnLoadout{};
+      class roles{};
     };
     class loadout {
       file = "client\loadout";
@@ -62,52 +55,40 @@ class CfgFunctions {
       class selector_optics{};
       class selector_weapons{};
       class selector_charges{};
-    };
-    class restrictions {
-      file = "client\restrictions";
-      class restrictions{};
-      class disableMisc{};
-      class afkCheck{};
-      class disableTyping{};
-      class removeRespawnButton{};
-      class hideMarkers{};
-      class restrictUniform{};
-      class zoneBoundary{};
-      class startBoundary{};
-      class restrictETool{};
-      class restrictGamma{};
-    };
-    class safety {
-      file = "client\safety";
-      class safety{};
-    };
-    class misc {
-      file = "client\misc";
-      class hintThenClear{};
-      class fortifyClient{};
-      class clientTime{};
-      class killCounter{};
-      class showTimeOnMap{};
-    };
-    class unflip {
-      file = "client\misc\unflip";
-      class unflipVehicle{};
-      class unflipVehicleAddAction{};
-    };
-    class initServer {
-      file = "server\init";
-      class serverSafety{};
-      class sendUniforms{};
-      class markCustomObjs{};
-      class fortifyServer{};
-      class server_setupGame{};
-      class radio_genFreqs{};
+      class selector_remove{};
     };
     class end {
       file = "server\end";
       class checkAlive{};
       class checkTime{};
       class overTimeEnd{};
+      class titanMultiRoundHandler{};
+    };
+    class restrictions {
+      file = "client\restrictions";
+      class restrictions{};
+      class disableMisc{};
+      class disableTyping{};
+      class removeRespawnButton{};
+      class restrictUniform{};
+      class zoneBoundary{};
+      class startBoundary{};
+      class restrictETool{};
+      class restrictGamma{};
+    };
+    class spectator {
+      file = "client\spectator";
+      class spectatorInit{};
+    };
+    class safety {
+      file = "client\safety";
+      class safety{};
+    };
+    class mode {
+      file = "mode";
+      class terminalClientSetup{};
+      class terminalServerSetup{};
+      class newRoundClient{};
     };
   };
 };

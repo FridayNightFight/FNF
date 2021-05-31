@@ -1,27 +1,14 @@
-#include "description\configDefs.hpp"
-
 //Uniforms
 phx_bluforUniform = "UNIFORM_MARPAT_WD";
 phx_opforUniform = "UNIFORM_EMR_SUMMER";
-phx_indforUniform = "UNIFORM_M93_OAKLEAF";
 
 //Weapons
 phx_bluforWeapons = "WEAPONS_US";
 phx_opforWeapons = "WEAPONS_RU";
-phx_indforWeapons = "WEAPONS_IND";
-
-/*
-You can also use the civilian unit 'C_man_1'
-Those units will not be touched by the tempalte loadout system, so they will keep their editor loadout
-If they have a radio, they will all be preset to the same frequency
-*/
 
 phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
 phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
 //Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
-
-phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
-phx_maxViewDistance = 500; //Maximum client view distance (meters)
 
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========

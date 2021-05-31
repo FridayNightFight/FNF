@@ -36,17 +36,22 @@ _showObj = {
     };
   };
 };
+phx_iconHandle = [{
+  drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL term1, 0.6, 0.6, 45];
+} , 0, []] call CBA_fnc_addPerFrameHandler;
+
+
 
 //Draw 3d icons for objectives
-{
-  if (_x call _showObj) then {
-    [{
-      params ["_obj"];
-      if (isNull _obj || !alive _obj) then {
-        [_handle] call CBA_fnc_removePerFrameHandler;
-      } else {
-        drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
-      };
-    } , 0, _x] call CBA_fnc_addPerFrameHandler;
-  };
-} forEach phx_specObjectives;
+//{
+//  if (_x call _showObj) then {
+//    [{
+//      params ["_obj"];
+//      if (isNull _obj || !alive _obj) then {
+//        [_handle] call CBA_fnc_removePerFrameHandler;
+//      } else {
+//        drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
+//      };
+//    } , 0, _x] call CBA_fnc_addPerFrameHandler;
+//  };
+//} forEach phx_specObjectives;

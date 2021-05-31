@@ -29,16 +29,22 @@ phx_checkAlive_count = {
 
   if (phx_bluforInMission) then {
     _bluCount = west call phx_checkAlive_count;
-    if (_bluCount < 1) then {phx_bluforInMission = false; "BLUFOR eliminated!" remoteExec ["hint"]};
+    if (_bluCount < 1) then {phx_bluforInMission = false; "BLUFOR eliminated!" remoteExec ["hint"]; phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
+  east call PHX_fnc_titanMultiRoundHandler;};
   };
 
   if (phx_opforInMission) then {
     _opfCount = east call phx_checkAlive_count;
-    if (_opfCount < 1) then {phx_opforInMission = false; "OPFOR eliminated!" remoteExec ["hint"]};
+    if (_opfCount < 1) then {phx_opforInMission = false; "OPFOR eliminated!" remoteExec ["hint"]; phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
+  west call PHX_fnc_titanMultiRoundHandler;};
   };
 
   if (phx_indforInMission) then {
     _indCount = independent call phx_checkAlive_count;
-    if (_indCount < 1) then {phx_indforInMission = false; "INDFOR eliminated!" remoteExec ["hint"]};
+    if (_indCount < 1) then {phx_indforInMission = false; "INDFOR eliminated!" remoteExec ["hint"]; phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
+  independent call PHX_fnc_titanMultiRoundHandler;};
   };
 }, 10] call CBA_fnc_addPerFrameHandler;
