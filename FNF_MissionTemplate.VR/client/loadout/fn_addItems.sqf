@@ -3,16 +3,22 @@ phx_loadout_smoke call phx_fnc_addGear;
 phx_loadout_maptools call phx_fnc_addGear;
 phx_loadout_cableTie call phx_fnc_addGear;
 
-if (pRole != ROLE_CE) then {phx_loadout_grenade call phx_fnc_addGear};
+if (pRole != ROLE_CE) then {{
+      if (_forEachIndex != 0) then {_x call phx_fnc_addGear};
+    } forEach phx_loadout_grenade;};
 
 switch (pRole) do {
   case ROLE_CE: {
-    phx_loadout_explosives call phx_fnc_addGear;
+    {
+      if (_forEachIndex != 0) then {_x call phx_fnc_addGear};
+    } forEach phx_loadout_explosives;
     phx_loadout_defusalkit call phx_fnc_addGear;
     phx_loadout_trigger call phx_fnc_addGear;
     phx_loadout_entrenching call phx_fnc_addGear;
     phx_loadout_detector call phx_fnc_addGear;
-    phx_loadout_thermite call phx_fnc_addGear;
+    {
+      if (_forEachIndex != 0) then {_x call phx_fnc_addGear};
+    } forEach phx_loadout_thermite;
   };
   case ROLE_MGTL: {phx_loadout_entrenching call phx_fnc_addGear};
   case ROLE_CLS: {

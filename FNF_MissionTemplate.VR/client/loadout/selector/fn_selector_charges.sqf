@@ -1,5 +1,5 @@
 //set current charges to default from laodout init
-phx_selector_currentExplosives = phx_selector_explosives select 0;
+phx_selector_currentExplosives = phx_loadout_explosives;
 
 phx_selector_fnc_explosives = {
   private _expArr = _this;

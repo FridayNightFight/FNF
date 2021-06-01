@@ -1,5 +1,5 @@
 //set current grenades to default from laodout init
-phx_selector_currentGrenades = phx_selector_grenades select 0;
+phx_selector_currentGrenades = phx_loadout_thermite;
 
 phx_selector_fnc_grenades = {
   private _expArr = _this;
