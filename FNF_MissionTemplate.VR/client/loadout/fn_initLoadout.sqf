@@ -39,15 +39,15 @@ if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
 phx_loadout_aid = "FirstAidKit:4";
 phx_loadout_smoke = "SmokeShell:2";
-phx_loadout_grenade = "rhs_mag_m67:2";
-phx_loadout_thermite = "ACE_M14:2";
+phx_loadout_grenade = ["2x Frag grenades", "rhs_mag_m67:2"];
+phx_loadout_thermite = ["2x Thermite grenades", "ACE_M14:2"];
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
 phx_loadout_nvg = "NVGoggles_OPFOR";
 phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
 phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 //CE
-phx_loadout_explosives = ["2x Satchel","SatchelCharge_Remote_Mag:2"];
+phx_loadout_explosives = ["2x Satchel", "SatchelCharge_Remote_Mag:2"];
 phx_loadout_defusalkit = "ACE_DefusalKit";
 phx_loadout_trigger = "ACE_M26_Clacker";
 phx_loadout_entrenching = "ACE_EntrenchingTool";
@@ -70,6 +70,10 @@ phx_loadout_explosives,
 ["2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"],
 ["2x AT mine", "ATMine_Range_Mag:2"],
 ["4x Demo charge", "DemoCharge_Remote_Mag:4"]
+];
+phx_selector_grenades = [
+  phx_loadout_thermite,
+  phx_loadout_grenade
 ];
 
 call phx_fnc_setUniform;
