@@ -19,9 +19,9 @@
 			_iconType = getText(configFile >> "CfgVehicles" >> (typeOf(vehicle _x)) >> "icon");
 			_thisName = format["%1: %2", ((roleDescription _x) splitString "@")# 0, name _x];
 
-			_pos = visiblePosition _x;
+			_pos = _x modelToWorldVisual [0,0,0];
 
-			drawIcon3D[_iconType, [1, 1, 1, 0.7], [(_pos select 0), (_pos select 1), 2.3], 0.6, 0.6, 0, _thisName, true, 0.03, "PuristaBold", "center"];
+			drawIcon3D[_iconType, [1, 1, 1, 0.7], [(_pos select 0), (_pos select 1), (_pos select 2) + 2.3], 0.6, 0.6, 0, _thisName, true, 0.03, "PuristaBold", "center"];
 		} forEach _cmdUnits;
 	}, 0] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;

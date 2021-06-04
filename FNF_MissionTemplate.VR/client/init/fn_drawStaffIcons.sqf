@@ -37,7 +37,7 @@
 				drawIcon3D[getMissionPath "fnfsmall.paa", [1, 1, 1, 0.3], [(_pos select 0), (_pos select 1), 3], 0.6, 0.6, 0, "", true, 0.05, "PuristaBold", "center"];
 			} else {
 				if (player distance _staffMember < 15) then {
-					drawIcon3D[getMissionPath "fnfsmall.paa", [1, 1, 1, 1], [(_pos select 0), (_pos select 1), 3], 1, 1, 0, _text, true, 0.05, "PuristaBold", "center"];
+					drawIcon3D[getMissionPath "fnfsmall.paa", [1, 1, 1, 1], [(_pos select 0), (_pos select 1), (_pos select 2) + 3], 1, 1, 0, _text, true, 0.05, "PuristaBold", "center"];
 				};
 			};
 		} forEach (missionNamespace getVariable "staffPlayers");
