@@ -39,8 +39,9 @@ if (pRole in [ROLE_PL,ROLE_SL]) then {phx_loadout_unitLevel = 2};
 if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
 phx_loadout_aid = "FirstAidKit:3";
-phx_loadout_smoke = "";
+phx_loadout_smoke = "SmokeShell";
 phx_loadout_grenade = "";
+phx_loadout_CEGrenade = "";
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
 //CE

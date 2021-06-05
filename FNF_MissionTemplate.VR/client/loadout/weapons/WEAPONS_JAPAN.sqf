@@ -6,8 +6,8 @@ phx_loadout_rifle_mag = "fow_5Rnd_77x58:14";
 phx_loadout_sidearm_weapon = "fow_w_type14";
 phx_loadout_sidearm_mag = "fow_8Rnd_8x22:2";
 
-phx_loadout_smoke = "SmokeShell:2";
 phx_loadout_grenade = "fow_e_type97:2";
+phx_loadout_CEGrenade = "fow_e_type99_at:2";
 
 if (pRole == ROLE_PL || pROLE == ROLE_SL || pROLE == ROLE_TL || pROLE == ROLE_MGTL) then {
   phx_loadout_rifle_weapon = "fow_w_type100";

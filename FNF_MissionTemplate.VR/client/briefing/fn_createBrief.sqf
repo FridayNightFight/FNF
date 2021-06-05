@@ -36,8 +36,6 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
   <img width='356' height='356' image='%1'/>
   ", _uniformImg, _helmetImg]
   ]];
-
-  _varStr = _varStr + format ["BLUFOR MAT: %1", phx_bluAT call _getName] + "<br/>";
 };
 
 if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
@@ -52,8 +50,6 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
   <img width='356' height='356' image='%1'/>
   ", _uniformImg, _helmetImg]
   ]];
-
-  _varStr = _varStr + format ["OPFOR MAT: %1", phx_redAT call _getName] + "<br/>";
 };
 
 if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") then {
@@ -68,8 +64,6 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
   <img width='356' height='356' image='%1'/>
   ", _uniformImg, _helmetImg]
   ]];
-
-  _varStr = _varStr + format ["INDFOR MAT: %1", phx_grnAT call _getName] + "<br/>";
 };
 
 if (phx_defendingSide != sideEmpty) then {

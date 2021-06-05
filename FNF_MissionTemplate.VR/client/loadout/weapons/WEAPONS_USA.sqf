@@ -6,8 +6,8 @@ phx_loadout_rifle_mag_tracer = "LIB_15Rnd_762x33_t:3";
 phx_loadout_sidearm_weapon = "fow_w_m1911";
 phx_loadout_sidearm_mag = "fow_7Rnd_45acp:2";
 
-phx_loadout_smoke = "SmokeShell:2";
 phx_loadout_grenade = "LIB_US_Mk_2:2";
+phx_loadout_CEGrenade = "fow_e_tnt_halfpound:2";
 
 if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
   phx_loadout_rifle_weapon = "fow_w_m1_thompson";
