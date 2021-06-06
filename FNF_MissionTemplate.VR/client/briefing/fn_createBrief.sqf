@@ -89,4 +89,281 @@ player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
   player createDiaryRecord ["PHX_Diary_Details",["Overtime Condition",phx_overTimeConStr]];
 }] call CBA_fnc_waitUntilAndExecute;
 
+
+// Reconnaissance photos in Diary
+player createDiarySubject["Recon", "Reconnaissance", "\A3\ui_f\data\igui\cfg\simpleTasks\types\scout_ca.paa"];
+
+switch (phx_gameMode) do {
+    case "destroy":{
+        #include "..\..\mode_config\destroy.sqf"
+
+        _objArr = [_obj1, _obj2, _obj3];
+        _objArr = _objArr select {
+            !isNull(_x# 0)
+        };
+
+        for [{
+            private _i = (count _objArr)
+        }, {
+            _i > 0
+        }, {
+            _i = _i - 1
+        }] do {
+            _item = _objArr select(_i - 1);
+            _item params["_obj", "_mark", "_label"];
+            _objNumber = _i;
+            _fileName = format["objectiveImages\objective%1.paa", _objNumber];
+            if (fileExists _fileName) then {
+                player createDiaryRecord[
+                    "Recon", [
+                        format[
+                            "Objective %1",
+                            _objNumber
+                        ],
+                        format[
+                            "<font face='PuristaMedium'>Recon photo of Objective %1 - <marker name='%2'>%3</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%4'/>",
+                            _objNumber,
+                            _mark,
+                            (
+                                if (!(_label isEqualTo "")) then {
+                                    _label
+                                } else {
+                                    "Location"
+                                }),
+                            _fileName
+                        ]
+                    ]
+                ];
+            };
+        };
+    };
+    case "neutralSector":{
+      #include "..\..\mode_config\neutralSector.sqf"
+
+        _sectors = [phx_sector1];
+        switch (_numberOfSectors) do {
+            case 2: {
+                _sectors pushBack phx_sector2;
+            };
+            case 3: {
+                _sectors pushBack phx_sector2;
+                _sectors pushBack phx_sector3;
+            };
+        };
+
+        for [{
+            private _i = (count _sectors)
+        }, {
+            _i > 0
+        }, {
+            _i = _i - 1
+        }] do {
+            _sector = _sectors select(_i - 1);
+            _objNumber = _i;
+            _loc = getPos _sector;
+            _mark = createMarkerLocal [str _sector + "Mark", _loc];
+            _fileName = format["objectiveImages\objective%1.paa", _objNumber];
+            systemChat str _loc;
+            systemChat str _mark;
+            if (fileExists _fileName) then {
+                player createDiaryRecord[
+                    "Recon", [
+                        format[
+                            "Sector %1",
+                            _objNumber
+                        ],
+                        format[
+                            "<font face='PuristaMedium'>Recon photo of Sector %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be roughly North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            _objNumber,
+                            _mark,
+                            _fileName
+                        ]
+                    ]
+                ];
+            };
+        };
+    };
+    case "adSector":{
+        #include "..\..\mode_config\adSector.sqf"
+
+        _sectors = [];
+
+        switch (_numberOfSectors) do {
+            case 1:{
+                    _sectors pushBack phx_sec1
+                };
+            case 2:{
+                    _sectors pushBack phx_sec1;
+                    _sectors pushBack phx_sec2
+                };
+            case 3:{
+                    _sectors pushBack phx_sec1;
+                    _sectors pushBack phx_sec2;
+                    _sectors pushBack phx_sec3
+                };
+        };
+
+        for [{
+            private _i = (count _sectors)
+        }, {
+            _i > 0
+        }, {
+            _i = _i - 1
+        }] do {
+            _sector = _sectors select(_i - 1);
+            _mark = str _sector + "TextMark";
+            _objNumber = _i;
+            _fileName = format["objectiveImages\objective%1.paa", _objNumber];
+            if (fileExists _fileName) then {
+                player createDiaryRecord[
+                    "Recon", [
+                        format[
+                            "Sector %1",
+                            _objNumber
+                        ],
+                        format[
+                            "<font face='PuristaMedium'>Recon photo of Sector %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be roughly North-up.</font></font><br/><br/><img width='350' height='225' image='%3'/>",
+                            _objNumber,
+                            _mark,
+                            _fileName
+                        ]
+                    ]
+                ];
+            };
+        };
+    };
+    case "uplink":{
+        #include "..\..\mode_config\uplink.sqf"
+
+        _terminals = [];
+        switch (_numberOfTerminals) do {
+            case 2:{
+                    _terminals = [term1, term2]
+                };
+            case 3:{
+                    _terminals = [term1, term2, term3]
+                };
+            default {};
+        };
+
+        for [{
+            private _i = (count _terminals)
+        }, {
+            _i > 0
+        }, {
+            _i = _i - 1
+        }] do {
+            _terminal = _terminals select(_i - 1);
+            _mark = str _terminal + "Mark";
+            _objNumber = _i;
+            _fileName = format["objectiveImages\objective%1.paa", _objNumber];
+            if (fileExists _fileName) then {
+                player createDiaryRecord[
+                    "Recon", [
+                        format[
+                            "Terminal %1",
+                            _objNumber
+                        ],
+                        format[
+                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            _objNumber,
+                            _mark,
+                            _fileName
+                        ]
+                    ]
+                ];
+            };
+        };
+    };
+    case "rush":{
+        #include "..\..\mode_config\rush.sqf"
+
+        _terminals = [];
+        switch (_numberOfTerminals) do {
+            case 2:{
+                    _terminals = [term1, term2]
+                };
+            case 3:{
+                    _terminals = [term1, term2, term3]
+                };
+            default {};
+        };
+
+        for [{
+            private _i = (count _terminals)
+        }, {
+            _i > 0
+        }, {
+            _i = _i - 1
+        }] do {
+            _terminal = _terminals select(_i - 1);
+            _mark = str _terminal + "Mark";
+            _objNumber = _i;
+            _fileName = format["objectiveImages\objective%1.paa", _objNumber];
+            if (fileExists _fileName) then {
+                player createDiaryRecord[
+                    "Recon", [
+                        format[
+                            "Terminal %1",
+                            _objNumber
+                        ],
+                        format[
+                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            _objNumber,
+                            _mark,
+                            _fileName
+                        ]
+                    ]
+                ];
+            };
+        };
+    };
+    case "connection":{
+        #include "..\..\mode_config\connection.sqf"
+
+        _terminals = [];
+        switch (_numberOfTerminals) do {
+            case 2:{
+                    _terminals = [term1, term2]
+                };
+            case 3:{
+                    _terminals = [term1, term2, term3]
+                };
+            default {};
+        };
+
+        for [{
+            private _i = (count _terminals)
+        }, {
+            _i > 0
+        }, {
+            _i = _i - 1
+        }] do {
+            _terminal = _terminals select(_i - 1);
+            _mark = str _terminal + "Mark";
+            _objNumber = _i;
+            _fileName = format["objectiveImages\objective%1.paa", _objNumber];
+            if (fileExists _fileName) then {
+                player createDiaryRecord[
+                    "Recon", [
+                        format[
+                            "Terminal %1",
+                            _objNumber
+                        ],
+                        format[
+                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            _objNumber,
+                            _mark,
+                            _fileName
+                        ]
+                    ]
+                ];
+            };
+        };
+    };
+    case "captureTheFlag":{
+        // execVM "modes\ctf\ctf_client.sqf";
+    };
+};
+
 phx_briefCreated = true;

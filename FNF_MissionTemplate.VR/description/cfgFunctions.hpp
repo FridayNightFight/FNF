@@ -89,6 +89,7 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
+      class captureObjPics{postInit=1};
     };
     class unflip {
       file = "client\misc\unflip";
