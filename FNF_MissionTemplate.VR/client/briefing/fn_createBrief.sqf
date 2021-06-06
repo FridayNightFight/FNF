@@ -121,7 +121,7 @@ switch (phx_gameMode) do {
                             _objNumber
                         ],
                         format[
-                            "<font face='PuristaMedium'>Recon photo of Objective %1 - <marker name='%2'>%3</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%4'/>",
+                            "<font face='PuristaMedium'>Recon photo of Objective %1 - <marker name='%2'>%3</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='350' height='225' image='%4'/>",
                             _objNumber,
                             _mark,
                             (
@@ -173,7 +173,7 @@ switch (phx_gameMode) do {
                             _objNumber
                         ],
                         format[
-                            "<font face='PuristaMedium'>Recon photo of Sector %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be roughly North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            "<font face='PuristaMedium'>Recon photo of Sector %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be roughly North-up.</font></font><br/><br/><img width='350' height='225' image='%3'/>",
                             _objNumber,
                             _mark,
                             _fileName
@@ -265,7 +265,7 @@ switch (phx_gameMode) do {
                             _objNumber
                         ],
                         format[
-                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='350' height='225' image='%3'/>",
                             _objNumber,
                             _mark,
                             _fileName
@@ -308,7 +308,7 @@ switch (phx_gameMode) do {
                             _objNumber
                         ],
                         format[
-                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='350' height='225' image='%3'/>",
                             _objNumber,
                             _mark,
                             _fileName
@@ -351,7 +351,7 @@ switch (phx_gameMode) do {
                             _objNumber
                         ],
                         format[
-                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='512' height='256' image='%3'/>",
+                            "<font face='PuristaMedium'>Recon photo of Terminal %1 - <marker name='%2'>Location</marker><br/><font size='12'>Images will always be approximately North-up.</font></font><br/><br/><img width='350' height='225' image='%3'/>",
                             _objNumber,
                             _mark,
                             _fileName
