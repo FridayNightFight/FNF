@@ -36,7 +36,6 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
   <img width='356' height='356' image='%1'/>
   ", _uniformImg, _helmetImg]
   ]];
-
 };
 
 if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
@@ -51,7 +50,6 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
   <img width='356' height='356' image='%1'/>
   ", _uniformImg, _helmetImg]
   ]];
-
 };
 
 if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") then {
@@ -66,7 +64,6 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
   <img width='356' height='356' image='%1'/>
   ", _uniformImg, _helmetImg]
   ]];
-
 };
 
 if (phx_defendingSide != sideEmpty) then {

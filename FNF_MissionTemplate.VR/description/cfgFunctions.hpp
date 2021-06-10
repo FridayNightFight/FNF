@@ -53,7 +53,6 @@ class CfgFunctions {
       file = "client\loadout\misc";
       class giveNVG{};
       class setMAT{};
-      class setUGLAmmo{};
       class setAttributes{};
     };
     class selector {

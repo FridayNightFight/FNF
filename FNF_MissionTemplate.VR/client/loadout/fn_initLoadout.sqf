@@ -19,6 +19,7 @@ if (_pClass == UNIT_OPFOR_R || _pClass == UNIT_BLUFOR_R || _pClass == UNIT_INDFO
 if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_INDFOR_CR) then {pRole = ROLE_CR};
 if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
 if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
+if (_pClass in [UNIT_OPFOR_GR,UNIT_BLUFOR_GR,UNIT_INDFOR_GR]) then {pRole = ROLE_GR};
 if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
 
 if (isNil "pRole") exitWith {
@@ -37,39 +38,38 @@ phx_loadout_unitLevel = 0;
 if (pRole in [ROLE_PL,ROLE_SL]) then {phx_loadout_unitLevel = 2};
 if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
-phx_loadout_aid = "FirstAidKit:4";
-phx_loadout_smoke = "SmokeShell:2";
-phx_loadout_grenade = ["2x Frag grenades", "rhs_mag_m67:2"];
-phx_loadout_thermite = ["2x Thermite grenades", "ACE_M14:2"];
+phx_loadout_aid = "FirstAidKit:3";
+phx_loadout_smoke = "SmokeShell";
+phx_loadout_grenade = "";
+phx_loadout_CEGrenade = "";
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
-phx_loadout_nvg = "NVGoggles_OPFOR";
-phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
-phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 //CE
-phx_loadout_explosives = ["2x Satchel", "SatchelCharge_Remote_Mag:2"];
+phx_loadout_explosives = ["2x TNT, 4 lb","LIB_US_TNT_4pound_mag:2"];
+phx_loadout_APMines = ["2x AP mine","LIB_US_M3_MINE_mag:2"];
+phx_loadout_ATMines = ["2x AT mine","LIB_US_M1A1_ATMINE_mag:2"];
 phx_loadout_defusalkit = "ACE_DefusalKit";
-phx_loadout_trigger = "ACE_M26_Clacker";
+phx_loadout_trigger = "ACE_LIB_LadungPM";
 phx_loadout_entrenching = "ACE_EntrenchingTool";
 phx_loadout_detector = "MineDetector";
+phx_loadout_fuse = "ACE_LIB_FireCord";
 //Medic
 phx_loadout_PAK = "ACE_personalAidKit";
-phx_loadout_bandage = "ACE_fieldDressing:32";
-phx_loadout_morphine = "ACE_morphine:16";
-phx_loadout_epinephrine = "ACE_epinephrine:8";
-phx_loadout_blood_1 = "ACE_bloodIV_500:12";
-phx_loadout_blood_2 = "ACE_bloodIV_250:4";
+phx_loadout_bandage = "ACE_fieldDressing:28";
+phx_loadout_morphine = "ACE_morphine:12";
+phx_loadout_epinephrine = "ACE_epinephrine:5";
+phx_loadout_blood_1 = "ACE_bloodIV_500:10";
+phx_loadout_blood_2 = "";
 //Range
 phx_loadout_binocular = "Binocular";
-phx_loadout_vector = "ACE_VectorDay";
-phx_loadout_rifle_optic = "optic_DMS";
+phx_loadout_rifle_optic = "";
 phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
 phx_selector_explosives = [
 phx_loadout_explosives,
-["2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"],
-["2x AT mine", "ATMine_Range_Mag:2"],
-["4x Demo charge", "DemoCharge_Remote_Mag:4"]
+phx_loadout_APMines,
+phx_loadout_ATMines,
+["4x 250g charge", "LIB_Ladung_Small_MINE_mag:4"]
 ];
 phx_selector_grenades = [
   phx_loadout_thermite,

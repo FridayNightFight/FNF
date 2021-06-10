@@ -17,7 +17,7 @@ if (!isNil "ctf_flag") then {
 };
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
-if (!(playerSide == phx_defendingSide) || !phx_allowFortify) exitWith {};
+if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
 if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F") && !(typeOf player == "I_Soldier_exp_F")) exitWith {
   [{
     if (!phx_safetyEnabled) then {[_handle] call CBA_fnc_removePerFrameHandler};

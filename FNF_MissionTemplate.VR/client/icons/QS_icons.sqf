@@ -64,7 +64,7 @@ private [
 //================== MASTER SWITCHES
 
 _QS_ST_map_enableUnitIcons = TRUE;							// BOOL. TRUE to enable MAP unit/vehicle Icons. Default TRUE.
-_QS_ST_gps_enableUnitIcons = TRUE;							// BOOL. TRUE to enable GPS unit/vehicle Icons. Default TRUE.
+_QS_ST_gps_enableUnitIcons = FALSE;							// BOOL. TRUE to enable GPS unit/vehicle Icons. Default TRUE.
 _QS_ST_enableGroupIcons = TRUE;								// BOOL. TRUE to enable Map+GPS+HUD GROUP Icons. Default TRUE.
 
 //================= ADMIN
