@@ -223,6 +223,7 @@ _cleanup = {
 	phx_fnc_objectivePreview_ppGrain = nil;
 	phx_fnc_objectivePreview_ppColor = nil;
 	phx_fnc_hideVehiclesExceptObjectives = nil;
+	phx_fnc_objectivePreview_Cam = nil;
 
 	true;
 };
