@@ -26,6 +26,9 @@
 		// skip if ACE spectator is drawing group/name icons so as not to clash
 		if (missionNamespace getVariable ["ace_spectator_drawunits", false] && ace_spectator_isSet) exitWith {};
 
+		// skip if in objectivePreviewCamera
+		if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
+
 		{
 			_staffMember = _y # 2;
 			_name = _y # 0;

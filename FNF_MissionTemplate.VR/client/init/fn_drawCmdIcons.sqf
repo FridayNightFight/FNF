@@ -16,6 +16,9 @@
 			// skip if ACE spectator is drawing group/name icons so as not to clash
 			if (missionNamespace getVariable "ace_spectator_drawunits" && ace_spectator_isSet) exitWith {};
 
+			// skip if in objectivePreviewCamera
+			if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
+
 			_iconType = getText(configFile >> "CfgVehicles" >> (typeOf(vehicle _x)) >> "icon");
 			_thisName = format["%1: %2", ((roleDescription _x) splitString "@")# 0, name _x];
 
