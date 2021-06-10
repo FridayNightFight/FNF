@@ -89,6 +89,7 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
+      class objectivePreview{};
     };
     class unflip {
       file = "client\misc\unflip";
