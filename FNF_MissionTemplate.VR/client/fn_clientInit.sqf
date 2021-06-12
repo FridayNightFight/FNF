@@ -40,6 +40,8 @@ _handle = [{
 			if (_currentInRole >= _x select 1) then 
 			{
 				_button ctrlEnable false;
+			} else {
+				_button ctrlEnable true;
 			};
 
 		} forEach phx_roleList;
