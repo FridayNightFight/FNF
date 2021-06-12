@@ -4,7 +4,9 @@
   -UNIFORM_GERMANY_TROPICAL
   -UNIFORM_SOVIET_WINTER
   -UNIFORM_BRITAIN_DESERT
-2.
+2. Added 3D staff icons
+3. Added 3D commander icons
+4. Added side assets lists to diary
 
 # WW2 v2
 1. Added binoculars to all recon team members
