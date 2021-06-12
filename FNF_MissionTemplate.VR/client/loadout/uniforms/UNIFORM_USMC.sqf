@@ -1,26 +1,19 @@
 //Global customization - will be applied to every role
-phx_loadout_uniform = "U_LIB_US_Rangers_Uniform";
-phx_loadout_vest = "V_LIB_US_Vest_Carbine";
-phx_loadout_backpack = "B_LIB_US_M36";
-phx_loadout_headgear = "H_LIB_US_Helmet";
+phx_loadout_uniform = "fow_u_usmc_p41_02_private";
+phx_loadout_vest = "fow_v_usmc_carbine";
+phx_loadout_backpack = "fow_b_usmc_m1928_02";
+phx_loadout_headgear = "fow_h_usmc_m1_camo_01";
 
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
-  phx_loadout_uniform = "U_LIB_US_Rangers_Sergeant";
-  phx_loadout_headgear = "H_LIB_US_Helmet_CO";
   phx_loadout_vest = "V_LIB_US_Assault_Vest_Light";
 };
 
-if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
-  phx_loadout_uniform = "U_LIB_US_Rangers_Corp";
-  phx_loadout_headgear = "H_LIB_US_Helmet_NCO";
-};
+if (pRole == ROLE_AR) then {phx_loadout_vest = "fow_v_usmc_bar"};
+if (pRole == ROLE_MG) then {phx_loadout_vest = "fow_v_us_ab_asst_mg"; phx_loadout_backpack = "B_LIB_US_M36_Rocketbag_Empty";};
 
-if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_US_Vest_Bar"};
-if (pRole == ROLE_MG) then {phx_loadout_vest = "V_LIB_US_Vest_M1919"; phx_loadout_backpack = "B_LIB_US_M36_Rocketbag_Empty";};
+if (pRole == ROLE_AAR || pRole == ROLE_R) then {phx_loadout_vest = "fow_v_usmc_garand"};
 
-if (pRole == ROLE_AAR || pRole == ROLE_R) then {phx_loadout_vest = "V_LIB_US_Vest_Garand"};
-
-if (pRole == ROLE_CLS) then {phx_loadout_vest = "V_LIB_US_Vest_Medic2"; phx_loadout_headgear = "H_LIB_US_Helmet_Med"; phx_loadout_uniform = "U_LIB_US_Rangers_Med"; phx_loadout_backpack = "B_LIB_US_M36_Rocketbag_Empty";};
+if (pRole == ROLE_CLS) then {phx_loadout_vest = "fow_v_us_medic"; phx_loadout_headgear = "H_LIB_US_Helmet_Med"; phx_loadout_backpack = "B_LIB_US_M36_Rocketbag_Empty";};
 
 //Use if you want to customize more
 switch (pRole) do {

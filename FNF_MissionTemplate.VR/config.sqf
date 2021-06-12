@@ -61,7 +61,8 @@ UNIFORM_SOVIET_WINTER
 
 =====INDFOR=====
 UNIFORM_USA                        -- WEAPONS_USA
-UNIFORM_BRITAIN                    -- WEAPONS_BRITAIN
+UNIFORM_USMC                       -- WEAPONS_BRITAIN
+UNIFORM_BRITAIN
 UNIFORM_BRITAIN_DESERT
 =========================================================================================================================
 */

@@ -1,9 +1,10 @@
 # WW2 v3
-1. Added 4 new uniform sets (thanks to Mazz38):
+1. Added 5 new uniform sets (thanks to Mazz38):
   -UNIFORM_GERMANY_WINTER
   -UNIFORM_GERMANY_TROPICAL
   -UNIFORM_SOVIET_WINTER
   -UNIFORM_BRITAIN_DESERT
+  -UNIFORM_USMC
 2. Added 3D staff icons
 3. Added 3D commander icons
 4. Added side assets lists to diary

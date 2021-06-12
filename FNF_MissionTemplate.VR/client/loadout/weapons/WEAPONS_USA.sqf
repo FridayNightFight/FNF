@@ -35,7 +35,7 @@ if (pRole == ROLE_AR) then {
 };
 if (pRole == ROLE_MG) then {
   phx_loadout_rifle_weapon = "fow_w_m1919a6";
-  phx_loadout_rifle_mag = "fow_50Rnd_762x63:8";
+  phx_loadout_rifle_mag = "fow_50Rnd_762x63:10";
 };
 
 //Magazine classnames for assistant AR and MMG ammo man roles
