@@ -51,12 +51,17 @@ phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 =====BLUFOR=====
 UNIFORM_GERMANY                    -- WEAPONS_GERMANY
 UNIFORM_JAPAN                      -- WEAPONS_JAPAN
+UNIFORM_GERMANY_WINTER
+UNIFORM_GERMANY_TROPICAL
+
 
 =====OPFOR=====
 UNIFORM_SOVIET                     -- WEAPONS_SOVIET
+UNIFORM_SOVIET_WINTER
 
 =====INDFOR=====
 UNIFORM_USA                        -- WEAPONS_USA
 UNIFORM_BRITAIN                    -- WEAPONS_BRITAIN
+UNIFORM_BRITAIN_DESERT
 =========================================================================================================================
 */

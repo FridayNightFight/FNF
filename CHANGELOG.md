@@ -1,3 +1,11 @@
+# WW2 v3
+1. Added 4 new uniform sets (thanks to Mazz38):
+  -UNIFORM_GERMANY_WINTER
+  -UNIFORM_GERMANY_TROPICAL
+  -UNIFORM_SOVIET_WINTER
+  -UNIFORM_BRITAIN_DESERT
+2.
+
 # WW2 v2
 1. Added binoculars to all recon team members
 2. Reduced smoke count to 1 for performance
