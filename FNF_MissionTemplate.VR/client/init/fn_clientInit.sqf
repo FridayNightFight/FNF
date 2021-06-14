@@ -9,9 +9,9 @@ call phx_fnc_staggeredLoad; //Start staggered load timer
 call phx_fnc_initLoadout; //Loadout vars
 call phx_fnc_radio_waitGear; //Start radio preset functions
 call phx_fnc_defineStaff; // define staff values
-[] spawn phx_fnc_drawStaffIcons; // Draw labels over staff members
-[] spawn phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
 call phx_fnc_assetDiaryInfo; // Add diary entries for assets
+call phx_fnc_drawStaffIcons; // Draw labels over staff members
+call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
 
 //Disable chat typing for mission display
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
