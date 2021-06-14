@@ -22,6 +22,7 @@ class CfgFunctions {
       file = "client\gui";
       class loadoutGUI{};
       class adminDiary{};
+      class adminGUI{};
     };
     class roleselect {
       file = "client\roleselect";
