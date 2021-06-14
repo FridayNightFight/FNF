@@ -1,3 +1,4 @@
+phx_keyDownEHId = -1;
 if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
 phx_playerSide = playerSide;
 
