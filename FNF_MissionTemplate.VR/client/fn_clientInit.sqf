@@ -22,6 +22,9 @@ _handle = [{
 	};
 	if !(player getVariable "LoadoutChosen") then
 	{
+
+		_i = 0;
+
 		{
 			_button = format["_button_%1", _x select 0];
 	
@@ -37,12 +40,19 @@ _handle = [{
 					};
 				};
 			} forEach allPlayers;
-			if (_currentInRole >= _x select 1) then 
-			{
-				_button ctrlEnable false;
-			} else {
-				_button ctrlEnable true;
+			if !(phx_loadoutGUI isEqualTo displayNull) then {
+				if (_currentInRole >= _x select 1) then 
+				{
+					if (ctrlEnabled (_i + 1000)) then {
+						ctrlEnable [_i + 1000, false];
+					}
+				} else {
+					if !(ctrlEnabled (_i + 1000)) then {
+						ctrlEnable [_i + 1000, true];
+					}
+				};
 			};
+			_i = _i + 1;
 
 		} forEach phx_roleList;
 	};
