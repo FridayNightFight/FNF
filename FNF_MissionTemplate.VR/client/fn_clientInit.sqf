@@ -10,6 +10,7 @@ phx_loadoutGUI = displayNull;
 call PHX_fnc_roles;
 call phx_fnc_safety;
 call PHX_fnc_adminDiary;
+call PHX_fnc_terminalClientSetup;
 
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 

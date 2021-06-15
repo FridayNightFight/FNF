@@ -1,5 +1,10 @@
 if (!isServer) exitWith {};
 
+[west, 1] call BIS_fnc_respawnTickets;
+[east, 1] call BIS_fnc_respawnTickets;
+[west, -1] call BIS_fnc_respawnTickets;
+[east, -1] call BIS_fnc_respawnTickets;
+
 call phx_fnc_serverSafety;
 call phx_fnc_markCustomObjs;
 

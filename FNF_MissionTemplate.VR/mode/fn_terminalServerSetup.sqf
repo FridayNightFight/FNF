@@ -1,4 +1,4 @@
-#include "..\..\mode_config\connection.sqf"
+_pointAddTime = 2;
 
 ["off"] call acex_fortify_fnc_handleChatCommand;
 
@@ -23,15 +23,33 @@ _markerSetup = {
 term1 call _markerSetup;
 
 phx_serverTerminalAction = {
+  _term = _this select 0;
   _side = _this select 1;
   _animate = false;
 
-  missionNamespace setVariable ["phx_term1HackingSide",_side,true];
-  if (!phx_term1Animate) then {
-    _animate = true;
-    phx_term1Animate = true;
+  switch (_term) do {
+    case term1: {
+      missionNamespace setVariable ["phx_term1HackingSide",_side,true];
+      if (!phx_term1Animate) then {
+        _animate = true;
+        phx_term1Animate = true;
+      };
+    };
+    case term2: {
+      missionNamespace setVariable ["phx_term2HackingSide",_side,true];
+      if (!phx_term2Animate) then {
+        _animate = true;
+        phx_term2Animate = true;
+      };
+    };
+    case term3: {
+      missionNamespace setVariable ["phx_term3HackingSide",_side,true];
+      if (!phx_term3Animate) then {
+        _animate = true;
+        phx_term3Animate = true;
+      };
+    };
   };
-};
 
   _mark = str _term + "Mark";
   _termNum = [str _term, 4, 4] call BIS_fnc_trimString;
@@ -82,33 +100,35 @@ phx_connectionWin = {
 };
 
 _sideWon = sideEmpty;
-waitUntil {phx_term1HackingSide != sideEmpty || phx_term2HackingSide != sideEmpty || phx_term3HackingSide != sideEmpty};
 
-while {!(missionNamespace getVariable ["phx_gameEnd",false])} do {
-  [phx_term1HackingSide, 1] call BIS_fnc_respawnTickets;
-  [phx_term2HackingSide, 1] call BIS_fnc_respawnTickets;
-  [phx_term3HackingSide, 1] call BIS_fnc_respawnTickets;
+[{phx_term1HackingSide != sideEmpty}, {
+phx_ticketPFH = [{
+  if (!(missionNamespace getVariable ["phx_gameEnd",false])) then {
+    [phx_term1HackingSide, 1] call BIS_fnc_respawnTickets;
+    [phx_term2HackingSide, 1] call BIS_fnc_respawnTickets;
+    [phx_term3HackingSide, 1] call BIS_fnc_respawnTickets;
 
-  _sideWon = [[west,[west] call BIS_fnc_respawnTickets], [east,[east] call BIS_fnc_respawnTickets], [independent,[independent] call BIS_fnc_respawnTickets]] select {(_x select 1) >= 100};
-  _sideWonCount = count _sideWon;
-  _winCall = (_sideWonCount >= 1);
-  switch (true) do {
-    case (_sideWonCount == 1): {_sideWon = (_sideWon select 0) select 0};
-    case (_sideWonCount > 1): {
-      _points = 0;
-      _largeSide = sideEmpty;
-      {
-        _sidePoints = _x select 1;
-        if (_sidePoints > _points) then {
-          _points = _sidePoints;
-          _largeSide = _x select 0;
-        };
-      } forEach _sideWon;
-      _sideWon = _largeSide;
+    _sideWon = [[west,[west] call BIS_fnc_respawnTickets], [east,[east] call BIS_fnc_respawnTickets], [independent,[independent] call BIS_fnc_respawnTickets]] select {(_x select 1) >= 100};
+    _sideWonCount = count _sideWon;
+    _winCall = (_sideWonCount >= 1);
+    switch (true) do {
+      case (_sideWonCount == 1): {_sideWon = (_sideWon select 0) select 0};
+      case (_sideWonCount > 1): {
+        _points = 0;
+        _largeSide = sideEmpty;
+        {
+          _sidePoints = _x select 1;
+          if (_sidePoints > _points) then {
+            _points = _sidePoints;
+            _largeSide = _x select 0;
+          };
+        } forEach _sideWon;
+        _sideWon = _largeSide;
+      };
+    };
+    if (_winCall) then {
+      _sideWon call phx_connectionWin;
     };
   };
-  if (_winCall) then {
-    _sideWon call phx_connectionWin;
-  };
-  sleep 2;
-};
+}, 2] call Cba_fnc_addPerFrameHandler;
+}] call CBA_fnc_waitUntilAndExecute;

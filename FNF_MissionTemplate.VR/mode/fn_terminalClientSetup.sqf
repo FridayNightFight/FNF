@@ -6,12 +6,12 @@ if !(isNull term1) then {
     "Connect",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && !(playerSide == phx_term1HackingSide) && !(playerSide == civilian)",
+    "(_this distance _target < 3) && !(phx_playerSide == phx_term1HackingSide) && !(playerSide == civilian)",
     "_caller distance _target < 3",
     {},
     {},
     {
-      [term1, playerSide] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term1, phx_playerSide] remoteExec ["phx_serverTerminalAction", 2, false];
     },
     {},
     [],
