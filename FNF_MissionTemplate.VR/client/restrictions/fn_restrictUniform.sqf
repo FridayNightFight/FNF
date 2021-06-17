@@ -9,7 +9,7 @@ private _playerHead = headgear player;
 private _playerVest = vest player;
 
 //Handle player not having the right uniform, vest, or helmet on
-[{
+/*[{
   params ["_args","_handle"];
   _args params ["_playerUniform","_playerHead","_playerVest"];
 
@@ -21,15 +21,13 @@ private _playerVest = vest player;
     removeHeadgear player;
     player addHeadgear _playerHead;
   };
-  /*
   if !(vest player isEqualTo _playerVest) then {
     _items = vestItems player;
     removeVest player;
     player addVest _playerVest;
     {player addItemToVest _x} forEach _items;
   };
-  */
-}, 5, [_playerUniform, _playerHead, _playerVest]] call CBA_fnc_addPerFrameHandler;
+}, 5, [_playerUniform, _playerHead, _playerVest]] call CBA_fnc_addPerFrameHandler;*/
 
 //Stop player from being able to take off gear
 player addEventHandler ["InventoryOpened",{
