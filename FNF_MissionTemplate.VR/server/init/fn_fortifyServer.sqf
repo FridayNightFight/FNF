@@ -54,8 +54,8 @@ switch (_fortifyColor) do {
     ] call acex_fortify_fnc_registerObjects;
   };
   case 1: {
-    [phx_defendingSide, phx_fortifyPoints, [
+    [phx_defendingSide, phx_fortifyPoints,
     _tanBags + _planks + _tanBunkers + _ww2 + _vanillaBunkers
-    ]] call acex_fortify_fnc_registerObjects;
+    ] call acex_fortify_fnc_registerObjects;
   };
 };
