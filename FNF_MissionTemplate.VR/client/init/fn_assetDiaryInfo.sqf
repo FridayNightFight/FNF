@@ -241,7 +241,7 @@ _getInventory = {
 			if (_pic == "") then {
 				_itemCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
 			} else {
-				_itemCargoOut pushBack format["<img width='30' height='30' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+				_itemCargoOut pushBack format["<img height='30' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
 			};
 			if ((_forEachIndex + 1) mod 6 == 0) then {_itemCargoOut pushBack "<br/>"};
 		} forEach _sortedItemCargo;
@@ -257,7 +257,7 @@ _getInventory = {
 			if (_pic == "") then {
 				_magCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
 			} else {
-				_magCargoOut pushBack format["<img width='30' height='30' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+				_magCargoOut pushBack format["<img height='30' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
 			};
 			if ((_forEachIndex + 1) mod 6 == 0) then {_magCargoOut pushBack "<br/>"};
 		} forEach _sortedMagazineCargo;
@@ -273,7 +273,7 @@ _getInventory = {
 			if (_pic == "") then {
 				_weaponCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
 			} else {
-				_weaponCargoOut pushBack format["<img width='75' height='50' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+				_weaponCargoOut pushBack format["<img height='50' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
 			};
 			if ((_forEachIndex + 1) mod 3 == 0) then {_weaponCargoOut pushBack "<br/>"};
 		} forEach _sortedWeaponCargo;
@@ -289,7 +289,7 @@ _getInventory = {
 			if (_pic == "") then {
 				_backpackCargoOut pushBack format["<font color='#ffffff' size='12' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>%3 x%2</execute></font>", _pic, _count, _name];
 			} else {
-				_backpackCargoOut pushBack format["<img width='50' height='50' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
+				_backpackCargoOut pushBack format["<img height='50' image='%1'/><font color='#ffffff' size='10' face='EtelkaMonospacePro'><execute expression='systemChat ""%3"";'>x%2</execute></font>", _pic, _count, _name];
 			};
 			if ((_forEachIndex + 1) mod 4 == 0) then {_backpackCargoOut pushBack "<br/>"};
 		} forEach _sortedBackpackCargo;
