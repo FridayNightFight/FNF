@@ -25,14 +25,16 @@ phx_attackingSide = sideEmpty; //west/east/independent
 
 ////////////////////////////////////////////////////////////
 
-//Uniforms
+//BLUFOR
 phx_bluforUniform = "UNIFORM_GERMANY";
-phx_opforUniform = "UNIFORM_SOVIET";
-phx_indforUniform = "UNIFORM_USA";
-
-//Weapons
 phx_bluforWeapons = "WEAPONS_GERMANY";
+
+//OPFOR
+phx_opforUniform = "UNIFORM_SOVIET";
 phx_opforWeapons = "WEAPONS_SOVIET";
+
+//INDFOR
+phx_indforUniform = "UNIFORM_USA";
 phx_indforWeapons = "WEAPONS_USA";
 
 /*

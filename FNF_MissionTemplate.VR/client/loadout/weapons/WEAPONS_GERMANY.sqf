@@ -50,7 +50,7 @@ switch (pRole) do {
   case ROLE_PL: {}; //Platoon leader
   case ROLE_SL: {}; //Squad leader
   case ROLE_TL: {
-    phx_loadout_rifle_weapon = "fow_w_g43";
+    phx_loadout_rifle_weapon = "LIB_G43";
     phx_loadout_rifle_mag_tracer = "LIB_10Rnd_792x57_T:5";
     phx_loadout_rifle_mag = "LIB_10Rnd_792x57:10";
     }; //Team leader
