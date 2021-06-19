@@ -2,7 +2,7 @@ if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
 
 [phx_iconHandle] call CBA_fnc_removePerFrameHandler;
 
-player setVariable ["LoadoutChosen", false];
+phx_LoadoutChosen = false;
 
 call PHX_fnc_roles;
 call phx_fnc_safety;

@@ -4,7 +4,7 @@ phx_playerSide = playerSide;
 
 player linkItem "ItemMap";
 
-player setVariable ["LoadoutChosen", false];
+phx_LoadoutChosen = false;
 phx_loadoutGUI = displayNull;
 
 call PHX_fnc_roles;
@@ -22,7 +22,7 @@ _handle = [{
 	if (phx_loadoutGUI isEqualTo displayNull) then {
 		call PHX_fnc_loadoutGUI;
 	};
-	if !(player getVariable "LoadoutChosen") then
+	if !(phx_LoadoutChosen) then
 	{
 
 		_i = 0;
