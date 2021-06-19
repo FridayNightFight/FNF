@@ -1,5 +1,8 @@
 _sideWon = _this;
-[phx_ticketPFH] call CBA_fnc_removePerFrameHandler;
+
+if !(isNil "phx_ticketPFH") then {
+	[phx_ticketPFH] call CBA_fnc_removePerFrameHandler;
+};
 
 _bluScore = [west] call BIS_fnc_respawnTickets;
 _opScore = [east] call BIS_fnc_respawnTickets;

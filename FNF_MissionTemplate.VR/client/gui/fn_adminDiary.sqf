@@ -9,12 +9,12 @@ if (serverCommandAvailable "#kick") then {
   systemChat format [""New safe start time: %1 mins"", f_var_mission_timer];
   '>-1 Minute to Safe Start</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = f_var_mission_timer + 1; publicVariableServer ""f_var_mission_timer""; systemChat format [""New safe start time: %1 mins"", f_var_mission_timer];'>+1 Minute to Safe Start</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='phx_gameEnd = true; publicVariable ""phx_gameEnd""; west call PHX_fnc_titanMultiRoundHandler;'>Blue Team Wins</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='phx_gameEnd = true; publicVariable ""phx_gameEnd""; east call PHX_fnc_titanMultiRoundHandler;'>Red Team Wins</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='phx_blueTeamScore = phx_blueTeamScore + 1'>Blue Team +1</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='phx_blueTeamScore = phx_blueTeamScore - 1'>Blue Team -1</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='phx_redTeamScore = phx_redTeamScore + 1'>Red Team +1</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='phx_redTeamScore = phx_redTeamScore - 1'>Red Team -1</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='1 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Blue Team Wins</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='2 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Red Team Wins</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='3 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Blue Team +1</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='4 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Blue Team -1</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='5 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Red Team +1</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='6 remoteExec [""PHX_fnc_adminCommandHandeler"", 2];'>Red Team -1</execute>"]];
   
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='""end1"" call bis_fnc_endmissionserver;'>End Mission</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='""end1"" remoteExec [""bis_fnc_endmissionserver"", 2];'>End Mission</execute>"]];
 };

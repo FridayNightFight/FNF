@@ -10,6 +10,7 @@ class CfgFunctions {
       class markCustomObjs{};
       class serverSafety{};
       class serverMidInit{};
+      class adminCommandHandeler{};
     };
     class clientInit {
       file = "client";
