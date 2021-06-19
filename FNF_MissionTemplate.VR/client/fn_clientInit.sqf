@@ -7,6 +7,22 @@ player linkItem "ItemMap";
 phx_LoadoutChosen = false;
 phx_loadoutGUI = displayNull;
 
+if (didJIP) then {
+	if (missionNamespace getVariable ["teamsSwitched", false]) then	{
+		if (phx_playerSide == west) then
+		{
+			phx_playerSide = east;
+			player setpos (getpos opforSpawn findEmptyPosition [0, 10, typeOf vehicle player])
+		} else {
+			if (phx_playerSide == east) then
+			{
+				phx_playerSide = west;
+				player setpos (getpos bluforSpawn findEmptyPosition [0, 10, typeOf vehicle player])
+			};
+		};
+	};
+};
+
 call PHX_fnc_roles;
 call phx_fnc_safety;
 call PHX_fnc_adminDiary;

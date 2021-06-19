@@ -13,6 +13,12 @@ _opScore = _opScore - (_opScore * 2);
 [west, _bluScore] call BIS_fnc_respawnTickets;
 [east, _opScore] call BIS_fnc_respawnTickets;
 
+if (missionNamespace getVariable ["teamsSwitched", false]) then	{
+	missionNamespace setVariable ["teamsSwitched", true, true];
+} else {
+	missionNamespace setVariable ["teamsSwitched", false, true];
+};
+
 [{
 
 	switch (_this select 0) do {
