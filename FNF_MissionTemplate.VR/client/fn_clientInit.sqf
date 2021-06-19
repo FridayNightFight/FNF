@@ -28,8 +28,6 @@ _handle = [{
 		_i = 0;
 
 		{
-			_button = format["_button_%1", _x select 0];
-	
 			_temp = _x;
 			_currentInRole = 0;
 			{
@@ -43,15 +41,20 @@ _handle = [{
 				};
 			} forEach allPlayers;
 			if !(phx_loadoutGUI isEqualTo displayNull) then {
+				_dialogControl = phx_loadoutGUI displayCtrl _i + 1000;
 				if (_currentInRole >= _x select 1) then 
 				{
-					if (ctrlEnabled (_i + 1000)) then {
-						ctrlEnable [_i + 1000, false];
-					}
+					if !(_dialogControl isEqualTo controllNull) then {
+						ctrlDelete _dialogControl;
+					};
 				} else {
-					if !(ctrlEnabled (_i + 1000)) then {
-						ctrlEnable [_i + 1000, true];
-					}
+					if (_dialogControl isEqualTo controllNull) then {
+						_button = phx_loadoutGUI ctrlCreate ["RscButton", _i + 1000]; 
+						_button ctrlSetPosition [0.275,0.03 + 0.08 * _i,0.45,0.05];
+						_button ctrlSetText (_x select 0);
+						_button buttonSetAction '_temp = ' + (str _x) + '; call PHX_fnc_selector_remove; _temp call PHX_fnc_spawnLoadout; phx_loadoutGUI closeDisplay 1;';
+						_button ctrlCommit 0;
+					};
 				};
 			};
 			_i = _i + 1;

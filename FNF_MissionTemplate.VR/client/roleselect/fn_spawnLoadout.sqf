@@ -16,6 +16,7 @@ _currentInRole = 0;
 } forEach allPlayers;
 
 if (_currentInRole >= _roleSelection select 1) exitWith {phx_LoadoutChosen = false};
+phx_LoadoutChosen = true;
 player setVariable ["role", _roleSelection select 0, true];
 
 removeBackpack player;
