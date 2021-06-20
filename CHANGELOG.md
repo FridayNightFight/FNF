@@ -1,3 +1,7 @@
+# WW2 v4
+1. Switch FoW G43 to IFA3 version due to low sound
+2. Fix desert terrain fortify array
+
 # WW2 v3
 1. Added 5 new uniform sets (thanks to Mazz38):
   -UNIFORM_GERMANY_WINTER
