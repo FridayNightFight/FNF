@@ -1,5 +1,15 @@
 phx_keyDownEHId = -1;
-if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
+if !(call phx_fnc_clientCanPlay) exitWith {
+		call phx_fnc_spectatorInit;
+		if (didJIP && typeOf player != "ace_spectator_virtual") then {
+			player setDamage 1;
+			[{phx_safetyEnabled},{
+				[false,false,false] call ace_spectator_fnc_setSpectator;
+				[phx_iconHandle] call CBA_fnc_removePerFrameHandler;
+				call PHX_fnc_clientInit;
+			}] call CBA_fnc_waitUntilAndExecute;
+		};
+	};
 phx_playerSide = playerSide;
 
 player linkItem "ItemMap";

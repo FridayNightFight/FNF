@@ -1,5 +1,3 @@
-if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
-
 [phx_iconHandle] call CBA_fnc_removePerFrameHandler;
 
 phx_LoadoutChosen = false;
