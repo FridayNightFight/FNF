@@ -320,17 +320,16 @@ _getVehicleData = {
 	_side = [getNumber(_configName >> 'side')] call BIS_fnc_sideName;
 	_canFloat = (_configName >> "canFloat") call BIS_fnc_getCfgDataBool;
 
+	_totalSeats = [_class, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
+	_crewSeats = [_class, false] call BIS_fnc_crewCount; // Number of crew seats only
 	_driverSeats = fullcrew [_vic, "driver", true];
 	_gunnerSeats = fullCrew [_vic, "gunner", true];
 	_commanderSeats = fullCrew [_vic, "commander", true];
-	_cargoSeats = fullCrew [_vic, "cargo", true];
+	// _cargoSeats = fullCrew [_vic, "cargo", true];
+	_cargoSeats = _totalSeats - _crewSeats; // Number of total cargo/passenger seats: non-FFV + FFV
 	_turretSeatsRaw = fullCrew [_vic, "turret", true];
-	// "debug_console" callExtension (str _turretSeatsRaw + "#0110");
 	_turretSeats = _turretSeatsRaw select {(_x # 4) isEqualTo false};
-	// "debug_console" callExtension (str _turretSeats + "#0110");
 	_ffvSeats = _turretSeatsRaw select {(_x # 4) isEqualTo true};
-	// "debug_console" callExtension (str _ffvSeats + "#0110");
-	_totalSeats = _driverSeats + _gunnerSeats + _commanderSeats + _cargoSeats + _turretSeats + _ffvSeats;
 
 	_pylons = getAllPylonsInfo _vic;
 
@@ -353,12 +352,12 @@ _getVehicleData = {
 
 	_outArr pushBack linebreak;
 
-	_outArr pushBack format["<font size='14' color='#e1701a' face='PuristaBold'>CAPACITY: %1</font>", count _totalSeats];
+	_outArr pushBack format["<font size='14' color='#e1701a' face='PuristaBold'>CAPACITY: %1</font>", _totalSeats];
 	_outArr pushBack format["<font face='PuristaMedium'>  Driver Seats: %1", count _driverSeats];
 	_outArr pushBack format["  Gunner Seats: %1", count _gunnerSeats];
 	_outArr pushBack format["  Commander Seats: %1", count _commanderSeats];
 	_outArr pushBack format["  Turret Seats: %1", count _turretSeats];
-	_outArr pushBack format["  Cargo Seats: %1", count _cargoSeats];
+	_outArr pushBack format["  Cargo Seats: %1", _cargoSeats];
 	_outArr pushBack format["  FFV Seats: %1</font>", count _ffvSeats];
 	_outArr pushBack linebreak;
 
