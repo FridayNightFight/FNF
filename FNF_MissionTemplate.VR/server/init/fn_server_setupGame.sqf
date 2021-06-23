@@ -24,7 +24,7 @@ switch (phx_gameMode) do {
   };
   case "connection": {
     execVM "modes\connection\connection_server.sqf";
-    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 25 points of the highest side. The first side to 100 points will still win.";
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side. The first side to 100 points will still win if mission is within normal time limit.";
   };
   case "captureTheFlag": {
     execVM "modes\ctf\ctf_server.sqf";
@@ -36,7 +36,7 @@ switch (phx_gameMode) do {
   };
   case "neutralSector": {
     execVM "modes\neutralsector\neutralSector.sqf";
-    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side.";
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side. The first side to 100 points will still win if mission is within normal time limit.";
   };
 };
 

@@ -23,6 +23,8 @@ count (missionNamespace getVariable ["phx_selector_optics",[]]) == 0
 count (missionNamespace getVariable ["phx_selector_weapons",[]]) == 0
 &&
 count (missionNamespace getVariable ["phx_selector_explosives",[]]) == 0
+&&
+count (missionNamespace getVariable ["phx_selector_grenades",[]]) == 0
 ) exitWith {};
 
 //Create base actions
@@ -38,15 +40,20 @@ _action = ["Weapon_Selector","Weapon","",{},{true}] call ace_interact_menu_fnc_c
 _action = ["Explosives_Selector","Explosives","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
+_action = ["Grenades_Selector","Grenades","",{},{true}] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+
 //Add actions if there are items to select from
 if (count (missionNamespace getVariable ["phx_selector_optics",[]]) > 0) then {call phx_fnc_selector_optics};
 if (count (missionNamespace getVariable ["phx_selector_weapons",[]]) > 0) then {call phx_fnc_selector_weapons};
 if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_charges};
+if (count (missionNamespace getVariable ["phx_selector_grenades",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_grenades};
 
 //Remove selector when safe start ends
 [{!phx_safetyEnabled}, {
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Optic_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Weapon_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Explosives_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Grenades_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
 }] call CBA_fnc_waitUntilAndExecute;
