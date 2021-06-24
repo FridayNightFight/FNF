@@ -55,6 +55,7 @@ UNIFORM_GERMANY                    -- WEAPONS_GERMANY
 UNIFORM_JAPAN                      -- WEAPONS_JAPAN
 UNIFORM_GERMANY_WINTER
 UNIFORM_GERMANY_TROPICAL
+UNIFORM_GERMANY_FSJ
 
 
 =====OPFOR=====
@@ -64,7 +65,8 @@ UNIFORM_SOVIET_WINTER
 =====INDFOR=====
 UNIFORM_USA                        -- WEAPONS_USA
 UNIFORM_USMC                       -- WEAPONS_BRITAIN
-UNIFORM_BRITAIN
+UNIFORM_BRITAIN                    -- WEAPONS_POLISH
 UNIFORM_BRITAIN_DESERT
+UNIFORM_POLISH
 =========================================================================================================================
 */

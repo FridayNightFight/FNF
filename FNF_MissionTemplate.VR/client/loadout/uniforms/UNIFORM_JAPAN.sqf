@@ -6,10 +6,18 @@ phx_loadout_headgear = "fow_h_ija_type90";
 
 if (pRole == ROLE_PL || pRole == ROLE_SL) then {
   phx_loadout_vest = "fow_v_ija_nco";
+  phx_loadout_headgear = "fow_h_ija_fieldcap_officer";
 };
 
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_vest = "fow_v_ija_nco";
+  phx_loadout_headgear = "fow_h_ija_fieldcap_neck";
+};
+
+if (pRole == ROLE_MK) then {
+  phx_loadout_vest = "fow_v_ija_rifle";
+  phx_loadout_headgear = "fow_h_ija_type90_foliage";
+  phx_loadout_uniform = "fow_u_ija_type98_foliage";
 };
 
 if (pRole == ROLE_AR || pRole == ROLE_MG) then {phx_loadout_vest = "fow_v_ija_mg"};

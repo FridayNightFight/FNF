@@ -22,8 +22,8 @@ if (pRole == ROLE_GR) then {
 };
 
 if (pRole == ROLE_AR) then {
-  phx_loadout_rifle_weapon = "fow_w_stg44";
-  phx_loadout_rifle_mag = "fow_30Rnd_792x33:14";
+  phx_loadout_rifle_weapon = "LIB_FG42G";
+  phx_loadout_rifle_mag = "fow_20Rnd_792x57:14";
 };
 if (pRole == ROLE_MG) then {
   phx_loadout_rifle_weapon = "fow_w_mg42";
