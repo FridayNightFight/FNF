@@ -87,7 +87,7 @@ phx_connectionWin = {
 
   _side = _this;
 
-  [_sideWon, "has reached 100 points and won!"] call phx_fnc_gameEnd;
+  [_sideWon, "has reached 100 points and won!"] spawn phx_fnc_gameEnd;
 
   {
     if (!isNull _x) then {

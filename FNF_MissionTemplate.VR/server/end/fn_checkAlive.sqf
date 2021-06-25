@@ -48,6 +48,6 @@ phx_checkAlive_count = {
 
     sleep 5;
 
-    [(([phx_bluforInMission, phx_opforInMission, phx_indforInMission] select {_x == true}) # 0), "has won by elimination!"] call phx_fnc_gameEnd;
+    [(([phx_bluforInMission, phx_opforInMission, phx_indforInMission] select {_x == true}) # 0), "has won by elimination!"] spawn phx_fnc_gameEnd;
   };
 }, 10] call CBA_fnc_addPerFrameHandler;

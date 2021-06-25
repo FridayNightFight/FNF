@@ -112,4 +112,4 @@ waitUntil {uiSleep 1; phx_aliveObjectives < 1 && !phx_gameEnd};
 phx_gameEnd = true;
 publicVariable "phx_gameEnd";
 
-[phx_attackingSide, "has successfully destroyed all objectives and won!"] call phx_fnc_gameEnd;
+[phx_attackingSide, "has successfully destroyed all objectives and won!"] spawn phx_fnc_gameEnd;

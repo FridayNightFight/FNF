@@ -11,7 +11,7 @@ _endGame = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  [phx_defendingSide, _msg] call phx_fnc_gameEnd;
+  [phx_defendingSide, _msg] spawn phx_fnc_gameEnd;
 };
 
 switch (true) do {
@@ -186,7 +186,7 @@ switch (true) do {
 
         phx_gameEnd = true;
         publicVariable "phx_gameEnd";
-        [_highSide, "wins to mission time limit!"] call phx_fnc_gameEnd;
+        [_highSide, "wins to mission time limit!"] spawn phx_fnc_gameEnd;
       } else {
         if (!_overTimeAlert) then {
           "Overtime enabled! \n The first side to hit 100 points or a 20 point lead will win." remoteExec ["hint"];

@@ -17,7 +17,7 @@ phx_server_sectorWin = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  [phx_attackingSide, "has captured all sectors and wins!"] call phx_fnc_gameEnd;
+  [phx_attackingSide, "has captured all sectors and wins!"] spawn phx_fnc_gameEnd;
 };
 
 _sectorNum = 0;

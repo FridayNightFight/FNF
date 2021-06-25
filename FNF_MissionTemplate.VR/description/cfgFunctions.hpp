@@ -109,6 +109,7 @@ class CfgFunctions {
       class checkAlive{};
       class checkTime{};
       class overTimeEnd{};
+      class gameEnd{};
     };
   };
 };

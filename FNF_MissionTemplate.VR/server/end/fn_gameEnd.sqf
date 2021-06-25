@@ -1,6 +1,6 @@
 params ["_sideWon", "_condition"];
 
-private ["_sideWonStr", "_winMethod", "_flagStr"];
+private ["_sideWonStr", "_flagStr"];
 
 _sideWonStr = str _sideWon;
 _sideWonName = (_sideWon call BIS_fnc_sideID) call BIS_fnc_sideName;
