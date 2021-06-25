@@ -247,17 +247,10 @@ while {!phx_gameEnd} do {
 
   if (_hackedObjectives >= _numberOfTerminals) then {
     uiSleep 13;
-    [format ["All objectives have been hacked.\n%1 wins!",
-    switch (phx_attackingSide) do {
-      case east: {"OPFOR"};
-      case west: {"BLUFOR"};
-      case independent: {"INDFOR"};
-    }]] remoteExec ["hint"];
 
     phx_gameEnd = true;
     publicVariable "phx_gameEnd";
 
-    uiSleep 15;
-    "end1" call bis_fnc_endMissionServer;
+    [phx_attackingSide, "has successfully hacked all objectives and won!"] call phx_fnc_gameEnd;
   };
 };

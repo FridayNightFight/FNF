@@ -87,12 +87,7 @@ phx_connectionWin = {
 
   _side = _this;
 
-  [format ["%1 has reached 100 points.\n%1 wins!",
-  switch (_sideWon) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
-    case independent: {"INDFOR"};
-  }]] remoteExec ["hint"];
+  [_sideWon, "has reached 100 points and won!"] call phx_fnc_gameEnd;
 
   {
     if (!isNull _x) then {
@@ -100,8 +95,6 @@ phx_connectionWin = {
     };
   } forEach [term1,term2,term3];
 
-  sleep 15;
-  "end1" call BIS_fnc_endMissionServer;
 };
 
 _sideWon = sideEmpty;

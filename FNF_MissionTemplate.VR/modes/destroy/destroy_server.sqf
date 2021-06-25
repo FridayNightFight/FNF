@@ -108,16 +108,8 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 //Check for win condition and end game if all objectives are destroyed
 waitUntil {uiSleep 1; phx_aliveObjectives < 1 && !phx_gameEnd};
 
-[format ["All objectives have been destroyed.\n%1 wins!",
-switch (phx_attackingSide) do {
-  case east: {"OPFOR"};
-  case west: {"BLUFOR"};
-  case independent: {"INDFOR"};
-}]] remoteExec ["hint"];
-
 //Send var to other scripts and clients to signal that the game has ended
 phx_gameEnd = true;
 publicVariable "phx_gameEnd";
 
-uisleep 20;
-"end1" call bis_fnc_endMissionServer;
+[phx_attackingSide, "has successfully destroyed all objectives and won!"] call phx_fnc_gameEnd;

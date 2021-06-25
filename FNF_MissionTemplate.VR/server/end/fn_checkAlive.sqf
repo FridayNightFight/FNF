@@ -41,4 +41,13 @@ phx_checkAlive_count = {
     _indCount = independent call phx_checkAlive_count;
     if (_indCount < 1) then {phx_indforInMission = false; "INDFOR eliminated!" remoteExec ["hint"]};
   };
+
+  if (count ([phx_bluforInMission, phx_opforInMission, phx_indforInMission] select {_x == true}) == 1) then {
+    phx_gameEnd = true;
+    publicVariable "phx_gameEnd";
+
+    sleep 5;
+
+    [(([phx_bluforInMission, phx_opforInMission, phx_indforInMission] select {_x == true}) # 0), "has won by elimination!"] call phx_fnc_gameEnd;
+  };
 }, 10] call CBA_fnc_addPerFrameHandler;
