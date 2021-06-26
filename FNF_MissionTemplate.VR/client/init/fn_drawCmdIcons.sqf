@@ -1,7 +1,9 @@
 [{!(isNull findDisplay 46) && (!isNil "staffInfo") && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+
+	// [commandIconsHelper] call CBA_fnc_removePerFrameHandler;
 	commandIconsHelper = [{
 
-		// skip if not safe start
+		// remove if not safe start
 		if (!phx_safetyEnabled) then {_handle call CBA_fnc_removePerFrameHandler};
 
 		_cmdUnits = (units playerSide) select {
@@ -11,19 +13,23 @@
 		// address officers (CMD, PL)
 		{
 			// skip if ACE spectator is drawing group/name icons so as not to clash
-			if (missionNamespace getVariable "ace_spectator_drawunits" && ace_spectator_isSet) exitWith {};
+			if (missionNamespace getVariable ["ace_spectator_drawunits", false] && ace_spectator_isSet) exitWith {};
 
 			// skip if in objectivePreviewCamera
 			if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
 
-			_iconType = getText(configFile >> "CfgVehicles" >> (typeOf(vehicle _x)) >> "icon");
-			_thisName = format["%1: %2", ((roleDescription _x) splitString "@")# 0, name _x];
+			// _thisName = format["%1: %2", ((roleDescription _x) splitString "@")# 0, name _x];
+			_thisName = groupId (group _x);
 
-			_pos = _x modelToWorldVisual [0,0,0];
+			_pos = _x modelToWorldVisual [0,0,2.5];
 
-			// skip draw beyond 300m
-			if (player distance _x <= 300) then {
-				drawIcon3D[_iconType, [1, 1, 1, 0.7], [(_pos select 0), (_pos select 1), (_pos select 2) + 2.3], 0.6, 0.6, 0, _thisName, true, 0.03, "PuristaBold", "center"];
+			switch (true) do {
+				// case (player distance _x <= 15): {
+				// 	drawIcon3D["", [1, 1, 1, 0.8], _pos, 0.6, 0.6, 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];
+				// };
+				case (player distance _x <= 300): {
+					drawIcon3D["", [1, 1, 1, 0.9], _pos, 0.6 / (getResolution select 5), 0.6 / (getResolution select 5), 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];
+				};
 			};
 		} forEach _cmdUnits;
 	}, 0] call CBA_fnc_addPerFrameHandler;

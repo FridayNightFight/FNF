@@ -19,6 +19,14 @@
 		};
 	};
 
+	
+	// testUnits = [];
+	// {
+	// 	testUnits pushBack (selectRandom (units playerSide select {_x == leader group _x}));
+	// 	true;
+	// } count [1,2,3,4,5];
+
+	// [staffIconHelper] call CBA_fnc_removePerFrameHandler;
 	staffIconHelper = [{
 
 		// remove if not safe start
@@ -37,13 +45,21 @@
 			_text = format["STAFF | %1 | %2", _name, _role];
 			_pos = _staffMember modelToWorldVisual [0,0,0];
 
-			if (player distance _staffMember >= 15 && player distance _staffMember <= 300) then {
-				drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 0.3], [(_pos select 0), (_pos select 1), 3], 0.6, 0.6, 0, "", true, 0.05, "PuristaBold", "center"];
-			} else {
-				if (player distance _staffMember < 15) then {
-					drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 1], [(_pos select 0), (_pos select 1), (_pos select 2) + 3], 1, 1, 0, _text, true, 0.05, "PuristaBold", "center"];
+			// _staffMember = _x;
+			// _text = "STAFF | John | Staff Guy";
+
+			_pos = _staffMember modelToWorldVisual [0,0,3];
+			// _pos = _x modelToWorldVisual [0,0,3];
+
+			switch (true) do {
+				case (player distance _staffMember <= 15): {
+					drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 1], [(_pos select 0), (_pos select 1), (_pos select 2)], 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+				};
+				case (player distance _staffMember <= 300): {
+					drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 0.3], _pos, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, "", true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
 				};
 			};
+		// } forEach testUnits;
 		} forEach (missionNamespace getVariable "staffPlayers");
 	}, 0] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
