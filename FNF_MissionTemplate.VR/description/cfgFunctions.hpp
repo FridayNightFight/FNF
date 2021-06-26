@@ -111,5 +111,11 @@ class CfgFunctions {
       class overTimeEnd{};
       class gameEnd{};
     };
+    class webhook {
+      file = "server\webhook";
+      class webhook_roundPrep;
+      class webhook_roundStart;
+      class webhook_roundEnd;
+    };
   };
 };
