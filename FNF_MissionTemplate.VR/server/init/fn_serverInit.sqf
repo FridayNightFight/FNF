@@ -28,10 +28,10 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
   if (_vic isKindOf "Man") exitWith {}; //Exit so the code below doesn't run for infantry units
 
 	if !(_vic getVariable ["fnf_clearInventoryExclude", false]) then {
-		clearBackpackCargoGlobal _vic;
-		clearWeaponCargoGlobal _vic;
-		clearItemCargoGlobal _vic;
-		clearMagazineCargoGlobal _vic;
+    clearBackpackCargoGlobal _vic;
+    clearWeaponCargoGlobal _vic;
+    clearItemCargoGlobal _vic;
+    clearMagazineCargoGlobal _vic;
 	};
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
