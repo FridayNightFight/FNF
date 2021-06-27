@@ -25,11 +25,6 @@ call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 //Wait for ACE spectator display and disable typing
 [{!isNull findDisplay 60000}, {60000 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
-//Returns true if obj can be drawn
-phx_iconHandle = [{
-  drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL term1, 0.6, 0.6, 45];
-} , 0, []] call CBA_fnc_addPerFrameHandler;
-
 
 
 if (serverCommandAvailable "#kick") then {

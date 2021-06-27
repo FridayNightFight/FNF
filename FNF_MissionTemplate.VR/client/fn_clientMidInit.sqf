@@ -1,5 +1,3 @@
-[phx_iconHandle] call CBA_fnc_removePerFrameHandler;
-
 phx_LoadoutChosen = false;
 
 call PHX_fnc_roles;

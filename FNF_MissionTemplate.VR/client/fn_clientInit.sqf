@@ -1,3 +1,9 @@
+phx_iconHandle = [{
+  if (ace_spectator_isset) then {
+    drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL term1, 0.6, 0.6, 45];
+  };
+} , 0, []] call CBA_fnc_addPerFrameHandler;
+
 phx_keyDownEHId = -1;
 if !(call phx_fnc_clientCanPlay) exitWith {
 		call phx_fnc_spectatorInit;
@@ -5,7 +11,6 @@ if !(call phx_fnc_clientCanPlay) exitWith {
 			player setDamage 1;
 			[{phx_safetyEnabled},{
 				[false,false,false] call ace_spectator_fnc_setSpectator;
-				[phx_iconHandle] call CBA_fnc_removePerFrameHandler;
 				call PHX_fnc_clientInit;
 			}] call CBA_fnc_waitUntilAndExecute;
 		};

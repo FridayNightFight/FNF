@@ -1,0 +1,9 @@
+disable the auto marking, it looks dumb atm
+
+add the player markers again
+
+removing controls still doesnt work but loadout lockout works now // genuinely no idea how to fix this
+
+look into TP in random pos within a marker?  //  may be possible with BIS_fnc_randomPOS
+
+scroll wheel to reopen loadout selector  //  simple add and remove action to set loadout chosen to false
