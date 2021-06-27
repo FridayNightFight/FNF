@@ -29,19 +29,19 @@ class Cfg3DEN
 						tooltip = "If checked, this object will be excluded from the FNF custom object marking script.";
 						expression = "_this setVariable ['%s',_value];";
 						typeName = "BOOL";
-						condition = "1 - objectControllable";
+						condition = "1 - objectControllable - objectVehicle";
 						defaultValue = false;
           };
-					class fnf_clearInventoryExclude
+					class fnf_clearInventory
           {
-						property = "FNF_AutoClearExclude";
+						property = "FNF_InventoryAutoClear";
 						control = "Checkbox";
-						displayName = "Exclude From Inventory Clear";
-						tooltip = "If checked, vehicle inventory will NOT be cleared.";
+						displayName = "Clear Inventory";
+						tooltip = "If checked, the vehicle's inventory will be cleared.";
 						expression = "_this setVariable ['%s',_value];";
 						typeName = "BOOL";
 						condition = "objectVehicle";
-						defaultValue = false;
+						defaultValue = true;
           };
         };
       };
