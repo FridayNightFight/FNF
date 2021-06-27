@@ -19,7 +19,7 @@ class Cfg3DEN
       {
         displayName = "FNF Properties";
         collapsed = 1;
-        class Attributes
+		class Attributes
 		{
 			class fnf_autoMarkExclude
 			{
@@ -43,7 +43,7 @@ class Cfg3DEN
 				condition = "objectVehicle";
 				defaultValue = true;
 			};
-        };
+		};
       };
     };
   };
