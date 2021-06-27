@@ -42,7 +42,7 @@ class Cfg3DEN
 						typeName = "BOOL";
 						condition = "objectVehicle";
 						defaultValue = true;
-          };
+					};
         };
       };
     };
