@@ -3,6 +3,20 @@ Creates a safety for the player. Restricts shooting and throwing grenades.
 Removed at safe start end.
 */
 
+phx_loadoutAction = player addAction
+[
+	"Select Loadout",
+	{
+		phx_LoadoutChosen = false;
+	},
+	nil,
+	1.5,
+	true,
+	false,
+	"",
+	"_originalTarget == _this"
+];
+
 phx_safeStartNoFire = nil;
 
 //Make player invincible
@@ -45,6 +59,7 @@ phx_acePlacing = [{
 
 [{!phx_safetyEnabled}, {
   [phx_acePlacing] call CBA_fnc_removePerFrameHandler;
+  player removeAction phx_loadoutAction;
   player removeAction phx_safeStartNoFire;
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
