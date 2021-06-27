@@ -21,8 +21,8 @@ class Cfg3DEN
         collapsed = 1;
         class Attributes
         {
-          class fnf_autoMarkExclude
-          {
+					class fnf_autoMarkExclude
+					{
 						property = "FNF_MarkingExclude";
 						control = "Checkbox";
 						displayName = "Exclude from Map Auto-Mark";
@@ -31,9 +31,9 @@ class Cfg3DEN
 						typeName = "BOOL";
 						condition = "1 - objectControllable - objectVehicle";
 						defaultValue = false;
-          };
+					};
 					class fnf_clearInventory
-          {
+					{
 						property = "FNF_InventoryAutoClear";
 						control = "Checkbox";
 						displayName = "Clear Inventory";
