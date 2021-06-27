@@ -20,7 +20,7 @@ class Cfg3DEN
         displayName = "FNF Properties";
         collapsed = 1;
         class Attributes
-        {
+				{
 					class fnf_autoMarkExclude
 					{
 						property = "FNF_MarkingExclude";
