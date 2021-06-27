@@ -44,7 +44,7 @@ class Cfg3DEN
 						defaultValue = true;
 					};
 				};
-      };
-    };
+			};
+		};
 	};
 };
