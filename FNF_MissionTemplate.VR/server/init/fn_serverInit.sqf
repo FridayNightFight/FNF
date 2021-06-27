@@ -24,7 +24,7 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
 
 //Clear vehicle inventories
 ["AllVehicles", "init", {
-	private _vic = (_this select 0);
+  private _vic = (_this select 0);
   if (_vic isKindOf "Man") exitWith {}; //Exit so the code below doesn't run for infantry units
 
   if !(_vic getVariable ["fnf_clearInventoryExclude", false]) then {

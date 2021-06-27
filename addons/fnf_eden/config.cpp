@@ -25,20 +25,20 @@ class Cfg3DEN
           {
 						property = "FNF_MarkingExclude";
 						control = "Checkbox";
-            displayName = "Exclude from Map Auto-Mark";
-            tooltip = "If checked, this object will be excluded from the FNF custom object marking script.";
-            expression = "_this setVariable ['%s',_value];";
+						displayName = "Exclude from Map Auto-Mark";
+						tooltip = "If checked, this object will be excluded from the FNF custom object marking script.";
+						expression = "_this setVariable ['%s',_value];";
 						typeName = "BOOL";
-            condition = "1 - objectControllable";
-            defaultValue = false;
+						condition = "1 - objectControllable";
+						defaultValue = false;
           };
 					class fnf_clearInventoryExclude
           {
 						property = "FNF_AutoClearExclude";
 						control = "Checkbox";
-            displayName = "Exclude From Inventory Clear";
-            tooltip = "If checked, vehicle inventory will NOT be cleared.";
-            expression = "_this setVariable ['%s',_value];";
+						displayName = "Exclude From Inventory Clear";
+						tooltip = "If checked, vehicle inventory will NOT be cleared.";
+						expression = "_this setVariable ['%s',_value];";
 						typeName = "BOOL";
 						condition = "objectVehicle";
 						defaultValue = false;
