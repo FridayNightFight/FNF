@@ -30,7 +30,7 @@ class Cfg3DEN
 						expression = "_this setVariable ['%s',_value];";
 						typeName = "BOOL";
 						condition = "1 - objectControllable - objectVehicle";
-						defaultValue = false;
+						defaultValue = "false";
 					};
 					class fnf_clearInventory
 					{
@@ -41,7 +41,7 @@ class Cfg3DEN
 						expression = "_this setVariable ['%s',_value];";
 						typeName = "BOOL";
 						condition = "objectVehicle";
-						defaultValue = true;
+						defaultValue = "true";
 					};
 				};
 			};
