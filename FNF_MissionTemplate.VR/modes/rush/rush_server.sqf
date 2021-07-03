@@ -39,18 +39,27 @@ switch (typeName _terminalHackTime) do {
 
 _termMarkSetup = {
   _mark = "";
+  _markColor = switch (phx_defendingSide) do {
+      case east: {"ColorEAST"};
+      case west: {"ColorWEST"};
+      case independent: {"ColorGUER"};
+      default {"ColorCIV"};
+    };
   switch (_this) do {
     case term1: {
       _mark = createMarker ["term1Mark",getPos term1];
       _mark setMarkerText "Terminal 1 - Active";
+      _mark setMarkerColor _markColor;
     };
     case term2: {
       _mark = createMarker ["term2Mark",getPos term2];
       _mark setMarkerText "Terminal 2 - Inactive";
+      _mark setMarkerColor _markColor;
     };
     case term3: {
       _mark = createMarker ["term3Mark",getPos term3];
       _mark setMarkerText "Terminal 3 - Inactive";
+      _mark setMarkerColor _markColor;
     };
   };
 

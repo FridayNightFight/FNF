@@ -17,6 +17,7 @@ _markerSetup = {
 
   _mark = createMarker [format ["%1Mark",_term],getPos _term];
   _mark setMarkerType "mil_dot";
+  _mark setMarkerColor "ColorCIV";
   _mark setMarkerText format ["Terminal %1", [str _term, 4, 4] call BIS_fnc_trimString];
 };
 
@@ -58,18 +59,28 @@ phx_serverTerminalAction = {
   _mark = str _term + "Mark";
   _termNum = [str _term, 4, 4] call BIS_fnc_trimString;
 
+  _markColor = switch (_side) do {
+    case east: {"ColorEAST"};
+    case west: {"ColorWEST"};
+    case independent: {"ColorGUER"};
+    default {"ColorCIV"};
+  };
+
   switch (_side) do {
     case east: {
       _mark setMarkerText format ["Terminal %1 - OPFOR", _termNum];
       _mark setMarkerType "Faction_OPFOR_EP1";
+      _mark setMarkerColor _markColor;
     };
     case west: {
       _mark setMarkerText format ["Terminal %1 - BLUFOR", _termNum];
       _mark setMarkerType "Faction_BLUFOR_EP1";
+      _mark setMarkerColor _markColor;
     };
     case independent: {
       _mark setMarkerText format ["Terminal %1 - INDFOR", _termNum];
       _mark setMarkerType "Faction_INDFOR_EP1";
+      _mark setMarkerColor _markColor;
     };
   };
 
