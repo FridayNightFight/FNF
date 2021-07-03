@@ -14,7 +14,9 @@ TF_speak_volume_meters = 5;
 call TFAR_fnc_updateSpeakVolumeUI;
 
 //View distance and terrain grid force & disable commanding menu
-[{
+phx_viewDistanceHandler = [{
+  if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {}; //Disable if obj preview is active
+
   if (viewDistance > phx_maxViewDistance) then {
     setViewDistance phx_maxViewDistance;
   };

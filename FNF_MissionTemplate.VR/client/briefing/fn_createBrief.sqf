@@ -89,4 +89,6 @@ player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
   player createDiaryRecord ["PHX_Diary_Details",["Overtime Condition",phx_overTimeConStr]];
 }] call CBA_fnc_waitUntilAndExecute;
 
+//call phx_fnc_objectiveRecon;
+
 phx_briefCreated = true;

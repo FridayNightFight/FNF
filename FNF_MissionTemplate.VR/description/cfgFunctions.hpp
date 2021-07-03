@@ -28,6 +28,7 @@ class CfgFunctions {
       class setGroupIDs{};
       class createBrief{};
       class createOrbat{};
+      class objectiveRecon{};
     };
     class radio {
       file = "client\radio";
@@ -94,6 +95,7 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
+      class objectivePreview{};
     };
     class unflip {
       file = "client\misc\unflip";
