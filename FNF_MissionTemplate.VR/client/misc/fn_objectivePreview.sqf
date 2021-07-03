@@ -74,7 +74,7 @@ _handleCam = {
 			disableSerialization;
 			{(_x call BIS_fnc_rscLayer) cutText ["", "PLAIN"]} forEach ["BIS_layerEstShot", "BIS_layerStatic", "BIS_layerInterlacing"];
 		};
-		
+
 		// Add interlacing to optionsMenuClosed
 		optionsMenuClosed = {
 			("BIS_layerEstShot" call BIS_fnc_rscLayer) cutRsc ["RscEstablishingShot", "PLAIN"];
@@ -192,17 +192,6 @@ _cleanup = {
 	optionsMenuOpened = nil;
 	optionsMenuClosed = nil;
 
-	// restore viewDistance handler
-	viewDistanceHandler = [{
-		if (viewDistance > phx_maxViewDistance) then {
-			setViewDistance phx_maxViewDistance;
-		};
-		if (getTerrainGrid > 25) then {
-			setTerrainGrid 25;
-		};
-	} , 1] call CBA_fnc_addPerFrameHandler;
-
-
 	phx_fnc_objectivePreview_Cam cameraEffect ["TERMINATE", "BACK"];
 	{
 		private ["_layer"];
@@ -277,9 +266,6 @@ phx_fnc_objectivePreview_SITREPText = [
 ];
 // "debug_console" callExtension ("SITREP data prepared" + "#1111");
 
-
-// Remove perFrameHandler limiting view distance
-[viewDistanceHandler] call CBA_fnc_removePerFrameHandler; 
 setViewDistance 6000;
 
 disableSerialization;
