@@ -23,6 +23,7 @@ class CfgFunctions {
       class setGroupIDs{};
       class createBrief{};
       class createOrbat{};
+      class objectiveRecon{};
     };
     class radio {
       file = "client\radio";
