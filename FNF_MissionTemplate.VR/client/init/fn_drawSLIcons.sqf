@@ -1,5 +1,4 @@
 [{!(isNull findDisplay 46) && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
-
 	_sideColor = str playerSide;
 	_colorStr = format["Color%1", _sideColor];
 	_facColor = [];
