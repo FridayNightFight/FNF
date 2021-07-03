@@ -1,4 +1,4 @@
-ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT"];
+ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa"];
 
 _getName = {
   getText (configFile >> "cfgWeapons" >> _this >> "displayName");
@@ -6,7 +6,7 @@ _getName = {
 
 //Admin end start trigger
 if (serverCommandAvailable "#kick") then {
-  PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin"];
+  PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin", "\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa"];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer""; systemChat ""Ending Safe Start"";'>End Safe Start</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
   if !(f_var_mission_timer <= 1) then {
@@ -20,7 +20,7 @@ if (serverCommandAvailable "#kick") then {
   [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "PHX_Diary_Admin_Safestart"}] call CBA_fnc_waitUntilAndExecute;
 };
 
-PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details"];
+PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 _varStr = "";
 

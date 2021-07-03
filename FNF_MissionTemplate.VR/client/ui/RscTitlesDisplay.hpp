@@ -58,7 +58,7 @@ class RscTitles {
         style = 0x00;
         lineSpacing = 1;
         x = 0.855781 * safezoneW + safezoneX;
-        y = 0.104 * safezoneH + safezoneY;
+        y = 0.2 * safezoneH + safezoneY;
         h = 0.055 * safezoneH;
         w = 0.06 * safezoneW; //w == h
         size = 0.020;
