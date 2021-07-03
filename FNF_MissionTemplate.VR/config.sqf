@@ -25,14 +25,16 @@ phx_attackingSide = sideEmpty; //west/east/independent
 
 ////////////////////////////////////////////////////////////
 
-//Uniforms
+//BLUFOR
 phx_bluforUniform = "UNIFORM_MARPAT_WD";
-phx_opforUniform = "UNIFORM_EMR_SUMMER";
-phx_indforUniform = "UNIFORM_M93_OAKLEAF";
-
-//Weapons
 phx_bluforWeapons = "WEAPONS_US";
+
+//OPFOR
+phx_opforUniform = "UNIFORM_EMR_SUMMER";
 phx_opforWeapons = "WEAPONS_RU";
+
+//INDFOR
+phx_indforUniform = "UNIFORM_M93_OAKLEAF";
 phx_indforWeapons = "WEAPONS_IND";
 
 /*
@@ -77,6 +79,7 @@ UNIFORM_ION_BK
 UNIFORM_ION_WD
 UNIFORM_ISRAEL_TAN
 UNIFORM_RANGER
+UNIFORM_WEST_POLICE
 
 =====OPFOR=====
 UNIFORM_EMR_SUMMER
@@ -86,6 +89,7 @@ UNIFORM_MOUNTAIN_FLORA
 UNIFORM_GORKA_GREEN
 UNIFORM_GORKA_BEREZKA
 UNIFORM_SOVIET_CSAT
+UNIFORM_EAST_POLICE
 
 =====INDFOR=====
 UNIFORM_M93_OAKLEAF
@@ -97,5 +101,7 @@ UNIFORM_M10_MOUNTAIN
 UNIFORM_GUERRILLA
 UNIFORM_AAF
 UNIFORM_ALTIS_LIZARD
+UNIFORM_PARAMILITARY
+UNIFORM_IND_POLICE
 =========================================================================================================================
 */

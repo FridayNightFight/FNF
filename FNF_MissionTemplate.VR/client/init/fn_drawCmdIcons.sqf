@@ -1,4 +1,4 @@
-[{!(isNull findDisplay 46) && (!isNil "staffInfo") && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+[{!(isNull findDisplay 46) && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
 
 	// [commandIconsHelper] call CBA_fnc_removePerFrameHandler;
 	commandIconsHelper = [{

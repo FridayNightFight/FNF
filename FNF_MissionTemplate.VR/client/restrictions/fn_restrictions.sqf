@@ -13,7 +13,7 @@ TF_speak_volume_level = "whispering";
 TF_speak_volume_meters = 5;
 call TFAR_fnc_updateSpeakVolumeUI;
 
-//View distance and terrain grid force
+//View distance and terrain grid force & disable commanding menu
 [{
   if (viewDistance > phx_maxViewDistance) then {
     setViewDistance phx_maxViewDistance;
@@ -21,6 +21,8 @@ call TFAR_fnc_updateSpeakVolumeUI;
   if (getTerrainGrid > 25) then {
     setTerrainGrid 25;
   };
+
+  if !(commandingMenu isEqualTo "") then {showCommandingMenu ""};
 } , 1] call CBA_fnc_addPerFrameHandler;
 
 //Disable zeus ping

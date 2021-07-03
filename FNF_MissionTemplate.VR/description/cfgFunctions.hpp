@@ -17,6 +17,7 @@ class CfgFunctions {
       class staggeredLoad{};
       class drawStaffIcons{};
       class drawCmdIcons{};
+      class drawSLIcons{};
       class assetDiaryInfo{};
       class defineStaff{};
       class clientInitCall{postInit = 1;};
@@ -66,6 +67,7 @@ class CfgFunctions {
       class selector_optics{};
       class selector_weapons{};
       class selector_charges{};
+      class selector_grenades{};
     };
     class restrictions {
       file = "client\restrictions";
