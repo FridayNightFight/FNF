@@ -13,3 +13,8 @@ if (phx_magnifiedOptics) then {
   },{(_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)}, {}, _x] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_optics;
+
+_action = ["Optic_Selector","None","",{
+  player removePrimaryWeaponItem ((primaryWeaponItems player) select 2);
+},{((primaryWeaponItems player) select 2) in phx_selector_optics}] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;

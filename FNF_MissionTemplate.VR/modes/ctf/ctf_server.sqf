@@ -53,6 +53,7 @@ switch (phx_attackingSide) do {
 
 createMarker ["flagMark", position ctf_flagPole];
 "flagMark" setMarkerType "hd_flag";
+"flagMark" setMarkerColor "colorOrange";
 
 [phx_defendingSide,"ctfDefendID",[format ["Flag capture time: %1",([phx_flagCaptureTime, "MM:SS"] call BIS_fnc_secondsToString)], "Defend The Flag"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
 [phx_attackingSide,"ctfAttackID",[format ["Flag capture time: %1",([phx_flagCaptureTime, "MM:SS"] call BIS_fnc_secondsToString)], "Capture The Flag"],objNull,"ASSIGNED"] call BIS_fnc_taskCreate;
@@ -123,7 +124,7 @@ phx_server_dropFlag = {
 
   if !(ctf_flag inArea ctf_attackTrig) then {
     ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_white_co.paa";
-    "flagMark" setMarkerColor "colorBlack";
+    "flagMark" setMarkerColor "colorOrange";
     ["The flag has been dropped!"] remoteExec ["phx_fnc_hintThenClear"];
   };
 };
