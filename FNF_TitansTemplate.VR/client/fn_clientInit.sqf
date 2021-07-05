@@ -27,12 +27,12 @@ if (didJIP) then {
 		if (phx_playerSide == west) then
 		{
 			phx_playerSide = east;
-			player setpos ([["opforSafeMarker"]] call BIS_fnc_randomPos)
+			player setpos ("opforSafeMarker" call BIS_fnc_randomPosTrigger)
 		} else {
 			if (phx_playerSide == east) then
 			{
 				phx_playerSide = west;
-				player setpos ([["bluforSafeMarker"]] call BIS_fnc_randomPos)
+				player setpos ("bluforSafeMarker" call BIS_fnc_randomPosTrigger)
 			};
 		};
 	};
