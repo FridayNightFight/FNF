@@ -52,7 +52,7 @@ if (!isNil "phx_ch8") then {phx_radioNoteString = phx_radioNoteString + "Channel
 if (!isNil "phx_ch9") then {phx_radioNoteString = phx_radioNoteString + "Channel 9: " + str(phx_ch9) + " MHz<br/>";};
 
 //Let player know what channels he starts on.
-PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset"];
+PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
 phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
 player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteString]];
 

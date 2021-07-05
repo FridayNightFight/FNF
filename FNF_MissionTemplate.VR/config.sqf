@@ -25,14 +25,16 @@ phx_attackingSide = sideEmpty; //west/east/independent
 
 ////////////////////////////////////////////////////////////
 
-//Uniforms
+//BLUFOR
 phx_bluforUniform = "UNIFORM_MARPAT_WD";
-phx_opforUniform = "UNIFORM_EMR_SUMMER";
-phx_indforUniform = "UNIFORM_M93_OAKLEAF";
-
-//Weapons
 phx_bluforWeapons = "WEAPONS_US";
+
+//OPFOR
+phx_opforUniform = "UNIFORM_EMR_SUMMER";
 phx_opforWeapons = "WEAPONS_RU";
+
+//INDFOR
+phx_indforUniform = "UNIFORM_M93_OAKLEAF";
 phx_indforWeapons = "WEAPONS_IND";
 
 /*

@@ -22,6 +22,19 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
     _marker setMarkerType "Empty";
 } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 
+//Clear vehicle inventories
+["AllVehicles", "init", {
+  private _vic = (_this select 0);
+  if (_vic isKindOf "Man") exitWith {}; //Exit so the code below doesn't run for infantry units
+
+  if (_vic getVariable ["fnf_clearInventory", true]) then {
+    clearBackpackCargoGlobal _vic;
+    clearWeaponCargoGlobal _vic;
+    clearItemCargoGlobal _vic;
+    clearMagazineCargoGlobal _vic;
+  };
+}, true, [], true] call CBA_fnc_addClassEventHandler;
+
 //Delete player bodies during safe start
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
