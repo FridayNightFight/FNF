@@ -1,8 +1,8 @@
 _sideWon = _this;
+missionNamespace setVariable ["phx_term1HackingSide",west,true];
+phx_term1HackingSide = west;
 
-if !(isNil "phx_ticketPFH") then {
-	[phx_ticketPFH] call CBA_fnc_removePerFrameHandler;
-};
+[{!isNil "phx_ticketPFH"}, {[phx_ticketPFH] call CBA_fnc_removePerFrameHandler}] call CBA_fnc_waitUntilAndExecute;
 
 _bluScore = [west] call BIS_fnc_respawnTickets;
 _opScore = [east] call BIS_fnc_respawnTickets;
@@ -32,6 +32,14 @@ if (missionNamespace getVariable ["teamsSwitched", false]) then	{
 	{
 		deleteVehicle _x;
 	} forEach allDeadMen;
+
+	if (markerColor "bluforSafeMarker" == "colorBLUFOR") then {
+		"bluforSafeMarker" setMarkerColor "colorOPFOR";
+		"opforSafeMarker" setMarkerColor "colorBLUFOR";
+	} else {
+		"bluforSafeMarker" setMarkerColor "colorBLUFOR";
+		"opforSafeMarker" setMarkerColor "colorOPFOR";
+	};
 
 	missionNamespace setVariable ["newRound", true, true];
 	call PHX_fnc_serverMidInit;

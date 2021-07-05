@@ -11,7 +11,7 @@ if !(isNull term1) then {
     {},
     {},
     {
-      [term1, phx_playerSide] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term1, playerSide] remoteExec ["phx_serverTerminalAction", 2, false];
     },
     {},
     [],

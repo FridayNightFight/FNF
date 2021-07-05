@@ -27,12 +27,12 @@ if (didJIP) then {
 		if (phx_playerSide == west) then
 		{
 			phx_playerSide = east;
-			player setpos (getpos opforSpawn findEmptyPosition [0, 10, typeOf vehicle player])
+			player setpos ([["opforSafeMarker"]] call BIS_fnc_randomPos)
 		} else {
 			if (phx_playerSide == east) then
 			{
 				phx_playerSide = west;
-				player setpos (getpos bluforSpawn findEmptyPosition [0, 10, typeOf vehicle player])
+				player setpos ([["bluforSafeMarker"]] call BIS_fnc_randomPos)
 			};
 		};
 	};
@@ -93,3 +93,6 @@ _handle = [{
 		} forEach phx_roleList;
 	};
 }, 0, []] call CBA_fnc_addPerFrameHandler;
+
+//Marking
+[] execVM "client\icons\QS_icons.sqf";

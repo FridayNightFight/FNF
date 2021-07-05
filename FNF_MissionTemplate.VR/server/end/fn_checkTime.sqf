@@ -6,8 +6,7 @@ Activates overtime function when time limit is reached.
 private _missionRuntimeSecs = 600 + phx_safetyEndTime;
 phx_alert15 = false;
 phx_alertEnd = false;
-
-[{
+_handle = [{
   params ["_missionRuntimeSecs", "_handle"];
 
   if (phx_gameEnd) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};

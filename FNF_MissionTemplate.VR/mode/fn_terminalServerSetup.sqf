@@ -56,11 +56,11 @@ phx_serverTerminalAction = {
 
   switch (_side) do {
     case east: {
-      _mark setMarkerText format ["Terminal %1 - OPFOR", _termNum];
+      _mark setMarkerText format ["Terminal %1 - Red Team", _termNum];
       _mark setMarkerType "Faction_OPFOR_EP1";
     };
     case west: {
-      _mark setMarkerText format ["Terminal %1 - BLUFOR", _termNum];
+      _mark setMarkerText format ["Terminal %1 - Blue Team", _termNum];
       _mark setMarkerType "Faction_BLUFOR_EP1";
     };
     case independent: {
@@ -74,7 +74,7 @@ phx_serverTerminalAction = {
     [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
   };
 
- format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
+ format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"Red Team"}; case west: {"Blue Team"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
 };
 
 phx_connectionWin = {
@@ -85,8 +85,8 @@ phx_connectionWin = {
 
   [format ["%1 has reached 100 points.\n%1 wins!",
   switch (_sideWon) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
+    case east: {"Red Team"};
+    case west: {"Blue Team"};
     case independent: {"INDFOR"};
   }]] remoteExec ["hint"];
 

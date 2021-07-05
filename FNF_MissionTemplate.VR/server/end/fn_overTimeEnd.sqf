@@ -5,27 +5,6 @@ Overtime end conditions for each game mode
 //Exit if game already ended via other script
 if (phx_gameEnd) exitWith {};
 
-_endGame = {
-  _msg = _this;
-  _defendSide = switch (phx_defendingSide) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
-    case independent: {"INDFOR"};
-  };
-
-  format [_msg + "\n" + _defendSide + " wins!"] remoteExec ["hint"];
-
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
-
-  if (phx_gameMode in ["destroy","uplink"]) then {
-    sleep 10;
-    "end1" call bis_fnc_endmissionserver;
-  };
-};
-
-
-
 _overTimeAlert = false;
 _pointLead = 20;
 while {!phx_gameEnd} do {

@@ -5,14 +5,16 @@
 if (phx_playerSide == west) then
 {
 	phx_playerSide = east;
-	player setpos (getpos opforSpawn findEmptyPosition [0, 10, typeOf vehicle player])
+	player setpos ([["opforSafeMarker"]] call BIS_fnc_randomPos);
 } else {
 	if (phx_playerSide == east) then
 	{
 		phx_playerSide = west;
-		player setpos (getpos bluforSpawn findEmptyPosition [0, 10, typeOf vehicle player])
+		player setpos ([["bluforSafeMarker"]] call BIS_fnc_randomPos);
 	};
 };
+
+[term1,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
 
 [false,false,false] call ace_spectator_fnc_setSpectator;
 

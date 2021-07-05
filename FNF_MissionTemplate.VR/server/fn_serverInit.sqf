@@ -6,10 +6,13 @@ if (!isServer) exitWith {};
 [east, -1] call BIS_fnc_respawnTickets;
 
 call phx_fnc_serverSafety;
-call phx_fnc_markCustomObjs;
+//call phx_fnc_markCustomObjs;
 
 phx_blueTeamScore = 0;
 phx_redTeamScore = 0;
+
+"bluforSafeMarker" setMarkerColor "colorBLUFOR";
+"opforSafeMarker" setMarkerColor "colorOPFOR";
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;
