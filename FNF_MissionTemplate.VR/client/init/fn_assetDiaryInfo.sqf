@@ -48,7 +48,7 @@ _getWeaponry = {
 			} else {
 				_outArr pushBack format["    <font color='#f6dcbf' face='PuristaSemiBold'>%1</font>", _seatCategory];
 			};
-			
+
 			{
 				_outArr pushBack _x;
 			} forEach _thisArr;
@@ -175,17 +175,17 @@ _getMags = {
 };
 
 
-_getInventory = { 
-	params ["_vic"]; 
+_getInventory = {
+	params ["_vic"];
 
 
 	_vicDispName = configOf _vic call BIS_fnc_displayName;
 	private _thisArr = [];
 
-	// _thisArr pushBack getItemCargo _vic; 
-	// _thisArr pushBack getBackpackCargo _vic; 
-	// _thisArr pushBack getMagazineCargo _vic; 
-	// _thisArr pushBack getWeaponCargo _vic; 
+	// _thisArr pushBack getItemCargo _vic;
+	// _thisArr pushBack getBackpackCargo _vic;
+	// _thisArr pushBack getMagazineCargo _vic;
+	// _thisArr pushBack getWeaponCargo _vic;
 
 	private _ItemCargo = [];
 	private _MagazineCargo = [];
@@ -225,7 +225,7 @@ _getInventory = {
 	private _sortedMagazineCargo = ([_MagazineCargo call BIS_fnc_consolidateArray, [], {_x # 0 # 0}] call BIS_fnc_sortBy) select {!(_x # 0 # 0 isEqualTo "")};
 	private _sortedWeaponCargo = ([_WeaponCargo call BIS_fnc_consolidateArray, [], {_x # 0 # 0}] call BIS_fnc_sortBy) select {!(_x # 0 # 0 isEqualTo "")};
 	private _sortedBackpackCargo = ([_BackpackCargo call BIS_fnc_consolidateArray, [], {_x # 0 # 0}] call BIS_fnc_sortBy) select {!(_x # 0 # 0 isEqualTo "")};
-	
+
 	// "debug_console" callExtension(str _sortedItemCargo + "~0100");
 	// "debug_console" callExtension(str _sortedMagazineCargo + "~0100");
 	// "debug_console" callExtension(str _sortedWeaponCargo + "~0100");
@@ -444,8 +444,8 @@ _getVehicleData = {
 		"76561198095073674", // Ghoster
 		"76561198049218642" // Bae
 	];
-	
-	if (count _invLines > 0 && (((getPlayerUID player) in (missionNamespace getVariable "staffInfo")) || ((getPlayerUID player) in _vetterIds))) then {
+
+	if (count _invLines > 0 && (((getPlayerUID player) in (missionNamespace getVariable "fnf_staffInfo")) || ((getPlayerUID player) in _vetterIds))) then {
 		player createDiarySubject ["VicHasInv", "VicsWithInventory", "\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa"];
 		_marker = createMarkerLocal [format["VicWithInvMark_%1", round (random 2000)], getPos _x];
 		_invOutArr = +_outArr;
@@ -462,9 +462,9 @@ _getVehicleData = {
 			false
 		];
 	};
-	
+
 	// "debug_console" callExtension (str _invLines + "~0000");
-	
+
 	_outArr pushBack lineBreak;
 	_outArr pushBack "-------------------------------------------------------------";
 

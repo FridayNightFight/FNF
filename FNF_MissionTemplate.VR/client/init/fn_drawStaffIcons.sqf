@@ -1,4 +1,4 @@
-[{!(isNull findDisplay 46) && (!isNil "staffInfo") && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+[{!(isNull findDisplay 46) && (!isNil "fnf_staffInfo") && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
 
 	missionNamespace setVariable ["staffPlayers", createHashMap];
 	phx_fnfIconSmall = getMissionPath "description\images\fnfsmall.paa";
@@ -7,19 +7,19 @@
 		// remove if not safe start
 		while {phx_safetyEnabled} do {
 
-			_staffInfo = missionNamespace getVariable "staffInfo";
+			_info = missionNamespace getVariable "fnf_staffInfo";
 
 			{
 				private _staffMember = _x call BIS_fnc_getUnitByUID;
 				if (!isNull _staffMember) then {
 					staffPlayers set [_x, [_y # 0, _y # 1, _staffMember]];
 				};
-			} forEach _staffInfo;
+			} forEach _info;
 			sleep 15;
 		};
 	};
 
-	
+
 	// testUnits = [];
 	// {
 	// 	testUnits pushBack (selectRandom (units playerSide select {_x == leader group _x}));

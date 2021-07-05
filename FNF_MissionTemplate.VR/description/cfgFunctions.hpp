@@ -19,7 +19,6 @@ class CfgFunctions {
       class drawCmdIcons{};
       class drawSLIcons{};
       class assetDiaryInfo{};
-      class defineStaff{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -75,7 +74,7 @@ class CfgFunctions {
       class restrictions{};
       class disableMisc{};
       class afkCheck{};
-      class disableTyping{};
+      class disableTyping{postInit = 1;};
       class removeRespawnButton{};
       class hideMarkers{};
       class restrictUniform{};
