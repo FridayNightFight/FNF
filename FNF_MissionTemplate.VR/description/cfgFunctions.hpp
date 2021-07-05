@@ -15,6 +15,11 @@ class CfgFunctions {
       class clientCanPlay{};
       class clientSetupGame{};
       class staggeredLoad{};
+      class drawStaffIcons{};
+      class drawCmdIcons{};
+      class drawSLIcons{};
+      class assetDiaryInfo{};
+      class defineStaff{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -23,6 +28,7 @@ class CfgFunctions {
       class setGroupIDs{};
       class createBrief{};
       class createOrbat{};
+      class objectiveRecon{};
     };
     class radio {
       file = "client\radio";
@@ -89,6 +95,7 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
+      class objectivePreview{};
     };
     class unflip {
       file = "client\misc\unflip";
