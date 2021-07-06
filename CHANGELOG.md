@@ -1,3 +1,31 @@
+# v2.3.0-beta
+Fixed:
+- Fixed wrong unflip action icon path
+
+Added:
+- Template version to admin briefing
+- New uniform sets: UNIFORM_BUNDESWEHR, UNIFORM_HELLENIC_ARMY, UNIFORM_RUSSIAN_SPETSNAZ, UNIFORM_RUSSIAN_RATNIK, UNIFORM_SOVIET_AFGHAN, UNIFORM_SOVIET_WINTER, UNIFORM_RUSSIAN_SPRING, UNIFORM_M88, UNIFORM_JUNGLE, UNIFORM_RANGER, UNIFORM_PARAMILITARY, UNIFORM_WEST_POLICE, UNIFORM_EAST_POLICE, UNIFORM_IND_POLICE
+- New weapon sets: WEAPONS_FAL_COLDWAR, WEAPONS_M14, WEAPONS_SOVIET
+- Added black base uniform sets
+- CEs can choose between thermite and frag grenades
+- FNF mod was updated with 2 Eden object attributes for use with this template update. Auto-clear vehicle inventory (default enabled) and exclude object from auto-mark script (default disabled)
+- Added CUP plants to blacklist for automatic objects marking script
+- Added a few new variables that you can use to prevent the uniform base sets from overwriting a uniform set. Details in "client\loadout\uniforms\README.MD"
+- Added player FNF Staff icons
+- Added player commander icons
+- Added player squad leader icons
+- Added side assets lists to game briefing
+- Added a beta version of a sat-style preview of the game objectives (admin-triggered only for now)
+
+Removed:
+
+Changed:
+- Changed color of objective markers to match the defending side and to no longer conflict with the object auto-mark script marker color
+- Disabled the Commanding Menu
+- Fortify objects (besides sandbags and planks) can no longer be placed in buildings or above terrain level. Now needs to be touching the terrain
+- Slight increase of default fortify budget to 125
+- CTF defenders can no longer pick up the flag
+
 # v2.2.2
 1. Fixed UNIFORM_OEF_CP and UNIFORM_M93_WOODLAND uniform sets not having a vest
 2. Added READMEs for the uniform and weapon sets

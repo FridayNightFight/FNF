@@ -57,8 +57,7 @@ phx_magnifiedOptics = false; //Allow players to grab magnified optics from the g
 phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
 //Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
 
-phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
-phx_fortifyPoints = 100; //Currency for fortify - individual to each Combat Engineer
+phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 
