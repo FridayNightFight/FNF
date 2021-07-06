@@ -5,10 +5,10 @@ phx_loadout_headgear = "rhsusf_opscore_fg_pelt";
 if (pRole == ROLE_CLS) then {
   phx_loadout_vest = "rhs_6b3_AK_3";
 };
-if (pRole == ROLE_PL || pRole == ROLE_SL) then {
+if (phx_loadout_unitLevel == 2) then {
   phx_loadout_vest = "rhs_6b3_R148";
 };
-if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
+if (phx_loadout_unitLevel == 1) then {
   phx_loadout_vest = "rhs_6b3_R148";
 };
 if (pRole == ROLE_MK) then {
