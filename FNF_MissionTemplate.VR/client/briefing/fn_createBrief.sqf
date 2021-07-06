@@ -7,6 +7,7 @@ _getName = {
 //Admin end start trigger
 if (serverCommandAvailable "#kick") then {
   PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin", "\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa"];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin",format ["Template Version: %1", phx_templateVersion]]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer""; systemChat ""Ending Safe Start"";'>End Safe Start</execute>"]];
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
   if !(f_var_mission_timer <= 1) then {
