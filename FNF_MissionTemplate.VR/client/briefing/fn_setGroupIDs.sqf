@@ -175,6 +175,8 @@ _groups = [
     ["Green_H3","H3","Hotel Three (Air)",0, [4, 1, [10, 10.1, 10.2, 10.3]] ]
 ];
 
+phx_templateGroupsList = _groups apply {_x select 0};
+
 private ["_grp"];
 {
     // Check first if the group exists
