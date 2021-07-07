@@ -4,20 +4,48 @@ _getName = {
   getText (configFile >> "cfgWeapons" >> _this >> "displayName");
 };
 
+phx_safetyEndExpression = {
+  [] spawn {
+    private _result = true;
+
+    if (!isServer) then {
+      _result = ["Are you sure you want to end safestart?", "Confirm", true, true] call BIS_fnc_guiMessage;
+    };
+
+    if (_result) then {
+      f_var_mission_timer = -1;
+      publicVariableServer "f_var_mission_timer";
+      systemChat "Ending Safe Start";
+    };
+  };
+};
+
 //Admin end start trigger
 if (serverCommandAvailable "#kick") then {
   PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin", "\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa"];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin",format ["Template Version: %1", phx_templateVersion]]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = -1; publicVariableServer ""f_var_mission_timer""; systemChat ""Ending Safe Start"";'>End Safe Start</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
-  if !(f_var_mission_timer <= 1) then {
-    f_var_mission_timer = f_var_mission_timer - 1;
-    publicVariableServer ""f_var_mission_timer"";
-  };
-  systemChat format [""New safe start time: %1 mins"", f_var_mission_timer];
-  '>-1 Minute to Safe Start</execute>"]];
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='f_var_mission_timer = f_var_mission_timer + 1; publicVariableServer ""f_var_mission_timer""; systemChat format [""New safe start time: %1 mins"", f_var_mission_timer];'>+1 Minute to Safe Start</execute>"]];
 
+  //display template version
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin",format ["Template Version: %1", phx_templateVersion]]];
+  //end safety
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call phx_safetyEndExpression'>End Safe Start</execute>"]];
+
+  //-1 minute to safety
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
+    if !(f_var_mission_timer <= 1) then {
+      f_var_mission_timer = f_var_mission_timer - 1;
+      publicVariableServer ""f_var_mission_timer"";
+    };
+    systemChat format [""New safe start time: %1 mins"", f_var_mission_timer];
+  '>-1 Minute to Safe Start</execute>"]];
+
+  //+1 minute to safety
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
+    f_var_mission_timer = f_var_mission_timer + 1;
+    publicVariableServer ""f_var_mission_timer"";
+    systemChat format [""New safe start time: %1 mins"", f_var_mission_timer];
+  '>+1 Minute to Safe Start</execute>"]];
+
+  //remove admin diary subject once safety ends
   [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "PHX_Diary_Admin_Safestart"}] call CBA_fnc_waitUntilAndExecute;
 };
 
@@ -25,6 +53,7 @@ PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Det
 
 _varStr = "";
 
+//show blufor uniform and headgear if side is present
 if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") then {
   _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_uniform >> "picture");
   _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_headgear >> "picture");
@@ -41,6 +70,7 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
   _varStr = _varStr + format ["BLUFOR MAT: %1", phx_bluAT call _getName] + "<br/>";
 };
 
+//show opfor uniform and headgear if side is present
 if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
   _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_uniform >> "picture");
   _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_headgear >> "picture");
@@ -57,6 +87,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
   _varStr = _varStr + format ["OPFOR MAT: %1", phx_redAT call _getName] + "<br/>";
 };
 
+//show indfor uniform and headgear if side is present
 if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") then {
   _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_uniform >> "picture");
   _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_headgear >> "picture");
@@ -73,6 +104,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
   _varStr = _varStr + format ["INDFOR MAT: %1", phx_grnAT call _getName] + "<br/>";
 };
 
+//list some pertinent variables
 if (phx_defendingSide != sideEmpty) then {
   _varStr = _varStr + "<br/>";
   _varStr = _varStr + format ["Defender fortify points: %1", phx_fortifyPoints];
@@ -92,4 +124,4 @@ player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
 
 //call phx_fnc_objectiveRecon;
 
-phx_briefCreated = true;
+phx_briefCreated = true; //let phx_fnc_briefInit know the briefing is created
