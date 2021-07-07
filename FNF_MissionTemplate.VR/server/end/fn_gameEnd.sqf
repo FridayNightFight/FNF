@@ -30,7 +30,7 @@ switch (_sideWon) do {
 [[getText(configfile >> "CfgMarkers" >> _flagStr >> "texture"), 2],[_sideWonName, 1.5], [_condition, 1, [1, 1, 1, 1]], false] remoteExec ["CBA_fnc_notify", 0];
 // [[getText(configfile >> "CfgMarkers" >> _flagStr >> "texture"), 2],[_sideWonName, 1.5, _facColor], [_condition, 1, [1, 1, 1, 1]], false] remoteExec ["CBA_fnc_notify", 0];
 
-if (isDedicated) then {
+if (isClass (configFile >> "CfgPatches" >> "OCAP")) then {
 	[_sideWon, format["%1 %2", _sideWonName, _condition]] call ocap_fnc_exportData;
 };
 
