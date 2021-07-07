@@ -2,7 +2,7 @@ params ["_sideWon", "_condition"];
 
 
 private _sideWonStr = str _sideWon;
-private _sideWonName = (_sideWon call BIS_fnc_sideID) call BIS_fnc_sideName;
+private _sideWonName = _sideWon call BIS_fnc_sideName;
 _colorStr = format["Color%1", _sideWonStr];
 private _flagStr = "";
 private _facColor = [];
@@ -30,7 +30,7 @@ switch (_sideWon) do {
 [[getText(configfile >> "CfgMarkers" >> _flagStr >> "texture"), 2],[_sideWonName, 1.5], [_condition, 1, [1, 1, 1, 1]], false] remoteExec ["CBA_fnc_notify", 0];
 // [[getText(configfile >> "CfgMarkers" >> _flagStr >> "texture"), 2],[_sideWonName, 1.5, _facColor], [_condition, 1, [1, 1, 1, 1]], false] remoteExec ["CBA_fnc_notify", 0];
 
-[_sideWon, format["%1 %2", _sideWonName, _condition] call ocap_fnc_exportData;
+[_sideWon, format["%1 %2", _sideWonName, _condition]] call ocap_fnc_exportData;
 
 sleep 10;
 
