@@ -296,7 +296,7 @@ ace_quickmount_priority = 0;
 force force ace_quickmount_speed = 18;
 
 // ACE Respawn
-force force ace_respawn_removeDeadBodiesDisconnected = true;
+force force ace_respawn_removeDeadBodiesDisconnected = false;
 force force ace_respawn_savePreDeathGear = false;
 
 // ACE Scopes
