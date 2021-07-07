@@ -183,7 +183,7 @@ private ["_grp"];
     if (!isNull _grp) then {
         if !((groupID _grp) isEqualTo _shortName) then {
             _grp setGroupIdGlobal [_shortName,"GroupColor0"];
-            _grp setVariable ["phx_groupIDSet",true,true];
+            //_grp setVariable ["phx_groupIDSet",true,true];
         };
         _grp setVariable ["phx_groupIdentifier",_identifier];
         _grp setVariable ["phx_LongName",_longName];
