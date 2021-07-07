@@ -38,6 +38,10 @@ phx_acePlacing = [{
     };
   };
 
+  if (isManualFire vehicle player) then {
+    player action ["manualFireCancel", vehicle player];
+  };
+
   if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
 } , 0] call CBA_fnc_addPerFrameHandler;
 
