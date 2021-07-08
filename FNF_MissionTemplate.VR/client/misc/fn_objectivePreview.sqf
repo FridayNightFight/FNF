@@ -365,8 +365,8 @@ switch true do {
 
 	case (phx_gameMode == "destroy"):{// DESTROY (CACHES)
 
-		_obj = missionNamespace getVariable [format["destroy_obj%1", _objectiveNumber], nil];
-		_objMark = format["destroy_obj%1Mark", _objectiveNumber];
+		_obj = missionNamespace getVariable [format["destroy_obj_%1", _objectiveNumber], nil];
+		_objMark = format["destroy_obj_%1_mark", _objectiveNumber];
 		if (isNil "_obj") exitWith {systemChat "Objective not found"};
 		if (isNull _obj) exitWith {systemChat "Objective not found"};
 		_targetPos = [[_objMark]] call BIS_fnc_randomPos;

@@ -14,9 +14,9 @@ if (!isNil "term1") then {phx_specObjectives pushBack term1};
 if (!isNil "term2") then {phx_specObjectives pushBack term2};
 if (!isNil "term3") then {phx_specObjectives pushBack term3};
 
-if (!isNil "destroy_obj1") then {phx_specObjectives pushBack destroy_obj1};
-if (!isNil "destroy_obj2") then {phx_specObjectives pushBack destroy_obj2};
-if (!isNil "destroy_obj3") then {phx_specObjectives pushBack destroy_obj3};
+if (!isNil "destroy_obj_1") then {phx_specObjectives pushBack destroy_obj_1};
+if (!isNil "destroy_obj_2") then {phx_specObjectives pushBack destroy_obj_2};
+if (!isNil "destroy_obj_3") then {phx_specObjectives pushBack destroy_obj_3};
 
 if (!isNil "ctf_flag") then {phx_specObjectives pushBack ctf_flag};
 
