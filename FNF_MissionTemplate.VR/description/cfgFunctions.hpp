@@ -89,6 +89,7 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
+      class adminGameEnd{};
     };
     class unflip {
       file = "client\misc\unflip";
@@ -110,6 +111,7 @@ class CfgFunctions {
       class checkTime{};
       class overTimeEnd{};
       class gameEnd{};
+      class endElimination{};
     };
   };
 };
