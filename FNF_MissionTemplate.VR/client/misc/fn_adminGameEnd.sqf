@@ -5,7 +5,7 @@ Generally only used for manual game end from side elimination.
 
 params ["_display"];
 
-//don't show display if not admin, still safestart, or game has already ended
+//Don't show display if not admin, still safestart, or game has already ended
 if !(serverCommandAvailable "#kick") exitWith {};
 if (missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {};
 if (missionNamespace getVariable ["phx_gameEnd",false]) exitWith {};
@@ -38,12 +38,12 @@ _buttonCtrl ctrlSetText "End Game";
 _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
   if (missionNamespace getVariable ["phx_gameEnd",false]) exitWith {};
 
-  private _ctrl = (findDisplay 49) displayCtrl 34768; //Get side-selection contorl
-  private _selection = lbCurSel _ctrl;
-  if (_selection < 1) exitWith {}; //Exit if nothing or the default is selected
+  private _ctrl = (findDisplay 49) displayCtrl 34768; //Get side-selection control
+  private _selectionIndex = lbCurSel _ctrl;
+  if (_selectionIndex < 1) exitWith {}; //Exit if nothing or the default is selected
 
   //Get side from selected control index
-  private _sideWon = switch (_selection) do {
+  private _sideWon = switch (_selectionIndex) do {
     case 1: {west};
     case 2: {east};
     case 3: {independent};
@@ -54,7 +54,12 @@ _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
   _sideWon spawn {
     private _sideWon = _this;
     private _sideWonText = _sideWon call BIS_fnc_sideName;
-    private _result = [format ["Are you sure you want %1 to win?", _sideWonText], "Confirm", true, true] call BIS_fnc_guiMessage;
+    private _parentDisplay = findDisplay 46; //Mission display
+    private _spectatorDisplay = findDisplay 60000; //ACE spectator display
+
+    if (!isNull _spectatorDisplay) then {_parentDisplay = _spectatorDisplay}; //If ACE spectator display is active, use it for GUI message parent display
+
+    private _result = [format ["Are you sure you want %1 to win?", _sideWonText], "Confirm", true, true, _parentDisplay] call BIS_fnc_guiMessage;
 
     if (_result) then {
       [_sideWon] remoteExec ["phx_fnc_endElimination",2];
