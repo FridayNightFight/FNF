@@ -13,6 +13,8 @@ if (west countSide phx_playersInMission > 0) then {phx_bluforInMission = true};
 if (east countSide phx_playersInMission > 0) then {phx_opforInMission = true};
 if (independent countSide phx_playersInMission > 0) then {phx_indforInMission = true};
 
+phx_numberOfSides = {_x} count [phx_bluforInMission,phx_opforInMission,phx_indforInMission];
+
 phx_checkAlive_count = {
   params ["_side"];
 
@@ -41,4 +43,20 @@ phx_checkAlive_count = {
     _indCount = independent call phx_checkAlive_count;
     if (_indCount < 1) then {phx_indforInMission = false; "INDFOR eliminated!" remoteExec ["hint"]};
   };
+
+  /*
+  if (count ([phx_bluforInMission, phx_opforInMission, phx_indforInMission] select {_x == true}) == 1 && phx_numberOfSides > 1) then {
+    phx_gameEnd = true;
+    publicVariable "phx_gameEnd";
+
+    private _sideWon = switch (true) do {
+      case (phx_bluforInMission): {west};
+      case (phx_opforInMission): {east};
+      case (phx_indforInMission): {independent};
+      default {civilian};
+    };
+
+    [_sideWon, "has won by elimination!"] spawn phx_fnc_gameEnd;
+  };
+  */
 }, 10] call CBA_fnc_addPerFrameHandler;

@@ -94,6 +94,7 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
+      class adminGameEnd{};
       class objectivePreview{};
     };
     class unflip {
@@ -115,6 +116,8 @@ class CfgFunctions {
       class checkAlive{};
       class checkTime{};
       class overTimeEnd{};
+      class gameEnd{};
+      class endElimination{};
     };
   };
 };

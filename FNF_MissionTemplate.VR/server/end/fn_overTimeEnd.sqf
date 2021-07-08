@@ -7,26 +7,16 @@ if (phx_gameEnd) exitWith {};
 
 _endGame = {
   _msg = _this;
-  _defendSide = switch (phx_defendingSide) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
-    case independent: {"INDFOR"};
-  };
-
-  format [_msg + "\n" + _defendSide + " wins!"] remoteExec ["hint"];
 
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  if (phx_gameMode in ["destroy","uplink"]) then {
-    sleep 10;
-    "end1" call bis_fnc_endmissionserver;
-  };
+  [phx_defendingSide, _msg] spawn phx_fnc_gameEnd;
 };
 
 switch (true) do {
   case (phx_gameMode == "destroy"): {
-    _defMsg = "The objectives have been defended.";
+    _defMsg = "has successfully defended the objectives and won!";
     if (phx_aliveObjectives == 1) then {
       _obj = [];
       _alert = false;
@@ -67,7 +57,7 @@ switch (true) do {
         {
           _x remoteExec ["removeAllActions",0,false];
         } forEach [term1,term2,term3];
-        "The objectives have been defended." call _endGame;
+        "has successfully defended the objectives and won!" call _endGame;
       } else {
         if (!_alert) then {
           //"Overtime enabled. \n The mission will end if no terminals are being hacked" remoteExec ["hintSilent", 0, false];
@@ -101,7 +91,7 @@ switch (true) do {
         {
           _x remoteExec ["removeAllActions",0,false];
         } forEach [term1,term2,term3];
-        "The objectives have been defended." call _endGame;
+        "has successfully defended the objectives and won!" call _endGame;
       };
       sleep 1;
     };
@@ -120,7 +110,7 @@ switch (true) do {
       _attackersInside = {(alive _x) && (lifeState _x != "INCAPACITATED") && (side _x == phx_attackingSide) && (_x inArea _finalSector)} count playableUnits;
 
       if (_attackersInside == 0) then {
-        "The sectors have been defended." call _endGame;
+        "has successfully defended the sectors and won!" call _endGame;
       };
       sleep 3;
     };
@@ -134,7 +124,7 @@ switch (true) do {
         [player,phx_client_dropFlagAction] remoteExec ["removeAction",0,false];
         deleteVehicle ctf_flag;
         deleteMarker "flagMark";
-        "The flag has not been captured." call _endGame;
+        "has successfully defended the flag!" call _endGame;
       };
       sleep 2;
     };
@@ -193,16 +183,10 @@ switch (true) do {
       if (_highSide == independent && (_indBluDif < _pointLead || _indOpfDif < _pointLead)) then {_overtime = true};
 
       if (!_overtime) then {
-        _sideText = switch (_highSide) do {
-          case east: {"OPFOR"};
-          case west: {"BLUFOR"};
-          case independent: {"INDFOR"};
-          default {"Nobody"};
-        };
 
-        format ["The mission time limit has been reached.\n%1 wins!", _sideText] remoteExec ["hint"];
         phx_gameEnd = true;
         publicVariable "phx_gameEnd";
+        [_highSide, "wins to mission time limit!"] spawn phx_fnc_gameEnd;
       } else {
         if (!_overTimeAlert) then {
           "Overtime enabled! \n The first side to hit 100 points or a 20 point lead will win." remoteExec ["hint"];
