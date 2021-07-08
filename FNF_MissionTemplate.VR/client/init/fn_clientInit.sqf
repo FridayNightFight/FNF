@@ -8,9 +8,11 @@ call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
 call phx_fnc_initLoadout; //Loadout vars
 call phx_fnc_radio_waitGear; //Start radio preset functions
+call phx_fnc_assetDiaryInfo; // Add diary entries for assets
+call phx_fnc_drawStaffIcons; // Draw labels over staff members
+call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
+call phx_fnc_drawSLIcons; //Draw labels over squad leaders
 
-//Disable chat typing for mission display
-[{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {call phx_fnc_setLoadout}] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear

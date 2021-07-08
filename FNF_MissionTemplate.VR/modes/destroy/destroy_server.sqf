@@ -17,6 +17,13 @@ if ((_obj1 select 0) != destroy_obj1) then {
   if !(_x in _obj1 || _x in _obj2 || _x in _obj3) then {
     deleteVehicle _x;
     deleteMarker ((str _x) + "Mark");
+  } else {
+    switch (phx_defendingSide) do {
+      case east: { ((str _x) + "Mark") setMarkerColor "ColorEAST"};
+      case west: { ((str _x) + "Mark") setMarkerColor "ColorWEST"};
+      case independent: { ((str _x) + "Mark") setMarkerColor "ColorGUER"};
+      default { ((str _x) + "Mark") setMarkerColor "ColorCIV"};
+    };
   };
 } forEach [destroy_obj1, destroy_obj2];
 

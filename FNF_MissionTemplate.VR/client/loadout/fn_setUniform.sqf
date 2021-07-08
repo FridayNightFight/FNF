@@ -1,4 +1,7 @@
 phx_loadout_lrRadio = "";
+phx_loadout_headgear_lock = false;
+phx_loadout_vest_lock = false;
+phx_loadout_backpack_lock = false;
 
 switch (playerSide) do {
   case east: {pUniform = phx_opforUniform; phx_loadout_lrRadio = "TFAR_mr3000_rhs"};

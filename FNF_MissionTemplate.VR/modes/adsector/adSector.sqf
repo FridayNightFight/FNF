@@ -49,9 +49,10 @@ _sectorNum = 0;
     };
 
     switch (phx_defendingSide) do {
-      case east: {_mark setMarkerColor "ColorRed"};
-      case west: {_mark setMarkerColor "ColorBlue"};
-      case independent: {_mark setMarkerColor "ColorGreen"};
+      case east: {_mark setMarkerColor "ColorEAST"};
+      case west: {_mark setMarkerColor "ColorWEST"};
+      case independent: {_mark setMarkerColor "ColorGUER"};
+      default {"ColorCIV"};
     };
 
     _dTask = "dtask" + str(_sectorNum);
