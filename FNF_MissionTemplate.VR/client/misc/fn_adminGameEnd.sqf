@@ -11,7 +11,7 @@ if (missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {};
 if (missionNamespace getVariable ["phx_gameEnd",false]) exitWith {};
 
 //Create side-selection combo control and populate
-_listCtrl =_display ctrlCreate ["RscCombo", 34768];
+private _listCtrl = _display ctrlCreate ["RscCombo", 34768];
 _listCtrl ctrlSetPosition [-0.49,0.25,0.2,0.05];
 _listCtrl ctrlCommit 0;
 _listCtrl lbAdd "Select Side";
@@ -29,7 +29,7 @@ _listCtrl lbSetColor [4, [0.6,0,1,1]];
 ///////////////////////////////////////
 
 //Create End Game button display
-_buttonCtrl =_display ctrlCreate ["RscButton", -1];
+private _buttonCtrl = _display ctrlCreate ["RscButton", -1];
 _buttonCtrl ctrlSetPosition [-0.65,0.25,0.15,0.05];
 _buttonCtrl ctrlCommit 0;
 _buttonCtrl ctrlSetText "End Game";
@@ -38,12 +38,12 @@ _buttonCtrl ctrlSetText "End Game";
 _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
   if (missionNamespace getVariable ["phx_gameEnd",false]) exitWith {};
 
-  _ctrl = (findDisplay 49) displayCtrl 34768; //Get side-selection contorl
-  _selection = lbCurSel _ctrl;
+  private _ctrl = (findDisplay 49) displayCtrl 34768; //Get side-selection contorl
+  private _selection = lbCurSel _ctrl;
   if (_selection < 1) exitWith {}; //Exit if nothing or the default is selected
 
   //Get side from selected control index
-  _sideWon = switch (_selection) do {
+  private _sideWon = switch (_selection) do {
     case 1: {west};
     case 2: {east};
     case 3: {independent};
