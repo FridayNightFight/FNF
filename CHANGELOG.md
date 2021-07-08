@@ -1,4 +1,4 @@
-# v2.3.0-beta
+# v2.3.0-beta-1
 Fixed:
 - Fixed wrong unflip action icon path
 
@@ -16,8 +16,7 @@ Added:
 - Added player squad leader icons
 - Added side assets lists to game briefing
 - Added a beta version of a sat-style preview of the game objectives (admin-triggered only for now)
-
-Removed:
+- Admin GUI to choose a winner and end the game
 
 Changed:
 - Changed color of objective markers to match the defending side and to no longer conflict with the object auto-mark script marker color
