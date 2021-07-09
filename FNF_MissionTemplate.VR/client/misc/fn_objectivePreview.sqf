@@ -90,7 +90,6 @@ _handleCam = {
 
 			private ["_key"];
 			_key = _this;
-			"debug_console" callExtension ("instructionsText initiated" + "#1111");
 
 			if (isNil "phx_fnc_objectivePreview_skip") then {
 				// Display instructions
@@ -124,7 +123,6 @@ _handleCam = {
 					"</t>",
 					"</t>"
 				];
-				"debug_console" callExtension ("instructions text vars initialized" + "#1111");
 
 				_ctrlText ctrlSetStructuredText parseText _skipText;
 				_ctrlText ctrlSetFade 1;
@@ -133,12 +131,10 @@ _handleCam = {
 				_ctrlText ctrlSetFade 0;
 				_ctrlText ctrlCommit 1;
 
-				"debug_console" callExtension ("instructions text set, waiting for skip" + "#1111");
 
 				// Wait for video to finish
 				waitUntil {{!(isNil _x)} count ["phx_fnc_objectivePreview_skip"] > 0};
 
-				"debug_console" callExtension ("instructions text - skip detected" + "#1111");
 				// Remove instructions
 				_ctrlText ctrlSetFade 1;
 				_ctrlText ctrlCommit 0;
@@ -264,14 +260,12 @@ phx_fnc_objectivePreview_SITREPText = [
 	["", "<br/>"],
 	[toUpper phx_fnc_objectivePreview_Text, ""]
 ];
-// "debug_console" callExtension ("SITREP data prepared" + "#1111");
 
 setViewDistance 6000;
 
 disableSerialization;
 
 waitUntil {!(isNull ([] call BIS_fnc_displayMission))};
-// "debug_console" callExtension ("missionDisplay is loaded" + "#1111");
 
 // Compile key
 _key = format ["BIS_%1.%2_establishingShot", missionName, worldName];

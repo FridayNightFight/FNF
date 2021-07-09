@@ -29,6 +29,13 @@ missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
   {_x allowDamage true;} forEach vehicles;
 
+  
+  {
+    if (player diarySubjectExists "Recon") then {
+      player removeDiarySubject "Recon";
+    };
+  } remoteExec ["call", -2, true];
+
   {
     if !(getMarkerColor _x isEqualTo "") then {
       [_x] remoteExec ["deleteMarkerLocal",0,true];
