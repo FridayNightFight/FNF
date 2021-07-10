@@ -42,11 +42,10 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
   if (phx_safetyEnabled) then {
     deleteVehicle _unit;
   } else {
-    /*
+    //Not needed with ace_respawn_removeDeadBodiesDisconnected = false
     //After safety ends, keep player bodies by transfering ownership of the unit to the server and then killing it
-    [{owner (_this select 0) == 2}, {(_this select 0) setDamage 1;}, [_unit], 15] call CBA_fnc_waitUntilAndExecute;
-    true;
-    */
+    //[{owner (_this select 0) == 2}, {(_this select 0) setDamage 1;}, [_unit], 15] call CBA_fnc_waitUntilAndExecute;
+    //true;
   };
 }];
 
