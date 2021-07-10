@@ -1,5 +1,8 @@
 // Reconnaissance photos in Diary
+
+//Create diary subject and remove it after safe start ends
 player createDiarySubject["Recon", "Reconnaissance", "\A3\ui_f\data\igui\cfg\simpleTasks\types\scout_ca.paa"];
+[{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "Recon"}] call CBA_fnc_waitUntilAndExecute;
 
 switch (phx_gameMode) do {
     case "destroy":{
