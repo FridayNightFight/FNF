@@ -41,16 +41,18 @@
 
 			_pos = _x modelToWorldVisual [0,0,5];
 
-			switch (true) do {
-				// case (player distance _x <= 15): {
-				// 	private _facColor = +factionColor;
-				// 	_facColor pushBack 0.8;
-				// 	drawIcon3D["", _facColor, [(_pos select 0), (_pos select 1), (_pos select 2)], 0, 0, 0, _thisName, true, 0.03 / (getResolution select 5), "PuristaBold", "center"];
-				// };
-				case (player distance _x <= 300): {
-					private _facColor = +factionColor;
-					_facColor pushBack 0.9;
-					drawIcon3D["", _facColor, _pos, 0, 0, 0, _thisName, true, 0.03 / (getResolution select 5), "PuristaBold", "center"];
+			if (alive _x) then {
+				switch (true) do {
+					// case (player distance _x <= 15): {
+					// 	private _facColor = +factionColor;
+					// 	_facColor pushBack 0.8;
+					// 	drawIcon3D["", _facColor, [(_pos select 0), (_pos select 1), (_pos select 2)], 0, 0, 0, _thisName, true, 0.03 / (getResolution select 5), "PuristaBold", "center"];
+					// };
+					case (player distance _x <= 300): {
+						private _facColor = +factionColor;
+						_facColor pushBack 0.9;
+						drawIcon3D["", _facColor, _pos, 0, 0, 0, _thisName, true, 0.03 / (getResolution select 5), "PuristaBold", "center"];
+					};
 				};
 			};
 		} forEach _slUnits;

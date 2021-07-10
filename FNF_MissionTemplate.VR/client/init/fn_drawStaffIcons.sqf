@@ -51,12 +51,14 @@
 			_pos = _staffMember modelToWorldVisual [0,0,3];
 			// _pos = _x modelToWorldVisual [0,0,3];
 
-			switch (true) do {
-				case (player distance _staffMember <= 15): {
-					drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 1], [(_pos select 0), (_pos select 1), (_pos select 2)], 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
-				};
-				case (player distance _staffMember <= 300): {
-					drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 0.3], _pos, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, "", true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+			if (alive _staffMember) then {
+				switch (true) do {
+					case (player distance _staffMember <= 15): {
+						drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 1], [(_pos select 0), (_pos select 1), (_pos select 2)], 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+					};
+					case (player distance _staffMember <= 300): {
+						drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 0.3], _pos, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, "", true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+					};
 				};
 			};
 		// } forEach testUnits;

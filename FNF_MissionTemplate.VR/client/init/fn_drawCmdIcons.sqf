@@ -23,12 +23,14 @@
 
 			_pos = _x modelToWorldVisual [0,0,2.5];
 
-			switch (true) do {
-				// case (player distance _x <= 15): {
-				// 	drawIcon3D["", [1, 1, 1, 0.8], _pos, 0.6, 0.6, 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];
-				// };
-				case (player distance _x <= 300): {
-					drawIcon3D["", [1, 1, 1, 0.9], _pos, 0.6 / (getResolution select 5), 0.6 / (getResolution select 5), 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];
+			if (alive _x) then {
+				switch (true) do {
+					// case (player distance _x <= 15): {
+					// 	drawIcon3D["", [1, 1, 1, 0.8], _pos, 0.6, 0.6, 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];
+					// };
+					case (player distance _x <= 300): {
+						drawIcon3D["", [1, 1, 1, 0.9], _pos, 0.6 / (getResolution select 5), 0.6 / (getResolution select 5), 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];
+					};
 				};
 			};
 		} forEach _cmdUnits;
