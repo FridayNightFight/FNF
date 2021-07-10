@@ -74,6 +74,11 @@ switch (playerSide) do {
       _errorStr = "Cannot place object. Object needs to be within start zone boundary."
     };
 
+    if (_cost > phx_fortifyPoints) then {
+      _canPlace = false;
+      _errorStr = "Cannot place object. Not enough funds.";
+    };
+
     hintSilent _errorStr;
 
     if (_canPlace) then {
