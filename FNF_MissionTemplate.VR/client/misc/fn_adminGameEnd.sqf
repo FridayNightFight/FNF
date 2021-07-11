@@ -12,7 +12,12 @@ if (missionNamespace getVariable ["phx_gameEnd",false]) exitWith {};
 
 //Create side-selection combo control and populate
 private _listCtrl = _display ctrlCreate ["RscCombo", 34768];
-_listCtrl ctrlSetPosition [-0.49,0.25,0.2,0.05];
+_listCtrl ctrlSetPosition [
+0.08 * safeZoneW + safeZoneX,
+0.365 * safeZoneH + safeZoneY,
+0.08 * safeZoneW,
+0.03 * safeZoneH
+];
 _listCtrl ctrlCommit 0;
 _listCtrl lbAdd "Select Side";
 _listCtrl lbAdd "BLUFOR Wins";
@@ -30,7 +35,12 @@ _listCtrl lbSetColor [4, [0.6,0,1,1]];
 
 //Create End Game button display
 private _buttonCtrl = _display ctrlCreate ["RscButton", -1];
-_buttonCtrl ctrlSetPosition [-0.65,0.25,0.15,0.05];
+_buttonCtrl ctrlSetPosition [
+0.025 * safeZoneW + safeZoneX,
+0.365 * safeZoneH + safeZoneY,
+0.05 * safeZoneW,
+0.03 * safeZoneH
+];
 _buttonCtrl ctrlCommit 0;
 _buttonCtrl ctrlSetText "End Game";
 

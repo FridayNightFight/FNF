@@ -13,7 +13,7 @@ switch (_sideWon) do {
 		_facColor = [west, false] call BIS_fnc_sideColor;
 	};
 	case east: {
-		_flagStr = "Faction_OPFFOR_EP1";
+		_flagStr = "Faction_OPFOR_EP1";
 		_facColor = [east, false] call BIS_fnc_sideColor;
 	};
 	case independent: {
