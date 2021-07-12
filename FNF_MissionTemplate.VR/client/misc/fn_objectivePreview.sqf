@@ -222,6 +222,42 @@ phx_fnc_hideVehiclesExceptObjectives = {
 			["term", vehicleVarName _x] call BIS_fnc_inString
 		)
 	};
+	_fortifyObjs = [ // from fn_fortifyServer
+		"Land_BagFence_01_short_green_F",
+		"Land_BagFence_01_long_green_F",
+		"Land_BagFence_01_round_green_F",
+		"Land_Plank_01_4m_F",
+		"Land_Plank_01_8m_F",
+		"Land_HBarrier_01_wall_4_green_F",
+		"Land_HBarrier_01_wall_corner_green_F",
+		"Land_HBarrier_01_wall_6_green_F",
+		"Land_BagBunker_01_small_green_F",
+		"Land_HBarrier_01_tower_green_F",
+		"Land_BagBunker_01_large_green_F",
+		"Land_Bunker_01_small_F",
+		"Land_Bunker_01_big_F",
+		"Land_Bunker_01_HQ_F",
+		"Land_Bunker_01_tall_F",
+		"Land_BagFence_Short_F",
+		"Land_BagFence_Long_F",
+		"Land_BagFence_Round_F",
+		"Land_Plank_01_4m_F",
+		"Land_Plank_01_8m_F",
+		"Land_HBarrierWall4_F",
+		"Land_HBarrierWall_corner_F",
+		"Land_HBarrierWall6_F",
+		"Land_BagBunker_Small_F",
+		"Land_BagBunker_Tower_F",
+		"Land_BagBunker_Large_F",
+		"Land_Bunker_01_small_F",
+		"Land_Bunker_01_big_F",
+		"Land_Bunker_01_HQ_F",
+		"Land_Bunker_01_tall_F"
+	];
+	{
+		_toProcess append (entities _x);
+	} forEach _fortifyObjs;
+
 	{
 		_x hideObject _hidden;
 	} forEach _toProcess;
