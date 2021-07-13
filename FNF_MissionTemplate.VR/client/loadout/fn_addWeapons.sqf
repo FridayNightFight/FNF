@@ -9,3 +9,10 @@ switch (pRole) do {
   };
   case ROLE_MK: {player addPrimaryWeaponItem phx_loadout_rifle_optic};
 };
+
+_addLaser = {{player addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];};
+switch (typeName phx_addNVG) do {
+  case "BOOL": {if (phx_addNVG) then {call _addLaser};};
+  case "SIDE": {if (playerSide == phx_addNVG) then {call _addLaser};};
+  case "ARRAY": {if (playerSide in phx_addNVG) then {call _addLaser};};
+};
