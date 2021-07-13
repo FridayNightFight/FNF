@@ -2,7 +2,7 @@ phx_loadout_uniform = "rhs_uniform_cu_ucp";
 phx_loadout_vest = "rhsusf_iotv_ucp_Rifleman";
 phx_loadout_headgear = "rhsusf_ach_helmet_headset_ess_ucp_alt";
 
-if (phx_loadout_hasUGL) then {
+if (phx_loadout_unitLevel > 0) then {
   phx_loadout_headgear = "rhsusf_ach_helmet_headset_ucp";
   phx_loadout_vest = "rhsusf_iotv_ucp_Squadleader";
 }; //PL, SL, TL, MGTL

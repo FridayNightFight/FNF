@@ -24,7 +24,7 @@ switch (phx_gameMode) do {
   };
   case "connection": {
     execVM "modes\connection\connection_server.sqf";
-    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 25 points of the highest side. The first side to 100 points will still win.";
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side. The first side to 100 points will still win if mission is within normal time limit.";
   };
   case "captureTheFlag": {
     execVM "modes\ctf\ctf_server.sqf";
@@ -36,7 +36,7 @@ switch (phx_gameMode) do {
   };
   case "neutralSector": {
     execVM "modes\neutralsector\neutralSector.sqf";
-    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side.";
+    phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side. The first side to 100 points will still win if mission is within normal time limit.";
   };
 };
 
@@ -53,8 +53,8 @@ _deleteObj = {
 };
 
 if !(phx_gameMode isEqualTo "destroy") then {
-  {_x call _deleteObj} forEach [destroy_obj1,destroy_obj2];
-  {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]}} forEach ["destroy_obj1Mark","destroy_obj2Mark"];
+  {_x call _deleteObj} forEach [destroy_obj_1,destroy_obj_2];
+  {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]}} forEach ["destroy_obj_1_mark","destroy_obj_2_mark"];
 };
 
 if !(phx_gameMode isEqualTo "uplink" || phx_gameMode isEqualTo "rush" || phx_gameMode isEqualTo "connection") then {

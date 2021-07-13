@@ -39,18 +39,27 @@ switch (typeName _terminalHackTime) do {
 
 _termMarkSetup = {
   _mark = "";
+  _markColor = switch (phx_defendingSide) do {
+      case east: {"ColorEAST"};
+      case west: {"ColorWEST"};
+      case independent: {"ColorGUER"};
+      default {"ColorCIV"};
+    };
   switch (_this) do {
     case term1: {
       _mark = createMarker ["term1Mark",getPos term1];
       _mark setMarkerText "Terminal 1 - Active";
+      _mark setMarkerColor _markColor;
     };
     case term2: {
       _mark = createMarker ["term2Mark",getPos term2];
       _mark setMarkerText "Terminal 2 - Inactive";
+      _mark setMarkerColor _markColor;
     };
     case term3: {
       _mark = createMarker ["term3Mark",getPos term3];
       _mark setMarkerText "Terminal 3 - Inactive";
+      _mark setMarkerColor _markColor;
     };
   };
 
@@ -177,19 +186,11 @@ phx_serverTerminalAction = {
 };
 
 _win = {
-  [format ["All terminals have been hacked.\n%1 wins!",
-  switch (phx_attackingSide) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
-    case independent: {"INDFOR"};
-  }]] remoteExec ["hint"];
-
   //Send var to other scripts and clients to signal that the game has ended
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  uiSleep 20;
-  "end1" call bis_fnc_endMissionServer;
+  [phx_attackingSide, "has successfully hacked all terminals and won!"] spawn phx_fnc_gameEnd;
 };
 
 [phx_defendingSide,"defendTask1",[format ["%1 second hack time",phx_term1Time],"Defend the data terminal","term1Mark"],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
