@@ -6,7 +6,7 @@ if (pRole == ROLE_CLS) then {
 };
 
 if (pRole == ROLE_AAR || pRole == ROLE_AM || pRole == ROLE_CE || pRole == ROLE_AAT) then {
-  phx_loadout_backpack = "rhs_tortila_blk";
+  phx_loadout_backpack = "rhs_tortila_black";
 };
 
 
