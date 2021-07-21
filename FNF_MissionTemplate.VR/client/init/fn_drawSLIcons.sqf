@@ -1,19 +1,10 @@
 [{!(isNull findDisplay 46) && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
-	_sideColor = str playerSide;
-	_colorStr = format["Color%1", _sideColor];
-	_facColor = [];
-	{
-		_facColor pushback (call compile _x);
-	} forEach (getArray(configfile >> "CfgMarkerColors" >> _colorStr >> "color"));
+	_facColor = [playerSide, false] call BIS_fnc_sideColor;
 	_facColor = _facColor apply {
-		if (_x + 0.3 > 1) then {
-			_x = 1
+		if (_x != 0) then {
+			(_x + 0.3) min 1
 		} else {
-			if (_x != 0) then {
-				_x + 0.3
-			} else {
-				_x
-			};
+			_x
 		};
 	};
 	missionNamespace setVariable ["factionColor", _facColor];
@@ -35,13 +26,38 @@
 			_x == leader group _x;
 		};
 
+		private _cameraPositionAGL = positionCameraToWorld[0,0,0];
+		private _cameraPositionASL = AGLtoASL _cameraPositionAGL;
+		private _zoom = (
+					(
+						[0.5,0.5] 
+						distance2D  
+						worldToScreen 
+						positionCameraToWorld 
+						[0,3,4]
+					) * (
+						getResolution 
+						select 5
+					) / 2
+		) + 0.66666;
+
 		// address squad leads (_Soldier_SL_F unit class & is leader of their group, to exclude CMD HQ auxiliaries)
 		{
-			_thisName = groupId (group _x);
+			// referenced https://github.com/Quailsnap/WHA-Nametags
+			_targetPositionAGLTopRef = _x modelToWorldVisual (_x selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _x))];
+			_targetPositionAGLBotRef = _x modelToWorldVisual [0,0,0] vectorAdd [0,0,((0.1 * (player distance _x)))];
+			
+			private _camDistance = _cameraPositionAGL distance _targetPositionAGLTopRef;
+			private _distance = _player distance _targetPositionAGLTopRef;
 
-			_pos = _x modelToWorldVisual [0,0,5];
+			private _vectorDir = eyePos player vectorFromTo (positionCameraToWorld[0,0,1]);
+			private _vectorDiff = vectorNormalized (((_vectorDir) vectorCrossProduct (vectorUp player)) vectorCrossProduct (_targetPositionAGLTopRef vectorDiff _cameraPositionAGL));
+			private _targetPositionAGLTop = _targetPositionAGLTopRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply 0.6);
+			private _targetPositionAGLBottom = _targetPositionAGLBotRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply -1);
 
-			if (alive _x) then {
+			_thisName = (roleDescription _x splitString '@') select 1;
+
+			if (alive _x && !(player isEqualTo _x)) then {
 				switch (true) do {
 					// case (player distance _x <= 15): {
 					// 	private _facColor = +factionColor;
@@ -50,8 +66,8 @@
 					// };
 					case (player distance _x <= 300): {
 						private _facColor = +factionColor;
-						_facColor pushBack 0.9;
-						drawIcon3D["", _facColor, _pos, 0, 0, 0, _thisName, true, 0.03 / (getResolution select 5), "PuristaBold", "center"];
+						_facColor set [3, 0.9];
+						drawIcon3D["", _facColor, _targetPositionAGLTop, 0, 0, 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];
 					};
 				};
 			};
