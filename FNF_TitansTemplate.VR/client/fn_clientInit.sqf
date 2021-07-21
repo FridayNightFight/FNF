@@ -47,7 +47,7 @@ call PHX_fnc_terminalClientSetup;
 
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
-[{time > 0}, {call phx_fnc_restrictions; call phx_fnc_checkLoadout;}] call CBA_fnc_waitUntilAndExecute;
+[{time > 0}, {call phx_fnc_restrictions;}] call CBA_fnc_waitUntilAndExecute;
 
 player addEventHandler ["Killed", {call phx_fnc_spectatorInit;}];
 

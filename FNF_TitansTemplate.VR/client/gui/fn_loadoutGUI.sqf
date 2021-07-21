@@ -2,6 +2,13 @@ disableSerialization;
 if (phx_LoadoutChosen) exitWith {};
 player setVariable ["role", "None", true];
 
+removeHeadgear player:
+removeVest player;
+removeBackpack player;
+removeUniform player;
+removeAllWeapons player:
+removeAllAssignedItems player;
+
 if (isNil "phx_inventoryLockPFH") then 
 {
 	phx_inventoryLockPFH = [{if (!isNull findDisplay 602)then {closeDialog 602};}] call CBA_fnc_addPerFrameHandler;
