@@ -11,6 +11,7 @@ class CfgFunctions {
       class serverSafety{};
       class serverMidInit{};
       class adminCommandHandeler{};
+      class serverCheck{};
     };
     class clientInit {
       file = "client";
@@ -28,6 +29,7 @@ class CfgFunctions {
     class roleselect {
       file = "client\roleselect";
       class spawnLoadout{};
+      class serverResponse{};
       class roles{};
     };
     class loadout {
