@@ -38,8 +38,8 @@ switch (phx_gameMode) do {
     execVM "modes\neutralsector\neutralSector.sqf";
     phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side. The first side to 100 points will still win if mission is within normal time limit.";
   };
-  case "scavenger": {
-    execVM "modes\scavenger\scavenger_server.sqf";
+  case "scavHunt": {
+    execVM "modes\scavHunt\scavHunt_server.sqf";
     phx_overTimeConStr = "The mission will go into overtime if both teams hold an equal number of target items in their zone when the timer reaches zero.";
   };
 };

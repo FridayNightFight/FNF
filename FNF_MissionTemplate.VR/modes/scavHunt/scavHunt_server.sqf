@@ -9,30 +9,31 @@ phx_missionTimeLimit = 40;
 // Get present sides
 phx_sidesInMission = [east, west, independent] select {playableSlotsNumber _x > 3};
 
-
+private _numberOfObjectives = 5;
+private _numberOfTransportsPerSide = 3;
 
 /*
 [OBJECT_NAME, MARKER_NAME, OBJECT_DESCRIPTION, INDEX]
 */
 private _scavHuntObjectives = [];
-for [{_i = 1}, {_i <= _numberOfObjectives}, {_i = _i + 1}] do {
+for "_i" from 1 to _numberOfObjectives do {
 	private _obj = missionNamespace getVariable [format["scav_obj_%1", _i], objNull];
 	if !(isNull _obj) then {
 		private _name = "Weapons Cache";
 		if (typeOf _obj != "Box_FIA_Ammo_F") then {
-			_name = [configOf _obj] call BIS_fnc_displayName;
+			_name = [configfile >> "CfgVehicles" >> typeOf _obj] call BIS_fnc_displayName;
 		};
-		_scavObjectives pushBack [
+		_scavHuntObjectives pushBack [
 			_obj,
 			format["scav_obj_%1_mark", _i],
 			_name,
-			str _i
+			_i
 		];
 	};
 };
 
 private _scavHuntTransports = [];
-for [{_i = 1}, {_i <= _numberOfTransportsPerSide}, {_i = _i + 1}] do {
+for "_i" from 1 to (_numberOfTransportsPerSide * (count phx_sidesInMission)) do {
 	private _obj = missionNamespace getVariable [format["scav_transport_%1", _i], objNull];
 	if !(isNull _obj) then {
 		_scavHuntTransports pushBack _obj;
@@ -164,12 +165,13 @@ phx_scavHuntObjIsNeutral = {
   params ["_obj","_marker","_captureID"];
 
   waitUntil {
+    private _capped = false;
     {
-      if (_obj inArea _x) exitWith {true};
+      if (_obj inArea _x) exitWith {_capped = true};
       false;
     } forEach phx_scavHuntCapZones;
     sleep 2;
-    false;
+    if (_capped) then {true} else {false};
   };
 
   {
@@ -217,7 +219,7 @@ phx_scavHuntObjIsCapped = {
         _x,
         _captureID + str _x,
         [
-          format [_taskText + "%1", _name],
+          format [_captureTaskText + "%1", _name],
           format ["Item %1", _index],
           _marker
         ],
