@@ -11,6 +11,7 @@ if !(call phx_fnc_clientCanPlay) exitWith {
 			player setDamage 1;
 			[{phx_safetyEnabled},{
 				[false,false,false] call ace_spectator_fnc_setSpectator;
+				[phx_iconHandle] call CBA_fnc_removePerFrameHandler;
 				call PHX_fnc_clientInit;
 			}] call CBA_fnc_waitUntilAndExecute;
 		};
@@ -23,7 +24,7 @@ phx_LoadoutChosen = false;
 phx_loadoutGUI = displayNull;
 
 if (didJIP) then {
-	if (missionNamespace getVariable ["teamsSwitched", false]) then	{
+	if (markerColor "bluforSafeMarker" == "colorOPFOR") then	{
 		if (phx_playerSide == west) then
 		{
 			phx_playerSide = east;
