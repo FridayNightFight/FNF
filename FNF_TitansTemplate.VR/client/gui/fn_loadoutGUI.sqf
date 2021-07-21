@@ -9,6 +9,8 @@ removeUniform player;
 removeAllWeapons player:
 removeAllAssignedItems player;
 
+player linkItem "ItemMap";
+
 if (isNil "phx_inventoryLockPFH") then 
 {
 	phx_inventoryLockPFH = [{if (!isNull findDisplay 602)then {closeDialog 602};}] call CBA_fnc_addPerFrameHandler;
