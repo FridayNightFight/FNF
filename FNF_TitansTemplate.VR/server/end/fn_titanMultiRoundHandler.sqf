@@ -27,6 +27,10 @@ _opScore = _opScore - (_opScore * 2);
 		deleteVehicle _x;
 	} forEach allDeadMen;
 
+	{
+		deleteVehicle _x; 
+	} forEach nearestObjects [getpos term1,["WeaponHolder","GroundWeaponHolder"],500];
+
 	if (markerColor "bluforSafeMarker" == "colorBLUFOR") then {
 		"bluforSafeMarker" setMarkerColor "colorOPFOR";
 		"opforSafeMarker" setMarkerColor "colorBLUFOR";

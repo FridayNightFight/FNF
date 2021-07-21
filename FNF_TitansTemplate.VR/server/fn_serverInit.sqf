@@ -27,13 +27,11 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
 } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 
 //Delete player bodies during safe start
-phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
-	params ["_unit", "_id", "_uid", "_name"];
-
-  if (phx_safetyEnabled) then {
-    deleteVehicle _unit;
-  };
-}];
+[{if (phx_safetyEnabled) then {
+  {
+		deleteVehicle _x;
+	} forEach allDeadMen;
+}},1] call CBA_fnc_addPerFrameHandler;
 
 [{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 

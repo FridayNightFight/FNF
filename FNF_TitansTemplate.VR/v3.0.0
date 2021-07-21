@@ -2,10 +2,10 @@ removing controls still doesnt work but loadout lockout works now // genuinely n
 
 if players are fast enough, two players can take the same loadout at once // implement server side checking
 
-JIP fails to move players to correct sides at round start
+JIP fails to move players to correct sides at round start // Fixed Maybe?
 
-bodies are not being deleted in safe start allowing for item duplication
+bodies are not being deleted in safe start allowing for item duplication // Fixed
 
-ground items must be cleaned up between rounds
+ground items must be cleaned up between rounds // Fixed
 
-remove inventory action when loadout GUI is selected
+remove inventory action when loadout GUI is selected // Fixed
