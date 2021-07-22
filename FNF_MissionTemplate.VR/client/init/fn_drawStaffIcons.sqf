@@ -60,8 +60,8 @@
 			_text = format["STAFF | %1 | %2", _name, _role];
 
 			// referenced https://github.com/Quailsnap/WHA-Nametags
-			_targetPositionAGLTopRef = _x modelToWorldVisual (_x selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _x))];
-			_targetPositionAGLBotRef = _x modelToWorldVisual [0,0,0] vectorAdd [0,0,((0.1 * (player distance _x)))];
+			_targetPositionAGLTopRef = _staffMember modelToWorldVisual (_staffMember selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _staffMember))];
+			_targetPositionAGLBotRef = _staffMember modelToWorldVisual [0,0,0] vectorAdd [0,0,((0.1 * (player distance _staffMember)))];
 			
 			private _camDistance = _cameraPositionAGL distance _targetPositionAGLTopRef;
 			private _distance = _player distance _targetPositionAGLTopRef;
@@ -76,7 +76,7 @@
 
 			// _pos = _staffMember modelToWorldVisual [0,0,3];
 
-			if (alive _staffMember && !(player isEqualTo _x)) then {
+			if (alive _staffMember && !(player isEqualTo _staffMember)) then {
 				switch (true) do {
 					case (player distance _staffMember <= 15): {
 						drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 1], _targetPositionAGLTop, 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
