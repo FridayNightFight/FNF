@@ -52,14 +52,14 @@ phx_scavHuntTransports = _scavHuntTransports;
 {
   _x allowDamage false;
   _x setVariable ["capturedBy", sideUnknown];
-  [_x, 30] call ace_cargo_fnc_setSize;
+  [_x, 15] call ace_cargo_fnc_setSize;
 } forEach phx_scavHuntObjs;
 
 
 // Prep transport vehicles
 {
-  // set size to 32, room for 1 objective + 2 wheels
-  [_x, 32] call ace_cargo_fnc_setSpace;
+  // set size to 17, room for 1 objective + 2 wheels
+  [_x, 17] call ace_cargo_fnc_setSpace;
   // clear existing wheels, add two
   ["ACE_Wheel", _x, 5] call ace_cargo_fnc_removeCargoItem;
   ["ACE_Wheel", _x] call ace_cargo_fnc_loadItem;
@@ -236,7 +236,7 @@ phx_scavHuntObjIsCapped = {
     //Handle moving objective
     [_obj, _marker, _captureID] spawn {
       params ["_obj", "_marker", "_captureID"];
-      _objMarkerUpdateTime = 10; //Change this value to however often you want the objective markers to update (seconds)
+      _objMarkerUpdateTime = 3; //Change this value to however often you want the objective markers to update (seconds)
       _objMaxDistance = selectMin (getMarkerSize _marker);
 
       //Sets marker position to a random area around the objective, keeping the objective inside the marker
