@@ -122,6 +122,16 @@ player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
   player createDiaryRecord ["PHX_Diary_Details",["Overtime Condition",phx_overTimeConStr]];
 }] call CBA_fnc_waitUntilAndExecute;
 
+
+player createDiarySubject ["Utilities", "Utilities"];
+player createDiaryRecord [
+  "Utilities",
+  [
+    "Screenshots/UI",
+    "<font face='PuristaMedium'><executeClose expression='showHUD [false,false,false,false,false,false,false,false,false,false,false]; diwako_dui_main_toggled_off=true; showChat false;'>Hide HUD</executeClose><br/><executeClose expression='showHUD [true,true,true,true,true,true,false,true,true,true,false]; diwako_dui_main_toggled_off=false; showChat true;'>Show HUD</executeClose></font>"
+  ]
+];
+
 //call phx_fnc_objectiveRecon;
 
 phx_briefCreated = true; //let phx_fnc_briefInit know the briefing is created
