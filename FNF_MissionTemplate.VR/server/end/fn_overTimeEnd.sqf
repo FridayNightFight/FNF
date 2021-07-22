@@ -203,20 +203,20 @@ switch (true) do {
     phx_scavHuntCheckScores = {
       private _scores = createHashMapFromArray [
         [
-          west,
-          phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east}
+          east,
+          count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east})
         ],
         [
-          east,
-          phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west}
+          west,
+          count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west})
         ],
         [
           independent,
-          phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent}
+          count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
         ]
       ];
 
-      private _winScore = selectMax (values _scores);
+      private _winScore = count(selectMax (values _scores));
       private _winSide = createHashMap;
       {
         if (_y == _winScore) then {_winSide set [_x, _y]};
@@ -225,17 +225,18 @@ switch (true) do {
       _winSide;
     };
 
-    if (count (call _checkScores) > 1) then {
+    if (count (call phx_scavHuntCheckScores) > 1) then {
       "Overtime enabled! \n The first side to capture another item will win." remoteExec ["hint"];
-      waitUntil {sleep 2; count (call _checkScores) == 1};
+      waitUntil {sleep 2; count (call phx_scavHuntCheckScores) == 1};
       phx_gameEnd = true;
       publicVariable "phx_gameEnd";
 
-      _winData = ((call _checkScores) toArray false) select 0;
+      private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
 
       [_winData # 0, format["%1 won Scavenger Hunt in overtime by holding %2 items!", str(_winData # 0), _winData # 1]] spawn phx_fnc_gameEnd;
     } else {
-      [_winData # 0, format["%1 won by holding %2 items!", str(_winData # 0), _winData # 1]] spawn phx_fnc_gameEnd;
+      private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
+      [_winData # 0, format["%1 won by holding %2 items!", _winData # 0, _winData # 1]] spawn phx_fnc_gameEnd;
     };
   };
 };

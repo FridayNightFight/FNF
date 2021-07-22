@@ -75,39 +75,40 @@ phx_scavHuntTransports = _scavHuntTransports;
 
   // accrue damage by parts and when reaching 1, reset, injure passenger
   // _x allowDamage false; // cannot be used with HandleDamage
-  _x addEventHandler ["HandleDamage", {
-    params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
-    private _old = _unit getVariable ["phx_damageCycle", 0];
-    private _new = _old + (0.01 * _damage);
-    if (_new >= 1) then {
-      private _curPax = (fullCrew [_unit, "", false]) select {_x select 1 != 'cargo'};
-      if (count _curPax > 0) then {
-        // if vehicle crewed, select a random driver, gunner, commander, or turret seat
-        private _victim = selectRandom (_curPax apply {_x select 0});
-        // apply 0.5 damage to head or body, simulate bullet wound
-        [
-          _victim,
-          0.5,
-          selectRandom ["head", "body"],
-          "bullet",
-          _instigator
-        ] call ace_medical_fnc_addDamageToUnit;
-        // force unconscious for 30 seconds, then wake up if stable
-        [
-          _victim,
-          true,
-          30,
-          true
-        ] call ace_medical_fnc_setUnconscious;
-        // reset vehicle damage counter
-        _unit setVariable ["phx_damageCycle", 0];
-      };
-    } else {
-      // if vehicle damage counter not at 1, increment
-      _unit setVariable ["phx_damageCycle", _new];
-    };
-    0;
-  }];
+  // _x addEventHandler ["HandleDamage", {
+  //   params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+  //   private _old = _unit getVariable ["phx_damageCycle", 0];
+  //   private _new = _old + (0.01 * _damage);
+  //   if (_new >= 1) then {
+  //     private _curPax = (fullCrew [_unit, "", false]) select {_x select 1 != 'cargo'};
+  //     if (count _curPax > 0) then {
+  //       // if vehicle crewed, select a random driver, gunner, commander, or turret seat
+  //       private _victim = selectRandom (_curPax apply {_x select 0});
+  //       // apply 0.5 damage to head or body, simulate bullet wound
+  //       [
+  //         _victim,
+  //         0.5,
+  //         (selectRandom ["Head", "Body"]),
+  //         "bullet",
+  //         _instigator
+  //       ] call ace_medical_fnc_addDamageToUnit;
+  //       // force unconscious for 30 seconds, then wake up if stable
+  //       [
+  //         _victim,
+  //         true,
+  //         30,
+  //         true
+  //       ] call ace_medical_fnc_setUnconscious;
+  //       // reset vehicle damage counter
+  //       _unit setVariable ["phx_damageCycle", 0];
+  //     };
+  //   } else {
+  //     // if vehicle damage counter not at 1, increment
+  //     _unit setVariable ["phx_damageCycle", _new];
+  //   };
+  //   0;
+  // }];
+  _x allowDamage false;
 
 } forEach phx_scavHuntTransports;
 
@@ -264,10 +265,15 @@ phx_scavHuntObjIsCapped = {
   };
 } forEach _objArr;
 
-waitUntil {!phx_safetyEnabled};
+[
+  {!phx_safetyEnabled},
+  {
+    {
+      _x setMarkerAlpha 1;
+    } forEach phx_scavHuntCapZones;
+  }
+] call CBA_fnc_waitUntilAndExecute;
 
-{
-  _x setMarkerAlpha 1;
-} forEach phx_scavHuntCapZones;
+
 
 // Win conditions handled at end of timer -- fn_overTimeEnd.sqf
