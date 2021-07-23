@@ -211,7 +211,7 @@ switch (true) do {
       [_winData # 0, format["%1 won Scavenger Hunt in overtime by holding %2 items!", str(_winData # 0), _winData # 1]] spawn phx_fnc_gameEnd;
     } else {
       private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
-      [_winData # 0, format["%1 won by holding %2 items!", _winData # 0, _winData # 1]] spawn phx_fnc_gameEnd;
+      [_winData # 0, format["%1 won by holding %2 items!", (_winData # 0) call BIS_fnc_sideName, _winData # 1]] spawn phx_fnc_gameEnd;
     };
   };
 };

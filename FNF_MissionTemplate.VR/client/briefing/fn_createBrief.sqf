@@ -126,9 +126,9 @@ player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
 player createDiaryRecord [
   "PHX_Diary_Details",
   [
-    "Mode: ScavHunt",
+    "Game Mode: ScavHunt",
     (
-      "This is a neutral objective mode where each time has to capture and hold as many of the items present as possible. To capture an item, it must be loaded into one of the specifically-purposed transport vehicles using ACE interaction, then driven back to the side's capture zone and unloaded. At mission time end (40 minutes duration), the side with the most items in their zone will win." +
+      "This is a neutral objective mode where each team has to capture and hold as many of the items present as possible. To capture an item, it must be loaded into one of the specifically-purposed transport vehicles using ACE interaction, then driven back to the side's capture zone and unloaded. At mission time end (40 minutes duration), the side with the most items in their zone will win." +
       "<br/><br/>" +
       "  - All objective items and their transport vehicles are invincible, though crew/passengers may still be killed by penetration or collision damage." +
       "<br/>" +
@@ -136,11 +136,13 @@ player createDiaryRecord [
       "<br/>" +
       "  - It will take approximately 33 seconds to complete a load or unload of an item. During this time, the player cannot move." +
       "<br/>" +
+      "  - If you can't ACE interact with an objective item, try moving the transport closer." +
+      "<br/>" +
       "  - A map marker for each objective item will update its location every 3 seconds." +
       "<br/>" +
       "  - A transport vehicle can only carry one item at a time." +
       "<br/>" +
-      "  - A player may NOT crew another side's transport vehicle. Attempts will result in (safe) ejection from the vehicle."
+      "  - A player may NOT crew another side's transport vehicle. Attempts will result in (safe) ejection from the vehicle." +
       "<br/><br/><br/>" +
       "OVERTIME CONDITION:" +
       "<br/><br/>" +
