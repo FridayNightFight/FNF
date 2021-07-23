@@ -200,31 +200,6 @@ switch (true) do {
 
   case (phx_gameMode == "scavHunt"): {
 
-    phx_scavHuntCheckScores = {
-      private _scores = createHashMapFromArray [
-        [
-          east,
-          count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east})
-        ],
-        [
-          west,
-          count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west})
-        ],
-        [
-          independent,
-          count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
-        ]
-      ];
-
-      private _winScore = count(selectMax (values _scores));
-      private _winSide = createHashMap;
-      {
-        if (_y == _winScore) then {_winSide set [_x, _y]};
-      } forEach _scores;
-
-      _winSide;
-    };
-
     if (count (call phx_scavHuntCheckScores) > 1) then {
       "Overtime enabled! \n The first side to capture another item will win." remoteExec ["hint"];
       waitUntil {sleep 2; count (call phx_scavHuntCheckScores) == 1};

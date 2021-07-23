@@ -52,14 +52,16 @@ phx_scavHuntTransports = _scavHuntTransports;
 {
   _x allowDamage false;
   _x setVariable ["capturedBy", sideUnknown];
-  [_x, 15] call ace_cargo_fnc_setSize;
+  _x setVariable ["phx_objLoaded", false];
+  [_x, true] call ace_arsenal_fnc_removeBox;
+  [_x, 7] call ace_cargo_fnc_setSize;
 } forEach phx_scavHuntObjs;
 
 
 // Prep transport vehicles
 {
   // set size to 17, room for 1 objective + 2 wheels
-  [_x, 17] call ace_cargo_fnc_setSpace;
+  [_x, 9] call ace_cargo_fnc_setSpace;
   // clear existing wheels, add two
   ["ACE_Wheel", _x, 5] call ace_cargo_fnc_removeCargoItem;
   ["ACE_Wheel", _x] call ace_cargo_fnc_loadItem;
@@ -133,7 +135,7 @@ phx_scavHuntCapZones = [];
   if (markerPos _marker select 0 != 0) then {
     phx_scavHuntCapZones pushBack _marker;
     // set marker opacity low until safe start ends
-    _marker setMarkerAlpha 0.3;
+    // _marker setMarkerAlpha 0.3;
   };
 } forEach phx_sidesInMission;
 
@@ -160,6 +162,63 @@ phx_scavHuntCapZones = [];
 } forEach _objArr;
 
 
+// Add loaded/unloaded Event Handlers
+["ace_cargoLoaded", {
+  if (!isServer) exitWith {};
+  _this params ["_item", "_vehicle"];
+  private _objIndex = phx_scavHuntObjs find _item;
+  if (_objIndex > -1 && (phx_scavHuntTransports find _vehicle) > -1) then {
+    (_thisArgs select (_objIndex)) params ["_obj", "_marker", "_name", "_index"];
+    private _likelyPlayer = nearestObject [_vehicle, "CAManBase"];
+    format["Item %1 (%2) loaded into a transport by %3 (%4)!", _index, _name, side _likelyPlayer call BIS_fnc_sideName, name _likelyPlayer] remoteExec ["systemChat", 0];
+    _item setVariable ["phx_objLoaded", true];
+  } else {
+    if (_objIndex > -1) then {
+      [_item, _vehicle] call ace_cargo_fnc_unloadItem;
+    };
+  };
+}, _objArr] call CBA_fnc_addEventHandlerArgs;
+
+["ace_cargoUnloaded", {
+  if (!isServer) exitWith {};
+  _this params ["_item", "_vehicle"];
+  private _objIndex = phx_scavHuntObjs find _item;
+  if (_objIndex > -1 && (phx_scavHuntTransports find _vehicle) > -1) then {
+    (_thisArgs select (_objIndex)) params ["_obj", "_marker", "_name", "_index"];
+    private _likelyPlayer = nearestObject [_vehicle, "CAManBase"];
+    format["Item %1 (%2) unloaded from a transport by %3 (%4)!", _index, _name, side _likelyPlayer call BIS_fnc_sideName, name _likelyPlayer] remoteExec ["systemChat", 0];
+    _item setVariable ["phx_objLoaded", false];
+  };
+}, _objArr] call CBA_fnc_addEventHandlerArgs;
+
+
+
+phx_scavHuntCheckScores = {
+  private _scores = createHashMapFromArray [
+    [
+      east,
+      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east})
+    ],
+    [
+      west,
+      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west})
+    ],
+    [
+      independent,
+      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
+    ]
+  ];
+
+  private _winScore = selectMax (values _scores);
+  private _winSide = createHashMap;
+  {
+    if (_y == _winScore) then {_winSide set [_x, _y]};
+  } forEach _scores;
+
+  _winSide;
+};
+
+
 
 // Define cap monitors
 phx_scavHuntObjIsNeutral = {
@@ -167,11 +226,10 @@ phx_scavHuntObjIsNeutral = {
 
   waitUntil {
     private _capped = false;
-    {
-      if (_obj inArea _x) exitWith {_capped = true};
-      false;
-    } forEach phx_scavHuntCapZones;
     sleep 2;
+    {
+      if (_obj inArea _x && (_obj getVariable ["phx_objLoaded", true] isEqualTo false)) exitWith {_capped = true};
+    } forEach phx_scavHuntCapZones;
     if (_capped) then {true} else {false};
   };
 
@@ -188,6 +246,13 @@ phx_scavHuntObjIsNeutral = {
       };
       _obj setVariable ["capturedBy", _cappedSide];
       [_captureID + str _cappedSide, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+      format["%1 has captured an objective!", _cappedSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
+
+      _highScore = (call phx_scavHuntCheckScores) toArray false;
+      "Leading Team(s):" remoteExec ["systemChat", 0];
+      {
+        format["  %1 with %2 items", (_x # 0) call BIS_fnc_sideName, _x # 1] remoteExec ["systemChat", 0];
+      } forEach _highScore;
 
       [_obj, _marker, _captureID, _cappedSide, _capMark] spawn phx_scavHuntObjIsCapped;
     };
@@ -197,12 +262,22 @@ phx_scavHuntObjIsNeutral = {
 phx_scavHuntObjIsCapped = {
   params ["_obj","_marker","_captureID","_cappedSide","_capMark"];
   waitUntil {
-    if !(_obj inArea _capMark) exitWith {true};
     sleep 2;
-    false;
+    if (!(_obj inArea _capMark) || (_obj getVariable ["phx_objLoaded", false] isEqualTo true)) then {
+      true
+    } else {
+      false;
+    };
   };
   _obj setVariable ["capturedBy", sideUnknown];
   [_captureID + str _cappedSide, "CREATED", true] call BIS_fnc_taskSetState;
+  format["%1 has lost an objective!", _cappedSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
+
+  _highScore = (call phx_scavHuntCheckScores) toArray false;
+  format["Leading Team(s):"] remoteExec ["systemChat", 0];
+  {
+    format["  %1 with %2 items", (_x # 0) call BIS_fnc_sideName, _x # 1] remoteExec ["systemChat", 0];
+  } forEach _highScore;
 
   [_obj, _marker, _captureID] spawn phx_scavHuntObjIsNeutral;
 };
@@ -265,14 +340,14 @@ phx_scavHuntObjIsCapped = {
   };
 } forEach _objArr;
 
-[
-  {!phx_safetyEnabled},
-  {
-    {
-      _x setMarkerAlpha 1;
-    } forEach phx_scavHuntCapZones;
-  }
-] call CBA_fnc_waitUntilAndExecute;
+// [
+//   {!phx_safetyEnabled},
+//   {
+//     {
+//       _x setMarkerAlpha 1;
+//     } forEach phx_scavHuntCapZones;
+//   }
+// ] call CBA_fnc_waitUntilAndExecute;
 
 
 
