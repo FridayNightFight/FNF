@@ -2,11 +2,11 @@ disableSerialization;
 if (phx_LoadoutChosen) exitWith {};
 player setVariable ["role", "None", true];
 
-removeHeadgear player:
+removeHeadgear player;
 removeVest player;
 removeBackpack player;
 removeUniform player;
-removeAllWeapons player:
+removeAllWeapons player;
 removeAllAssignedItems player;
 
 player linkItem "ItemMap";
