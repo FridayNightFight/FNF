@@ -112,6 +112,25 @@ phx_scavHuntTransports = _scavHuntTransports;
   // }];
   _x allowDamage false;
 
+
+  [{
+    // handle wheel removal by re-adding wheel to truck and deleting nearest wheel in 10m
+    _transport = _this # 0;
+
+    _hitParts = [];
+    {
+      _hitParts pushBack (configName _x);
+    } forEach ([configFile >> "CfgVehicles" >> typeOf _transport >> "HitPoints", 0] call BIS_fnc_returnChildren);
+    {
+      if (_transport getHitPointDamage _x > 0) then {
+        _transport setHitPointDamage [_x, 0, false];
+        private _nearWheels = nearestObjects [getPos _transport, ["ACE_Wheel"], 10, true];
+        if (count _nearWheels > 0) then {deleteVehicle (_nearWheels # 0)};
+      };
+    } forEach (_hitParts select {['wheel', _x] call BIS_fnc_inString})
+  }, 5, _x] call CBA_fnc_addPerFrameHandler;
+  
+
 } forEach phx_scavHuntTransports;
 
 
@@ -172,9 +191,11 @@ phx_scavHuntCapZones = [];
     private _likelyPlayer = nearestObject [_vehicle, "CAManBase"];
     format["Item %1 (%2) loaded into a transport by %3 (%4)!", _index, _name, side _likelyPlayer call BIS_fnc_sideName, name _likelyPlayer] remoteExec ["systemChat", 0];
     _item setVariable ["phx_objLoaded", true];
+    _item allowDamage false;
   } else {
     if (_objIndex > -1) then {
       [_item, _vehicle] call ace_cargo_fnc_unloadItem;
+      _item allowDamage false;
     };
   };
 }, _objArr] call CBA_fnc_addEventHandlerArgs;
@@ -188,6 +209,7 @@ phx_scavHuntCapZones = [];
     private _likelyPlayer = nearestObject [_vehicle, "CAManBase"];
     format["Item %1 (%2) unloaded from a transport by %3 (%4)!", _index, _name, side _likelyPlayer call BIS_fnc_sideName, name _likelyPlayer] remoteExec ["systemChat", 0];
     _item setVariable ["phx_objLoaded", false];
+    _item allowDamage false;
   };
 }, _objArr] call CBA_fnc_addEventHandlerArgs;
 
