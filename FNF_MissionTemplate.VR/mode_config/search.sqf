@@ -1,7 +1,7 @@
 _numberOfTerminals = 3;
 // Number of terminal objectives. Value = 1, 3, or 5
 // You can place all 5 but leave this value at 3 or 1 for random selection
-_randomSelection = false;
+_randomSelection = false; // KEEP FALSE FOR NOW, NOT IMPLEMENTED
 
 _pointAddTime = 40;
 // How often points are added for each controlled terminal, in seconds.

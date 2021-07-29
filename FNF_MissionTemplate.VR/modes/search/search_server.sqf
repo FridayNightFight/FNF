@@ -26,7 +26,7 @@ phx_searchTerminalTemplate = createHashMapFromArray [
   ["radiusStageEast", phx_searchMarkAreaStartRadius],
   ["radiusStageWest", phx_searchMarkAreaStartRadius],
   ["radiusStageGuer", phx_searchMarkAreaStartRadius]
-]
+];
 // also used is terminal getVariable "phx_searchMarkPosEast", etc
 
 
