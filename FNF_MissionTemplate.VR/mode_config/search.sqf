@@ -1,4 +1,4 @@
-_numberOfTerminals = 3;
+_numberOfTerminals = 5;
 // Number of terminal objectives. Value = 1, 3, or 5
 // You can place all 5 but leave this value at 3 or 1 for random selection
 _randomSelection = false; // KEEP FALSE FOR NOW, NOT IMPLEMENTED

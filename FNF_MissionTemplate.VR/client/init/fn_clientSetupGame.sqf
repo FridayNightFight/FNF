@@ -20,4 +20,7 @@ switch (phx_gameMode) do {
   case "captureTheFlag": {
     execVM "modes\ctf\ctf_client.sqf";
   };
+  case "search": {
+    execVM "modes\search\search_client.sqf";
+  };
 };
