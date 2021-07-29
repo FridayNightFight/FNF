@@ -1,10 +1,12 @@
 _numberOfTerminals = 3;
 // Number of terminal objectives. Value = 1, 3, or 5
+// You can place all 5 but leave this value at 3 or 1 for random selection
+_randomSelection = false;
 
 _pointAddTime = 40;
 // How often points are added for each controlled terminal, in seconds.
 
-_markAreaStartRadius = 500;
+phx_searchMarkAreaStartRadius = 500;
 // How large the starting area of the marking circle is
 
 /*
