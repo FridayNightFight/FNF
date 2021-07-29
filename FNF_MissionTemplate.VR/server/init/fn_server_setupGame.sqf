@@ -38,6 +38,10 @@ switch (phx_gameMode) do {
     execVM "modes\neutralsector\neutralSector.sqf";
     phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side. The first side to 100 points will still win if mission is within normal time limit.";
   };
+  case "search": {
+    execVM "modes\search\search_server.sqf";
+    phx_overTimeConStr = "If all sectors are not held by a single side at timer expiration, overtime will continue until a side reaches 100 points.";
+  };
 };
 
 publicVariable "phx_overTimeConStr";
@@ -57,8 +61,8 @@ if !(phx_gameMode isEqualTo "destroy") then {
   {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]}} forEach ["destroy_obj_1_mark","destroy_obj_2_mark"];
 };
 
-if !(phx_gameMode isEqualTo "uplink" || phx_gameMode isEqualTo "rush" || phx_gameMode isEqualTo "connection") then {
-  {_x call _deleteObj} forEach [term1,term2,term3];
+if !(phx_gameMode isEqualTo "uplink" || phx_gameMode isEqualTo "rush" || phx_gameMode isEqualTo "connection" || phx_gameMode isEqualTo "search") then {
+  {_x call _deleteObj} forEach [term1,term2,term3,term4,term5];
 };
 
 if !(phx_gamEMode isEqualTo "captureTheFlag") then {

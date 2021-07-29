@@ -16,6 +16,7 @@ adSector
 ===NEUTRAL===
 connection
 neutralSector
+search
 */
 
 /************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/

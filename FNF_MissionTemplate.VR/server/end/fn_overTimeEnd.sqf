@@ -131,7 +131,7 @@ switch (true) do {
   };
   //CTF END
 
-  case (phx_gameMode == "neutralSector" || phx_gameMode == "connection"): {
+  case (phx_gameMode == "neutralSector" || phx_gameMode == "connection" || phx_gameMode == "search"): {
     _overTimeAlert = false;
     _pointLead = 20;
     while {!phx_gameEnd} do {
