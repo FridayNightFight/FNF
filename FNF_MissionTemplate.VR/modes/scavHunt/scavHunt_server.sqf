@@ -47,6 +47,8 @@ _objArr = _scavHuntObjectives;
 phx_scavHuntObjs = _objArr apply {_x select 0};
 phx_scavHuntTransports = _scavHuntTransports;
 
+publicVariable "phx_scavHuntObjs";
+publicVariable "phx_scavHuntTransports";
 
 // Prep capturable objects
 {
@@ -60,6 +62,10 @@ phx_scavHuntTransports = _scavHuntTransports;
 
 // Prep transport vehicles
 {
+
+  private _transportSide = ([_x, true] call BIS_fnc_objectSide);
+  private _transportSideColor = [_transportSide, true] call BIS_fnc_sideColor;
+
   // set size to 17, room for 1 objective + 2 wheels
   [_x, 9] call ace_cargo_fnc_setSpace;
   // clear existing wheels, add two
@@ -74,6 +80,35 @@ phx_scavHuntTransports = _scavHuntTransports;
       _unit action ["Eject", _vehicle];
     };
   }];
+
+
+
+  private _truckID = round(random(50) + 20);
+  // truck markers for owning side
+  private _markStr = [
+    format["Transport%1%2", str _transportSide, _truckID], // markerName
+    getPos _x, // markerPos
+    "c_car", // markerType
+    "ICON", // markerShape
+    [0.5, 0.5], //markerSize
+    0, // markerDir
+    "Solid", //markerBrush
+    _transportSideColor, //markerColor
+    1, // markerAlpha
+    format["Truck %1", _truckID] // markerText
+  ] joinString '|';
+
+  [format["|%1", _markStr]] remoteExecCall ["BIS_fnc_stringToMarkerLocal", _transportSide];
+
+  // update pos
+  [{
+    _args = (_this # 0);
+    _args params ["_truck", "_side", "_color", "_truckID"];
+    private _markName = format["Transport%1%2", str _side, _truckID];
+    [_markName, getPos _truck] remoteExec ["setMarkerPosLocal", _side];
+  }, 10, [_x, _transportSide, _transportSideColor, _truckID]] call CBA_fnc_addPerFrameHandler;
+
+
 
   // accrue damage by parts and when reaching 1, reset, injure passenger
   // _x allowDamage false; // cannot be used with HandleDamage
@@ -153,32 +188,14 @@ phx_scavHuntCapZones = [];
   private _marker = ("scavHuntCap" + str _x);
   if (markerPos _marker select 0 != 0) then {
     phx_scavHuntCapZones pushBack _marker;
-    // set marker opacity low until safe start ends
-    // _marker setMarkerAlpha 0.3;
+    // make invisible for all
+    _marker setMarkerAlpha 0;
+    // then make visible to the side who owns it
+    [_marker, 1] remoteExecCall ["setMarkerAlphaLocal", _x];
   };
 } forEach phx_sidesInMission;
 
-
-// Create objective markers
-{
-  _x params ["_obj", "_marker", "_name", "_index"];
-
-  private _markStr = [
-    _marker, // markerName
-    getPos _obj, // markerPos
-    "mil_dot", // markerType
-    "ELLIPSE", // markerShape
-    [25, 25], //markerSize
-    0, // markerDir
-    "Solid", //markerBrush
-    "ColorOrange", //markerColor
-    1, // markerAlpha
-    format["Obj %1 - %2", _index, _name] // markerText
-  ] joinString '|';
-
-  format["|%1", _markStr] call BIS_fnc_stringToMarker;
-
-} forEach _objArr;
+publicVariable "phx_scavHuntCapZones";
 
 
 // Add loaded/unloaded Event Handlers
@@ -215,30 +232,29 @@ phx_scavHuntCapZones = [];
 
 
 
-phx_scavHuntCheckScores = {
-  private _scores = createHashMapFromArray [
-    [
-      east,
-      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east})
-    ],
-    [
-      west,
-      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west})
-    ],
-    [
-      independent,
-      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
-    ]
-  ];
 
-  private _winScore = selectMax (values _scores);
-  private _winSide = createHashMap;
-  {
-    if (_y == _winScore) then {_winSide set [_x, _y]};
-  } forEach _scores;
 
-  _winSide;
-};
+
+
+// Create objective markers
+{
+  _x params ["_obj", "_marker", "_name", "_index"];
+
+  private _markStr = [
+    _marker, // markerName
+    getPos _obj, // markerPos
+    "mil_dot", // markerType
+    "ELLIPSE", // markerShape
+    [25, 25], //markerSize
+    0, // markerDir
+    "Solid", //markerBrush
+    "ColorOrange", //markerColor
+    1, // markerAlpha
+    format["Obj %1 - %2", _index, _name] // markerText
+  ] joinString '|';
+
+  format["|%1", _markStr] call BIS_fnc_stringToMarker;
+} forEach _objArr;
 
 
 
@@ -362,14 +378,61 @@ phx_scavHuntObjIsCapped = {
   };
 } forEach _objArr;
 
-// [
-//   {!phx_safetyEnabled},
-//   {
-//     {
-//       _x setMarkerAlpha 1;
-//     } forEach phx_scavHuntCapZones;
-//   }
-// ] call CBA_fnc_waitUntilAndExecute;
+
+
+phx_scavHuntCheckScores = {
+  private _scores = createHashMapFromArray [
+    [
+      east,
+      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east})
+    ],
+    [
+      west,
+      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west})
+    ],
+    [
+      independent,
+      count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
+    ]
+  ];
+
+  private _winScore = selectMax (values _scores);
+  private _winSide = createHashMap;
+  {
+    if (_y == _winScore) then {_winSide set [_x, _y]};
+  } forEach _scores;
+
+  _winSide;
+};
+
+
+phx_scavHuntAnyScore = {
+  private _scores = [
+    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east}),
+    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west}),
+    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
+  ];
+
+  private _highScore = selectMax _scores;
+  (_highScore > 0);
+};
+
+
+// waitUntil {BIS_fnc_init};
+// "debug_console" callextension "init";
+// =====================================================================================================
+[ // at 15 minutes after safe start, or when first score is made, reveal cap zones
+  {
+    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
+    (call phx_scavHuntAnyScore)
+  },
+  {
+    {
+      _x setMarkerAlpha 1;
+    } forEach phx_scavHuntCapZones;
+    ["All capture zones have been revealed!", 5] remoteExecCall ["phx_fnc_hintThenClear", 0];
+  }
+] call CBA_fnc_waitUntilAndExecute;
 
 
 
