@@ -47,9 +47,6 @@ _objArr = _scavHuntObjectives;
 phx_scavHuntObjs = _objArr apply {_x select 0};
 phx_scavHuntTransports = _scavHuntTransports;
 
-publicVariable "phx_scavHuntObjs";
-publicVariable "phx_scavHuntTransports";
-
 // Prep capturable objects
 {
   _x allowDamage false;
@@ -90,7 +87,7 @@ publicVariable "phx_scavHuntTransports";
     getPos _x, // markerPos
     "c_car", // markerType
     "ICON", // markerShape
-    [0.5, 0.5], //markerSize
+    [0.75, 0.75], //markerSize
     0, // markerDir
     "Solid", //markerBrush
     _transportSideColor, //markerColor
@@ -98,15 +95,12 @@ publicVariable "phx_scavHuntTransports";
     format["Truck %1", _truckID] // markerText
   ] joinString '|';
 
-  [format["|%1", _markStr]] remoteExecCall ["BIS_fnc_stringToMarkerLocal", _transportSide];
+  [format["|%1", _markStr]] call BIS_fnc_stringToMarker;
 
-  // update pos
-  [{
-    _args = (_this # 0);
-    _args params ["_truck", "_side", "_color", "_truckID"];
-    private _markName = format["Transport%1%2", str _side, _truckID];
-    [_markName, getPos _truck] remoteExec ["setMarkerPosLocal", _side];
-  }, 10, [_x, _transportSide, _transportSideColor, _truckID]] call CBA_fnc_addPerFrameHandler;
+  _x setVariable ["truckMarkName", format["Transport%1%2", str _transportSide, _truckID], true];
+
+
+  
 
 
 
@@ -145,32 +139,52 @@ publicVariable "phx_scavHuntTransports";
   //   };
   //   0;
   // }];
-  _x allowDamage false;
-
-
-  [{
-    // handle wheel removal by re-adding wheel to truck and deleting nearest wheel in 10m
-    _transport = _this # 0;
-
-    _hitParts = [];
-    {
-      _hitParts pushBack (configName _x);
-    } forEach ([configFile >> "CfgVehicles" >> typeOf _transport >> "HitPoints", 0] call BIS_fnc_returnChildren);
-    {
-      if (_transport getHitPointDamage _x > 0) then {
-        _transport setHitPointDamage [_x, 0, false];
-        private _nearWheels = nearestObjects [getPos _transport, ["ACE_Wheel"], 10, true];
-        if (count _nearWheels > 0) then {deleteVehicle (_nearWheels # 0)};
-      };
-    } forEach (_hitParts select {['wheel', _x] call BIS_fnc_inString})
-  }, 5, _x] call CBA_fnc_addPerFrameHandler;
   
 
 } forEach phx_scavHuntTransports;
 
+publicVariable "phx_scavHuntObjs";
+publicVariable "phx_scavHuntTransports";
 
+{
+  {
+    _x addEventHandler ["Local", {
+      params ["_truck", "_isLocal"];
+      if (_isLocal) then {
+        _truck allowDamage false;
+      };
+    }];
+  } forEach phx_scavHuntObjs;
 
+  {
+    _x addEventHandler ["Local", {
+      params ["_truck", "_isLocal"];
+      if (_isLocal) then {
+        _truck allowDamage false;
+      };
+    }];
 
+    // [{
+    //   // handle wheel removal by re-adding wheel to truck and deleting nearest wheel in 10m
+    //   _args = (_this # 0);
+    //   _args params ["_transport"];
+
+    //   // if (local _transport) then {
+    //     _hitParts = [];
+    //     {
+    //       _hitParts pushBack (configName _x);
+    //     } forEach ([configFile >> "CfgVehicles" >> typeOf _transport >> "HitPoints", 0] call BIS_fnc_returnChildren);
+    //     {
+    //       if (_transport getHitPointDamage _x > 0) then {
+    //         _transport setHitPointDamage [_x, 0, false];
+    //         private _nearWheels = nearestObjects [getPos _transport, ["ACE_Wheel"], 10, true];
+    //         if (count _nearWheels > 0) then {deleteVehicle (_nearWheels # 0)};
+    //       };
+    //     } forEach (_hitParts select {['wheel', _x] call BIS_fnc_inString})
+    //   // };
+    // }, 5, [_x]] call CBA_fnc_addPerFrameHandler;
+  } forEach phx_scavHuntTransports;
+} remoteExec ["call", 0, true];
 
 // Fetch zone triggers
 // phx_scavHuntCapZones = [];
@@ -416,6 +430,19 @@ phx_scavHuntAnyScore = {
   private _highScore = selectMax _scores;
   (_highScore > 0);
 };
+
+
+[ // after safe start, make trucks invincible
+  {
+    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) >= 2)
+  },
+  {
+    {
+      _x allowDamage false;
+    } forEach phx_scavHuntTransports;
+  } remoteExec ["call", 0, true];
+] call CBA_fnc_waitUntilAndExecute;
+
 
 
 // waitUntil {BIS_fnc_init};

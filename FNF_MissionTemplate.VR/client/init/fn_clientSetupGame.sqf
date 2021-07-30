@@ -25,5 +25,6 @@ switch (phx_gameMode) do {
       {!isNil "phx_missionTimeLimit"},
       {phx_missionTimeLimit = 40}
     ] call CBA_fnc_waitUntilAndExecute;
+    execVM "modes\scavHunt\scavHunt_client.sqf";
   };
 };
