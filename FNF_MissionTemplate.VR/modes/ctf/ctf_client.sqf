@@ -28,7 +28,7 @@ if (playerSide == phx_attackingSide) then {
     "Take flag",
     "",
     "",
-    "player distance ctf_flagPole < 5",
+    "player distance ctf_flagPole < 5 && !phx_safetyEnabled",
     "player distance ctf_flagPole < 5",
     {},
     {},
@@ -43,7 +43,15 @@ if (playerSide == phx_attackingSide) then {
     true,
     false
   ] call BIS_fnc_holdActionAdd;
+};
 
+private _attackSpawnMark = switch (phx_attackingSide) do {
+  case east: {"opforSafeMarker"};
+  case west: {"bluforSafeMarker"};
+  case independent: {"indforSafeMarker"};
+};
+
+if (playerside == phx_attackingSide || ctf_flagPole inArea _attackSpawnMark) then {
   "capZoneMark" setMarkerAlphaLocal 1;
   "capZoneMarkText" setMarkerAlphaLocal 1;
 } else {
@@ -56,7 +64,7 @@ phx_clientFlagAction = [
   "Take flag",
   "",
   "",
-  "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide)",
+  "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide || ctf_flag inArea ctf_attackTrig)",
   "player distance ctf_flag < 3.5",
   {},
   {},
@@ -71,3 +79,14 @@ phx_clientFlagAction = [
   false,
   false
 ] call BIS_fnc_holdActionAdd;
+
+phx_ctf_clientSpeedHandler = [{
+  _speedCoef = 0.75;
+  _speed = getAnimSpeedCoef player;
+
+  if (player getVariable ["phx_flagUnit",false] && !(ctf_flag inArea ctf_attackTrig)) then {
+    player setAnimSpeedCoef _speedCoef;
+  } else {
+    if (_speed < 1) then {player setAnimSpeedCoef 1};
+  };
+} , 0.25] call CBA_fnc_addPerFrameHandler;
