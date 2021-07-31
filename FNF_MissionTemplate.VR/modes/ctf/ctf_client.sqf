@@ -2,23 +2,27 @@ if (!hasInterface) exitWith {};
 
 ctf_flag disableCollisionWith player;
 
+phx_clientFlagDropped = {
+  [player] remoteExec ["phx_server_dropFlag",2,false];
+  [phx_client_flagCarrierPFH] call CBA_fnc_removePerFrameHandler;
+  player removeAction phx_client_dropFlagAction;
+  player setVariable ["phx_flagUnit",false,true];
+  player setAnimSpeedCoef 1;
+};
+
 phx_flagDropAction = {
   player setVariable ["phx_flagUnit",true,true];
 
   phx_client_flagCarrierPFH = [{
+    player setAnimSpeedCoef 0.75;
+
     if (player getVariable ["ace_isunconscious",false]) then {
-      [player] remoteExec ["phx_server_dropFlag",2,false];
-      player removeAction phx_client_dropFlagAction;
-      player setVariable ["phx_flagUnit",false,true];
-      [_handle] call CBA_fnc_removePerFrameHandler;
+      phx_clientFlagDropped call CBA_fnc_directCall;
     };
   }, 0.1] call CBA_fnc_addPerFrameHandler;
 
   phx_client_dropFlagAction = player addaction ["Drop Flag",{
-    [player] remoteExec ["phx_server_dropFlag",2,false];
-    player removeAction phx_client_dropFlagAction;
-    player setVariable ["phx_flagUnit",false,true];
-    [phx_client_flagCarrierPFH] call CBA_fnc_removePerFrameHandler;
+    phx_clientFlagDropped call CBA_fnc_directCall;
   },nil,1.5,false,false,"","_this == _target"];
 };
 
@@ -79,14 +83,3 @@ phx_clientFlagAction = [
   false,
   false
 ] call BIS_fnc_holdActionAdd;
-
-phx_ctf_clientSpeedHandler = [{
-  _speedCoef = 0.75;
-  _speed = getAnimSpeedCoef player;
-
-  if (player getVariable ["phx_flagUnit",false] && !(ctf_flag inArea ctf_attackTrig)) then {
-    player setAnimSpeedCoef _speedCoef;
-  } else {
-    if (_speed < 1) then {player setAnimSpeedCoef 1};
-  };
-} , 0.25] call CBA_fnc_addPerFrameHandler;
