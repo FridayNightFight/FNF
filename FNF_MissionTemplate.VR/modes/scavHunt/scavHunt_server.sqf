@@ -457,7 +457,7 @@ phx_scavHuntAnyScore = {
     {
       _x setMarkerAlpha 1;
     } forEach phx_scavHuntCapZones;
-    ["All capture zones have been revealed!", 5] remoteExecCall ["phx_fnc_hintThenClear", 0];
+    ["All capture zones have been revealed!", 5] remoteExec ["phx_fnc_hintThenClear", 0];
   }
 ] call CBA_fnc_waitUntilAndExecute;
 
