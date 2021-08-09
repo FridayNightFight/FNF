@@ -18,7 +18,9 @@ _staffArr = [
 	["76561198136175919",["Stracotenko","Disciplinary Team Lead"]],
 	["76561198142848471",["Dingo","Community Team/Host"]],
 	["76561198144278271",["Pickles","Community Team Lead"]],
-	["76561198839019295",["Dusty","Community Team"]]
+	["76561198839019295",["Dusty","Community Team"]],
+	["76561198043984507",["Cyrus","Moderation Team"]],
+	["76561198071074788",["GregLegs","Community Team"]]
 ];
 
 _staffHash = createHashMapFromArray _staffArr;
