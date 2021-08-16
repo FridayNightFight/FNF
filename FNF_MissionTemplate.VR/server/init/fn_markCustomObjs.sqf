@@ -1,4 +1,4 @@
-private _baseClasses = ["Static"]; //anything that is a subtype of these classes and is big enough will be marked
+private _baseClasses = ["Static","Cargo_base_F"]; //anything that is a subtype of these classes and is big enough will be marked
 private _classBlacklist = ["Land_DataTerminal_01_F","Wreck_Base","FlagCarrierCore","Base_CUP_Plant"]; //blacklist of item or parent classes to never mark
 private _markerBlacklist = switch (phx_attackingSide) do {
   case west: {["bluforSafeMarker"]};

@@ -9,8 +9,6 @@ phx_missionTimeLimit = 40;
 // Get present sides
 phx_sidesInMission = [east, west, independent] select {playableSlotsNumber _x > 3};
 
-private _numberOfObjectives = 5;
-private _numberOfTransportsPerSide = 3;
 
 /*
 [OBJECT_NAME, MARKER_NAME, OBJECT_DESCRIPTION, INDEX]
@@ -43,8 +41,8 @@ for "_i" from 1 to (_numberOfTransportsPerSide * (count phx_sidesInMission)) do 
 
 
 // Create array of objectives and transports and push to global var for use in other scripts
-_objArr = _scavHuntObjectives;
-phx_scavHuntObjs = _objArr apply {_x select 0};
+phx_scavHuntObjDetails = _scavHuntObjectives;
+phx_scavHuntObjs = phx_scavHuntObjDetails apply {_x select 0};
 phx_scavHuntTransports = _scavHuntTransports;
 
 // Prep capturable objects
@@ -57,11 +55,11 @@ phx_scavHuntTransports = _scavHuntTransports;
 } forEach phx_scavHuntObjs;
 
 
-// Prep transport vehicles
-{
 
-  private _transportSide = ([_x, true] call BIS_fnc_objectSide);
-  private _transportSideColor = [_transportSide, true] call BIS_fnc_sideColor;
+// Prep transport truck properties
+{
+  private _truckID = round(random(50) + 20);
+  _x setVariable ["truckID", _truckID, true];
 
   // set size to 17, room for 1 objective + 2 wheels
   [_x, 9] call ace_cargo_fnc_setSpace;
@@ -70,6 +68,10 @@ phx_scavHuntTransports = _scavHuntTransports;
   ["ACE_Wheel", _x] call ace_cargo_fnc_loadItem;
   ["ACE_Wheel", _x] call ace_cargo_fnc_loadItem;
 
+
+  private _transportSide = ([_x, true] call BIS_fnc_objectSide);
+  private _transportSideColor = [_transportSide, true] call BIS_fnc_sideColor;
+
   // prevent sides from using each other's vehicles
   _x addEventHandler ["GetIn", {
     params ["_vehicle", "_role", "_unit", "_turret"];
@@ -77,114 +79,30 @@ phx_scavHuntTransports = _scavHuntTransports;
       _unit action ["Eject", _vehicle];
     };
   }];
-
-
-
-  private _truckID = round(random(50) + 20);
-  // truck markers for owning side
-  private _markStr = [
-    format["Transport%1%2", str _transportSide, _truckID], // markerName
-    getPos _x, // markerPos
-    "c_car", // markerType
-    "ICON", // markerShape
-    [0.75, 0.75], //markerSize
-    0, // markerDir
-    "Solid", //markerBrush
-    _transportSideColor, //markerColor
-    1, // markerAlpha
-    format["Truck %1", _truckID] // markerText
-  ] joinString '|';
-
-  [format["|%1", _markStr]] call BIS_fnc_stringToMarker;
-
-  _x setVariable ["truckMarkName", format["Transport%1%2", str _transportSide, _truckID], true];
-
-
-  
-
-
-
-  // accrue damage by parts and when reaching 1, reset, injure passenger
-  // _x allowDamage false; // cannot be used with HandleDamage
-  // _x addEventHandler ["HandleDamage", {
-  //   params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
-  //   private _old = _unit getVariable ["phx_damageCycle", 0];
-  //   private _new = _old + (0.01 * _damage);
-  //   if (_new >= 1) then {
-  //     private _curPax = (fullCrew [_unit, "", false]) select {_x select 1 != 'cargo'};
-  //     if (count _curPax > 0) then {
-  //       // if vehicle crewed, select a random driver, gunner, commander, or turret seat
-  //       private _victim = selectRandom (_curPax apply {_x select 0});
-  //       // apply 0.5 damage to head or body, simulate bullet wound
-  //       [
-  //         _victim,
-  //         0.5,
-  //         (selectRandom ["Head", "Body"]),
-  //         "bullet",
-  //         _instigator
-  //       ] call ace_medical_fnc_addDamageToUnit;
-  //       // force unconscious for 30 seconds, then wake up if stable
-  //       [
-  //         _victim,
-  //         true,
-  //         30,
-  //         true
-  //       ] call ace_medical_fnc_setUnconscious;
-  //       // reset vehicle damage counter
-  //       _unit setVariable ["phx_damageCycle", 0];
-  //     };
-  //   } else {
-  //     // if vehicle damage counter not at 1, increment
-  //     _unit setVariable ["phx_damageCycle", _new];
-  //   };
-  //   0;
-  // }];
-  
-
 } forEach phx_scavHuntTransports;
 
 publicVariable "phx_scavHuntObjs";
 publicVariable "phx_scavHuntTransports";
 
+
 {
-  {
-    _x addEventHandler ["Local", {
-      params ["_truck", "_isLocal"];
-      if (_isLocal) then {
-        _truck allowDamage false;
-      };
-    }];
-  } forEach phx_scavHuntObjs;
+  _x addEventHandler ["Local", {
+    params ["_truck", "_isLocal"];
+    if (_isLocal) then {
+      _truck allowDamage false;
+    };
+  }];
+} forEach phx_scavHuntObjs;
 
-  {
-    _x addEventHandler ["Local", {
-      params ["_truck", "_isLocal"];
-      if (_isLocal) then {
-        _truck allowDamage false;
-      };
-    }];
+{
+  _x addEventHandler ["Local", {
+    params ["_truck", "_isLocal"];
+    if (_isLocal) then {
+      _truck allowDamage false;
+    };
+  }];
+} forEach phx_scavHuntTransports;
 
-    // [{
-    //   // handle wheel removal by re-adding wheel to truck and deleting nearest wheel in 10m
-    //   _args = (_this # 0);
-    //   _args params ["_transport"];
-
-    //   // if (local _transport) then {
-    //     _hitParts = [];
-    //     {
-    //       _hitParts pushBack (configName _x);
-    //     } forEach ([configFile >> "CfgVehicles" >> typeOf _transport >> "HitPoints", 0] call BIS_fnc_returnChildren);
-    //     {
-    //       if (_transport getHitPointDamage _x > 0) then {
-    //         _transport setHitPointDamage [_x, 0, false];
-    //         private _nearWheels = nearestObjects [getPos _transport, ["ACE_Wheel"], 10, true];
-    //         if (count _nearWheels > 0) then {deleteVehicle (_nearWheels # 0)};
-    //       };
-    //     } forEach (_hitParts select {['wheel', _x] call BIS_fnc_inString})
-    //   // };
-    // }, 5, [_x]] call CBA_fnc_addPerFrameHandler;
-  } forEach phx_scavHuntTransports;
-} remoteExec ["call", 0, true];
 
 // Fetch zone triggers
 // phx_scavHuntCapZones = [];
@@ -195,21 +113,16 @@ publicVariable "phx_scavHuntTransports";
 //   };
 // } forEach ["scavHuntCapEAST", "scavHuntCapWEST", "scavHuntCapGUER"];
 
+// publicVariable "phx_scavHuntCapZones";
 
-// Register zone markers
+// CAP ZONE MARKERS
 phx_scavHuntCapZones = [];
 {
-  private _marker = ("scavHuntCap" + str _x);
-  if (markerPos _marker select 0 != 0) then {
-    phx_scavHuntCapZones pushBack _marker;
-    // make invisible for all
-    _marker setMarkerAlpha 0;
-    // then make visible to the side who owns it
-    [_marker, 1] remoteExecCall ["setMarkerAlphaLocal", _x];
-  };
+	private _marker = ("scavHuntCap" + str _x);
+	if (((markerPos _marker) select 0) != 0) then {
+		phx_scavHuntCapZones pushBack _marker;
+	};
 } forEach phx_sidesInMission;
-
-publicVariable "phx_scavHuntCapZones";
 
 
 // Add loaded/unloaded Event Handlers
@@ -229,7 +142,7 @@ publicVariable "phx_scavHuntCapZones";
       _item allowDamage false;
     };
   };
-}, _objArr] call CBA_fnc_addEventHandlerArgs;
+}, phx_scavHuntObjDetails] call CBA_fnc_addEventHandlerArgs;
 
 ["ace_cargoUnloaded", {
   if (!isServer) exitWith {};
@@ -242,7 +155,7 @@ publicVariable "phx_scavHuntCapZones";
     _item setVariable ["phx_objLoaded", false];
     _item allowDamage false;
   };
-}, _objArr] call CBA_fnc_addEventHandlerArgs;
+}, phx_scavHuntObjDetails] call CBA_fnc_addEventHandlerArgs;
 
 
 
@@ -268,7 +181,7 @@ publicVariable "phx_scavHuntCapZones";
   ] joinString '|';
 
   format["|%1", _markStr] call BIS_fnc_stringToMarker;
-} forEach _objArr;
+} forEach phx_scavHuntObjDetails;
 
 
 
@@ -296,7 +209,7 @@ phx_scavHuntObjIsNeutral = {
         case "scavHuntCapCIV": {_cappedSide = civilian};
         default {_cappedSide = sideUnknown};
       };
-      _obj setVariable ["capturedBy", _cappedSide];
+      _obj setVariable ["capturedBy", _cappedSide, true];
       [_captureID + str _cappedSide, "SUCCEEDED", true] call BIS_fnc_taskSetState;
       format["%1 has captured an objective!", _cappedSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
 
@@ -321,7 +234,7 @@ phx_scavHuntObjIsCapped = {
       false;
     };
   };
-  _obj setVariable ["capturedBy", sideUnknown];
+  _obj setVariable ["capturedBy", sideUnknown, true];
   [_captureID + str _cappedSide, "CREATED", true] call BIS_fnc_taskSetState;
   format["%1 has lost an objective!", _cappedSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
 
@@ -390,7 +303,7 @@ phx_scavHuntObjIsCapped = {
       };
     };
   };
-} forEach _objArr;
+} forEach phx_scavHuntObjDetails;
 
 
 
@@ -416,8 +329,10 @@ phx_scavHuntCheckScores = {
     if (_y == _winScore) then {_winSide set [_x, _y]};
   } forEach _scores;
 
-  _winSide;
+  _winSide
 };
+
+
 
 
 phx_scavHuntAnyScore = {
@@ -428,11 +343,23 @@ phx_scavHuntAnyScore = {
   ];
 
   private _highScore = selectMax _scores;
-  (_highScore > 0);
+  (_highScore > 0)
 };
 
+[ // at 15 minutes after safe start, or when first score is made, reveal cap zones
+  {
+    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
+    (call phx_scavHuntAnyScore)
+  },
+  {
+    {
+      _x setMarkerAlphaLocal 1;
+    } forEach phx_scavHuntCapZones;
+  }
+] call CBA_fnc_waitUntilAndExecute;
 
-[ // after safe start, make trucks invincible
+
+[ // after safe start, remind trucks they should be invincible
   {
     (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) >= 2)
   },
@@ -443,23 +370,6 @@ phx_scavHuntAnyScore = {
   } remoteExec ["call", 0, true];
 ] call CBA_fnc_waitUntilAndExecute;
 
-
-
-// waitUntil {BIS_fnc_init};
-// "debug_console" callextension "init";
-// =====================================================================================================
-[ // at 15 minutes after safe start, or when first score is made, reveal cap zones
-  {
-    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
-    (call phx_scavHuntAnyScore)
-  },
-  {
-    {
-      _x setMarkerAlpha 1;
-    } forEach phx_scavHuntCapZones;
-    ["All capture zones have been revealed!", 5] remoteExec ["phx_fnc_hintThenClear", 0];
-  }
-] call CBA_fnc_waitUntilAndExecute;
 
 
 

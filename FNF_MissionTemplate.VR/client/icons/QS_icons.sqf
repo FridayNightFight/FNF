@@ -74,7 +74,7 @@ _QS_ST_showAll = 0;											// NUMBER. Intended for Debug / Development use on
 
 //================= DIPLOMACY - set the Friendly factions for each faction.
 
-_QS_ST_friendlySides_Dynamic = FALSE;						// BOOL. Set TRUE to allow faction alliances to change dynamically (IE. AAF may not always be loyal to NATO) and be represented on the map. Default TRUE.
+_QS_ST_friendlySides_Dynamic = TRUE;						// BOOL. Set TRUE to allow faction alliances to change dynamically (IE. AAF may not always be loyal to NATO) and be represented on the map. Default TRUE.
 _QS_ST_friendlySides_EAST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
 	//1,					//EAST is friendly to WEST
 	//2,					//EAST is friendly to INDEPENDENT/RESISTANCE

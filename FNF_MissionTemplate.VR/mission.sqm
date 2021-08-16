@@ -1837,7 +1837,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={498.58746,5,676.09863};
+				position[]={498.58701,5,676.099};
 			};
 			description="You can delete these crewman and pilots if not needed";
 			id=1353;
@@ -1847,7 +1847,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={698.33191,5,672.45905};
+				position[]={698.33197,5,672.45898};
 			};
 			description="You can delete these crewman and pilots if not needed";
 			id=1354;
@@ -1857,7 +1857,7 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={298.16702,5,678.9516};
+				position[]={298.16699,5,678.95203};
 				angles[]={0,0.015123317,0};
 			};
 			description="You can delete these crewman and pilots if not needed";
