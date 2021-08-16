@@ -17,7 +17,7 @@ if (!isNil "ctf_flag") then {
 };
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
-if (!(playerSide == phx_defendingSide) || !phx_allowFortify) exitWith {};
+if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
 if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F") && !(typeOf player == "I_Soldier_exp_F")) exitWith {
   [{
     if (!phx_safetyEnabled) then {[_handle] call CBA_fnc_removePerFrameHandler};
@@ -51,9 +51,9 @@ switch (playerSide) do {
     };
 
     if (_type != "Land_Plank_01_4m_F" && _type != "Land_Plank_01_8m_F" && (_type find "BagFence" == -1)) then {
-      if ((_pos select 2) > 0.35) then {
+      if ((getPosATL _object) select 2 > 0.35) then {
         _canPlace = false;
-        _errorStr = "Cannot place object. Object must be on a surface."
+        _errorStr = "Cannot place object. Object must be on the terrain."
       };
     };
 
@@ -72,6 +72,11 @@ switch (playerSide) do {
     if !(_pos inArea phx_fortifyMarker) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Object needs to be within start zone boundary."
+    };
+
+    if (_cost > phx_fortifyPoints) then {
+      _canPlace = false;
+      _errorStr = "Cannot place object. Not enough funds.";
     };
 
     hintSilent _errorStr;

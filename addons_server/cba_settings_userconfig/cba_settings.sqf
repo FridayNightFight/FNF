@@ -42,7 +42,7 @@ force force ace_mk6mortar_useAmmoHandling = true;
 
 // ACE Captives
 force force ace_captives_allowHandcuffOwnSide = false;
-force force ace_captives_allowSurrender = true;
+force force ace_captives_allowSurrender = false;
 force force ace_captives_requireSurrender = 0;
 force force ace_captives_requireSurrenderAi = false;
 
@@ -226,7 +226,7 @@ force force ace_medical_treatment_locationSurgicalKit = 0;
 force force ace_medical_treatment_maxLitterObjects = 100;
 force force ace_medical_treatment_medicEpinephrine = 0;
 force force ace_medical_treatment_medicIV = 0;
-force force ace_medical_treatment_medicPAK = 0;
+force force ace_medical_treatment_medicPAK = 1;
 force force ace_medical_treatment_medicSurgicalKit = 1;
 force force ace_medical_treatment_timeCoefficientPAK = 0.5;
 force force ace_medical_treatment_treatmentTimeAutoinjector = 4;
@@ -296,7 +296,7 @@ ace_quickmount_priority = 0;
 force force ace_quickmount_speed = 18;
 
 // ACE Respawn
-force force ace_respawn_removeDeadBodiesDisconnected = true;
+force force ace_respawn_removeDeadBodiesDisconnected = false;
 force force ace_respawn_savePreDeathGear = false;
 
 // ACE Scopes
@@ -427,7 +427,7 @@ force force TFAR_voiceCone = false;
 force force emr_main_allowMidairClimbing = true;
 force force emr_main_animSpeedCoef = 1;
 force force emr_main_animSpeedStaminaCoef = 0.4;
-force force emr_main_blacklistStr = "Land_I44_Buildings_Barbedwire,Land_I44_Buildings_Barbedwire2,Land_WW2_Wire_Bruno,Land_WW2_Wire_2,WW2_BET_Bwire_2,WW2_BET_Bwire_3,WW2_BET_Bwire_4,Land_fow_Barbedwire,Land_I44_Buildings_Wirefence";
+force force emr_main_blacklistStr = "";
 force force emr_main_climbingEnabled = true;
 force force emr_main_climbOnDuty = 3.4;
 force force emr_main_climbOverDuty = 3;
@@ -453,17 +453,35 @@ force force emr_main_whitelistStr = "";
 force force grad_trenches_functions_allowBigEnvelope = true;
 force force grad_trenches_functions_allowCamouflage = true;
 force force grad_trenches_functions_allowDigging = true;
+force force grad_trenches_functions_allowDiggingInVehicle = true;
 force force grad_trenches_functions_allowGiantEnvelope = true;
+force force grad_trenches_functions_allowHitDecay = false;
 force force grad_trenches_functions_allowLongEnvelope = true;
 force force grad_trenches_functions_allowShortEnvelope = true;
 force force grad_trenches_functions_allowSmallEnvelope = true;
+force force grad_trenches_functions_allowTrenchDecay = false;
 force force grad_trenches_functions_allowVehicleEnvelope = true;
-force force grad_trenches_functions_bigEnvelopeDigTime = 70;
+force force grad_trenches_functions_bigEnvelopeDamageMultiplier = 2;
+force force grad_trenches_functions_bigEnvelopeDigTime = 75;
+force force grad_trenches_functions_bigEnvelopeRemovalTime = -1;
 force force grad_trenches_functions_buildFatigueFactor = 0;
 force force grad_trenches_functions_camouflageRequireEntrenchmentTool = false;
+force force grad_trenches_functions_createTrenchMarker = false;
+force force grad_trenches_functions_decayTime = 1800;
+force force grad_trenches_functions_giantEnvelopeDamageMultiplier = 1;
 force force grad_trenches_functions_giantEnvelopeDigTime = 140;
-force force grad_trenches_functions_LongEnvelopeDigTime = 140;
+force force grad_trenches_functions_giantEnvelopeRemovalTime = -1;
+force force grad_trenches_functions_hitDecayMultiplier = 1;
+force force grad_trenches_functions_LongEnvelopeDigTime = 130;
+force force grad_trenches_functions_LongEnvelopeRemovalTime = -1;
+force force grad_trenches_functions_shortEnvelopeDamageMultiplier = 2;
 force force grad_trenches_functions_shortEnvelopeDigTime = 45;
+force force grad_trenches_functions_shortEnvelopeRemovalTime = -1;
+force force grad_trenches_functions_smallEnvelopeDamageMultiplier = 3;
 force force grad_trenches_functions_smallEnvelopeDigTime = 20;
-force force grad_trenches_functions_stopBuildingAtFatigueMax = true;
+force force grad_trenches_functions_smallEnvelopeRemovalTime = -1;
+force force grad_trenches_functions_stopBuildingAtFatigueMax = false;
+force force grad_trenches_functions_timeoutToDecay = 7200;
+force force grad_trenches_functions_vehicleEnvelopeDamageMultiplier = 1;
 force force grad_trenches_functions_vehicleEnvelopeDigTime = 140;
+force force grad_trenches_functions_vehicleEnvelopeRemovalTime = -1;

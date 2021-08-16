@@ -15,6 +15,10 @@ class CfgFunctions {
       class clientCanPlay{};
       class clientSetupGame{};
       class staggeredLoad{};
+      class drawStaffIcons{};
+      class drawCmdIcons{};
+      class drawSLIcons{};
+      class assetDiaryInfo{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -23,6 +27,7 @@ class CfgFunctions {
       class setGroupIDs{};
       class createBrief{};
       class createOrbat{};
+      class objectiveRecon{};
     };
     class radio {
       file = "client\radio";
@@ -69,7 +74,7 @@ class CfgFunctions {
       class restrictions{};
       class disableMisc{};
       class afkCheck{};
-      class disableTyping{};
+      class disableTyping{postInit = 1;};
       class removeRespawnButton{};
       class hideMarkers{};
       class restrictUniform{};
@@ -81,6 +86,7 @@ class CfgFunctions {
     class safety {
       file = "client\safety";
       class safety{};
+      class handleSafetyVics{};
     };
     class misc {
       file = "client\misc";
@@ -89,6 +95,8 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
+      class adminGameEnd{};
+      class objectivePreview{};
     };
     class unflip {
       file = "client\misc\unflip";
@@ -110,6 +118,7 @@ class CfgFunctions {
       class checkTime{};
       class overTimeEnd{};
       class gameEnd{};
+      class endElimination{};
     };
     class webhook {
       file = "server\webhook";

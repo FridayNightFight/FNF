@@ -16,6 +16,7 @@ adSector
 ===NEUTRAL===
 connection
 neutralSector
+scavHunt
 */
 
 /************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/
@@ -25,14 +26,16 @@ phx_attackingSide = sideEmpty; //west/east/independent
 
 ////////////////////////////////////////////////////////////
 
-//Uniforms
+//BLUFOR
 phx_bluforUniform = "UNIFORM_MARPAT_WD";
-phx_opforUniform = "UNIFORM_EMR_SUMMER";
-phx_indforUniform = "UNIFORM_M93_OAKLEAF";
-
-//Weapons
 phx_bluforWeapons = "WEAPONS_US";
+
+//OPFOR
+phx_opforUniform = "UNIFORM_EMR_SUMMER";
 phx_opforWeapons = "WEAPONS_RU";
+
+//INDFOR
+phx_indforUniform = "UNIFORM_M93_OAKLEAF";
 phx_indforWeapons = "WEAPONS_IND";
 
 /*
@@ -55,8 +58,7 @@ phx_magnifiedOptics = false; //Allow players to grab magnified optics from the g
 phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
 //Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
 
-phx_allowFortify = true; //Allow the defending side to use ACEX Fortify
-phx_fortifyPoints = 100; //Currency for fortify - individual to each Combat Engineer
+phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 
@@ -72,11 +74,14 @@ UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
 UNIFORM_M93_WOODLAND               --   WEAPONS_M21
 UNIFORM_ARMY_OCP                   --   WEAPONS_SCAR
 UNIFORM_UCP                        --   WEAPONS_VHS
-UNIFORM_CTRG_WD                    --
-UNIFORM_ION_BK
-UNIFORM_ION_WD
+UNIFORM_CTRG_WD                    --   WEAPONS_FAL_COLDWAR
+UNIFORM_ION_BK                     --   WEAPONS_M14
+UNIFORM_ION_WD                     --   WEAPONS_SOVIET
 UNIFORM_ISRAEL_TAN
 UNIFORM_RANGER
+UNIFORM_WEST_POLICE
+UNIFORM_BUNDESWEHR
+UNIFORM_HELLENIC_ARMY
 
 =====OPFOR=====
 UNIFORM_EMR_SUMMER
@@ -86,6 +91,12 @@ UNIFORM_MOUNTAIN_FLORA
 UNIFORM_GORKA_GREEN
 UNIFORM_GORKA_BEREZKA
 UNIFORM_SOVIET_CSAT
+UNIFORM_EAST_POLICE
+UNIFORM_RUSSIAN_SPETSNAZ
+UNIFORM_RUSSIAN_RATNIK
+UNIFORM_SOVIET_AFGHAN
+UNIFORM_SOVIET_WINTER
+UNIFORM_RUSSIAN_SPRING
 
 =====INDFOR=====
 UNIFORM_M93_OAKLEAF
@@ -97,5 +108,9 @@ UNIFORM_M10_MOUNTAIN
 UNIFORM_GUERRILLA
 UNIFORM_AAF
 UNIFORM_ALTIS_LIZARD
+UNIFORM_PARAMILITARY
+UNIFORM_IND_POLICE
+UNIFORM_M88
+UNIFORM_JUNGLE
 =========================================================================================================================
 */

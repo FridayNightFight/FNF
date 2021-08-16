@@ -1,3 +1,4 @@
+//Backpack
 phx_loadout_backpack = "B_TacticalPack_oli";
 
 if (pRole == ROLE_CLS) then {
@@ -10,10 +11,16 @@ if (pRole == ROLE_AT || pRole == ROLE_AAT || pRole == ROLE_CE) then {
   phx_loadout_backpack = "B_Kitbag_rgr";
 };
 
+//Headgear
 if (pRole == ROLE_P) then {
   phx_loadout_headgear = "H_PilotHelmetHeli_O";
-  phx_loadout_vest = "V_TacVest_oli";
 };
 if (pRole == ROLE_CR) then {
   phx_loadout_headgear = "H_HelmetCrew_I";
+};
+
+
+//Vest
+if (pRole == ROLE_P) then {
+  phx_loadout_vest = "V_TacVest_oli";
 };

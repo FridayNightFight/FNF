@@ -2,23 +2,27 @@ if (!hasInterface) exitWith {};
 
 ctf_flag disableCollisionWith player;
 
+phx_clientFlagDropped = {
+  [player] remoteExec ["phx_server_dropFlag",2,false];
+  [phx_client_flagCarrierPFH] call CBA_fnc_removePerFrameHandler;
+  player removeAction phx_client_dropFlagAction;
+  player setVariable ["phx_flagUnit",false,true];
+  player setAnimSpeedCoef 1;
+};
+
 phx_flagDropAction = {
   player setVariable ["phx_flagUnit",true,true];
 
   phx_client_flagCarrierPFH = [{
+    player setAnimSpeedCoef 0.75;
+
     if (player getVariable ["ace_isunconscious",false]) then {
-      [player] remoteExec ["phx_server_dropFlag",2,false];
-      player removeAction phx_client_dropFlagAction;
-      player setVariable ["phx_flagUnit",false,true];
-      [_handle] call CBA_fnc_removePerFrameHandler;
+      phx_clientFlagDropped call CBA_fnc_directCall;
     };
   }, 0.1] call CBA_fnc_addPerFrameHandler;
 
   phx_client_dropFlagAction = player addaction ["Drop Flag",{
-    [player] remoteExec ["phx_server_dropFlag",2,false];
-    player removeAction phx_client_dropFlagAction;
-    player setVariable ["phx_flagUnit",false,true];
-    [phx_client_flagCarrierPFH] call CBA_fnc_removePerFrameHandler;
+    phx_clientFlagDropped call CBA_fnc_directCall;
   },nil,1.5,false,false,"","_this == _target"];
 };
 
@@ -28,7 +32,7 @@ if (playerSide == phx_attackingSide) then {
     "Take flag",
     "",
     "",
-    "player distance ctf_flagPole < 5",
+    "player distance ctf_flagPole < 5 && !phx_safetyEnabled",
     "player distance ctf_flagPole < 5",
     {},
     {},
@@ -43,7 +47,15 @@ if (playerSide == phx_attackingSide) then {
     true,
     false
   ] call BIS_fnc_holdActionAdd;
+};
 
+private _attackSpawnMark = switch (phx_attackingSide) do {
+  case east: {"opforSafeMarker"};
+  case west: {"bluforSafeMarker"};
+  case independent: {"indforSafeMarker"};
+};
+
+if (playerside == phx_attackingSide || ctf_flagPole inArea _attackSpawnMark) then {
   "capZoneMark" setMarkerAlphaLocal 1;
   "capZoneMarkText" setMarkerAlphaLocal 1;
 } else {
@@ -56,7 +68,7 @@ phx_clientFlagAction = [
   "Take flag",
   "",
   "",
-  "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide)",
+  "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide || ctf_flag inArea ctf_attackTrig)",
   "player distance ctf_flag < 3.5",
   {},
   {},

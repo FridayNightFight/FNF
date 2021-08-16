@@ -38,6 +38,10 @@ switch (phx_gameMode) do {
     execVM "modes\neutralsector\neutralSector.sqf";
     phx_overTimeConStr = "The mission will go into overtime if the second-highest side stays within 20 points of the highest side. The first side to 100 points will still win if mission is within normal time limit.";
   };
+  case "scavHunt": {
+    execVM "modes\scavHunt\scavHunt_server.sqf";
+    phx_overTimeConStr = "The mission will go into overtime if both teams hold an equal number of target items in their zone when the timer reaches zero.";
+  };
 };
 
 publicVariable "phx_overTimeConStr";
@@ -53,8 +57,8 @@ _deleteObj = {
 };
 
 if !(phx_gameMode isEqualTo "destroy") then {
-  {_x call _deleteObj} forEach [destroy_obj1,destroy_obj2];
-  {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]}} forEach ["destroy_obj1Mark","destroy_obj2Mark"];
+  {_x call _deleteObj} forEach [destroy_obj_1,destroy_obj_2];
+  {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]}} forEach ["destroy_obj_1_mark","destroy_obj_2_mark"];
 };
 
 if !(phx_gameMode isEqualTo "uplink" || phx_gameMode isEqualTo "rush" || phx_gameMode isEqualTo "connection") then {
@@ -67,4 +71,12 @@ if !(phx_gamEMode isEqualTo "captureTheFlag") then {
 
 if !(phx_gameMode isEqualTo "adSector") then {
   {_x call _deleteObj} forEach [phx_sec1,phx_sec2,phx_sec3];
+};
+
+if !(phx_gameMode isEqualTo "scavHunt") then {
+  {_x call _deleteObj} forEach [scav_obj_1,scav_obj_2,scav_obj_3,scav_obj_4,scav_obj_5,scav_obj_6,scav_obj_7,scav_obj_8,scav_obj_9,scav_obj_10];
+  {_x call _deleteObj} forEach [scav_transport_1,scav_transport_2,scav_transport_3,scav_transport_4,scav_transport_5,scav_transport_6,scav_transport_7,scav_transport_8,scav_transport_9,scav_transport_10];
+  {
+    deleteMarker _x;
+  } forEach ["scavHuntCapEAST", "scavHuntCapWEST", "scavHuntCapGUER"];
 };

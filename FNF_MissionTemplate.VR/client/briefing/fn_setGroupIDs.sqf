@@ -175,6 +175,8 @@ _groups = [
     ["Green_H3","H3","Hotel Three (Air)",0, [4, 1, [10, 10.1, 10.2, 10.3]] ]
 ];
 
+phx_templateGroupsList = _groups apply {_x select 0};
+
 private ["_grp"];
 {
     // Check first if the group exists
@@ -183,7 +185,7 @@ private ["_grp"];
     if (!isNull _grp) then {
         if !((groupID _grp) isEqualTo _shortName) then {
             _grp setGroupIdGlobal [_shortName,"GroupColor0"];
-            _grp setVariable ["phx_groupIDSet",true,true];
+            //_grp setVariable ["phx_groupIDSet",true,true];
         };
         _grp setVariable ["phx_groupIdentifier",_identifier];
         _grp setVariable ["phx_LongName",_longName];
