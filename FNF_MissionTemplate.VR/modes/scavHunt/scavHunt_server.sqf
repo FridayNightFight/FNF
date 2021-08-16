@@ -5,6 +5,7 @@ if (!isServer) exitWith {};
 
 // Lower game mode to 40 minutes
 phx_missionTimeLimit = 40;
+publicVariable "phx_missionTimeLimit";
 
 // Get present sides
 phx_sidesInMission = [east, west, independent] select {playableSlotsNumber _x > 3};
@@ -48,8 +49,9 @@ phx_scavHuntTransports = _scavHuntTransports;
 // Prep capturable objects
 {
   _x allowDamage false;
-  _x setVariable ["capturedBy", sideUnknown];
-  _x setVariable ["phx_objLoaded", false];
+  _x setVariable ["capturedBy", sideUnknown, true];
+  _x setVariable ["phx_objLoaded", false, true];
+  _x setVariable ["phx_isRevealed", false, true];
   [_x, true] call ace_arsenal_fnc_removeBox;
   [_x, 7] call ace_cargo_fnc_setSize;
 } forEach phx_scavHuntObjs;
@@ -79,6 +81,7 @@ phx_scavHuntTransports = _scavHuntTransports;
       _unit action ["Eject", _vehicle];
     };
   }];
+
 } forEach phx_scavHuntTransports;
 
 publicVariable "phx_scavHuntObjs";
@@ -134,7 +137,7 @@ phx_scavHuntCapZones = [];
     (_thisArgs select (_objIndex)) params ["_obj", "_marker", "_name", "_index"];
     private _likelyPlayer = nearestObject [_vehicle, "CAManBase"];
     format["Item %1 (%2) loaded into a transport by %3 (%4)!", _index, _name, side _likelyPlayer call BIS_fnc_sideName, name _likelyPlayer] remoteExec ["systemChat", 0];
-    _item setVariable ["phx_objLoaded", true];
+    _item setVariable ["phx_objLoaded", true, true];
     _item allowDamage false;
   } else {
     if (_objIndex > -1) then {
@@ -152,7 +155,7 @@ phx_scavHuntCapZones = [];
     (_thisArgs select (_objIndex)) params ["_obj", "_marker", "_name", "_index"];
     private _likelyPlayer = nearestObject [_vehicle, "CAManBase"];
     format["Item %1 (%2) unloaded from a transport by %3 (%4)!", _index, _name, side _likelyPlayer call BIS_fnc_sideName, name _likelyPlayer] remoteExec ["systemChat", 0];
-    _item setVariable ["phx_objLoaded", false];
+    _item setVariable ["phx_objLoaded", false, true];
     _item allowDamage false;
   };
 }, phx_scavHuntObjDetails] call CBA_fnc_addEventHandlerArgs;
@@ -169,7 +172,7 @@ phx_scavHuntCapZones = [];
 
   private _markStr = [
     _marker, // markerName
-    getPos _obj, // markerPos
+    [0,0,0], //getPos _obj, // markerPos
     "mil_dot", // markerType
     "ELLIPSE", // markerShape
     [25, 25], //markerSize
@@ -211,6 +214,10 @@ phx_scavHuntObjIsNeutral = {
       };
       _obj setVariable ["capturedBy", _cappedSide, true];
       [_captureID + str _cappedSide, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+      _failedSides = +phx_sidesInMission - [_cappedSide];
+      {
+        [_captureID + str _x, "FAILED", true] call BIS_fnc_taskSetState;
+      } forEach _failedSides;
       format["%1 has captured an objective!", _cappedSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
 
       _highScore = (call phx_scavHuntCheckScores) toArray false;
@@ -219,7 +226,13 @@ phx_scavHuntObjIsNeutral = {
         format["  %1 with %2 items", (_x # 0) call BIS_fnc_sideName, _x # 1] remoteExec ["systemChat", 0];
       } forEach _highScore;
 
-      [_obj, _marker, _captureID, _cappedSide, _capMark] spawn phx_scavHuntObjIsCapped;
+      // switch to recappable
+      // [_obj, _marker, _captureID, _cappedSide, _capMark] spawn phx_scavHuntObjIsCapped;
+
+      // switch to NOT recappable
+      [_obj, false] remoteExec ["ace_dragging_fnc_setDraggable", 0];
+      [_obj, false] remoteExec ["ace_dragging_fnc_setCarryable", 0];
+      [_obj, -1] remoteExec ["ace_cargo_fnc_setSize", 0];
     };
   } forEach phx_scavHuntCapZones;
 };
@@ -252,6 +265,7 @@ phx_scavHuntObjIsCapped = {
   if !(isNull (_x select 0)) then {
     _x params ["_obj", "_marker", "_name", "_index"];
     private _captureTaskText = "Capture and bring back the ";
+    private _captureTaskImg = format["<img width='200' height='100' image='%1'/>", getText(configFile >> "CfgVehicles" >> typeOf _obj >> 'editorPreview')];
     private _captureID = "captureTask" + str _index + "_";
 
     // create tasks
@@ -260,11 +274,11 @@ phx_scavHuntObjIsCapped = {
         _x,
         _captureID + str _x,
         [
-          format [_captureTaskText + "%1", _name],
+          format [_captureTaskText + "%1" + "<br/>" + _captureTaskImg, _name],
           format ["Item %1", _index],
           _marker
         ],
-        _obj,
+        [0,0,0],
         "CREATED"
       ] call BIS_fnc_taskCreate;
     } forEach phx_sidesInMission;
@@ -277,20 +291,22 @@ phx_scavHuntObjIsCapped = {
     //Handle moving objective
     [_obj, _marker, _captureID] spawn {
       params ["_obj", "_marker", "_captureID"];
+
       _objMarkerUpdateTime = 3; //Change this value to however often you want the objective markers to update (seconds)
       _objMaxDistance = selectMin (getMarkerSize _marker);
 
       //Sets marker position to a random area around the objective, keeping the objective inside the marker
-      if !(_obj inArea _marker) then {
+      if (!(_obj inArea _marker) && _obj getVariable ["phx_isRevealed", false]) then {
         _marker setMarkerPos ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
+        {
+          [_captureID + str _x, _marker] call BIS_fnc_taskSetDestination;
+        } forEach phx_sidesInMission;
       };
-      {
-        [_captureID + str _x, _marker] call BIS_fnc_taskSetDestination;
-      } forEach phx_sidesInMission;
       //Loop over objective position every _objMarkerUpdateTime
       //If objective moves more than _objMaxDistance meters away from it's last known position, the objective marker will update
       while {true} do {
-        if !(_obj inArea _marker) then {
+        if !((_obj getVariable ["capturedBy", sideUnknown]) isEqualTo sideUnknown) then {[_marker] remoteExec ["deleteMarker", 0]; terminate _thisScript;};
+        if (!(_obj inArea _marker) && _obj getVariable ["phx_isRevealed", false]) then {
           //Move the objective marker to a random position around the objective, while keeping the objective inside the marker's area
           _newPos = ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
           _marker setMarkerPos _newPos;
@@ -304,6 +320,97 @@ phx_scavHuntObjIsCapped = {
     };
   };
 } forEach phx_scavHuntObjDetails;
+
+
+
+phx_scavHuntAnyScore = {
+  private _scores = [
+    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east}),
+    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west}),
+    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
+  ];
+
+  private _highScore = selectMax _scores;
+  (_highScore > 0)
+};
+
+[ // at 15 minutes after safe start, or when first score is made, reveal cap zones
+  {
+    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
+    (call phx_scavHuntAnyScore)
+  },
+  {
+    {
+      _x setMarkerAlphaLocal 1;
+    } forEach phx_scavHuntCapZones;
+  }
+] call CBA_fnc_waitUntilAndExecute;
+
+
+
+
+
+
+
+
+[ // after safe start
+  {(!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) >= 2)}, {
+
+    // remind trucks they should be invincible
+    {
+      {
+        _x allowDamage false;
+      } forEach phx_scavHuntTransports;
+    } remoteExec ["call", 0, true];
+
+
+    // Reveal new objective every mission time minus 15 divided by number of objectives
+    _objRevealTime = (phx_missionTimeLimit - 15) / count phx_scavHuntObjs;
+    // 5 objectives -- every 5 minutes
+    // 10 objectives -- every 2.5 minutes
+    [{
+      _args params ["_objs"];
+
+      // select randomly from objectives that haven't been revealed or captured yet, and reveal them
+      private _objsToMaybeReveal = _objs select {
+        (_x getVariable ["capturedBy", sideUnknown]) isEqualTo sideUnknown &&
+        !(_x getVariable ["phx_isRevealed", false]) 
+      };
+
+      private _revealThis = selectRandom _objsToMaybeReveal;
+      _revealThis setVariable ["phx_isRevealed", true, true];
+      private _index = phx_scavHuntObjs find _revealThis;
+
+      (phx_scavHuntObjDetails select _index) params ["_obj", "_mark", "_name", "_index"];
+      format["Item %1 has been revealed!", _index] remoteExec ["systemChat", 0];
+
+    }, _objRevealTime * 60, [phx_scavHuntObjs]] call CBA_fnc_addPerFrameHandler;
+
+
+    // Show leading teams every 5 minutes
+    [{
+      _highScore = (call phx_scavHuntCheckScores) toArray false;
+      "Leading Team(s):" remoteExec ["systemChat", 0];
+      {
+        format["  %1 with %2 items", (_x # 0) call BIS_fnc_sideName, _x # 1] remoteExec ["systemChat", 0];
+      } forEach _highScore;
+    }, 300] call CBA_fnc_addPerFrameHandler;
+
+  }
+] call CBA_fnc_waitUntilAndExecute;
+
+
+
+
+// Win conditions handled at end of timer -- fn_overTimeEnd.sqf
+
+
+
+
+
+
+
+
 
 
 
@@ -333,44 +440,10 @@ phx_scavHuntCheckScores = {
 };
 
 
+[{(values (call phx_scavHuntCheckScores)) findIf {_x > ((count phx_scavHuntObjs) / 2)} > -1}, {
+  phx_gameEnd = true;
+  publicVariable "phx_gameEnd";
+  private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
+  [_winData # 0, format["%1 won by capturing a majority of items! (%2)", (_winData # 0) call BIS_fnc_sideName, _winData # 1]] spawn phx_fnc_gameEnd;
+}] call CBA_fnc_waitUntilAndExecute;
 
-
-phx_scavHuntAnyScore = {
-  private _scores = [
-    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east}),
-    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west}),
-    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
-  ];
-
-  private _highScore = selectMax _scores;
-  (_highScore > 0)
-};
-
-[ // at 15 minutes after safe start, or when first score is made, reveal cap zones
-  {
-    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
-    (call phx_scavHuntAnyScore)
-  },
-  {
-    {
-      _x setMarkerAlphaLocal 1;
-    } forEach phx_scavHuntCapZones;
-  }
-] call CBA_fnc_waitUntilAndExecute;
-
-
-[ // after safe start, remind trucks they should be invincible
-  {
-    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) >= 2)
-  },
-  {
-    {
-      _x allowDamage false;
-    } forEach phx_scavHuntTransports;
-  } remoteExec ["call", 0, true];
-] call CBA_fnc_waitUntilAndExecute;
-
-
-
-
-// Win conditions handled at end of timer -- fn_overTimeEnd.sqf

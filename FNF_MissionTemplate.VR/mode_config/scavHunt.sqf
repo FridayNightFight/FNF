@@ -1,4 +1,4 @@
-private _numberOfObjectives = 5;
+private _numberOfObjectives = 10;
 private _numberOfTransportsPerSide = 3;
 
 

@@ -24,10 +24,6 @@ phx_scavHuntCapZones = [];
 
 
 [{!isNil "phx_scavHuntTransports" && !isNil "phx_scavHuntObjs"}, {
-
-
-
-
 	// OBJECTIVES
 	{
 		// ensure invincibility of objectives
@@ -88,23 +84,28 @@ phx_scavHuntCapZones = [];
 
 		[{
 			// handle wheel removal by re-adding wheel to truck and deleting nearest wheel in 10m
-			_args = (_this # 0);
-			_args params ["_transport"];
+			(_this # 0) params ["_transport"];
 
 			// if (local _transport) then {
-				_hitParts = [];
-				{
-					_hitParts pushBack (configName _x);
-				} forEach ([configFile >> "CfgVehicles" >> typeOf _transport >> "HitPoints", 0] call BIS_fnc_returnChildren);
-				{
-					if (_transport getHitPointDamage _x > 0) then {
-						_transport setHitPointDamage [_x, 0, false];
-						private _nearWheels = nearestObjects [getPos _transport, ["ACE_Wheel"], 10, true];
-						if (count _nearWheels > 0) then {deleteVehicle (_nearWheels # 0)};
+			_hitParts = [];
+			{
+				_hitParts pushBack (configName _x);
+			} forEach ([configFile >> "CfgVehicles" >> typeOf _transport >> "HitPoints", 0] call BIS_fnc_returnChildren);
+			{
+				if (_transport getHitPointDamage _x > 0) then {
+					_transport allowDamage true;
+					_transport setHitPointDamage [_x, 0];
+					_transport allowDamage false;
+					private _nearWheels = nearestObjects [_transport, ["ACE_Wheel"], 10, true];
+					if (count _nearWheels > 0) then {
+						deleteVehicle (_nearWheels # 0)
 					};
-				} forEach (_hitParts select {['wheel', _x] call BIS_fnc_inString});
+				};
+			} forEach (_hitParts select {['wheel', _x] call BIS_fnc_inString});
 			// };
 		}, 5, [_x]] call CBA_fnc_addPerFrameHandler;
+
+
 	} forEach phx_scavHuntTransports;
 }] call CBA_fnc_waitUntilAndExecute;
 

@@ -74,5 +74,9 @@ if !(phx_gameMode isEqualTo "adSector") then {
 };
 
 if !(phx_gameMode isEqualTo "scavHunt") then {
-  {_x call _deleteObj} forEach [scav_obj_1,scav_obj_2,scav_obj_3,scav_obj_4,scav_obj_5];
+  {_x call _deleteObj} forEach [scav_obj_1,scav_obj_2,scav_obj_3,scav_obj_4,scav_obj_5,scav_obj_6,scav_obj_7,scav_obj_8,scav_obj_9,scav_obj_10];
+  {_x call _deleteObj} forEach [scav_transport_1,scav_transport_2,scav_transport_3,scav_transport_4,scav_transport_5,scav_transport_6,scav_transport_7,scav_transport_8,scav_transport_9,scav_transport_10];
+  {
+    deleteMarker _x;
+  } forEach ["scavHuntCapEAST", "scavHuntCapWEST", "scavHuntCapGUER"];
 };
