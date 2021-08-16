@@ -20,4 +20,11 @@ switch (phx_gameMode) do {
   case "captureTheFlag": {
     execVM "modes\ctf\ctf_client.sqf";
   };
+  case "scavHunt": {
+    [
+      {!isNil "phx_missionTimeLimit"},
+      {phx_missionTimeLimit = 40}
+    ] call CBA_fnc_waitUntilAndExecute;
+    execVM "modes\scavHunt\scavHunt_client.sqf";
+  };
 };
