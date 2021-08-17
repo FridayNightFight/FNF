@@ -9,9 +9,12 @@ call phx_fnc_staggeredLoad; //Start staggered load timer
 call phx_fnc_initLoadout; //Loadout vars
 call phx_fnc_radio_waitGear; //Start radio preset functions
 call phx_fnc_assetDiaryInfo; // Add diary entries for assets
-call phx_fnc_drawStaffIcons; // Draw labels over staff members
-call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
-call phx_fnc_drawSLIcons; //Draw labels over squad leaders
+if (isMultiplayer) then {
+	call phx_fnc_drawStaffIcons; // Draw labels over staff members
+	call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
+	call phx_fnc_drawSLIcons; // Draw labels over squad leaders
+};
+call phx_fnc_teleportInit; // Add leadership teleport options
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {call phx_fnc_setLoadout}] call CBA_fnc_waitUntilAndExecute;

@@ -9,6 +9,11 @@ class CfgFunctions {
       class serverInit{};
       class serverInitCall{postInit = 1;};
     };
+    class teleport {
+      file = "client\misc\leaderTeleport";
+      class teleportInit{};
+      class teleportExec{};
+    }
     class clientInit {
       file = "client\init";
       class clientInit{};
