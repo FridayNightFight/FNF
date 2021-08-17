@@ -1,3 +1,23 @@
+# v2.3.2
+
+## Changes
+#85 Formal deployment of ScavHunt game mode
+Adds the ability to hide HUD items while playing (Map > Utilities > Screenshots/UI)
+Cargo containers now auto-marked
+INDFOR weapons now have Ball_89 AP ammo to be more competitive with other factions -- tracers to be updated via config
+Kill counter UI box removed -- OCAP2 is primary source of kill tracking, please use that if interested
+Tweaks to ACE Spectator: now delays 3 seconds after death before entering Spectator, and starts focused on your killer
+CTF defenders can now pick up the flag, but only if it has been dropped inside of the capture zone they're trying to defend
+
+
+## Fixes
+#87 Issue with player's side changing // seeing enemies marked on map after they had surrendered at least once
+#88 ScavHunt cap zones not hidden at game start
+Unit level ACE Performance Factor settings overriding CBA configured stamina settings removed
+Fixes issue with flag in CTF not being kept at ground level after being destroyed
+Fixes issue with CTF overtime condition not triggering properly
+
+
 # v2.3.0-beta-1
 Fixed:
 - Fixed wrong unflip action icon path
