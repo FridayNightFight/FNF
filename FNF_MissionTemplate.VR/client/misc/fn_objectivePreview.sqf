@@ -47,7 +47,10 @@ _makeCam = {
 	phx_fnc_objectivePreview_Cam camSetFov 0.3;
 	phx_fnc_objectivePreview_Cam camSetFocus [-1, -1];
 	phx_fnc_objectivePreview_Cam camCommitPrepared 0;
-	true;
+
+	phx_hideVehiclesExceptObjectives = true;
+
+	true
 };
 
 
@@ -175,6 +178,7 @@ _handleCam = {
 _useNvg = {if (sunOrMoon < 0.50) then {camUseNVG true};};
 
 _cleanup = {
+	params ["_pos"];
 
 	waitUntil {{!(isNil _x)} count ["phx_fnc_objectivePreview_skip"] > 0};
 
@@ -197,9 +201,8 @@ _cleanup = {
 	ppEffectDestroy phx_fnc_objectivePreview_ppColor;
 	ppEffectDestroy phx_fnc_objectivePreview_ppGrain;
 	camDestroy phx_fnc_objectivePreview_Cam;
-	[false] call phx_fnc_hideVehiclesExceptObjectives;
+	phx_hideVehiclesExceptObjectives = false;
 
-	sleep 2;
 	// Clear existing global variables
 	phx_fnc_objectivePreview_skip = nil;
 	phx_fnc_objectivePreview_Done = nil;
@@ -207,62 +210,68 @@ _cleanup = {
 	phx_fnc_objectivePreview_Text = nil;
 	phx_fnc_objectivePreview_ppGrain = nil;
 	phx_fnc_objectivePreview_ppColor = nil;
-	phx_fnc_hideVehiclesExceptObjectives = nil;
+	phx_hideVehiclesExceptObjectives = nil;
 	phx_fnc_objectivePreview_Cam = nil;
 
-	true;
+	true
 };
 
 
+// at cam start
+// phx_hideVehiclesExceptObjectives = true;
 phx_fnc_hideVehiclesExceptObjectives = {
-	params ["_hidden"];
-	_toProcess = vehicles select {
-		!(
-			["obj", vehicleVarName _x] call BIS_fnc_inString ||
-			["term", vehicleVarName _x] call BIS_fnc_inString
-		)
-	};
-	_fortifyObjs = [ // from fn_fortifyServer
-		"Land_BagFence_01_short_green_F",
-		"Land_BagFence_01_long_green_F",
-		"Land_BagFence_01_round_green_F",
-		"Land_Plank_01_4m_F",
-		"Land_Plank_01_8m_F",
-		"Land_HBarrier_01_wall_4_green_F",
-		"Land_HBarrier_01_wall_corner_green_F",
-		"Land_HBarrier_01_wall_6_green_F",
-		"Land_BagBunker_01_small_green_F",
-		"Land_HBarrier_01_tower_green_F",
-		"Land_BagBunker_01_large_green_F",
-		"Land_Bunker_01_small_F",
-		"Land_Bunker_01_big_F",
-		"Land_Bunker_01_HQ_F",
-		"Land_Bunker_01_tall_F",
-		"Land_BagFence_Short_F",
-		"Land_BagFence_Long_F",
-		"Land_BagFence_Round_F",
-		"Land_Plank_01_4m_F",
-		"Land_Plank_01_8m_F",
-		"Land_HBarrierWall4_F",
-		"Land_HBarrierWall_corner_F",
-		"Land_HBarrierWall6_F",
-		"Land_BagBunker_Small_F",
-		"Land_BagBunker_Tower_F",
-		"Land_BagBunker_Large_F",
-		"Land_Bunker_01_small_F",
-		"Land_Bunker_01_big_F",
-		"Land_Bunker_01_HQ_F",
-		"Land_Bunker_01_tall_F"
-	];
-	{
-		_toProcess append (entities _x);
-	} forEach _fortifyObjs;
+	params ["_pos"];
+	[{
 
-	{
-		_x hideObject _hidden;
-	} forEach _toProcess;
+		(_this select 0) params ["_pos"];
+		_hidden = phx_hideVehiclesExceptObjectives;
+
+		_toProcess = vehicles select {
+			!(
+				["obj", vehicleVarName _x] call BIS_fnc_inString ||
+				["term", vehicleVarName _x] call BIS_fnc_inString
+			)
+		};
+		_toProcess append allUnits;
+
+		if (count acex_fortify_objects_east > 0) then {
+			// can fortify, find objects
+			private _searchArr = (acex_fortify_objects_east apply {_x select 0});
+			private _foundArr = nearestObjects [_pos, _searchArr, 1000];
+			if (count _foundArr > 0) then {
+				_toProcess append _foundArr;
+			};
+		};
+		if (count acex_fortify_objects_west > 0) then {
+			private _searchArr = (acex_fortify_objects_west apply {_x select 0});
+			private _foundArr = nearestObjects [_pos, _searchArr, 1000];
+			if (count _foundArr > 0) then {
+				_toProcess append _foundArr;
+			};
+		};
+		if (count acex_fortify_objects_guer > 0) then {
+			private _searchArr = (acex_fortify_objects_guer apply {_x select 0});
+			private _foundArr = nearestObjects [_pos, _searchArr, 1000];
+			if (count _foundArr > 0) then {
+				_toProcess append _foundArr;
+			};
+		};
+
+		// _arr = "(configName _x isKindOf 'ACE_envelope_small')" configClasses (configFile >> "CfgVehicles");
+		// _arr = _arr apply {configName _x};
+		// _arr
+		_toProcess append (nearestObjects [_pos, ["ACE_envelope_small"], 1000]);
+
+		// _toProcess append phx_aceXFortify_objects;
+
+		{
+			_x hideObject _hidden;
+		} forEach (_toProcess arrayIntersect _toProcess);
+
+		if (!_hidden) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
+
+	}, 0.03, [_pos]] call CBA_fnc_addPerFrameHandler;
 };
-
 
 
 
@@ -350,14 +359,14 @@ switch true do {
 		_cam = [_loc] spawn _makeCam;
 		waitUntil {scriptDone _cam};
 
-		[true] call phx_fnc_hideVehiclesExceptObjectives;
+		[_loc] call phx_fnc_hideVehiclesExceptObjectives;
 		phx_fnc_objectivePreview_Cam cameraEffect ["internal", "back"];
 		cameraEffectEnableHUD true;
 		// waitUntil {!(isNull (uiNamespace getVariable "RscEstablishingShot"))};
 
 		call _useNVG;
 		[_key] spawn _handleCam;
-		[] spawn _cleanup;
+		[_loc] spawn _cleanup;
 	};
 	case (phx_gameMode == "adSector"):{// AD SECTOR
 		_obj = (missionNamespace getVariable [format["phx_sec%1", _objectiveNumber], nil]);
@@ -366,14 +375,14 @@ switch true do {
 		_cam = [getPos _obj] spawn _makeCam;
 		waitUntil {scriptDone _cam};
 
-		[true] call phx_fnc_hideVehiclesExceptObjectives;
+		[getPos _obj] call phx_fnc_hideVehiclesExceptObjectives;
 		phx_fnc_objectivePreview_Cam cameraEffect ["internal", "back"];
 		cameraEffectEnableHUD true;
 		// waitUntil {!(isNull (uiNamespace getVariable "RscEstablishingShot"))};
 
 		call _useNVG;
 		[_key] spawn _handleCam;
-		[] spawn _cleanup;
+		[getPos _obj] spawn _cleanup;
 	};
 	case (phx_gameMode in ["uplink","connection","rush"]): {// TERMINALS
 		_obj = (missionNamespace getVariable [format["term%1", _objectiveNumber], nil]);
@@ -382,14 +391,14 @@ switch true do {
 		_cam = [getPos _obj] spawn _makeCam;
 		waitUntil {scriptDone _cam};
 
-		[true] call phx_fnc_hideVehiclesExceptObjectives;
+		[getPos _obj] call phx_fnc_hideVehiclesExceptObjectives;
 		phx_fnc_objectivePreview_Cam cameraEffect ["internal", "back"];
 		cameraEffectEnableHUD true;
 		// waitUntil {!(isNull (uiNamespace getVariable "RscEstablishingShot"))};
 
 		call _useNVG;
 		[_key] spawn _handleCam;
-		[] spawn _cleanup;
+		[getPos _obj] spawn _cleanup;
 	};
 
 
@@ -405,13 +414,13 @@ switch true do {
 		_cam = [_targetPos] spawn _makeCam;
 		waitUntil {scriptDone _cam};
 
-		[true] call phx_fnc_hideVehiclesExceptObjectives;
+		[_targetPos] call phx_fnc_hideVehiclesExceptObjectives;
 		phx_fnc_objectivePreview_Cam cameraEffect ["internal", "back"];
 		cameraEffectEnableHUD true;
 		// waitUntil {!(isNull (uiNamespace getVariable "RscEstablishingShot"))};
 
 		call _useNVG;
 		[_key] spawn _handleCam;
-		[] spawn _cleanup;
+		[_targetPos] spawn _cleanup;
 	};
 };
