@@ -6,7 +6,7 @@ if (pRole == ROLE_CLS) then {
 };
 
 if (pRole == ROLE_AT || pRole == ROLE_AAT || pRole == ROLE_CE || pRole == ROLE_AAR || pRole == ROLE_AM) then {
-  phx_loadout_backpack = "rhs_tortila_blk";
+  phx_loadout_backpack = "rhs_tortila_black";
 };
 
 //Headgear

@@ -117,7 +117,7 @@ switch (true) do {
   };
   //ATK/DEF SECTOR END
 
-  case "captureTheFlag": {
+  case (phx_gameMode == "captureTheFlag"): {
     while {!phx_gameEnd} do {
       if !(ctf_flag inArea ctf_attackTrig) then {
         [player,phx_clientFlagAction] remoteExec ["BIS_fnc_holdActionRemove",0,false];
@@ -197,4 +197,23 @@ switch (true) do {
     };
   };
   //END NEUTRAL SECTOR & CONNECTION
+
+  case (phx_gameMode == "scavHunt"): {
+
+    if (count (call phx_scavHuntCheckScores) > 1) then {
+      "Overtime enabled! \n The first side to capture another item will win." remoteExec ["hint"];
+      waitUntil {sleep 2; count (call phx_scavHuntCheckScores) == 1};
+      phx_gameEnd = true;
+      publicVariable "phx_gameEnd";
+
+      private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
+
+      [_winData # 0, format["%1 won Scavenger Hunt in overtime by holding %2 items!", str(_winData # 0), _winData # 1]] spawn phx_fnc_gameEnd;
+    } else {
+      phx_gameEnd = true;
+      publicVariable "phx_gameEnd";
+      private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
+      [_winData # 0, format["%1 won by holding %2 items!", (_winData # 0) call BIS_fnc_sideName, _winData # 1]] spawn phx_fnc_gameEnd;
+    };
+  };
 };

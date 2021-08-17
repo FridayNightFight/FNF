@@ -62,7 +62,12 @@ createMarker ["flagMark", position ctf_flagPole];
   params ["_updateTime"];
   while {!isNull ctf_flag} do {
     "flagMark" setMarkerPos (position ctf_flag);
-    sleep _updateTime;
+
+    if (side (attachedTo ctf_flag) == phx_defendingSide) then {
+      sleep 1;
+    } else {
+      sleep _updateTime;
+    };
   };
 };
 
@@ -163,6 +168,11 @@ phx_server_dropFlag = {
       phx_flagCaptureTime = phx_flagCaptureTime - 1;
     } else {
       if (_flagInZoneTex) then {_flagInZoneTex = false};
+    };
+
+    if (isNull attachedTo ctf_flag && !isTouchingGround ctf_flag) then {
+      getpos ctf_flag params ["_x","_y"];
+      ctf_flag setPos ([_x,_y] findEmptyPosition [3, 100, typeOf ctf_flag]);
     };
 
     sleep 1;
