@@ -61,7 +61,7 @@ class CfgORBAT
 					// %1 - ID (e.g. "7th")
 					// %2 - Type (e.g. "Infantry")
 					// %3 - Size (e.g. "Division")
-				textShort = "Team 1";
+				textShort = "Assault Team";
 			};
 
 			class FNFBLUPLTA2 {
@@ -74,7 +74,7 @@ class CfgORBAT
 					// %1 - ID (e.g. "7th")
 					// %2 - Type (e.g. "Infantry")
 					// %3 - Size (e.g. "Division")
-				textShort = "Team 2";
+				textShort = "Support Team";
 			};
 		};
 
@@ -90,6 +90,32 @@ class CfgORBAT
 				// %2 - Type (e.g. "Infantry")
 				// %3 - Size (e.g. "Division")
 			textShort = "Bravo";
+
+			class FNFBLUPLTA1 {
+				id = 1;
+				idType = 0;
+				side = "West"; // Unit side from CfgChainOfCommand >> Sides
+				size = "Fireteam"; // Unit size from CfgChainOfCommand >> Sizes. Displays relevant icon above the Type icon
+				type = "Infantry"; // Unit type from CfgChainOfCommand >> Types
+				text = "Team 1 - MAT Team"; // Custom text and short text, can still use some arguments when defined:
+					// %1 - ID (e.g. "7th")
+					// %2 - Type (e.g. "Infantry")
+					// %3 - Size (e.g. "Division")
+				textShort = "MAT Team";
+			};
+
+			class FNFBLUPLTA2 {
+				id = 2;
+				idType = 0;
+				side = "West"; // Unit side from CfgChainOfCommand >> Sides
+				size = "Fireteam"; // Unit size from CfgChainOfCommand >> Sizes. Displays relevant icon above the Type icon
+				type = "Infantry"; // Unit type from CfgChainOfCommand >> Types
+				text = "Team 2 - MMG Team"; // Custom text and short text, can still use some arguments when defined:
+					// %1 - ID (e.g. "7th")
+					// %2 - Type (e.g. "Infantry")
+					// %3 - Size (e.g. "Division")
+				textShort = "MMG Team";
+			};
 		};
 
 		class FNFBLUPLTC
