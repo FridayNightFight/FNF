@@ -2,24 +2,48 @@ call phx_fnc_loadout_vars; //sets the variables the loadout system uses
 
 //Set player role from class of their unit
 _pClass = typeOf player;
-if (_pClass == UNIT_OPFOR_PL || _pClass == UNIT_BLUFOR_PL || _pClass == UNIT_INDFOR_PL) then {pRole = ROLE_PL};
-if (_pClass == UNIT_OPFOR_SL || _pClass == UNIT_BLUFOR_SL || _pClass == UNIT_INDFOR_SL) then {pRole = ROLE_SL};
-if (_pClass == UNIT_OPFOR_TL || _pClass == UNIT_BLUFOR_TL || _pClass == UNIT_INDFOR_TL) then {pRole = ROLE_TL};
-if (_pClass == UNIT_OPFOR_MGTL || _pClass == UNIT_BLUFOR_MGTL || _pClass == UNIT_INDFOR_MGTL) then {pRole = ROLE_MGTL};
-if (_pClass == UNIT_OPFOR_CLS || _pClass == UNIT_BLUFOR_CLS || _pClass == UNIT_INDFOR_CLS) then {pRole = ROLE_CLS};
-if (_pClass == UNIT_OPFOR_AR || _pClass == UNIT_BLUFOR_AR || _pClass == UNIT_INDFOR_AR) then {pRole = ROLE_AR};
-if (_pClass == UNIT_OPFOR_AAR || _pClass == UNIT_BLUFOR_AAR || _pClass == UNIT_INDFOR_AAR) then {pRole = ROLE_AAR};
-if (_pClass == UNIT_OPFOR_MG || _pClass == UNIT_BLUFOR_MG || _pClass == UNIT_INDFOR_MG) then {pRole = ROLE_MG};
-if (_pClass == UNIT_OPFOR_AM || _pClass == UNIT_BLUFOR_AM || _pClass == UNIT_INDFOR_AM) then {pRole = ROLE_AM};
-if (_pClass == UNIT_OPFOR_RAT || _pClass == UNIT_BLUFOR_RAT || _pClass == UNIT_INDFOR_RAT) then {pRole = ROLE_RAT};
-if (_pClass == UNIT_OPFOR_CE || _pClass == UNIT_BLUFOR_CE || _pClass == UNIT_INDFOR_CE) then {pRole = ROLE_CE};
-if (_pClass == UNIT_OPFOR_AT || _pClass == UNIT_BLUFOR_AT || _pClass == UNIT_INDFOR_AT) then {pRole = ROLE_AT};
-if (_pClass == UNIT_OPFOR_AAT || _pClass == UNIT_BLUFOR_AAT || _pClass == UNIT_INDFOR_AAT) then {pRole = ROLE_AAT};
-if (_pClass == UNIT_OPFOR_R || _pClass == UNIT_BLUFOR_R || _pClass == UNIT_INDFOR_R) then {pRole = ROLE_R};
-if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_INDFOR_CR) then {pRole = ROLE_CR};
-if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
-if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
-if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
+// if (_pClass == UNIT_OPFOR_PL || _pClass == UNIT_BLUFOR_PL || _pClass == UNIT_INDFOR_PL) then {pRole = ROLE_PL};
+// if (_pClass == UNIT_OPFOR_SL || _pClass == UNIT_BLUFOR_SL || _pClass == UNIT_INDFOR_SL) then {pRole = ROLE_SL};
+// if (_pClass == UNIT_OPFOR_TL || _pClass == UNIT_BLUFOR_TL || _pClass == UNIT_INDFOR_TL) then {pRole = ROLE_TL};
+// if (_pClass == UNIT_OPFOR_MGTL || _pClass == UNIT_BLUFOR_MGTL || _pClass == UNIT_INDFOR_MGTL) then {pRole = ROLE_MGTL};
+// if (_pClass == UNIT_OPFOR_CLS || _pClass == UNIT_BLUFOR_CLS || _pClass == UNIT_INDFOR_CLS) then {pRole = ROLE_CLS};
+// if (_pClass == UNIT_OPFOR_AR || _pClass == UNIT_BLUFOR_AR || _pClass == UNIT_INDFOR_AR) then {pRole = ROLE_AR};
+// if (_pClass == UNIT_OPFOR_AAR || _pClass == UNIT_BLUFOR_AAR || _pClass == UNIT_INDFOR_AAR) then {pRole = ROLE_AAR};
+// if (_pClass == UNIT_OPFOR_MG || _pClass == UNIT_BLUFOR_MG || _pClass == UNIT_INDFOR_MG) then {pRole = ROLE_MG};
+// if (_pClass == UNIT_OPFOR_AM || _pClass == UNIT_BLUFOR_AM || _pClass == UNIT_INDFOR_AM) then {pRole = ROLE_AM};
+// if (_pClass == UNIT_OPFOR_RAT || _pClass == UNIT_BLUFOR_RAT || _pClass == UNIT_INDFOR_RAT) then {pRole = ROLE_RAT};
+// if (_pClass == UNIT_OPFOR_CE || _pClass == UNIT_BLUFOR_CE || _pClass == UNIT_INDFOR_CE) then {pRole = ROLE_CE};
+// if (_pClass == UNIT_OPFOR_AT || _pClass == UNIT_BLUFOR_AT || _pClass == UNIT_INDFOR_AT) then {pRole = ROLE_AT};
+// if (_pClass == UNIT_OPFOR_AAT || _pClass == UNIT_BLUFOR_AAT || _pClass == UNIT_INDFOR_AAT) then {pRole = ROLE_AAT};
+// if (_pClass == UNIT_OPFOR_R || _pClass == UNIT_BLUFOR_R || _pClass == UNIT_INDFOR_R) then {pRole = ROLE_R};
+// if (_pClass == UNIT_OPFOR_CR || _pClass == UNIT_BLUFOR_CR || _pClass == UNIT_INDFOR_CR) then {pRole = ROLE_CR};
+// if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
+// if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
+// if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
+
+#define LOADOUTROLE(_str) (player getVariable ["phxLoadout", ""] isEqualTo _str)
+
+if (LOADOUTROLE("PL")) then {pRole = ROLE_PL};
+if (LOADOUTROLE("SL")) then {pRole = ROLE_SL};
+if (LOADOUTROLE("TL")) then {pRole = ROLE_TL};
+if (LOADOUTROLE("AR")) then {pRole = ROLE_AR};
+if (LOADOUTROLE("ARA")) then {pRole = ROLE_AAR};
+if (LOADOUTROLE("GR")) then {pRole = ROLE_GR};
+if (LOADOUTROLE("GRIR")) then {pRole = ROLE_GRIR};
+if (LOADOUTROLE("MG")) then {pRole = ROLE_MG};
+if (LOADOUTROLE("MGA")) then {pRole = ROLE_AM};
+if (LOADOUTROLE("CE")) then {pRole = ROLE_CE};
+if (LOADOUTROLE("LAT")) then {pRole = ROLE_RAT};
+if (LOADOUTROLE("MAT")) then {pRole = ROLE_AT};
+if (LOADOUTROLE("MATA")) then {pRole = ROLE_AAT};
+if (LOADOUTROLE("RI")) then {pRole = ROLE_R};
+if (LOADOUTROLE("DM")) then {pRole = ROLE_MK};
+if (LOADOUTROLE("SNP")) then {pRole = ROLE_SNP};
+if (LOADOUTROLE("CR")) then {pRole = ROLE_CR};
+if (LOADOUTROLE("PI")) then {pRole = ROLE_P};
+if (LOADOUTROLE("MED")) then {pRole = ROLE_CLS};
+
+
 
 if (isNil "pRole") exitWith {
   hint "Player role not set correctly. Alert the mission maker and join another slot.";
