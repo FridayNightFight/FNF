@@ -1,7 +1,7 @@
 if (pRole == ROLE_MK) exitWith {}; //don't want marksman to change optic
 
 //Add magnified optics if enabled
-if (phx_magnifiedOptics) then {
+if (phx_magnifiedOptics || pRole in [ROLE_DM,ROLE_SNP]) then {
   phx_selector_optics append phx_selector_magOptics;
 };
 

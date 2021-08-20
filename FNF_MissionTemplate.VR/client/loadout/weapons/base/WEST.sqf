@@ -32,6 +32,10 @@ if (pRole == ROLE_MK) then {
   phx_loadout_rifle_weapon = "rhs_weap_sr25";
   phx_loadout_rifle_mag = "rhsusf_20Rnd_762x51_SR25_m62_Mag:4";
 };
+if (pRole == ROLE_SNP) then {
+  phx_loadout_rifle_weapon = "rhs_weap_XM2010_sa";
+  phx_loadout_rifle_mag = "rhsusf_5Rnd_300winmag_xm2010";
+};
 if (pRole == ROLE_P) then {
   phx_loadout_rifle_weapon = "rhsusf_weap_MP7A2";
   phx_loadout_rifle_mag = "rhsusf_mag_40Rnd_46x30_FMJ:4";

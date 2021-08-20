@@ -35,4 +35,4 @@ if (phx_loadout_hasUGL || pRole == ROLE_MK) then {player addWeapon phx_loadout_v
 
 if (pRole in [ROLE_AAR,ROLE_AAT,ROLE_AM,ROLE_CR]) then {player addWeapon phx_loadout_binocular};
 
-if (pRole == ROLE_MK) then {"ACE_Tripod" call phx_fnc_addGear; "ACE_RangeCard" call phx_fnc_addGear;};
+if (pRole == ROLE_SNP) then {"ACE_Tripod" call phx_fnc_addGear; "ACE_RangeCard" call phx_fnc_addGear;};

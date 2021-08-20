@@ -32,6 +32,10 @@ if (pRole == ROLE_MK) then {
   phx_loadout_rifle_weapon = "rhs_weap_svdp_npz";
   phx_loadout_rifle_mag = "ACE_10Rnd_762x54_Tracer_mag:9";
 };
+if (pRole == ROLE_SNP) then {
+  phx_loadout_rifle_weapon = "rhs_weap_t5000";
+  phx_loadout_rifle_mag = "rhs_5Rnd_338lapua_t5000";
+};
 if (pRole == ROLE_P) then {
   phx_loadout_rifle_weapon = "rhs_weap_aks74un";
   phx_loadout_rifle_mag = "rhs_30Rnd_545x39_7N10_AK:4";

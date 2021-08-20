@@ -52,7 +52,7 @@ if (isNil "pRole") exitWith {
 };
 player linkItem "ItemMap";
 
-if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL]) then {phx_loadout_hasUGL = true} else {phx_loadout_hasUGL = false};
+if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL,ROLE_GR]) then {phx_loadout_hasUGL = true} else {phx_loadout_hasUGL = false};
 if (pRole in [ROLE_AR,ROLE_MG,ROLE_MK,ROLE_P]) then {phx_loadout_hasSpecial = true} else {phx_loadout_hasSpecial = false};
 
 if (pRole == ROLE_CIV) exitWith {};
@@ -69,7 +69,10 @@ phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
 phx_loadout_nvg = "NVGoggles_OPFOR";
 phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
+phx_loadout_uglAmmoEastGR = ["rhs_VOG25:12", "rhs_GRD40_White:6", "rhs_VG40OP_white:2"];
 phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
+phx_loadout_uglAmmoWestGR = ["1Rnd_HE_Grenade_shell:15", "1Rnd_Smoke_Grenade_shell:6", "UGL_FlareWhite_F:2"];
+phx_loadout_uglAmmoGRIR = ["1Rnd_HE_Grenade_shell:10", "1Rnd_Smoke_Grenade_shell:4", "UGL_FlareWhite_F:2", "ACE_HuntIR_M203:4"];
 //CE
 phx_loadout_explosives = ["2x Satchel", "SatchelCharge_Remote_Mag:2"];
 phx_loadout_defusalkit = "ACE_DefusalKit";
