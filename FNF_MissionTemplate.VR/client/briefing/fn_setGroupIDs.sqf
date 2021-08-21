@@ -33,9 +33,9 @@ _groups = [
     //not used
     ["Blue_Pilot","P","Pilots",1, [1, 2, [1, 2, 3, 4, .1]] ],
 
-    ["Blue_A","A HQ","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2]] ],
-    ["Blue_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2]] ],
-    ["Blue_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2]] ],
+    ["Blue_A","A HQ","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2, 2.3]] ],
+    ["Blue_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2, 2.3]] ],
+    ["Blue_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2, 2.3]] ],
     ["Blue_A3","A3","Alpha Three",0, [4, 1, [2, 2.1, 2.2, 2.3]] ],
 
     ["Blue_B","B HQ","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2]] ],
@@ -43,9 +43,9 @@ _groups = [
     ["Blue_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2]] ],
     ["Blue_B3","B3","Bravo Three",0, [4, 1, [3, 3.1, 3.2, 3.3]] ],
 
-    ["Blue_C","C HQ","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2]] ],
-    ["Blue_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2]] ],
-    ["Blue_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2]] ],
+    ["Blue_C","C HQ","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2, 4.3]] ],
+    ["Blue_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2, 4.3]] ],
+    ["Blue_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2, 4.3]] ],
     ["Blue_C3","C3","Charlie Three",0, [4, 1, [4, 4.1, 4.2, 4.3]] ],
 
     ["Blue_D","D HQ","Delta Squad",1, [2, 1, [1, 5, 5.1, 5.2, 5.3]] ],
@@ -89,19 +89,19 @@ _groups = [
     //not used
     ["Red_Pilot","P","Pilots",1, [1, 2, [1, 2, 3, 4, .1]] ],
 
-    ["Red_A","A HQ","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2]] ],
-    ["Red_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2]] ],
-    ["Red_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2]] ],
+    ["Red_A","A HQ","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2, 2.3]] ],
+    ["Red_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2, 2.3]] ],
+    ["Red_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2, 2.3]] ],
     ["Red_A3","A3","Alpha Three",0, [4, 1, [2, 2.1, 2.2, 2.3]] ],
 
-    ["Red_B","B HQ","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2]] ],
-    ["Red_B1","B1","Bravo One",0, [2, 1, [3, 3.1, 3.2]] ],
-    ["Red_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2]] ],
+    ["Red_B","B HQ","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2, 3.3]] ],
+    ["Red_B1","B1","Bravo One",0, [2, 1, [3, 3.1, 3.2, 3.3]] ],
+    ["Red_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2, 3.3]] ],
     ["Red_B3","B3","Bravo Three",0, [4, 1, [3, 3.1, 3.2, 3.3]] ],
 
-    ["Red_C","C HQ","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2]] ],
-    ["Red_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2]] ],
-    ["Red_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2]] ],
+    ["Red_C","C HQ","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2, 4.3]] ],
+    ["Red_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2, 4.3]] ],
+    ["Red_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2, 4.3]] ],
     ["Red_C3","C3","Charlie Three",0, [4, 1, [4, 4.1, 4.2, 4.3]] ],
 
     ["Red_D","D HQ","Delta Squad",1, [2, 1, [1, 5, 5.1, 5.2, 5.3]] ],
@@ -143,19 +143,19 @@ _groups = [
     //not used
     ["Green_Pilot","P","Pilots",1, [1, 2, [1, 2, 3, 4, .1]] ],
 
-    ["Green_A","A HQ","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2]] ],
-    ["Green_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2]] ],
-    ["Green_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2]] ],
+    ["Green_A","A HQ","Alpha Squad",1, [2, 1, [1, 2, 2.1, 2.2, 2.3]] ],
+    ["Green_A1","A1","Alpha One",0, [2, 1, [2, 2.1, 2.2, 2.3]] ],
+    ["Green_A2","A2","Alpha Two",0, [3, 1, [2, 2.1, 2.2, 2.3]] ],
     ["Green_A3","A3","Alpha Three",0, [4, 1, [2, 2.1, 2.2, 2.3]] ],
 
-    ["Green_B","B HQ","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2]] ],
-    ["Green_B1","B1","Bravo One",0, [2, 1, [3, 3.1, 3.2]] ],
-    ["Green_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2]] ],
+    ["Green_B","B HQ","Bravo Squad",1, [2, 1, [1, 3, 3.1, 3.2, 3.3]] ],
+    ["Green_B1","B1","Bravo One",0, [2, 1, [3, 3.1, 3.2, 3.3]] ],
+    ["Green_B2","B2","Bravo Two",0, [3, 1, [3, 3.1, 3.2, 3.3]] ],
     ["Green_B3","B3","Bravo Three",0, [4, 1, [3, 3.1, 3.2, 3.3]] ],
 
-    ["Green_C","C HQ","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2]] ],
-    ["Green_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2]] ],
-    ["Green_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2]] ],
+    ["Green_C","C HQ","Charlie Squad",1, [2, 1, [1, 4, 4.1, 4.2, 4.3]] ],
+    ["Green_C1","C1","Charlie One",0, [2, 1, [4, 4.1, 4.2, 4.3]] ],
+    ["Green_C2","C2","Charlie Two",0, [3, 1, [4, 4.1, 4.2, 4.3]] ],
     ["Green_C3","C3","Charlie Three",0, [4, 1, [4, 4.1, 4.2, 4.3]] ],
 
     ["Green_D","D HQ","Delta Squad",1, [2, 1, [1, 5, 5.1, 5.2, 5.3]] ],
