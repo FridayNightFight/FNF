@@ -9,16 +9,6 @@ phx_roleList = [
 	4
 	],
 
-	["Assistant Automatic Rifleman",
-	1,
-	5
-	],
-
-	["Rifleman (LAT)",
-	1,
-	6
-	],
-
 	["Marksman",
 	1,
 	16
@@ -37,11 +27,6 @@ phx_roleList = [
 	["Medic",
 	2,
 	1
-	],
-
-	["Ammo Bearer",
-	1,
-	10
 	]
 
 ];
