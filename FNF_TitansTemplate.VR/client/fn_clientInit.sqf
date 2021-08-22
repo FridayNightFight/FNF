@@ -49,7 +49,7 @@ call PHX_fnc_terminalClientSetup;
 
 [{time > 0}, {call phx_fnc_restrictions;}] call CBA_fnc_waitUntilAndExecute;
 
-player addEventHandler ["Killed", {call phx_fnc_spectatorInit;}];
+player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
 
 _handle = [{
 	if ((phx_loadoutGUI select 0) isEqualTo displayNull) then {

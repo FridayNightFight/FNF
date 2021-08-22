@@ -7,6 +7,9 @@ if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {
   [true, true, true] call ace_spectator_fnc_setSpectator;
 };
 
+private _lastDamage = player getVariable ["ace_medical_lastDamageSource",objNull];
+if (!isNull _lastDamage) then {[2, _lastDamage] call ace_spectator_fnc_setCameraAttributes;};
+
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];
 
