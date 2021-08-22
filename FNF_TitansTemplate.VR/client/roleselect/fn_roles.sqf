@@ -24,8 +24,13 @@ phx_roleList = [
 	7
 	],
 
-	["Medic",
-	2,
+	["Medic 1",
+	1,
+	1
+	],
+
+	["Medic 2",
+	1,
 	1
 	]
 
