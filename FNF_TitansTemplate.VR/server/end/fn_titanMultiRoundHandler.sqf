@@ -1,6 +1,6 @@
 _sideWon = _this;
-missionNamespace setVariable ["phx_term1HackingSide",west,true];
-phx_term1HackingSide = west;
+missionNamespace setVariable ["phx_term1HackingSide",independent,true];
+phx_term1HackingSide = independent;
 
 [{!isNil "phx_ticketPFH"}, {[phx_ticketPFH] call CBA_fnc_removePerFrameHandler}] call CBA_fnc_waitUntilAndExecute;
 
