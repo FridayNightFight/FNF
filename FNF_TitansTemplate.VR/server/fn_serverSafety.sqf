@@ -3,7 +3,7 @@ Server component to the safety system
 */
 
 missionNamespace setVariable ["phx_safetyEnabled",true,true];
-f_var_mission_timer = 3;
+f_var_mission_timer = 1;
 missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
 {_x allowDamage false;} forEach vehicles;
