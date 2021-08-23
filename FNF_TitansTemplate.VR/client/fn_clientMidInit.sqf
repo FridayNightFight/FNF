@@ -1,5 +1,7 @@
 phx_LoadoutChosen = false;
 
+phx_term1HackingSide = independent;
+
 call PHX_fnc_roles;
 call phx_fnc_safety;
 
