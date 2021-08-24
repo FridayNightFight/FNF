@@ -1,5 +1,13 @@
 if (!isServer) exitWith {};
 
+phx_adminChannelId = radioChannelCreate [
+	[1,1,0,1], // RGBA color
+	"Staff Channel", // channel name
+	"[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME", // callsign
+  []
+];
+publicVariable "phx_adminChannelId";
+
 call phx_fnc_serverSafety;
 call phx_fnc_radio_genFreqs;
 call phx_fnc_sendUniforms;
