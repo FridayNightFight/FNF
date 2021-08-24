@@ -2,8 +2,8 @@ params ["_source", "_scope"];
 
 
 private _groupId = groupId (group player);
-private _allPlayers = allUnits select {playerSide isEqualTo side _x};
-private _allGroups = allGroups select {playerSide isEqualTo side _x};
+private _allGroups = allGroups select {side player isEqualTo side _x};
+private _allPlayers = allUnits select {side player isEqualTo ([_x, true] call BIS_fnc_objectSide)};
 private _toTeleport = [];
 
 private _validateSelection = {
@@ -139,6 +139,45 @@ _getHotelLeads = {
 };
 
 
+// all PLatoon Members
+_getAllPLT = {
+	params ["_allGroups", "_groupId"];
+	private _result = [];
+	private _squads = [];
+
+	switch (_groupId) do {
+		case "P1HQ": {
+			_squads = [
+				"A",
+				"B",
+				"C"
+			];
+		};
+		case "P2HQ": {
+			_squads = [
+				"D",
+				"E",
+				"F"
+			];
+		};
+	};
+
+	if (count _squads > 0) then {
+		{
+			// select only the first leader found in A, A1, A2
+			private _groupChar = _x;
+			private _groupsThatExist = _allGroups select {(groupId _x) in [_groupChar, (_groupChar + "1"), (_groupChar + "2")]};
+			if (count _groupsThatExist > 0) then {
+				{
+					_result append (units _x);
+				} forEach _groupsThatExist;
+			};
+		} forEach _squads;
+		_result
+	};
+};
+
+
 
 switch (_source) do {
 	case "Company Commander": {
@@ -208,6 +247,12 @@ switch (_source) do {
 				// all Team Leaders
 				_toTeleport append ([_allGroups, _groupId] call _getTLs);
 			};
+			case "plt": {
+				// teleport all players in platoon
+
+				// all Squad Leaders
+				_toTeleport append ([_allGroups, _groupId] call _getAllPLT);
+			};
 			case "all": {
 				// teleport all players on PL side (only used if CO not filled)
 				_toTeleport append _allPlayers;
@@ -245,17 +290,25 @@ if ([
 ] call BIS_fnc_guiMessage) then {
 
 	hintSilent format["Teleporting %1 players", count _toTeleport];
-	private _angleIncrement = 360 / count _toTeleport;
-	private _angle = 0;
+	private _ring = 1;
+	
 	private _pos = (getPosATL player);
-	{
-		private _radius = 2 + (_forEachIndex % 5) * 2;
-		private _placeAt = _pos vectorAdd [_radius * sin _angle, _radius * cos _angle, 0];
-		_x setPosATL _placeAt;
-		private _dir = _x getDir player;
-		_x setDir _dir;
-		_angle = _angle + _angleIncrement;
-	} forEach _toTeleport;
+	
+	while {count _toTeleport > 0} do {
+		private _playersInThisRing = (_ring * 15);
+		private _radius = (_ring * 5);
+		private _angleIncrement = 360 / (_ring * 15);
+		private _angle = 0;
+		{
+			private _placeAt = _pos vectorAdd [_radius * sin _angle, _radius * cos _angle, 0];
+			_x setPosATL _placeAt;
+			private _dir = _x getDir player;
+			_x setDir _dir;
+			_angle = _angle + _angleIncrement;
+			_toTeleport deleteAt (_toTeleport find _x);
+		} forEach (_toTeleport select [0, _playersInThisRing]);
+		_ring = _ring + 1;
+	};
 	sleep 2;
 	hintSilent "";
 };

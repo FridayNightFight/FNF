@@ -42,7 +42,7 @@ ace_interact_menu_fnc_addActionToObject
 
 
 	_action = [
-		"CO_Teleport_Leads",
+		"CO_Teleport_Leaders",
 		"Teleport PL/X/Assets",
 		"",
 		{
@@ -59,7 +59,7 @@ ace_interact_menu_fnc_addActionToObject
 
 
 	_action = [
-		"CO_Teleport_Leads",
+		"CO_Teleport_LeadersSL",
 		"Teleport PL/X/Assets + SLs",
 		"",
 		{
@@ -111,7 +111,7 @@ ace_interact_menu_fnc_addActionToObject
 
 
 	_action = [
-		"PL_Teleport_Leads",
+		"PL_Teleport_SL",
 		"Teleport SLs",
 		"",
 		{
@@ -128,7 +128,7 @@ ace_interact_menu_fnc_addActionToObject
 
 
 	_action = [
-		"PL_Teleport_Leads",
+		"PL_Teleport_SLTL",
 		"Teleport SLs + TLs",
 		"",
 		{
@@ -143,9 +143,25 @@ ace_interact_menu_fnc_addActionToObject
 		_action
 	] call ace_interact_menu_fnc_addActionToObject;
 
+	_action = [
+		"PL_Teleport_PLT",
+		"Teleport ALL PLT",
+		"",
+		{
+			["Platoon Leader", "plt"] spawn phx_fnc_teleportExec;
+		},
+		{phx_safetyEnabled}
+	] call ace_interact_menu_fnc_createAction;
+	[
+		player,
+		1,
+		["ACE_SelfActions", "PL_Teleport"],
+		_action
+	] call ace_interact_menu_fnc_addActionToObject;
+
 
 	_action = [
-		"PL_Teleport_Leads",
+		"PL_Teleport_ALL",
 		format["Teleport ALL %1", str playerSide],
 		"",
 		{
