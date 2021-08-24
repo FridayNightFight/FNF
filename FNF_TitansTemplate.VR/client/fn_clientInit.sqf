@@ -5,14 +5,28 @@ phx_iconHandle = [{
   };
 } , 0, []] call CBA_fnc_addPerFrameHandler;
 
+player addEventHandler ["Killed", {call phx_fnc_spectatorInit;}];
+
 phx_keyDownEHId = -1;
 if !(call phx_fnc_clientCanPlay) exitWith {
 		call phx_fnc_spectatorInit;
 		if (didJIP && typeOf player != "ace_spectator_virtual") then {
 			player setDamage 1;
+
 			[{phx_safetyEnabled},{
 				[false,false,false] call ace_spectator_fnc_setSpectator;
 				[phx_iconHandle] call CBA_fnc_removePerFrameHandler;
+				if (markerColor "opforSafeMarker" == "colorOPFOR") then	{
+					if (phx_playerSide == west) then
+					{
+						player setpos ("bluforSafeMarker" call BIS_fnc_randomPosTrigger)
+					} else {
+						if (phx_playerSide == east) then
+						{
+							player setpos ("opforSafeMarker" call BIS_fnc_randomPosTrigger)
+						};
+					};
+				};
 				call PHX_fnc_clientInit;
 			}] call CBA_fnc_waitUntilAndExecute;
 		};
@@ -48,8 +62,6 @@ call PHX_fnc_terminalClientSetup;
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
 [{time > 0}, {call phx_fnc_restrictions;}] call CBA_fnc_waitUntilAndExecute;
-
-player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
 
 _handle = [{
 	if ((phx_loadoutGUI select 0) isEqualTo displayNull) then {
