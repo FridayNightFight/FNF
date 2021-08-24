@@ -187,7 +187,7 @@ _groups = [
     //Pilot teams - under Platoon
     ["Green_H1","H1","Hotel One (Air)",0, [2, 1, [10, 10.1, 10.2, 10.3]] ],
     ["Green_H2","H2","Hotel Two (Air)",0, [3, 1, [10, 10.1, 10.2, 10.3]] ],
-    ["Green_H3","H3","Hotel Three (Air)",0, [4, 1, [10, 10.1, 10.2, 10.3]] ],
+    ["Green_H3","H3","Hotel Three (Air)",0, [4, 1, [10, 10.1, 10.2, 10.3]] ]
 ];
 
 phx_templateGroupsList = _groups apply {_x select 0};
