@@ -33,10 +33,9 @@ player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cb
 
 
 // Zeus actions
-
 _action = [
 	"Zeus_GoToLastReport",
-	"Go to Pos of Last Report",
+	"Zoom to Last Admin Report",
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa",
 	{
 		[] spawn {
