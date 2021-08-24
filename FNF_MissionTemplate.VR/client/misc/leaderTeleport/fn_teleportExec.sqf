@@ -309,7 +309,7 @@ if ([
 		} forEach (_toTeleport select [0, _playersInThisRing]);
 		_ring = _ring + 1;
 	};
-	sleep 2;
+	sleep 4;
 	hintSilent "";
 };
 
