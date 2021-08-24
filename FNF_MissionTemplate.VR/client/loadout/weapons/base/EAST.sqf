@@ -27,7 +27,7 @@ if (pRole == ROLE_RAT) then {
   phx_loadout_antitank_weapon = "rhs_weap_rpg26";
 };
 if (pRole == ROLE_MK) then {
-  phx_loadout_rifle_weapon = "rhs_weap_svdp_npz";
+  phx_loadout_rifle_weapon = "rhs_weap_svdp";
   phx_loadout_rifle_mag = "ACE_10Rnd_762x54_Tracer_mag:9";
 };
 if (pRole == ROLE_P) then {
