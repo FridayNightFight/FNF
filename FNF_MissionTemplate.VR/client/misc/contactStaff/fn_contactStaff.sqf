@@ -77,8 +77,13 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 		_seconds = floor(_elapsed % 60);
 		// [_minutes, _seconds]
 
+		// send global event -- staff will have a handler to deal with it
 		["phxAdminMessageSent", [player, _infoText, _msgText]] call CBA_fnc_globalEvent;
-		["AdminMsg", [
+
+		// sends event to server w/ information
+		// server resolves currently logged in admin then publishes Discord embed with report
+		["phxAdminMessageServer", [
+			"",
 			name player,
 			(_msgText joinString "\n"),
 			(playerSide call BIS_fnc_sideID) call BIS_fnc_sideName,
@@ -90,9 +95,9 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 			briefingName,
 			worldName,
 			_grid,
-			cba_missionTime
-			// [cba_missionTime / 60, "HH:MM"] call BIS_fnc_timeToString
-		]] remoteExec ["DiscordEmbedBuilder_fnc_buildCfg", 2];
+			// cba_missionTime
+			[cba_missionTime / 60, "HH:MM"] call BIS_fnc_timeToString
+		]] call CBA_fnc_serverEvent;
 
 		_display closeDisplay 1;
 	};

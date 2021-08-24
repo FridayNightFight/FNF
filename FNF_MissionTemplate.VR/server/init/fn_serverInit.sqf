@@ -57,5 +57,24 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
   };
 }];
 
+// Receives event when a player submits a report
+// Determines logged-in admin and sends Discord embed with contents of report and the admin @'ed
+phxAdminMessageReceiver = ["phxAdminMessageServer", {
+  private _arr = +_this;
+
+  _loggedInAdmins = allPlayers select {
+    (admin owner _x) isEqualTo 2 &&
+    (getPlayerUID _x) in fnf_staffInfo;
+  };
+  private _adminDiscordID = "";
+  if (count _loggedInAdmins > 0) then {
+    _loggedInAdmin = fnf_staffInfo get (getPlayerUID (_loggedInAdmins # 0));
+    _adminDiscordID = _loggedInAdmin # 2;
+    _arr set [0, _adminDiscordID];
+  };
+
+  ["AdminMsg", _arr] call DiscordEmbedBuilder_fnc_buildCfg;
+}] call CBA_fnc_addEventHandler;
+
 //Let clients know that server is done setting up
 missionNamespace setVariable ["phx_serverGameSetup",true,true];
