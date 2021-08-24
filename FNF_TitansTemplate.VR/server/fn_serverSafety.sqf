@@ -3,7 +3,7 @@ Server component to the safety system
 */
 
 missionNamespace setVariable ["phx_safetyEnabled",true,true];
-f_var_mission_timer = 1;
+f_var_mission_timer = 60;
 missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
 {_x allowDamage false;} forEach vehicles;
@@ -13,12 +13,12 @@ missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
       if (f_var_mission_timer < 0) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
 
       if (f_var_mission_timer > 0) then {
-        ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
+        ["SafeStart",[format["Time Remaining: %1 Seconds",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
       };
 
-      f_var_mission_timer = f_var_mission_timer - 1;
+      f_var_mission_timer = f_var_mission_timer - 15;
       publicVariable "f_var_mission_timer";
-  }, 60] call CBA_fnc_addPerFrameHandler;
+  }, 15] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
 
 [{f_var_mission_timer < 0}, {
