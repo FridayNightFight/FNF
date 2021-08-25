@@ -2,7 +2,7 @@ phx_loadout_uniform  = "rhs_uniform_cu_ocp"; //per req
 phx_loadout_vest     = "rhsusf_spcs_ocp_rifleman"; //per req
 phx_loadout_headgear = "rhsusf_opscore_ut_pelt_nsw"; // per req
 
-  if (pRole == ROLE_AR || pRole == ROLE_MG) then {phx_loadout_vest = "rhsusf_spcs__ocp_saw";}; //AR & MG
+  if (pRole == ROLE_AR || pRole == ROLE_MG) then {phx_loadout_vest = "rhsusf_spcs_ocp_saw";}; //AR & MG
 
   if (pRole == ROLE_SL || pRole == ROLE_PL) then {phx_loadout_vest = "rhsusf_spcs_ocp_squadleader";}; //SLPL
 
