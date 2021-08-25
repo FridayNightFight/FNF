@@ -20,7 +20,6 @@ _pClass = typeOf player;
 // if (_pClass == UNIT_OPFOR_MK || _pClass == UNIT_BLUFOR_MK || _pClass == UNIT_INDFOR_MK) then {pRole = ROLE_MK};
 // if (_pClass == UNIT_OPFOR_P || _pClass == UNIT_BLUFOR_P || _pClass == UNIT_INDFOR_P) then {pRole = ROLE_P};
 // if (_pClass == UNIT_CIV_R) then {pRole = ROLE_CIV};
-
 #define LOADOUTROLE(_str) (player getVariable ["phxLoadout", ""] isEqualTo _str)
 
 if (LOADOUTROLE("PL")) then {pRole = ROLE_PL};
@@ -37,6 +36,7 @@ if (LOADOUTROLE("LAT")) then {pRole = ROLE_RAT};
 if (LOADOUTROLE("MAT")) then {pRole = ROLE_AT};
 if (LOADOUTROLE("MATA")) then {pRole = ROLE_AAT};
 if (LOADOUTROLE("RI")) then {pRole = ROLE_R};
+if (LOADOUTROLE("RIS")) then {pRole = ROLE_RS};
 if (LOADOUTROLE("DM")) then {pRole = ROLE_MK};
 if (LOADOUTROLE("SNP")) then {pRole = ROLE_SNP};
 if (LOADOUTROLE("CR")) then {pRole = ROLE_CR};
@@ -58,7 +58,8 @@ if (pRole in [ROLE_AR,ROLE_MG,ROLE_MK,ROLE_P]) then {phx_loadout_hasSpecial = tr
 if (pRole == ROLE_CIV) exitWith {};
 
 phx_loadout_unitLevel = 0;
-if (pRole in [ROLE_PL,ROLE_SL]) then {phx_loadout_unitLevel = 2};
+if (pRole == ROLE_PL) then {phx_loadout_unitLevel = 3};
+if (pRole == ROLE_SL) then {phx_loadout_unitLevel = 2};
 if (pRole in [ROLE_TL,ROLE_MGTL]) then {phx_loadout_unitLevel = 1};
 //Shared
 phx_loadout_aid = "FirstAidKit:4";

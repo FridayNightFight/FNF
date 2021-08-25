@@ -22,6 +22,7 @@ ROLE_MK = 16; //Marksman
 ROLE_SNP = 17; // Sniper
 ROLE_GR = 18; // Grenadier
 ROLE_GRIR = 19; // Grenadier w HuntIR
+ROLE_RS = 20; // Silenced Rifleman
 
 UNIT_SPECTATOR = "VirtualMan_F";
 

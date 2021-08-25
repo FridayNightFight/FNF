@@ -20,7 +20,6 @@ switch (pRole) do {
       if (_forEachIndex != 0) then {_x call phx_fnc_addGear};
     } forEach phx_loadout_thermite;
   };
-  case ROLE_MGTL: {phx_loadout_entrenching call phx_fnc_addGear};
   case ROLE_CLS: {
     [phx_loadout_PAK, "backpack"] call phx_fnc_addGear;
     [phx_loadout_bandage, "backpack"] call phx_fnc_addGear;
@@ -31,7 +30,7 @@ switch (pRole) do {
   };
 };
 
-if (phx_loadout_hasUGL || pRole == ROLE_MK) then {player addWeapon phx_loadout_vector};
+if (phx_loadout_hasUGL || pRole == ROLE_GRIR) then {player addWeapon phx_loadout_vector};
 
 if (pRole in [ROLE_AAR,ROLE_AAT,ROLE_AM,ROLE_CR]) then {player addWeapon phx_loadout_binocular};
 
