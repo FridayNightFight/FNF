@@ -30,6 +30,13 @@ if (pRole == ROLE_AM) then {
 if (pRole == ROLE_RAT) then {
   phx_loadout_antitank_weapon = "rhs_weap_m72a7";
 };
+if (pRole == ROLE_GRIR) then {
+  phx_loadout_sidearm_weapon = "rhs_weap_M320";
+  phx_loadout_sidearm_mag = "";
+};
+if (pRole == ROLE_RS) then {
+  phx_loadout_rifle_weapon = "srifle_EBR_F";
+};
 if (pRole == ROLE_MK) then {
   phx_loadout_rifle_weapon = "rhs_weap_sr25";
   phx_loadout_rifle_mag = "rhsusf_20Rnd_762x51_SR25_m62_Mag:4";

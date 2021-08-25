@@ -28,10 +28,14 @@ switch (pRole) do {
     [phx_loadout_blood_1, "backpack"] call phx_fnc_addGear;
     [phx_loadout_blood_2, "backpack"] call phx_fnc_addGear;
   };
+  case ROLE_GRIR: {
+    phx_loadout_huntIR call phx_fnc_addGear;
+  };
 };
 
-if (phx_loadout_hasUGL || pRole == ROLE_GRIR) then {player addWeapon phx_loadout_vector};
+if (phx_loadout_hasUGL && !(pRole in [ROLE_GR, ROLE_GRIR, ROLE_AAT])) then {player addWeapon phx_loadout_vector};
+if (pRole in [ROLE_GR, ROLE_GRIR, ROLE_AAT]) then {player addWeapon phx_loadout_yardage};
+if (pRole in [ROLE_AAR,ROLE_AM,ROLE_CR]) then {player addWeapon phx_loadout_binocular};
 
-if (pRole in [ROLE_AAR,ROLE_AAT,ROLE_AM,ROLE_CR]) then {player addWeapon phx_loadout_binocular};
-
+if (pRole == ROLE_RS) then {"ACE_SpottingScope" call phx_fnc_addGear};
 if (pRole == ROLE_SNP) then {"ACE_Tripod" call phx_fnc_addGear; "ACE_RangeCard" call phx_fnc_addGear;};
