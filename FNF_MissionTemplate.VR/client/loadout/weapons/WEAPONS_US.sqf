@@ -8,10 +8,10 @@ phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:7";
 
 if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_M203_bk";
-  phx_selector_weapons = [["rhs_weap_m16a4_carryhandle_M203"]];
+  phx_selector_weapons = ["rhs_weap_m16a4_carryhandle_M203"];
 } else {
   phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_bk";
-  phx_selector_weapons = [["rhs_weap_m16a4_carryhandle"]];
+  phx_selector_weapons = ["rhs_weap_m16a4_carryhandle"];
 };
 if (pRole == ROLE_AR) then {
   phx_loadout_rifle_weapon = "rhs_weap_m249_pip_L";
@@ -37,13 +37,10 @@ if (pRole == ROLE_GRIR) then {
 if (pRole == ROLE_RS) then {
   phx_loadout_rifle_weapon = "srifle_EBR_F";
 };
-if (pRole == ROLE_MK) then {
-  phx_loadout_rifle_weapon = "rhs_weap_sr25";
-  phx_loadout_rifle_mag = "rhsusf_20Rnd_762x51_SR25_m62_Mag:4";
-};
 if (pRole == ROLE_SNP) then {
-  phx_loadout_rifle_weapon = "rhs_weap_XM2010_sa";
-  phx_loadout_rifle_mag = "rhsusf_5Rnd_300winmag_xm2010";
+  phx_loadout_rifle_weapon = "rhs_weap_XM2010";
+  phx_loadout_rifle_mag = "rhsusf_5Rnd_300winmag_xm2010:12";
+  phx_selector_weapons = ["rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"];
 };
 if (pRole == ROLE_P) then {
   phx_loadout_rifle_weapon = "rhsusf_weap_MP7A2";
