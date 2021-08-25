@@ -117,7 +117,7 @@ switch (true) do {
   };
   //ATK/DEF SECTOR END
 
-  case "captureTheFlag": {
+  case (phx_gameMode == "captureTheFlag"): {
     while {!phx_gameEnd} do {
       if !(ctf_flag inArea ctf_attackTrig) then {
         [player,phx_clientFlagAction] remoteExec ["BIS_fnc_holdActionRemove",0,false];

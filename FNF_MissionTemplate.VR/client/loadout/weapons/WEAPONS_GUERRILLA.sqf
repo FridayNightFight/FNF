@@ -8,7 +8,7 @@ if (phx_loadout_hasUGL) then {
 };
 
 if (pRole == ROLE_MK) then {
-  phx_loadout_rifle_weapon = selectRandom ["rhs_weap_svds_npz", "rhs_weap_m14_rail"];
+  phx_loadout_rifle_weapon = selectRandom ["rhs_weap_svds", "rhs_weap_m14_rail"];
 };
 
 phx_loadout_rifle_mag_tracer = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagazines select 1) + ":5";
