@@ -3,7 +3,6 @@ params ["_source", "_scope"];
 
 private _groupId = groupId (group player);
 private _allGroups = allGroups select {side player isEqualTo side _x};
-private _allPlayers = allUnits select {side player isEqualTo ([_x, true] call BIS_fnc_objectSide)};
 private _toTeleport = [];
 
 private _validateSelection = {
@@ -13,25 +12,11 @@ private _validateSelection = {
 };
 
 
-
-
-
-// all members of Company Command group
-_getCMD = {
-	params ["_allGroups"];
-	private _result = [];
-	private _cmd = (_allGroups select {(groupId _x) isEqualTo "CMD"});
-	if ([_cmd] call _validateSelection) then {
-		{_result append (units _x)} forEach _cmd;
-	};
-	_result
-};
-
 // leader of X-Ray
 _getXray = {
 	params ["_allGroups"];
 	private _result = [];
-	private _xray = (_allGroups select {(groupId _x) isEqualTo "X"});
+	private _xray = (_allGroups select {(groupId _x) isEqualTo "XRAY"});
 	if ([_xray] call _validateSelection) then {
 		{_result pushBack (leader _x)} forEach _xray;
 	};
@@ -40,39 +25,20 @@ _getXray = {
 
 // all members of Platoon HQs
 _getPltHq = {
-	params ["_allGroups", "_groupId"];
+	params ["_allGroups"];
 	private _result = [];
-	if (isNil "_groupId") then {
-		private _platoon = (_allGroups select {(groupId _x) in ["P1HQ", "P2HQ"]});
-		if ([_platoon] call _validateSelection) then {
-			{_result append (units _x)} forEach _platoon;
-		};
-	} else {
-		private _platoon = (_allGroups select {(groupId _x) isEqualTo _groupId});
-		if ([_platoon] call _validateSelection) then {
-			{_result append (units _x)} forEach _platoon;
-		};
+	private _platoon = (_allGroups select {(groupId _x) isEqualTo "PLTHQ"});
+	if ([_platoon] call _validateSelection) then {
+		{_result append (units _x)} forEach _platoon;
 	};
 	_result
 };
 
 // all Squad Leaders
 _getSLs = {
-	params ["_allGroups", "_groupId"];
+	params ["_allGroups"];
 	private _result = [];
-	private _squads = [];
-	if (isNil "_groupId") then {
-		_squads = ["A","B","C","D","E","F"];
-	} else {
-		switch (_groupId) do {
-			case "P1HQ": {
-				_squads = ["A","B","C"];
-			};
-			case "P2HQ": {
-				_squads = ["D","E","F"];
-			};
-		};
-	};
+	private _squads = ["A","B","C","D"];
 
 	{
 		// select only the first leader found in A, A1, A2
@@ -87,21 +53,10 @@ _getSLs = {
 
 // all Team Leaders
 _getTLs = {
-	params ["_allGroups", "_groupId"];
+	params ["_allGroups"];
 	private _result = [];
 	private _squads = [];
-	if (isNil "_groupId") then {
-		_squads = ["A","B","C","D","E","F"];
-	} else {
-		switch (_groupId) do {
-			case "P1HQ": {
-				_squads = ["A","B","C"];
-			};
-			case "P2HQ": {
-				_squads = ["D","E","F"];
-			};
-		};
-	};
+	_squads = ["A","B","C","D"];
 
 	{
 		// select only the first leader found in A, A1, A2
@@ -120,7 +75,7 @@ _getTLs = {
 _getGolfLeads = {
 	params ["_allGroups"];
 	private _result = [];
-	private _golf = (_allGroups select {(groupId _x) in ["G", "G1", "G2", "G3", "G4"]});
+	private _golf = (_allGroups select {(groupId _x) in ["G1", "G2", "G3", "G4"]});
 	if ([_golf] call _validateSelection) then {
 		{_result pushBack (leader _x)} forEach _golf;
 	};
@@ -131,7 +86,7 @@ _getGolfLeads = {
 _getHotelLeads = {
 	params ["_allGroups"];
 	private _result = [];
-	private _hotel = (_allGroups select {(groupId _x) in ["H", "H1", "H2", "H3"]});
+	private _hotel = (_allGroups select {(groupId _x) in ["H1", "H2", "H3"]});
 	if ([_hotel] call _validateSelection) then {
 		{_result pushBack (leader _x)} forEach _hotel;
 	};
@@ -139,60 +94,18 @@ _getHotelLeads = {
 };
 
 
-// all PLatoon Members
-_getAllPLT = {
-	params ["_allGroups", "_groupId"];
-	private _result = [];
-	private _squads = [];
-
-	switch (_groupId) do {
-		case "P1HQ": {
-			_squads = [
-				"A",
-				"B",
-				"C"
-			];
-		};
-		case "P2HQ": {
-			_squads = [
-				"D",
-				"E",
-				"F"
-			];
-		};
-	};
-
-	if (count _squads > 0) then {
-		{
-			// select only the first leader found in A, A1, A2
-			private _groupChar = _x;
-			private _groupsThatExist = _allGroups select {(groupId _x) in [_groupChar, (_groupChar + "1"), (_groupChar + "2")]};
-			if (count _groupsThatExist > 0) then {
-				{
-					_result append (units _x);
-				} forEach _groupsThatExist;
-			};
-		} forEach _squads;
-		_result
-	};
-};
-
-
 
 switch (_source) do {
-	case "Company Commander": {
+	case "Platoon Leader": {
 		switch (_scope) do {
 			case "leaders": {
-				// teleport PLs, X lead, G lead, H lead
-
-				// all members of Company Command group
-				_toTeleport append ([_allGroups] call _getCMD);
-
-				// leader of X-Ray
-				_toTeleport append ([_allGroups] call _getXray);
+				// teleport SLs, X lead, G lead, H lead
 
 				// all members of Platoon HQs
 				_toTeleport append ([_allGroups] call _getPltHq);
+
+				// leader of X-Ray
+				_toTeleport append ([_allGroups] call _getXray);
 
 				// leaders of Golf groups
 				_toTeleport append ([_allGroups] call _getGolfLeads);
@@ -201,61 +114,31 @@ switch (_source) do {
 				_toTeleport append ([_allGroups] call _getHotelLeads);
 			};
 			case "sl": {
-				// teleport all leaders + SLs
-
-				// all members of Company Command group
-				_toTeleport append ([_allGroups] call _getCMD);
-
-				// leader of X-Ray
-				_toTeleport append ([_allGroups] call _getXray);
+				// teleport all SLs
 
 				// all members of Platoon HQs
 				_toTeleport append ([_allGroups] call _getPltHq);
-
-				// leaders of Golf groups
-				_toTeleport append ([_allGroups] call _getGolfLeads);
-
-				// leaders of Hotel groups
-				_toTeleport append ([_allGroups] call _getHotelLeads);
 
 				// all Squad Leaders
 				_toTeleport append ([_allGroups] call _getSLs);
 			};
-			case "all": {
-				// teleport all players on CO side
-				_toTeleport append _allPlayers;
-			};
-		};
-	};
-	case "Platoon Leader": {
-		switch (_scope) do {
-			case "sl": {
-				// teleport all SLs in platoon
-
-				// all members of Platoon HQs
-				_toTeleport append ([_allGroups, _groupId] call _getPltHq);
-
-				// all Squad Leaders
-				_toTeleport append ([_allGroups, _groupId] call _getSLs);
-			};
 			case "sltl": {
 				// teleport all SLs + TLs in platoon
 
+				// all members of Platoon HQs
+				_toTeleport append ([_allGroups] call _getPltHq);
+
 				// all Squad Leaders
-				_toTeleport append ([_allGroups, _groupId] call _getSLs);
+				_toTeleport append ([_allGroups] call _getSLs);
 
 				// all Team Leaders
-				_toTeleport append ([_allGroups, _groupId] call _getTLs);
-			};
-			case "plt": {
-				// teleport all players in platoon
-
-				// all Squad Leaders
-				_toTeleport append ([_allGroups, _groupId] call _getAllPLT);
+				_toTeleport append ([_allGroups] call _getTLs);
 			};
 			case "all": {
-				// teleport all players on PL side (only used if CO not filled)
-				_toTeleport append _allPlayers;
+				// teleport all players on PL side
+				{
+					_toTeleport append (units _x);
+				} forEach _allGroups;
 			};
 		};
 	};
@@ -280,6 +163,7 @@ switch (_source) do {
 };
 
 if (count _toTeleport isEqualTo 0) exitWith {hintSilent "No players found to teleport"};
+_toTeleport = _toTeleport arrayIntersect _toTeleport;
 _toTeleport deleteAt (_toTeleport find player);
 
 if ([
