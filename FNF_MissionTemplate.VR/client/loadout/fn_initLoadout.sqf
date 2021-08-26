@@ -94,7 +94,7 @@ phx_loadout_vector = "ACE_VectorDay";
 phx_loadout_yardage = "ACE_Yardage450";
 phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"];
 phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
-phx_loadout_sniper_optics = ["rhsusf_acc_m8541", "rhsusf_acc_m8541_wd"];
+phx_loadout_sniper_optics = ["rhsusf_acc_M8541", "rhsusf_acc_M8541_wd"];
 phx_selector_explosives = [
   phx_loadout_explosives,
   ["2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"],
