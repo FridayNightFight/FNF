@@ -52,7 +52,7 @@ if (isNil "pRole") exitWith {
 };
 player linkItem "ItemMap";
 
-if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL,ROLE_GR]) then {phx_loadout_hasUGL = true} else {phx_loadout_hasUGL = false};
+if (pRole in [ROLE_PL,ROLE_SL,ROLE_TL,ROLE_MGTL,ROLE_GR,ROLE_GRIR]) then {phx_loadout_hasUGL = true} else {phx_loadout_hasUGL = false};
 if (pRole in [ROLE_AR,ROLE_MG,ROLE_SNP,ROLE_P,ROLE_RS]) then {phx_loadout_hasSpecial = true} else {phx_loadout_hasSpecial = false};
 
 if (pRole == ROLE_CIV) exitWith {};

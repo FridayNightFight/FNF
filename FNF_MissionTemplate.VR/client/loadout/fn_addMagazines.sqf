@@ -34,4 +34,4 @@ switch (pRole) do {
   case ROLE_RAT: {if (!isNil "phx_loadout_antitank_mag") then {phx_loadout_antitank_mag call phx_fnc_addGear}};
 };
 
-if ((phx_loadout_hasUGL || pRole == ROLE_GRIR)) then {{_x call phx_fnc_addGear} forEach phx_loadout_uglAmmo};
+if (phx_loadout_hasUGL) then {{_x call phx_fnc_addGear} forEach phx_loadout_uglAmmo};
