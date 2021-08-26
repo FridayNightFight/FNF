@@ -101,7 +101,10 @@ phx_connectionWin = {
 
 _sideWon = sideEmpty;
 
+if !(phx_terminalScoreWaiting) then {
+phx_terminalScoreWaiting = true;
 [{phx_term1HackingSide != sideEmpty}, {
+phx_terminalScoreWaiting = false;
 phx_ticketPFH = [{
   if (!(missionNamespace getVariable ["phx_gameEnd",false])) then {
     [phx_term1HackingSide, 1] call BIS_fnc_respawnTickets;
@@ -132,3 +135,4 @@ phx_ticketPFH = [{
   };
 }, 2] call Cba_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
+};
