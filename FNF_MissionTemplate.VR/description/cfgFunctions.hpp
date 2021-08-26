@@ -111,6 +111,7 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
+      class populateORBATS{};
     };
     class end {
       file = "server\end";

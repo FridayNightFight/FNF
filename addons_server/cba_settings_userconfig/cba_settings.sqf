@@ -1,3 +1,7 @@
+// Community Base Addons
+// fixes loadout bug / units appearing naked on locality switch
+force force cba_network_loadoutValidation = 2;
+
 // ACE Advanced Ballistics
 force force ace_advanced_ballistics_ammoTemperatureEnabled = false;
 force force ace_advanced_ballistics_barrelLengthInfluenceEnabled = false;
@@ -165,12 +169,17 @@ force force ace_map_mapShowCursorCoordinates = false;
 ace_markers_moveRestriction = 4;
 
 // ACE Map Gestures
-ace_map_gestures_defaultColor = [1,0.88,0,0.7];
+ace_map_gestures_allowCurator = true;
+ace_map_gestures_allowSpectator = true;
+force force ace_map_gestures_briefingMode = 4;
+ace_map_gestures_defaultColor = [0.744662,0.567105,0,0.7];
 ace_map_gestures_defaultLeadColor = [1,0.88,0,0.95];
 force force ace_map_gestures_enabled = true;
 force force ace_map_gestures_interval = 0.03;
 force force ace_map_gestures_maxRange = 10;
+force force ace_map_gestures_maxRangeCamera = 14;
 ace_map_gestures_nameTextColor = [0.2,0.2,0.2,0.3];
+force force ace_map_gestures_onlyShowFriendlys = true;
 
 // ACE Map Tools
 force force ace_maptools_drawStraightLines = true;
