@@ -2,7 +2,26 @@
 if !((phx_loadout_rifle_mag_tracer splitString ":" select 0) in magazines player) then {phx_loadout_rifle_mag_tracer = "0:0"};
 
 //add player's current weapon to selector
-phx_selector_weapons append [primaryWeapon player];
+_curAllMags = (magazinesAmmo player);
+_curAllMags pushback [primaryWeaponMagazine player];
+_curAllMagsProcessed = flatten (_curAllMags apply {_x # 0});
+_compatMags = [primaryWeapon player] call CBA_fnc_compatibleMagazines;
+
+_saveMags = _curAllMagsProcessed select {_x in _compatMags};
+_toProcess = _saveMags call CBA_fnc_getArrayElements;
+
+_curSet = [primaryWeapon player];
+{
+  if !(_x isEqualType 2) then {
+    _curSet pushBack format[
+      "%1:%2",
+      _x,
+      _toProcess select (_forEachIndex + 1)
+    ];
+  };
+} forEach _toProcess;
+
+phx_selector_weapons pushBack _curSet;
 reverse phx_selector_weapons;
 
 phx_selector_fnc_weapons = {
@@ -49,23 +68,29 @@ phx_selector_fnc_weapons = {
   {
     player addPrimaryWeaponItem _x;
   } forEach _weaponItems;
+
+  if (pRole == ROLE_RS) then {
+    // add silencer if avail
+    _muzzleAcc = [_weapon, "muzzle"] call CBA_fnc_compatibleItems;
+    _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};
+    if (count _silencers > 0) then {player addPrimaryWeaponItem (_silencers select 0)};
+  };
 };
 
 //Weapons actions
 {
   _action = [
     "Weapon_Selector",
-    getText (configFile >> "cfgWeapons" >> _x >> "displayName"),
+    getText (configFile >> "cfgWeapons" >> _x # 0 >> "displayName"),
     "",
     { // param to code above
-    "debug_console" callExtension str _this;
-      [_this select 2] call phx_selector_fnc_weapons;
+      (_this select 2) call phx_selector_fnc_weapons;
     },
     { // condition
       primaryWeapon player != "" && count phx_selector_weapons > 1
     },
     {},
-    _x // arg to be used in param, arg is weapon
+    _x // arg to be used in param, arg is array
   ] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Weapon_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_weapons;

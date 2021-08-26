@@ -3,7 +3,7 @@ Creates a control on the pause screen for the player to send a message to connec
 */
 
 disableSerialization;
-private _display = findDisplay 46 createDisplay "RscDisplayEmpty";
+private _display = findDisplay 60000 createDisplay "RscDisplayEmpty";
 private _ctrlGroup = _display ctrlCreate ["RscControlsGroupNoScrollbars", -1];
 private _ctrlBackground = _display ctrlCreate ["RscTextMulti", -1, _ctrlGroup];
 IDD_EDIT_BOX = 123;
@@ -101,12 +101,12 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 
 		_display closeDisplay 1;
 	};
-	if (ace_spectator_isSet) then {
-		private _attr = [] call ace_spectator_fnc_getCameraAttributes;
-		[false] call ace_spectator_fnc_setSpectator;
-		[true] call ace_spectator_fnc_setSpectator;
-		_attr call ace_spectator_fnc_setCameraAttributes;
-	};
+	// if (ace_spectator_isSet) then {
+	// 	private _attr = [] call ace_spectator_fnc_getCameraAttributes;
+	// 	[false] call ace_spectator_fnc_setSpectator;
+	// 	[true] call ace_spectator_fnc_setSpectator;
+	// 	_attr call ace_spectator_fnc_setCameraAttributes;
+	// };
 }];
 ctrlSetFocus _ctrlEdit;
 _ctrlGroup ctrlSetPosition [0.25, 0.25, 0.5, 0.5];
