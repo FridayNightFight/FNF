@@ -9,6 +9,11 @@ class CfgFunctions {
       class serverInit{};
       class serverInitCall{postInit = 1;};
     };
+    class teleport {
+      file = "client\misc\leaderTeleport";
+      class teleportInit{};
+      class teleportExec{};
+    }
     class clientInit {
       file = "client\init";
       class clientInit{};
@@ -117,6 +122,7 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
+      class populateORBATS{};
     };
     class end {
       file = "server\end";
@@ -125,6 +131,12 @@ class CfgFunctions {
       class overTimeEnd{};
       class gameEnd{};
       class endElimination{};
+    };
+    class webhook {
+      file = "server\webhook";
+      class webhook_roundPrep;
+      class webhook_roundStart;
+      class webhook_roundEnd;
     };
   };
 };

@@ -27,6 +27,8 @@ call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
   ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
   ["off"] call acex_fortify_fnc_handleChatCommand;
 
+  [] call phx_fnc_webhook_roundStart;
+
   {
     if !(getMarkerColor _x isEqualTo "") then {
       [_x] remoteExec ["deleteMarkerLocal",0,true];

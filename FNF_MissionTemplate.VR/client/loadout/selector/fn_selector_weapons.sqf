@@ -2,7 +2,7 @@
 if !((phx_loadout_rifle_mag_tracer splitString ":" select 0) in magazines player) then {phx_loadout_rifle_mag_tracer = "0:0"};
 
 //add player's current weapon to selector
-phx_selector_weapons append [[primaryWeapon player]];
+phx_selector_weapons append [primaryWeapon player];
 reverse phx_selector_weapons;
 
 phx_selector_fnc_weapons = {
@@ -53,8 +53,19 @@ phx_selector_fnc_weapons = {
 
 //Weapons actions
 {
-  _action = ["Weapon_Selector",getText (configFile >> "cfgWeapons" >> _x select 0 >> "displayName"),"",{
-    (_this select 2) call phx_selector_fnc_weapons;
-  },{primaryWeapon player != "" && count phx_selector_weapons > 1}, {}, _x] call ace_interact_menu_fnc_createAction;
+  _action = [
+    "Weapon_Selector",
+    getText (configFile >> "cfgWeapons" >> _x >> "displayName"),
+    "",
+    { // param to code above
+    "debug_console" callExtension str _this;
+      [_this select 2] call phx_selector_fnc_weapons;
+    },
+    { // condition
+      primaryWeapon player != "" && count phx_selector_weapons > 1
+    },
+    {},
+    _x // arg to be used in param, arg is weapon
+  ] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Weapon_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_weapons;
