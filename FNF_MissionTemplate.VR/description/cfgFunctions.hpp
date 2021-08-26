@@ -103,6 +103,12 @@ class CfgFunctions {
       class adminGameEnd{};
       class objectivePreview{};
     };
+    class contactStaff {
+      file = "client\misc\contactStaff";
+      class contactStaffInit{};
+      class contactStaff{};
+      class addStaffContactButton{};
+    };
     class unflip {
       file = "client\misc\unflip";
       class unflipVehicle{};
