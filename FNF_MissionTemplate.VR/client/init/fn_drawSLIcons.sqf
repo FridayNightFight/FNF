@@ -55,7 +55,12 @@
 			private _targetPositionAGLTop = _targetPositionAGLTopRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply 0.6);
 			private _targetPositionAGLBottom = _targetPositionAGLBotRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply -1);
 
-			_thisName = (roleDescription _x splitString '@') select 1;
+			_role = (roleDescription _x splitString '@');
+			if (count _role > 1) then {
+				_thisName = _role select 1;
+			} else {
+				_thisName = _role;
+			};
 
 			if (alive _x && !(player isEqualTo _x)) then {
 				switch (true) do {
