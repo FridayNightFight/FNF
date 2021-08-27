@@ -69,11 +69,12 @@ phx_loadout_thermite = ["2x Thermite grenades", "ACE_M14:2"];
 phx_loadout_maptools = "ACE_MapTools";
 phx_loadout_cableTie = "ACE_CableTie:2";
 phx_loadout_nvg = "NVGoggles_OPFOR";
-phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
-phx_loadout_uglAmmoEastGR = ["rhs_VOG25:15", "rhs_GRD40_White:6", "rhs_VG40OP_white:2"];
 phx_loadout_uglAmmoWest = ["1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"];
 phx_loadout_uglAmmoWestGR = ["1Rnd_HE_Grenade_shell:15", "1Rnd_Smoke_Grenade_shell:6", "UGL_FlareWhite_F:2"];
-phx_loadout_uglAmmoGRIR = ["1Rnd_HE_Grenade_shell:10", "1Rnd_Smoke_Grenade_shell:4", "UGL_FlareWhite_F:2", "ACE_HuntIR_M203:4"];
+phx_loadout_uglAmmoWestGRIR = ["1Rnd_HE_Grenade_shell:10", "1Rnd_Smoke_Grenade_shell:4", "UGL_FlareWhite_F:2", "ACE_HuntIR_M203:4"];
+phx_loadout_uglAmmoEast = ["rhs_VOG25:6", "rhs_GRD40_White:3", "rhs_VG40OP_white:3"];
+phx_loadout_uglAmmoEastGR = ["rhs_VOG25:15", "rhs_GRD40_White:6", "rhs_VG40OP_white:2"];
+phx_loadout_uglAmmoEastGRIR = ["rhs_VOG25:10", "rhs_GRD40_White:4", "rhs_VG40OP_white:2", "ACE_HuntIR_M203:4"];
 phx_loadout_huntIR = "ACE_HuntIR_monitor:1";
 //CE
 phx_loadout_explosives = ["2x Satchel", "SatchelCharge_Remote_Mag:2"];

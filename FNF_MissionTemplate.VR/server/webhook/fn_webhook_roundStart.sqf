@@ -1,4 +1,5 @@
 if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send RoundStart webhook -- mod not loaded!"};
+if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundStart Discord post"};
 
 _vehiclesToProcessBLUFOR = [];
 _vehiclesToProcessOPFOR = [];
