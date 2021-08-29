@@ -20,6 +20,7 @@ class CfgFunctions {
       class drawSLIcons{};
       class assetDiaryInfo{};
       class clientInitCall{postInit = 1;};
+	  class handleDamage{};
     };
     class briefing {
       file = "client\briefing";
