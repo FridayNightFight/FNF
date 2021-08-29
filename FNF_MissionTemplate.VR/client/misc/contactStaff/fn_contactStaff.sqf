@@ -9,7 +9,6 @@ if (ace_spectator_isSet) then {
 } else {
 	_display = findDisplay 46 createDisplay "RscDisplayEmpty";
 };
-private _display = findDisplay 60000 createDisplay "RscDisplayEmpty";
 private _ctrlGroup = _display ctrlCreate ["RscControlsGroupNoScrollbars", -1];
 private _ctrlBackground = _display ctrlCreate ["RscTextMulti", -1, _ctrlGroup];
 IDD_EDIT_BOX = 123;
