@@ -17,21 +17,28 @@
 params ["_vehicle"];
 
 {
-	_kill = selectRandom [1,100];
+	_kill = random [1,50,100];
 
 	if (_kill > 69) then {
 		_bodyPart = selectRandom ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"];
-		_damage = selectRandom [0.7,0.75,0.8,0.85,0.9,1,1,1,1]; //small chance to survive
+		_damage = 1; // full damage
 		_type = selectRandom ["bullet", "vehiclecrash", "collision", "grenade", "explosive", "shell", "backblast", "stab", "unknown"];
 		[_x, _damage, _bodyPart, _type] call ace_medical_fnc_addDamageToUnit;
+		_x setDamage 1; // kill player
+		systemChat format ["DEBUG: %1 damage added to %2 with a %3 value with _kill set to %4",_type,_bodypart,_damage,_kill];
 	} else {
-		_damage = selectRandom [0,0,0,0,0,0,0,0,0.1,0.2,0.3]; //small chance to be slightly injured in a limb
+		_damage = selectRandom [0,0,0,0,0,0.2,0.3,0.4]; //small chance to be slightly injured in a limb
 		if (_damage > 0) then {
 			_bodyPart = selectRandom ["LeftArm", "RightArm", "LeftLeg", "RightLeg"];
 			_type = selectRandom ["bullet", "vehiclecrash", "collision", "grenade", "explosive", "shell", "backblast", "stab", "unknown"];
 			[_x, _damage, _bodyPart, _type] call ace_medical_fnc_addDamageToUnit;
+			systemChat format ["DEBUG: %1 damage added to %2 with a %3 value with _kill set to %4",_type,_bodypart,_damage,_kill];
+			uiSleep 2;
+			waitUntil {(getPos _vehicle) select 2 isEqualTo 0 && speed _vehicle isEqualTo 0};
 			moveOut _x;
 		} else { 
+			uiSleep 2;
+			waitUntil {(getPos _vehicle) select 2 isEqualTo 0 && speed _vehicle isEqualTo 0};
 			moveOut _x;
 		};
 	};

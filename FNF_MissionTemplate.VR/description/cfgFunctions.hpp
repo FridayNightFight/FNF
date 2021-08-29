@@ -20,7 +20,6 @@ class CfgFunctions {
       class drawSLIcons{};
       class assetDiaryInfo{};
       class clientInitCall{postInit = 1;};
-	  class handleDamage{};
     };
     class briefing {
       file = "client\briefing";
@@ -121,5 +120,9 @@ class CfgFunctions {
       class gameEnd{};
       class endElimination{};
     };
+	class damage {
+	  file = "server\damage";
+	  class handleDamage{};
+	};
   };
 };
