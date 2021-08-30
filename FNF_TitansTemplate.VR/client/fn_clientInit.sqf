@@ -89,16 +89,12 @@ _handle = [{
 				_dialogControl = (phx_loadoutGUI select 0) displayCtrl _i + 1000;
 				if (_currentInRole >= _x select 1) then 
 				{
-					if !(_dialogControl isEqualTo controllNull) then {
-						ctrlDelete _dialogControl;
+					if (ctrlEnabled _dialogControl) then {
+						_dialogControl ctrlEnable false;
 					};
 				} else {
-					if (_dialogControl isEqualTo controllNull) then {
-						_button = (phx_loadoutGUI select 0) ctrlCreate ["RscButton", _i + 1000]; 
-						_button ctrlSetPosition [0.275,0.03 + 0.08 * _i,0.45,0.05];
-						_button ctrlSetText (_x select 0);
-						_button buttonSetAction '_temp = ' + (str _x) + '; call PHX_fnc_selector_remove; _temp call PHX_fnc_spawnLoadout; phx_loadoutGUI closeDisplay 1;';
-						_button ctrlCommit 0;
+					if !(ctrlEnabled _dialogControl) then {
+						_dialogControl ctrlEnable true;
 					};
 				};
 			};

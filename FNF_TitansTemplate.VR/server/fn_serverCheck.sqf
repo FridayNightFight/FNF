@@ -16,6 +16,6 @@ _currentInRole = 0;
 if (_currentInRole >= _playerRole select 1) then {
 	[false] remoteExec ["PHX_fnc_serverResponse", remoteExecutedOwner];
 } else {	
-	_playerRequested setVariable ["role", _playerRole select 0];
+	_playerRequested setVariable ["role", _playerRole select 0, true];
 	[true] remoteExec ["PHX_fnc_serverResponse", remoteExecutedOwner];
 };

@@ -7,3 +7,4 @@
 *Fixed issue where score would increase by more than 1 point every 2 seconds
 *Fixed when joining during a round the end mission death screen would show and not allow spectating
 *Fixed serialisation text being shown for admin GUI
+*Fixed loadout options not being correctly disabled when roles were chosen by other players
