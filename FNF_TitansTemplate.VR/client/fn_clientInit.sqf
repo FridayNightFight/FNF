@@ -11,7 +11,7 @@ phx_keyDownEHId = -1;
 if !(call phx_fnc_clientCanPlay) exitWith {
 		call phx_fnc_spectatorInit;
 		if (didJIP && typeOf player != "ace_spectator_virtual") then {
-			player setPos [-1000, -1000, 0];
+			player setDamage 1;
 
 			[{phx_safetyEnabled},{
 				[false,false,false] call ace_spectator_fnc_setSpectator;
