@@ -39,7 +39,7 @@ if (serverCommandAvailable "#kick") then {
     phx_keyDownEHId = findDisplay 60000 displayAddEventHandler ["KeyDown", {
       _keyPressed = _this select 1;
       if (_keyPressed == 23) then {
-        if (phx_adminGUI isEqualTo displayNull) then {
+        if ((phx_adminGUI select 0) isEqualTo displayNull) then {
 		      call PHX_fnc_adminGUI;
 	      };
       };
