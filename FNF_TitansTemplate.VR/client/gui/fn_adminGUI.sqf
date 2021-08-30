@@ -14,14 +14,14 @@ _essbutton ctrlCommit 0;
 _mssButton = phx_adminGUI ctrlCreate ["RscButton", -1]; 
 _mssButton ctrlSetPosition [0.275,0.03 + 0.08,0.45,0.05];
 _mssButton ctrlSetText ("-1 Minute to Safe Start");
-_mssButton buttonSetAction 'if !(f_var_mission_timer <= 60) then { f_var_mission_timer = f_var_mission_timer - 60; publicVariableServer "f_var_mission_timer";};
-  systemChat format ["New safe start time: %1 Seconds", f_var_mission_timer];';
+_mssButton buttonSetAction 'if !(f_var_mission_timer <= 1) then { f_var_mission_timer = f_var_mission_timer - 1; publicVariableServer "f_var_mission_timer";};
+  systemChat format ["New safe start time: %1 mins", f_var_mission_timer];';
 _mssButton ctrlCommit 0;
 
 _pssButton = phx_adminGUI ctrlCreate ["RscButton", -1]; 
 _pssButton ctrlSetPosition [0.275,0.03 + 0.08 * 2,0.45,0.05];
 _pssButton ctrlSetText ("+1 Minute to Safe Start");
-_pssButton buttonSetAction 'f_var_mission_timer = f_var_mission_timer + 60; publicVariableServer "f_var_mission_timer"; systemChat format ["New safe start time: %1 Seconds", f_var_mission_timer];';
+_pssButton buttonSetAction 'f_var_mission_timer = f_var_mission_timer + 1; publicVariableServer "f_var_mission_timer"; systemChat format ["New safe start time: %1 Seconds", f_var_mission_timer];';
 _pssButton ctrlCommit 0;
 
 _btwButton = phx_adminGUI ctrlCreate ["RscButton", -1]; 

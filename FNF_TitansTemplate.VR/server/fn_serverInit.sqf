@@ -10,7 +10,6 @@ call phx_fnc_serverSafety;
 
 phx_blueTeamScore = 0;
 phx_redTeamScore = 0;
-phx_terminalScoreWaiting = false;
 
 "bluforSafeMarker" setMarkerColor "colorBLUFOR";
 "opforSafeMarker" setMarkerColor "colorOPFOR";
