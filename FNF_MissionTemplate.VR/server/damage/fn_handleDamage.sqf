@@ -34,10 +34,10 @@ params ["_vehicle"];
 			[_x, _damage, _bodyPart, _type] call ace_medical_fnc_addDamageToUnit;
 			diag_log format ["Vehicle DEBUG: %1 damage added to %2's %3 with a %4 value with _kill set to %5",_type,(name player),_bodypart,_damage,_kill];
 			uiSleep 1;
-			[speed _vehicle isEqualTo 0, moveOut _x;] call CBA_fnc_waitUntilAndExecute;
+			[speed _vehicle isEqualTo 0, (moveOut _x)] call CBA_fnc_waitUntilAndExecute;
 		} else { 
 			uiSleep 1;
-			[speed _vehicle isEqualTo 0, moveOut _x;] call CBA_fnc_waitUntilAndExecute;
+			[(speed _vehicle isEqualTo 0), (moveOut _x)] call CBA_fnc_waitUntilAndExecute;
 		};
 	};
 } forEach crew _vehicle;
