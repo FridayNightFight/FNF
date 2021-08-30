@@ -65,5 +65,32 @@ phx_acePlacing = [{
   player allowDamage true;
   call PHX_fnc_selector_remove;
 
+  phx_grenadeFiringPFH = [{
+  if (CBA_missionTime - phx_safetyEndTime <= 5) then
+  {
+    _tempWeaponState = weaponState player;
+    if (_tempWeaponState select 0 != _tempWeaponState select 1) then {
+      if (isNil "phx_grenadeNoFire") then {
+        phx_grenadeNoFire = player addAction ["", {}, nil, 0, false, true, "defaultAction", "
+        {
+          _this setWeaponReloadingTime [_this, _x, 1];
+        } forEach phx_safetyMuzzles;
+        "];
+      };
+    } else {
+      if !(isNil "phx_grenadeNoFire") then {
+        player removeAction phx_grenadeNoFire;
+      };
+    };
+  } else {
+    player removeAction phx_grenadeNoFire;
+    _tempWeaponState = weaponState player;
+    if (_tempWeaponState select 0 != _tempWeaponState select 1) then {
+      hint "Grenade Launcher can now be fired";
+    };
+    [phx_grenadeFiringPFH] call CBA_fnc_removePerFrameHandler;
+  };
+  }] call CBA_fnc_addPerFrameHandler;
+
   [{missionNamespace getVariable "newRound"},{call PHX_fnc_newRoundClient}] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;
