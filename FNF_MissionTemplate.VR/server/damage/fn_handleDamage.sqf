@@ -15,30 +15,31 @@
  * Public: no
  */
 params ["_vehicle"];
+if !(isServer) exitWith {};
 
 {
-	_kill = random [1,50,100];
+	_kill = random 100;
 
 	if (_kill > 69) then {
 		_bodyPart = selectRandom ["Head", "Body", "LeftArm", "RightArm", "LeftLeg", "RightLeg"];
 		_damage = 1; // full damage
-		_type = selectRandom ["bullet", "vehiclecrash", "collision", "grenade", "explosive", "shell", "backblast", "stab", "unknown"];
+		_type = selectRandom ["bullet", "vehiclecrash", "collision", "grenade", "explosive", "shell", "backblast", "stab"];
+		diag_log format ["Vehicle DEBUG: %1 damage added to %2's %3 with a %4 value with _kill set to %5",_type,(name player),_bodypart,_damage,_kill];
 		[_x, _damage, _bodyPart, _type] call ace_medical_fnc_addDamageToUnit;
 		_x setDamage 1; // kill player
-		diag_log format ["Vehicle DEBUG: %1 damage added to %2's %3 with a %4 value with _kill set to %5",_type,(name player),_bodypart,_damage,_kill];
 	} else {
 		_damage = selectRandom [0,0,0,0,0,0.2,0.3,0.4]; //small chance to be slightly injured in a limb
 		if (_damage > 0) then {
 			_bodyPart = selectRandom ["LeftArm", "RightArm", "LeftLeg", "RightLeg"];
-			_type = selectRandom ["bullet", "vehiclecrash", "collision", "grenade", "explosive", "shell", "backblast", "stab", "unknown"];
-			[_x, _damage, _bodyPart, _type] call ace_medical_fnc_addDamageToUnit;
+			_type = selectRandom ["bullet", "vehiclecrash", "collision", "grenade", "explosive", "shell", "backblast", "stab"];
 			diag_log format ["Vehicle DEBUG: %1 damage added to %2's %3 with a %4 value with _kill set to %5",_type,(name player),_bodypart,_damage,_kill];
-			uiSleep 1;
-			[speed _vehicle isEqualTo 0, (moveOut _x)] call CBA_fnc_waitUntilAndExecute;
-		} else { 
-			uiSleep 1;
-			[(speed _vehicle isEqualTo 0), (moveOut _x)] call CBA_fnc_waitUntilAndExecute;
+			[_x, _damage, _bodyPart, _type] call ace_medical_fnc_addDamageToUnit;
 		};
+		
+		uiSleep 1;
+		[{abs (speed _this) < 1}, {
+		  {moveOut _x} forEach (crew _this);
+		}, _vehicle, 20] call CBA_fnc_waitUntilAndExecute;
 	};
 } forEach crew _vehicle;
 
