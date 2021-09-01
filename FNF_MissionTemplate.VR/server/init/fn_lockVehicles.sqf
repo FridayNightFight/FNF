@@ -1,17 +1,14 @@
-// Setup lock state of vehicles
+// Lock unoccupied vehicles in safe start areas
 private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], false, true];
 
-{
-    _x setVariable ["ace_vehiclelock_lockSide", west];
-    _x setVehicleLock "LOCKED";
-} forEach (_vics inAreaArray "bluforSafeMarker");
+_vics inAreaArray "bluforSafeMarker"
+    select { count crew _x == 0 }
+    apply { _x setVehicleLock "LOCKED" };
 
-{
-    _x setVariable ["ace_vehiclelock_lockSide", east];
-    _x setVehicleLock "LOCKED";
-} forEach (_vics inAreaArray "opforSafeMarker");
+_vics inAreaArray "opforSafeMarker"
+    select { count crew _x == 0 }
+    apply { _x setVehicleLock "LOCKED" };
 
-{
-    _x setVariable ["ace_vehiclelock_lockSide", independent];
-    _x setVehicleLock "LOCKED";
-} forEach (_vics inAreaArray "indforSafeMarker");
+_vics inAreaArray "indforSafeMarker"
+    select { count crew _x == 0 }
+    apply { _x setVehicleLock "LOCKED" };
