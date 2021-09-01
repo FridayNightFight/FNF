@@ -132,6 +132,10 @@ class CfgFunctions {
       class gameEnd{};
       class endElimination{};
     };
+    class damage {
+      file = "server\damage";
+      class handleDamage{};
+    };
     class webhook {
       file = "server\webhook";
       class webhook_roundPrep;
