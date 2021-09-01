@@ -74,6 +74,8 @@ call phx_fnc_safety;
 call PHX_fnc_adminDiary;
 call PHX_fnc_terminalClientSetup;
 
+setViewDistance 300;
+
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
 [{time > 0}, {call phx_fnc_restrictions;}] call CBA_fnc_waitUntilAndExecute;

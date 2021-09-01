@@ -39,6 +39,11 @@ _opScore = _opScore - (_opScore * 2);
 		deleteVehicle _x; 
 	} forEach nearestObjects [getpos term1,["WeaponHolder","GroundWeaponHolder"],500];
 
+	//delete all Thrown Grenades
+	{
+		deleteVehicle _x; 
+	} forEach ((getpos term1) nearObjects ["GrenadeHand", 500]);
+
 	//switch safe start colours
 	if (markerColor "bluforSafeMarker" == "colorBLUFOR") then {
 		"bluforSafeMarker" setMarkerColor "colorOPFOR";
