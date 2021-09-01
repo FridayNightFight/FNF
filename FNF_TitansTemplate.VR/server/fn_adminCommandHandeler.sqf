@@ -1,5 +1,6 @@
 _option = _this;
 
+//used on server side to handle admin commands
 switch (_option) do
 {
 	case 1: {phx_gameEnd = true;

@@ -29,7 +29,7 @@ call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 [{!isNull findDisplay 60000}, {60000 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
 
-
+//used to display admin menu for spectators
 if (serverCommandAvailable "#kick") then {
   [{!isNull findDisplay 60000}, {
     call PHX_fnc_adminGUI;
@@ -46,19 +46,3 @@ if (serverCommandAvailable "#kick") then {
     }];
   }] call CBA_fnc_waitUntilAndExecute;
 };
-
-
-
-//Draw 3d icons for objectives
-//{
-//  if (_x call _showObj) then {
-//    [{
-//      params ["_obj"];
-//      if (isNull _obj || !alive _obj) then {
-//        [_handle] call CBA_fnc_removePerFrameHandler;
-//      } else {
-//        drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
-//      };
-//    } , 0, _x] call CBA_fnc_addPerFrameHandler;
-//  };
-//} forEach phx_specObjectives;

@@ -1,7 +1,4 @@
-//forceRespawn player;
-//uisleep 5;
-[true, true, true] call ace_spectator_fnc_setSpectator;
-
+//switch "sides" of player
 if (phx_playerSide == west) then
 {
 	phx_playerSide = east;
@@ -14,8 +11,8 @@ if (phx_playerSide == west) then
 	};
 };
 
+//close the terminal
 [term1,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
 
-[false,false,false] call ace_spectator_fnc_setSpectator;
-
+//call mid game init
 call PHX_fnc_clientMidInit;

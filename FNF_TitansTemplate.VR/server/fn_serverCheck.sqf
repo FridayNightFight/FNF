@@ -1,6 +1,8 @@
+//called by client to verify player role (NOT FOOL PROOF)
 _playerRole = _this select 0;
 _playerRequested = _this select 1;
 
+//check how many players are in the role
 _currentInRole = 0;
 {
 	if (side _x == side _playerRequested) then
@@ -13,6 +15,7 @@ _currentInRole = 0;
 	};
 } forEach allPlayers;
 
+//if more players in role than allowed return no, else return yes!
 if (_currentInRole >= _playerRole select 1) then {
 	[false] remoteExec ["PHX_fnc_serverResponse", remoteExecutedOwner];
 } else {	

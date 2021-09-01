@@ -22,6 +22,7 @@ _markerSetup = {
 
 term1 call _markerSetup;
 
+//used when the terminal is touched
 phx_serverTerminalAction = {
   _term = _this select 0;
   _side = _this select 1;
@@ -77,6 +78,7 @@ phx_serverTerminalAction = {
  format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"Red Team"}; case west: {"Blue Team"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
 };
 
+//used when a side reaches 100 points and wins
 phx_connectionWin = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
@@ -100,6 +102,8 @@ phx_connectionWin = {
 };
 
 _sideWon = sideEmpty;
+
+//if server has a PFH for tickets waiting do not create new PFH to prevent double points
 if !(phx_terminalScoreWaiting) then {
 phx_terminalScoreWaiting = true;
 [{phx_term1HackingSide != sideEmpty}, {

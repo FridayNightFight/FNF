@@ -65,6 +65,7 @@ phx_acePlacing = [{
   player allowDamage true;
   call PHX_fnc_selector_remove;
 
+  //prevent player from firing UBGLs for first 5 seconds of round
   phx_grenadeFiringPFH = [{
   if (CBA_missionTime - phx_safetyEndTime <= 5) then
   {
@@ -92,5 +93,6 @@ phx_acePlacing = [{
   };
   }] call CBA_fnc_addPerFrameHandler;
 
+  //wait until round has ended and new round has been created and call client actions for new round items
   [{missionNamespace getVariable "newRound"},{call PHX_fnc_newRoundClient}] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;

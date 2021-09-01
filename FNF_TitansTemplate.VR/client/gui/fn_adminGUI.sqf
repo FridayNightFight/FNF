@@ -1,7 +1,10 @@
 disableSerialization;
+
+//create Admin GUI Display
 _phx_adminGUI = findDisplay 60000 createDisplay "RscDisplayEmpty";
 phx_adminGUI = [_phx_adminGUI];
 
+//Add pre defined buttons for each admin diary entry to be clicked on
 _background = (phx_adminGUI select 0) ctrlCreate ["IGUIBack", -1];
 _background ctrlSetPosition [0.25,0,0.5,0.83];
 _background ctrlSetBackgroundColor [0,0,0,0.5];

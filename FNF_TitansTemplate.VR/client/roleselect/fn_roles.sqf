@@ -1,3 +1,5 @@
+//role list is created for selection later
+
 phx_roleList = [
 	["Squad Leader",//Role Name
 	1,//Role limit
@@ -35,5 +37,3 @@ phx_roleList = [
 	]
 
 ];
-
-//,["rhs_mag_30Rnd_556x45_M855A1_Stanag",7],["rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red",4]
