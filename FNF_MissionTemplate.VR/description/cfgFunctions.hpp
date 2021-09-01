@@ -103,6 +103,10 @@ class CfgFunctions {
       class unflipVehicle{};
       class unflipVehicleAddAction{};
     };
+    class ui {
+      file = "client\ui";
+      class hideUIKeybind{};
+    };
     class initServer {
       file = "server\init";
       class serverSafety{};

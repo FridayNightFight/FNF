@@ -51,3 +51,46 @@ _showObj = {
     } , 0, _x] call CBA_fnc_addPerFrameHandler;
   };
 } forEach phx_specObjectives;
+
+phx_spectatorVisiblePrevinput = true;
+phx_spectatorPrevVisibleCtrls = [];
+
+[{
+  private _missionRuntimeSecs = (phx_missionTimelimit * 60) + phx_safetyEndTime;
+  private _visible = ace_spectator_uiVisible;
+  if (_visible != phx_spectatorVisiblePrevinput) then {
+    phx_spectatorVisiblePrevinput = _visible;
+    if !(_visible) then {
+      showChat false;
+
+      phx_spectatorPrevVisibleCtrls = [];
+      {
+        if (ctrlShown _x) then {
+          _x ctrlShow false;
+          phx_spectatorPrevVisibleCtrls append [_x];
+        };
+      } forEach allControls findDisplay 60000;
+
+      showHUD [false,false,false,false,false,false,false,false,false,false,false];
+
+      if ((_missionRuntimeSecs - (15 * 60)) <= CBA_missionTime) then {
+      	[phx_missionTimeUI_PFH] call CBA_fnc_removePerFrameHandler;
+        uiNameSpace getVariable "timeleftStructText" closeDisplay 1;
+  		};
+    } else {
+      showChat true;
+
+      {
+        _x ctrlShow true;
+      } forEach phx_spectatorPrevVisibleCtrls;
+
+      showHUD [true,true,true,true,true,true,false,true,true,true,false];
+
+      phx_spectatorPrevVisibleCtrls = [];
+
+      if ((_missionRuntimeSecs - (15 * 60)) <= CBA_missionTime) then {
+      	call phx_fnc_clientTime;
+  		};
+    };
+  };
+}] call CBA_fnc_addPerFrameHandler;
