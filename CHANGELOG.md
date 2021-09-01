@@ -11,3 +11,9 @@
 *Fixed when joining during a round the end mission death screen would show and not allow spectating
 *Fixed serialisation text being shown for admin GUI
 *Fixed loadout options not being correctly disabled when roles were chosen by other players
+
+# v3.1.1
+
+*Fixed grenades are now cleared between rounds
+*Fixed ACE Stamina
+*Changed view distance to 300m to improve frames wherever possible
