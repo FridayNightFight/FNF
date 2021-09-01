@@ -2,5 +2,5 @@
 player setspeaker "NoVoice";
 showSubtitles false;
 enableSentences false;
-enableRadio false;
+enableRadio true;
 player disableConversation true;
