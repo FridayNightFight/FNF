@@ -27,6 +27,21 @@ reverse phx_selector_weapons;
 phx_selector_fnc_weapons = {
   params ["_weapon","_mag","_tracer"];
 
+  _fnc_hintDetails = {
+    private _thisCfg = _this call CBA_fnc_getItemConfig;
+    private _dispName = [_thisCfg] call BIS_fnc_displayName;
+    private _desc = getText(_thisCfg >> "descriptionShort");
+    private _pic = getText(_thisCfg >> "picture");
+
+    _textArr = [
+      format["<t align='center'><t size='1.5'>%1</t>", _dispName],
+      _desc,
+      format["<img size='3' image='%1'/>", _pic],
+      "</t>"
+    ];
+    [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+  };
+
   if (isNil "_mag") then {_mag = phx_loadout_rifle_mag};
   if (isNil "_tracer") then {_tracer = phx_loadout_rifle_mag_tracer};
 
@@ -75,6 +90,8 @@ phx_selector_fnc_weapons = {
     _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};
     if (count _silencers > 0) then {player addPrimaryWeaponItem (_silencers select 0)};
   };
+
+  _weapon call _fnc_hintDetails;
 };
 
 //Weapons actions
@@ -87,7 +104,7 @@ phx_selector_fnc_weapons = {
       (_this select 2) call phx_selector_fnc_weapons;
     },
     { // condition
-      primaryWeapon player != "" && count phx_selector_weapons > 1
+      primaryWeapon player != "" && count phx_selector_weapons > 1 && fnf_pref_loadoutInterface == "ACE"
     },
     {},
     _x // arg to be used in param, arg is array
