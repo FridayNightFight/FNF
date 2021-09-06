@@ -28,4 +28,4 @@ phx_alertEnd = false;
       [] spawn phx_fnc_overTimeEnd;
       [_handle] call CBA_fnc_removePerFrameHandler
   };
-}, 0.25, _missionRuntimeSecs] call CBA_fnc_addPerFrameHandler;
+}, 0.5, _missionRuntimeSecs] call CBA_fnc_addPerFrameHandler;

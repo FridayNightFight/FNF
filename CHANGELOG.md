@@ -1,3 +1,140 @@
+# v2.4.0
+#98 Implements major ORBAT change
+#97 Adds Discord embeds in general channel of Discord to report round status
+#95 Adds the ability for players to contact staff (connected via notification and other via Discord) using in-game GUI from pause menu
+#108 Adds the ability to choose a CBA fleximenu instead of ACE Self-Interact for loadout selection during SafeStart (CBA Settings)
+#108 Adds a customizable (default Ctrl-F12) CBA Keybind to hide UI elements for gameplay / spectator
+#100 Adds chance to kill or randomize damage & eject players in a vehicle upon its destruction
+
+# v2.3.2
+
+## Changes
+#85 Formal deployment of ScavHunt game mode
+Adds the ability to hide HUD items while playing (Map > Utilities > Screenshots/UI)
+Cargo containers now auto-marked
+INDFOR weapons now have Ball_89 AP ammo to be more competitive with other factions -- tracers to be updated via config
+Kill counter UI box removed -- OCAP2 is primary source of kill tracking, please use that if interested
+Tweaks to ACE Spectator: now delays 3 seconds after death before entering Spectator, and starts focused on your killer
+CTF defenders can now pick up the flag, but only if it has been dropped inside of the capture zone they're trying to defend
+
+
+## Fixes
+#87 Issue with player's side changing // seeing enemies marked on map after they had surrendered at least once
+#88 ScavHunt cap zones not hidden at game start
+Unit level ACE Performance Factor settings overriding CBA configured stamina settings removed
+Fixes issue with flag in CTF not being kept at ground level after being destroyed
+Fixes issue with CTF overtime condition not triggering properly
+
+
+# v2.3.0-beta-1
+Fixed:
+- Fixed wrong unflip action icon path
+
+Added:
+- Template version to admin briefing
+- New uniform sets: UNIFORM_BUNDESWEHR, UNIFORM_HELLENIC_ARMY, UNIFORM_RUSSIAN_SPETSNAZ, UNIFORM_RUSSIAN_RATNIK, UNIFORM_SOVIET_AFGHAN, UNIFORM_SOVIET_WINTER, UNIFORM_RUSSIAN_SPRING, UNIFORM_M88, UNIFORM_JUNGLE, UNIFORM_RANGER, UNIFORM_PARAMILITARY, UNIFORM_WEST_POLICE, UNIFORM_EAST_POLICE, UNIFORM_IND_POLICE
+- New weapon sets: WEAPONS_FAL_COLDWAR, WEAPONS_M14, WEAPONS_SOVIET
+- Added black base uniform sets
+- CEs can choose between thermite and frag grenades
+- FNF mod was updated with 2 Eden object attributes for use with this template update. Auto-clear vehicle inventory (default enabled) and exclude object from auto-mark script (default disabled)
+- Added CUP plants to blacklist for automatic objects marking script
+- Added a few new variables that you can use to prevent the uniform base sets from overwriting a uniform set. Details in "client\loadout\uniforms\README.MD"
+- Added player FNF Staff icons
+- Added player commander icons
+- Added player squad leader icons
+- Added side assets lists to game briefing
+- Added a beta version of a sat-style preview of the game objectives (admin-triggered only for now)
+- Admin GUI to choose a winner and end the game
+
+Changed:
+- Changed color of objective markers to match the defending side and to no longer conflict with the object auto-mark script marker color
+- Disabled the Commanding Menu
+- Fortify objects (besides sandbags and planks) can no longer be placed in buildings or above terrain level. Now needs to be touching the terrain
+- Slight increase of default fortify budget to 125
+- CTF defenders can no longer pick up the flag
+
+# v2.2.2
+1. Fixed UNIFORM_OEF_CP and UNIFORM_M93_WOODLAND uniform sets not having a vest
+2. Added READMEs for the uniform and weapon sets
+3. Added 2 uniform sets, SOVIET_CSAT and ALTIS_LIZARD
+4. Added defender fortify points to the briefing vars
+5. Increased the cost of most fortify objects
+6. Set ACE role specialty attributes via template script rather than unit attributes
+7. Fixed spectating units spawning in sector area being counted towards the sector defense
+8. Fixed medic slot error. Wrong variable type for ACE medic class
+9. Fixed hidden spectating units appearing on BFT
+
+# v2.2.1
+1. Fixed recon team rifleman role not being defined, causing the role to be unplayable
+2. Kill counter display moved to not block point display
+3. Mission-placed objects marking system won't mark objects within the attacker's start zone or any start zone if game mode is neutral
+
+# v2.2.0
+1. Cleaned up some loadout fncs and loadout sets.
+2. Weapon sets can now be freely assigned as there is not a forced base set anymore.
+
+# v2.2.0-rc2
+Added:
+1. Support for custom civilian units. Using the class "C_man_1". The loadout of the civilian role will remain whatever it is in the editor. If the unit has a radio, the frequency will be preset to one used by all civilians.
+2. Kill counter that will be displayed when you die or the game ends. Uses the last damage source of a unit to figure out the killer.
+3. Config variable for adding NVGs to units. Also adds laser to player's weapon if compatible.
+4. Config variable for allowing players to select magnified optics.
+5. Combat engineers can now select between different charge loadouts. Currently 2x satchels or 4x m112 demo blocks or 2 AP mines and 2 flare mines or 2 M15 AT mines.
+6. Added a system to automatically mark mission-placed objects if they are large enough.
+
+Changed:
+1. Staggered load (black screen loadout stagger) won't run if fewer than 60 players on server.
+2. Player loadout roles are now accessible via global variables.
+3. Combat engineers are given thermite grenades instead of frags
+4. Rewrite of gear selector system. Allows player to choose between different weapons with different compatible magazines if defined in the used weapons loadout.
+5. Streamlined the uniform and weapon sets. Each uniform set has a base where backpacks, pilot and crew helmets are defined, so very few things need to be defined when creating a new uniform set. Player now has a base weapon set that is always called depending on their side. Other weapon sets overwrite the base, so very few things need to be defined when creating a new weapon set.
+6. Mission time remaining now accounts for admin changes in the safe start time.
+7. Function for restricting uniform changes won't run when testing the mission locally.
+8. Time allowed outside of the start boundary towards the end of safestart is now maximum 1 second.
+9. Renamed the default weapon sets in the mission config.
+10. Accounted for CTF flag being dropped over water. Will now sit at water surface at location it was dropped.
+11. Added new terrains to automatic fortification color function.
+12. Automatic selection of UGL ammo type so it doesn't need to be defined in the weapons loadouts.
+13. MAT classes in the briefing tab will show the display name of the class, rather than the classname.
+14. Increased default fortify currency to 100.
+15. Misc small changes.
+
+Fixed:
+1. Misc small fixes.
+
+Removed:
+1. Old weapon and uniform sets from mods no longer used.
+2. USMC weapon set with M27 for the AR as it was never used.
+3. Automatic invincibility of objective buildings. Mission maker will have to set the building invincible if they want it to be or account for the different damage states of the building to make sure access to the objective is still possible.
+
+# v2.1.0c-hotfix.1
+1. Fixes mission timer on all display sizes
+2. Custom objects placed by mission makers are now automatically marked.
+
+# v2.1.0c
+Fixed Army OCP uniform set having raven backpacks.
+
+# v2.1.0b
+Removed old uniform and weapons sets.
+
+# v2.1.0a
+Fixed missing '('
+
+# v2.1.0
+Added:
+1. Added rangecard to marksman
+2. Added road restriction for ACEX fortify placements
+3. Added tasks to CTF game mode, task lists flag capture time
+
+Changed:
+1. Changed medic blood loadout to 12x 500ml & 4x 250ml
+2. Reduced neutral sector mode overtime condition point lead from 25 to 20
+
+Fixed:
+1. Fixed staggered load function running too quickly causing all players to get gear at same time
+2. Fix TFAR speak volume UI not updating to whisper at mission start
+3. Fix server nil var, unimportant
+
 # v2.1.0_rc2
 1. Fixed remove respawn button function
 

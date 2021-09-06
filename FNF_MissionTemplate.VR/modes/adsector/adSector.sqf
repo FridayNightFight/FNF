@@ -14,19 +14,10 @@ switch (_numberOfSectors) do {
 };
 
 phx_server_sectorWin = {
-  [format ["%1 has captured all sectors.\n%1 wins!",
-  switch (phx_attackingSide) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
-    case independent: {"INDFOR"};
-  }]] remoteExec ["hint"];
-
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  sleep 20;
-
-  "end1" call bis_fnc_endmissionserver;
+  [phx_attackingSide, "has captured all sectors and wins!"] spawn phx_fnc_gameEnd;
 };
 
 _sectorNum = 0;
@@ -58,9 +49,10 @@ _sectorNum = 0;
     };
 
     switch (phx_defendingSide) do {
-      case east: {_mark setMarkerColor "ColorRed"};
-      case west: {_mark setMarkerColor "ColorBlue"};
-      case independent: {_mark setMarkerColor "ColorGreen"};
+      case east: {_mark setMarkerColor "ColorEAST"};
+      case west: {_mark setMarkerColor "ColorWEST"};
+      case independent: {_mark setMarkerColor "ColorGUER"};
+      default {"ColorCIV"};
     };
 
     _dTask = "dtask" + str(_sectorNum);
@@ -80,10 +72,10 @@ _sectorNum = 0;
       _units = allUnits inAreaArray _sector;
 
       {
-        if (_x call BIS_fnc_objectSide == phx_defendingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED") then {
+        if (_x call BIS_fnc_objectSide == phx_defendingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x) then {
           _dPresent = true;
         };
-        if (_x call BIS_fnc_objectSide == phx_attackingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED") then {
+        if (_x call BIS_fnc_objectSide == phx_attackingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x) then {
           _aPresent = true;
         };
       } forEach _units;

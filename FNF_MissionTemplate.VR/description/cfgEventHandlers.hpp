@@ -1,7 +1,7 @@
 //CBA Extended Event Handlers
 class Extended_InitPost_EventHandlers {
   class CAManBase {
-    class PHX_FixFriendlyFire { clientInit = "if (local (_this select 0)) then {(_this select 0) addRating 100000;};";};
+    class PHX_FixFriendlyFire { clientInit = "(_this select 0) addRating 100000;";};
   };
   class Car {
     class PHX_NoBitchZone { init = "(_this select 0) allowCrewInImmobile true;"; };

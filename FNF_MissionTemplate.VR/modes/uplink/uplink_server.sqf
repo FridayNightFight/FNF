@@ -31,18 +31,27 @@ switch (typeName _terminalHackTime) do {
 
 _termMarkSetup = {
   _mark = "";
+  _markColor = switch (phx_defendingSide) do {
+      case east: {"ColorEAST"};
+      case west: {"ColorWEST"};
+      case independent: {"ColorGUER"};
+      default {"ColorCIV"};
+    };
   switch (_this) do {
     case term1: {
       _mark = createMarker ["term1Mark",getPos term1];
       _mark setMarkerText "Terminal 1";
+      _mark setMarkerColor _markColor;
     };
     case term2: {
       _mark = createMarker ["term2Mark",getPos term2];
       _mark setMarkerText "Terminal 2";
+      _mark setMarkerColor _markColor;
     };
     case term3: {
       _mark = createMarker ["term3Mark",getPos term3];
       _mark setMarkerText "Terminal 3";
+      _mark setMarkerColor _markColor;
     };
   };
 
@@ -247,18 +256,10 @@ while {!phx_gameEnd} do {
 
   if (_hackedObjectives >= _numberOfTerminals) then {
     uiSleep 13;
-    [format ["All objectives have been hacked.\n%1 wins!",
-    switch (phx_attackingSide) do {
-      case east: {"OPFOR"};
-      case west: {"BLUFOR"};
-      case independent: {"INDFOR"};
-    }]] remoteExec ["hint"];
 
     phx_gameEnd = true;
     publicVariable "phx_gameEnd";
 
-    uiSleep 15;
-
-    "end1" call bis_fnc_endMissionServer;
+    [phx_attackingSide, "has successfully hacked all objectives and won!"] spawn phx_fnc_gameEnd;
   };
 };

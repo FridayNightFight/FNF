@@ -108,10 +108,10 @@ _QS_ST_iconColor_UNKNOWN = [0.7,0.6,0,0.5];						// ARRAY (NUMBER). RGBA color c
 
 _QS_ST_showMedicalWounded = TRUE;								// BOOL. TRUE to show wounded on the map and GPS. FALSE to not show wounded on the map with this script. Default TRUE.
 _QS_ST_MedicalSystem = [										// ARRAY(STRING). The Active Medical System. Uncomment ONLY ONE. FIRST UNCOMMENTED ONE WILL BE USED. Comment the rest out as shown. Do not add commas and only allow 1 to be uncommented.
-	'BIS'														// BIS Revive.
+	//'BIS'														// BIS Revive.
 	//'BTC'														// BTC Revive.
 	//'AIS'														// AIS Revive.
-	//'ACE'														// ACE 3 Revive.
+	'ACE'														// ACE 3 Revive.
 	//'FAR'														// Farooq's Revive.
 	//'AWS'    													// A3 Wounding System by Psycho.
 ];
@@ -159,7 +159,7 @@ _QS_ST_MAPrequireGPSItem = FALSE;								// BOOL. TRUE to require player have GP
 //=========================== CONFIGURE GPS (UNIT/VEHICLE) ICONS ===================//
 //==================================================================================//
 
-_QS_ST_GPSDist = 200;											// NUMBER. Distance from player that units shown on GPS. Higher number = lower script performance. Not significant but every 1/10th of a frame counts! Default 300
+_QS_ST_GPSDist = 150;											// NUMBER. Distance from player that units shown on GPS. Higher number = lower script performance. Not significant but every 1/10th of a frame counts! Default 300
 _QS_ST_GPSshowNames = FALSE;									// BOOL. TRUE to show unit names on the GPS display. Default FALSE.
 _QS_ST_GPSshowGroupOnly = FALSE;								// BOOL. TRUE to show only group members on the GPS display. Default TRUE.
 _QS_ST_iconTextSize_GPS = 0.05;									// NUMBER. Icon Text Size on GPS display. Default is 0.05.
@@ -952,7 +952,7 @@ _QS_fnc_iconDrawMap = {
 		{
 			if (!isNull _x) then {
 				_ve = vehicle _x;
-				if (alive _ve) then {
+				if (alive _ve && !(isObjectHidden _ve)) then {
 					_po = [_ve,1,_de] call (_QS_ST_X select 44);
 					_is = [_ve,1,_QS_ST_X] call (_QS_ST_X select 43);
 					if (_ve isEqualTo (vehicle _player)) then {
@@ -1020,7 +1020,7 @@ _QS_fnc_iconDrawGPS = {
 		{
 			if (!isNull _x) then {
 				_ve = vehicle _x;
-				if (alive _ve) then {
+				if (alive _ve && !(isObjectHidden _ve)) then {
 					_po = [_ve,2,_de] call (_QS_ST_X select 44);
 					_is = [_ve,2,_QS_ST_X] call (_QS_ST_X select 43);
 					_m drawIcon [
