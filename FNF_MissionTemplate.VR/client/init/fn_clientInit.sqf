@@ -15,6 +15,7 @@ if (isMultiplayer) then {
 	call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
 	call phx_fnc_drawSLIcons; // Draw labels over squad leaders
 };
+call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
 
 //Set player loadout after stagger time

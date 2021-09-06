@@ -1,4 +1,5 @@
 if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send RoundStart webhook -- mod not loaded!"};
+if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundStart Discord post"};
 
 _vehiclesToProcessBLUFOR = [];
 _vehiclesToProcessOPFOR = [];
@@ -115,8 +116,21 @@ if (_transportsPresentIND > 0) then {_indArr pushBack format[" + %1 transports",
 private ["_gameMode"];
 if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gameMode};
 
+
+_info = missionNamespace getVariable "fnf_staffInfo";
+_staffPlayers = [];
+{
+	{
+		private _staffMember = _x call BIS_fnc_getUnitByUID;
+		if (!isNull _staffMember) then {
+			_staffPlayers set [_x, [_y # 0, _y # 1, _staffMember]];
+		};
+	};
+} forEach _info;
+
+
 _playingPlayerCount = str(count (playableUnits select {alive _x}));
-_staffCount = if (isNil "staffPlayers") then {"0"} else {str(count staffPlayers)};
+_staffCount = if (isNil "staffPlayers") then {"0"} else {str(count _staffPlayers)};
 _spectatorCount = str(count (call ace_spectator_fnc_players));
 _bluPlayers = if (playableSlotsNumber west == 0) then {""} else {str(count(allPlayers select {side _x == west && alive _x}))};
 _opfPlayers = if (playableSlotsNumber east == 0) then {""} else {str(count(allPlayers select {side _x == east && alive _x}))};
