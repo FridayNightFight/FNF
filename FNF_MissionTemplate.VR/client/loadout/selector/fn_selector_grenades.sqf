@@ -1,10 +1,28 @@
-//set current grenades to default from laodout init
+//set current grenades to default from loadout init
 phx_selector_currentGrenades = phx_loadout_thermite;
 
 phx_selector_fnc_grenades = {
+
+  _fnc_hintDetails = {
+    params ["_dispName", "_className"];
+    private _thisCfg = _className call CBA_fnc_getItemConfig;
+    private _dispName = _dispName;
+    private _desc = getText(_thisCfg >> "descriptionShort");
+    private _pic = getText(_thisCfg >> "picture");
+
+    _textArr = [
+      format["<t align='center'><t size='1.5'>%1</t>", _dispName],
+      _desc,
+      format["<img size='3' image='%1'/>", _pic],
+      "</t>"
+    ];
+    [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+  };
+
   private _expArr = _this;
 
   if (_expArr isEqualTo phx_selector_currentGrenades) exitWith {};
+
 
   private _missing = false;
 
@@ -39,11 +57,49 @@ phx_selector_fnc_grenades = {
       };
     } forEach _expArr;
 
-    format ["Grenade loadout changed to:\n %1", _expArr select 0] call phx_fnc_hintThenClear;
+    // Show the player what they chose
+    _granted = [];
+    {
+      _class = (_x splitString ":" select 0);
+      _granted pushBack _class;
+    } forEach (_expArr select [1, 3]);
+
+    {
+      [_expArr # 0, _x] call _fnc_hintDetails;
+    } forEach _granted;
+    
 
     phx_selector_currentGrenades = _expArr;
   } else {
-    "Missing items" call phx_fnc_hintThenClear;
+
+    // warn player they are missing grenades
+    _mustReturn = [];
+    {
+      _class = (_x splitString ":" select 0);
+      _mustReturn pushBack ([
+        getText(configFile >> "CfgMagazines" >> _class >> "displayName"),
+        format[
+          "<img size='4' image='%1'></t>",
+          getText(configFile >> "CfgMagazines" >> _class >> "picture")
+        ]
+      ] joinString "<br/>");
+    } forEach (phx_selector_currentGrenades select [1, 3]);
+    _mustReturn = _mustReturn joinString "<br/>";
+
+    [
+      [
+        "<t align='center'>",
+        "<t size='2' color='#FFFF00' >WARNING</t>",
+        "Previously chosen grenades not found in inventory.",
+        "Cannot spawn new grenades for you.",
+        "",
+        "This is an anti-duplication measure. You will need to return the below grenades to your inventory to be removed and replaced with your selection.<br/>",
+        _mustReturn,
+        "</t>"
+      ] joinString "<br/>",
+      "warning",
+      10
+    ] call phx_ui_fnc_notify;
   };
 };
 
@@ -51,6 +107,8 @@ phx_selector_fnc_grenades = {
 {
   _action = ["Grenades_Selector",_x select 0,"",{
     (_this select 2) call phx_selector_fnc_grenades;
-  },{true}, {}, _x] call ace_interact_menu_fnc_createAction;
+  },{ // condition
+    fnf_pref_loadoutInterface == "ACE"
+  }, {}, _x] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Grenades_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_grenades;

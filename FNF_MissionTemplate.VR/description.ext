@@ -14,4 +14,7 @@ class Header
 #include "description\cfgNotifications.hpp"
 #include "description\cfgSounds.hpp"
 #include "description\cfgFunctions.hpp"
+#include "description\cfgORBAT.hpp"
+#include "client\ui\defines.hpp"
 #include "client\ui\RscTitlesDisplay.hpp"
+#include "client\ui\PauseMenuDisplays.hpp"

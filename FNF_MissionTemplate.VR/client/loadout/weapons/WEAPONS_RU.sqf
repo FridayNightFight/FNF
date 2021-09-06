@@ -28,9 +28,14 @@ if (pRole == ROLE_AM) then {
 if (pRole == ROLE_RAT) then {
   phx_loadout_antitank_weapon = "rhs_weap_rpg26";
 };
-if (pRole == ROLE_MK) then {
-  phx_loadout_rifle_weapon = "rhs_weap_svdp";
-  phx_loadout_rifle_mag = "ACE_10Rnd_762x54_Tracer_mag:9";
+if (pRole == ROLE_RS) then {
+  phx_selector_weapons = [
+    ["rhs_weap_aks74un", "rhs_45Rnd_545X39_7U1_AK:8"]
+  ];
+};
+if (pRole == ROLE_SNP) then {
+  phx_loadout_rifle_weapon = "rhs_weap_t5000";
+  phx_loadout_rifle_mag = "rhs_5Rnd_338lapua_t5000:12";
 };
 if (pRole == ROLE_P) then {
   phx_loadout_rifle_weapon = "rhs_weap_aks74un";

@@ -28,9 +28,25 @@ if (pRole == ROLE_AM) then {
 if (pRole == ROLE_RAT) then {
   phx_loadout_antitank_weapon = "rhs_weap_m72a7";
 };
-if (pRole == ROLE_MK) then {
-  phx_loadout_rifle_weapon = "rhs_weap_sr25";
-  phx_loadout_rifle_mag = "rhsusf_20Rnd_762x51_SR25_m62_Mag:4";
+if (pRole == ROLE_GRIR) then {
+  phx_loadout_sidearm_weapon = "rhs_weap_M320";
+  phx_loadout_sidearm_mag = "";
+};
+if (pRole == ROLE_RS) then {
+  phx_loadout_rifle_weapon = "srifle_EBR_F"; // for subsonic ammo
+  phx_loadout_rifle_mag = "ACE_20Rnd_762x51_Mag_SD:11";
+  phx_selector_weapons = [
+    ["rhsusf_weap_MP7A2", "rhsusf_mag_40Rnd_46x30_FMJ:8"]
+  ];
+};
+if (pRole == ROLE_SNP) then {
+  phx_loadout_rifle_weapon = "rhs_weap_XM2010";
+  phx_loadout_rifle_mag = "rhsusf_5Rnd_300winmag_xm2010:12";
+  phx_selector_weapons = [
+    ["rhs_weap_XM2010_wd", "rhsusf_5Rnd_300winmag_xm2010:12"],
+    ["rhs_weap_XM2010_d", "rhsusf_5Rnd_300winmag_xm2010:12"],
+    ["rhs_weap_XM2010_sa", "rhsusf_5Rnd_300winmag_xm2010:12"]
+  ];
 };
 if (pRole == ROLE_P) then {
   phx_loadout_rifle_weapon = "rhsusf_weap_MP7A2";

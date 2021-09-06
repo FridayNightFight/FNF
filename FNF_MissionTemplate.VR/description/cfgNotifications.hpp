@@ -13,4 +13,11 @@ class cfgNotifications {
         duration = 3;
         priority = 1;
     };
+    class AdminMessage {
+        title = "Admin Message";
+        description = "New report received from %1";
+        iconPicture="description\images\fnfsmall.paa";
+        duration = 7;
+        priority = 1;
+    };
 };
