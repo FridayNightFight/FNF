@@ -23,7 +23,7 @@ _pClass = typeOf player;
 #define LOADOUTROLE(_str) (player getVariable ["phxLoadout", ""] isEqualTo _str)
 
 if (LOADOUTROLE("PL")) then {pRole = ROLE_PL};
-if (LOADOUTROLE("SL")) then {pRole = ROLE_SL};
+if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {pRole = ROLE_SL};
 if (LOADOUTROLE("TL")) then {pRole = ROLE_TL};
 if (LOADOUTROLE("AR")) then {pRole = ROLE_AR};
 if (LOADOUTROLE("ARA")) then {pRole = ROLE_AAR};

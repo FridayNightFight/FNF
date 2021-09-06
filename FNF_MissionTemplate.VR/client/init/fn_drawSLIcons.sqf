@@ -22,8 +22,8 @@
 		if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
 
 		_slUnits = (units playerSide) select {
-			["_Soldier_SL_F", typeOf _x] call BIS_fnc_inString &&
-			_x == leader group _x;
+			(_x getVariable ["phxLoadout", ""]) isEqualTo ROLE_SL &&
+			_x == leader (group _x)
 		};
 
 		private _cameraPositionAGL = positionCameraToWorld[0,0,0];
@@ -55,12 +55,23 @@
 			private _targetPositionAGLTop = _targetPositionAGLTopRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply 0.6);
 			private _targetPositionAGLBottom = _targetPositionAGLBotRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply -1);
 
-			_role = (roleDescription _x splitString '@');
-			if (count _role > 1) then {
-				_thisName = _role select 1;
+			private _thisName = "";
+			private _role = "";
+			if (["@", roleDescription _x] call BIS_fnc_inString) then {
+				_role = (roleDescription _x splitString '@');
+				if (count _role > 1) then {
+					if (count (_role # 1) > 0) then {
+						_thisName = _role # 1;
+					} else {
+						_thisName =  roleDescription _x;
+					};
+				} else {
+					_thisName = _role;
+				};
 			} else {
-				_thisName = _role;
+				_thisName = roleDescription _x;
 			};
+			
 
 			if (alive _x && !(player isEqualTo _x)) then {
 				switch (true) do {
@@ -76,6 +87,6 @@
 					};
 				};
 			};
-		} forEach _slUnits;
+		} forEach (_slUnits select {!(isNull _x)});
 	}, 0] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
