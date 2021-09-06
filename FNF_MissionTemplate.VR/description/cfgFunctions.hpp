@@ -139,4 +139,18 @@ class CfgFunctions {
       class webhook_roundEnd;
     };
   };
+  class phx_ui {
+    class safeStartMenu {
+      file = "client\ui\safeStartMenu";
+      class safeStartMain{};
+      class weaponSelector{};
+      class opticSelector{};
+      class chargesSelector{};
+      class grenadesSelector{};
+    }
+    class notifications {
+      file = "client\ui\notifications";
+      class notify{};
+    }
+  };
 };
