@@ -463,6 +463,7 @@ force force grad_trenches_functions_allowBigEnvelope = true;
 force force grad_trenches_functions_allowCamouflage = true;
 force force grad_trenches_functions_allowDigging = true;
 force force grad_trenches_functions_allowDiggingInVehicle = true;
+force force grad_trenches_functions_allowEffects = false;
 force force grad_trenches_functions_allowGiantEnvelope = true;
 force force grad_trenches_functions_allowHitDecay = false;
 force force grad_trenches_functions_allowLongEnvelope = true;
