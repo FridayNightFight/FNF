@@ -1,3 +1,11 @@
+# v2.4.0
+#98 Implements major ORBAT change
+#97 Adds Discord embeds in general channel of Discord to report round status
+#95 Adds the ability for players to contact staff (connected via notification and other via Discord) using in-game GUI from pause menu
+#108 Adds the ability to choose a CBA fleximenu instead of ACE Self-Interact for loadout selection during SafeStart (CBA Settings)
+#108 Adds a customizable (default Ctrl-F12) CBA Keybind to hide UI elements for gameplay / spectator
+#100 Adds chance to kill or randomize damage & eject players in a vehicle upon its destruction
+
 # v2.3.2
 
 ## Changes
