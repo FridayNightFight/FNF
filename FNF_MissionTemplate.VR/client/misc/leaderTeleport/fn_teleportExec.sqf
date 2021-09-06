@@ -53,21 +53,47 @@ _getSLs = {
 
 // all Team Leaders
 _getTLs = {
-	params ["_allGroups"];
+	params ["_allGroups", "_groupId"];
 	private _result = [];
 	private _squads = [];
 	_squads = ["A","B","C","D"];
 
-	{
-		// select only the first leader found in A, A1, A2
-		private _groupChar = _x;
-		private _groupsThatExist = _allGroups select {(groupId _x) in [(_groupChar + "1"), (_groupChar + "2")]};
+	if (!isNil "_groupId") then {
+		private _groupChar = _groupId select [0, 1];
+		private _groupsThatExist = _allGroups select {(groupId _x) in [_groupChar, (_groupChar + "1"), (_groupChar + "2")]};
 		if (count _groupsThatExist > 0) then {
 			{
 				_result pushBack (leader _x);
 			} forEach _groupsThatExist;
 		};
-	} forEach _squads;
+	} else {
+		{
+			// select only the first leader found in A, A1, A2
+			private _groupChar = _x;
+			private _groupsThatExist = _allGroups select {(groupId _x) in [(_groupId + "1"), (_groupId + "2")]};
+			if (count _groupsThatExist > 0) then {
+				{
+					_result pushBack (leader _x);
+				} forEach _groupsThatExist;
+			};
+		} forEach _squads;
+	};
+	_result
+};
+
+// all Squad members
+_getSquadMembers = {
+	// used for SLs teleporting all squad members
+	params ["_allGroups", "_groupId"];
+	private _result = [];
+
+	private _groupChar = _groupId select [0, 1];
+	private _groupsThatExist = _allGroups select {(groupId _x) in [_groupChar, (_groupChar + "1"), (_groupChar + "2")]};
+	if (count _groupsThatExist > 0) then {
+		{
+			_result append (units _x);
+		} forEach _groupsThatExist;
+	};
 	_result
 };
 
@@ -146,17 +172,11 @@ switch (_source) do {
 		switch (_scope) do {
 			case "tl": {
 				// teleport team leads
-				{_toTeleport pushBack (leader _x)} forEach (_allGroups select {(groupId _x) in [
-					(_groupId + "1"),
-					(_groupId + "2")
-				]});
+				_toTeleport append ([_allGroups, _groupId] call _getTLs);
 			};
 			case "all": {
 				// teleport all squad members
-				{_toTeleport append (units _x)} forEach (_allGroups select {(groupId _x) in [
-					(_groupId + "1"),
-					(_groupId + "2")
-				]});
+				_toTeleport append ([_allGroups, _groupId] call _getSquadMembers);
 			};
 		};
 	};

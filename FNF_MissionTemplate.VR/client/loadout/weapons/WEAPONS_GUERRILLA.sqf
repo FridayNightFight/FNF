@@ -10,6 +10,9 @@ if (phx_loadout_hasUGL) then {
 phx_loadout_rifle_mag_tracer = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagazines select 1) + ":5";
 phx_loadout_rifle_mag = ([phx_loadout_rifle_weapon] call CBA_fnc_compatibleMagazines select 0) + ":9";
 
+phx_loadout_sidearm_weapon = selectRandom ["hgun_Rook40_F", "hgun_P07_F", "hgun_ACPC2_F", "rhs_weap_makarov_pm", "rhsusf_weap_glock17g4", "rhsusf_weap_m1911a1", "rhs_weap_tt33", "rhs_weap_cz99"];
+  phx_loadout_sidearm_mag = ([phx_loadout_sidearm_weapon] call CBA_fnc_compatibleMagazines select 0) + ":2";
+
 if (pRole == ROLE_AR) then {
   phx_loadout_rifle_weapon = "rhs_weap_m84";
   phx_loadout_rifle_mag = "rhs_100Rnd_762x54mmR:8"; //updated to 8 boxes from 5
@@ -24,12 +27,10 @@ if (pRole == ROLE_MG) then {
 if (pRole == ROLE_AM) then {
   phx_loadout_am_mag = "rhsusf_100Rnd_762x51:8"; //5 to 8
 };
-if (pRole == ROLE_GRIR) then {
-  phx_loadout_sidearm_weapon = "rhs_weap_M320";
-  phx_loadout_sidearm_mag = "";
-} else {
-  phx_loadout_sidearm_weapon = selectRandom ["hgun_Rook40_F", "hgun_P07_F", "hgun_ACPC2_F", "rhs_weap_makarov_pm", "rhsusf_weap_glock17g4", "rhsusf_weap_m1911a1", "rhs_weap_tt33", "rhs_weap_cz99"];
-  phx_loadout_sidearm_mag = ([phx_loadout_sidearm_weapon] call CBA_fnc_compatibleMagazines select 0) + ":2";
+if (pRole == ROLE_RS) then {
+  phx_selector_weapons = [
+    ["rhs_weap_aks74un", "rhs_45Rnd_545X39_7U1_AK:8"]
+  ];
 };
 if (pRole == ROLE_SNP) then {
   phx_loadout_rifle_weapon = "rhs_weap_t5000";

@@ -89,6 +89,7 @@ phx_ORBATHandlers = [];
 	};
 
 	if (playableSlotsNumber _side > 3 && phx_enemyStartVisible) then {
+		_PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "phxLoadout" isEqualTo "PL"};
 		[ // PLTHQ
 			missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTHQ", _sideShort], 
 			_sideColorStr, 
@@ -101,7 +102,9 @@ phx_ORBATHandlers = [];
 			1, 
 			getMissionPath "description\images\fnf.paa", 
 			[_side, false] call BIS_fnc_sideColor, 
-			"", // commander name
+			(
+				if (count _PLTLeader > 0) then {_PLTLeader # 0} else {""}
+			), // commander name
 			"", // rank 
 			"A motorized platoon consisting of two assault squads and two heavy weapons squads, a 6-man reconnaissance team, and (depending on availability) detached mechanized assets and light aerial support.", // description 
 			_vehicles 
@@ -191,57 +194,10 @@ phx_ORBATHandlers = [];
 		} forEach [1, 2];
 
 		_logic = missionNamespace getVariable ("ORBAT" + _sideShort);
-		[_logic] spawn BIS_fnc_moduleStrategicMapORBAT;
+		missionNamespace setVariable ["ORBAT" + _sideShort + "handler", [_logic] spawn BIS_fnc_moduleStrategicMapORBAT];
 	};
 } forEach [east, west, independent];
 
-
-
-
-
-/* 
-// OPFOR
-if (playableSlotsNumber east > 3 && phx_enemyStartVisible) then {
-[ 
-	missionConfigFile >> "CfgORBAT" >> "FNFOPFPLTHQ", 
-	"Red", 
-	"Platoon", 
-	"HQ", 
-	"East", 
-	"OPFOR Motorized Platoon", 
-	"Platoon HQ", 
-	"o_motor_inf", 
-	1, 
-	"", 
-	[east, false] call BIS_fnc_sideColor, 
-	"", 
-	"", // rank 
-	"", // description 
-	_vehiclesToProcessOPFOR
-] call BIS_fnc_ORBATSetGroupParams;
-phx_ORBATHandlers pushBack ([ORBATOPF] spawn BIS_fnc_moduleStrategicMapORBAT);
-};
-
-// INDFOR
-if (playableSlotsNumber independent > 3 && phx_enemyStartVisible) then {
-	[ 
-		missionConfigFile >> "CfgORBAT" >> "FNFINDPLTHQ", 
-		"Green", 
-		"Platoon", 
-		"HQ", 
-		"Resistance", 
-		"INDFOR Motorized Platoon", 
-		"Platoon HQ", 
-		"n_motor_inf", 
-		1, 
-		"", 
-		[independent, false] call BIS_fnc_sideColor, 
-		"", 
-		"", // rank 
-		"", // description 
-		_vehiclesToProcessINDFOR
-	] call BIS_fnc_ORBATSetGroupParams;
-	phx_ORBATHandlers pushBack ([ORBATIND] spawn BIS_fnc_moduleStrategicMapORBAT);
-};
-
- */
+[{!phx_safetyEnabled && time > 0}, {
+	missionNamespace setVariable ["BIS_fnc_moduleStrategicMapORBAT_drawIcon", nil];
+}] call CBA_fnc_waitUntilAndExecute;

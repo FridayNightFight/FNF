@@ -14,7 +14,7 @@ or phx_selector_weapons = [["WEAPON_CLASS", "MAG_CLASS:Num", "MAG_CLASS:Num"]]
 */
 
 //Don't allow classes with non-rifleman weapon to switch weapons
-if (phx_loadout_hasSpecial) then {phx_selector_weapons = []};
+if (phx_loadout_hasSpecial && !(pRole in [ROLE_RS, ROLE_SNP])) then {phx_selector_weapons = []};
 
 //Exit if there is nothing for the player to select
 if (

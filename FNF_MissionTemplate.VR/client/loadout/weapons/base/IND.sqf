@@ -30,6 +30,11 @@ if (pRole == ROLE_GRIR) then {
   phx_loadout_sidearm_weapon = "rhs_weap_M320";
   phx_loadout_sidearm_mag = "";
 };
+if (pRole == ROLE_RS) then {
+  phx_selector_weapons = [
+    ["rhs_weap_aks74un", "rhs_45Rnd_545X39_7U1_AK:8"]
+  ];
+};
 if (pRole == ROLE_SNP) then {
   phx_loadout_rifle_weapon = "rhs_weap_t5000";
   phx_loadout_rifle_mag = "rhs_5Rnd_338lapua_t5000:12";
