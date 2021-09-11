@@ -30,7 +30,9 @@ call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
     [] call phx_fnc_webhook_roundStart;
 
     {
-        [_x] remoteExec ["deleteMarkerLocal", -2, true];
+        if !(getMarkerColor _x isEqualTo "") then {
+            [_x] remoteExec ["deleteMarkerLocal", -2, true];
+        };
         _x setMarkerAlphaLocal 0;
     } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
 
@@ -38,7 +40,9 @@ call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
         uiSleep 300;
         call phx_fnc_lockVehicles;
         {
-            deleteMarkerLocal _x;
+            if !(getMarkerColor _x isEqualTo "") then {
+                deleteMarkerLocal _x;
+            };
         } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
     };
 
