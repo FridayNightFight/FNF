@@ -123,6 +123,8 @@ class CfgFunctions {
       class server_setupGame{};
       class radio_genFreqs{};
       class populateORBATS{};
+      class keyVehicles{};
+      class lockVehicles{};
     };
     class end {
       file = "server\end";
