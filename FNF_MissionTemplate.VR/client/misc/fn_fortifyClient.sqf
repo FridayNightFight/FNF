@@ -1,20 +1,11 @@
 phx_fortify_objArr = [];
 
-if (!isNil "term1") then {
- phx_fortify_objArr append [term1];
-};
-if (!isNil "term2") then {
- phx_fortify_objArr append [term2];
-};
-if (!isNil "term3") then {
- phx_fortify_objArr append [term3];
-};
-if (!isNil "phx_destroyObjs") then {
- phx_fortify_objArr append phx_destroyObjs;
-};
-if (!isNil "ctf_flag") then {
-  phx_fortify_objArr append [ctf_flag];
-};
+if (!isNil "term1") then { phx_fortify_objArr append [term1] };
+if (!isNil "term2") then { phx_fortify_objArr append [term2] };
+if (!isNil "term3") then { phx_fortify_objArr append [term3] };
+if (!isNil "phx_destroyObjs") then { phx_fortify_objArr append phx_destroyObjs };
+if (!isNil "ctf_flag") then { phx_fortify_objArr append [ctf_flag] };
+if (!isNil "ctf_attackTrig") then { phx_fortify_objArr append [ctf_attackTrig] };
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
 if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
@@ -58,9 +49,11 @@ switch (playerSide) do {
     };
 
     {
-      if (_pos distance (position _x) < _minDistance) then {
+      if (_pos distance (position _x) < _minDistance || _pos inArea _x) then {
         _canPlace = false;
         _errorStr = format ["Cannot place object. Object needs to be at least %1 meters away from an objective.", _minDistance];
+
+        if (_pos inArea _x) then {_errorStr = "Cannot place object within objective area."};
       };
     } forEach phx_fortify_objArr;
 
