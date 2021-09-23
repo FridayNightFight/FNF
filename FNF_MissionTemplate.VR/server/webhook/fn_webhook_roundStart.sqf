@@ -130,7 +130,7 @@ _staffPlayers = [];
 
 
 _playingPlayerCount = str(count (playableUnits select {alive _x}));
-_staffCount = if (isNil "staffPlayers") then {"0"} else {str(count _staffPlayers)};
+_staffCount = str(count _staffPlayers);
 _spectatorCount = str(count (call ace_spectator_fnc_players));
 _bluPlayers = if (playableSlotsNumber west == 0) then {""} else {str(count(allPlayers select {side _x == west && alive _x}))};
 _opfPlayers = if (playableSlotsNumber east == 0) then {""} else {str(count(allPlayers select {side _x == east && alive _x}))};
