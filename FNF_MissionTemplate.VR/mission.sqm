@@ -15175,6 +15175,7 @@ class Mission
 					{
 						description="Medic@Delta 2";
 						isPlayable=1;
+						init="this setVariable [""phxLoadout"", ""MED""]";
 						class Inventory
 						{
 							class uniform
