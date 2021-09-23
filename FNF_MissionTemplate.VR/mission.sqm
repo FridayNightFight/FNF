@@ -12859,7 +12859,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="vthis setVariable [""phxLoadout"", ""MED""];";
+						init="this setVariable [""phxLoadout"", ""MED""];";
 						description="Medic@Charlie 2";
 						isPlayable=1;
 						class Inventory
