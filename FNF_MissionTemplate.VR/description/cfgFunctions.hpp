@@ -123,6 +123,8 @@ class CfgFunctions {
       class server_setupGame{};
       class radio_genFreqs{};
       class populateORBATS{};
+      class keyVehicles{};
+      class lockVehicles{};
     };
     class end {
       file = "server\end";
@@ -131,6 +133,10 @@ class CfgFunctions {
       class overTimeEnd{};
       class gameEnd{};
       class endElimination{};
+    };
+    class damage {
+      file = "server\damage";
+      class handleDamage{};
     };
     class webhook {
       file = "server\webhook";

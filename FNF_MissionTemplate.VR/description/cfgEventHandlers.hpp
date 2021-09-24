@@ -6,10 +6,12 @@ class Extended_InitPost_EventHandlers {
   class Car {
     class PHX_NoBitchZone { init = "(_this select 0) allowCrewInImmobile true;"; };
     class PHX_DisableThermals { serverInit = "(_this select 0) disableTIEquipment true;"; };
+	class tnk_randomDamage { serverInit = "((_this select 0) addMPEventHandler ['MPKilled', {params ['_unit', '_killer', '_instigator', '_useEffects']; [_unit] spawn PHX_fnc_handleDamage;}])"; };     
   };
   class Tank {
     class PHX_NoBitchZone { init = "(_this select 0) allowCrewInImmobile true;"; };
     class PHX_DisableThermals { serverInit = "(_this select 0) disableTIEquipment true;"; };
+	class tnk_randomDamage { serverInit = "((_this select 0) addMPEventHandler ['MPKilled', {params ['_unit', '_killer', '_instigator', '_useEffects']; [_unit] spawn PHX_fnc_handleDamage;}])"; };     
   };
   class Helicopter {
     class PHX_DisableThermals { serverInit = "(_this select 0) disableTIEquipment true;"; };

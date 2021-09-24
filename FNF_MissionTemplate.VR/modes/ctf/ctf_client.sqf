@@ -55,14 +55,6 @@ private _attackSpawnMark = switch (phx_attackingSide) do {
   case independent: {"indforSafeMarker"};
 };
 
-if (playerside == phx_attackingSide || ctf_flagPole inArea _attackSpawnMark) then {
-  "capZoneMark" setMarkerAlphaLocal 1;
-  "capZoneMarkText" setMarkerAlphaLocal 1;
-} else {
-  "capZoneMark" setMarkerAlphaLocal 0;
-  "capZoneMarkText" setMarkerAlphaLocal 0;
-};
-
 phx_clientFlagAction = [
   player,
   "Take flag",

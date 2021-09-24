@@ -22,16 +22,28 @@ call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
 }] call CBA_fnc_waitUntilAndExecute;
 
 [{f_var_mission_timer < 0}, {
-  missionNamespace setVariable ["phx_safetyEnabled",false,true];
-  missionNamespace setVariable ["phx_safetyEndTime", round CBA_missionTime, true];
-  ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
-  ["off"] call acex_fortify_fnc_handleChatCommand;
+    missionNamespace setVariable ["phx_safetyEnabled",false,true];
+    missionNamespace setVariable ["phx_safetyEndTime", round CBA_missionTime, true];
+    ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
+    ["off"] call acex_fortify_fnc_handleChatCommand;
 
-  [] call phx_fnc_webhook_roundStart;
+    [] call phx_fnc_webhook_roundStart;
 
-  {
-    if !(getMarkerColor _x isEqualTo "") then {
-      [_x] remoteExec ["deleteMarkerLocal",0,true];
+    {
+        if !(getMarkerColor _x isEqualTo "") then {
+            [_x] remoteExec ["deleteMarkerLocal", -2, true];
+        };
+        _x setMarkerAlphaLocal 0;
+    } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+
+    [] spawn {
+        uiSleep 300;
+        call phx_fnc_lockVehicles;
+        {
+            if !(getMarkerColor _x isEqualTo "") then {
+                deleteMarkerLocal _x;
+            };
+        } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
     };
-  } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+
 }] call CBA_fnc_waitUntilAndExecute;

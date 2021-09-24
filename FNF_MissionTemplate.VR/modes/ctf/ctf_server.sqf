@@ -38,10 +38,11 @@ createMarker ["capZoneMarkText", position ctf_attackTrig];
 "capZoneMarkText" setMarkerType "hd_dot";
 "capZoneMarkText" setMarkerText "Flag Capture Zone";
 
-"capZoneMark" setMarkerAlpha 0;
-"capZoneMarkText" setMarkerAlpha 0;
+//Hide capture zone if set to hidden in config and show to spectators and attackers
+if !(_showCapZoneGlobal) then {
+  {_x setMarkerAlpha 0} forEach ["capZoneMark","capZoneMarkText"];
+};
 
-//Show flag zone to spectators and attackers
 ["capZoneMark",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, phx_attackingSide], true];
 ["capZoneMarkText",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, phx_attackingSide], true];
 
