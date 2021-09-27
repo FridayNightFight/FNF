@@ -68,8 +68,13 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
   ]];
 
   _varStr = _varStr + format [
-    "BLUFOR MAT: %1<br/><img width='100' image='%2'/>",
-    phx_bluAT call _getName,
+    "BLUFOR MAT 1: %1<br/><img width='100' image='%2'/>",
+    phx_bluAT_Bravo call _getName,
+    getText(configFile >> "CfgWeapons" >> phx_bluAT >> "picture")
+  ] + "<br/>";
+  _varStr = _varStr + format [
+    "BLUFOR MAT 2: %1<br/><img width='100' image='%2'/>",
+    phx_bluAT_Delta call _getName,
     getText(configFile >> "CfgWeapons" >> phx_bluAT >> "picture")
   ] + "<br/>";
 };
@@ -89,7 +94,6 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
   ];
 }] call CBA_fnc_waitUntilAndExecute;
 
-
 //show opfor uniform and headgear if side is present
 if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
   _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_uniform >> "picture");
@@ -105,9 +109,14 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
   ]];
 
   _varStr = _varStr + format [
-    "OPFOR MAT: %1<br/><img width='100' image='%2'/>",
-    phx_redAT call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_redAT >> "picture")
+    "OPFOR MAT 1: %1<br/><img width='100' image='%2'/>",
+    phx_redAT_Bravo call _getName,
+    getText(configFile >> "CfgWeapons" >> phx_redAT_Bravo >> "picture")
+  ] + "<br/>";
+  _varStr = _varStr + format [
+    "OPFOR MAT 2: %1<br/><img width='100' image='%2'/>",
+    phx_redAT_Delta call _getName,
+    getText(configFile >> "CfgWeapons" >> phx_redAT_Delta >> "picture")
   ] + "<br/>";
 };
 
@@ -141,9 +150,14 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
   ]];
 
   _varStr = _varStr + format [
-    "INDFOR MAT: %1<br/><img width='100' image='%2'/>",
-    phx_grnAT call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_grnAT >> "picture")
+    "INDFOR MAT 1: %1<br/><img width='100' image='%2'/>",
+    phx_grnAT_Bravo call _getName,
+    getText(configFile >> "CfgWeapons" >> phx_grnAT_Bravo >> "picture")
+  ] + "<br/>";
+  _varStr = _varStr + format [
+    "INDFOR MAT 2: %1<br/><img width='100' image='%2'/>",
+    phx_grnAT_Delta call _getName,
+    getText(configFile >> "CfgWeapons" >> phx_grnAT_Delta >> "picture")
   ] + "<br/>";
 };
 
