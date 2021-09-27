@@ -21,9 +21,15 @@ if (count phx_briefingWorldInfo > 0) then {
   _mmNotes pushBack "<br/>";
 };
 
-if (count phx_briefingWorldInfo > 0) then {
+if (count phx_briefingNotes > 0) then {
   _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>NOTES</font>";
   _mmNotes pushBack phx_briefingNotes;
+  _mmNotes pushBack "<br/>";
+};
+
+if (count phx_briefingRules > 0) then {
+  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>MISSION RULES</font>";
+  _mmNotes pushBack phx_briefingRules;
   _mmNotes pushBack "<br/>";
 };
 

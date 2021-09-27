@@ -71,6 +71,8 @@ phx_briefingBackground = "";
 phx_briefingWorldInfo = "";
 // "Notes" can include anything else.
 phx_briefingNotes = "";
+// "Rules" should include any mission-specific rules that you want to spell out for players.
+phx_briefingRules = "";
 
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
