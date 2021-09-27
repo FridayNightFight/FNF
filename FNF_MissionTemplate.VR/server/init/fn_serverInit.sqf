@@ -47,6 +47,20 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
   };
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
+// Show diary admin menu to logged in admin
+addMissionEventHandler ["OnUserAdminStateChanged", {
+	params ["_networkId", "_loggedIn", "_votedIn"];
+	if (_loggedIn) then {
+    [] remoteExec ["phx_fnc_adminDiary", _networkId];
+	};
+  if (!_loggedIn) then {
+    {
+      player removeDiarySubject "PHX_Diary_Admin_Safestart";
+      // phx_adminDiaryRemove call CBA_fnc_removePerFrameHandler;
+    } remoteExec ["call", _networkId];
+  };
+}];
+
 //Delete player bodies during safe start
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];

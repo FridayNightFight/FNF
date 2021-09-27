@@ -101,6 +101,7 @@ class CfgFunctions {
       class killCounter{};
       class showTimeOnMap{};
       class adminGameEnd{};
+      class adminDiary{};
       class objectivePreview{};
     };
     class contactStaff {
