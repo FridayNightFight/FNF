@@ -34,6 +34,11 @@ class CfgFunctions {
       class createOrbat{};
       class objectiveRecon{};
     };
+    class briefingLoadouts {
+      file = "client\briefing\loadoutPrep";
+      class briefingParseLoadout{};
+      class briefingWeaponDetails{};
+    };
     class radio {
       file = "client\radio";
       class radio_waitGear{};
