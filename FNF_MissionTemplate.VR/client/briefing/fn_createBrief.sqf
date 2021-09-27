@@ -1,3 +1,50 @@
+
+
+
+
+
+// MM briefing notes
+private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
+_systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
+
+_mmNotes = [];
+
+if (count phx_briefingBackground > 0) then {
+  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>BACKGROUND</font>";
+  _mmNotes pushBack phx_briefingBackground;
+  _mmNotes pushBack "<br/>";
+};
+
+if (count phx_briefingWorldInfo > 0) then {
+  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>AREA OF OPERATIONS</font>";
+  _mmNotes pushBack phx_briefingWorldInfo;
+  _mmNotes pushBack "<br/>";
+};
+
+if (count phx_briefingNotes > 0) then {
+  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>NOTES</font>";
+  _mmNotes pushBack phx_briefingNotes;
+  _mmNotes pushBack "<br/>";
+};
+
+if (count phx_briefingRules > 0) then {
+  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>MISSION RULES</font>";
+  _mmNotes pushBack phx_briefingRules;
+  _mmNotes pushBack "<br/>";
+};
+
+player createDiaryRecord ["Diary",
+  [
+    getText(missionConfigFile >> "Author"),
+    _mmNotes joinString "<br/>"
+  ],
+  taskNull,
+  "NONE",
+  false
+];
+
+
+
 ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa"];
 
 _getName = {
@@ -188,8 +235,128 @@ _varStr = _varStr + format ["Safe start time: %1 minutes", phx_safeStartTime];
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Maximum view distance: %1m", phx_maxViewDistance];
+_varStr = _varStr + "<br/>";
+private _magOpticsStr = "";
+switch (phx_magnifiedOptics) do {
+  case true: {_magOpticsStr = "Yes"};
+  case false: {_magOpticsStr = "No"};
+};
+_varStr = _varStr + format ["Magnified optics: %1", _magOpticsStr];
+_varStr = _varStr + "<br/>";
+private _addNVGStr = "";
+switch (phx_addNVG) do {
+  case true: {_addNVGStr = "Yes"};
+  case false: {_addNVGStr = "No"};
+};
+_varStr = _varStr + format ["NVGs equipped: %1", _addNVGStr];
+_varStr = _varStr + "<br/>";
+_varStr = _varStr + "<br/>";
 
-player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
+
+// game mode details
+_varStr = _varStr + format ["<font size='16' color='#e1701a' face='PuristaBold'>%1</font>", toUpper phx_gameMode];
+_varStr = _varStr + "<br/>";
+
+switch (phx_gameMode) do {
+  case "destroy": {
+    #include "..\..\mode_config\destroy.sqf";
+    _objArr = [_obj1,_obj2,_obj3];
+    _objects = [_obj1 select 0, _obj2 select 0, _obj3 select 0] select {!isNull _x};
+    _varStr = _varStr + format ["Destroy objectives: %1", count _objects];
+    _varStr = _varStr + "<br/>";
+  };
+  case "uplink": {
+    #include "..\..\mode_config\uplink.sqf";
+
+    _varStr = _varStr + format ["Terminal count: %1", _numberOfTerminals];
+    _varStr = _varStr + "<br/>";
+
+    if (_terminalHackTime isEqualType []) then {
+      _varStr = _varStr + "Hack time:";
+      _varStr = _varStr + "<br/>";
+      for "_i" from 0 to _numberOfTerminals do {
+        _varStr = _varStr + format ["  Terminal %1: %2", _i + 1, _terminalHackTime # _i];
+        _varStr = _varStr + "<br/>";
+      };
+    } else {
+      _varStr = _varStr + format ["Hack time: %1", _terminalHackTime];
+      _varStr = _varStr + "<br/>";
+    };
+  };
+  case "rush": {
+    #include "..\..\mode_config\rush.sqf";
+    _varStr = _varStr + format ["Terminal count: %1", _numberOfTerminals];
+    _varStr = _varStr + "<br/>";
+
+    if (_terminalHackTime isEqualType []) then {
+      _varStr = _varStr + "Hack time:";
+      for "_i" from 0 to _numberOfTerminals do {
+        _varStr = _varStr + format ["Terminal %1: %2", _i + 1, _terminalHackTime # _i];
+        _varStr = _varStr + "<br/>";
+      };
+    } else {
+      _varStr = _varStr + format ["Hack time: %1", _terminalHackTime];
+      _varStr = _varStr + "<br/>";
+    };
+  };
+  case "connection": {
+    #include "..\..\mode_config\connection.sqf";
+    _varStr = _varStr + format ["Terminal count: %1", _numberOfTerminals];
+    _varStr = _varStr + "<br/>";
+
+    _varStr = _varStr + format ["One point accrued per terminal every %1 seconds", _pointAddTime];
+    _varStr = _varStr + "<br/>";
+  };
+  case "captureTheFlag": {
+    #include "..\..\mode_config\ctf.sqf";
+
+    private _capZoneShown = "";
+    switch (_showCapZoneGlobal) do {
+      case true: {_capZoneShown = "to all players at mission start"};
+      case false: {_capZoneShown = "only to attackers until flag is touched"};
+    };
+    _varStr = _varStr + format ["Capture zone visible %1", _capZoneShown];
+    _varStr = _varStr + "<br/>";
+
+    _varStr = _varStr + format ["Flag marker updated every %1 seconds", _flagMarkUpdateTime];
+    _varStr = _varStr + "<br/>";
+
+    _varStr = _varStr + format ["Attackers must hold the flag in capture zone for %1 seconds to achieve victory", _flagCaptureTime];
+    _varStr = _varStr + "<br/>";
+
+  };
+  case "adSector": {
+    #include "..\..\mode_config\adSector.sqf";
+    _varStr = _varStr + format ["Sector count: %1", _numberOfSectors];
+    _varStr = _varStr + "<br/>";
+
+    private _isSequential = "";
+    switch (_inOrder) do {
+      case true: {_isSequential = "Yes"};
+      case false: {_isSequential = "No"};
+    };
+    _varStr = _varStr + format ["Sequential: %1", _isSequential];
+    _varStr = _varStr + "<br/>";
+  };
+  case "neutralSector": {
+    #include "..\..\mode_config\neutralSector.sqf";
+    _varStr = _varStr + format ["Sector count: %1", _numberOfSectors];
+    _varStr = _varStr + "<br/>";
+
+    _varStr = _varStr + format ["One point accrued per sector every %1 seconds", _pointAddTime];
+    _varStr = _varStr + "<br/>";
+  };
+  case "scavHunt": {
+    #include "..\..\mode_config\scavHunt.sqf";
+    _varStr = _varStr + format ["Objective count: %1", _numberOfObjectives];
+    _varStr = _varStr + "<br/>";
+
+    _varStr = _varStr + format ["Specialized transports per side: %1", _numberOfTransportsPerSide];
+    _varStr = _varStr + "<br/>";
+  };
+};
+
+player createDiaryRecord ["PHX_Diary_Details",["Mission Variables",_varStr]];
 [{!isNil "phx_overTimeConStr"}, {
   player createDiaryRecord ["PHX_Diary_Details",["Overtime Condition",phx_overTimeConStr]];
 }] call CBA_fnc_waitUntilAndExecute;

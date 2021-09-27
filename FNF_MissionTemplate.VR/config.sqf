@@ -97,6 +97,18 @@ phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engi
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 
+// MISSION MAKER NOTES
+// 0 or more of the below can be included. At minimum, it's suggested to populate the "briefingNotes" item.
+
+// "Background" should include any lore you wish to explain.
+phx_briefingBackground = "";
+// "WorldInfo" should include any notable details about the AO.
+phx_briefingWorldInfo = "";
+// "Notes" can include anything else.
+phx_briefingNotes = "";
+// "Rules" should include any mission-specific rules that you want to spell out for players.
+phx_briefingRules = "";
+
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
 
