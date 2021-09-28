@@ -115,14 +115,14 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
   ]];
 
   _varStr = _varStr + format [
-    "BLUFOR MAT 1: %1<br/><img width='100' image='%2'/>",
+    "BLUFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
     phx_bluAT_Bravo call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_bluAT >> "picture")
+    getText(configFile >> "CfgWeapons" >> phx_bluAT_Bravo >> "picture")
   ] + "<br/>";
   _varStr = _varStr + format [
-    "BLUFOR MAT 2: %1<br/><img width='100' image='%2'/>",
+    "BLUFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
     phx_bluAT_Delta call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_bluAT >> "picture")
+    getText(configFile >> "CfgWeapons" >> phx_bluAT_Delta >> "picture")
   ] + "<br/>";
 };
 
@@ -156,12 +156,12 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
   ]];
 
   _varStr = _varStr + format [
-    "OPFOR MAT 1: %1<br/><img width='100' image='%2'/>",
+    "OPFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
     phx_redAT_Bravo call _getName,
     getText(configFile >> "CfgWeapons" >> phx_redAT_Bravo >> "picture")
   ] + "<br/>";
   _varStr = _varStr + format [
-    "OPFOR MAT 2: %1<br/><img width='100' image='%2'/>",
+    "OPFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
     phx_redAT_Delta call _getName,
     getText(configFile >> "CfgWeapons" >> phx_redAT_Delta >> "picture")
   ] + "<br/>";
@@ -197,12 +197,12 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
   ]];
 
   _varStr = _varStr + format [
-    "INDFOR MAT 1: %1<br/><img width='100' image='%2'/>",
+    "INDFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
     phx_grnAT_Bravo call _getName,
     getText(configFile >> "CfgWeapons" >> phx_grnAT_Bravo >> "picture")
   ] + "<br/>";
   _varStr = _varStr + format [
-    "INDFOR MAT 2: %1<br/><img width='100' image='%2'/>",
+    "INDFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
     phx_grnAT_Delta call _getName,
     getText(configFile >> "CfgWeapons" >> phx_grnAT_Delta >> "picture")
   ] + "<br/>";
