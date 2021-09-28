@@ -34,6 +34,11 @@ class CfgFunctions {
       class createOrbat{};
       class objectiveRecon{};
     };
+    class briefingLoadouts {
+      file = "client\briefing\loadoutPrep";
+      class briefingParseLoadout{};
+      class briefingWeaponDetails{};
+    };
     class radio {
       file = "client\radio";
       class radio_waitGear{};
@@ -57,14 +62,8 @@ class CfgFunctions {
       class addItems{};
       class checkLoadout{};
       class initLoadout{};
-      class loadout_vars{};
-    };
-    class loadout_misc {
-      file = "client\loadout\misc";
-      class giveNVG{};
       class setMAT{};
-      class setUGLAmmo{};
-      class setAttributes{};
+      class loadout_vars{};
     };
     class selector {
       file = "client\loadout\selector";

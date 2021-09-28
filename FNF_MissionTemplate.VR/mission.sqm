@@ -20,14 +20,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={843.38812,131.83554,181.87306};
-		dir[]={-0.21176787,-0.41795453,0.88344526};
-		up[]={-0.09742716,0.9084667,0.40644351};
-		aside[]={0.97245407,7.6834112e-009,0.23310332};
+		pos[]={689.43671,29.58264,676.12372};
+		dir[]={0.57518113,-0.79352224,-0.19871886};
+		up[]={0.75002146,0.60854119,-0.25912428};
+		aside[]={-0.3265495,1.4901161e-008,-0.94518012};
 	};
 };
 binarizationWanted=0;
-sourceName="ORBATtest";
+sourceName="FNF_MissionTemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -15173,9 +15173,9 @@ class Mission
 					flags=4;
 					class Attributes
 					{
+						init="this setVariable [""phxLoadout"", ""MED""]";
 						description="Medic@Delta 2";
 						isPlayable=1;
-						init="this setVariable [""phxLoadout"", ""MED""]";
 						class Inventory
 						{
 							class uniform

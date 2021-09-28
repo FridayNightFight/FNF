@@ -1,0 +1,4 @@
+#define SIDE_KEY "ACE_key_west"
+#define BASE_UGL_FRAG 1Rnd_HE_Grenade_shell
+#define BASE_UGL_SMOKEWHITE 1Rnd_Smoke_Grenade_shell
+#define BASE_UGL_FLAREWHITE UGL_FlareWhite_F

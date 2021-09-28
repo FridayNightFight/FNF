@@ -44,15 +44,50 @@ Those units will not be touched by the tempalte loadout system, so they will kee
 If they have a radio, they will all be preset to the same frequency
 */
 
-//MAT launcher weapon
-phx_bluAT = CARLG; //BLUFOR
-phx_redAT = RPG32; //OPFOR
-phx_grnAT = RPG32; //INDFOR
+
+
 /*
-Values:
-CARLG, RPG32, RPG7, TITAN, JAVELIN
-METIS, NLAW, STINGER, IGLA
+MAT SELECTION
+
+Possible launcher values (and recommended counts)
+	CARLG (2)
+	RPG32 (2)
+	RPG7 (4) // NOTE: missile specs would receive 4 PG7VL, 2 PG7VR rockets
+	TITAN (1)
+	JAVELIN (1)
+	METIS (1)
+	NLAW // NOTE: count is irrelevant, as this is a DISPOSABLE launcher
+	STINGER (1)
+	IGLA (1)
+
+EXAMPLE:
+	launcher type (see possible values below)
+		phx_bluAT_Bravo = CARLG; 
+
+	how many rockets/missiles for each: gunner, assistant, assistant.
+	a value of 2 would mean a total of 6 rockets/missiles in this squad
+		phx_bluAT_Bravo_count = 2; 
 */
+
+// BLUFOR
+phx_bluAT_Bravo = CARLG;
+phx_bluAT_Bravo_count = 2;
+phx_bluAT_Delta = STINGER;
+phx_bluAT_Delta_count = 1;
+
+// OPFOR
+phx_redAT_Bravo = RPG32;
+phx_redAT_Bravo_count = 2;
+phx_redAT_Delta = IGLA;
+phx_redAT_Delta_count = 1;
+
+// INDFOR
+phx_grnAT_Bravo = RPG32;
+phx_grnAT_Bravo_count = 2;
+phx_grnAT_Delta = IGLA;
+phx_grnAT_Delta_count = 1;
+
+
 
 phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
 phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
@@ -61,6 +96,18 @@ phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) -
 phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
+
+// MISSION MAKER NOTES
+// 0 or more of the below can be included. At minimum, it's suggested to populate the "briefingNotes" item.
+
+// "Background" should include any lore you wish to explain.
+phx_briefingBackground = "";
+// "WorldInfo" should include any notable details about the AO.
+phx_briefingWorldInfo = "";
+// "Notes" can include anything else.
+phx_briefingNotes = "";
+// "Rules" should include any mission-specific rules that you want to spell out for players.
+phx_briefingRules = "";
 
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========

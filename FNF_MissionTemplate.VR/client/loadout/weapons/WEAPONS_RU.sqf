@@ -1,5 +1,16 @@
 /*This is a base weapon set. Standard Russian military loadout. Other sets can use this as a base.*/
 
+WEAPONS_RU_LOADOUT = [
+  ["rifle", ["rhs_weap_ak74m"]],
+  ["sidearm", ["rhs_weap_pya"]],
+  ["AR", ["rhs_weap_pkm"]],
+  ["MG", ["rhs_weap_pkp"]],
+  ["AT", ["rhs_weap_rpg26"]],
+  ["SNP", ["rhs_weap_t5000"]],
+  ["RS", ["rhs_weap_ak74m", "rhs_weap_aks74un"]],
+  ["P", ["rhs_weap_aks74un"]]
+];
+
 phx_loadout_sidearm_weapon = "rhs_weap_pya";
 phx_loadout_sidearm_mag = "rhs_mag_9x19_17:2";
 

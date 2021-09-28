@@ -17,6 +17,11 @@ if (east call _sidePresent) then {
 
   missionNamespace setVariable ["phx_briefing_east_uniform", _eastUniform, true];
   missionNamespace setVariable ["phx_briefing_east_headgear", _eastHead, true];
+
+  _incStr = "client\loadout\weapons\" + phx_opforWeapons + ".sqf";
+  call compile preprocessFileLineNumbers _incStr;
+  _loadout = missionNamespace getVariable format["%1_LOADOUT", phx_opforWeapons];
+  missionNamespace setVariable ["phx_briefing_east_loadout", _loadout, true];
 };
 
 if (west call _sidePresent) then {
@@ -28,6 +33,11 @@ if (west call _sidePresent) then {
 
   missionNamespace setVariable ["phx_briefing_west_uniform", _westUniform, true];
   missionNamespace setVariable ["phx_briefing_west_headgear", _westHead, true];
+
+  _incStr = "client\loadout\weapons\" + phx_bluforWeapons + ".sqf";
+  call compile preprocessFileLineNumbers _incStr;
+  _loadout = missionNamespace getVariable format["%1_LOADOUT", phx_bluforWeapons];
+  missionNamespace setVariable ["phx_briefing_west_loadout", _loadout, true];
 };
 
 if (independent call _sidePresent) then {
@@ -39,4 +49,9 @@ if (independent call _sidePresent) then {
 
   missionNamespace setVariable ["phx_briefing_ind_uniform", _indUniform, true];
   missionNamespace setVariable ["phx_briefing_ind_headgear", _indHead, true];
+
+  _incStr = "client\loadout\weapons\" + phx_indforWeapons + ".sqf";
+  call compile preprocessFileLineNumbers _incStr;
+  _loadout = missionNamespace getVariable format["%1_LOADOUT", phx_indforWeapons];
+  missionNamespace setVariable ["phx_briefing_ind_loadout", _loadout, true];
 };

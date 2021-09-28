@@ -1,5 +1,17 @@
 #include "WEAPONS_IND.sqf"
 
+
+WEAPONS_FAL_COLDWAR_LOADOUT = [
+  ["rifle", ["rhs_weap_l1a1_wood"]],
+  ["sidearm", ["rhsusf_weap_m1911a1"]],
+  ["AR", ["rhs_weap_rpk74m"]],
+  ["MG", ["rhs_weap_pkp"]],
+  ["AT", ["rhs_weap_rpg26"]],
+  ["SNP", ["rhs_weap_t5000"]],
+  ["RS", ["rhs_weap_aks74un", "rhsusf_weap_MP7A2"]],
+  ["P", ["rhs_weap_aks74un"]]
+];
+
 //Global primary weapon and magazine classes
 if (!phx_loadout_hasSpecial && !phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_l1a1_wood";

@@ -1,5 +1,17 @@
 #include "WEAPONS_IND.sqf"
 
+
+WEAPONS_GUERRILLA_LOADOUT = [
+  ["rifle", ["rhs_weap_MP44", "rhs_weap_asval", "arifle_TRG20_F", "SMG_03C_black", "rhs_weap_ak103", "rhs_weap_ak74_2", "rhs_weap_ak74m", "rhs_weap_m16a4_carryhandle", "rhs_weap_m14", "rhs_weap_l1a1_wood", "rhs_weap_m21a", "rhs_weap_savz58p", "rhs_weap_savz58v_black"]],
+  ["sidearm", ["hgun_Rook40_F", "hgun_P07_F", "hgun_ACPC2_F", "rhs_weap_makarov_pm", "rhsusf_weap_glock17g4", "rhsusf_weap_m1911a1", "rhs_weap_tt33", "rhs_weap_cz99"]],
+  ["AR", ["rhs_weap_m84"]],
+  ["MG", ["rhs_weap_fnmag"]],
+  ["AT", ["rhs_weap_rpg26"]],
+  ["SNP", ["rhs_weap_t5000"]],
+  ["RS", ["rhs_weap_aks74un"]],
+  ["P", ["rhs_weap_aks74un"]]
+];
+
 //Random guerrilla-style weapons
 phx_loadout_rifle_weapon = selectRandom ["rhs_weap_MP44", "rhs_weap_asval", "arifle_TRG20_F", "SMG_03C_black", "rhs_weap_ak103", "rhs_weap_ak74_2", "rhs_weap_ak74m", "rhs_weap_m16a4_carryhandle", "rhs_weap_m14", "rhs_weap_l1a1_wood", "rhs_weap_m21a", "rhs_weap_savz58p", "rhs_weap_savz58v_black"];
 if (random 100 > 99) then {phx_loadout_rifle_weapon = "rhs_weap_t5000"};

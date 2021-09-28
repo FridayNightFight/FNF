@@ -6,7 +6,8 @@ call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes
 call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
-call phx_fnc_initLoadout; //Loadout vars
+// call phx_fnc_initLoadout; //Loadout vars
+execVM 'client\loadout\applyCfgLoadout.sqf';
 call phx_fnc_radio_waitGear; //Start radio preset functions
 call phx_fnc_contactStaffInit; // Init handling for player reports
 call phx_fnc_assetDiaryInfo; // Add diary entries for assets
@@ -17,6 +18,7 @@ if (isMultiplayer) then {
 };
 call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
+
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {call phx_fnc_setLoadout}] call CBA_fnc_waitUntilAndExecute;
