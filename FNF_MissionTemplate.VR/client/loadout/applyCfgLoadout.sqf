@@ -17,6 +17,8 @@ waitUntil {!isNull player};
     };
 }, 0, [diag_tickTime]] call CBA_fnc_addPerFrameHandler;
 
+player enableSimulation false;
+
 uiSleep 5;
 player unlinkItem "ItemRadio";
 {
@@ -33,7 +35,7 @@ removeUniform player;
 removeVest player;
 removeBackpack player;
 removeHeadgear player;
-removeGoggles player;
+// removeGoggles player;
 
 private _cfgPath = (missionConfigFile >> "CfgLoadouts" >> "west" >> (player getVariable "phxLoadout"));
 
@@ -56,11 +58,11 @@ private _cfgLauncherAttachments = (_cfgPath >> "launcherAttachments") call BIS_f
 private _headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
 
 
-_fnc_getWeaponMagazines = {
-	params ["_toSearch", "_weapon"];
+fnc_getWeaponMagazines = {
+	params ["_toSearch", "_weapon", ["_allMuzzles", true]];
 	private _out = [];
 	{
-		if ((_x splitString ':' select 0) in ([_weapon, true] call CBA_fnc_compatibleMagazines)) then {
+		if ((_x splitString ':' select 0) in ([_weapon, _allMuzzles] call CBA_fnc_compatibleMagazines)) then {
 			_out pushBack _x;
 		};
 	} forEach _toSearch;
@@ -77,22 +79,23 @@ player addHeadgear selectRandom(_cfgHeadgear);
 phx_loadout_weaponChosen = if (count _cfgWeaponChoices > 0) then {selectRandom(_cfgWeaponChoices)} else {[]};
 phx_loadout_weaponChosen params ["_weapons", "_mags"];
 phx_loadout_weapon = selectRandom(_weapons);
-phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call _fnc_getWeaponMagazines;
+phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call fnc_getWeaponMagazines;
 player addWeapon phx_loadout_weapon;
 {[_x, "vest"] call phx_fnc_addGear; nil} count phx_loadout_weaponMagazines;
 
 phx_loadout_sidearmChosen = if (count _cfgSidearms > 0) then {selectRandom(_cfgSidearms)} else {""};
 phx_loadout_sidearmChosen params ["_sidearms", "_mags"];
 phx_loadout_sidearm = selectRandom(_sidearms);
-phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call _fnc_getWeaponMagazines;
+phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call fnc_getWeaponMagazines;
 player addWeapon phx_loadout_sidearm;
 {[_x, "vest"] call phx_fnc_addGear; nil} count phx_loadout_sidearmMagazines;
 
 phx_loadout_launcher = if (count _cfgLaunchers > 0) then {selectRandom(_cfgLaunchers)} else {""};
 player addWeapon phx_loadout_launcher;
 
-{[_x, "backpack"] call phx_fnc_addGear} forEach _cfgBackpackItems;
+{[_x, "vest"] call phx_fnc_addGear} forEach _cfgMagazines;
 {[_x, "uniform"] call phx_fnc_addGear} forEach _cfgItems;
+{[_x, "backpack"] call phx_fnc_addGear} forEach _cfgBackpackItems;
 {player linkItem _x} forEach _cfgLinkedItems;
 
 // NVGs/laser accessory
@@ -123,30 +126,43 @@ if (player getVariable "phxLoadout" in ["CE","CR","PI"]) then {player setVariabl
 
 // load weapons
 [] spawn {
-	waitUntil {count weapons player >= 2};
-	sleep 2;
-	reload player;
-	private _toReload = [];
+	waitUntil {
+		!isNil "phx_loadout_weaponMagazines" &&
+		!isNil "phx_loadout_sidearmMagazines"
+	};
 	{
-		private _type = _x;
-		// player selectWeapon _type;
-		// sleep 0.5;
+		_x params ["_weaponClass", "_mags"];
+		private _cfgWeapon = _weaponClass call CBA_fnc_getItemConfig;
+
 		// check for multiple muzzles (eg: GL)
-		private _muzzles = getArray (configFile >> "cfgWeapons" >> _type >> "muzzles") select {!(["SAFE", _x] call BIS_fnc_inString)};
+		private _muzzles = getArray (configFile >> "cfgWeapons" >> _weaponClass >> "muzzles") select {!(["SAFE", _x] call BIS_fnc_inString)};
 		
 		{
 			private _thisMuzzle = _x;
-			player selectWeapon _type;
-			player selectWeapon _thisMuzzle;
-			// sleep 2;
-			if ((weaponState player) select 4 == 0) then {
-				reload player;
-				waitUntil {(weaponState player) select 4 > 0};
+			private "_compatMag";
+			if (_thisMuzzle == "this") then {
+				_compatMag = ([_mags, _cfgWeapon, false] call fnc_getWeaponMagazines) select 0;
+			} else {
+				_compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines) select 0;
+			};
+			_compatMag = _compatMag splitString ':' select 0;
+			"debug_console" callExtension str([_weaponClass, _thisMuzzle, _compatMag]);
+
+			player removeMagazine _compatMag;
+			switch (_weaponClass) do {
+				case (primaryWeapon player): {
+					player addPrimaryWeaponItem _compatMag;
+				};
+				case (handgunWeapon player): {
+					player addHandgunItem _compatMag;
+				};
 			};
 		} forEach _muzzles;
-	} forEach (weapons player select {!(_x isEqualTo secondaryWeapon player)});
-
-	player selectWeapon (primaryWeapon player);
+	} forEach [
+		[primaryWeapon player, phx_loadout_weaponMagazines],
+		[handgunWeapon player, phx_loadout_sidearmMagazines]
+	];
+	player enableSimulation true;
 };
 
 

@@ -1,31 +1,31 @@
 //If player doesn't have tracer mags at start, ignore for mag count checks
-if !((phx_loadout_rifle_mag_tracer splitString ":" select 0) in magazines player) then {phx_loadout_rifle_mag_tracer = "0:0"};
+// if !((phx_loadout_rifle_mag_tracer splitString ":" select 0) in magazines player) then {phx_loadout_rifle_mag_tracer = "0:0"};
 
-//add player's current weapon to selector
-_curAllMags = (magazinesAmmo player);
-_curAllMags pushback [primaryWeaponMagazine player];
-_curAllMagsProcessed = flatten (_curAllMags apply {_x # 0});
-_compatMags = [primaryWeapon player] call CBA_fnc_compatibleMagazines;
+// //add player's current weapon to selector
+// _curAllMags = (magazinesAmmo player);
+// _curAllMags pushback [primaryWeaponMagazine player];
+// _curAllMagsProcessed = flatten (_curAllMags apply {_x # 0});
+// _compatMags = [primaryWeapon player] call CBA_fnc_compatibleMagazines;
 
-_saveMags = _curAllMagsProcessed select {_x in _compatMags};
-_toProcess = _saveMags call CBA_fnc_getArrayElements;
+// _saveMags = _curAllMagsProcessed select {_x in _compatMags};
+// _toProcess = _saveMags call CBA_fnc_getArrayElements;
 
-_curSet = [primaryWeapon player];
-{
-  if !(_x isEqualType 2) then {
-    _curSet pushBack format[
-      "%1:%2",
-      _x,
-      _toProcess select (_forEachIndex + 1)
-    ];
-  };
-} forEach _toProcess;
+// _curSet = [primaryWeapon player];
+// {
+//   if !(_x isEqualType 2) then {
+//     _curSet pushBack format[
+//       "%1:%2",
+//       _x,
+//       _toProcess select (_forEachIndex + 1)
+//     ];
+//   };
+// } forEach _toProcess;
 
 // phx_selector_weapons pushBack _curSet;
 // reverse phx_selector_weapons;
 
 phx_selector_fnc_weapons = {
-  params ["_weapon","_mag","_tracer"];
+  params ["_weapon","_mags"];
 
   _fnc_hintDetails = {
     private _thisCfg = _this call CBA_fnc_getItemConfig;
@@ -42,14 +42,15 @@ phx_selector_fnc_weapons = {
     [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
   };
 
-  if (isNil "_mag") then {_mag = phx_loadout_rifle_mag};
-  if (isNil "_tracer") then {_tracer = phx_loadout_rifle_mag_tracer};
+
+  if (isNil "_mags") then {_mags = phx_loadout_weaponMagazines};
+  _mags = [_mags, _weapon] call fnc_getWeaponMagazines;
 
   if (_weapon == primaryWeapon player) exitWith {};
 
   {
     player removePrimaryWeaponItem _x;
-    player addItem _x;
+    [_x, "vest"] call phx_fnc_addGear;
   } forEach primaryWeaponMagazine player;
 
   private _weaponItems = primaryWeaponItems player;
@@ -65,32 +66,27 @@ phx_selector_fnc_weapons = {
       _count = parseNumber(_count);
     };
     for "_i" from 1 to _count do {
-      _oldMags pushBack [_magClass, _count];
+      _oldMags pushBack _magClass;
     };
   } forEach phx_loadout_weaponMagazines;
 
-  private _allOldMagsPresent = false;
+  _oldMags = _oldMags call BIS_fnc_consolidateArray;
+
+  private _allOldMagsPresent = true;
   {
     _x params ["_thisOldMag", "_desiredCount"];
     private _currentCount = ({_x == _thisOldMag} count magazines player);
-    if (_currentCount != _desiredCount) then {
-      if (true) exitWith {_allOldMagsPresent = false};
-    } else {
-      _allOldMagsPresent = true;
-    };
+    if (_currentCount != _desiredCount) exitWith {_allOldMagsPresent = false};
   } forEach _oldMags;
 
   if (!_allOldMagsPresent) exitWith {hint "Missing magazines"};
 
-  player removeMagazines _oldMag;
-  player removeMagazines _oldTracer;
+  {player removeMagazines _x} forEach (_oldMags apply {_x # 0});
 
-  _mag call phx_fnc_addGear;
+  {[_x, "vest"] call phx_fnc_addGear} forEach _mags;
   player addWeapon _weapon;
-  _tracer call phx_fnc_addGear;
 
-  phx_loadout_rifle_mag = _mag;
-  phx_loadout_rifle_mag_tracer = _tracer;
+  phx_loadout_weaponMagazines = _mags;
 
   {
     player addPrimaryWeaponItem _x;

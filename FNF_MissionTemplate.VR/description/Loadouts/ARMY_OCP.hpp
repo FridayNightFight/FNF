@@ -64,7 +64,7 @@ class BASE {
   vest[] = {VEST};
   headgear[] = {HELMET};
   backpack[] = {BACKPACK};
-  backpackItems[] = {GRUNT_MEDICAL};
+  backpackItems[] = {};
   launchers[] = {};
   sidearms[] = {
     {{SIDEARM},{SIDEARM_MAG}}
@@ -73,8 +73,8 @@ class BASE {
     {{RIFLE},{RIFLE_MAG}},
     {{CARBINE},{CARBINE_MAG}}
   };
-  magazines[] = {RIFLE_MAG,SIDEARM_MAG,BASE_GRENADES};
-  items[] = {TOOLS};
+  magazines[] = {BASE_GRENADES};
+  items[] = {TOOLS,GRUNT_MEDICAL};
   linkedItems[] = {LINKED};
   attachments[] = {};
   launcherAttachments[] = {};
@@ -87,17 +87,18 @@ class RI : BASE {};
 class PL : BASE {
   vest[] = {VEST_LEADER};
   backpack[] = {BACKPACK_RADIO};
-  backpackItems[] = {GRUNT_MEDICAL};
   weaponChoices[] = {
-    {{RIFLE_GL},{RIFLE_GL_MAG}}
+    {
+      {RIFLE_GL},
+      {
+        RIFLE_GL_MAG,
+        UGL_MAGS(BASE_UGL_FRAG,6),
+        UGL_MAGS(BASE_UGL_SMOKEWHITE,3),
+        UGL_MAGS(BASE_UGL_FLAREWHITE,3)
+      }
+    }
   };
-  magazines[] = {
-    RIFLE_GL_MAG,
-    UGL_MAGS(BASE_UGL_FRAG,6),
-    UGL_MAGS(BASE_UGL_SMOKEWHITE,3),
-    UGL_MAGS(BASE_UGL_FLAREWHITE,3),
-    SIDEARM_MAG,
-    BASE_GRENADES,
+  magazines[] += {
     LEADER_SMOKES
   };
   items[] += {LEADER_TOOLS,SIDE_KEY};
@@ -112,7 +113,9 @@ class AR : BASE {
   vest[] = {VEST_AR};
   backpack[] = {BACKPACK_AR};
   weapons[] = {AR_RIFLE};
-  magazines[] = {AR_MAG,SIDEARM_MAG,BASE_GRENADES};
+  weaponChoices[] = {
+    {{AR_RIFLE},{AR_MAG}}
+  };
   attachments[] = {};
   opticChoices[] = {};
 };
@@ -125,5 +128,7 @@ class MED : BASE {
   vest[] = {VEST_MEDIC};
   backpack[] = {BACKPACK_MEDIC};
   backpackItems[] = {MEDIC_MEDICAL};
-  magazines[] += {MEDIC_SMOKES};
+  magazines[] += {
+    MEDIC_SMOKES
+  };
 };
