@@ -59,29 +59,38 @@
 #define BACKPACK_AR "B_Carryall_cbr"
 #define BACKPACK_AT "B_Kitbag_cbr"
 
-
-class RI {
+class BASE {
   uniform[] = {UNIFORM};
   vest[] = {VEST};
   headgear[] = {HELMET};
   backpack[] = {BACKPACK};
   backpackItems[] = {GRUNT_MEDICAL};
-  weapons[] = {RIFLE};
   launchers[] = {};
-  sidearms[] = {SIDEARM};
+  sidearms[] = {
+    {{SIDEARM},{SIDEARM_MAG}}
+  };
+  weaponChoices[] = {
+    {{RIFLE},{RIFLE_MAG}},
+    {{CARBINE},{CARBINE_MAG}}
+  };
   magazines[] = {RIFLE_MAG,SIDEARM_MAG,BASE_GRENADES};
   items[] = {TOOLS};
   linkedItems[] = {LINKED};
   attachments[] = {};
   launcherAttachments[] = {};
   opticChoices[] = {MISSION_OPTICS};
+  mineChoices[] = {CE_SATCHEL,CE_MINEAP,CE_MINEAT,CE_DEMOCHARGE};
 };
 
-class PL : RI {
+class RI : BASE {};
+
+class PL : BASE {
   vest[] = {VEST_LEADER};
   backpack[] = {BACKPACK_RADIO};
   backpackItems[] = {GRUNT_MEDICAL};
-  weapons[] = {RIFLE_GL};
+  weaponChoices[] = {
+    {{RIFLE_GL},{RIFLE_GL_MAG}}
+  };
   magazines[] = {
     RIFLE_GL_MAG,
     UGL_MAGS(BASE_UGL_FRAG,6),
@@ -99,7 +108,7 @@ class SGT : PL {};
 class SL : PL {};
 class TL : PL {};
 
-class AR : RI {
+class AR : BASE {
   vest[] = {VEST_AR};
   backpack[] = {BACKPACK_AR};
   weapons[] = {AR_RIFLE};
@@ -108,11 +117,11 @@ class AR : RI {
   opticChoices[] = {};
 };
 
-class ARA : RI {
+class ARA : BASE {
   magazines[] += {AR_MAG_ASST};
 };
 
-class MED : RI {
+class MED : BASE {
   vest[] = {VEST_MEDIC};
   backpack[] = {BACKPACK_MEDIC};
   backpackItems[] = {MEDIC_MEDICAL};

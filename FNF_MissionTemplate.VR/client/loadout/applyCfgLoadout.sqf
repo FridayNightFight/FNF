@@ -37,19 +37,20 @@ removeGoggles player;
 
 private _cfgPath = (missionConfigFile >> "CfgLoadouts" >> "west" >> (player getVariable "phxLoadout"));
 
-private _cfgUniform = (_cfgPath >> "uniform") call BIS_fnc_getCfgData;
-private _cfgVest = (_cfgPath >> "vest") call BIS_fnc_getCfgData;
-private _cfgHeadgear = (_cfgPath >> "headgear") call BIS_fnc_getCfgData;
-private _cfgBackpack = (_cfgPath >> "backpack") call BIS_fnc_getCfgData;
-private _cfgBackpackItems = (_cfgPath >> "backpackItems") call BIS_fnc_getCfgData;
-private _cfgWeapons = (_cfgPath >> "weapons") call BIS_fnc_getCfgData;
-private _cfgLaunchers = (_cfgPath >> "launchers") call BIS_fnc_getCfgData;
-private _cfgSidearms = (_cfgPath >> "sidearms") call BIS_fnc_getCfgData;
-private _cfgMagazines = (_cfgPath >> "magazines") call BIS_fnc_getCfgData;
-private _cfgItems = (_cfgPath >> "items") call BIS_fnc_getCfgData;
-private _cfgLinkedItems = (_cfgPath >> "linkedItems") call BIS_fnc_getCfgData;
-private _cfgAttachments = (_cfgPath >> "attachments") call BIS_fnc_getCfgData;
-private _cfgLauncherAttachments = (_cfgPath >> "launcherAttachments") call BIS_fnc_getCfgData;
+private _cfgUniform = (_cfgPath >> "uniform") call BIS_fnc_getCfgDataArray;
+private _cfgVest = (_cfgPath >> "vest") call BIS_fnc_getCfgDataArray;
+private _cfgHeadgear = (_cfgPath >> "headgear") call BIS_fnc_getCfgDataArray;
+private _cfgBackpack = (_cfgPath >> "backpack") call BIS_fnc_getCfgDataArray;
+private _cfgBackpackItems = (_cfgPath >> "backpackItems") call BIS_fnc_getCfgDataArray;
+private _cfgLaunchers = (_cfgPath >> "launchers") call BIS_fnc_getCfgDataArray;
+private _cfgSidearms = (_cfgPath >> "sidearms") call BIS_fnc_getCfgDataArray;
+private _cfgMagazines = (_cfgPath >> "magazines") call BIS_fnc_getCfgDataArray;
+private _cfgItems = (_cfgPath >> "items") call BIS_fnc_getCfgDataArray;
+private _cfgLinkedItems = (_cfgPath >> "linkedItems") call BIS_fnc_getCfgDataArray;
+private _cfgWeaponChoices = (_cfgPath >> "weaponChoices") call BIS_fnc_getCfgDataArray;
+private _cfgAttachments = (_cfgPath >> "attachments") call BIS_fnc_getCfgDataArray;
+private _cfgOpticChoices = (_cfgPath >> "opticChoices") call BIS_fnc_getCfgDataArray;
+private _cfgLauncherAttachments = (_cfgPath >> "launcherAttachments") call BIS_fnc_getCfgDataArray;
 // private _cfgHandgunAttachments = getArray (_cfgPath >> "handgunAttachments");
 
 private _headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
@@ -73,14 +74,18 @@ player addVest selectRandom(_cfgVest);
 player addBackpack selectRandom(_cfgBackpack);
 player addHeadgear selectRandom(_cfgHeadgear);
 
-phx_loadout_weapon = if (count _cfgWeapons > 0) then {selectRandom(_cfgWeapons)} else {""};
+phx_loadout_weaponChosen = if (count _cfgWeaponChoices > 0) then {selectRandom(_cfgWeaponChoices)} else {[]};
+phx_loadout_weaponChosen params ["_weapons", "_mags"];
+phx_loadout_weapon = selectRandom(_weapons);
+phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call _fnc_getWeaponMagazines;
 player addWeapon phx_loadout_weapon;
-phx_loadout_weaponMagazines = [_cfgMagazines, phx_loadout_weapon] call _fnc_getWeaponMagazines;
 {[_x, "vest"] call phx_fnc_addGear; nil} count phx_loadout_weaponMagazines;
 
-phx_loadout_sidearm = if (count _cfgSidearms > 0) then {selectRandom(_cfgSidearms)} else {""};
+phx_loadout_sidearmChosen = if (count _cfgSidearms > 0) then {selectRandom(_cfgSidearms)} else {""};
+phx_loadout_sidearmChosen params ["_sidearms", "_mags"];
+phx_loadout_sidearm = selectRandom(_sidearms);
+phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call _fnc_getWeaponMagazines;
 player addWeapon phx_loadout_sidearm;
-phx_loadout_sidearmMagazines = [_cfgMagazines, phx_loadout_sidearm] call _fnc_getWeaponMagazines;
 {[_x, "vest"] call phx_fnc_addGear; nil} count phx_loadout_sidearmMagazines;
 
 phx_loadout_launcher = if (count _cfgLaunchers > 0) then {selectRandom(_cfgLaunchers)} else {""};

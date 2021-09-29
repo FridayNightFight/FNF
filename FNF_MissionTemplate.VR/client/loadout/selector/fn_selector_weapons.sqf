@@ -21,8 +21,8 @@ _curSet = [primaryWeapon player];
   };
 } forEach _toProcess;
 
-phx_selector_weapons pushBack _curSet;
-reverse phx_selector_weapons;
+// phx_selector_weapons pushBack _curSet;
+// reverse phx_selector_weapons;
 
 phx_selector_fnc_weapons = {
   params ["_weapon","_mag","_tracer"];
@@ -56,19 +56,31 @@ phx_selector_fnc_weapons = {
 
   //makes sure player still has all magazines to prevent mag duping
   //all old mags have to be removed for the new weapon and mags to be added
-  _oldMag = phx_loadout_rifle_mag splitString ":" select 0;
-  _oldMagNum = parseNumber (phx_loadout_rifle_mag splitString ":" select 1);
-  if (isNil "_oldMagNum") then {_oldMagNum = 1};
+  _oldMags = [];
+  {
+    (_x splitString ":") params ["_magClass","_count"];
+    if (isNil "_count") then {
+      _count = 1;
+    } else {
+      _count = parseNumber(_count);
+    };
+    for "_i" from 1 to _count do {
+      _oldMags pushBack [_magClass, _count];
+    };
+  } forEach phx_loadout_weaponMagazines;
 
-  _oldTracer = phx_loadout_rifle_mag_tracer splitString ":" select 0;
-  _oldTracerNum = parseNumber (phx_loadout_rifle_mag_tracer splitString ":" select 1);
-  if (isNil "_oldTracerNum") then {_oldTracerNum = 1};
+  private _allOldMagsPresent = false;
+  {
+    _x params ["_thisOldMag", "_desiredCount"];
+    private _currentCount = ({_x == _thisOldMag} count magazines player);
+    if (_currentCount != _desiredCount) then {
+      if (true) exitWith {_allOldMagsPresent = false};
+    } else {
+      _allOldMagsPresent = true;
+    };
+  } forEach _oldMags;
 
-  _oldMagCount = {_x == _oldMag} count magazines player;
-  _oldTracerCount = {_x == _oldTracer} count magazines player;
-
-  if !(_oldMagCount == _oldMagNum) exitWith {hint "Missing magazines"};
-  if !(_oldTracerCount == _oldTracerNum) exitWith {hint "Missing tracers"};
+  if (!_allOldMagsPresent) exitWith {hint "Missing magazines"};
 
   player removeMagazines _oldMag;
   player removeMagazines _oldTracer;

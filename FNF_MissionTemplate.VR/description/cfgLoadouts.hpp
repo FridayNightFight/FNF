@@ -5,9 +5,9 @@ class CfgLoadouts {
 	addLaser = 0;
 	addNVG = 0;
 
-	class west {
+	class WEST {
 		#include "Loadouts\west_kit.hpp"
-		
+
 		// change the below to desired loadout
 		#include "Loadouts\ARMY_OCP.hpp"
 	};
