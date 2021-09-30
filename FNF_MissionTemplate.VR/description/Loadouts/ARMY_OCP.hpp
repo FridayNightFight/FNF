@@ -1,25 +1,26 @@
 
-#define RIFLE "rhs_weap_m16a4_carryhandle", "rhs_weap_m4a1_blockII_bk"
-#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+// put all rifle weapons
+#define RIFLE "rhs_weap_m16a4_carryhandle","rhs_weap_m4a1_blockII_bk"
+// put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
+#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+// give Riflemen extra mags
+#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
 
-#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203", "rhs_weap_m4a1_blockII_M203_bk"
+// put all GL weapons
+#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203","rhs_weap_m4a1_blockII_M203_bk"
 #define RIFLE_GL_MAG RIFLE_MAG
 
-#define ARR3(_arg1,_arg2,_arg3) _arg1##,##_arg2##,##_arg3
-#define ARR4(_arg1,_arg2,_arg3,_arg4) _arg1,_arg2,_arg3,_arg4
-#define STR(s) #s;
+// UGL types - these should be classnames of items compatible with RIFLE_GL
+// note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
-// #define STD_UGL_MAG BASE_UGL_FRAG##:6",\
-//   BASE_UGL_SMOKEWHITE##:3",\
-//   BASE_UGL_FLAREWHITE##:3"
-// #define GR_UGL_MAG BASE_UGL_FRAG##:15",\
-//   BASE_UGL_SMOKEWHITE##:6",\
-//   BASE_UGL_FLAREWHITE##:2"
-// #define GRIR_UGL_MAG "UGL_MAGS(BASE_UGL_FRAG,10)"","UGL_MAGS(BASE_UGL_SMOKEWHITE,4)","UGL_MAGS(BASE_UGL_FLAREWHITE,2)","UGL_MAGS(BASE_UGL_HUNTIR,4)"
-// #define GRIR_UGL_MAG UGL_MAGS(BASE_UGL_FRAG,10)
+#define UGL_FRAG 1Rnd_HE_Grenade_shell
+#define UGL_SMOKEWHITE 1Rnd_Smoke_Grenade_shell
+#define UGL_FLAREWHITE UGL_FlareWhite_F
 
+// put all Carbine-style (shorter) weapons
 #define CARBINE "rhs_weap_m4a1_carryhandle"
 #define CARBINE_MAG RIFLE_MAG
+#define CARBINE_MAG_RI RIFLE_MAG_RI
 
 #define SIDEARM "rhsusf_weap_glock17g4"
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
@@ -43,7 +44,6 @@
 #define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
 #define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
 
-
 #define UNIFORM "rhs_uniform_cu_ocp"
 #define HELMET "rhsusf_ach_helmet_headset_ess_ocp_alt"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_tan"
@@ -59,76 +59,121 @@
 #define BACKPACK_AR "B_Carryall_cbr"
 #define BACKPACK_AT "B_Kitbag_cbr"
 
-class BASE {
-  uniform[] = {UNIFORM};
-  vest[] = {VEST};
-  headgear[] = {HELMET};
-  backpack[] = {BACKPACK};
-  backpackItems[] = {};
-  launchers[] = {};
-  sidearms[] = {
-    {{SIDEARM},{SIDEARM_MAG}}
-  };
-  weaponChoices[] = {
-    {{RIFLE},{RIFLE_MAG}},
-    {{CARBINE},{CARBINE_MAG}}
-  };
-  magazines[] = {BASE_GRENADES};
-  items[] = {TOOLS,GRUNT_MEDICAL};
-  linkedItems[] = {LINKED};
-  attachments[] = {};
-  launcherAttachments[] = {};
-  opticChoices[] = {MISSION_OPTICS};
-  mineChoices[] = {CE_SATCHEL,CE_MINEAP,CE_MINEAT,CE_DEMOCHARGE};
-};
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RI : BASE {};
+class ARMY_OCP {
+  class BASE {
+    uniform[] = {UNIFORM};
+    vest[] = {VEST};
+    headgear[] = {HELMET};
+    backpack[] = {BACKPACK};
+    backpackItems[] = {};
+    launchers[] = {};
+    sidearms[] = {
+      {{SIDEARM},{SIDEARM_MAG}}
+    };
+    weaponChoices[] = {
+      {{RIFLE},{RIFLE_MAG}},
+      {{CARBINE},{CARBINE_MAG}}
+    };
+    magazines[] = {BASE_GRENADES};
+    items[] = {TOOLS,GRUNT_MEDICAL};
+    linkedItems[] = {LINKED};
+    attachments[] = {};
+    launcherAttachments[] = {};
+    opticChoices[] = {MISSION_OPTICS};
+    mineChoices[] = {CE_SATCHEL,CE_MINEAP,CE_MINEAT,CE_DEMOCHARGE};
+    giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
+  };
 
-class PL : BASE {
-  vest[] = {VEST_LEADER};
-  backpack[] = {BACKPACK_RADIO};
-  weaponChoices[] = {
-    {
-      {RIFLE_GL},
+  class RI : BASE {
+    weaponChoices[] = {
+      {{RIFLE},{RIFLE_MAG_RI}},
+      {{CARBINE},{CARBINE_MAG_RI}}
+    };
+  };
+
+  class TL : BASE {
+    vest[] = {VEST_LEADER};
+    backpack[] = {BACKPACK_RADIO};
+    weaponChoices[] = {
       {
-        RIFLE_GL_MAG,
-        UGL_MAGS(BASE_UGL_FRAG,6),
-        UGL_MAGS(BASE_UGL_SMOKEWHITE,3),
-        UGL_MAGS(BASE_UGL_FLAREWHITE,3)
+        {RIFLE_GL},
+        {
+          RIFLE_GL_MAG,
+          UGL_MAGS(UGL_FRAG,6),
+          UGL_MAGS(UGL_SMOKEWHITE,3),
+          UGL_MAGS(UGL_FLAREWHITE,3)
+        }
       }
-    }
+    };
+    magazines[] += {
+      LEADER_SMOKES
+    };
+    items[] += {LEADER_TOOLS};
+    linkedItems[] += {VECTOR};
+    giveSideKey = 1;
   };
-  magazines[] += {
-    LEADER_SMOKES
+
+  class SL : TL {};
+  class SGT : TL {};
+  class PL : TL {};
+
+  class AR : BASE {
+    vest[] = {VEST_AR};
+    backpack[] = {BACKPACK_AR};
+    weapons[] = {AR_RIFLE};
+    weaponChoices[] = {
+      {{AR_RIFLE},{AR_MAG}}
+    };
+    attachments[] = {};
+    opticChoices[] = {};
   };
-  items[] += {LEADER_TOOLS,SIDE_KEY};
-  linkedItems[] += {VECTOR};
-};
 
-class SGT : PL {};
-class SL : PL {};
-class TL : PL {};
-
-class AR : BASE {
-  vest[] = {VEST_AR};
-  backpack[] = {BACKPACK_AR};
-  weapons[] = {AR_RIFLE};
-  weaponChoices[] = {
-    {{AR_RIFLE},{AR_MAG}}
+  class ARA : BASE {
+    magazines[] += {AR_MAG_ASST};
   };
-  attachments[] = {};
-  opticChoices[] = {};
-};
 
-class ARA : BASE {
-  magazines[] += {AR_MAG_ASST};
-};
+  class GR : BASE {
+    weaponChoices[] = {
+      {
+        {RIFLE_GL},
+        {
+          RIFLE_GL_MAG,
+          UGL_MAGS(UGL_FRAG,15),
+          UGL_MAGS(UGL_SMOKEWHITE,6),
+          UGL_MAGS(UGL_FLAREWHITE,2)
+        }
+      }
+    };
+  };
 
-class MED : BASE {
-  vest[] = {VEST_MEDIC};
-  backpack[] = {BACKPACK_MEDIC};
-  backpackItems[] = {MEDIC_MEDICAL};
-  magazines[] += {
-    MEDIC_SMOKES
+  class GRIR : BASE {
+    weaponChoices[] = {
+      {
+        {RIFLE_GL},
+        {
+          RIFLE_GL_MAG,
+          UGL_MAGS(UGL_FRAG,10),
+          UGL_MAGS(UGL_SMOKEWHITE,4),
+          UGL_MAGS(UGL_FLAREWHITE,2),
+          UGL_MAGS(UGL_FLAREWHITE,2),
+          UGL_MAGS(BASE_UGL_HUNTIR,4)
+        }
+      }
+    };
+  };
+
+  class LAT : BASE {
+    launchers[] = {AT_LAUNCHER};
+  };
+
+  class MED : BASE {
+    vest[] = {VEST_MEDIC};
+    backpack[] = {BACKPACK_MEDIC};
+    backpackItems[] = {MEDIC_MEDICAL};
+    magazines[] += {
+      MEDIC_SMOKES
+    };
   };
 };

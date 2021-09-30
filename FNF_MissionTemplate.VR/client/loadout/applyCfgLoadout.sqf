@@ -1,3 +1,4 @@
+if (!hasInterface || isDedicated) exitWith {};
 waitUntil {!isNull player};
 
 [{
@@ -37,7 +38,9 @@ removeBackpack player;
 removeHeadgear player;
 // removeGoggles player;
 
-private _cfgPath = (missionConfigFile >> "CfgLoadouts" >> "west" >> (player getVariable "phxLoadout"));
+private _sideStr = (playerSide call BIS_fnc_sideID) call BIS_fnc_sideName;
+private _mySideLoadoutInfo = missionNamespace getVariable ("phx_" + _sideStr + "Weapons");
+private _cfgPath = (missionConfigFile >> "CfgLoadouts" >> _mySideLoadoutInfo >> (player getVariable "phxLoadout"));
 
 private _cfgUniform = (_cfgPath >> "uniform") call BIS_fnc_getCfgDataArray;
 private _cfgVest = (_cfgPath >> "vest") call BIS_fnc_getCfgDataArray;
@@ -53,9 +56,9 @@ private _cfgWeaponChoices = (_cfgPath >> "weaponChoices") call BIS_fnc_getCfgDat
 private _cfgAttachments = (_cfgPath >> "attachments") call BIS_fnc_getCfgDataArray;
 private _cfgOpticChoices = (_cfgPath >> "opticChoices") call BIS_fnc_getCfgDataArray;
 private _cfgLauncherAttachments = (_cfgPath >> "launcherAttachments") call BIS_fnc_getCfgDataArray;
+private _cfgGiveSideKey = (_cfgPath >> "giveSideKey") call BIS_fnc_getCfgData;
 // private _cfgHandgunAttachments = getArray (_cfgPath >> "handgunAttachments");
 
-private _headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
 
 
 fnc_getWeaponMagazines = {
@@ -70,12 +73,33 @@ fnc_getWeaponMagazines = {
 };
 
 
+private _uniform = if (_cfgUniform isEqualTo []) then { "" } else { selectRandom _cfgUniform };
+private _vest = if (_cfgVest isEqualTo []) then { "" } else { selectRandom _cfgVest };
+private _backpack = if (_cfgBackpack isEqualTo []) then { "" } else { selectRandom _cfgBackpack };
+private _headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
 
 player forceAddUniform selectRandom(_cfgUniform);
 player addVest selectRandom(_cfgVest);
 player addBackpack selectRandom(_cfgBackpack);
 player addHeadgear selectRandom(_cfgHeadgear);
 
+
+// Items, grenades
+{[_x, "vest"] call phx_fnc_addGear} forEach _cfgMagazines;
+{[_x, "uniform"] call phx_fnc_addGear} forEach _cfgItems;
+{[_x, "backpack"] call phx_fnc_addGear} forEach _cfgBackpackItems;
+{player linkItem _x} forEach _cfgLinkedItems;
+
+// NVGs/laser accessory
+_giveNVG = {player linkItem phx_loadout_nvg};
+_addLaser = {{player addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];};
+switch (typeName phx_addNVG) do {
+  case "NUMBER": {if (phx_addNVG == 1) then {call _giveNVG; call _addLaser}};
+  case "ARRAY": {if (playerSide in phx_addNVG) then {call _giveNVG; call _addLaser}};
+};
+
+
+// Weapons and amagazines
 phx_loadout_weaponChosen = if (count _cfgWeaponChoices > 0) then {selectRandom(_cfgWeaponChoices)} else {[]};
 phx_loadout_weaponChosen params ["_weapons", "_mags"];
 phx_loadout_weapon = selectRandom(_weapons);
@@ -88,26 +112,13 @@ phx_loadout_sidearmChosen params ["_sidearms", "_mags"];
 phx_loadout_sidearm = selectRandom(_sidearms);
 phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call fnc_getWeaponMagazines;
 player addWeapon phx_loadout_sidearm;
-{[_x, "vest"] call phx_fnc_addGear; nil} count phx_loadout_sidearmMagazines;
+{[_x, "uniform"] call phx_fnc_addGear; nil} count phx_loadout_sidearmMagazines;
 
 phx_loadout_launcher = if (count _cfgLaunchers > 0) then {selectRandom(_cfgLaunchers)} else {""};
 player addWeapon phx_loadout_launcher;
 
-{[_x, "vest"] call phx_fnc_addGear} forEach _cfgMagazines;
-{[_x, "uniform"] call phx_fnc_addGear} forEach _cfgItems;
-{[_x, "backpack"] call phx_fnc_addGear} forEach _cfgBackpackItems;
-{player linkItem _x} forEach _cfgLinkedItems;
 
-// NVGs/laser accessory
-_giveNVG = {player linkItem phx_loadout_nvg};
-_addLaser = {{player addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];};
-switch (typeName phx_addNVG) do {
-  case "BOOL": {if (phx_addNVG) then {call _giveNVG; call _addLaser};};
-  case "SIDE": {if (playerSide == phx_addNVG) then {call _giveNVG; call _addLaser};};
-  case "ARRAY": {if (playerSide in phx_addNVG) then {call _giveNVG; call _addLaser};};
-};
-
-
+// phx_magnifiedOptics
 
 
 // MAT
@@ -118,52 +129,68 @@ if (
 	!isNil "phx_loadout_mediumantitank_mag_1"
 ) then {phx_loadout_mediumantitank_mag_1 call phx_fnc_addGear};
 
+
+
 // Attributes
 if (player getVariable "phxLoadout" == "MED") then {player setVariable ["ace_medical_medicClass", 1, true]};
 if (player getVariable "phxLoadout" in ["CE","CR","PI"]) then {player setVariable ["ace_isEngineer", 1, true]};
 
 
+// Side key
+if (_cfgGiveSideKey > 0) then {
+  switch (playerSide) do {
+    case west: {
+        player addItem "ACE_key_west";
+    };
+    case east: {
+        player addItem "ACE_key_east";
+    };
+    case independent: {
+        player addItem "ACE_key_indp";
+    };
+  };
+};
+
+
+
 
 // load weapons
-[] spawn {
-	waitUntil {
-		!isNil "phx_loadout_weaponMagazines" &&
-		!isNil "phx_loadout_sidearmMagazines"
-	};
-	{
-		_x params ["_weaponClass", "_mags"];
-		private _cfgWeapon = _weaponClass call CBA_fnc_getItemConfig;
+{
+    _x params ["_weaponClass", "_mags"];
+    private _cfgWeapon = _weaponClass call CBA_fnc_getItemConfig;
 
-		// check for multiple muzzles (eg: GL)
-		private _muzzles = getArray (configFile >> "cfgWeapons" >> _weaponClass >> "muzzles") select {!(["SAFE", _x] call BIS_fnc_inString)};
-		
-		{
-			private _thisMuzzle = _x;
-			private "_compatMag";
-			if (_thisMuzzle == "this") then {
-				_compatMag = ([_mags, _cfgWeapon, false] call fnc_getWeaponMagazines) select 0;
-			} else {
-				_compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines) select 0;
-			};
-			_compatMag = _compatMag splitString ':' select 0;
-			"debug_console" callExtension str([_weaponClass, _thisMuzzle, _compatMag]);
+    // check for multiple muzzles (eg: GL)
+    private _muzzles = getArray (configFile >> "cfgWeapons" >> _weaponClass >> "muzzles") select {!(["SAFE", _x] call BIS_fnc_inString)};
+    "debug_console" callExtension str([_weaponClass, _muzzles]);
 
-			player removeMagazine _compatMag;
-			switch (_weaponClass) do {
-				case (primaryWeapon player): {
-					player addPrimaryWeaponItem _compatMag;
-				};
-				case (handgunWeapon player): {
-					player addHandgunItem _compatMag;
-				};
-			};
-		} forEach _muzzles;
-	} forEach [
-		[primaryWeapon player, phx_loadout_weaponMagazines],
-		[handgunWeapon player, phx_loadout_sidearmMagazines]
-	];
-	player enableSimulation true;
-};
+  {
+    private _thisMuzzle = _x;
+    private "_compatMag";
+    "debug_console" callExtension str([_weaponClass, _mags, configName(_cfgWeapon >> _thisMuzzle), [_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines]);
+
+    if (_thisMuzzle == "this") then {
+      _compatMag = ([_mags, _cfgWeapon, false] call fnc_getWeaponMagazines) select 0;
+    } else {
+      _compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines) select 0;
+    };
+    _compatMag = _compatMag splitString ':' select 0;
+    "debug_console" callExtension str([_weaponClass, _thisMuzzle, _compatMag]);
+
+    player removeMagazine _compatMag;
+    switch (_weaponClass) do {
+      case (primaryWeapon player): {
+        player addPrimaryWeaponItem _compatMag;
+      };
+      case (handgunWeapon player): {
+        player addHandgunItem _compatMag;
+      };
+    };
+  } forEach _muzzles;
+} forEach [
+  [primaryWeapon player, phx_loadout_weaponMagazines],
+  [handgunWeapon player, phx_loadout_sidearmMagazines]
+];
+player enableSimulation true;
 
 
 
@@ -211,7 +238,7 @@ if (LOADOUTROLE("MED")) then {_strRole = " Medic"};
 private _notifyString = [];
 _notifyString pushBack ("<t align='center' size='1.4' color='#e1701a' face='PuristaBold'>ROLE</t>");
 _notifyString pushBack ("<t align='center' face='PuristaLight'>You are a" + _strRole + "<br/>in " + (roleDescription player splitString '@' select 1) + "</t>");
-_notifyString pushBack ("<br/>");
+// _notifyString pushBack ("<br/>");
 _notifyString pushBack ("<t align='center' size='1.4' color='#e1701a' face='PuristaBold'>Primary Weapon</t>");
 _notifyString pushBack (primaryWeapon player call _fnc_hintDetails);
 // _notifyString pushBack ("<br/>");
@@ -220,7 +247,7 @@ _notifyString pushBack (handgunWeapon player call _fnc_hintDetails);
 // _notifyString pushBack ("<br/>");
 
 if (secondaryWeapon player != "") then {
-	_notifyString pushBack ("<t align='center' size='14' color='#e1701a' face='PuristaBold'>Launcher</t>");
+	_notifyString pushBack ("<t align='center' size='1.4' color='#e1701a' face='PuristaBold'>Launcher</t>");
 	_notifyString pushBack (secondaryWeapon player call _fnc_hintDetails)
 };
 [_notifyString joinString '<br/>'] call phx_ui_fnc_notify;

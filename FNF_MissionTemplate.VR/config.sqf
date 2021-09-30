@@ -28,22 +28,21 @@ phx_attackingSide = sideEmpty; //west/east/independent
 
 //BLUFOR
 phx_bluforUniform = "UNIFORM_MARPAT_WD";
-phx_bluforWeapons = "WEAPONS_US";
+phx_bluforWeapons = "ARMY_OCP";
 
 //OPFOR
 phx_opforUniform = "UNIFORM_EMR_SUMMER";
 phx_opforWeapons = "WEAPONS_RU";
 
 //INDFOR
-phx_indforUniform = "UNIFORM_M93_OAKLEAF";
-phx_indforWeapons = "WEAPONS_IND";
+phx_independentUniform = "UNIFORM_M93_OAKLEAF";
+phx_independentWeapons = "WEAPONS_IND";
 
 /*
 You can also use the civilian unit 'C_man_1'
-Those units will not be touched by the tempalte loadout system, so they will keep their editor loadout
+Those units will not be touched by the template loadout system, so they will keep their editor loadout
 If they have a radio, they will all be preset to the same frequency
 */
-
 
 
 /*
@@ -62,11 +61,11 @@ Possible launcher values (and recommended counts)
 
 EXAMPLE:
 	launcher type (see possible values below)
-		phx_bluAT_Bravo = CARLG; 
+		phx_bluAT_Bravo = CARLG;
 
 	how many rockets/missiles for each: gunner, assistant, assistant.
 	a value of 2 would mean a total of 6 rockets/missiles in this squad
-		phx_bluAT_Bravo_count = 2; 
+		phx_bluAT_Bravo_count = 2;
 */
 
 // BLUFOR
@@ -88,10 +87,21 @@ phx_grnAT_Delta = IGLA;
 phx_grnAT_Delta_count = 1;
 
 
-
-phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
-phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
-//Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
+/*
+  Allow players to grab magnified optics from the gear selector
+  0 will restrict 4x+ optics to designated marksmen and snipers.
+  1 will allow 4x+ optic choices. -1 will force ironsights
+*/
+phx_magnifiedOptics = 0;
+/*
+  Automatically add NVGs & lasers to players (Gen3, Black)
+  Examples:
+    addNVG = 0 OR [] will not give anyone NVGs
+    addNVG = 1 OR [east, west, independent] will give all sides NVGs
+    addNVG = [east] will give side east NVGs
+    addNVG = [east,west] will give sides east and west NVGs
+  */
+phx_addNVG = 0;
 
 phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers

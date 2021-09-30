@@ -19,7 +19,7 @@
 #define LEADER_SMOKES "SmokeShellGreen:2","SmokeShellPurple:2", "SmokeShellRed:2"
 #define INCENDIARY_GRENADES "ACE_M14:2"
 
-#define BASE_UGL_HUNTIR "ACE_HuntIR_M203"
+#define BASE_UGL_HUNTIR ACE_HuntIR_M203
 
 #define GL_BASE_WEST "1Rnd_HE_Grenade_shell:6", "1Rnd_Smoke_Grenade_shell:3", "UGL_FlareWhite_F:3"
 #define GL_GR_WEST "1Rnd_HE_Grenade_shell:15", "1Rnd_Smoke_Grenade_shell:6", "UGL_FlareWhite_F:2"
