@@ -24,10 +24,7 @@ if (pRole == ROLE_RS) then {
 phx_loadout_rifle_mag call phx_fnc_addGear;
 phx_loadout_sidearm_mag call phx_fnc_addGear;
 
-if (!phx_loadout_hasSpecial) then {
-  //Use of CBA_fnc_waitAndExecute here is just to make sure that non-tracer mags get loaded into the player's weapon intstead of tracer mags
-  [{phx_loadout_rifle_mag_tracer call phx_fnc_addGear}, 1] call CBA_fnc_waitAndExecute;
-};
+if (!phx_loadout_hasSpecial) then {phx_loadout_rifle_mag_tracer call phx_fnc_addGear};
 
 switch (pRole) do {
   case ROLE_AAR: {phx_loadout_aar_mag call phx_fnc_addGear};
