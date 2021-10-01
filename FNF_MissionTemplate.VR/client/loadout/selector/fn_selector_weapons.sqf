@@ -104,11 +104,13 @@ phx_selector_fnc_weapons = {
 
 //Weapons actions
 {
+  // "debug_console" callExtension ("ForEach phx_selector_weapons: " + str(_x));
   _action = [
     "Weapon_Selector",
     getText (configFile >> "cfgWeapons" >> _x # 0 >> "displayName"),
     "",
     { // param to code above
+
       (_this select 2) call phx_selector_fnc_weapons;
     },
     { // condition

@@ -1,13 +1,6 @@
 //Add magnified optics if enabled
-if (phx_magnifiedOptics || pRole == ROLE_MK) then {
-  phx_selector_optics append phx_selector_magOptics;
-};
-if (pRole == ROLE_SNP) then {
-  phx_selector_optics = phx_loadout_sniper_optics;
-};
 
 player setVariable ["phx_ChosenOptic", (primaryWeaponItems player) select 2];
-
 
 phx_selector_fnc_optics = {
 
@@ -28,71 +21,56 @@ phx_selector_fnc_optics = {
 
   private _optic = _this select 2;
   private _previousOptic = player getVariable ["phx_ChosenOptic", ""];
-  if (
-    (
-      (pRole == ROLE_SNP) ||
-      (pRole == ROLE_MK && !phx_magnifiedOptics)
-    )
-  ) then {
-    // Has special optic, validate
-    _loadoutWeapons = (getUnitLoadout player) # 4;
-    _loadoutWeapons append (primaryWeaponItems player);
-    _loadoutWeapons append (backpackitems player);
-    _oldOpticPresent = ((flatten _loadoutWeapons) findIf {(_x) isEqualTo _previousOptic}) > -1;
-    if (_oldOpticPresent || _previousOptic isEqualTo "") then {
-      // found previous optic in inventory, now remove > replace
-      {
-        if (_x isEqualTo _previousOptic) then {
-            player removeItemFromUniform _x;
-        };
-        nil
-      } count (uniformItems player);
+  // Every player should have 1 optic on the field. No sense to trade.
+  _loadoutWeapons = (getUnitLoadout player) # 4;
+  _loadoutWeapons append (primaryWeaponItems player);
+  _loadoutWeapons append (backpackitems player);
+  _oldOpticPresent = ((flatten _loadoutWeapons) findIf {(_x) isEqualTo _previousOptic}) > -1;
+  if (_oldOpticPresent || _previousOptic isEqualTo "") then {
+    // found previous optic in inventory, now remove > replace
+    {
+      if (_x isEqualTo _previousOptic) then {
+          player removeItemFromUniform _x;
+      };
+      nil
+    } count (uniformItems player);
 
-      {
-        if (_x isEqualTo _previousOptic) then {
-            player removeItemFromVest _x;
-        };
-        nil
-      } count (vestItems player);
+    {
+      if (_x isEqualTo _previousOptic) then {
+          player removeItemFromVest _x;
+      };
+      nil
+    } count (vestItems player);
 
-      {
-        if (_x isEqualTo _previousOptic) then {
-            player removeItemFromBackpack _x;
-        };
-        nil
-      } count (backpackItems player);
+    {
+      if (_x isEqualTo _previousOptic) then {
+          player removeItemFromBackpack _x;
+      };
+      nil
+    } count (backpackItems player);
 
-      player removePrimaryWeaponItem _previousOptic;
-      player addPrimaryWeaponItem _optic;
-      player setVariable ["phx_ChosenOptic", _optic];
-
-      _optic call _fnc_hintDetails;
-    } else {
-      // restricted role & old optic not found to replace
-      [
-        [
-          "<t align='center'>",
-          "<t size='2' color='#FFFF00' >WARNING</t>",
-          "You chose a 'special' optic that's no longer in your inventory.",
-          "Cannot spawn a new optic for you.",
-          "",
-          "This is an anti-duplication measure. You will need to return the below optic to your inventory to be removed and replaced with your selection.",
-          format[
-            "<img size='4' image='%1'></t>",
-            getText(configFile >> "CfgWeapons" >> _previousOptic >> "picture")
-          ],
-          getText(configFile >> "CfgWeapons" >> _previousOptic >> "displayName"),
-          "</t>"
-        ] joinString "<br/>",
-        "warning",
-        10
-      ] call phx_ui_fnc_notify;
-    };
-  } else {
-    // Not special optic, give
+    player removePrimaryWeaponItem _previousOptic;
     player addPrimaryWeaponItem _optic;
     player setVariable ["phx_ChosenOptic", _optic];
+
     _optic call _fnc_hintDetails;
+  } else {
+    // restricted role & old optic not found to replace
+    [
+      [
+        "<t align='center'>",
+        "<t size='2' color='#FFFF00' >WARNING</t>",
+        "Trading optics amongst players is not allowed. You must have your previously chosen one in your inventory to select a new one.",
+        format[
+          "<img size='4' image='%1'></t>",
+          getText(configFile >> "CfgWeapons" >> _previousOptic >> "picture")
+        ],
+        getText(configFile >> "CfgWeapons" >> _previousOptic >> "displayName"),
+        "</t>"
+      ] joinString "<br/>",
+      "warning",
+      10
+    ] call phx_ui_fnc_notify;
   };
 };
 
@@ -121,23 +99,16 @@ phx_selector_fnc_optics = {
 		_dispName = _dispName + (_zoomsArr joinString "/") + ")";
 	};
 
-  _action = ["Optic_Selector",
+  _action = [
+    "Optic_Selector",
     _dispName,
     "",
     { // execution
       _this call phx_selector_fnc_optics;
     },
     { // condition
-      (
-        (_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems) ||
-        (
-          pRole == ROLE_SNP &&
-          (
-            ((primaryWeaponItems player) select 2) in phx_loadout_sniper_optics ||
-            ((primaryWeaponItems player) select 2) == ""
-          )
-        )
-      ) && fnf_pref_loadoutInterface == "ACE"
+      (_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems) &&
+      fnf_pref_loadoutInterface == "ACE"
     },
     {},
     _x
@@ -154,7 +125,8 @@ _action = [
     player setVariable ["phx_ChosenOptic", ""];
   },
   {
-    ((primaryWeaponItems player) select 2) != "" && fnf_pref_loadoutInterface == "ACE"
+    player getVariable "phx_ChosenOptic" != "" &&
+    fnf_pref_loadoutInterface == "ACE"
   }
 ] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;

@@ -88,10 +88,7 @@ phx_selector_fnc_explosives = {
       [
         "<t align='center'>",
         "<t size='2' color='#FFFF00' >WARNING</t>",
-        "Previously chosen explosives not found in inventory.",
-        "Cannot spawn new explosives for you.",
-        "",
-        "This is an anti-duplication measure. You will need to return the below explosives to your inventory to be removed and replaced with your selection.<br/>",
+        "To avoid duplication, you must have your previously chosen explosives in your inventory to select a new one.",
         _mustReturn,
         "</t>"
       ] joinString "<br/>",
@@ -103,7 +100,10 @@ phx_selector_fnc_explosives = {
 
 //charges actions
 {
-  _action = ["Explosives_Selector",_x select 0,"",
+  _action = [
+    "Explosives_Selector",
+    _x select 0,
+    "",
   { // execution
     (_this select 2) call phx_selector_fnc_explosives;
   },

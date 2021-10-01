@@ -11,6 +11,8 @@
 #define LEADER_TOOLS "ACE_microDAGR"
 #define SPOTTER_TOOLS "ACE_SpottingScope"
 #define SNIPER_TOOLS "ACE_Tripod","ACE_RangeCard"
+#define TRIPOD "ACE_Tripod"
+#define SHOVEL "ACE_EntrenchingTool"
 
 #define SMOKE_GRENADES "SmokeShell:2"
 #define FRAG_GRENADES "rhs_mag_m67:2"
@@ -33,29 +35,27 @@
 #define CE_TRIGGER "ACE_M26_Clacker"
 #define CE_DEFUSE "ACE_DefusalKit"
 #define CE_DETECTOR "MineDetector"
-#define CE_DIGTOOL "ACE_EntrenchingTool"
-#define CE_SATCHEL "SatchelCharge_Remote_Mag:2"
-#define CE_MINEAP "APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"
-#define CE_MINEAT "ATMine_Range_Mag:2"
-#define CE_DEMOCHARGE "DemoCharge_Remote_Mag:4"
+#define CE_FORTIFYTOOL "ACE_Fortify"
+#define CE_SATCHEL "2x Satchel", "SatchelCharge_Remote_Mag:2"
+#define CE_MINEAP "2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"
+#define CE_MINEAT "2x AT mine", "ATMine_Range_Mag:2"
+#define CE_DEMOCHARGE "4x Demo charge", "DemoCharge_Remote_Mag:4"
 
 #define BINOCULARS "Binocular"
 #define RANGEFINDER "ACE_Yardage450"
 #define VECTOR "ACE_VectorDay"
 #define NVG "NVGoggles_OPFOR"
 
-
 // OPTICS
 #define STD_OPTICS "optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"
 #define MAG_OPTICS "rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"
-
-#if phx_magnifiedOptics
-#define MISSION_OPTICS STD_OPTICS##,##MAG_OPTICS
-#else
-#define MISSION_OPTICS STD_OPTICS
-#endif
-
 #define SNP_OPTICS "rhsusf_acc_M8541", "rhsusf_acc_M8541_wd"
+class optics {
+  standard[] = {STD_OPTICS};
+  magnified[] = {STD_OPTICS,MAG_OPTICS};
+  sniper[] = {SNP_OPTICS};
+};
+
 
 // FUNCTIONS
 #define SAM_GEAR(BACKPACK,MAG) backpack[] = {BACKPACK}; backpackItems[] = {}; magazines[] += {MAG}; items[] += {BASE_MEDICAL};

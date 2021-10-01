@@ -22,8 +22,8 @@
 #define CARBINE_MAG RIFLE_MAG
 #define CARBINE_MAG_RI RIFLE_MAG_RI
 
-#define SIDEARM "rhsusf_weap_glock17g4"
-#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
+#define DM_RIFLE RIFLE
+#define DM_MAG RIFLE_MAG
 
 #define AR_RIFLE "rhs_weap_m249_pip_L"
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
@@ -43,6 +43,9 @@
 
 #define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
 #define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
+
+#define SIDEARM "rhsusf_weap_glock17g4"
+#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 #define UNIFORM "rhs_uniform_cu_ocp"
 #define HELMET "rhsusf_ach_helmet_headset_ess_ocp_alt"
@@ -81,8 +84,7 @@ class ARMY_OCP {
     linkedItems[] = {LINKED};
     attachments[] = {};
     launcherAttachments[] = {};
-    opticChoices[] = {MISSION_OPTICS};
-    mineChoices[] = {CE_SATCHEL,CE_MINEAP,CE_MINEAT,CE_DEMOCHARGE};
+    explosiveChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
   };
 
@@ -127,7 +129,6 @@ class ARMY_OCP {
       {{AR_RIFLE},{AR_MAG}}
     };
     attachments[] = {};
-    opticChoices[] = {};
   };
 
   class ARA : BASE {
@@ -164,8 +165,33 @@ class ARMY_OCP {
     };
   };
 
+  class MGA : BASE {
+    backpackItems[] += {MMG_MAG_ASST,TRIPOD};
+  };
+
+  class MG : BASE {
+    weaponChoices[] = {
+      {{MMG_RIFLE},{MMG_MAG}}
+    };
+  };
+
+  class CE : BASE {
+    items[] += {CE_TRIGGER,CE_DEFUSE};
+    backpackItems[] += {CE_DETECTOR,CE_FORTIFYTOOL,SHOVEL};
+    explosiveChoices[] = {{CE_SATCHEL},{CE_MINEAP},{CE_MINEAT},{CE_DEMOCHARGE}};
+  };
+
+
   class LAT : BASE {
     launchers[] = {AT_LAUNCHER};
+  };
+  class MATA: BASE {};
+  class MAT: MATA {};
+
+  class DM: BASE {
+    weaponChoices[] = {
+      {{DM_RIFLE},{DM_MAG}}
+    };
   };
 
   class MED : BASE {

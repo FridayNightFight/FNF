@@ -13,44 +13,12 @@ or phx_selector_weapons = [["WEAPON_CLASS", "MAG_CLASS:Num", "MAG_CLASS:Num"]]
 -The weapon selector only works with primary weapon slot weapons
 */
 
-private _cfgOpticChoices = (missionConfigFile >> "CfgLoadouts" >> str(playerSide) >> (player getVariable "phxLoadout") >> "opticChoices") call BIS_fnc_getCfgData;
-
-
-
-_fnc_getWeaponMagazines = {
-	params ["_toSearch", "_weapon"];
-	private _out = [];
-	{
-		if ((_x splitString ':' select 0) in ([_weapon, true] call CBA_fnc_compatibleMagazines)) then {
-			_out pushBack _x;
-		};
-	} forEach _toSearch;
-	_out
-};
-private _cfgWeaponChoices = (missionConfigFile >> "CfgLoadouts" >> str(playerSide) >> (player getVariable "phxLoadout") >> "weaponChoices") call BIS_fnc_getCfgDataArray;
-private _weaponChoices = [];
-{
-  _x params ["_weapons", "_mags"];
-  {
-    private _weapon = _x;
-    private _compatMags = [_mags, _weapon] call _fnc_getWeaponMagazines;
-    _weaponChoices pushBack [_weapon, _compatMags];
-  } forEach _weapons;
-} forEach _cfgWeaponChoices;
-
-"debug_console" callExtension str(_weaponChoices);
-missionNamespace setVariable ["phx_selector_weapons", _weaponChoices];
-
-
-// private _weaponChoices = (missionConfigFile >> "CfgLoadouts" >> "west" >> (player getVariable "phxLoadout") >> "weapons") call BIS_fnc_getCfgData;
-// private _weaponChoices = (missionConfigFile >> "CfgLoadouts" >> "west" >> (player getVariable "phxLoadout") >> "weapons") call BIS_fnc_getCfgData;
-
 
 //Exit if there is nothing for the player to select
 if (
-count (_opticChoices) == 0
+count (phx_selector_optics) == 0
 &&
-count (_weaponChoices) == 0
+count (phx_selector_weapons) == 0
 // &&
 // count (missionNamespace getVariable ["phx_selector_explosives",[]]) == 0
 // &&
@@ -67,17 +35,17 @@ _action = ["Optic_Selector","Optic","",{},{true}] call ace_interact_menu_fnc_cre
 _action = ["Weapon_Selector","Weapon","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
-_action = ["Explosives_Selector","Explosives","",{},{true}] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+// _action = ["Explosives_Selector","Explosives","",{},{true}] call ace_interact_menu_fnc_createAction;
+// [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
-_action = ["Grenades_Selector","Grenades","",{},{true}] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+// _action = ["Grenades_Selector","Grenades","",{},{true}] call ace_interact_menu_fnc_createAction;
+// [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
 //Add actions if there are items to select from
-if (count (_opticChoices) > 0) then {call phx_fnc_selector_optics};
-if (count (_weaponChoices) > 0) then {call phx_fnc_selector_weapons};
-if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_charges};
-if (count (missionNamespace getVariable ["phx_selector_grenades",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_grenades};
+if (count (phx_selector_optics) > 1) then {call phx_fnc_selector_optics};
+if (count (phx_selector_weapons) > 1) then {call phx_fnc_selector_weapons};
+// if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_charges};
+// if (count (missionNamespace getVariable ["phx_selector_grenades",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_grenades};
 
 //Remove selector when safe start ends
 [{!phx_safetyEnabled}, {
