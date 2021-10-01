@@ -37,6 +37,7 @@ removeHeadgear player;
 
 
 #define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+#define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 
 private _sideStr = (playerSide call BIS_fnc_sideID) call BIS_fnc_sideName;
 mySideWeaponSelection = missionNamespace getVariable ("phx_" + _sideStr + "Weapons");
@@ -57,6 +58,7 @@ private _cfgWeaponChoices = (CFGWEAPONS >> "weaponChoices") call BIS_fnc_getCfgD
 private _cfgAttachments = (CFGWEAPONS >> "attachments") call BIS_fnc_getCfgDataArray;
 private _cfgLauncherAttachments = (CFGWEAPONS >> "launcherAttachments") call BIS_fnc_getCfgDataArray;
 private _cfgExplosiveChoices = (CFGWEAPONS >> "explosiveChoices") call BIS_fnc_getCfgDataArray;
+private _cfgGrenadeChoices = (CFGWEAPONS >> "grenadeChoices") call BIS_fnc_getCfgDataArray;
 private _cfgGiveSideKey = (CFGWEAPONS >> "giveSideKey") call BIS_fnc_getCfgData;
 // private _cfgHandgunAttachments = getArray (_cfgPath >> "handgunAttachments");
 
@@ -189,12 +191,26 @@ if (PLAYERLOADOUTVAR in ["MAT", "MATA"]) then {
 
 
 // CE Explosives
-phx_loadout_explosives = if (count _cfgExplosiveChoices > 0) then {selectRandom(_cfgExplosiveChoices)} else {[]};
-"debug_console" callExtension str(phx_loadout_explosives);
-{
-  [_x, "backpack"] call phx_fnc_addGear;
-} forEach (phx_loadout_explosives select [1, 2]);
-phx_selector_explosives = if (count _cfgExplosiveChoices > 0) then {_cfgExplosiveChoices} else {[]};
+if (count _cfgExplosiveChoices > 0) then {
+  phx_selector_currentExplosives = selectRandom(_cfgExplosiveChoices);
+  // "debug_console" callExtension str(phx_loadout_explosives);
+  {
+    [_x, "backpack"] call phx_fnc_addGear;
+  } forEach (phx_selector_currentExplosives select [1, 2]);
+  phx_selector_explosives = _cfgExplosiveChoices;
+} else {phx_selector_explosives = []};
+
+
+// CE Grenades
+if (count _cfgGrenadeChoices > 0) then {
+  phx_selector_currentGrenades = selectRandom(_cfgGrenadeChoices);
+  // "debug_console" callExtension str(phx_loadout_explosives);
+  {
+    [_x, "backpack"] call phx_fnc_addGear;
+  } forEach (phx_selector_currentGrenades select [1, 2]);
+  phx_selector_grenades = _cfgGrenadeChoices;
+} else {phx_selector_grenades = []};
+
 
 // Attributes
 if (PLAYERLOADOUTVAR == "MED") then {player setVariable ["ace_medical_medicClass", 1, true]};
@@ -256,36 +272,6 @@ if (_cfgGiveSideKey > 0) then {
 ];
 
 
-// show hint
-_fnc_hintDetails = {
-  params ["_class", "_count"];
-	private _thisCfg = _class call CBA_fnc_getItemConfig;
-	private _dispName = [_thisCfg] call BIS_fnc_displayName;
-	private _desc = getText(_thisCfg >> "descriptionShort");
-	private _pic = getText(_thisCfg >> "picture");
-
-  private "_textArr";
-  if (!isNil "_count") then {
-    _textArr = [
-      format["<t align='center'><img size='2.5' image='%1'/><t valign='bottom'>x%2</t>", _pic, _count],
-      format["<t size='0.7'>%1</t>", _dispName],
-      format["<t size='0.7'>%1</t>", _desc],
-      "</t>"
-    ];
-  } else {
-    _textArr = [
-      format["<t align='center'><img size='2.5' image='%1'/>", _pic],
-      format["<t size='0.7'>%1</t>", _dispName],
-      format["<t size='0.7'>%1</t>", _desc],
-      "</t>"
-    ];
-  };
-	// [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
-	_textArr joinString '<br/>'
-};
-
-#define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
-
 private _strRole = "";
 if (LOADOUTROLE("PL")) then {_strRole = " Platoon Leader"};
 if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {_strRole = " Squad Leader"};
@@ -309,36 +295,94 @@ if (LOADOUTROLE("PI")) then {_strRole = " Pilot"};
 if (LOADOUTROLE("MED")) then {_strRole = " Medic"};
 
 
-#define STYLE_HEADER "<t align='center' size='1.4' color='#e1701a' face='PuristaBold'>"
+#define STYLE_HEADER_NOTIFY "<t align='center' size='1.4' color='#e1701a' face='PuristaBold'>"
+#define STYLE_TEXT_NOTIFY "<t align='center' size='0.7' face='EtelkaMonospacePro'>"
+#define STYLE_HEADER_DIARY "<font size='16' color='#e1701a' face='PuristaBold'>"
+#define STYLE_TEXT_DIARY "<font size='12' face='PuristaMedium'>"
+
+// show hint
+_fnc_hintDetails = {
+  params ["_class", "_count", "_notifyString", "_diaryString"];
+	private _thisCfg = _class call CBA_fnc_getItemConfig;
+	private _dispName = [_thisCfg] call BIS_fnc_displayName;
+	private _desc = getText(_thisCfg >> "descriptionShort");
+	private _pic = getText(_thisCfg >> "picture");
+
+  private _notifyArr = [];
+  private _diaryArr = [];
+  if (!isNil "_count") then {
+    _notifyArr pushBack format["<t align='center'><img size='2.5' image='%1'/><t valign='bottom'>x%2</t>", _pic, _count];
+    _diaryArr pushBack format[STYLE_TEXT_DIARY + "<img height='75' image='%1'/><font valign='bottom'>x%2</font>", _pic, _count];
+  } else {
+    _notifyArr pushBack format["<t align='center'><img size='2.5' image='%1'/>", _pic];
+    _diaryArr pushBack format[STYLE_TEXT_DIARY + "<img height='75' image='%1'/>", _pic];
+  };
+  _notifyArr append [
+    format[STYLE_TEXT_NOTIFY + "%1</t>", _dispName],
+    // format[STYLE_TEXT_NOTIFY + "%1</t>", _desc],
+    "</t>"
+  ];
+  _diaryArr append [
+    format[STYLE_TEXT_DIARY + "%1</font>", _dispName],
+    format[STYLE_TEXT_DIARY + "%1</font>", _desc],
+    "</font>"
+  ];
+
+	// [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+	_notifyString pushBack (_notifyArr joinString '<br/>');
+  _diaryString pushBack (_diaryArr joinString '<br/>');
+  true
+};
+
 private _notifyString = [];
-_notifyString pushBack (STYLE_HEADER + "ROLE</t>");
-_notifyString pushBack ("<t align='center' face='PuristaLight'>You are a" + _strRole + "<br/>in " + (roleDescription player splitString '@' select 1) + "</t>");
-// _notifyString pushBack ("<br/>");
-_notifyString pushBack (STYLE_HEADER + "Primary Weapon</t>");
-_notifyString pushBack ([primaryWeapon player] call _fnc_hintDetails);
-// _notifyString pushBack ("<br/>");
-_notifyString pushBack (STYLE_HEADER + "Handgun Weapon</t>");
-_notifyString pushBack ([handgunWeapon player] call _fnc_hintDetails);
-// _notifyString pushBack ("<br/>");
+private _diaryString = [];
+
+_notifyString pushBack (STYLE_HEADER_NOTIFY + "ROLE</t>");
+_diaryString pushBack (STYLE_HEADER_DIARY + "ROLE</font>");
+_notifyString pushBack ("<t align='center' face='PuristaMedium'>You are a" + _strRole + "<br/>in " + (roleDescription player splitString '@' select 1) + "</t>");
+_diaryString pushBack ("<font align='center' face='PuristaMedium'>You are a" + _strRole + " in " + (roleDescription player splitString '@' select 1) + "</t><br/>");
+
+_notifyString pushBack (STYLE_HEADER_NOTIFY + "Primary Weapon</t>");
+_diaryString pushBack (STYLE_HEADER_DIARY + "Primary Weapon</font>");
+[primaryWeapon player, nil, _notifyString, _diaryString] call _fnc_hintDetails;
+
+_notifyString pushBack (STYLE_HEADER_NOTIFY + "Handgun Weapon</t>");
+_diaryString pushBack (STYLE_HEADER_DIARY + "Handgun Weapon</font>");
+[handgunWeapon player, nil, _notifyString, _diaryString] call _fnc_hintDetails;
 
 if (secondaryWeapon player != "") then {
-	_notifyString pushBack (STYLE_HEADER + "Launcher</t>");
-	_notifyString pushBack ([secondaryWeapon player] call _fnc_hintDetails)
+	_notifyString pushBack (STYLE_HEADER_NOTIFY + "Launcher</t>");
+  _diaryString pushBack (STYLE_HEADER_DIARY + "Launcher</font>");
+	[secondaryWeapon player, nil, _notifyString, _diaryString] call _fnc_hintDetails;
 };
 
 if (LOADOUTROLE("CE")) then {
-	_notifyString pushBack (STYLE_HEADER + "Explosives</t>");
+	_notifyString pushBack (STYLE_HEADER_NOTIFY + "Explosives</t>");
+  _diaryString pushBack (STYLE_HEADER_DIARY + "Explosives</font>");
 	{
     (_x splitString ':') params ["_class", "_count"];
-    _notifyString pushBack ([_class, _count] call _fnc_hintDetails);
-  } forEach (phx_loadout_explosives select [1,2]);
+    [_class, _count, _notifyString, _diaryString] call _fnc_hintDetails;
+  } forEach (phx_selector_currentExplosives select [1,2]);
+
+  _notifyString pushBack (STYLE_HEADER_NOTIFY + "Grenades</t>");
+  _diaryString pushBack (STYLE_HEADER_DIARY + "Grenades</font>");
+	{
+    (_x splitString ':') params ["_class", "_count"];
+    [_class, _count, _notifyString, _diaryString] call _fnc_hintDetails;
+  } forEach (phx_selector_currentGrenades select [1,2]);
 };
 
 [{
   [_this joinString '<br/>', "warning", 15] call phx_ui_fnc_notify;
 }, _notifyString, 2] call CBA_fnc_waitAndExecute;
 
-
+player createDiaryRecord [
+  "PHX_Diary_Details",
+  [
+    "My Starting Loadout",
+    _diaryString joinString "<br/>"
+  ]
+];
 
 
 missionNamespace setVariable ["phx_loadoutAssigned",true];

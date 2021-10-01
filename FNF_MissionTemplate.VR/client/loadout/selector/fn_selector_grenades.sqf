@@ -1,5 +1,4 @@
 //set current grenades to default from loadout init
-phx_selector_currentGrenades = phx_loadout_thermite;
 
 phx_selector_fnc_grenades = {
 
@@ -67,7 +66,7 @@ phx_selector_fnc_grenades = {
     {
       [_expArr # 0, _x] call _fnc_hintDetails;
     } forEach _granted;
-    
+
 
     phx_selector_currentGrenades = _expArr;
   } else {
@@ -90,10 +89,7 @@ phx_selector_fnc_grenades = {
       [
         "<t align='center'>",
         "<t size='2' color='#FFFF00' >WARNING</t>",
-        "Previously chosen grenades not found in inventory.",
-        "Cannot spawn new grenades for you.",
-        "",
-        "This is an anti-duplication measure. You will need to return the below grenades to your inventory to be removed and replaced with your selection.<br/>",
+        "To avoid duplication, you must have your previously chosen explosives in your inventory to select a new one.",
         _mustReturn,
         "</t>"
       ] joinString "<br/>",
@@ -105,10 +101,18 @@ phx_selector_fnc_grenades = {
 
 //grenades actions
 {
-  _action = ["Grenades_Selector",_x select 0,"",{
-    (_this select 2) call phx_selector_fnc_grenades;
-  },{ // condition
-    fnf_pref_loadoutInterface == "ACE"
-  }, {}, _x] call ace_interact_menu_fnc_createAction;
+  _action = [
+    "Grenades_Selector",
+    _x select 0,
+    "",
+    { // statement
+      (_this select 2) call phx_selector_fnc_grenades;
+    },
+    { // condition
+      fnf_pref_loadoutInterface == "ACE"
+    },
+    {}, // child code
+    _x
+  ] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Grenades_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_grenades;

@@ -85,6 +85,7 @@ class ARMY_OCP {
     attachments[] = {};
     launcherAttachments[] = {};
     explosiveChoices[] = {};
+    grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
   };
 
@@ -166,7 +167,7 @@ class ARMY_OCP {
   };
 
   class MGA : BASE {
-    backpackItems[] += {MMG_MAG_ASST,TRIPOD};
+    backpackItems[] += {MMG_MAG_ASST,TRIPOD,SHOVEL};
   };
 
   class MG : BASE {
@@ -176,11 +177,12 @@ class ARMY_OCP {
   };
 
   class CE : BASE {
+    magazines[] = {SMOKE_GRENADES};
     items[] += {CE_TRIGGER,CE_DEFUSE};
     backpackItems[] += {CE_DETECTOR,CE_FORTIFYTOOL,SHOVEL};
     explosiveChoices[] = {{CE_SATCHEL},{CE_MINEAP},{CE_MINEAT},{CE_DEMOCHARGE}};
+    grenadeChoices[] = {{CE_FRAG_GRENADES},{CE_INCEN_GRENADES}};
   };
-
 
   class LAT : BASE {
     launchers[] = {AT_LAUNCHER};

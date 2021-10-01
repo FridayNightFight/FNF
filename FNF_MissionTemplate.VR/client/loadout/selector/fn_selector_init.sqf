@@ -13,6 +13,8 @@ or phx_selector_weapons = [["WEAPON_CLASS", "MAG_CLASS:Num", "MAG_CLASS:Num"]]
 -The weapon selector only works with primary weapon slot weapons
 */
 
+#define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+#define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 
 //Exit if there is nothing for the player to select
 if (
@@ -35,17 +37,17 @@ _action = ["Optic_Selector","Optic","",{},{true}] call ace_interact_menu_fnc_cre
 _action = ["Weapon_Selector","Weapon","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
-// _action = ["Explosives_Selector","Explosives","",{},{true}] call ace_interact_menu_fnc_createAction;
-// [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+_action = ["Explosives_Selector","Explosives","",{},{true}] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
-// _action = ["Grenades_Selector","Grenades","",{},{true}] call ace_interact_menu_fnc_createAction;
-// [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+_action = ["Grenades_Selector","Grenades","",{},{true}] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
 //Add actions if there are items to select from
 if (count (phx_selector_optics) > 1) then {call phx_fnc_selector_optics};
 if (count (phx_selector_weapons) > 1) then {call phx_fnc_selector_weapons};
-// if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_charges};
-// if (count (missionNamespace getVariable ["phx_selector_grenades",[]]) > 0 && pRole == ROLE_CE) then {call phx_fnc_selector_grenades};
+if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && LOADOUTROLE("CE")) then {call phx_fnc_selector_charges};
+if (count (missionNamespace getVariable ["phx_selector_grenades",[]]) > 0 && LOADOUTROLE("CE")) then {call phx_fnc_selector_grenades};
 
 //Remove selector when safe start ends
 [{!phx_safetyEnabled}, {

@@ -18,8 +18,7 @@
 #define FRAG_GRENADES "rhs_mag_m67:2"
 #define BASE_GRENADES FRAG_GRENADES,SMOKE_GRENADES
 #define MEDIC_SMOKES "SmokeShellBlue:3"
-#define LEADER_SMOKES "SmokeShellGreen:2","SmokeShellPurple:2", "SmokeShellRed:2"
-#define INCENDIARY_GRENADES "ACE_M14:2"
+#define LEADER_SMOKES "SmokeShellGreen:2","SmokeShellPurple:2","SmokeShellRed:2"
 
 #define BASE_UGL_HUNTIR ACE_HuntIR_M203
 
@@ -36,6 +35,8 @@
 #define CE_DEFUSE "ACE_DefusalKit"
 #define CE_DETECTOR "MineDetector"
 #define CE_FORTIFYTOOL "ACE_Fortify"
+#define CE_FRAG_GRENADES "2x Frag grenades", "rhs_mag_m67:2"
+#define CE_INCEN_GRENADES "2x Thermite grenades", "ACE_M14:2"
 #define CE_SATCHEL "2x Satchel", "SatchelCharge_Remote_Mag:2"
 #define CE_MINEAP "2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"
 #define CE_MINEAT "2x AT mine", "ATMine_Range_Mag:2"

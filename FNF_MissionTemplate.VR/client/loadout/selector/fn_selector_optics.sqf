@@ -103,14 +103,14 @@ phx_selector_fnc_optics = {
     "Optic_Selector",
     _dispName,
     "",
-    { // execution
+    { // statement
       _this call phx_selector_fnc_optics;
     },
     { // condition
       (_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems) &&
       fnf_pref_loadoutInterface == "ACE"
     },
-    {},
+    {}, // child code
     _x
   ] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
@@ -120,11 +120,11 @@ _action = [
   "Optic_Selector",
   "None",
   "",
-  {
+  { // statement
     player removePrimaryWeaponItem ((primaryWeaponItems player) select 2);
     player setVariable ["phx_ChosenOptic", ""];
   },
-  {
+  { // condition
     player getVariable "phx_ChosenOptic" != "" &&
     fnf_pref_loadoutInterface == "ACE"
   }

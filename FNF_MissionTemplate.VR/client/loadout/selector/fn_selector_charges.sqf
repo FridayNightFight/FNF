@@ -1,5 +1,4 @@
 //set current charges to default from laodout init
-phx_selector_currentExplosives = phx_loadout_explosives;
 
 phx_selector_fnc_explosives = {
 
@@ -19,6 +18,7 @@ phx_selector_fnc_explosives = {
     [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
   };
 
+  "debug_console" callExtension str(_this);
   private _expArr = _this;
 
   if (_expArr isEqualTo phx_selector_currentExplosives) exitWith {};
@@ -100,15 +100,19 @@ phx_selector_fnc_explosives = {
 
 //charges actions
 {
+  // "debug_console" callExtension ("ForEach phx_selector_charges: " + str(_x));
   _action = [
     "Explosives_Selector",
     _x select 0,
     "",
-  { // execution
-    (_this select 2) call phx_selector_fnc_explosives;
-  },
-  { // condition
-    fnf_pref_loadoutInterface == "ACE"
-  }, {}, _x] call ace_interact_menu_fnc_createAction;
+    { // statement
+      (_this select 2) call phx_selector_fnc_explosives;
+    },
+    { // condition
+      fnf_pref_loadoutInterface == "ACE"
+    },
+    {}, // child code
+    _x
+  ] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Explosives_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_explosives;
