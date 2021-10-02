@@ -36,6 +36,21 @@ player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cb
 [] spawn phx_fnc_unflipVehicleAddAction;
 
 
+private _action = [
+	"FixUniformBug",
+	"Fix ""No Uniform"" Bug",
+	"",
+	{[player] call phx_fnc_fixUniformBug},
+	{phx_safetyEnabled}
+] call ace_interact_menu_fnc_createAction;
+[
+	player,
+	1,
+	["ACE_SelfActions"],
+	_action
+] call ace_interact_menu_fnc_addActionToObject;
+
+
 // Zeus actions
 _action = [
 	"Zeus_GoToLastReport",
