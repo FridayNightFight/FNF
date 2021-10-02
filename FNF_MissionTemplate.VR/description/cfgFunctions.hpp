@@ -102,6 +102,7 @@ class CfgFunctions {
       class showTimeOnMap{};
       class adminGameEnd{};
       class objectivePreview{};
+      class SCUDFired{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";
