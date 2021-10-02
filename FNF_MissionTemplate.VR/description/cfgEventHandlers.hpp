@@ -28,7 +28,7 @@ class Extended_InitPost_EventHandlers {
 };
 
 class Extended_FiredBIS_Eventhandlers {
-	class rhs_9k79_K {
-		serverScudFired = "_this call phx_fnc_SCUDfired";
-	};
+  class rhs_9k79_K {
+    ScudFired = "_this call phx_fnc_SCUDfired";
+  };
 };
