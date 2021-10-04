@@ -9,23 +9,27 @@ class CfgPatches
     units[] = {};
     weapons[] = {};
     requiredVersion = 0.1;
-    requiredAddons[] = {"ace_compat_rhs_afrf3"};
+    requiredAddons[] = {"rhs_c_rva"};
   };
 };
 
 class CfgVehicles {
-  class Truck_F {
+  class Car_F;
+
+  class Truck_F: Car_F{
     class UserActions;
   };
-  class OTR21_Base : Truck_F {
-    class UserActions : UserActions {
+
+  class OTR21_Base: Truck_F {
+    class UserActions: UserActions {
       class ControlPanel;
     };
   };
-  class rhs_9k79 : OTR21_Base {
-    class UserActions : UserActions {
-      class ControlPanel : ControlPanel {
-        condition = "(alive this)&&((call rhs_fnc_findPlayer)==(gunner this))&&!(missionNamespace getVariable [""phx_safetyEnabled"", true])";
+
+  class rhs_9k79: OTR21_Base {
+    class UserActions: UserActions {
+      class ControlPanel: ControlPanel {
+        condition = "(alive this)&&((call rhs_fnc_findPlayer)==(gunner this))&&!(missionNamespace getVariable ['phx_safetyEnabled', true])";
       };
     };
   };
