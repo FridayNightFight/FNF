@@ -4,21 +4,18 @@ params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projecti
 
 phx_server_playRocketSiren = {
 	params ["_unit", "_ammo"];
-	_startTime = time;
 	_projectile = (position _unit nearObjects [_ammo,250]) select 0;
-	while {(time - _startTime) < 30} do {
-		if (time % 5 < 1) then {
-			playSound3D [
-				"A3\Sounds_F\sfx\siren.wss", // filename
-				_unit, // soundSource
-				false, // isInside
-				getposasl _unit, // soundPosition
-				5, // volume
-				1, // soundPitch
-				([0,0] distance2d [worldSize,worldSize]) // distance 
-			];
-			uiSleep 1;
-		};
+	for "_i" from 1 to 12 do {
+		playSound3D [
+			"A3\Sounds_F\sfx\siren.wss", // filename
+			_unit, // soundSource
+			false, // isInside
+			getposasl _unit, // soundPosition
+			3, // volume
+			1, // soundPitch
+			10000 // distance
+		];
+		sleep 1.2;
 	};
 };
 
