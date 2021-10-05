@@ -1,5 +1,16 @@
 #include "WEAPONS_RU.sqf"
 
+WEAPONS_SOVIET_LOADOUT = [
+  ["rifle", ["rhs_weap_ak74n", "rhs_weap_akmn"]],
+  ["sidearm", ["rhs_weap_pya"]],
+  ["AR", ["rhs_weap_pkm"]],
+  ["MG", ["rhs_weap_pkm"]],
+  ["AT", ["rhs_weap_rpg26"]],
+  ["SNP", ["rhs_weap_t5000"]],
+  ["RS", ["rhs_weap_ak74n", "rhs_weap_akmn", "rhs_weap_aks74un"]],
+  ["P", ["rhs_weap_aks74un"]]
+];
+
 if (!phx_loadout_hasSpecial) then {
   switch (selectRandom [1,2]) do {
     case 1: {
