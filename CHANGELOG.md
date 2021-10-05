@@ -1,3 +1,22 @@
+# 2.4.2
+- #123 allows mission makers to set Bravo & Delta MATs separately per side, as well as missile/rocket counts
+- #123 adds pictures of MAT weaponry
+- #123 adds MM-chosen loadout info page to diary >> Mission Details >> Mission Variables
+- #123 renames diary >> Mission Details >> Vars to Mission Variables
+- #123 adds configured game mode-specific victory conditions/info to Mission Variables
+- #123 adds ability for MMs to add detailed briefing information to their missions
+- #126 adds the ability for NVG goggles to remain active when looking down primary sniper optic
+
+# 2.4.1-hotfix.1
+- fixes radio ORBAT issue
+
+# 2.4.1
+- adds vehicle locking system
+- fixes 2 medic inits
+- cba settings update
+- rpk config fix
+- fixes to webhooks
+
 # v2.4.0
 #98 Implements major ORBAT change
 #97 Adds Discord embeds in general channel of Discord to report round status
