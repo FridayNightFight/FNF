@@ -139,7 +139,7 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
       ]
     ]
   ];
-}] call CBA_fnc_waitUntilAndExecute;
+}, [], 30] call CBA_fnc_waitUntilAndExecute;
 
 //show opfor uniform and headgear if side is present
 if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
@@ -180,7 +180,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
       ]
     ]
   ];
-}] call CBA_fnc_waitUntilAndExecute;
+}, [], 30] call CBA_fnc_waitUntilAndExecute;
 
 //show indfor uniform and headgear if side is present
 if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") then {
@@ -221,7 +221,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
       ]
     ]
   ];
-}] call CBA_fnc_waitUntilAndExecute;
+}, [], 30] call CBA_fnc_waitUntilAndExecute;
 
 //list some pertinent variables
 if (phx_defendingSide != sideEmpty) then {
@@ -244,9 +244,16 @@ switch (phx_magnifiedOptics) do {
 _varStr = _varStr + format ["Magnified optics: %1", _magOpticsStr];
 _varStr = _varStr + "<br/>";
 private _addNVGStr = "";
-switch (phx_addNVG) do {
-  case true: {_addNVGStr = "Yes"};
-  case false: {_addNVGStr = "No"};
+switch (true) do {
+  case (phx_addNVG isEqualTo true): {_addNVGStr = "Yes"};
+  case (phx_addNVG isEqualTo false): {_addNVGStr = "No"};
+  case (typeName phx_addNVG == "SIDE"): {_addNVGStr = phx_addNVG call BIS_fnc_sideName};
+  case (typeName phx_addNVG == "ARRAY"): {
+    {
+      _addNVGStr = _addNVGStr + (_x call BIS_fnc_sideName);
+      if !(_forEachIndex == (count phx_addNVG) - 1) then {_addNVGStr = _addNVGStr + ", "};
+    } forEach phx_addNVG;
+  };
 };
 _varStr = _varStr + format ["NVGs equipped: %1", _addNVGStr];
 _varStr = _varStr + "<br/>";
