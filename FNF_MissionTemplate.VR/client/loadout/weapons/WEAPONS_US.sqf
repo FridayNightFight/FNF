@@ -6,6 +6,18 @@ phx_loadout_sidearm_mag = "rhsusf_mag_17Rnd_9x19_JHP:2";
 phx_loadout_rifle_mag_tracer = "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4";
 phx_loadout_rifle_mag = "rhs_mag_30Rnd_556x45_M855A1_Stanag:7";
 
+
+WEAPONS_US_LOADOUT = [
+  ["rifle", ["rhs_weap_m4a1_blockII_bk", "rhs_weap_m16a4_carryhandle"]],
+  ["sidearm", ["rhsusf_weap_glock17g4"]],
+  ["AR", ["rhs_weap_m249_pip_L"]],
+  ["MG", ["rhs_weap_m240G"]],
+  ["AT", ["rhs_weap_m72a7"]],
+  ["SNP", ["rhs_weap_XM2010"]],
+  ["RS", ["srifle_EBR_F", "rhsusf_weap_MP7A2"]],
+  ["P", ["rhsusf_weap_MP7A2"]]
+];
+
 if (phx_loadout_hasUGL) then {
   phx_loadout_rifle_weapon = "rhs_weap_m4a1_blockII_M203_bk";
   phx_selector_weapons = [["rhs_weap_m16a4_carryhandle_M203"]];
