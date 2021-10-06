@@ -61,6 +61,13 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
   };
 }];
 
+//Lock the door for roof access on the office building
+_triggerSize = triggerArea zoneTrigger;
+_maxSize = sqrt (((_triggerSize select 0) ^ 2) + ((_triggerSize select 1) ^ 2));
+{
+  _x setVariable ['bis_disabled_Door_6',1,true];
+} forEach (getPos zoneTrigger nearObjects ["Land_Offices_01_V1_F", _maxSize]);
+
 // Receives event when a player submits a report
 // Determines logged-in admin and sends Discord embed with contents of report and the admin @'ed
 phxAdminMessageReceiver = ["phxAdminMessageServer", {
