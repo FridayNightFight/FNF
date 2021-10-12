@@ -1,11 +1,17 @@
 phx_fortify_objArr = [];
 
-if (!isNil "term1") then { phx_fortify_objArr append [term1] };
-if (!isNil "term2") then { phx_fortify_objArr append [term2] };
-if (!isNil "term3") then { phx_fortify_objArr append [term3] };
-if (!isNil "phx_destroyObjs") then { phx_fortify_objArr append phx_destroyObjs };
-if (!isNil "ctf_flag") then { phx_fortify_objArr append [ctf_flag] };
-if (!isNil "ctf_attackTrig") then { phx_fortify_objArr append [ctf_attackTrig] };
+[{!isNil "term1"}, {phx_fortify_objArr append [term1]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term2"}, {phx_fortify_objArr append [term2]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term3"}, {phx_fortify_objArr append [term3]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "phx_destroyObjs"}, {phx_fortify_objArr append phx_destroyObjs}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_flag"}, {phx_fortify_objArr append [ctf_flag]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_attackTrig"}, {phx_fortify_objArr append [ctf_attackTrig]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+
+[{
+  {
+    if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
+  } forEach phx_fortify_objArr;
+}, [], 15] call CBA_fnc_waitAndExecute;
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
 if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
@@ -23,10 +29,6 @@ switch (playerSide) do {
   case west: {phx_fortifyMarker = "bluforSafeMarker";};
   case independent: {phx_fortifyMarker = "indforSafeMarker";};
 };
-
-{
-  if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
-} forEach phx_fortify_objArr;
 
 [{
     params ["_unit", "_object", "_cost"];
