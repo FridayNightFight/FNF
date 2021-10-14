@@ -27,16 +27,33 @@ phx_attackingSide = sideEmpty; //west/east/independent
 ////////////////////////////////////////////////////////////
 
 //BLUFOR
-phx_bluforUniform = "UNIFORM_MARPAT_WD";
-phx_bluforWeapons = "ARMY_OCP";
+phx_bluforUniform = "VN_UNI_US_MACV";
+phx_bluforGear = "VN_GEAR_US_ARMY1970";
 
 //OPFOR
-phx_opforUniform = "UNIFORM_EMR_SUMMER";
-phx_opforWeapons = "WEAPONS_RU";
+phx_opforUniform = "VN_UNI_NVA_Vietcong";
+phx_opforGear = "VN_GEAR_NVA_VC1970";
 
 //INDFOR
-phx_independentUniform = "UNIFORM_M93_OAKLEAF";
-phx_independentWeapons = "WEAPONS_IND";
+phx_indforUniform = "VN_UNI_NVA_Vietcong";
+phx_indforGear = "VN_GEAR_FR_FRA1970";
+
+/*
+  POSSIBLE VALUES:
+
+    UNIFORMS:
+      RHS_UNI_US_ARMY_OCP
+      VN_UNI_US_MACV
+      VN_UNI_US_SOG
+      VN_UNI_NVA_Vietcong
+
+    GEAR:
+      RHS_GEAR_US_ARMY
+      VN_GEAR_US_ARMY1970
+      VN_GEAR_US_SOG1970
+      VN_GEAR_NVA_VC1970
+      VN_GEAR_FR_FRA1970
+*/
 
 /*
 You can also use the civilian unit 'C_man_1'
@@ -49,42 +66,45 @@ If they have a radio, they will all be preset to the same frequency
 MAT SELECTION
 
 Possible launcher values (and recommended counts)
-	CARLG (2)
-	RPG32 (2)
-	RPG7 (4) // NOTE: missile specs would receive 4 PG7VL, 2 PG7VR rockets
-	TITAN (1)
-	JAVELIN (1)
-	METIS (1)
-	NLAW // NOTE: count is irrelevant, as this is a DISPOSABLE launcher
-	STINGER (1)
-	IGLA (1)
+	CARLG(2)
+	RPG32(2)
+	RPG7(4) // NOTE: missile specs would receive 4 PG7VL, 2 PG7VR rockets
+	TITAN(1)
+	JAVELIN(1)
+	METIS(1)
+	NLAW // NOTE: count is irrelevant and will be ignored, as this is a DISPOSABLE launcher
+	STINGER(1)
+	IGLA(1)
+
+  // SOG ONLY
+  VN_LAW(1)
+  VN_RPG7(2)
+  VN_STRELA(1)
+
+  or, you can set GEARDEFAULT to use that side's gear set's recommended MAT settings for each squad.
+    GEARDEFAULT
 
 EXAMPLE:
-	launcher type (see possible values below)
-		phx_bluAT_Bravo = CARLG;
+	format:
+		phx_bluAT_Bravo = CARLG(2);
 
-	how many rockets/missiles for each: gunner, assistant, assistant.
-	a value of 2 would mean a total of 6 rockets/missiles in this squad
-		phx_bluAT_Bravo_count = 2;
+  CARLG would give the MAT gunner a Carl Gustav
+  The 2 refers to how many rockets/missiles for each: gunner, assistant, assistant.
+  a value of 2 would mean a total of 6 rockets/missiles in this squad
+
 */
 
 // BLUFOR
-phx_bluAT_Bravo = CARLG;
-phx_bluAT_Bravo_count = 2;
-phx_bluAT_Delta = STINGER;
-phx_bluAT_Delta_count = 1;
+phx_bluAT_Bravo = GEARDEFAULT;
+phx_bluAT_Delta = VN_STRELA(1);
 
 // OPFOR
-phx_redAT_Bravo = RPG32;
-phx_redAT_Bravo_count = 2;
-phx_redAT_Delta = IGLA;
-phx_redAT_Delta_count = 1;
+phx_redAT_Bravo = RPG32(2);
+phx_redAT_Delta = IGLA(1);
 
 // INDFOR
-phx_grnAT_Bravo = RPG32;
-phx_grnAT_Bravo_count = 2;
-phx_grnAT_Delta = IGLA;
-phx_grnAT_Delta_count = 1;
+phx_grnAT_Bravo = RPG32(2);
+phx_grnAT_Delta = IGLA(1);
 
 
 /*
@@ -93,6 +113,7 @@ phx_grnAT_Delta_count = 1;
   1 will allow 4x+ optic choices. -1 will force ironsights
 */
 phx_magnifiedOptics = 0;
+
 /*
   Automatically add NVGs & lasers to players (Gen3, Black)
   Examples:
@@ -123,19 +144,19 @@ phx_briefingRules = "";
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
 
 =====BLUFOR=====                                =====ANY=====
-UNIFORM_MARPAT_WD                  --   WEAPONS_US
+UNIFORM_MARPAT_WD                  --
 UNIFORM_MARPAT_D                   --   WEAPONS_RU
 UNIFORM_OEF_CP                     --   WEAPONS_IND
 UNIFORM_PMC                        --   WEAPONS_G36
 UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
 UNIFORM_M93_WOODLAND               --   WEAPONS_M21
-UNIFORM_ARMY_OCP                   --   WEAPONS_SCAR
+RHS_US_ARMY_OCP                    --   WEAPONS_SCAR
 UNIFORM_UCP                        --   WEAPONS_VHS
 UNIFORM_CTRG_WD                    --   WEAPONS_FAL_COLDWAR
 UNIFORM_ION_BK                     --   WEAPONS_M14
 UNIFORM_ION_WD                     --   WEAPONS_SOVIET
-UNIFORM_ISRAEL_TAN
-UNIFORM_RANGER
+UNIFORM_ISRAEL_TAN                 --
+UNIFORM_RANGER                     --
 UNIFORM_WEST_POLICE
 UNIFORM_BUNDESWEHR
 UNIFORM_HELLENIC_ARMY

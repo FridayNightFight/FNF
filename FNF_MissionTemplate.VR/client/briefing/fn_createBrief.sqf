@@ -48,8 +48,54 @@ player createDiaryRecord ["Diary",
 ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa"];
 
 _getName = {
+  if (_this isEqualTo "") exitWith {""};
   getText (configFile >> "cfgWeapons" >> _this >> "displayName");
 };
+
+fnc_getItemInfo = {
+  private _thisCfg = _this call CBA_fnc_getItemConfig;
+  private _dispName = [_thisCfg] call BIS_fnc_displayName;
+  private _desc = getText(_thisCfg >> "descriptionShort");
+  private _pic = (_thisCfg >> "picture") call BIS_fnc_getCfgData;
+  [
+    ["config",_thisCfg],
+    ["displayName",_dispName],
+    ["description",_desc],
+    ["picture",_pic]
+  ]
+};
+
+_fnc_parseMATForBriefing = {
+    params ["_side", "_bravoOption", "_deltaOption"];
+    private _out = [];
+    private "_gearLoadout";
+    switch (_side) do {
+      case east: {_gearLoadout = phx_opforGear};
+      case west: {_gearLoadout = phx_bluforGear};
+      case independent: {_gearLoadout = phx_indforGear};
+    };
+    {
+      _x params ["_setting", "_role"];
+      "debug_console" callExtension str(_x);
+      if (count _setting > 0) then {
+        if (_setting # 0 isEqualTo "GEARDEFAULT") then {
+          // "debug_console" callExtension str([_gearLoadout,_role,phx_bluAT_Bravo]);
+          _data = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray;
+          //  "debug_console" callExtension str(_data);
+          _out pushBack (_data # 0);
+        } else {
+          _out pushBack (_setting # 0);
+        };
+      } else {
+        _out pushBack "";
+      };
+    } forEach [
+      [_bravoOption, "MAT1"],
+      [_deltaOption, "MAT2"]
+    ];
+
+    _out
+  };
 
 phx_safetyEndExpression = {
   [] spawn {
@@ -101,29 +147,62 @@ PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Det
 _varStr = "";
 
 //show blufor uniform and headgear if side is present
-if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") then {
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_headgear >> "picture");
+if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" || !isNil "phx_briefing_west_uniformMeta") then {
+  _helmetImg = [];
+  _vestImg = [];
+  _uniformImg = [];
+  {
+    _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_west_headgear;
+  {
+    _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_west_vest;
+  {
+    _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_west_uniform;
 
-  player createDiaryRecord ["PHX_Diary_Details",["BLUFOR Uniform",
-  format ["BLUFOR Helmet:<br/><br/>
-  <img width='178' height='178' image='%2'/>
-  <br/><br/>
-  BLUFOR Uniform:<br/><br/>
-  <img width='356' height='356' image='%1'/>
-  ", _uniformImg, _helmetImg]
-  ]];
+  private _meta = +phx_briefing_west_uniformMeta;
+
+  // "debug_console" callExtension str(phx_briefing_west_vest call fnc_getItemInfo);
+
+  player createDiaryRecord [
+    "PHX_Diary_Details",
+    [
+      "BLUFOR Uniform",
+      format ["<font size='24' shadow='1' color='#f6dcbf' face='PuristaBold'>%4</font><br/>
+<font size='14'>%5</font><br/>
+Author: %6<br/><br/>
+%1<br/>
+%2<br/>
+%3
+",
+        _helmetImg joinString "",
+        _vestImg joinString "",
+        _uniformImg joinString "",
+        _meta # 0,
+        _meta # 1,
+        _meta # 2
+      ]
+    ]
+  ];
+
+   // BLUFOR MAT
+  ([west, phx_bluAT_Bravo, phx_bluAT_Delta] call _fnc_parseMATForBriefing) params ["_bravoClass", "_deltaClass"];
+  private _bravoMeta = _bravoClass call fnc_getItemInfo;
+  private _deltaMeta = _deltaClass call fnc_getItemInfo;
 
   _varStr = _varStr + format [
-    "BLUFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
-    phx_bluAT_Bravo call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_bluAT_Bravo >> "picture")
-  ] + "<br/>";
+    "BLUFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/><br/>%3",
+    [_bravoMeta, "displayName"] call BIS_fnc_getFromPairs,
+    [_bravoMeta, "picture"] call BIS_fnc_getFromPairs,
+    [_bravoMeta, "description"] call BIS_fnc_getFromPairs
+  ] + "<br/><br/>";
   _varStr = _varStr + format [
-    "BLUFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
-    phx_bluAT_Delta call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_bluAT_Delta >> "picture")
-  ] + "<br/>";
+    "BLUFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/><br/>%3",
+    [_deltaMeta, "displayName"] call BIS_fnc_getFromPairs,
+    [_deltaMeta, "picture"] call BIS_fnc_getFromPairs,
+    [_deltaMeta, "description"] call BIS_fnc_getFromPairs
+  ] + "<br/><br/>";
 };
 
 // show BLUFOR loadout
@@ -134,37 +213,73 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") t
       "BLUFOR Loadout",
       format [
         "<font size='24' shadow='1' color='#f6dcbf' face='PuristaBold'>%1</font><br/>%2",
-        format["%1_LOADOUT", phx_bluforWeapons],
-        [phx_briefing_west_loadout] call phx_fnc_briefingParseLoadout
+        phx_briefing_west_loadout # 0 # 0,
+        phx_briefing_west_loadout call phx_fnc_briefingParseLoadout
       ]
     ]
   ];
 }] call CBA_fnc_waitUntilAndExecute;
 
+
+
+
 //show opfor uniform and headgear if side is present
-if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_headgear >> "picture");
+if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" || !isNil "phx_briefing_east_uniformMeta") then {
+  _helmetImg = [];
+  _vestImg = [];
+  _uniformImg = [];
+  {
+    _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_east_headgear;
+  {
+    _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_east_vest;
+  {
+    _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_east_uniform;
 
-  player createDiaryRecord ["PHX_Diary_Details",["OPFOR Uniform",
-  format ["OPFOR Helmet:<br/><br/>
-  <img width='178' height='178' image='%2'/>
-  <br/><br/>
-  OPFOR Uniform:<br/><br/>
-  <img width='356' height='356' image='%1'/>
-  ", _uniformImg, _helmetImg]
-  ]];
+  private _meta = +phx_briefing_east_uniformMeta;
+
+  // "debug_console" callExtension str(phx_briefing_east_vest call fnc_getItemInfo);
+
+  player createDiaryRecord [
+    "PHX_Diary_Details",
+    [
+      "OPFOR Uniform",
+      format ["<font size='24' shadow='1' color='#f6dcbf' face='PuristaBold'>%4</font><br/>
+<font size='14'>%5</font><br/>
+Author: %6<br/><br/>
+%1<br/>
+%2<br/>
+%3
+",
+        _helmetImg joinString "",
+        _vestImg joinString "",
+        _uniformImg joinString "",
+        _meta # 0,
+        _meta # 1,
+        _meta # 2
+      ]
+    ]
+  ];
+
+   // OPFOR MAT
+  ([east, phx_redAT_Bravo, phx_redAT_Delta] call _fnc_parseMATForBriefing) params ["_bravoClass", "_deltaClass"];
+  private _bravoMeta = _bravoClass call fnc_getItemInfo;
+  private _deltaMeta = _deltaClass call fnc_getItemInfo;
 
   _varStr = _varStr + format [
-    "OPFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
-    phx_redAT_Bravo call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_redAT_Bravo >> "picture")
-  ] + "<br/>";
+    "OPFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/><br/>%3",
+    [_bravoMeta, "displayName"] call BIS_fnc_getFromPairs,
+    [_bravoMeta, "picture"] call BIS_fnc_getFromPairs,
+    [_bravoMeta, "description"] call BIS_fnc_getFromPairs
+  ] + "<br/><br/>";
   _varStr = _varStr + format [
-    "OPFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
-    phx_redAT_Delta call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_redAT_Delta >> "picture")
-  ] + "<br/>";
+    "OPFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/><br/>%3",
+    [_deltaMeta, "displayName"] call BIS_fnc_getFromPairs,
+    [_deltaMeta, "picture"] call BIS_fnc_getFromPairs,
+    [_deltaMeta, "description"] call BIS_fnc_getFromPairs
+  ] + "<br/><br/>";
 };
 
 // show OPFOR loadout
@@ -175,37 +290,72 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") t
       "OPFOR Loadout",
       format [
         "<font size='24' shadow='1' color='#f6dcbf' face='PuristaBold'>%1</font><br/>%2",
-        format["%1_LOADOUT", phx_opforWeapons],
-        [phx_briefing_east_loadout] call phx_fnc_briefingParseLoadout
+        phx_briefing_east_loadout # 0 # 0,
+        phx_briefing_east_loadout call phx_fnc_briefingParseLoadout
       ]
     ]
   ];
 }] call CBA_fnc_waitUntilAndExecute;
 
+
+
 //show indfor uniform and headgear if side is present
-if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") then {
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_headgear >> "picture");
+if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !isNil "phx_briefing_ind_uniformMeta") then {
+  _helmetImg = [];
+  _vestImg = [];
+  _uniformImg = [];
+  {
+    _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_ind_headgear;
+  {
+    _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_ind_vest;
+  {
+    _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+  } forEach phx_briefing_ind_uniform;
 
-  player createDiaryRecord ["PHX_Diary_Details",["INDFOR Uniform",
-  format ["INDFOR Helmet:<br/><br/>
-  <img width='178' height='178' image='%2'/>
-  <br/><br/>
-  INDFOR Uniform:<br/><br/>
-  <img width='356' height='356' image='%1'/>
-  ", _uniformImg, _helmetImg]
-  ]];
+  private _meta = +phx_briefing_ind_uniformMeta;
+
+  // "debug_console" callExtension str(phx_briefing_ind_vest call fnc_getItemInfo);
+
+  player createDiaryRecord [
+    "PHX_Diary_Details",
+    [
+      "INDFOR Uniform",
+      format ["<font size='24' shadow='1' color='#f6dcbf' face='PuristaBold'>%4</font><br/>
+<font size='14'>%5</font><br/>
+Author: %6<br/><br/>
+%1<br/>
+%2<br/>
+%3
+",
+        _helmetImg joinString "",
+        _vestImg joinString "",
+        _uniformImg joinString "",
+        _meta # 0,
+        _meta # 1,
+        _meta # 2
+      ]
+    ]
+  ];
+
+   // INDFOR MAT
+  ([independent, phx_indAT_Bravo, phx_indAT_Delta] call _fnc_parseMATForBriefing) params ["_bravoClass", "_deltaClass"];
+  private _bravoMeta = _bravoClass call fnc_getItemInfo;
+  private _deltaMeta = _deltaClass call fnc_getItemInfo;
 
   _varStr = _varStr + format [
-    "INDFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
-    phx_grnAT_Bravo call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_grnAT_Bravo >> "picture")
-  ] + "<br/>";
+    "INDFOR MAT 1: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/><br/>%3",
+    [_bravoMeta, "displayName"] call BIS_fnc_getFromPairs,
+    [_bravoMeta, "picture"] call BIS_fnc_getFromPairs,
+    [_bravoMeta, "description"] call BIS_fnc_getFromPairs
+  ] + "<br/><br/>";
   _varStr = _varStr + format [
-    "INDFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/>",
-    phx_grnAT_Delta call _getName,
-    getText(configFile >> "CfgWeapons" >> phx_grnAT_Delta >> "picture")
-  ] + "<br/>";
+    "INDFOR MAT 2: <font color='#4de4ff'>%1</font><br/><img width='120' image='%2'/><br/>%3",
+    [_deltaMeta, "displayName"] call BIS_fnc_getFromPairs,
+    [_deltaMeta, "picture"] call BIS_fnc_getFromPairs,
+    [_deltaMeta, "description"] call BIS_fnc_getFromPairs
+  ] + "<br/><br/>";
 };
 
 // show INDFOR loadout
@@ -216,12 +366,15 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") the
       "INDFOR Loadout",
       format [
         "<font size='24' shadow='1' color='#f6dcbf' face='PuristaBold'>%1</font><br/>%2",
-        format["%1_LOADOUT", phx_indforWeapons],
-        [phx_briefing_ind_loadout] call phx_fnc_briefingParseLoadout
+        phx_briefing_ind_loadout # 0 # 0,
+        phx_briefing_ind_loadout call phx_fnc_briefingParseLoadout
       ]
     ]
   ];
 }] call CBA_fnc_waitUntilAndExecute;
+
+
+
 
 //list some pertinent variables
 if (phx_defendingSide != sideEmpty) then {
@@ -238,15 +391,15 @@ _varStr = _varStr + format ["Maximum view distance: %1m", phx_maxViewDistance];
 _varStr = _varStr + "<br/>";
 private _magOpticsStr = "";
 switch (phx_magnifiedOptics) do {
-  case true: {_magOpticsStr = "Yes"};
-  case false: {_magOpticsStr = "No"};
+  case 1: {_magOpticsStr = "Yes"};
+  case 0: {_magOpticsStr = "No"};
 };
 _varStr = _varStr + format ["Magnified optics: %1", _magOpticsStr];
 _varStr = _varStr + "<br/>";
 private _addNVGStr = "";
 switch (phx_addNVG) do {
-  case true: {_addNVGStr = "Yes"};
-  case false: {_addNVGStr = "No"};
+  case 1: {_addNVGStr = "Yes"};
+  case 0: {_addNVGStr = "No"};
 };
 _varStr = _varStr + format ["NVGs equipped: %1", _addNVGStr];
 _varStr = _varStr + "<br/>";

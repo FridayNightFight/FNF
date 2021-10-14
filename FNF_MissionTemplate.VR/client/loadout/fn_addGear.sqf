@@ -44,7 +44,7 @@ if (typeName _itemStr isEqualTo "STRING") then {
   switch (_itemStr select 1) do {
     case "backpack": {
       for "_i" from 1 to _numToAdd do {
-        if (player canAddItemToBackpack _item) then {
+        if ([player, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
           player addItemToBackpack _item;
         } else {
           _itemStr call _err;
@@ -53,10 +53,10 @@ if (typeName _itemStr isEqualTo "STRING") then {
     };
     case "vest": {
       for "_i" from 1 to _numToAdd do {
-        if (player canAddItemToVest _item) then {
+        if ([player, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
           player addItemToVest _item;
         } else {
-          if (player canAddItemToBackpack _item) then {
+          if ([player, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
             player addItemToBackpack _item;
           } else {
             _itemStr call _err;
@@ -66,13 +66,13 @@ if (typeName _itemStr isEqualTo "STRING") then {
     };
     case "uniform": {
       for "_i" from 1 to _numToAdd do {
-        if (player canAddItemToUniform _item) then {
+        if ([player, _item, 1, true, false, false] call CBA_fnc_canAddItem) then {
           player addItemToUniform _item;
         } else {
-          if (player canAddItemToVest _item) then {
+          if ([player, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
             player addItemToVest _item;
           } else {
-            if (player canAddItemToBackpack _item) then {
+            if ([player, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
               player addItemToBackpack _item;
             } else {
               _itemStr call _err;

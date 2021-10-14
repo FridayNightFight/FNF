@@ -1,76 +1,71 @@
 /*Sets the MAT weapon and ammo class*/
 
-private ["_at", "_magCount"];
+#define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+#define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
+#define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
+#define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
+#define CFGCOMMON missionConfigFile >> "CfgLoadouts" >> "common"
+#define CFGOPTICS missionConfigFile >> "CfgLoadouts" >> "optics"
 
-switch (playerSide) do {
-  case east: {
-    if (["Bravo", roleDescription player] call BIS_fnc_inString) then {
-      _at = phx_redAT_Bravo;
-      _magCount = phx_redAT_Bravo_count;
-    };
-    if (["Delta", roleDescription player] call BIS_fnc_inString) then {
-      _at = phx_redAT_Delta;
-      _magCount = phx_redAT_Bravo_count;
-    };
-  };
-  case west: {
-    if (["Bravo", roleDescription player] call BIS_fnc_inString) then {
-      _at = phx_bluAT_Bravo;
-      _magCount = phx_bluAT_Bravo_count;
-    };
-    if (["Delta", roleDescription player] call BIS_fnc_inString) then {
-      _at = phx_bluAT_Delta;
-      _magCount = phx_bluAT_Delta_count;
-    };
-  };
-  case independent: {
-    if (["Bravo", roleDescription player] call BIS_fnc_inString) then {
-      _at = phx_grnAT_Bravo;
-      _magCount = phx_grnAT_Bravo_count;
-    };
-    if (["Delta", roleDescription player] call BIS_fnc_inString) then {
-      _at = phx_grnAT_Delta;
-      _magCount = phx_grnAT_Delta_count;
-    };
-  };
+fnc_notify_noDefaultConfigured = {
+  [{time > 2}, {["<t align='center'>Error:<br/>GEARDEFAULT selected as MAT,<br/>but no default MAT is configured for this gearset</t>", "error", 20] call phx_ui_fnc_notify}] call CBA_fnc_waitUntilAndExecute;
+};
+fnc_notify_invalidConfigSetting = {
+  [{time > 2}, {["<t align='center'>Error:<br/>The mission configuration for<br/>your slot's MAT setting is invalid.</t>", "error", 20] call phx_ui_fnc_notify}] call CBA_fnc_waitUntilAndExecute;
 };
 
-phx_loadout_mediumantitank_weapon = _at;
-phx_loadout_mediumantitank_optic = "";
-phx_loadout_mediumantitank_mag_1 = "";
 
-switch (phx_loadout_mediumantitank_weapon) do {
-  case "rhs_weap_maaws": {
-    phx_loadout_mediumantitank_optic = "rhs_optic_maaws";
-    phx_loadout_mediumantitank_mag = format["rhs_mag_maaws_HEAT:%1", _magCount];
+private ["_at","_configVarValue","_configVarName","_cfgDefaultMAT"];
+_cfgDefaultMAT = (CFGGEAR >> "defaultMAT") call BIS_fnc_getCfgDataArray;
+
+switch (playerSide) do {
+  case east: {_configVarName = "phx_redAT_"};
+  case west: {_configVarName = "phx_bluAT_"};
+  case independent: {_configVarName = "phx_grnAT_"};
+};
+
+
+
+if (["Bravo", roleDescription player] call BIS_fnc_inString) then {
+  _configVarName = _configVarName + "Bravo";
+};
+if (["Delta", roleDescription player] call BIS_fnc_inString) then {
+  _configVarName = _configVarName + "Delta";
+};
+
+_configVarValue = missionNamespace getVariable [_configVarName, []];
+if (
+  !(typeName _configVarValue == "ARRAY") ||
+  _configVarValue isEqualTo []
+) exitWith {
+  // if value from config.sqf isn't valid, notify the player and cease further processing
+  call fnc_notify_invalidConfigSetting;
+};
+
+// "debug_console" callExtension ("PREPRE: " + str(_cfgDefaultMAT));
+// if it is valid, move on
+if ((_configVarValue # 0) isEqualTo "GEARDEFAULT") then {
+  // We're using the gear set -- validate it
+  if (_cfgDefaultMAT isEqualTo []) exitWith {
+    call fnc_notify_noDefaultConfigured;
   };
-  case "launch_RPG32_green_F": {
-    phx_loadout_mediumantitank_mag = format["RPG32_F:%1", _magCount];
-  };
-  case "rhs_weap_rpg7": {
-    phx_loadout_mediumantitank_optic = "rhs_acc_pgo7v3";
-    phx_loadout_mediumantitank_mag = format["rhs_rpg7_PG7VL_mag:%1", _magCount];
-    phx_loadout_mediumantitank_mag_1 = format["rhs_rpg7_PG7VR_mag:%1", ceil(_magCount / 2)];
-  };
-  case "launch_I_Titan_short_F": {
-    phx_loadout_mediumantitank_mag = format["Titan_AT:%1", _magCount];
-  };
-  case "rhs_weap_fgm148": {
-    phx_loadout_mediumantitank_mag = format["rhs_fgm148_magazine_AT:%1", _magCount];
-  };
-  case "ACE_launch_NLAW_ready_F": {
-    phx_loadout_mediumantitank_mag = "NLAW_F";
-    if (pRole == ROLE_AAT) then {
-      phx_loadout_mediumantitank_mag = "";
-    };
-  };
-  case "launch_O_Vorona_green_F": {
-    phx_loadout_mediumantitank_mag = format["Vorona_HEAT:%1", _magCount];
-  };
-  case "rhs_weap_fim92": {
-    phx_loadout_mediumantitank_mag = format["rhs_fim92_mag:%1", _magCount];
-  };
-  case "rhs_weap_igla": {
-    phx_loadout_mediumantitank_mag = format["rhs_mag_9k38_rocket:%1", _magCount];
+  // Save valid info
+  _at = _cfgDefaultMAT;
+} else {
+  // We're using the config.sqf setting
+  _at = _configVarValue;
+};
+
+// "debug_console" callExtension ("PRE: " + str(_at));
+// If _at is somehow still null, exit
+if (isNil "_at") exitWith {};
+
+phx_loadout_mediumantitank_weapon = _at # 0;
+if (count _at > 1) then {phx_loadout_mediumantitank_mag = _at # 1};
+if (count _at > 2) then {phx_loadout_mediumantitank_optic = _at # 2};
+if (count _at > 3) then {
+  switch (_at # 3) do {
+    case "RELOAD": {phx_loadout_mediumantitank_isReloadable = true};
+    case "DISPOSABLE": {phx_loadout_mediumantitank_isReloadable = false};
   };
 };
