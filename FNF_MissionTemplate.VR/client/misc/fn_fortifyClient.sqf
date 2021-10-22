@@ -79,13 +79,13 @@ switch (playerSide) do {
     if (_canPlace) then {
       switch (playerSide) do {
         case east: {
-          missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_east", -1, false];
         };
         case west: {
-          missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_west", -1, false];
         };
         case independent: {
-          missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_guer", -1, false];
         };
       };
       phx_fortifyPoints = phx_fortifyPoints - _cost;
@@ -104,16 +104,16 @@ switch (playerSide) do {
 
   switch (playerSide) do {
     case east: {
-      _fortifyVarStr = "acex_fortify_objects_east";
-      missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_east";
+      missionNamespace setVariable ["ace_fortify_budget_east", -1, false];
     };
     case west: {
-      _fortifyVarStr = "acex_fortify_objects_west";
-      missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_west";
+      missionNamespace setVariable ["ace_fortify_budget_west", -1, false];
     };
     case independent: {
-      _fortifyVarStr = "acex_fortify_objects_guer";
-      missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_guer";
+      missionNamespace setVariable ["ace_fortify_budget_guer", -1, false];
     };
   };
 
@@ -135,13 +135,13 @@ switch (playerSide) do {
 
   switch (playerSide) do {
     case east: {
-      missionNamespace setVariable ["acex_fortify_budget_east", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_east", phx_fortifyPoints, false];
     };
     case west: {
-      missionNamespace setVariable ["acex_fortify_budget_west", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_west", phx_fortifyPoints, false];
     };
     case independent: {
-      missionNamespace setVariable ["acex_fortify_budget_guer", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_guer", phx_fortifyPoints, false];
     };
   };
 }] call CBA_fnc_addEventHandler;
