@@ -38,8 +38,7 @@
 #define AR_MAG "vn_ppsh41_71_t_mag:8"
 #define AR_MAG_ASST "vn_ppsh41_71_t_mag:4"
 
-#define AT_LAUNCHER "vn_rpg7"
-#define AT_MAG "vn_rpg7_mag:2"
+#define AT_LAUNCHER VN_RPG7(2)
 
 #define MAT1_LAUNCHER VN_RPG7(3)
 #define MAT2_LAUNCHER VN_RPG7(3)
@@ -83,6 +82,8 @@ class VN_GEAR_NVA_VC1970 {
     grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
     giveSilencer = 0; // 0 for no silencer, 1 to equip silencer on primary weapon
+    giveSRRadio = 0;
+    giveLRRadio = 0;
   };
 
   class RI : BASE {
@@ -109,6 +110,7 @@ class VN_GEAR_NVA_VC1970 {
     };
     linkedItems[] += {VN_BINOCULARS};
     giveSideKey = 1;
+    giveLRRadio = 1;
   };
 
   class SL : TL {};
@@ -179,7 +181,6 @@ class VN_GEAR_NVA_VC1970 {
 
   class LAT : BASE {
     launchers[] = {AT_LAUNCHER};
-    launcherMagazines[] = {AT_MAG};
   };
 
   class MATA1 : BASE {
@@ -220,8 +221,12 @@ class VN_GEAR_NVA_VC1970 {
     };
     giveSideKey = 1;
   };
-  class CRL : CR {};
-  class PI : CR {};
+  class CRL : CR {
+    giveLRRadio = 1;
+  };
+  class PI : CR {
+    giveLRRadio = 1;
+  };
 
   class MED : BASE {
     backpackItems[] += {MEDIC_MEDICAL};

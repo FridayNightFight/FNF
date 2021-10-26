@@ -417,6 +417,13 @@ switch (phx_gameMode) do {
     _objects = [_obj1 select 0, _obj2 select 0, _obj3 select 0] select {!isNull _x};
     _varStr = _varStr + format ["Destroy objectives: %1", count _objects];
     _varStr = _varStr + "<br/>";
+    {
+      _varStr = _varStr + format[
+        "Objective %1:<br/><img image='%2' height=200/><br/>",
+        _forEachIndex + 1,
+        getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "EditorPreview")
+      ];
+    } forEach _objects;
   };
   case "uplink": {
     #include "..\..\mode_config\uplink.sqf";

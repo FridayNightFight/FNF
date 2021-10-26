@@ -27,8 +27,8 @@ phx_attackingSide = sideEmpty; //west/east/independent
 ////////////////////////////////////////////////////////////
 
 //BLUFOR
-phx_bluforUniform = "VN_UNI_US_MACV";
-phx_bluforGear = "VN_GEAR_US_ARMY1970";
+phx_bluforUniform = "RHS_UNI_US_ARMY_OCP";
+phx_bluforGear = "RHS_GEAR_US_ARMY";
 
 //OPFOR
 phx_opforUniform = "VN_UNI_NVA_Vietcong";
@@ -68,16 +68,16 @@ MAT SELECTION
 Possible launcher values (and recommended counts)
 	CARLG(2)
 	RPG32(2)
-	RPG7(4) // NOTE: missile specs would receive 4 PG7VL, 2 PG7VR rockets
+	RPG7(4)
 	TITAN(1)
 	JAVELIN(1)
 	METIS(1)
-	NLAW // NOTE: count is irrelevant and will be ignored, as this is a DISPOSABLE launcher
+	NLAW(1) // DISPOSABLE
 	STINGER(1)
 	IGLA(1)
 
   // SOG ONLY
-  VN_LAW(1)
+  VN_LAW(1) // DISPOSABLE
   VN_RPG7(2)
   VN_STRELA(1)
 
@@ -96,7 +96,7 @@ EXAMPLE:
 
 // BLUFOR
 phx_bluAT_Bravo = GEARDEFAULT;
-phx_bluAT_Delta = VN_STRELA(1);
+phx_bluAT_Delta = JAVELIN(1);
 
 // OPFOR
 phx_redAT_Bravo = RPG32(2);
@@ -127,6 +127,13 @@ phx_addNVG = 0;
 phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
+
+
+// Show/Hide unit / group icons on map, GPS for players
+// Used in limited-intel scenarios like WWII and Vietnam
+phx_showUnitIcons = true;
+phx_showGroupIcons = true;
+
 
 // MISSION MAKER NOTES
 // 0 or more of the below can be included. At minimum, it's suggested to populate the "briefingNotes" item.

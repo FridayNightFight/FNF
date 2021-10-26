@@ -92,7 +92,7 @@ phx_selector_fnc_weapons = {
     player addPrimaryWeaponItem _x;
   } forEach _weaponItems;
 
-  if (pRole == ROLE_RS) then {
+  if ((player getVariable "phxLoadout") == "RIS") then {
     // add silencer if avail
     _muzzleAcc = [_weapon, "muzzle"] call CBA_fnc_compatibleItems;
     _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};

@@ -1,8 +1,8 @@
 // GEAR
 #define GRUNT_MEDICAL "FirstAidKit:4"
 #define MEDIC_MEDICAL "ACE_fieldDressing:32","ACE_morphine:16","ACE_epinephrine:8","ACE_tourniquet:4","ACE_bloodIV_500:12","ACE_bloodIV_250:4","ACE_personalAidKit"
-#define LINKED "ItemMap","ItemCompass","ItemWatch","ItemRadio","ItemGPS","TFAR_microdagr"
-#define VN_LINKED "ItemMap","ItemCompass","ItemWatch","ItemRadio"
+#define LINKED "ItemMap","ItemCompass","ItemWatch","ItemGPS","TFAR_microdagr"
+#define VN_LINKED "ItemMap","ItemCompass","ItemWatch"
 #define TOOLS "ACE_MapTools","ACE_CableTie:2"
 #define LEADER_TOOLS "ACE_microDAGR"
 #define SPOTTER_TOOLS "ACE_SpottingScope"
@@ -60,6 +60,7 @@
 // #define HALF_AMMO(_count) __EVAL((_count) / (2));
 #define STRINGIFY(s) #s
 #define CARLG(_count) "rhs_weap_maaws",{STRINGIFY(rhs_mag_maaws_HEAT:_count)},{"rhs_optic_maaws"},"RELOAD"
+#define M72LAW(_count) "rhs_weap_m72a7",{},{},"DISPOSABLE"
 #define RPG32(_count) "launch_RPG32_green_F",{STRINGIFY(RPG32_F:_count)},{},"RELOAD"
 #define RPG7(_count) "rhs_weap_rpg7",{STRINGIFY(rhs_rpg7_PG7VL_mag:_count)},{"rhs_acc_pgo7v3"},"RELOAD"
 #define TITAN(_count) "launch_I_Titan_short_F",{STRINGIFY(Titan_AT:_count)},{},"RELOAD"
@@ -84,8 +85,9 @@ class common {
 #define STD_OPTICS "optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsusf_acc_compm4", "rhsusf_acc_T1_high", "rhs_acc_1p63", "rhs_acc_ekp1", "rhs_acc_ekp8_02", "rhs_acc_okp7_dovetail", "rhs_acc_pkas"
 #define MAG_OPTICS "rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"
 #define SNP_OPTICS "rhsusf_acc_M8541", "rhsusf_acc_M8541_wd"
-#define STD_VN_OPTICS "vn_o_4x_m16"
-#define MAG_VN_OPTICS "vn_o_9x_m16"
+#define STD_VN_OPTICS
+#define MAG_VN_OPTICS "vn_o_4x_m16","vn_o_4x_m4956","vn_o_3x_m84","vn_o_3x_m9130"
+// "vn_o_9x_m16","vn_o_9x_m14"
 #define SNP_VN_OPTICS "vn_o_9x_m40a1"
 #define SNP_VN_NVG_OPTICS "vn_o_anpvs2_m40a1"
 

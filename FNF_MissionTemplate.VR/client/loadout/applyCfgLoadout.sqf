@@ -57,18 +57,6 @@ if ((player getVariable ["phxLoadout", ""]) isEqualTo "") exitWith {
 };
 
 
-// if (mySideUniformSelection[0,2] == "VN" && )
-
-
-
-
-
-[{time > 2}, {
-    ["<t align='center'>Assigning uniform and gear...</t>", "success", 5] call phx_ui_fnc_notify;
-}] call CBA_fnc_waitUntilAndExecute;
-
-
-
 #define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
@@ -103,10 +91,11 @@ private _cfgItems = (CFGGEAR >> "items") call BIS_fnc_getCfgDataArray;
 private _cfgLinkedItems = (CFGGEAR >> "linkedItems") call BIS_fnc_getCfgDataArray;
 private _cfgWeaponChoices = (CFGGEAR >> "weaponChoices") call BIS_fnc_getCfgDataArray;
 private _cfgAttachments = (CFGGEAR >> "attachments") call BIS_fnc_getCfgDataArray;
-private _cfgLauncherAttachments = (CFGGEAR >> "launcherAttachments") call BIS_fnc_getCfgDataArray;
 private _cfgExplosiveChoices = (CFGGEAR >> "explosiveChoices") call BIS_fnc_getCfgDataArray;
 private _cfgGrenadeChoices = (CFGGEAR >> "grenadeChoices") call BIS_fnc_getCfgDataArray;
 private _cfgGiveSideKey = (CFGGEAR >> "giveSideKey") call BIS_fnc_getCfgData;
+private _cfgGiveSRRadio = (CFGGEAR >> "giveSRRadio") call BIS_fnc_getCfgDataBool;
+private _cfgGiveLRRadio = (CFGGEAR >> "giveLRRadio") call BIS_fnc_getCfgDataBool;
 // private _cfgHandgunAttachments = getArray (_cfgPath >> "handgunAttachments");
 
 
@@ -132,6 +121,34 @@ player forceAddUniform _uniform;
 player addVest _vest;
 player addBackpack _backpack;
 player addHeadgear _headgear;
+
+
+// Radios
+#define SR_RADIO "TFAR_anprc152"
+#define LR_RADIO "TFAR_rt1523g_black"
+if (_cfgGiveSRRadio) then {
+  player linkItem SR_RADIO;
+};
+// Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
+if (_cfgGiveLRRadio) then {
+  [{call TFAR_fnc_haveLRRadio}, {}, [], 3, {
+    private _items = backpackItems player;
+    removeBackpack player;
+    player addBackpack "TFAR_rt1523g_black";
+    {
+      player addItemToBackpack _x;
+    } forEach _items;
+  }] call CBA_fnc_waitUntilAndExecute;
+} else {
+  [{call TFAR_fnc_haveLRRadio}, {
+    private _items = backpackItems player;
+    removeBackpack player;
+    player addBackpack "B_TacticalPack_blk";
+    {
+      player addItemToBackpack _x;
+    } forEach _items;
+  }, [], 3, {}] call CBA_fnc_waitUntilAndExecute;
+};
 
 
 // Items, grenades
@@ -231,9 +248,36 @@ if (PLAYERLOADOUTVAR in _matRoleVarArr) then {
     };
   };
 } else {
+
+  // LAUNCHERS
   // if not MAT or MATA role, check normal launchers[] array from config
-  phx_loadout_launcher = if (count _cfgLaunchers > 0) then {selectRandom(_cfgLaunchers)} else {""};
-  if !(phx_loadout_launcher isEqualTo "") then {player addWeapon phx_loadout_launcher};
+  if (count _cfgLaunchers > 0) then {
+    phx_loadout_launcher = _cfgLaunchers
+  } else {
+    phx_loadout_launcher = ""
+  };
+  // "debug_console" callExtension str(phx_loadout_launcher);
+  if (phx_loadout_launcher isEqualType []) then {
+    phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
+
+    player addWeapon _launcher;
+
+    {
+      [_x, "backpack"] call phx_fnc_addGear;
+    } forEach _mags;
+
+    // if (count (secondaryWeaponMagazine player) > 0) then {
+      private _loadThisMag = (_mags # 0 splitString ':' select 0);
+      if (!isNil "_loadThisMag") then {
+        player removeMagazine _loadThisMag;
+        player addSecondaryWeaponItem _loadThisMag;
+      };
+    // };
+
+    if (count _optics > 0) then {
+      player addSecondaryWeaponItem selectRandom(_optics);
+    };
+  };
 };
 
 
@@ -534,10 +578,11 @@ _diaryString pushBack ("<font align='center' face='PuristaMedium'>You are a" + _
 
 _diaryString pushBack (STYLE_HEADER_DIARY + "General Equipment</font>");
 
-[{time > 2}, {
-    ["<t align='center'>Uniform and gear assigned.<br/>Awaiting radio initialization...</t>", "success", 5] call phx_ui_fnc_notify;
-}] call CBA_fnc_waitUntilAndExecute;
-waitUntil {if (isNil {call TFAR_fnc_activeSwRadio}) then {false} else {!(call TFAR_fnc_activeSwRadio == "")}};
+// [{time > 2}, {
+//     ["<t align='center'>Uniform and gear assigned.</t>", "success", 5] call phx_ui_fnc_notify;
+// }] call CBA_fnc_waitUntilAndExecute;
+["<t align='center'>Uniform and gear assigned.</t>", "success", 5] call phx_ui_fnc_notify;
+
 [_playerMagazines, _diaryString, true] call _fnc_notesItems;
 [items player, _diaryString, true] call _fnc_notesItems;
 [assignedItems player, _diaryString, false] call _fnc_notesItems;

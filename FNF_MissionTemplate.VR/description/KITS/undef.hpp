@@ -60,6 +60,9 @@
 #ifdef HELMET_PILOT
   #undef HELMET_PILOT
 #endif
+#ifdef HELMET_CMDR
+  #undef HELMET_CMDR
+#endif
 
 #ifdef BACKPACK
   #undef BACKPACK

@@ -35,7 +35,7 @@
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
 #define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
-#define AT_LAUNCHER "rhs_weap_m72a7"
+#define AT_LAUNCHER M72LAW(1)
 
 #define MAT1_LAUNCHER CARLG(2)
 #define MAT2_LAUNCHER STINGER(1)
@@ -79,6 +79,8 @@ class RHS_GEAR_US_ARMY {
     grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
     giveSilencer = 0; // 0 for no silencer, 1 to equip silencer on primary weapon
+    giveSRRadio = 1;
+    giveLRRadio = 0;
   };
 
   class RI : BASE {
@@ -106,6 +108,7 @@ class RHS_GEAR_US_ARMY {
     items[] += {LEADER_TOOLS};
     linkedItems[] += {VECTOR};
     giveSideKey = 1;
+    giveLRRadio = 1;
   };
 
   class SL : TL {};
@@ -213,8 +216,12 @@ class RHS_GEAR_US_ARMY {
     };
     giveSideKey = 1;
   };
-  class CRL : CR {};
-  class PI : CR {};
+  class CRL : CR {
+    giveLRRadio = 1;
+  };
+  class PI : CR {
+    giveLRRadio = 1;
+  };
 
   class MED : BASE {
     backpackItems[] += {MEDIC_MEDICAL};
