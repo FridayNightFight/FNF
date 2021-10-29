@@ -24,6 +24,7 @@ class CfgFunctions {
       class drawCmdIcons{};
       class drawSLIcons{};
       class assetDiaryInfo{};
+      class adminKickUI{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -123,6 +124,7 @@ class CfgFunctions {
     class initServer {
       file = "server\init";
       class serverSafety{};
+      class kickPlayer{};
       class sendUniforms{};
       class markCustomObjs{};
       class fortifyServer{};
