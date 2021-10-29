@@ -252,27 +252,26 @@ if (PLAYERLOADOUTVAR in _matRoleVarArr) then {
   // LAUNCHERS
   // if not MAT or MATA role, check normal launchers[] array from config
   if (count _cfgLaunchers > 0) then {
-    phx_loadout_launcher = _cfgLaunchers
+    phx_loadout_launcher = selectRandom(_cfgLaunchers);
   } else {
     phx_loadout_launcher = ""
   };
   // "debug_console" callExtension str(phx_loadout_launcher);
   if (phx_loadout_launcher isEqualType []) then {
     phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
-
     player addWeapon _launcher;
 
     {
       [_x, "backpack"] call phx_fnc_addGear;
     } forEach _mags;
 
-    // if (count (secondaryWeaponMagazine player) > 0) then {
+    if (count (secondaryWeaponMagazine player) == 0) then {
       private _loadThisMag = (_mags # 0 splitString ':' select 0);
       if (!isNil "_loadThisMag") then {
         player removeMagazine _loadThisMag;
         player addSecondaryWeaponItem _loadThisMag;
       };
-    // };
+    };
 
     if (count _optics > 0) then {
       player addSecondaryWeaponItem selectRandom(_optics);

@@ -63,6 +63,9 @@
 #ifdef HELMET_CMDR
   #undef HELMET_CMDR
 #endif
+#ifdef HELMET_RECON
+  #undef HELMET_RECON
+#endif
 
 #ifdef BACKPACK
   #undef BACKPACK

@@ -65,6 +65,7 @@ _getLoadoutFromConfig = {
 
   // AT
   private _AT = (CFGGEAR >> _gearVar >> "LAT" >> "launchers") call BIS_fnc_getCfgDataArray;
+  _AT = _AT apply {_x # 0};
 
   // Recon
   private _SNP = (CFGGEAR >> _gearVar >> "SNP" >> "weaponChoices") call BIS_fnc_getCfgDataArray;

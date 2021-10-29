@@ -13,6 +13,8 @@
 // #define HALF_AMMO(_count) __EVAL((_count) / (2));
 #define STRINGIFY(s) #s
 #define CARLG(_count) ["rhs_weap_maaws",[STRINGIFY(rhs_mag_maaws_HEAT:_count)],["rhs_optic_maaws"],"RELOAD"]
+#define M72LAW(_count) ["rhs_weap_m72a7",[],[],"DISPOSABLE"]
+#define RPG26(_count) ["rhs_weap_rpg26",[],[],"DISPOSABLE"]
 #define RPG32(_count) ["launch_RPG32_green_F",[STRINGIFY(RPG32_F:_count)],[],"RELOAD"]
 #define RPG7(_count) ["rhs_weap_rpg7",[STRINGIFY(rhs_rpg7_PG7VL_mag:_count)],["rhs_acc_pgo7v3"],"RELOAD"]
 #define TITAN(_count) ["launch_I_Titan_short_F",[STRINGIFY(Titan_AT:_count)],[],"RELOAD"]

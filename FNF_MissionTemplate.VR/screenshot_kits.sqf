@@ -31,27 +31,27 @@
 
 // [uniform, gear, classes]
 // get the classes to check, which will match player vars during a session
-_loadoutRolesToCheck = [
-  // [
-  //   "VN_US_MACV"
-  //   "VN_US_ARMY1970",
-  //   (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> "VN_US_MACV") call Bis_fnc_getCfgSubClasses
-  // ],
-  // [
-  //   "VN_US_MACV",
-  //   "VN_US_ARMY1970",
-  //   (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> "VN_US_MACV") call Bis_fnc_getCfgSubClasses
-  // ],
-  // [
-  //   "RHS_US_ARMY_OCP",
-  //   "RHS_US_ARMY",
-  //   (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> "RHS_US_ARMY_OCP") call Bis_fnc_getCfgSubClasses
-  // ],
-  [
-    "VN_VC_Vietcong",
-    "VN_NVA_VC",
-    (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> "VN_VC_Vietcong") call Bis_fnc_getCfgSubClasses
-  ]
+_loadoutRolesToCheck = [];
+{
+  _loadoutRolesToCheck pushBack [
+    _x # 0,
+    _x # 1,
+    (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> (_x # 0)) call Bis_fnc_getCfgSubClasses
+  ];
+} forEach [
+  // ["RHS_UNI_US_ARMY_2020","RHS_GEAR_US_ARMY_2010_M16A4"],
+  // ["RHS_UNI_US_ARMY_1980","RHS_GEAR_US_ARMY_1980_M14"],
+  // ["RHS_UNI_US_RANGERS_2020","RHS_GEAR_US_ARMY_2010_M16A4"],
+  // ["RHS_UNI_RU_RATNIK_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  // ["RHS_UNI_RU_RATNIK_D_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  // ["RHS_UNI_RU_SPETSNAZ_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  // ["RHS_UNI_SRU_ARMY_1980","RHS_GEAR_SRU_ARMY_1980_AK74"]
+  ["VN_UNI_NLF_Vietcong","VN_GEAR_NVA_VC1970"],
+  ["VN_UNI_PAVN_NVA","VN_GEAR_NVA_VC1970"],
+  ["VN_UNI_SVA_ARVN","VN_GEAR_FR_FRA1970"],
+  ["VN_UNI_NVA_Vietcong","VN_GEAR_NVA_VC1970"],
+  ["VN_UNI_US_MACV","VN_GEAR_US_ARMY1970"],
+  ["VN_UNI_US_SOG","VN_GEAR_US_SOG1970"]
 ];
 
 
@@ -246,8 +246,38 @@ fnc_assignLoadoutFromConfig = {
   _unit addWeapon phx_loadout_sidearm;
   {[_x, "uniform", _unit] call phx_fnc_addGear; nil} count phx_loadout_sidearmMagazines;
 
-  phx_loadout_launcher = if (count _cfgLaunchers > 0) then {selectRandom(_cfgLaunchers)} else {""};
-  _unit addWeapon phx_loadout_launcher;
+
+
+
+  // LAUNCHERS
+  // if not MAT or MATA role, check normal launchers[] array from config
+  if (count _cfgLaunchers > 0) then {
+    phx_loadout_launcher = selectRandom(_cfgLaunchers);
+  } else {
+    phx_loadout_launcher = ""
+  };
+  // "debug_console" callExtension str(phx_loadout_launcher);
+  if (phx_loadout_launcher isEqualType []) then {
+    phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
+
+    _unit addWeapon _launcher;
+
+    {
+      [_x, "backpack"] call phx_fnc_addGear;
+    } forEach _mags;
+
+    if (count (secondaryWeaponMagazine _unit) == 0) then {
+      private _loadThisMag = (_mags # 0 splitString ':' select 0);
+      if (!isNil "_loadThisMag") then {
+        _unit removeMagazine _loadThisMag;
+        _unit addSecondaryWeaponItem _loadThisMag;
+      };
+    };
+
+    if (count _optics > 0) then {
+      _unit addSecondaryWeaponItem selectRandom(_optics);
+    };
+  };
 
 
 
@@ -271,26 +301,26 @@ fnc_assignLoadoutFromConfig = {
   if (_role in _matRoleVarArr) then {
     _cfgMATDefault = (CFGGEAR >> "defaultMAT") call BIS_fnc_getCfgDataArray;
     if !(_cfgMATDefault isEqualTo []) then {
-      phx_loadout_mediumantitank_weapon = _cfgMATDefault # 0;
-      if (count _cfgMATDefault > 1) then {phx_loadout_mediumantitank_mag = _cfgMATDefault # 1};
-      if (count _cfgMATDefault > 2) then {phx_loadout_mediumantitank_optic = _cfgMATDefault # 2};
+      _cfgMATDefault = selectRandom(_cfgMATDefault);
+      _cfgMATDefault params ["_launcher", "_mags", "_optics"];
 
       // add mags & load one
         // "debug_console" callExtension str(phx_loadout_mediumantitank_mag);
       private "_compatMag";
-      if (!isNil "phx_loadout_mediumantitank_mag") then {
+      if (!isNil "_mags") then {
         {
           // "debug_console" callExtension ("Adding " + _x + " to inventory");
           [_x, "backpack", _unit] call phx_fnc_addGear;
-        } forEach phx_loadout_mediumantitank_mag;
-        _compatMag = (phx_loadout_mediumantitank_mag # 0) splitString ':';
+        } forEach _mags;
+        _compatMag = (_mags # 0) splitString ':';
       };
 
       if (_role in _matGunnerVarArr) then {
-        _unit addWeapon phx_loadout_mediumantitank_weapon;
-        if (!isNil "phx_loadout_mediumantitank_optic") then {
-          _unit addSecondaryWeaponItem selectRandom(phx_loadout_mediumantitank_optic);
+        _unit addWeapon _launcher;
+        if (!isNil "_optics") then {
+          _unit addSecondaryWeaponItem selectRandom(_optics);
         };
+
         if (!isNil "_compatMag") then {
           // if we found a mag, try pre-loading the launcher
           _compatMag params ["_magClass", "_magCount"];
@@ -329,7 +359,7 @@ fnc_assignLoadoutFromConfig = {
       } else {
         _compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines) select 0;
       };
-      _compatMag = _compatMag splitString ':' select 0;
+      // _compatMag = _compatMag splitString ':' select 0;
       // "debug_console" callExtension str([_weaponClass, _thisMuzzle, _compatMag]);
 
       _unit removeMagazine _compatMag;

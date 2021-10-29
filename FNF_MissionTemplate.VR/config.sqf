@@ -27,8 +27,8 @@ phx_attackingSide = sideEmpty; //west/east/independent
 ////////////////////////////////////////////////////////////
 
 //BLUFOR
-phx_bluforUniform = "RHS_UNI_US_ARMY_OCP";
-phx_bluforGear = "RHS_GEAR_US_ARMY";
+phx_bluforUniform = "RHS_UNI_US_ARMY_2020";
+phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
 
 //OPFOR
 phx_opforUniform = "VN_UNI_NVA_Vietcong";
@@ -42,17 +42,29 @@ phx_indforGear = "VN_GEAR_FR_FRA1970";
   POSSIBLE VALUES:
 
     UNIFORMS:
+      RHS_UNI_MARINES_DESERT_2010
+      RHS_UNI_RU_RATNIK_2020
+      RHS_UNI_RU_RATNIK_D_2020
+      RHS_UNI_RU_SPETSNAZ_2020
+      RHS_UNI_SRU_ARMY_1980
+      RHS_UNI_US_ARMY_1980
+      RHS_UNI_US_ARMY_2020
       RHS_UNI_US_ARMY_OCP
+      RHS_UNI_US_RANGERS_2020
+      VN_UNI_NVA_Vietcong
       VN_UNI_US_MACV
       VN_UNI_US_SOG
-      VN_UNI_NVA_Vietcong
 
     GEAR:
+      RHS_GEAR_RU_ARMY_2010_AK74M
+      RHS_GEAR_SRU_ARMY_1980_AK74
       RHS_GEAR_US_ARMY
+      RHS_GEAR_US_ARMY_1980_M14
+      RHS_GEAR_US_ARMY_2010_M16A4
+      VN_GEAR_FR_FRA1970
+      VN_GEAR_NVA_VC1970
       VN_GEAR_US_ARMY1970
       VN_GEAR_US_SOG1970
-      VN_GEAR_NVA_VC1970
-      VN_GEAR_FR_FRA1970
 */
 
 /*
@@ -72,14 +84,18 @@ Possible launcher values (and recommended counts)
 	TITAN(1)
 	JAVELIN(1)
 	METIS(1)
-	NLAW(1) // DISPOSABLE
 	STINGER(1)
 	IGLA(1)
 
+  // Disposables
+    M72LAW(1)
+    RPG26(1)
+    NLAW(1)
+
   // SOG ONLY
-  VN_LAW(1) // DISPOSABLE
-  VN_RPG7(2)
-  VN_STRELA(1)
+    VN_LAW(1) // DISPOSABLE
+    VN_RPG7(2)
+    VN_STRELA(1)
 
   or, you can set GEARDEFAULT to use that side's gear set's recommended MAT settings for each squad.
     GEARDEFAULT
