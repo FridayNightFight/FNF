@@ -2,7 +2,7 @@
 
 #define UNIFORM "rhs_uniform_cu_ocp"
 
-#define VEST "rhsusf_iotv_ocp_Rifleman"
+#define VEST "rhsusf_opscore_ut_pelt_nsw_cam"
 #define VEST_LEADER "rhsusf_iotv_ocp_Teamleader"
 #define VEST_AR "rhsusf_iotv_ocp_SAW"
 #define VEST_MEDIC VEST

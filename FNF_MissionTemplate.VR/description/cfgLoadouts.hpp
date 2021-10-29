@@ -20,6 +20,7 @@ class CfgLoadouts {
     #include "KITS\UNIFORMS\RHS_UNI_US_ARMY_1980.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_US_ARMY_2020.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_US_RANGERS_2020.hpp"
+
   };
 
   class GEAR {
@@ -27,15 +28,14 @@ class CfgLoadouts {
 
     #include "KITS\GEAR\VN_GEAR_US_ARMY1970.hpp"
     #include "KITS\GEAR\VN_GEAR_US_SOG1970.hpp"
-
     #include "KITS\GEAR\VN_GEAR_NVA_VC1970.hpp"
-
-    #include "KITS\GEAR\VN_GEAR_FR_FRA1970.hpp"
 
     #include "KITS\GEAR\RHS_GEAR_RU_ARMY_2010_AK74M.hpp"
     #include "KITS\GEAR\RHS_GEAR_SRU_ARMY_1980_AK74.hpp"
     #include "KITS\GEAR\RHS_GEAR_US_ARMY_1980_M14.hpp"
     #include "KITS\GEAR\RHS_GEAR_US_ARMY_2010_M16A4.hpp"
+    #include "KITS\GEAR\RHS_GEAR_US_RANGERS_2010_SCAR.hpp"
+
 
   };
 };

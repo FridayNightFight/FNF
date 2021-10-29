@@ -340,7 +340,7 @@ Author: %6<br/><br/>
   ];
 
    // INDFOR MAT
-  ([independent, phx_indAT_Bravo, phx_indAT_Delta] call _fnc_parseMATForBriefing) params ["_bravoClass", "_deltaClass"];
+  ([independent, phx_grnAT_Bravo, phx_grnAT_Delta] call _fnc_parseMATForBriefing) params ["_bravoClass", "_deltaClass"];
   private _bravoMeta = _bravoClass call fnc_getItemInfo;
   private _deltaMeta = _deltaClass call fnc_getItemInfo;
 

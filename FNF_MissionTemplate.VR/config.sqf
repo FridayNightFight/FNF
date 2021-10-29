@@ -31,12 +31,12 @@ phx_bluforUniform = "RHS_UNI_US_ARMY_2020";
 phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
 
 //OPFOR
-phx_opforUniform = "VN_UNI_NVA_Vietcong";
-phx_opforGear = "VN_GEAR_NVA_VC1970";
+phx_opforUniform = "RHS_UNI_RU_RATNIK_2020";
+phx_opforGear = "RHS_GEAR_RU_ARMY_2010_AK74M";
 
 //INDFOR
-phx_indforUniform = "VN_UNI_NVA_Vietcong";
-phx_indforGear = "VN_GEAR_FR_FRA1970";
+phx_indforUniform = "RHS_UNI_US_ARMY_1980";
+phx_indforGear = "RHS_GEAR_US_ARMY_1980_M14";
 
 /*
   POSSIBLE VALUES:

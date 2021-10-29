@@ -18,7 +18,7 @@
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
 #define UGL_FRAG rhs_VOG25
-#define UGL_SMOKEWHITE rhs_GDM40
+#define UGL_SMOKEWHITE rhs_GRD40_White
 #define UGL_FLAREWHITE rhs_VOG25P
 
 // put all Carbine-style (shorter) weapons
@@ -37,8 +37,8 @@
 
 #define AT_LAUNCHER RPG26(1)
 
-#define MAT1_LAUNCHER RPG7(4)
-#define MAT2_LAUNCHER RPG7(4)
+#define MAT1_LAUNCHER RPG32(2)
+#define MAT2_LAUNCHER RPG32(2)
 
 #define DM_RIFLE RIFLE
 #define DM_MAG RIFLE_MAG

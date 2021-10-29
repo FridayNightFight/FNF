@@ -124,17 +124,17 @@ player addHeadgear _headgear;
 
 
 // Radios
-#define SR_RADIO "TFAR_anprc152"
-#define LR_RADIO "TFAR_rt1523g_black"
+// #define SR_RADIO "TFAR_anprc152"
+// #define LR_RADIO "TFAR_rt1523g_black"
 if (_cfgGiveSRRadio) then {
-  player linkItem SR_RADIO;
+  player linkItem ([playerSide, 1] call TFAR_fnc_getSideRadio);
 };
 // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
 if (_cfgGiveLRRadio) then {
-  [{call TFAR_fnc_haveLRRadio}, {}, [], 3, {
+  [{call TFAR_fnc_haveLRRadio}, {}, [], 5, {
     private _items = backpackItems player;
     removeBackpack player;
-    player addBackpack "TFAR_rt1523g_black";
+    player addBackpack ([playerSide, 0] call TFAR_fnc_getSideRadio);
     {
       player addItemToBackpack _x;
     } forEach _items;
@@ -147,7 +147,7 @@ if (_cfgGiveLRRadio) then {
     {
       player addItemToBackpack _x;
     } forEach _items;
-  }, [], 3, {}] call CBA_fnc_waitUntilAndExecute;
+  }, [], 5, {}] call CBA_fnc_waitUntilAndExecute;
 };
 
 
@@ -657,8 +657,10 @@ if (LOADOUTROLE("CE")) then {
 };
 
 [{
-  [_this joinString '<br/>', "warning", 15] call phx_ui_fnc_notify;
+  [_this joinString '<br/>', "success", 15] call phx_ui_fnc_notify;
 }, _notifyString, 2] call CBA_fnc_waitAndExecute;
+
+
 
 player createDiaryRecord [
   "PHX_Diary_Details",

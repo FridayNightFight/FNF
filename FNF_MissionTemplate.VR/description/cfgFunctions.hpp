@@ -124,6 +124,7 @@ class CfgFunctions {
       class populateORBATS{};
       class keyVehicles{};
       class lockVehicles{};
+      class vehicleRadios{};
     };
     class end {
       file = "server\end";
