@@ -66,15 +66,15 @@ switch (playerSide) do {
 //Next step - wait for loadout
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
   [{call TFAR_fnc_haveSWRadio}, {
-    phx_hasSW = true;
     [call TFAR_fnc_activeSwRadio, phx_loadout_TFAREncryptionCode] call TFAR_fnc_setSwRadioCode;
+    phx_hasSW = true;
   }, [], 8, {
     phx_hasSW = false;
   }] call CBA_fnc_waitUntilAndExecute;
 
   [{call TFAR_fnc_haveLRRadio}, {
-    phx_hasLR = true;
     [call TFAR_fnc_activeLrRadio, phx_loadout_TFAREncryptionCode] call TFAR_fnc_setLrRadioCode;
+    phx_hasLR = true;
   }, [], 8, {
     phx_hasLR = false;
   }] call CBA_fnc_waitUntilAndExecute;

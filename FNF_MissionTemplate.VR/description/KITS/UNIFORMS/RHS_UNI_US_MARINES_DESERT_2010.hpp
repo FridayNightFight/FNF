@@ -1,30 +1,30 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_vkpo_gloves"
+#define UNIFORM "rhs_uniform_FROG01_d"
 
-#define VEST "rhs_6b45_rifleman", "rhs_6b45_rifleman_2"
-#define VEST_LEADER "rhs_6b45_off"
-#define VEST_AR "rhs_6b45_mg"
-#define VEST_MEDIC VEST
+#define VEST "rhsusf_mbav_rifleman"
+#define VEST_LEADER "rhsusf_mbav_grenadier"
+#define VEST_AR "rhsusf_mbav_mg"
+#define VEST_MEDIC "rhsusf_mbav_medic"
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhs_6b47_bala"
-#define HELMET_CMDR "rhs_vkpo_cap_alt"
-#define HELMET_RECON "rhs_Booniehat_digi"
-#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
-#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
+#define HELMET "rhsusf_lwh_helmet_marpatd_ess"
+#define HELMET_CMDR "rhs_8point_marpatd"
+#define HELMET_RECON "rhs_booniehat2_marpatd"
+#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "rhs_rk_sht_30_emr"
-#define BACKPACK_RADIO "TFAR_mr3000_rhs"
-#define BACKPACK_AR "rhs_tortila_emr"
-#define BACKPACK_AT "rhs_tortila_emr"
-#define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK "rhsusf_assault_eagleaiii_coy"
+#define BACKPACK_RADIO "TFAR_rt1523g_black"
+#define BACKPACK_AR "B_Carryall_khk"
+#define BACKPACK_AT "B_Carryall_khk"
+#define BACKPACK_MEDIC "B_Kitbag_cbr"
 
 
-class RHS_UNI_RU_RATNIK_2010 {
+class RHS_UNI_US_MARINES_DESERT_2010 {
   author = "Mazz38";
-  description = "RU: Modern Russian ARMY EMR Camouflage";
+  description = "USA: Modern American MARINES Desert Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};

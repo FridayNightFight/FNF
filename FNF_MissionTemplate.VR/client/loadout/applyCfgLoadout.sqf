@@ -40,6 +40,315 @@ removeHeadgear player;
 
 
 
+
+
+
+fnc_getWeaponMagazines = {
+	params ["_toSearch", "_weapon", ["_allMuzzles", true]];
+	private _out = [];
+	{
+		if ((_x splitString ':' select 0) in ([_weapon, _allMuzzles] call CBA_fnc_compatibleMagazines)) then {
+			_out pushBack _x;
+		};
+	} forEach _toSearch;
+	_out
+};
+
+
+
+fnc_addUniform = {
+  params [
+    ["_unit", objNull],
+    ["_uniform", ""],
+    ["_vest", ""],
+    ["_backpack", ""],
+    ["_headgear", ""]
+  ];
+  _unit forceAddUniform _uniform;
+  _unit addVest _vest;
+  _unit addBackpack _backpack;
+  _unit addHeadgear _headgear;
+};
+
+
+fnc_giveRadios = {
+  // Radios
+  params [["_unit", objNull], ["_srRadio", true], ["_lrRadio", false]];
+
+  if (_srRadio) then {
+    _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
+  };
+
+  // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
+
+  // should have a LR but doesn't
+  if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
+    private _items = backpackItems _unit;
+    removeBackpack _unit;
+    _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
+    {
+      _unit addItemToBackpack _x;
+    } forEach _items;
+  };
+
+  // shouldn't have a LR but does
+  if (!_lrRadio && ((backpack _unit) call TFAR_fnc_isRadio)) then {
+    private _items = backpackItems _unit;
+    removeBackpack _unit;
+    _unit addBackpack "B_TacticalPack_blk";
+    {
+      _unit addItemToBackpack _x;
+    } forEach _items;
+  };
+};
+
+
+fnc_giveGear = {
+  // Items, grenades
+  params [
+    ["_unit", objNull],
+    ["_mags", []],
+    ["_items", []],
+    ["_backpackItems", []],
+    ["_linkedItems", []]
+  ];
+  {[_x, "vest", _unit] call phx_fnc_addGear} forEach _mags;
+  {[_x, "uniform", _unit] call phx_fnc_addGear} forEach _items;
+  {[_x, "backpack", _unit] call phx_fnc_addGear} forEach _backpackItems;
+  {_unit linkItem _x} forEach _linkedItems;
+};
+
+
+fnc_givePrimaryWeapon = {
+  // Primary weapon and appropriate magazines
+  params [
+    ["_unit", objNull],
+    ["_cfgChoices", []]
+  ];
+
+  private _category = selectRandom(_cfgChoices);
+  if (isNil "_category") exitWith {
+    [{time > 2}, {
+      ["<t align='center'>Error:<br/>Failed to process primary weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
+      diag_log text "[FNF] (loadout) ERROR: Failed to process primary weapon settings.";
+      diag_log text format["[FNF] (loadout) DEBUG: Choices: %1", _cfgChoices];
+    }] call CBA_fnc_waitUntilAndExecute;
+  };
+  _category params ["_weapons","_mags"];
+  phx_loadout_weapon = selectRandom(_weapons);
+  phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call fnc_getWeaponMagazines;
+
+  if !(phx_loadout_weapon isEqualTo "" || (count phx_loadout_weaponMagazines) isEqualTo 0) then {
+    _unit addWeapon phx_loadout_weapon;
+    {[_x, "vest", _unit] call phx_fnc_addGear} forEach phx_loadout_weaponMagazines;
+    diag_log text format["[FNF] (loadout) INFO: Equipped primary weapon ""%1""", phx_loadout_weapon];
+    diag_log text format["[FNF] (loadout) INFO: Equipped primary weapon magazines"];
+    diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_weaponMagazines];
+  };
+};
+fnc_prepWeaponsSelector = {
+  // iterate through _cfgWeaponChoices and add each weapon and appropriate mags to phx_selector_weapons so they can be chosen from
+  params [
+    ["_unit", objNull],
+    ["_cfgChoices", []]
+  ];
+
+  private _weaponChoices = [];
+  {
+    _x params ["_weapons", "_mags"];
+    {
+      private _weapon = _x;
+      private _compatMags = [_mags, _weapon] call fnc_getWeaponMagazines;
+      _weaponChoices pushBack [_weapon, _compatMags];
+    } forEach _weapons;
+  } forEach _cfgChoices;
+
+  // "debug_console" callExtension str(_weaponChoices);
+  missionNamespace setVariable ["phx_selector_weapons", _weaponChoices];
+};
+
+
+fnc_giveSidearmWeapon = {
+  // Sidearm and appropriate magazines
+  params [
+    ["_unit", objNull],
+    ["_cfgChoices", []]
+  ];
+
+  private _category = selectRandom(_cfgChoices);
+  if (isNil "_category") exitWith {
+    [{time > 2}, {
+      ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
+      diag_log text "[FNF] (loadout) ERROR: Failed to process sidearm weapon settings.";
+      diag_log text format["[FNF] (loadout) DEBUG: Choices %1", _cfgChoices];
+    }] call CBA_fnc_waitUntilAndExecute;
+  };
+  _category params ["_sidearms","_mags"];
+  phx_loadout_sidearm = selectRandom(_sidearms);
+  phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call fnc_getWeaponMagazines;
+
+  if !(phx_loadout_sidearm isEqualTo "" || (count phx_loadout_sidearmMagazines) isEqualTo 0) then {
+    _unit addWeapon phx_loadout_sidearm;
+    {[_x, "uniform", _unit] call phx_fnc_addGear} forEach phx_loadout_sidearmMagazines;
+    diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon ""%1""", phx_loadout_sidearm];
+    diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon magazines"];
+    diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_sidearmMagazines];
+  };
+};
+
+
+fnc_giveSilencer = {
+  params [
+    ["_unit", objNull],
+    ["_giveSilencer", 0]
+  ];
+
+  if (_giveSilencer > 0 && !isNil "phx_loadout_weapon") then {
+    _muzzleAcc = [phx_loadout_weapon, "muzzle"] call CBA_fnc_compatibleItems;
+    _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};
+    if (count _silencers > 0) then {
+      _unit addPrimaryWeaponItem (_silencers select 0);
+      diag_log text format["[FNF] (loadout) INFO: Equipped silencer ""%1""", _silencers # 0];
+    } else {
+      diag_log text format["[FNF] (loadout) WARNING: Tried to equip silencer, but none compatible with ""%1""", phx_loadout_weapon];
+    };
+  };
+};
+
+
+fnc_giveNVG = {
+  // NVGs/laser accessory
+  params [
+    ["_unit", objNull],
+    ["_giveNVG", 0],
+    ["_NVGType", "NVGoggles_OPFOR"]
+  ];
+
+  switch (typeName phx_addNVG) do {
+    case "SCALAR": {
+      if (phx_addNVG == 1) then {
+        _unit linkItem _NVGType;
+        {_unit addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];
+        diag_log text format["[FNF] (loadout) INFO: Gave NVGs ""%1""", _NVGType];
+      };
+    };
+    case "ARRAY": {
+      if (side (group _unit) in phx_addNVG) then {
+        _unit linkItem _NVGType;
+        {_unit addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];
+        diag_log text format["[FNF] (loadout) INFO: Gave NVGs ""%1""", _NVGType];
+      };
+    };
+  };
+};
+
+
+fnc_giveAT = {
+  // MAT AND LAUNCHERS
+  params [
+    ["_unit", objNull],
+    ["_role", "BASE"]
+  ];
+
+  private _matRoleVarArr = ["MATA1","MAT1","MATA2","MAT2"];
+  private _matGunnerVarArr = ["MAT1","MAT2"];
+  if (_role in _matRoleVarArr) then {
+    call phx_fnc_setMAT;
+
+    if (isNil "phx_loadout_mediumantitank_weapon") exitWith {
+      [{time > 2}, {
+        ["<t align='center'>Error:<br/>Failed to process MAT settings.</t>", "error", 20] call phx_ui_fnc_notify;
+        diag_log text "[FNF] (loadout) ERROR: Failed to process MAT settings.";
+      }] call CBA_fnc_waitUntilAndExecute;
+    };
+
+    // add mags & load one
+    // "debug_console" callExtension str(phx_loadout_mediumantitank_mag);
+    private "_compatMag";
+    if (!isNil "phx_loadout_mediumantitank_mag") then {
+      if (phx_loadout_mediumantitank_isReloadable) then {
+        {
+          // "debug_console" callExtension ("Adding " + _x + " to inventory");
+          [_x, "backpack", _unit] call phx_fnc_addGear;
+        } forEach phx_loadout_mediumantitank_mag;
+        diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon magazines"];
+        diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_mediumantitank_mag];
+      };
+
+      _compatMag = (phx_loadout_mediumantitank_mag # 0) splitString ':';
+    };
+
+    if (_role in _matGunnerVarArr) then {
+      // for gunner, add MAT weapon, then optic to it
+      _unit addWeapon phx_loadout_mediumantitank_weapon;
+      diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon ""%1""", phx_loadout_mediumantitank_weapon];
+      if (!isNil "phx_loadout_mediumantitank_optic") then {
+        private _thisOptic = selectRandom(phx_loadout_mediumantitank_optic);
+        _unit addSecondaryWeaponItem _thisOptic;
+        diag_log text format["[FNF] (loadout) INFO: Equipped AT optic ""%1""", _thisOptic];
+      };
+      if (!isNil "_compatMag") then {
+        // if we found a mag, try pre-loading the launcher
+        _compatMag params ["_magClass", "_magCount"];
+        _magCount = parseNumber(_magCount);
+        _numOfMags = count ([_unit, _magClass] call CBA_fnc_getMagazineIndex);
+        // some MAT rounds, when given to a player's inventory, will autoload into the launcher
+        // if this DOESN'T happen, we need to do it manually. otherwise we want to leave it alone so the proper number given
+        if (_numOfMags == _magCount) then {
+          // _unit removeMagazine _magClass;
+          [_unit, _magClass] call CBA_fnc_removeMagazine;
+          _unit addSecondaryWeaponItem _magClass;
+        };
+      };
+    };
+  } else {
+
+    // LAUNCHERS
+    // if not MAT or MATA role, check normal launchers[] array from config
+    if (count _cfgLaunchers > 0) then {
+      phx_loadout_launcher = selectRandom(_cfgLaunchers);
+    } else {
+      phx_loadout_launcher = "";
+    };
+    // "debug_console" callExtension str(phx_loadout_launcher);
+    if (phx_loadout_launcher isEqualType []) then {
+      phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
+      _unit addWeapon _launcher;
+      diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon ""%1""", _launcher];
+
+      if (count _mags > 0) then {
+        {
+          [_x, "backpack", _unit] call phx_fnc_addGear;
+        } forEach _mags;
+        diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon magazines"];
+        diag_log text format["[FNF] (loadout) DEBUG: %1", _mags];
+      };
+
+      if (count (secondaryWeaponMagazine player) == 0) then {
+        private _loadThisMag = (_mags # 0 splitString ':' select 0);
+        if (!isNil "_loadThisMag") then {
+          _unit removeMagazine _loadThisMag;
+          _unit addSecondaryWeaponItem _loadThisMag;
+        };
+      };
+
+      if (count _optics > 0) then {
+        private _thisOptic = selectRandom(_optics);
+        _unit addSecondaryWeaponItem _thisOptic;
+        diag_log text format["[FNF] (loadout) INFO: Equipped AT optic ""%1""", _thisOptic];
+      };
+    };
+  };
+};
+
+
+
+
+
+
+
+
+
 private "_sideLabel";
 switch (playerSide) do {
   case east: {_sideLabel = "opfor"};
@@ -52,7 +361,7 @@ mySideGearSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Gear"
 
 if ((player getVariable ["phxLoadout", ""]) isEqualTo "") exitWith {
   [{time > 2}, {
-    ["<t align='center'>Error:<br/>Your slot doesn't have a loadout property.<br/>Please notify staff, then select another slot..</t>", "error", 20] call phx_ui_fnc_notify
+    ["<t align='center'>Error:<br/>Your slot doesn't have a loadout property.<br/>Please notify staff, then select another slot..</t>", "error", 20] call phx_ui_fnc_notify;
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
@@ -64,20 +373,20 @@ if ((player getVariable ["phxLoadout", ""]) isEqualTo "") exitWith {
 #define CFGCOMMON missionConfigFile >> "CfgLoadouts" >> "common"
 #define CFGOPTICS missionConfigFile >> "CfgLoadouts" >> "optics"
 
-"debug_console" callExtension format["
------ LOADED -----
-ROLE: %1
-UNIFORM: %2
-GEAR: %3
-COMMON: %4
-CFGOPTICS: %5
-",
-  PLAYERLOADOUTVAR,
-  call {private _t = [CFGUNIFORM, true] call BIS_fnc_returnParents; reverse _t; _t},
-  call {private _t = [CFGGEAR, true] call BIS_fnc_returnParents; reverse _t; _t},
-  call {private _t = [CFGCOMMON, true] call BIS_fnc_returnParents; reverse _t; _t},
-  call {private _t = [CFGOPTICS, true] call BIS_fnc_returnParents; reverse _t; _t}
-];
+// "debug_console" callExtension format["
+// ----- LOADED -----
+// ROLE: %1
+// UNIFORM: %2
+// GEAR: %3
+// COMMON: %4
+// CFGOPTICS: %5
+// ",
+//   PLAYERLOADOUTVAR,
+//   call {private _t = [CFGUNIFORM, true] call BIS_fnc_returnParents; reverse _t; _t},
+//   call {private _t = [CFGGEAR, true] call BIS_fnc_returnParents; reverse _t; _t},
+//   call {private _t = [CFGCOMMON, true] call BIS_fnc_returnParents; reverse _t; _t},
+//   call {private _t = [CFGOPTICS, true] call BIS_fnc_returnParents; reverse _t; _t}
+// ];
 
 private _cfgUniform = (CFGUNIFORM >> "uniform") call BIS_fnc_getCfgDataArray;
 private _cfgVest = (CFGUNIFORM >> "vest") call BIS_fnc_getCfgDataArray;
@@ -93,191 +402,60 @@ private _cfgWeaponChoices = (CFGGEAR >> "weaponChoices") call BIS_fnc_getCfgData
 private _cfgAttachments = (CFGGEAR >> "attachments") call BIS_fnc_getCfgDataArray;
 private _cfgExplosiveChoices = (CFGGEAR >> "explosiveChoices") call BIS_fnc_getCfgDataArray;
 private _cfgGrenadeChoices = (CFGGEAR >> "grenadeChoices") call BIS_fnc_getCfgDataArray;
+// Side key - 0 = no, 1 = side, 2 = global
 private _cfgGiveSideKey = (CFGGEAR >> "giveSideKey") call BIS_fnc_getCfgData;
 private _cfgGiveSRRadio = (CFGGEAR >> "giveSRRadio") call BIS_fnc_getCfgDataBool;
 private _cfgGiveLRRadio = (CFGGEAR >> "giveLRRadio") call BIS_fnc_getCfgDataBool;
 // private _cfgHandgunAttachments = getArray (_cfgPath >> "handgunAttachments");
 
 
-fnc_getWeaponMagazines = {
-	params ["_toSearch", "_weapon", ["_allMuzzles", true]];
-	private _out = [];
-	{
-		if ((_x splitString ':' select 0) in ([_weapon, _allMuzzles] call CBA_fnc_compatibleMagazines)) then {
-			_out pushBack _x;
-		};
-	} forEach _toSearch;
-	_out
-};
-
 
 // Wearable
-private _uniform = if (_cfgUniform isEqualTo []) then { "" } else { selectRandom _cfgUniform };
-private _vest = if (_cfgVest isEqualTo []) then { "" } else { selectRandom _cfgVest };
-private _backpack = if (_cfgBackpack isEqualTo []) then { "" } else { selectRandom _cfgBackpack };
-private _headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
-
-player forceAddUniform _uniform;
-player addVest _vest;
-player addBackpack _backpack;
-player addHeadgear _headgear;
+phx_loadout_uniform = if (_cfgUniform isEqualTo []) then { "" } else { selectRandom _cfgUniform };
+phx_loadout_vest = if (_cfgVest isEqualTo []) then { "" } else { selectRandom _cfgVest };
+phx_loadout_backpack = if (_cfgBackpack isEqualTo []) then { "" } else { selectRandom _cfgBackpack };
+phx_loadout_headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
 
 
-// Radios
-// #define SR_RADIO "TFAR_anprc152"
-// #define LR_RADIO "TFAR_rt1523g_black"
-if (_cfgGiveSRRadio) then {
-  player linkItem ([playerSide, 1] call TFAR_fnc_getSideRadio);
-};
-// Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
-if (_cfgGiveLRRadio) then {
-  [{call TFAR_fnc_haveLRRadio}, {}, [], 5, {
-    private _items = backpackItems player;
-    removeBackpack player;
-    player addBackpack ([playerSide, 0] call TFAR_fnc_getSideRadio);
-    {
-      player addItemToBackpack _x;
-    } forEach _items;
-  }] call CBA_fnc_waitUntilAndExecute;
-} else {
-  [{call TFAR_fnc_haveLRRadio}, {
-    private _items = backpackItems player;
-    removeBackpack player;
-    player addBackpack "B_TacticalPack_blk";
-    {
-      player addItemToBackpack _x;
-    } forEach _items;
-  }, [], 5, {}] call CBA_fnc_waitUntilAndExecute;
-};
+
+[
+  player,
+  phx_loadout_uniform,
+  phx_loadout_vest,
+  phx_loadout_backpack,
+  phx_loadout_headgear
+] call fnc_addUniform;
+
+[
+  player,
+  _cfgGiveSRRadio,
+  _cfgGiveLRRadio
+] call fnc_giveRadios;
+
+[
+  player,
+  _cfgMagazines,
+  _cfgItems,
+  _cfgBackpackItems,
+  _cfgLinkedItems
+] call fnc_giveGear;
+
+[player, _cfgWeaponChoices] call fnc_givePrimaryWeapon;
+[player, _cfgWeaponChoices] call fnc_prepWeaponsSelector;
+
+[player, _cfgSidearms] call fnc_giveSidearmWeapon;
+
+[player, getNumber(CFGGEAR >> "giveSilencer")] call fnc_giveSilencer;
+
+[player, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG;
 
 
-// Items, grenades
-{[_x, "vest"] call phx_fnc_addGear} forEach _cfgMagazines;
-{[_x, "uniform"] call phx_fnc_addGear} forEach _cfgItems;
-{[_x, "backpack"] call phx_fnc_addGear} forEach _cfgBackpackItems;
-{player linkItem _x} forEach _cfgLinkedItems;
+[player, PLAYERLOADOUTVAR] call fnc_giveAT;
 
 
-// Primary weapon and appropriate magazines
-phx_loadout_weaponChosen = if (count _cfgWeaponChoices > 0) then {selectRandom(_cfgWeaponChoices)} else {[]};
-phx_loadout_weaponChosen params ["_weapons", "_mags"];
-phx_loadout_weapon = selectRandom(_weapons);
-phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call fnc_getWeaponMagazines;
-player addWeapon phx_loadout_weapon;
-{[_x, "vest"] call phx_fnc_addGear; nil} count phx_loadout_weaponMagazines;
 
-// iterate through _cfgWeaponChoices and add each weapon and appropriate mags to phx_selector_weapons so they can be chosen from
-private _weaponChoices = [];
-{
-  _x params ["_weapons", "_mags"];
-  {
-    private _weapon = _x;
-    private _compatMags = [_mags, _weapon] call fnc_getWeaponMagazines;
-    _weaponChoices pushBack [_weapon, _compatMags];
-  } forEach _weapons;
-} forEach _cfgWeaponChoices;
 
-// "debug_console" callExtension str(_weaponChoices);
-missionNamespace setVariable ["phx_selector_weapons", _weaponChoices];
 
-// NVGs/laser accessory
-_giveNVG = { player linkItem getText(CFGCOMMON >> "NVG") };
-_addLaser = {{player addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];};
-switch (typeName phx_addNVG) do {
-  case "SCALAR": {if (phx_addNVG == 1) then {call _giveNVG; call _addLaser}};
-  case "ARRAY": {if (playerSide in phx_addNVG) then {call _giveNVG; call _addLaser}};
-};
-
-// add silencer if RS
-if (getNumber(CFGGEAR >> "giveSilencer") isEqualTo 1) then {
-  _muzzleAcc = [phx_loadout_weapon, "muzzle"] call CBA_fnc_compatibleItems;
-  _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};
-  if (count _silencers > 0) then {player addPrimaryWeaponItem (_silencers select 0)};
-};
-
-// Sidearm and appropriate magazines
-phx_loadout_sidearmChosen = if (count _cfgSidearms > 0) then {selectRandom(_cfgSidearms)} else {""};
-phx_loadout_sidearmChosen params ["_sidearms", "_mags"];
-phx_loadout_sidearm = selectRandom(_sidearms);
-phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call fnc_getWeaponMagazines;
-player addWeapon phx_loadout_sidearm;
-{[_x, "uniform"] call phx_fnc_addGear; nil} count phx_loadout_sidearmMagazines;
-
-// MAT
-private _matRoleVarArr = ["MATA1","MAT1","MATA2","MAT2"];
-private _matGunnerVarArr = ["MAT1","MAT2"];
-if (PLAYERLOADOUTVAR in _matRoleVarArr) then {
-  call phx_fnc_setMAT;
-
-  if (isNil "phx_loadout_mediumantitank_weapon") exitWith {
-    [{time > 2}, {["<t align='center'>Error:<br/>Failed to process MAT settings.</t>", "error", 20] call phx_ui_fnc_notify}] call CBA_fnc_waitUntilAndExecute;
-  };
-
-  // add mags & load one
-  // "debug_console" callExtension str(phx_loadout_mediumantitank_mag);
-  private "_compatMag";
-  if (!isNil "phx_loadout_mediumantitank_mag") then {
-    if (phx_loadout_mediumantitank_isReloadable) then {
-      {
-        // "debug_console" callExtension ("Adding " + _x + " to inventory");
-        [_x, "backpack"] call phx_fnc_addGear;
-      } forEach phx_loadout_mediumantitank_mag;
-    };
-
-    _compatMag = (phx_loadout_mediumantitank_mag # 0) splitString ':';
-  };
-
-  if (PLAYERLOADOUTVAR in _matGunnerVarArr) then {
-    // for gunner, add MAT weapon, then optic to it
-    player addWeapon phx_loadout_mediumantitank_weapon;
-    if (!isNil "phx_loadout_mediumantitank_optic") then {
-      player addSecondaryWeaponItem selectRandom(phx_loadout_mediumantitank_optic);
-    };
-    if (!isNil "_compatMag") then {
-      // if we found a mag, try pre-loading the launcher
-      _compatMag params ["_magClass", "_magCount"];
-      _magCount = parseNumber(_magCount);
-      _numOfMags = count ([player, _magClass] call CBA_fnc_getMagazineIndex);
-      // some MAT rounds, when given to a player's inventory, will autoload into the launcher
-      // if this DOESN'T happen, we need to do it manually. otherwise we want to leave it alone so the proper number given
-      if (_numOfMags == _magCount) then {
-        // player removeMagazine _magClass;
-        [player, _magClass] call CBA_fnc_removeMagazine;
-        player addSecondaryWeaponItem _magClass;
-      };
-    };
-  };
-} else {
-
-  // LAUNCHERS
-  // if not MAT or MATA role, check normal launchers[] array from config
-  if (count _cfgLaunchers > 0) then {
-    phx_loadout_launcher = selectRandom(_cfgLaunchers);
-  } else {
-    phx_loadout_launcher = ""
-  };
-  // "debug_console" callExtension str(phx_loadout_launcher);
-  if (phx_loadout_launcher isEqualType []) then {
-    phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
-    player addWeapon _launcher;
-
-    {
-      [_x, "backpack"] call phx_fnc_addGear;
-    } forEach _mags;
-
-    if (count (secondaryWeaponMagazine player) == 0) then {
-      private _loadThisMag = (_mags # 0 splitString ':' select 0);
-      if (!isNil "_loadThisMag") then {
-        player removeMagazine _loadThisMag;
-        player addSecondaryWeaponItem _loadThisMag;
-      };
-    };
-
-    if (count _optics > 0) then {
-      player addSecondaryWeaponItem selectRandom(_optics);
-    };
-  };
-};
 
 
 // Optic selections based on phx_magnifiedOptics setting
@@ -394,6 +572,11 @@ _playerMagazines = magazines player;
 ];
 
 
+/////////////////////////////////////////
+          // NOTIFY //
+/////////////////////////////////////////
+
+
 private _strRole = "";
 if (LOADOUTROLE("PL")) then {_strRole = " Platoon Leader"};
 if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {_strRole = " Squad Leader"};
@@ -497,9 +680,9 @@ _fnc_notesWeapon = {
   } forEach _toGather;
   // "debug_console" callExtension str(_details);
   _weaponArr = +_details # 0;
-  "debug_console" callExtension str(_weaponArr);
+  // "debug_console" callExtension str(_weaponArr);
   _details = _details - [_weaponArr];
-  "debug_console" callExtension str(_details);
+  // "debug_console" callExtension str(_details);
 
   private _notifyArr = [];
   private _diaryArr = [];

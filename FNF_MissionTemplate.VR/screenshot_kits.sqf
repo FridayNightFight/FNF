@@ -39,17 +39,27 @@ _loadoutRolesToCheck = [];
     (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> (_x # 0)) call Bis_fnc_getCfgSubClasses
   ];
 } forEach [
-  // ["RHS_UNI_US_ARMY_2020","RHS_GEAR_US_ARMY_2010_M16A4"],
-  // ["RHS_UNI_US_ARMY_1980","RHS_GEAR_US_ARMY_1980_M14"],
-  // ["RHS_UNI_US_RANGERS_2020","RHS_GEAR_US_ARMY_2010_M16A4"],
-  // ["RHS_UNI_RU_RATNIK_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
-  // ["RHS_UNI_RU_RATNIK_D_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
-  // ["RHS_UNI_RU_SPETSNAZ_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
-  // ["RHS_UNI_SRU_ARMY_1980","RHS_GEAR_SRU_ARMY_1980_AK74"]
+  ["RHS_UNI_ID_MEC_2010","RHS_GEAR_ID_MEC_2010_AK74MR"],
+  ["RHS_UNI_RU_RATNIK_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_RU_RATNIK_D_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_RU_SPETSNAZ_2010","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_RU_SPETSNAZ_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+
+  ["RHS_UNI_SOV_ARMY_1980","RHS_GEAR_SOV_ARMY_1980_AK74"],
+
+  ["RHS_UNI_SERBIAN_ARMY_2010", "RHS_GEAR_SERBIAN_ARMY_2010_M21"],
+
+  ["RHS_UNI_US_ARMY_1980","RHS_GEAR_US_ARMY_1980_M14"],
+  ["RHS_UNI_US_ARMY_2020","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_US_ARMY_OCP","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_MARINES_DESERT_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_MARINES_WOODLAND_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_US_RANGERS_2020","RHS_GEAR_US_RANGERS_2010_SCAR"],
+
   ["VN_UNI_NLF_Vietcong","VN_GEAR_NVA_VC1970"],
-  ["VN_UNI_PAVN_NVA","VN_GEAR_NVA_VC1970"],
-  ["VN_UNI_SVA_ARVN","VN_GEAR_FR_FRA1970"],
   ["VN_UNI_NVA_Vietcong","VN_GEAR_NVA_VC1970"],
+  ["VN_UNI_PAVN_NVA","VN_GEAR_NVA_VC1970"],
+  ["VN_UNI_SVA_ARVN","VN_GEAR_NVA_VC1970"],
   ["VN_UNI_US_MACV","VN_GEAR_US_ARMY1970"],
   ["VN_UNI_US_SOG","VN_GEAR_US_SOG1970"]
 ];
@@ -57,95 +67,6 @@ _loadoutRolesToCheck = [];
 
 //////////////////////////////////////////////////////////////////////////////
 
-
-fnc_addGear = {
-  _itemStr = _this;
-
-  if (_itemStr isEqualTo "") exitWith {};
-
-  private _addGearErrorStr = "";
-
-  _err = {
-    params ["_item"];
-    _addGearErrorStr = _addGearErrorStr + _item + "\n";
-    _msg = format ["Error adding \n %1", _addGearErrorStr];
-    titleText [_msg, "PLAIN"];
-    titleFadeOut 20;
-    systemChat ("Error adding " + _item);
-  };
-
-  if (typeName _itemStr isEqualTo "STRING") then {
-    if (_itemStr find ":" != -1) then {
-      _item = _itemStr select [0, _itemStr find ":"];
-      _numToAdd = parseNumber (_itemStr select [(_itemStr find ":") + 1]);
-      for "_i" from 1 to _numToAdd do {
-        if (player canAdd _item) then {
-          player additem _item;
-        } else {
-          _item call _err;
-        };
-      };
-    } else {
-      if (player canAdd _itemStr) then {
-        player additem _itemStr;
-      } else {
-        _itemStr call _err;
-      };
-    };
-  } else {
-    _numToAdd = 1;
-
-    _str = _itemStr select 0;
-    _unit = _itemStr select 2;
-    _item = _str;
-    if (_str find ":" != -1) then {
-      _item = (_str select [0, _str find ":"]);
-      _numToAdd = parseNumber (_str select [(_str find ":") + 1]);
-    };
-
-    switch (_itemStr select 1) do {
-      case "backpack": {
-        for "_i" from 1 to _numToAdd do {
-          if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
-            _unit addItemToBackpack _item;
-          } else {
-            _itemStr call _err;
-          };
-        };
-      };
-      case "vest": {
-        for "_i" from 1 to _numToAdd do {
-          if ([_unit, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
-            _unit addItemToVest _item;
-          } else {
-            if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
-              _unit addItemToBackpack _item;
-            } else {
-              _itemStr call _err;
-            };
-          };
-        };
-      };
-      case "uniform": {
-        for "_i" from 1 to _numToAdd do {
-          if ([_unit, _item, 1, true, false, false] call CBA_fnc_canAddItem) then {
-            _unit addItemToUniform _item;
-          } else {
-            if ([_unit, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
-              _unit addItemToVest _item;
-            } else {
-              if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
-                _unit addItemToBackpack _item;
-              } else {
-                _itemStr call _err;
-              };
-            };
-          };
-        };
-      };
-    };
-  };
-};
 
 
 fnc_assignLoadoutFromConfig = {

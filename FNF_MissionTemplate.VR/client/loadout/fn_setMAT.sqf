@@ -50,7 +50,7 @@ if ((_configVarValue # 0) isEqualTo "GEARDEFAULT") then {
     call fnc_notify_noDefaultConfigured;
   };
   // Save valid info
-  _at = _cfgDefaultMAT;
+  _at = selectRandom(_cfgDefaultMAT);
 } else {
   // We're using the config.sqf setting
   _at = _configVarValue;

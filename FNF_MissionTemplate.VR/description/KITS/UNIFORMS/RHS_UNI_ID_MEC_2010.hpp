@@ -1,30 +1,30 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_vkpo_gloves"
+#define UNIFORM "rhssaf_uniform_m10_digital_desert"
 
-#define VEST "rhs_6b45_rifleman", "rhs_6b45_rifleman_2"
-#define VEST_LEADER "rhs_6b45_off"
-#define VEST_AR "rhs_6b45_mg"
+#define VEST "rhssaf_vest_md12_digital_desert"
+#define VEST_LEADER VEST
+#define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhs_6b47_bala"
-#define HELMET_CMDR "rhs_vkpo_cap_alt"
-#define HELMET_RECON "rhs_Booniehat_digi"
-#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
-#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
+#define HELMET "rhssaf_helmet_m97_black_nocamo_black_ess"
+#define HELMET_CMDR "H_Beret_blk"
+#define HELMET_RECON "H_ShemagOpen_khk"
+#define HELMET_CREWMAN "rhs_tsh4"
+#define HELMET_PILOT "rhs_zsh7a_mike_alt"
 
-#define BACKPACK "rhs_rk_sht_30_emr"
-#define BACKPACK_RADIO "TFAR_mr3000_rhs"
-#define BACKPACK_AR "rhs_tortila_emr"
-#define BACKPACK_AT "rhs_tortila_emr"
+#define BACKPACK "B_Kitbag_cbr"
+#define BACKPACK_RADIO "TFAR_anprc155_coyote"
+#define BACKPACK_AR "B_Carryall_khk"
+#define BACKPACK_AT "B_Carryall_khk"
 #define BACKPACK_MEDIC "rhs_medic_bag"
 
 
-class RHS_UNI_RU_RATNIK_2010 {
+class RHS_UNI_ID_MEC_2010 {
   author = "Mazz38";
-  description = "RU: Modern Russian ARMY EMR Camouflage";
+  description = "INDEPENDENT FACTION: 2010 Middle Eastern Coalition ARMY Desert Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};

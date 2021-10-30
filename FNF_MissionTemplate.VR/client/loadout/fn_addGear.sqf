@@ -32,20 +32,21 @@ if (typeName _itemStr isEqualTo "STRING") then {
     };
   };
 } else {
-  _numToAdd = 1;
 
-  _str = _itemStr select 0;
-  _item = _str;
+  _numToAdd = 1;
+  _itemStr params ["_str","_container", "_unit"];
+
+  private _item = _str;
   if (_str find ":" != -1) then {
     _item = (_str select [0, _str find ":"]);
     _numToAdd = parseNumber (_str select [(_str find ":") + 1]);
   };
 
-  switch (_itemStr select 1) do {
+  switch (_container) do {
     case "backpack": {
       for "_i" from 1 to _numToAdd do {
-        if ([player, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
-          player addItemToBackpack _item;
+        if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
+          _unit addItemToBackpack _item;
         } else {
           _itemStr call _err;
         };
@@ -53,11 +54,11 @@ if (typeName _itemStr isEqualTo "STRING") then {
     };
     case "vest": {
       for "_i" from 1 to _numToAdd do {
-        if ([player, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
-          player addItemToVest _item;
+        if ([_unit, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
+          _unit addItemToVest _item;
         } else {
-          if ([player, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
-            player addItemToBackpack _item;
+          if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
+            _unit addItemToBackpack _item;
           } else {
             _itemStr call _err;
           };
@@ -66,14 +67,14 @@ if (typeName _itemStr isEqualTo "STRING") then {
     };
     case "uniform": {
       for "_i" from 1 to _numToAdd do {
-        if ([player, _item, 1, true, false, false] call CBA_fnc_canAddItem) then {
-          player addItemToUniform _item;
+        if ([_unit, _item, 1, true, false, false] call CBA_fnc_canAddItem) then {
+          _unit addItemToUniform _item;
         } else {
-          if ([player, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
-            player addItemToVest _item;
+          if ([_unit, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
+            _unit addItemToVest _item;
           } else {
-            if ([player, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
-              player addItemToBackpack _item;
+            if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
+              _unit addItemToBackpack _item;
             } else {
               _itemStr call _err;
             };
