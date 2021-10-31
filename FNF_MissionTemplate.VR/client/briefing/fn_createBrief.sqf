@@ -66,36 +66,36 @@ fnc_getItemInfo = {
 };
 
 _fnc_parseMATForBriefing = {
-    params ["_side", "_bravoOption", "_deltaOption"];
-    private _out = [];
-    private "_gearLoadout";
-    switch (_side) do {
-      case east: {_gearLoadout = phx_opforGear};
-      case west: {_gearLoadout = phx_bluforGear};
-      case independent: {_gearLoadout = phx_indforGear};
-    };
-    {
-      _x params ["_setting", "_role"];
-      "debug_console" callExtension str(_x);
-      if (count _setting > 0) then {
-        if (_setting # 0 isEqualTo "GEARDEFAULT") then {
-          // "debug_console" callExtension str([_gearLoadout,_role,phx_bluAT_Bravo]);
-          _data = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray;
-          //  "debug_console" callExtension str(_data);
-          _out pushBack (_data # 0);
-        } else {
-          _out pushBack (_setting # 0);
-        };
-      } else {
-        _out pushBack "";
-      };
-    } forEach [
-      [_bravoOption, "MAT1"],
-      [_deltaOption, "MAT2"]
-    ];
-
-    _out
+  params ["_side", "_bravoOption", "_deltaOption"];
+  private _out = [];
+  private "_gearLoadout";
+  switch (_side) do {
+    case east: {_gearLoadout = phx_opforGear};
+    case west: {_gearLoadout = phx_bluforGear};
+    case independent: {_gearLoadout = phx_indforGear};
   };
+  {
+    _x params ["_setting", "_role"];
+    "debug_console" callExtension str(_x);
+    if (count _setting > 0) then {
+      if (_setting # 0 isEqualTo "GEARDEFAULT") then {
+        // "debug_console" callExtension str([_gearLoadout,_role,phx_bluAT_Bravo]);
+        _data = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray;
+        //  "debug_console" callExtension str(_data);
+        _out pushBack (_data # 0);
+      } else {
+        _out pushBack (_setting # 0);
+      };
+    } else {
+      _out pushBack "";
+    };
+  } forEach [
+    [_bravoOption, "MAT1"],
+    [_deltaOption, "MAT2"]
+  ];
+
+  _out
+};
 
 phx_safetyEndExpression = {
   [] spawn {

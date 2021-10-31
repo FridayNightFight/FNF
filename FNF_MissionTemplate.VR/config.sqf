@@ -133,12 +133,12 @@ phx_magnifiedOptics = 0;
 /*
   Automatically add NVGs & lasers to players (Gen3, Black)
   Examples:
-    addNVG = 0 OR [] will not give anyone NVGs
-    addNVG = 1 OR [east, west, independent] will give all sides NVGs
-    addNVG = [east] will give side east NVGs
-    addNVG = [east,west] will give sides east and west NVGs
+    phx_addNVG = 0 OR [] will not give anyone NVGs
+    phx_addNVG = 1 OR [east, west, independent] will give all sides NVGs
+    phx_addNVG = [east] will give side east NVGs
+    phx_addNVG = [east,west] will give sides east and west NVGs
   */
-phx_addNVG = 0;
+phx_addNVG = 1;
 
 phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers

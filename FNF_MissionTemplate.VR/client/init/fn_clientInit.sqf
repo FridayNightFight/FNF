@@ -23,7 +23,7 @@ call phx_fnc_teleportInit; // Add leadership teleport options
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
   // call phx_fnc_setLoadout;
-  execVM 'client\loadout\applyCfgLoadout.sqf';
+  call phx_loadout_fnc_applyCfgLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {

@@ -159,4 +159,10 @@ class CfgFunctions {
       class notify{};
     }
   };
+  class phx_loadout {
+    class applyLoadout {
+      file = "client\loadout";
+      class applyCfgLoadout{};
+    };
+  };
 };

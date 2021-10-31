@@ -73,7 +73,7 @@ class VN_GEAR_US_SOG1970 {
       {{RIFLE},{RIFLE_MAG}},
       {{CARBINE},{CARBINE_MAG}}
     };
-    magazines[] = {BASE_GRENADES};
+    magazines[] = {VN_B_BASE_GRENADES};
     items[] = {TOOLS,GRUNT_MEDICAL};
     linkedItems[] = {VN_LINKED};
     attachments[] = {};
