@@ -42,6 +42,7 @@ if (phx_hasLR) then {
     //Set stero mode for alternate channel
     phx_curSettings set [6,2];
     [(call TFAR_fnc_activeLrRadio), phx_curSettings] call TFAR_fnc_setLrSettings;
+    [(call TFAR_fnc_activeLrRadio), phx_loadout_TFAREncryptionCode] call TFAR_fnc_setLrRadioCode;
 };
 
 //Only setup short wave channels if player has one
@@ -70,11 +71,12 @@ if (phx_hasSW) then {
     phx_curSettings set [6,2];
 
     [(call TFAR_fnc_activeSwRadio), phx_curSettings] call TFAR_fnc_setSwSettings;
+    [(call TFAR_fnc_activeSwRadio), phx_loadout_TFAREncryptionCode] call TFAR_fnc_setSwRadioCode;
 };
 
 
 //Everything should be setup. Let the player know.
-systemChat "Radios preset.";
+// systemChat "Radios preset.";
 [] spawn {
   ["<t align='center'>Radios initialized.</t>", "success", 5] call phx_ui_fnc_notify;
   // SW radio

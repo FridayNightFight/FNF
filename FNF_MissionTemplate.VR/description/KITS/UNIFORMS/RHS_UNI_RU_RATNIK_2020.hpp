@@ -22,7 +22,7 @@
 #define BACKPACK_MEDIC "rhs_medic_bag"
 
 
-class RHS_UNI_RU_RATNIK_2010 {
+class RHS_UNI_RU_RATNIK_2020 {
   author = "Mazz38";
   description = "RU: Modern Russian ARMY EMR Camouflage";
 

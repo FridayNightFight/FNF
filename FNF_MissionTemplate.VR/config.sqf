@@ -26,6 +26,49 @@ phx_attackingSide = sideEmpty; //west/east/independent
 
 ////////////////////////////////////////////////////////////
 
+// MISSION MAKER NOTES //
+// 0 or more of the below can be included. At minimum, it's suggested to populate the "briefingNotes" item.
+
+// "Background" should include any lore you wish to explain.
+phx_briefingBackground = "";
+// "WorldInfo" should include any notable details about the AO.
+phx_briefingWorldInfo = "";
+// "Notes" can include anything else.
+phx_briefingNotes = "";
+// "Rules" should include any mission-specific rules that you want to spell out for players.
+phx_briefingRules = "";
+
+
+// SCENARIO SETTINGS //
+
+phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
+phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
+phx_maxViewDistance = 1500; //Maximum client view distance (meters)
+
+/*
+  Allow players to grab magnified optics from the gear selector
+  0 will restrict 4x+ optics to designated marksmen and snipers.
+  1 will allow 4x+ optic choices for all except MGs.
+  -1 will force ironsights.
+*/
+phx_magnifiedOptics = 0;
+
+/*
+  Automatically add NVGs & lasers to players (Gen3, Black)
+  Examples:
+    phx_addNVG = 0 OR [] will not give anyone NVGs
+    phx_addNVG = 1 OR [east, west, independent] will give all sides NVGs
+    phx_addNVG = [east] will give side east NVGs
+    phx_addNVG = [east,west] will give sides east and west NVGs
+  */
+phx_addNVG = 0;
+
+
+
+
+
+// UNIFORM AND GEAR CHOICES //
+
 //BLUFOR
 phx_bluforUniform = "RHS_UNI_US_ARMY_2020";
 phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
@@ -35,33 +78,41 @@ phx_opforUniform = "RHS_UNI_RU_RATNIK_2020";
 phx_opforGear = "RHS_GEAR_RU_ARMY_2010_AK74M";
 
 //INDFOR
-phx_indforUniform = "RHS_UNI_US_ARMY_1980";
-phx_indforGear = "RHS_GEAR_US_ARMY_1980_M14";
+phx_indforUniform = "RHS_UNI_ID_MEC_2010";
+phx_indforGear = "RHS_GEAR_ID_MEC_2010_AK74MR";
 
 /*
   POSSIBLE VALUES:
 
     UNIFORMS:
-      RHS_UNI_MARINES_DESERT_2010
+      RHS_UNI_ID_MEC_2010
       RHS_UNI_RU_RATNIK_2020
       RHS_UNI_RU_RATNIK_D_2020
+      RHS_UNI_RU_SPETSNAZ_2010
       RHS_UNI_RU_SPETSNAZ_2020
-      RHS_UNI_SRU_ARMY_1980
+      RHS_UNI_SERBIAN_ARMY_2010
+      RHS_UNI_SOV_ARMY_1980
       RHS_UNI_US_ARMY_1980
       RHS_UNI_US_ARMY_2020
       RHS_UNI_US_ARMY_OCP
+      RHS_UNI_US_MARINES_DESERT_2010
+      RHS_UNI_US_MARINES_WOODLAND_2010
       RHS_UNI_US_RANGERS_2020
+      VN_UNI_NLF_Vietcong
       VN_UNI_NVA_Vietcong
+      VN_UNI_PAVN_NVA
+      VN_UNI_SVA_ARVN
       VN_UNI_US_MACV
       VN_UNI_US_SOG
 
     GEAR:
+      RHS_GEAR_ID_MEC_2010_AK74MR
       RHS_GEAR_RU_ARMY_2010_AK74M
-      RHS_GEAR_SRU_ARMY_1980_AK74
-      RHS_GEAR_US_ARMY
+      RHS_GEAR_SERBIAN_ARMY_2010_M21
+      RHS_GEAR_SOV_ARMY_1980_AK74
       RHS_GEAR_US_ARMY_1980_M14
       RHS_GEAR_US_ARMY_2010_M16A4
-      VN_GEAR_FR_FRA1970
+      RHS_GEAR_US_RANGERS_2010_SCAR
       VN_GEAR_NVA_VC1970
       VN_GEAR_US_ARMY1970
       VN_GEAR_US_SOG1970
@@ -74,18 +125,30 @@ If they have a radio, they will all be preset to the same frequency
 */
 
 
-/*
-MAT SELECTION
+// MAT SELECTION //
 
+// BLUFOR
+phx_bluAT_Bravo = GEARDEFAULT;
+phx_bluAT_Delta = JAVELIN(1);
+
+// OPFOR
+phx_redAT_Bravo = RPG32(2);
+phx_redAT_Delta = IGLA(1);
+
+// INDFOR
+phx_grnAT_Bravo = RPG32(2);
+phx_grnAT_Delta = IGLA(1);
+
+/*
 Possible launcher values (and recommended counts)
-	CARLG(2)
-	RPG32(2)
-	RPG7(4)
-	TITAN(1)
-	JAVELIN(1)
-	METIS(1)
-	STINGER(1)
-	IGLA(1)
+  CARLG(2)
+  RPG32(2)
+  RPG7(4)
+  TITAN(1)
+  JAVELIN(1)
+  METIS(1)
+  STINGER(1)
+  IGLA(1)
 
   // Disposables
     M72LAW(1)
@@ -101,8 +164,8 @@ Possible launcher values (and recommended counts)
     GEARDEFAULT
 
 EXAMPLE:
-	format:
-		phx_bluAT_Bravo = CARLG(2);
+  format:
+    phx_bluAT_Bravo = CARLG(2);
 
   CARLG would give the MAT gunner a Carl Gustav
   The 2 refers to how many rockets/missiles for each: gunner, assistant, assistant.
@@ -110,58 +173,15 @@ EXAMPLE:
 
 */
 
-// BLUFOR
-phx_bluAT_Bravo = GEARDEFAULT;
-phx_bluAT_Delta = JAVELIN(1);
-
-// OPFOR
-phx_redAT_Bravo = RPG32(2);
-phx_redAT_Delta = IGLA(1);
-
-// INDFOR
-phx_grnAT_Bravo = RPG32(2);
-phx_grnAT_Delta = IGLA(1);
 
 
-/*
-  Allow players to grab magnified optics from the gear selector
-  0 will restrict 4x+ optics to designated marksmen and snipers.
-  1 will allow 4x+ optic choices. -1 will force ironsights
-*/
-phx_magnifiedOptics = 0;
-
-/*
-  Automatically add NVGs & lasers to players (Gen3, Black)
-  Examples:
-    phx_addNVG = 0 OR [] will not give anyone NVGs
-    phx_addNVG = 1 OR [east, west, independent] will give all sides NVGs
-    phx_addNVG = [east] will give side east NVGs
-    phx_addNVG = [east,west] will give sides east and west NVGs
-  */
-phx_addNVG = 1;
-
-phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
-phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
-phx_maxViewDistance = 1500; //Maximum client view distance (meters)
-
+// SYSTEM SETTINGS //
 
 // Show/Hide unit / group icons on map, GPS for players
 // Used in limited-intel scenarios like WWII and Vietnam
 phx_showUnitIcons = true;
 phx_showGroupIcons = true;
 
-
-// MISSION MAKER NOTES
-// 0 or more of the below can be included. At minimum, it's suggested to populate the "briefingNotes" item.
-
-// "Background" should include any lore you wish to explain.
-phx_briefingBackground = "";
-// "WorldInfo" should include any notable details about the AO.
-phx_briefingWorldInfo = "";
-// "Notes" can include anything else.
-phx_briefingNotes = "";
-// "Rules" should include any mission-specific rules that you want to spell out for players.
-phx_briefingRules = "";
 
 /*
 ==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========

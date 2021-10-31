@@ -424,6 +424,20 @@ switch (phx_gameMode) do {
         getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "EditorPreview")
       ];
     } forEach _objects;
+
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: Destroy",
+        (
+          "Attack/Defend game mode with between 1 and 3 objectives, which can be any object in the game (default: an ammo cache)." +
+          "<br/>" +
+          "Attackers must destroy them by any means necessary and in any order, defenders must prevent them from doing so." +
+          "<br/><br/><br/>" +
+          "See the ""Mission Variables"" tab for this mission's configured game mode settings."
+        )
+      ]
+    ];
   };
   case "uplink": {
     #include "..\..\mode_config\uplink.sqf";
@@ -442,6 +456,22 @@ switch (phx_gameMode) do {
       _varStr = _varStr + format ["Hack time: %1", _terminalHackTime];
       _varStr = _varStr + "<br/>";
     };
+
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: Uplink",
+        (
+          "Attackers need to hack 1 to 3 data terminals in any order to win." +
+          "<br/>" +
+          "Terminals can be hacked by interacting with them, after which there is a countdown of a X seconds (default: 90) before they explode." +
+          "<br/>" +
+          "Defenders are able to pause a hack by interacting with the terminals, but the countdown will not be reset." +
+          "<br/><br/><br/>" +
+          "See the ""Mission Variables"" tab for this mission's configured game mode settings."
+        )
+      ]
+    ];
   };
   case "rush": {
     #include "..\..\mode_config\rush.sqf";
@@ -458,6 +488,22 @@ switch (phx_gameMode) do {
       _varStr = _varStr + format ["Hack time: %1", _terminalHackTime];
       _varStr = _varStr + "<br/>";
     };
+
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: Rush",
+        (
+          "Attackers need to hack 1 to 3 data terminals in sequential order to win." +
+          "<br/>" +
+          "Terminals can be hacked by interacting with them, after which there is a countdown of a X seconds (default: 90) before they explode." +
+          "<br/>" +
+          "Defenders are able to pause a hack by interacting with the terminals, but the countdown will not be reset." +
+          "<br/><br/><br/>" +
+          "See the ""Mission Variables"" tab for this mission's configured game mode settings."
+        )
+      ]
+    ];
   };
   case "connection": {
     #include "..\..\mode_config\connection.sqf";
@@ -466,6 +512,20 @@ switch (phx_gameMode) do {
 
     _varStr = _varStr + format ["One point accrued per terminal every %1 seconds", _pointAddTime];
     _varStr = _varStr + "<br/>";
+
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: Connection",
+        (
+          "Neutral game mode that has between 1 and 3 data terminal objectives, which must be hacked by interacting with them." +
+          "<br/>" +
+          "Once a side has hacked a terminal they will start to accrue a point every X seconds (default: 40) and the first team to 100 points wins." +
+          "<br/><br/><br/>" +
+          "See the ""Mission Variables"" tab for this mission's configured game mode settings."
+        )
+      ]
+    ];
   };
   case "captureTheFlag": {
     #include "..\..\mode_config\ctf.sqf";
@@ -484,6 +544,23 @@ switch (phx_gameMode) do {
     _varStr = _varStr + format ["Attackers must hold the flag in capture zone for %1 seconds to achieve victory", _flagCaptureTime];
     _varStr = _varStr + "<br/>";
 
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: Capture The Flag",
+        (
+          "Classic capture the flag mode. Attacking team needs to control the flag, bring it back to their capture zone and hold it there for X seconds (default: 600 = 10 min)." +
+          "<br/>" +
+          "The flag capture countdown will not start until the flag is removed from a vehicle or player's hands and placed in the capture zone." +
+          "<br/>" +
+          "The defending team will not know where the capture zone is until the attackers have the flag, at which point its location will be updated globally every X seconds (default: 15)." +
+          "<br/>" +
+          "Note that the flag carrier is only able to move at 65% normal speed." +
+          "<br/><br/><br/>" +
+          "See the ""Mission Variables"" tab for this mission's configured game mode settings."
+        )
+      ]
+    ];
   };
   case "adSector": {
     #include "..\..\mode_config\adSector.sqf";
@@ -497,6 +574,20 @@ switch (phx_gameMode) do {
     };
     _varStr = _varStr + format ["Sequential: %1", _isSequential];
     _varStr = _varStr + "<br/>";
+
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: A/D Sector",
+        (
+          "Attack/defend sector control mode. Attackers need to capture 1 to 3 sectors to win which are either set to sequential or non-sequential (default: non-sequential)." +
+          "<br/>" +
+          "A sector is captured if there is at least one dismounted attacker in the sector and no conscious defenders.  Upon capture, sectors disappear and cannot be re-captured by the defenders." +
+          "<br/><br/><br/>" +
+          "See the ""Mission Variables"" tab for this mission's configured game mode settings."
+        )
+      ]
+    ];
   };
   case "neutralSector": {
     #include "..\..\mode_config\neutralSector.sqf";
@@ -505,6 +596,22 @@ switch (phx_gameMode) do {
 
     _varStr = _varStr + format ["One point accrued per sector every %1 seconds", _pointAddTime];
     _varStr = _varStr + "<br/>";
+
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: Neutral Sector",
+        (
+          "Neutral game mode that has between 1 and 3 sectors. Sectors are captured when one team has the majority of conscious, dismounted players within it.<br/>1 point will be added to a team's total score for each sector they control, for every X seconds they control it. The defaults are:" +
+          "<br/><br/>" +
+          "1 sector: 12 seconds.<br/>2 sectors: 15.6 seconds.<br/>3 sectors: 19.2 seconds." +
+          "<br/><br/>" +
+          "The first team to 100 points wins." +
+          "<br/><br/><br/>" +
+          "See the ""Mission Variables"" tab for this mission's configured game mode settings."
+        )
+      ]
+    ];
   };
   case "scavHunt": {
     #include "..\..\mode_config\scavHunt.sqf";
@@ -513,6 +620,42 @@ switch (phx_gameMode) do {
 
     _varStr = _varStr + format ["Specialized transports per side: %1", _numberOfTransportsPerSide];
     _varStr = _varStr + "<br/>";
+
+    player createDiaryRecord [
+      "PHX_Diary_Details",
+      [
+        "Game Mode: ScavHunt",
+        (
+          "This is a neutral objective mode where each team has to capture as many of the objective items as possible before the other teams.<br/><br/>To capture an item, it must be loaded into one of the specifically-purposed transport vehicles using ACE interaction, then driven back to the side's capture zone and unloaded. An item will count towards the team's score and it will no longer be interactable with. STEALING ANOTHER SIDE'S CAPTURED ITEMS IS NO LONGER POSSIBLE. At mission time end (40 minutes duration), the side with the most items in their zone will win. If a side captures more than 50% of the objectives on the field, they will instantly win." +
+          "<br/><br/>" +
+          "  - Capture zones are only visible to their owning side, until any side scores or 15 minutes after safe start ends." +
+          "<br/>" +
+          "  - Objectives will be marked on the map at fixed intervals, with the first starting right after safe start. Unmarked objectives are still capturable, if you can find them." +
+          "<br/>" +
+          "  - By the final 15 minutes of the round, all uncaptured objectives will have been marked on the map." +
+          "<br/>" +
+          "  - All objective items and their transport vehicles are invincible, though crew/passengers may still be killed by penetration or collision damage." +
+          "<br/>" +
+          "  - Items must be UNLOADED to count toward a team's score. Loading them again while in capture zone will REMOVE it from that team's score." +
+          "<br/>" +
+          "  - It will take approximately 33 seconds to complete a load or unload of an item. During this time, the player cannot move." +
+          "<br/>" +
+          "  - If you can't ACE interact with an objective item, try moving the transport closer." +
+          "<br/>" +
+          "  - A map marker for each objective item will update its location every 3 seconds." +
+          "<br/>" +
+          "  - A transport vehicle can only carry one item at a time." +
+          "<br/>" +
+          "  - A player may NOT crew another side's transport vehicle. Attempts will result in (safe) ejection from the vehicle." +
+          "<br/><br/><br/>" +
+          "OVERTIME CONDITION:" +
+          "<br/><br/>" +
+          "At the end of mission time, if two or more teams have an equal number of items captured, overtime will begin." +
+          "<br/>" +
+          "Overtime will continue until a leading side captures an additional item."
+        )
+      ]
+    ];
   };
 };
 
