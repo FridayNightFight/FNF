@@ -112,21 +112,27 @@ phx_server_dropFlag = {
 
   _dummy = objNull;
 
-  _pos = ASLtoATL (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0,(getPosASL ctf_flag) select 1,-200], vehicle _player]) select 0) select 0);
+  //Get new position for flag (draws a line under the flag, and the position at the first surface that the line intersects is chosen for the new flag pos)
+  _posASL = (((lineIntersectsSurfaces [getPosASL ctf_flag, [(getPosASL ctf_flag) select 0, (getPosASL ctf_flag) select 1, -1000], vehicle _player]) select 0) select 0);
+  _posATL = ASLtoATL _posASL; //Convert ASL to ATL for use with createVehicle
 
-  if (surfaceIsWater _pos) then {
-    _pos = [_pos select 0, _pos select 1, abs getTerrainHeightASL _pos];
+  //If flag position is under water, push it to water surface
+  if (_posASL select 2 < -0.75) then {
+    _posATL = [_posATL select 0, _posATL select 1, abs getTerrainHeightASL _posATL];
   };
 
+  //Spawn dummy object and attach/detach flag to it
   if (vehicle _player != _player) then {
-    _dummy = createVehicle ["Land_HelipadEmpty_F", _pos, [], 0, "NONE"];
+    _dummy = createVehicle ["Land_HelipadEmpty_F", _posATL, [], 0, "NONE"];
   } else {
-    _dummy = createVehicle ["Land_HelipadEmpty_F", _pos, [], 0, "CAN_COLLIDE"];
+    _dummy = createVehicle ["Land_HelipadEmpty_F", _posATL, [], 0, "CAN_COLLIDE"];
   };
 
   ctf_flag attachTo [_dummy, [0,0,1.5]];
   detach ctf_flag;
   deleteVehicle _dummy;
+
+  ctf_flag setVectorUp [0,0,1];
 
   if !(ctf_flag inArea ctf_attackTrig) then {
     ctf_flag setFlagTexture "\A3\Data_F\Flags\flag_white_co.paa";
@@ -171,9 +177,10 @@ phx_server_dropFlag = {
       if (_flagInZoneTex) then {_flagInZoneTex = false};
     };
 
-    if (isNull attachedTo ctf_flag && !isTouchingGround ctf_flag) then {
+    //Make sure flag stays on ground/touching surface
+    if (isNull attachedTo ctf_flag && ((getPos ctf_flag) select 2) > 0.6) then {
       getpos ctf_flag params ["_x","_y"];
-      ctf_flag setPos ([_x,_y] findEmptyPosition [3, 100, typeOf ctf_flag]);
+      ctf_flag setPos ([_x,_y] findEmptyPosition [2, 100, typeOf ctf_flag]);
     };
 
     sleep 1;

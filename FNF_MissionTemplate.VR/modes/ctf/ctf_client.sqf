@@ -60,8 +60,8 @@ phx_clientFlagAction = [
   "Take flag",
   "",
   "",
-  "(player distance ctf_flag < 3.5) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide || ctf_flag inArea ctf_attackTrig)",
-  "player distance ctf_flag < 3.5",
+  "(player distance ctf_flag < 4) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide || ctf_flag inArea ctf_attackTrig)",
+  "player distance ctf_flag < 4",
   {},
   {},
   {
