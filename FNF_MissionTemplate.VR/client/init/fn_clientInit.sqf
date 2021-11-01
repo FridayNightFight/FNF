@@ -65,3 +65,8 @@ _action = [
 	{true}
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;
+
+// Admin player patch jip support
+if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
+	call PHX_fnc_jipPatch;
+};

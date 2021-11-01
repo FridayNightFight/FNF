@@ -122,7 +122,8 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
-	    class adminPatch{};
+	  class adminPatch{};
+	  class jipPatch{};
       class populateORBATS{};
     };
     class end {
