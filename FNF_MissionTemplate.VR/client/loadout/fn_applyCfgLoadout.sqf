@@ -20,8 +20,22 @@ removeHeadgear player;
 // removeGoggles player;
 
 
+params ["_LOADOUTROLE"];
 
-
+if (!isNil {_LOADOUTROLE}) then {
+diag_log text format["[FNF] (loadout) INFO: Player role is %1.", PLAYERLOADOUTVAR];
+} else {
+  {true} exitWith {
+    [{time > 2}, {
+      ["<t align='center'>Error:<br/>Slot has no role assigned. Please notify staff and select another slot.</t>", "error", 20] call phx_ui_fnc_notify;
+      diag_log text format["[FNF] (loadout) ERROR: Slot has no role assigned."];
+      [] spawn {
+        sleep 10;
+        endMission "END1";
+      };
+    }] call CBA_fnc_waitUntilAndExecute;
+  };
+};
 
 
 
@@ -258,7 +272,7 @@ fnc_giveAT = {
   private _matRoleVarArr = ["MATA1","MAT1","MATA2","MAT2"];
   private _matGunnerVarArr = ["MAT1","MAT2"];
   if (_role in _matRoleVarArr) then {
-    call phx_fnc_setMAT;
+    [_role] call phx_fnc_setMAT;
 
     if (isNil "phx_loadout_mediumantitank_weapon") exitWith {
       [{time > 2}, {
@@ -570,7 +584,7 @@ if ((player getVariable ["phxLoadout", ""]) isEqualTo "") exitWith {
 };
 
 
-#define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+#define PLAYERLOADOUTVAR (_LOADOUTROLE)
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
 #define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
@@ -621,20 +635,7 @@ phx_loadout_backpack = if (_cfgBackpack isEqualTo []) then { "" } else { selectR
 phx_loadout_headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
 
 
-if (!isNil {PLAYERLOADOUTVAR}) then {
-diag_log text format["[FNF] (loadout) INFO: Player role is %1.", PLAYERLOADOUTVAR];
-} else {
-  {true} exitWith {
-    [{time > 2}, {
-      ["<t align='center'>Error:<br/>Slot has no role assigned. Please notify staff and select another slot.</t>", "error", 20] call phx_ui_fnc_notify;
-      diag_log text format["[FNF] (loadout) ERROR: Slot has no role assigned."];
-      [] spawn {
-        sleep 10;
-        endMission "END1";
-      };
-    }] call CBA_fnc_waitUntilAndExecute;
-  };
-};
+
 
 
 if (isNil {

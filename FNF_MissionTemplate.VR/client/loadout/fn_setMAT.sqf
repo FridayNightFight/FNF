@@ -1,6 +1,7 @@
 /*Sets the MAT weapon and ammo class*/
 
-#define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+params ["_LOADOUTROLE"];
+#define PLAYERLOADOUTVAR _LOADOUTROLE
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
 #define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
@@ -25,12 +26,16 @@ switch (playerSide) do {
 };
 
 
-
-if (["Bravo", roleDescription player] call BIS_fnc_inString) then {
-  _configVarName = _configVarName + "Bravo";
-};
-if (["Delta", roleDescription player] call BIS_fnc_inString) then {
-  _configVarName = _configVarName + "Delta";
+switch (true) do {
+  case (["Bravo", roleDescription player] call BIS_fnc_inString): {
+    _configVarName = _configVarName + "Bravo";
+  };
+  case (["Delta", roleDescription player] call BIS_fnc_inString): {
+    _configVarName = _configVarName + "Delta";
+  };
+  default {
+    _configVarName = _configVarName + "Bravo";
+  };
 };
 
 _configVarValue = missionNamespace getVariable [_configVarName, []];
