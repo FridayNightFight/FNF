@@ -13,7 +13,26 @@ class CfgPatches
   };
 };
 
+class CfgWeapons
+{
+	class rhs_45Rnd_545X39_AK_Green;
+	class tanaka_45rnd_rpk_green: rhs_45Rnd_545X39_AK_Green {
+		scope = 1;
+		author = "tanaKa";
+		count = 45;
+		descriptionShort = "Caliber: 7.62x39mm<br/>Rounds: 45<br/>Used in: RPK";
+		displayName = "57-N-231P 45 round Mag";
+		mass = 10;
+		picture = "\A3\Weapons_F\Data\UI\m_200rnd_65x39_green_ca.paa";
+	};
+};
+
 class CfgWeapons {
+  // Custom rpk
+  class rhs_weap_rpk74m;
+  class tanaka_rpk: rhs_weap_rpk74m {
+    magazines[] = {"tanaka_45rnd_rpk_green"};
+  };
 
   // fix ACE_Compat for RPK use
   class rhs_weap_rpk_base;
