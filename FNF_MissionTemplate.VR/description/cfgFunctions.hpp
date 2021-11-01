@@ -52,18 +52,10 @@ class CfgFunctions {
     };
     class loadout {
       file = "client\loadout";
-      class setLoadout{};
-      class setUniform{};
-      class setWeapons{};
-      class addUniform{};
-      class addWeapons{};
+      class applyCfgLoadout{};
       class addGear{};
-      class addMagazines{};
-      class addItems{};
       class checkLoadout{};
-      class initLoadout{};
       class setMAT{};
-      class loadout_vars{};
     };
     class selector {
       file = "client\loadout\selector";
@@ -157,12 +149,6 @@ class CfgFunctions {
     class notifications {
       file = "client\ui\notifications";
       class notify{};
-    }
-  };
-  class phx_loadout {
-    class applyLoadout {
-      file = "client\loadout";
-      class applyCfgLoadout{};
     };
   };
 };

@@ -50,7 +50,7 @@ phx_selector_fnc_weapons = {
 
   {
     player removePrimaryWeaponItem _x;
-    [_x, "vest"] call phx_fnc_addGear;
+    [_x, "vest", player] call phx_fnc_addGear;
   } forEach primaryWeaponMagazine player;
 
   private _weaponItems = primaryWeaponItems player;
@@ -76,14 +76,14 @@ phx_selector_fnc_weapons = {
   {
     _x params ["_thisOldMag", "_desiredCount"];
     private _currentCount = ({_x == _thisOldMag} count magazines player);
-    if (_currentCount != _desiredCount) exitWith {_allOldMagsPresent = false};
+    if (_currentCount < _desiredCount) exitWith {_allOldMagsPresent = false};
   } forEach _oldMags;
 
   if (!_allOldMagsPresent) exitWith {hint "Missing magazines"};
 
   {player removeMagazines _x} forEach (_oldMags apply {_x # 0});
 
-  {[_x, "vest"] call phx_fnc_addGear} forEach _mags;
+  {[_x, "vest", player] call phx_fnc_addGear} forEach _mags;
   player addWeapon _weapon;
 
   phx_loadout_weaponMagazines = _mags;

@@ -124,7 +124,6 @@ class VN_GEAR_US_ARMY1970 {
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
     };
-    attachments[] = {};
   };
 
   class GR : BASE {

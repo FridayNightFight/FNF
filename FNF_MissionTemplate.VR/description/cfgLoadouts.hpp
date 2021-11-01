@@ -3,7 +3,9 @@ class CfgLoadouts {
 
   class UNIFORMS {
 
+    #include "KITS\UNIFORMS\RHS_UNI_DE_BUNDESWEHR_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_ID_MEC_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_ID_NAVSOG_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_RU_RATNIK_2020.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_RU_RATNIK_D_2020.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_RU_SPETSNAZ_2010.hpp"
@@ -27,7 +29,9 @@ class CfgLoadouts {
 
   class GEAR {
 
+    #include "KITS\GEAR\RHS_GEAR_DE_BUNDESWEHR_2010_G36.hpp"
     #include "KITS\GEAR\RHS_GEAR_ID_MEC_2010_AK74MR.hpp"
+    #include "KITS\GEAR\RHS_GEAR_ID_NAVSOG_2010_M16A4.hpp"
     #include "KITS\GEAR\RHS_GEAR_RU_ARMY_2010_AK74M.hpp"
     #include "KITS\GEAR\RHS_GEAR_SERBIAN_ARMY_2010_M21.hpp"
     #include "KITS\GEAR\RHS_GEAR_SOV_ARMY_1980_AK74.hpp"

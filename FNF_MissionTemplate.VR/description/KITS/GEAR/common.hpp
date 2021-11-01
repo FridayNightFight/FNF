@@ -50,10 +50,7 @@
 #define VN_O_MINEAT "2x AT mine", "vn_mine_tm57_mag:2"
 #define VN_CE_DEMOCHARGE "4x Demo charge", "vn_mine_m112_remote_mag:4"
 
-#define BINOCULARS "Binocular"
 #define VN_BINOCULARS "vn_mk21_binocs"
-#define RANGEFINDER "ACE_Yardage450"
-#define VECTOR "ACE_VectorDay"
 
 // MAT Launchers
 // [launcher,[mags],[optics]]
@@ -79,7 +76,22 @@
 
 // CONDITIONALS -- references here used in SQF based on variables set in config.sqf
 class common {
-  NVG = "NVGoggles_OPFOR";
+  NVG = "ACE_NVG_Gen4";
+  thermalImager = "ACE_MX2A";
+  mortarGear[] = {"ACE_RangeTable_82mm"};
+
+  class binoculars {
+    standard = "Binocular";
+    rangefinder = "ACE_Yardage450";
+    vector21 = "ACE_VectorDay";
+  };
+};
+
+// CSW
+class CSW {
+  // by number of side (east, west, independent)
+  tracerColor[] = {"green","red","yellow"};
+  // [cursorObject, [0]] call ace_csw_fnc_aceRearmGetCarryMagazines
 };
 
 // OPTICS

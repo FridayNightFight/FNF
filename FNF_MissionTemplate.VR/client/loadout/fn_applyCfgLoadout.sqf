@@ -2,6 +2,7 @@ if (!hasInterface || isDedicated) exitWith {};
 waitUntil {!isNull player};
 
 player unlinkItem "ItemRadio";
+{player removeItem _x} forEach (assignedItems player);
 {
   player unassignItem _x;
   player removeItem _x;
@@ -46,9 +47,13 @@ fnc_addUniform = {
     ["_headgear", ""]
   ];
   _unit forceAddUniform _uniform;
+  diag_log text format["[FNF] (loadout) INFO: Equipped uniform ""%1""", _uniform];
   _unit addVest _vest;
+  diag_log text format["[FNF] (loadout) INFO: Equipped vest ""%1""", _vest];
   _unit addBackpack _backpack;
+  diag_log text format["[FNF] (loadout) INFO: Equipped backpack ""%1""", _backpack];
   _unit addHeadgear _headgear;
+  diag_log text format["[FNF] (loadout) INFO: Equipped headgear ""%1""", _headgear];
   true
 };
 
@@ -59,6 +64,7 @@ fnc_giveRadios = {
 
   if (_srRadio) then {
     _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
+    diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1""", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
   };
 
   // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
@@ -71,6 +77,7 @@ fnc_giveRadios = {
     {
       _unit addItemToBackpack _x;
     } forEach _items;
+    diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1"" (didn't have one).", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
   };
 
   // shouldn't have a LR but does
@@ -96,8 +103,14 @@ fnc_giveGear = {
     ["_linkedItems", []]
   ];
   {[_x, "vest", _unit] call phx_fnc_addGear} forEach _mags;
+  diag_log text format["[FNF] (loadout) INFO: Equipped gear (magazines)."];
+  diag_log text format["[FNF] (loadout) DEBUG: %1", _mags];
   {[_x, "uniform", _unit] call phx_fnc_addGear} forEach _items;
+  diag_log text format["[FNF] (loadout) INFO: Equipped gear (items)."];
+  diag_log text format["[FNF] (loadout) DEBUG: %1", _items];
   {[_x, "backpack", _unit] call phx_fnc_addGear} forEach _backpackItems;
+  diag_log text format["[FNF] (loadout) INFO: Equipped gear (backpackitems)."];
+  diag_log text format["[FNF] (loadout) DEBUG: %1", _backpackItems];
   {_unit linkItem _x} forEach _linkedItems;
   true
 };
@@ -370,8 +383,8 @@ fnc_prepOpticsSelector = {
     };
   };
   // "debug_console" callExtension ("Optics choices: " + str(_cfgOpticChoices));
-  if (count _cfgOpticsChoices > 0 && !isNil "phx_loadout_weapon") then {
-    private _optic = selectRandom(_cfgOpticChoices select {_x in (["phx_loadout_weapon", "optic"] call CBA_fnc_compatibleItems)});
+  if (count _cfgOpticChoices > 0 && !isNil "phx_loadout_weapon") then {
+    private _optic = selectRandom(_cfgOpticChoices select {_x in ([phx_loadout_weapon, "optic"] call CBA_fnc_compatibleItems)});
     if (!isNil "_optic") then {
       _unit addPrimaryWeaponItem _optic;
       diag_log text format["[FNF] (loadout) INFO: Equipped optic ""%1""", _optic];
@@ -395,6 +408,7 @@ fnc_giveCECharges = {
     {
       [_x, "backpack", _unit] call phx_fnc_addGear;
     } forEach (phx_selector_currentExplosives select [1, 2]);
+    diag_log text format["[FNF] (loadout) INFO: Equipped CE explosive %1", phx_selector_currentExplosives # 0];
     phx_selector_explosives = _cfgExplosiveChoices;
   } else {phx_selector_explosives = []};
   true
@@ -413,6 +427,7 @@ fnc_giveCEGrenades = {
     {
       [_x, "vest", _unit] call phx_fnc_addGear;
     } forEach (phx_selector_currentGrenades select [1, 2]);
+    diag_log text format["[FNF] (loadout) INFO: Equipped CE grenade %1", phx_selector_currentGrenades # 0];
     phx_selector_grenades = _cfgGrenadeChoices;
   } else {phx_selector_grenades = []};
   true
@@ -454,6 +469,39 @@ fnc_giveSideKey = {
   if (_cfgGiveSideKey == 2) then {
     _unit addItem "ACE_key_master";
   };
+  true
+};
+
+fnc_giveBinoculars = {
+  // Give binocular items
+  params [
+    ["_unit", objNull],
+    ["_role", "BASE"]
+  ];
+
+  private _binocs = (missionConfigFile >> "CfgLoadouts" >> "common" >> "binoculars");
+
+  private _hasBinoc = (((assigneditems _unit) findIf {getText(configFile >> "CfgWeapons" >> _x >> "simulation") == "Binocular"}) > -1);
+
+  if (_hasBinoc) exitWith {true};
+
+  private "_thisBinoc";
+
+  if (_role in ["ARA", "MGA", "CR"]) then {
+    _thisBinoc = getText(_binocs >> "standard");
+  };
+  if (_role in ["TL", "MATA1", "MATA2"]) then {
+    _thisBinoc = getText(_binocs >> "rangefinder");
+  };
+  if (_role in ["SL", "SGT", "PL", "CRL"]) then {
+    _thisBinoc = getText(_binocs >> "vector21");
+  };
+
+  if (!isNil "_thisBinoc") then {
+    _unit addWeapon _thisBinoc;
+    diag_log text format["[FNF] (loadout) INFO: Equipped binoculars ""%1""", _thisBinoc];
+  };
+
   true
 };
 
@@ -573,7 +621,20 @@ phx_loadout_backpack = if (_cfgBackpack isEqualTo []) then { "" } else { selectR
 phx_loadout_headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
 
 
-
+if (!isNil {PLAYERLOADOUTVAR}) then {
+diag_log text format["[FNF] (loadout) INFO: Player role is %1.", PLAYERLOADOUTVAR];
+} else {
+  {true} exitWith {
+    [{time > 2}, {
+      ["<t align='center'>Error:<br/>Slot has no role assigned. Please notify staff and select another slot.</t>", "error", 20] call phx_ui_fnc_notify;
+      diag_log text format["[FNF] (loadout) ERROR: Slot has no role assigned."];
+      [] spawn {
+        sleep 10;
+        endMission "END1";
+      };
+    }] call CBA_fnc_waitUntilAndExecute;
+  };
+};
 
 
 if (isNil {
@@ -618,6 +679,13 @@ if (isNil {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process gear settings."];
+  }] call CBA_fnc_waitUntilAndExecute;
+};
+
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) then {
+  [{time > 2}, {
+    ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
+    diag_log text format["[FNF] (loadout) ERROR: Failed to process binocular settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 

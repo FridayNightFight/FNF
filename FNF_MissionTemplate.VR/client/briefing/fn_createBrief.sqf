@@ -704,14 +704,14 @@ if (phx_gameMode isEqualTo "scavHunt") then {
 };
 
 
-player createDiarySubject ["Utilities", "Utilities"];
-player createDiaryRecord [
-  "Utilities",
-  [
-    "Screenshots/UI",
-    "<font face='PuristaMedium'><executeClose expression='showHUD [false,false,false,false,false,false,false,false,false,false,false]; diwako_dui_main_toggled_off=true; showChat false;'>Hide HUD</executeClose><br/><executeClose expression='showHUD [true,true,true,true,true,true,false,true,true,true,false]; diwako_dui_main_toggled_off=false; showChat true;'>Show HUD</executeClose></font>"
-  ]
-];
+// player createDiarySubject ["Utilities", "Utilities"];
+// player createDiaryRecord [
+//   "Utilities",
+//   [
+//     "Screenshots/UI",
+//     "<font face='PuristaMedium'><executeClose expression='showHUD [false,false,false,false,false,false,false,false,false,false,false]; diwako_dui_main_toggled_off=true; showChat false;'>Hide HUD</executeClose><br/><executeClose expression='showHUD [true,true,true,true,true,true,false,true,true,true,false]; diwako_dui_main_toggled_off=false; showChat true;'>Show HUD</executeClose></font>"
+//   ]
+// ];
 
 //call phx_fnc_objectiveRecon;
 

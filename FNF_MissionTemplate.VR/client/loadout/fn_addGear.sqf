@@ -35,6 +35,7 @@ if (typeName _itemStr isEqualTo "STRING") then {
 
   _numToAdd = 1;
   _itemStr params ["_str","_container", "_unit"];
+  if (isNil "_unit") then {_unit = player};
 
   private _item = _str;
   if (_str find ":" != -1) then {

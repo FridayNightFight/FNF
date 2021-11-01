@@ -1,30 +1,30 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_cu_ocp"
+#define UNIFORM "rhsgref_uniform_tigerstripe"
 
-#define VEST "rhsusf_iotv_ocp_Rifleman"
-#define VEST_LEADER "rhsusf_iotv_ocp_Teamleader"
-#define VEST_AR "rhsusf_iotv_ocp_SAW"
-#define VEST_MEDIC VEST
+#define VEST "rhsusf_mbav_rifleman"
+#define VEST_LEADER "rhsusf_mbav_grenadier"
+#define VEST_AR "rhsusf_mbav_mg"
+#define VEST_MEDIC "rhsusf_mbav_medic"
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsusf_opscore_ut_pelt_nsw_cam"
-#define HELMET_CMDR "rhsusf_patrolcap_ocp"
-#define HELMET_RECON "rhs_Booniehat_ocp"
+#define HELMET "rhsusf_opscore_mar_ut"
+#define HELMET_CMDR "H_Beret_blk"
+#define HELMET_RECON "H_Booniehat_oli"
 #define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask_skull"
 
-#define BACKPACK "rhsusf_assault_eagleaiii_ocp"
+#define BACKPACK "B_AssaultPack_blk"
 #define BACKPACK_RADIO "TFAR_rt1523g_black"
-#define BACKPACK_AR "B_Carryall_mcamo"
-#define BACKPACK_AT "B_Carryall_mcamo"
-#define BACKPACK_MEDIC "B_Kitbag_mcamo"
+#define BACKPACK_AR "B_Carryall_oli"
+#define BACKPACK_AT "B_Carryall_oli"
+#define BACKPACK_MEDIC "rhs_medic_bag"
 
 
-class RHS_UNI_US_RANGERS_2020 {
+class RHS_UNI_ID_NAVSOG_2010 {
   author = "Mazz38";
-  description = "USA: Modern American RANGERS Multicam Camouflage";
+  description = "INDEPENDENT FACTION: 2010 PHILIPPINE Naval Special Operations Command Tigerstripe Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -86,7 +86,6 @@ class RHS_UNI_US_RANGERS_2020 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {U_B_GhillieSuit};
   };
 
   class CR : BASE {
