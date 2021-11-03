@@ -272,8 +272,6 @@ fnc_giveAT = {
   private _matRoleVarArr = ["MATA1","MAT1","MATA2","MAT2"];
   private _matGunnerVarArr = ["MAT1","MAT2"];
   if (_role in _matRoleVarArr) then {
-    [_role] call phx_fnc_setMAT;
-
     if (isNil "phx_loadout_mediumantitank_weapon") exitWith {
       [{time > 2}, {
         ["<t align='center'>Error:<br/>Failed to process MAT settings.</t>", "error", 20] call phx_ui_fnc_notify;
@@ -499,16 +497,28 @@ fnc_giveBinoculars = {
 
   if (_hasBinoc) exitWith {true};
 
+  private _binocRolesStandard = ["ARA", "MGA", "CR"];
+  private _binocRolesRangefinder = ["TL", "MATA1", "MATA2"];
+  private _binocRolesVector = ["SL", "SGT", "PL", "CRL"];
   private "_thisBinoc";
 
-  if (_role in ["ARA", "MGA", "CR"]) then {
-    _thisBinoc = getText(_binocs >> "standard");
-  };
-  if (_role in ["TL", "MATA1", "MATA2"]) then {
-    _thisBinoc = getText(_binocs >> "rangefinder");
-  };
-  if (_role in ["SL", "SGT", "PL", "CRL"]) then {
-    _thisBinoc = getText(_binocs >> "vector21");
+  if (
+    mySideGearSelection select [0,2] isEqualTo "VN" &&
+    _role in flatten([_binocRolesStandard,_binocRolesRangefinder,_binocRolesVector])
+  ) then {
+    // Vietnam should receive reg binocs only
+    _thisBinoc = "vn_mk21_binocs";
+  } else {
+    // Modern should receive differing types
+    if (_role in _binocRolesStandard) then {
+      _thisBinoc = getText(_binocs >> "standard");
+    };
+    if (_role in _binocRolesRangefinder) then {
+      _thisBinoc = getText(_binocs >> "rangefinder");
+    };
+    if (_role in _binocRolesVector) then {
+      _thisBinoc = getText(_binocs >> "vector21");
+    };
   };
 
   if (!isNil "_thisBinoc") then {
@@ -567,15 +577,9 @@ fnc_loadWeapons = {
 
 
 
-private "_sideLabel";
-switch (playerSide) do {
-  case east: {_sideLabel = "opfor"};
-  case west: {_sideLabel = "blufor"};
-  case independent: {_sideLabel = "indfor"};
-};
 
-mySideUniformSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Uniform");
-mySideGearSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Gear");
+
+
 
 if ((player getVariable ["phxLoadout", ""]) isEqualTo "") exitWith {
   [{time > 2}, {
@@ -683,13 +687,6 @@ if (isNil {
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) then {
-  [{time > 2}, {
-    ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process binocular settings."];
-  }] call CBA_fnc_waitUntilAndExecute;
-};
-
 
 if (isNil {[player, _cfgWeaponChoices] call fnc_givePrimaryWeapon}) then {
   [{time > 2}, {
@@ -774,9 +771,12 @@ if (isNil {[player, _cfgGiveSideKey] call fnc_giveSideKey}) then {
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-
-
-
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) then {
+  [{time > 2}, {
+    ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
+    diag_log text format["[FNF] (loadout) ERROR: Failed to process binocular settings."];
+  }] call CBA_fnc_waitUntilAndExecute;
+};
 
 // get this before loading, so Diary displays /all/ of them
 _playerMagazines = magazines player;

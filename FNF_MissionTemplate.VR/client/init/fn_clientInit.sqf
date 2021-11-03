@@ -21,7 +21,25 @@ call phx_fnc_teleportInit; // Add leadership teleport options
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
-  [(player getVariable "phxLoadout")] call phx_fnc_applyCfgLoadout;
+  #define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+  private "_sideLabel";
+  switch (playerSide) do {
+    case east: {_sideLabel = "opfor"};
+    case west: {_sideLabel = "blufor"};
+    case independent: {_sideLabel = "indfor"};
+  };
+  mySideUniformSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Uniform");
+  mySideGearSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Gear");
+  if (PLAYERLOADOUTVAR in ["MAT1","MATA1","MAT2","MATA2"]) then {
+    [PLAYERLOADOUTVAR] call phx_fnc_setMAT;
+    if (
+      !phx_loadout_mediumantitank_isReloadable &&
+      PLAYERLOADOUTVAR in ["MATA1","MATA2"]
+    ) then {
+      player setVariable ["phxLoadout", "RI"]
+    };
+  };
+  [PLAYERLOADOUTVAR] call phx_fnc_applyCfgLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {
