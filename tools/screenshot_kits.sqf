@@ -1,18 +1,15 @@
-// [] spawn {
-//   sleep 2;
-//   player setDir 90;
-//   _camPos = (player getPos [3, 90]) vectorAdd [0,2,2];
+/*
+  File: screenshot_kits.sqf
+  Author: Bohemia Interactive / IndigoFox
+  Description: Automated system for capturing front/back images of loadout presets.
+  Credit: Base code borrowed  and adapted from BIS_fnc_exportEditorPreviews.
 
-//   showcinemaBorder false;
+  Parameters:
+    none
 
-//   indx_uniformPreviewCam = "camera" camCreate _camPos;
-//   indx_uniformPreviewCam cameraeffect ["external", "back"];
-//   indx_uniformPreviewCam camPrepareTarget ((getPosATL player) vectorAdd [-2,-1.5,0]);
-//   indx_uniformPreviewCam camPreparePos _camPos;
-//   indx_uniformPreviewCam camPrepareFOV 0.40;
-//   indx_uniformPreviewCam camCommitPrepared 0;
-
-
+  Notes:
+    The uniform and gear sets this script will process through is to be updated as more are made available. This code is currently WIP to achieve parity with the latest framework code.
+*/
 
 
 
@@ -39,24 +36,24 @@ _loadoutRolesToCheck = [];
     (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> (_x # 0)) call Bis_fnc_getCfgSubClasses
   ];
 } forEach [
-  // ["RHS_UNI_RU_RATNIK_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
-  // ["RHS_UNI_RU_RATNIK_D_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
-  // ["RHS_UNI_RU_SPETSNAZ_2010","RHS_GEAR_RU_ARMY_2010_AK74M"],
-  // ["RHS_UNI_RU_SPETSNAZ_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_RU_RATNIK_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_RU_RATNIK_D_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_RU_SPETSNAZ_2010","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_RU_SPETSNAZ_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
 
-  // ["RHS_UNI_ID_MEC_2010","RHS_GEAR_ID_MEC_2010_AK74MR"],
+  ["RHS_UNI_ID_MEC_2010","RHS_GEAR_ID_MEC_2010_AK74MR"],
   ["RHS_UNI_DE_BUNDESWEHR_2010","RHS_GEAR_DE_BUNDESWEHR_2010_G36"],
   ["RHS_UNI_ID_NAVSOG_2010","RHS_GEAR_ID_NAVSOG_2010_M16A4"],
 
-  // ["RHS_UNI_SOV_ARMY_1980","RHS_GEAR_SOV_ARMY_1980_AK74"],
+  ["RHS_UNI_SOV_ARMY_1980","RHS_GEAR_SOV_ARMY_1980_AK74"],
 
-  // ["RHS_UNI_SERBIAN_ARMY_2010", "RHS_GEAR_SERBIAN_ARMY_2010_M21"],
+  ["RHS_UNI_SERBIAN_ARMY_2010", "RHS_GEAR_SERBIAN_ARMY_2010_M21"],
 
   ["RHS_UNI_US_ARMY_1980","RHS_GEAR_US_ARMY_1980_M14"],
   ["RHS_UNI_US_ARMY_2020","RHS_GEAR_US_ARMY_2010_M16A4"],
-  // ["RHS_UNI_US_ARMY_OCP","RHS_GEAR_US_ARMY_2010_M16A4"],
-  // ["RHS_UNI_MARINES_DESERT_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
-  // ["RHS_UNI_MARINES_WOODLAND_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_US_ARMY_OCP","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_MARINES_DESERT_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_MARINES_WOODLAND_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
   ["RHS_UNI_US_RANGERS_2020","RHS_GEAR_US_RANGERS_2010_SCAR"],
 
   ["VN_UNI_NLF_Vietcong","VN_GEAR_NVA_VC1970"],
