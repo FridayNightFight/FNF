@@ -5,7 +5,7 @@ class CfgMagazines {
 		author = "tanaKa";
 		count = 45;
 		descriptionShort = "Caliber: 5.45x39mm<br/>Rounds: 45<br/>Used in: RPK";
-		displayName = "57-N-231P 45 round mag";
+		displayName = "7N22 45 round mag";
 		mass = 10;
 		picture = "\rhsafrf\addons\rhs_inventoryicons\data\weapons\rhs_weap_rpk74m_ca.paa";
 	};
