@@ -52,7 +52,7 @@
 
 #define VN_BINOCULARS "vn_mk21_binocs"
 
-// MAT Launchers
+// AT Launchers
 // [launcher,[mags],[optics]]
 // #define HALF_AMMO(_count) __EVAL((_count) / (2));
 #define STRINGIFY(s) #s
@@ -71,8 +71,6 @@
 #define VN_RPG7(_count) {"vn_rpg7",{STRINGIFY(vn_rpg7_mag:_count)},{},"RELOAD"}
 #define VN_STRELA(_count) {"vn_sa7",{STRINGIFY(vn_sa7_mag:_count)},{},"RELOAD"}
 
-// #define MAT_MAGS(_matDef) __EVAL(_matDef select 1)
-
 
 // CONDITIONALS -- references here used in SQF based on variables set in config.sqf
 class common {
@@ -85,13 +83,6 @@ class common {
     rangefinder = "ACE_Yardage450";
     vector21 = "ACE_VectorDay";
   };
-};
-
-// CSW
-class CSW {
-  // by number of side (east, west, independent)
-  tracerColor[] = {"green","red","yellow"};
-  // [cursorObject, [0]] call ace_csw_fnc_aceRearmGetCarryMagazines
 };
 
 // OPTICS

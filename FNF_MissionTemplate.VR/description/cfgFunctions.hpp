@@ -57,14 +57,6 @@ class CfgFunctions {
       class checkLoadout{};
       class setMAT{};
     };
-    class selector {
-      file = "client\loadout\selector";
-      class selector_init{};
-      class selector_optics{};
-      class selector_weapons{};
-      class selector_charges{};
-      class selector_grenades{};
-    };
     class restrictions {
       file = "client\restrictions";
       class restrictions{};
@@ -150,6 +142,17 @@ class CfgFunctions {
     class notifications {
       file = "client\ui\notifications";
       class notify{};
+    };
+  };
+  class phx_selector {
+    class selectors {
+      file = "client\loadout\selector";
+      class init{};
+      class weapons{};
+      class optics{};
+      class grenades{};
+      class charges{};
+      class csw{};
     };
   };
 };

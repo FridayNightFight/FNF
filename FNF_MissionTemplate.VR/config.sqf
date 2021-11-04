@@ -178,6 +178,51 @@ EXAMPLE:
 */
 
 
+// SQUAD HQ AUXILIARY ROLES //
+// "SHQAUX"
+// Adjusts what loadout the two extra Squad HQ members will receive
+// Set to 0 to make default crewman, set to one of the options to enable equipment for it.
+// OPFOR
+  phx_eastAlphaAuxRole = 0;
+  phx_eastBravoAuxRole = HMG_KORD_LO(8);
+  phx_eastCharlieAuxRole = 0;
+  phx_eastDeltaAuxRole = HMG_KORD_LO(8);
+
+// BLUFOR
+  phx_westAlphaAuxRole = 0;
+  phx_westBravoAuxRole = HMG_M2_LO(4);
+  phx_westCharlieAuxRole = 0;
+  phx_westDeltaAuxRole = HMG_M2_LO(4);
+
+// INDFOR
+  phx_guerAlphaAuxRole = 0;
+  phx_guerBravoAuxRole = HMG_DSHKM_LO(8);
+  phx_guerCharlieAuxRole = 0;
+  phx_guerDeltaAuxRole = HMG_DSHKM_LO(8);
+
+/*
+OPTIONS
+  HMG_M2(_boxes) // 100 rd mags
+  HMG_M2LO(_boxes) // 100 rd mags
+  HMG_KORD(_boxes) // 50 rd mags
+  HMG_KORDLO(_boxes) // 50 rd mags
+  HMG_DSHKM(_boxes) // 50 rd mags
+  HMG_DSHKMLO(_boxes) // 50 rd mags
+  MORTAR_2B14(_he,_smk,_illum)
+  MORTAR_M252(_he,_smk,_illum)
+  AT_SPG9(_he,_heat)
+  AT_METIS(_he,_heat)
+  AT_TOW(_tow)
+
+  VN_MORTAR_TYPE53(_he,_smk,_illum)
+  VN_MORTAR_M2_60mm(_hecnt,_smk,_illum)
+  VN_MORTAR_M29_81mm(_hecnt,_smk,_illum)
+*/
+
+
+
+
+
 
 // SYSTEM SETTINGS //
 

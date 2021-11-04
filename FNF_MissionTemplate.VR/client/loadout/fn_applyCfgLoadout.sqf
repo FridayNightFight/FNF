@@ -21,9 +21,10 @@ removeHeadgear player;
 
 
 params ["_LOADOUTROLE"];
-
+if (!isNil {(player getVariable "phxLoadout")}) then {
+  diag_log text format["[FNF] (loadout) INFO: Player role is %1.", (player getVariable "phxLoadout")];
+};
 if (!isNil {_LOADOUTROLE}) then {
-diag_log text format["[FNF] (loadout) INFO: Player role is %1.", PLAYERLOADOUTVAR];
 } else {
   {true} exitWith {
     [{time > 2}, {
@@ -36,6 +37,118 @@ diag_log text format["[FNF] (loadout) INFO: Player role is %1.", PLAYERLOADOUTVA
     }] call CBA_fnc_waitUntilAndExecute;
   };
 };
+
+#define PLAYERLOADOUTVAR _LOADOUTROLE
+
+private "_sideLabel";
+switch (playerSide) do {
+  case east: {_sideLabel = "opfor"};
+  case west: {_sideLabel = "blufor"};
+  case independent: {_sideLabel = "indfor"};
+};
+mySideUniformSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Uniform");
+mySideGearSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Gear");
+if (PLAYERLOADOUTVAR in ["MAT1","MATA1","MAT2","MATA2"]) then {
+  [PLAYERLOADOUTVAR] call phx_fnc_setMAT;
+  if (
+    !phx_loadout_mediumantitank_isReloadable &&
+    PLAYERLOADOUTVAR in ["MATA1","MATA2"]
+  ) then {
+    PLAYERLOADOUTVAR = "RI";
+    player setVariable ["phxLoadout", "RI"];
+  };
+};
+
+
+fnc_handleSHQAUX = {
+  // handle the two members attached to squad HQs
+  params [
+    ["_unit", objNull],
+    ["_role", "BASE"]
+  ];
+
+  private _settingStr = format[
+    "phx_%1%2AuxRole",
+    str(side (group _unit)),
+    (
+      ["Alpha","Bravo","Charlie","Delta"] select {
+        [_x, roleDescription _unit] call BIS_fnc_inString
+      }
+    ) select 0
+  ];
+  private _setting = missionNamespace getVariable _settingStr;
+
+  if (isNil "_setting") exitWith {
+    [{time > 2}, {
+      ["<t align='center'>Error:<br/>Failed to load AuxRole setting. Please notify the Missions team.</t>", "error", 20] call phx_ui_fnc_notify;
+      diag_log text format["[FNF] (loadout) ERROR: Failed to load AuxRole setting. Please notify the Missions team."];
+    }] call CBA_fnc_waitUntilAndExecute;
+    true
+  };
+
+  if (_setting isEqualTo 0) exitWith {
+    player setVariable ["phxLoadout", "CR"];
+    ["CR"] call phx_fnc_applyCfgLoadout;
+    diag_log text format["[FNF] (loadout) INFO: SHQAux setting is ""0"". Loading default crewman kit."];
+    true
+  };
+
+  if (isNil "phx_cswItems") then {
+    _setting params ["_weapon","_tripod","_mags"];
+    missionNamespace setVariable ["phx_cswItems", [_weapon,_tripod]];
+    missionNamespace setVariable ["phx_cswMags", _mags];
+
+    {
+      private _action = [
+        "CSW_Selector",
+        getText (configFile >> "cfgWeapons" >> _x >> "displayName"),
+        "",
+        { // statement (pass arg)
+          (_this select 2) call phx_selector_fnc_csw;
+        },
+        { // condition
+          phx_safetyEnabled &&
+          (player getVariable "phxLoadout") isEqualTo "SHQAUX"
+        },
+        {},
+        _x // arg to be used in param, arg is array
+      ] call ace_interact_menu_fnc_createAction;
+      [
+        player,
+        1,
+        ["ACE_SelfActions","CSW_Selector"],
+        _action
+      ] call ace_interact_menu_fnc_addActionToObject;
+    } forEach phx_cswItems;
+
+    // KIT APPLIES HERE
+    ["BASE"] call phx_fnc_applyCfgLoadout;
+
+    // add hint to remind players to take their CSW gear
+    [{time > 10}, {
+      ["<t align='center'>Make sure you use ACE Self-interact to get your crew-served weapons gear!</t>", "info", 10] call phx_ui_fnc_notify;
+      diag_log text format["[FNF] (loadout) DEBUG: Player notified about using ACE Self-interact to retrieve CSW gear."];
+    }] call CBA_fnc_waitUntilAndExecute;
+  };
+
+  true
+};
+
+if (PLAYERLOADOUTVAR == "SHQAUX") exitWith {
+  [player, PLAYERLOADOUTVAR] call fnc_handleSHQAUX;
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -581,14 +694,7 @@ fnc_loadWeapons = {
 
 
 
-if ((player getVariable ["phxLoadout", ""]) isEqualTo "") exitWith {
-  [{time > 2}, {
-    ["<t align='center'>Error:<br/>Your slot doesn't have a loadout property.<br/>Please notify staff, then select another slot..</t>", "error", 20] call phx_ui_fnc_notify;
-  }] call CBA_fnc_waitUntilAndExecute;
-};
 
-
-#define PLAYERLOADOUTVAR (_LOADOUTROLE)
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
 #define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
@@ -817,6 +923,7 @@ if (LOADOUTROLE("SNP")) then {_strRole = " Sniper"};
 if (LOADOUTROLE("CR")) then {_strRole = " Crewman"};
 if (LOADOUTROLE("PI")) then {_strRole = " Pilot"};
 if (LOADOUTROLE("MED")) then {_strRole = " Medic"};
+if (LOADOUTROLE("BASE")) then {_strRole = " Weapon Operator"};
 
 
 #define STYLE_HEADER_NOTIFY "<t align='center' size='1.4' color='#e1701a' face='PuristaBold'>"
