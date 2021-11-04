@@ -24,18 +24,15 @@ params ["_LOADOUTROLE"];
 if (!isNil {(player getVariable "phxLoadout")}) then {
   diag_log text format["[FNF] (loadout) INFO: Player role is %1.", (player getVariable "phxLoadout")];
 };
-if (!isNil {_LOADOUTROLE}) then {
-} else {
-  {true} exitWith {
-    [{time > 2}, {
-      ["<t align='center'>Error:<br/>Slot has no role assigned. Please notify staff and select another slot.</t>", "error", 20] call phx_ui_fnc_notify;
-      diag_log text format["[FNF] (loadout) ERROR: Slot has no role assigned."];
-      [] spawn {
-        sleep 10;
-        endMission "END1";
-      };
-    }] call CBA_fnc_waitUntilAndExecute;
-  };
+if (isNil {_LOADOUTROLE}) exitWith {
+  [{time > 2}, {
+    ["<t align='center'>Error:<br/>Invalid role assignment. Please notify staff and select another slot.</t>", "error", 20] call phx_ui_fnc_notify;
+    diag_log text format["[FNF] (loadout) ERROR: Slot has no role assigned."];
+    [] spawn {
+      sleep 10;
+      endMission "END1";
+    };
+  }] call CBA_fnc_waitUntilAndExecute;
 };
 
 #define PLAYERLOADOUTVAR _LOADOUTROLE

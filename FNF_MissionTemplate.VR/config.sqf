@@ -133,7 +133,7 @@ If they have a radio, they will all be preset to the same frequency
 
 // BLUFOR
 phx_bluAT_Bravo = GEARDEFAULT;
-phx_bluAT_Delta = JAVELIN(1);
+phx_bluAT_Delta = GEARDEFAULT;
 
 // OPFOR
 phx_redAT_Bravo = RPG32(2);
@@ -203,11 +203,11 @@ EXAMPLE:
 /*
 OPTIONS
   HMG_M2(_boxes) // 100 rd mags
-  HMG_M2LO(_boxes) // 100 rd mags
+  HMG_M2_LO(_boxes) // 100 rd mags
   HMG_KORD(_boxes) // 50 rd mags
-  HMG_KORDLO(_boxes) // 50 rd mags
+  HMG_KORD_LO(_boxes) // 50 rd mags
   HMG_DSHKM(_boxes) // 50 rd mags
-  HMG_DSHKMLO(_boxes) // 50 rd mags
+  HMG_DSHKM_LO(_boxes) // 50 rd mags
   MORTAR_2B14(_he,_smk,_illum)
   MORTAR_M252(_he,_smk,_illum)
   AT_SPG9(_he,_heat)
@@ -217,10 +217,19 @@ OPTIONS
   VN_MORTAR_TYPE53(_he,_smk,_illum)
   VN_MORTAR_M2_60mm(_hecnt,_smk,_illum)
   VN_MORTAR_M29_81mm(_hecnt,_smk,_illum)
+
+EXAMPLE:
+  for BLUFOR Bravo Squad:
+    format:
+      // crewman
+      phx_westBravoAuxRole = 0;
+
+      // M2, short tripod, 4 boxes of ammo total
+      phx_westBravoAuxRole = HMG_M2_LO(4);
+
+      // M252 mortar with 10 HE, 5 smoke, 5 flares
+      phx_westBravoAuxRole = MORTAR_M252(10,5,5);
 */
-
-
-
 
 
 
@@ -228,59 +237,5 @@ OPTIONS
 
 // Show/Hide unit / group icons on map, GPS for players
 // Used in limited-intel scenarios like WWII and Vietnam
-phx_showUnitIcons = true;
+phx_showUnitIcons = false;
 phx_showGroupIcons = true;
-
-
-/*
-==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
-
-=====BLUFOR=====                                =====ANY=====
-UNIFORM_MARPAT_WD                  --
-UNIFORM_MARPAT_D                   --   WEAPONS_RU
-UNIFORM_OEF_CP                     --   WEAPONS_IND
-UNIFORM_PMC                        --   WEAPONS_G36
-UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
-UNIFORM_M93_WOODLAND               --   WEAPONS_M21
-RHS_US_ARMY_OCP                    --   WEAPONS_SCAR
-UNIFORM_UCP                        --   WEAPONS_VHS
-UNIFORM_CTRG_WD                    --   WEAPONS_FAL_COLDWAR
-UNIFORM_ION_BK                     --   WEAPONS_M14
-UNIFORM_ION_WD                     --   WEAPONS_SOVIET
-UNIFORM_ISRAEL_TAN                 --
-UNIFORM_RANGER                     --
-UNIFORM_WEST_POLICE
-UNIFORM_BUNDESWEHR
-UNIFORM_HELLENIC_ARMY
-
-=====OPFOR=====
-UNIFORM_EMR_SUMMER
-UNIFORM_EMR_DESERT
-UNIFORM_FLORA
-UNIFORM_MOUNTAIN_FLORA
-UNIFORM_GORKA_GREEN
-UNIFORM_GORKA_BEREZKA
-UNIFORM_SOVIET_CSAT
-UNIFORM_EAST_POLICE
-UNIFORM_RUSSIAN_SPETSNAZ
-UNIFORM_RUSSIAN_RATNIK
-UNIFORM_SOVIET_AFGHAN
-UNIFORM_SOVIET_WINTER
-UNIFORM_RUSSIAN_SPRING
-
-=====INDFOR=====
-UNIFORM_M93_OAKLEAF
-UNIFORM_M93_TIGER
-UNIFORM_M93_GREEN
-UNIFORM_M93_FLECKTARN
-UNIFORM_M10_DESERT
-UNIFORM_M10_MOUNTAIN
-UNIFORM_GUERRILLA
-UNIFORM_AAF
-UNIFORM_ALTIS_LIZARD
-UNIFORM_PARAMILITARY
-UNIFORM_IND_POLICE
-UNIFORM_M88
-UNIFORM_JUNGLE
-=========================================================================================================================
-*/
