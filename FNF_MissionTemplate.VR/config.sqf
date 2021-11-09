@@ -41,9 +41,9 @@ phx_briefingRules = "";
 
 // SCENARIO SETTINGS //
 
-phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
-phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
-phx_maxViewDistance = 1500; //Maximum client view distance (meters)
+phx_fortifyPoints = 125; // Currency for fortify - individual to each Combat Engineer - set to 0 to disable
+phx_enemyStartVisible = true; // Set to false to hide enemy start zone markers
+phx_maxViewDistance = 1500; // Maximum client view distance (meters)
 
 /*
   Allow players to grab magnified optics from the gear selector
@@ -60,26 +60,24 @@ phx_magnifiedOptics = 0;
     phx_addNVG = 1 OR [east, west, independent] will give all sides NVGs
     phx_addNVG = [east] will give side east NVGs
     phx_addNVG = [east,west] will give sides east and west NVGs
-  */
+*/
 phx_addNVG = 0;
-
-
 
 
 
 // UNIFORM AND GEAR CHOICES //
 
 //BLUFOR
-phx_bluforUniform = "RHS_UNI_US_ARMY_2020";
-phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
+phx_bluforUniform = "VN_UNI_US_MACV";
+phx_bluforGear = "VN_GEAR_US_ARMY1970";
 
 //OPFOR
-phx_opforUniform = "RHS_UNI_RU_RATNIK_2020";
-phx_opforGear = "RHS_GEAR_RU_ARMY_2010_AK74M";
+phx_opforUniform = "VN_UNI_PAVN_NVA";
+phx_opforGear = "VN_GEAR_NVA_VC1970";
 
 //INDFOR
-phx_indforUniform = "RHS_UNI_ID_MEC_2010";
-phx_indforGear = "RHS_GEAR_ID_MEC_2010_AK74MR";
+phx_indforUniform = "VN_UNI_US_SOG";
+phx_indforGear = "VN_GEAR_US_SOG1970";
 
 /*
   POSSIBLE VALUES:
@@ -93,13 +91,14 @@ phx_indforGear = "RHS_GEAR_ID_MEC_2010_AK74MR";
     RHS_UNI_RU_SPETSNAZ_2010
     RHS_UNI_RU_SPETSNAZ_2020
     RHS_UNI_SERBIAN_ARMY_2010
-    RHS_UNI_SOV_ARMY_1980
-    RHS_UNI_US_ARMY_1980
     RHS_UNI_US_ARMY_2020
-    RHS_UNI_US_ARMY_OCP
     RHS_UNI_US_MARINES_DESERT_2010
     RHS_UNI_US_MARINES_WOODLAND_2010
     RHS_UNI_US_RANGERS_2020
+
+    RHS_UNI_SOV_ARMY_1980
+    RHS_UNI_US_ARMY_1980
+
     VN_UNI_NLF_Vietcong
     VN_UNI_NVA_Vietcong
     VN_UNI_PAVN_NVA
@@ -113,10 +112,11 @@ phx_indforGear = "RHS_GEAR_ID_MEC_2010_AK74MR";
     RHS_GEAR_ID_NAVSOG_2010_M16A4
     RHS_GEAR_RU_ARMY_2010_AK74M
     RHS_GEAR_SERBIAN_ARMY_2010_M21
-    RHS_GEAR_SOV_ARMY_1980_AK74
-    RHS_GEAR_US_ARMY_1980_M14
     RHS_GEAR_US_ARMY_2010_M16A4
     RHS_GEAR_US_RANGERS_2010_SCAR
+
+    RHS_GEAR_SOV_ARMY_1980_AK74
+    RHS_GEAR_US_ARMY_1980_M14
     VN_GEAR_NVA_VC1970
     VN_GEAR_US_ARMY1970
     VN_GEAR_US_SOG1970
@@ -136,23 +136,26 @@ phx_bluAT_Bravo = GEARDEFAULT;
 phx_bluAT_Delta = GEARDEFAULT;
 
 // OPFOR
-phx_redAT_Bravo = RPG32(2);
-phx_redAT_Delta = IGLA(1);
+phx_redAT_Bravo = GEARDEFAULT;
+phx_redAT_Delta = GEARDEFAULT;
 
 // INDFOR
-phx_grnAT_Bravo = RPG32(2);
-phx_grnAT_Delta = IGLA(1);
+phx_grnAT_Bravo = GEARDEFAULT;
+phx_grnAT_Delta = GEARDEFAULT;
 
 /*
 Possible launcher values (and recommended counts)
-  CARLG(2)
-  RPG32(2)
-  RPG7(4)
-  TITAN(1)
-  JAVELIN(1)
-  METIS(1)
-  STINGER(1)
-  IGLA(1)
+  Supports LAUNCHER(_HEATCount,_HECount)
+    CARLG(2,0)
+    RPG32(2,0)
+    RPG7(4,2)
+
+  Supports LAUNCHER(_HEATCount)
+    TITAN(1)
+    JAVELIN(1)
+    METIS(1)
+    STINGER(1)
+    IGLA(1)
 
   // Disposables
     M72LAW(1)
@@ -184,21 +187,21 @@ EXAMPLE:
 // Set to 0 to make default crewman, set to one of the options to enable equipment for it.
 // OPFOR
   phx_eastAlphaAuxRole = 0;
-  phx_eastBravoAuxRole = HMG_KORD_LO(8);
+  phx_eastBravoAuxRole = 0;
   phx_eastCharlieAuxRole = 0;
-  phx_eastDeltaAuxRole = HMG_KORD_LO(8);
+  phx_eastDeltaAuxRole = 0;
 
 // BLUFOR
-  phx_westAlphaAuxRole = 0;
-  phx_westBravoAuxRole = HMG_M2_LO(4);
+  phx_westAlphaAuxRole = MORTAR_M252(5,5,5);
+  phx_westBravoAuxRole = 0;
   phx_westCharlieAuxRole = 0;
-  phx_westDeltaAuxRole = HMG_M2_LO(4);
+  phx_westDeltaAuxRole = 0;
 
 // INDFOR
   phx_guerAlphaAuxRole = 0;
-  phx_guerBravoAuxRole = HMG_DSHKM_LO(8);
+  phx_guerBravoAuxRole = 0;
   phx_guerCharlieAuxRole = 0;
-  phx_guerDeltaAuxRole = HMG_DSHKM_LO(8);
+  phx_guerDeltaAuxRole = 0;
 
 /*
 OPTIONS

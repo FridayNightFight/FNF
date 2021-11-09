@@ -1,30 +1,30 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_afghanka_winter_boots"
+#define UNIFORM "rhs_uniform_afghanka_wdl"
 
-#define VEST "rhs_suspender_AK8_chestrig"
-#define VEST_LEADER "rhs_belt_AK_GL"
+#define VEST "rhs_chicom"
+#define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
-#define VEST_CREWMAN "rhs_suspender_AK"
-#define VEST_PILOT "rhs_suspender_AK"
+#define VEST_CREWMAN VEST
+#define VEST_PILOT VEST
 
-#define HELMET "rhs_ssh68_2"
-#define HELMET_CMDR "rhs_cossack_visor_cap_tan"
-#define HELMET_RECON "rhs_ushanka"
-#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
-#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
+#define HELMET "rhssaf_helmet_m97_veil_woodland"
+#define HELMET_CMDR "rhs_fieldcap_m88_woodland"
+#define HELMET_RECON "rhssaf_booniehat_woodland"
+#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "rhs_rd54"
-#define BACKPACK_RADIO "TFAR_mr3000_rhs"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK "rhssaf_kitbag_md2camo"
+#define BACKPACK_RADIO "TFAR_rt1523g_sage"
+#define BACKPACK_AR "B_Carryall_oli"
+#define BACKPACK_AT "B_Carryall_oli"
+#define BACKPACK_MEDIC "B_FieldPack_oli"
 
 
-class RHS_UNI_SOV_ARMY_1980 {
+class RHS_UNI_CZ_CZECHFORCES_2010 {
   author = "Mazz38";
-  description = "RU: 1980s Soviet Russian ARMY Khaki M88";
+  description = "CZ: Modern Czech Armed Forces Woodland Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -86,6 +86,7 @@ class RHS_UNI_SOV_ARMY_1980 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
+    uniform[] = {U_B_GhillieSuit};
   };
 
   class CR : BASE {

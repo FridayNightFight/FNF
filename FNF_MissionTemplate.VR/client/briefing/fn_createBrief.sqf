@@ -76,7 +76,7 @@ _fnc_parseMATForBriefing = {
   };
   {
     _x params ["_setting", "_role"];
-    "debug_console" callExtension str(_x);
+    // "debug_console" callExtension str(_x);
     if (count _setting > 0) then {
       if (_setting # 0 isEqualTo "GEARDEFAULT") then {
         // "debug_console" callExtension str([_gearLoadout,_role,phx_bluAT_Bravo]);

@@ -17,7 +17,7 @@ removeUniform player;
 removeVest player;
 removeBackpack player;
 removeHeadgear player;
-// removeGoggles player;
+removeGoggles player;
 
 
 params ["_LOADOUTROLE"];
@@ -120,6 +120,8 @@ fnc_handleSHQAUX = {
 
     // KIT APPLIES HERE
     ["BASE"] call phx_fnc_applyCfgLoadout;
+
+    private _mortarGear = (missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray;
 
     // add hint to remind players to take their CSW gear
     [{time > 10}, {

@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=7367;
+		nextID=7370;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={514.0575,23.89304,711.52008};
-		dir[]={-0.55567998,-0.58888698,-0.58688903};
-		up[]={-0.4048813,0.80821514,-0.42762065};
-		aside[]={-0.72615278,1.4319085e-007,0.68753898};
+		pos[]={303.87582,11.253511,651.35504};
+		dir[]={0.34515184,-0.36432904,0.86495149};
+		up[]={0.13502954,0.93127114,0.33838424};
+		aside[]={0.9287867,1.1292286e-008,-0.37062499};
 	};
 };
 binarizationWanted=0;
@@ -52,13 +52,14 @@ addons[]=
 	"ace_gforces",
 	"ace_parachute",
 	"rhs_c_troops",
-	"rhssaf_c_gear"
+	"rhssaf_c_gear",
+	"rhsusf_c_statics"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=21;
+		items=22;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -204,6 +205,13 @@ class AddonsMetaData
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
+		class Item21
+		{
+			className="rhsusf_c_statics";
+			name="RHSUSF Static Weapons";
+			author="Red Hammer Studios";
+			url="http://www.rhsmods.org/";
+		};
 	};
 };
 dlcs[]=
@@ -225,7 +233,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category0
+	class Category1
 	{
 		name="Multiplayer";
 		class Attribute0
@@ -248,7 +256,7 @@ class CustomAttributes
 		};
 		nAttributes=1;
 	};
-	class Category1
+	class Category2
 	{
 		name="Scenario";
 		class Attribute0
@@ -341,7 +349,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=136;
+		items=138;
 		class Item0
 		{
 			dataType="Logic";
@@ -8005,14 +8013,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={492.04498,5.0014391,688.7323};
+						position[]={492.04501,5.0014391,688.73199};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Alpha 2";
+						description="Grenadier@Alpha 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -12578,14 +12586,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={504.10559,5.0014391,689.02985};
+						position[]={504.10599,5.0014391,689.02997};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Charlie 2";
+						description="Grenadier@Charlie 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -20382,14 +20390,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={291.55698,5.0014391,689.73047};
+						position[]={291.55701,5.0014391,689.72998};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Alpha 2";
+						description="Grenadier@Alpha 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23059,14 +23067,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={304.31137,5.0014391,689.41803};
+						position[]={304.311,5.0014391,689.41797};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Charlie 2";
+						description="Grenadier@Charlie 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -29984,14 +29992,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={692.21979,5.0014391,689.117};
+						position[]={692.21997,5.0014391,689.117};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Alpha 2";
+						description="Grenadier@Alpha 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34028,14 +34036,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={704.35327,5.0014391,689.06451};
+						position[]={704.35303,5.0014391,689.065};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Charlie 2";
+						description="Grenadier@Charlie 2";
 						isPlayable=1;
 						class Inventory
 						{

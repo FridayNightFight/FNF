@@ -33,7 +33,7 @@
 #define BACKPACK_PILOT BACKPACK
 
 
-class VN_UNI_PAVN_Vietcong {
+class VN_UNI_PAVN_NVA {
   author = "Mazz38";
   description = "North Vietnam: North Vietnamese Army";
 

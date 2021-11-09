@@ -25,7 +25,7 @@ call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
 call phx_fnc_markCustomObjs;
 call phx_fnc_server_setupGame;
-[] spawn phx_fnc_webhook_roundPrep;
+call phx_fnc_webhook_roundPrep;
 
 call phx_fnc_populateORBATs;
 call phx_fnc_keyVehicles;

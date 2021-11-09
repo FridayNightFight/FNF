@@ -60,4 +60,11 @@ switch (_toLoad) do {
   };
 };
 
+{
+  private _item = _x;
+  if (count (items player select {_x == _item}) == 0) then {
+    [_x, "uniform", player] call phx_fnc_addGear;
+  };
+} forEach ((missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray);
+
 player setVariable ["phx_cswMagsCurrent", _addedMags];

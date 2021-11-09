@@ -16,7 +16,7 @@
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
 #define BACKPACK "rhsusf_assault_eagleaiii_ocp"
-#define BACKPACK_RADIO "TFAR_rt1523g_black"
+#define BACKPACK_RADIO "TFAR_rt1523g"
 #define BACKPACK_AR "B_Carryall_mcamo"
 #define BACKPACK_AT "B_Carryall_mcamo"
 #define BACKPACK_MEDIC "B_Kitbag_mcamo"

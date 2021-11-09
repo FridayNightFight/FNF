@@ -37,8 +37,8 @@
 
 #define AT_LAUNCHER RPG7(1)
 
-#define MAT1_LAUNCHER RPG7(4)
-#define MAT2_LAUNCHER RPG7(4)
+#define MAT1_LAUNCHER RPG7(4,2)
+#define MAT2_LAUNCHER RPG7(4,2)
 
 #define DM_RIFLE RIFLE
 #define DM_MAG RIFLE_MAG
@@ -55,7 +55,7 @@
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_SRU_ARMY_1980_AK74 {
+class RHS_GEAR_SOV_ARMY_1980_AK74 {
   author = "Mazz38";
   description = "SRU: Soviet Russian ARMY AK74 Kits";
 
