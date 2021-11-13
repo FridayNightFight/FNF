@@ -2,7 +2,9 @@
 #define GRUNT_MEDICAL "FirstAidKit:4"
 #define MEDIC_MEDICAL "ACE_fieldDressing:32","ACE_morphine:16","ACE_epinephrine:8","ACE_tourniquet:4","ACE_bloodIV_500:12","ACE_bloodIV_250:4","ACE_personalAidKit"
 #define LINKED "ItemMap","ItemCompass","ItemWatch","ItemGPS","TFAR_microdagr"
-#define VN_LINKED "ItemMap","ItemCompass","ItemWatch"
+#define VN_B_LINKED_SOG "vn_b_item_map","vn_b_item_compass_sog","vn_b_item_watch"
+#define VN_B_LINKED "vn_b_item_map","vn_b_item_compass","vn_b_item_watch"
+#define VN_O_LINKED "vn_o_item_map","vn_b_item_compass","vn_b_item_watch"
 #define TOOLS "ACE_MapTools","ACE_CableTie:2"
 #define LEADER_TOOLS "ACE_microDAGR"
 #define SPOTTER_TOOLS "ACE_SpottingScope"
@@ -34,20 +36,22 @@
 #define CE_FORTIFYTOOL "ACE_Fortify"
 #define CE_FRAG_GRENADES "2x Frag grenades", "rhs_mag_m67:2"
 #define CE_INCEN_GRENADES "2x Thermite grenades", "ACE_M14:2"
-#define VN_B_CE_FRAG_GRENADES "2x Frag grenades",VN_B_FRAG_GRENADES
-#define VN_B_CE_INCEN_GRENADES "2x Incendiary grenades", "vn_m14_grenade_mag:2"
-#define VN_O_CE_FRAG_GRENADES "2x Frag grenades",VN_O_FRAG_GRENADES
-#define VN_O_CE_INCEN_GRENADES "2x Molotov cocktails", "vn_molotov_grenade_mag:2"
 #define CE_SATCHEL "2x Satchel", "SatchelCharge_Remote_Mag:2"
 #define CE_MINEAP "2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"
 #define CE_MINEAT "2x AT mine", "ATMine_Range_Mag:2"
 #define CE_DEMOCHARGE "4x Demo charge", "DemoCharge_Remote_Mag:4"
 
+#define VN_B_CE_FRAG_GRENADES "2x Frag grenades",VN_B_FRAG_GRENADES
+#define VN_B_CE_WP_GRENADES "2x WP Grenades", "vn_m34_grenade_mag:2"
+#define VN_O_CE_FRAG_GRENADES "2x Frag grenades",VN_O_FRAG_GRENADES
+#define VN_O_CE_INCEN_GRENADES "2x Molotov cocktails", "vn_molotov_grenade_mag:2"
+
 #define VN_CE_SATCHEL "2x Satchel", "vn_mine_satchel_remote_02_mag:2"
-#define VN_B_MINEAP "2x AP mine, 2x flare mine","vn_mine_tripwire_m16_04_mag:2","rhs_mine_sm320_red_mag:2"
-#define VN_O_MINEAP "2x AP mine, 2x flare mine","vn_mine_tripwire_f1_04_mag:2","rhs_mine_sm320_red_mag:2"
-#define VN_B_MINEAT "2x AT mine", "vn_mine_m15_mag:2"
-#define VN_O_MINEAT "2x AT mine", "vn_mine_tm57_mag:2"
+#define VN_B_MINEAP "2x AP pressure plate mine, 2x flare mine","vn_mine_m16_mag:2","rhs_mine_sm320_red_mag:2"
+#define VN_O_MINEAP "2x AP pressure plate mine, 2x flare mine","vn_mine_m14_mag:2","rhs_mine_sm320_red_mag:2"
+#define VN_B_MINEAT "2x AT pressure plate mine", "vn_mine_m15_mag:2"
+#define VN_O_MINEAT "2x AT pressure plate mine", "vn_mine_tm57_mag:2"
+#define VN_O_MINEAT_TRIPWIRE "2x AT tripwire mine", "vn_mine_tripwire_arty_mag:2"
 #define VN_CE_DEMOCHARGE "4x Demo charge", "vn_mine_m112_remote_mag:4"
 
 #define VN_BINOCULARS "vn_mk21_binocs"

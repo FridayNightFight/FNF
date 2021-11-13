@@ -75,7 +75,7 @@ class VN_GEAR_US_ARMY1970 {
     };
     magazines[] = {VN_B_BASE_GRENADES};
     items[] = {TOOLS,GRUNT_MEDICAL};
-    linkedItems[] = {VN_LINKED};
+    linkedItems[] = {VN_B_LINKED};
     attachments[] = {};
     launcherAttachments[] = {};
     explosiveChoices[] = {};
@@ -157,7 +157,6 @@ class VN_GEAR_US_ARMY1970 {
 
   class MGA : BASE {
     backpackItems[] += {MMG_MAG_ASST,TRIPOD,SHOVEL};
-    linkedItems[] += {VN_BINOCULARS};
   };
 
   class MG : BASE {
@@ -174,8 +173,8 @@ class VN_GEAR_US_ARMY1970 {
       {{CARBINE},{CARBINE_MAG}},
       {{SHOTGUN},{SHOTGUN_MAG}}
     };
-    explosiveChoices[] = {{CE_SATCHEL},{CE_MINEAP},{CE_MINEAT},{CE_DEMOCHARGE}};
-    grenadeChoices[] = {{VN_B_CE_FRAG_GRENADES},{VN_B_CE_INCEN_GRENADES}};
+    explosiveChoices[] = {{VN_CE_SATCHEL},{VN_B_MINEAP},{VN_B_MINEAT},{VN_CE_DEMOCHARGE}};
+    grenadeChoices[] = {{VN_B_CE_FRAG_GRENADES},{VN_B_CE_WP_GRENADES}};
   };
 
   class LAT : BASE {

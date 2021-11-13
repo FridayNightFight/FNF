@@ -15,13 +15,13 @@ class CfgLoadouts {
     #include "KITS\UNIFORMS\RHS_UNI_US_ARMY_2020.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_US_MARINES_DESERT_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_US_MARINES_WOODLAND_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_US_NAVY_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_US_RANGERS_2020.hpp"
 
     #include "KITS\UNIFORMS\RHS_UNI_SOV_ARMY_1980.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_US_ARMY_1980.hpp"
 
     #include "KITS\UNIFORMS\VN_UNI_NLF_Vietcong.hpp"
-    #include "KITS\UNIFORMS\VN_UNI_NVA_Vietcong.hpp"
     #include "KITS\UNIFORMS\VN_UNI_PAVN_NVA.hpp"
     #include "KITS\UNIFORMS\VN_UNI_SVA_ARVN.hpp"
     #include "KITS\UNIFORMS\VN_UNI_US_MACV.hpp"
@@ -38,6 +38,7 @@ class CfgLoadouts {
     #include "KITS\GEAR\RHS_GEAR_RU_ARMY_2010_AK74M.hpp"
     #include "KITS\GEAR\RHS_GEAR_SERBIAN_ARMY_2010_M21.hpp"
     #include "KITS\GEAR\RHS_GEAR_US_ARMY_2010_M16A4.hpp"
+    #include "KITS\GEAR\RHS_GEAR_US_NAVY_2010_MK18.hpp"
     #include "KITS\GEAR\RHS_GEAR_US_RANGERS_2010_SCAR.hpp"
 
     #include "KITS\GEAR\RHS_GEAR_SOV_ARMY_1980_AK74.hpp"

@@ -48,7 +48,7 @@
 #define AT_TOW(_tow) ["ace_compat_rhs_usf3_tow_carry",[STRINGIFY(ace_compat_rhs_usf3_mag_TOW:_tow)]]
 
 
-#define VN_MORTAR_TYPE53(_he,_smk,_illum) ["ace_compat_sog_mortar_type53_carry","ace_csw_carryMortarBaseplate",[STRINGIFY(ace_compat_sog_82mm_he:_hecnt),STRINGIFY(ace_compat_sog_82mm_wp:_smk),STRINGIFY(ace_compat_sog_82mm_lume:_illum)]]
+#define VN_MORTAR_TYPE53(_hecnt,_smk,_illum) ["ace_compat_sog_mortar_type53_carry","ace_csw_carryMortarBaseplate",[STRINGIFY(ace_compat_sog_82mm_he:_hecnt),STRINGIFY(ace_compat_sog_82mm_wp:_smk),STRINGIFY(ace_compat_sog_82mm_lume:_illum)]]
 #define VN_MORTAR_M2_60mm(_hecnt,_smk,_illum) ["ace_compat_sog_mortar_m2_carry","ace_csw_carryMortarBaseplate",[STRINGIFY(ace_compat_sog_60mm_he:_hecnt),STRINGIFY(ace_compat_sog_60mm_wp:_smk),STRINGIFY(ace_compat_sog_60mm_lume:_illum)]]
 #define VN_MORTAR_M29_81mm(_hecnt,_smk,_illum) ["ace_compat_sog_mortar_m29_carry","ace_csw_carryMortarBaseplate",[STRINGIFY(ace_compat_sog_81mm_he:_hecnt),STRINGIFY(ace_compat_sog_81mm_wp:_smk),STRINGIFY(ace_compat_sog_81mm_lume:_illum)]]
 

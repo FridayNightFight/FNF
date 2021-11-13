@@ -1,29 +1,5 @@
 #include "description\configDefs.hpp"
 
-/* MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF */
-/* DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS - they will be deleted automatically if not in use */
-
-phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
-//If you don't want to use one of the template modes, you can set phx_gameMode = "";
-/*
-===ATK/DEF===
-destroy
-uplink
-rush
-captureTheFlag
-adSector
-
-===NEUTRAL===
-connection
-neutralSector
-scavHunt
-*/
-
-/************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/
-phx_defendingSide = sideEmpty; //west/east/independent
-phx_attackingSide = sideEmpty; //west/east/independent
-//Leave it as sideEmpty if chosen mode is neutral
-
 ////////////////////////////////////////////////////////////
 
 // MISSION MAKER NOTES //
@@ -38,21 +14,77 @@ phx_briefingNotes = "";
 // "Rules" should include any mission-specific rules that you want to spell out for players.
 phx_briefingRules = "";
 
+////////////////////////////////////////////////////////////
 
 // SCENARIO SETTINGS //
 
-phx_fortifyPoints = 125; // Currency for fortify - individual to each Combat Engineer - set to 0 to disable
-phx_enemyStartVisible = true; // Set to false to hide enemy start zone markers
-phx_maxViewDistance = 1500; // Maximum client view distance (meters)
+/* MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF */
+/* DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS - they will be deleted automatically if not in use */
 
+phx_gameMode = destroy;
+/*
+Change this to whatever game mode you want and configure the respective file in mode_config
+If you don't want to use one of the template modes, you can set phx_gameMode = "";
+  ===ATK/DEF===
+  destroy
+  uplink
+  rush
+  captureTheFlag
+  adSector
+
+  ===NEUTRAL===
+  connection
+  neutralSector
+  scavHunt
+*/
+
+/*************************
+DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL
+*************************/
+phx_defendingSide = sideEmpty; // west/east/independent
+phx_attackingSide = sideEmpty; // west/east/independent
+//Leave it as sideEmpty if chosen mode is neutral
+
+phx_vnArtillerySide = sideEmpty; // west/east/independent
+// which side's PLT SGT will have access to VN Artillery interface (requires Prairie Fire)
+// use sideEmpty to not give anyone access
+
+phx_enemyStartVisible = true; // Set to false to hide enemy start zone markers
+phx_maxViewDistance = 1500;
+/*
+  Maximum client view distance (meters)
+    LOW: 500 (for urban combat)
+    MEDIUM: 1000 (for hilly terrain, open areas)
+    HIGH: 1500 (for large open ground, mountains)
+*/
+
+phx_fortifyPoints = 125;
+/*
+  Currency for fortify - individual to each Combat Engineer - set to 0 to disable
+    LOW: 60
+    MEDIUM: 125
+    HIGH: 250
+*/
+
+phx_fortifyStyle = "MACV";
+/*
+  Determines what objects will be available for phx_defendingSide CEs to place using Fortify tool
+    "Modern" will auto-dermine tan or green hescos, sandbags, etc depending on map
+    "ModernGreen" will force modern green objects
+    "ModernTan" will force modern tan objects
+    "NVA" will give Vietnam-era NVA/VC emplacements (requires Prairie Fire)
+    "MACV" will give Vietnam-era US Army emplacements (requires Prairie Fire)
+*/
+
+phx_magnifiedOptics = 0;
 /*
   Allow players to grab magnified optics from the gear selector
   0 will restrict 4x+ optics to designated marksmen and snipers.
   1 will allow 4x+ optic choices for all except MGs.
   -1 will force ironsights.
 */
-phx_magnifiedOptics = 0;
 
+phx_addNVG = 0;
 /*
   Automatically add NVGs & lasers to players (Gen3, Black)
   Examples:
@@ -61,9 +93,8 @@ phx_magnifiedOptics = 0;
     phx_addNVG = [east] will give side east NVGs
     phx_addNVG = [east,west] will give sides east and west NVGs
 */
-phx_addNVG = 0;
 
-
+////////////////////////////////////////////////////////////
 
 // UNIFORM AND GEAR CHOICES //
 
@@ -72,7 +103,7 @@ phx_bluforUniform = "VN_UNI_US_MACV";
 phx_bluforGear = "VN_GEAR_US_ARMY1970";
 
 //OPFOR
-phx_opforUniform = "VN_UNI_PAVN_NVA";
+phx_opforUniform = "VN_UNI_NLF_Vietcong";
 phx_opforGear = "VN_GEAR_NVA_VC1970";
 
 //INDFOR
@@ -82,7 +113,8 @@ phx_indforGear = "VN_GEAR_US_SOG1970";
 /*
   POSSIBLE VALUES:
 
-    UNIFORMS:
+  UNIFORMS:
+    RHS_UNI_CZ_CZECHFORCES_2010
     RHS_UNI_DE_BUNDESWEHR_2010
     RHS_UNI_ID_MEC_2010
     RHS_UNI_ID_NAVSOG_2010
@@ -94,40 +126,39 @@ phx_indforGear = "VN_GEAR_US_SOG1970";
     RHS_UNI_US_ARMY_2020
     RHS_UNI_US_MARINES_DESERT_2010
     RHS_UNI_US_MARINES_WOODLAND_2010
+    RHS_UNI_US_NAVY_2010
     RHS_UNI_US_RANGERS_2020
 
     RHS_UNI_SOV_ARMY_1980
     RHS_UNI_US_ARMY_1980
 
     VN_UNI_NLF_Vietcong
-    VN_UNI_NVA_Vietcong
     VN_UNI_PAVN_NVA
     VN_UNI_SVA_ARVN
     VN_UNI_US_MACV
     VN_UNI_US_SOG
 
-    GEAR:
+  GEAR:
+    RHS_GEAR_CZ_CZECHFORCES_2010_VHS
     RHS_GEAR_DE_BUNDESWEHR_2010_G36
     RHS_GEAR_ID_MEC_2010_AK74MR
     RHS_GEAR_ID_NAVSOG_2010_M16A4
     RHS_GEAR_RU_ARMY_2010_AK74M
     RHS_GEAR_SERBIAN_ARMY_2010_M21
     RHS_GEAR_US_ARMY_2010_M16A4
+    RHS_GEAR_US_NAVY_2010_MK18
     RHS_GEAR_US_RANGERS_2010_SCAR
 
     RHS_GEAR_SOV_ARMY_1980_AK74
     RHS_GEAR_US_ARMY_1980_M14
+
     VN_GEAR_NVA_VC1970
     VN_GEAR_US_ARMY1970
     VN_GEAR_US_SOG1970
 */
 
-/*
-You can also use the civilian unit 'C_man_1'
-Those units will not be touched by the template loadout system, so they will keep their editor loadout
-If they have a radio, they will all be preset to the same frequency
-*/
 
+////////////////////////////////////////////////////////////
 
 // MAT SELECTION //
 
@@ -172,7 +203,8 @@ Possible launcher values (and recommended counts)
 
 EXAMPLE:
   format:
-    phx_bluAT_Bravo = CARLG(2);
+    phx_bluAT_Bravo = CARLG(2,0);
+    phx_bluAT_Delta = JAVELIN(1);
 
   CARLG would give the MAT gunner a Carl Gustav
   The 2 refers to how many rockets/missiles for each: gunner, assistant, assistant.
@@ -180,6 +212,7 @@ EXAMPLE:
 
 */
 
+////////////////////////////////////////////////////////////
 
 // SQUAD HQ AUXILIARY ROLES //
 // "SHQAUX"
@@ -192,7 +225,7 @@ EXAMPLE:
   phx_eastDeltaAuxRole = 0;
 
 // BLUFOR
-  phx_westAlphaAuxRole = MORTAR_M252(5,5,5);
+  phx_westAlphaAuxRole = 0;
   phx_westBravoAuxRole = 0;
   phx_westCharlieAuxRole = 0;
   phx_westDeltaAuxRole = 0;
@@ -234,7 +267,7 @@ EXAMPLE:
       phx_westBravoAuxRole = MORTAR_M252(10,5,5);
 */
 
-
+////////////////////////////////////////////////////////////
 
 // SYSTEM SETTINGS //
 

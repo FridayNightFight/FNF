@@ -1,6 +1,14 @@
 if (!hasInterface || isDedicated) exitWith {};
 waitUntil {!isNull player};
 
+if (playerSide isEqualTo civilian) exitWith {
+  phx_selector_optics = [];
+  phx_selector_weapons = [];
+  phx_selector_explosives = [];
+  phx_selector_grenades = [];
+  missionNamespace setVariable ["phx_loadoutAssigned",true];
+};
+
 player unlinkItem "ItemRadio";
 {player removeItem _x} forEach (assignedItems player);
 {
@@ -565,8 +573,17 @@ fnc_setAttributes = {
     ["_role", "BASE"]
   ];
 
-  if (_role == "MED") then {_unit setVariable ["ace_medical_medicClass", 1, true]};
-  if (_role in ["CE","CR","PI"]) then {_unit setVariable ["ace_isEngineer", 1, true]};
+  if (_role == "MED") then {
+    _unit setVariable ["ace_medical_medicClass", 1, true];
+    _unit setUnitTrait ["medic", true, true];
+  };
+  if (_role in ["CE","CR","PI"]) then {
+    _unit setVariable ["ace_isEngineer", 1, true];
+    _unit setUnitTrait ["engineer", true, true];
+  };
+  if (_role == "SGT" && side (group _unit) isEqualTo phx_vnArtillerySide) then {
+    _unit setUnitTrait ["vn_artillery", true, true];
+  };
   true
 };
 

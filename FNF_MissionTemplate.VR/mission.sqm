@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=7370;
+		nextID=7392;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={303.87582,11.253511,651.35504};
-		dir[]={0.34515184,-0.36432904,0.86495149};
-		up[]={0.13502954,0.93127114,0.33838424};
-		aside[]={0.9287867,1.1292286e-008,-0.37062499};
+		pos[]={400.48465,145.69275,311.33084};
+		dir[]={0.32485813,-0.40124309,0.85653704};
+		up[]={0.14230473,0.91596013,0.3752068};
+		aside[]={0.93507874,-3.0733645e-007,-0.35464475};
 	};
 };
 binarizationWanted=0;
-sourceName="FNF_MissionTemplate";
+sourceName="fnf_missiontemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -53,7 +53,7 @@ addons[]=
 	"ace_parachute",
 	"rhs_c_troops",
 	"rhssaf_c_gear",
-	"rhsusf_c_statics"
+	"modules_f_vietnam"
 };
 class AddonsMetaData
 {
@@ -207,10 +207,10 @@ class AddonsMetaData
 		};
 		class Item21
 		{
-			className="rhsusf_c_statics";
-			name="RHSUSF Static Weapons";
-			author="Red Hammer Studios";
-			url="http://www.rhsmods.org/";
+			className="modules_f_vietnam";
+			name="modules_f_vietnam";
+			author="Savage Game Design";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -224,6 +224,7 @@ dlcs[]=
 randomSeed=615564;
 class ScenarioData
 {
+	author="Your Name Here";
 	disabledAI=1;
 	wreckRemovalMaxTime=3600;
 	corpseManagerMode=1;
@@ -233,7 +234,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category1
+	class Category0
 	{
 		name="Multiplayer";
 		class Attribute0
@@ -256,7 +257,7 @@ class CustomAttributes
 		};
 		nAttributes=1;
 	};
-	class Category2
+	class Category1
 	{
 		name="Scenario";
 		class Attribute0
@@ -302,8 +303,10 @@ class CustomAttributes
 };
 class Mission
 {
+	assetType="Free";
 	class Intel
 	{
+		briefingName="FNF Mission Template";
 		overviewText="Insert mission details shown at lobby screen here (Multiplayer attributes > Lobby > Summary)";
 		resistanceWest=0;
 		timeOfChanges=28800;
@@ -349,7 +352,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=138;
+		items=137;
 		class Item0
 		{
 			dataType="Logic";
@@ -5087,7 +5090,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={497.82867,5.0014391,708.02802};
+						position[]={497.82901,5.0014391,708.02802};
 						angles[]={0,3.1594648,0};
 					};
 					side="West";
@@ -5096,7 +5099,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SGT""];";
-						description="Platoon Sergeant@Platoon HQ";
+						description="Platoon Sergeant (Fire Support)@Platoon HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -6197,7 +6200,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={489.52765,5.0014391,700.60614};
+						position[]={489.52802,5.0014391,700.60602};
 					};
 					side="West";
 					flags=7;
@@ -6205,7 +6208,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Alpha HQ";
+						description="Squad Leader@Alpha HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -8461,7 +8464,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Bravo HQ (M2 Low)";
+						description="Squad Leader@Bravo HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -10771,7 +10774,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={502.07001,5.0014391,700.6424};
+						position[]={502.07001,5.0014391,700.64197};
 					};
 					side="West";
 					flags=7;
@@ -10779,7 +10782,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Charlie HQ";
+						description="Squad Leader@Charlie HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -13034,7 +13037,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Delta HQ (M2 Low)";
+						description="Squad Leader@Delta HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -18417,7 +18420,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={299.13409,5.0014391,708.08636};
+						position[]={299.134,5.0014391,708.086};
 						angles[]={0,3.1593602,0};
 					};
 					side="East";
@@ -18426,7 +18429,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this setVariable [""phxLoadout"", ""SGT""];";
-						description="Platoon Sergeant@Platoon HQ";
+						description="Platoon Sergeant (Fire Support)@Platoon HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -19304,14 +19307,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={289.27524,5.0014391,701.89557};
+						position[]={289.27499,5.0014391,701.896};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Alpha HQ";
+						description="Squad Leader@Alpha HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -20650,7 +20653,7 @@ class Mission
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Bravo HQ (KORD Low)";
+						description="Squad Leader@Bravo HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -21981,14 +21984,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={302.02414,5.0014391,701.78217};
+						position[]={302.02399,5.0014391,701.78198};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Charlie HQ";
+						description="Squad Leader@Charlie HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23327,7 +23330,7 @@ class Mission
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Delta HQ (KORD Low)";
+						description="Squad Leader@Delta HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -27345,7 +27348,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={697.90417,5.0014391,706.2793};
+						position[]={697.90399,5.0014391,706.27899};
 						angles[]={0,3.147614,0};
 					};
 					side="Independent";
@@ -27354,7 +27357,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SGT""];";
-						description="Platoon Sergeant@Platoon HQ";
+						description="Platoon Sergeant (Fire Support)@Platoon HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -28269,7 +28272,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={689.99164,5.0014391,700.89978};
+						position[]={689.992,5.0014391,700.89996};
 					};
 					side="Independent";
 					flags=7;
@@ -28277,7 +28280,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Alpha HQ";
+						description="Squad Leader@Alpha HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -30384,7 +30387,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Bravo HQ (DShKM Low)";
+						description="Squad Leader@Bravo HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -32313,7 +32316,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={702.12524,5.0014391,700.84747};
+						position[]={702.125,5.0014391,700.84698};
 					};
 					side="Independent";
 					flags=7;
@@ -32321,7 +32324,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Charlie HQ";
+						description="Squad Leader@Charlie HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34428,7 +34431,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Delta HQ (DShKM Low)";
+						description="Squad Leader@Delta HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -38913,6 +38916,16 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item136
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={-4670.061,5,-5003.6377};
+			};
+			id=7391;
+			type="vn_module_artillery";
 		};
 	};
 	class Connections

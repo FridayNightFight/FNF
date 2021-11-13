@@ -22,9 +22,9 @@ if (
   &&
   count (phx_selector_weapons) == 0
   &&
-  count (missionNamespace getVariable ["phx_selector_explosives",0]) == 0
+  count (phx_selector_explosives) == 0
   &&
-  count (missionNamespace getVariable ["phx_selector_grenades",0]) == 0
+  count (phx_selector_grenades) == 0
 ) exitWith {};
 
 //Create base actions
@@ -141,7 +141,7 @@ if (count (missionNamespace getVariable ["phx_selector_explosives",[]]) > 0 && L
       _x select 0,
       "",
       { // statement
-        (_this select 2) call phx_selector_fnc_explosives;
+        (_this select 2) call phx_selector_fnc_charges;
       },
       { // condition
         fnf_pref_loadoutInterface == "ACE"
