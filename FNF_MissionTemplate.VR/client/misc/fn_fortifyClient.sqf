@@ -15,14 +15,14 @@ phx_fortify_objArr = [];
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
 if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
-if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F") && !(typeOf player == "I_Soldier_exp_F")) exitWith {
+
+#define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+if (PLAYERLOADOUTVAR != "CE") exitWith {
   [{
     if (!phx_safetyEnabled) then {[_handle] call CBA_fnc_removePerFrameHandler};
     if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
   }, 1] call CBA_fnc_addPerFrameHandler;
 };
-
-player addItem "ACE_Fortify";
 
 switch (playerSide) do {
   case east: {phx_fortifyMarker = "opforSafeMarker";};

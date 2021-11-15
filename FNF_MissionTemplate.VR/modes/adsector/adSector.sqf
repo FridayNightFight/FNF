@@ -72,10 +72,10 @@ _sectorNum = 0;
       _units = allUnits inAreaArray _sector;
 
       {
-        if (_x call BIS_fnc_objectSide == phx_defendingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x) then {
+        if (_x call BIS_fnc_objectSide == phx_defendingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x && ([_x] call ace_common_fnc_isAwake)) then {
           _dPresent = true;
         };
-        if (_x call BIS_fnc_objectSide == phx_attackingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x) then {
+        if (_x call BIS_fnc_objectSide == phx_attackingSide && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x && ([_x] call ace_common_fnc_isAwake)) then {
           _aPresent = true;
         };
       } forEach _units;

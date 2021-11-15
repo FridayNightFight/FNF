@@ -8,11 +8,10 @@ private _out = [];
   _description = ([_description, "<br/>", true] call BIS_fnc_splitString) joinString '<br/>  ';
   _description = ([_description, "<br />", true] call BIS_fnc_splitString) joinString '<br/>  ';
 
-  _out pushBack format[ 
-    "    <img width='120' image='%1'/><br/><font face='EtelkaMonospacePro' size='10'>  %2<br/>  %3<br/></font>", 
-    _picture, 
-    _displayName, 
-    _description
+  _out pushBack format[
+    "<img width='170' image='%1'/><br/>               <font face='PuristaMedium' size='12'>%2</font>",
+    _picture,
+    _displayName
   ];
 } forEach _weapons;
 _out

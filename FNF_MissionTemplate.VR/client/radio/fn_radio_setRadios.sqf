@@ -2,6 +2,20 @@
 phx_curChan = phx_curChan - 1;
 phx_altChan = phx_altChan - 1;
 
+
+// [ // stereo settings example
+// 	1, // active channel (value - 1, as it uses a 0-based index)
+// 	6, // volume (value - 1, as it uses a 0-based index)
+// 	["47","47.2","48","49","50","51","52","53","117.8"], // channel frequencies
+// 	1, // stereo setting [center, left, right]
+// 	"indfor", // encryption code
+// 	0, // additional channel (value - 1, as it uses a 0-based index)
+// 	2, // additional channel stereo setting [center, left, right]
+// 	"76561197991996737", // owner's playerUID
+// 	false, // is on speakers
+// 	true // is powered on
+// ]
+
 //Only setup long range channels if player has one
 if (phx_hasLR) then {
     phx_curSettings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
@@ -28,6 +42,7 @@ if (phx_hasLR) then {
     //Set stero mode for alternate channel
     phx_curSettings set [6,2];
     [(call TFAR_fnc_activeLrRadio), phx_curSettings] call TFAR_fnc_setLrSettings;
+    [(call TFAR_fnc_activeLrRadio), phx_loadout_TFAREncryptionCode] call TFAR_fnc_setLrRadioCode;
 };
 
 //Only setup short wave channels if player has one
@@ -56,9 +71,22 @@ if (phx_hasSW) then {
     phx_curSettings set [6,2];
 
     [(call TFAR_fnc_activeSwRadio), phx_curSettings] call TFAR_fnc_setSwSettings;
+    [(call TFAR_fnc_activeSwRadio), phx_loadout_TFAREncryptionCode] call TFAR_fnc_setSwRadioCode;
 };
 
 
 //Everything should be setup. Let the player know.
-systemChat "Radios preset.";
+// systemChat "Radios preset.";
+[] spawn {
+  ["<t align='center'>Radios initialized.</t>", "success", 5] call phx_ui_fnc_notify;
+  // SW radio
+  if (call TFAR_fnc_haveSWRadio) then {
+    [(call TFAR_fnc_activeSwRadio), false] call TFAR_fnc_showRadioInfo;
+  };
+  sleep 5;
+  // LR radio
+  if (call TFAR_fnc_haveLRRadio) then {
+    [(call TFAR_fnc_activeLrRadio), true] call TFAR_fnc_showRadioInfo;
+  };
+};
 call phx_fnc_radio_cleanup;
