@@ -1,5 +1,6 @@
 if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send RoundEnd webhook -- mod not loaded!"};
 if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundEnd Discord post"};
+
 params ["_endMessage"];
 
 private [
@@ -35,9 +36,30 @@ _durationSecs = "0" + str(_durationSecs);
 
 _missionDuration = format["%1:%2:%3", _durationHours, _durationMins, _durationSecs];
 
-_bluPlayers = if (playableSlotsNumber west == 0) then {""} else {str(count(allPlayers select {side _x == west && alive _x}))};
-_opfPlayers = if (playableSlotsNumber east == 0) then {""} else {str(count(allPlayers select {side _x == east && alive _x}))};
-_indPlayers = if (playableSlotsNumber independent == 0) then {""} else {str(count(allPlayers select {side _x == independent && alive _x}))};
+_fnc_doCount = {
+  params [
+    ["_unit", objNull],
+    ["_side", sideEmpty]
+  ];
+  if (isNull _unit || _side isEqualTo sideEmpty) exitWith {false};
+
+  (
+    side (group _unit) isEqualTo _side &&
+    alive _unit &&
+    !(isObjectHidden _unit) &&
+    [_x] call ace_common_fnc_isAwake
+  )
+};
+
+_bluPlayers = if (playableSlotsNumber west == 0) then {""} else {
+  count(allPlayers select {[_x, west] call _fnc_doCount})
+};
+_opfPlayers = if (playableSlotsNumber east == 0) then {""} else {
+  count(allPlayers select {[_x, east] call _fnc_doCount})
+};
+_indPlayers = if (playableSlotsNumber independent == 0) then {""} else {
+  count(allPlayers select {[_x, independent] call _fnc_doCount})
+};
 
 
 ["RoundEnd", [
@@ -46,7 +68,7 @@ _indPlayers = if (playableSlotsNumber independent == 0) then {""} else {str(coun
 	_gameMode,
 	_connectedPlayerCount,
 	_missionDuration,
-	_bluPlayers,
-	_opfPlayers,
-	_indPlayers
+	str(_bluPlayers),
+	str(_opfPlayers),
+	str(_indPlayers)
 ]] call DiscordEmbedBuilder_fnc_buildCfg;

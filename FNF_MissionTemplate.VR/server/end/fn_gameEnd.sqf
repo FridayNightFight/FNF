@@ -27,14 +27,22 @@ switch (_sideWon) do {
 } forEach (getArray(configfile >> "CfgMarkerColors" >> _colorStr >> "color"));
 
 
-[[getText(configfile >> "CfgMarkers" >> _flagStr >> "texture"), 2],[_sideWonName, 1.5], [_condition, 1, [1, 1, 1, 1]], false] remoteExec ["CBA_fnc_notify", 0];
-// [[getText(configfile >> "CfgMarkers" >> _flagStr >> "texture"), 2],[_sideWonName, 1.5, _facColor], [_condition, 1, [1, 1, 1, 1]], false] remoteExec ["CBA_fnc_notify", 0];
-private _endMessage = format["%1 %2", _sideWonName, _condition];
-[_sideWon, _endMessage] call ocap_fnc_exportData;
-[_endMessage] call phx_fnc_webhook_roundEnd;
+[format [
+  "<t align='center'><br/><img image='%1' size='5'/><br/><br/><t size='1.5'>%2 %3</t></t>",
+  getText(configfile >> "CfgMarkers" >> _flagStr >> "texture"),
+  _sideWonName,
+  _condition
+  ],
+  "info",
+  20
+] remoteExec ["phx_ui_fnc_notify", 0];
+
+if (count allPlayers > 14) then {
+  [format["%1 %2", _sideWonName, _condition]] call phx_fnc_webhook_roundEnd;
+};
 
 if (isClass (configFile >> "CfgPatches" >> "OCAP")) then {
-	[_sideWon, format["%1 %2", _sideWonName, _condition]] call ocap_fnc_exportData;
+  [_sideWon, format["%1 %2", _sideWonName, _condition]] call ocap_fnc_exportData;
 };
 
 sleep 10;
