@@ -9,7 +9,7 @@
  * N/A
  *
  * Usage: 
- * call PHX_fnc_jipPatch
+ * call phx_admin_fnc_jipPatch
  *
  * Public: no
  */

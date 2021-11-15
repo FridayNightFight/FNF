@@ -14,8 +14,6 @@ class Header
 #include "description\cfgNotifications.hpp"
 #include "description\cfgSounds.hpp"
 #include "description\cfgFunctions.hpp"
-#include "client\ui\TimeDisplay.hpp"
-#include "description\cfgUnitInsignia.hpp"
 #include "description\cfgORBAT.hpp"
 #include "description\cfgLoadouts.hpp"
 #include "description\cfgVNArtillery.hpp"

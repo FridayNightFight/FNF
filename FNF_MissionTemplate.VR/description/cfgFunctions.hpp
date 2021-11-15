@@ -105,8 +105,6 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
-	  class adminPatch{};
-	  class jipPatch{};
       class populateORBATS{};
       class keyVehicles{};
       class lockVehicles{};
@@ -146,6 +144,11 @@ class CfgFunctions {
     };
   };
   class phx_admin {
+    class adminPatches {
+      file = "server\patches";
+      class adminPatch{};
+      class jipPatch{};
+    };
     class adminKick {
       file = "client\misc\admin\adminKick";
       class addAdminKickButton{};
