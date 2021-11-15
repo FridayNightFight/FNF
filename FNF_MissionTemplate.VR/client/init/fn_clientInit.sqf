@@ -17,6 +17,10 @@ if (isMultiplayer) then {
 };
 call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
+// Admin player patch jip support
+if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
+	call phx_admin_fnc_jipPatch;
+};
 
 
 //Set player loadout after stagger time
