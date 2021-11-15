@@ -75,26 +75,44 @@ _QS_ST_showAll = 0;											// NUMBER. Intended for Debug / Development use on
 //================= DIPLOMACY - set the Friendly factions for each faction.
 
 _QS_ST_friendlySides_Dynamic = TRUE;						// BOOL. Set TRUE to allow faction alliances to change dynamically (IE. AAF may not always be loyal to NATO) and be represented on the map. Default TRUE.
-_QS_ST_friendlySides_EAST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
-	//1,					//EAST is friendly to WEST
-	//2,					//EAST is friendly to INDEPENDENT/RESISTANCE
-	//3						//EAST is friendly to CIVILIANS
-];
-_QS_ST_friendlySides_WEST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
-	//0,					//WEST is friendly to EAST
-	//2,						//WEST is friendly to INDEP/RESISTANCE
-	//3						//WEST is friendly to CIVILIAN
-];
-_QS_ST_friendlySides_RESISTANCE = [							// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
-	//0,					//RESISTANCE is friendly to EAST
-	//1,						//RESISTANCE is friendly to WEST
-	//3						//RESISTANCE is friendly to CIVILIAN
-];
-_QS_ST_friendlySides_CIVILIAN = [							// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
-	//0,						//CIVILIAN is friendly to EAST
-	//1,					//CIVILIAN is friendly to WEST
-	//2						//CIVILIAN is friendly to INDEP/RESISTANCE
-];
+private _independentAllegiance = "Scenario" get3DENMissionAttribute "IntelIndepAllegiance";
+_independentAllegiance params ["_alliedWest","_alliedEast"];
+_QS_ST_friendlySides_EAST = [];
+_QS_ST_friendlySides_WEST = [];
+_QS_ST_friendlySides_RESISTANCE = [];
+_QS_ST_friendlySides_CIVILIAN = [];
+if (_alliedWest isEqualTo 1) then {
+  _QS_ST_friendlySides_EAST = [];
+  _QS_ST_friendlySides_WEST = [2];
+  _QS_ST_friendlySides_RESISTANCE = [1];
+  _QS_ST_friendlySides_CIVILIAN = [];
+};
+if (_alliedEast isEqualTo 1) then {
+  _QS_ST_friendlySides_EAST = [2];
+  _QS_ST_friendlySides_WEST = [];
+  _QS_ST_friendlySides_RESISTANCE = [0];
+  _QS_ST_friendlySides_CIVILIAN = [];
+};
+// _QS_ST_friendlySides_EAST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
+// 	//1,					//EAST is friendly to WEST
+// 	//2,					//EAST is friendly to INDEPENDENT/RESISTANCE
+// 	//3						//EAST is friendly to CIVILIANS
+// ];
+// _QS_ST_friendlySides_WEST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
+// 	//0,					//WEST is friendly to EAST
+// 	//2,						//WEST is friendly to INDEP/RESISTANCE
+// 	//3						//WEST is friendly to CIVILIAN
+// ];
+// _QS_ST_friendlySides_RESISTANCE = [							// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
+// 	//0,					//RESISTANCE is friendly to EAST
+// 	//1,						//RESISTANCE is friendly to WEST
+// 	//3						//RESISTANCE is friendly to CIVILIAN
+// ];
+// _QS_ST_friendlySides_CIVILIAN = [							// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
+// 	//0,						//CIVILIAN is friendly to EAST
+// 	//1,					//CIVILIAN is friendly to WEST
+// 	//2						//CIVILIAN is friendly to INDEP/RESISTANCE
+// ];
 
 //================= DEFAULT ICON COLORS by FACTION
 
@@ -122,12 +140,12 @@ _QS_ST_colorInjured = [0.75,0.55,0,0.75];						// ARRAY (NUMBER). RGBA color cod
 //=========================== CONFIGURE MAP (UNIT/VEHICLE) ICONS ===================//
 //==================================================================================//
 
-_QS_ST_showFactionOnly = FALSE;									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
+_QS_ST_showFactionOnly = (!phx_showAlliedFactions);									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
 _QS_ST_showAI = TRUE;											// BOOL. FALSE = players only, TRUE = players and AI. Default TRUE.
 _QS_ST_AINames = FALSE;											// BOOL. Set TRUE to show human names for AI with the map/vehicle icons. Set FALSE and will be named 'AI'. Default FALSE.
 _QS_ST_showCivilianIcons = FALSE;								// BOOL. Set TRUE to allow showing of civilians, only works if Dynamic Diplomacy is enabled above. Default FALSE.
 _QS_ST_iconMapText = TRUE;										// BOOL. TRUE to show unit/vehicle icon text on the map. FALSE to only show the icon and NO text (name/class). Default TRUE.
-_QS_ST_showMOS = FALSE;											// BOOL. TRUE = show Military Occupational Specialty text(unit/vehicle class/role display name), FALSE = disable and only show icons and names. Default FALSE.
+_QS_ST_showMOS = TRUE;											// BOOL. TRUE = show Military Occupational Specialty text(unit/vehicle class/role display name), FALSE = disable and only show icons and names. Default FALSE.
 _QS_ST_showMOS_range = 3500;									// NUMBER. Range in distance to show MOS on the map. Default 3500.
 _QS_ST_showGroupOnly = FALSE;									// BOOL. Set TRUE to show ONLY the unit icons of THE PLAYERS GROUP MEMBERS on the MAP, FALSE to show ALL your factions units. May override other config. Default TRUE.
 _QS_ST_showOnlyVehicles = FALSE;								// BOOL. Set TRUE to show ONLY vehicles, no foot-soldier units will be shown. May override other config. Default TRUE.
@@ -176,13 +194,13 @@ _QS_ST_showAIGroups = TRUE;										// BOOL. Show Groups with AI leaders. Defau
 _QS_ST_showAINames = FALSE;										// BOOL. Show AI Names. If FALSE, when names are listed with Group features, will only display as '[AI]'. Default FALSE.
 _QS_ST_groupInteractiveIcons = TRUE;							// BOOL. Group icons are interactable (mouse hover and mouse click for group details). Default TRUE.
 _QS_ST_groupInteractiveIcons_showClass = TRUE;					// BOOL. TRUE to show units vehicle class when revealing group details with interactive map group click. Default TRUE.
-_QS_ST_dynamicGroupID = TRUE;									// BOOL. If TRUE, Script tries to utilize BIS-Dynamic-Groups Group Name for group info display (only available with QS_ST_groupInteractiveIcons), if available. Default TRUE. EDIT: Obsolete as of A3 1.48
+_QS_ST_dynamicGroupID = FALSE;									// BOOL. If TRUE, Script tries to utilize BIS-Dynamic-Groups Group Name for group info display (only available with QS_ST_groupInteractiveIcons), if available. Default TRUE. EDIT: Obsolete as of A3 1.48
 _QS_ST_showGroupMapText = TRUE;									// BOOL. TRUE to show Group Name on the map. If FALSE, name can still be seen by clicking on the group icon, if QS_ST_groupInteractiveIcons = TRUE. Default FALSE.
 _QS_ST_groupIconScale = 0.75;										// NUMBER. Group Icon Scale. Default = 0.75
 _QS_ST_groupIconOffset = [0.65,0.65];							// ARRAY (NUMBERS). [X,Y], offset position of icon from group leaders position. Can be positive or negative numbers. Default = [0.65,0.65];
 _QS_ST_groupTextFactionOnly = TRUE;								// BOOL. TRUE to show group icon text from ONLY the PLAYERS faction. FALSE will show text for all friendly/revealed factions. Default TRUE.
 _QS_ST_showCivilianGroups = FALSE;								// BOOL. TRUE to show Civilian groups. Must be whitelisted above in friendlySides. Default FALSE.
-_QS_ST_showOwnGroup = FALSE;									// BOOL. TRUE to show the Players own group icon. Default FALSE.
+_QS_ST_showOwnGroup = TRUE;									// BOOL. TRUE to show the Players own group icon. Default FALSE.
 _QS_ST_GRPrequireGPSItem = FALSE;								// BOOL. TRUE to require player have GPS in his assigned items. Default FALSE.
 
 //==================================================================================//
@@ -239,11 +257,12 @@ _QS_fnc_isIncapacitated = {
 					};
 				} else {
 					if (_med isEqualTo 'ACE') then {
-						if (!isNil {_u getVariable 'ACE_isUnconscious'}) then {
-							if ((_u getVariable 'ACE_isUnconscious')) then {
-								_r = TRUE;
-							};
-						};
+            if (!([_u] call ace_common_fnc_isAwake)) then {_r = TRUE};
+						// if (!isNil {_u getVariable 'ACE_isUnconscious'}) then {
+						// 	if ((_u getVariable 'ACE_isUnconscious')) then {
+						// 		_r = TRUE;
+						// 	};
+						// };
 					};
 				};
 			};
@@ -1431,7 +1450,7 @@ _QS_ST_R = [
 
 	_QS_ST_autonomousVehicles,
 	_QS_fnc_iconColor,
-	_QS_fnc_iconType,
+	_QS_fnc_iconType, // 52
 	_QS_fnc_iconSize,
 	_QS_fnc_iconPosDir,
 	_QS_fnc_iconText,
@@ -1451,7 +1470,7 @@ _QS_ST_R = [
 	_QS_fnc_onGroupIconOverEnter,
 	_QS_ST_showCivilianGroups,
 
-	_QS_ST_iconTextFont,
+	_QS_ST_iconTextFont, // 60
 	_QS_ST_showAll,
 	_QS_ST_showFactionOnly,
 	_QS_ST_showAI,
@@ -1645,13 +1664,17 @@ if (_QS_ST_X select 2) then {
 									if (isNil {_grp getVariable 'QS_ST_Group'}) then {
 										if (!isNull _grp) then {
 											if (!isNull _grpLeader) then {
-												[_grp,0,_QS_ST_X] call _configGroupIcon;
+                        if (!(typeOf _grpLeader isEqualTo "Logic")) then {
+                          [_grp,0,_QS_ST_X] call _configGroupIcon;
+                        };
 											};
 										};
 									} else {
 										if (!isNull _grp) then {
 											if (!isNull _grpLeader) then {
-												[_grp,1,_QS_ST_X] call _configGroupIcon;
+                        if (!(typeOf _grpLeader isEqualTo "Logic")) then {
+                          [_grp,1,_QS_ST_X] call _configGroupIcon;
+                        };
 											};
 										};
 									};
@@ -1660,13 +1683,17 @@ if (_QS_ST_X select 2) then {
 										if (isNil {_grp getVariable 'QS_ST_Group'}) then {
 											if (!isNull _grp) then {
 												if (!isNull _grpLeader) then {
-													[_grp,0,_QS_ST_X] call _configGroupIcon;
+                          if (!(typeOf _grpLeader isEqualTo "Logic")) then {
+                            [_grp,0,_QS_ST_X] call _configGroupIcon;
+                          };
 												};
 											};
 										} else {
 											if (!isNull _grp) then {
 												if (!isNull _grpLeader) then {
-													[_grp,1,_QS_ST_X] call _configGroupIcon;
+                          if (!(typeOf _grpLeader isEqualTo "Logic")) then {
+                            [_grp,1,_QS_ST_X] call _configGroupIcon;
+                          };
 												};
 											};
 										};

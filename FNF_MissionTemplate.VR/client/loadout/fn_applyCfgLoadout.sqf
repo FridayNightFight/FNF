@@ -752,7 +752,27 @@ private _cfgGiveSRRadio = (CFGGEAR >> "giveSRRadio") call BIS_fnc_getCfgDataBool
 private _cfgGiveLRRadio = (CFGGEAR >> "giveLRRadio") call BIS_fnc_getCfgDataBool;
 // private _cfgHandgunAttachments = getArray (_cfgPath >> "handgunAttachments");
 
-
+_pairs = [
+  ["uniform", _cfgUniform],
+  ["vest", _cfgVest],
+  ["headgear", _cfgHeadgear],
+  ["backpack", _cfgBackpack],
+  ["backpackItems", _cfgBackpackItems],
+  ["launchers", _cfgLaunchers],
+  ["sidearms", _cfgSidearms],
+  ["magazines", _cfgMagazines],
+  ["items", _cfgItems],
+  ["linkedItems", _cfgLinkedItems],
+  ["weaponChoices", _cfgWeaponChoices],
+  ["attachments", _cfgAttachments],
+  ["explosiveChoices", _cfgExplosiveChoices],
+  ["grenadeChoices", _cfgGrenadeChoices],
+  ["giveSideKey", _cfgGiveSideKey],
+  ["giveSRRadio", _cfgGiveSRRadio],
+  ["giveLRRadio", _cfgGiveLRRadio]
+];
+_cfgLoaded = [_pairs, []] call CBA_fnc_hashCreate;
+phx_loadout = [_cfgLoaded, false] call CBA_fnc_deserializeNamespace;
 
 // Wearable
 phx_loadout_uniform = if (_cfgUniform isEqualTo []) then { "" } else { selectRandom _cfgUniform };
