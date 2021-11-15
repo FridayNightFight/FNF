@@ -118,38 +118,52 @@ if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gam
 
 
 _info = missionNamespace getVariable "fnf_staffInfo";
-_staffPlayers = [];
-{
-	{
-		private _staffMember = _x call BIS_fnc_getUnitByUID;
-		if (!isNull _staffMember) then {
-			_staffPlayers set [_x, [_y # 0, _y # 1, _staffMember]];
-		};
-	};
-} forEach _info;
+_staffPlayers = allPlayers select {!isNil {_info get (getPlayerUID _x)}};
 
 
-_playingPlayerCount = str(count (playableUnits select {alive _x}));
-_staffCount = if (isNil "staffPlayers") then {"0"} else {str(count _staffPlayers)};
-_spectatorCount = str(count (call ace_spectator_fnc_players));
-_bluPlayers = if (playableSlotsNumber west == 0) then {""} else {str(count(allPlayers select {side _x == west && alive _x}))};
-_opfPlayers = if (playableSlotsNumber east == 0) then {""} else {str(count(allPlayers select {side _x == east && alive _x}))};
-_indPlayers = if (playableSlotsNumber independent == 0) then {""} else {str(count(allPlayers select {side _x == independent && alive _x}))};
+_playingPlayerCount = count (playableUnits select {alive _x});
+_staffCount = count _staffPlayers;
+_spectatorCount = count (call ace_spectator_fnc_players);
+
+_fnc_doCount = {
+  params [
+    ["_unit", objNull],
+    ["_side", sideEmpty]
+  ];
+  if (isNull _unit || _side isEqualTo sideEmpty) exitWith {false};
+
+  (
+    side (group _unit) isEqualTo _side &&
+    alive _unit &&
+    !(isObjectHidden _unit) &&
+    [_x] call ace_common_fnc_isAwake
+  )
+};
+
+_bluPlayers = if (playableSlotsNumber west == 0) then {""} else {
+  count(allPlayers select {[_x, west] call _fnc_doCount})
+};
+_opfPlayers = if (playableSlotsNumber east == 0) then {""} else {
+  count(allPlayers select {[_x, east] call _fnc_doCount})
+};
+_indPlayers = if (playableSlotsNumber independent == 0) then {""} else {
+  count(allPlayers select {[_x, independent] call _fnc_doCount})
+};
 _bluAssets = (_bluArr joinString "");
 _opfAssets = (_opfarr joinString "");
 _indAssets = (_indArr joinString "");
 
 
 ["RoundStart", [
-    missionName,
-    _gameMode,
-    _playingPlayerCount,
-    _spectatorCount,
-    _staffCount,
-    _bluPlayers,
-    _opfPlayers,
-    _indPlayers,
-    _bluAssets,
-    _opfAssets,
-    _indAssets
+  missionName,
+  _gameMode,
+  str(_playingPlayerCount),
+  str(_spectatorCount),
+  str(_staffCount),
+  str(_bluPlayers),
+  str(_opfPlayers),
+  str(_indPlayers),
+  _bluAssets,
+  _opfAssets,
+  _indAssets
 ]] call DiscordEmbedBuilder_fnc_buildCfg;

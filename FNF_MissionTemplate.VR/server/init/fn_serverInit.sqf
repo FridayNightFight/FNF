@@ -8,16 +8,29 @@ phx_adminChannelId = radioChannelCreate [
 ];
 publicVariable "phx_adminChannelId";
 
+missionNamespace setVariable [
+  "TFAR_DefaultRadio_Personal_Guer",
+  TFAR_DefaultRadio_Personal_Independent,
+  true
+];
+missionNamespace setVariable [
+  "TFAR_DefaultRadio_Backpack_Guer",
+  TFAR_DefaultRadio_Backpack_Independent,
+  true
+];
+
 call phx_fnc_serverSafety;
 call phx_fnc_radio_genFreqs;
 call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
 call phx_fnc_markCustomObjs;
 call phx_fnc_server_setupGame;
-call PHX_fnc_adminPatch;
-[] spawn phx_fnc_webhook_roundPrep;
+call phx_fnc_adminPatch;
+call phx_fnc_webhook_roundPrep;
 
 call phx_fnc_populateORBATs;
+call phx_fnc_keyVehicles;
+call phx_fnc_vehicleRadios;
 
 
 [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;

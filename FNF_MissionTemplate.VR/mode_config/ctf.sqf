@@ -1,6 +1,6 @@
 _flagCaptureTime = 600; //How long the attackers need to hold the flag in their capture zone (seconds)
-
 _flagMarkUpdateTime = 15; //How often the flag marker updates (seconds)
+_showCapZoneGlobal = false; //false: capture zone will only be shown to attackers at mission start - true: capture zone will be shown to all players at mission start
 
 /*
 ====================================================================================================

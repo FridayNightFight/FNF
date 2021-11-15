@@ -27,8 +27,8 @@ _groups = [
     // BLUFOR
 
     //1st Platoon
-    ["Blue_PHQ","PLTHQ","Platoon HQ",2, [2, 1, [.1, 1, 2, 3, 4, 5, 6, 7, 8]] ],
-    ["Blue_X","XRAY","X-Ray (Recon)",1, [2, 1, [.2, 1, 2, 3, 4, 5, 6, 7, 8]] ],
+    ["Blue_PHQ","PLTHQ","Platoon HQ",2, [1, 2, [1, 1.1, 2, 3, 4, 5, 6, 7, 8]] ],
+    ["Blue_X","XRAY","X-Ray (Recon)",1, [2, 1, [1, 1.2, 2, 3, 4, 5, 6, 7, 8]] ],
 
     //not used
     ["Blue_Pilot","P","Pilots",1, [1, 2, [1, 2, 3, 4, .1]] ],
@@ -83,8 +83,8 @@ _groups = [
 
     // REDFOR
     //1st Platoon
-    ["Red_PHQ","PLTHQ","Platoon HQ",2, [2, 1, [.1, 1, 2, 3, 4, 5, 6, 7, 8]] ],
-    ["Red_X","XRAY","X-Ray (Recon)",1, [2, 1, [.2, 1, 2, 3, 4, 5, 6, 7, 8]] ],
+    ["Red_PHQ","PLTHQ","Platoon HQ",2, [1, 2, [1, 1.1, 2, 3, 4, 5, 6, 7, 8]] ],
+    ["Red_X","XRAY","X-Ray (Recon)",1, [2, 1, [1, 1.2, 2, 3, 4, 5, 6, 7, 8]] ],
 
     //not used
     ["Red_Pilot","P","Pilots",1, [1, 2, [1, 2, 3, 4, .1]] ],
@@ -137,8 +137,8 @@ _groups = [
 
     // INDFOR
     //1st Platoon
-    ["Green_PHQ","PLTHQ","Platoon HQ",2, [2, 1, [.1, 1, 2, 3, 4, 5, 6, 7, 8]] ],
-    ["Green_X","XRAY","X-Ray (Recon)",1, [2, 1, [.2, 1, 2, 3, 4, 5, 6, 7, 8]] ],
+    ["Green_PHQ","PLTHQ","Platoon HQ",2, [1, 2, [1, 1.1, 2, 3, 4, 5, 6, 7, 8]] ],
+    ["Green_X","XRAY","X-Ray (Recon)",1, [2, 1, [1, 1.2, 2, 3, 4, 5, 6, 7, 8]] ],
 
     //not used
     ["Green_Pilot","P","Pilots",1, [1, 2, [1, 2, 3, 4, .1]] ],

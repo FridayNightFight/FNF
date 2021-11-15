@@ -15,7 +15,7 @@ force force ace_advanced_fatigue_enabled = true;
 force force ace_advanced_fatigue_enableStaminaBar = true;
 ace_advanced_fatigue_fadeStaminaBar = true;
 force force ace_advanced_fatigue_loadFactor = 0.4;
-force force ace_advanced_fatigue_performanceFactor = 4;
+force force ace_advanced_fatigue_performanceFactor = 1;
 force force ace_advanced_fatigue_recoveryFactor = 5;
 force force ace_advanced_fatigue_swayFactor = 0.25;
 force force ace_advanced_fatigue_terrainGradientFactor = 0.7;
@@ -102,7 +102,7 @@ force force ace_hearing_enabledForZeusUnits = false;
 force force ace_hearing_unconsciousnessVolume = 0.4;
 
 // ACE Interaction
-force force ace_interaction_disableNegativeRating = false;
+force force ace_interaction_disableNegativeRating = true;
 force force ace_interaction_enableMagazinePassing = true;
 force force ace_interaction_enableTeamManagement = true;
 
@@ -463,6 +463,7 @@ force force grad_trenches_functions_allowBigEnvelope = true;
 force force grad_trenches_functions_allowCamouflage = true;
 force force grad_trenches_functions_allowDigging = true;
 force force grad_trenches_functions_allowDiggingInVehicle = true;
+force force grad_trenches_functions_allowEffects = false;
 force force grad_trenches_functions_allowGiantEnvelope = true;
 force force grad_trenches_functions_allowHitDecay = false;
 force force grad_trenches_functions_allowLongEnvelope = true;

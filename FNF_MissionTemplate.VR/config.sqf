@@ -1,116 +1,147 @@
 #include "description\configDefs.hpp"
 
-/* MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF */
-/* DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS - they will be deleted automatically if not in use */
+////////////////////////////////////////////////////////////
 
-phx_gameMode = destroy; //Change this to whatever game mode you want and configure the respective file in mode_config
-//If you don't want to use one of the template modes, you can set phx_gameMode = "";
-/*
-===ATK/DEF===
-destroy
-uplink
-rush
-captureTheFlag
-adSector
+// MISSION MAKER NOTES //
+// 0 or more of the below can be included. At minimum, it's suggested to populate the "briefingNotes" item.
 
-===NEUTRAL===
-connection
-neutralSector
-scavHunt
-*/
-
-/************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/
-phx_defendingSide = sideEmpty; //west/east/independent
-phx_attackingSide = sideEmpty; //west/east/independent
-//Leave it as sideEmpty if chosen mode is neutral
+// "Background" should include any lore you wish to explain.
+phx_briefingBackground = "";
+// "WorldInfo" should include any notable details about the AO.
+phx_briefingWorldInfo = "";
+// "Notes" can include anything else.
+phx_briefingNotes = "";
+// "Rules" should include any mission-specific rules that you want to spell out for players.
+phx_briefingRules = "";
 
 ////////////////////////////////////////////////////////////
 
+// SCENARIO SETTINGS //
+
+phx_gameMode = destroy;
+/* 
+  MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF
+  DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS
+  they will be deleted automatically if not in use
+*/
+phx_defendingSide = sideEmpty; // west/east/independent
+phx_attackingSide = sideEmpty; // west/east/independent
+// Leave it as sideEmpty if chosen mode is neutral
+
+phx_vnArtillerySide = sideEmpty; // west/east/independent
+// which side's PLT SGT will have access to VN Artillery interface (requires Prairie Fire)
+// use sideEmpty to not give anyone access
+
+phx_enemyStartVisible = true; // Set to false to hide enemy start zone markers
+phx_maxViewDistance = 1500;
+/*
+  Maximum client view distance (meters)
+    LOW: 500 (for urban combat)
+    MEDIUM: 1000 (for hilly terrain, open areas)
+    HIGH: 1500 (for large open ground, mountains)
+*/
+
+phx_fortifyPoints = 125;
+/*
+  Currency for fortify - individual to each Combat Engineer - set to 0 to disable
+    LOW: 60
+    MEDIUM: 125
+    HIGH: 250
+*/
+
+phx_fortifyStyle = "MACV";
+/*
+  Determines what objects will be available for phx_defendingSide CEs to place using Fortify tool
+    "Modern" will auto-dermine tan or green hescos, sandbags, etc depending on map
+    "ModernGreen" will force modern green objects
+    "ModernTan" will force modern tan objects
+    "NVA" will give Vietnam-era NVA/VC emplacements (requires Prairie Fire)
+    "MACV" will give Vietnam-era US Army emplacements (requires Prairie Fire)
+*/
+
+phx_magnifiedOptics = 0;
+/*
+  Allow players to grab magnified optics from the gear selector
+  0 will restrict 4x+ optics to designated marksmen and snipers.
+  1 will allow 4x+ optic choices for all except MGs.
+  -1 will force ironsights.
+*/
+
+phx_addNVG = 0;
+/*
+  Automatically add NVGs & lasers to players (Gen3, Black)
+  Examples:
+    phx_addNVG = 0 OR [] will not give anyone NVGs
+    phx_addNVG = 1 OR [east, west, independent] will give all sides NVGs
+    phx_addNVG = [east] will give side east NVGs
+    phx_addNVG = [east,west] will give sides east and west NVGs
+*/
+
+////////////////////////////////////////////////////////////
+
+// UNIFORM AND GEAR CHOICES //
+
 //BLUFOR
-phx_bluforUniform = "UNIFORM_MARPAT_WD";
-phx_bluforWeapons = "WEAPONS_US";
+phx_bluforUniform = "VN_UNI_US_MACV";
+phx_bluforGear = "VN_GEAR_US_ARMY1970";
 
 //OPFOR
-phx_opforUniform = "UNIFORM_EMR_SUMMER";
-phx_opforWeapons = "WEAPONS_RU";
+phx_opforUniform = "VN_UNI_NLF_Vietcong";
+phx_opforGear = "VN_GEAR_NVA_VC1970";
 
 //INDFOR
-phx_indforUniform = "UNIFORM_M93_OAKLEAF";
-phx_indforWeapons = "WEAPONS_IND";
+phx_indforUniform = "VN_UNI_US_SOG";
+phx_indforGear = "VN_GEAR_US_SOG1970";
 
-/*
-You can also use the civilian unit 'C_man_1'
-Those units will not be touched by the tempalte loadout system, so they will keep their editor loadout
-If they have a radio, they will all be preset to the same frequency
-*/
 
-//MAT launcher weapon
-phx_bluAT = CARLG; //BLUFOR
-phx_redAT = RPG32; //OPFOR
-phx_grnAT = RPG32; //INDFOR
-/*
-Values:
-CARLG, RPG32, RPG7, TITAN, JAVELIN
-METIS, NLAW, STINGER, IGLA
-*/
+////////////////////////////////////////////////////////////
 
-phx_magnifiedOptics = false; //Allow players to grab magnified optics from the gear selector
-phx_addNVG = false; //Automatically add NVGs & lasers to players (Gen3, Black) - true for global add or side or array of sides
-//Example: phx_addNVG = east will give side east NVGs, phx_addNVG = [east,west] will give sides east and west NVGs
+// MAT SELECTION //
 
-phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
-phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
-phx_maxViewDistance = 1500; //Maximum client view distance (meters)
+// BLUFOR
+phx_bluAT_Bravo = GEARDEFAULT;
+phx_bluAT_Delta = GEARDEFAULT;
 
-/*
-==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
+// OPFOR
+phx_redAT_Bravo = GEARDEFAULT;
+phx_redAT_Delta = GEARDEFAULT;
 
-=====BLUFOR=====                                =====ANY=====
-UNIFORM_MARPAT_WD                  --   WEAPONS_US
-UNIFORM_MARPAT_D                   --   WEAPONS_RU
-UNIFORM_OEF_CP                     --   WEAPONS_IND
-UNIFORM_PMC                        --   WEAPONS_G36
-UNIFORM_M93_DESERT                 --   WEAPONS_GUERRILLA
-UNIFORM_M93_WOODLAND               --   WEAPONS_M21
-UNIFORM_ARMY_OCP                   --   WEAPONS_SCAR
-UNIFORM_UCP                        --   WEAPONS_VHS
-UNIFORM_CTRG_WD                    --   WEAPONS_FAL_COLDWAR
-UNIFORM_ION_BK                     --   WEAPONS_M14
-UNIFORM_ION_WD                     --   WEAPONS_SOVIET
-UNIFORM_ISRAEL_TAN
-UNIFORM_RANGER
-UNIFORM_WEST_POLICE
-UNIFORM_BUNDESWEHR
-UNIFORM_HELLENIC_ARMY
+// INDFOR
+phx_grnAT_Bravo = GEARDEFAULT;
+phx_grnAT_Delta = GEARDEFAULT;
 
-=====OPFOR=====
-UNIFORM_EMR_SUMMER
-UNIFORM_EMR_DESERT
-UNIFORM_FLORA
-UNIFORM_MOUNTAIN_FLORA
-UNIFORM_GORKA_GREEN
-UNIFORM_GORKA_BEREZKA
-UNIFORM_SOVIET_CSAT
-UNIFORM_EAST_POLICE
-UNIFORM_RUSSIAN_SPETSNAZ
-UNIFORM_RUSSIAN_RATNIK
-UNIFORM_SOVIET_AFGHAN
-UNIFORM_SOVIET_WINTER
-UNIFORM_RUSSIAN_SPRING
 
-=====INDFOR=====
-UNIFORM_M93_OAKLEAF
-UNIFORM_M93_TIGER
-UNIFORM_M93_GREEN
-UNIFORM_M93_FLECKTARN
-UNIFORM_M10_DESERT
-UNIFORM_M10_MOUNTAIN
-UNIFORM_GUERRILLA
-UNIFORM_AAF
-UNIFORM_ALTIS_LIZARD
-UNIFORM_PARAMILITARY
-UNIFORM_IND_POLICE
-UNIFORM_M88
-UNIFORM_JUNGLE
-=========================================================================================================================
-*/
+////////////////////////////////////////////////////////////
+
+// SQUAD HQ AUXILIARY ROLES //
+// "SHQAUX"
+// Adjusts what loadout the two extra Squad HQ members will receive
+// Set to 0 to make default crewman, set to one of the options to enable equipment for it.
+// OPFOR
+  phx_eastAlphaAuxRole = 0;
+  phx_eastBravoAuxRole = 0;
+  phx_eastCharlieAuxRole = 0;
+  phx_eastDeltaAuxRole = 0;
+
+// BLUFOR
+  phx_westAlphaAuxRole = 0;
+  phx_westBravoAuxRole = 0;
+  phx_westCharlieAuxRole = 0;
+  phx_westDeltaAuxRole = 0;
+
+// INDFOR
+  phx_guerAlphaAuxRole = 0;
+  phx_guerBravoAuxRole = 0;
+  phx_guerCharlieAuxRole = 0;
+  phx_guerDeltaAuxRole = 0;
+
+
+////////////////////////////////////////////////////////////
+
+// SYSTEM SETTINGS //
+
+// Show/Hide unit / group icons on map, GPS for players
+// Used in limited-intel scenarios like WWII and Vietnam
+phx_showUnitIcons = false;
+phx_showGroupIcons = true;
+phx_showAlliedFactions = true;

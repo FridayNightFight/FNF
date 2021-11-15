@@ -9,7 +9,12 @@ respawnOnStart = -1;
 respawnTemplates[] = {};
 joinUnassigned = 1;
 
-onPauseScript[] = {phx_fnc_removeRespawnButton, phx_fnc_adminGameEnd, phx_fnc_addStaffContactButton};
+onPauseScript[] = {\
+    phx_fnc_removeRespawnButton,\
+    phx_fnc_addStaffContactButton,\
+    phx_admin_fnc_adminGameEnd,\
+    phx_admin_fnc_addAdminKickButton\
+};
 
 class CfgDebriefingSections {
     class acex_killTracker {
