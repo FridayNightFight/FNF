@@ -205,6 +205,7 @@ fnc_giveRadios = {
 
   // should have a LR but doesn't
   [{call TFAR_fnc_haveLRRadio}, {
+    params ["_unit", "_lrRadio"];
     // shouldn't have a LR but does
     if (!_lrRadio && ((backpack _unit) call TFAR_fnc_isRadio)) then {
       private _items = backpackItems _unit;
@@ -214,7 +215,8 @@ fnc_giveRadios = {
         _unit addItemToBackpack _x;
       } forEach _items;
     };
-  }, [], 8, {
+  }, [_unit, _lrRadio], 8, {
+    params ["_unit", "_lrRadio"];
     if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
       private _items = backpackItems _unit;
       removeBackpack _unit;
@@ -597,7 +599,7 @@ fnc_giveSideKey = {
   ];
 
   if (_cfgGiveSideKey == 1) then {
-    switch (playerSide) do {
+    switch (side (group _unit)) do {
       case west: {
           _unit addItem "ACE_key_west";
       };
@@ -625,7 +627,6 @@ fnc_giveBinoculars = {
   private _binocs = (missionConfigFile >> "CfgLoadouts" >> "common" >> "binoculars");
 
   private _hasBinoc = (((assigneditems _unit) findIf {getText(configFile >> "CfgWeapons" >> _x >> "simulation") == "Binocular"}) > -1);
-
   if (_hasBinoc) exitWith {true};
 
   private _binocRolesStandard = ["ARA", "MGA", "CR"];
