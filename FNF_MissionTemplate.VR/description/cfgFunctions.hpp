@@ -24,7 +24,6 @@ class CfgFunctions {
       class drawCmdIcons{};
       class drawSLIcons{};
       class assetDiaryInfo{};
-      class adminKickUI{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -106,15 +105,14 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
-      class adminGameEnd{};
       class objectivePreview{};
       class SCUDFired{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";
+      class addStaffContactButton{};
       class contactStaffInit{};
       class contactStaff{};
-      class addStaffContactButton{};
     };
     class unflip {
       file = "client\misc\unflip";
@@ -124,7 +122,6 @@ class CfgFunctions {
     class initServer {
       file = "server\init";
       class serverSafety{};
-      class kickPlayer{};
       class sendUniforms{};
       class markCustomObjs{};
       class fortifyServer{};
@@ -161,10 +158,22 @@ class CfgFunctions {
       class opticSelector{};
       class chargesSelector{};
       class grenadesSelector{};
-    }
+    };
     class notifications {
       file = "client\ui\notifications";
       class notify{};
-    }
+    };
+  };
+  class phx_admin {
+    class adminKick {
+      file = "client\misc\admin\adminKick";
+      class addAdminKickButton{};
+      class adminKickUI{};
+      class kickPlayer{};
+    };
+    class gameEnd {
+      file = "client\misc\admin";
+      class adminGameEnd{};
+    };
   };
 };
