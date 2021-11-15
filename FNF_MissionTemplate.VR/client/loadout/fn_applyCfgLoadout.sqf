@@ -204,25 +204,27 @@ fnc_giveRadios = {
   // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
 
   // should have a LR but doesn't
-  if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
-    private _items = backpackItems _unit;
-    removeBackpack _unit;
-    _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
-    {
-      _unit addItemToBackpack _x;
-    } forEach _items;
-    diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1"" (didn't have one).", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
-  };
-
-  // shouldn't have a LR but does
-  if (!_lrRadio && ((backpack _unit) call TFAR_fnc_isRadio)) then {
-    private _items = backpackItems _unit;
-    removeBackpack _unit;
-    _unit addBackpack "B_TacticalPack_blk";
-    {
-      _unit addItemToBackpack _x;
-    } forEach _items;
-  };
+  [{call TFAR_fnc_haveLRRadio}, {
+    // shouldn't have a LR but does
+    if (!_lrRadio && ((backpack _unit) call TFAR_fnc_isRadio)) then {
+      private _items = backpackItems _unit;
+      removeBackpack _unit;
+      _unit addBackpack "B_TacticalPack_blk";
+      {
+        _unit addItemToBackpack _x;
+      } forEach _items;
+    };
+  }, [], 8, {
+    if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
+      private _items = backpackItems _unit;
+      removeBackpack _unit;
+      _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
+      {
+        _unit addItemToBackpack _x;
+      } forEach _items;
+      diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1"" (didn't have one).", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
+    };
+  }] call CBA_fnc_waitUntilAndExecute;
   true
 };
 
