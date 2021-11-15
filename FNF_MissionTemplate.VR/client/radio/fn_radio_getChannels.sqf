@@ -1,14 +1,44 @@
 //Figure out which side the player is on.
 _side = playerSide;
+
+private _independentAllegiance = "Scenario" get3DENMissionAttribute "IntelIndepAllegiance";
+_independentAllegiance params ["_alliedWest","_alliedEast"];
+
+phx_loadout_TFAREncryptionCode = "";
+
 switch (_side) do {
-    case east: { phx_playerBaseChannel = phx_opforBaseChannel; };
-    case west: { phx_playerBaseChannel = phx_bluforBaseChannel; };
-    case independent: { phx_playerBaseChannel = phx_indforBaseChannel; };
-    case civilian: {phx_playerBaseChannel = phx_civilianBaseChannel; };
+    case east: {
+      phx_playerBaseChannel = phx_opforBaseChannel;
+      phx_loadout_TFAREncryptionCode = "opfor";
+    };
+    case west: {
+      phx_playerBaseChannel = phx_bluforBaseChannel;
+      phx_loadout_TFAREncryptionCode = "blufor";
+    };
+    case independent: {
+
+      if (_alliedWest == 1) exitWith {
+        phx_playerBaseChannel = phx_bluforBaseChannel;
+        phx_loadout_TFAREncryptionCode = "blufor";
+      };
+      if (_alliedEast == 1) exitWith {
+        phx_playerBaseChannel = phx_opforBaseChannel;
+        phx_loadout_TFAREncryptionCode = "opfor";
+      };
+
+      phx_playerBaseChannel = phx_indforBaseChannel;
+      phx_loadout_TFAREncryptionCode = "indfor";
+    };
+    case civilian: {
+      phx_playerBaseChannel = phx_civilianBaseChannel;
+      phx_loadout_TFAREncryptionCode = "civilian";
+    };
     default { titleText ["The game thinks you aren't one of the three teams!","PLAIN"]; };
 };
+
+
 //Error message
-if (isNil "phx_playerBaseChannel") exitWith {titleText ["Error! Default radio channels will not be set!","PLAIN DOWN",0.5];};
+if (isNil "phx_playerBaseChannel" || phx_loadout_TFAREncryptionCode isEqualTo "") exitWith {titleText ["Error! Default radio channels will not be set!","PLAIN DOWN",0.5];};
 /*
 phx_ch1 = phx_playerBaseChannel; //All players will be able to switch to channel 1 to get on platoon net.
 */
@@ -58,7 +88,22 @@ player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteStr
 
 //Next step - wait for loadout
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
-  [{call TFAR_fnc_haveSWRadio}, {phx_hasSW = true;}, [], 10, {phx_hasSW = false;}] call CBA_fnc_waitUntilAndExecute;
-  [{call TFAR_fnc_haveLRRadio}, {phx_hasLR = true;}, [], 3, {phx_hasLR = false;}] call CBA_fnc_waitUntilAndExecute;
-  [{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {call phx_fnc_radio_setRadios}, [], 60, {systemChat "Radio preset timeout";}] call CBA_fnc_waitUntilAndExecute;
+  [{call TFAR_fnc_haveSWRadio}, {
+    phx_hasSW = true;
+  }, [], 8, {
+    phx_hasSW = false;
+  }] call CBA_fnc_waitUntilAndExecute;
+
+  [{call TFAR_fnc_haveLRRadio}, {
+    phx_hasLR = true;
+  }, [], 8, {
+    phx_hasLR = false;
+  }] call CBA_fnc_waitUntilAndExecute;
+
+  [{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {
+    call phx_fnc_radio_setRadios;
+  }, [], 60, {
+    // systemChat "Radio preset timeout";
+    ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 5] call phx_ui_fnc_notify;
+  }] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;
