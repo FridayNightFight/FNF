@@ -32,31 +32,54 @@ if (typeName _itemStr isEqualTo "STRING") then {
     };
   };
 } else {
-  _numToAdd = 1;
 
-  _str = _itemStr select 0;
-  _item = _str;
+  _numToAdd = 1;
+  _itemStr params ["_str","_container", "_unit"];
+  if (isNil "_unit") then {_unit = player};
+
+  private _item = _str;
   if (_str find ":" != -1) then {
     _item = (_str select [0, _str find ":"]);
     _numToAdd = parseNumber (_str select [(_str find ":") + 1]);
   };
 
-  switch (_itemStr select 1) do {
+  switch (_container) do {
     case "backpack": {
       for "_i" from 1 to _numToAdd do {
-        if (player canAddItemToBackpack _item) then {
-          player addItemToBackpack _item;
+        if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
+          _unit addItemToBackpack _item;
         } else {
           _itemStr call _err;
         };
       };
     };
+    case "vest": {
+      for "_i" from 1 to _numToAdd do {
+        if ([_unit, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
+          _unit addItemToVest _item;
+        } else {
+          if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
+            _unit addItemToBackpack _item;
+          } else {
+            _itemStr call _err;
+          };
+        };
+      };
+    };
     case "uniform": {
       for "_i" from 1 to _numToAdd do {
-        if (player canAddItemToUniform _item) then {
-          player addItemToUniform _item;
+        if ([_unit, _item, 1, true, false, false] call CBA_fnc_canAddItem) then {
+          _unit addItemToUniform _item;
         } else {
-          _itemStr call _err;
+          if ([_unit, _item, 1, false, true, false] call CBA_fnc_canAddItem) then {
+            _unit addItemToVest _item;
+          } else {
+            if ([_unit, _item, 1, false, false, true] call CBA_fnc_canAddItem) then {
+              _unit addItemToBackpack _item;
+            } else {
+              _itemStr call _err;
+            };
+          };
         };
       };
     };

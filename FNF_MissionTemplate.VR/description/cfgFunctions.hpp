@@ -52,32 +52,10 @@ class CfgFunctions {
     };
     class loadout {
       file = "client\loadout";
-      class setLoadout{};
-      class setUniform{};
-      class setWeapons{};
-      class addUniform{};
-      class addWeapons{};
+      class applyCfgLoadout{};
       class addGear{};
-      class addMagazines{};
-      class addItems{};
       class checkLoadout{};
-      class initLoadout{};
-      class loadout_vars{};
-    };
-    class loadout_misc {
-      file = "client\loadout\misc";
-      class giveNVG{};
       class setMAT{};
-      class setUGLAmmo{};
-      class setAttributes{};
-    };
-    class selector {
-      file = "client\loadout\selector";
-      class selector_init{};
-      class selector_optics{};
-      class selector_weapons{};
-      class selector_charges{};
-      class selector_grenades{};
     };
     class restrictions {
       file = "client\restrictions";
@@ -131,6 +109,7 @@ class CfgFunctions {
       class populateORBATS{};
       class keyVehicles{};
       class lockVehicles{};
+      class vehicleRadios{};
     };
     class end {
       file = "server\end";
@@ -163,6 +142,17 @@ class CfgFunctions {
     class notifications {
       file = "client\ui\notifications";
       class notify{};
-    }
+    };
+  };
+  class phx_selector {
+    class selectors {
+      file = "client\loadout\selector";
+      class init{};
+      class weapons{};
+      class optics{};
+      class grenades{};
+      class charges{};
+      class csw{};
+    };
   };
 };
