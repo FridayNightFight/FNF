@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=7361;
+		nextID=7392;
 	};
 	class MarkerIDProvider
 	{
@@ -20,14 +20,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={843.38812,131.83554,181.87306};
-		dir[]={-0.21176787,-0.41795453,0.88344526};
-		up[]={-0.09742716,0.9084667,0.40644351};
-		aside[]={0.97245407,7.6834112e-009,0.23310332};
+		pos[]={400.48465,145.69275,311.33084};
+		dir[]={0.32485813,-0.40124309,0.85653704};
+		up[]={0.14230473,0.91596013,0.3752068};
+		aside[]={0.93507874,-3.0733645e-007,-0.35464475};
 	};
 };
 binarizationWanted=0;
-sourceName="ORBATtest";
+sourceName="fnf_missiontemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -52,13 +52,14 @@ addons[]=
 	"ace_gforces",
 	"ace_parachute",
 	"rhs_c_troops",
-	"rhssaf_c_gear"
+	"rhssaf_c_gear",
+	"modules_f_vietnam"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=21;
+		items=22;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -204,6 +205,13 @@ class AddonsMetaData
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
+		class Item21
+		{
+			className="modules_f_vietnam";
+			name="modules_f_vietnam";
+			author="Savage Game Design";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -216,6 +224,7 @@ dlcs[]=
 randomSeed=615564;
 class ScenarioData
 {
+	author="Your Name Here";
 	disabledAI=1;
 	wreckRemovalMaxTime=3600;
 	corpseManagerMode=1;
@@ -294,8 +303,10 @@ class CustomAttributes
 };
 class Mission
 {
+	assetType="Free";
 	class Intel
 	{
+		briefingName="FNF Mission Template";
 		overviewText="Insert mission details shown at lobby screen here (Multiplayer attributes > Lobby > Summary)";
 		resistanceWest=0;
 		timeOfChanges=28800;
@@ -341,7 +352,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=136;
+		items=137;
 		class Item0
 		{
 			dataType="Logic";
@@ -5079,7 +5090,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={497.82867,5.0014391,708.02802};
+						position[]={497.82901,5.0014391,708.02802};
 						angles[]={0,3.1594648,0};
 					};
 					side="West";
@@ -5088,7 +5099,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SGT""];";
-						description="Platoon Sergeant@Platoon HQ";
+						description="Platoon Sergeant (Fire Support)@Platoon HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -6189,7 +6200,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={489.52765,5.0014391,700.60614};
+						position[]={489.52802,5.0014391,700.60602};
 					};
 					side="West";
 					flags=7;
@@ -6197,7 +6208,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Alpha HQ";
+						description="Squad Leader@Alpha HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -6318,14 +6329,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={489.73187,5.0014391,698.68243};
+						position[]={489.73199,5.0014391,698.68201};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Alpha HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Alpha HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -6446,14 +6457,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={492.28589,5.0014391,698.5954};
+						position[]={492.28601,5.0014391,698.59497};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Alpha HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Alpha HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -7676,7 +7687,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={491.95099,5.0014391,694.62225};
+						position[]={491.88553,5.0014391,694.72156};
 					};
 					side="West";
 					flags=5;
@@ -8005,14 +8016,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={492.04498,5.0014391,688.7323};
+						position[]={492.04501,5.0014391,688.73199};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Alpha 2";
+						description="Grenadier@Alpha 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -8445,7 +8456,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.06488,5.0014391,700.54852};
+						position[]={496.065,5.0014391,700.54901};
 					};
 					side="West";
 					flags=7;
@@ -8453,7 +8464,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Bravo HQ";
+						description="Squad Leader@Bravo HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -8574,14 +8585,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={495.96783,5.0014391,698.69342};
+						position[]={495.96799,5.0014391,698.69299};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Bravo HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Bravo HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -8702,14 +8713,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={498.01984,5.0014391,698.69745};
+						position[]={498.01999,5.0014391,698.69696};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Bravo HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Bravo HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -8998,14 +9009,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.04803,5.0014391,694.69128};
+						position[]={496.048,5.0014391,694.69098};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="this setVariable [""phxLoadout"", ""MAT""];";
+						init="this setVariable [""phxLoadout"", ""MAT1""];";
 						description="Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -9127,13 +9138,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.07898,5.0014391,692.69226};
+						position[]={496.07901,5.0014391,692.69202};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA1""];";
 						description="Asst. Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -9255,13 +9266,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.03241,5.0014391,690.73773};
+						position[]={496.03201,5.0014391,690.73798};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA1""];";
 						description="Asst. Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -10763,7 +10774,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={502.07001,5.0014391,700.6424};
+						position[]={502.07001,5.0014391,700.64197};
 					};
 					side="West";
 					flags=7;
@@ -10771,7 +10782,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Charlie HQ";
+						description="Squad Leader@Charlie HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -10892,14 +10903,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={501.93994,5.0014391,698.617};
+						position[]={501.94,5.0014391,698.617};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Charlie HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Charlie HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -11020,14 +11031,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={504.1759,5.0014391,698.57898};
+						position[]={504.17599,5.0014391,698.57898};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Charlie HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Charlie HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -12578,14 +12589,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={504.10559,5.0014391,689.02985};
+						position[]={504.10599,5.0014391,689.02997};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Charlie 2";
+						description="Grenadier@Charlie 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -13018,7 +13029,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.12756,5.0014391,700.69849};
+						position[]={508.12799,5.0014391,700.698};
 					};
 					side="West";
 					flags=7;
@@ -13026,7 +13037,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Delta HQ";
+						description="Squad Leader@Delta HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -13147,14 +13158,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.0719,5.0014391,698.63599};
+						position[]={508.07199,5.0014391,698.63599};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Delta HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Delta HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -13275,14 +13286,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={510.3559,5.0014391,698.54901};
+						position[]={510.35599,5.0014391,698.54901};
 					};
 					side="West";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Delta HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Delta HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -13440,7 +13451,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.11945,5.0014391,696.68073};
+						position[]={508.21255,5.0014391,696.54181};
 					};
 					side="West";
 					flags=7;
@@ -13569,14 +13580,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.14441,5.0014391,694.68073};
+						position[]={508.23712,5.0014391,694.54205};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="this setVariable [""phxLoadout"", ""MAT""];";
+						init="this setVariable [""phxLoadout"", ""MAT2""];";
 						description="Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -13698,13 +13709,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.17542,5.0014391,692.68176};
+						position[]={508.2681,5.0014391,692.54309};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA2""];";
 						description="Asst. Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -13826,13 +13837,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.12842,5.0014391,690.72675};
+						position[]={508.2211,5.0014391,690.58807};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA2""];";
 						description="Asst. Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -13954,7 +13965,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.1684,5.0014391,688.73773};
+						position[]={508.26151,5.0014391,688.59882};
 					};
 					side="West";
 					flags=5;
@@ -14082,7 +14093,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.12543,5.0014391,686.65173};
+						position[]={508.21854,5.0014391,686.51282};
 					};
 					side="West";
 					flags=4;
@@ -14210,7 +14221,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={508.13837,5.0014391,684.68073};
+						position[]={508.23148,5.0014391,684.54181};
 					};
 					side="West";
 					flags=4;
@@ -15173,9 +15184,9 @@ class Mission
 					flags=4;
 					class Attributes
 					{
+						init="this setVariable [""phxLoadout"", ""MED""]";
 						description="Medic@Delta 2";
 						isPlayable=1;
-						init="this setVariable [""phxLoadout"", ""MED""]";
 						class Inventory
 						{
 							class uniform
@@ -15332,13 +15343,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={502.71191,5.0014391,679.32373};
+						position[]={502.71201,5.0014391,679.32397};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 1";
 						isPlayable=1;
 						class Inventory
@@ -15753,13 +15764,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={507.14319,5.0014391,678.98468};
+						position[]={507.14301,5.0014391,678.98499};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 2";
 						isPlayable=1;
 						class Inventory
@@ -16174,13 +16185,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={502.60547,5.0014391,674.01593};
+						position[]={502.60501,5.0014391,674.01599};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 3";
 						isPlayable=1;
 						class Inventory
@@ -16595,13 +16606,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={507.00549,5.0014391,673.95081};
+						position[]={507.005,5.0014391,673.95099};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 4";
 						isPlayable=1;
 						class Inventory
@@ -18409,7 +18420,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={299.13409,5.0014391,708.08636};
+						position[]={299.134,5.0014391,708.086};
 						angles[]={0,3.1593602,0};
 					};
 					side="East";
@@ -18418,7 +18429,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="this setVariable [""phxLoadout"", ""SGT""];";
-						description="Platoon Sergeant@Platoon HQ";
+						description="Platoon Sergeant (Fire Support)@Platoon HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -19296,14 +19307,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={289.27524,5.0014391,701.89557};
+						position[]={289.27499,5.0014391,701.896};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Alpha HQ";
+						description="Squad Leader@Alpha HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -19369,14 +19380,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={289.20755,5.0014391,699.80151};
+						position[]={289.20801,5.0014391,699.802};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Alpha HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Alpha HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -19441,14 +19452,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={291.50253,5.0014391,699.75751};
+						position[]={291.50299,5.0014391,699.758};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Alpha HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Alpha HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -20382,14 +20393,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={291.55698,5.0014391,689.73047};
+						position[]={291.55701,5.0014391,689.72998};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Alpha 2";
+						description="Grenadier@Alpha 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -20635,14 +20646,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={295.82123,5.0014391,701.82452};
+						position[]={295.82101,5.0014391,701.82501};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Bravo HQ";
+						description="Squad Leader@Bravo HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -20708,14 +20719,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={296.05453,5.0014391,699.67847};
+						position[]={296.05499,5.0014391,699.67798};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Bravo HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Bravo HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -20780,14 +20791,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={298.05325,5.0014391,699.69421};
+						position[]={298.05301,5.0014391,699.69397};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Bravo HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Bravo HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -20962,13 +20973,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={295.6575,5.0014391,695.86462};
+						position[]={295.65799,5.0014391,695.86499};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MAT""];";
+						init="this setVariable [""phxLoadout"", ""MAT1""];";
 						description="Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -21040,7 +21051,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA1""];";
 						description="Asst. Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -21112,7 +21123,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA1""];";
 						description="Asst. Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -21973,14 +21984,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={302.02414,5.0014391,701.78217};
+						position[]={302.02399,5.0014391,701.78198};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Charlie HQ";
+						description="Squad Leader@Charlie HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -22046,14 +22057,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={302.07684,5.0014391,699.75879};
+						position[]={302.077,5.0014391,699.75897};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Charlie HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Charlie HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -22118,14 +22129,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={304.37183,5.0014391,699.71478};
+						position[]={304.37201,5.0014391,699.71497};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Charlie HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Charlie HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23059,14 +23070,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={304.31137,5.0014391,689.41803};
+						position[]={304.311,5.0014391,689.41797};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Charlie 2";
+						description="Grenadier@Charlie 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23319,7 +23330,7 @@ class Mission
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Delta HQ";
+						description="Squad Leader@Delta HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23391,8 +23402,8 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Delta HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Delta HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23457,14 +23468,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={310.61191,5.0014391,699.58911};
+						position[]={310.612,5.0014391,699.58899};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Delta HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Delta HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -23639,13 +23650,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={308.41235,5.0014391,695.552};
+						position[]={308.41199,5.0014391,695.552};
 					};
 					side="East";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MAT""];";
+						init="this setVariable [""phxLoadout"", ""MAT2""];";
 						description="Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -23717,7 +23728,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA2""];";
 						description="Asst. Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -23789,7 +23800,7 @@ class Mission
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA2""];";
 						description="Asst. Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -24650,13 +24661,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={309.50037,5.0014391,672.37506};
+						position[]={309.5,5.0014391,672.375};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 1";
 						isPlayable=1;
 						class Inventory
@@ -25014,13 +25025,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={314.80984,5.0014391,672.22467};
+						position[]={314.81,5.0014391,672.22498};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 2";
 						isPlayable=1;
 						class Inventory
@@ -25378,13 +25389,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={309.37405,5.0014391,666.42407};
+						position[]={309.37399,5.0014391,666.42401};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 3";
 						isPlayable=1;
 						class Inventory
@@ -25742,13 +25753,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={314.8631,5.0014391,666.62042};
+						position[]={314.86301,5.0014391,666.62};
 					};
 					side="East";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 4";
 						isPlayable=1;
 						class Inventory
@@ -27337,7 +27348,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={697.90417,5.0014391,706.2793};
+						position[]={697.90399,5.0014391,706.27899};
 						angles[]={0,3.147614,0};
 					};
 					side="Independent";
@@ -27346,7 +27357,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SGT""];";
-						description="Platoon Sergeant@Platoon HQ";
+						description="Platoon Sergeant (Fire Support)@Platoon HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -28261,7 +28272,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={689.99164,5.0014391,700.89978};
+						position[]={689.992,5.0014391,700.89996};
 					};
 					side="Independent";
 					flags=7;
@@ -28269,7 +28280,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Alpha HQ";
+						description="Squad Leader@Alpha HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -28390,15 +28401,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={690.08881,5.0014391,698.97101};
+						position[]={690.08899,5.0014391,698.97101};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Alpha HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Alpha HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -28500,15 +28511,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={692.05579,5.0014391,699.00702};
+						position[]={692.05603,5.0014391,699.00696};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Alpha HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Alpha HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -29984,14 +29995,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={692.21979,5.0014391,689.117};
+						position[]={692.21997,5.0014391,689.117};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Alpha 2";
+						description="Grenadier@Alpha 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -30368,7 +30379,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={696.10016,5.0014391,701.0304};
+						position[]={696.09998,5.0014391,701.02997};
 					};
 					side="Independent";
 					flags=7;
@@ -30376,7 +30387,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Bravo HQ";
+						description="Squad Leader@Bravo HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -30497,15 +30508,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={696.19177,5.0014391,699.08502};
+						position[]={696.19202,5.0014391,699.08496};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Bravo HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Bravo HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -30607,15 +30618,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={698.18079,5.0014391,699.18799};
+						position[]={698.18103,5.0014391,699.18799};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Bravo HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Bravo HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -30827,14 +30838,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={696.17682,5.0014391,694.86102};
+						position[]={696.177,5.0014391,694.86096};
 					};
 					side="Independent";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="this setVariable [""phxLoadout"", ""MAT""];";
+						init="this setVariable [""phxLoadout"", ""MAT1""];";
 						description="Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -30962,7 +30973,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA1""];";
 						description="Asst. Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -31090,7 +31101,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA1""];";
 						description="Asst. Missile Specialist@Bravo 1";
 						isPlayable=1;
 						class Inventory
@@ -32305,7 +32316,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={702.12524,5.0014391,700.84747};
+						position[]={702.125,5.0014391,700.84698};
 					};
 					side="Independent";
 					flags=7;
@@ -32313,7 +32324,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Charlie HQ";
+						description="Squad Leader@Charlie HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -32434,15 +32445,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={702.22223,5.0014391,698.91852};
+						position[]={702.22198,5.0014391,698.91901};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Charlie HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Charlie HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -32544,15 +32555,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={704.18927,5.0014391,698.95447};
+						position[]={704.18903,5.0014391,698.95398};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Charlie HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Charlie HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34028,14 +34039,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={704.35327,5.0014391,689.06451};
+						position[]={704.35303,5.0014391,689.065};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
 						init="this setVariable [""phxLoadout"", ""GRIR""];";
-						description="Grenadier (HuntIR)@Charlie 2";
+						description="Grenadier@Charlie 2";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34412,7 +34423,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={708.23322,5.0014391,700.97748};
+						position[]={708.23297,5.0014391,700.97699};
 					};
 					side="Independent";
 					flags=7;
@@ -34420,7 +34431,7 @@ class Mission
 					{
 						rank="SERGEANT";
 						init="this setVariable [""phxLoadout"", ""SL""];";
-						description="Squad Leader@Delta HQ";
+						description="Squad Leader@Delta HQ ()";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34541,15 +34552,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={708.32526,5.0014391,699.03247};
+						position[]={708.32501,5.0014391,699.03198};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Driver@Delta HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Driver/Weapons Crew@Delta HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34651,15 +34662,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={710.31427,5.0014391,699.1355};
+						position[]={710.31403,5.0014391,699.13599};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=5;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
-						description="Vehicle Gunner@Delta HQ";
+						init="this setVariable [""phxLoadout"", ""SHQAUX""];";
+						description="Vehicle Gunner/Weapons Crew@Delta HQ";
 						isPlayable=1;
 						class Inventory
 						{
@@ -34871,14 +34882,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={708.31024,5.0014391,694.80847};
+						position[]={708.31,5.0014391,694.80798};
 					};
 					side="Independent";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="this setVariable [""phxLoadout"", ""MAT""];";
+						init="this setVariable [""phxLoadout"", ""MAT2""];";
 						description="Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -35006,7 +35017,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA2""];";
 						description="Asst. Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -35134,7 +35145,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""MATA""];";
+						init="this setVariable [""phxLoadout"", ""MATA2""];";
 						description="Asst. Missile Specialist@Delta 1";
 						isPlayable=1;
 						class Inventory
@@ -36349,14 +36360,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={709.15466,5.0014391,677.24652};
+						position[]={709.15503,5.0014391,677.24701};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 1";
 						isPlayable=1;
 						class Inventory
@@ -36716,14 +36727,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={714.73077,5.0014391,677.21143};
+						position[]={714.73102,5.0014391,677.211};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 2";
 						isPlayable=1;
 						class Inventory
@@ -37083,14 +37094,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={709.24817,5.0014391,672.42633};
+						position[]={709.24799,5.0014391,672.42596};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 3";
 						isPlayable=1;
 						class Inventory
@@ -37450,14 +37461,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={714.68335,5.0014391,672.50507};
+						position[]={714.68298,5.0014391,672.505};
 						angles[]={0,0.067806043,0};
 					};
 					side="Independent";
 					flags=7;
 					class Attributes
 					{
-						init="this setVariable [""phxLoadout"", ""CR""];";
+						init="this setVariable [""phxLoadout"", ""CRL""];";
 						description="Vehicle Commander@Golf 4";
 						isPlayable=1;
 						class Inventory
@@ -38905,6 +38916,16 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item136
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={-4670.061,5,-5003.6377};
+			};
+			id=7391;
+			type="vn_module_artillery";
 		};
 	};
 	class Connections

@@ -1,32 +1,34 @@
 phx_fortify_objArr = [];
 
-if (!isNil "term1") then { phx_fortify_objArr append [term1] };
-if (!isNil "term2") then { phx_fortify_objArr append [term2] };
-if (!isNil "term3") then { phx_fortify_objArr append [term3] };
-if (!isNil "phx_destroyObjs") then { phx_fortify_objArr append phx_destroyObjs };
-if (!isNil "ctf_flag") then { phx_fortify_objArr append [ctf_flag] };
-if (!isNil "ctf_attackTrig") then { phx_fortify_objArr append [ctf_attackTrig] };
+[{!isNil "term1"}, {phx_fortify_objArr append [term1]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term2"}, {phx_fortify_objArr append [term2]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term3"}, {phx_fortify_objArr append [term3]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "phx_destroyObjs"}, {phx_fortify_objArr append phx_destroyObjs}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_flag"}, {phx_fortify_objArr append [ctf_flag]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_attackTrig"}, {phx_fortify_objArr append [ctf_attackTrig]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+
+[{
+  {
+    if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
+  } forEach phx_fortify_objArr;
+}, [], 15] call CBA_fnc_waitAndExecute;
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
 if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
-if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F") && !(typeOf player == "I_Soldier_exp_F")) exitWith {
+
+#define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+if (PLAYERLOADOUTVAR != "CE") exitWith {
   [{
     if (!phx_safetyEnabled) then {[_handle] call CBA_fnc_removePerFrameHandler};
     if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
   }, 1] call CBA_fnc_addPerFrameHandler;
 };
 
-player addItem "ACE_Fortify";
-
 switch (playerSide) do {
   case east: {phx_fortifyMarker = "opforSafeMarker";};
   case west: {phx_fortifyMarker = "bluforSafeMarker";};
   case independent: {phx_fortifyMarker = "indforSafeMarker";};
 };
-
-{
-  if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
-} forEach phx_fortify_objArr;
 
 [{
     params ["_unit", "_object", "_cost"];
@@ -77,13 +79,13 @@ switch (playerSide) do {
     if (_canPlace) then {
       switch (playerSide) do {
         case east: {
-          missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_east", -1, false];
         };
         case west: {
-          missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_west", -1, false];
         };
         case independent: {
-          missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_guer", -1, false];
         };
       };
       phx_fortifyPoints = phx_fortifyPoints - _cost;
@@ -102,16 +104,16 @@ switch (playerSide) do {
 
   switch (playerSide) do {
     case east: {
-      _fortifyVarStr = "acex_fortify_objects_east";
-      missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_east";
+      missionNamespace setVariable ["ace_fortify_budget_east", -1, false];
     };
     case west: {
-      _fortifyVarStr = "acex_fortify_objects_west";
-      missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_west";
+      missionNamespace setVariable ["ace_fortify_budget_west", -1, false];
     };
     case independent: {
-      _fortifyVarStr = "acex_fortify_objects_guer";
-      missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_guer";
+      missionNamespace setVariable ["ace_fortify_budget_guer", -1, false];
     };
   };
 
@@ -133,13 +135,13 @@ switch (playerSide) do {
 
   switch (playerSide) do {
     case east: {
-      missionNamespace setVariable ["acex_fortify_budget_east", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_east", phx_fortifyPoints, false];
     };
     case west: {
-      missionNamespace setVariable ["acex_fortify_budget_west", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_west", phx_fortifyPoints, false];
     };
     case independent: {
-      missionNamespace setVariable ["acex_fortify_budget_guer", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_guer", phx_fortifyPoints, false];
     };
   };
 }] call CBA_fnc_addEventHandler;

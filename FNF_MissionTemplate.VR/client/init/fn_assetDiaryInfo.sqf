@@ -512,9 +512,9 @@ _getVehicleData = {
 
 
 
-player createDiarySubject ["BLUAssets", "BLU Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
-player createDiarySubject ["OPFAssets", "OPF Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
-player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+phx_assetDiaryBLU = player createDiarySubject ["BLUAssets", "BLU Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+phx_assetDiaryOPF = player createDiarySubject ["OPFAssets", "OPF Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+phx_assetDiaryIND = player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 
 
 _vehiclesToProcess = createHashMap;
@@ -531,3 +531,12 @@ _vehiclesToProcess = createHashMap;
 	};
 
 } forEach ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle" && (locked _x) in [0,1]}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy);
+
+// cleanup sections that weren't used
+_diarySubjectsToCheck = ["BLUAssets","OPFAssets","INDAssets"];
+{
+  _x params ["_name","_displayName","_picture","_countRecords"];
+  if (_name in _diarySubjectsToCheck && _countRecords == 0) then {
+    player removeDiarySubject _name;
+  };
+} forEach (allDiarySubjects player);

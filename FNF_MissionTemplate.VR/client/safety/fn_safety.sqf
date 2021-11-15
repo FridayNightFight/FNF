@@ -20,7 +20,7 @@ phx_safetyMuzzles = getArray (configFile >> "CfgWeapons" >> "Throw" >> "muzzles"
 phx_acePlacing = [{
   if (
     (missionNamespace getVariable ["ace_explosives_placeaction",0] == -1) ||
-    (missionNamespace getVariable ["acex_fortify_isPlacing",0] == -1) ||
+    (missionNamespace getVariable ["ace_fortify_isPlacing",0] == -1) ||
     (player getVariable ["ace_dragging_iscarrying",false]) ||
     (player getVariable ["ace_dragging_isdragging",false]) ||
     (player getVariable ["ace_trenches_isplacing",false]) ||
@@ -47,8 +47,16 @@ phx_acePlacing = [{
   if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
 } , 0] call CBA_fnc_addPerFrameHandler;
 
+phx_switchToMeleeDisablePFH = [{
+  _tempWeaponState = weaponState player;
+  if (_tempWeaponState select 1 == "vn_melee_muzzle" || _tempWeaponState select 1 == "vn_hand_melee_muzzle") then {
+    player selectWeapon (_tempWeaponState select 0);
+  };
+}] call CBA_fnc_addPerFrameHandler;
+
 [{!phx_safetyEnabled}, {
   [phx_acePlacing] call CBA_fnc_removePerFrameHandler;
+  [phx_switchToMeleeDisablePFH] call CBA_fnc_removePerFrameHandler;
   player removeAction phx_safeStartNoFire;
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
