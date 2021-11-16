@@ -70,7 +70,7 @@ class vn_artillery_settings {
                 magazines[] = {};
                 vehicleclass = "vn_b_air_uh1d_02_03";
                 allow_double = 0;
-                cooldown = (5 * 60);
+                cooldown = __EVAL(5 * 60);
                 illumination = 1;
                 cost = 2;
             };
@@ -82,7 +82,7 @@ class vn_artillery_settings {
 
                 function = "vn_fnc_artillery_dawn_1";
                 allow_double = 0;
-                cooldown = (60 * 60);
+                cooldown = __EVAL(60 * 60);
                 illumination = 1;
                 cost = 5;
             };
@@ -102,7 +102,7 @@ class vn_artillery_settings {
                     "vn_flare_plane_med_w_ammo"
                 };
                 allow_double = 0;
-                cooldown = (60 * 4);
+                cooldown = __EVAL(60 * 4);
                 divergence = 100;
                 count = 1;
                 illumination = 1;
@@ -121,7 +121,7 @@ class vn_artillery_settings {
                     "vn_flare_plane_med_w_ammo"
                 };
                 allow_double = 0;
-                cooldown = (60 * 5);
+                cooldown = __EVAL(60 * 5);
                 divergence = 100;
                 count = 1;
                 illumination = 1;
@@ -142,7 +142,7 @@ class vn_artillery_settings {
                     "vn_flare_plane_med_w_ammo"
                 };
                 allow_double = 0;
-                cooldown = (60 * 7);
+                cooldown = __EVAL(60 * 7);
                 divergence = 100;
                 count = 1;
                 illumination = 1;
@@ -162,7 +162,7 @@ class vn_artillery_settings {
                     "vn_shell_105mm_m60_wp_ammo"
                 };
                 allow_double = 0;
-                cooldown = (60 * 15);
+                cooldown = __EVAL(60 * 15);
                 divergence = 50;
                 count = 1;
                 cost = 8;
@@ -182,7 +182,7 @@ class vn_artillery_settings {
                     "vn_shell_60mm_m302_wp_ammo"
                 };
                 allow_double = 0;
-                cooldown = (60 * 15);
+                cooldown = __EVAL(60 * 15);
                 divergence = 50;
                 count = 1;
                 cost = 4;
@@ -202,7 +202,7 @@ class vn_artillery_settings {
                     "vn_shell_105mm_m60_wp_ammo"
                 };
                 allow_double = 0;
-                cooldown = (60 * 15);
+                cooldown = __EVAL(60 * 15);
                 divergence = 50;
                 count = 1;
                 cost = 15;
