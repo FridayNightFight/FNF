@@ -84,6 +84,7 @@ class CfgFunctions {
       class killCounter{};
       class showTimeOnMap{};
       class objectivePreview{};
+      class fixUniformBug{};
       class SCUDFired{};
     };
     class contactStaff {

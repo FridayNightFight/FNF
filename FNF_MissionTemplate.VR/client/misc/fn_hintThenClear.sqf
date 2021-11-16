@@ -5,10 +5,10 @@ Description:
 Parameters:
     _hintStr - the initial hint to display <STRING>
 Optional Parameters:
-    _delay - the delay in seconds from when the hint is displayed until it is cleared [default: 15] <INTEGER>
+    _delay - the delay in seconds from when the hint is displayed until it is cleared [default: 10] <INTEGER>
 Examples:
     (begin example)
-        // Call a hint and then clear it after the default 15 seconds.
+        // Call a hint and then clear it after the default 10 seconds.
         ["BLUFOR are victorious!"] call phx_fnc_hintThenClear;
 
         // Call a hint and then clear it after 45 seconds.
@@ -18,18 +18,19 @@ Examples:
         [_str,5] call phx_fnc_hintThenClear;
     (end)
 ---------------------------------------------------------------------------- */
-params ["_hintStr","_delay"];
+params ["_hintStr",["_delay", 10]];
 hint _hintStr;
 if (isNil "_delay") then {
     _delay = 10;
 };
-_delayedTime = diag_tickTime + _delay;
-[{
-    params ["_args","_handle"];
-    _args params ["_delayedTime"];
+[_hintStr, "info", _delay] call phx_ui_fnc_notify;
+// _delayedTime = diag_tickTime + _delay;
+// [{
+//     params ["_args","_handle"];
+//     _args params ["_delayedTime"];
 
-    if (diag_tickTime > _delayedTime) then {
-        hintSilent "";
-        [_handle] call CBA_fnc_removePerFrameHandler;
-    };
-}, 1, [_delayedTime]] call CBA_fnc_addPerFrameHandler;
+//     if (diag_tickTime > _delayedTime) then {
+//         hintSilent "";
+//         [_handle] call CBA_fnc_removePerFrameHandler;
+//     };
+// }, 1, [_delayedTime]] call CBA_fnc_addPerFrameHandler;
