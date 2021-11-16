@@ -89,7 +89,7 @@ phx_serverTerminalAction = {
     [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
   };
 
- format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
+  format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
 };
 
 phx_connectionWin = {

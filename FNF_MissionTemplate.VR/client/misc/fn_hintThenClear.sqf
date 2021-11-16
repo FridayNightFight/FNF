@@ -19,10 +19,7 @@ Examples:
     (end)
 ---------------------------------------------------------------------------- */
 params ["_hintStr",["_delay", 10]];
-hint _hintStr;
-if (isNil "_delay") then {
-    _delay = 10;
-};
+// hint _hintStr;
 [_hintStr, "info", _delay] call phx_ui_fnc_notify;
 // _delayedTime = diag_tickTime + _delay;
 // [{

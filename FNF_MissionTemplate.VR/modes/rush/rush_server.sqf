@@ -140,7 +140,7 @@ _terminalHacking = {
 
   if (_timer <= 0) then {
     _termTimeText = format ["Terminal %1 hack complete",[str _term, 4, 4] call BIS_fnc_trimString];
-    _termTimeText remoteExec ["hintSilent",0,false];
+    _termTimeText remoteExec ["phx_fnc_hintThenClear",0,false];
     switch (_term) do {
       case term1: {[_term, "defendTask1", "attackTask1", "term1Mark"] spawn _terminalHackComplete};
       case term2: {[_term, "defendTask2", "attackTask2", "term2Mark"] spawn _terminalHackComplete};
@@ -179,7 +179,7 @@ phx_serverTerminalAction = {
         case term3: {missionNamespace setVariable ["phx_term3Hacking", false, true];};
       };
 
-      [{format ["%1 hack paused!", _this] remoteExec ["hintSilent", 0]}, _message, 1] call CBA_fnc_waitAndExecute;
+      [{format ["%1 hack paused!", _this] remoteExec ["phx_fnc_hintThenClear", 0]}, _message, 1] call CBA_fnc_waitAndExecute;
       [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
     };
   };

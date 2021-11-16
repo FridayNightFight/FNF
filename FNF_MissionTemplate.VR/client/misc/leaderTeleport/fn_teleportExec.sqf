@@ -182,7 +182,7 @@ switch (_source) do {
 	};
 };
 
-if (count _toTeleport isEqualTo 0) exitWith {hintSilent "No players found to teleport"};
+if (count _toTeleport isEqualTo 0) exitWith {["No players found to teleport", "error", 5] call phx_ui_fnc_notify};
 _toTeleport = _toTeleport arrayIntersect _toTeleport;
 _toTeleport deleteAt (_toTeleport find player);
 
@@ -193,7 +193,8 @@ if ([
 	true
 ] call BIS_fnc_guiMessage) then {
 
-	hintSilent format["Teleporting %1 players", count _toTeleport];
+	// hintSilent format["Teleporting %1 players", count _toTeleport];
+  [format["Teleporting %1 players", count _toTeleport], "success", 7] call phx_ui_fnc_notify;
 	private _ring = 1;
 	
 	private _pos = (getPosATL player);
@@ -214,6 +215,5 @@ if ([
 		_ring = _ring + 1;
 	};
 	sleep 4;
-	hintSilent "";
 };
 
