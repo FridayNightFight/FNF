@@ -49,20 +49,20 @@ player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cb
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
 [] spawn phx_fnc_unflipVehicleAddAction;
 
-
-private _action = [
-	"FixUniformBug",
-	"Fix ""No Uniform"" Bug",
-	"",
-	{[player] call phx_fnc_fixUniformBug},
-	{phx_safetyEnabled}
-] call ace_interact_menu_fnc_createAction;
-[
-	player,
-	1,
-	["ACE_SelfActions"],
-	_action
-] call ace_interact_menu_fnc_addActionToObject;
+// adds ACE Self-interact to fix uniform bug
+// private _action = [
+// 	"FixUniformBug",
+// 	"Fix ""No Uniform"" Bug",
+// 	"",
+// 	{[player] call phx_fnc_fixUniformBug},
+// 	{phx_safetyEnabled}
+// ] call ace_interact_menu_fnc_createAction;
+// [
+// 	player,
+// 	1,
+// 	["ACE_SelfActions"],
+// 	_action
+// ] call ace_interact_menu_fnc_addActionToObject;
 
 
 // Zeus actions
