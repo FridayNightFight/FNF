@@ -7,7 +7,9 @@
 private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
 _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
 
-_mmNotes = [];
+_mmNotes = [format["<font ><font size='16' color='#e1701a' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor]];
+_mmNotes pushBack "<br/>";
+_mmNotes pushBack "<br/>";
 
 if (count phx_briefingBackground > 0) then {
   _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>BACKGROUND</font>";
@@ -410,16 +412,16 @@ Author: %6<br/><br/>
 
 
 //list some pertinent variables
-if (phx_defendingSide != sideEmpty) then {
-  _varStr = _varStr + "<br/>";
-  _varStr = _varStr + format ["Defender fortify points: %1", phx_fortifyPoints];
-  _varStr = _varStr + "<br/>";
-};
-_varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
+_varStr = _varStr + format ["<font ><font size='16' color='#e1701a' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor];
 _varStr = _varStr + "<br/>";
+_varStr = _varStr + "<br/>";
+
 _varStr = _varStr + format ["Safe start time: %1 minutes", phx_safeStartTime];
 _varStr = _varStr + "<br/>";
+_varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
 _varStr = _varStr + "<br/>";
+_varStr = _varStr + "<br/>";
+
 _varStr = _varStr + format ["Maximum view distance: %1m", phx_maxViewDistance];
 _varStr = _varStr + "<br/>";
 private _magOpticsStr = "";
@@ -429,6 +431,14 @@ switch (phx_magnifiedOptics) do {
 };
 _varStr = _varStr + format ["Magnified optics: %1", _magOpticsStr];
 _varStr = _varStr + "<br/>";
+_varStr = _varStr + "<br/>";
+
+if (phx_defendingSide != sideEmpty) then {
+  _varStr = _varStr + format ["Defender fortify points: %1", phx_fortifyPoints];
+  _varStr = _varStr + "<br/>";
+  _varStr = _varStr + "<br/>";
+};
+
 private _addNVGStr = "";
 switch (phx_addNVG) do {
   case 1: {_addNVGStr = "Yes"};
@@ -436,8 +446,12 @@ switch (phx_addNVG) do {
 };
 _varStr = _varStr + format ["NVGs equipped: %1", _addNVGStr];
 _varStr = _varStr + "<br/>";
-_varStr = _varStr + "<br/>";
 
+(date call BIS_fnc_sunriseSunsetTime) params ["_sunriseTime", "_sunsetTime"];
+_varStr = _varStr + format ["Sunrise: %1 | Sunset: %2", [_sunriseTime, "HH:MM"] call BIS_fnc_timeToString, [_sunsetTime, "HH:MM"] call BIS_fnc_timeToString];
+_varStr = _varStr + "<br/>";
+_varStr = _varStr + "<br/>";
+_varStr = _varStr + "<br/>";
 
 // game mode details
 _varStr = _varStr + format ["<font size='16' color='#e1701a' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
