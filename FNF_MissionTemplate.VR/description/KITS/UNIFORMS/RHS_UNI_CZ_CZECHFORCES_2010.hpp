@@ -86,7 +86,7 @@ class RHS_UNI_CZ_CZECHFORCES_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {U_B_GhillieSuit};
+    uniform[] = {"U_B_GhillieSuit"};
   };
 
   class CR : BASE {

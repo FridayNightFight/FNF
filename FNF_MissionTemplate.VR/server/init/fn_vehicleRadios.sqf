@@ -16,8 +16,6 @@ private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], fa
   _x setVariable ["tf_side", "east", true];
   [{call TFAR_fnc_hasVehicleRadio}, {
     params ["_vehicle"];
-    "debug_console" callExtension str(_this);
-
     _radios = _vehicle call TFAR_fnc_getVehicleRadios;
     {
       [_x, "opfor"] call TFAR_fnc_setLrRadioCode;

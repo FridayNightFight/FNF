@@ -204,25 +204,29 @@ fnc_giveRadios = {
   // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
 
   // should have a LR but doesn't
-  if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
-    private _items = backpackItems _unit;
-    removeBackpack _unit;
-    _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
-    {
-      _unit addItemToBackpack _x;
-    } forEach _items;
-    diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1"" (didn't have one).", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
-  };
-
-  // shouldn't have a LR but does
-  if (!_lrRadio && ((backpack _unit) call TFAR_fnc_isRadio)) then {
-    private _items = backpackItems _unit;
-    removeBackpack _unit;
-    _unit addBackpack "B_TacticalPack_blk";
-    {
-      _unit addItemToBackpack _x;
-    } forEach _items;
-  };
+  [{call TFAR_fnc_haveLRRadio}, {
+    params ["_unit", "_lrRadio"];
+    // shouldn't have a LR but does
+    if (!_lrRadio && ((backpack _unit) call TFAR_fnc_isRadio)) then {
+      private _items = backpackItems _unit;
+      removeBackpack _unit;
+      _unit addBackpack "B_TacticalPack_blk";
+      {
+        _unit addItemToBackpack _x;
+      } forEach _items;
+    };
+  }, [_unit, _lrRadio], 8, {
+    params ["_unit", "_lrRadio"];
+    if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
+      private _items = backpackItems _unit;
+      removeBackpack _unit;
+      _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
+      {
+        _unit addItemToBackpack _x;
+      } forEach _items;
+      diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1"" (didn't have one).", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
+    };
+  }] call CBA_fnc_waitUntilAndExecute;
   true
 };
 
@@ -595,7 +599,7 @@ fnc_giveSideKey = {
   ];
 
   if (_cfgGiveSideKey == 1) then {
-    switch (playerSide) do {
+    switch (side (group _unit)) do {
       case west: {
           _unit addItem "ACE_key_west";
       };
@@ -623,7 +627,6 @@ fnc_giveBinoculars = {
   private _binocs = (missionConfigFile >> "CfgLoadouts" >> "common" >> "binoculars");
 
   private _hasBinoc = (((assigneditems _unit) findIf {getText(configFile >> "CfgWeapons" >> _x >> "simulation") == "Binocular"}) > -1);
-
   if (_hasBinoc) exitWith {true};
 
   private _binocRolesStandard = ["ARA", "MGA", "CR"];
@@ -752,7 +755,27 @@ private _cfgGiveSRRadio = (CFGGEAR >> "giveSRRadio") call BIS_fnc_getCfgDataBool
 private _cfgGiveLRRadio = (CFGGEAR >> "giveLRRadio") call BIS_fnc_getCfgDataBool;
 // private _cfgHandgunAttachments = getArray (_cfgPath >> "handgunAttachments");
 
-
+_pairs = [
+  ["uniform", _cfgUniform],
+  ["vest", _cfgVest],
+  ["headgear", _cfgHeadgear],
+  ["backpack", _cfgBackpack],
+  ["backpackItems", _cfgBackpackItems],
+  ["launchers", _cfgLaunchers],
+  ["sidearms", _cfgSidearms],
+  ["magazines", _cfgMagazines],
+  ["items", _cfgItems],
+  ["linkedItems", _cfgLinkedItems],
+  ["weaponChoices", _cfgWeaponChoices],
+  ["attachments", _cfgAttachments],
+  ["explosiveChoices", _cfgExplosiveChoices],
+  ["grenadeChoices", _cfgGrenadeChoices],
+  ["giveSideKey", _cfgGiveSideKey],
+  ["giveSRRadio", _cfgGiveSRRadio],
+  ["giveLRRadio", _cfgGiveLRRadio]
+];
+_cfgLoaded = [_pairs, []] call CBA_fnc_hashCreate;
+phx_loadout = [_cfgLoaded, false] call CBA_fnc_deserializeNamespace;
 
 // Wearable
 phx_loadout_uniform = if (_cfgUniform isEqualTo []) then { "" } else { selectRandom _cfgUniform };
