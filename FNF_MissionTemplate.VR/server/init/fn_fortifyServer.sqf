@@ -40,11 +40,11 @@ phx_fortify_ModernTan = [
   ["Land_Bunker_01_tall_F",130]
 ];
 phx_fortify_NVA = [
-  ["Land_vn_Plank_01_4m_F",5],
-  ["Land_vn_Plank_01_8m_F",5],
-  ["vn_o_NVA_spiderhole_01",12], // straight cover
-  ["vn_o_NVA_spiderhole_02",12], // sloped cover
-  ["vn_o_NVA_spiderhole_03",15], // two-man
+  ["Land_Plank_01_4m_F",5],
+  ["Land_Plank_01_8m_F",5],
+  // ["vn_o_NVA_spiderhole_01",12], // straight cover
+  // ["vn_o_NVA_spiderhole_02",12], // sloped cover
+  // ["vn_o_NVA_spiderhole_03",15], // two-man
   ["Land_vn_o_bunker_01",12], // low crawl
   ["Land_vn_o_bunker_02",12], // crouch
   ["Land_vn_o_bunker_03",20], // covered
@@ -57,8 +57,8 @@ phx_fortify_MACV = [
   ["Land_vn_BagFence_01_short_green_F",3],
   ["Land_vn_BagFence_01_long_green_F",4],
   ["Land_vn_BagFence_01_round_green_F",4],
-  ["Land_vn_Plank_01_4m_F",5],
-  ["Land_vn_Plank_01_8m_F",5],
+  ["Land_Plank_01_4m_F",5],
+  ["Land_Plank_01_8m_F",5],
   ["Land_vn_b_foxhole_01",10],
   ["Land_vn_b_mortarpit_01",15],
   ["Land_vn_BagBunker_01_small_green_F",22],

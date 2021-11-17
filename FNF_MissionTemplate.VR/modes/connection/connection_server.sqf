@@ -87,13 +87,14 @@ phx_serverTerminalAction = {
 
 
   if (_animate) then {
-    [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+    if ((typeOf _term) isEqualTo "Land_DataTerminal_01_F") then {
+      [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+    };
   };
 
-  format ["<t align='center'>Terminal %1 connected for %2</t>",
-    _termNum,
-    switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}
-  ] remoteExec ["phx_fnc_hintThenClear", 0, false];
+//  format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
+  private _str = format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}];
+  [_str, "warning", 7] remoteExec ["phx_ui_fnc_notify",0,false];
 };
 
 phx_connectionWin = {

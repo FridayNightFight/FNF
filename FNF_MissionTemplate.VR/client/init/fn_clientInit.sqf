@@ -65,6 +65,20 @@ player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cb
 // ] call ace_interact_menu_fnc_addActionToObject;
 
 
+// remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool
+// remove ETool-less trench from all
+// remove spiderholes from non-NVA loadouts
+[{!isNil "mySideGearSelection" && !is3DEN}, {
+  if (isClass ((configOf player) >> "ACE_SelfActions" >> "ACE_Equipment" >> "ace_compat_sog_digSpiderhole")) then {
+    if !(["NVA", mySideGearSelection] call BIS_fnc_inString) then {
+      [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_compat_sog_digSpiderhole"]] call ace_interact_menu_fnc_removeActionFromClass;
+      [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_compat_sog_digSpiderholeAngled"]] call ace_interact_menu_fnc_removeActionFromClass;
+      [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_compat_sog_digSpiderholeDual"]] call ace_interact_menu_fnc_removeActionFromClass;
+    };
+    [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_trenches_digEnvelopeSmall"]] call ace_interact_menu_fnc_removeActionFromClass;
+  };
+}, [], 5] call CBA_fnc_waitUntilAndExecute;
+
 // Zeus actions
 _action = [
 	"Zeus_GoToLastReport",
