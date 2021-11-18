@@ -20,6 +20,8 @@
 #define BACKPACK_AR "rhs_tortila_olive"
 #define BACKPACK_AT "rhs_tortila_olive"
 #define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
 class RHS_UNI_RU_SPETSNAZ_2010 {
@@ -101,6 +103,7 @@ class RHS_UNI_RU_SPETSNAZ_2010 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

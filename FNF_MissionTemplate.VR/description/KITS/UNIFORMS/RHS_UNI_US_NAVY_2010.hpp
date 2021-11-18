@@ -20,6 +20,8 @@
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
 #define BACKPACK_MEDIC "B_Kitbag_sgg"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
 class RHS_UNI_US_NAVY_2010 {
@@ -102,6 +104,7 @@ class RHS_UNI_US_NAVY_2010 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

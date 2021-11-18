@@ -1,5 +1,10 @@
 
-
+// colors: https://imgur.com/a/AfimbU2
+#define COLOR1 "#944509"
+#define COLOR2 "#FF8E38"
+#define COLOR3 "#E0701B"
+#define COLOR4 "#008394"
+#define COLOR5 "#1BCAE0"
 
 
 
@@ -7,30 +12,30 @@
 private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
 _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
 
-_mmNotes = [format["<font ><font size='16' color='#e1701a' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor]];
+_mmNotes = [format["<font ><font size='16' color='" + COLOR3 + "' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor]];
 _mmNotes pushBack "<br/>";
 _mmNotes pushBack "<br/>";
 
 if (count phx_briefingBackground > 0) then {
-  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>BACKGROUND</font>";
+  _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>BACKGROUND</font>";
   _mmNotes pushBack phx_briefingBackground;
   _mmNotes pushBack "<br/>";
 };
 
 if (count phx_briefingWorldInfo > 0) then {
-  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>AREA OF OPERATIONS</font>";
+  _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>AREA OF OPERATIONS</font>";
   _mmNotes pushBack phx_briefingWorldInfo;
   _mmNotes pushBack "<br/>";
 };
 
 if (count phx_briefingNotes > 0) then {
-  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>NOTES</font>";
+  _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>NOTES</font>";
   _mmNotes pushBack phx_briefingNotes;
   _mmNotes pushBack "<br/>";
 };
 
 if (count phx_briefingRules > 0) then {
-  _mmNotes pushBack "<font size='18' color='#e1701a' face='PuristaBold'>MISSION RULES</font>";
+  _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>MISSION RULES</font>";
   _mmNotes pushBack phx_briefingRules;
   _mmNotes pushBack "<br/>";
 };
@@ -141,7 +146,7 @@ _fnc_parseMATForBriefing = {
 
 
     _textOut pushBack format [
-      "%1 %2: <font color='#4de4ff'>%3</font><br/><img width='120' image='%4'/><br/>%5<br/>%6%7",
+      "%1 %2: <font color='" + COLOR3 + "'>%3</font><br/><img width='120' image='%4'/><br/>%5<br/>%6%7",
       _side call BIS_fnc_sideName,
       _role,
       [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
@@ -251,7 +256,7 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" ||
     "PHX_Diary_Details",
     [
       "BLUFOR Uniform",
-      format ["<font size='18' shadow='1' color='#f6dcbf' face='PuristaBold'>%4</font><br/>
+      format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
 <font size='14'>%5</font><br/>
 Author: %6<br/><br/>
 %1<br/>
@@ -278,7 +283,7 @@ Author: %6<br/><br/>
     [
       "BLUFOR Loadout",
       format [
-        "<font size='18' shadow='1' color='#f6dcbf' face='PuristaBold'>%1</font><br/>%2",
+        "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
         phx_briefing_west_loadout # 0 # 0,
         phx_briefing_west_loadout call phx_fnc_briefingParseLoadout
       ]
@@ -312,7 +317,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
     "PHX_Diary_Details",
     [
       "OPFOR Uniform",
-      format ["<font size='18' shadow='1' color='#f6dcbf' face='PuristaBold'>%4</font><br/>
+      format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
 <font size='14'>%5</font><br/>
 Author: %6<br/><br/>
 %1<br/>
@@ -340,7 +345,7 @@ Author: %6<br/><br/>
     [
       "OPFOR Loadout",
       format [
-        "<font size='18' shadow='1' color='#f6dcbf' face='PuristaBold'>%1</font><br/>%2",
+        "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
         phx_briefing_east_loadout # 0 # 0,
         phx_briefing_east_loadout call phx_fnc_briefingParseLoadout
       ]
@@ -373,7 +378,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
     "PHX_Diary_Details",
     [
       "INDFOR Uniform",
-      format ["<font size='18' shadow='1' color='#f6dcbf' face='PuristaBold'>%4</font><br/>
+      format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
 <font size='14'>%5</font><br/>
 Author: %6<br/><br/>
 %1<br/>
@@ -400,7 +405,7 @@ Author: %6<br/><br/>
     [
       "INDFOR Loadout",
       format [
-        "<font size='18' shadow='1' color='#f6dcbf' face='PuristaBold'>%1</font><br/>%2",
+        "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
         phx_briefing_ind_loadout # 0 # 0,
         phx_briefing_ind_loadout call phx_fnc_briefingParseLoadout
       ]
@@ -412,7 +417,7 @@ Author: %6<br/><br/>
 
 
 //list some pertinent variables
-_varStr = _varStr + format ["<font ><font size='16' color='#e1701a' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor];
+_varStr = _varStr + format ["<font ><font size='16' color='" + COLOR3 + "' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor];
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + "<br/>";
 
@@ -454,7 +459,7 @@ _varStr = _varStr + "<br/>";
 _varStr = _varStr + "<br/>";
 
 // game mode details
-_varStr = _varStr + format ["<font size='16' color='#e1701a' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
+_varStr = _varStr + format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
 _varStr = _varStr + "<br/>";
 
 switch (phx_gameMode) do {

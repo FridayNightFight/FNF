@@ -1,30 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_gorka_r_g_gloves"
+#define UNIFORM "rhsgref_uniform_altis_lizard", "rhsgref_uniform_altis_lizard_olive"
 
-#define VEST "rhs_vydra_3m"
+#define VEST "rhsgref_otv_khaki"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhs_altyn_bala"
-#define HELMET_CMDR "rhs_beanie"
-#define HELMET_RECON "rhs_beanie_green"
-#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
-#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
+#define HELMET "rhsgref_helmet_pasgt_altis_lizard"
+#define HELMET_CMDR "rhssaf_beret_green"
+#define HELMET_RECON "rhssaf_booniehat_woodland"
+#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "rhs_rk_sht_30_olive"
-#define BACKPACK_RADIO "TFAR_mr3000_rhs"
-#define BACKPACK_AR "rhs_tortila_olive"
-#define BACKPACK_AT "rhs_tortila_olive"
-#define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK "B_Kitbag_rgr"
+#define BACKPACK_RADIO "TFAR_rt1523g_sage"
+#define BACKPACK_AR "B_Carryall_khk"
+#define BACKPACK_AT "B_Carryall_khk"
+#define BACKPACK_MEDIC "B_FieldPack_khk"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_RU_SPETSNAZ_2020 {
+class RHS_UNI_GR_GREEKFORCES_2010 {
   author = "Mazz38";
-  description = "RU: Modern Russian Spetsnaz Gorka";
+  description = "GR: Modern Greek Armed Forces Lizard Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -86,6 +88,7 @@ class RHS_UNI_RU_SPETSNAZ_2020 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
@@ -101,6 +104,7 @@ class RHS_UNI_RU_SPETSNAZ_2020 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {
