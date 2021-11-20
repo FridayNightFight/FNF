@@ -75,19 +75,23 @@ _QS_ST_showAll = 0;											// NUMBER. Intended for Debug / Development use on
 //================= DIPLOMACY - set the Friendly factions for each faction.
 
 _QS_ST_friendlySides_Dynamic = TRUE;						// BOOL. Set TRUE to allow faction alliances to change dynamically (IE. AAF may not always be loyal to NATO) and be represented on the map. Default TRUE.
-private _independentAllegiance = "Scenario" get3DENMissionAttribute "IntelIndepAllegiance";
-_independentAllegiance params ["_alliedWest","_alliedEast"];
+
+private ["_alliedWest","_alliedEast"];
+_indFriendly = independent call BIS_fnc_friendlySides;
+if (_indFriendly find west > -1) then {_alliedWest = true} else {_alliedWest = false};
+if (_indFriendly find east > -1) then {_alliedEast = true} else {_alliedEast = false};
+
 _QS_ST_friendlySides_EAST = [];
 _QS_ST_friendlySides_WEST = [];
 _QS_ST_friendlySides_RESISTANCE = [];
 _QS_ST_friendlySides_CIVILIAN = [];
-if (_alliedWest isEqualTo 1) then {
+if (_alliedWest) then {
   _QS_ST_friendlySides_EAST = [];
   _QS_ST_friendlySides_WEST = [2];
   _QS_ST_friendlySides_RESISTANCE = [1];
   _QS_ST_friendlySides_CIVILIAN = [];
 };
-if (_alliedEast isEqualTo 1) then {
+if (_alliedEast) then {
   _QS_ST_friendlySides_EAST = [2];
   _QS_ST_friendlySides_WEST = [];
   _QS_ST_friendlySides_RESISTANCE = [0];

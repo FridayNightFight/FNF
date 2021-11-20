@@ -1,8 +1,10 @@
 //Figure out which side the player is on.
 _side = playerSide;
 
-private _independentAllegiance = "Scenario" get3DENMissionAttribute "IntelIndepAllegiance";
-_independentAllegiance params ["_alliedWest","_alliedEast"];
+private ["_alliedWest","_alliedEast"];
+_indFriendly = independent call BIS_fnc_friendlySides;
+if (_indFriendly find west > -1) then {_alliedWest = true} else {_alliedWest = false};
+if (_indFriendly find east > -1) then {_alliedEast = true} else {_alliedEast = false};
 
 phx_loadout_TFAREncryptionCode = "";
 
@@ -17,11 +19,11 @@ switch (_side) do {
     };
     case independent: {
 
-      if (_alliedWest == 1) exitWith {
+      if (_alliedWest) exitWith {
         phx_playerBaseChannel = phx_bluforBaseChannel;
         phx_loadout_TFAREncryptionCode = "blufor";
       };
-      if (_alliedEast == 1) exitWith {
+      if (_alliedEast) exitWith {
         phx_playerBaseChannel = phx_opforBaseChannel;
         phx_loadout_TFAREncryptionCode = "opfor";
       };

@@ -10,7 +10,7 @@ if (playerSide isEqualTo civilian) exitWith {
 };
 
 player unlinkItem "ItemRadio";
-{player removeItem _x} forEach (assignedItems player);
+{player unlinkItem _x} forEach (assignedItems player);
 {
   player unassignItem _x;
   player removeItem _x;
