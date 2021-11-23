@@ -17,7 +17,7 @@
 #define VEST_CREWMAN "vn_o_vest_02"
 #define VEST_PILOT "vn_o_vest_05"
 
-#define HELMET "vn_c_conehat_02", "vn_c_conehat_01", "vn_o_helmet_vc_02", "rhs_ssh68", "vn_o_helmet_vc_03", "vn_o_boonie_vc_02_01"
+#define HELMET "vn_c_conehat_02", "vn_c_conehat_01", "vn_o_helmet_vc_02", "vn_o_helmet_vc_03", "vn_o_boonie_vc_02_01"
 #define HELMET_SNP "vn_o_helmet_nva_04"
 #define HELMET_CREWMAN HELMET
 #define HELMET_PILOT HELMET
