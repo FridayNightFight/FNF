@@ -20,6 +20,8 @@
 #define BACKPACK_AR "rhsgref_wdl_alicepack"
 #define BACKPACK_AT "rhsgref_wdl_alicepack"
 #define BACKPACK_MEDIC "B_Kitbag_rgr"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
 class RHS_UNI_US_ARMY_1980 {
@@ -101,6 +103,7 @@ class RHS_UNI_US_ARMY_1980 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

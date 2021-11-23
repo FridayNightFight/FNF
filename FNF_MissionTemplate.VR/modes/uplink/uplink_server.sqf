@@ -174,7 +174,7 @@ phx_serverTerminalAction = {
           missionNamespace setVariable ["phx_term3Hacking", true, true];
         };
       };
-      format ["%1 hack started!", _message] remoteExec ["hintSilent", 0];
+      [format ["%1 hack started!", _message]] remoteExec ["phx_fnc_hintThenClear", 0];
     };
     case false: {
       [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
@@ -189,7 +189,7 @@ phx_serverTerminalAction = {
           missionNamespace setVariable ["phx_term3Hacking", false, true];
         };
       };
-      format ["%1 hack paused!", _message] remoteExec ["hintSilent", 0];
+      [format ["%1 hack paused!", _message]] remoteExec ["phx_fnc_hintThenClear", 0];
     };
   };
 };

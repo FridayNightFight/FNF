@@ -10,7 +10,7 @@ if (playerSide isEqualTo civilian) exitWith {
 };
 
 player unlinkItem "ItemRadio";
-{player removeItem _x} forEach (assignedItems player);
+{player unlinkItem _x} forEach (assignedItems player);
 {
   player unassignItem _x;
   player removeItem _x;
@@ -26,7 +26,6 @@ removeVest player;
 removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
-
 
 params ["_LOADOUTROLE"];
 if (!isNil {(player getVariable "phxLoadout")}) then {
@@ -196,10 +195,20 @@ fnc_giveRadios = {
   // Radios
   params [["_unit", objNull], ["_srRadio", true], ["_lrRadio", false]];
 
-  if (_srRadio) then {
-    _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
-    diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1""", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
-  };
+  [{call TFAR_fnc_haveSWRadio}, {
+    params ["_unit", "_srRadio"];
+    // shouldn't have a SW but does
+    if (!_srRadio) then {
+      player unlinkItem (call TFAR_fnc_activeSwRadio);
+    };
+  }, [_unit, _srRadio], 8, {
+    params ["_unit", "_srRadio"];
+    // doesn't have a SW but should
+    if (_srRadio) then {
+      _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
+      diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1"" (didn't have one).", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
+    };
+  }] call CBA_fnc_waitUntilAndExecute;
 
   // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
 

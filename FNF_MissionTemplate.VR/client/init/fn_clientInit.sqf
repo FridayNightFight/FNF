@@ -17,6 +17,10 @@ if (isMultiplayer) then {
 };
 call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
+// Admin player patch jip support
+if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
+	call phx_admin_fnc_jipPatch;
+};
 
 
 //Set player loadout after stagger time
@@ -44,6 +48,21 @@ player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cb
 [] execVM "client\icons\QS_icons.sqf";
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
 [] spawn phx_fnc_unflipVehicleAddAction;
+
+// adds ACE Self-interact to fix uniform bug
+// private _action = [
+// 	"FixUniformBug",
+// 	"Fix ""No Uniform"" Bug",
+// 	"",
+// 	{[player] call phx_fnc_fixUniformBug},
+// 	{phx_safetyEnabled}
+// ] call ace_interact_menu_fnc_createAction;
+// [
+// 	player,
+// 	1,
+// 	["ACE_SelfActions"],
+// 	_action
+// ] call ace_interact_menu_fnc_addActionToObject;
 
 
 // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool

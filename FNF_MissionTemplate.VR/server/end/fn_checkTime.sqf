@@ -15,7 +15,7 @@ phx_alertEnd = false;
   _missionRuntimeSecs = _this select 0;
 
   if ((_missionRuntimeSecs - (15 * 60)) <= CBA_missionTime && !phx_alert15) then {
-      "15 minutes remaining" remoteExec ["phx_fnc_hintThenClear", 0, false];
+      ["<t align='center'>15 minutes remaining of play</t>","warning",10] remoteExec ["phx_ui_fnc_notify", 0, false];
       phx_alert15 = true;
       missionNamespace setVariable ["phx_timeLeftShown",true,true];
       remoteExec ["phx_fnc_clientTime", 0, true];

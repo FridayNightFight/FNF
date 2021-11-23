@@ -39,7 +39,7 @@ waitUntil {
   phx_sector3 getVariable ["owner", sideUnknown] != sideUnknown
 };
 
-"First sector captured \n Points will be begin to be awarded in 5 minutes" remoteExec ["phx_fnc_hintThenClear"];
+["First sector captured<br/>Points will be begin to be awarded in 5 minutes"] remoteExec ["phx_fnc_hintThenClear"];
 uiSleep 300;
 
 while {!phx_gameEnd} do {

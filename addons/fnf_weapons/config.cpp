@@ -15,16 +15,6 @@ class CfgPatches
 
 class CfgWeapons {
 
-  // fix ACE_Compat for RPK use
-  class rhs_weap_rpk_base;
-
-  class rhs_weap_rpk74_base: rhs_weap_rpk_base {
-    ACE_barrelLength = 590.00;
-    ACE_barrelTwist = 195.072;
-  };
-
-  class rhs_weap_rpk74: rhs_weap_rpk74_base {};
-
   // allow NVG passthrough on primary sniper optic
   class ItemCore;
 
@@ -45,7 +35,7 @@ class CfgWeapons {
       };
     };
   };
-  
+
   class rhsusf_acc_M8541: rhsusf_acc_premier {
     class ItemInfo: ItemInfo {
       class OpticsModes: OpticsModes {

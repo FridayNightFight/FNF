@@ -33,7 +33,7 @@ switch (true) do {
         };
 
         if (!_alert) then {
-          "Overtime enabled! \n The mission will end if no attackers are near the last objective." remoteExec ["hintSilent", 0, false];
+          ["<t align='center'>Overtime enabled!<br/>The mission will end if no attackers are near the last objective.</t>","warning",10] remoteExec ["phx_ui_fnc_notify", 0, false];
           _alert = true;
         };
         sleep 5;
@@ -61,6 +61,7 @@ switch (true) do {
       } else {
         if (!_alert) then {
           //"Overtime enabled. \n The mission will end if no terminals are being hacked" remoteExec ["hintSilent", 0, false];
+          ["<t align='center'>Overtime enabled!<br/>The mission will end if no terminals are being hacked.</t>","warning",10] remoteExec ["phx_ui_fnc_notify", 0, false];
           _alert = true;
         };
       };
@@ -189,7 +190,8 @@ switch (true) do {
         [_highSide, "wins to mission time limit!"] spawn phx_fnc_gameEnd;
       } else {
         if (!_overTimeAlert) then {
-          "Overtime enabled! \n The first side to hit 100 points or a 20 point lead will win." remoteExec ["hint"];
+          // "Overtime enabled! \n The first side to hit 100 points or a 20 point lead will win." remoteExec ["hint"];
+          ["<t align='center'>Overtime enabled!<br/>The first side to hit 100 points or a 20 point lead will win.</t>","warning",10] remoteExec ["phx_ui_fnc_notify", 0, false];
           _overTimeAlert = true;
         };
       };
@@ -201,7 +203,8 @@ switch (true) do {
   case (phx_gameMode == "scavHunt"): {
 
     if (count (call phx_scavHuntCheckScores) > 1) then {
-      "Overtime enabled! \n The first side to capture another item will win." remoteExec ["hint"];
+      // "Overtime enabled! \n The first side to capture another item will win." remoteExec ["hint"];
+      ["<t align='center'>Overtime enabled!<br/>The first side to capture another item will win.</t>","warning",10] remoteExec ["phx_ui_fnc_notify", 0, false];
       waitUntil {sleep 2; count (call phx_scavHuntCheckScores) == 1};
       phx_gameEnd = true;
       publicVariable "phx_gameEnd";

@@ -83,15 +83,15 @@ class CfgFunctions {
       class clientTime{};
       class killCounter{};
       class showTimeOnMap{};
-      class adminGameEnd{};
       class objectivePreview{};
+      class fixUniformBug{};
       class SCUDFired{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";
+      class addStaffContactButton{};
       class contactStaffInit{};
       class contactStaff{};
-      class addStaffContactButton{};
     };
     class unflip {
       file = "client\misc\unflip";
@@ -138,10 +138,27 @@ class CfgFunctions {
       class opticSelector{};
       class chargesSelector{};
       class grenadesSelector{};
-    }
+    };
     class notifications {
       file = "client\ui\notifications";
       class notify{};
+    };
+  };
+  class phx_admin {
+    class adminPatches {
+      file = "server\patches";
+      class adminPatch{};
+      class jipPatch{};
+    };
+    class adminKick {
+      file = "client\misc\admin\adminKick";
+      class addAdminKickButton{};
+      class adminKickUI{};
+      class kickPlayer{};
+    };
+    class gameEnd {
+      file = "client\misc\admin";
+      class adminGameEnd{};
     };
   };
   class phx_selector {

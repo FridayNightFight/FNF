@@ -26,6 +26,7 @@ switch (_numberOfTerminals) do {
   case 3: {{_x call _markerSetup;} forEach [term1,term2,term3];};
   default {hint "Terminal number not set correctly";};
 };
+[] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
 phx_serverTerminalAction = {
   _term = _this select 0;
