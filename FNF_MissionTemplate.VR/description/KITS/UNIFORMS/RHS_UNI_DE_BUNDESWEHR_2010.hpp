@@ -88,7 +88,7 @@ class RHS_UNI_DE_BUNDESWEHR_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {U_B_GhillieSuit};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

@@ -97,7 +97,7 @@ class common {
 #define STD_VN_OPTICS
 #define MAG_VN_OPTICS "vn_o_4x_m16","vn_o_4x_m4956","vn_o_3x_m84","vn_o_3x_m9130"
 // "vn_o_9x_m16","vn_o_9x_m14"
-#define SNP_VN_OPTICS "vn_o_9x_m40a1"
+#define SNP_VN_OPTICS "vn_o_9x_m40a1","vn_o_3x_m9130"
 #define SNP_VN_NVG_OPTICS "vn_o_anpvs2_m40a1"
 
 class optics {
