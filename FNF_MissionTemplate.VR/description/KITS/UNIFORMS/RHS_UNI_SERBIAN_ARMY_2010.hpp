@@ -16,7 +16,7 @@
 #define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
 #define BACKPACK "B_FieldPack_oli"
-#define BACKPACK_RADIO "TFAR_anarc164"
+#define BACKPACK_RADIO "TFAR_rt1523g_sage"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
 #define BACKPACK_MEDIC "B_Kitbag_sgg"

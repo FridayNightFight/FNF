@@ -61,6 +61,22 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
   };
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 
+
+["TeamkillDetected", {
+  params ["_killed", "_killer"];
+
+  if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send Teamkill webhook -- mod not loaded!"};
+  // if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundPrep Discord post"};
+
+  [
+    "BotNotifications",
+    format["%1 teamkilled %2 with a %3", name _killer, name _killed, weaponState _killer select 0],
+    "",
+    "",
+    []
+	] call DiscordEmbedBuilder_fnc_buildSqf;
+}] call CBA_fnc_addEventHandler;
+
 //Delete player bodies during safe start
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];

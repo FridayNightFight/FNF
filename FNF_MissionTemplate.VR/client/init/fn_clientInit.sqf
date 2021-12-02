@@ -45,6 +45,17 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
 player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
 phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
 
+player addEventHandler ["Killed", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+  if (!isNull _instigator && (side _instigator == side _unit)) exitWith {
+    ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
+  };
+  if (side _killer == side _unit) exitWith {
+    ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
+  };
+}];
+
+
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
