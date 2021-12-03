@@ -16,7 +16,7 @@
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask_smiley"
 
 #define BACKPACK "B_AssaultPack_khk"
-#define BACKPACK_RADIO "TFAR_bussole"
+#define BACKPACK_RADIO "TFAR_rt1523g"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
 #define BACKPACK_MEDIC "B_Kitbag_sgg"

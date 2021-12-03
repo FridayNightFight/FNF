@@ -98,7 +98,8 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
           "KILLER: `%1 (%2)`
 VICTIM: `%4 (%5)`
 VEH: %3 | WEP: `%6` | RNG: `%7m`
-ELAPSED: `%8` | UTC `%9`
+ELAPSED: `%8`
+UTC: `%9`
 MISSION: `%10`",
           name _killer,
           // groupId (group _killer),
