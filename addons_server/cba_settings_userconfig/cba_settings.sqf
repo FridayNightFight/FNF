@@ -81,6 +81,12 @@ force force ace_explosives_explodeOnDefuse = false;
 force force ace_explosives_punishNonSpecialists = false;
 force force ace_explosives_requireSpecialist = false;
 
+// ACE Fortify
+force force ace_fortify_markObjectsOnMap = 1;
+force force ace_fortify_timeCostCoefficient = 0;
+force force ace_fortify_timeMin = 0;
+force force acex_fortify_settingHint = 0;
+
 // ACE Fragmentation Simulation
 force force ace_frag_enabled = false;
 force force ace_frag_maxTrack = 10;
@@ -322,7 +328,7 @@ force force ace_scopes_zeroReferenceHumidity = 0;
 force force ace_scopes_zeroReferenceTemperature = 15;
 
 // ACE Spectator
-force force ace_spectator_enableAI = true;
+force force ace_spectator_enableAI = false;
 ace_spectator_maxFollowDistance = 5;
 force force ace_spectator_restrictModes = 0;
 force force ace_spectator_restrictVisions = 0;
