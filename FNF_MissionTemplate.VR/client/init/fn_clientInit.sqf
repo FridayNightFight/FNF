@@ -47,10 +47,10 @@ phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}
 
 player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-  if (!isNull _instigator && (side (group _instigator) == playerSide)) exitWith {
+  if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
     ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
   };
-  if (side (group _killer) == playerSide) exitWith {
+  if (side (group _killer) == playerSide && (_unit != _killer)) exitWith {
     ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
   };
 }];

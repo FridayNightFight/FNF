@@ -1,13 +1,5 @@
 if (!isServer) exitWith {};
 
-phx_adminChannelId = radioChannelCreate [
-	[1,1,0,1], // RGBA color
-	"Staff Channel", // channel name
-	"[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME", // callsign
-  []
-];
-publicVariable "phx_adminChannelId";
-
 missionNamespace setVariable [
   "TFAR_DefaultRadio_Personal_Guer",
   TFAR_DefaultRadio_Personal_Independent,
@@ -126,6 +118,15 @@ MISSION: `%10`",
     ]
 	] call DiscordEmbedBuilder_fnc_buildSqf;
 }] call CBA_fnc_addEventHandler;
+
+// Staff channel
+phx_adminChannelId = radioChannelCreate [
+	[1,1,0,1], // RGBA color
+	"Staff Channel", // channel name
+	"[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME", // callsign
+  allPlayers select {getPlayerUID _x in fnf_staffInfo}
+];
+publicVariable "phx_adminChannelId";
 
 //Delete player bodies during safe start
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {

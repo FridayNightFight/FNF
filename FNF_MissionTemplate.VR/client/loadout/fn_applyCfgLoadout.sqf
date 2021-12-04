@@ -201,7 +201,7 @@ fnc_giveRadios = {
     if (!_srRadio) then {
       player unlinkItem (call TFAR_fnc_activeSwRadio);
     };
-  }, [_unit, _srRadio], 8, {
+  }, [_unit, _srRadio], 5, {
     params ["_unit", "_srRadio"];
     // doesn't have a SW but should
     if (_srRadio) then {
@@ -224,7 +224,7 @@ fnc_giveRadios = {
         _unit addItemToBackpack _x;
       } forEach _items;
     };
-  }, [_unit, _lrRadio], 8, {
+  }, [_unit, _lrRadio], 5, {
     params ["_unit", "_lrRadio"];
     if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
       private _items = backpackItems _unit;

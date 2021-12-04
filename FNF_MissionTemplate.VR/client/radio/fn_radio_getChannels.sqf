@@ -92,13 +92,13 @@ player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteStr
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
   [{call TFAR_fnc_haveSWRadio}, {
     phx_hasSW = true;
-  }, [], 8, {
+  }, [], 10, {
     phx_hasSW = false;
   }] call CBA_fnc_waitUntilAndExecute;
 
   [{call TFAR_fnc_haveLRRadio}, {
     phx_hasLR = true;
-  }, [], 8, {
+  }, [], 10, {
     phx_hasLR = false;
   }] call CBA_fnc_waitUntilAndExecute;
 
