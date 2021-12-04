@@ -76,10 +76,10 @@ switch (phx_fortifyStyle) do {
   case "Modern": {
     switch (_fortifyColor) do {
       case 1: {
-        [phx_defendingSide, phx_fortifyPoints, _fortifyModernTan] call ace_fortify_fnc_registerObjects;
+        [phx_defendingSide, phx_fortifyPoints, phx_fortify_ModernTan] call ace_fortify_fnc_registerObjects;
       };
       default {
-        [phx_defendingSide, phx_fortifyPoints, _fortifyModernGreen] call ace_fortify_fnc_registerObjects;
+        [phx_defendingSide, phx_fortifyPoints, phx_fortify_ModernGreen] call ace_fortify_fnc_registerObjects;
       };
     };
   };

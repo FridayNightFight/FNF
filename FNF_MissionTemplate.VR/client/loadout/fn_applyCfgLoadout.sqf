@@ -200,6 +200,9 @@ fnc_giveRadios = {
     // shouldn't have a SW but does
     if (!_srRadio) then {
       player unlinkItem (call TFAR_fnc_activeSwRadio);
+      missionNamespace setVariable ["phx_hasSW", false];
+    } else {
+      missionNamespace setVariable ["phx_hasSW", true];
     };
   }, [_unit, _srRadio], 5, {
     params ["_unit", "_srRadio"];
@@ -207,6 +210,9 @@ fnc_giveRadios = {
     if (_srRadio) then {
       _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
       diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1"" (didn't have one).", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
+      missionNamespace setVariable ["phx_hasSW", true];
+    } else {
+      missionNamespace setVariable ["phx_hasSW", false];
     };
   }] call CBA_fnc_waitUntilAndExecute;
 
@@ -216,17 +222,20 @@ fnc_giveRadios = {
   [{call TFAR_fnc_haveLRRadio}, {
     params ["_unit", "_lrRadio"];
     // shouldn't have a LR but does
-    if (!_lrRadio && ((backpack _unit) call TFAR_fnc_isRadio)) then {
+    if (!_lrRadio) then {
       private _items = backpackItems _unit;
       removeBackpack _unit;
       _unit addBackpack "B_TacticalPack_blk";
       {
         _unit addItemToBackpack _x;
       } forEach _items;
+      missionNamespace setVariable ["phx_hasLR", false];
+    } else {
+      missionNamespace setVariable ["phx_hasLR", true];
     };
   }, [_unit, _lrRadio], 5, {
     params ["_unit", "_lrRadio"];
-    if (_lrRadio && !((backpack _unit) call TFAR_fnc_isRadio)) then {
+    if (_lrRadio) then {
       private _items = backpackItems _unit;
       removeBackpack _unit;
       _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
@@ -234,6 +243,9 @@ fnc_giveRadios = {
         _unit addItemToBackpack _x;
       } forEach _items;
       diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1"" (didn't have one).", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
+      missionNamespace setVariable ["phx_hasLR", true];
+    } else {
+      missionNamespace setVariable ["phx_hasLR", false];
     };
   }] call CBA_fnc_waitUntilAndExecute;
   true
