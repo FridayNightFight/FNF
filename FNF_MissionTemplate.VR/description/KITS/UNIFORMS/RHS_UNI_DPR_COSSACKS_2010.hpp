@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_gorka_1_f"
+#define UNIFORM "rhsgref_uniform_specter"
 
-#define VEST "rhsgref_alice_webbing"
-#define VEST_LEADER VEST
-#define VEST_AR VEST
+#define VEST "rhs_6b23_6sh116_mixed", "rhs_6b23_6sh116_flora", "rhs_6b23_6sh92"
+#define VEST_LEADER "rhs_6b23_6sh116_vog_mixed", "rhs_6b23_digi_6sh92_vog_headset"
+#define VEST_AR "rhs_6b23_digi_vydra_3m"
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_flecktarn"
-#define HELMET_CMDR "H_Cap_oli_hs"
-#define HELMET_RECON "rhsusf_Bowman"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "rhs_6b7_1m_bala2_olive", "rhs_6b7_1m_bala1_olive", "rhs_6b7_1m_olive"
+#define HELMET_CMDR "rhs_cossack_papakha"
+#define HELMET_RECON "rhs_beanie_green"
+#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
+#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
-#define BACKPACK "B_TacticalPack_blk"
-#define BACKPACK_RADIO "TFAR_rt1523g_bwmod"
-#define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_Kitbag_rgr"
+#define BACKPACK "rhs_rk_sht_30_olive", "rhs_rk_sht_30_olive_engineer_empty"
+#define BACKPACK_RADIO "TFAR_mr3000_rhs"
+#define BACKPACK_AR "rhs_tortila_emr", "rhs_tortila_olive"
+#define BACKPACK_AT "rhs_rpg_empty"
+#define BACKPACK_MEDIC "rhs_medic_bag"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_DE_BUNDESWEHR_2010 {
+class RHS_UNI_DPR_COSSACKS_2010 {
   author = "Mazz38";
-  description = "DE: Modern German BUNDESWEHR Flecktarn Camouflage";
+  description = "DPR: Modern Seperatist Cossack Forces Spectre Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,6 @@ class RHS_UNI_DE_BUNDESWEHR_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_gorka_1_f"
+#define UNIFORM "rhsgref_uniform_olive"
 
-#define VEST "rhsgref_alice_webbing"
+#define VEST "V_I_G_resistanceLeader_F"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_flecktarn"
-#define HELMET_CMDR "H_Cap_oli_hs"
-#define HELMET_RECON "rhsusf_Bowman"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "rhsgref_helmet_M1_erdl"
+#define HELMET_CMDR "rhssaf_beret_green"
+#define HELMET_RECON "H_Watchcap_camo"
+#define HELMET_CREWMAN "rhs_6b48"
+#define HELMET_PILOT "rhsusf_ihadss"
 
-#define BACKPACK "B_TacticalPack_blk"
-#define BACKPACK_RADIO "TFAR_rt1523g_bwmod"
-#define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_Kitbag_rgr"
+#define BACKPACK "B_Kitbag_rgr"
+#define BACKPACK_RADIO "TFAR_rt1523g_green"
+#define BACKPACK_AR "rhsgref_hidf_alicepack"
+#define BACKPACK_AT "rhs_rpg_2"
+#define BACKPACK_MEDIC "B_FieldPack_oli"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_DE_BUNDESWEHR_2010 {
+class RHS_UNI_YUGOSLAVIA_ARMY_2000 {
   author = "Mazz38";
-  description = "DE: Modern German BUNDESWEHR Flecktarn Camouflage";
+  description = "CS: 2000s Post-Yugoslavia ARMY Olive Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,6 @@ class RHS_UNI_DE_BUNDESWEHR_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

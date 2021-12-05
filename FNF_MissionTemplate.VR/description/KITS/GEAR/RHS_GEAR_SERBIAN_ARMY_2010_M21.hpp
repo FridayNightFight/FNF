@@ -27,28 +27,28 @@
 #define CARBINE_MAG_RI RIFLE_MAG_RI
 #define CARBINE_MAG_CREW "rhsgref_30rnd_556x45_m21:4","rhsgref_30rnd_556x45_m21_t:2"
 
-#define SMG_RIFLE "rhs_weap_savz58v_ris"
-#define SMG_MAG "rhs_30Rnd_762x39mm_Savz58:8"
-#define SMG_MAG_CREW "rhs_30Rnd_762x39mm_Savz58_tracer:4"
+#define SMG_RIFLE "rhs_weap_savz61"
+#define SMG_MAG "rhsgref_20rnd_765x17_vz61:9"
+#define SMG_MAG_CREW "rhsgref_20rnd_765x17_vz61:6"
 
 #define AR_RIFLE "rhs_weap_m84"
 #define AR_MAG "rhs_100Rnd_762x54mmR:6"
 #define AR_MAG_ASST "rhs_100Rnd_762x54mmR:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER M80(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "rhs_weap_m76"
+#define DM_MAG "rhsgref_10Rnd_792x57_m76:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
 #define MMG_MAG "rhsusf_100Rnd_762x51:8"
 #define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m62_tracer:6"
 
-#define SPOTTER_RIFLE "rhs_weap_m14_rail", "rhs_weap_asval_npz"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhs_20rnd_9x39mm_SP6:11"
+#define SPOTTER_RIFLE "rhs_weap_m14_rail", "rhs_weap_m92"
+#define SPOTTER_MAG "rhsusf_20Rnd_762x51_m993_Mag:8", "rhs_10Rnd_762x39mm_U:12"
 
 #define SNP_RIFLE "rhs_weap_m24sws"
 #define SNP_MAG "rhsusf_5Rnd_762x51_m118_special_Mag:12"

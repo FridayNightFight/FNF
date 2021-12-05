@@ -11,7 +11,7 @@
 
 #define HELMET "rhssaf_helmet_m97_veil_oakleaf"
 #define HELMET_CMDR "rhssaf_beret_green"
-#define HELMET_RECON "rhssaf_bandana_oakleaf"
+#define HELMET_RECON "rhssaf_booniehat_md2camo"
 #define HELMET_CREWMAN "rhs_6b48"
 #define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
