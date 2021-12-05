@@ -60,9 +60,12 @@
 // [launcher,[mags],[optics]]
 // #define HALF_AMMO(_count) __EVAL((_count) / (2));
 #define STRINGIFY(s) #s
-#define CARLG(_HEATCount,_HECount) {"rhs_weap_maaws",{STRINGIFY(rhs_mag_maaws_HEAT:_HEATCount),STRINGIFY(rhs_mag_maaws_HE:_HECount)},{"rhs_optic_maaws"},"RELOAD"}
 #define M72LAW(_count) {"rhs_weap_m72a7",{},{},"DISPOSABLE"}
 #define RPG26(_count) {"rhs_weap_rpg26",{},{},"DISPOSABLE"}
+
+#define CARLG(_HEATCount,_HECount) {"rhs_weap_maaws",{STRINGIFY(rhs_mag_maaws_HEAT:_HEATCount),STRINGIFY(rhs_mag_maaws_HE:_HECount)},{"rhs_optic_maaws"},"RELOAD"}
+#define SMAW(_HEATCount,_HECount) {"rhs_weap_smaw_green",{STRINGIFY(rhs_mag_smaw_HEAA:_HEATCount),STRINGIFY(rhs_mag_smaw_HEDP:_HECount)},{"rhs_weap_optic_smaw"},"RELOAD"}
+#define M80(_count) {"rhs_weap_m80",{},{},"DISPOSABLE"}
 #define RPG32(_HEATCount,_HECount) {"launch_RPG32_green_F",{STRINGIFY(RPG32_F:_HEATCount),STRINGIFY(RPG32_HE_F:_HECount)},{},"RELOAD"}
 #define RPG7(_HEATCount,_HECount) {"rhs_weap_rpg7",{STRINGIFY(rhs_rpg7_PG7VL_mag:_HEATCount),STRINGIFY(rhs_rpg7_OG7V_mag:_HECount)},{"rhs_acc_pgo7v3"},"RELOAD"}
 #define TITAN(_count) {"launch_I_Titan_short_F",{STRINGIFY(Titan_AT:_count)},{},"RELOAD"}
@@ -97,7 +100,7 @@ class common {
 #define STD_VN_OPTICS
 #define MAG_VN_OPTICS "vn_o_4x_m16","vn_o_4x_m4956","vn_o_3x_m84","vn_o_3x_m9130"
 // "vn_o_9x_m16","vn_o_9x_m14"
-#define SNP_VN_OPTICS "vn_o_9x_m40a1"
+#define SNP_VN_OPTICS "vn_o_9x_m40a1","vn_o_3x_m9130"
 #define SNP_VN_NVG_OPTICS "vn_o_anpvs2_m40a1"
 
 class optics {

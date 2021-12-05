@@ -20,14 +20,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={400.48465,145.69275,311.33084};
-		dir[]={0.32485813,-0.40124309,0.85653704};
-		up[]={0.14230473,0.91596013,0.3752068};
-		aside[]={0.93507874,-3.0733645e-007,-0.35464475};
+		pos[]={205.20332,145.69275,458.50815};
+		dir[]={0.7030344,-0.48034993,0.52458721};
+		up[]={0.38501313,0.87706715,0.28728709};
+		aside[]={0.59808272,-5.2282121e-007,-0.80152732};
 	};
 };
 binarizationWanted=0;
-sourceName="fnf_missiontemplate";
+sourceName="FNF_MissionTemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -52,14 +52,13 @@ addons[]=
 	"ace_gforces",
 	"ace_parachute",
 	"rhs_c_troops",
-	"rhssaf_c_gear",
-	"modules_f_vietnam"
+	"rhssaf_c_gear"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=22;
+		items=21;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -205,13 +204,6 @@ class AddonsMetaData
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item21
-		{
-			className="modules_f_vietnam";
-			name="modules_f_vietnam";
-			author="Savage Game Design";
-			url="https://www.arma3.com";
-		};
 	};
 };
 dlcs[]=
@@ -352,7 +344,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=137;
+		items=136;
 		class Item0
 		{
 			dataType="Logic";
@@ -38916,16 +38908,6 @@ class Mission
 				};
 				nAttributes=1;
 			};
-		};
-		class Item136
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={-4670.061,5,-5003.6377};
-			};
-			id=7391;
-			type="vn_module_artillery";
 		};
 	};
 	class Connections

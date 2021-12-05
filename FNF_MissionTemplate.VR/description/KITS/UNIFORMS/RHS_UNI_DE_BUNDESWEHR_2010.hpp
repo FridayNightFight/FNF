@@ -16,7 +16,7 @@
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
 #define BACKPACK "B_TacticalPack_blk"
-#define BACKPACK_RADIO "TFAR_rt1523g_black"
+#define BACKPACK_RADIO "TFAR_rt1523g_bwmod"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
 #define BACKPACK_MEDIC "B_Kitbag_rgr"
@@ -88,7 +88,7 @@ class RHS_UNI_DE_BUNDESWEHR_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {U_B_GhillieSuit};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

@@ -22,3 +22,13 @@ class CfgDebriefingSections {
         variable = "acex_killTracker_outputText";
     };
 };
+
+class CfgSettings {
+    class CBA {
+        class Caching {
+            compile = 0;
+            xeh = 0;
+            functions = 0;
+        };
+    };
+};

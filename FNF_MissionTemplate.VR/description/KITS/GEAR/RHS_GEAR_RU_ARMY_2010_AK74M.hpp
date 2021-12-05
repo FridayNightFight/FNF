@@ -27,9 +27,9 @@
 #define CARBINE_MAG_RI RIFLE_MAG_RI
 #define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_AK:4","rhs_30Rnd_545x39_AK_green:2"
 
-#define SMG_RIFLE "rhs_weap_aks74n_2"
-#define SMG_MAG "rhs_30Rnd_545x39_7N10_AK:8"
-#define SMG_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
 #define AR_RIFLE "fnf_rpk"
 #define AR_MAG "fnf_45rnd_rpk_green:6"
@@ -40,8 +40,8 @@
 #define MAT1_LAUNCHER RPG32(2,0)
 #define MAT2_LAUNCHER RPG32(2,0)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "rhs_weap_svdp_wd_npz"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
 #define MMG_RIFLE "rhs_weap_pkp"
 #define MMG_MAG "rhs_100Rnd_762x54mmR:8"

@@ -11,12 +11,12 @@
 
 #define HELMET "rhssaf_helmet_m97_veil_oakleaf"
 #define HELMET_CMDR "rhssaf_beret_green"
-#define HELMET_RECON "rhssaf_bandana_oakleaf"
+#define HELMET_RECON "rhssaf_booniehat_md2camo"
 #define HELMET_CREWMAN "rhs_6b48"
 #define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
 #define BACKPACK "B_FieldPack_oli"
-#define BACKPACK_RADIO "TFAR_anarc164"
+#define BACKPACK_RADIO "TFAR_rt1523g_sage"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
 #define BACKPACK_MEDIC "B_Kitbag_sgg"

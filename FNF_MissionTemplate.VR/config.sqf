@@ -49,7 +49,7 @@ phx_fortifyPoints = 125;
     HIGH: 250
 */
 
-phx_fortifyStyle = "MACV";
+phx_fortifyStyle = "Modern";
 /*
   Determines what objects will be available for phx_defendingSide CEs to place using Fortify tool
     "Modern" will auto-dermine tan or green hescos, sandbags, etc depending on map
@@ -82,16 +82,16 @@ phx_addNVG = 0;
 // UNIFORM AND GEAR CHOICES //
 
 //BLUFOR
-phx_bluforUniform = "VN_UNI_US_MACV";
-phx_bluforGear = "VN_GEAR_US_ARMY1970";
+phx_bluforUniform = "RHS_UNI_US_MARINES_WOODLAND_2010";
+phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
 
 //OPFOR
-phx_opforUniform = "VN_UNI_NLF_Vietcong";
-phx_opforGear = "VN_GEAR_NVA_VC1970";
+phx_opforUniform = "RHS_UNI_RU_RATNIK_2020";
+phx_opforGear = "RHS_GEAR_RU_ARMY_2010_AK74M";
 
 //INDFOR
-phx_indforUniform = "VN_UNI_US_SOG";
-phx_indforGear = "VN_GEAR_US_SOG1970";
+phx_indforUniform = "RHS_UNI_GR_GREEKFORCES_2010";
+phx_indforGear = "RHS_GEAR_GR_GREEKFORCES_2010_L1A1";
 
 
 ////////////////////////////////////////////////////////////
@@ -142,6 +142,6 @@ phx_grnAT_Delta = GEARDEFAULT;
 
 // Show/Hide unit / group icons on map, GPS for players
 // Used in limited-intel scenarios like WWII and Vietnam
-phx_showUnitIcons = false;
+phx_showUnitIcons = true;
 phx_showGroupIcons = true;
 phx_showAlliedFactions = true;

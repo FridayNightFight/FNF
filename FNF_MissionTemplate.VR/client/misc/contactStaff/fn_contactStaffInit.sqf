@@ -1,12 +1,12 @@
 
-[{!isNil "phx_adminChannelId" && time > 0 && !isNull player}, {
+[{!isNil "phx_adminChannelId" && !isNull player}, {
 
 	private _isStaff = true;
 	if (!isNil "fnf_staffInfo") then {
 		_isStaff = (getPlayerUID player) in fnf_staffInfo;
 	};
 	
-	if !(_isStaff || isServer) exitWith {};
+	if !(_isStaff) exitWith {};
 	
 	
 	phx_adminChannelId radioChannelAdd [player];

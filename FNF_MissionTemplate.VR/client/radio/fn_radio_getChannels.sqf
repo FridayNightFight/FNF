@@ -89,23 +89,13 @@ phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font
 player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteString]];
 
 //Next step - wait for loadout
-[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
-  [{call TFAR_fnc_haveSWRadio}, {
-    phx_hasSW = true;
-  }, [], 8, {
-    phx_hasSW = false;
-  }] call CBA_fnc_waitUntilAndExecute;
-
-  [{call TFAR_fnc_haveLRRadio}, {
-    phx_hasLR = true;
-  }, [], 8, {
-    phx_hasLR = false;
-  }] call CBA_fnc_waitUntilAndExecute;
-
   [{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {
-    call phx_fnc_radio_setRadios;
+    [] spawn {
+      sleep 3;
+      call phx_fnc_radio_setRadios;
+    };
   }, [], 60, {
     // systemChat "Radio preset timeout";
     ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 5] call phx_ui_fnc_notify;
   }] call CBA_fnc_waitUntilAndExecute;
-}] call CBA_fnc_waitUntilAndExecute;
+

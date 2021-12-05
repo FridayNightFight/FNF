@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_g3_aor2"
+#define UNIFORM "rhs_uniform_g3_mc"
 
-#define VEST "rhsusf_plateframe_rifleman"
-#define VEST_LEADER "rhsusf_plateframe_teamleader"
-#define VEST_AR "rhsusf_plateframe_machinegunner"
-#define VEST_MEDIC "rhsusf_plateframe_medic"
+#define VEST "rhsusf_iotv_ucp_Rifleman", "rhsusf_iotv_ocp_Rifleman", "rhsusf_spc_patchless_radio", "rhsusf_spc_patchless", "rhsusf_mbav_rifleman", "rhsusf_mbav_light"
+#define VEST_LEADER "rhsusf_spcs_ocp_squadleader", "rhsusf_spcs_ucp_squadleader"
+#define VEST_AR "rhs_6b23_digi_vydra_3m"
+#define VEST_MEDIC "rhsusf_iotv_ocp_Medic", "rhsusf_iotv_ucp_Medic", "rhsusf_mbav_medic"
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsusf_opscore_aor2_pelt", "rhsusf_opscore_aor1_pelt"
-#define HELMET_CMDR "rhsusf_bowman_cap"
-#define HELMET_RECON "H_Booniehat_oli"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask_smiley"
+#define HELMET "rhsusf_opscore_mc_cover", "rhsusf_opscore_mc", "rhsusf_ach_helmet_camo_ocp"
+#define HELMET_CMDR "rhsusf_patrolcap_ocp"
+#define HELMET_RECON "rhs_Booniehat_ocp"
+#define HELMET_CREWMAN "rhsusf_cvc_ess"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask_green"
 
-#define BACKPACK "B_AssaultPack_khk"
-#define BACKPACK_RADIO "TFAR_rt1523g"
-#define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_Kitbag_sgg"
+#define BACKPACK "B_Kitbag_rgr", "B_Kitbag_sgg", "B_Kitbag_tan", "B_Kitbag_mcamo"
+#define BACKPACK_RADIO "TFAR_mr3000_multicam"
+#define BACKPACK_AR "B_Carryall_mcamo", "B_Carryall_cbr"
+#define BACKPACK_AT "B_Carryall_mcamo"
+#define BACKPACK_MEDIC "B_FieldPack_cbr", "B_TacticalPack_mcamo"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_US_NAVY_2010 {
+class RHS_UNI_UA_ARMY_2010 {
   author = "Mazz38";
-  description = "USA: Modern American NAVY AOR Camouflage";
+  description = "UA: Modern Ukrainian ARMY Multicam Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,6 @@ class RHS_UNI_US_NAVY_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
