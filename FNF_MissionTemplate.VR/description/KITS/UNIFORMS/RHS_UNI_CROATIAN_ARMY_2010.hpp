@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_gorka_1_f"
+#define UNIFORM "rhssaf_uniform_m10_digital"
 
-#define VEST "rhsgref_alice_webbing"
+#define VEST "rhsgref_otv_digi"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_flecktarn"
-#define HELMET_CMDR "H_Cap_oli_hs"
-#define HELMET_RECON "rhsusf_Bowman"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "rhsgref_6b27m_ttsko_digi"
+#define HELMET_CMDR "H_Beret_02"
+#define HELMET_RECON "rhssaf_booniehat_digital"
+#define HELMET_CREWMAN "rhs_tsh4_bala"
+#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
-#define BACKPACK "B_TacticalPack_blk"
-#define BACKPACK_RADIO "TFAR_rt1523g_bwmod"
+#define BACKPACK "rhssaf_kitbag_digital"
+#define BACKPACK_RADIO "TFAR_rt1523g_big_bwmod"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_Kitbag_rgr"
+#define BACKPACK_MEDIC "B_FieldPack_oli"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_DE_BUNDESWEHR_2010 {
+class RHS_UNI_CROATIAN_ARMY_2010 {
   author = "Mazz38";
-  description = "DE: Modern German BUNDESWEHR Flecktarn Camouflage";
+  description = "HS: 2010 Croatian ARMY Digital Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,6 @@ class RHS_UNI_DE_BUNDESWEHR_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

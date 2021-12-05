@@ -1,17 +1,17 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_ak74mr"
+#define RIFLE "rhs_weap_ak103_zenitco01"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_30Rnd_545x39_7N10_AK:7","rhs_30Rnd_545x39_AK_plum_green:4"
+#define RIFLE_MAG "rhs_30Rnd_762x39mm_polymer:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12","rhs_30Rnd_545x39_AK_plum_green:6"
+#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_polymer:12","rhs_30Rnd_762x39mm_polymer_tracer:6"
 
 #define SIDEARM "rhs_weap_pya"
 #define SIDEARM_MAG "rhs_mag_9x19_17:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_ak74mr_gp25"
+#define RIFLE_GL "rhs_weap_ak103_gp25_npz"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
@@ -27,9 +27,9 @@
 #define CARBINE_MAG_RI RIFLE_MAG_RI
 #define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_AK:4","rhs_30Rnd_545x39_AK_green:2"
 
-#define SMG_RIFLE "rhs_weap_aks74n_2"
-#define SMG_MAG "rhs_30Rnd_545x39_7N10_AK:8"
-#define SMG_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
 #define AR_RIFLE "fnf_rpk"
 #define AR_MAG "fnf_45rnd_rpk_green:6"
@@ -37,11 +37,11 @@
 
 #define AT_LAUNCHER RPG26(1)
 
-#define MAT1_LAUNCHER RPG32(2,0)
-#define MAT2_LAUNCHER RPG32(2,0)
+#define MAT1_LAUNCHER RPG7(4,2)
+#define MAT2_LAUNCHER RPG7(4,2)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "rhs_weap_svdp_wd_npz"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
 #define MMG_RIFLE "rhs_weap_pkp"
 #define MMG_MAG "rhs_100Rnd_762x54mmR:8"
@@ -55,9 +55,9 @@
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_ID_MEC_2010_AK74MR {
+class RHS_GEAR_ID_MEC_2010_AK103 {
   author = "Mazz38";
-  description = "ID: 2010 Middle Eastern Coalition ARMY AK74MR Kits";
+  description = "ID: 2010 Middle Eastern Coalition ARMY AK103 Kits";
 
   class BASE {
     backpackItems[] = {};
