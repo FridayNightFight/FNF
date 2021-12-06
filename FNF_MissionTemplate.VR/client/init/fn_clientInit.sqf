@@ -55,6 +55,12 @@ player addEventHandler ["Killed", {
   };
 }];
 
+player addEventHandler ["Respawn", {
+	params ["_unit", "_corpse"];
+	_unit allowDamage false;
+	_unit remoteExec ["hideObjectGlobal",2];
+	[player] join createGroup civilian;
+}];
 
 //Marking
 [] execVM "client\icons\QS_icons.sqf";

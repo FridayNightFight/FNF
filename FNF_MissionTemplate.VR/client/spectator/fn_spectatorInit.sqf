@@ -95,3 +95,9 @@ phx_spectatorPrevVisibleCtrls = [];
     };
   };
 }] call CBA_fnc_addPerFrameHandler;
+
+//Hide players also in spectator
+[{
+  _playersToBlacklist = call ace_spectator_fnc_players;
+  [allPlayers, _playersToBlacklist] call ace_spectator_fnc_updateUnits;
+}] call CBA_fnc_addPerFrameHandler;

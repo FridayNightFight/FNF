@@ -4,7 +4,7 @@ enableDebugConsole = 1;
 
 respawn = 3;
 respawnDialog = 0;
-respawndelay = 99999;
+respawndelay = 5;
 respawnOnStart = -1;
 respawnTemplates[] = {};
 joinUnassigned = 1;
