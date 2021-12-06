@@ -44,7 +44,9 @@ _kickButton ctrlAddEventHandler[ "ButtonClick", {
 	params[ "_kickButton" ];
 	
 	_playerList = ctrlParent _kickButton displayCtrl 10000;
-	_selected = (lbSelection _playerList) select 0;
+	_selectedIndex = lbCurSel _playerList;
+	_selected = _playerList lbText _selectedIndex;
+	
 
 	_selected remoteExec ["phx_admin_fnc_kickPlayer", 2];
 	
