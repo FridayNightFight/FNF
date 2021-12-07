@@ -1,2 +1,2 @@
 _playertoKick = _this;
-"llcooljiscool" serverCommand format ["#kick %1", name _playertoKick];
+"llcooljiscool" serverCommand format ["#kick %1", _playertoKick];
