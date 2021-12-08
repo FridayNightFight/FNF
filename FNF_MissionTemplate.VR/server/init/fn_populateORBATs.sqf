@@ -89,6 +89,10 @@ phx_ORBATHandlers = [];
 	};
 
 	if (playableSlotsNumber _side > 3 && phx_enemyStartVisible) then {
+    _helmetImg = [];
+    {
+      _helmetImg pushBack format["<img width='35' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_west_headgear;
 		_PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "phxLoadout" isEqualTo "PL"};
 		[ // PLTHQ
 			missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTHQ", _sideShort], 
@@ -106,7 +110,10 @@ phx_ORBATHandlers = [];
 				if (count _PLTLeader > 0) then {_PLTLeader # 0} else {""}
 			), // commander name
 			"", // rank 
-			"A motorized platoon consisting of two assault squads and two heavy weapons squads, a 6-man reconnaissance team, and (depending on availability) detached mechanized assets and light aerial support.", // description 
+			format["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
+        missionNamespace getVariable [format["phx_%1Gear",_sideNameStr], "N/A"],
+        missionNamespace getVariable [format["phx_%1Uniform",_sideNameStr], "N/A"]
+      ], // description 
 			_vehicles 
 		] call BIS_fnc_ORBATSetGroupParams;
 

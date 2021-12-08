@@ -81,6 +81,7 @@ class CfgFunctions {
       class hintThenClear{};
       class fortifyClient{};
       class clientTime{};
+      class clientSafeStartTime{};
       class killCounter{};
       class showTimeOnMap{};
       class objectivePreview{};

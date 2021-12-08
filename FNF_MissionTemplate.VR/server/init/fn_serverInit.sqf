@@ -12,6 +12,7 @@ missionNamespace setVariable [
 ];
 
 call phx_fnc_serverSafety;
+call phx_fnc_setGroupIDs;
 call phx_fnc_radio_genFreqs;
 call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
@@ -128,14 +129,36 @@ phx_adminChannelId = radioChannelCreate [
 ];
 publicVariable "phx_adminChannelId";
 
-addMissionEventHandler ["PlayerConnected",
-{
+addMissionEventHandler ["PlayerConnected", {
+  if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerConnected", _thisEventHandler]};
+
   [{!isNull ((_this # 1) call BIS_fnc_getUnitByUid)}, {
     params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
     if !(missionNamespace getVariable ["phx_safetyEnabled",true]) exitWith {};
+    if (!_jip) exitWith {};
     private _unit = (_uid call BIS_fnc_getUnitByUid);
-    [] remoteExec ["phx_fnc_createOrbat", units (side (group _unit))];
+    private _sides = _unit call BIS_fnc_friendlySides select {_x != sideFriendly};
+    [{
+      params [["_unit", objNull], ["_sides", [sideUnknown]]];
+      {
+        [] remoteExec ["phx_fnc_createOrbat", units _x - [_unit]];
+      } forEach _sides;
+    }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
   }, _this] call CBA_fnc_waitUntilAndExecute;
+}];
+
+addMissionEventHandler ["PlayerDisconnected", {
+  if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerDisconnected", _thisEventHandler]};
+
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+  private _unit = (_uid call BIS_fnc_getUnitByUid);
+  private _sides = _unit call BIS_fnc_friendlySides select {_x != sideFriendly};
+  [{
+    params [["_unit", objNull], ["_sides", [sideUnknown]]];
+    {
+      [] remoteExec ["phx_fnc_createOrbat", units _x - [_unit]];
+    } forEach _sides;
+  }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
 }];
 
 //Delete player bodies during safe start
@@ -144,7 +167,6 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 
   if (phx_safetyEnabled) then {
     deleteVehicle _unit;
-    [] remoteExec ["phx_fnc_createOrbat", units (side (group _unit))];
   } else {
     //Not needed with ace_respawn_removeDeadBodiesDisconnected = false
     //After safety ends, keep player bodies by transfering ownership of the unit to the server and then killing it

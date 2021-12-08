@@ -16,9 +16,10 @@ _generateORBAT = {
 
     // Loop through the group, print out group ID, leader name and medics if present
     {
-        if !((count units _x) isEqualTo 0) then {
+        // if !((count units _x) isEqualTo 0) then {
             // Don't apply leading line breaks to first group.
             private _groupSize = _x getVariable ["phx_gps_groupSize",0];
+            private _identity = _x getVariable ["phx_groupIdentifier", groupID _x];
             private _name = groupID _x;
             private _longName = _x getVariable ["phx_LongName",groupID _x];
             private _shortName = groupID _x;
@@ -97,12 +98,12 @@ _generateORBAT = {
             if (isNil "_freq") then {
                 _groupString = _groupString + format ["%1 --", _name];
             } else {
-              _groupString = _groupString + format ["<font size='12' face='EtelkaMonospacePro'><font color='%5'>%1 [%4]</font> - %2 MHz - %3 men</font>:  ",
+              _groupString = _groupString + format ["<font size='12' face='EtelkaMonospacePro'><font color='%5'>%1 [%4]</font> - %2 MHz</font>  ",
                 _name,
                 _freq,
                 (count units _x),
                 toUpper(_groupSide select [0,3]),
-                COLOR2
+                "#FF8E38"
               ];
             };
 
@@ -127,20 +128,11 @@ _generateORBAT = {
                   _colorUsed,
                   _thisSpaces
                 ];
-            } forEach (allUnits select {
-              _x getVariable [
-                "phx_startGroup",
-                "UNK"
-              ] == format[
-                "%1 [%2]",
-                _shortName,
-                toUpper(_groupSide select [0,3])
-              ]
-            });
+            } forEach (allUnits select {_x getVariable ["phx_startGroup","UNK"] == _identity});
 
             _groupString = _groupString + "<br/><br/>";
             _functionText = _functionText + _groupString;
-        };
+        // };
     } forEach _groups;
 
     // Return functionText
@@ -170,29 +162,43 @@ phx_colorArrayUsed = [];
 private _groups = [];
 private _templateGroups = [];
 
-{
-    // Add to ORBAT if side matches, group isn't already listed, and group has players
-    private _identity = _x getVariable ["phx_groupIdentifier",groupID _x];
-    if ((side _x in _side) && {!(_x in _groups)} && {({_x in (switchableUnits + playableUnits)} count units _x) > 0}) then {
-        if (_identity in phx_templateGroupsList) then {
-            _templateGroups pushBack _x;
-        } else {
-            _groups pushBack _x;
-        };
-    };
+
+// if someone is in spectator, ORBAT will display attached units with gamelogic
+// if players change groups, the old groups will not be shown. the players who moved will therefore not be listed directly in the new group, despite the manpower count of the destination group increasing.
+
+{ 
+  // Add to ORBAT if side matches, group isn't already listed, and group has players 
+  private _identity = _x getVariable ["phx_groupIdentifier",groupID _x]; 
+  private _groupId = groupID _x; 
+  private _groupSide = side _x;
+  if ( 
+    (side _x in _side) && 
+    {!(_x in _groups)} && 
+    (
+      ({_x in (switchableUnits + playableUnits) && !(_x in ([] call ace_spectator_fnc_players))} count units _x > 0) ||
+      ((units _groupSide) findIf {_x getVariable ["phx_startGroup","UNK"] == _identity} > -1)
+    )
+  ) then { 
+    if (_identity in phx_templateGroupsList) then { 
+      _templateGroups pushBack _x; 
+    } else { 
+      _groups pushBack _x; 
+    }; 
+  }; 
 } forEach allGroups;
+
 
 // Generate ORBAT text for template groups
 private _templateText = [_templateGroups] call _generateORBAT;
 
 // Use next color in the chain when switching between template and non-template groups
 if (isNil "phx_orbat_lastUsedColor") then {
-    phx_orbat_lastUsedColor = ["#FFFFFF"];
+  phx_orbat_lastUsedColor = ["#FFFFFF"];
 };
 phx_colorArray = (phx_colorArrayBase - phx_colorArrayUsed);
 if (count phx_colorArray isEqualTo 0) then {
-    phx_colorArrayUsed = [];
-    phx_colorArray = phx_colorArrayBase;
+  phx_colorArrayUsed = [];
+  phx_colorArray = phx_colorArrayBase;
 };
 private _color = phx_colorArray select 0;
 phx_colorArrayUsed pushBack _color;
@@ -202,10 +208,10 @@ phx_orbat_lastUsedColor = [_color];
 _orbatText = _orbatText + _templateText;
 private _groupText = "";
 if !(_groups isEqualTo []) then {
-    _groupText = [_groups] call _generateORBAT;
+  _groupText = [_groups] call _generateORBAT;
 };
 if !(_groupText isEqualTo "") then {
-    _orbatText = _orbatText + "<br/>Attached Units:<br/>" + _groupText;
+  _orbatText = _orbatText + "<br/>Attached Units:<br/>" + _groupText;
 };
 
 // Insert final result into subsection ORBAT of section Notes

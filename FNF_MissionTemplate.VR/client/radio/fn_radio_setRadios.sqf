@@ -89,4 +89,4 @@ if (phx_hasSW) then {
     [(call TFAR_fnc_activeLrRadio), true] call TFAR_fnc_showRadioInfo;
   };
 };
-call phx_fnc_radio_cleanup;
+// call phx_fnc_radio_cleanup;

@@ -190,7 +190,7 @@ _groups = [
     ["Green_H3","H3","Hotel 3",1, [4, 1, [10, 10.1, 10.2, 10.3]] ]
 ];
 
-phx_templateGroupsList = _groups apply {_x select 0};
+missionNamespace setVariable ["phx_templateGroupsList", _groups apply {_x select 0}, true];
 
 private ["_grp"];
 {
@@ -202,10 +202,10 @@ private ["_grp"];
             _grp setGroupIdGlobal [_shortName,"GroupColor0"];
             //_grp setVariable ["phx_groupIDSet",true,true];
         };
-        _grp setVariable ["phx_groupIdentifier",_identifier];
-        _grp setVariable ["phx_LongName",_longName];
-        _grp setVariable ["phx_gps_groupSize",_groupSize];
-        _grp setVariable ["phx_radioSettings",_radioArray];
+        _grp setVariable ["phx_groupIdentifier",_identifier,true];
+        _grp setVariable ["phx_LongName",_longName,true];
+        _grp setVariable ["phx_gps_groupSize",_groupSize,true];
+        _grp setVariable ["phx_radioSettings",_radioArray,true];
 
         // for AI testing
         // private _groupSide = [(side _grp) call BIS_fnc_sideID] call BIS_fnc_sideName;
@@ -218,8 +218,15 @@ private ["_grp"];
         //   ],
         //   true
         // ]} forEach (units _grp);
+        {
+          player setVariable [
+            "phx_startGroup",
+            (group player) getVariable ["phx_groupIdentifier", groupID (group player)],
+            true
+          ];
+        } remoteExecCall ["call", -2, true];
     };
 } forEach _groups;
 
 
-phx_groupIDset = true;
+missionNamespace setVariable ["phx_groupIDset", true, true];

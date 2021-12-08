@@ -594,7 +594,7 @@ MAT_Diary = player createDiaryRecord ["Diary",["MAT Selection",_MATDataString]];
 player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 [{
-  getClientState == "BRIEFING SHOWN" && 
+  getClientStateNumber >= 9 && 
   !isNil "phx_templateGroupsList" &&
   !isNil "phx_playerBaseChannel" &&
   !isNil "phx_briefing_startingLoadout" &&
@@ -608,6 +608,11 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
   player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
   call phx_briefing_MMNotes;
   call phx_fnc_createOrbat;
+  [{
+    [] spawn phx_fnc_createOrbat;
+    if (getClientStateNumber >= 10) then {[_handle] call CBA_fnc_removePerFrameHandler};
+  }, 7] call CBA_fnc_addPerFrameHandler;
+
   private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
   private _briefingEntryCount = _briefingEntry # 0 # 3;
   player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
