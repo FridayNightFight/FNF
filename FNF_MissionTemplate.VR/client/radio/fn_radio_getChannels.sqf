@@ -84,9 +84,11 @@ if (!isNil "phx_ch8") then {phx_radioNoteString = phx_radioNoteString + "Channel
 if (!isNil "phx_ch9") then {phx_radioNoteString = phx_radioNoteString + "Channel 9: " + str(phx_ch9) + " MHz<br/>";};
 
 //Let player know what channels he starts on.
-PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
+// PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
 phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
-player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteString]];
+phx_briefing_startingRadios = {
+  player createDiaryRecord ["Diary", ["My Radio Settings", phx_radioNoteString]];
+};
 
 //Next step - wait for loadout
   [{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {
@@ -96,6 +98,6 @@ player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteStr
     };
   }, [], 60, {
     // systemChat "Radio preset timeout";
-    ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 5] call phx_ui_fnc_notify;
+    ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
   }] call CBA_fnc_waitUntilAndExecute;
 

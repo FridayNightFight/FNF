@@ -5,7 +5,8 @@ Sends base uniform and helmet classes to clients for each present side
 if (isNil "pRole") then {pRole = 99999;};
 
 _sidePresent = {
-  _this countSide (call BIS_fnc_listPlayers) > 0
+  // _this countSide (call BIS_fnc_listPlayers) > 0
+  playableSlotsNumber _this > 4
 };
 
 

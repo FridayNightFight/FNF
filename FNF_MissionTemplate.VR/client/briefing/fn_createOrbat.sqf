@@ -2,6 +2,12 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // This script has been modified from it's original form.
 // ====================================================================================
+// colors: https://imgur.com/a/AfimbU2
+#define COLOR1 "#944509"
+#define COLOR2 "#FF8E38"
+#define COLOR3 "#E0701B"
+#define COLOR4 "#008394"
+#define COLOR5 "#1BCAE0"
 
 _generateORBAT = {
     params ["_groups"];
@@ -15,22 +21,23 @@ _generateORBAT = {
             private _groupSize = _x getVariable ["phx_gps_groupSize",0];
             private _name = groupID _x;
             private _longName = _x getVariable ["phx_LongName",groupID _x];
+            private _groupSide = [(side _x) call BIS_fnc_sideID] call BIS_fnc_sideName;
             private _groupString = "";
-            private _changeColor = false;
+            private _changeColor = true;
 
             if (_forEachIndex != 0) then {
                 switch (_groupSize) do {
-                    case 0: {_groupString = _groupString + format["    "]; _changeColor = false;};
-                    case 1: {_groupString = _groupString + format["<br />- %1<br />    ",_longName]; _changeColor = true;};
-                    case 2: {_groupString = _groupString + format["<br /><br /><font size='18'>%1</font><br />    ",_longName]; _changeColor = true;};
-                    case 3: {_groupString = _groupString + format["<br /><br /><br /><font size='20'>%1</font><br />    ",_longName]; _changeColor = true;};
+                    case 0: {_groupString = _groupString + format["    "]; _changeColor = true;};
+                    // case 1: {_groupString = _groupString + format["<br />- %1<br />    ",_longName]; _changeColor = true;};
+                    // case 2: {_groupString = _groupString + format["<br /><br /><font size='18'>%1</font><br />    ",_longName]; _changeColor = true;};
+                    // case 3: {_groupString = _groupString + format["<br /><br /><br /><font size='20'>%1</font><br />    ",_longName]; _changeColor = true;};
                 };
             } else {
                 switch (_groupSize) do {
-                    case 0: {_groupString = _groupString + format["    ",_longName]; _changeColor = false;};
-                    case 1: {_groupString = _groupString + format["- %1<br />    ",_longName]; _changeColor = true;};
-                    case 2: {_groupString = _groupString + format["<font size='18'>%1</font><br />    ",_longName]; _changeColor = true;};
-                    case 3: {_groupString = _groupString + format["<font size='20'>%1</font><br />    ",_longName]; _changeColor = true;};
+                    case 0: {_groupString = _groupString + format["",_longName]; _changeColor = true;};
+                    // case 1: {_groupString = _groupString + format["- %1<br />    ",_longName]; _changeColor = true;};
+                    // case 2: {_groupString = _groupString + format["<font size='18'>%1</font><br />    ",_longName]; _changeColor = true;};
+                    // case 3: {_groupString = _groupString + format["<font size='20'>%1</font><br />    ",_longName]; _changeColor = true;};
                 };
             };
 
@@ -89,27 +96,39 @@ _generateORBAT = {
             if (isNil "_freq") then {
                 _groupString = _groupString + format ["%1 --", _name];
             } else {
-                _groupString = _groupString + format ["<font size='16'>%1</font><font size='14'> - %2 MHz </font><font size='12'>- %3 men</font>:  ", _name, _freq, (count units _x)];
+              _groupString = _groupString + format ["<font size='12' face='EtelkaMonospacePro'><font color='%5'>%1 [%4]</font> - %2 MHz - %3 men</font>:  ",
+                _name,
+                _freq,
+                (count units _x),
+                toUpper(_groupSide select [0,3]),
+                COLOR2
+              ];
             };
 
             // Add group members
             {
-                private _leftPad = " ";
-                if !(_forEachIndex isEqualTo 0) then{
-                    _leftPad = ", ";
+                private _leftPad = "      ";
+                // if !(_forEachIndex isEqualTo 0) then{
+                //     _leftPad = ", ";
+                // };
+                private _colorUsed = _color;
+                if (player isEqualTo _x) then {_colorUsed = _highlightColor};
+                private _spacesCount = 21 - count ([phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "BASE"] call BIS_fnc_getFromPairs);
+                private _thisSpaces = "";
+                for "_i" from 1 to _spacesCount do {
+                  _thisSpaces = _thisSpaces + ".";
                 };
-                if (getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "attendant") isEqualTo 1) then {
-                    private _colorUsed = _color;
-                    if (player isEqualTo _x) then {_colorUsed = _highlightColor};
-                    _groupString = _groupString + format["<font size='12'>%2<font color='%3'>%1</font> [M]</font>",name _x,_leftPad,_colorUsed];
-                } else {
-                    private _colorUsed = _color;
-                    if (player isEqualTo _x) then {_colorUsed = _highlightColor};
-                    _groupString = _groupString + format["<font size='12'>%2<font color='%3'>%1</font></font>",name _x,_leftPad,_colorUsed];
-                };
+                _groupString = _groupString + format[
+                  "<br/><font size='9' face='EtelkaMonospacePro'>%3[%2]%5<font color='%4'>%1</font></font>",
+                  name _x,
+                  [phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "BASE"] call BIS_fnc_getFromPairs,
+                  _leftPad,
+                  _colorUsed,
+                  _thisSpaces
+                ];
             } forEach units _x;
 
-            _groupString = _groupString + "<br/>";
+            _groupString = _groupString + "<br/><br/>";
             _functionText = _functionText + _groupString;
         };
     } forEach _groups;
@@ -119,9 +138,9 @@ _generateORBAT = {
 };
 
 //----------------------------------------------------------------------------------------------------
-private _side = side group player;
-private _orbatText = "<br />NOTE: This ORBAT is only valid at mission start.<br />
-<br />";
+private _side = player call BIS_fnc_friendlySides select {_x != sideFriendly};
+// private _orbatText = "<br />NOTE: This ORBAT is only valid at mission start.<br /><br />";
+private _orbatText = "";
 
 phx_colorArrayBase = [
     "#8080FF", // light blue
@@ -144,7 +163,7 @@ private _templateGroups = [];
 {
     // Add to ORBAT if side matches, group isn't already listed, and group has players
     private _identity = _x getVariable ["phx_groupIdentifier",groupID _x];
-    if ((side _x isEqualTo _side) && {!(_x in _groups)} && {({_x in (switchableUnits + playableUnits)} count units _x) > 0}) then {
+    if ((side _x in _side) && {!(_x in _groups)} && {({_x in (switchableUnits + playableUnits)} count units _x) > 0}) then {
         if (_identity in phx_templateGroupsList) then {
             _templateGroups pushBack _x;
         } else {
@@ -180,5 +199,8 @@ if !(_groupText isEqualTo "") then {
 };
 
 // Insert final result into subsection ORBAT of section Notes
-playerORBATRecord = player createDiaryRecord ["ORBAT_Diary", ["Team ORBAT", _orbatText]];
+if (!isNil "playerORBATRecord") then {player removeDiaryRecord ["Diary", playerORBATRecord]};
+playerORBATRecord = player createDiaryRecord ["Diary", ["Allied ORBAT", _orbatText]];
+
+phx_orbat_lastUsedColor = null;
 phx_writtenORBAT = true;

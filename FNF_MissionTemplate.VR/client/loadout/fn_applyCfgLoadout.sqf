@@ -962,29 +962,31 @@ if (isNil {[player, PLAYERLOADOUTVAR] call fnc_loadWeapons}) then {
           // NOTIFY //
 /////////////////////////////////////////
 
+// roles list in fn_clientInit.sqf
 
-private _strRole = "";
-if (LOADOUTROLE("PL")) then {_strRole = " Platoon Leader"};
-if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {_strRole = " Squad Leader"};
-if (LOADOUTROLE("TL")) then {_strRole = " Team Leader"};
-if (LOADOUTROLE("AR")) then {_strRole = "n Automatic Rifleman"};
-if (LOADOUTROLE("ARA")) then {_strRole = "n Asst. Automatic Rifleman"};
-if (LOADOUTROLE("GR")) then {_strRole = " Grenadier"};
-if (LOADOUTROLE("GRIR")) then {_strRole = " Grenadier w/ HuntIR"};
-if (LOADOUTROLE("MG")) then {_strRole = " Machine Gunner"};
-if (LOADOUTROLE("MGA")) then {_strRole = "n Asst. Machine Gunner"};
-if (LOADOUTROLE("CE")) then {_strRole = " Combat Engineer"};
-if (LOADOUTROLE("LAT")) then {_strRole = " Light Anti-Tank Rifleman"};
-if (LOADOUTROLE("MAT1") || LOADOUTROLE("MAT2")) then {_strRole = " Medium Anti-Tank Specialist"};
-if (LOADOUTROLE("MATA1") || LOADOUTROLE("MATA2")) then {_strRole = " Medium Anti-Tank Assistant"};
-if (LOADOUTROLE("RI")) then {_strRole = " Rifleman"};
-if (LOADOUTROLE("RIS")) then {_strRole = " Senior Rifleman"};
-if (LOADOUTROLE("DM")) then {_strRole = " Designated Marksman"};
-if (LOADOUTROLE("SNP")) then {_strRole = " Sniper"};
-if (LOADOUTROLE("CR")) then {_strRole = " Crewman"};
-if (LOADOUTROLE("PI")) then {_strRole = " Pilot"};
-if (LOADOUTROLE("MED")) then {_strRole = " Medic"};
-if (LOADOUTROLE("BASE")) then {_strRole = " Weapon Operator"};
+private _strRole = " ";
+_strRole = [phx_loadout_roles, PLAYERLOADOUTVAR, "Unknown"] call BIS_fnc_getFromPairs;
+// if (LOADOUTROLE("PL")) then {_strRole = " Platoon Leader"};
+// if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {_strRole = " Squad Leader"};
+// if (LOADOUTROLE("TL")) then {_strRole = " Team Leader"};
+// if (LOADOUTROLE("AR")) then {_strRole = "n Automatic Rifleman"};
+// if (LOADOUTROLE("ARA")) then {_strRole = "n Asst. Automatic Rifleman"};
+// if (LOADOUTROLE("GR")) then {_strRole = " Grenadier"};
+// if (LOADOUTROLE("GRIR")) then {_strRole = " Grenadier w/ HuntIR"};
+// if (LOADOUTROLE("MG")) then {_strRole = " Machine Gunner"};
+// if (LOADOUTROLE("MGA")) then {_strRole = "n Asst. Machine Gunner"};
+// if (LOADOUTROLE("CE")) then {_strRole = " Combat Engineer"};
+// if (LOADOUTROLE("LAT")) then {_strRole = " Light Anti-Tank Rifleman"};
+// if (LOADOUTROLE("MAT1") || LOADOUTROLE("MAT2")) then {_strRole = " Medium Anti-Tank Specialist"};
+// if (LOADOUTROLE("MATA1") || LOADOUTROLE("MATA2")) then {_strRole = " Medium Anti-Tank Assistant"};
+// if (LOADOUTROLE("RI")) then {_strRole = " Rifleman"};
+// if (LOADOUTROLE("RIS")) then {_strRole = " Senior Rifleman"};
+// if (LOADOUTROLE("DM")) then {_strRole = " Designated Marksman"};
+// if (LOADOUTROLE("SNP")) then {_strRole = " Sniper"};
+// if (LOADOUTROLE("CR")) then {_strRole = " Crewman"};
+// if (LOADOUTROLE("PI")) then {_strRole = " Pilot"};
+// if (LOADOUTROLE("MED")) then {_strRole = " Medic"};
+// if (LOADOUTROLE("BASE")) then {_strRole = " Weapon Operator"};
 
 
 #define STYLE_HEADER_NOTIFY "<t align='center' size='1.4' color='#e1701a' face='PuristaBold'>"
@@ -1143,8 +1145,8 @@ private _diaryString = [];
 
 _notifyString pushBack (STYLE_HEADER_NOTIFY + "ROLE</t>");
 _diaryString pushBack (STYLE_HEADER_DIARY + "ROLE</font>");
-_notifyString pushBack ("<t align='center' face='PuristaMedium'>You are a" + _strRole + "<br/>in " + (roleDescription player splitString '@' select 1) + "</t>");
-_diaryString pushBack ("<font align='center' face='PuristaMedium'>You are a" + _strRole + " in " + (roleDescription player splitString '@' select 1) + "</t><br/>");
+_notifyString pushBack ("<t align='center' face='PuristaMedium'>You are a " + _strRole + "<br/>in " + (roleDescription player splitString '@' select 1) + "</t>");
+_diaryString pushBack ("<font align='center' face='PuristaMedium'>You are a " + _strRole + " in " + (roleDescription player splitString '@' select 1) + "</t><br/>");
 
 _diaryString pushBack (STYLE_HEADER_DIARY + "General Equipment</font>");
 
@@ -1232,14 +1234,16 @@ if (LOADOUTROLE("CE")) then {
 }, _notifyString, 2] call CBA_fnc_waitAndExecute;
 
 
-
-player createDiaryRecord [
-  "PHX_Diary_Details",
-  [
-    "My Starting Loadout",
-    _diaryString joinString "<br/>"
-  ]
-];
+phx_briefing_loadoutString = _diaryString;
+phx_briefing_startingLoadout = {
+  player createDiaryRecord [
+    "Diary",
+    [
+      "My Starting Loadout",
+      phx_briefing_loadoutString joinString "<br/>"
+    ]
+  ];
+};
 
 if (uniform player != "") then {
   missionNamespace setVariable ["phx_loadoutAssigned",true];

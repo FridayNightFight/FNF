@@ -182,7 +182,7 @@ class RHS_GEAR_HS_CROATIAN_2010_VHS {
     defaultMAT[] = {MAT1_LAUNCHER};
   };
   class MAT1 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
+    defaultMAT[] = {MAT1_LAUNCHER};
   };
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};
