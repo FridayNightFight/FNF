@@ -365,9 +365,9 @@ Author: %6<br/><br/>
 
 
 //list some pertinent variables
-_varStr = _varStr + format ["<font ><font size='16' color='" + COLOR3 + "' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor];
-_varStr = _varStr + "<br/>";
-_varStr = _varStr + "<br/>";
+// _varStr = _varStr + format ["<font ><font size='16' color='" + COLOR3 + "' face='PuristaBold'>%1</font><br/>%2", briefingName, [missionConfigFile] call BIS_fnc_overviewAuthor];
+// _varStr = _varStr + "<br/>";
+// _varStr = _varStr + "<br/>";
 
 _varStr = _varStr + format ["Safe start time: %1 minutes", phx_safeStartTime];
 _varStr = _varStr + "<br/>";
@@ -573,10 +573,7 @@ phx_briefing_MMNotes = {
       // getText(missionConfigFile >> "Author"),
       "Briefing",
       _mmNotes joinString ""
-    ],
-    taskNull,
-    "NONE",
-    false
+    ]
   ];
 };
 
@@ -601,18 +598,19 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
   !isNil "phx_templateGroupsList" &&
   !isNil "phx_playerBaseChannel" &&
   !isNil "phx_briefing_startingLoadout" &&
-  !isNil "phx_briefing_startingRadios"
+  !isNil "phx_briefing_startingRadios" &&
+  missionNamespace getVariable ["phx_groupIDset", false]
 }, {
   params ["_varStr"];
 
-  call phx_fnc_createOrbat;
   call phx_briefing_startingRadios;
   call phx_briefing_startingLoadout;
   player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
   call phx_briefing_MMNotes;
+  call phx_fnc_createOrbat;
   private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
   private _briefingEntryCount = _briefingEntry # 0 # 3;
-  player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 1];
+  player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
 },[_varStr]] call CBA_fnc_waitUntilAndExecute;
 
 

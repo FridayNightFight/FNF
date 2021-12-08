@@ -128,12 +128,23 @@ phx_adminChannelId = radioChannelCreate [
 ];
 publicVariable "phx_adminChannelId";
 
+addMissionEventHandler ["PlayerConnected",
+{
+  [{!isNull ((_this # 1) call BIS_fnc_getUnitByUid)}, {
+    params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+    if !(missionNamespace getVariable ["phx_safetyEnabled",true]) exitWith {};
+    private _unit = (_uid call BIS_fnc_getUnitByUid);
+    [] remoteExec ["phx_fnc_createOrbat", units (side (group _unit))];
+  }, _this] call CBA_fnc_waitUntilAndExecute;
+}];
+
 //Delete player bodies during safe start
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
 
   if (phx_safetyEnabled) then {
     deleteVehicle _unit;
+    [] remoteExec ["phx_fnc_createOrbat", units (side (group _unit))];
   } else {
     //Not needed with ace_respawn_removeDeadBodiesDisconnected = false
     //After safety ends, keep player bodies by transfering ownership of the unit to the server and then killing it

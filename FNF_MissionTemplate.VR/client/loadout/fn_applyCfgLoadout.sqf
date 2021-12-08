@@ -1158,6 +1158,8 @@ _diaryString pushBack (STYLE_HEADER_DIARY + "General Equipment</font>");
 [_playerMagazines, _diaryString, true] call _fnc_notesItems;
 [items player, _diaryString, true] call _fnc_notesItems;
 [assignedItems player, _diaryString, false] call _fnc_notesItems;
+_diaryString pushBack "<br/>";
+
 // _currentLoadout = (getUnitLoadout player) params [
 //   "_primaryWeapon",
 //   "_secondaryWeapon",

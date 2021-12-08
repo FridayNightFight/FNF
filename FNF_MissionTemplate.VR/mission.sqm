@@ -20,14 +20,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={205.20332,145.69275,458.50815};
-		dir[]={0.7030344,-0.48034993,0.52458721};
-		up[]={0.38501313,0.87706715,0.28728709};
-		aside[]={0.59808272,-5.2282121e-007,-0.80152732};
+		pos[]={463.77875,42.329849,627.80707};
+		dir[]={0.16029374,-0.60860747,0.77711189};
+		up[]={0.12294831,0.79347146,0.59605938};
+		aside[]={0.97938234,0,-0.20201576};
 	};
 };
 binarizationWanted=0;
-sourceName="FNF_MissionTemplate";
+sourceName="fnf_missiontemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -300,7 +300,6 @@ class Mission
 	{
 		briefingName="FNF Mission Template";
 		overviewText="Insert mission details shown at lobby screen here (Multiplayer attributes > Lobby > Summary)";
-		resistanceWest=0;
 		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0.1;
@@ -9514,7 +9513,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={496.02899,5.0014391,686.66229};
+						position[]={496.0817,5.0014391,686.69891};
 					};
 					side="West";
 					flags=4;

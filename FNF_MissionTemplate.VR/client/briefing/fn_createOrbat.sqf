@@ -21,6 +21,7 @@ _generateORBAT = {
             private _groupSize = _x getVariable ["phx_gps_groupSize",0];
             private _name = groupID _x;
             private _longName = _x getVariable ["phx_LongName",groupID _x];
+            private _shortName = groupID _x;
             private _groupSide = [(side _x) call BIS_fnc_sideID] call BIS_fnc_sideName;
             private _groupString = "";
             private _changeColor = true;
@@ -126,7 +127,16 @@ _generateORBAT = {
                   _colorUsed,
                   _thisSpaces
                 ];
-            } forEach units _x;
+            } forEach (allUnits select {
+              _x getVariable [
+                "phx_startGroup",
+                "UNK"
+              ] == format[
+                "%1 [%2]",
+                _shortName,
+                toUpper(_groupSide select [0,3])
+              ]
+            });
 
             _groupString = _groupString + "<br/><br/>";
             _functionText = _functionText + _groupString;
@@ -202,5 +212,5 @@ if !(_groupText isEqualTo "") then {
 if (!isNil "playerORBATRecord") then {player removeDiaryRecord ["Diary", playerORBATRecord]};
 playerORBATRecord = player createDiaryRecord ["Diary", ["Allied ORBAT", _orbatText]];
 
-phx_orbat_lastUsedColor = null;
+phx_orbat_lastUsedColor = nil;
 phx_writtenORBAT = true;

@@ -31,6 +31,17 @@ phx_loadout_roles = [
   ["BASE","Crew/Wpn Operator"]
 ];
 
+[{missionNamespace getVariable ["phx_groupIDset", false]}, {
+  private _groupSide = [(side group player) call BIS_fnc_sideID] call BIS_fnc_sideName;
+  player setVariable [
+    "phx_startGroup",
+    format[
+      "%1 [%2]",
+      groupId (group player),
+      toUpper(_groupSide select [0,3])
+    ], true
+  ];
+}] call CBA_fnc_waitUntilAndExecute;
 
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_fnc_briefInit; //Briefing
@@ -52,7 +63,6 @@ call phx_fnc_teleportInit; // Add leadership teleport options
 if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
 	call phx_admin_fnc_jipPatch;
 };
-
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
@@ -86,12 +96,6 @@ player addEventHandler ["Killed", {
     ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
   };
 }];
-
-if (didJIP && missionNamespace getVariable ["phx_safetyEnabled", false]) then {
-  [{getClientState == "BRIEFING READ"}, {
-    [] remoteExec ["phx_fnc_createOrbat",-2];
-  }] call CBA_fnc_waitUntilAndExecute;
-};
 
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
