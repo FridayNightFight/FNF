@@ -53,6 +53,7 @@ class CfgFunctions {
     class loadout {
       file = "client\loadout";
       class applyCfgLoadout{};
+      class applyCfgLoadoutScreenshots{};
       class addGear{};
       class checkLoadout{};
       class setMAT{};

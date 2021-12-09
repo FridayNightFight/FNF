@@ -141,7 +141,7 @@ addMissionEventHandler ["PlayerConnected", {
     [{
       params [["_unit", objNull], ["_sides", [sideUnknown]]];
       {
-        [] remoteExec ["phx_fnc_createOrbat", units _x - [_unit]];
+        [] remoteExec ["phx_fnc_createOrbat", units _x];
       } forEach _sides;
     }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
   }, _this] call CBA_fnc_waitUntilAndExecute;
@@ -156,7 +156,7 @@ addMissionEventHandler ["PlayerDisconnected", {
   [{
     params [["_unit", objNull], ["_sides", [sideUnknown]]];
     {
-      [] remoteExec ["phx_fnc_createOrbat", units _x - [_unit]];
+      [] remoteExec ["phx_fnc_createOrbat", units _x];
     } forEach _sides;
   }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
 }];

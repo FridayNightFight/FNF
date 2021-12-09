@@ -224,7 +224,7 @@ private ["_grp"];
             (group player) getVariable ["phx_groupIdentifier", groupID (group player)],
             true
           ];
-        } remoteExecCall ["call", -2, true];
+        } remoteExecCall ["call", 0, true];
     };
 } forEach _groups;
 
