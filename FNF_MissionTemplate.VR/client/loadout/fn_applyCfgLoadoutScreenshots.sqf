@@ -825,18 +825,18 @@ if (isNil {
 
 
 
-if (isNil {
-  [
-    _setUnit,
-    _cfgGiveSRRadio,
-    _cfgGiveLRRadio
-  ] call fnc_giveRadios
-}) then {
-  [{time > 2}, {
-    ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
-  }] call CBA_fnc_waitUntilAndExecute;
-};
+// if (isNil {
+//   [
+//     _setUnit,
+//     _cfgGiveSRRadio,
+//     _cfgGiveLRRadio
+//   ] call fnc_giveRadios
+// }) then {
+//   [{time > 2}, {
+//     ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
+//     diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
+//   }] call CBA_fnc_waitUntilAndExecute;
+// };
 
 if (isNil {
   [
