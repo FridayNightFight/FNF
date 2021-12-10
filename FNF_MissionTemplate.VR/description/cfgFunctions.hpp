@@ -88,6 +88,7 @@ class CfgFunctions {
       class objectivePreview{};
       class fixUniformBug{};
       class SCUDFired{};
+      class lobbyTextGenerator{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";

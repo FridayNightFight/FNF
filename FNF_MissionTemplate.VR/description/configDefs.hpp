@@ -50,8 +50,8 @@
 #define HMG_DSHKM_LO(_boxes) ["ace_compat_rhs_gref3_dshkm_carry","ace_csw_kordCarryTripodLow",[STRINGIFY(ace_csw_50Rnd_127x108_mag:_boxes)]]
 
 #define AT_SPG9(_he,_heat) ["ace_compat_rhs_afrf3_spg9_carry","ace_csw_spg9CarryTripod",[STRINGIFY(ace_compat_rhs_afrf3_mag_OG9VM:_he),STRINGIFY(ace_compat_rhs_afrf3_mag_PG9V:_heat)]]
-#define AT_METIS(_he,_heat) ["ace_compat_rhs_afrf3_metis_carry",nil,[STRINGIFY(ace_compat_rhs_afrf3_mag_9M131F:_he),STRINGIFY(ace_compat_rhs_afrf3_mag_9M131M:_heat)]]
-#define AT_TOW(_tow) ["ace_compat_rhs_usf3_tow_carry",[STRINGIFY(ace_compat_rhs_usf3_mag_TOW:_tow)]]
+#define AT_METIS(_he,_heat) ["ace_compat_rhs_afrf3_metis_carry","",[STRINGIFY(ace_compat_rhs_afrf3_mag_9M131F:_he),STRINGIFY(ace_compat_rhs_afrf3_mag_9M131M:_heat)]]
+#define AT_TOW(_tow) ["ace_compat_rhs_usf3_tow_carry","",[STRINGIFY(ace_compat_rhs_usf3_mag_TOW:_tow)]]
 
 
 #define VN_MORTAR_TYPE53(_hecnt,_smk,_illum) ["ace_compat_sog_mortar_type53_carry","ace_csw_carryMortarBaseplate",[STRINGIFY(ace_compat_sog_82mm_he:_hecnt),STRINGIFY(ace_compat_sog_82mm_wp:_smk),STRINGIFY(ace_compat_sog_82mm_lume:_illum)]]

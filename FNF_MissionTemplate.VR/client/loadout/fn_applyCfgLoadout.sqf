@@ -105,7 +105,7 @@ fnc_handleSHQAUX = {
     {
       private _action = [
         "CSW_Selector",
-        getText (configFile >> "cfgWeapons" >> _x >> "displayName"),
+        (if (_x isEqualTo "") then {"Ammo only"} else {getText (configFile >> "cfgWeapons" >> _x >> "displayName")}),
         "",
         { // statement (pass arg)
           (_this select 2) call phx_selector_fnc_csw;
