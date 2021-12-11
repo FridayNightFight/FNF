@@ -54,6 +54,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+  call phx_fnc_clientSafeStartTime;
   [player getVariable "phxLoadout"] call phx_fnc_applyCfgLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
@@ -66,8 +67,8 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
   call phx_fnc_fortifyClient;
   call phx_selector_fnc_init;
   player enableSimulation true;
-  call phx_fnc_clientSafeStartTime;
 }] call CBA_fnc_waitUntilAndExecute;
+
 
 //Start kill counter when game ends or player is dead
 //[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;

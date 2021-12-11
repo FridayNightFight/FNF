@@ -106,7 +106,6 @@ class RHS_GEAR_RU_ARMY_2010_AK74M {
       LEADER_SMOKES
     };
     items[] += {LEADER_TOOLS};
-    linkedItems[] += {VECTOR};
     giveSideKey = 1;
     giveLRRadio = 1;
   };

@@ -1,7 +1,8 @@
 //Change channel numbers from user readable to script readable
-phx_curChan = phx_curChan - 1;
-phx_altChan = phx_altChan - 1;
-
+if (isNil "phx_radiosSet") then {
+  phx_curChan = phx_curChan - 1;
+  phx_altChan = phx_altChan - 1;
+};
 
 // [ // stereo settings example
 // 	1, // active channel (value - 1, as it uses a 0-based index)
@@ -74,7 +75,7 @@ if (phx_hasSW) then {
     [(call TFAR_fnc_activeSwRadio), phx_loadout_TFAREncryptionCode] call TFAR_fnc_setSwRadioCode;
 };
 
-
+missionNamespace setVariable ["phx_radiosSet", true];
 //Everything should be setup. Let the player know.
 // systemChat "Radios preset.";
 [] spawn {

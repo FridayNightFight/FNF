@@ -11,29 +11,29 @@ phx_loadout_TFAREncryptionCode = "";
 switch (_side) do {
     case east: {
       phx_playerBaseChannel = phx_opforBaseChannel;
-      phx_loadout_TFAREncryptionCode = "opfor";
+      phx_loadout_TFAREncryptionCode = "_opfor";
     };
     case west: {
       phx_playerBaseChannel = phx_bluforBaseChannel;
-      phx_loadout_TFAREncryptionCode = "blufor";
+      phx_loadout_TFAREncryptionCode = "_bluefor";
     };
     case independent: {
 
       if (_alliedWest) exitWith {
         phx_playerBaseChannel = phx_bluforBaseChannel;
-        phx_loadout_TFAREncryptionCode = "blufor";
+        phx_loadout_TFAREncryptionCode = "_bluefor";
       };
       if (_alliedEast) exitWith {
         phx_playerBaseChannel = phx_opforBaseChannel;
-        phx_loadout_TFAREncryptionCode = "opfor";
+        phx_loadout_TFAREncryptionCode = "_opfor";
       };
 
       phx_playerBaseChannel = phx_indforBaseChannel;
-      phx_loadout_TFAREncryptionCode = "indfor";
+      phx_loadout_TFAREncryptionCode = "_independent";
     };
     case civilian: {
       phx_playerBaseChannel = phx_civilianBaseChannel;
-      phx_loadout_TFAREncryptionCode = "civilian";
+      phx_loadout_TFAREncryptionCode = "_civilian";
     };
     default { titleText ["The game thinks you aren't one of the three teams!","PLAIN"]; };
 };
@@ -91,13 +91,11 @@ phx_briefing_startingRadios = {
 };
 
 //Next step - wait for loadout
-  [{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {
-    [] spawn {
-      sleep 3;
-      call phx_fnc_radio_setRadios;
-    };
-  }, [], 60, {
-    // systemChat "Radio preset timeout";
-    ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
-  }] call CBA_fnc_waitUntilAndExecute;
-
+[{!isNil "phx_hasSW" && !isNil "phx_hasLR" && call TFAR_fnc_isAbleToUseRadio}, {
+  call TFAR_fnc_requestRadios;
+  // call phx_fnc_radio_setRadios;
+  [{call phx_fnc_radio_setRadios},[],2] call CBA_fnc_waitAndExecute;
+}, [], 60, {
+  // systemChat "Radio preset timeout";
+  ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
+}] call CBA_fnc_waitUntilAndExecute;

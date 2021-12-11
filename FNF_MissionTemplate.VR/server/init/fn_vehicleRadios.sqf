@@ -7,7 +7,7 @@ private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], fa
     params ["_vehicle"];
     _radios = _vehicle call TFAR_fnc_getVehicleRadios;
     {
-      [_x, "blufor"] call TFAR_fnc_setLrRadioCode;
+      [_x, "_bluefor"] call TFAR_fnc_setLrRadioCode;
     } forEach _radios;
   }, [_x], 10, {}] call CBA_fnc_waitUntilAndExecute;
 } forEach (_vics inAreaArray "bluforSafeMarker");
@@ -18,7 +18,7 @@ private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], fa
     params ["_vehicle"];
     _radios = _vehicle call TFAR_fnc_getVehicleRadios;
     {
-      [_x, "opfor"] call TFAR_fnc_setLrRadioCode;
+      [_x, "_opfor"] call TFAR_fnc_setLrRadioCode;
     } forEach _radios;
   }, [_x], 10, {}] call CBA_fnc_waitUntilAndExecute;
 } forEach (_vics inAreaArray "opforSafeMarker");
@@ -29,7 +29,7 @@ private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], fa
     params ["_vehicle"];
     _radios = _vehicle call TFAR_fnc_getVehicleRadios;
     {
-      [_x, "indfor"] call TFAR_fnc_setLrRadioCode;
+      [_x, "_independent"] call TFAR_fnc_setLrRadioCode;
     } forEach _radios;
   }, [_x], 10, {}] call CBA_fnc_waitUntilAndExecute;
 } forEach (_vics inAreaArray "indforSafeMarker");

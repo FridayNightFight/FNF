@@ -153,7 +153,7 @@ phx_safetyEndExpression = {
 
 //Admin end start trigger
 // if (serverCommandAvailable "#kick") then {
-if (getPlayerUID player in fnf_staffInfo || serverCommandAvailable "#kick") then {
+if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick") then {
   PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin", "\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa"];
 
   //display template version
