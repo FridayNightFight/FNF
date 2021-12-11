@@ -40,8 +40,8 @@
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "rhs_weap_sr25_ec"
+#define DM_MAG "rhsusf_20Rnd_762x51_SR25_m118_special_Mag:8", "rhsusf_20Rnd_762x51_SR25_m62_Mag:4"
 
 #define MMG_RIFLE "rhs_weap_m240G"
 #define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"

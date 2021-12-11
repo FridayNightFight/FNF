@@ -18,7 +18,7 @@
 #define BACKPACK "rhs_sidor"
 #define BACKPACK_RADIO "TFAR_rt1523g_fabric"
 #define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "rhs_rpg_2"
+#define BACKPACK_AT "B_Carryall_oli"
 #define BACKPACK_MEDIC "B_TacticalPack_rgr"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO

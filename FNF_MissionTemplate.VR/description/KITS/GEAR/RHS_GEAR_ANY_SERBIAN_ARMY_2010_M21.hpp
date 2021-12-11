@@ -1,17 +1,17 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_m70b1n"
+#define RIFLE "rhs_weap_m21a"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhssaf_30Rnd_762x39mm_M67:8","rhssaf_30Rnd_762x39mm_M78_tracer:10"
+#define RIFLE_MAG "rhsgref_30rnd_556x45_m21:8","rhsgref_30rnd_556x45_m21_t:10"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhssaf_30Rnd_762x39mm_M67:12","rhssaf_30Rnd_762x39mm_M78_tracer:12"
+#define RIFLE_MAG_RI "rhsgref_30rnd_556x45_m21:12","rhsgref_30rnd_556x45_m21_t:12"
 
 #define SIDEARM "rhs_weap_cz99"
 #define SIDEARM_MAG "rhssaf_mag_15Rnd_9x19_FMJ:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_m70b3n_pbg40"
+#define RIFLE_GL "rhs_weap_m21a_pbg40"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
@@ -22,10 +22,10 @@
 #define UGL_FLAREWHITE rhs_VOG25P
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_m92"
+#define CARBINE "rhs_weap_m21s"
 #define CARBINE_MAG RIFLE_MAG
 #define CARBINE_MAG_RI RIFLE_MAG_RI
-#define CARBINE_MAG_CREW "rhssaf_30Rnd_762x39mm_M67:4","rhssaf_30Rnd_762x39mm_M78_tracer:2"
+#define CARBINE_MAG_CREW "rhsgref_30rnd_556x45_m21:4","rhsgref_30rnd_556x45_m21_t:2"
 
 #define SMG_RIFLE "rhs_weap_savz61"
 #define SMG_MAG "rhsgref_20rnd_765x17_vz61:9"
@@ -37,8 +37,8 @@
 
 #define AT_LAUNCHER M80(1)
 
-#define MAT1_LAUNCHER RPG7(4,2)
-#define MAT2_LAUNCHER RPG7(4,2)
+#define MAT1_LAUNCHER CARLG(2,0)
+#define MAT2_LAUNCHER CARLG(2,0)
 
 #define DM_RIFLE "rhs_weap_m76"
 #define DM_MAG "rhsgref_10Rnd_792x57_m76:11"
@@ -55,9 +55,9 @@
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_YUGOSLAVIA_ARMY_2000_M70 {
-  author = "FNF";
-  description = "CS: 2000s Yugoslavia ARMY M70 Kits";
+class RHS_GEAR_ANY_SERBIAN_ARMY_2010_M21 {
+  author = "Mazz38";
+  description = "CS: 2010 Serbian ARMY M21 Kits";
 
   class BASE {
     backpackItems[] = {};

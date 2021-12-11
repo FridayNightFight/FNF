@@ -12,7 +12,7 @@
 #define HELMET "rhs_6b47_bala"
 #define HELMET_CMDR "rhs_vkpo_cap_alt"
 #define HELMET_RECON "rhs_Booniehat_digi"
-#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
+#define HELMET_CREWMAN "rhs_6b48"
 #define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
 #define BACKPACK "rhs_rk_sht_30_emr"
