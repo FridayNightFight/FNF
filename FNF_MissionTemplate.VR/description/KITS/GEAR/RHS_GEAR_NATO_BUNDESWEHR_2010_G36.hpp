@@ -31,21 +31,21 @@
 #define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
 #define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
 
-#define AR_RIFLE "rhs_weap_mg42"
-#define AR_MAG "rhsgref_296Rnd_792x57_SmE_notracers_belt:6"
-#define AR_MAG_ASST "rhsgref_296Rnd_792x57_SmE_belt:4"
+#define AR_RIFLE "rhs_weap_minimi_para_railed"
+#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
+#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
 #define AT_LAUNCHER M72LAW(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE "rhs_weap_SCARH_LB"
-#define DM_MAG "rhs_mag_20Rnd_SCAR_762x51_m118_special_bk:12"
+#define DM_RIFLE "rhs_weap_hk416d145"
+#define DM_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:11"
 
-#define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
+#define MMG_RIFLE "rhs_weap_mg42"
+#define MMG_MAG "rhsgref_296Rnd_792x57_SmE_belt:6"
+#define MMG_MAG_ASST "rhsgref_296Rnd_792x57_SmE_belt:4"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhsusf_weap_MP7A2"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhsusf_mag_40Rnd_46x30_FMJ:8"
@@ -55,9 +55,9 @@
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_NATO_LITHUANIA_2020_G36C {
+class RHS_GEAR_NATO_BUNDESWEHR_2010_G36 {
   author = "FNF";
-  description = "DE: Nato Lithuanian Olive G36C Kits";
+  description = "DE: German BUNDESWEHR G36 Kits";
 
   class BASE {
     backpackItems[] = {};

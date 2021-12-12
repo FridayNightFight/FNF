@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_FROG01_wd"
+#define UNIFORM "rhsgref_uniform_gorka_1_f"
 
-#define VEST "rhsusf_spc_corpsman"
-#define VEST_LEADER "rhsusf_spc_teamleader"
-#define VEST_AR "rhsusf_spc_iar"
-#define VEST_MEDIC "rhsusf_spc_rifleman"
+#define VEST "rhsgref_alice_webbing"
+#define VEST_LEADER VEST
+#define VEST_AR VEST
+#define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsusf_lwh_helmet_marpatwd_headset_blk2"
-#define HELMET_CMDR "rhs_8point_marpatwd"
-#define HELMET_RECON "rhs_booniehat2_marpatwd"
+#define HELMET "rhsgref_helmet_pasgt_flecktarn"
+#define HELMET_CMDR "H_Beret_02"
+#define HELMET_RECON "rhsusf_Bowman"
 #define HELMET_CREWMAN "rhsusf_cvc_green_ess"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "rhsusf_assault_eagleaiii_coy"
-#define BACKPACK_RADIO "TFAR_rt1523g_black"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "B_Kitbag_cbr"
+#define BACKPACK "B_TacticalPack_blk"
+#define BACKPACK_RADIO "TFAR_rt1523g_bwmod"
+#define BACKPACK_AR "B_Carryall_oli"
+#define BACKPACK_AT "B_Carryall_oli"
+#define BACKPACK_MEDIC "B_Kitbag_rgr"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_US_MARINES_WOODLAND_2010 {
+class RHS_UNI_NATO_GER_BUNDESWEHR_2010 {
   author = "Mazz38";
-  description = "USA: Modern American MARINES Woodland Camouflage";
+  description = "DE: Modern German BUNDESWEHR Flecktarn Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,6 +88,7 @@ class RHS_UNI_US_MARINES_WOODLAND_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
