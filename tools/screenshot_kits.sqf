@@ -36,269 +36,30 @@ _loadoutRolesToCheck = [];
     (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> (_x # 0)) call Bis_fnc_getCfgSubClasses
   ];
 } forEach [
+  ["RHS_UNI_CROATIAN_ARMY_2010","RHS_GEAR_HS_CROATIAN_2010_VHS"],
+  ["RHS_UNI_CZ_CZECHFORCES_2010","RHS_GEAR_CZ_CZECHFORCES_2010_VZ58"],
+  ["RHS_UNI_DE_BUNDESWEHR_2010","RHS_GEAR_DE_BUNDESWEHR_2010_G36"],
+  // ["RHS_UNI_DPR_COSSACKS_2010","RHS_GEAR_RU_ARMY_2010_AK74M"],
+  ["RHS_UNI_GR_GREEKFORCES_2010","RHS_GEAR_GR_GREEKFORCES_2010_L1A1"],
+  ["RHS_UNI_ID_MEC_2010","RHS_GEAR_ID_MEC_2010_AK103"],
+  ["RHS_UNI_ID_NAVSOG_2010","RHS_GEAR_ID_NAVSOG_2010_M16A4"],
+  ["RHS_UNI_ID_REBELS_2010","RHS_GEAR_ID_REBELS_2010_AKMN"],
   ["RHS_UNI_RU_RATNIK_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
   ["RHS_UNI_RU_RATNIK_D_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
   ["RHS_UNI_RU_SPETSNAZ_2010","RHS_GEAR_RU_ARMY_2010_AK74M"],
-  ["RHS_UNI_RU_SPETSNAZ_2020","RHS_GEAR_RU_ARMY_2010_AK74M"],
-
-  ["RHS_UNI_ID_MEC_2010","RHS_GEAR_ID_MEC_2010_AK74MR"],
-  ["RHS_UNI_DE_BUNDESWEHR_2010","RHS_GEAR_DE_BUNDESWEHR_2010_G36"],
-  ["RHS_UNI_ID_NAVSOG_2010","RHS_GEAR_ID_NAVSOG_2010_M16A4"],
-
-  ["RHS_UNI_SOV_ARMY_1980","RHS_GEAR_SOV_ARMY_1980_AK74"],
-
-  ["RHS_UNI_SERBIAN_ARMY_2010", "RHS_GEAR_SERBIAN_ARMY_2010_M21"],
-
-  ["RHS_UNI_US_ARMY_1980","RHS_GEAR_US_ARMY_1980_M14"],
+  ["RHS_UNI_SERBIAN_ARMY_2010","RHS_GEAR_SERBIAN_ARMY_2010_M21"],
+  ["RHS_UNI_UA_ARMY_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
   ["RHS_UNI_US_ARMY_2020","RHS_GEAR_US_ARMY_2010_M16A4"],
-  ["RHS_UNI_US_ARMY_OCP","RHS_GEAR_US_ARMY_2010_M16A4"],
-  ["RHS_UNI_MARINES_DESERT_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
-  ["RHS_UNI_MARINES_WOODLAND_2010","RHS_GEAR_US_ARMY_2010_M16A4"],
+  ["RHS_UNI_US_MARINES_DESERT_2010","RHS_GEAR_US_MARINES_2020_M27"],
+  ["RHS_UNI_US_MARINES_WOODLAND_2010","RHS_GEAR_US_MARINES_2020_M27"],
+  ["RHS_UNI_US_NAVY_2010","RHS_GEAR_US_NAVY_2010_MK18"],
   ["RHS_UNI_US_RANGERS_2020","RHS_GEAR_US_RANGERS_2010_SCAR"],
-
-  ["VN_UNI_NLF_Vietcong","VN_GEAR_NVA_VC1970"],
-  ["VN_UNI_NVA_Vietcong","VN_GEAR_NVA_VC1970"],
-  ["VN_UNI_PAVN_NVA","VN_GEAR_NVA_VC1970"],
-  ["VN_UNI_SVA_ARVN","VN_GEAR_NVA_VC1970"],
-  ["VN_UNI_US_MACV","VN_GEAR_US_ARMY1970"],
-  ["VN_UNI_US_SOG","VN_GEAR_US_SOG1970"]
+  ["RHS_UNI_YUGOSLAVIA_ARMY_2000","RHS_GEAR_YUGOSLAVIA_ARMY_2000_M70"]
 ];
 
 
+
 //////////////////////////////////////////////////////////////////////////////
-
-
-
-fnc_assignLoadoutFromConfig = {
-  params ["_unit", "_role", "_uniformSet", "_gearSet"];
-
-  #define LOADOUTROLE(_str) (_role isEqualTo _str)
-  #define CFGCOMMON missionConfigFile >> "CfgLoadouts" >> "common"
-  #define CFGOPTICS missionConfigFile >> "CfgLoadouts" >> "optics"
-  #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> _uniformSelection >> _role
-  #define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearSelection >> _role
-
-  {
-    _unit unassignItem _x;
-    _unit removeItem _x;
-  } forEach [
-    "NVGoggles",
-    "NVGoggles_OPFOR",
-    "NVGoggles_INDEP"
-  ];
-  removeAllItems _unit;
-  removeAllWeapons _unit;
-  removeUniform _unit;
-  removeVest _unit;
-  removeBackpack _unit;
-  removeHeadgear _unit;
-  removeGoggles _unit;
-
-  private _cfgUniform = (CFGUNIFORM >> "uniform") call BIS_fnc_getCfgDataArray;
-  private _cfgVest = (CFGUNIFORM >> "vest") call BIS_fnc_getCfgDataArray;
-  private _cfgHeadgear = (CFGUNIFORM >> "headgear") call BIS_fnc_getCfgDataArray;
-  private _cfgBackpack = (CFGUNIFORM >> "backpack") call BIS_fnc_getCfgDataArray;
-  private _cfgBackpackItems = (CFGGEAR >> "backpackItems") call BIS_fnc_getCfgDataArray;
-  private _cfgLaunchers = (CFGGEAR >> "launchers") call BIS_fnc_getCfgDataArray;
-  private _cfgSidearms = (CFGGEAR >> "sidearms") call BIS_fnc_getCfgDataArray;
-  private _cfgMagazines = (CFGGEAR >> "magazines") call BIS_fnc_getCfgDataArray;
-  private _cfgItems = (CFGGEAR >> "items") call BIS_fnc_getCfgDataArray;
-  private _cfgLinkedItems = (CFGGEAR >> "linkedItems") call BIS_fnc_getCfgDataArray;
-  private _cfgWeaponChoices = (CFGGEAR >> "weaponChoices") call BIS_fnc_getCfgDataArray;
-  private _cfgAttachments = (CFGGEAR >> "attachments") call BIS_fnc_getCfgDataArray;
-  private _cfgLauncherAttachments = (CFGGEAR >> "launcherAttachments") call BIS_fnc_getCfgDataArray;
-
-
-
-  fnc_getWeaponMagazines = {
-    params ["_toSearch", "_weapon", ["_allMuzzles", true]];
-    private _out = [];
-    {
-      if ((_x splitString ':' select 0) in ([_weapon, _allMuzzles] call CBA_fnc_compatibleMagazines)) then {
-        _out pushBack _x;
-      };
-    } forEach _toSearch;
-    _out
-  };
-
-
-  // Wearable
-  private _uniform = if (_cfgUniform isEqualTo []) then { "" } else { selectRandom _cfgUniform };
-  private _vest = if (_cfgVest isEqualTo []) then { "" } else { selectRandom _cfgVest };
-  private _backpack = if (_cfgBackpack isEqualTo []) then { "" } else { selectRandom _cfgBackpack };
-  private _headgear = if (_cfgHeadgear isEqualTo []) then { "" } else { selectRandom _cfgHeadgear };
-
-
-
-  _unit forceAddUniform _uniform;
-  _unit addVest _vest;
-  _unit addBackpack _backpack;
-  _unit addHeadgear _headgear;
-
-  // Items, grenades
-  {[_x, "vest", _unit] call phx_fnc_addGear} forEach _cfgMagazines;
-  {[_x, "uniform", _unit] call phx_fnc_addGear} forEach _cfgItems;
-  {[_x, "backpack", _unit] call phx_fnc_addGear} forEach _cfgBackpackItems;
-  {_unit linkItem _x} forEach _cfgLinkedItems;
-
-
-  // Primary weapon and appropriate magazines
-  phx_loadout_weaponChosen = if (count _cfgWeaponChoices > 0) then {selectRandom(_cfgWeaponChoices)} else {[]};
-  phx_loadout_weaponChosen params ["_weapons", "_mags"];
-  phx_loadout_weapon = selectRandom(_weapons);
-  phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call fnc_getWeaponMagazines;
-  _unit addWeapon phx_loadout_weapon;
-  {[_x, "vest", _unit] call phx_fnc_addGear; nil} count phx_loadout_weaponMagazines;
-
-
-  // add silencer if RS
-  if (getNumber(CFGGEAR >> "giveSilencer") isEqualTo 1) then {
-    _muzzleAcc = [phx_loadout_weapon, "muzzle"] call CBA_fnc_compatibleItems;
-    _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};
-    if (count _silencers > 0) then {_unit addPrimaryWeaponItem (_silencers select 0)};
-  };
-
-
-  // Sidearm and appropriate magazines
-  phx_loadout_sidearmChosen = if (count _cfgSidearms > 0) then {selectRandom(_cfgSidearms)} else {""};
-  phx_loadout_sidearmChosen params ["_sidearms", "_mags"];
-  phx_loadout_sidearm = selectRandom(_sidearms);
-  phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call fnc_getWeaponMagazines;
-  _unit addWeapon phx_loadout_sidearm;
-  {[_x, "uniform", _unit] call phx_fnc_addGear; nil} count phx_loadout_sidearmMagazines;
-
-
-
-
-  // LAUNCHERS
-  // if not MAT or MATA role, check normal launchers[] array from config
-  if (count _cfgLaunchers > 0) then {
-    phx_loadout_launcher = selectRandom(_cfgLaunchers);
-  } else {
-    phx_loadout_launcher = ""
-  };
-  // "debug_console" callExtension str(phx_loadout_launcher);
-  if (phx_loadout_launcher isEqualType []) then {
-    phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
-
-    _unit addWeapon _launcher;
-
-    {
-      [_x, "backpack"] call phx_fnc_addGear;
-    } forEach _mags;
-
-    if (count (secondaryWeaponMagazine _unit) == 0) then {
-      private _loadThisMag = (_mags # 0 splitString ':' select 0);
-      if (!isNil "_loadThisMag") then {
-        _unit removeMagazine _loadThisMag;
-        _unit addSecondaryWeaponItem _loadThisMag;
-      };
-    };
-
-    if (count _optics > 0) then {
-      _unit addSecondaryWeaponItem selectRandom(_optics);
-    };
-  };
-
-
-
-  if (LOADOUTROLE("DM")) then {
-    _availOptics = ((CFGOPTICS >> "magnified") call BIS_fnc_getCfgDataArray) select {
-      _x in ([primaryWeapon _unit, "optic"] call CBA_fnc_compatibleItems)
-    };
-    _unit addPrimaryWeaponItem selectRandom(_availOptics);
-  };
-  if (LOADOUTROLE("SNP")) then {
-    _availOptics = ((CFGOPTICS >> "sniper") call BIS_fnc_getCfgDataArray) select {
-      _x in ([primaryWeapon _unit, "optic"] call CBA_fnc_compatibleItems)
-    };
-    _unit addPrimaryWeaponItem selectRandom(_availOptics);
-  };
-
-
-  // set MAT
-  private _matRoleVarArr = ["MATA1","MAT1","MATA2","MAT2"];
-  private _matGunnerVarArr = ["MAT1","MAT2"];
-  if (_role in _matRoleVarArr) then {
-    _cfgMATDefault = (CFGGEAR >> "defaultMAT") call BIS_fnc_getCfgDataArray;
-    if !(_cfgMATDefault isEqualTo []) then {
-      _cfgMATDefault = selectRandom(_cfgMATDefault);
-      _cfgMATDefault params ["_launcher", "_mags", "_optics"];
-
-      // add mags & load one
-        // "debug_console" callExtension str(phx_loadout_mediumantitank_mag);
-      private "_compatMag";
-      if (!isNil "_mags") then {
-        {
-          // "debug_console" callExtension ("Adding " + _x + " to inventory");
-          [_x, "backpack", _unit] call phx_fnc_addGear;
-        } forEach _mags;
-        _compatMag = (_mags # 0) splitString ':';
-      };
-
-      if (_role in _matGunnerVarArr) then {
-        _unit addWeapon _launcher;
-        if (!isNil "_optics") then {
-          _unit addSecondaryWeaponItem selectRandom(_optics);
-        };
-
-        if (!isNil "_compatMag") then {
-          // if we found a mag, try pre-loading the launcher
-          _compatMag params ["_magClass", "_magCount"];
-          _magCount = parseNumber(_magCount);
-          _numOfMags = count ([_unit, _magClass] call CBA_fnc_getMagazineIndex);
-          // some MAT rounds, when given to a player's inventory, will autoload into the launcher
-          // if this DOESN'T happen, we need to do it manually. otherwise we want to leave it alone so the proper number given
-          if (_numOfMags == _magCount) then {
-            // player removeMagazine _magClass;
-            [_unit, _magClass] call CBA_fnc_removeMagazine;
-            _unit addSecondaryWeaponItem _magClass;
-          };
-        };
-      };
-    };
-  };
-
-
-
-  // load weapons
-  {
-      _x params ["_weaponClass", "_mags"];
-      private _cfgWeapon = _weaponClass call CBA_fnc_getItemConfig;
-
-      // check for multiple muzzles (eg: GL)
-      private _muzzles = getArray (configFile >> "cfgWeapons" >> _weaponClass >> "muzzles") select {!(["SAFE", _x] call BIS_fnc_inString) && !(["melee", _x] call BIS_fnc_inString)};
-      // "debug_console" callExtension str([_weaponClass, _muzzles]);
-
-    {
-      private _thisMuzzle = _x;
-      private "_compatMag";
-      // "debug_console" callExtension str([_weaponClass, _mags, configName(_cfgWeapon >> _thisMuzzle), [_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines]);
-
-      if (_thisMuzzle == "this") then {
-        _compatMag = ([_mags, _cfgWeapon, false] call fnc_getWeaponMagazines) select 0;
-      } else {
-        _compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines) select 0;
-      };
-      // _compatMag = _compatMag splitString ':' select 0;
-      // "debug_console" callExtension str([_weaponClass, _thisMuzzle, _compatMag]);
-
-      _unit removeMagazine _compatMag;
-      switch (_weaponClass) do {
-        case (primaryWeapon _unit): {
-          _unit addPrimaryWeaponItem _compatMag;
-        };
-        case (handgunWeapon _unit): {
-          _unit addHandgunItem _compatMag;
-        };
-      };
-    } forEach _muzzles;
-  } forEach [
-    [primaryWeapon _unit, phx_loadout_weaponMagazines],
-    [handgunWeapon _unit, phx_loadout_sidearmMagazines]
-  ];
-
-};
 
 
 //--- Export pictures ------------------------------------
@@ -381,9 +142,10 @@ _screenRight = safezoneX + safezoneW;
     //--- Get filename
     _fileName = format ["LoadoutPreviews\%1--%2\%3",_uniformSelection,_gearSelection,_role];
 
+    _ctrlProgress progresssetposition (_foreachindex / count _loadoutRolesToCheck);
+
     //--- Update UI
     _ctrlInfo ctrlsetstructuredtext parsetext format ["Saving screenshot to<br /><t font='EtelkaMonospaceProBold' size='0.875'>[Arma 3 Profile]\Screenshots\%1</t><br />Note: The text overlay will not be saved.",_fileName];
-    _ctrlProgress progresssetposition (_foreachindex / count _loadoutRolesToCheck);
 
     //--- Set position and camera angles (exsception for helipads)
     _camDirH = 135;
@@ -403,8 +165,9 @@ _screenRight = safezoneX + safezoneW;
       _object setdir 270;
     };
 
-
-    [_object, _role, _uniformSelection, _gearSelection] call fnc_assignLoadoutFromConfig;
+    phx_bluforUniform = _uniformSelection;
+    phx_bluforGear = _gearSelection;
+    [_role, _object] call phx_fnc_applyCfgLoadoutScreenshots;
 
 
     if (primaryweapon _object != "") then {_object switchmove "amovpercmstpslowwrfldnon"} else {_object switchmove "amovpercmstpsnonwnondnon";};

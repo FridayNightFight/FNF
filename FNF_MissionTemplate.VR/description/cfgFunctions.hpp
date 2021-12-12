@@ -53,6 +53,7 @@ class CfgFunctions {
     class loadout {
       file = "client\loadout";
       class applyCfgLoadout{};
+      class applyCfgLoadoutScreenshots{};
       class addGear{};
       class checkLoadout{};
       class setMAT{};
@@ -81,11 +82,13 @@ class CfgFunctions {
       class hintThenClear{};
       class fortifyClient{};
       class clientTime{};
+      class clientSafeStartTime{};
       class killCounter{};
       class showTimeOnMap{};
       class objectivePreview{};
       class fixUniformBug{};
       class SCUDFired{};
+      class lobbyTextGenerator{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";

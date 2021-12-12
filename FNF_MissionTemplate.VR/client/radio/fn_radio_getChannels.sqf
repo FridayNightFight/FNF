@@ -11,29 +11,29 @@ phx_loadout_TFAREncryptionCode = "";
 switch (_side) do {
     case east: {
       phx_playerBaseChannel = phx_opforBaseChannel;
-      phx_loadout_TFAREncryptionCode = "opfor";
+      phx_loadout_TFAREncryptionCode = "_opfor";
     };
     case west: {
       phx_playerBaseChannel = phx_bluforBaseChannel;
-      phx_loadout_TFAREncryptionCode = "blufor";
+      phx_loadout_TFAREncryptionCode = "_bluefor";
     };
     case independent: {
 
       if (_alliedWest) exitWith {
         phx_playerBaseChannel = phx_bluforBaseChannel;
-        phx_loadout_TFAREncryptionCode = "blufor";
+        phx_loadout_TFAREncryptionCode = "_bluefor";
       };
       if (_alliedEast) exitWith {
         phx_playerBaseChannel = phx_opforBaseChannel;
-        phx_loadout_TFAREncryptionCode = "opfor";
+        phx_loadout_TFAREncryptionCode = "_opfor";
       };
 
       phx_playerBaseChannel = phx_indforBaseChannel;
-      phx_loadout_TFAREncryptionCode = "indfor";
+      phx_loadout_TFAREncryptionCode = "_independent";
     };
     case civilian: {
       phx_playerBaseChannel = phx_civilianBaseChannel;
-      phx_loadout_TFAREncryptionCode = "civilian";
+      phx_loadout_TFAREncryptionCode = "_civilian";
     };
     default { titleText ["The game thinks you aren't one of the three teams!","PLAIN"]; };
 };
@@ -84,18 +84,18 @@ if (!isNil "phx_ch8") then {phx_radioNoteString = phx_radioNoteString + "Channel
 if (!isNil "phx_ch9") then {phx_radioNoteString = phx_radioNoteString + "Channel 9: " + str(phx_ch9) + " MHz<br/>";};
 
 //Let player know what channels he starts on.
-PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
+// PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
 phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
-player createDiaryRecord ["PHX_Diary_Radio", ["Radio Settings", phx_radioNoteString]];
+phx_briefing_startingRadios = {
+  player createDiaryRecord ["Diary", ["My Radio Settings", phx_radioNoteString]];
+};
 
 //Next step - wait for loadout
-  [{!isNil "phx_hasSW" && !isNil "phx_hasLR"}, {
-    [] spawn {
-      sleep 3;
-      call phx_fnc_radio_setRadios;
-    };
-  }, [], 60, {
-    // systemChat "Radio preset timeout";
-    ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 5] call phx_ui_fnc_notify;
-  }] call CBA_fnc_waitUntilAndExecute;
-
+[{!isNil "phx_hasSW" && !isNil "phx_hasLR" && call TFAR_fnc_isAbleToUseRadio}, {
+  call TFAR_fnc_requestRadios;
+  // call phx_fnc_radio_setRadios;
+  [{call phx_fnc_radio_setRadios},[],2] call CBA_fnc_waitAndExecute;
+}, [], 60, {
+  // systemChat "Radio preset timeout";
+  ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
+}] call CBA_fnc_waitUntilAndExecute;

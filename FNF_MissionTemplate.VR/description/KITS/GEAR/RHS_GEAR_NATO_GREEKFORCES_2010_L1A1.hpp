@@ -37,8 +37,8 @@
 
 #define AT_LAUNCHER M72LAW(1)
 
-#define MAT1_LAUNCHER CARLG(2)
-#define MAT2_LAUNCHER CARLG(2)
+#define MAT1_LAUNCHER CARLG(2,0)
+#define MAT2_LAUNCHER CARLG(2,0)
 
 #define DM_RIFLE "rhs_weap_hk416d145"
 #define DM_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:11"
@@ -182,7 +182,7 @@ class RHS_GEAR_NATO_GREEKFORCES_2010_L1A1 {
     defaultMAT[] = {MAT1_LAUNCHER};
   };
   class MAT1 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
+    defaultMAT[] = {MAT1_LAUNCHER};
   };
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};

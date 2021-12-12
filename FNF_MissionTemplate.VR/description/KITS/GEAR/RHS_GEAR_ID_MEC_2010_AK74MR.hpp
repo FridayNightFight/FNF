@@ -1,63 +1,63 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_vhsd2"
+#define RIFLE "rhs_weap_ak74mr"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhsgref_30rnd_556x45_vhs2:7","rhsgref_30rnd_556x45_vhs2_t:4"
+#define RIFLE_MAG "rhs_30Rnd_545x39_7N10_AK:7","rhs_30Rnd_545x39_AK_plum_green:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhsgref_30rnd_556x45_vhs2:12","rhsgref_30rnd_556x45_vhs2_t:6"
+#define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12","rhs_30Rnd_545x39_AK_plum_green:6"
 
-#define SIDEARM "rhsusf_weap_glock17g4"
-#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
+#define SIDEARM "rhs_weap_pya"
+#define SIDEARM_MAG "rhs_mag_9x19_17:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_vhsd2_bg"
+#define RIFLE_GL "rhs_weap_ak74mr_gp25"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
-#define UGL_FRAG 1Rnd_HE_Grenade_shell
-#define UGL_SMOKEWHITE 1Rnd_Smoke_Grenade_shell
-#define UGL_FLAREWHITE UGL_FlareWhite_F
+#define UGL_FRAG rhs_VOG25
+#define UGL_SMOKEWHITE rhs_GRD40_White
+#define UGL_FLAREWHITE rhs_VOG25P
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_vhsk2"
+#define CARBINE "rhs_weap_aks74n_2"
 #define CARBINE_MAG RIFLE_MAG
 #define CARBINE_MAG_RI RIFLE_MAG_RI
-#define CARBINE_MAG_CREW "rhsgref_30rnd_556x45_vhs2:4","rhsgref_30rnd_556x45_vhs2_t:2"
+#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_AK:4","rhs_30Rnd_545x39_AK_green:2"
 
-#define SMG_RIFLE "rhs_weap_scorpion"
-#define SMG_MAG "rhsgref_20rnd_765x17_vz6:11"
-#define SMG_MAG_CREW "rhsgref_20rnd_765x17_vz61:6"
+#define SMG_RIFLE "rhs_weap_aks74n_2"
+#define SMG_MAG "rhs_30Rnd_545x39_7N10_AK:8"
+#define SMG_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4"
 
-#define AR_RIFLE "rhs_weap_minimi_para_railed"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
+#define AR_RIFLE "fnf_rpk"
+#define AR_MAG "fnf_45rnd_rpk_green:6"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER RPG26(1)
 
-#define MAT1_LAUNCHER CARLG(2,0)
-#define MAT2_LAUNCHER CARLG(2,0)
+#define MAT1_LAUNCHER RPG32(2,0)
+#define MAT2_LAUNCHER RPG32(2,0)
 
-#define DM_RIFLE "rhs_weap_hk416d145"
-#define DM_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:11"
+#define DM_RIFLE RIFLE
+#define DM_MAG RIFLE_MAG
 
-#define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
+#define MMG_RIFLE "rhs_weap_pkp"
+#define MMG_MAG "rhs_100Rnd_762x54mmR:8"
+#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
 
-#define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhs_weap_m14_socom"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:6", "rhsusf_20Rnd_762x51_m993_Mag:4"
+#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
+#define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
 
-#define SNP_RIFLE "rhs_weap_m40a5", "rhs_weap_m40a5_wd", "rhs_weap_m40a5_d"
-#define SNP_MAG "rhsusf_5Rnd_762x51_AICS_m118_special_Mag:12"
+#define SNP_RIFLE "rhs_weap_t5000"
+#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_ANY_CROATIAN_2010_VHS {
-  author = "FNF";
-  description = "HS: Croatian Armed Forces VHS Kits";
+class RHS_GEAR_ID_MEC_2010_AK74MR {
+  author = "Mazz38";
+  description = "ID: 2010 Middle Eastern Coalition ARMY AK74MR Kits";
 
   class BASE {
     backpackItems[] = {};
@@ -106,6 +106,7 @@ class RHS_GEAR_ANY_CROATIAN_2010_VHS {
       LEADER_SMOKES
     };
     items[] += {LEADER_TOOLS};
+    linkedItems[] += {VECTOR};
     giveSideKey = 1;
     giveLRRadio = 1;
   };
@@ -117,7 +118,7 @@ class RHS_GEAR_ANY_CROATIAN_2010_VHS {
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
   };
-  class AR : BASE {
+  class AR : ARA {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
@@ -181,15 +182,11 @@ class RHS_GEAR_ANY_CROATIAN_2010_VHS {
   class MATA1 : BASE {
     defaultMAT[] = {MAT1_LAUNCHER};
   };
-  class MAT1 : BASE {
-    defaultMAT[] = {MAT1_LAUNCHER};
-  };
+  class MAT1 : MATA1 {};
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};
   };
-  class MAT2 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
-  };
+  class MAT2 : MATA2 {};
 
   class RIS : BASE {
     weaponChoices[] = {

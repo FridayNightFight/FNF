@@ -1,6 +1,36 @@
 //Determine if client can play the round, if not, spectate
 if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
 player enableSimulation false;
+
+phx_loadout_roles = [
+  ["PL","Platoon Leader"],
+  ["SGT","Platoon Sergeant"],
+  ["SL","Squad Leader"],
+  ["TL","Team Leader"],
+  ["AR","Autorifleman"],
+  ["ARA","Asst. Autorifleman"],
+  ["GR","Grenadier"],
+  ["GRIR","Sr. Grenadier"],
+  ["MG","Machine Gunner"],
+  ["MGA","Asst. Machine Gunner"],
+  ["CE","Combat Engineer"],
+  ["LAT","AT Rifleman"],
+  ["MAT1","AT Specialist"],
+  ["MATA1","Asst. AT Specialist"],
+  ["MAT2","AT Specialist"],
+  ["MATA2","Asst. AT Specialist"],
+  ["RI","Rifleman"],
+  ["RIS","Sr. Rifleman"],
+  ["DM","Marksman"],
+  ["SNP","Sniper"],
+  ["CRL","Vehicle Cmdr"],
+  ["CR","Crewman"],
+  ["PI","Pilot"],
+  ["MED","Medic"],
+  ["SHQAUX","Crew/Wpn Operator"],
+  ["BASE","Crew/Wpn Operator"]
+];
+
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes
@@ -19,12 +49,12 @@ call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
 // Admin player patch jip support
 if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
-	call phx_admin_fnc_jipPatch;
+	// call phx_admin_fnc_jipPatch;
 };
-
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+  call phx_fnc_clientSafeStartTime;
   [player getVariable "phxLoadout"] call phx_fnc_applyCfgLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
@@ -39,11 +69,13 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
   player enableSimulation true;
 }] call CBA_fnc_waitUntilAndExecute;
 
+
 //Start kill counter when game ends or player is dead
 //[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
 //Start spectator fnc when player is killed
 player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
 phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
+
 
 player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
@@ -54,7 +86,6 @@ player addEventHandler ["Killed", {
     ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
   };
 }];
-
 
 //Marking
 [] execVM "client\icons\QS_icons.sqf";

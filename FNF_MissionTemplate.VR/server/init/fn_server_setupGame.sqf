@@ -80,5 +80,5 @@ if !(phx_gameMode isEqualTo "scavHunt") then {
     {
       deleteMarker _x;
     } forEach ["scavHuntCapEAST", "scavHuntCapWEST", "scavHuntCapGUER"];
-  } remoteExec ["call", 0];
+  } remoteExec ["call", 0, true];
 };

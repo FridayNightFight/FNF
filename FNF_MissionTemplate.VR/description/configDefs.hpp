@@ -11,27 +11,28 @@
 // [launcher,[mags],[optics]]
 // keep this in sync with \description\KITS\GEAR\common.hpp
 // #define HALF_AMMO(_count) __EVAL((_count) / (2));
+// classname,magazines,optics,reloadable,shortname
 #define STRINGIFY(s) #s
-#define M72LAW(_count) ["rhs_weap_m72a7",[],[],"DISPOSABLE"]
-#define RPG26(_count) ["rhs_weap_rpg26",[],[],"DISPOSABLE"]
+#define M72LAW(_count) ["rhs_weap_m72a7",[],[],"DISPOSABLE","M72"]
+#define RPG26(_count) ["rhs_weap_rpg26",[],[],"DISPOSABLE","RPG26"]
 
-#define CARLG(_HEATCount,_HECount) ["rhs_weap_maaws",[STRINGIFY(rhs_mag_maaws_HEAT:_HEATCount),STRINGIFY(rhs_mag_maaws_HE:_HECount)],["rhs_optic_maaws"],"RELOAD"]
-#define SMAW(_HEATCount,_HECount) ["rhs_weap_smaw_green",[STRINGIFY(rhs_mag_smaw_HEAA:_HEATCount),STRINGIFY(rhs_mag_smaw_HEDP:_HECount)],["rhs_weap_optic_smaw"],"RELOAD"]
-#define M80(_count) ["rhs_weap_m80",[],[],"DISPOSABLE"]
-#define RPG32(_HEATCount,_HECount) ["launch_RPG32_green_F",[STRINGIFY(RPG32_F:_HEATCount),STRINGIFY(RPG32_HE_F:_HECount)],[],"RELOAD"]
-#define RPG7(_HEATCount,_HECount) ["rhs_weap_rpg7",[STRINGIFY(rhs_rpg7_PG7VL_mag:_HEATCount),STRINGIFY(rhs_rpg7_OG7V_mag:_HECount)],["rhs_acc_pgo7v3"],"RELOAD"]
+#define CARLG(_HEATCount,_HECount) ["rhs_weap_maaws",[STRINGIFY(rhs_mag_maaws_HEAT:_HEATCount),STRINGIFY(rhs_mag_maaws_HE:_HECount)],["rhs_optic_maaws"],"RELOAD","CARLG"]
+#define SMAW(_HEATCount,_HECount) ["rhs_weap_smaw_green",[STRINGIFY(rhs_mag_smaw_HEAA:_HEATCount),STRINGIFY(rhs_mag_smaw_HEDP:_HECount)],["rhs_weap_optic_smaw"],"RELOAD","SMAW"]
+#define M80(_count) ["rhs_weap_m80",[],[],"DISPOSABLE","M80"]
+#define RPG32(_HEATCount,_HECount) ["launch_RPG32_green_F",[STRINGIFY(RPG32_F:_HEATCount),STRINGIFY(RPG32_HE_F:_HECount)],[],"RELOAD","RPG32"]
+#define RPG7(_HEATCount,_HECount) ["rhs_weap_rpg7",[STRINGIFY(rhs_rpg7_PG7VL_mag:_HEATCount),STRINGIFY(rhs_rpg7_OG7V_mag:_HECount)],["rhs_acc_pgo7v3"],"RELOAD","RPG7"]
 
-#define TITAN(_count) ["launch_I_Titan_short_F",[STRINGIFY(Titan_AT:_count)],[],"RELOAD"]
-#define JAVELIN(_count) ["rhs_weap_fgm148",[STRINGIFY(rhs_fgm148_magazine_AT:_count)],[],"RELOAD"]
-#define NLAW(_count) ["ACE_launch_NLAW_ready_F",[],[],"DISPOSABLE"]
-#define METIS(_count) ["launch_O_Vorona_green_F",[STRINGIFY(Vorona_HEAT:_count)],[],"RELOAD"]
+#define TITAN(_count) ["launch_I_Titan_short_F",[STRINGIFY(Titan_AT:_count)],[],"RELOAD","TITAN"]
+#define JAVELIN(_count) ["rhs_weap_fgm148",[STRINGIFY(rhs_fgm148_magazine_AT:_count)],[],"RELOAD","JAVELIN"]
+#define NLAW(_count) ["ACE_launch_NLAW_ready_F",[],[],"DISPOSABLE","NLAW"]
+#define METIS(_count) ["launch_O_Vorona_green_F",[STRINGIFY(Vorona_HEAT:_count)],[],"RELOAD","METIS"]
 
-#define STINGER(_count) ["rhs_weap_fim92",[STRINGIFY(rhs_fim92_mag:_count)],[],"RELOAD"]
-#define IGLA(_count) ["rhs_weap_igla",[STRINGIFY(rhs_mag_9k38_rocket:_count)],[],"RELOAD"]
+#define STINGER(_count) ["rhs_weap_fim92",[STRINGIFY(rhs_fim92_mag:_count)],[],"RELOAD","STINGER"]
+#define IGLA(_count) ["rhs_weap_igla",[STRINGIFY(rhs_mag_9k38_rocket:_count)],[],"RELOAD","IGLA"]
 
-#define VN_LAW(_count) ["vn_m72",[STRINGIFY(vn_m72_mag:_count)],[],"DISPOSABLE"]
-#define VN_RPG7(_count) ["vn_rpg7",[STRINGIFY(vn_rpg7_mag:_count)],[],"RELOAD"]
-#define VN_STRELA(_count) ["vn_sa7",[STRINGIFY(vn_sa7_mag:_count)],[],"RELOAD"]
+#define VN_LAW(_count) ["vn_m72",[STRINGIFY(vn_m72_mag:_count)],[],"DISPOSABLE","M72"]
+#define VN_RPG7(_count) ["vn_rpg7",[STRINGIFY(vn_rpg7_mag:_count)],[],"RELOAD","RPG7"]
+#define VN_STRELA(_count) ["vn_sa7",[STRINGIFY(vn_sa7_mag:_count)],[],"RELOAD","STRELA"]
 
 #define GEARDEFAULT ["GEARDEFAULT"]
 
@@ -49,8 +50,8 @@
 #define HMG_DSHKM_LO(_boxes) ["ace_compat_rhs_gref3_dshkm_carry","ace_csw_kordCarryTripodLow",[STRINGIFY(ace_csw_50Rnd_127x108_mag:_boxes)]]
 
 #define AT_SPG9(_he,_heat) ["ace_compat_rhs_afrf3_spg9_carry","ace_csw_spg9CarryTripod",[STRINGIFY(ace_compat_rhs_afrf3_mag_OG9VM:_he),STRINGIFY(ace_compat_rhs_afrf3_mag_PG9V:_heat)]]
-#define AT_METIS(_he,_heat) ["ace_compat_rhs_afrf3_metis_carry",nil,[STRINGIFY(ace_compat_rhs_afrf3_mag_9M131F:_he),STRINGIFY(ace_compat_rhs_afrf3_mag_9M131M:_heat)]]
-#define AT_TOW(_tow) ["ace_compat_rhs_usf3_tow_carry",[STRINGIFY(ace_compat_rhs_usf3_mag_TOW:_tow)]]
+#define AT_METIS(_he,_heat) ["ace_compat_rhs_afrf3_metis_carry","",[STRINGIFY(ace_compat_rhs_afrf3_mag_9M131F:_he),STRINGIFY(ace_compat_rhs_afrf3_mag_9M131M:_heat)]]
+#define AT_TOW(_tow) ["ace_compat_rhs_usf3_tow_carry","",[STRINGIFY(ace_compat_rhs_usf3_mag_TOW:_tow)]]
 
 
 #define VN_MORTAR_TYPE53(_hecnt,_smk,_illum) ["ace_compat_sog_mortar_type53_carry","ace_csw_carryMortarBaseplate",[STRINGIFY(ace_compat_sog_82mm_he:_hecnt),STRINGIFY(ace_compat_sog_82mm_wp:_smk),STRINGIFY(ace_compat_sog_82mm_lume:_illum)]]
