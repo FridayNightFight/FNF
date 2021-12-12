@@ -82,7 +82,7 @@ phx_addNVG = 0;
 // UNIFORM AND GEAR CHOICES //
 
 //BLUFOR
-phx_bluforUniform = "RHS_UNI_US_MARINES_WOODLAND_2010";
+phx_bluforUniform = "RHS_UNI_NATO_US_MARINES_WOODLAND_2010";
 phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
 
 //OPFOR

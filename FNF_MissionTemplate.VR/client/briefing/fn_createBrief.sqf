@@ -181,6 +181,42 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
   [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "PHX_Diary_Admin_Safestart"}] call CBA_fnc_waitUntilAndExecute;
 };
 
+PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
+player createDiaryRecord [
+  "PHX_Diary_UpdateInfo",
+  [
+    "Changelog",
+    format [
+      "<font size='18' shadow='1' color='" + COLOR2 + "'>%1</font><br/>%2<br/>%3",
+      "Changelog",
+      format ["Template Version: %1", phx_templateVersion],
+      "
+<br/>
+Radios:<br/>
+- modification to the way radio assignment is handled for more consistency<br/>
+<br/>
+UI:<br/>
+- move time display to bottom left to not interfere w TFAR info<br/>
+- change radio codes to match default TFAR<br/>
+- safe start timer using existing mission time display to replace notification system, updates every 10 seconds<br/>
+<br/>
+Diary:<br/>
+- all categories moved under native ""Briefing"" tab<br/>
+- ORBAT reformatted and now supports updates during safe start<br/>
+- moves gamemode details to Briefing<br/>
+<br/>
+Other:<br/>
+- fixes METIS and TOW CSW configs<br/>
+- ace cookoff fix exclusion for cars<br/>
+- adds loadout and uniform classname to map ORBAT objects + commander name<br/>
+- fixes scavhunt marker deletion for JIP clients<br/>
+- moves groupID settings to server<br/>
+- display warning if editing mission in SP<br/>
+"
+    ]
+  ]
+];
+
 // PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 
