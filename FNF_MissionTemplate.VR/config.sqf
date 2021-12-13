@@ -117,17 +117,17 @@ phx_grnAT_Delta = GEARDEFAULT;
 // "SHQAUX"
 // Adjusts what loadout the two extra Squad HQ members will receive
 // Set to 0 to make default crewman, set to one of the options to enable equipment for it.
-// OPFOR
-  phx_eastAlphaAuxRole = 0;
-  phx_eastBravoAuxRole = 0;
-  phx_eastCharlieAuxRole = 0;
-  phx_eastDeltaAuxRole = 0;
-
 // BLUFOR
   phx_westAlphaAuxRole = 0;
   phx_westBravoAuxRole = 0;
   phx_westCharlieAuxRole = 0;
   phx_westDeltaAuxRole = 0;
+
+// OPFOR
+  phx_eastAlphaAuxRole = 0;
+  phx_eastBravoAuxRole = 0;
+  phx_eastCharlieAuxRole = 0;
+  phx_eastDeltaAuxRole = 0;
 
 // INDFOR
   phx_guerAlphaAuxRole = 0;
