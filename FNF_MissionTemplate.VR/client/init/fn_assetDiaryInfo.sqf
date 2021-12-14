@@ -445,7 +445,7 @@ _getVehicleData = {
 		"76561198049218642" // Bae
 	];
 
-	if (count _invLines > 0 && (((getPlayerUID player) in (missionNamespace getVariable ["fnf_staffInfo",[]])) || ((getPlayerUID player) in _vetterIds))) then {
+  if (count _invLines > 0 && (((getPlayerUID player) in (missionNamespace getVariable ["fnf_staffInfo",[]])) || ((getPlayerUID player) in _vetterIds))) then {
 		player createDiarySubject ["VicHasInv", "VicsWithInventory", "\A3\ui_f\data\igui\cfg\simpleTasks\types\danger_ca.paa"];
 		_marker = createMarkerLocal [format["VicWithInvMark_%1", round (random 2000)], getPos _x];
 		_invOutArr = +_outArr;

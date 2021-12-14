@@ -19,11 +19,11 @@ _fnc_hintDetails = {
 private _optic = _this select 2;
 private _previousOptic = player getVariable ["phx_ChosenOptic", ""];
 // Every player should have 1 optic on the field. No sense to trade.
-_loadoutWeapons = uniformItems player; 
+_loadoutWeapons = uniformItems player;
 _loadoutWeapons append (vestItems player);
 _loadoutWeapons append (primaryWeaponItems player);
 _loadoutWeapons append (backpackitems player);
-_oldOpticPresent = (_loadoutWeapons findIf {(_x) isEqualTo _previousOptic}) > -1;
+_oldOpticPresent = (_loadoutWeapons findIf {[_previousOptic, _x] call BIS_fnc_inString}) > -1;
 if (_oldOpticPresent || _previousOptic isEqualTo "") then {
   // found previous optic in inventory, now remove > replace
   {
