@@ -24,7 +24,7 @@
 
 #define TITAN(_count) ["launch_I_Titan_short_F",[STRINGIFY(Titan_AT:_count)],[],"RELOAD","TITAN"]
 #define JAVELIN(_count) ["rhs_weap_fgm148",[STRINGIFY(rhs_fgm148_magazine_AT:_count)],[],"RELOAD","JAVELIN"]
-#define NLAW(_count) ["ACE_launch_NLAW_ready_F",[],[],"DISPOSABLE","NLAW"]
+#define NLAW(_count) ["launch_NLAW_F",[],[],"DISPOSABLE","NLAW"]
 #define METIS(_count) ["launch_O_Vorona_green_F",[STRINGIFY(Vorona_HEAT:_count)],[],"RELOAD","METIS"]
 
 #define STINGER(_count) ["rhs_weap_fim92",[STRINGIFY(rhs_fim92_mag:_count)],[],"RELOAD","STINGER"]
