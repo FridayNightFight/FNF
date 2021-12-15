@@ -157,7 +157,6 @@ if (PLAYERLOADOUTVAR == "SHQAUX") exitWith {
 
 
 
-
 fnc_getWeaponMagazines = {
 	params ["_toSearch", "_weapon", ["_allMuzzles", true]];
 	private _out = [];

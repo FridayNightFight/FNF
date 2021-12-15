@@ -7,6 +7,12 @@
 #define COLOR4 "#008394"
 #define COLOR5 "#1BCAE0"
 
+phx_ui_structTextRef = [["MAT Settings",""]];
+phx_ui_structTextRef_AssetsBLU = [];
+phx_ui_structTextRef_AssetsOPF = [];
+phx_ui_structTextRef_AssetsIND = [];
+phx_ui_structTextRef_AssetsOther = [];
+
 _getName = {
   if (_this isEqualTo "") exitWith {""};
   getText (configFile >> "cfgWeapons" >> _this >> "displayName");
@@ -28,7 +34,8 @@ fnc_getItemInfo = {
 _fnc_notesItems = {
   params [
     "_items",
-    ["_showCount", true]
+    ["_showCount", true],
+    ["_structText", false]
   ];
 
   private _parseArr = [];
@@ -45,23 +52,38 @@ _fnc_notesItems = {
   private _outArr = [];
   private _procItems = _parseArr call BIS_fnc_consolidateArray;
 
-  {
-    private _thisCfg = (_x # 0) call CBA_fnc_getItemConfig;
-    private _dispName = [_thisCfg] call BIS_fnc_displayName;
-    private _desc = getText(_thisCfg >> "descriptionShort");
-    private _pic = (_thisCfg >> "picture") call BIS_fnc_getCfgData;
-    private _count = _x # 1;
-    if (_showCount) then {
-      _outArr pushBack format["<img height='30' image='%1'/><execute expression='systemChat ""%2"";'>x%3</execute>", _pic, _dispName, _count];
-    } else {
-      _outArr pushBack format["<img height='30' image='%1'/><execute expression='systemChat ""%2"";'>o</execute>", _pic, _dispName];
-    };
-  } forEach _procItems;
+  if (!_structText) then {
+    {
+      private _thisCfg = (_x # 0) call CBA_fnc_getItemConfig;
+      private _dispName = [_thisCfg] call BIS_fnc_displayName;
+      private _desc = getText(_thisCfg >> "descriptionShort");
+      private _pic = (_thisCfg >> "picture") call BIS_fnc_getCfgData;
+      private _count = _x # 1;
+      if (_showCount) then {
+        _outArr pushBack format["<img height='30' image='%1'/><execute expression='systemChat ""%2"";'>x%3</execute>", _pic, _dispName, _count];
+      } else {
+        _outArr pushBack format["<img height='30' image='%1'/><execute expression='systemChat ""%2"";'>o</execute>", _pic, _dispName];
+      };
+    } forEach _procItems;
+  } else {
+    {
+      private _thisCfg = (_x # 0) call CBA_fnc_getItemConfig;
+      private _dispName = [_thisCfg] call BIS_fnc_displayName;
+      private _desc = getText(_thisCfg >> "descriptionShort");
+      private _pic = (_thisCfg >> "picture") call BIS_fnc_getCfgData;
+      private _count = _x # 1;
+      if (_showCount) then {
+        _outArr pushBack format["<img size='1.2' image='%1'/>x%3  ", _pic, _dispName, _count];
+      } else {
+        _outArr pushBack format["<img size='1.2' image='%1'/>  ", _pic, _dispName];
+      };
+    } forEach _procItems;
+  };
   (_outArr joinString "")
 };
 
 _fnc_parseMATForBriefing = {
-  params ["_side", "_bravoOption", "_deltaOption"];
+  params ["_side", "_bravoOption", "_deltaOption", ["_structText", false]];
 
   private "_gearLoadout";
   switch (_side) do {
@@ -97,16 +119,27 @@ _fnc_parseMATForBriefing = {
     _MATData params ["_launcher", "_ammo", "_optics", "_type"];
     private _launcherInfo = _launcher call fnc_getItemInfo;
 
-
-    _textOut pushBack format [
-      "%1 %2: <font color='" + COLOR3 + "'>%3</font><br/><img width='120' image='%4'/><br/>%5<br/>%6",
-      _side call BIS_fnc_sideName,
-      _role,
-      [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
-      [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-      (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call _fnc_notesItems]} else {""}),
-      [_launcherInfo, "description"] call BIS_fnc_getFromPairs
-    ] + "<br/><br/>";
+    if (!_structText) then {
+      _textOut pushBack format [
+        "%1 %2: <font color='" + COLOR3 + "'>%3</font><br/><img width='120' image='%4'/><br/>%5<br/>%6",
+        _side call BIS_fnc_sideName,
+        _role,
+        [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
+        [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
+        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call _fnc_notesItems]} else {""}),
+        [_launcherInfo, "description"] call BIS_fnc_getFromPairs
+      ] + "<br/><br/>";
+    } else {
+      _textOut pushBack format [
+        "%1 %2: <t color='" + COLOR3 + "'>%3</t><br/><img size='4' image='%4'/><br/>%5<br/>",
+        _side call BIS_fnc_sideName,
+        _role,
+        [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
+        [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
+        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true, true] call _fnc_notesItems]} else {""}),
+        [_launcherInfo, "description"] call BIS_fnc_getFromPairs
+      ];
+    };
 
   } forEach [
     [_bravoOption, "MAT1"],
@@ -130,7 +163,7 @@ _fnc_parseMATForBriefing = {
   //   [_deltaMeta, "picture"] call BIS_fnc_getFromPairs,
   //   [_deltaMeta, "description"] call BIS_fnc_getFromPairs
   // ] + "<br/><br/>";
-
+  _textOut pushBack "<br/>";
   _textOut joinString "<br/>"
 };
 
@@ -227,6 +260,9 @@ _varStr = "";
 if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" || !isNil "phx_briefing_west_uniformMeta" && !isNil "phx_briefing_west_loadout") then {
 
   _MATDataString = _MATDataString + ([west, phx_bluAT_Bravo, phx_bluAT_Delta] call _fnc_parseMATForBriefing) + "---------------------------------------------<br/>";
+  private _uiMAT = [phx_ui_structTextRef, "MAT Settings"] call BIS_fnc_getFromPairs;
+  _uiMAT = _uiMAT + ([west, phx_bluAT_Bravo, phx_bluAT_Delta, true]  call _fnc_parseMATForBriefing);
+  phx_ui_structTextRef = [phx_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show BLUFOR loadout
   phx_briefing_loadoutBLU = {
@@ -252,7 +288,7 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" ||
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
           phx_briefing_west_loadout # 0 # 0,
-          phx_briefing_west_loadout call phx_fnc_briefingParseLoadout
+          [phx_briefing_west_loadout] call phx_fnc_briefingParseLoadout
         ]
       ]
     ];
@@ -276,6 +312,53 @@ Author: %6<br/><br/>
         ]
       ]
     ];
+
+    _helmetImg = [];
+    _vestImg = [];
+    _uniformImg = [];
+    {
+      _helmetImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_west_headgear;
+    {
+      _vestImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_west_vest;
+    {
+      _uniformImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_west_uniform;
+
+    phx_ui_structTextRef pushBackUnique [
+      "BLUFOR",
+      format ["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
+        missionNamespace getVariable [format["phx_%1Gear","blufor"], "N/A"],
+        missionNamespace getVariable [format["phx_%1Uniform","blufor"], "N/A"]
+      ]
+    ];
+
+    phx_ui_structTextRef pushBackUnique [
+      "BLUFOR Loadout",
+      format [
+        "<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>%2",
+        phx_briefing_west_loadout # 0 # 0,
+        [phx_briefing_west_loadout, true] call phx_fnc_briefingParseLoadout
+      ]
+    ];
+    phx_ui_structTextRef pushBackUnique [
+      "BLUFOR Uniform",
+      format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
+<t size='1.1'>%5</t><br/>
+Author: %6<br/><br/>
+%1<br/>
+%2<br/>
+%3
+",
+        _helmetImg joinString "",
+        _vestImg joinString "",
+        _uniformImg joinString "",
+        _meta # 0,
+        _meta # 1,
+        _meta # 2
+      ]
+    ];
   };
 };
 
@@ -285,6 +368,9 @@ Author: %6<br/><br/>
 if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" || !isNil "phx_briefing_east_uniformMeta" && !isNil "phx_briefing_east_loadout") then {
 
   _MATDataString = _MATDataString + ([east, phx_redAT_Bravo, phx_redAT_Delta] call _fnc_parseMATForBriefing) + "---------------------------------------------<br/>";
+  private _uiMAT = [phx_ui_structTextRef, "MAT Settings"] call BIS_fnc_getFromPairs;
+  _uiMAT = _uiMAT + ([east, phx_redAT_Bravo, phx_redAT_Delta, true] call _fnc_parseMATForBriefing);
+  phx_ui_structTextRef = [phx_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show OPFOR loadout
   phx_briefing_loadoutOPF = {
@@ -302,7 +388,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
     } forEach phx_briefing_east_uniform;
 
     private _meta = +phx_briefing_east_uniformMeta;
-    
+
     player createDiaryRecord [
       "Diary",
       [
@@ -310,7 +396,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
           phx_briefing_east_loadout # 0 # 0,
-          phx_briefing_east_loadout call phx_fnc_briefingParseLoadout
+          [phx_briefing_east_loadout] call phx_fnc_briefingParseLoadout
         ]
       ]
     ];
@@ -334,6 +420,54 @@ Author: %6<br/><br/>
         ]
       ]
     ];
+
+
+    _helmetImg = [];
+    _vestImg = [];
+    _uniformImg = [];
+    {
+      _helmetImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_east_headgear;
+    {
+      _vestImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_east_vest;
+    {
+      _uniformImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_east_uniform;
+
+    phx_ui_structTextRef pushBackUnique [
+      "OPFOR",
+      format ["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
+        missionNamespace getVariable [format["phx_%1Gear","OPFOR"], "N/A"],
+        missionNamespace getVariable [format["phx_%1Uniform","OPFOR"], "N/A"]
+      ]
+    ];
+
+    phx_ui_structTextRef pushBackUnique [
+      "OPFOR Loadout",
+      format [
+        "<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>%2",
+        phx_briefing_east_loadout # 0 # 0,
+        [phx_briefing_east_loadout, true] call phx_fnc_briefingParseLoadout
+      ]
+    ];
+    phx_ui_structTextRef pushBackUnique [
+      "OPFOR Uniform",
+      format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
+<t size='1.1'>%5</t><br/>
+Author: %6<br/><br/>
+%1<br/>
+%2<br/>
+%3
+",
+        _helmetImg joinString "",
+        _vestImg joinString "",
+        _uniformImg joinString "",
+        _meta # 0,
+        _meta # 1,
+        _meta # 2
+      ]
+    ];
   };
 };
 
@@ -343,6 +477,9 @@ Author: %6<br/><br/>
 if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !isNil "phx_briefing_ind_uniformMeta" && !isNil "phx_briefing_ind_loadout") then {
 
   _MATDataString = _MATDataString + ([independent, phx_grnAT_Bravo, phx_grnAT_Delta] call _fnc_parseMATForBriefing) + "---------------------------------------------<br/>";
+  private _uiMAT = [phx_ui_structTextRef, "MAT Settings"] call BIS_fnc_getFromPairs;
+  _uiMAT = _uiMAT + ([independent, phx_grnAT_Bravo, phx_grnAT_Delta, true] call _fnc_parseMATForBriefing);
+  phx_ui_structTextRef = [phx_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show INDFOR loadout
   phx_briefing_loadoutIND = {
@@ -368,7 +505,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
           phx_briefing_ind_loadout # 0 # 0,
-          phx_briefing_ind_loadout call phx_fnc_briefingParseLoadout
+          [phx_briefing_ind_loadout] call phx_fnc_briefingParseLoadout
         ]
       ]
     ];
@@ -390,6 +527,53 @@ Author: %6<br/><br/>
           _meta # 1,
           _meta # 2
         ]
+      ]
+    ];
+
+
+    _helmetImg = [];
+    _vestImg = [];
+    _uniformImg = [];
+    {
+      _helmetImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_ind_headgear;
+    {
+      _vestImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_ind_vest;
+    {
+      _uniformImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach phx_briefing_ind_uniform;
+
+    phx_ui_structTextRef pushBackUnique [
+      "INDFOR",
+      format ["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
+        missionNamespace getVariable [format["phx_%1Gear","indfor"], "N/A"],
+        missionNamespace getVariable [format["phx_%1Uniform","indfor"], "N/A"]
+      ]
+    ];
+    phx_ui_structTextRef pushBackUnique [
+      "INDFOR Loadout",
+      format [
+        "<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>%2",
+        phx_briefing_ind_loadout # 0 # 0,
+        [phx_briefing_ind_loadout, true] call phx_fnc_briefingParseLoadout
+      ]
+    ];
+    phx_ui_structTextRef pushBackUnique [
+      "INDFOR Uniform",
+      format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
+<t size='1.1'>%5</t><br/>
+Author: %6<br/><br/>
+%1<br/>
+%2<br/>
+%3
+",
+        _helmetImg joinString "",
+        _vestImg joinString "",
+        _uniformImg joinString "",
+        _meta # 0,
+        _meta # 1,
+        _meta # 2
       ]
     ];
   };
@@ -630,7 +814,7 @@ MAT_Diary = player createDiaryRecord ["Diary",["MAT Selection",_MATDataString]];
 player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 [{
-  getClientStateNumber >= 9 && 
+  getClientStateNumber >= 9 &&
   !isNil "phx_templateGroupsList" &&
   !isNil "phx_playerBaseChannel" &&
   !isNil "phx_briefing_startingLoadout" &&

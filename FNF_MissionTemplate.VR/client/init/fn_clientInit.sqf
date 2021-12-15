@@ -36,15 +36,18 @@ call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes
 call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
-
 call phx_fnc_radio_waitGear; //Start radio preset functions
 call phx_fnc_contactStaffInit; // Init handling for player reports
 call phx_fnc_assetDiaryInfo; // Add diary entries for assets
-if (isMultiplayer) then {
-	call phx_fnc_drawStaffIcons; // Draw labels over staff members
-	call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
-	call phx_fnc_drawSLIcons; // Draw labels over squad leaders
-};
+
+[{missionNamespace getVariable ["phx_briefCreated", false]}, {
+  call phx_fnc_assetDiaryInfoStruct; // Prep global vars for UI info panel
+}] call CBA_fnc_waitUntilAndExecute;
+
+call phx_fnc_drawStaffIcons; // Draw labels over staff members
+call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
+call phx_fnc_drawSLIcons; // Draw labels over squad leaders
+
 call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
 // Admin player patch jip support

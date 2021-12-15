@@ -24,6 +24,7 @@ class CfgFunctions {
       class drawCmdIcons{};
       class drawSLIcons{};
       class assetDiaryInfo{};
+      class assetDiaryInfoStruct{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -145,6 +146,10 @@ class CfgFunctions {
     class notifications {
       file = "client\ui\notifications";
       class notify{};
+    };
+    class scripts {
+      file = "client\ui";
+      class missionInfoPanel{};
     };
   };
   class phx_admin {
