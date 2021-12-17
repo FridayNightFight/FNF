@@ -218,15 +218,16 @@ private ["_grp"];
         //   ],
         //   true
         // ]} forEach (units _grp);
-        {
-          player setVariable [
-            "phx_startGroup",
-            (group player) getVariable ["phx_groupIdentifier", groupID (group player)],
-            true
-          ];
-        } remoteExecCall ["call", 0, true];
     };
 } forEach _groups;
+
+{
+  player setVariable [
+    "phx_startGroup",
+    (group player) getVariable ["phx_groupIdentifier", groupID (group player)],
+    true
+  ];
+} remoteExecCall ["call", 0, true];
 
 
 missionNamespace setVariable ["phx_groupIDset", true, true];

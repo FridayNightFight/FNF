@@ -26,7 +26,7 @@ switch (_sideWon) do {
 // 	_facColor pushback (call compile _x);
 // } forEach (getArray(configfile >> "CfgMarkerColors" >> _colorStr >> "color"));
 
-[player,false] remoteExec ["allowDamage"];
+{player allowDamage false} remoteExec ["call", -2];
 
 [format [
   "<t align='center'><br/><img image='%1' size='5'/><br/><br/><t size='1.5'>%2 %3</t></t>",
