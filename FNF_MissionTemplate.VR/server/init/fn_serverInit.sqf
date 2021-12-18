@@ -70,7 +70,6 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
   if (!_loggedIn) then {
     {
       player removeDiarySubject "PHX_Diary_Admin_Safestart";
-      // phx_adminDiaryRemove call CBA_fnc_removePerFrameHandler;
     } remoteExec ["call", _networkId];
   };
 }];

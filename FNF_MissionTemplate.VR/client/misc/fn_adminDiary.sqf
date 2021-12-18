@@ -38,4 +38,8 @@ systemChat format [""New safe start time: %1 mins"", f_var_mission_timer];
 '>+1 Minute to Safe Start</execute>"]];
 
 //remove admin diary subject once safety ends
-phx_adminDiaryRemove = [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "PHX_Diary_Admin_Safestart"}] call CBA_fnc_waitUntilAndExecute;
+phx_adminDiaryRemove = [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {
+  if (player diarySubjectExists "PHX_Diary_Admin_Safestart") then {
+    player removeDiarySubject "PHX_Diary_Admin_Safestart";
+  };
+}] call CBA_fnc_waitUntilAndExecute;
