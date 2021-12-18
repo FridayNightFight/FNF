@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_US_MARINES_2020_M27 {
-  author = "FNF";
+  author = "Mazz38";
   description = "USA: US MARINES M27 Kits";
 
   class BASE {
