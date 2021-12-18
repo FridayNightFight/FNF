@@ -1,30 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_g3_aor2"
+#define UNIFORM "rhsgref_uniform_specter"
 
-#define VEST "rhsusf_plateframe_rifleman"
-#define VEST_LEADER "rhsusf_plateframe_teamleader"
-#define VEST_AR "rhsusf_plateframe_machinegunner"
-#define VEST_MEDIC "rhsusf_plateframe_medic"
+#define VEST "rhs_6b23_6sh116_mixed", "rhs_6b23_6sh116_flora", "rhs_6b23_6sh92", "rhs_6b13_EMR_6sh92", "rhs_6b13_Flora_6sh92"
+#define VEST_LEADER "rhs_6b23_6sh116_vog_mixed", "rhs_6b23_digi_6sh92_vog_headset"
+#define VEST_AR "rhs_6b23_digi_vydra_3m"
+#define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsusf_opscore_aor2_pelt", "rhsusf_opscore_aor1_pelt"
-#define HELMET_CMDR "rhsusf_bowman_cap"
-#define HELMET_RECON "H_Booniehat_oli"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask_smiley"
+#define HELMET "rhs_6b7_1m_bala2_olive", "rhs_6b7_1m_bala1_olive", "rhs_6b7_1m_olive"
+#define HELMET_CMDR "rhs_cossack_papakha"
+#define HELMET_RECON "rhs_beanie_green"
+#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
+#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
-#define BACKPACK "B_AssaultPack_khk"
-#define BACKPACK_RADIO "TFAR_bussole"
-#define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_Kitbag_sgg"
+#define BACKPACK "rhs_rk_sht_30_olive", "rhs_rk_sht_30_olive_engineer_empty"
+#define BACKPACK_RADIO "TFAR_mr3000_rhs"
+#define BACKPACK_AR "rhs_tortila_emr", "rhs_tortila_olive"
+#define BACKPACK_AT "rhs_rpg_empty"
+#define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_US_NAVY_2010 {
+class RHS_UNI_RU_COSSACKS_2010 {
   author = "Mazz38";
-  description = "USA: Modern American NAVY AOR Camouflage";
+  description = "RU: Modern Seperatist Cossack Forces Spectre Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -86,7 +88,6 @@ class RHS_UNI_US_NAVY_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {U_B_GhillieSuit};
   };
 
   class CR : BASE {
@@ -102,6 +103,7 @@ class RHS_UNI_US_NAVY_2010 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

@@ -1,6 +1,36 @@
 //Determine if client can play the round, if not, spectate
 if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
 player enableSimulation false;
+
+phx_loadout_roles = [
+  ["PL","Platoon Leader"],
+  ["SGT","Platoon Sergeant"],
+  ["SL","Squad Leader"],
+  ["TL","Team Leader"],
+  ["AR","Autorifleman"],
+  ["ARA","Asst. Autorifleman"],
+  ["GR","Grenadier"],
+  ["GRIR","Sr. Grenadier"],
+  ["MG","Machine Gunner"],
+  ["MGA","Asst. Machine Gunner"],
+  ["CE","Combat Engineer"],
+  ["LAT","AT Rifleman"],
+  ["MAT1","AT Specialist"],
+  ["MATA1","Asst. AT Specialist"],
+  ["MAT2","AT Specialist"],
+  ["MATA2","Asst. AT Specialist"],
+  ["RI","Rifleman"],
+  ["RIS","Sr. Rifleman"],
+  ["DM","Marksman"],
+  ["SNP","Sniper"],
+  ["CRL","Vehicle Cmdr"],
+  ["CR","Crewman"],
+  ["PI","Pilot"],
+  ["MED","Medic"],
+  ["SHQAUX","Crew/Wpn Operator"],
+  ["BASE","Crew/Wpn Operator"]
+];
+
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes
@@ -20,12 +50,12 @@ call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
 // Admin player patch jip support
 if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
-  call phx_admin_fnc_jipPatch;
+	// call phx_admin_fnc_jipPatch;
 };
-
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+  call phx_fnc_clientSafeStartTime;
   [player getVariable "phxLoadout"] call phx_fnc_applyCfgLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
@@ -40,16 +70,58 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
   player enableSimulation true;
 }] call CBA_fnc_waitUntilAndExecute;
 
+
 //Start kill counter when game ends or player is dead
 //[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
 //Start spectator fnc when player is killed
 player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
+phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
+
+
+player addEventHandler ["Killed", {
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+  if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
+    ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
+  };
+  if (side (group _killer) == playerSide && (_unit != _killer)) exitWith {
+    ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
+  };
+}];
 
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
 [] spawn phx_fnc_unflipVehicleAddAction;
 
+// adds ACE Self-interact to fix uniform bug
+// private _action = [
+// 	"FixUniformBug",
+// 	"Fix ""No Uniform"" Bug",
+// 	"",
+// 	{[player] call phx_fnc_fixUniformBug},
+// 	{phx_safetyEnabled}
+// ] call ace_interact_menu_fnc_createAction;
+// [
+// 	player,
+// 	1,
+// 	["ACE_SelfActions"],
+// 	_action
+// ] call ace_interact_menu_fnc_addActionToObject;
+
+
+// remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool
+// remove ETool-less trench from all
+// remove spiderholes from non-NVA loadouts
+[{!isNil "mySideGearSelection" && !is3DEN}, {
+  if (isClass ((configOf player) >> "ACE_SelfActions" >> "ACE_Equipment" >> "ace_compat_sog_digSpiderhole")) then {
+    if !(["NVA", mySideGearSelection] call BIS_fnc_inString) then {
+      [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_compat_sog_digSpiderhole"]] call ace_interact_menu_fnc_removeActionFromClass;
+      [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_compat_sog_digSpiderholeAngled"]] call ace_interact_menu_fnc_removeActionFromClass;
+      [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_compat_sog_digSpiderholeDual"]] call ace_interact_menu_fnc_removeActionFromClass;
+    };
+    [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_trenches_digEnvelopeSmall"]] call ace_interact_menu_fnc_removeActionFromClass;
+  };
+}, [], 5] call CBA_fnc_waitUntilAndExecute;
 
 // Zeus actions
 _action = [

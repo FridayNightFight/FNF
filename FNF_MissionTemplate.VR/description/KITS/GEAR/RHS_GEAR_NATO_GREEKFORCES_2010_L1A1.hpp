@@ -1,18 +1,18 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_vhsd2"
+#define RIFLE "rhs_weap_l1a1"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhsgref_30rnd_556x45_vhs2:7","rhsgref_30rnd_556x45_vhs2_t:4"
+#define RIFLE_MAG "rhs_mag_20Rnd_762x51_m80_fnfal:7","rhs_mag_20Rnd_762x51_m62_fnfal:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhsgref_30rnd_556x45_vhs2:12","rhsgref_30rnd_556x45_vhs2_t:6"
+#define RIFLE_MAG_RI "rhs_mag_20Rnd_762x51_m80_fnfal:12","rhs_mag_20Rnd_762x51_m62_fnfal:6"
 
 #define SIDEARM "rhsusf_weap_glock17g4"
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_vhsd2_bg"
-#define RIFLE_GL_MAG RIFLE_MAG
+#define RIFLE_GL "rhs_weap_hk416d145_m320"
+#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
@@ -22,10 +22,10 @@
 #define UGL_FLAREWHITE UGL_FlareWhite_F
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_vhsk2"
-#define CARBINE_MAG RIFLE_MAG
-#define CARBINE_MAG_RI RIFLE_MAG_RI
-#define CARBINE_MAG_CREW "rhsgref_30rnd_556x45_vhs2:4","rhsgref_30rnd_556x45_vhs2_t:2"
+#define CARBINE "rhs_weap_hk416d145"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:2"
 
 #define SMG_RIFLE "rhsusf_weap_MP7A2"
 #define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
@@ -40,14 +40,14 @@
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "rhs_weap_hk416d145"
+#define DM_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
 #define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
 #define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
 
-#define SPOTTER_RIFLE "srifle_EBR_F", "rhsusf_weap_MP7A2"
+#define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhsusf_weap_MP7A2"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhsusf_mag_40Rnd_46x30_FMJ:8"
 
 #define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
@@ -55,9 +55,9 @@
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_CZ_CZECHFORCES_2010_VHS {
-  author = "FNF";
-  description = "CZ: Czech Armed Forces VHS Kits";
+class RHS_GEAR_NATO_GREEKFORCES_2010_L1A1 {
+  author = "Mazz38";
+  description = "GR: Greek Armed Forces L1A1 Kits";
 
   class BASE {
     backpackItems[] = {};
@@ -182,7 +182,7 @@ class RHS_GEAR_CZ_CZECHFORCES_2010_VHS {
     defaultMAT[] = {MAT1_LAUNCHER};
   };
   class MAT1 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
+    defaultMAT[] = {MAT1_LAUNCHER};
   };
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};

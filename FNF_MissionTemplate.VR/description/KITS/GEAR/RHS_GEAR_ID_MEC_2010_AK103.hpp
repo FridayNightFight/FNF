@@ -1,63 +1,63 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_ak74n"
+#define RIFLE "rhs_weap_ak103_zenitco01"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_30Rnd_545x39_7N6M_AK:7","rhs_30Rnd_545x39_AK_green:4"
+#define RIFLE_MAG "rhs_30Rnd_762x39mm_polymer:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N6M_AK:12","rhs_30Rnd_545x39_AK_green:6"
+#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_polymer:12","rhs_30Rnd_762x39mm_polymer_tracer:6"
 
-#define SIDEARM "rhs_weap_makarov_pm"
-#define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
+#define SIDEARM "rhs_weap_pya"
+#define SIDEARM_MAG "rhs_mag_9x19_17:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_ak74n_gp25"
+#define RIFLE_GL "rhs_weap_ak103_gp25_npz"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
 #define UGL_FRAG rhs_VOG25
-#define UGL_SMOKEWHITE rhs_GDM40
-#define UGL_FLAREWHITE rhs_VOG25P
+#define UGL_SMOKEWHITE rhs_GRD40_White
+#define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_aks74n"
-#define CARBINE_MAG RIFLE_MAG
-#define CARBINE_MAG_RI RIFLE_MAG_RI
+#define CARBINE "rhs_weap_aks74n_2"
+#define CARBINE_MAG "rhs_30Rnd_545x39_7N6M_AK:7", "rhs_30Rnd_545x39_AK_green:4"
+#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N6M_AK:12", "rhs_30Rnd_545x39_AK_green:6"
 #define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_AK:4","rhs_30Rnd_545x39_AK_green:2"
 
-#define SMG_RIFLE "rhs_weap_aks74un"
-#define SMG_MAG "rhs_30Rnd_545x39_7N6M_AK:8"
-#define SMG_MAG_CREW "rhs_30Rnd_545x39_7N6M_AK:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
 #define AR_RIFLE "fnf_rpk"
 #define AR_MAG "fnf_45rnd_rpk_green:6"
 #define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
 
-#define AT_LAUNCHER RPG7(1)
+#define AT_LAUNCHER RPG26(1)
 
 #define MAT1_LAUNCHER RPG7(4,2)
 #define MAT2_LAUNCHER RPG7(4,2)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "rhs_weap_svdp_wd_npz"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
-#define MMG_RIFLE "rhs_weap_pkm"
+#define MMG_RIFLE "rhs_weap_pkp"
 #define MMG_MAG "rhs_100Rnd_762x54mmR:8"
 #define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
 
-#define SPOTTER_RIFLE "rhs_weap_aks74n", "rhs_weap_vss"
+#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
 #define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
 
-#define SNP_RIFLE "rhs_weap_m38_rail"
-#define SNP_MAG "rhsgref_5Rnd_762x54_m38:12"
+#define SNP_RIFLE "rhs_weap_t5000"
+#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_SOV_ARMY_1980_AK74 {
+class RHS_GEAR_ID_MEC_2010_AK103 {
   author = "Mazz38";
-  description = "SRU: Soviet Russian ARMY AK74 Kits";
+  description = "ID: 2010 Middle Eastern Coalition ARMY AK103 Kits";
 
   class BASE {
     backpackItems[] = {};

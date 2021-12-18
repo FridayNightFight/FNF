@@ -1,30 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_cu_ocp"
+#define UNIFORM "rhs_uniform_FROG01_wd"
 
-#define VEST "rhsusf_iotv_ocp_Rifleman"
-#define VEST_LEADER "rhsusf_iotv_ocp_Teamleader"
-#define VEST_AR "rhsusf_iotv_ocp_SAW"
-#define VEST_MEDIC VEST
+#define VEST "rhsusf_spc_corpsman"
+#define VEST_LEADER "rhsusf_spc_teamleader"
+#define VEST_AR "rhsusf_spc_iar"
+#define VEST_MEDIC "rhsusf_spc_rifleman"
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsusf_opscore_ut_pelt_nsw_cam"
-#define HELMET_CMDR "rhsusf_patrolcap_ocp"
-#define HELMET_RECON "rhs_Booniehat_ocp"
+#define HELMET "rhsusf_lwh_helmet_marpatwd_headset_blk2"
+#define HELMET_CMDR "rhs_8point_marpatwd"
+#define HELMET_RECON "rhs_booniehat2_marpatwd"
 #define HELMET_CREWMAN "rhsusf_cvc_green_ess"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "rhsusf_assault_eagleaiii_ocp"
-#define BACKPACK_RADIO "TFAR_rt1523g"
-#define BACKPACK_AR "B_Carryall_mcamo"
-#define BACKPACK_AT "B_Carryall_mcamo"
-#define BACKPACK_MEDIC "B_Kitbag_mcamo"
+#define BACKPACK "rhsusf_assault_eagleaiii_coy"
+#define BACKPACK_RADIO "TFAR_rt1523g_black"
+#define BACKPACK_AR "B_Carryall_khk"
+#define BACKPACK_AT "B_Carryall_khk"
+#define BACKPACK_MEDIC "B_Kitbag_cbr"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_US_RANGERS_2020 {
+class RHS_UNI_NATO_US_MARINES_WOODLAND_2010 {
   author = "Mazz38";
-  description = "USA: Modern American RANGERS Multicam Camouflage";
+  description = "USA: Modern American MARINES Woodland Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -86,7 +88,6 @@ class RHS_UNI_US_RANGERS_2020 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {U_B_GhillieSuit};
   };
 
   class CR : BASE {
@@ -102,6 +103,7 @@ class RHS_UNI_US_RANGERS_2020 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

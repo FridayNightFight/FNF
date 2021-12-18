@@ -71,7 +71,7 @@ if (_text isEqualType "") then {
     _text = parseText _text;
 };
 
-playSound "HintExpand";
+// playSound "HintExpand";
 
 private _Title = _display ctrlCreate ["RscText", -1];
 //Creating Title Control and Setting the Position, Width and Height.

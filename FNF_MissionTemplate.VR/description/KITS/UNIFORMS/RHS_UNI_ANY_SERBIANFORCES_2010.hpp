@@ -11,18 +11,20 @@
 
 #define HELMET "rhssaf_helmet_m97_veil_oakleaf"
 #define HELMET_CMDR "rhssaf_beret_green"
-#define HELMET_RECON "rhssaf_bandana_oakleaf"
-#define HELMET_CREWMAN "rhs_6b48"
-#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
+#define HELMET_RECON "rhssaf_booniehat_md2camo"
+#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask_saf"
 
 #define BACKPACK "B_FieldPack_oli"
-#define BACKPACK_RADIO "TFAR_anarc164"
+#define BACKPACK_RADIO "TFAR_rt1523g_sage"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
 #define BACKPACK_MEDIC "B_Kitbag_sgg"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_SERBIAN_ARMY_2010 {
+class RHS_UNI_ANY_SERBIANFORCES_2010 {
   author = "Mazz38";
   description = "CS: 2010 Serbian ARMY Oakleaf Camouflage";
 
@@ -101,6 +103,7 @@ class RHS_UNI_SERBIAN_ARMY_2010 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

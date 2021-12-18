@@ -26,6 +26,7 @@ switch (_numberOfTerminals) do {
   case 3: {{_x call _markerSetup;} forEach [term1,term2,term3];};
   default {hint "Terminal number not set correctly";};
 };
+[] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
 phx_serverTerminalAction = {
   _term = _this select 0;
@@ -86,10 +87,14 @@ phx_serverTerminalAction = {
 
 
   if (_animate) then {
-    [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+    if ((typeOf _term) isEqualTo "Land_DataTerminal_01_F") then {
+      [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+    };
   };
 
- format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
+//  format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
+  private _str = format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}];
+  [_str, "warning", 7] remoteExec ["phx_ui_fnc_notify",0,false];
 };
 
 phx_connectionWin = {

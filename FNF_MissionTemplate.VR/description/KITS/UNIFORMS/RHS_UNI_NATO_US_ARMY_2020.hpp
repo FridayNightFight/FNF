@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhssaf_uniform_m10_digital_desert"
+#define UNIFORM "rhs_uniform_acu_oefcp"
 
-#define VEST "rhssaf_vest_md12_digital_desert"
-#define VEST_LEADER VEST
-#define VEST_AR VEST
+#define VEST "rhsusf_iotv_ocp_Rifleman"
+#define VEST_LEADER "rhsusf_iotv_ocp_Teamleader"
+#define VEST_AR "rhsusf_iotv_ocp_SAW"
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhssaf_helmet_m97_black_nocamo_black_ess"
-#define HELMET_CMDR "H_Beret_blk"
-#define HELMET_RECON "H_ShemagOpen_khk"
-#define HELMET_CREWMAN "rhs_tsh4"
-#define HELMET_PILOT "rhs_zsh7a_mike_alt"
+#define HELMET "rhsusf_ach_helmet_headset_ess_ocp"
+#define HELMET_CMDR "rhsusf_patrolcap_ocp"
+#define HELMET_RECON "rhs_Booniehat_ocp"
+#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "B_Kitbag_cbr"
-#define BACKPACK_RADIO "TFAR_anprc155_coyote"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK "rhsusf_assault_eagleaiii_ocp"
+#define BACKPACK_RADIO "TFAR_rt1523g"
+#define BACKPACK_AR "B_Carryall_mcamo"
+#define BACKPACK_AT "B_Carryall_mcamo"
+#define BACKPACK_MEDIC "B_Kitbag_mcamo"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_ID_MEC_2010 {
+class RHS_UNI_NATO_US_ARMY_2020 {
   author = "Mazz38";
-  description = "INDEPENDENT FACTION: 2010 Middle Eastern Coalition ARMY Desert Camouflage";
+  description = "USA: Modern American ARMY Multicam Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};

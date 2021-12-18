@@ -1,8 +1,8 @@
 This text file serves as a reference for options available in config.sqf
 
 GAME MODES
-  Change this to whatever game mode you want and configure the respective file in mode_config
-  If you don't want to use one of the template modes, you can set phx_gameMode = "";
+Change this to whatever game mode you want and configure the respective file in mode_config
+If you don't want to use one of the template modes, you can set phx_gameMode = "";
   ===ATK/DEF===
   destroy
   uplink
@@ -20,57 +20,53 @@ UNIFORM AND GEAR CHOICES
 UNI = Uniform, GEAR = Gear
 
   Era: Modern (2000+)
-    UNIFORMS:
-      RHS_UNI_CZ_CZECHFORCES_2010
-      RHS_UNI_DE_BUNDESWEHR_2010
-      RHS_UNI_ID_MEC_2010
-      RHS_UNI_ID_NAVSOG_2010
-      RHS_UNI_RU_RATNIK_2020
-      RHS_UNI_RU_RATNIK_D_2020
-      RHS_UNI_RU_SPETSNAZ_2010
-      RHS_UNI_SERBIAN_ARMY_2010
-      RHS_UNI_US_ARMY_2020
-      RHS_UNI_US_MARINES_DESERT_2010
-      RHS_UNI_US_MARINES_WOODLAND_2010
-      RHS_UNI_US_NAVY_2010
-      RHS_UNI_US_RANGERS_2020
+    NATO UNIFORMS AND GEAR:
+      RHS_UNI_NATO_GER_BUNDESWEHR_2010       +  RHS_GEAR_NATO_BUNDESWEHR_2010_G36
+      RHS_UNI_NATO_GREEKFORCES_2010          +  RHS_GEAR_NATO_GREEKFORCES_2010_L1A1
+      RHS_UNI_NATO_UKRAINIAN_2010            +  RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK
+      RHS_UNI_NATO_US_ARMY_2020              +  RHS_GEAR_US_ARMY_2010_M16A4
+      RHS_UNI_NATO_US_MARINES_DESERT_2010    +  RHS_GEAR_US_MARINES_2020_M27
+      RHS_UNI_NATO_US_MARINES_WOODLAND_2010  +  RHS_GEAR_US_MARINES_2020_M27
+      RHS_UNI_NATO_US_NAVY_2010              +  RHS_GEAR_US_NAVY_2010_MK18
+      RHS_UNI_NATO_US_RANGERS_2020           +  RHS_GEAR_US_RANGERS_2010_SCAR
 
-    GEAR:
-      RHS_GEAR_CZ_CZECHFORCES_2010_VHS
-      RHS_GEAR_DE_BUNDESWEHR_2010_G36
-      RHS_GEAR_ID_MEC_2010_AK74MR
-      RHS_GEAR_ID_NAVSOG_2010_M16A4
-      RHS_GEAR_RU_ARMY_2010_AK74M
-      RHS_GEAR_SERBIAN_ARMY_2010_M21
-      RHS_GEAR_US_ARMY_2010_M16A4
-      RHS_GEAR_US_NAVY_2010_MK18
-      RHS_GEAR_US_RANGERS_2010_SCAR
+     ANY UNIFORMS AND GEAR:
+      RHS_UNI_ANY_CROATIAN_2010              +  RHS_GEAR_ANY_CROATIAN_2010_VHS
+      RHS_UNI_ANY_CZECHFORCES_2010           +  RHS_GEAR_ANY_CZECHFORCES_2010_VZ58
+      RHS_UNI_ANY_SERBIANFORCES_2010         +  RHS_GEAR_ANY_SERBIAN_ARMY_2010_M21
+      RHS_UNI_ANY_YUGOSLAVIA_2000            +  RHS_GEAR_ANY_YUGOSLAVIA_2000_M70
 
-  Era: 1980s
-    UNIFORMS:
-      RHS_UNI_SOV_ARMY_1980
-      RHS_UNI_US_ARMY_1980
-    GEAR:
-      RHS_GEAR_SOV_ARMY_1980_AK74
-      RHS_GEAR_US_ARMY_1980_M14
+     RU UNIFORMS AND GEAR:
+      RHS_UNI_RU_COSSACKS_2010               +  RHS_GEAR_RU_ARMY_2010_AK74M
+      RHS_UNI_RU_RATNIK_2020                 +  RHS_GEAR_RU_ARMY_2010_AK74M
+      RHS_UNI_RU_RATNIK_D_2020               +  RHS_GEAR_RU_ARMY_2010_AK74M
+      RHS_UNI_RU_SPETSNAZ_2010               +  RHS_GEAR_RU_ARMY_2010_AK74M
+
+     ID UNIFORMS AND GEAR:
+      RHS_UNI_ID_MEC_2010                    +  RHS_GEAR_ID_MEC_2010_AK103
+      RHS_UNI_ID_NAVSOG_2010                 +  RHS_GEAR_ID_NAVSOG_2010_M16A4
+      RHS_UNI_ID_REBELS_2010                 +  RHS_GEAR_ID_REBELS_2010_AKMN
+      RHS_UNI_ID_INSURGENTS_2000             +  RHS_GEAR_ID_INSURGENTS_2000_AK74N
+
 
   Era: Vietnam (requires Prairie Fire)
     UNIFORMS:
-      VN_UNI_NLF_Vietcong
-      VN_UNI_PAVN_NVA
-      VN_UNI_SVA_ARVN
-      VN_UNI_US_MACV
-      VN_UNI_US_SOG
+      VN_UNI_NLF_Vietcong (DONT USE)
+      VN_UNI_PAVN_NVA (DONT USE)
+      VN_UNI_SVA_ARVN (DONT USE)
+      VN_UNI_US_MACV (DONT USE)
+      VN_UNI_US_SOG (DONT USE)
     GEAR:
-      VN_GEAR_NVA_VC1970
-      VN_GEAR_US_ARMY1970
-      VN_GEAR_US_SOG1970
+      VN_GEAR_NVA_VC1970 (DONT USE)
+      VN_GEAR_US_ARMY1970 (DONT USE)
+      VN_GEAR_US_SOG1970 (DONT USE)
 
 
 MAT SELECTION
 Possible launcher values (and recommended counts)
     Supports LAUNCHER(_HEATCount,_HECount)
     CARLG(2,0)
+    SMAW(2,0)
     RPG32(2,0)
     RPG7(4,2)
 
@@ -83,6 +79,7 @@ Possible launcher values (and recommended counts)
 
   // Disposables
     M72LAW(1)
+    M80(1)
     RPG26(1)
     NLAW(1)
 

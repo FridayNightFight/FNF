@@ -17,7 +17,7 @@
 #define VEST_CREWMAN "vn_o_vest_02"
 #define VEST_PILOT "vn_o_vest_05"
 
-#define HELMET "vn_o_helmet_nva_09", "vn_o_helmet_nva_01", "vn_o_helmet_nva_04", "vn_o_helmet_nva_03", "vn_o_helmet_nva_07", "vn_o_helmet_nva_02"
+#define HELMET "vn_o_helmet_nva_01", "vn_o_helmet_nva_04", "vn_o_helmet_nva_03", "vn_o_helmet_nva_07", "vn_o_helmet_nva_02"
 #define HELMET_SNP "vn_o_helmet_nva_04"
 #define HELMET_CREWMAN "vn_o_helmet_tsh3_01"
 #define HELMET_PILOT "vn_o_helmet_zsh3_01"
@@ -29,8 +29,8 @@
 #define BACKPACK_CE "vn_o_pack_05"
 #define BACKPACK_DM BACKPACK
 #define BACKPACK_MEDIC BACKPACK
-#define BACKPACK_CREWMAN BACKPACK
-#define BACKPACK_PILOT BACKPACK
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
 class VN_UNI_PAVN_NVA {
@@ -108,7 +108,6 @@ class VN_UNI_PAVN_NVA {
     uniform[] = {UNIFORM};
     vest[] = {VEST_CREWMAN};
     headgear[] = {HELMET_CREWMAN};
-    backpack[] = {BACKPACK_CREWMAN};
   };
 
   class CRL : CR {
@@ -119,7 +118,7 @@ class VN_UNI_PAVN_NVA {
     uniform[] = {UNIFORM_PILOT};
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
-    backpack[] = {BACKPACK_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

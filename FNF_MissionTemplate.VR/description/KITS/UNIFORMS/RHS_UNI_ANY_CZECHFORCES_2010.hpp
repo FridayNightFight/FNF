@@ -1,30 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_woodland"
+#define UNIFORM "rhs_uniform_afghanka_wdl"
 
-#define VEST "rhsgref_alice_webbing"
+#define VEST "rhs_chicom"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_woodland"
-#define HELMET_CMDR "rhsgref_hat_M1951"
+#define HELMET "rhssaf_helmet_m97_veil_woodland"
+#define HELMET_CMDR "rhs_fieldcap_m88_woodland"
 #define HELMET_RECON "rhssaf_booniehat_woodland"
 #define HELMET_CREWMAN "rhsusf_cvc_green_ess"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "B_TacticalPack_oli"
-#define BACKPACK_RADIO "TFAR_rt1523g_black"
-#define BACKPACK_AR "rhsgref_wdl_alicepack"
-#define BACKPACK_AT "rhsgref_wdl_alicepack"
-#define BACKPACK_MEDIC "B_Kitbag_rgr"
+#define BACKPACK "rhssaf_kitbag_md2camo"
+#define BACKPACK_RADIO "TFAR_rt1523g_sage"
+#define BACKPACK_AR "B_Carryall_oli"
+#define BACKPACK_AT "B_Carryall_oli"
+#define BACKPACK_MEDIC "B_FieldPack_oli"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_US_ARMY_1980 {
+class RHS_UNI_ANY_CZECHFORCES_2010 {
   author = "Mazz38";
-  description = "USA: 1980s American ARMY M81 Woodland Camouflage";
+  description = "CZ: Modern Czech Armed Forces Woodland Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -86,6 +88,7 @@ class RHS_UNI_US_ARMY_1980 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
@@ -101,6 +104,7 @@ class RHS_UNI_US_ARMY_1980 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

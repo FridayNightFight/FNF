@@ -37,7 +37,8 @@ switch (playerSide) do {
       };
       hintSilent "";
     } else {
-      hint format ["You have %1 seconds to get back to the starting area", phx_startTimer];
+      // hint format ["You have %1 seconds to get back to the starting area", phx_startTimer];
+      [format ["<t align='center'><t color='#FF0000' size='1.5'>%1</t><br/>seconds to get back to the safe start zone", phx_startTimer], "warning", 1] call phx_ui_fnc_notify;
       phx_startTimer = phx_startTimer - 1;
     };
   };

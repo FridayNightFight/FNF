@@ -1,7 +1,7 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_m16a4_carryhandle","rhs_weap_m4a1_blockII_bk"
+#define RIFLE "rhs_weap_hk416d145"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
 #define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 // give Riflemen extra mags
@@ -40,15 +40,15 @@
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "rhs_weap_m14_rail"
+#define DM_MAG "rhsusf_20Rnd_762x51_m80_Mag:11"
 
 #define MMG_RIFLE "rhs_weap_m240G"
 #define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
 #define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
 
-#define SPOTTER_RIFLE "srifle_EBR_F", "rhsusf_weap_MP7A2"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhsusf_mag_40Rnd_46x30_FMJ:8"
+#define SPOTTER_RIFLE "rhs_weap_m14_rail", "rhs_weap_m14_socom"
+#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:6", "rhsusf_20Rnd_762x51_m993_Mag:4"
 
 #define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
 #define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ID_NAVSOG_2010_M16A4 {
-  author = "FNF";
+  author = "Mazz38";
   description = "INDEPENDENT FACTION: PHILIPPINE NAVSOG M4/M16 Kits";
 
   class BASE {

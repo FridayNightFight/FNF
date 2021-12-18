@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhssaf_uniform_m10_digital_desert"
+#define UNIFORM "rhsgref_uniform_TLA_2", "rhsgref_uniform_TLA_1"
 
-#define VEST "rhssaf_vest_md12_digital_desert"
+#define VEST "rhsgref_chicom"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhssaf_helmet_m97_black_nocamo_black_ess"
-#define HELMET_CMDR "H_Beret_blk"
+#define HELMET "rhsgref_M56", "rhs_ssh60"
+#define HELMET_CMDR "rhs_headband"
 #define HELMET_RECON "H_ShemagOpen_khk"
 #define HELMET_CREWMAN "rhs_tsh4"
-#define HELMET_PILOT "rhs_zsh7a_mike_alt"
+#define HELMET_PILOT "H_Cap_headphones"
 
-#define BACKPACK "B_Kitbag_cbr"
-#define BACKPACK_RADIO "TFAR_anprc155_coyote"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK "rhs_sidor"
+#define BACKPACK_RADIO "TFAR_rt1523g_fabric"
+#define BACKPACK_AR "B_Carryall_oli"
+#define BACKPACK_AT "B_Carryall_oli"
+#define BACKPACK_MEDIC "B_TacticalPack_rgr"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_ID_MEC_2010 {
+class RHS_UNI_ID_REBELS_2010 {
   author = "Mazz38";
-  description = "INDEPENDENT FACTION: 2010 Middle Eastern Coalition ARMY Desert Camouflage";
+  description = "ID: 2010 Rebel French-Lizard Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};

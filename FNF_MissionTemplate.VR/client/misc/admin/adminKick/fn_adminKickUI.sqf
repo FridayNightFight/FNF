@@ -17,9 +17,22 @@ _background ctrlCommit 0;
 _playerList = _display ctrlCreate[ "ctrlListbox", 10000 ];
 _playerList ctrlSetPosition[ 0.3, 0.04, 0.4, 0.8 ];
 _playerList ctrlCommit 0;
+
+_playerList lbAdd "===BLUFOR===";
 {
 	_playerList lbAdd name _x;
-} forEach ( allPlayers - [ player ] );
+} forEach (allPlayers select {side (group _x) == west});
+
+_playerList lbAdd "===OPFOR===";
+{
+	_playerList lbAdd name _x;
+} forEach (allPlayers select {side (group _x) == east});
+
+_playerList lbAdd "===INDEPENDENT===";
+{
+	_playerList lbAdd name _x;
+} forEach (allPlayers select {side (group _x) == independent});
+
 _playerList lbSetCurSel 0;
 
 _kickButton = _display ctrlCreate[ "ctrlButton", 10001 ];
@@ -31,7 +44,9 @@ _kickButton ctrlAddEventHandler[ "ButtonClick", {
 	params[ "_kickButton" ];
 	
 	_playerList = ctrlParent _kickButton displayCtrl 10000;
-	_selected = (lbSelection _playerList) select 0;
+	_selectedIndex = lbCurSel _playerList;
+	_selected = _playerList lbText _selectedIndex;
+	
 
 	_selected remoteExec ["phx_admin_fnc_kickPlayer", 2];
 	

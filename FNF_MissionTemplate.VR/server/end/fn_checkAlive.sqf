@@ -31,17 +31,17 @@ phx_checkAlive_count = {
 
   if (phx_bluforInMission) then {
     _bluCount = west call phx_checkAlive_count;
-    if (_bluCount < 1) then {phx_bluforInMission = false; "BLUFOR eliminated!" remoteExec ["hint"]};
+    if (_bluCount < 1) then {phx_bluforInMission = false; ["<t align='center'>BLUFOR eliminated!</t>","info",10] remoteExec ["phx_ui_fnc_notify",0]};
   };
 
   if (phx_opforInMission) then {
     _opfCount = east call phx_checkAlive_count;
-    if (_opfCount < 1) then {phx_opforInMission = false; "OPFOR eliminated!" remoteExec ["hint"]};
+    if (_opfCount < 1) then {phx_opforInMission = false; ["<t align='center'>OPFOR eliminated!</t>","info",10] remoteExec ["phx_ui_fnc_notify",0]};
   };
 
   if (phx_indforInMission) then {
     _indCount = independent call phx_checkAlive_count;
-    if (_indCount < 1) then {phx_indforInMission = false; "INDFOR eliminated!" remoteExec ["hint"]};
+    if (_indCount < 1) then {phx_indforInMission = false; ["<t align='center'>INDFOR eliminated!</t>","info",10] remoteExec ["phx_ui_fnc_notify",0]};
   };
 
   /*

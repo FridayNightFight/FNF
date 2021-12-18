@@ -12,7 +12,7 @@
 #define HELMET "rhs_6b47_bala"
 #define HELMET_CMDR "rhs_vkpo_cap_alt"
 #define HELMET_RECON "rhs_Booniehat_digi"
-#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
+#define HELMET_CREWMAN "rhs_6b48"
 #define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
 
 #define BACKPACK "rhs_rk_sht_30_emr"
@@ -20,6 +20,8 @@
 #define BACKPACK_AR "rhs_tortila_emr"
 #define BACKPACK_AT "rhs_tortila_emr"
 #define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK_CREWMAN BACKPACK_RADIO
+#define BACKPACK_PILOT BACKPACK_RADIO
 
 
 class RHS_UNI_RU_RATNIK_2020 {
@@ -101,6 +103,7 @@ class RHS_UNI_RU_RATNIK_2020 {
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
+    backpack[] = {BACKPACK_RADIO};
   };
 
   class MED : BASE {

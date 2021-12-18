@@ -12,6 +12,7 @@ switch (_numberOfSectors) do {
   case 2: {_sectors pushBack phx_sec1; _sectors pushBack phx_sec2};
   case 3: {_sectors pushBack phx_sec1; _sectors pushBack phx_sec2; _sectors pushBack phx_sec3};
 };
+[] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
 phx_server_sectorWin = {
   phx_gameEnd = true;
@@ -55,6 +56,11 @@ _sectorNum = 0;
       default {"ColorCIV"};
     };
 
+    private _defColorHTML = ([phx_defendingSide, false] call BIS_fnc_sideColor) call BIS_fnc_colorRGBAtoHTML;
+    private _defColorStr = ([phx_defendingSide, true] call BIS_fnc_sideColor);
+    private _atkColorHTML = ([phx_attackingSide, false] call BIS_fnc_sideColor) call BIS_fnc_colorRGBAtoHTML;
+    private _atkColorStr = ([phx_attackingSide, true] call BIS_fnc_sideColor);
+
     _dTask = "dtask" + str(_sectorNum);
     _aTask = "atask" + str(_sectorNum);
     _dTaskTitle = "Defend Sector " + str(_sectorNum);
@@ -83,19 +89,43 @@ _sectorNum = 0;
       if (_aPresent && !_dPresent) then {
         phx_capNum = phx_capNum + 1;
 
+        [
+          _sectorNum - 1, // id
+          format["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>",_sectorNum], // text
+          "\A3\ui_f\data\map\markers\nato\n_installation.paa", // texture
+          [phx_attackingSide, false] call BIS_fnc_sideColor, // color
+          0, // fade
+          getPosATL _sector, // position
+          100 // barHeight (progress)
+        ] remoteExec ["BIS_fnc_setMissionStatusSlot",0];
+
         deleteVehicle _sector;
-        deleteMarker _mark;
-        deleteMarker _textMark;
+        // deleteMarker _textMark;
+        [_mark,_atkColorStr,10] spawn BIS_fnc_changeColorMarker;
+        // [{deleteMarker _this},_mark,10] call CBA_fnc_waitAndExecute;
 
         [_dTask,"FAILED"] call BIS_fnc_taskSetState;
         [_aTask,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
         if (phx_capNum >= phx_sectorNum) then {call phx_server_sectorWin} else {
-          ["Attackers have captured Sector " + (str _sectorNum)]  remoteExec ["phx_fnc_hintThenClear",0,false];
+          [format[
+            "<t align='center'>Attackers have captured Sector %1</t>",
+            (str _sectorNum)
+          ]] remoteExec ["phx_fnc_hintThenClear",0,false];
         };
+      } else {
+        [
+          _sectorNum - 1, // id
+          format["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>",_sectorNum], // text
+          "\A3\ui_f\data\map\markers\nato\n_installation.paa", // texture
+          [phx_defendingSide, false] call BIS_fnc_sideColor, // color
+          0, // fade
+          getPosATL _sector, // position
+          0 // barHeight (progress)
+        ] remoteExec ["BIS_fnc_setMissionStatusSlot",0];
       };
 
-      sleep 2;
+      sleep 3;
     };
   };
 } forEach _sectors;

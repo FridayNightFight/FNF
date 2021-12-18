@@ -1,13 +1,5 @@
 if (!isServer) exitWith {};
 
-phx_adminChannelId = radioChannelCreate [
-	[1,1,0,1], // RGBA color
-	"Staff Channel", // channel name
-	"[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME", // callsign
-  []
-];
-publicVariable "phx_adminChannelId";
-
 missionNamespace setVariable [
   "TFAR_DefaultRadio_Personal_Guer",
   TFAR_DefaultRadio_Personal_Independent,
@@ -20,6 +12,7 @@ missionNamespace setVariable [
 ];
 
 call phx_fnc_serverSafety;
+call phx_fnc_setGroupIDs;
 call phx_fnc_radio_genFreqs;
 call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
@@ -72,6 +65,113 @@ addMissionEventHandler ["OnUserAdminStateChanged", {
       player removeDiarySubject "PHX_Diary_Admin_Safestart";
     } remoteExec ["call", _networkId];
   };
+}];
+
+
+["TeamkillDetected", {
+  params ["_killed", "_killer"];
+
+  if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send Teamkill webhook -- mod not loaded!"};
+  // if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundPrep Discord post"};
+
+  private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
+  _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
+  private _inVehicle = "N/A";
+  if (vehicle _killer != _killer) then {
+    _inVehicle = getText(configFile >> "CfgVehicles" >> (typeOf (vehicle _killer)) >> "displayName");
+  };
+
+  private _killerOrgGroup = groupId (group _killer);
+  if ((roleDescription _killer) find '@' > -1) then {
+    _killerOrgGroup = (roleDescription _killer) splitString '@' select 1;
+  };
+  private _killedOrgGroup = groupId (group _killed);
+  if ((roleDescription _killed) find '@' > -1) then {
+    _killedOrgGroup = (roleDescription _killed) splitString '@' select 1;
+  };
+
+  [
+    "BotNotifications",
+    // "Testing",
+    "",
+    "",
+    "",
+    false,
+    [
+      [
+        format["TEAMKILL [%1]",[side (group _killer)] call BIS_fnc_sideName],
+        format[
+          "KILLER: `%1 (%2)`
+VICTIM: `%4 (%5)`
+VEH: %3 | WEP: `%6` | RNG: `%7m`
+ELAPSED: `%8`
+UTC: `%9`
+MISSION: `%10`",
+          name _killer,
+          // groupId (group _killer),
+          _killerOrgGroup,
+          format["`%1`", _inVehicle],
+          name _killed,
+          // groupId (group _killed),
+          _killedOrgGroup,
+          getText(configFile >> "CfgWeapons" >> (weaponState _killer select 0) >> "displayName"),
+          str(ceil(_killer distance _killed)),
+          cba_missionTime,
+          format _systemTimeFormat,
+          missionName
+        ],
+        "",
+        "00FF00",
+        false,
+        "",
+        "",
+        [],
+        [],
+        []
+      ]
+    ]
+	] call DiscordEmbedBuilder_fnc_buildSqf;
+}] call CBA_fnc_addEventHandler;
+
+// Staff channel
+phx_adminChannelId = radioChannelCreate [
+	[1,1,0,1], // RGBA color
+	"Staff Channel", // channel name
+	"[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME", // callsign
+  allPlayers select {getPlayerUID _x in fnf_staffInfo}
+];
+publicVariable "phx_adminChannelId";
+
+addMissionEventHandler ["PlayerConnected", {
+  if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerConnected", _thisEventHandler]};
+
+  [{!isNull ((_this # 1) call BIS_fnc_getUnitByUid)}, {
+    params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+    if !(missionNamespace getVariable ["phx_safetyEnabled",true]) exitWith {};
+    if (!_jip) exitWith {};
+    private _unit = (_uid call BIS_fnc_getUnitByUid);
+    private _sides = _unit call BIS_fnc_friendlySides select {_x != sideFriendly};
+    [{
+      params [["_unit", objNull], ["_sides", [sideUnknown]]];
+      {
+        [] remoteExec ["phx_fnc_createOrbat", units _x];
+      } forEach _sides;
+    }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
+  }, _this] call CBA_fnc_waitUntilAndExecute;
+}];
+
+addMissionEventHandler ["PlayerDisconnected", {
+  if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerDisconnected", _thisEventHandler]};
+
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+  private _unit = (_uid call BIS_fnc_getUnitByUid);
+  private _sides = _unit call BIS_fnc_friendlySides select {_x != sideFriendly};
+  [{
+    params [["_unit", objNull], ["_sides", [sideUnknown]]];
+    {
+      [] remoteExec ["phx_fnc_createOrbat", units _x];
+    } forEach _sides;
+  }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
 }];
 
 //Delete player bodies during safe start

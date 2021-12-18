@@ -1,14 +1,14 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_m16a4_carryhandle","rhs_weap_m4a1_blockII_bk"
+#define RIFLE "rhs_weap_m27iar"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:7","rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
+#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_PMAG:12","rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red:6"
 
-#define SIDEARM "rhsusf_weap_glock17g4"
-#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
+#define SIDEARM "rhsusf_weap_m9"
+#define SIDEARM_MAG "rhsusf_mag_15Rnd_9x19_JHP:2"
 
 // put all GL weapons
 #define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203","rhs_weap_m4a1_blockII_M203_bk"
@@ -31,17 +31,17 @@
 #define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
 #define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
 
-#define AR_RIFLE "rhs_weap_m249_pip_L"
+#define AR_RIFLE "rhs_weap_m249_light_L"
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
 #define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
 #define AT_LAUNCHER M72LAW(1)
 
-#define MAT1_LAUNCHER CARLG(2,0)
-#define MAT2_LAUNCHER CARLG(2,0)
+#define MAT1_LAUNCHER SMAW(2,0)
+#define MAT2_LAUNCHER SMAW(2,0)
 
 #define DM_RIFLE "rhs_weap_sr25_ec"
-#define DM_MAG "rhsusf_20Rnd_762x51_SR25_m118_special_Mag:8", "rhsusf_20Rnd_762x51_SR25_m62_Mag:4"
+#define DM_MAG "rhsusf_20Rnd_762x51_SR25_m118_special_Mag:9"
 
 #define MMG_RIFLE "rhs_weap_m240G"
 #define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
@@ -50,14 +50,14 @@
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhs_weap_m14_socom"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:6", "rhsusf_20Rnd_762x51_m993_Mag:4"
 
-#define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
-#define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
+#define SNP_RIFLE "rhs_weap_m40a5", "rhs_weap_m40a5_wd", "rhs_weap_m40a5_d"
+#define SNP_MAG "rhsusf_5Rnd_762x51_AICS_m118_special_Mag:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_US_ARMY_2010_M16A4 {
+class RHS_GEAR_US_MARINES_2020_M27 {
   author = "Mazz38";
-  description = "USA: US ARMY M4/M16 Kits";
+  description = "USA: US MARINES M27 Kits";
 
   class BASE {
     backpackItems[] = {};

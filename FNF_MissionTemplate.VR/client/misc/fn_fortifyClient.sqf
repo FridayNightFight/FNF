@@ -74,7 +74,8 @@ switch (playerSide) do {
       _errorStr = "Cannot place object. Not enough funds.";
     };
 
-    hintSilent _errorStr;
+    // hintSilent _errorStr;
+    [_errorStr, "error", 7] call phx_ui_fnc_notify;
 
     if (_canPlace) then {
       switch (playerSide) do {
@@ -89,7 +90,8 @@ switch (playerSide) do {
         };
       };
       phx_fortifyPoints = phx_fortifyPoints - _cost;
-      hintSilent format ["Fortify Budget: $%1", phx_fortifyPoints];
+      // hintSilent format ["Fortify Budget: $%1", phx_fortifyPoints];
+      [format ["Fortify Budget: $%1", phx_fortifyPoints], "info", 7] call phx_ui_fnc_notify;
     };
 
     _canPlace
