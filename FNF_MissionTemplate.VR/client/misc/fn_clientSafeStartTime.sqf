@@ -22,4 +22,4 @@ phx_safeStartTimeUI_PFH = [{
     uiNameSpace getVariable "timeleftStructText" closeDisplay 1;
     [_handle] call CBA_fnc_removePerFrameHandler;
   };
-}, 2] call CBA_fnc_addPerFrameHandler;
+}, 1] call CBA_fnc_addPerFrameHandler;
