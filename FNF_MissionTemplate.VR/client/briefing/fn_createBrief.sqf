@@ -126,10 +126,16 @@ _fnc_parseCSWForBriefing = {
   {
     private _setting = _x;
     if (_x isEqualTo 0 || typeName _x != "ARRAY") then {
-      _textOut pushBack format["%1: Crewmen", _squads select _forEachIndex];
+      _textOut pushBack format["<font size='16' color='" + COLOR5 + "'>%1</font><br/>    Crewmen", _squads select _forEachIndex];
     } else {
       if (count _setting > 0) then {
         private _cswPrimaryInfo = (_setting # 0) call fnc_getItemInfo;
+
+        private _mags = [];
+        {
+          _mags pushBack ([_x, true] call _fnc_notesItems);
+        } forEach (_setting select {typeName _x == "ARRAY"});
+
         private _cswSecondaryName = "Ammo only";
         if (_setting # 1 != "") then {
           private _temp = (_setting # 1) call fnc_getItemInfo;
@@ -137,12 +143,13 @@ _fnc_parseCSWForBriefing = {
         };
 
         _textOut pushBack format [
-          "<font size='16' color='" + COLOR5 + "'>%2</font><br/>    <font color='" + COLOR3 + "'>%3</font><br/>    <img width='120' image='%4'/><br/>    + %5<br/>",
+          "<font size='16' color='" + COLOR5 + "'>%2</font><br/>    <font color='" + COLOR3 + "'>%3</font><br/>    <img width='120' image='%4'/><br/>    + %5<br/>    + %6",
           _side call BIS_fnc_sideName,
           _squads select _forEachIndex,
           [_cswPrimaryInfo, "displayName"] call BIS_fnc_getFromPairs,
           [_cswPrimaryInfo, "picture"] call BIS_fnc_getFromPairs,
-          _cswSecondaryName
+          _cswSecondaryName,
+          _mags joinString " "
         ];
       };
     };
@@ -214,26 +221,7 @@ player createDiaryRecord [
       format ["Template Version: %1", phx_templateVersion],
       "
 <br/>
-Radios:<br/>
-- modification to the way radio assignment is handled for more consistency<br/>
-<br/>
-UI:<br/>
-- move time display to bottom left to not interfere w TFAR info<br/>
-- change radio codes to match default TFAR<br/>
-- safe start timer using existing mission time display to replace notification system, updates every 10 seconds<br/>
-<br/>
-Diary:<br/>
-- all categories moved under native ""Briefing"" tab<br/>
-- ORBAT reformatted and now supports updates during safe start<br/>
-- moves gamemode details to Briefing<br/>
-<br/>
-Other:<br/>
-- fixes METIS and TOW CSW configs<br/>
-- ace cookoff fix exclusion for cars<br/>
-- adds loadout and uniform classname to map ORBAT objects + commander name<br/>
-- fixes scavhunt marker deletion for JIP clients<br/>
-- moves groupID settings to server<br/>
-- display warning if editing mission in SP<br/>
+- adds CSW configuration to diary
 "
     ]
   ]
@@ -340,6 +328,14 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
     player createDiaryRecord [
       "Diary",
       [
+        "OPFOR CSW Settings",
+        east call _fnc_parseCSWForBriefing
+      ]
+    ];
+
+    player createDiaryRecord [
+      "Diary",
+      [
         "OPFOR Loadout",
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
@@ -394,6 +390,14 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
     } forEach phx_briefing_ind_uniform;
 
     private _meta = +phx_briefing_ind_uniformMeta;
+
+    player createDiaryRecord [
+      "Diary",
+      [
+        "BLUFOR CSW Settings",
+        independent call _fnc_parseCSWForBriefing
+      ]
+    ];
 
     player createDiaryRecord [
       "Diary",
