@@ -302,7 +302,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
     } forEach phx_briefing_east_uniform;
 
     private _meta = +phx_briefing_east_uniformMeta;
-    
+
     player createDiaryRecord [
       "Diary",
       [
@@ -630,17 +630,14 @@ MAT_Diary = player createDiaryRecord ["Diary",["MAT Selection",_MATDataString]];
 player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 [{
-  getClientStateNumber >= 9 && 
+  getClientStateNumber >= 8 &&
   !isNil "phx_templateGroupsList" &&
   !isNil "phx_playerBaseChannel" &&
-  !isNil "phx_briefing_startingLoadout" &&
   !isNil "phx_briefing_startingRadios" &&
   missionNamespace getVariable ["phx_groupIDset", false]
 }, {
   params ["_varStr"];
-
   call phx_briefing_startingRadios;
-  call phx_briefing_startingLoadout;
   player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
   call phx_briefing_MMNotes;
   call phx_fnc_createOrbat;
