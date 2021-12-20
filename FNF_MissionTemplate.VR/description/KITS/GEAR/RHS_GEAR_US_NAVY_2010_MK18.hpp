@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_US_NAVY_2010_MK18 {
-  author = "FNF";
+  author = "Mazz38";
   description = "USA: US NAVY MK18 Kits";
 
   class BASE {

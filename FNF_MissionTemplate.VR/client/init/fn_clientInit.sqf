@@ -56,6 +56,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
   call phx_fnc_clientSafeStartTime;
   [player getVariable "phxLoadout"] call phx_fnc_applyCfgLoadout;
+  call phx_briefing_startingLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {

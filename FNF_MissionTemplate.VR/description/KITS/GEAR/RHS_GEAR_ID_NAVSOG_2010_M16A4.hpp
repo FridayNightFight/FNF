@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ID_NAVSOG_2010_M16A4 {
-  author = "FNF";
+  author = "Mazz38";
   description = "INDEPENDENT FACTION: PHILIPPINE NAVSOG M4/M16 Kits";
 
   class BASE {
