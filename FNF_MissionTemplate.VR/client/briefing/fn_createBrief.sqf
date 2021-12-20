@@ -192,26 +192,9 @@ player createDiaryRecord [
       format ["Template Version: %1", phx_templateVersion],
       "
 <br/>
-Radios:<br/>
-- modification to the way radio assignment is handled for more consistency<br/>
-<br/>
-UI:<br/>
-- move time display to bottom left to not interfere w TFAR info<br/>
-- change radio codes to match default TFAR<br/>
-- safe start timer using existing mission time display to replace notification system, updates every 10 seconds<br/>
-<br/>
-Diary:<br/>
-- all categories moved under native ""Briefing"" tab<br/>
-- ORBAT reformatted and now supports updates during safe start<br/>
-- moves gamemode details to Briefing<br/>
-<br/>
-Other:<br/>
-- fixes METIS and TOW CSW configs<br/>
-- ace cookoff fix exclusion for cars<br/>
-- adds loadout and uniform classname to map ORBAT objects + commander name<br/>
-- fixes scavhunt marker deletion for JIP clients<br/>
-- moves groupID settings to server<br/>
-- display warning if editing mission in SP<br/>
+- Briefing fixes
+- Restore UGL flares in specific loadouts
+- Invincibility at game end
 "
     ]
   ]
