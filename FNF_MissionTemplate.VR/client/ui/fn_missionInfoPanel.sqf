@@ -2,19 +2,34 @@ h = [] spawn {
   disableSerialization;
 
   // _display = findDisplay 46 createDisplay "RscDisplayEmpty";
-  createDialog "RscDisplayEmpty";
-  _display = (findDisplay -1);
-  _tree = _display ctrlCreate [ "ctrlTree", 100 ];
-  _tree ctrlSetPosition[ 0, -0.25, 0.35, 1.5 ];
-  _tree ctrlSetBackgroundColor [0,0,0,0.8];
-  _tree ctrlCommit 0;
-  _textBox = _display ctrlCreate [ "ctrlStructuredText", 101 ];
-  _textBox ctrlSetPosition[ 0.35, -0.25, 0.65, 1.5 ];
-  _textBox ctrlSetBackgroundColor [0,0,0,0.8];
-  _textBox ctrlCommit 0;
+  // createDialog "RscDisplayEmpty";
+
+  createDialog "InfoPanel";
+  _display = (findDisplay 2525);
+
+  // _display = findDisplay 46 createDisplay "InfoPanel";
+
+  // _tree = _display ctrlCreate [ "ctrlTree", 100 ];
+  // _tree ctrlSetPosition[ 0, -0.25, 0.35, 1.5 ];
+  // _tree ctrlSetBackgroundColor [0,0,0,0.8];
+  // _tree ctrlCommit 0;
+  // _textBox = _display ctrlCreate [ "ctrlStructuredText", 101 ];
+  // _textBox ctrlSetPosition[ 0.35, -0.25, 0.65, 1.5 ];
+  // _textBox ctrlSetBackgroundColor [0,0,0,0.8];
+  // _textBox ctrlCommit 0;
+
+  _tree = _display displayCtrl 2526;
 
 
+  _BriefingIndex = _tree tvAdd [[],"Briefing"];
+  _GamemodeIndex = _tree tvAdd [[],"Gamemode"];
+  _MissionVarIndex = _tree tvAdd [[],"Mission Variables"];
 
+  if (call phx_fnc_clientCanPlay) then {
+    _MyRadiosIndex = _tree tvAdd [[],"My Starting Radios"];
+    _MyLoadoutIndex = _tree tvAdd [[],"My Starting Loadout"];
+    _ORBATIndex = _tree tvAdd [[],"ORBAT"];
+  };
 
   _MATSettingsIndex = _tree tvAdd [[],"MAT Settings"];
 
@@ -32,6 +47,10 @@ h = [] spawn {
   _INDFORIndexAssets = _tree tvAdd [[_INDFORIndex],"Assets"];
 
   _OtherAssetsIndex = _tree tvAdd [[],"Other Assets"];
+  _ChangelogIndex = _tree tvAdd[[],"Changelog"];
+  _CreditsIndex = _tree tvAdd[[],"Credits"];
+  _RulesIndex = _tree tvAdd[[],"Rules"];
+
 
   {
     _tree tvAdd [[_BLUFORIndex, _BLUFORIndexAssets], _x # 0];
@@ -92,21 +111,33 @@ h = [] spawn {
       _data = +phx_ui_structTextRef;
     };
 
-    private _textBox = ((ctrlParent _tree) displayCtrl 101);
+    // private _textBox = ((ctrlParent _tree) displayCtrl 101);
+    private _textBox = ((ctrlParent _tree) displayCtrl 2528);
+    private _ctrlPos = ctrlPosition _textBox;
+    _oldH = _ctrlPos select 3;
+
     if (!isNil "_prefix") then {_selected = ([_selected, _prefix, true] call BIS_fnc_splitString) # 1};
     private _toLoad = [_data, _selected] call BIS_fnc_getFromPairs;
+
     if (isNil "_toLoad") then {
-      _textBox ctrlSetStructuredText parseText "<t size='3'>NO DATA</t>"
+      _textBox ctrlSetStructuredText parseText "<t size='3'><br/>NO DATA</t>"
     } else {
       _textBox ctrlSetStructuredText parseText _toLoad;
-      // private _ctrlPos = ctrlPosition _textBox;
-      // private _height = ctrlTextHeight _textBox;
-      // _ctrlPos set [3,_height min (safezoneH - (_ctrlPos select 1) + 0.2)];
-      // _textBox ctrlSetPosition _ctrlPos;
-      // _textBox ctrlCommit 0;
     };
+
+    _newH = (ctrlTextHeight _textBox + 0.1) max 1;
+    _x = _ctrlPos select 0;
+    _y = _ctrlPos select 1;
+    _z = _ctrlPos select 2;
+    _textBox ctrlSetPosition [_x,_y,_z,_newH];
+    _textBox ctrlCommit 0;
 
     // hint format[ "You Selected\n%1", _selected ]; //eg "PARENT 1 >> CHILD 2"
   }];
+
+  while {ctrlVisible 2526} do {
+    ctrlSetFocus _tree;
+    sleep 1;
+  };
 
 };

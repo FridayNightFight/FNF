@@ -13,6 +13,7 @@ _generateORBAT = {
     params ["_groups"];
 
     private _functionText = "";
+    private _functionTextStruct = "";
 
     // Loop through the group, print out group ID, leader name and medics if present
     {
@@ -25,18 +26,27 @@ _generateORBAT = {
             private _shortName = groupID _x;
             private _groupSide = [(side _x) call BIS_fnc_sideID] call BIS_fnc_sideName;
             private _groupString = "";
+            private _groupStringStruct = "";
             private _changeColor = true;
 
             if (_forEachIndex != 0) then {
                 switch (_groupSize) do {
-                    case 0: {_groupString = _groupString + format["    "]; _changeColor = true;};
+                    case 0: {
+                      _groupString = _groupString + format["    "];
+                      _groupStringStruct = _groupStringStruct + format["    "];
+                      _changeColor = true;
+                    };
                     // case 1: {_groupString = _groupString + format["<br />- %1<br />    ",_longName]; _changeColor = true;};
                     // case 2: {_groupString = _groupString + format["<br /><br /><font size='18'>%1</font><br />    ",_longName]; _changeColor = true;};
                     // case 3: {_groupString = _groupString + format["<br /><br /><br /><font size='20'>%1</font><br />    ",_longName]; _changeColor = true;};
                 };
             } else {
                 switch (_groupSize) do {
-                    case 0: {_groupString = _groupString + format["",_longName]; _changeColor = true;};
+                    case 0: {
+                      _groupString = _groupString + format["",_longName];
+                      _groupStringStruct = _groupStringStruct + format["",_longName];
+                      _changeColor = true;
+                    };
                     // case 1: {_groupString = _groupString + format["- %1<br />    ",_longName]; _changeColor = true;};
                     // case 2: {_groupString = _groupString + format["<font size='18'>%1</font><br />    ",_longName]; _changeColor = true;};
                     // case 3: {_groupString = _groupString + format["<font size='20'>%1</font><br />    ",_longName]; _changeColor = true;};
@@ -97,8 +107,16 @@ _generateORBAT = {
             // Add group to the ORBAT
             if (isNil "_freq") then {
                 _groupString = _groupString + format ["%1 --", _name];
+                _groupStringStruct = _groupStringStruct + format ["%1 --", _name];
             } else {
               _groupString = _groupString + format ["<font size='12' face='EtelkaMonospacePro'><font color='%5'>%1 [%4]</font> - %2 MHz</font>  ",
+                _name,
+                _freq,
+                (count units _x),
+                toUpper(_groupSide select [0,3]),
+                "#FF8E38"
+              ];
+              _groupStringStruct = _groupStringStruct + format ["<t size='1' font='EtelkaMonospacePro'><t color='%5'>%1 [%4]</t> - %2 MHz</t>  ",
                 _name,
                 _freq,
                 (count units _x),
@@ -128,21 +146,32 @@ _generateORBAT = {
                   _colorUsed,
                   _thisSpaces
                 ];
+                _groupStringStruct = _groupStringStruct + format[
+                  "<br/><t size='0.8' font='EtelkaMonospacePro'>%3[%2]%5<t color='%4'>%1</t></t>",
+                  name _x,
+                  [phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "BASE"] call BIS_fnc_getFromPairs,
+                  _leftPad,
+                  _colorUsed,
+                  _thisSpaces
+                ];
             } forEach (allUnits select {_x getVariable ["phx_startGroup","UNK"] == _identity});
 
             _groupString = _groupString + "<br/><br/>";
+            _groupStringStruct = _groupStringStruct + "<br/><br/>";
             _functionText = _functionText + _groupString;
+            _functionTextStruct = _functionTextStruct + _groupStringStruct;
         // };
     } forEach _groups;
 
     // Return functionText
-    _functionText
+    [_functionText, _functionTextStruct]
 };
 
 //----------------------------------------------------------------------------------------------------
 private _side = player call BIS_fnc_friendlySides select {_x != sideFriendly};
 // private _orbatText = "<br />NOTE: This ORBAT is only valid at mission start.<br /><br />";
 private _orbatText = "";
+private _orbatTextStruct = "";
 
 phx_colorArrayBase = [
     "#8080FF", // light blue
@@ -166,30 +195,32 @@ private _templateGroups = [];
 // if someone is in spectator, ORBAT will display attached units with gamelogic
 // if players change groups, the old groups will not be shown. the players who moved will therefore not be listed directly in the new group, despite the manpower count of the destination group increasing.
 
-{ 
-  // Add to ORBAT if side matches, group isn't already listed, and group has players 
-  private _identity = _x getVariable ["phx_groupIdentifier",groupID _x]; 
-  private _groupId = groupID _x; 
+{
+  // Add to ORBAT if side matches, group isn't already listed, and group has players
+  private _identity = _x getVariable ["phx_groupIdentifier",groupID _x];
+  private _groupId = groupID _x;
   private _groupSide = side _x;
-  if ( 
-    (side _x in _side) && 
-    {!(_x in _groups)} && 
+  if (
+    (side _x in _side) &&
+    {!(_x in _groups)} &&
     (
       ({_x in (switchableUnits + playableUnits) && !(_x in ([] call ace_spectator_fnc_players))} count units _x > 0) ||
       ((units _groupSide) findIf {_x getVariable ["phx_startGroup","UNK"] == _identity} > -1)
     )
-  ) then { 
-    if (_identity in phx_templateGroupsList) then { 
-      _templateGroups pushBack _x; 
-    } else { 
-      _groups pushBack _x; 
-    }; 
-  }; 
+  ) then {
+    if (_identity in phx_templateGroupsList) then {
+      _templateGroups pushBack _x;
+    } else {
+      _groups pushBack _x;
+    };
+  };
 } forEach allGroups;
 
 
 // Generate ORBAT text for template groups
-private _templateText = [_templateGroups] call _generateORBAT;
+private _tempRef = [_templateGroups] call _generateORBAT;
+private _templateText = _tempRef # 0;
+private _templateTextStruct = _tempRef # 1;
 
 // Use next color in the chain when switching between template and non-template groups
 if (isNil "phx_orbat_lastUsedColor") then {
@@ -206,17 +237,31 @@ phx_orbat_lastUsedColor = [_color];
 
 // Generate ORBAT text for non-template groups
 _orbatText = _orbatText + _templateText;
+_orbatTextStruct = _orbatTextStruct + _templateTextStruct;
+
 private _groupText = "";
+private _groupTextStruct = "";
 if !(_groups isEqualTo []) then {
-  _groupText = [_groups] call _generateORBAT;
+  private _groupTextRef = [_groups] call _generateORBAT;
+  _groupText = _groupTextRef # 0;
+  _groupTextStruct = _groupTextRef # 1;
 };
 if !(_groupText isEqualTo "") then {
   _orbatText = _orbatText + "<br/>Attached Units:<br/>" + _groupText;
+  _orbatTextStruct = _orbatTextStruct + "<br/>Attached Units:<br/>" + _groupTextStruct;
 };
 
 // Insert final result into subsection ORBAT of section Notes
-if (!isNil "playerORBATRecord") then {player removeDiaryRecord ["Diary", playerORBATRecord]};
-playerORBATRecord = player createDiaryRecord ["Diary", ["Allied ORBAT", _orbatText]];
+
+// Tucked under Briefing tab
+// if (!isNil "playerORBATRecord") then {player removeDiaryRecord ["Diary", playerORBATRecord]};
+// playerORBATRecord = player createDiaryRecord ["Diary", ["Allied ORBAT", _orbatText]];
+
+// Standalone ORBAT section
+if (!isNil "playerORBATRecord") then {player removeDiaryRecord ["ORBAT_Diary", playerORBATRecord]};
+playerORBATRecord = player createDiaryRecord ["ORBAT_Diary", ["Allied ORBAT", _orbatText]];
+
+[phx_ui_structTextRef, "ORBAT", _orbatTextStruct] call BIS_fnc_setToPairs;
 
 phx_orbat_lastUsedColor = nil;
 phx_writtenORBAT = true;

@@ -229,5 +229,12 @@ private ["_grp"];
   ];
 } remoteExecCall ["call", 0, true];
 
+{
+  _x setVariable [
+    "phx_startGroup",
+    (group _x) getVariable ["phx_groupIdentifier", groupID (group _x)],
+    true
+  ];
+} forEach (allUnits select {!isPlayer _x});
 
 missionNamespace setVariable ["phx_groupIDset", true, true];
