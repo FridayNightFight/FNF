@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_NATO_BUNDESWEHR_2010_G36 {
-  author = "FNF";
+  author = "Mazz38";
   description = "DE: German BUNDESWEHR G36 Kits";
 
   class BASE {

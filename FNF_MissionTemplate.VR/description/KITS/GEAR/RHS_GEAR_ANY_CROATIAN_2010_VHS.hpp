@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ANY_CROATIAN_2010_VHS {
-  author = "FNF";
+  author = "Mazz38";
   description = "HS: Croatian Armed Forces VHS Kits";
 
   class BASE {

@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_CZ_CZECHFORCES_2010_VZ58 {
-  author = "FNF";
+  author = "Mazz38";
   description = "CZ: Czech Armed Forces VZ58 Kits";
 
   class BASE {
