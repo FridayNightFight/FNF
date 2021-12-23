@@ -9,10 +9,10 @@ class InfoPanel
   {
     class TreePanel: RscTree {
       idc = 2526;
-      x = 0
+      x = 0;
       y = 0;
       w = 0.25;
-      h = 1
+      h = 1;
       colorBackground[] = {0,0,0,0.8};
     };
     class myControl: RscControlsGroup {    //--- inherits from RscControlsGroup already defined
@@ -28,7 +28,7 @@ class InfoPanel
         class myControl_a: RscStructuredText
         {
           idc = 2528;
-          x = 0.25
+          x = 0.25;
           y = 0;
           w = 0.73;
           h = 1;

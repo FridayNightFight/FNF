@@ -9,7 +9,7 @@ phx_ui_structTextRef_AssetsOPF = [];
 phx_ui_structTextRef_AssetsIND = [];
 phx_ui_structTextRef_AssetsOther = [];
 
-_rules = call compile preprocessFile "description/RulesAndPolicies.txt";
+_rules = call compile preprocessFile "description\RulesAndPolicies.txt";
 [phx_ui_structTextRef, "Rules", _rules] call BIS_fnc_setToPairs;
 
 
