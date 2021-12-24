@@ -39,6 +39,7 @@ class CfgFunctions {
       file = "client\briefing\loadoutPrep";
       class briefingParseLoadout{};
       class briefingWeaponDetails{};
+      class briefingGear{};
     };
     class radio {
       file = "client\radio";

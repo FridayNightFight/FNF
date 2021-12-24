@@ -26,8 +26,8 @@ h = [] spawn {
   _MissionVarIndex = _tree tvAdd [[],"Mission Variables"];
 
   if (call phx_fnc_clientCanPlay) then {
-    _MyRadiosIndex = _tree tvAdd [[],"My Starting Radios"];
     _MyLoadoutIndex = _tree tvAdd [[],"My Starting Loadout"];
+    _MyRadiosIndex = _tree tvAdd [[],"My Starting Radios"];
     _ORBATIndex = _tree tvAdd [[],"ORBAT"];
   };
 
