@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_NATO_GREEKFORCES_2010_L1A1 {
-  author = "FNF";
+  author = "Mazz38";
   description = "GR: Greek Armed Forces L1A1 Kits";
 
   class BASE {

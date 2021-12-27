@@ -22,6 +22,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 
 //Set objective marker to defending side color
 {
+  _obj = _x select 0;
   _marker = _x select 1;
 
   switch (phx_defendingSide) do {
@@ -30,6 +31,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
     case independent: {_marker setMarkerColor "ColorGUER"};
     default {_marker setMarkerColor "ColorCIV"};
   };
+
 } forEach _objArr;
 
 //Increase phx_aliveObjectives for each active objective
@@ -103,6 +105,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
           //Move the objective marker to a random position around the objective, while keeping the objective inside the marker's area
           _newPos = ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
           _marker setMarkerPosLocal _newPos;
+          _marker setMarkerAlphaLocal 1;
 
           [_marker,_newPos] remoteExec ["setMarkerPosLocal",phx_attackingSide,_obj];
           [_attackTaskID, _marker] call BIS_fnc_taskSetDestination;

@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_US_RANGERS_2010_SCAR {
-  author = "FNF";
+  author = "Mazz38";
   description = "USA: US RANGERS SCAR Kits";
 
   class BASE {
