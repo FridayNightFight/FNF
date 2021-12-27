@@ -19,7 +19,7 @@
 #define UGL_MAGS(_type,_count) _type##:##_count
 #define UGL_FRAG rhs_VOG25
 #define UGL_SMOKEWHITE rhs_GRD40_White
-#define UGL_FLAREWHITE rhs_VOG25P
+#define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
 #define CARBINE "rhs_weap_m21s"

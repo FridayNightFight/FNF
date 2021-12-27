@@ -19,7 +19,7 @@
 #define UGL_MAGS(_type,_count) _type##:##_count
 #define UGL_FRAG rhs_VOG25
 #define UGL_SMOKEWHITE rhs_GRD40_White
-#define UGL_FLAREWHITE rhs_VOG25P
+#define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
 #define CARBINE "rhs_weap_aks74n"
@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ID_INSURGENTS_2000_AK74N {
-  author = "FNF";
+  author = "Mazz38";
   description = "CS: 2000s Yugoslavia INSURGENT AK74N Kits";
 
   class BASE {

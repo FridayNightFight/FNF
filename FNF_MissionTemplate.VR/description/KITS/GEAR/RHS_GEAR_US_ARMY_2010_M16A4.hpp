@@ -56,7 +56,7 @@
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_US_ARMY_2010_M16A4 {
-  author = "FNF";
+  author = "Mazz38";
   description = "USA: US ARMY M4/M16 Kits";
 
   class BASE {
