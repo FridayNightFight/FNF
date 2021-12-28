@@ -60,6 +60,4 @@ phx_switchToMeleeDisablePFH = [{
   player removeAction phx_safeStartNoFire;
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
-
-  call phx_fnc_showTimeOnMap; //Show time left on map after safety ends
 }] call CBA_fnc_waitUntilAndExecute;
