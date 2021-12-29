@@ -1,6 +1,9 @@
 if (!hasInterface) exitWith {};
 
-ctf_flag disableCollisionWith player;
+
+[{!isNil "ctf_flag"}, {
+  ctf_flag disableCollisionWith player;
+}] call CBA_fnc_waitUntilAndExecute;
 
 phx_clientFlagDropped = {
   [player] remoteExec ["phx_server_dropFlag",2,false];
@@ -32,7 +35,7 @@ if (playerSide == phx_attackingSide) then {
     "Take flag",
     "",
     "",
-    "player distance ctf_flagPole < 5 && !phx_safetyEnabled",
+    "player distance ctf_flagPole < 5 && !phx_safetyEnabled && (vehicle player isEqualTo player || (getArray(configFile >> ""CfgVehicles"" >> (typeOf vehicle player) >> ""threat"") # 0 <= 0.2))",
     "player distance ctf_flagPole < 5",
     {},
     {},
@@ -60,7 +63,7 @@ phx_clientFlagAction = [
   "Take flag",
   "",
   "",
-  "(player distance ctf_flag < 4) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide || ctf_flag inArea ctf_attackTrig)",
+  "(player distance ctf_flag < 4) && (attachedTo ctf_flag isEqualTo objNull) && (isNull ctf_flagPole) && (playerSide == phx_attackingSide || ctf_flag inArea ctf_attackTrig) && (vehicle player isEqualTo player || (getArray(configFile >> ""CfgVehicles"" >> (typeOf vehicle player) >> ""threat"") # 0 <= 0.2))",
   "player distance ctf_flag < 4",
   {},
   {},
@@ -75,3 +78,14 @@ phx_clientFlagAction = [
   false,
   false
 ] call BIS_fnc_holdActionAdd;
+
+
+CTFNoArmedVehicles = player addEventHandler ["GetInMan", {
+  params ["_unit", "_role", "_vehicle", "_turret"];
+  private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _vehicle));
+  private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
+  if (_threat select 0 > 0.2 && player getVariable ["phx_flagUnit",false]) then {
+    _unit action ["Eject", _vehicle];
+    ["<t align='center'>You cannot board an armed vehicle while carrying the flag!</t>", "warning", 7] call phx_ui_fnc_notify;
+  };
+}];
