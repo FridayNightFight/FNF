@@ -191,10 +191,9 @@ player createDiaryRecord [
       "Changelog",
       format ["Template Version: %1", phx_templateVersion],
       "
-<br/>
-- Briefing fixes
-- Restore UGL flares in specific loadouts
-- Invincibility at game end
+- Briefing fixes<br/>
+- Restore UGL flares in specific loadouts<br/>
+- Invincibility at game end<br/>
 "
     ]
   ]
@@ -469,6 +468,7 @@ phx_briefing_MMNotes = {
   };
 
   phx_gameModeDiary = player createDiaryRecord ["Diary",["Gamemode", ""]];
+  call phx_fnc_createBriefGamemode;
 
   player createDiaryRecord ["Diary",
     [

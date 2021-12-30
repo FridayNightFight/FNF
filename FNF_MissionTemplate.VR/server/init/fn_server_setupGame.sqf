@@ -85,3 +85,10 @@ if !(phx_gameMode isEqualTo "scavHunt") then {
     } forEach ["scavHuntCapEAST", "scavHuntCapWEST", "scavHuntCapGUER"];
   } remoteExec ["call", 0, true];
 };
+
+if !(phx_gameMode isEqualTo "assassin") then {
+  private _markers = ["fnf_assassin_boundaries_"] call BIS_fnc_getMarkers;
+  {
+    deleteMarker _x;
+  } forEach _markers;
+};

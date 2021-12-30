@@ -127,14 +127,26 @@ switch (phx_gameMode) do {
     _gamemodeNotes pushBack format ["Objective count: %1", _numberOfObjectives];
     _gamemodeNotes pushBack "<br/>";
 
-    _mmNotes pushBack format ["Specialized transports per side: %1", _numberOfTransportsPerSide];
-    _mmNotes pushBack "<br/>";
+    _gamemodeNotes pushBack format ["Specialized transports per side: %1", _numberOfTransportsPerSide];
+    _gamemodeNotes pushBack "<br/>";
   };
   case "assassin": {
     ["REFRESH_BRIEF_GAMEMODE", {
-      #include "..\..mode_config\assassin.sqf";
-      params ["_targets"];
+      #include "..\..\mode_config\assassin.sqf";
 
+      private _gamemodeNotes = [];
+
+      _gamemodeNotes pushBack format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
+      _gamemodeNotes pushBack "<br/>";
+      _gamemodeNotes pushBack "<br/>";
+      if (!isNil "phx_overTimeConStr") then {
+        _gamemodeNotes pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
+        _gamemodeNotes pushBack "<br/>";
+        _gamemodeNotes pushBack "<br/>";
+      } else {
+        _gamemodeNotes pushBack "<br/>";
+        _gamemodeNotes pushBack "<br/>";
+      };
 
       _gamemodeNotes pushBack format ["HVT Count: %1<br/>", count _targets];
       _gamemodeNotes pushBack format ["%1 needs to kill %2 of them to win.<br/>", phx_attackingSide call BIS_fnc_sideName, _requiredKills];
@@ -151,11 +163,19 @@ switch (phx_gameMode) do {
         } else {
           _gamemodeNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by [NOT FILLED])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
         };
-      } forEach _targets;
-
+      } forEach phx_assassinationTargets;
+      player setDiaryRecordText [["Diary", phx_gameModeDiary], [
+        format["Gamemode - %1", toUpper phx_gameMode],
+        _gamemodeNotes joinString ""
+        ]
+      ];
     }] call CBA_fnc_addEventHandler;
   };
 };
 
 
-player setDiaryRecordText [["Diary", phx_gameModeDiary], ["Gamemode", _gamemodeNotes joinString ""]];
+player setDiaryRecordText [["Diary", phx_gameModeDiary], [
+  format["Gamemode - %1", toUpper phx_gameMode],
+  _gamemodeNotes joinString ""
+  ]
+];

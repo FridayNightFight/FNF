@@ -69,12 +69,12 @@ _fnc_gatherObjects = {
     } forEach _targets;
   };
 
-
+  publicVariable "phx_assassinationTargets";
   [{
     if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
-    ["REFRESH_BRIEF_GAMEMODE", [phx_assassinationTargets]] call CBA_fnc_globalEvent;
+    ["REFRESH_BRIEF_GAMEMODE"] call CBA_fnc_globalEvent;
   // }, (random(20) + 50)] call CBA_fnc_addPerFrameHandler;
-  }, 10] call CBA_fnc_addPerFrameHandler;
+  }, 60] call CBA_fnc_addPerFrameHandler;
 };
 
 // make sure the tasks are "following" the location of the objectives for defenders
@@ -159,10 +159,6 @@ call _fnc_updateTaskAssociations;
 } forEach phx_assassinationTargets;
 
 
-phx_civGroup = createGroup civilian;
-phx_civGroup setGroupIdGlobal ["Revealed HVTs"];
-phx_hvtGroup = createGroup phx_defendingSide;
-phx_hvtGroup setGroupIdGlobal ["HVTs"];
 // Warn the HVTs if they leave their assigned zone
 [{
   private _goodLocations = ["fnf_assassin_boundaries_"] call BIS_fnc_getMarkers;
@@ -175,18 +171,29 @@ phx_hvtGroup setGroupIdGlobal ["HVTs"];
         _badLocations pushBack _x;
       };
     } forEach _goodLocations;
-    if (count _badLocations == count _goodLocations) then {
-      [format["atkTask%1", _forEachIndex + 1], [HVTXOBJ,true]] call BIS_fnc_taskSetDestination;
-      ["<t align='center'>You're an HVT leaving protective custody.<br/>Your location has been revealed to your enemies.<br/><br/>Return to the zone immediately!</t>", "warning", 5] remoteExec ["phx_ui_fnc_notify", _unit];
-    } else {
-      [format["atkTask%1", _forEachIndex + 1], [objNull,true]] call BIS_fnc_taskSetDestination;
+
+    switch (_unit getVariable ["phx_inZone", true]) do {
+      case true: {
+        if (count _badLocations == count _goodLocations) then {
+          [format["atkTask%1", _forEachIndex + 1], [HVTXOBJ,true]] call BIS_fnc_taskSetDestination;
+          ["<t align='center'>You're an HVT leaving a friendly jammer's radius.<br/>Your location has been revealed.</t>", "warning", 10] remoteExec ["phx_ui_fnc_notify", _unit];
+          _unit setVariable ["phx_inZone", false];
+        };
+      };
+      case false: {
+        if (count _badLocations != count _goodLocations) then {
+          [format["atkTask%1", _forEachIndex + 1], [objNull,true]] call BIS_fnc_taskSetDestination;
+          ["<t align='center'>You've entered the cover of a friendly jammer.<br/>Your location is no longer being revealed.</t>", "success", 10] remoteExec ["phx_ui_fnc_notify", _unit];
+          _unit setVariable ["phx_inZone", true];
+        };
+      };
     };
   } forEach phx_assassinationTargets;
-}, 5] call CBA_fnc_addPerFrameHandler;
+}, 2] call CBA_fnc_addPerFrameHandler;
 
 // Don't end game automatically in case it was due to DC or something.
 [{phx_aliveHVTs <= (count (_this # 0) - (_this # 1))},{
-  [format["<t align='center'><br/>The required number of HVTs has been eliminated!<br/>(%1 / %2)<br/><br/>As this may be due to disconnects or other circumstances, keep fighting until the staff declare a win!<br/></t>", _this # 1, count (_this # 0)],"info",15] call phx_ui_fnc_notify;
+  [format["<t align='center'>The required number of HVTs has been eliminated!<br/>(%1 / %2)<br/><br/>As this may be due to disconnects or other circumstances, keep fighting until the staff declare a win!</t>", _this # 1, count (_this # 0)],"info",15] call phx_ui_fnc_notify;
 }, [_targets, _requiredKills]] call CBA_fnc_waitUntilAndExecute;
 
 // Admin should run this function if all HVTs are dead and mission should end in favor of attackers.
