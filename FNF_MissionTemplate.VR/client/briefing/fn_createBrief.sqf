@@ -468,124 +468,7 @@ phx_briefing_MMNotes = {
     _mmNotes pushBack "<br/>";
   };
 
-  // game mode details
-  _mmNotes pushBack format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
-  _mmNotes pushBack "<br/>";
-  _mmNotes pushBack "<br/>";
-  if (!isNil "phx_overTimeConStr") then {
-    _mmNotes pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
-    _mmNotes pushBack "<br/>";
-    _mmNotes pushBack "<br/>";
-  } else {
-    _mmNotes pushBack "<br/>";
-    _mmNotes pushBack "<br/>";
-  };
-
-  switch (phx_gameMode) do {
-    case "destroy": {
-      #include "..\..\mode_config\destroy.sqf";
-      _objArr = [_obj1,_obj2,_obj3];
-      _objects = [_obj1 select 0, _obj2 select 0, _obj3 select 0] select {!isNull _x};
-      _mmNotes pushBack format ["Destroy objectives: %1", count _objects];
-      _mmNotes pushBack "<br/>";
-      {
-        _mmNotes pushBack format[
-          "Objective %1:<br/><img image='%2' height=200/><br/>",
-          _forEachIndex + 1,
-          getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "EditorPreview")
-        ];
-      } forEach _objects;
-    };
-    case "uplink": {
-      #include "..\..\mode_config\uplink.sqf";
-
-      _mmNotes pushBack format ["Terminal count: %1", _numberOfTerminals];
-      _mmNotes pushBack "<br/>";
-
-      if (_terminalHackTime isEqualType []) then {
-        _mmNotes pushBack "Hack time:";
-        _mmNotes pushBack "<br/>";
-        for "_i" from 0 to _numberOfTerminals do {
-          _mmNotes pushBack format ["  Terminal %1: %2", _i + 1, _terminalHackTime # _i];
-          _mmNotes pushBack "<br/>";
-        };
-      } else {
-        _mmNotes pushBack format ["Hack time: %1", _terminalHackTime];
-        _mmNotes pushBack "<br/>";
-      };
-    };
-    case "rush": {
-      #include "..\..\mode_config\rush.sqf";
-      _mmNotes pushBack format ["Terminal count: %1", _numberOfTerminals];
-      _mmNotes pushBack "<br/>";
-
-      if (_terminalHackTime isEqualType []) then {
-        _mmNotes pushBack "Hack time:";
-        for "_i" from 0 to _numberOfTerminals do {
-          _mmNotes pushBack format ["Terminal %1: %2", _i + 1, _terminalHackTime # _i];
-          _mmNotes pushBack "<br/>";
-        };
-      } else {
-        _mmNotes pushBack format ["Hack time: %1", _terminalHackTime];
-        _mmNotes pushBack "<br/>";
-      };
-    };
-    case "connection": {
-      #include "..\..\mode_config\connection.sqf";
-      _mmNotes pushBack format ["Terminal count: %1", _numberOfTerminals];
-      _mmNotes pushBack "<br/>";
-
-      _mmNotes pushBack format ["One point accrued per terminal every %1 seconds", _pointAddTime];
-      _mmNotes pushBack "<br/>";
-    };
-    case "captureTheFlag": {
-      #include "..\..\mode_config\ctf.sqf";
-
-      private _capZoneShown = "";
-      switch (_showCapZoneGlobal) do {
-        case true: {_capZoneShown = "to all players at mission start"};
-        case false: {_capZoneShown = "only to attackers until flag is touched"};
-      };
-      _mmNotes pushBack format ["Capture zone visible %1", _capZoneShown];
-      _mmNotes pushBack "<br/>";
-
-      _mmNotes pushBack format ["Flag marker updated every %1 seconds", _flagMarkUpdateTime];
-      _mmNotes pushBack "<br/>";
-
-      _mmNotes pushBack format ["Attackers must hold the flag in capture zone for %1 seconds to achieve victory", _flagCaptureTime];
-      _mmNotes pushBack "<br/>";
-
-    };
-    case "adSector": {
-      #include "..\..\mode_config\adSector.sqf";
-      _mmNotes pushBack format ["Sector count: %1", _numberOfSectors];
-      _mmNotes pushBack "<br/>";
-
-      private _isSequential = "";
-      switch (_inOrder) do {
-        case true: {_isSequential = "Yes"};
-        case false: {_isSequential = "No"};
-      };
-      _mmNotes pushBack format ["Sequential: %1", _isSequential];
-      _mmNotes pushBack "<br/>";
-    };
-    case "neutralSector": {
-      #include "..\..\mode_config\neutralSector.sqf";
-      _mmNotes pushBack format ["Sector count: %1", _numberOfSectors];
-      _mmNotes pushBack "<br/>";
-
-      _mmNotes pushBack format ["One point accrued per sector every %1 seconds", _pointAddTime];
-      _mmNotes pushBack "<br/>";
-    };
-    case "scavHunt": {
-      #include "..\..\mode_config\scavHunt.sqf";
-      _mmNotes pushBack format ["Objective count: %1", _numberOfObjectives];
-      _mmNotes pushBack "<br/>";
-
-      _mmNotes pushBack format ["Specialized transports per side: %1", _numberOfTransportsPerSide];
-      _mmNotes pushBack "<br/>";
-    };
-  };
+  phx_gameModeDiary = player createDiaryRecord ["Diary",["Gamemode", ""]];
 
   player createDiaryRecord ["Diary",
     [
@@ -594,6 +477,7 @@ phx_briefing_MMNotes = {
       _mmNotes joinString ""
     ]
   ];
+
 };
 
 

@@ -42,6 +42,9 @@ switch (phx_gameMode) do {
     execVM "modes\scavHunt\scavHunt_server.sqf";
     phx_overTimeConStr = "The mission will go into overtime if both teams hold an equal number of target items in their zone when the timer reaches zero.";
   };
+  case "assassin": {
+    execVM "modes\assassin\assassin_server.sqf";
+  };
 };
 
 publicVariable "phx_overTimeConStr";

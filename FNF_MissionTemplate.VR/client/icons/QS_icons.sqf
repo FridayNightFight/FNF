@@ -81,21 +81,21 @@ _indFriendly = independent call BIS_fnc_friendlySides;
 if (_indFriendly find west > -1) then {_alliedWest = true} else {_alliedWest = false};
 if (_indFriendly find east > -1) then {_alliedEast = true} else {_alliedEast = false};
 
-_QS_ST_friendlySides_EAST = [];
-_QS_ST_friendlySides_WEST = [];
-_QS_ST_friendlySides_RESISTANCE = [];
-_QS_ST_friendlySides_CIVILIAN = [];
+_QS_ST_friendlySides_EAST = [3];
+_QS_ST_friendlySides_WEST = [3];
+_QS_ST_friendlySides_RESISTANCE = [3];
+_QS_ST_friendlySides_CIVILIAN = [0,1,2];
 if (_alliedWest) then {
-  _QS_ST_friendlySides_EAST = [];
-  _QS_ST_friendlySides_WEST = [2];
-  _QS_ST_friendlySides_RESISTANCE = [1];
-  _QS_ST_friendlySides_CIVILIAN = [];
+  _QS_ST_friendlySides_EAST = [3];
+  _QS_ST_friendlySides_WEST = [2,3];
+  _QS_ST_friendlySides_RESISTANCE = [1,3];
+  _QS_ST_friendlySides_CIVILIAN = [0,1,2];
 };
 if (_alliedEast) then {
-  _QS_ST_friendlySides_EAST = [2];
-  _QS_ST_friendlySides_WEST = [];
-  _QS_ST_friendlySides_RESISTANCE = [0];
-  _QS_ST_friendlySides_CIVILIAN = [];
+  _QS_ST_friendlySides_EAST = [2,3];
+  _QS_ST_friendlySides_WEST = [3];
+  _QS_ST_friendlySides_RESISTANCE = [0,3];
+  _QS_ST_friendlySides_CIVILIAN = [0,1,2];
 };
 // _QS_ST_friendlySides_EAST = [								// ARRAY (NUMBER). Uncomment the relevant number(s). Remove comma after last used entry (important!).
 // 	//1,					//EAST is friendly to WEST
@@ -147,7 +147,7 @@ _QS_ST_colorInjured = [0.75,0.55,0,0.75];						// ARRAY (NUMBER). RGBA color cod
 _QS_ST_showFactionOnly = (!phx_showAlliedFactions);									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
 _QS_ST_showAI = TRUE;											// BOOL. FALSE = players only, TRUE = players and AI. Default TRUE.
 _QS_ST_AINames = FALSE;											// BOOL. Set TRUE to show human names for AI with the map/vehicle icons. Set FALSE and will be named 'AI'. Default FALSE.
-_QS_ST_showCivilianIcons = FALSE;								// BOOL. Set TRUE to allow showing of civilians, only works if Dynamic Diplomacy is enabled above. Default FALSE.
+_QS_ST_showCivilianIcons = FALSE;// BOOL. Set TRUE to allow showing of civilians, only works if Dynamic Diplomacy is enabled above. Default FALSE.
 _QS_ST_iconMapText = TRUE;										// BOOL. TRUE to show unit/vehicle icon text on the map. FALSE to only show the icon and NO text (name/class). Default TRUE.
 _QS_ST_showMOS = TRUE;											// BOOL. TRUE = show Military Occupational Specialty text(unit/vehicle class/role display name), FALSE = disable and only show icons and names. Default FALSE.
 _QS_ST_showMOS_range = 3500;									// NUMBER. Range in distance to show MOS on the map. Default 3500.
