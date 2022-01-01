@@ -36,32 +36,35 @@ call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes
 call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
-
 call phx_fnc_radio_waitGear; //Start radio preset functions
 call phx_fnc_contactStaffInit; // Init handling for player reports
 call phx_fnc_assetDiaryInfo; // Add diary entries for assets
-if (isMultiplayer) then {
-	call phx_fnc_drawStaffIcons; // Draw labels over staff members
-	call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
-	call phx_fnc_drawSLIcons; // Draw labels over squad leaders
-};
+
+[{missionNamespace getVariable ["phx_briefCreated", false]}, {
+  call phx_fnc_assetDiaryInfoStruct; // Prep global vars for UI info panel
+}] call CBA_fnc_waitUntilAndExecute;
+
+call phx_fnc_drawStaffIcons; // Draw labels over staff members
+call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
+call phx_fnc_drawSLIcons; // Draw labels over squad leaders
+
 call phx_fnc_populateORBATs;
 call phx_fnc_teleportInit; // Add leadership teleport options
 // Admin player patch jip support
 if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
-	// call phx_admin_fnc_jipPatch;
+  // call phx_admin_fnc_jipPatch;
 };
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
-  call phx_fnc_clientSafeStartTime;
+  call phx_fnc_showTimeOnMap;
   [player getVariable "phxLoadout"] call phx_fnc_applyCfgLoadout;
-  call phx_briefing_startingLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {
   call phx_fnc_restrictions;
   call phx_fnc_checkLoadout;
+  [false] call phx_fnc_briefingGear;
 }] call CBA_fnc_waitUntilAndExecute;
 //Client-side fortify, and gear selector
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
@@ -79,7 +82,7 @@ phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}
 
 
 player addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
+  params ["_unit", "_killer", "_instigator", "_useEffects"];
   if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
     ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
   };
@@ -125,30 +128,30 @@ player addEventHandler ["Killed", {
 
 // Zeus actions
 _action = [
-	"Zeus_GoToLastReport",
-	"Zoom to Last Admin Report",
-	"\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa",
-	{
-		[] spawn {
-			(missionNamespace getVariable ["phx_lastAdminReporter", [objNull, [0,0,0]]]) params ["_player", "_pos"];
-			if (!isNull _player && !(_player in ([] call ace_spectator_fnc_players))) then {
-				[
-					((_player getPos [50, 180]) vectorAdd [0,0,30]),
-					_player,
-					true
-				] spawn BIS_fnc_setCuratorCamera;
-			} else {
-				if (_pos isEqualTo [0,0,0]) exitWith {
-					["Last Player Report", "Player/location not saved. Have any reports been sent?", 5] call BIS_fnc_curatorHint;
-				};
-				[
-					((_pos getPos [50, 180]) vectorAdd [0,0,30]),
-					_pos,
-					true
-				] spawn BIS_fnc_setCuratorCamera;
-			};
-		};
-	},
-	{true}
+  "Zeus_GoToLastReport",
+  "Zoom to Last Admin Report",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa",
+  {
+    [] spawn {
+      (missionNamespace getVariable ["phx_lastAdminReporter", [objNull, [0,0,0]]]) params ["_player", "_pos"];
+      if (!isNull _player && !(_player in ([] call ace_spectator_fnc_players))) then {
+        [
+          ((_player getPos [50, 180]) vectorAdd [0,0,30]),
+          _player,
+          true
+        ] spawn BIS_fnc_setCuratorCamera;
+      } else {
+        if (_pos isEqualTo [0,0,0]) exitWith {
+          ["Last Player Report", "Player/location not saved. Have any reports been sent?", 5] call BIS_fnc_curatorHint;
+        };
+        [
+          ((_pos getPos [50, 180]) vectorAdd [0,0,30]),
+          _pos,
+          true
+        ] spawn BIS_fnc_setCuratorCamera;
+      };
+    };
+  },
+  {true}
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;

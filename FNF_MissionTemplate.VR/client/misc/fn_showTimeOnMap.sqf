@@ -7,7 +7,11 @@ phx_mapMissionTime = addMissionEventHandler ["Map", {
 	params ["_mapIsOpened", "_mapIsForced"];
 
   if (_mapIsOpened) then {
-    call phx_fnc_clientTime;
+    if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {
+      call phx_fnc_clientSafeStartTime;
+    } else {
+      call phx_fnc_clientTime;
+    };
     phx_mapTimeShown = true;
   } else {
 		[phx_missionTimeUI_PFH] call CBA_fnc_removePerFrameHandler;
