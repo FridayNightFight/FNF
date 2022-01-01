@@ -83,12 +83,27 @@ if (!isNil "phx_ch7") then {phx_radioNoteString = phx_radioNoteString + "Channel
 if (!isNil "phx_ch8") then {phx_radioNoteString = phx_radioNoteString + "Channel 8: " + str(phx_ch8) + " MHz<br/>";};
 if (!isNil "phx_ch9") then {phx_radioNoteString = phx_radioNoteString + "Channel 9: " + str(phx_ch9) + " MHz<br/>";};
 
+_structStartingRadios = ["<t size='1.2'>Your Radio's Default Settings</t><br/><br/>Channel 1: " + str(phx_ch1) + " MHz<br/>"];
+if (!isNil "phx_ch2") then {_structStartingRadios pushBack ("Channel 2: " + str(phx_ch2) + " MHz<br/>")};
+if (!isNil "phx_ch3") then {_structStartingRadios pushBack ("Channel 3: " + str(phx_ch3) + " MHz<br/>")};
+if (!isNil "phx_ch4") then {_structStartingRadios pushBack ("Channel 4: " + str(phx_ch4) + " MHz<br/>")};
+if (!isNil "phx_ch5") then {_structStartingRadios pushBack ("Channel 5: " + str(phx_ch5) + " MHz<br/>")};
+if (!isNil "phx_ch6") then {_structStartingRadios pushBack ("Channel 6: " + str(phx_ch6) + " MHz<br/>")};
+if (!isNil "phx_ch7") then {_structStartingRadios pushBack ("Channel 7: " + str(phx_ch7) + " MHz<br/>")};
+if (!isNil "phx_ch8") then {_structStartingRadios pushBack ("Channel 8: " + str(phx_ch8) + " MHz<br/>")};
+if (!isNil "phx_ch9") then {_structStartingRadios pushBack ("Channel 9: " + str(phx_ch9) + " MHz<br/>")};
+
+
+
 //Let player know what channels he starts on.
 // PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
 phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
 phx_briefing_startingRadios = {
   player createDiaryRecord ["Diary", ["My Radio Settings", phx_radioNoteString]];
 };
+
+_structStartingRadios pushBack ("<br/>Main Channel (left ear): <t color='#90ee90'>CH " + str(phx_curChan) + "</t><br/>Alt. Channel (right ear): <t color='#90ee90'>CH " + str(phx_altChan) + "</t>");
+[phx_ui_structTextRef, "My Starting Radios", _structStartingRadios joinString ""] call BIS_fnc_setToPairs;
 
 //Next step - wait for loadout
 [{!isNil "phx_hasSW" && !isNil "phx_hasLR" && call TFAR_fnc_isAbleToUseRadio}, {
