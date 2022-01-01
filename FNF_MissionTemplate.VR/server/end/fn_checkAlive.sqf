@@ -25,24 +25,56 @@ phx_checkAlive_count = {
 [{
   if (phx_gameEnd) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
 
+  _fnc_notifyElimination = {
+
+    private _sideEliminated = sideEmpty;
+
+    if (phx_bluforInMission) then {
+      _bluCount = west call phx_checkAlive_count;
+      if (_bluCount < 1) then {
+        phx_bluforInMission = false;
+        _sideEliminated = west;
+      };
+    };
+
+    if (phx_opforInMission) then {
+      _opfCount = east call phx_checkAlive_count;
+      if (_opfCount < 1) then {
+        phx_opforInMission = false;
+        _sideEliminated = east;
+      };
+    };
+
+    if (phx_indforInMission) then {
+      _indCount = independent call phx_checkAlive_count;
+      if (_indCount < 1) then {
+        phx_indforInMission = false;
+        _sideEliminated = independent;
+      };
+    };
+
+    if (_sideEliminated != sideEmpty) then {
+      [format[
+        "<t align='center'>%1 eliminated!</t>",
+        _sideEliminated call BIS_fnc_sideName
+      ],"info",10] remoteExec ["phx_ui_fnc_notify",0];
+    };
+  };
+
   private _phx_currentSpectators = call ace_spectator_fnc_players;
   phx_playersInMission = [phx_playersInMission, {_this in _phx_currentSpectators}] call CBA_fnc_reject;
   phx_playersInMission = [phx_playersInMission, {!(alive _this)}] call CBA_fnc_reject;
 
-  if (phx_bluforInMission) then {
-    _bluCount = west call phx_checkAlive_count;
-    if (_bluCount < 1) then {phx_bluforInMission = false; ["<t align='center'>BLUFOR eliminated!</t>","info",10] remoteExec ["phx_ui_fnc_notify",0]};
+
+  // only notify during uplink and rush if no terminals are active
+  if (phx_gameMode in ["uplink","rush"]) then {
+    if !(phx_term1Hacking || phx_term2Hacking || phx_term3Hacking) then {
+      call _fnc_notifyElimination;
+    };
+  } else {
+    call _fnc_notifyElimination;
   };
 
-  if (phx_opforInMission) then {
-    _opfCount = east call phx_checkAlive_count;
-    if (_opfCount < 1) then {phx_opforInMission = false; ["<t align='center'>OPFOR eliminated!</t>","info",10] remoteExec ["phx_ui_fnc_notify",0]};
-  };
-
-  if (phx_indforInMission) then {
-    _indCount = independent call phx_checkAlive_count;
-    if (_indCount < 1) then {phx_indforInMission = false; ["<t align='center'>INDFOR eliminated!</t>","info",10] remoteExec ["phx_ui_fnc_notify",0]};
-  };
 
   /*
   if (count ([phx_bluforInMission, phx_opforInMission, phx_indforInMission] select {_x == true}) == 1 && phx_numberOfSides > 1) then {
