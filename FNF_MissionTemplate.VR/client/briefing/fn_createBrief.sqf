@@ -140,6 +140,53 @@ _fnc_parseMATForBriefing = {
     [_deltaOption, "MAT2"]
   ];
 
+  _textOut joinString "<br/>"
+};
+
+
+_fnc_parseCSWForBriefing = {
+  params ["_side"];
+
+  private _sideStr = str(_side);
+  private _squads = ["Alpha", "Bravo", "Charlie", "Delta"];
+  private _textOut = [];
+  {
+    private _setting = _x;
+    if (_x isEqualTo 0 || typeName _x != "ARRAY") then {
+      _textOut pushBack format["<font size='16' color='" + COLOR5 + "'>%1</font><br/>    Crewmen", _squads select _forEachIndex];
+    } else {
+      if (count _setting > 0) then {
+        private _cswPrimaryInfo = (_setting # 0) call fnc_getItemInfo;
+
+        private _mags = [];
+        {
+          _mags pushBack ([_x, true] call _fnc_notesItems);
+        } forEach (_setting select {typeName _x == "ARRAY"});
+
+        private _cswSecondaryName = "Ammo only";
+        if (_setting # 1 != "") then {
+          private _temp = (_setting # 1) call fnc_getItemInfo;
+          _cswSecondaryName = [_temp, "displayName"] call BIS_fnc_getFromPairs;
+        };
+
+        _textOut pushBack format [
+          "<font size='16' color='" + COLOR5 + "'>%2</font><br/>    <font color='" + COLOR3 + "'>%3</font><br/>    <img width='120' image='%4'/><br/>    + %5<br/>    + %6",
+          _side call BIS_fnc_sideName,
+          _squads select _forEachIndex,
+          [_cswPrimaryInfo, "displayName"] call BIS_fnc_getFromPairs,
+          [_cswPrimaryInfo, "picture"] call BIS_fnc_getFromPairs,
+          _cswSecondaryName,
+          _mags joinString " "
+        ];
+      };
+    };
+  } forEach [
+    missionNamespace getVariable [format["phx_%1AlphaAuxRole",_sideStr], 0],
+    missionNamespace getVariable [format["phx_%1BravoAuxRole",_sideStr], 0],
+    missionNamespace getVariable [format["phx_%1CharlieAuxRole",_sideStr], 0],
+    missionNamespace getVariable [format["phx_%1DeltaAuxRole",_sideStr], 0]
+  ];
+
   _textOut pushBack "<br/>";
   _textOut joinString "<br/>"
 };
@@ -192,6 +239,26 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 };
 
 
+PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
+player createDiaryRecord [
+  "PHX_Diary_UpdateInfo",
+  [
+    "Changelog",
+    format [
+      "<font size='18' shadow='1' color='" + COLOR2 + "'>%1</font><br/>%2<br/>%3",
+      "Changelog",
+      format ["Template Version: %1", phx_templateVersion],
+      "
+<br/>
+- adds CSW configuration to diary
+"
+    ]
+  ]
+];
+
+
+
+// PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 
 private _MATDataString = "";
@@ -222,6 +289,14 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" ||
     } forEach phx_briefing_west_uniform;
 
     private _meta = +phx_briefing_west_uniformMeta;
+
+    player createDiaryRecord [
+      "Diary",
+      [
+        "BLUFOR CSW Settings",
+        west call _fnc_parseCSWForBriefing
+      ]
+    ];
 
     player createDiaryRecord [
       "Diary",
@@ -338,6 +413,14 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
     player createDiaryRecord [
       "Diary",
       [
+        "OPFOR CSW Settings",
+        east call _fnc_parseCSWForBriefing
+      ]
+    ];
+
+    player createDiaryRecord [
+      "Diary",
+      [
         "OPFOR Loadout",
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
@@ -447,6 +530,14 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
     } forEach phx_briefing_ind_uniform;
 
     private _meta = +phx_briefing_ind_uniformMeta;
+
+    player createDiaryRecord [
+      "Diary",
+      [
+        "BLUFOR CSW Settings",
+        independent call _fnc_parseCSWForBriefing
+      ]
+    ];
 
     player createDiaryRecord [
       "Diary",
