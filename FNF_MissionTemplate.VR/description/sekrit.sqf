@@ -18,6 +18,7 @@ _rules = call compile preprocessFile "description\RulesAndPolicies.txt";
 phx_ui_changelogText = ([
   "- adds CSW configuration to diary",
   "- adds custom UI mission info panel for alive/dead player and spectators (Ctrl-J or click button while spectating)",
+  "- reworks spectator init to support missionInfoPanel data",
   "- adds safe start timer (only visible while map is open during safestart)",
   "- adds Assassination game mode",
   "- CTF",
@@ -28,7 +29,15 @@ phx_ui_changelogText = ([
   "  - if a side was eliminated while a terminal was active, the notification will be delayed until it's paused or its time runs out",
   "- fix for safeStart leadership teleport - SLs will now be properly detected and teleported",
   "- minor loadout updates",
-  "- adds debriefing text"
+  "- adds debriefing text",
+  "- disable ambient life for players (rabbits, snakes, etc)",
+  "- set unit ranks for players based on their role (for nametag's sake and future squad (loadout ref)",
+  "- adds small mission intro using textTiles",
+  "- auto-selects Briefing tab of missionInfoPanel",
+  "- auto turn on collision lights of aircraft and helos if the ambient light level at their position is below a certain threshold, to make them easier to find",
+  "- auto disable vehicle sensors (Jets DLC, radar, etc)",
+  "- blufor tracker icon configuration updated so that all sides will see Civilian unit markers",
+  "- adds some cool media to the diary"
 ] joinString "<br/>");
 
 phx_ui_frameworkCreditsText = ([
