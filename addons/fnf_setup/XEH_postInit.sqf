@@ -98,7 +98,9 @@ if (!hasInterface) exitWith {};
     "View mission details, including in spectator"
   ],
   { // key down code
-    call phx_ui_fnc_missionInfoPanel;
+    if (!dialog) then {
+      [] spawn phx_ui_fnc_missionInfoPanel;
+    };
   },
   "", // no up code
   [DIK_J, [false, true, false]], // default bind to Ctrl J

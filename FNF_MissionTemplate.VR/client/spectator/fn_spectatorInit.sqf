@@ -53,6 +53,22 @@ _showObj = {
 } forEach phx_specObjectives;
 
 
+
+disableSerialization;
+
+[{!isNull findDisplay 60000}, {
+  disableSerialization;
+  _display = findDisplay 60000;
+
+  _infoButton = _display ctrlCreate ["InfoPanelSpectatorButton", 2524];
+  _infoButton ctrlAddEventHandler ["ButtonClick", {
+    if (!dialog) then {
+      [] spawn phx_ui_fnc_missionInfoPanel;
+    };
+  }];
+}] call CBA_fnc_waitUntilAndExecute;
+
+
 phx_spectatorVisiblePrevinput = true;
 phx_spectatorPrevVisibleCtrls = [];
 
