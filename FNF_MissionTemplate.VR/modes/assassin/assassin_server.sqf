@@ -5,6 +5,7 @@ if (!isServer) exitWith {};
 
 phx_assassinationTargets = _targets;
 phx_aliveHVTs = count phx_assassinationTargets;
+phx_requiredKills = _requiredKills;
 
 #define HVTXVAR {missionNamespace getVariable format["HVT_%1", _forEachIndex + 1]}
 #define HVTXOBJ (missionNamespace getVariable [format["HVT_%1", _forEachIndex + 1], objNull])
@@ -192,9 +193,9 @@ call _fnc_updateTaskAssociations;
 }, 2] call CBA_fnc_addPerFrameHandler;
 
 // Don't end game automatically in case it was due to DC or something.
-[{phx_aliveHVTs <= (count (_this # 0) - (_this # 1))},{
-  [format["<t align='center'>The required number of HVTs has been eliminated!<br/>(%1 / %2)<br/><br/>As this may be due to disconnects or other circumstances, keep fighting until the staff declare a win!</t>", _this # 1, count (_this # 0)],"info",15] call phx_ui_fnc_notify;
-}, [_targets, _requiredKills]] call CBA_fnc_waitUntilAndExecute;
+[{phx_aliveHVTs <= (count (phx_assassinationTargets) - phx_requiredKills)},{
+  [format["<t align='center'>The required number of HVTs has been eliminated!<br/>(%1 / %2)<br/><br/>As this may be due to disconnects or other circumstances, keep fighting until the staff declare a win!</t>", phx_requiredKills, count (phx_assassinationTargets)],"info",15] remoteExec ["phx_ui_fnc_notify", 0];
+}] call CBA_fnc_waitUntilAndExecute;
 
 // Admin should run this function if all HVTs are dead and mission should end in favor of attackers.
 phx_fnc_HVTEnd = {

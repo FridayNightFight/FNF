@@ -19,8 +19,7 @@ _useDefaultPLTHQ = true;
 _targets = [
   ["Target 1", ["Platoon Leader", "Danny Carpenter"]],
   ["Target 2", ["Second-in-Command", "Gary Jones"]],
-  ["Target 3", ["Medic", "Rick Porter"]],
-  ["Target 4", ["Ambassador", "Jeremiah Anders"]]
+  ["Target 3", ["Medic", "Rick Porter"]]
 ];
 
 // How many of the above targets must be killed for the attackers to win
