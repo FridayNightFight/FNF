@@ -32,6 +32,7 @@ class CfgFunctions {
       class briefInit{};
       class setGroupIDs{};
       class createBrief{};
+      class createBriefGamemode{};
       class createOrbat{};
       class objectiveRecon{};
     };

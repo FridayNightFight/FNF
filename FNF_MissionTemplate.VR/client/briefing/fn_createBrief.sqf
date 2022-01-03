@@ -973,6 +973,7 @@ phx_briefing_MMNotes = {
       _mmNotes joinString ""
     ]
   ];
+
 };
 
 
