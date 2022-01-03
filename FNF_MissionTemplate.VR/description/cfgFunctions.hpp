@@ -24,6 +24,7 @@ class CfgFunctions {
       class drawCmdIcons{};
       class drawSLIcons{};
       class assetDiaryInfo{};
+      class assetDiaryInfoStruct{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -39,6 +40,7 @@ class CfgFunctions {
       file = "client\briefing\loadoutPrep";
       class briefingParseLoadout{};
       class briefingWeaponDetails{};
+      class briefingGear{};
     };
     class radio {
       file = "client\radio";
@@ -146,6 +148,10 @@ class CfgFunctions {
     class notifications {
       file = "client\ui\notifications";
       class notify{};
+    };
+    class scripts {
+      file = "client\ui";
+      class missionInfoPanel{};
     };
   };
   class phx_admin {

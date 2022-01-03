@@ -3,7 +3,7 @@ Server component to the safety system
 */
 
 missionNamespace setVariable ["phx_safetyEnabled",true,true];
-f_var_mission_timer = phx_safeStartTime * 60;
+f_var_mission_timer = phx_safeStartTime * 60 + 10;
 missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
 call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends

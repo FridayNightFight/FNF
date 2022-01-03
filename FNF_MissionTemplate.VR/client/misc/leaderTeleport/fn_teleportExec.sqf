@@ -41,9 +41,9 @@ _getSLs = {
 	private _squads = ["A","B","C","D"];
 
 	{
-		// select only the first leader found in A, A1, A2
+		// select the squad leader in A or A HQ, B or B HQ, etc
 		private _groupChar = _x;
-		private _groupsThatExist = _allGroups select {(groupId _x) in [_groupChar, (_groupChar + "1"), (_groupChar + "2")]};
+		private _groupsThatExist = _allGroups select {(groupId _x) in [_groupChar, (_groupChar + " HQ")]};
 		if (count _groupsThatExist > 0) then {
 			_result pushBack (leader (_groupsThatExist select 0));
 		};
@@ -196,9 +196,9 @@ if ([
 	// hintSilent format["Teleporting %1 players", count _toTeleport];
   [format["Teleporting %1 players", count _toTeleport], "success", 7] call phx_ui_fnc_notify;
 	private _ring = 1;
-	
+
 	private _pos = (getPosATL player);
-	
+
 	while {count _toTeleport > 0} do {
 		private _playersInThisRing = (_ring * 15);
 		private _radius = (_ring * 5);

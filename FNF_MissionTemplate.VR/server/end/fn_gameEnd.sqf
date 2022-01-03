@@ -47,4 +47,9 @@ if (isClass (configFile >> "CfgPatches" >> "OCAP")) then {
 };
 
 sleep 10;
+"end1" setDebriefingText [
+  "Round Complete", // title
+  format ["%1 %2", _sideWon, _condition], // description
+  format ["%1 wins!", _sideWon] // subtitle
+];
 "end1" call BIS_fnc_endMissionServer;

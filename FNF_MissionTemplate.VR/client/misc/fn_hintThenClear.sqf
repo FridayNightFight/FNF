@@ -20,7 +20,7 @@ Examples:
 ---------------------------------------------------------------------------- */
 params ["_hintStr",["_delay", 10]];
 // hint _hintStr;
-[_hintStr, "info", _delay] call phx_ui_fnc_notify;
+[format["<t align='center'>%1</t>", _hintStr], "info", _delay] call phx_ui_fnc_notify;
 // _delayedTime = diag_tickTime + _delay;
 // [{
 //     params ["_args","_handle"];
