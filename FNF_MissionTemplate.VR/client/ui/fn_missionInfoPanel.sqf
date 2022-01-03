@@ -47,7 +47,7 @@ _INDFORIndexLoadout = _tree tvAdd [[_INDFORIndex],"Loadout"];
 _INDFORIndexAssets = _tree tvAdd [[_INDFORIndex],"Assets"];
 
 _OtherAssetsIndex = _tree tvAdd [[],"Other Assets"];
-_ChangelogIndex = _tree tvAdd[[],"Changelog"];
+_ChangelogIndex = _tree tvAdd[[],"Framework Info"];
 _CreditsIndex = _tree tvAdd[[],"Credits"];
 _RulesIndex = _tree tvAdd[[],"Rules"];
 
@@ -134,6 +134,8 @@ _tree ctrlAddEventHandler [ "TreeSelChanged", {
 
   // hint format[ "You Selected\n%1", _selected ]; //eg "PARENT 1 >> CHILD 2"
 }];
+
+tvSetCurSel [2526, [_BriefingIndex]];
 
 while {ctrlVisible 2526} do {
   ctrlSetFocus _tree;

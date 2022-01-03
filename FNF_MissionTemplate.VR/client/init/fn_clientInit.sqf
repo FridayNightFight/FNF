@@ -1,4 +1,36 @@
 //Determine if client can play the round, if not, spectate
+
+[{time > 0}, {enableEnvironment [false, true]}] call CBA_fnc_waitUntilAndExecute;
+
+phx_loadout_roles = [
+  ["PL",["Platoon Leader","LIEUTENANT"]],
+  ["SGT",["Platoon Sergeant","SERGEANT"]],
+  ["SL",["Squad Leader","SERGEANT"]],
+  ["TL",["Team Leader","CORPORAL"]],
+  ["AR",["Autorifleman","PRIVATE"]],
+  ["ARA",["Asst. Autorifleman","PRIVATE"]],
+  ["GR",["Grenadier","PRIVATE"]],
+  ["GRIR",["Sr. Grenadier","CORPORAL"]],
+  ["MG",["Machine Gunner","PRIVATE"]],
+  ["MGA",["Asst. Machine Gunner","PRIVATE"]],
+  ["CE",["Combat Engineer","PRIVATE"]],
+  ["LAT",["AT Rifleman","PRIVATE"]],
+  ["MAT1",["AT Specialist","PRIVATE"]],
+  ["MATA1",["Asst. AT Specialist","PRIVATE"]],
+  ["MAT2",["AT Specialist","PRIVATE"]],
+  ["MATA2",["Asst. AT Specialist","PRIVATE"]],
+  ["RI",["Rifleman","PRIVATE"]],
+  ["RIS",["Sr. Rifleman","CORPORAL"]],
+  ["DM",["Marksman","PRIVATE"]],
+  ["SNP",["Sniper","CORPORAL"]],
+  ["CRL",["Vehicle Cmdr","SERGEANT"]],
+  ["CR",["Crewman","CORPORAL"]],
+  ["PI",["Pilot","LIEUTENANT"]],
+  ["MED",["Medic","CORPORAL"]],
+  ["SHQAUX",["Crew/Wpn Operator","PRIVATE"]],
+  ["BASE",["Crew/Wpn Operator","PRIVATE"]]
+];
+
 if !(call phx_fnc_clientCanPlay) exitWith {
   call phx_fnc_briefInit; //Briefing
   call phx_fnc_clientSetupGame; //Client portion of game modes
@@ -13,35 +45,6 @@ if !(call phx_fnc_clientCanPlay) exitWith {
   call phx_fnc_spectatorInit;
 };
 player enableSimulation false;
-
-phx_loadout_roles = [
-  ["PL","Platoon Leader"],
-  ["SGT","Platoon Sergeant"],
-  ["SL","Squad Leader"],
-  ["TL","Team Leader"],
-  ["AR","Autorifleman"],
-  ["ARA","Asst. Autorifleman"],
-  ["GR","Grenadier"],
-  ["GRIR","Sr. Grenadier"],
-  ["MG","Machine Gunner"],
-  ["MGA","Asst. Machine Gunner"],
-  ["CE","Combat Engineer"],
-  ["LAT","AT Rifleman"],
-  ["MAT1","AT Specialist"],
-  ["MATA1","Asst. AT Specialist"],
-  ["MAT2","AT Specialist"],
-  ["MATA2","Asst. AT Specialist"],
-  ["RI","Rifleman"],
-  ["RIS","Sr. Rifleman"],
-  ["DM","Marksman"],
-  ["SNP","Sniper"],
-  ["CRL","Vehicle Cmdr"],
-  ["CR","Crewman"],
-  ["PI","Pilot"],
-  ["MED","Medic"],
-  ["SHQAUX","Crew/Wpn Operator"],
-  ["BASE","Crew/Wpn Operator"]
-];
 
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_fnc_briefInit; //Briefing
@@ -77,7 +80,48 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
   call phx_fnc_restrictions;
   call phx_fnc_checkLoadout;
   [false] call phx_fnc_briefingGear;
+
+  // Compile Date text
+	date params ["_year", "_month", "_day", "_hour", "_minute"];
+
+	if (_month < 10) then {_month = format ["0%1", _month]};
+	if (_day < 10) then {_day = format ["0%1", _day]};
+	if (_hour < 10) then {_hour = format ["0%1", _hour]};
+	if (_minute < 10) then {_minute = format ["0%1", _minute]};
+
+	private ["_time", "_date"];
+	_time = format ["%1:%2", _hour, _minute];
+	_date = format ["%1-%2-%3", _year, _month, _day];
+
+  private _locationTypes = [
+    "NameCity",
+    "NameCityCapital",
+    "NameLocal",
+    "NameMarine",
+    "NameVillage"
+  ];
+  private _locationText = "In the middle of nowhere";
+  private _locations = nearestLocations [player, _locationTypes, 2000, player];
+  if (count _locations > 0) then {
+    _locationText = format["Near %1", text (_locations select 0)];
+  };
+
+  private _showText = composeText [
+    "Welcome to ", serverName, lineBreak,
+    briefingName, lineBreak,
+    _date, " ", _time, " ", _locationText, lineBreak,
+    "Game mode: ", (toUpper phx_gameMode), lineBreak
+  ];
+
+  [
+    _showText, // content
+    true, // position
+    10, // tileSize
+    10, // duration
+    3 // fadeInOutTime
+  ] spawn BIS_fnc_textTiles;
 }] call CBA_fnc_waitUntilAndExecute;
+
 //Client-side fortify, and gear selector
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
   call phx_fnc_fortifyClient;

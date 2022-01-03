@@ -11,6 +11,7 @@ private _loadoutRole = player getVariable ["phx_lastLoadout", "UNKNOWN"];
 // roles list in fn_clientInit.sqf
 private _strRole = " ";
 _strRole = [phx_loadout_roles, PLAYERLOADOUTVAR, "Unknown"] call BIS_fnc_getFromPairs;
+if (typeName _strRole isEqualTo "ARRAY") then {_strRole = _strRole select 0};
 // if (LOADOUTROLE("PL")) then {_strRole = " Platoon Leader"};
 // if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {_strRole = " Squad Leader"};
 // if (LOADOUTROLE("TL")) then {_strRole = " Team Leader"};

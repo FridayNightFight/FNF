@@ -967,9 +967,10 @@ player createDiaryRecord [
   [
     "Changelog",
     format [
-      "<font size='18' shadow='1' color='" + COLOR2 + "'>Changelog</font><br/>Template Version: %1<br/><br/>%2",
+      "<font size='18' shadow='1' color='" + COLOR2 + "'>Changelog</font><br/>Template Version: %1<br/><br/>%2<br/><br/><font size='18' shadow='1' color='" + COLOR2 + "'>Credits</font><br/>%3",
       phx_templateVersion,
-      phx_ui_changelogText
+      phx_ui_changelogText,
+      phx_ui_frameworkCreditsText
     ]
   ]
 ];

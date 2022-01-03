@@ -43,6 +43,14 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
     _marker setMarkerType "Empty";
 } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 
+
+// turn on collision lights for air vehicles if it's night
+{
+  if ((getLightingAt _x) select 1 <= 1500) then {
+    [_x, true] remoteExecCall ["setCollisionLight", _x];
+  };
+} forEach (entities[["Air"], [], false, true]);
+
 //Clear vehicle inventories
 ["AllVehicles", "init", {
   private _vic = (_this select 0);
@@ -53,6 +61,12 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
     clearWeaponCargoGlobal _vic;
     clearItemCargoGlobal _vic;
     clearMagazineCargoGlobal _vic;
+  };
+
+  private _sensors = listVehicleSensors _vic;
+  if (count _sensors > 0) then {
+    _sensors = _sensors apply {_x # 0};
+    {_vic enableVehicleSensor [_x, false]} forEach _sensors;
   };
 }, true, [], true] call CBA_fnc_addClassEventHandler;
 

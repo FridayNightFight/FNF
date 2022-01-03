@@ -133,7 +133,9 @@ _generateORBAT = {
                 // };
                 private _colorUsed = _color;
                 if (player isEqualTo _x) then {_colorUsed = _highlightColor};
-                private _spacesCount = 21 - count ([phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "BASE"] call BIS_fnc_getFromPairs);
+                _roleName = [phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "RI"] call BIS_fnc_getFromPairs;
+                if (typeName _roleName isEqualTo "ARRAY") then {_roleName = _roleName select 0};
+                private _spacesCount = 21 - count (_roleName);
                 private _thisSpaces = "";
                 for "_i" from 1 to _spacesCount do {
                   _thisSpaces = _thisSpaces + ".";
@@ -141,7 +143,7 @@ _generateORBAT = {
                 _groupString = _groupString + format[
                   "<br/><font size='9' face='EtelkaMonospacePro'>%3[%2]%5<font color='%4'>%1</font></font>",
                   name _x,
-                  [phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "BASE"] call BIS_fnc_getFromPairs,
+                  _roleName,
                   _leftPad,
                   _colorUsed,
                   _thisSpaces
@@ -149,7 +151,7 @@ _generateORBAT = {
                 _groupStringStruct = _groupStringStruct + format[
                   "<br/><t size='0.8' font='EtelkaMonospacePro'>%3[%2]%5<t color='%4'>%1</t></t>",
                   name _x,
-                  [phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "BASE"] call BIS_fnc_getFromPairs,
+                  _roleName,
                   _leftPad,
                   _colorUsed,
                   _thisSpaces

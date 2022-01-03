@@ -30,13 +30,18 @@ phx_ui_changelogText = ([
   "- adds debriefing text"
 ] joinString "<br/>");
 
+phx_ui_frameworkCreditsText = ([
+  "UI Notification System: Aquaman, TanKode, Lucian"
+] joinString "<br/>");
+
 #define COLOR2 "#FF8E38"
 private _changelogStruct = format [
-  "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/><br/>%2",
+  "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/><br/>%2<br/><br/><t size='1.2' shadow='1' color='" + COLOR2 + "'>Credits</t><br/>%3",
   phx_templateVersion,
-  phx_ui_changelogText
+  phx_ui_changelogText,
+  phx_ui_frameworkCreditsText
 ];
-[phx_ui_structTextRef, "Changelog", _changelogStruct] call BIS_fnc_setToPairs;
+[phx_ui_structTextRef, "Framework Info", _changelogStruct] call BIS_fnc_setToPairs;
 
 
 
