@@ -4,11 +4,12 @@ GAME MODES
 Change this to whatever game mode you want and configure the respective file in mode_config
 If you don't want to use one of the template modes, you can set phx_gameMode = "";
   ===ATK/DEF===
-  destroy
-  uplink
-  rush
-  captureTheFlag
   adSector
+  assassin
+  captureTheFlag
+  destroy
+  rush
+  uplink
 
   ===NEUTRAL===
   connection

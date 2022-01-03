@@ -944,18 +944,97 @@ phx_briefing_MMNotes = {
       _mmNotesStructGamemode pushBack format ["Specialized transports per side: %1", _numberOfTransportsPerSide];
       _mmNotesStructGamemode pushBack "<br/>";
     };
+    case "assassin": {
+      ["REFRESH_BRIEF_GAMEMODE", {
+        #include "..\..\mode_config\assassin.sqf";
+
+        private _mmNotes = [];
+        private _mmNotesStructGamemode = [];
+
+        _mmNotes pushBack format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
+        _mmNotes pushBack "<br/>";
+        _mmNotes pushBack "<br/>";
+
+        _mmNotesStructGamemode pushBack format ["<t size='1.2' color='" + COLOR3 + "' font='PuristaBold'>GAMEMODE: %1</t>", toUpper phx_gameMode];
+        _mmNotesStructGamemode pushBack "<br/>";
+        _mmNotesStructGamemode pushBack "<br/>";
+
+        if (!isNil "phx_overTimeConStr") then {
+          _mmNotes pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
+          _mmNotes pushBack "<br/>";
+          _mmNotes pushBack "<br/>";
+
+          _mmNotesStructGamemode pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
+          _mmNotesStructGamemode pushBack "<br/>";
+          _mmNotesStructGamemode pushBack "<br/>";
+        } else {
+          _mmNotes pushBack "<br/>";
+          _mmNotes pushBack "<br/>";
+
+          _mmNotesStructGamemode pushBack "<br/>";
+          _mmNotesStructGamemode pushBack "<br/>";
+        };
+
+        _mmNotes pushBack format ["HVT Count: %1<br/>", count _targets];
+        _mmNotes pushBack format ["%1 needs to kill %2 of them to win.<br/>", phx_attackingSide call BIS_fnc_sideName, _requiredKills];
+        _mmNotes pushBack "<br/><br/>";
+        _mmNotes pushBack "Jammers are in place to secure 1 or more specifically marked areas in which the HVTs can safely hide. If an HVT moves outside of any protected zone, their position will be revealed on the enemy's map until they return to safety. HVT locations will ALWAYS be revealed to their allies to aid them in tactical defense.";
+        _mmNotes pushBack "<br/><br/>";
+
+        _mmNotesStructGamemode pushBack format ["HVT Count: %1<br/>", count _targets];
+        _mmNotesStructGamemode pushBack format ["%1 needs to kill %2 of them to win.<br/>", phx_attackingSide call BIS_fnc_sideName, _requiredKills];
+        _mmNotesStructGamemode pushBack "<br/><br/>";
+        _mmNotesStructGamemode pushBack "Jammers are in place to secure 1 or more specifically marked areas in which the HVTs can safely hide. If an HVT moves outside of any protected zone, their position will be revealed on the enemy's map until they return to safety. HVT locations will ALWAYS be revealed to their allies to aid them in tactical defense.";
+        _mmNotesStructGamemode pushBack "<br/><br/>";
+
+
+        _mmNotes pushBack format ["<font color='%1' size='16'>HVTs</font><br/>", COLOR3];
+
+        _mmNotesStructGamemode pushBack format ["<t color='%1' size='1.2'>HVTs</t><br/>", COLOR3];
+        {
+          (_x # 0) params ["_targetHeader"];
+          (_x # 1) params ["_role", "_name", "_obj"];
+          if (!isNil "_obj") then {
+            _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+            _mmNotesStructGamemode pushBack format ["<t color='%1'>  %2:</t> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+          } else {
+            _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by [NOT FILLED])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+            _mmNotesStructGamemode pushBack format ["<t color='%1'>  %2:</t> %3 (%4, played by [NOT FILLED])<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+          };
+        } forEach phx_assassinationTargets;
+
+        player setDiaryRecordText [["Diary", phx_diary_gamemode], [
+          format["Gamemode - %1", toUpper phx_gameMode],
+          _mmNotes joinString ""
+          ]
+        ];
+
+        [phx_ui_structTextRef, "Gamemode", _mmNotesStructGamemode joinString ""] call BIS_fnc_setToPairs;
+      }] call CBA_fnc_addEventHandler;
+
+      phx_diary_gamemode = player createDiaryRecord ["Diary",
+        [
+          // getText(missionConfigFile >> "Author"),
+          "Gamemode",
+          ""
+        ]
+      ];
+
+      ["REFRESH_BRIEF_GAMEMODE"] call CBA_fnc_localEvent;
+    }
   };
 
   [phx_ui_structTextRef, "Briefing", _mmNotesStructBrief joinString ""] call BIS_fnc_setToPairs;
   [phx_ui_structTextRef, "Gamemode", _mmNotesStructGamemode joinString ""] call BIS_fnc_setToPairs;
 
-  player createDiaryRecord ["Diary",
+  phx_diary_briefing = player createDiaryRecord ["Diary",
     [
       // getText(missionConfigFile >> "Author"),
       "Briefing",
       _mmNotes joinString ""
     ]
   ];
+
 };
 
 

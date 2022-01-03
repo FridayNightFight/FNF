@@ -42,6 +42,9 @@ switch (phx_gameMode) do {
     execVM "modes\scavHunt\scavHunt_server.sqf";
     phx_overTimeConStr = "The mission will go into overtime if both teams hold an equal number of target items in their zone when the timer reaches zero.";
   };
+  case "assassin": {
+    execVM "modes\assassin\assassin_server.sqf";
+  };
 };
 
 publicVariable "phx_overTimeConStr";
@@ -81,4 +84,11 @@ if !(phx_gameMode isEqualTo "scavHunt") then {
       deleteMarker _x;
     } forEach ["scavHuntCapEAST", "scavHuntCapWEST", "scavHuntCapGUER"];
   } remoteExec ["call", 0, true];
+};
+
+if !(phx_gameMode isEqualTo "assassin") then {
+  private _markers = ["fnf_assassin_boundaries_"] call BIS_fnc_getMarkers;
+  {
+    deleteMarker _x;
+  } forEach _markers;
 };
