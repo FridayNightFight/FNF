@@ -11,6 +11,8 @@ missionNamespace setVariable [
   true
 ];
 
+estimatedTimeLeft (60 * (phx_safeStartTime + phx_missionTimeLimit));
+
 call phx_fnc_serverSafety;
 call phx_fnc_setGroupIDs;
 call phx_fnc_radio_genFreqs;

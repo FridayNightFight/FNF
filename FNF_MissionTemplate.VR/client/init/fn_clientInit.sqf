@@ -1,5 +1,17 @@
 //Determine if client can play the round, if not, spectate
-if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
+if !(call phx_fnc_clientCanPlay) exitWith {
+  call phx_fnc_briefInit; //Briefing
+  call phx_fnc_clientSetupGame; //Client portion of game modes
+  phx_playerBaseChannel = 0;
+  phx_briefing_startingRadios = {};
+  call phx_fnc_contactStaffInit; // Init handling for player reports
+  call phx_fnc_assetDiaryInfo; // Add diary entries for assets
+  [{missionNamespace getVariable ["phx_briefCreated", false]}, {
+    call phx_fnc_assetDiaryInfoStruct; // Prep global vars for UI info panel
+  }] call CBA_fnc_waitUntilAndExecute;
+  call phx_fnc_populateORBATs;
+  call phx_fnc_spectatorInit;
+};
 player enableSimulation false;
 
 phx_loadout_roles = [

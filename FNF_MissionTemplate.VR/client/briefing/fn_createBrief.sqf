@@ -315,13 +315,13 @@ Author: %6<br/><br/>
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_west_headgear;
     {
-      _vestImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_west_vest;
     {
-      _uniformImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_west_uniform;
 
     [
@@ -436,13 +436,13 @@ Author: %6<br/><br/>
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_east_headgear;
     {
-      _vestImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_east_vest;
     {
-      _uniformImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_east_uniform;
 
     [
@@ -557,13 +557,13 @@ Author: %6<br/><br/>
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_ind_headgear;
     {
-      _vestImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_ind_vest;
     {
-      _uniformImg pushBack format["<img size='8' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_ind_uniform;
 
     [
@@ -694,36 +694,36 @@ phx_briefing_MMNotes = {
   if (count phx_briefingBackground > 0) then {
     _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>BACKGROUND</font>";
     _mmNotes pushBack "<br/>";
-    _mmNotes pushBack phx_briefingBackground;
+    _mmNotes pushBack (phx_briefingBackground call CBA_fnc_sanitizeHTML);
     _mmNotes pushBack "<br/>";
 
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>BACKGROUND</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack phx_briefingBackground;
+    _mmNotesStructBrief pushBack (phx_briefingBackground call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
   if (count phx_briefingWorldInfo > 0) then {
     _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>AREA OF OPERATIONS</font>";
     _mmNotes pushBack "<br/>";
-    _mmNotes pushBack phx_briefingWorldInfo;
+    _mmNotes pushBack (phx_briefingWorldInfo call CBA_fnc_sanitizeHTML);
     _mmNotes pushBack "<br/>";
 
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>AREA OF OPERATIONS</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack phx_briefingWorldInfo;
+    _mmNotesStructBrief pushBack (phx_briefingWorldInfo call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
   if (count phx_briefingNotes > 0) then {
     _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>NOTES</font>";
     _mmNotes pushBack "<br/>";
-    _mmNotes pushBack phx_briefingNotes;
+    _mmNotes pushBack (phx_briefingNotes call CBA_fnc_sanitizeHTML);
     _mmNotes pushBack "<br/>";
 
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>NOTES</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack phx_briefingNotes;
+    _mmNotesStructBrief pushBack (phx_briefingNotes call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
@@ -732,10 +732,12 @@ phx_briefing_MMNotes = {
     _mmNotes pushBack "<br/>";
     _mmNotes pushBack phx_briefingRules;
     _mmNotes pushBack "<br/>";
+    _mmNotes pushBack "<br/>";
+    _mmNotes pushBack "<br/>";
 
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>MISSION RULES</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack phx_briefingRules;
+    _mmNotesStructBrief pushBack (phx_briefingRules call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
@@ -957,6 +959,8 @@ phx_briefing_MMNotes = {
 };
 
 
+call phx_fnc_briefNews;
+
 PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
 player createDiaryRecord [
   "PHX_Diary_UpdateInfo",
@@ -970,7 +974,7 @@ player createDiaryRecord [
   ]
 ];
 
-PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_Credits", "Credits"];
+PHX_Diary_Credits = player createDiarySubject ["PHX_Diary_Credits", "Credits"];
 player createDiaryRecord [
   "PHX_Diary_Credits",
   [
