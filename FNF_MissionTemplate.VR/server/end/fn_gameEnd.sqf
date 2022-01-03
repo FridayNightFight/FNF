@@ -42,14 +42,17 @@ if (count allPlayers > 14) then {
   [format["%1 %2", _sideWonName, _condition]] call phx_fnc_webhook_roundEnd;
 };
 
+sleep 10;
+["end1", [
+  format ["%1 wins!", _sideWonName], // title
+  format ["%1 %2", _sideWonName, _condition], // description
+  format ["Game mode: %1", toUpper phx_gameMode], // subtitle
+  getMissionPath "description\images\fnf.paa" // title image
+  // getMissionPath "description\images\fnf_bg1.paa" // background image
+]] remoteExecCall ["setDebriefingText", 0];
+
 if (isClass (configFile >> "CfgPatches" >> "OCAP")) then {
   [_sideWon, format["%1 %2", _sideWonName, _condition]] call ocap_fnc_exportData;
 };
 
-sleep 10;
-"end1" setDebriefingText [
-  "Round Complete", // title
-  format ["%1 %2", _sideWon, _condition], // description
-  format ["%1 wins!", _sideWon] // subtitle
-];
 "end1" call BIS_fnc_endMissionServer;

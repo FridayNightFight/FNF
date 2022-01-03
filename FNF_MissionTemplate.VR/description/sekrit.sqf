@@ -15,7 +15,6 @@ _rules = call compile preprocessFile "description\RulesAndPolicies.txt";
 
 
 phx_ui_changelogText = ([
-  "",
   "- adds CSW configuration to diary",
   "- adds custom UI mission info panel for alive/dead player and spectators (Ctrl-J or click button while spectating)",
   "- adds safe start timer (only visible while map is open during safestart)",
@@ -27,12 +26,13 @@ phx_ui_changelogText = ([
   "  - 'side eliminated' notifications will not appear while a terminal is being hacked",
   "  - if a side was eliminated while a terminal was active, the notification will be delayed until it's paused or its time runs out",
   "- fix for safeStart leadership teleport - SLs will now be properly detected and teleported",
-  "- minor loadout updates"
+  "- minor loadout updates",
+  "- adds debriefing text"
 ] joinString "<br/>");
 
 #define COLOR2 "#FF8E38"
 private _changelogStruct = format [
-  "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/>%2",
+  "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/><br/>%2",
   phx_templateVersion,
   phx_ui_changelogText
 ];
