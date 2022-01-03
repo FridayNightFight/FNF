@@ -6,6 +6,9 @@
 #define adSector "adSector"
 #define neutralSector "neutralSector"
 #define scavHunt "scavHunt"
+#define assassination "assassin"
+#define assassin "assassin"
+#define ass "assassin"
 
 // AT Launchers
 // [launcher,[mags],[optics]]

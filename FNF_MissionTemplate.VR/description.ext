@@ -2,13 +2,6 @@ author = "YOUR_NAME";
 onLoadName = "MISSION_NAME";
 onLoadMission = "SHORT_DESCRIPTION";
 
-class Header
-{
-	gameType = TDM;
-	minPlayers = 1;
-	maxPlayers = 200;
-};
-
 #include "description\definitions.hpp"
 #include "description\cfgEventHandlers.hpp"
 #include "description\cfgNotifications.hpp"
@@ -20,3 +13,4 @@ class Header
 #include "client\ui\defines.hpp"
 #include "client\ui\RscTitlesDisplay.hpp"
 #include "client\ui\PauseMenuDisplays.hpp"
+#include "client\ui\InfoPanel.hpp"
