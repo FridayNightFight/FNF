@@ -11,6 +11,14 @@ phx_requiredKills = _requiredKills;
 #define HVTXOBJ (missionNamespace getVariable [format["HVT_%1", _forEachIndex + 1], objNull])
 #define GETTARGET ([phx_assassinationTargets, format["Target %1", _forEachIndex + 1]] call BIS_fnc_getFromPairs)
 
+if (phx_defendingSide == sideEmpty || phx_attackingSide == sideEmpty) exitWith {
+  [
+    "<t align='center'>This is an Atk/Def mode and the defending or attacking side is not configured. Please set it.</t>",
+    "error",
+    15
+  ] remoteExec ["phx_ui_fnc_notify", 0];
+};
+
 
 _fnc_gatherObjects = {
   params ["_useDefaultPLTHQ", "_targets"];
@@ -20,7 +28,7 @@ _fnc_gatherObjects = {
     if (count _HVTGroups > 0) then {
       _HVTGroup = _HVTGroups # 0
     } else {
-      {true} exitWith {
+      if (true) exitWith {
         [
           format["<t align='center'>Unable to locate Platoon HQ on %1, this mission will not work.</t>", phx_defendingSide call BIS_fnc_sideName],
           "error",

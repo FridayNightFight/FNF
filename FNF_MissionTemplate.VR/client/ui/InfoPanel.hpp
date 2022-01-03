@@ -81,7 +81,7 @@ class InfoPanel
       idc = 2526;
       x = 0;
       y = 0;
-      w = 0.25;
+      w = 0.35;
       h = 1;
       colorBackground[] = {0,0,0,0.8};
     };
@@ -98,9 +98,9 @@ class InfoPanel
         class myControl_a: RscStructuredText
         {
           idc = 2528;
-          x = 0.25;
+          x = 0.35;
           y = 0;
-          w = 0.73;
+          w = 0.642;
           h = 1;
           size = 0.035;
           colorBackground[] = {0,0,0,0.8};

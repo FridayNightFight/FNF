@@ -521,7 +521,6 @@ _vehiclesToProcess = createHashMap;
 {
 	_typeCount = _vehiclesToProcess getOrDefault [(typeOf _x), 0];
 	_vehiclesToProcess set [(typeOf _x), _typeCount + 1];
-
 } forEach (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"});
 
 

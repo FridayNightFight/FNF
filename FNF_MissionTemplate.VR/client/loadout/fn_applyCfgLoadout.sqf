@@ -7,6 +7,11 @@ if (playerSide isEqualTo civilian) exitWith {
   phx_selector_explosives = [];
   phx_selector_grenades = [];
   missionNamespace setVariable ["phx_loadoutAssigned",true];
+  [
+    "[%1] Player %2 loaded as civilian, loadout scripts cancelled",
+    [(cba_missionTime),"HH:MM:SS"] call BIS_fnc_secondsToString,
+    name player
+  ] call BIS_fnc_logFormatServer;
 };
 
 player unlinkItem "ItemRadio";
@@ -801,7 +806,7 @@ if (isNil {
     phx_loadout_backpack,
     phx_loadout_headgear
   ] call fnc_addUniform
-}) then {
+}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process uniform settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process uniform settings."];
@@ -816,7 +821,7 @@ if (isNil {
     _cfgGiveSRRadio,
     _cfgGiveLRRadio
   ] call fnc_giveRadios
-}) then {
+}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
@@ -832,7 +837,7 @@ if (isNil {
     _cfgBackpackItems,
     _cfgLinkedItems
   ] call fnc_giveGear
-}) then {
+}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process gear settings."];
@@ -840,14 +845,14 @@ if (isNil {
 };
 
 
-if (isNil {[player, _cfgWeaponChoices] call fnc_givePrimaryWeapon}) then {
+if (isNil {[player, _cfgWeaponChoices] call fnc_givePrimaryWeapon}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process primary weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process primary weapon settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, _cfgWeaponChoices] call fnc_prepWeaponsSelector}) then {
+if (isNil {[player, _cfgWeaponChoices] call fnc_prepWeaponsSelector}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process weapon selector settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process weapon selector settings."];
@@ -856,21 +861,21 @@ if (isNil {[player, _cfgWeaponChoices] call fnc_prepWeaponsSelector}) then {
 
 
 
-if (isNil {[player, _cfgSidearms] call fnc_giveSidearmWeapon}) then {
+if (isNil {[player, _cfgSidearms] call fnc_giveSidearmWeapon}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process sidearm weapon settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, getNumber(CFGGEAR >> "giveSilencer")] call fnc_giveSilencer}) then {
+if (isNil {[player, getNumber(CFGGEAR >> "giveSilencer")] call fnc_giveSilencer}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process silencer settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process silencer settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG}) then {
+if (isNil {[player, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process NVG settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process NVG settings."];
@@ -878,7 +883,7 @@ if (isNil {[player, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG}) 
 };
 
 
-if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveAT}) then {
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveAT}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process AT settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process AT settings."];
@@ -886,7 +891,7 @@ if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveAT}) then {
 };
 
 
-if (isNil {[player, PLAYERLOADOUTVAR, CFGOPTICS] call fnc_prepOpticsSelector}) then {
+if (isNil {[player, PLAYERLOADOUTVAR, CFGOPTICS] call fnc_prepOpticsSelector}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process optics settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process optics settings."];
@@ -894,21 +899,21 @@ if (isNil {[player, PLAYERLOADOUTVAR, CFGOPTICS] call fnc_prepOpticsSelector}) t
 };
 
 
-if (isNil {[player, _cfgExplosiveChoices] call fnc_giveCECharges}) then {
+if (isNil {[player, _cfgExplosiveChoices] call fnc_giveCECharges}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process CE explosives settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process CE explosives settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, _cfgGrenadeChoices] call fnc_giveCEGrenades}) then {
+if (isNil {[player, _cfgGrenadeChoices] call fnc_giveCEGrenades}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process CE grenade settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process CE grenade settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, PLAYERLOADOUTVAR] call fnc_setAttributes}) then {
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_setAttributes}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process ACE attribute settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE attribute settings."];
@@ -916,14 +921,14 @@ if (isNil {[player, PLAYERLOADOUTVAR] call fnc_setAttributes}) then {
 };
 
 
-if (isNil {[player, _cfgGiveSideKey] call fnc_giveSideKey}) then {
+if (isNil {[player, _cfgGiveSideKey] call fnc_giveSideKey}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process ACE vehicle key settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE vehicle key settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) then {
+if (isNil {[player, PLAYERLOADOUTVAR] call fnc_giveBinoculars}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process binocular settings."];
@@ -946,6 +951,17 @@ if (uniform player != "") then {
   player setVariable ["phx_lastLoadout", PLAYERLOADOUTVAR];
   [true] call phx_fnc_briefingGear;
   missionNamespace setVariable ["phx_loadoutAssigned",true];
+
+  // set rank from phx_loadout_roles (for Nametags)
+  _rank = [phx_loadout_roles, PLAYERLOADOUTVAR, "PRIVATE"] call BIS_fnc_getFromPairs;
+  if (typeName _rank isEqualTo "ARRAY") then {_rank = _rank select 1};
+  player setUnitRank _rank;
+
+  [
+    "[%1] Loadout assigned",
+    [(cba_missionTime),"HH:MM:SS"] call BIS_fnc_secondsToString,
+    name player
+  ] call BIS_fnc_logFormatServer;
 } else {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process uniform settings.</t>", "error", 20] call phx_ui_fnc_notify;

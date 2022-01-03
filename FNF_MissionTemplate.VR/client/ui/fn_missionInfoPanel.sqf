@@ -36,20 +36,26 @@ _MATSettingsIndex = _tree tvAdd [[],"MAT Settings"];
 _BLUFORIndex = _tree tvAdd [[],"BLUFOR"];
 _BLUFORIndexUniform = _tree tvAdd [[_BLUFORIndex],"Uniform"];
 _BLUFORIndexLoadout = _tree tvAdd [[_BLUFORIndex],"Loadout"];
+_BLUFORIndexCSW = _tree tvAdd [[_BLUFORIndex],"CSW"];
 _BLUFORIndexAssets = _tree tvAdd [[_BLUFORIndex],"Assets"];
 _OPFORIndex = _tree tvAdd [[],"OPFOR"];
 _OPFORIndexUniform = _tree tvAdd [[_OPFORIndex],"Uniform"];
 _OPFORIndexLoadout = _tree tvAdd [[_OPFORIndex],"Loadout"];
+_OPFORIndexCSW = _tree tvAdd [[_OPFORIndex],"CSW"];
 _OPFORIndexAssets = _tree tvAdd [[_OPFORIndex],"Assets"];
 _INDFORIndex = _tree tvAdd [[],"INDFOR"];
 _INDFORIndexUniform = _tree tvAdd [[_INDFORIndex],"Uniform"];
 _INDFORIndexLoadout = _tree tvAdd [[_INDFORIndex],"Loadout"];
+_INDFORIndexCSW = _tree tvAdd [[_INDFORIndex],"CSW"];
 _INDFORIndexAssets = _tree tvAdd [[_INDFORIndex],"Assets"];
 
 _OtherAssetsIndex = _tree tvAdd [[],"Other Assets"];
-_ChangelogIndex = _tree tvAdd[[],"Changelog"];
+_ChangelogIndex = _tree tvAdd[[],"Framework Info"];
 _CreditsIndex = _tree tvAdd[[],"Credits"];
 _RulesIndex = _tree tvAdd[[],"Rules"];
+if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick") then {
+  _ReportsIndex = _tree tvAdd[[],"Staff Reports"];
+};
 
 
 {
@@ -64,6 +70,10 @@ _RulesIndex = _tree tvAdd[[],"Rules"];
 {
   _tree tvAdd [[_OtherAssetsIndex], _x # 0];
 } forEach phx_ui_structTextRef_AssetsOther;
+
+{
+  _tree tvAdd [[_ReportsIndex], _x # 0];
+} forEach phx_ui_structTextRef_staffReports;
 
 
 
@@ -84,7 +94,7 @@ _tree ctrlAddEventHandler [ "TreeSelChanged", {
     };
     _selected = _selected + ( _tree tvText ( _path select [ 0, _forEachIndex + 1 ] ));
   } forEach _path;
-
+  // hint _selected;
 
   private ["_data", "_prefix"];
 
@@ -108,7 +118,12 @@ _tree ctrlAddEventHandler [ "TreeSelChanged", {
       }
     };
   } else {
-    _data = +phx_ui_structTextRef;
+    if (["Staff Reports ", _selected] call BIS_fnc_inString) then {
+      _data = +phx_ui_structTextRef_staffReports;
+      _prefix = "Staff Reports ";
+    } else {
+      _data = +phx_ui_structTextRef;
+    };
   };
 
   // private _textBox = ((ctrlParent _tree) displayCtrl 101);
@@ -134,6 +149,8 @@ _tree ctrlAddEventHandler [ "TreeSelChanged", {
 
   // hint format[ "You Selected\n%1", _selected ]; //eg "PARENT 1 >> CHILD 2"
 }];
+
+tvSetCurSel [2526, [_BriefingIndex]];
 
 while {ctrlVisible 2526} do {
   ctrlSetFocus _tree;
