@@ -85,6 +85,42 @@ _fnc_hintDetails = {
   true
 };
 
+_fnc_notesItems = {
+  params [
+    "_items",
+    ["_showCount", true],
+    ["_structText", false]
+  ];
+
+  private _arr = [];
+  _procItems = _items call BIS_fnc_consolidateArray;
+  // "debug_console" callExtension str(_items);
+  {
+    private _thisCfg = (_x # 0) call CBA_fnc_getItemConfig;
+    private _dispName = [_thisCfg] call BIS_fnc_displayName;
+    private _desc = getText(_thisCfg >> "descriptionShort");
+    private _pic = (_thisCfg >> "picture") call BIS_fnc_getCfgData;
+    private _count = _x # 1;
+
+    if (!_structText) then {
+      if (_showCount) then {
+        _arr pushBack format["<img " + SMALLPIC_DIARY + " image='%1'/><execute expression='systemChat ""%2"";'>x%3</execute>", _pic, _dispName, _count];
+      } else {
+        _arr pushBack format["<img " + SMALLPIC_DIARY + " image='%1'/><execute expression='systemChat ""%2"";'>o</execute>", _pic, _dispName];
+      };
+    } else {
+      if (_showCount) then {
+        _arr pushBack format["<img " + SMALLPIC_NOTIFY + " image='%1'/>x%3 %2", _pic, _dispName, _count];
+        _arr pushBack "<br/>";
+      } else {
+        _arr pushBack format["<img " + SMALLPIC_NOTIFY + " image='%1'/> %2", _pic, _dispName];
+        _arr pushBack "<br/>";
+      };
+    }
+  } forEach _procItems;
+  _arr joinString "";
+};
+
 BIGPIC_NOTIFY = "size='2.5'";
 BIGPIC_DIARY = "height='75'";
 SMALLPIC_NOTIFY = "size='1.2'";
@@ -179,43 +215,6 @@ _fnc_notesWeapon = {
   _diaryString pushBack (_diaryArr joinString '<br/>');
   true
 };
-
-_fnc_notesItems = {
-  params [
-    "_items",
-    ["_showCount", true],
-    ["_structText", false]
-  ];
-
-  private _arr = [];
-  _procItems = _items call BIS_fnc_consolidateArray;
-  // "debug_console" callExtension str(_items);
-  {
-    private _thisCfg = (_x # 0) call CBA_fnc_getItemConfig;
-    private _dispName = [_thisCfg] call BIS_fnc_displayName;
-    private _desc = getText(_thisCfg >> "descriptionShort");
-    private _pic = (_thisCfg >> "picture") call BIS_fnc_getCfgData;
-    private _count = _x # 1;
-
-    if (!_structText) then {
-      if (_showCount) then {
-        _arr pushBack format["<img " + SMALLPIC_DIARY + " image='%1'/><execute expression='systemChat ""%2"";'>x%3</execute>", _pic, _dispName, _count];
-      } else {
-        _arr pushBack format["<img " + SMALLPIC_DIARY + " image='%1'/><execute expression='systemChat ""%2"";'>o</execute>", _pic, _dispName];
-      };
-    } else {
-      if (_showCount) then {
-        _arr pushBack format["<img " + SMALLPIC_NOTIFY + " image='%1'/>x%3 %2", _pic, _dispName, _count];
-        _arr pushBack "<br/>";
-      } else {
-        _arr pushBack format["<img " + SMALLPIC_NOTIFY + " image='%1'/> %2", _pic, _dispName];
-        _arr pushBack "<br/>";
-      };
-    }
-  } forEach _procItems;
-  _arr joinString "";
-};
-
 
 
 

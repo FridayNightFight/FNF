@@ -260,8 +260,10 @@ if !(_groupText isEqualTo "") then {
 // playerORBATRecord = player createDiaryRecord ["Diary", ["Allied ORBAT", _orbatText]];
 
 // Standalone ORBAT section
-if (!isNil "playerORBATRecord") then {player removeDiaryRecord ["ORBAT_Diary", playerORBATRecord]};
-playerORBATRecord = player createDiaryRecord ["ORBAT_Diary", ["Allied ORBAT", _orbatText]];
+if !(typeOf player == "ace_spectator_virtual") then {
+  if (!isNil "playerORBATRecord") then {player removeDiaryRecord ["ORBAT_Diary", playerORBATRecord]};
+  playerORBATRecord = player createDiaryRecord ["ORBAT_Diary", ["Allied ORBAT", _orbatText]];
+};
 
 [phx_ui_structTextRef, "ORBAT", _orbatTextStruct] call BIS_fnc_setToPairs;
 

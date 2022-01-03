@@ -32,22 +32,22 @@ phx_loadout_roles = [
 ];
 
 if !(call phx_fnc_clientCanPlay) exitWith {
-  call phx_fnc_briefInit; //Briefing
-  call phx_fnc_clientSetupGame; //Client portion of game modes
-  phx_playerBaseChannel = 0;
-  phx_briefing_startingRadios = {};
+  diag_log formatText [
+    "[FNF] (clientInit) typeOf ""%1"" player %2 was placed in spectator at join. Safestart %3",
+    typeOf player,
+    name player,
+    (if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {"is active"} else {"is not active"})
+  ];
   call phx_fnc_contactStaffInit; // Init handling for player reports
-  call phx_fnc_assetDiaryInfo; // Add diary entries for assets
-  [{missionNamespace getVariable ["phx_briefCreated", false]}, {
-    call phx_fnc_assetDiaryInfoStruct; // Prep global vars for UI info panel
-  }] call CBA_fnc_waitUntilAndExecute;
-  call phx_fnc_populateORBATs;
+  call phx_fnc_createBriefSpec; // Set up briefing for UI panel
+  call phx_fnc_assetDiaryInfoStruct; // Add diary entries for assets
   call phx_fnc_spectatorInit;
 };
 player enableSimulation false;
 
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_fnc_briefInit; //Briefing
+call phx_fnc_createBriefSpec; // Set up briefing for UI panel
 call phx_fnc_clientSetupGame; //Client portion of game modes
 call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer

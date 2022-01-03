@@ -3,6 +3,33 @@ Sets player as ACE spectator if not already.
 Draws 3D icons on alive objectives.
 */
 
+["featureCamera", {
+  disableSerialization;
+  _display = findDisplay 60000;
+  if (isNull _display) exitWith {};
+
+  _infoButton = _display ctrlCreate ["InfoPanelSpectatorButton", 2524];
+  _infoButton ctrlAddEventHandler ["ButtonClick", {
+    if (!dialog) then {
+      [] spawn phx_ui_fnc_missionInfoPanel;
+    };
+  }];
+}] call CBA_fnc_addPlayerEventHandler;
+
+disableSerialization;
+[{!isNull findDisplay 60000}, {
+  _display = findDisplay 60000;
+  if (isNull _display) exitWith {};
+
+  _infoButton = _display ctrlCreate ["InfoPanelSpectatorButton", 2524];
+  _infoButton ctrlAddEventHandler ["ButtonClick", {
+    if (!dialog) then {
+      [] spawn phx_ui_fnc_missionInfoPanel;
+    };
+  }];
+}] call CBA_fnc_waitUntilAndExecute;
+
+
 if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {
   [true, true, true] call ace_spectator_fnc_setSpectator;
 };
@@ -53,22 +80,6 @@ _showObj = {
 } forEach phx_specObjectives;
 
 
-
-disableSerialization;
-
-[{!isNull findDisplay 60000}, {
-  disableSerialization;
-  _display = findDisplay 60000;
-
-  _infoButton = _display ctrlCreate ["InfoPanelSpectatorButton", 2524];
-  _infoButton ctrlAddEventHandler ["ButtonClick", {
-    if (!dialog) then {
-      [] spawn phx_ui_fnc_missionInfoPanel;
-    };
-  }];
-}] call CBA_fnc_waitUntilAndExecute;
-
-
 phx_spectatorVisiblePrevinput = true;
 phx_spectatorPrevVisibleCtrls = [];
 
@@ -111,3 +122,5 @@ phx_spectatorPrevVisibleCtrls = [];
     };
   };
 }] call CBA_fnc_addPerFrameHandler;
+
+true

@@ -4,6 +4,7 @@ phx_safeStartTime = 15; //Safestart time in minutes
 phx_templateVersion = call compile preprocessFile "version.txt";
 
 phx_ui_structTextRef = [];
+phx_ui_structTextRef_staffReports = [];
 phx_ui_structTextRef_AssetsBLU = [];
 phx_ui_structTextRef_AssetsOPF = [];
 phx_ui_structTextRef_AssetsIND = [];

@@ -32,6 +32,8 @@ class CfgFunctions {
       class briefInit{};
       class setGroupIDs{};
       class createBrief{};
+      class createBriefSpec{};
+      class notesItems{};
       class briefNews{};
       class createOrbat{};
       class objectiveRecon{};
