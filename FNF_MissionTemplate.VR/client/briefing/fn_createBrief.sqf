@@ -239,25 +239,6 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 };
 
 
-PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
-player createDiaryRecord [
-  "PHX_Diary_UpdateInfo",
-  [
-    "Changelog",
-    format [
-      "<font size='18' shadow='1' color='" + COLOR2 + "'>%1</font><br/>%2<br/>%3",
-      "Changelog",
-      format ["Template Version: %1", phx_templateVersion],
-      "
-<br/>
-- adds CSW configuration to diary
-"
-    ]
-  ]
-];
-
-
-
 // PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 
@@ -990,7 +971,7 @@ player createDiaryRecord [
   ]
 ];
 
-PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_Credits", "FNF Credits"];
+PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_Credits", "Credits"];
 player createDiaryRecord [
   "PHX_Diary_Credits",
   [
