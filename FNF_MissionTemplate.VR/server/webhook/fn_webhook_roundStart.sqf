@@ -1,4 +1,5 @@
-if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send RoundStart webhook -- mod not loaded!"};
+if !(isClass (configFile >> "CfgPatches" >>  "CAU_DiscordEmbedBuilder")) exitWith {diag_log text "Failed to send RoundStart webhook -- mod not loaded!"};
+if !(isDedicated) exitWith {diag_log text "Not running on FNF Dedicated -- skipping RoundStart Discord post"};
 if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundStart Discord post"};
 
 _vehiclesToProcessBLUFOR = [];
@@ -112,16 +113,17 @@ if (_transportsPresentIND > 0) then {_indArr pushBack format[" + %1 transports",
 
 // _assets = (_outArr joinString "");
 
+_bluAssets = (_bluArr joinString "");
+_opfAssets = (_opfarr joinString "");
+_indAssets = (_indArr joinString "");
+
 
 private ["_gameMode"];
 if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gameMode};
 
 
-_info = missionNamespace getVariable "fnf_staffInfo";
+_info = missionNamespace getVariable ["fnf_staffInfo", []];
 _staffPlayers = allPlayers select {!isNil {_info get (getPlayerUID _x)}};
-
-
-_playingPlayerCount = count (playableUnits select {alive _x});
 _staffCount = count _staffPlayers;
 _spectatorCount = count (call ace_spectator_fnc_players);
 
@@ -141,17 +143,19 @@ _fnc_doCount = {
 };
 
 _bluPlayers = if (playableSlotsNumber west == 0) then {""} else {
-  count(allPlayers select {[_x, west] call _fnc_doCount})
+  // count(allPlayers select {[_x, west] call _fnc_doCount})
+  playersNumber west;
 };
 _opfPlayers = if (playableSlotsNumber east == 0) then {""} else {
-  count(allPlayers select {[_x, east] call _fnc_doCount})
+  // count(allPlayers select {[_x, east] call _fnc_doCount})
+  playersNumber east;
 };
 _indPlayers = if (playableSlotsNumber independent == 0) then {""} else {
-  count(allPlayers select {[_x, independent] call _fnc_doCount})
+  // count(allPlayers select {[_x, independent] call _fnc_doCount})
+  playersNumber independent;
 };
-_bluAssets = (_bluArr joinString "");
-_opfAssets = (_opfarr joinString "");
-_indAssets = (_indArr joinString "");
+// _playingPlayerCount = count (playableUnits select {alive _x});
+_playingPlayerCount = _bluPlayers + _opfPlayers + _indPlayers;
 
 
 ["RoundStart", [

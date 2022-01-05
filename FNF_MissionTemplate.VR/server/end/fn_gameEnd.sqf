@@ -38,9 +38,7 @@ switch (_sideWon) do {
   20
 ] remoteExec ["phx_ui_fnc_notify", 0];
 
-if (count allPlayers > 14) then {
-  [format["%1 %2", _sideWonName, _condition]] call phx_fnc_webhook_roundEnd;
-};
+[format["%1 %2", _sideWonName, _condition]] call phx_fnc_webhook_roundEnd;
 
 sleep 10;
 ["end1", [

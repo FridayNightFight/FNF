@@ -74,8 +74,8 @@ zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, 
 ["TeamkillDetected", {
   params ["_killed", "_killer"];
 
-  if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send Teamkill webhook -- mod not loaded!"};
-  // if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundPrep Discord post"};
+  if !(isClass (configFile >> "CfgPatches" >>  "CAU_DiscordEmbedBuilder")) exitWith {diag_log text "Failed to send Teamkill webhook -- mod not loaded!"};
+  if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping TeamKill Notification Discord post"};
 
   private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
   _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
