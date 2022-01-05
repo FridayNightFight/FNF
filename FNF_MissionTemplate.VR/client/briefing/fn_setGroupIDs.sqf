@@ -1,3 +1,19 @@
+/*
+* Author: ferstaberinde.com, modified by Martin, IndigoFox
+* Configures group variables used in ORBAT creation and TFAR radio setup.
+*
+* Arguments:
+* /NONE/
+*
+* Return Value:
+* true on success <BOOLEAN>
+*
+* Example:
+* call phx_briefing_fnc_createOrbat
+*
+* Public: No
+*/
+
 // F3 Set Group IDs
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // This script has been modified from it's original form.
@@ -238,3 +254,4 @@ private ["_grp"];
 } forEach (allUnits select {!isPlayer _x});
 
 missionNamespace setVariable ["phx_groupIDset", true, true];
+true

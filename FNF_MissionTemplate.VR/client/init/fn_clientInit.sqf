@@ -39,15 +39,15 @@ if !(call phx_fnc_clientCanPlay) exitWith {
     (if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {"is active"} else {"is not active"})
   ];
   call phx_fnc_contactStaffInit; // Init handling for player reports
-  call phx_fnc_createBriefSpec; // Set up briefing for UI panel
+  call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
   call phx_fnc_assetDiaryInfoStruct; // Add diary entries for assets
   call phx_fnc_spectatorInit;
 };
 player enableSimulation false;
 
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
-call phx_fnc_briefInit; //Briefing
-call phx_fnc_createBriefSpec; // Set up briefing for UI panel
+call phx_briefing_fnc_init; //Briefing
+call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
 call phx_fnc_clientSetupGame; //Client portion of game modes
 call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
@@ -79,7 +79,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
 [{time > 0}, {
   call phx_fnc_restrictions;
   call phx_fnc_checkLoadout;
-  [false] call phx_fnc_briefingGear;
+  [false] call phx_briefing_fnc_parseGear;
 
   // Compile Date text
 	date params ["_year", "_month", "_day", "_hour", "_minute"];

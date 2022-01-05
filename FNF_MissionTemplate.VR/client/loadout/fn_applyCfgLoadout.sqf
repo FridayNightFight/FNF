@@ -949,7 +949,7 @@ if (isNil {[player, PLAYERLOADOUTVAR] call fnc_loadWeapons}) then {
 
 if (uniform player != "") then {
   player setVariable ["phx_lastLoadout", PLAYERLOADOUTVAR];
-  [true] call phx_fnc_briefingGear;
+  [true] call phx_briefing_fnc_parseGear;
   missionNamespace setVariable ["phx_loadoutAssigned",true];
 
   // set rank from phx_loadout_roles (for Nametags)

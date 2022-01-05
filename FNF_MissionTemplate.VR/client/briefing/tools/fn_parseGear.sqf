@@ -1,7 +1,19 @@
-
-/////////////////////////////////////////
-          // NOTIFY //
-/////////////////////////////////////////
+/*
+* Author: IndigoFox
+* Used in tandem with phx_fnc_applyCfgLoadout to produce a diary record and structured text reference that contains
+* a readout of a player's gear that they've been assigned.
+*
+* Arguments:
+* 0: Show a UI notification via phx_ui_fnc_notify of assigned items and role <BOOLEAN>
+*
+* Return Value:
+* true on success <BOOLEAN>
+*
+* Example:
+* [false] call phx_briefing_fnc_parseGear;
+*
+* Public: No
+*/
 
 params [["_showNotification", false]];
 private _loadoutRole = player getVariable ["phx_lastLoadout", "UNKNOWN"];

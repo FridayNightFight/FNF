@@ -14,7 +14,7 @@ missionNamespace setVariable [
 estimatedTimeLeft (60 * (phx_safeStartTime + phx_missionTimeLimit));
 
 call phx_fnc_serverSafety;
-call phx_fnc_setGroupIDs;
+call phx_briefing_fnc_setGroupIDs;
 call phx_fnc_radio_genFreqs;
 call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
@@ -157,7 +157,7 @@ addMissionEventHandler ["PlayerConnected", {
     [{
       params [["_unit", objNull], ["_sides", [sideUnknown]]];
       {
-        [] remoteExec ["phx_fnc_createOrbat", units _x];
+        [] remoteExec ["phx_briefing_fnc_createOrbat", units _x];
       } forEach _sides;
     }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
   }, _this] call CBA_fnc_waitUntilAndExecute;
@@ -172,7 +172,7 @@ addMissionEventHandler ["PlayerDisconnected", {
   [{
     params [["_unit", objNull], ["_sides", [sideUnknown]]];
     {
-      [] remoteExec ["phx_fnc_createOrbat", units _x];
+      [] remoteExec ["phx_briefing_fnc_createOrbat", units _x];
     } forEach _sides;
   }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
 }];

@@ -1,3 +1,21 @@
+/*
+* Author: IndigoFox
+* Used to generate diary string or structured text for UI applications containing a weapon's details (picture + display name).
+* Used in tandem with phx_briefing_fnc_parseLoadout.
+*
+* Arguments:
+* 0: 1 or more weapon classnames <ARRAY> of <STRING>
+* 1. (optional) default false: return diary string, true: return Structured Text
+*
+* Return Value:
+* <STRING> or <Structured Text>
+*
+* Example:
+* [["rhs_weap_mk18_KAC","rhs_weap_mk18_m320","rhs_weap_m4a1_m320"]] call phx_briefing_fnc_weaponDetails
+*
+* Public: No
+*/
+
 params [["_data", []], ["_structTxt", false]];
 private _weapons = +_data;
 private _out = [];

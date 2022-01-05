@@ -27,23 +27,6 @@ class CfgFunctions {
       class assetDiaryInfoStruct{};
       class clientInitCall{postInit = 1;};
     };
-    class briefing {
-      file = "client\briefing";
-      class briefInit{};
-      class setGroupIDs{};
-      class createBrief{};
-      class createBriefSpec{};
-      class notesItems{};
-      class briefNews{};
-      class createOrbat{};
-      class objectiveRecon{};
-    };
-    class briefingLoadouts {
-      file = "client\briefing\loadoutPrep";
-      class briefingParseLoadout{};
-      class briefingWeaponDetails{};
-      class briefingGear{};
-    };
     class radio {
       file = "client\radio";
       class radio_waitGear{};
@@ -182,6 +165,34 @@ class CfgFunctions {
       class grenades{};
       class charges{};
       class csw{};
+    };
+  };
+  class phx_briefing {
+    class core {
+      file = "client\briefing";
+      class init{};
+      class setGroupIDs{};
+      class createBrief{};
+      class createBriefSpec{};
+      class createOrbat{};
+      class news{};
+      class objectiveRecon{};
+    };
+    class tools {
+      file = "client\briefing\tools"
+      class parseLoadout{};
+      class parseGear{};
+      class parseMAT{};
+      class parseCSW{};
+      class weaponDetails{};
+      class notesItems{};
+      class getItemInfo{};
+    };
+  };
+  class phx_article {
+    class articles {
+      file = "client\briefing\articles";
+      class NewYear2022{};
     };
   };
 };
