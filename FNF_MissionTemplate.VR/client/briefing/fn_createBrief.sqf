@@ -369,7 +369,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
     player createDiaryRecord [
       "Diary",
       [
-        "BLUFOR CSW Settings",
+        "INDFOR CSW Settings",
         [independent] call _fnc_parseCSWForBriefing
       ]
     ];
