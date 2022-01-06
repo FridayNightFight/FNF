@@ -60,15 +60,6 @@ private _textOut = [];
   private _launcherInfo = _launcher call phx_briefing_fnc_getItemInfo;
 
   if (!_structText) then {
-    "debug_console" callExtension format [
-      "%1 %2: <font color='" + COLOR3 + "'>%3</font><br/><img width='120' image='%4'/><br/>%5<br/>%6",
-      _side call BIS_fnc_sideName,
-      _role,
-      [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
-      [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-      (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call phx_briefing_fnc_notesItems]} else {""}),
-      [_launcherInfo, "description"] call BIS_fnc_getFromPairs
-    ];
     _textOut pushBack format [
       "%1 %2: <font color='" + COLOR3 + "'>%3</font><br/><img width='120' image='%4'/><br/>%5<br/>%6",
       _side call BIS_fnc_sideName,
@@ -79,15 +70,6 @@ private _textOut = [];
       [_launcherInfo, "description"] call BIS_fnc_getFromPairs
     ] + "<br/><br/>";
   } else {
-    "debug_console" callExtension format [
-      "%1 %2: <t color='" + COLOR3 + "'>%3</t><br/><img size='4' image='%4'/><br/>%5<br/>",
-      _side call BIS_fnc_sideName,
-      _role,
-      [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
-      [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-      (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true, true] call phx_briefing_fnc_notesItems]} else {""}),
-      [_launcherInfo, "description"] call BIS_fnc_getFromPairs
-    ];
     _textOut pushBack format [
       "%1 %2: <t color='" + COLOR3 + "'>%3</t><br/><img size='4' image='%4'/><br/>%5<br/>",
       _side call BIS_fnc_sideName,
