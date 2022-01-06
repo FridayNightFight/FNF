@@ -158,9 +158,8 @@ class CfgFunctions {
   };
   class phx_admin {
     class adminPatches {
-      file = "server\patches";
-      class adminPatch{};
-      class jipPatch{};
+      file = "client\loadout\patches";
+      class setAdminPatch{};
     };
     class adminKick {
       file = "client\misc\admin\adminKick";
