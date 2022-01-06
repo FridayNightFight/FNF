@@ -14,19 +14,6 @@ class CfgFunctions {
       class teleportInit{};
       class teleportExec{};
     }
-    class clientInit {
-      file = "client\init";
-      class clientInit{};
-      class clientCanPlay{};
-      class clientSetupGame{};
-      class staggeredLoad{};
-      class drawStaffIcons{};
-      class drawCmdIcons{};
-      class drawSLIcons{};
-      class assetDiaryInfo{};
-      class assetDiaryInfoStruct{};
-      class clientInitCall{postInit = 1;};
-    };
     class radio {
       file = "client\radio";
       class radio_waitGear{};
@@ -37,14 +24,6 @@ class CfgFunctions {
     class spectator {
       file = "client\spectator";
       class spectatorInit{};
-    };
-    class loadout {
-      file = "client\loadout";
-      class applyCfgLoadout{};
-      class applyCfgLoadoutScreenshots{};
-      class addGear{};
-      class checkLoadout{};
-      class setMAT{};
     };
     class restrictions {
       file = "client\restrictions";
@@ -121,24 +100,6 @@ class CfgFunctions {
       class webhook_roundEnd;
     };
   };
-  class phx_ui {
-    class safeStartMenu {
-      file = "client\ui\safeStartMenu";
-      class safeStartMain{};
-      class weaponSelector{};
-      class opticSelector{};
-      class chargesSelector{};
-      class grenadesSelector{};
-    };
-    class notifications {
-      file = "client\ui\notifications";
-      class notify{};
-    };
-    class scripts {
-      file = "client\ui";
-      class missionInfoPanel{};
-    };
-  };
   class phx_admin {
     class adminPatches {
       file = "server\patches";
@@ -151,20 +112,13 @@ class CfgFunctions {
       class adminKickUI{};
       class kickPlayer{};
     };
+    class diaryActions {
+      file = "client\misc\admin";
+      class safetyEndExpression{};
+    };
     class gameEnd {
       file = "client\misc\admin";
       class adminGameEnd{};
-    };
-  };
-  class phx_selector {
-    class selectors {
-      file = "client\loadout\selector";
-      class init{};
-      class weapons{};
-      class optics{};
-      class grenades{};
-      class charges{};
-      class csw{};
     };
   };
   class phx_briefing {
@@ -174,6 +128,8 @@ class CfgFunctions {
       class setGroupIDs{};
       class createBrief{};
       class createBriefSpec{};
+      class assetDiary{};
+      class assetDiaryStruct{};
       class createOrbat{};
       class news{};
       class objectiveRecon{};
@@ -193,6 +149,86 @@ class CfgFunctions {
     class articles {
       file = "client\briefing\articles";
       class NewYear2022{};
+    };
+  };
+  class phx_client {
+    class core {
+      file = "client\init";
+      class initCall{postInit = 1;};
+      class init{};
+      class canPlay{};
+      class setupGame{};
+      class staggeredLoad{};
+    };
+  };
+  class phx_selector {
+    class selectors {
+      file = "client\loadout\selector";
+      class init{};
+      class weapons{};
+      class optics{};
+      class grenades{};
+      class charges{};
+      class csw{};
+    };
+  };
+  class phx_loadout {
+    class core {
+      file = "client\loadout";
+      class applyLoadout{};
+      class checkLoadout{};
+      class addGear{};
+    };
+    class tools {
+      file = "client\loadout\tools";
+      class handleSHQAUX{};
+      class screenshotLoadout{};
+      class getWeaponMagazines{};
+      class setMAT{};
+    };
+    class procedure {
+      file = "client\loadout\procedure";
+      class addUniform{};
+      class giveRadios{};
+      class giveGear{};
+      class givePrimaryWeapon{};
+      class prepWeaponsSelector{};
+      class giveSidearmWeapon{};
+      class giveSilencer{};
+      class giveNVG{};
+      class giveAT{};
+      class prepOpticsSelector{};
+      class giveCECharges{};
+      class giveCEGrenades{};
+      class setAttributes{};
+      class giveSideKey{};
+      class giveBinoculars{};
+      class loadWeapons{};
+      class setRank{};
+    };
+  };
+  class phx_ui {
+    class safeStartMenu {
+      file = "client\ui\safeStartMenu";
+      class safeStartMain{};
+      class weaponSelector{};
+      class opticSelector{};
+      class chargesSelector{};
+      class grenadesSelector{};
+    };
+    class notifications {
+      file = "client\ui\notifications";
+      class notify{};
+    };
+    class draw3D {
+      file = "client\ui\draw3D";
+      class drawStaffIcons{};
+      class drawCmdIcons{};
+      class drawSLIcons{};
+    };
+    class scripts {
+      file = "client\ui";
+      class missionInfoPanel{};
     };
   };
 };

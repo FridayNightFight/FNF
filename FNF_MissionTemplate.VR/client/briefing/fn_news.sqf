@@ -1,5 +1,7 @@
 /*
 * Author: IndigoFox
+*
+* Description:
 * Used to create News diary subject and fill w/ records containing news/update articles from staff as well as Youtube references for Steam Overlay playback.
 *
 * Arguments:

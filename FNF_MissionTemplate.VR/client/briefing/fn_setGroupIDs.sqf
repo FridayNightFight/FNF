@@ -1,5 +1,7 @@
 /*
 * Author: ferstaberinde.com, modified by Martin, IndigoFox
+*
+* Description:
 * Configures group variables used in ORBAT creation and TFAR radio setup.
 *
 * Arguments:

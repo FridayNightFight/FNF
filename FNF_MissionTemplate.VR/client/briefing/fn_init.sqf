@@ -1,5 +1,7 @@
 /*
 * Author: Martin, IndigoFox
+*
+* Description:
 * Route for calling phx_briefing_fnc_createBrief when client is reaching map screen & required variables are present on units.
 *
 * Arguments:

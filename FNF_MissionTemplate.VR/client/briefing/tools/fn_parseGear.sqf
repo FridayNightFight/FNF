@@ -1,6 +1,6 @@
 /*
 * Author: IndigoFox
-* Used in tandem with phx_fnc_applyCfgLoadout to produce a diary record and structured text reference that contains
+* Used in tandem with phx_loadout_fnc_applyLoadout to produce a diary record and structured text reference that contains
 * a readout of a player's gear that they've been assigned.
 *
 * Arguments:

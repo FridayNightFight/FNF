@@ -1,5 +1,7 @@
 /*
 * Author: IndigoFox, Martin
+*
+* Description:
 * Primary entry point for players to generate briefing notes. Creates diary subjects and fills w/ appropriate records.
 *
 * Arguments:
@@ -30,27 +32,6 @@ _getName = {
 };
 
 
-phx_briefing_fnc_parseCSW = {
-
-};
-
-
-phx_safetyEndExpression = {
-  [] spawn {
-    private _result = true;
-
-    if (!isServer) then {
-      _result = ["Are you sure you want to end safestart?", "Confirm", true, true] call BIS_fnc_guiMessage;
-    };
-
-    if (_result) then {
-      f_var_mission_timer = -1;
-      publicVariableServer "f_var_mission_timer";
-      systemChat "Ending Safe Start";
-    };
-  };
-};
-
 //Admin end start trigger
 // if (serverCommandAvailable "#kick") then {
 if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick") then {
@@ -59,7 +40,7 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
   //display template version
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin",format ["Template Version: %1", phx_templateVersion]]];
   //end safety
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call phx_safetyEndExpression'>End Safe Start</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call phx_admin_fnc_safetyEndExpression'>End Safe Start</execute>"]];
 
   //-1 minute to safety
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='

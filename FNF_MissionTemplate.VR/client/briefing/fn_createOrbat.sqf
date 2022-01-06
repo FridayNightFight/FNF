@@ -1,5 +1,7 @@
 /*
 * Author: ferstaberinde.com, modified by Martin, IndigoFox
+*
+* Description:
 * Generates ORBAT of roles & assigned frequencies by squad and team. Creates or updates diary record & sets UI reference array pair.
 *
 * Arguments:

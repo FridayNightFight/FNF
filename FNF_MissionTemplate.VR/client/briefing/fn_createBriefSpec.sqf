@@ -1,5 +1,7 @@
 /*
 * Author: IndigoFox
+*
+* Description:
 * Primary entry point for players and spectators to fill a reference array of pairs with structured text items compatible in UI applications.
 *
 * Arguments:

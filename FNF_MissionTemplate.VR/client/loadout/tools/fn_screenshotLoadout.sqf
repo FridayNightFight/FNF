@@ -52,7 +52,7 @@ switch (side _setUnit) do {
 mySideUniformSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Uniform");
 mySideGearSelection = missionNamespace getVariable ("phx_" + _sideLabel + "Gear");
 if (LOADOUTVAR in ["MAT1","MATA1","MAT2","MATA2"]) then {
-  [LOADOUTVAR] call phx_fnc_setMAT;
+  [LOADOUTVAR] call phx_loadout_fnc_setMAT;
   if (
     !phx_loadout_mediumantitank_isReloadable &&
     LOADOUTVAR in ["MATA1","MATA2"]
@@ -63,7 +63,7 @@ if (LOADOUTVAR in ["MAT1","MATA1","MAT2","MATA2"]) then {
 };
 
 
-fnc_handleSHQAUX = {
+phx_loadout_fnc_handleSHQAUX = {
   // handle the two members attached to squad HQs
   params [
     ["_unit", objNull],
@@ -91,7 +91,7 @@ fnc_handleSHQAUX = {
 
   if (_setting isEqualTo 0) exitWith {
     _setUnit setVariable ["phxLoadout", "CR"];
-    ["CR"] call phx_fnc_applyCfgLoadout;
+    ["CR"] call phx_loadout_fnc_applyLoadout;
     diag_log text format["[FNF] (loadout) INFO: SHQAux setting is ""0"". Loading default crewman kit."];
     true
   };
@@ -125,7 +125,7 @@ fnc_handleSHQAUX = {
     } forEach phx_cswItems;
 
     // KIT APPLIES HERE
-    ["BASE"] call phx_fnc_applyCfgLoadout;
+    ["BASE"] call phx_loadout_fnc_applyLoadout;
 
     private _mortarGear = (missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray;
 
@@ -140,7 +140,7 @@ fnc_handleSHQAUX = {
 };
 
 if (LOADOUTVAR == "SHQAUX") exitWith {
-  [_setUnit, LOADOUTVAR] call fnc_handleSHQAUX;
+  [_setUnit, LOADOUTVAR] call phx_loadout_fnc_handleSHQAUX;
 };
 
 
@@ -157,7 +157,7 @@ if (LOADOUTVAR == "SHQAUX") exitWith {
 
 
 
-fnc_getWeaponMagazines = {
+phx_loadout_fnc_getWeaponMagazines = {
 	params ["_toSearch", "_weapon", ["_allMuzzles", true]];
 	private _out = [];
 	{
@@ -170,7 +170,7 @@ fnc_getWeaponMagazines = {
 
 
 
-fnc_addUniform = {
+phx_loadout_fnc_addUniform = {
   params [
     ["_unit", objNull],
     ["_uniform", ""],
@@ -190,7 +190,7 @@ fnc_addUniform = {
 };
 
 
-fnc_giveRadios = {
+phx_loadout_fnc_giveRadios = {
   // Radios
   params [["_unit", objNull], ["_srRadio", true], ["_lrRadio", false]];
 
@@ -251,7 +251,7 @@ fnc_giveRadios = {
 };
 
 
-fnc_giveGear = {
+phx_loadout_fnc_giveGear = {
   // Items, grenades
   params [
     ["_unit", objNull],
@@ -260,13 +260,13 @@ fnc_giveGear = {
     ["_backpackItems", []],
     ["_linkedItems", []]
   ];
-  {[_x, "vest", _unit] call phx_fnc_addGear} forEach _mags;
+  {[_x, "vest", _unit] call phx_loadout_fnc_addGear} forEach _mags;
   diag_log text format["[FNF] (loadout) INFO: Equipped gear (magazines)."];
   diag_log text format["[FNF] (loadout) DEBUG: %1", _mags];
-  {[_x, "uniform", _unit] call phx_fnc_addGear} forEach _items;
+  {[_x, "uniform", _unit] call phx_loadout_fnc_addGear} forEach _items;
   diag_log text format["[FNF] (loadout) INFO: Equipped gear (items)."];
   diag_log text format["[FNF] (loadout) DEBUG: %1", _items];
-  {[_x, "backpack", _unit] call phx_fnc_addGear} forEach _backpackItems;
+  {[_x, "backpack", _unit] call phx_loadout_fnc_addGear} forEach _backpackItems;
   diag_log text format["[FNF] (loadout) INFO: Equipped gear (backpackitems)."];
   diag_log text format["[FNF] (loadout) DEBUG: %1", _backpackItems];
   {_unit linkItem _x} forEach _linkedItems;
@@ -274,7 +274,7 @@ fnc_giveGear = {
 };
 
 
-fnc_givePrimaryWeapon = {
+phx_loadout_fnc_givePrimaryWeapon = {
   // Primary weapon and appropriate magazines
   params [
     ["_unit", objNull],
@@ -292,11 +292,11 @@ fnc_givePrimaryWeapon = {
   };
   _category params ["_weapons","_mags"];
   phx_loadout_weapon = selectRandom(_weapons);
-  phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call fnc_getWeaponMagazines;
+  phx_loadout_weaponMagazines = [_mags, phx_loadout_weapon] call phx_loadout_fnc_getWeaponMagazines;
 
   if !(phx_loadout_weapon isEqualTo "" || (count phx_loadout_weaponMagazines) isEqualTo 0) then {
     _unit addWeapon phx_loadout_weapon;
-    {[_x, "vest", _unit] call phx_fnc_addGear} forEach phx_loadout_weaponMagazines;
+    {[_x, "vest", _unit] call phx_loadout_fnc_addGear} forEach phx_loadout_weaponMagazines;
     diag_log text format["[FNF] (loadout) INFO: Equipped primary weapon ""%1""", phx_loadout_weapon];
     diag_log text format["[FNF] (loadout) INFO: Equipped primary weapon magazines"];
     diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_weaponMagazines];
@@ -305,7 +305,7 @@ fnc_givePrimaryWeapon = {
     nil
   };
 };
-fnc_prepWeaponsSelector = {
+phx_loadout_fnc_prepWeaponsSelector = {
   // iterate through _cfgWeaponChoices and add each weapon and appropriate mags to phx_selector_weapons so they can be chosen from
   params [
     ["_unit", objNull],
@@ -317,7 +317,7 @@ fnc_prepWeaponsSelector = {
     _x params ["_weapons", "_mags"];
     {
       private _weapon = _x;
-      private _compatMags = [_mags, _weapon] call fnc_getWeaponMagazines;
+      private _compatMags = [_mags, _weapon] call phx_loadout_fnc_getWeaponMagazines;
       _weaponChoices pushBack [_weapon, _compatMags];
     } forEach _weapons;
   } forEach _cfgChoices;
@@ -328,7 +328,7 @@ fnc_prepWeaponsSelector = {
 };
 
 
-fnc_giveSidearmWeapon = {
+phx_loadout_fnc_giveSidearmWeapon = {
   // Sidearm and appropriate magazines
   params [
     ["_unit", objNull],
@@ -345,11 +345,11 @@ fnc_giveSidearmWeapon = {
   };
   _category params ["_sidearms","_mags"];
   phx_loadout_sidearm = selectRandom(_sidearms);
-  phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call fnc_getWeaponMagazines;
+  phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call phx_loadout_fnc_getWeaponMagazines;
 
   if !(phx_loadout_sidearm isEqualTo "" || (count phx_loadout_sidearmMagazines) isEqualTo 0) then {
     _unit addWeapon phx_loadout_sidearm;
-    {[_x, "uniform", _unit] call phx_fnc_addGear} forEach phx_loadout_sidearmMagazines;
+    {[_x, "uniform", _unit] call phx_loadout_fnc_addGear} forEach phx_loadout_sidearmMagazines;
     diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon ""%1""", phx_loadout_sidearm];
     diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon magazines"];
     diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_sidearmMagazines];
@@ -358,7 +358,7 @@ fnc_giveSidearmWeapon = {
 };
 
 
-fnc_giveSilencer = {
+phx_loadout_fnc_giveSilencer = {
   params [
     ["_unit", objNull],
     ["_giveSilencer", 0]
@@ -378,7 +378,7 @@ fnc_giveSilencer = {
 };
 
 
-fnc_giveNVG = {
+phx_loadout_fnc_giveNVG = {
   // NVGs/laser accessory
   params [
     ["_unit", objNull],
@@ -406,7 +406,7 @@ fnc_giveNVG = {
 };
 
 
-fnc_giveAT = {
+phx_loadout_fnc_giveAT = {
   // MAT AND LAUNCHERS
   params [
     ["_unit", objNull],
@@ -431,7 +431,7 @@ fnc_giveAT = {
       if (phx_loadout_mediumantitank_isReloadable) then {
         {
           // "debug_console" callExtension ("Adding " + _x + " to inventory");
-          [_x, "backpack", _unit] call phx_fnc_addGear;
+          [_x, "backpack", _unit] call phx_loadout_fnc_addGear;
         } forEach phx_loadout_mediumantitank_mag;
         diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon magazines"];
         diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_mediumantitank_mag];
@@ -481,7 +481,7 @@ fnc_giveAT = {
 
       if (count _mags > 0) then {
         {
-          [_x, "backpack", _unit] call phx_fnc_addGear;
+          [_x, "backpack", _unit] call phx_loadout_fnc_addGear;
         } forEach _mags;
         diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon magazines"];
         diag_log text format["[FNF] (loadout) DEBUG: %1", _mags];
@@ -505,7 +505,7 @@ fnc_giveAT = {
   };
 };
 
-fnc_prepOpticsSelector = {
+phx_loadout_fnc_prepOpticsSelector = {
   params [
     ["_unit", objNull],
     ["_role", "BASE"],
@@ -552,7 +552,7 @@ fnc_prepOpticsSelector = {
 };
 
 
-fnc_giveCECharges = {
+phx_loadout_fnc_giveCECharges = {
   // CE Explosives
   params [
     ["_unit", objNull],
@@ -563,7 +563,7 @@ fnc_giveCECharges = {
     phx_selector_currentExplosives = selectRandom(_cfgExplosiveChoices);
     // "debug_console" callExtension str(phx_loadout_explosives);
     {
-      [_x, "backpack", _unit] call phx_fnc_addGear;
+      [_x, "backpack", _unit] call phx_loadout_fnc_addGear;
     } forEach (phx_selector_currentExplosives select [1, 2]);
     diag_log text format["[FNF] (loadout) INFO: Equipped CE explosive %1", phx_selector_currentExplosives # 0];
     phx_selector_explosives = _cfgExplosiveChoices;
@@ -571,7 +571,7 @@ fnc_giveCECharges = {
   true
 };
 
-fnc_giveCEGrenades = {
+phx_loadout_fnc_giveCEGrenades = {
   // CE Grenades
   params [
     ["_unit", objNull],
@@ -582,7 +582,7 @@ fnc_giveCEGrenades = {
     phx_selector_currentGrenades = selectRandom(_cfgGrenadeChoices);
     // "debug_console" callExtension str(phx_loadout_explosives);
     {
-      [_x, "vest", _unit] call phx_fnc_addGear;
+      [_x, "vest", _unit] call phx_loadout_fnc_addGear;
     } forEach (phx_selector_currentGrenades select [1, 2]);
     diag_log text format["[FNF] (loadout) INFO: Equipped CE grenade %1", phx_selector_currentGrenades # 0];
     phx_selector_grenades = _cfgGrenadeChoices;
@@ -591,7 +591,7 @@ fnc_giveCEGrenades = {
 };
 
 
-fnc_setAttributes = {
+phx_loadout_fnc_setAttributes = {
   // Attributes
   params [
     ["_unit", objNull],
@@ -612,7 +612,7 @@ fnc_setAttributes = {
   true
 };
 
-fnc_giveSideKey = {
+phx_loadout_fnc_giveSideKey = {
   // ACE Side key
   params [
     ["_unit", objNull],
@@ -638,7 +638,7 @@ fnc_giveSideKey = {
   true
 };
 
-fnc_giveBinoculars = {
+phx_loadout_fnc_giveBinoculars = {
   // Give binocular items
   params [
     ["_unit", objNull],
@@ -683,7 +683,7 @@ fnc_giveBinoculars = {
 };
 
 
-fnc_loadWeapons = {
+phx_loadout_fnc_loadWeapons = {
   // load weapons
   params [
     ["_unit", objNull],
@@ -701,12 +701,12 @@ fnc_loadWeapons = {
     {
       private _thisMuzzle = _x;
       private "_compatMag";
-      // "debug_console" callExtension str([_weaponClass, _mags, configName(_cfgWeapon >> _thisMuzzle), [_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines]);
+      // "debug_console" callExtension str([_weaponClass, _mags, configName(_cfgWeapon >> _thisMuzzle), [_mags, _cfgWeapon >> _thisMuzzle, false] call phx_loadout_fnc_getWeaponMagazines]);
 
       if (_thisMuzzle == "this") then {
-        _compatMag = ([_mags, _cfgWeapon, false] call fnc_getWeaponMagazines) select 0;
+        _compatMag = ([_mags, _cfgWeapon, false] call phx_loadout_fnc_getWeaponMagazines) select 0;
       } else {
-        _compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call fnc_getWeaponMagazines) select 0;
+        _compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call phx_loadout_fnc_getWeaponMagazines) select 0;
       };
       _compatMag = _compatMag splitString ':' select 0;
       // "debug_console" callExtension str([_weaponClass, _thisMuzzle, _compatMag]);
@@ -815,7 +815,7 @@ if (isNil {
     phx_loadout_vest,
     phx_loadout_backpack,
     phx_loadout_headgear
-  ] call fnc_addUniform
+  ] call phx_loadout_fnc_addUniform
 }) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process uniform settings.</t>", "error", 20] call phx_ui_fnc_notify;
@@ -830,7 +830,7 @@ if (isNil {
 //     _setUnit,
 //     _cfgGiveSRRadio,
 //     _cfgGiveLRRadio
-//   ] call fnc_giveRadios
+//   ] call phx_loadout_fnc_giveRadios
 // }) then {
 //   [{time > 2}, {
 //     ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
@@ -845,7 +845,7 @@ if (isNil {
     _cfgItems,
     _cfgBackpackItems,
     _cfgLinkedItems
-  ] call fnc_giveGear
+  ] call phx_loadout_fnc_giveGear
 }) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
@@ -854,14 +854,14 @@ if (isNil {
 };
 
 
-if (isNil {[_setUnit, _cfgWeaponChoices] call fnc_givePrimaryWeapon}) then {
+if (isNil {[_setUnit, _cfgWeaponChoices] call phx_loadout_fnc_givePrimaryWeapon}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process primary weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process primary weapon settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[_setUnit, _cfgWeaponChoices] call fnc_prepWeaponsSelector}) then {
+if (isNil {[_setUnit, _cfgWeaponChoices] call phx_loadout_fnc_prepWeaponsSelector}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process weapon selector settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process weapon selector settings."];
@@ -870,21 +870,21 @@ if (isNil {[_setUnit, _cfgWeaponChoices] call fnc_prepWeaponsSelector}) then {
 
 
 
-if (isNil {[_setUnit, _cfgSidearms] call fnc_giveSidearmWeapon}) then {
+if (isNil {[_setUnit, _cfgSidearms] call phx_loadout_fnc_giveSidearmWeapon}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process sidearm weapon settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[_setUnit, getNumber(CFGGEAR >> "giveSilencer")] call fnc_giveSilencer}) then {
+if (isNil {[_setUnit, getNumber(CFGGEAR >> "giveSilencer")] call phx_loadout_fnc_giveSilencer}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process silencer settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process silencer settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[_setUnit, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG}) then {
+if (isNil {[_setUnit, phx_addNVG, getText(CFGCOMMON >> "NVG")] call phx_loadout_fnc_giveNVG}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process NVG settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process NVG settings."];
@@ -892,7 +892,7 @@ if (isNil {[_setUnit, phx_addNVG, getText(CFGCOMMON >> "NVG")] call fnc_giveNVG}
 };
 
 
-if (isNil {[_setUnit, LOADOUTVAR] call fnc_giveAT}) then {
+if (isNil {[_setUnit, LOADOUTVAR] call phx_loadout_fnc_giveAT}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process AT settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process AT settings."];
@@ -900,7 +900,7 @@ if (isNil {[_setUnit, LOADOUTVAR] call fnc_giveAT}) then {
 };
 
 
-if (isNil {[_setUnit, LOADOUTVAR, CFGOPTICS] call fnc_prepOpticsSelector}) then {
+if (isNil {[_setUnit, LOADOUTVAR, CFGOPTICS] call phx_loadout_fnc_prepOpticsSelector}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process optics settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process optics settings."];
@@ -908,21 +908,21 @@ if (isNil {[_setUnit, LOADOUTVAR, CFGOPTICS] call fnc_prepOpticsSelector}) then 
 };
 
 
-if (isNil {[_setUnit, _cfgExplosiveChoices] call fnc_giveCECharges}) then {
+if (isNil {[_setUnit, _cfgExplosiveChoices] call phx_loadout_fnc_giveCECharges}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process CE explosives settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process CE explosives settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[_setUnit, _cfgGrenadeChoices] call fnc_giveCEGrenades}) then {
+if (isNil {[_setUnit, _cfgGrenadeChoices] call phx_loadout_fnc_giveCEGrenades}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process CE grenade settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process CE grenade settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[_setUnit, LOADOUTVAR] call fnc_setAttributes}) then {
+if (isNil {[_setUnit, LOADOUTVAR] call phx_loadout_fnc_setAttributes}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process ACE attribute settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE attribute settings."];
@@ -930,14 +930,14 @@ if (isNil {[_setUnit, LOADOUTVAR] call fnc_setAttributes}) then {
 };
 
 
-if (isNil {[_setUnit, _cfgGiveSideKey] call fnc_giveSideKey}) then {
+if (isNil {[_setUnit, _cfgGiveSideKey] call phx_loadout_fnc_giveSideKey}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process ACE vehicle key settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process ACE vehicle key settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[_setUnit, LOADOUTVAR] call fnc_giveBinoculars}) then {
+if (isNil {[_setUnit, LOADOUTVAR] call phx_loadout_fnc_giveBinoculars}) then {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process gear settings.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process binocular settings."];
@@ -948,7 +948,7 @@ if (isNil {[_setUnit, LOADOUTVAR] call fnc_giveBinoculars}) then {
 _setUnitMagazines = magazines _setUnit;
 
 
-if (isNil {[_setUnit, LOADOUTVAR] call fnc_loadWeapons}) then {
+if (isNil {[_setUnit, LOADOUTVAR] call phx_loadout_fnc_loadWeapons}) then {
   [{time > 2}, {
     // ["<t align='center'>Error:<br/>Failed to auto-load weapons.</t>", "error", 20] call phx_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to auto-load weapons."];
