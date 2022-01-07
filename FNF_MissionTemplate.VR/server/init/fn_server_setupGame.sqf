@@ -90,37 +90,55 @@ _deleteObj = {
 };
 
 if !(phx_gameMode isEqualTo "destroy") then {
-  (getMissionLayerEntities "FNF Gamemode: Destroy") params ["_objects", "_markers"];
-  {_x call _deleteObj} forEach _objects;
-  {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  _test = (getMissionLayerEntities "FNF Gamemode: Destroy");
+  if (count _test > 0) then {
+    _test params ["_objects", "_markers"];
+    {_x call _deleteObj} forEach _objects;
+    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  };
 };
 
 if !(phx_gameMode isEqualTo "uplink" || phx_gameMode isEqualTo "rush" || phx_gameMode isEqualTo "connection") then {
-  (getMissionLayerEntities "FNF Gamemode: Rush, Uplink, Connection") params ["_objects", "_markers"];
-  {_x call _deleteObj} forEach _objects;
-  {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  _test = (getMissionLayerEntities "FNF Gamemode: Rush, Uplink, Connection");
+  if (count _test > 0) then {
+    _test params ["_objects", "_markers"];
+    {_x call _deleteObj} forEach _objects;
+    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  };
 };
 
-if !(phx_gamEMode isEqualTo "captureTheFlag") then {
-  (getMissionLayerEntities "FNF Gamemode: CTF") params ["_objects", "_markers"];
-  {_x call _deleteObj} forEach _objects;
-  {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+if !(phx_gameMode isEqualTo "captureTheFlag") then {
+  _test = (getMissionLayerEntities "FNF Gamemode: CTF");
+  if (count _test > 0) then {
+    _test params ["_objects", "_markers"];
+    {_x call _deleteObj} forEach _objects;
+    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  };
 };
 
 if !(phx_gameMode isEqualTo "adSector") then {
-  (getMissionLayerEntities "FNF Gamemode: ADSector") params ["_objects", "_markers"];
-  {_x call _deleteObj} forEach _objects;
-  {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  _test = (getMissionLayerEntities "FNF Gamemode: ADSector");
+  if (count _test > 0) then {
+    _test params ["_objects", "_markers"];
+    {_x call _deleteObj} forEach _objects;
+    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  };
 };
 
 if !(phx_gameMode isEqualTo "scavHunt") then {
-  (getMissionLayerEntities "FNF Gamemode: ScavHunt") params ["_objects", "_markers"];
-  {_x call _deleteObj} forEach _objects;
-  {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  _test = (getMissionLayerEntities "FNF Gamemode: ScavHunt");
+  if (count _test > 0) then {
+    _test params ["_objects", "_markers"];
+    {_x call _deleteObj} forEach _objects;
+    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  };
 };
 
 if !(phx_gameMode isEqualTo "assassin") then {
-  (getMissionLayerEntities "FNF Gamemode: Assassin") params ["_objects", "_markers"];
-  {_x call _deleteObj} forEach _objects;
-  {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  _test = (getMissionLayerEntities "FNF Gamemode: Assassin");
+  if (count _test > 0) then {
+    _test params ["_objects", "_markers"];
+    {_x call _deleteObj} forEach _objects;
+    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  };
 };
