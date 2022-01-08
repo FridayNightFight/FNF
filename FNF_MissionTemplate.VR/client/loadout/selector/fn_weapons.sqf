@@ -91,6 +91,12 @@ phx_loadout_weaponMagazines = _mags;
   player addPrimaryWeaponItem _x;
 } forEach _weaponItems;
 
+// if previous optic doesn't fit new weapon, null prior selection so they can pick a new one
+if !((player getVariable ["phx_chosenOptic",""]) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)) then {
+  player setVariable ["phx_chosenOptic", ""];
+};
+
+
 if ((player getVariable "phxLoadout") == "RIS") then {
   // add silencer if avail
   _muzzleAcc = [_weapon, "muzzle"] call CBA_fnc_compatibleItems;

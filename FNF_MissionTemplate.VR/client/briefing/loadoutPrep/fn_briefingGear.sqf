@@ -341,7 +341,7 @@ if (isNil "phx_briefing_loadoutInfo") then {
       phx_briefing_loadoutString joinString "<br/>"
     ]
   ];
-  [{time > 10}, {
+  [{getClientStateNumber > 8}, {
     player setDiaryRecordText [["Diary", phx_briefing_loadoutInfo], ["My Starting Loadout", phx_briefing_loadoutString joinString "<br/>"]];
   }] call CBA_fnc_waitUntilAndExecute;
 } else {
