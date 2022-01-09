@@ -41,7 +41,8 @@ phx_ui_changelogText = ([
 ] joinString "<br/>");
 
 phx_ui_frameworkCreditsText = ([
-  "UI Notification System: Aquaman, TanKode, Lucian"
+  "UI Notification System: Aquaman, TanKode, Lucian",
+  "Map Unit Icons/Blufor Tracker: QS Icons by Quiksilver"
 ] joinString "<br/>");
 
 #define COLOR2 "#FF8E38"
