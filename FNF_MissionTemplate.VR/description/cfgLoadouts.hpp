@@ -23,6 +23,8 @@ class CfgLoadouts {
     #include "KITS\UNIFORMS\RHS_UNI_ID_NAVSOG_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_ID_REBELS_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_ID_INSURGENTS_2000.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_NATO_NL_DUTCH_ARMY_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_ID_IRAQI_ARMY_2010.hpp"
 
     #include "KITS\UNIFORMS\VN_UNI_NLF_Vietcong.hpp"
     #include "KITS\UNIFORMS\VN_UNI_PAVN_NVA.hpp"
@@ -50,6 +52,8 @@ class CfgLoadouts {
     #include "KITS\GEAR\RHS_GEAR_ID_REBELS_2010_AKMN.hpp"
     #include "KITS\GEAR\RHS_GEAR_ID_INSURGENTS_2000_AK74N.hpp"
     #include "KITS\GEAR\RHS_GEAR_ID_NAVSOG_2010_M16A4.hpp"
+    #include "KITS\GEAR\RHS_GEAR_ID_IRAQI_ARMY_2010_AKMN.hpp"
+    #include "KITS\GEAR\RHS_GEAR_NATO_DUTCH_ARMY_2010_M4.hpp"
 
     #include "KITS\GEAR\VN_GEAR_NVA_VC1970.hpp"
     #include "KITS\GEAR\VN_GEAR_US_ARMY1970.hpp"
