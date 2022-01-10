@@ -59,3 +59,5 @@ _createMarker = {
 };
 
 {_x call _createMarker} forEach _objectsToMark;
+
+missionNamespace setVariable ["phx_markCustomObjs_ready", true, true];

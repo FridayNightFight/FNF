@@ -7,6 +7,11 @@ ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\
 #define COLOR4 "#008394"
 #define COLOR5 "#1BCAE0"
 
+
+// remove existing addon entries
+[{player diarySubjectExists "Radio"}, {player removeDiarySubject "Radio"}] call cba_fnc_waitUntilAndExecute;
+[{player diarySubjectExists "cba_help_docs"}, {player removeDiarySubject "cba_help_docs"}] call cba_fnc_waitUntilAndExecute;
+
 _getName = {
   if (_this isEqualTo "") exitWith {""};
   getText (configFile >> "cfgWeapons" >> _this >> "displayName");
