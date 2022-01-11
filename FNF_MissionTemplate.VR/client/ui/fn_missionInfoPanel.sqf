@@ -3,7 +3,7 @@ disableSerialization;
 // _display = findDisplay 46 createDisplay "RscDisplayEmpty";
 // createDialog "RscDisplayEmpty";
 
-_displayCreated = createDialog "InfoPanel";
+_displayCreated = createDialog "FNF_MissionInfoPanel";
 if (!_displayCreated) exitWith {hint "Failed to open mission info panel"};
 _display = (findDisplay 2525);
 

@@ -8,7 +8,7 @@ Draws 3D icons on alive objectives.
   _display = findDisplay 60000;
   if (isNull _display) exitWith {};
 
-  _infoButton = _display ctrlCreate ["InfoPanelSpectatorButton", 2524];
+  _infoButton = _display ctrlCreate ["FNF_MissionInfoPanelSpectatorButton", 2524];
   _infoButton ctrlAddEventHandler ["ButtonClick", {
     if (!dialog) then {
       [] spawn phx_ui_fnc_missionInfoPanel;
@@ -21,7 +21,7 @@ disableSerialization;
   _display = findDisplay 60000;
   if (isNull _display) exitWith {};
 
-  _infoButton = _display ctrlCreate ["InfoPanelSpectatorButton", 2524];
+  _infoButton = _display ctrlCreate ["FNF_MissionInfoPanelSpectatorButton", 2524];
   _infoButton ctrlAddEventHandler ["ButtonClick", {
     if (!dialog) then {
       [] spawn phx_ui_fnc_missionInfoPanel;
