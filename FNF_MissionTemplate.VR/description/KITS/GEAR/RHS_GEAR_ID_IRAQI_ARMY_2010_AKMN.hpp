@@ -55,9 +55,9 @@
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_ID_REBELS_2010_AKMN {
+class RHS_GEAR_ID_IRAQI_ARMY_2010_AKMN {
   author = "Mazz38";
-  description = "ID: 2010 Rebels ARMY AKMN Kits";
+  description = "ID: 2010 IRAQI ARMY AKMN Kits";
 
   class BASE {
     backpackItems[] = {};
