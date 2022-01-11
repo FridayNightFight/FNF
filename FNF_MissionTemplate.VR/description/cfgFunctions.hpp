@@ -164,9 +164,9 @@ class CfgFunctions {
     };
     class adminKick {
       file = "client\misc\admin\adminKick";
-      class addAdminKickButton{};
-      class adminKickUI{};
-      class kickPlayer{};
+      class addAdminUIButton{};
+      class adminUI{};
+      class serverCommands{};
     };
     class gameEnd {
       file = "client\misc\admin";

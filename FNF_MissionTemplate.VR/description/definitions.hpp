@@ -14,7 +14,7 @@ onPauseScript[] = {\
     phx_fnc_removeRespawnButton,\
     phx_fnc_addStaffContactButton,\
     phx_admin_fnc_adminGameEnd,\
-    phx_admin_fnc_addAdminKickButton\
+    phx_admin_fnc_addAdminUIButton\
 };
 
 // change game type if appropriate
