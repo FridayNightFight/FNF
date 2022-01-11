@@ -1,7 +1,5 @@
 //Determine if client can play the round, if not, spectate
 
-[{time > 0}, {enableEnvironment [false, true]}] call CBA_fnc_waitUntilAndExecute;
-
 phx_loadout_roles = [
   ["PL",["Platoon Leader","LIEUTENANT"]],
   ["SGT",["Platoon Sergeant","SERGEANT"]],
@@ -78,6 +76,7 @@ call phx_fnc_teleportInit; // Add leadership teleport options
   call phx_fnc_restrictions;
   call phx_fnc_checkLoadout;
   [false] call phx_fnc_briefingGear;
+  [] spawn {sleep 0.1; enableEnvironment [false, true]};
 
   // Compile Date text
 	date params ["_year", "_month", "_day", "_hour", "_minute"];
