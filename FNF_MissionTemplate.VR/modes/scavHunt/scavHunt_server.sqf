@@ -282,7 +282,7 @@ phx_scavHuntObjIsCapped = {
         "CREATED"
       ] call BIS_fnc_taskCreate;
     } forEach phx_sidesInMission;
-    
+
 
     //Check for objectives captured or not
     [_obj, _marker, _captureID] spawn phx_scavHuntObjIsNeutral;
@@ -374,7 +374,7 @@ phx_scavHuntAnyScore = {
       // select randomly from objectives that haven't been revealed or captured yet, and reveal them
       private _objsToMaybeReveal = _objs select {
         (_x getVariable ["capturedBy", sideUnknown]) isEqualTo sideUnknown &&
-        !(_x getVariable ["phx_isRevealed", false]) 
+        !(_x getVariable ["phx_isRevealed", false])
       };
 
       private _revealThis = selectRandom _objsToMaybeReveal;
@@ -444,6 +444,6 @@ phx_scavHuntCheckScores = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
   private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
-  [_winData # 0, format["%1 won by capturing a majority of items! (%2)", (_winData # 0) call BIS_fnc_sideName, _winData # 1]] spawn phx_fnc_gameEnd;
+  [_winData # 0, format["%1 won by capturing a majority of items! (%2)", (_winData # 0) call BIS_fnc_sideName, _winData # 1]] spawn phx_server_fnc_gameEnd;
 }] call CBA_fnc_waitUntilAndExecute;
 

@@ -29,7 +29,7 @@ _win = {
 
   _side = _this;
 
-  [_sideWon, "has reached 100 points and won!"] spawn phx_fnc_gameEnd;
+  [_sideWon, "has reached 100 points and won!"] spawn phx_server_fnc_gameEnd;
 };
 
 waitUntil {

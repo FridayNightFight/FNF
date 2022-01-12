@@ -1,6 +1,6 @@
 /*
 * Author: IndigoFox
-* Used in tandem with phx_fnc_sendUniforms to parse data from the server and display the weaponry assigned to each faction
+* Used in tandem with phx_server_fnc_sendUniforms to parse data from the server and display the weaponry assigned to each faction
 * as well as name, description, and author of the set for use in the diary notes and UI.
 *
 * Arguments:

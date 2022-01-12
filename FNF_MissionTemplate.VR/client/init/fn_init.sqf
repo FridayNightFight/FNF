@@ -40,17 +40,17 @@ if !(call phx_client_fnc_canplay) exitWith {
   call phx_fnc_contactStaffInit; // Init handling for player reports
   call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
   call phx_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
-  call phx_fnc_spectatorInit;
+  call phx_spectator_fnc_init;
 };
 player enableSimulation false;
 
-call phx_fnc_hideMarkers; //Hide markers player shouldn't see
+call phx_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_briefing_fnc_init; //Briefing
 call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
 call phx_client_fnc_setupGame; //Client portion of game modes
-call phx_fnc_safety; //Enable safety
+call phx_safety_fnc_init; //Enable safety
 call phx_client_fnc_staggeredLoad; //Start staggered load timer
-call phx_fnc_radio_waitGear; //Start radio preset functions
+call phx_radio_fnc_waitGear; //Start radio preset functions
 call phx_fnc_contactStaffInit; // Init handling for player reports
 call phx_briefing_fnc_assetDiary; // Add diary entries for assets
 
@@ -62,7 +62,7 @@ call phx_ui_fnc_drawStaffIcons; // Draw labels over staff members
 call phx_ui_fnc_drawCmdIcons; // Draw labels over CMD, PL
 call phx_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
-call phx_fnc_populateORBATs;
+call phx_server_fnc_populateORBATS;
 call phx_fnc_teleportInit; // Add leadership teleport options
 // Admin player patch jip support
 if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
@@ -76,7 +76,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
 }] call CBA_fnc_waitUntilAndExecute;
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {
-  call phx_fnc_restrictions;
+  call phx_restrictions_fnc_init;
   call phx_loadout_fnc_checkLoadout;
   [false] call phx_briefing_fnc_parseGear;
 
@@ -132,7 +132,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
 //Start kill counter when game ends or player is dead
 //[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
 //Start spectator fnc when player is killed
-player addEventHandler ["Killed", {[{call phx_fnc_spectatorInit}, [], 3] call cba_fnc_waitAndExecute;}];
+player addEventHandler ["Killed", {[{call phx_spectator_fnc_init}, [], 3] call cba_fnc_waitAndExecute;}];
 phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
 
 

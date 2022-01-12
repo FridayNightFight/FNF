@@ -6,7 +6,7 @@ Removed at safe start end.
 //Make player invincible
 player allowDamage false;
 
-call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
+call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
 //Heal player if they were damaged on start
 [player] call ace_medical_treatment_fnc_fullHealLocal;

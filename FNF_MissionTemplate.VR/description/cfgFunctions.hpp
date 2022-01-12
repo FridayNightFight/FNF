@@ -14,36 +14,6 @@ class CfgFunctions {
       class teleportInit{};
       class teleportExec{};
     }
-    class radio {
-      file = "client\radio";
-      class radio_waitGear{};
-      class radio_getChannels{};
-      class radio_setRadios{};
-      class radio_cleanup{};
-    };
-    class spectator {
-      file = "client\spectator";
-      class spectatorInit{};
-    };
-    class restrictions {
-      file = "client\restrictions";
-      class restrictions{};
-      class disableMisc{};
-      class afkCheck{};
-      class disableTyping{postInit = 1;};
-      class removeRespawnButton{};
-      class hideMarkers{};
-      class restrictUniform{};
-      class zoneBoundary{};
-      class startBoundary{};
-      class restrictETool{};
-      class restrictGamma{};
-    };
-    class safety {
-      file = "client\safety";
-      class safety{};
-      class handleSafetyVics{};
-    };
     class misc {
       file = "client\misc";
       class hintThenClear{};
@@ -67,37 +37,6 @@ class CfgFunctions {
       file = "client\misc\unflip";
       class unflipVehicle{};
       class unflipVehicleAddAction{};
-    };
-    class initServer {
-      file = "server\init";
-      class serverSafety{};
-      class sendUniforms{};
-      class markCustomObjs{};
-      class fortifyServer{};
-      class server_setupGame{};
-      class radio_genFreqs{};
-      class populateORBATS{};
-      class keyVehicles{};
-      class lockVehicles{};
-      class vehicleRadios{};
-    };
-    class end {
-      file = "server\end";
-      class checkAlive{};
-      class checkTime{};
-      class overTimeEnd{};
-      class gameEnd{};
-      class endElimination{};
-    };
-    class damage {
-      file = "server\damage";
-      class handleDamage{};
-    };
-    class webhook {
-      file = "server\webhook";
-      class webhook_roundPrep;
-      class webhook_roundStart;
-      class webhook_roundEnd;
     };
   };
   class phx_admin {
@@ -207,6 +146,44 @@ class CfgFunctions {
       class setRank{};
     };
   };
+  class phx_radio {
+    class functions {
+      file = "client\radio";
+      class waitGear{};
+      class getChannels{};
+      class setRadios{};
+      class cleanup{};
+    };
+  };
+  class phx_restrictions {
+    class functions {
+      file = "client\restrictions";
+      class init{};
+      class disableTyping{postInit = 1;};
+      class zoneBoundary{};
+      class startBoundary{};
+      class disableMisc{};
+      class afkCheck{};
+      class removeRespawnButton{};
+      class hideMarkers{};
+      class restrictUniform{};
+      class restrictETool{};
+      class restrictGamma{};
+    };
+  };
+  class phx_safety {
+    class safety {
+      file = "client\safety";
+      class init{};
+      class handleSafetyVics{};
+    };
+  };
+  class phx_spectator {
+    class functions {
+      file = "client\spectator";
+      class init{};
+    };
+  };
   class phx_ui {
     class safeStartMenu {
       file = "client\ui\safeStartMenu";
@@ -229,6 +206,39 @@ class CfgFunctions {
     class scripts {
       file = "client\ui";
       class missionInfoPanel{};
+    };
+  };
+  class phx_server {
+    class initServer {
+      file = "server\init";
+      class safety{};
+      class sendUniforms{};
+      class markCustomObjs{};
+      class fortifyServer{};
+      class setupGame{};
+      class genRadioFreqs{};
+      class populateORBATS{};
+      class keyVehicles{};
+      class lockVehicles{};
+      class vehicleRadios{};
+    };
+    class end {
+      file = "server\end";
+      class checkAlive{};
+      class checkTime{};
+      class overTimeEnd{};
+      class gameEnd{};
+      class endElimination{};
+    };
+    class damage {
+      file = "server\damage";
+      class handleDamage{};
+    };
+    class webhook {
+      file = "server\webhook";
+      class webhook_roundPrep;
+      class webhook_roundStart;
+      class webhook_roundEnd;
     };
   };
 };
