@@ -10,7 +10,7 @@ missionNamespace setVariable ["phx_gameEnd", false, true];
 phx_overTimeConStr = "N/A";
 
 _fnc_warnForAD = {
-  _str = format["phx_attackingSide (%1)<br/>or<br/>phx_defendingSide (%2)<br/>isn't set, but this is an attack/defend gamemode (%3).",phx_attackingSide,phx_defendingSide,phx_gameMode];
+  _str = format["phx_attackingSide (%1) or phx_defendingSide (%2) isn't set, but this is an attack/defend gamemode (%3).",phx_attackingSide,phx_defendingSide,phx_gameMode];
   _strStruct = "<t align='center'>" + _str + "<br/>The framework may not work properly!</t>";
   [{time > 3}, {
     [_this, "error", 15] remoteExecCall ["phx_ui_fnc_notify", 0, true];
@@ -20,7 +20,7 @@ _fnc_warnForAD = {
   systemChat "The framework may not work properly!";
 };
 _fnc_warnForNeutral = {
-  _str = format["phx_attackingSide (%1)<br/>or<br/>phx_defendingSide (%2)<br/>is set, but this is a neutral gamemode (%3).",phx_attackingSide,phx_defendingSide,phx_gameMode];
+  _str = format["phx_attackingSide (%1) or phx_defendingSide (%2) is set, but this is a neutral gamemode (%3).",phx_attackingSide,phx_defendingSide,phx_gameMode];
   _strStruct = "<t align='center'>" + _str + "<br/>The framework may not work properly!</t>";
   [{time > 3}, {
     [_this, "error", 15] remoteExecCall ["phx_ui_fnc_notify", 0, true];

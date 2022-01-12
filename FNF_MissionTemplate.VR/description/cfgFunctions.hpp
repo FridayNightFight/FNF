@@ -174,7 +174,7 @@ class CfgFunctions {
     class safety {
       file = "client\safety";
       class init{};
-      class handleSafetyVics{};
+      class handleVics{};
     };
   };
   class phx_spectator {

@@ -19,13 +19,13 @@ phx_briefingRules = "";
 // SCENARIO SETTINGS //
 
 phx_gameMode = destroy;
-/* 
+/*
   MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF
   DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS
   they will be deleted automatically if not in use
 */
-phx_defendingSide = sideEmpty; // west/east/independent
-phx_attackingSide = sideEmpty; // west/east/independent
+phx_defendingSide = west; // west/east/independent
+phx_attackingSide = east; // west/east/independent
 // Leave it as sideEmpty if chosen mode is neutral
 
 phx_vnArtillerySide = sideEmpty; // west/east/independent

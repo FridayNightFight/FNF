@@ -233,8 +233,8 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
     player createDiaryRecord [
       "Diary",
       [
-        [independent] call phx_briefing_fnc_parseCSW
         "INDFOR CSW Settings",
+        [independent] call phx_briefing_fnc_parseCSW
       ]
     ];
 
