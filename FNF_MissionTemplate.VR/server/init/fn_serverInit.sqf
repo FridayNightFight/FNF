@@ -19,6 +19,7 @@ call phx_server_fnc_genRadioFreqs;
 call phx_server_fnc_sendUniforms;
 call phx_server_fnc_fortifyServer;
 call phx_server_fnc_markCustomObjs;
+call phx_admin_fnc_serverCommands;
 
 // after custom building markers are up, recreate safe markers so they're on top and visible
 [{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {

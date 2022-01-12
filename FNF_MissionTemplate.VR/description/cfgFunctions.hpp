@@ -44,15 +44,25 @@ class CfgFunctions {
       file = "client\loadout\patches";
       class setAdminPatch{};
     };
-    class adminKick {
-      file = "client\misc\admin\adminKick";
-      class addAdminKickButton{};
-      class adminKickUI{};
-      class kickPlayer{};
+    class adminMenu {
+      file = "client\misc\admin\menu";
+      class addAdminUIButton{};
+      class adminUI{};
+      class serverCommands{};
     };
     class diaryActions {
       file = "client\misc\admin";
       class safetyEndExpression{};
+    };
+    class functions {
+      file = "client\misc\admin\functions";
+      class adminAdjustGameClock{};
+      class adminSetLoadout{};
+      class copyPlayerUIDs{};
+      class killPlayer{};
+      class resetAnimState{};
+      class respawnPlayer{};
+      class setIndforAllegiance{};
     };
     class gameEnd {
       file = "client\misc\admin";

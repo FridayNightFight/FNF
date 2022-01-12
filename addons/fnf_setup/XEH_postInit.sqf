@@ -12,7 +12,7 @@ if (!hasInterface) exitWith {};
 [
   [
     "Friday Night Fight",
-    "UI/Screenshots"
+    "User Interface"
   ],
   "phx_key_hideUI",
   [
@@ -62,7 +62,7 @@ if (!hasInterface) exitWith {};
 
   [
     "Friday Night Fight",
-    "UI/Screenshots"
+    "User Interface"
   ],
   "phx_key_openLoadoutFleximenu",
   [
@@ -90,7 +90,7 @@ if (!hasInterface) exitWith {};
 
   [
     "Friday Night Fight",
-    "UI/Screenshots"
+    "User Interface"
   ],
   "phx_key_missionInfoPanel",
   [
@@ -104,6 +104,32 @@ if (!hasInterface) exitWith {};
   },
   "", // no up code
   [DIK_J, [false, true, false]], // default bind to Ctrl J
+  false, // don't press every frame while key down
+  0, // 0 delay in execution
+  false // don't overwrite custom bind
+] call cba_fnc_addKeybind;
+
+// Open Admin Panel
+// Shift-J default
+// IndigoFox
+[
+
+  [
+    "Friday Night Fight",
+    "Administration"
+  ],
+  "phx_key_adminPanel",
+  [
+    "Open Admin Panel",
+    "Perform routine administrative tasks to the mission and players in it"
+  ],
+  { // key down code
+    if (!dialog && (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick")) then {
+      [] spawn phx_admin_fnc_adminUI;
+    };
+  },
+  "", // no up code
+  [DIK_J, [true, false, false]], // default bind to Shift J
   false, // don't press every frame while key down
   0, // 0 delay in execution
   false // don't overwrite custom bind

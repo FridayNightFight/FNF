@@ -4,7 +4,8 @@ call phx_restrictions_fnc_startBoundary;
 call phx_restrictions_fnc_restrictGamma;
 
 //Uniform and etool restrictions
-[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_restrictions_fnc_restrictUniform; call phx_restrictions_fnc_restrictETool;}] call CBA_fnc_waitUntilAndExecute;
+[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_restrictions_fnc_restrictETool}] call CBA_fnc_waitUntilAndExecute;
+[{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_restrictions_fnc_restrictUniform}] call CBA_fnc_waitUntilAndExecute;
 
 //[{!phx_safetyEnabled && !isNull (findDisplay 46)}, {call phx_restrictions_fnc_afkCheck}] call CBA_fnc_waitUntilAndExecute;
 

@@ -66,14 +66,14 @@ class PauseMenuSendAdminMsg : RscShortcutButton
 	size = GUI_TEXT_SIZE_MEDIUM;
 	sizeEx = GUI_TEXT_SIZE_MEDIUM;
 };
-class PauseMenuKickPlayer : RscShortcutButton
+class FNF_AdminMenuButton : RscShortcutButton
 {
 	deletable = 0;
 	fade = 0;
 	access = 0;
 
 	textureNoShortcut = "description\images\fnfsmall.paa";
-	text = "Kick Player Menu";
+	text = "Admin Menu";
 	colorText[] = {1,1,1,1};
 	colorDisabled[] = {1,1,1,0.25};
 	colorBackground[] = {0,0.5,0,1};
