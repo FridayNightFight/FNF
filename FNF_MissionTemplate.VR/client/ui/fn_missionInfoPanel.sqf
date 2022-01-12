@@ -3,7 +3,7 @@ disableSerialization;
 // _display = findDisplay 46 createDisplay "RscDisplayEmpty";
 // createDialog "RscDisplayEmpty";
 
-_displayCreated = createDialog "InfoPanel";
+_displayCreated = createDialog "FNF_MissionInfoPanel";
 if (!_displayCreated) exitWith {hint "Failed to open mission info panel"};
 _display = (findDisplay 2525);
 
@@ -55,6 +55,9 @@ _CreditsIndex = _tree tvAdd[[],"Credits"];
 _RulesIndex = _tree tvAdd[[],"Rules"];
 if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick") then {
   _ReportsIndex = _tree tvAdd[[],"Staff Reports"];
+  {
+    _tree tvAdd [[_ReportsIndex], _x # 0];
+  } forEach phx_ui_structTextRef_staffReports;
 };
 
 
@@ -70,10 +73,6 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 {
   _tree tvAdd [[_OtherAssetsIndex], _x # 0];
 } forEach phx_ui_structTextRef_AssetsOther;
-
-{
-  _tree tvAdd [[_ReportsIndex], _x # 0];
-} forEach phx_ui_structTextRef_staffReports;
 
 
 

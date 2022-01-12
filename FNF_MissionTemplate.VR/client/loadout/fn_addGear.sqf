@@ -58,11 +58,10 @@ if (typeName _itemStr isEqualTo "STRING") then {
   };
 } else {
 
-  _numToAdd = 1;
-  _itemStr params ["_str","_container", "_unit"];
-  if (isNil "_unit") then {_unit = player};
+  _itemStr params ["_str",["_container", "uniform", [""]], ["_unit", player, [objNull]]];
 
   private _item = _str;
+  _numToAdd = 1;
   if (_str find ":" != -1) then {
     _item = (_str select [0, _str find ":"]);
     _numToAdd = parseNumber (_str select [(_str find ":") + 1]);

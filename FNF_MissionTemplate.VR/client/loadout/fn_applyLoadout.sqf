@@ -326,6 +326,11 @@ if (uniform player != "") then {
   [true] call phx_briefing_fnc_parseGear;
   missionNamespace setVariable ["phx_loadoutAssigned",true];
 
+  // set rank from phx_loadout_roles (for Nametags)
+  _rank = [phx_loadout_roles, PLAYERLOADOUTVAR, "PRIVATE"] call BIS_fnc_getFromPairs;
+  if (typeName _rank isEqualTo "ARRAY") then {_rank = _rank select 1};
+  player setUnitRank _rank;
+
   [
     "[%1] Loadout assigned",
     [(cba_missionTime),"HH:MM:SS"] call BIS_fnc_secondsToString,

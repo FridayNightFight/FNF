@@ -59,9 +59,9 @@ if (count _cfgOpticChoices > 0 && !isNil "phx_loadout_weapon") then {
   if (!isNil "_optic") then {
     // _unit addPrimaryWeaponItem _optic;
     // player setVariable ["phx_ChosenOptic", _optic];
-    player setVariable ["phx_ChosenOptic", ""];
     // diag_log text format["[FNF] (loadout) INFO: Equipped optic ""%1""", _optic];
-    missionNamespace setVariable ["phx_selector_optics", _cfgOpticChoices];
   };
+  player setVariable ["phx_ChosenOptic", ""];
+  missionNamespace setVariable ["phx_selector_optics", _cfgOpticChoices];
 };
 true

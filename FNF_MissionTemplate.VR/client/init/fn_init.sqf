@@ -64,10 +64,7 @@ call phx_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
 call phx_server_fnc_populateORBATS;
 call phx_fnc_teleportInit; // Add leadership teleport options
-// Admin player patch jip support
-if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) then {
-  // call phx_admin_fnc_jipPatch;
-};
+[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_admin_fnc_setAdminPatch}] call CBA_fnc_waitUntilAndExecute; // Admin player patch
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
@@ -79,6 +76,7 @@ if (CBA_missionTime > 10 && floor(CBA_missionTime) < (phx_safeStartTime * 60)) t
   call phx_restrictions_fnc_init;
   call phx_loadout_fnc_checkLoadout;
   [false] call phx_briefing_fnc_parseGear;
+  [] spawn {sleep 0.1; enableEnvironment [false, true]};
 
   // Compile Date text
 	date params ["_year", "_month", "_day", "_hour", "_minute"];

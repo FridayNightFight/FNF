@@ -19,8 +19,19 @@ call phx_server_fnc_genRadioFreqs;
 call phx_server_fnc_sendUniforms;
 call phx_server_fnc_fortifyServer;
 call phx_server_fnc_markCustomObjs;
+
+// after custom building markers are up, recreate safe markers so they're on top and visible
+[{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {
+  {
+    if (markerColor _x != "") then {
+      _ogMark = _x call BIS_fnc_markerToString;
+      deleteMarker _x;
+      _ogMark call BIS_fnc_stringToMarker;
+    };
+  } forEach ["bluforSafeMarker", "opforSafeMarker", "indforSafeMarker"];
+}] call CBA_fnc_waitUntilAndExecute;
+
 call phx_server_fnc_setupGame;
-call phx_admin_fnc_adminPatch;
 call phx_server_fnc_webhook_roundPrep;
 
 call phx_server_fnc_populateORBATS;
