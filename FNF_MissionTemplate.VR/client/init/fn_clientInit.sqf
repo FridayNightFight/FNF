@@ -147,6 +147,29 @@ player addEventHandler ["Killed", {
   };
 }];
 
+if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick") then {
+  ["FNF_UIPanelAdmin_ReturnStatus", {
+    [
+      format [
+        "<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><br/>%1",
+        _this
+      ],
+      "warning",
+      10
+    ] call phx_ui_fnc_notify;
+
+    if (isNil "phx_adminDisplay") exitWith {};
+    private _display = (phx_adminDisplay select 0);
+    private "_resultBox";
+    if (_display == displayNull) exitWith {
+      [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+    };
+
+    _resultBox = _display displayCtrl 10020;
+    _resultBox ctrlSetStructuredText (parseText _this);
+  }] call CBA_fnc_addEventHandlerArgs;
+};
+
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)

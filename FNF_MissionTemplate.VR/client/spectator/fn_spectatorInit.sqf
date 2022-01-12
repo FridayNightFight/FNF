@@ -70,7 +70,7 @@ _showObj = {
   if (_x call _showObj) then {
     [{
       params ["_obj"];
-      if (isNull _obj || !alive _obj) then {
+      if (isNull _obj || !alive _obj || alive player) then {
         [_handle] call CBA_fnc_removePerFrameHandler;
       } else {
         drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];

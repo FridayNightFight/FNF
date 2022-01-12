@@ -162,11 +162,21 @@ class CfgFunctions {
       class adminPatch{};
       class jipPatch{};
     };
-    class adminKick {
-      file = "client\misc\admin\adminKick";
+    class adminMenu {
+      file = "client\misc\admin\menu";
       class addAdminUIButton{};
       class adminUI{};
       class serverCommands{};
+    };
+    class functions {
+      file = "client\misc\admin\functions";
+      class adminAdjustGameClock{};
+      class adminSetLoadout{};
+      class copyPlayerUIDs{};
+      class killPlayer{};
+      class resetAnimState{};
+      class respawnPlayer{};
+      class setIndforAllegiance{};
     };
     class gameEnd {
       file = "client\misc\admin";

@@ -533,10 +533,10 @@ fnc_prepOpticsSelector = {
     if (!isNil "_optic") then {
       // _unit addPrimaryWeaponItem _optic;
       // player setVariable ["phx_ChosenOptic", _optic];
-      player setVariable ["phx_ChosenOptic", ""];
       // diag_log text format["[FNF] (loadout) INFO: Equipped optic ""%1""", _optic];
-      missionNamespace setVariable ["phx_selector_optics", _cfgOpticChoices];
     };
+    player setVariable ["phx_ChosenOptic", ""];
+    missionNamespace setVariable ["phx_selector_optics", _cfgOpticChoices];
   };
   true
 };
@@ -956,6 +956,16 @@ if (uniform player != "") then {
   _rank = [phx_loadout_roles, PLAYERLOADOUTVAR, "PRIVATE"] call BIS_fnc_getFromPairs;
   if (typeName _rank isEqualTo "ARRAY") then {_rank = _rank select 1};
   player setUnitRank _rank;
+
+
+  if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {
+    [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Optic_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+    [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Weapon_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+    [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Explosives_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+    [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Grenades_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+    [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+    call phx_selector_fnc_init;
+  };
 
   [
     "[%1] Loadout assigned",
