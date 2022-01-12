@@ -93,12 +93,20 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
         setPlayerRespawnTime 9999;
 
         // teleport and loadout application
-        player setPosATL phx_startGoodPos;
+        private _pos = missionNamespace getVariable ["phx_startGoodPos", [0,0,0]];
+        if (surfaceIsWater _pos) then {
+          player setPosASLW _pos;
+        } else {
+          player setPosATL _pos;
+        };
         [false] call ace_spectator_fnc_setSpectator;
         [player getVariable ["phxLoadout", "BASE"]] call phx_loadout_fnc_applyLoadout;
+        [player, {phx_playersInMission pushBack _this}] remoteExecCall ["call", 2];
+        phx_safeStartNoFire = nil;
+        call phx_restrictions_fnc_init;
+        call phx_safety_fnc_init;
 
         uiSleep 2;
-
 
         // notify
         [format["<t align='center'>You've been returned<br/>to your side's safe start zone.<br/>The logged-in admin<br/>(%1)<br/>may teleport you momentarily.<br/>Performed by %2</t>", _this # 0, _this # 1], "success", 15] call phx_ui_fnc_notify;
@@ -119,17 +127,17 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
 // used for Discord report
 ["phxAdminMessageServer", [
   "",
-  name player,
+  _admin_soldierName,
   (_out joinString "\n"),
-  (playerSide call BIS_fnc_sideID) call BIS_fnc_sideName,
+  (side _admin_playerObject) call BIS_fnc_sideName,
   format [
     "%1 in %2",
-    ((roleDescription player) splitString '@') # 0,
-    groupId (group player)
+    ((roleDescription _admin_playerObject) splitString '@') # 0,
+    groupId (group _admin_playerObject)
   ],
   briefingName,
   worldName,
-  _grid,
+  mapGridPosition _admin_playerObject,
   // cba_missionTime
   [cba_missionTime / 60, "HH:MM"] call BIS_fnc_timeToString
 ]] call CBA_fnc_serverEvent;

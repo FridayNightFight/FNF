@@ -62,7 +62,6 @@ call phx_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
 call phx_server_fnc_populateORBATS;
 call phx_fnc_teleportInit; // Add leadership teleport options
-[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_admin_fnc_setAdminPatch}] call CBA_fnc_waitUntilAndExecute; // Admin player patch
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
@@ -74,19 +73,20 @@ call phx_fnc_teleportInit; // Add leadership teleport options
   call phx_restrictions_fnc_init;
   call phx_loadout_fnc_checkLoadout;
   [false] call phx_briefing_fnc_parseGear;
+  [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_admin_fnc_setAdminPatch}] call CBA_fnc_waitUntilAndExecute; // Admin player patch
   [] spawn {sleep 0.1; enableEnvironment [false, true]};
 
   // Compile Date text
-	date params ["_year", "_month", "_day", "_hour", "_minute"];
+  date params ["_year", "_month", "_day", "_hour", "_minute"];
 
-	if (_month < 10) then {_month = format ["0%1", _month]};
-	if (_day < 10) then {_day = format ["0%1", _day]};
-	if (_hour < 10) then {_hour = format ["0%1", _hour]};
-	if (_minute < 10) then {_minute = format ["0%1", _minute]};
+  if (_month < 10) then {_month = format ["0%1", _month]};
+  if (_day < 10) then {_day = format ["0%1", _day]};
+  if (_hour < 10) then {_hour = format ["0%1", _hour]};
+  if (_minute < 10) then {_minute = format ["0%1", _minute]};
 
-	private ["_time", "_date"];
-	_time = format ["%1:%2", _hour, _minute];
-	_date = format ["%1-%2-%3", _year, _month, _day];
+  private ["_time", "_date"];
+  _time = format ["%1:%2", _hour, _minute];
+  _date = format ["%1-%2-%3", _year, _month, _day];
 
   private _locationTypes = [
     "NameCity",
@@ -171,19 +171,19 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 [] spawn phx_fnc_unflipVehicleAddAction;
 
 // adds ACE Self-interact to fix uniform bug
-// private _action = [
-// 	"FixUniformBug",
-// 	"Fix ""No Uniform"" Bug",
-// 	"",
-// 	{[player] call phx_fnc_fixUniformBug},
-// 	{phx_safetyEnabled}
-// ] call ace_interact_menu_fnc_createAction;
-// [
-// 	player,
-// 	1,
-// 	["ACE_SelfActions"],
-// 	_action
-// ] call ace_interact_menu_fnc_addActionToObject;
+private _action = [
+  "FixUniformBug",
+  "Fix ""No Uniform"" Bug",
+  "",
+  {[player] call phx_fnc_fixUniformBug},
+  {true}
+] call ace_interact_menu_fnc_createAction;
+[
+  player,
+  1,
+  ["ACE_SelfActions"],
+  _action
+] call ace_interact_menu_fnc_addActionToObject;
 
 
 // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool

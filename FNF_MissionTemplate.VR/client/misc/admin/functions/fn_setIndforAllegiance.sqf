@@ -95,17 +95,17 @@ _out pushBack format["hostile to %1", _enemySide apply {_x call BIS_fnc_sideName
 // used for Discord report
 ["phxAdminMessageServer", [
   "",
-  name player,
+  _admin_soldierName,
   (_out joinString "\n"),
-  (playerSide call BIS_fnc_sideID) call BIS_fnc_sideName,
+  (side _admin_playerObject) call BIS_fnc_sideName,
   format [
     "%1 in %2",
-    ((roleDescription player) splitString '@') # 0,
-    groupId (group player)
+    ((roleDescription _admin_playerObject) splitString '@') # 0,
+    groupId (group _admin_playerObject)
   ],
   briefingName,
   worldName,
-  _grid,
+  mapGridPosition _playerObject,
   // cba_missionTime
   [cba_missionTime / 60, "HH:MM"] call BIS_fnc_timeToString
 ]] call CBA_fnc_serverEvent;
