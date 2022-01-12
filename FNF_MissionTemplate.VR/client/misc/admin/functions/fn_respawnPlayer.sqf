@@ -66,8 +66,15 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
 
 
   if (_continue) then {
+    // get admin
+    private _admin = "N/A";
+    _loggedInAdmins = allPlayers select {
+      (admin owner _x) isEqualTo 2
+    };
+    if (count _loggedInAdmins != 0) then {_admin = name (_loggedInAdmins select 0)};
+
     // remoteExec instructions to client
-    [_admin_soldierName, {
+    [[_admin, _admin_soldierName], {
       if !(isNil "fnf_adminRespawnHandler") then {
         if !(scriptDone fnf_adminRespawnHandler) exitWith {};
       };
@@ -88,18 +95,13 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
         // teleport and loadout application
         player setPosATL phx_startGoodPos;
         [false] call ace_spectator_fnc_setSpectator;
-        [player getVariable ["phxLoadout", "BASE"]] call phx_fnc_applyCfgLoadout;
+        [player getVariable ["phxLoadout", "BASE"]] call phx_loadout_fnc_applyLoadout;
 
         uiSleep 2;
 
-        // get admin
-        private _admin = "N/A";
-        _loggedInAdmins = allPlayers select {
-          (admin owner _x) isEqualTo 2
-        };
-        if (count _loggedInAdmins != 0) then {_admin = name (_loggedInAdmins select 0)};
+
         // notify
-        [format["<t align='center'>You've been returned<br/>to your side's safe start zone.<br/>The logged-in admin<br/>(%1)<br/>should teleport you momentarily.<br/>Performed by %2</t>", _admin, _this], "success", 15] call phx_ui_fnc_notify;
+        [format["<t align='center'>You've been returned<br/>to your side's safe start zone.<br/>The logged-in admin<br/>(%1)<br/>may teleport you momentarily.<br/>Performed by %2</t>", _this # 0, _this # 1], "success", 15] call phx_ui_fnc_notify;
       };
     }] remoteExecCall ["call", _owner];
 

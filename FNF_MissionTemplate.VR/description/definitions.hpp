@@ -21,14 +21,14 @@ onPauseScript[] = {\
 // CTF
 // SC (Sector Control)
 class Header {
-	gameType =  Unknown;	// Game type
-	minPlayers =  20;	// minimum number of players the mission supports
-	maxPlayers = 124;	// maximum number of players the mission supports
+  gameType =  Unknown;	// Game type
+  minPlayers =  20;	// minimum number of players the mission supports
+  maxPlayers = 124;	// maximum number of players the mission supports
 };
 
 class CfgDebriefingSections {
-    class acex_killTracker {
-        title = "ACEX Killed Events";
-        variable = "acex_killTracker_outputText";
-    };
+  class acex_killTracker {
+    title = "ACEX Killed Events";
+    variable = "acex_killTracker_outputText";
+  };
 };

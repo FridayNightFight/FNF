@@ -14,40 +14,32 @@
 params [["_sideFriendly", sideEmpty, [sideEmpty]], ["_adminId", "", [""]]];
 
 // establish correct code based on _sideFriendly, and assume other sides should be hostile
-phx_admin_FixedEncryptionCode = ""; // the side indfor should be able to talk to
+private _fixedEncryptionCode = ""; // the side indfor should be able to talk to
 switch (_sideFriendly) do {
   case west: {
-    phx_admin_FixedEncryptionCode = "_bluefor";
+    _fixedEncryptionCode = "_bluefor";
   };
   case east: {
-    phx_admin_FixedEncryptionCode = "_opfor"
+    _fixedEncryptionCode = "_opfor"
   };
   case sideEmpty: {
-    phx_admin_FixedEncryptionCode = "_independent";
+    _fixedEncryptionCode = "_independent";
   };
 };
 
 // figure out the players whose radios need adjusting
 private _playersToFix = (allPlayers select {alive _x && side _x == independent});
 
-// send the code to the relevant clients
-{
-  (owner _x) publicVariableClient "phx_admin_FixedEncryptionCode";
-} forEach _playersToFix;
-
 // apply the radio changes clientside
-{
-  [{!isNil "phx_admin_FixedEncryptionCode"}, {
-    if (call TFAR_fnc_haveSwRadio) then {
-      [(call TFAR_fnc_activeSwRadio), phx_admin_FixedEncryptionCode] call TFAR_fnc_setSwRadioCode;
-    };
-    if (call TFAR_fnc_haveLRRadio) then {
-      [(call TFAR_fnc_activeLrRadio), phx_admin_FixedEncryptionCode] call TFAR_fnc_setLrRadioCode;
-    };
-    phx_admin_FixedEncryptionCode = nil;
-    diag_log formatText["[FNF] (admin) Fixed Independent side association."];
-  }] call CBA_fnc_waitUntilAndExecute;
-} remoteExecCall ["call", _playersToFix];
+[_fixedEncryptionCode, {
+  if (call TFAR_fnc_haveSwRadio) then {
+    [(call TFAR_fnc_activeSwRadio), _this] call TFAR_fnc_setSwRadioCode;
+  };
+  if (call TFAR_fnc_haveLRRadio) then {
+    [(call TFAR_fnc_activeLrRadio), _this] call TFAR_fnc_setLrRadioCode;
+  };
+  diag_log formatText["[FNF] (admin) Fixed radio codes due to Independent side association change."];
+}] remoteExecCall ["call", _playersToFix];
 
 
 // apply friendlySides changes serverside
@@ -63,9 +55,24 @@ private _enemySide = [west, east] select {_x != _sideFriendly};
 if !(_sideFriendly isEqualTo sideEmpty) then {
   independent setFriend [_sideFriendly, 1];
   _sideFriendly setFriend [independent, 1];
+  [
+    format[
+      "<t align='center'>The Independent faction is now allied with<br/>%1<br/>and hostile to<br/>%2</t>",
+      _sideFriendly call BIS_fnc_sideName,
+      (_enemySide # 0) call BIS_fnc_sideName
+    ],
+    "info",
+    10
+  ] remoteExecCall ["phx_ui_fnc_notify", 0];
+} else {
+  [
+    format[
+      "<t align='center'>The Independent faction is now hostile to BLUFOR and OPFOR.</t>"
+    ],
+    "info",
+    10
+  ] remoteExecCall ["phx_ui_fnc_notify", 0];
 };
-
-phx_admin_FixedEncryptionCode = nil;
 
 (getUserInfo _adminId) params ["_networkId","_owner","_playerUID","_soldierName","_soldierNameInclSquad","_steamProfileName","_clientStateNumber","_isHeadless","_adminState","_netPerf","_playerObject"];
 
@@ -73,8 +80,10 @@ private _out = [];
 _out pushBack format["ACTOR: %1", _soldierName];
 _out pushBack format["ACTION: SetIndforAllegiance"];
 _out pushBack format["Adjusted Independent side association."];
-_out pushBack format["Friendly to %1,", _sideFriendly];
-_out pushBack format["hostile to %4", _enemySide];
+_out pushBack format["Friendly to %1,", _sideFriendly call BIS_fnc_sideName];
+_out pushBack format["hostile to %1", _enemySide apply {_x call BIS_fnc_sideName}];
+
+
 
 [
   "FNF_UIPanelAdmin_ReturnStatus",

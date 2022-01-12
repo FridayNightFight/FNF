@@ -56,16 +56,20 @@ _out pushBack format["ACTION: %1", "SetLoadout"];
 
   if (_continue) then {
     // remoteExec instructions to client
-    [_classToSet] remoteExec ["phx_fnc_applyCfgLoadout", _owner];
+    [_classToSet] remoteExec ["phx_loadout_fnc_applyLoadout", _owner];
     // change loadout var (for selector scripts etc)
     _playerObject setVariable ["phxLoadout", _classToSet, true];
 
     // notify
-    [
-      format["<t align='center'>Loadout manually set to <br/>%1<br/> by an admin.<br/>Performed by %2</t>", _classDisplayName, _admin_soldierName],
-      "warning",
-      10
-    ] remoteExec ["phx_ui_fnc_notify", _owner];
+    [[_classDisplayName, _admin_soldierName], {
+      [{
+        [
+          format["<t align='center'>Loadout manually set to <br/>%1<br/> by an admin.<br/>Performed by %2</t>", _this # 0, _this # 1],
+          "warning",
+          10
+        ] call phx_ui_fnc_notify;
+      }, _this, 2] call CBA_fnc_waitAndExecute;
+    }] remoteExecCall ["call", _owner];
 
     _out pushBack format["SUCCESS: Set loadout %1 on %2", _classToSet, _soldierName];
   };

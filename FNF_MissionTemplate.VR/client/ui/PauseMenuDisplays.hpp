@@ -66,7 +66,7 @@ class PauseMenuSendAdminMsg : RscShortcutButton
 	size = GUI_TEXT_SIZE_MEDIUM;
 	sizeEx = GUI_TEXT_SIZE_MEDIUM;
 };
-class PauseMenuKickPlayer : RscShortcutButton
+class FNF_AdminMenuButton : RscShortcutButton
 {
 	deletable = 0;
 	fade = 0;

@@ -12,8 +12,8 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
   [{
     if (f_var_mission_timer < 0) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
 
-    if (f_var_mission_timer > 0) then {
-      // ["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]] remoteExec ["bis_fnc_showNotification",0,false];
+    if (f_var_mission_timer > 115 && f_var_mission_timer < 124) then {
+      ["SafeStart",["2 minutes remaining."]] remoteExec ["bis_fnc_showNotification",0,false];
     };
 
     f_var_mission_timer = f_var_mission_timer - 10;
