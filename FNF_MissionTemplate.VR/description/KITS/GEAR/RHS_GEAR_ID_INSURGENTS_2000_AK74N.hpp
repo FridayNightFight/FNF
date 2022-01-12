@@ -22,10 +22,10 @@
 #define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_aks74n"
-#define CARBINE_MAG RIFLE_MAG
-#define CARBINE_MAG_RI RIFLE_MAG_RI
-#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_AK:4","rhs_30Rnd_545x39_AK_green:2"
+#define CARBINE "rhs_weap_aks74n_2"
+#define CARBINE_MAG "rhs_30Rnd_545x39_7N6M_plum_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
+#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N6M_plum_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
+#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_plum_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
 
 #define SMG_RIFLE "rhs_weap_aks74u"
 #define SMG_MAG "rhs_30Rnd_545x39_7N6M_AK:9"

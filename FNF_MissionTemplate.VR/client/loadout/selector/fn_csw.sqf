@@ -48,13 +48,13 @@ private _addedMags = [];
 switch (_toLoad) do {
   case _weapon: {
     {
-      [_x, "backpack", player] call phx_fnc_addGear;
+      [_x, "backpack", player] call phx_loadout_fnc_addGear;
       _addedMags pushBack _x;
     } forEach (_totalMags select [_halfMags, count _totalMags - 1]);
   };
   case _tripod: {
     {
-      [_x, "backpack", player] call phx_fnc_addGear;
+      [_x, "backpack", player] call phx_loadout_fnc_addGear;
       _addedMags pushBack _x;
     } forEach (_totalMags select [0, _halfMags]);
   };
@@ -63,7 +63,7 @@ switch (_toLoad) do {
 {
   private _item = _x;
   if (count (items player select {_x == _item}) == 0) then {
-    [_x, "uniform", player] call phx_fnc_addGear;
+    [_x, "uniform", player] call phx_loadout_fnc_addGear;
   };
 } forEach ((missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray);
 

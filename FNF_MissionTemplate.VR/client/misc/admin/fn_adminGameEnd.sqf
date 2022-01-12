@@ -72,7 +72,7 @@ _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
     private _result = [format ["Are you sure you want %1 to win?", _sideWonText], "Confirm", true, true, _parentDisplay] call BIS_fnc_guiMessage;
 
     if (_result) then {
-      [_sideWon] remoteExec ["phx_fnc_endElimination",2];
+      [_sideWon] remoteExec ["phx_server_fnc_endElimination",2];
     };
   };
 }];

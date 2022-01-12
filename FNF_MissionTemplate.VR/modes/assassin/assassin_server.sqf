@@ -210,5 +210,5 @@ phx_fnc_HVTEnd = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  [phx_attackingSide, "has successfully killed all HVTs and won!"] spawn phx_fnc_gameEnd;
+  [phx_attackingSide, "has successfully killed all HVTs and won!"] spawn phx_server_fnc_gameEnd;
 };

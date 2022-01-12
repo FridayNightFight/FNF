@@ -25,7 +25,7 @@ _BriefingIndex = _tree tvAdd [[],"Briefing"];
 _GamemodeIndex = _tree tvAdd [[],"Gamemode"];
 _MissionVarIndex = _tree tvAdd [[],"Mission Variables"];
 
-if (call phx_fnc_clientCanPlay) then {
+if (call phx_client_fnc_canplay) then {
   _MyLoadoutIndex = _tree tvAdd [[],"My Starting Loadout"];
   _MyRadiosIndex = _tree tvAdd [[],"My Starting Radios"];
   _ORBATIndex = _tree tvAdd [[],"ORBAT"];
@@ -111,10 +111,10 @@ _tree ctrlAddEventHandler [ "TreeSelChanged", {
         _data = +phx_ui_structTextRef_AssetsIND;
         _prefix = "INDFOR Assets ";
       };
-      default {
+      case (["Other", _selected] call BIS_fnc_inString): {
         _data = +phx_ui_structTextRef_AssetsOther;
         _prefix = "Other Assets ";
-      }
+      };
     };
   } else {
     if (["Staff Reports ", _selected] call BIS_fnc_inString) then {

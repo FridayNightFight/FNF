@@ -3,9 +3,9 @@
 // put all rifle weapons
 #define RIFLE "rhs_weap_akmn"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_30Rnd_762x39mm_bakelite_89:7","rhs_30Rnd_762x39mm_bakelite_tracer:4"
+#define RIFLE_MAG "rhs_30Rnd_762x39mm_polymer_89:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_bakelite_89:12","rhs_30Rnd_762x39mm_bakelite_tracer:6"
+#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_polymer_89:12","rhs_30Rnd_762x39mm_polymer_tracer:6"
 
 #define SIDEARM "rhs_weap_makarov_pm"
 #define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
@@ -23,9 +23,9 @@
 
 // put all Carbine-style (shorter) weapons
 #define CARBINE "rhs_weap_aks74n_2"
-#define CARBINE_MAG "rhs_30Rnd_545x39_7N6M_AK:7", "rhs_30Rnd_545x39_AK_green:4"
-#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N6M_AK:12", "rhs_30Rnd_545x39_AK_green:6"
-#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_AK:4","rhs_30Rnd_545x39_AK_green:2"
+#define CARBINE_MAG "rhs_30Rnd_545x39_7N6M_plum_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
+#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N6M_plum_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
+#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_plum_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
 
 #define SMG_RIFLE "rhs_weap_pp2000"
 #define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"

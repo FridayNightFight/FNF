@@ -155,7 +155,7 @@ phx_server_dropFlag = {
       ["ctfDefendID", "FAILED", true] call BIS_fnc_taskSetState;
       ["ctfAttackID", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-      [phx_attackingSide, "has successfully captured and held the flag!"] spawn phx_fnc_gameEnd;
+      [phx_attackingSide, "has successfully captured and held the flag!"] spawn phx_server_fnc_gameEnd;
     };
 
     if (phx_flagCaptureTime > 0 && (ctf_flag inArea ctf_attackTrig) && (isNull attachedTo ctf_flag)) then {

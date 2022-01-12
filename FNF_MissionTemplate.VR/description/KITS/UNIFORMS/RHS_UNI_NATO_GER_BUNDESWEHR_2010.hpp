@@ -10,9 +10,9 @@
 #define VEST_PILOT VEST
 
 #define HELMET "rhsgref_helmet_pasgt_flecktarn"
-#define HELMET_CMDR "H_Beret_02"
+#define HELMET_CMDR "rhsgref_hat_m43cap_heer"
 #define HELMET_RECON "rhsusf_Bowman"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
+#define HELMET_CREWMAN "H_HelmetCrew_I"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
 #define BACKPACK "B_TacticalPack_blk"

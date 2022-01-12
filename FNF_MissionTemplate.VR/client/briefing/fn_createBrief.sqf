@@ -1,3 +1,22 @@
+/*
+* Author: IndigoFox, Martin
+*
+* Description:
+* Primary entry point for players to generate briefing notes. Creates diary subjects and fills w/ appropriate records.
+*
+* Arguments:
+* /NONE/
+*
+* Return Value:
+* true on success <BOOLEAN>
+*
+* Example:
+* call phx_briefing_fnc_createBrief;
+*
+* Public: No
+*/
+
+
 ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa"];
 
 // colors: https://imgur.com/a/AfimbU2
@@ -7,171 +26,16 @@ ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\
 #define COLOR4 "#008394"
 #define COLOR5 "#1BCAE0"
 
+
+// remove existing addon entries
+[{player diarySubjectExists "Radio"}, {player removeDiarySubject "Radio"}] call cba_fnc_waitUntilAndExecute;
+[{player diarySubjectExists "cba_help_docs"}, {player removeDiarySubject "cba_help_docs"}] call cba_fnc_waitUntilAndExecute;
+
 _getName = {
   if (_this isEqualTo "") exitWith {""};
   getText (configFile >> "cfgWeapons" >> _this >> "displayName");
 };
 
-fnc_getItemInfo = {
-  private _thisCfg = _this call CBA_fnc_getItemConfig;
-  private _dispName = [_thisCfg] call BIS_fnc_displayName;
-  private _desc = getText(_thisCfg >> "descriptionShort");
-  private _pic = (_thisCfg >> "picture") call BIS_fnc_getCfgData;
-  [
-    ["config",_thisCfg],
-    ["displayName",_dispName],
-    ["description",_desc],
-    ["picture",_pic]
-  ]
-};
-
-_fnc_parseMATForBriefing = {
-  params ["_side", "_bravoOption", "_deltaOption", ["_structText", false]];
-
-  private "_gearLoadout";
-  switch (_side) do {
-    case east: {_gearLoadout = phx_opforGear};
-    case west: {_gearLoadout = phx_bluforGear};
-    case independent: {_gearLoadout = phx_indforGear};
-  };
-
-  private _textOut = [];
-  {
-    _x params ["_setting", "_role"];
-
-    private "_MATData";
-
-    // "debug_console" callExtension str(_x);
-    if (count _setting > 0) then {
-      if (_setting # 0 isEqualTo "GEARDEFAULT") then {
-        // "debug_console" callExtension str([_gearLoadout,_role,phx_bluAT_Bravo]);
-        _MATData = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
-        //  "debug_console" callExtension str(_data);
-        // _textOut pushBack (_data # 0);
-      } else {
-        _MATData = _setting;
-        // _textOut pushBack (_setting # 0);
-      };
-    } else {
-      _textOut pushBack "";
-    };
-
-    // "debug_console" callExtension str(_x);
-    // "debug_console" callExtension str(_MATData);
-
-    _MATData params ["_launcher", "_ammo", "_optics", "_type"];
-    private _launcherInfo = _launcher call fnc_getItemInfo;
-
-    if (!_structText) then {
-      _textOut pushBack format [
-        "%1 %2: <font color='" + COLOR3 + "'>%3</font><br/><img width='120' image='%4'/><br/>%5<br/>%6",
-        _side call BIS_fnc_sideName,
-        _role,
-        [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
-        [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call phx_fnc_notesItems]} else {""}),
-        [_launcherInfo, "description"] call BIS_fnc_getFromPairs
-      ] + "<br/><br/>";
-    } else {
-      _textOut pushBack format [
-        "%1 %2: <t color='" + COLOR3 + "'>%3</t><br/><img size='4' image='%4'/><br/>%5<br/>",
-        _side call BIS_fnc_sideName,
-        _role,
-        [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
-        [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true, true] call phx_fnc_notesItems]} else {""}),
-        [_launcherInfo, "description"] call BIS_fnc_getFromPairs
-      ];
-    };
-
-  } forEach [
-    [_bravoOption, "MAT1"],
-    [_deltaOption, "MAT2"]
-  ];
-
-  _textOut joinString "<br/>"
-};
-
-
-_fnc_parseCSWForBriefing = {
-  params ["_side", ["_structText", false]];
-
-  private _sideStr = str(_side);
-  private _squads = ["Alpha", "Bravo", "Charlie", "Delta"];
-  private _textOut = [];
-  {
-    private _setting = _x;
-    if (_x isEqualTo 0 || typeName _x != "ARRAY") then {
-      if (!_structText) then {
-        _textOut pushBack format["<font size='16' color='" + COLOR5 + "'>%1</font><br/>    Crewmen", _squads select _forEachIndex];
-      } else {
-        _textOut pushBack format["<t size='1.4' color='" + COLOR5 + "'>%1</t><br/>    Crewmen", _squads select _forEachIndex];
-      };
-    } else {
-      if (count _setting > 0) then {
-        private _cswPrimaryInfo = (_setting # 0) call fnc_getItemInfo;
-
-        private _mags = [];
-        {
-          _mags pushBack ([_x, true] call phx_fnc_notesItems);
-        } forEach (_setting select {typeName _x == "ARRAY"});
-
-        private _cswSecondaryName = "Ammo only";
-        if (_setting # 1 != "") then {
-          private _temp = (_setting # 1) call fnc_getItemInfo;
-          _cswSecondaryName = [_temp, "displayName"] call BIS_fnc_getFromPairs;
-        };
-
-        if (!_structText) then {
-          _textOut pushBack format [
-            "<font size='16' color='" + COLOR5 + "'>%2</font><br/>    <font color='" + COLOR3 + "'>%3</font><br/>    <img width='120' image='%4'/><br/>    + %5<br/>    + %6",
-            _side call BIS_fnc_sideName,
-            _squads select _forEachIndex,
-            [_cswPrimaryInfo, "displayName"] call BIS_fnc_getFromPairs,
-            [_cswPrimaryInfo, "picture"] call BIS_fnc_getFromPairs,
-            _cswSecondaryName,
-            _mags joinString " "
-          ];
-        } else {
-          _textOut pushBack format [
-            "<t size='1.4' color='" + COLOR5 + "'>%2</t><br/>    <t color='" + COLOR3 + "'>%3</t><br/>    <img width='120' image='%4'/><br/>    + %5<br/>    + %6",
-            _side call BIS_fnc_sideName,
-            _squads select _forEachIndex,
-            [_cswPrimaryInfo, "displayName"] call BIS_fnc_getFromPairs,
-            [_cswPrimaryInfo, "picture"] call BIS_fnc_getFromPairs,
-            _cswSecondaryName,
-            _mags joinString " "
-          ];
-        };
-      };
-    };
-  } forEach [
-    missionNamespace getVariable [format["phx_%1AlphaAuxRole",_sideStr], 0],
-    missionNamespace getVariable [format["phx_%1BravoAuxRole",_sideStr], 0],
-    missionNamespace getVariable [format["phx_%1CharlieAuxRole",_sideStr], 0],
-    missionNamespace getVariable [format["phx_%1DeltaAuxRole",_sideStr], 0]
-  ];
-
-  _textOut pushBack "<br/>";
-  _textOut joinString "<br/>"
-};
-
-
-phx_safetyEndExpression = {
-  [] spawn {
-    private _result = true;
-
-    if (!isServer) then {
-      _result = ["Are you sure you want to end safestart?", "Confirm", true, true] call BIS_fnc_guiMessage;
-    };
-
-    if (_result) then {
-      f_var_mission_timer = -1;
-      publicVariableServer "f_var_mission_timer";
-      systemChat "Ending Safe Start";
-    };
-  };
-};
 
 //Admin end start trigger
 // if (serverCommandAvailable "#kick") then {
@@ -181,7 +45,7 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
   //display template version
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin",format ["Template Version: %1", phx_templateVersion]]];
   //end safety
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call phx_safetyEndExpression'>End Safe Start</execute>"]];
+  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call phx_admin_fnc_safetyEndExpression'>End Safe Start</execute>"]];
 
   //-1 minute to safety
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
@@ -215,7 +79,7 @@ _varStrStruct = [];
 //show blufor uniform and headgear if side is present
 if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" || !isNil "phx_briefing_west_uniformMeta" && !isNil "phx_briefing_west_loadout") then {
 
-  _MATDataString = _MATDataString + ([west, phx_bluAT_Bravo, phx_bluAT_Delta] call _fnc_parseMATForBriefing) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([west, phx_bluAT_Bravo, phx_bluAT_Delta] call phx_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show BLUFOR loadout
   phx_briefing_loadoutBLU = {
@@ -223,13 +87,13 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" ||
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_west_headgear;
     {
-      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_west_vest;
     {
-      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_west_uniform;
 
     private _meta = +phx_briefing_west_uniformMeta;
@@ -238,7 +102,7 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" ||
       "Diary",
       [
         "BLUFOR CSW Settings",
-        [west] call _fnc_parseCSWForBriefing
+        [west] call phx_briefing_fnc_parseCSW
       ]
     ];
 
@@ -249,7 +113,7 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" ||
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
           phx_briefing_west_loadout # 0 # 0,
-          [phx_briefing_west_loadout] call phx_fnc_briefingParseLoadout
+          [phx_briefing_west_loadout] call phx_briefing_fnc_parseLoadout
         ]
       ]
     ];
@@ -281,7 +145,7 @@ Author: %6<br/><br/>
 //show opfor uniform and headgear if side is present
 if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" || !isNil "phx_briefing_east_uniformMeta" && !isNil "phx_briefing_east_loadout") then {
 
-  _MATDataString = _MATDataString + ([east, phx_redAT_Bravo, phx_redAT_Delta] call _fnc_parseMATForBriefing) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([east, phx_redAT_Bravo, phx_redAT_Delta] call phx_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show OPFOR loadout
   phx_briefing_loadoutOPF = {
@@ -289,13 +153,13 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_east_headgear;
     {
-      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_east_vest;
     {
-      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_east_uniform;
 
     private _meta = +phx_briefing_east_uniformMeta;
@@ -304,7 +168,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
       "Diary",
       [
         "OPFOR CSW Settings",
-        [east] call _fnc_parseCSWForBriefing
+        [east] call phx_briefing_fnc_parseCSW
       ]
     ];
 
@@ -315,7 +179,7 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
           phx_briefing_east_loadout # 0 # 0,
-          [phx_briefing_east_loadout] call phx_fnc_briefingParseLoadout
+          [phx_briefing_east_loadout] call phx_briefing_fnc_parseLoadout
         ]
       ]
     ];
@@ -347,7 +211,7 @@ Author: %6<br/><br/>
 //show indfor uniform and headgear if side is present
 if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !isNil "phx_briefing_ind_uniformMeta" && !isNil "phx_briefing_ind_loadout") then {
 
-  _MATDataString = _MATDataString + ([independent, phx_grnAT_Bravo, phx_grnAT_Delta] call _fnc_parseMATForBriefing) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([independent, phx_grnAT_Bravo, phx_grnAT_Delta] call phx_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show INDFOR loadout
   phx_briefing_loadoutIND = {
@@ -355,13 +219,13 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_ind_headgear;
     {
-      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_ind_vest;
     {
-      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
     } forEach phx_briefing_ind_uniform;
 
     private _meta = +phx_briefing_ind_uniformMeta;
@@ -369,8 +233,8 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
     player createDiaryRecord [
       "Diary",
       [
-        "BLUFOR CSW Settings",
-        [independent] call _fnc_parseCSWForBriefing
+        "INDFOR CSW Settings",
+        [independent] call phx_briefing_fnc_parseCSW
       ]
     ];
 
@@ -381,7 +245,7 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
           phx_briefing_ind_loadout # 0 # 0,
-          [phx_briefing_ind_loadout] call phx_fnc_briefingParseLoadout
+          [phx_briefing_ind_loadout] call phx_briefing_fnc_parseLoadout
         ]
       ]
     ];
@@ -684,7 +548,7 @@ phx_briefing_MMNotes = {
 };
 
 
-call phx_fnc_briefNews;
+call phx_briefing_fnc_news;
 
 PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
 player createDiaryRecord [
@@ -733,12 +597,12 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
 }, {
   params ["_varStr"];
   call phx_briefing_startingRadios;
-  [false] call phx_fnc_briefingGear;
+  [false] call phx_briefing_fnc_parseGear;
   player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
   call phx_briefing_MMNotes;
-  call phx_fnc_createOrbat;
+  call phx_briefing_fnc_createOrbat;
   [{
-    [] spawn phx_fnc_createOrbat;
+    [] spawn phx_briefing_fnc_createOrbat;
     if (getClientStateNumber >= 10) then {[_handle] call CBA_fnc_removePerFrameHandler};
   }, 7] call CBA_fnc_addPerFrameHandler;
 
@@ -757,6 +621,7 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
 //   ]
 // ];
 
-//call phx_fnc_objectiveRecon;
+//call phx_briefing_fnc_objectiveRecon;
 
-phx_briefCreated = true; //let phx_fnc_briefInit know the briefing is created
+phx_briefCreated = true; //let phx_briefing_fnc_init know the briefing is created
+true
