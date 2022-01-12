@@ -3,14 +3,14 @@
  * Function used to handle random damage on vehicle destruction
  * for FNF
  *
- * Params: 
+ * Params:
  * 0: vehicle <OBJECT>
  *
  * Return value:
  * N/A
  *
- * Usage: 
- * [vehicle] spawn PHX_fnc_handleDamage
+ * Usage:
+ * [vehicle] spawn phx_server_fnc_handleDamage
  *
  * Public: no
  */
@@ -35,7 +35,7 @@ if !(isServer) exitWith {};
 			diag_log format ["Vehicle DEBUG: %1 damage added to %2's %3 with a %4 value with _kill set to %5",_type,(name player),_bodypart,_damage,_kill];
 			[_x, _damage, _bodyPart, _type] call ace_medical_fnc_addDamageToUnit;
 		};
-		
+
 		uiSleep 1;
 		[{abs (speed _this) < 1}, {
 		  {moveOut _x} forEach (crew _this);

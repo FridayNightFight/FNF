@@ -48,7 +48,7 @@ if (!_missing) then {
 
   {
     if (_forEachIndex != 0) then {
-      _x call phx_fnc_addGear;
+      _x call phx_loadout_fnc_addGear;
     };
   } forEach _expArr;
 

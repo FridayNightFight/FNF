@@ -8,7 +8,7 @@ if (CBA_missionTime > 30 || count (call BIS_fnc_listPlayers) < 60) exitWith {phx
 
 phx_staggeredLoaded = false;
 phx_screenBlack = false;
-private _time = 10 + (random 15); //keep this below 30 for phx_fnc_checkLoadout
+private _time = 10 + (random 15); //keep this below 30 for phx_loadout_fnc_checkLoadout
 player enableSimulation false;
 
 [{time > 0}, {

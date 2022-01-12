@@ -1,6 +1,28 @@
+/*
+* Author: Martin, IndigoFox
+*
+* Description:
+* Parses configs to determine relevant MAT settings based on someone's role and squad.
+* Sets missionNamespace variables w/ relevant data, no meaningful return.
+*
+* Arguments:
+* 0: Loadout role to evaluate for (default: "BASE") <STRING>
+*
+* Return Value:
+* true on success <BOOLEAN>
+* nil on failure with warning <NIL>
+*
+* Example:
+* "FirstAidKit" call phx_loadout_fnc_addGear;
+* "FirstAidKit:5" call phx_loadout_fnc_addGear;
+* ["FirstAidKit:3","ItemMap","ItemCompass"] call phx_loadout_fnc_addGear;
+*
+* Public: Yes
+*/
+
 /*Sets the MAT weapon and ammo class*/
 
-params ["_LOADOUTROLE"];
+params [["_LOADOUTROLE", "BASE"]];
 #define PLAYERLOADOUTVAR _LOADOUTROLE
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
@@ -74,3 +96,5 @@ if (count _at > 3) then {
     case "DISPOSABLE": {phx_loadout_mediumantitank_isReloadable = false};
   };
 };
+
+true

@@ -90,4 +90,4 @@ missionNamespace setVariable ["phx_radiosSet", true];
     [(call TFAR_fnc_activeLrRadio), true] call TFAR_fnc_showRadioInfo;
   };
 };
-// call phx_fnc_radio_cleanup;
+// call phx_radio_fnc_cleanup;

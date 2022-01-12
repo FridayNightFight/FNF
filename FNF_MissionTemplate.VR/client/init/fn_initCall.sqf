@@ -1,3 +1,21 @@
+/*
+* Author: Martin, IndigoFox
+*
+* Description:
+* Initializes client init scripts when the server has completed game setup and safety is defined. Called postInit.
+*
+* Arguments:
+* <NONE>
+*
+* Return Value:
+* <NIL>
+*
+* Example:
+* call phx_client_fnc_initCall
+*
+* Public: No
+*/
+
 if (!hasInterface) exitWith {};
 
 if (!isMultiplayer) exitWith {
@@ -27,5 +45,5 @@ if ([west, independent] call BIS_fnc_sideIsFriendly && [east, independent] call 
 };
 
 [{!isNil "phx_serverGameSetup" && !isNil "phx_safetyEnabled"},{
-  phx_fnc_clientInit call CBA_fnc_directCall;
+  phx_client_fnc_init call CBA_fnc_directCall;
 }] call CBA_fnc_waitUntilAndExecute;

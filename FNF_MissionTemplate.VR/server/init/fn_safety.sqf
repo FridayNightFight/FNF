@@ -6,7 +6,7 @@ missionNamespace setVariable ["phx_safetyEnabled",true,true];
 f_var_mission_timer = phx_safeStartTime * 60 + 10;
 missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
-call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
+call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
 [{time > 1}, {
   [{
@@ -27,7 +27,7 @@ call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
     ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
     ["off"] call acex_fortify_fnc_handleChatCommand;
 
-    [] call phx_fnc_webhook_roundStart;
+    [] call phx_server_fnc_webhook_roundStart;
 
     {
         if !(getMarkerColor _x isEqualTo "") then {
@@ -38,7 +38,7 @@ call phx_fnc_handleSafetyVics; //Make vehicles invincible until safety ends
 
     [] spawn {
         uiSleep 300;
-        call phx_fnc_lockVehicles;
+        call phx_server_fnc_lockVehicles;
         {
             if !(getMarkerColor _x isEqualTo "") then {
                 deleteMarkerLocal _x;

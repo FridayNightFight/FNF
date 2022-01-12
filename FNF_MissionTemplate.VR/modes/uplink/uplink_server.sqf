@@ -260,6 +260,6 @@ while {!phx_gameEnd} do {
     phx_gameEnd = true;
     publicVariable "phx_gameEnd";
 
-    [phx_attackingSide, "has successfully hacked all objectives and won!"] spawn phx_fnc_gameEnd;
+    [phx_attackingSide, "has successfully hacked all objectives and won!"] spawn phx_server_fnc_gameEnd;
   };
 };

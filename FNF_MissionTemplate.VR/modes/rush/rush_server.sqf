@@ -197,7 +197,7 @@ _win = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  [phx_attackingSide, "has successfully hacked all terminals and won!"] spawn phx_fnc_gameEnd;
+  [phx_attackingSide, "has successfully hacked all terminals and won!"] spawn phx_server_fnc_gameEnd;
 };
 
 [phx_defendingSide,"defendTask1",[format ["%1 second hack time",phx_term1Time],"Defend the data terminal","term1Mark"],term1,"AUTOASSIGNED"] call BIS_fnc_taskCreate;

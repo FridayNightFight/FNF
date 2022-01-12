@@ -13,13 +13,13 @@ missionNamespace setVariable [
 
 estimatedTimeLeft (60 * (phx_safeStartTime + phx_missionTimeLimit));
 
-call phx_fnc_serverSafety;
-call phx_fnc_setGroupIDs;
-call phx_fnc_radio_genFreqs;
-call phx_fnc_sendUniforms;
-call phx_fnc_fortifyServer;
+call phx_server_fnc_safety;
+call phx_briefing_fnc_setGroupIDs;
+call phx_server_fnc_genRadioFreqs;
+call phx_server_fnc_sendUniforms;
+call phx_server_fnc_fortifyServer;
+call phx_server_fnc_markCustomObjs;
 
-call phx_fnc_markCustomObjs;
 // after custom building markers are up, recreate safe markers so they're on top and visible
 [{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {
   {
@@ -31,17 +31,16 @@ call phx_fnc_markCustomObjs;
   } forEach ["bluforSafeMarker", "opforSafeMarker", "indforSafeMarker"];
 }] call CBA_fnc_waitUntilAndExecute;
 
-call phx_fnc_server_setupGame;
-call phx_admin_fnc_adminPatch;
-call phx_fnc_webhook_roundPrep;
+call phx_server_fnc_setupGame;
+call phx_server_fnc_webhook_roundPrep;
 
-call phx_fnc_populateORBATs;
-call phx_fnc_keyVehicles;
-call phx_fnc_vehicleRadios;
+call phx_server_fnc_populateORBATS;
+call phx_server_fnc_keyVehicles;
+call phx_server_fnc_vehicleRadios;
 
 
-[{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
+[{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "phx_safetyEndTime"}, {call phx_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;
@@ -169,7 +168,7 @@ addMissionEventHandler ["PlayerConnected", {
     [{
       params [["_unit", objNull], ["_sides", [sideUnknown]]];
       {
-        [] remoteExec ["phx_fnc_createOrbat", units _x];
+        [] remoteExec ["phx_briefing_fnc_createOrbat", units _x];
       } forEach _sides;
     }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
   }, _this] call CBA_fnc_waitUntilAndExecute;
@@ -184,7 +183,7 @@ addMissionEventHandler ["PlayerDisconnected", {
   [{
     params [["_unit", objNull], ["_sides", [sideUnknown]]];
     {
-      [] remoteExec ["phx_fnc_createOrbat", units _x];
+      [] remoteExec ["phx_briefing_fnc_createOrbat", units _x];
     } forEach _sides;
   }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
 }];

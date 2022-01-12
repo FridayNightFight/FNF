@@ -1,3 +1,25 @@
+/*
+* Author: IndigoFox
+* Used to prepare a string (diary) or structured text (ui) object that displays a small icon representing each unique item
+* with a count of how many are provided (optional). In the diary, the number is clickable and
+* will locally systemChat the display name of the item.
+*
+* Arguments:
+* 0: The items to represent in the format "itemClassname:count" <ARRAY> of <STRING>
+* 1: (optional) Whether to display the count of each unique item <BOOLEAN> (default: true)
+* 2: (optional) Whether to return diary-compatible STRING or UI-compatible Structured Text <BOOLEAN> (default: false, returns diary string)
+*
+* Return Value:
+* <STRING> or <Structured Text>
+*
+* Example:
+* [["FirstAidKit:5","ACE_MapTools","ACE_CableTie:2"]] call phx_briefing_fnc_notesItems;
+* "<img height='30' image='\A3\Weapons_F\Items\data\UI\gear_FirstAidKit_CA.paa'/><execute expression='systemChat ""First Aid Kit"";'>x5</execute><img height='30' image='\z\ace\addons\captives\UI\ace_cabletie_ca.paa'/><execute expression='systemChat ""Cable Tie"";'>x2</execute>"
+*
+*
+* Public: No
+*/
+
 params [
   "_items",
   ["_showCount", true],
@@ -12,6 +34,8 @@ private _parseArr = [];
     for "_i" from 1 to _numToAdd do {
       _parseArr pushBack _item;
     };
+  } else {
+    _parseArr pushBack _item;
   };
 } forEach _items;
 

@@ -11,7 +11,7 @@ respawnTemplates[] = {};
 joinUnassigned = 1;
 
 onPauseScript[] = {\
-    phx_fnc_removeRespawnButton,\
+    phx_restrictions_fnc_removeRespawnButton,\
     phx_fnc_addStaffContactButton,\
     phx_admin_fnc_adminGameEnd,\
     phx_admin_fnc_addAdminKickButton\

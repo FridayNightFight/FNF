@@ -11,7 +11,7 @@ _endGame = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  [phx_defendingSide, _msg] spawn phx_fnc_gameEnd;
+  [phx_defendingSide, _msg] spawn phx_server_fnc_gameEnd;
 };
 
 switch (true) do {
@@ -187,7 +187,7 @@ switch (true) do {
 
         phx_gameEnd = true;
         publicVariable "phx_gameEnd";
-        [_highSide, "wins to mission time limit!"] spawn phx_fnc_gameEnd;
+        [_highSide, "wins to mission time limit!"] spawn phx_server_fnc_gameEnd;
       } else {
         if (!_overTimeAlert) then {
           // "Overtime enabled! \n The first side to hit 100 points or a 20 point lead will win." remoteExec ["hint"];
@@ -211,12 +211,12 @@ switch (true) do {
 
       private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
 
-      [_winData # 0, format["%1 won Scavenger Hunt in overtime by holding %2 items!", str(_winData # 0), _winData # 1]] spawn phx_fnc_gameEnd;
+      [_winData # 0, format["%1 won Scavenger Hunt in overtime by holding %2 items!", str(_winData # 0), _winData # 1]] spawn phx_server_fnc_gameEnd;
     } else {
       phx_gameEnd = true;
       publicVariable "phx_gameEnd";
       private _winData = ((call phx_scavHuntCheckScores) toArray false) select 0;
-      [_winData # 0, format["%1 won by holding %2 items!", (_winData # 0) call BIS_fnc_sideName, _winData # 1]] spawn phx_fnc_gameEnd;
+      [_winData # 0, format["%1 won by holding %2 items!", (_winData # 0) call BIS_fnc_sideName, _winData # 1]] spawn phx_server_fnc_gameEnd;
     };
   };
 };

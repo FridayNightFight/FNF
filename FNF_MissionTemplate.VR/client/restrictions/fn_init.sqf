@@ -1,12 +1,12 @@
-call phx_fnc_disableMisc;
-call phx_fnc_zoneBoundary;
-call phx_fnc_startBoundary;
-call phx_fnc_restrictGamma;
+call phx_restrictions_fnc_disableMisc;
+call phx_restrictions_fnc_zoneBoundary;
+call phx_restrictions_fnc_startBoundary;
+call phx_restrictions_fnc_restrictGamma;
 
 //Uniform and etool restrictions
-[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_restrictUniform; call phx_fnc_restrictETool;}] call CBA_fnc_waitUntilAndExecute;
+[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_restrictions_fnc_restrictUniform; call phx_restrictions_fnc_restrictETool;}] call CBA_fnc_waitUntilAndExecute;
 
-//[{!phx_safetyEnabled && !isNull (findDisplay 46)}, {call phx_fnc_afkCheck}] call CBA_fnc_waitUntilAndExecute;
+//[{!phx_safetyEnabled && !isNull (findDisplay 46)}, {call phx_restrictions_fnc_afkCheck}] call CBA_fnc_waitUntilAndExecute;
 
 //Set TFAR volume to whisper
 TF_speak_volume_level = "whispering";

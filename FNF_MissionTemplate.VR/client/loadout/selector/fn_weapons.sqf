@@ -43,13 +43,13 @@ _fnc_hintDetails = {
 
 
 if (isNil "_mags") then {_mags = phx_loadout_weaponMagazines};
-_mags = [_mags, _weapon] call fnc_getWeaponMagazines;
+_mags = [_mags, _weapon] call phx_loadout_fnc_getWeaponMagazines;
 
 if (_weapon == primaryWeapon player) exitWith {};
 
 {
   player removePrimaryWeaponItem _x;
-  [_x, "vest", player] call phx_fnc_addGear;
+  [_x, "vest", player] call phx_loadout_fnc_addGear;
 } forEach primaryWeaponMagazine player;
 
 private _weaponItems = primaryWeaponItems player;
@@ -82,7 +82,7 @@ if (!_allOldMagsPresent) exitWith {hint "Missing magazines"};
 
 {player removeMagazines _x} forEach (_oldMags apply {_x # 0});
 
-{[_x, "vest", player] call phx_fnc_addGear} forEach _mags;
+{[_x, "vest", player] call phx_loadout_fnc_addGear} forEach _mags;
 player addWeapon _weapon;
 
 phx_loadout_weaponMagazines = _mags;
@@ -95,7 +95,6 @@ phx_loadout_weaponMagazines = _mags;
 if !((player getVariable ["phx_chosenOptic",""]) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)) then {
   player setVariable ["phx_chosenOptic", ""];
 };
-
 
 if ((player getVariable "phxLoadout") == "RIS") then {
   // add silencer if avail
