@@ -23,9 +23,9 @@
 
 // put all Carbine-style (shorter) weapons
 #define CARBINE "rhs_weap_aks74n_2"
-#define CARBINE_MAG "rhs_30Rnd_545x39_7N6M_plum_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
-#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N6M_plum_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
-#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_plum_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
+#define CARBINE_MAG "rhs_30Rnd_545x39_7N10_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
+#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
+#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
 
 #define SMG_RIFLE "rhs_weap_aks74u"
 #define SMG_MAG "rhs_30Rnd_545x39_7N6M_AK:9"
