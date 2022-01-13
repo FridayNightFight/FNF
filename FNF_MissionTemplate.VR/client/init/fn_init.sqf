@@ -120,7 +120,7 @@ call phx_fnc_teleportInit; // Add leadership teleport options
 //Client-side fortify, and gear selector
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
   call phx_fnc_fortifyClient;
-  call phx_selector_fnc_init;
+  // call phx_selector_fnc_init;
   player enableSimulation true;
 }] call CBA_fnc_waitUntilAndExecute;
 
