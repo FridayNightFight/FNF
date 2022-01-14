@@ -13,7 +13,9 @@
 
   phx_adminChannelId radioChannelAdd [player];
   (5 + phx_adminChannelId) enableChannel [true, false];
-  PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_MessageLog", "STAFF - Reports", getMissionPath "description\images\fnfsmall.paa"];
+  phx_briefing_fnc_adminDiary = {
+    PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_MessageLog", "STAFF - Reports", getMissionPath "description\images\fnfsmall.paa"];
+  };
   phx_adminChannelId radioChannelSetCallSign "NOTICE:";
   player customChat [phx_adminChannelId, "Administrative channel initialized. Listening for user reports."];
   phx_adminChannelId radioChannelSetCallSign "[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME";
