@@ -144,8 +144,9 @@ if !(phx_gameMode isEqualTo "assassin") then {
 };
 
 
-
+"debug_console" callExtension "passed delete process setupgame";
 if (phx_gameMode == "sustainedAssault") then {
+  "debug_console" callExtension "enter SA setupgame";
   call phx_server_fnc_ambientFlyby;
 
   phx_safeZone_BLUFOR_marker = ["safeZone_BLUFOR_marker", safeZone_BLUFOR] call BIS_fnc_markerToTrigger;

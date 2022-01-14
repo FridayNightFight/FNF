@@ -48,12 +48,12 @@ call phx_client_fnc_setupGame; //Client portion of game modes
   call phx_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
   call phx_briefing_fnc_init; //Briefing
   call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
+  call phx_briefing_fnc_assetDiary; // Add diary entries for assets
 }] call CBA_fnc_waitUntilAndExecute;
 call phx_safety_fnc_init; //Enable safety
 call phx_client_fnc_staggeredLoad; //Start staggered load timer
 call phx_radio_fnc_waitGear; //Start radio preset functions
 call phx_fnc_contactStaffInit; // Init handling for player reports
-call phx_briefing_fnc_assetDiary; // Add diary entries for assets
 
 [{missionNamespace getVariable ["phx_briefCreated", false]}, {
   call phx_briefing_fnc_assetDiaryStruct; // Prep global vars for UI info panel
@@ -147,12 +147,7 @@ if !(phx_gameMode == "sustainedAssault") then {
       ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
     };
   }];
-};
-
-if (phx_gameMode == "sustainedAssault") then {
-  [{getClientStateNumber > 8}, {
-    player removeDiarySubject "BIS_fnc_moduleMPTypeSectorControl";
-  }] call CBA_fnc_waitUntilAndExecute;
+} else {
   player setVariable ["ACE_canMoveRallypoint", false, true];
 };
 

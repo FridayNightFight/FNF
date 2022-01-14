@@ -97,16 +97,15 @@ if (!isNil "phx_ch9") then {_structStartingRadios pushBack ("Channel 9: " + str(
 
 //Let player know what channels he starts on.
 // PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
-if (isNil "phx_radioNoteString") then {
-  phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
+phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
 
-  phx_briefing_startingRadios = {
-    player createDiaryRecord ["Diary", ["My Radio Settings", phx_radioNoteString]];
-  };
-
-  _structStartingRadios pushBack ("<br/>Main Channel (left ear): <t color='#90ee90'>CH " + str(phx_curChan) + "</t><br/>Alt. Channel (right ear): <t color='#90ee90'>CH " + str(phx_altChan) + "</t>");
-  [phx_ui_structTextRef, "My Starting Radios", _structStartingRadios joinString ""] call BIS_fnc_setToPairs;
+phx_briefing_startingRadios = {
+  player createDiaryRecord ["Diary", ["My Radio Settings", phx_radioNoteString]];
 };
+
+_structStartingRadios pushBack ("<br/>Main Channel (left ear): <t color='#90ee90'>CH " + str(phx_curChan) + "</t><br/>Alt. Channel (right ear): <t color='#90ee90'>CH " + str(phx_altChan) + "</t>");
+[phx_ui_structTextRef, "My Starting Radios", _structStartingRadios joinString ""] call BIS_fnc_setToPairs;
+
 
 //Next step - wait for loadout
 [{!isNil "phx_hasSW" && !isNil "phx_hasLR" && call TFAR_fnc_isAbleToUseRadio}, {

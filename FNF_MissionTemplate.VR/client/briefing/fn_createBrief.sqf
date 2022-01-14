@@ -606,9 +606,21 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
     if (getClientStateNumber >= 10) then {[_handle] call CBA_fnc_removePerFrameHandler};
   }, 7] call CBA_fnc_addPerFrameHandler;
 
-  private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
-  private _briefingEntryCount = _briefingEntry # 0 # 3;
-  player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
+  if (phx_gameMode == "sustainedAssault") then {
+    [{player diarySubjectExists "BIS_fnc_moduleMPTypeSectorControl"}, {
+      [] spawn {
+        uiSleep 0.5;
+        player removeDiarySubject "BIS_fnc_moduleMPTypeSectorControl";
+        private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
+        private _briefingEntryCount = _briefingEntry # 0 # 3;
+        player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
+      };
+    }] call CBA_fnc_waitUntilAndExecute;
+  } else {
+    private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
+    private _briefingEntryCount = _briefingEntry # 0 # 3;
+    player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
+  };
 },[_varStr]] call CBA_fnc_waitUntilAndExecute;
 
 

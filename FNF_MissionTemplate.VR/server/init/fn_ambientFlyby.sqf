@@ -1,3 +1,14 @@
+
+
+#define BOTTOM_LEFT (markerPos "ambient_helispawn_1")
+#define TOP_LEFT (markerPos "ambient_helispawn_2")
+#define TOP_RIGHT (markerPos "ambient_helispawn_3")
+#define BOTTOM_RIGHT (markerPos "ambient_helispawn_4")
+
+{
+  _x setMarkerAlpha 0;
+} forEach (["ambient_helispawn_"] call BIS_fnc_getMarkers);
+
 private _airGroups = [];
 
 if (["VN_UNI_", phx_bluforUniform] call BIS_fnc_inString) then {
@@ -38,70 +49,66 @@ if (["VN_UNI_", phx_bluforUniform] call BIS_fnc_inString) then {
 };
 
 
-#define BOTTOM_LEFT (markerPos "ambient_helispawn_1")
-#define TOP_LEFT (markerPos "ambient_helispawn_2")
-#define TOP_RIGHT (markerPos "ambient_helispawn_3")
-#define BOTTOM_RIGHT (markerPos "ambient_helispawn_4")
-
 fnf_ambient_randomFlyby = [{
-  _args spawn {
-    params ["_cfgGroups","_paths"];
-    selectRandom(_paths) params ["_startPos","_endPos"];
+    _args spawn {
+      params ["_cfgGroups","_paths"];
+      selectRandom(_paths) params ["_startPos","_endPos"];
 
-  if !(["VN_UNI_", phx_bluforUniform] call BIS_fnc_inString) then {
-    // MODERN
-    {
-      [_startPos, _endPos, random(50) + 100, "NORMAL", _x, independent] call BIS_fnc_ambientFlyby;
-      sleep 1;
-    } forEach selectRandom(_cfgGroups);
-    {_x allowDamage false} forEach (units independent);
+    if !(["VN_UNI_", phx_bluforUniform] call BIS_fnc_inString) then {
+      // MODERN
+      {
+        [_startPos, _endPos, random(50) + 100, "NORMAL", _x, independent] call BIS_fnc_ambientFlyby;
+        sleep 1;
+      } forEach selectRandom(_cfgGroups);
+      {_x allowDamage false} forEach (units independent);
 
-  } else {
-    // VIETNAM / CfgGroups
-    _startPos set [2,200];
-    private _thisGroup = [
-      _startPos,
-      civilian,
-      selectRandom _cfgGroups,
-      [],
-      [],
-      [],
-      [0,0],
-      [2,1],
-      _startPos getDir _endPos,
-      false, 50
-    ] call BIS_fnc_spawnGroup;
-    {
-      switch (true) do {
-        case (_x isKindOf "Plane"): {
-          _x flyInHeightASL[700,700,700];
-          _x flyInHeight 250;
+    } else {
+      // VIETNAM / CfgGroups
+      _startPos set [2,200];
+      private _thisGroup = [
+        _startPos,
+        civilian,
+        selectRandom _cfgGroups,
+        [],
+        [],
+        [],
+        [0,0],
+        [2,1],
+        _startPos getDir _endPos,
+        false, 50
+      ] call BIS_fnc_spawnGroup;
+      {
+        switch (true) do {
+          case (_x isKindOf "Plane"): {
+            _x flyInHeightASL[700,700,700];
+            _x flyInHeight 250;
+          };
+          default {
+            _x flyInHeightASL[400,400,400];
+            _x flyInHeight 100;
+            // _x limitSpeed 200;
+          };
         };
-        default {
-          _x flyInHeightASL[400,400,400];
-          _x flyInHeight 100;
-          // _x limitSpeed 200;
-        };
-      };
-      _x setCaptive true;
-    } forEach (units _thisGroup);
-    private _wpt = _thisGroup addWaypoint [_endPos, 300];
-    _wpt setWaypointType "MOVE";
-    _wpt setWaypointCombatMode "GREEN";
-    _wpt setWaypointForceBehaviour true;
-    _wpt setWaypointSpeed "NORMAL";
-    _wpt setWaypointCompletionRadius 100;
-    _wpt setWaypointFormation selectRandom([
-      "STAG COLUMN",
-      "FILE",
-      "ECH LEFT",
-      "WEDGE",
-      "DIAMOND"
-    ]);
-    _thisGroup deleteGroupWhenEmpty true;
-    _thisGroup setCombatMode "GREEN";
-    waitUntil {currentWaypoint _thisGroup != 1};
-    {deleteVehicle _x} count (units _thisGroup);
+        _x setCaptive true;
+      } forEach (units _thisGroup);
+      private _wpt = _thisGroup addWaypoint [_endPos, 300];
+      _wpt setWaypointType "MOVE";
+      _wpt setWaypointCombatMode "GREEN";
+      _wpt setWaypointForceBehaviour true;
+      _wpt setWaypointSpeed "NORMAL";
+      _wpt setWaypointCompletionRadius 100;
+      _wpt setWaypointFormation selectRandom([
+        "STAG COLUMN",
+        "FILE",
+        "ECH LEFT",
+        "WEDGE",
+        "DIAMOND"
+      ]);
+      _thisGroup deleteGroupWhenEmpty true;
+      _thisGroup setCombatMode "GREEN";
+      waitUntil {currentWaypoint _thisGroup != 1};
+      {deleteVehicle _x} count (units _thisGroup);
+    };
   };
 }, random(120) + 240, [
   _airGroups,
