@@ -62,7 +62,7 @@ private _textOut = [];
         ];
       } else {
         _textOut pushBack format [
-          "<t size='1.4' color='" + COLOR5 + "'>%2</t><br/>    <t color='" + COLOR3 + "'>%3</t><br/>    <img width='120' image='%4'/><br/>    + %5<br/>    + %6",
+          "<t size='1.4' color='" + COLOR5 + "'>%2</t><br/>    <t color='" + COLOR3 + "'>%3</t><br/>    <img size='4' image='%4'/><br/>    + %5<br/>    + %6",
           _side call BIS_fnc_sideName,
           _squads select _forEachIndex,
           [_cswPrimaryInfo, "displayName"] call BIS_fnc_getFromPairs,
