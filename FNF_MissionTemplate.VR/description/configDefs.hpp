@@ -9,6 +9,8 @@
 #define assassination "assassin"
 #define assassin "assassin"
 #define ass "assassin"
+#define sustainedAssault "sustainedAssault"
+#define sustainedassault "sustainedAssault"
 
 // AT Launchers
 // [launcher,[mags],[optics]]

@@ -7,18 +7,31 @@ private _maxTime = 10;
 phx_startTimer = 10;
 phx_startGoodPos = getpos vehicle player;
 
-switch (playerSide) do {
-  case east: {
-    _marker = "opforSafeMarker";
+if !(phx_gameMode == "sustainedAssault") then {
+  switch (playerSide) do {
+    case east: {
+      _marker = "opforSafeMarker";
+    };
+    case west: {
+      _marker = "bluforSafeMarker";
+    };
+    case independent: {
+      _marker = "indforSafeMarker";
+    };
   };
-  case west: {
-    _marker = "bluforSafeMarker";
-  };
-  case independent: {
-    _marker = "indforSafeMarker";
+} else {
+  switch (playerSide) do {
+    case east: {
+      _marker = "safeZone_OPFOR_marker";
+    };
+    case west: {
+      _marker = "safeZone_BLUFOR_marker";
+    };
+    case independent: {
+      _marker = "safeZone_Independent_marker";
+    };
   };
 };
-
 
 [{
   _this select 0 params ["_marker","_maxTime"];

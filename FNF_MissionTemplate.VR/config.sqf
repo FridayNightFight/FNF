@@ -18,7 +18,7 @@ phx_briefingRules = "";
 
 // SCENARIO SETTINGS //
 
-phx_gameMode = destroy;
+phx_gameMode = sustainedAssault;
 /*
   MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF
   DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS
@@ -82,16 +82,16 @@ phx_addNVG = 0;
 // UNIFORM AND GEAR CHOICES //
 
 //BLUFOR
-phx_bluforUniform = "RHS_UNI_NATO_US_MARINES_WOODLAND_2010";
-phx_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
+phx_bluforUniform = "VN_UNI_US_MACV";
+phx_bluforGear = "VN_GEAR_US_ARMY1970";
 
 //OPFOR
-phx_opforUniform = "RHS_UNI_RU_RATNIK_2020";
-phx_opforGear = "RHS_GEAR_RU_ARMY_2010_AK74M";
+phx_opforUniform = "VN_UNI_PAVN_NVA";
+phx_opforGear = "VN_GEAR_NVA_VC1970";
 
 //INDFOR
-phx_indforUniform = "RHS_UNI_ID_MEC_2010";
-phx_indforGear = "RHS_GEAR_ID_MEC_2010_AK103";
+phx_indforUniform = "VN_UNI_US_SOG";
+phx_indforGear = "VN_GEAR_US_SOG1970";
 
 
 ////////////////////////////////////////////////////////////

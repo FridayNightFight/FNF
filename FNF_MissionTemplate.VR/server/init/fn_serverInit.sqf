@@ -30,6 +30,7 @@ call phx_admin_fnc_serverCommands;
       _ogMark call BIS_fnc_stringToMarker;
     };
   } forEach ["bluforSafeMarker", "opforSafeMarker", "indforSafeMarker"];
+  missionNamespace setVariable ["phx_markCustomObjs_done", true, true];
 }] call CBA_fnc_waitUntilAndExecute;
 
 call phx_server_fnc_setupGame;
@@ -40,21 +41,22 @@ call phx_server_fnc_keyVehicles;
 call phx_server_fnc_vehicleRadios;
 
 
-[{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "phx_safetyEndTime"}, {call phx_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
+// [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+// [{!isNil "phx_safetyEndTime"}, {call phx_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;
 zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
 [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
 
-// Create respawn markers in bottom left corner of map
-{
+if !(phx_gameMode == "sustainedAssault") then {
+  // Create respawn markers in bottom left corner of map
+  {
     private _marker = createMarker [_x, [-1000,-1000,0]];
     _marker setMarkerShape "ICON";
     _marker setMarkerType "Empty";
-} forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
-
+  } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
+};
 
 // turn on collision lights for air vehicles if it's night
 {

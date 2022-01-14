@@ -42,10 +42,13 @@ if !(call phx_client_fnc_canplay) exitWith {
 };
 player enableSimulation false;
 
-call phx_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
-call phx_briefing_fnc_init; //Briefing
-call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
+
 call phx_client_fnc_setupGame; //Client portion of game modes
+[{missionNamespace getVariable ["phx_markCustomObjs_done", false]}, {
+  call phx_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
+  call phx_briefing_fnc_init; //Briefing
+  call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
+}] call CBA_fnc_waitUntilAndExecute;
 call phx_safety_fnc_init; //Enable safety
 call phx_client_fnc_staggeredLoad; //Start staggered load timer
 call phx_radio_fnc_waitGear; //Start radio preset functions
@@ -68,12 +71,12 @@ call phx_fnc_teleportInit; // Add leadership teleport options
   call phx_fnc_showTimeOnMap;
   [player getVariable "phxLoadout"] call phx_loadout_fnc_applyLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
+
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {
   call phx_restrictions_fnc_init;
   call phx_loadout_fnc_checkLoadout;
   [false] call phx_briefing_fnc_parseGear;
-  [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_admin_fnc_setAdminPatch}] call CBA_fnc_waitUntilAndExecute; // Admin player patch
   [] spawn {sleep 0.1; enableEnvironment [false, true]};
 
   // Compile Date text
@@ -119,28 +122,39 @@ call phx_fnc_teleportInit; // Add leadership teleport options
 
 //Client-side fortify, and gear selector
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
-  call phx_fnc_fortifyClient;
-  // call phx_selector_fnc_init;
+  if !(phx_gameMode == "sustainedAssault") then {
+    call phx_fnc_fortifyClient;
+  };
   player enableSimulation true;
 }] call CBA_fnc_waitUntilAndExecute;
 
 
-//Start kill counter when game ends or player is dead
-//[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
-//Start spectator fnc when player is killed
-player addEventHandler ["Killed", {[{call phx_spectator_fnc_init}, [], 3] call cba_fnc_waitAndExecute;}];
 phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
 
+if !(phx_gameMode == "sustainedAssault") then {
+  //Start kill counter when game ends or player is dead
+  //[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
+  //Start spectator fnc when player is killed
+  player addEventHandler ["Killed", {[{call phx_spectator_fnc_init}, [], 3] call cba_fnc_waitAndExecute;}];
 
-player addEventHandler ["Killed", {
-  params ["_unit", "_killer", "_instigator", "_useEffects"];
-  if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
-    ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
-  };
-  if (side (group _killer) == playerSide && (_unit != _killer)) exitWith {
-    ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
-  };
-}];
+
+  player addEventHandler ["Killed", {
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
+    if (!isNull _instigator && (side (group _instigator) == playerSide) && (_unit != _instigator)) exitWith {
+      ["TeamkillDetected", [_unit, _instigator]] call CBA_fnc_serverEvent;
+    };
+    if (side (group _killer) == playerSide && (_unit != _killer)) exitWith {
+      ["TeamkillDetected", [_unit, _killer]] call CBA_fnc_serverEvent;
+    };
+  }];
+};
+
+if (phx_gameMode == "sustainedAssault") then {
+  [{getClientStateNumber > 8}, {
+    player removeDiarySubject "BIS_fnc_moduleMPTypeSectorControl";
+  }] call CBA_fnc_waitUntilAndExecute;
+  player setVariable ["ACE_canMoveRallypoint", false, true];
+};
 
 if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick") then {
   ["FNF_UIPanelAdmin_ReturnStatus", {

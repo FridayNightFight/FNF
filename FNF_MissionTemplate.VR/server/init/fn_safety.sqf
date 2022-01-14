@@ -3,7 +3,7 @@ Server component to the safety system
 */
 
 missionNamespace setVariable ["phx_safetyEnabled",true,true];
-f_var_mission_timer = phx_safeStartTime * 60 + 10;
+f_var_mission_timer = phx_safeStartTime * 60 + 20;
 missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
 call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
@@ -22,28 +22,29 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 }] call CBA_fnc_waitUntilAndExecute;
 
 [{f_var_mission_timer < 0}, {
-    missionNamespace setVariable ["phx_safetyEnabled",false,true];
-    missionNamespace setVariable ["phx_safetyEndTime", round CBA_missionTime, true];
-    ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
-    ["off"] call acex_fortify_fnc_handleChatCommand;
+  missionNamespace setVariable ["phx_safetyEnabled",false,true];
+  missionNamespace setVariable ["phx_safetyEndTime", round CBA_missionTime, true];
+  ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
+  ["off"] call acex_fortify_fnc_handleChatCommand;
 
-    [] call phx_server_fnc_webhook_roundStart;
+  [] call phx_server_fnc_webhook_roundStart;
 
-    {
-        if !(getMarkerColor _x isEqualTo "") then {
-            [_x] remoteExec ["deleteMarkerLocal", -2, true];
-        };
-        _x setMarkerAlphaLocal 0;
-    } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
-
-    [] spawn {
-        uiSleep 300;
-        call phx_server_fnc_lockVehicles;
-        {
-            if !(getMarkerColor _x isEqualTo "") then {
-                deleteMarkerLocal _x;
-            };
-        } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+  {
+    if !(getMarkerColor _x isEqualTo "") then {
+      [_x] remoteExec ["deleteMarkerLocal", -2, true];
     };
+    _x setMarkerAlphaLocal 0;
+  } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+
+  [{cba_missionTime > 300}, {
+    if !(phx_gameMode == "sustainedAssault") then {
+      call phx_server_fnc_lockVehicles;
+    };
+    {
+      if !(getMarkerColor _x isEqualTo "") then {
+        deleteMarkerLocal _x;
+      };
+    } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+  }] call CBA_fnc_waitUntilAndExecute;
 
 }] call CBA_fnc_waitUntilAndExecute;

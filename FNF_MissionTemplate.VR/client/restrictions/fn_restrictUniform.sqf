@@ -32,18 +32,21 @@ private _playerVest = vest player;
 }, 5, [_playerUniform, _playerHead, _playerVest]] call CBA_fnc_addPerFrameHandler;
 
 //Stop player from being able to take off gear
-player addEventHandler ["InventoryOpened",{
-  [{!(isNull (findDisplay 602))}, {
-    //Uniform
-    ((findDisplay 602) displayCtrl 6331) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6331, false];"];
-    ((findDisplay 602) displayCtrl 6331) ctrlAddEventHandler ["mouseHolding", "ctrlEnable [6331, false];"];
+if !(isClass ((configOf player) >> "ACE_SelfActions" >> "ACE_Equipment" >> "ace_compat_sog_digSpiderhole")) then {
+  // disable when SOG is loaded because items don't support it
+  player addEventHandler ["InventoryOpened",{
+    [{!(isNull (findDisplay 602))}, {
+      //Uniform
+      ((findDisplay 602) displayCtrl 6331) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6331, false];"];
+      ((findDisplay 602) displayCtrl 6331) ctrlAddEventHandler ["mouseHolding", "ctrlEnable [6331, false];"];
 
-    //Vest
-    //((findDisplay 602) displayCtrl 6381) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6381, false];"];
-    //((findDisplay 602) displayCtrl 6381) ctrlAddEventHandler ["mouseHolding", "ctrlEnable [6381, false];"];
+      //Vest
+      //((findDisplay 602) displayCtrl 6381) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6381, false];"];
+      //((findDisplay 602) displayCtrl 6381) ctrlAddEventHandler ["mouseHolding", "ctrlEnable [6381, false];"];
 
-    //Headgear
-    ((findDisplay 602) displayCtrl 6240) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6240, false];"];
-    ((findDisplay 602) displayCtrl 6240) ctrlAddEventHandler ["mouseHolding", "ctrlEnable [6240, false];"];
-  }, [], 5] call CBA_fnc_waitUntilAndExecute;
-}];
+      //Headgear
+      ((findDisplay 602) displayCtrl 6240) ctrlAddEventHandler ["mouseButtonDown", "ctrlEnable [6240, false];"];
+      ((findDisplay 602) displayCtrl 6240) ctrlAddEventHandler ["mouseHolding", "ctrlEnable [6240, false];"];
+    }, [], 5] call CBA_fnc_waitUntilAndExecute;
+  }];
+};

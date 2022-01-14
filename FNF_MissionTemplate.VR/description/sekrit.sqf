@@ -1,4 +1,8 @@
-phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
+if !(phx_gameMode == "sustainedAssault") then {
+  phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
+} else {
+  phx_missionTimeLimit = 60;
+};
 phx_safeStartTime = 15; //Safestart time in minutes
 
 phx_templateVersion = call compile preprocessFile "version.txt";

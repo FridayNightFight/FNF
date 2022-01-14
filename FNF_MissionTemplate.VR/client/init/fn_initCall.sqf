@@ -36,7 +36,7 @@ if ((phx_attackingSide != phx_defendingSide) && [phx_attackingSide, phx_defendin
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if ([west, independent] call BIS_fnc_sideIsFriendly && [east, independent] call BIS_fnc_sideIsFriendly) exitWith {
+if ([west, independent] call BIS_fnc_sideIsFriendly && [east, independent] call BIS_fnc_sideIsFriendly) then {
   systemChat "The Independent faction is allied to both BLUFOR and OPFOR. This should probably be changed.";
   diag_log text "The Independent faction is allied to both BLUFOR and OPFOR. This should probably be changed.";
   [{getClientStateNumber >= 10}, {

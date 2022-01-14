@@ -36,7 +36,11 @@ if (!(typeOf player == "ace_spectator_virtual") && !ace_spectator_isset) then {
 
 //Set camera focus to killer if they exist
 private _lastDamage = player getVariable ["ace_medical_lastDamageSource",objNull];
-if (!isNull _lastDamage) then {[2, _lastDamage] call ace_spectator_fnc_setCameraAttributes;};
+if (!isNull _lastDamage) then {
+  [2, _lastDamage] call ace_spectator_fnc_setCameraAttributes;
+} else {
+  [2, allUnits select {side (group _x) isEqualTo playerSide && alive _x] call ace_spectator_fnc_setCameraAttributes;
+};
 
 //Set up objectives for 3d icon draws
 phx_specObjectives = [];

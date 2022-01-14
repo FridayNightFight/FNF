@@ -1,12 +1,11 @@
 call phx_restrictions_fnc_disableMisc;
 call phx_restrictions_fnc_zoneBoundary;
-call phx_restrictions_fnc_startBoundary;
 call phx_restrictions_fnc_restrictGamma;
+call phx_restrictions_fnc_startBoundary;
 
 //Uniform and etool restrictions
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_restrictions_fnc_restrictETool}] call CBA_fnc_waitUntilAndExecute;
 [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_restrictions_fnc_restrictUniform}] call CBA_fnc_waitUntilAndExecute;
-
 //[{!phx_safetyEnabled && !isNull (findDisplay 46)}, {call phx_restrictions_fnc_afkCheck}] call CBA_fnc_waitUntilAndExecute;
 
 //Set TFAR volume to whisper
@@ -17,7 +16,7 @@ call TFAR_fnc_updateSpeakVolumeUI;
 //View distance and terrain grid force & disable commanding menu
 phx_viewDistanceHandler = [{
   if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {}; //Disable if obj preview is active
-
+  if (!alive player) exitWith {};
   if (viewDistance > phx_maxViewDistance) then {
     setViewDistance phx_maxViewDistance;
   };

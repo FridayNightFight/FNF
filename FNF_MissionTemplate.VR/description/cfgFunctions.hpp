@@ -83,7 +83,7 @@ class CfgFunctions {
       class objectiveRecon{};
     };
     class tools {
-      file = "client\briefing\tools"
+      file = "client\briefing\tools";
       class parseLoadout{};
       class parseGear{};
       class parseMAT{};
@@ -211,6 +211,7 @@ class CfgFunctions {
       class drawStaffIcons{};
       class drawCmdIcons{};
       class drawSLIcons{};
+      class drawHelpers{};
     };
     class scripts {
       file = "client\ui";
@@ -230,6 +231,7 @@ class CfgFunctions {
       class keyVehicles{};
       class lockVehicles{};
       class vehicleRadios{};
+      class ambientFlyby{};
     };
     class end {
       file = "server\end";

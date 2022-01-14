@@ -82,7 +82,7 @@ class VN_GEAR_NVA_VC1970 {
     grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
     giveSilencer = 0; // 0 for no silencer, 1 to equip silencer on primary weapon
-    giveSRRadio = 0;
+    giveSRRadio = 1;
     giveLRRadio = 0;
   };
 
