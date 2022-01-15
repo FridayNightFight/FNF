@@ -88,7 +88,7 @@ private _credits = [
   " - Tanaka - Technical Assistance",
   " - Mazz38 - Mission Vetter",
   " - Bae - Mission Vetter",
-  " - Ghoster - Previous Mission Vetter"
+  " - Ghoster - Previous Mission Vetter",
   "",
   "And a huge thank you to previous staff:",
   " - Dingo",
