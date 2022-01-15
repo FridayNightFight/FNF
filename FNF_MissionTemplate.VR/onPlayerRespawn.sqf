@@ -30,7 +30,6 @@ if !(phx_gameMode == "sustainedAssault") then {
 phx_safeStartNoFire = nil;
 call phx_restrictions_fnc_init;
 call phx_safety_fnc_init;
-call phx_radio_fnc_getChannels;
 
 if (phx_gameMode == "sustainedAssault") then {
   _newUnit setVariable ["ACE_canMoveRallypoint", false, true];

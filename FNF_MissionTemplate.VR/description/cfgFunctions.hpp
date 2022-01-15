@@ -160,6 +160,7 @@ class CfgFunctions {
       file = "client\radio";
       class waitGear{};
       class getChannels{};
+      class calcBaseFreqs{};
       class setRadios{};
       class cleanup{};
     };

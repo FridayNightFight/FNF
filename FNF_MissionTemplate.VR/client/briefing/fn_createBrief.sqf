@@ -611,10 +611,13 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
 
   if (phx_gameMode == "sustainedAssault") then {
     [{count (allDiarySubjects player select {(_x # 0) == "BIS_fnc_moduleMPTypeSectorControl" && (_x # 5) == true}) > 0}, {
-      private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
-      private _briefingEntryCount = _briefingEntry # 0 # 3;
-      player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
-      player removeDiarySubject "BIS_fnc_moduleMPTypeSectorControl";
+      [] spawn {
+        private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
+        private _briefingEntryCount = _briefingEntry # 0 # 3;
+        player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
+        uiSleep 0.2;
+        player removeDiarySubject "BIS_fnc_moduleMPTypeSectorControl";
+      };
     }] call CBA_fnc_waitUntilAndExecute;
   } else {
     private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};

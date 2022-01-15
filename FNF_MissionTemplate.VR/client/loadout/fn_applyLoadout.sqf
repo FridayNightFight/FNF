@@ -188,18 +188,28 @@ if (isNil {
 
 
 
-if (isNil {
+// if (isNil {
+//   [
+//     player,
+//     _cfgGiveSRRadio,
+//     _cfgGiveLRRadio
+//   ] call phx_loadout_fnc_giveRadios
+// }) exitWith {
+//   [{time > 2}, {
+//     ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
+//     diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
+//   }] call CBA_fnc_waitUntilAndExecute;
+// };
+
+[{
+  params [["_swRadio", true], ["_lrRadio", false]];
   [
     player,
-    _cfgGiveSRRadio,
-    _cfgGiveLRRadio
-  ] call phx_loadout_fnc_giveRadios
-}) exitWith {
-  [{time > 2}, {
-    ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
-  }] call CBA_fnc_waitUntilAndExecute;
-};
+    _swRadio,
+    _lrRadio
+  ] call phx_loadout_fnc_giveRadios;
+  diag_log text "[FNF] (loadoutRadio) Completed radio assignment.";
+}, [_cfgGiveSRRadio, _cfgGiveLRRadio], 5] call CBA_fnc_waitAndExecute;
 
 
 if (isNil {

@@ -30,17 +30,18 @@ if (_srRadio) then {
     _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
     diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1""", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
   };
-  missionNamespace setVariable ["phx_hasSW", true];
+  // missionNamespace setVariable ["phx_hasSW", true];
 } else {
   if (call TFAR_fnc_haveSWRadio) then {
     player unlinkItem (call TFAR_fnc_activeSwRadio);
   };
-  missionNamespace setVariable ["phx_hasSW", false];
+  // missionNamespace setVariable ["phx_hasSW", false];
 };
 
 
 if (_lrRadio) then {
   // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
+  // This is to ensure leadership receives LR radios if they should, even if the loadout-assigned backpack isn't a radio
   if (!(call TFAR_fnc_haveLRRadio)) then {
     private _items = backpackItems _unit;
     removeBackpack _unit;
@@ -50,7 +51,7 @@ if (_lrRadio) then {
     } forEach _items;
     diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1""", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
   };
-  missionNamespace setVariable ["phx_hasLR", true];
+  // missionNamespace setVariable ["phx_hasLR", true];
 } else {
   if (call TFAR_fnc_haveLRRadio) then {
     private _items = backpackItems _unit;
@@ -60,6 +61,6 @@ if (_lrRadio) then {
       _unit addItemToBackpack _x;
     } forEach _items;
   };
-  missionNamespace setVariable ["phx_hasLR", false];
+  // missionNamespace setVariable ["phx_hasLR", false];
 };
 true

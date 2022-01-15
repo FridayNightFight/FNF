@@ -53,24 +53,10 @@ phx_ch1 = phx_playerBaseChannel; //All players will be able to switch to channel
 //        Try to keep offsets single digit or the channel may not be set if playerBaseChannel is a high number.
 //        Frequencies can only have one decimal place.
 //     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.
-_radioSettings = (group player) getVariable ["phx_radioSettings",[1,2,[0]]];
-phx_curChan = _radioSettings select 0;
-phx_altChan = _radioSettings select 1;
-_channelArray = _radioSettings select 2;
-if (count _channelArray > 0) then {phx_ch1 = phx_playerBaseChannel + (_channelArray select 0)};
-if (count _channelArray > 1) then {phx_ch2 = phx_playerBaseChannel + (_channelArray select 1)};
-if (count _channelArray > 2) then {phx_ch3 = phx_playerBaseChannel + (_channelArray select 2)};
-if (count _channelArray > 3) then {phx_ch4 = phx_playerBaseChannel + (_channelArray select 3)};
-if (count _channelArray > 4) then {phx_ch5 = phx_playerBaseChannel + (_channelArray select 4)};
-if (count _channelArray > 5) then {phx_ch6 = phx_playerBaseChannel + (_channelArray select 5)};
-if (count _channelArray > 6) then {phx_ch7 = phx_playerBaseChannel + (_channelArray select 6)};
-if (count _channelArray > 7) then {phx_ch8 = phx_playerBaseChannel + (_channelArray select 7)};
+phx_radioSettingsStart = (group player) getVariable ["phx_radioSettings",[1,2,[0]]];
 
-//player isn't part of any template group
-if (isNil "phx_curChan") then {
-    phx_curChan = 1;
-    phx_altChan = 8;
-};
+// this call is also in setRadios, to allow recalc if playerBaseChannel changes due to allegiance change
+call phx_radio_fnc_calcBaseFreqs;
 
 //Generate Mission Notes
 phx_radioNoteString = "<font size='24'>Your Radio's Default Settings</font><br/><br/>Channel 1: " + str(phx_ch1) + " MHz<br/>";
@@ -108,11 +94,22 @@ _structStartingRadios pushBack ("<br/>Main Channel (left ear): <t color='#90ee90
 
 
 //Next step - wait for loadout
-[{!isNil "phx_hasSW" && !isNil "phx_hasLR" && call TFAR_fnc_isAbleToUseRadio}, {
-  [true] call TFAR_fnc_requestRadios;
-  // call phx_radio_fnc_setRadios;
-  [{call phx_radio_fnc_setRadios},[],5] call CBA_fnc_waitAndExecute;
-}, [], 60, {
-  // systemChat "Radio preset timeout";
-  ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
-}] call CBA_fnc_waitUntilAndExecute;
+// [{
+//   !isNil "phx_hasSW" && !isNil "phx_hasLR"
+// }, {
+//   call TFAR_fnc_requestRadios;
+//   // call phx_radio_fnc_setRadios;
+//   [{
+
+//   },[],5] call CBA_fnc_waitAndExecute;
+// }, [], 60, {
+//   // systemChat "Radio preset timeout";
+//   ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
+// }] call CBA_fnc_waitUntilAndExecute;
+
+// This will automatically set radios to FNF freqs when any new radio is instantiated from the server
+["TFAR_event_OnRadiosReceived", {
+  [{
+    call phx_radio_fnc_setRadios;
+  },[],1] call CBA_fnc_waitAndExecute;
+}] call CBA_fnc_addEventHandler;
