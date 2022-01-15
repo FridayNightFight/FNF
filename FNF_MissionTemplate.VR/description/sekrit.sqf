@@ -92,6 +92,7 @@ private _credits = [
   " - Tanaka - Technical Assistance",
   " - Mazz38 - Mission Vetter",
   " - Bae - Mission Vetter",
+  " - Ghoster - Previous Mission Vetter",
   "",
   "And a huge thank you to previous staff:",
   " - Dingo",
@@ -102,8 +103,7 @@ private _credits = [
   " - Pickles (Pads33)",
   " - JibStyle",
   " - Falenty",
-  " - Cyrus",
-  " - Ghoster"
+  " - Cyrus"
 ] joinString "<br/>";
 
 [phx_ui_structTextRef, "Credits", _credits] call BIS_fnc_setToPairs;

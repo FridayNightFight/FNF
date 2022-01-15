@@ -31,9 +31,8 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
   {
     if !(getMarkerColor _x isEqualTo "") then {
-      [_x] remoteExec ["deleteMarkerLocal", -2, true];
+      deleteMarker _x;
     };
-    _x setMarkerAlphaLocal 0;
   } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
 
   [{cba_missionTime > 300}, {
@@ -46,5 +45,4 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
       };
     } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
   }] call CBA_fnc_waitUntilAndExecute;
-
 }] call CBA_fnc_waitUntilAndExecute;

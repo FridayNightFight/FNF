@@ -109,9 +109,9 @@ _structStartingRadios pushBack ("<br/>Main Channel (left ear): <t color='#90ee90
 
 //Next step - wait for loadout
 [{!isNil "phx_hasSW" && !isNil "phx_hasLR" && call TFAR_fnc_isAbleToUseRadio}, {
-  call TFAR_fnc_requestRadios;
+  [true] call TFAR_fnc_requestRadios;
   // call phx_radio_fnc_setRadios;
-  [{call phx_radio_fnc_setRadios},[],2] call CBA_fnc_waitAndExecute;
+  [{call phx_radio_fnc_setRadios},[],5] call CBA_fnc_waitAndExecute;
 }, [], 60, {
   // systemChat "Radio preset timeout";
   ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
