@@ -233,6 +233,7 @@ class CfgFunctions {
       class lockVehicles{};
       class vehicleRadios{};
       class ambientFlyby{};
+      class initMSPTeleport{};
     };
     class end {
       file = "server\end";

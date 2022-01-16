@@ -39,6 +39,7 @@ call phx_server_fnc_webhook_roundPrep;
 call phx_server_fnc_populateORBATS;
 call phx_server_fnc_keyVehicles;
 call phx_server_fnc_vehicleRadios;
+call phx_server_fnc_initMSPTeleport;
 
 
 // [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
