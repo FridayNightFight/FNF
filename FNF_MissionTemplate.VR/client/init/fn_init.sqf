@@ -166,7 +166,7 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
     private _display = (phx_adminDisplay select 0);
     private "_resultBox";
     if (_display == displayNull) exitWith {
-      [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+      // [_thisType, _thisId] call CBA_fnc_removeEventHandler;
     };
 
     _resultBox = _display displayCtrl 10020;

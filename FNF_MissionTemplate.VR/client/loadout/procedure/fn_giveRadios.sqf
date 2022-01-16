@@ -34,6 +34,7 @@ if (_srRadio) then {
 } else {
   if (call TFAR_fnc_haveSWRadio) then {
     player unlinkItem (call TFAR_fnc_activeSwRadio);
+    diag_log text format["[FNF] (loadout) INFO: Removed SW radio (loadout says this role shouldn't receive one)"];
   };
   // missionNamespace setVariable ["phx_hasSW", false];
 };
@@ -60,6 +61,7 @@ if (_lrRadio) then {
     {
       _unit addItemToBackpack _x;
     } forEach _items;
+    diag_log text format["[FNF] (loadout) INFO: Removed LR radio (loadout says this role shouldn't receive one)"];
   };
   // missionNamespace setVariable ["phx_hasLR", false];
 };

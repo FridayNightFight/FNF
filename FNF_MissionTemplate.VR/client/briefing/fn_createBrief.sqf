@@ -614,7 +614,7 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
       [] spawn {
         private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
         private _briefingEntryCount = _briefingEntry # 0 # 3;
-        player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
+        player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 1];
         uiSleep 0.2;
         player removeDiarySubject "BIS_fnc_moduleMPTypeSectorControl";
       };
@@ -622,7 +622,7 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
   } else {
     private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
     private _briefingEntryCount = _briefingEntry # 0 # 3;
-    player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
+    player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 1];
   };
 },[_varStr]] call CBA_fnc_waitUntilAndExecute;
 

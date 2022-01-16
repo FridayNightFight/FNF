@@ -16,9 +16,28 @@ phx_briefingRules = "";
 
 ////////////////////////////////////////////////////////////
 
+// Standard 1-life Friday Night Fight Mode
+/*
+  1. rename "mission_normal.sqm" to "mission.sqm"
+  2. rename "description_normal.ext" to "description.ext"
+  3. below, set phx_gameMode to any of the valid values from configGuide.txt
+  4. delete "description_SA.ext", "mission_SA_Modern.sqm", and "mission_SA_VN.sqm" (for filesize purposes)
+*/
+
+// NEW! Sustained Assault Mode
+/*
+  **requires advance permission from Missions Team Lead**
+  1a. if using SOG Prairie Fire, rename "mission_SA_VN.sqm" to "mission.sqm"
+  1b. if using modern RHS, rename "mission_SA_modern.sqm" to "mission.sqm"
+  2. rename "description_SA.ext" to "description.ext"
+  3. below, set phx_gameMode = sustainedAssault
+  4. delete "description_normal.ext" and whichever missionX.sqm files you didn't use (for filesize purposes)
+*/
+
+
 // SCENARIO SETTINGS //
 
-phx_gameMode = sustainedAssault;
+phx_gameMode = destroy;
 /*
   MAKE SURE YOU SET THE ATTACKING AND DEFENDING SIDES BELOW IF YOUR CHOSEN MODE IS AN ATK/DEF
   DO NOT DELETE ANY OF THE OTHER TEMPLATE OBJECTIVE OBJECTS

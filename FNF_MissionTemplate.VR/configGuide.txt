@@ -1,6 +1,6 @@
 This text file serves as a reference for options available in config.sqf
 
-GAME MODES
+// GAME MODES //
 Change this to whatever game mode you want and configure the respective file in mode_config
 If you don't want to use one of the template modes, you can set phx_gameMode = "";
   ===ATK/DEF===
@@ -17,7 +17,7 @@ If you don't want to use one of the template modes, you can set phx_gameMode = "
   scavHunt
 
 
-UNIFORM AND GEAR CHOICES
+// UNIFORM AND GEAR CHOICES //
 UNI = Uniform, GEAR = Gear
 
   Era: Modern (2000+)
@@ -65,7 +65,7 @@ UNI = Uniform, GEAR = Gear
       VN_GEAR_US_SOG1970 (DONT USE)
 
 
-MAT SELECTION
+// MAT SELECTION //
 Possible launcher values (and recommended counts)
     Supports LAUNCHER(_HEATCount,_HECount)
     CARLG(2,0)
@@ -104,7 +104,7 @@ Possible launcher values (and recommended counts)
   a value of 2 would mean a total of 6 rockets/missiles in this squad
 
 
-SQUAD HQ AUXILIARY ROLES
+// SQUAD HQ AUXILIARY ROLES //
   OPTIONS
     HMG_M2(_boxes) // 100 rd mags
     HMG_M2_LO(_boxes) // 100 rd mags

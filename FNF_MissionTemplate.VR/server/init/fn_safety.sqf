@@ -41,7 +41,7 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
     };
     {
       if !(getMarkerColor _x isEqualTo "") then {
-        deleteMarkerLocal _x;
+        deleteMarker _x;
       };
     } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
   }] call CBA_fnc_waitUntilAndExecute;

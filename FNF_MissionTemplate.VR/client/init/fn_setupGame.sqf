@@ -42,7 +42,7 @@ if (phx_gameMode == "sustainedAssault") then {
 
   player addEventHandler ["FiredMan",{
     private _vehicle = param [7,objNull];
-    // _this spawn {
+    _this spawn {
       private _unit = param [0,objNull];
       private _weapon = param [1,objNull];
       private _projectile = param [6,objNull];
@@ -59,7 +59,7 @@ if (phx_gameMode == "sustainedAssault") then {
             _badPos = true;
           };
         };
-        // sleep random(1);
+        uiSleep 0.5;
       };
 
       if (_badPos) then {
@@ -73,6 +73,6 @@ if (phx_gameMode == "sustainedAssault") then {
           ], "warning", 7] remoteExecCall ["phx_ui_fnc_notify",0];
         };
       };
-    // };
+    };
   }];
 };
