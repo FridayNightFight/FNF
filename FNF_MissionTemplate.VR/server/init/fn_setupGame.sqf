@@ -79,8 +79,6 @@ switch (phx_gameMode) do {
 
 publicVariable "phx_overTimeConStr";
 
-//To do: allow objectives to be deleted w/o throwing error
-
 _deleteObj = {
   params ["_obj"];
 
@@ -90,55 +88,35 @@ _deleteObj = {
 };
 
 if !(phx_gameMode isEqualTo "destroy") then {
-  _test = (getMissionLayerEntities "FNF Gamemode: Destroy");
-  if (count _test > 0) then {
-    _test params ["_objects", "_markers"];
-    {_x call _deleteObj} forEach _objects;
-    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
-  };
+  {_x call _deleteObj} forEach [destroy_obj_1,destroy_obj_2];
+  {if !(getMarkerColor _x isEqualTo "") then {_x remoteExec ["deleteMarkerLocal", 0, true]}} forEach ["destroy_obj_1_mark","destroy_obj_2_mark"];
 };
 
 if !(phx_gameMode isEqualTo "uplink" || phx_gameMode isEqualTo "rush" || phx_gameMode isEqualTo "connection") then {
-  _test = (getMissionLayerEntities "FNF Gamemode: Rush, Uplink, Connection");
-  if (count _test > 0) then {
-    _test params ["_objects", "_markers"];
-    {_x call _deleteObj} forEach _objects;
-    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
-  };
+  {_x call _deleteObj} forEach [term1,term2,term3];
 };
 
-if !(phx_gameMode isEqualTo "captureTheFlag") then {
-  _test = (getMissionLayerEntities "FNF Gamemode: CTF");
-  if (count _test > 0) then {
-    _test params ["_objects", "_markers"];
-    {_x call _deleteObj} forEach _objects;
-    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
-  };
+if !(phx_gamEMode isEqualTo "captureTheFlag") then {
+  {_x call _deleteObj} forEach [ctf_flagPole, ctf_attackTrig];
 };
 
 if !(phx_gameMode isEqualTo "adSector") then {
-  _test = (getMissionLayerEntities "FNF Gamemode: ADSector");
-  if (count _test > 0) then {
-    _test params ["_objects", "_markers"];
-    {_x call _deleteObj} forEach _objects;
-    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
-  };
+  {_x call _deleteObj} forEach [phx_sec1,phx_sec2,phx_sec3];
 };
 
 if !(phx_gameMode isEqualTo "scavHunt") then {
-  _test = (getMissionLayerEntities "FNF Gamemode: ScavHunt");
-  if (count _test > 0) then {
-    _test params ["_objects", "_markers"];
-    {_x call _deleteObj} forEach _objects;
-    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
-  };
+  {_x call _deleteObj} forEach [scav_obj_1,scav_obj_2,scav_obj_3,scav_obj_4,scav_obj_5,scav_obj_6,scav_obj_7,scav_obj_8,scav_obj_9,scav_obj_10];
+  {_x call _deleteObj} forEach [scav_transport_1,scav_transport_2,scav_transport_3,scav_transport_4,scav_transport_5,scav_transport_6,scav_transport_7,scav_transport_8,scav_transport_9,scav_transport_10];
+  {
+    {
+      deleteMarker _x;
+    } forEach ["scavHuntCapEAST", "scavHuntCapWEST", "scavHuntCapGUER"];
+  } remoteExec ["call", 0, true];
 };
 
 if !(phx_gameMode isEqualTo "assassin") then {
-  _test = (getMissionLayerEntities "FNF Gamemode: Assassin");
-  if (count _test > 0) then {
-    _test params ["_objects", "_markers"];
-    {_x call _deleteObj} forEach _objects;
-    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
-  };
+  private _markers = ["fnf_assassin_boundaries_"] call BIS_fnc_getMarkers;
+  {
+    deleteMarker _x;
+  } forEach _markers;
 };

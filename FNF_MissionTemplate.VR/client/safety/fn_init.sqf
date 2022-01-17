@@ -44,7 +44,11 @@ phx_acePlacing = [{
     player action ["manualFireCancel", vehicle player];
   };
 
-  if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
+  if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {
+    player removeAction phx_safeStartNoFire;
+    phx_safeStartNoFire = nil;
+    [_this select 1] call CBA_fnc_removePerFrameHandler;
+  };
 } , 0] call CBA_fnc_addPerFrameHandler;
 
 phx_switchToMeleeDisablePFH = [{
@@ -52,12 +56,10 @@ phx_switchToMeleeDisablePFH = [{
   if (_tempWeaponState select 1 == "vn_melee_muzzle" || _tempWeaponState select 1 == "vn_hand_melee_muzzle") then {
     player selectWeapon (_tempWeaponState select 0);
   };
+  if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
 }] call CBA_fnc_addPerFrameHandler;
 
-[{!phx_safetyEnabled}, {
-  [phx_acePlacing] call CBA_fnc_removePerFrameHandler;
-  [phx_switchToMeleeDisablePFH] call CBA_fnc_removePerFrameHandler;
-  player removeAction phx_safeStartNoFire;
+[{!(missionNamespace getVariable ["phx_safetyEnabled", true])}, {
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
 }] call CBA_fnc_waitUntilAndExecute;

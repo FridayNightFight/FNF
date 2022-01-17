@@ -15,15 +15,19 @@ params [["_sideFriendly", sideEmpty, [sideEmpty]], ["_adminId", "", [""]]];
 
 // establish correct code based on _sideFriendly, and assume other sides should be hostile
 private _fixedEncryptionCode = ""; // the side indfor should be able to talk to
+private _fixedBaseChannel = 0; // the base channel for the side to base freqs off of
 switch (_sideFriendly) do {
   case west: {
     _fixedEncryptionCode = "_bluefor";
+    _fixedBaseChannel = phx_bluforBaseChannel;
   };
   case east: {
-    _fixedEncryptionCode = "_opfor"
+    _fixedEncryptionCode = "_opfor";
+    _fixedBaseChannel = phx_opforBaseChannel;
   };
   case sideEmpty: {
     _fixedEncryptionCode = "_independent";
+    _fixedBaseChannel = phx_indforBaseChannel;
   };
 };
 
@@ -31,13 +35,11 @@ switch (_sideFriendly) do {
 private _playersToFix = (allPlayers select {alive _x && side _x == independent});
 
 // apply the radio changes clientside
-[_fixedEncryptionCode, {
-  if (call TFAR_fnc_haveSwRadio) then {
-    [(call TFAR_fnc_activeSwRadio), _this] call TFAR_fnc_setSwRadioCode;
-  };
-  if (call TFAR_fnc_haveLRRadio) then {
-    [(call TFAR_fnc_activeLrRadio), _this] call TFAR_fnc_setLrRadioCode;
-  };
+[[_fixedBaseChannel, _fixedEncryptionCode], {
+  params ["_baseChannel", "_encryptionCode"];
+  phx_playerBaseChannel = _baseChannel;
+  phx_loadout_TFAREncryptionCode = _encryptionCode;
+  call phx_radio_fnc_setRadios;
   diag_log formatText["[FNF] (admin) Fixed radio codes due to Independent side association change."];
 }] remoteExecCall ["call", _playersToFix];
 

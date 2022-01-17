@@ -34,7 +34,6 @@ if (playerSide isEqualTo civilian) exitWith {
   ] call BIS_fnc_logFormatServer;
 };
 
-player unlinkItem "ItemRadio";
 {player unlinkItem _x} forEach (assignedItems player);
 {
   player unassignItem _x;
@@ -188,18 +187,28 @@ if (isNil {
 
 
 
-if (isNil {
+// if (isNil {
+//   [
+//     player,
+//     _cfgGiveSRRadio,
+//     _cfgGiveLRRadio
+//   ] call phx_loadout_fnc_giveRadios
+// }) exitWith {
+//   [{time > 2}, {
+//     ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
+//     diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
+//   }] call CBA_fnc_waitUntilAndExecute;
+// };
+
+[{
+  params [["_swRadio", true], ["_lrRadio", false]];
   [
     player,
-    _cfgGiveSRRadio,
-    _cfgGiveLRRadio
-  ] call phx_loadout_fnc_giveRadios
-}) exitWith {
-  [{time > 2}, {
-    ["<t align='center'>Error:<br/>Failed to process radio assignment settings.</t>", "error", 20] call phx_ui_fnc_notify;
-    diag_log text format["[FNF] (loadout) ERROR: Failed to process radio assignment settings."];
-  }] call CBA_fnc_waitUntilAndExecute;
-};
+    _swRadio,
+    _lrRadio
+  ] call phx_loadout_fnc_giveRadios;
+  diag_log text "[FNF] (loadoutRadio) Completed radio assignment.";
+}, [_cfgGiveSRRadio, _cfgGiveLRRadio], 5] call CBA_fnc_waitAndExecute;
 
 
 if (isNil {
@@ -323,12 +332,12 @@ if (isNil {[player, PLAYERLOADOUTVAR] call phx_loadout_fnc_loadWeapons}) then {
 [PLAYERLOADOUTVAR] call phx_loadout_fnc_setRank;
 
 // if during safe start and role is being changed, reset ACE self-interact selectors
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Optic_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Weapon_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Explosives_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Grenades_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
 if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Optic_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Weapon_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Explosives_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Grenades_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
   call phx_selector_fnc_init;
 };
 

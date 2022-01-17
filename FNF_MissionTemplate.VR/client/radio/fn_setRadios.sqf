@@ -1,8 +1,6 @@
-//Change channel numbers from user readable to script readable
-if (isNil "phx_radiosSet") then {
-  phx_curChan = phx_curChan - 1;
-  phx_altChan = phx_altChan - 1;
-};
+
+// recalc base freq in case phx_playerBaseChannel has changed
+call phx_radio_fnc_calcBaseFreqs;
 
 // [ // stereo settings example
 // 	1, // active channel (value - 1, as it uses a 0-based index)
@@ -18,7 +16,7 @@ if (isNil "phx_radiosSet") then {
 // ]
 
 //Only setup long range channels if player has one
-if (phx_hasLR) then {
+if (call TFAR_fnc_haveLRRadio) then {
     phx_curSettings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
     //Set default channel
     phx_curSettings set [0,phx_curChan];
@@ -47,7 +45,7 @@ if (phx_hasLR) then {
 };
 
 //Only setup short wave channels if player has one
-if (phx_hasSW) then {
+if (call TFAR_fnc_haveSwRadio) then {
     phx_curSettings = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
     //Set default channel
     phx_curSettings set [0,phx_curChan];
@@ -75,7 +73,6 @@ if (phx_hasSW) then {
     [(call TFAR_fnc_activeSwRadio), phx_loadout_TFAREncryptionCode] call TFAR_fnc_setSwRadioCode;
 };
 
-missionNamespace setVariable ["phx_radiosSet", true];
 //Everything should be setup. Let the player know.
 // systemChat "Radios preset.";
 [] spawn {

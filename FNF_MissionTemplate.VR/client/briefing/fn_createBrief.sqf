@@ -601,14 +601,29 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
   player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
   call phx_briefing_MMNotes;
   call phx_briefing_fnc_createOrbat;
+  if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]])) then {
+    call phx_briefing_fnc_adminDiary;
+  };
   [{
     [] spawn phx_briefing_fnc_createOrbat;
     if (getClientStateNumber >= 10) then {[_handle] call CBA_fnc_removePerFrameHandler};
   }, 7] call CBA_fnc_addPerFrameHandler;
 
-  private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
-  private _briefingEntryCount = _briefingEntry # 0 # 3;
-  player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 2];
+  if (phx_gameMode == "sustainedAssault") then {
+    [{count (allDiarySubjects player select {(_x # 0) == "BIS_fnc_moduleMPTypeSectorControl" && (_x # 5) == true}) > 0}, {
+      [] spawn {
+        private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
+        private _briefingEntryCount = _briefingEntry # 0 # 3;
+        player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 1];
+        uiSleep 0.2;
+        player removeDiarySubject "BIS_fnc_moduleMPTypeSectorControl";
+      };
+    }] call CBA_fnc_waitUntilAndExecute;
+  } else {
+    private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
+    private _briefingEntryCount = _briefingEntry # 0 # 3;
+    player selectDiarySubject format["Diary:Record%1", _briefingEntryCount - 1];
+  };
 },[_varStr]] call CBA_fnc_waitUntilAndExecute;
 
 
