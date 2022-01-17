@@ -34,7 +34,6 @@ if (playerSide isEqualTo civilian) exitWith {
   ] call BIS_fnc_logFormatServer;
 };
 
-player unlinkItem "ItemRadio";
 {player unlinkItem _x} forEach (assignedItems player);
 {
   player unassignItem _x;

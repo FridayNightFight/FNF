@@ -147,19 +147,22 @@ if !(phx_gameMode isEqualTo "assassin") then {
 if (phx_gameMode == "sustainedAssault") then {
   call phx_server_fnc_ambientFlyby;
 
-  phx_safeZone_BLUFOR_marker = ["safeZone_BLUFOR_marker", safeZone_BLUFOR] call BIS_fnc_markerToTrigger;
-  phx_safeZone_OPFOR_marker = ["safeZone_OPFOR_marker", safeZone_OPFOR] call BIS_fnc_markerToTrigger;
-  phx_safeZone_Independent_marker = ["safeZone_Independent_marker", safeZone_Independent] call BIS_fnc_markerToTrigger;
-  publicVariable "phx_safeZone_BLUFOR_marker";
-  publicVariable "phx_safeZone_OPFOR_marker";
-  publicVariable "phx_safeZone_Independent_marker";
-
-  phx_safeZone_BLUFOR_marker setMarkerColor "ColorBLUFOR";
-  phx_safeZone_BLUFOR_marker setMarkerBrush "FDiagonal";
-
-  phx_safeZone_OPFOR_marker setMarkerColor "ColorOPFOR";
-  phx_safeZone_OPFOR_marker setMarkerBrush "FDiagonal";
-
-  phx_safeZone_Independent_marker setMarkerColor "ColorGUER";
-  phx_safeZone_Independent_marker setMarkerBrush "FDiagonal";
+  if (!isNil "safeZone_BLUFOR") then {
+    phx_safeZone_BLUFOR_marker = ["safeZone_BLUFOR_marker", safeZone_BLUFOR] call BIS_fnc_markerToTrigger;
+    publicVariable "phx_safeZone_BLUFOR_marker";
+    phx_safeZone_BLUFOR_marker setMarkerColor "ColorBLUFOR";
+    phx_safeZone_BLUFOR_marker setMarkerBrush "FDiagonal";
+  };
+  if (!isNil "safeZone_OPFOR") then {
+    phx_safeZone_OPFOR_marker = ["safeZone_OPFOR_marker", safeZone_OPFOR] call BIS_fnc_markerToTrigger;
+    publicVariable "phx_safeZone_Independent_marker";
+    phx_safeZone_OPFOR_marker setMarkerColor "ColorOPFOR";
+    phx_safeZone_OPFOR_marker setMarkerBrush "FDiagonal";
+  };
+  if (!isNil "safeZone_Independent") then {
+    phx_safeZone_Independent_marker = ["safeZone_Independent_marker", safeZone_Independent] call BIS_fnc_markerToTrigger;
+    publicVariable "phx_safeZone_OPFOR_marker";
+    phx_safeZone_Independent_marker setMarkerColor "ColorGUER";
+    phx_safeZone_Independent_marker setMarkerBrush "FDiagonal";
+  };
 };

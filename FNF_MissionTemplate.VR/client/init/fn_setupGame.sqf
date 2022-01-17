@@ -64,7 +64,10 @@ if (phx_gameMode == "sustainedAssault") then {
 
       if (_badPos) then {
         deleteVehicle _projectile;
-        if (_vehicle in [west_howitzer,east_howitzer]) then {
+        if (_vehicle in [
+          missionNamespace getVariable ["west_howitzer", objNull],
+          missionNamespace getVariable ["east_howitzer", objNull]
+        ]) then {
           [format[
             "<t align='center'>Deleted a round from a<br/>%1<br/> fired by<br/>%2 (%3)<br/><br/>Please do NOT fire at the enemy base!</t>",
             getText(configFile >> "CfgWeapons" >> _weapon >> "displayName"),

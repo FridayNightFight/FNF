@@ -65,6 +65,7 @@ call phx_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
 call phx_server_fnc_populateORBATS;
 call phx_fnc_teleportInit; // Add leadership teleport options
+call phx_client_fnc_initMSPTeleport; // Add MSP teleport option to flagpole if sustainedAssault
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {

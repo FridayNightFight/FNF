@@ -107,6 +107,7 @@ class CfgFunctions {
       class canPlay{};
       class setupGame{};
       class staggeredLoad{};
+      class initMSPTeleport{};
     };
   };
   class phx_selector {
@@ -233,7 +234,7 @@ class CfgFunctions {
       class lockVehicles{};
       class vehicleRadios{};
       class ambientFlyby{};
-      class initMSPTeleport{};
+      class restoreAirLoadouts{};
     };
     class end {
       file = "server\end";

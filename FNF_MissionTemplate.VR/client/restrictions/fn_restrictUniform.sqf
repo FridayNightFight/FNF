@@ -3,18 +3,37 @@ Disables access to removing helmet and uniform. Ensures that the player has the 
 */
 
 if (isServer) exitWith {}; //Don't need to run this function for local testing
+if (!isNil "phx_restrictUniformHandle") then {
+  if !(scriptDone phx_restrictUniformHandle) exitWith {};
+};
 
 private _playerUniform = uniform player;
 private _playerHead = headgear player;
 private _playerVest = vest player;
 
 //Handle player not having the right uniform, vest, or helmet on
-[{
+phx_restrictUniformHandle = [{
   params ["_args","_handle"];
   _args params ["_playerUniform","_playerHead","_playerVest"];
 
   if !(uniform player isEqualTo _playerUniform) then {
+    private ["_uniform", "_uniformItems", "_uniformMagazines"];
+    _uniform = uniform player;
+    _uniformItems = uniformItems player;
+    _uniformMagazines = magazinesAmmoCargo (uniformContainer player);
+    removeUniform player;
+
     player forceAddUniform _playerUniform;
+    {
+      if not (isClass (configFile >> "cfgMagazines" >> _x)) then {
+        player addItemToUniform _x;
+      };
+    } foreach _uniformItems;
+
+    {
+      (uniformContainer player) addMagazineAmmoCargo [_x select 0, 1, _x select 1];
+    } foreach _uniformMagazines;
+
   };
 
   if !(headgear player isEqualTo _playerHead) then {

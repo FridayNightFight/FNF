@@ -127,7 +127,7 @@ private _credits = [
   " - Mazz38 - Mission Vetter",
   " - Bae - Mission Vetter",
   " - Ghoster - Previous Mission Vetter",
-  "and all of our community mission makers for creating fresh content every week!"
+  "and all of our community mission makers for creating fresh content every week!",
   "",
   "Finally, a huge thank you to previous staff:",
   " - Dingo",

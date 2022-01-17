@@ -27,7 +27,11 @@ if !(phx_gameMode == "sustainedAssault") then {
   }] remoteExecCall ["call", 2];
 };
 
-phx_safeStartNoFire = nil;
+if (!isNil "phx_restrictUniformHandle") then {
+  if !(scriptDone phx_restrictUniformHandle) then {
+    [phx_restrictUniformHandle] call CBA_fnc_removePerFrameHandler;
+  };
+};
 call phx_restrictions_fnc_init;
 call phx_safety_fnc_init;
 

@@ -39,11 +39,6 @@ call phx_server_fnc_webhook_roundPrep;
 call phx_server_fnc_populateORBATS;
 call phx_server_fnc_keyVehicles;
 call phx_server_fnc_vehicleRadios;
-call phx_server_fnc_initMSPTeleport;
-
-
-// [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
-// [{!isNil "phx_safetyEndTime"}, {call phx_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;
@@ -57,6 +52,9 @@ if !(phx_gameMode == "sustainedAssault") then {
     _marker setMarkerShape "ICON";
     _marker setMarkerType "Empty";
   } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
+
+  [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+  [{!isNil "phx_safetyEndTime"}, {call phx_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 };
 
 // turn on collision lights for air vehicles if it's night

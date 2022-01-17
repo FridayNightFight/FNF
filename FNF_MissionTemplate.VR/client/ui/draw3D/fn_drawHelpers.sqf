@@ -11,7 +11,6 @@ if (isNil "fnf_ui") then {
   #define MSG_SERVICEPOINT "Vehicle Repair Station"
   #define MSG_PLANES "Planes"
   #define MSG_SUPPLY "ACE Arsenal"
-  #define MSG_MSP
 
   #define ICON_AA "\A3\ui_f\data\map\vehicleicons\iconStaticAA_ca.paa"
   #define ICON_APC "\A3\ui_f\data\map\vehicleicons\iconAPC_ca.paa"
@@ -35,8 +34,8 @@ if (isNil "fnf_ui") then {
     [OPF_planes,MSG_PLANES,ICON_PLANE,true],
     [OPF_IFV,MSG_IFV,ICON_APC,true],
     [rallybase_east,MSG_RALLY,ICON_RALLY],
-    [east_MSPRespawn_1,"Mobile Spawn Point",true],
-    [east_MSP_1,"MSP",false,east],
+    [east_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
+    [east_MSP_1,"MSP",ICON_RALLY,false,east],
     [OPF_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR]
   ]];
 
@@ -51,8 +50,8 @@ if (isNil "fnf_ui") then {
     [BLU_planes,MSG_PLANES,ICON_PLANE,true],
     [BLU_IFV,MSG_IFV,ICON_APC,true],
     [rallybase_west,MSG_RALLY,ICON_RALLY],
-    [west_MSPRespawn_1,"Mobile Spawn Point",true],
-    [west_MSP_1,"MSP",false,west],
+    [west_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
+    [west_MSP_1,"MSP",ICON_RALLY,false,west],
     [BLU_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR]
   ]];
 };
