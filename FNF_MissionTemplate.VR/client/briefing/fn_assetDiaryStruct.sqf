@@ -430,7 +430,7 @@ _getVehicleData = {
   };
 
 
-  _invLines = [_x] call _getInventory;
+  _invLines = [_vic] call _getInventory;
 
   if (count _invLines > 0) then {
     _outArr pushBack format["<t size='1.2' color='#e1701a' face='PuristaBold'>INVENTORY</t>"];
@@ -441,56 +441,61 @@ _getVehicleData = {
   _outArr pushBack lineBreak;
   _outArr pushBack "-------------------------------------------------------------";
 
-
-  switch (true) do {
-    case (_x inArea "bluforSafeMarker"): {
-      [
-        phx_ui_structTextRef_AssetsBLU,
-        format["%1x %2",_typeCount, _dispName],
-        _outArr joinString "<br/>"
-      ] call BIS_fnc_setToPairs;
-      exit;
-    };
-    case (_x inArea "opforSafeMarker"): {
-      [
-        phx_ui_structTextRef_AssetsOPF,
-        format["%1x %2",_typeCount, _dispName],
-        _outArr joinString "<br/>"
-      ] call BIS_fnc_setToPairs;
-      exit;
-    };
-    case (_x inArea "indforSafeMarker"): {
-      [
-        phx_ui_structTextRef_AssetsIND,
-        format["%1x %2",_typeCount, _dispName],
-        _outArr joinString "<br/>"
-      ] call BIS_fnc_setToPairs;
-      exit;
-    };
-    default {
-      [
-        phx_ui_structTextRef_AssetsOther,
-        format["%1x %2",_typeCount, _dispName],
-        _outArr joinString "<br/>"
-      ] call BIS_fnc_setToPairs;
-    };
-  };
+  [_dispName, _outArr joinString "<br/>"];
 };
 
+#define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+#define MISSIONVICS_SORTED ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy)
 
-_vehiclesToProcess = createHashMap;
+// put vehicles into a hashmap based on who they belong to (if anyone)
+phx_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
 {
-  _typeCount = _vehiclesToProcess getOrDefault [(typeOf _x), 0];
-  _vehiclesToProcess set [(typeOf _x), _typeCount + 1];
-
-} forEach (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"});
-
-
-{
-  if (!((configOf _x) call BIS_fnc_displayName in ["Helicopter"])) then {
-    [_x, _vehiclesToProcess get (typeOf _x)] call _getVehicleData;
+  private _vehicle = _x;
+  switch (true) do {
+    case (_vehicle inArea "bluforSafeMarker"): {
+      [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+    };
+    case (_vehicle inArea "opforSafeMarker"): {
+      [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+    };
+    case (_vehicle inArea "indforSafeMarker"): {
+      [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+    };
+    default {
+      [phx_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+    };
   };
+} forEach MISSIONVICS;
 
-} forEach ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle" && (locked _x) in [0,1]}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy);
+
+// create diary records
+{
+  private _querySide = _x;
+  private _objects = [phx_vehiclesToProcess, _querySide, []] call BIS_fnc_getFromPairs;
+  if (count _objects > 0) then {
+    {
+      _x params ["_vehicle", "_count"];
+      private _processedText = "";
+      private _objectsToProcess = _objects select {typeOf _x == _vehicle};
+
+      {
+        private _processed = [];
+        if (!((configOf _x) call BIS_fnc_displayName in ["Helicopter"])) then {
+          _processed = [_x, _count] call _getVehicleData;
+        };
+
+        _processed params ["_dispName", "_diaryText"];
+        _processedText = _processedText + "<br/>" + _diaryText;
+      } forEach _objectsToProcess;
+
+      [
+        missionNamespace getVariable format["phx_ui_structTextRef_Assets%1", _querySide],
+        format["%1x %2", _count, (configFile >> "CfgVehicles" >> _vehicle) call BIS_fnc_displayName],
+        _processedText
+      ] call BIS_fnc_setToPairs;
+
+    } forEach ((_objects apply {typeOf _x}) call BIS_fnc_consolidateArray);
+  };
+} forEach ["BLU", "OPF", "IND", "OTHER"];
 
 true
