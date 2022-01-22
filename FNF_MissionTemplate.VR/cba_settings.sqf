@@ -111,6 +111,7 @@ force force ace_hearing_unconsciousnessVolume = 0.4;
 force force ace_interaction_disableNegativeRating = true;
 force force ace_interaction_enableMagazinePassing = true;
 force force ace_interaction_enableTeamManagement = true;
+force force ace_interaction_enableGroupRenaming = false;
 
 // ACE Interaction Menu
 ace_gestures_showOnInteractionMenu = 2;
@@ -132,6 +133,10 @@ ace_interact_menu_shadowSetting = 2;
 ace_interact_menu_textSize = 2;
 ace_interact_menu_useListMenu = true;
 ace_interact_menu_useListMenuSelf = true;
+
+// ACE Interaction Menu (Self) - Move to Root
+force force ace_interact_menu_moveToRoot__ACE_TeamManagement__ACE_RenameGroup = false;
+force force ace_interact_menu_moveToRoot__ACE_TeamManagement__ACE_BecomeLeader = false;
 
 // ACE Logistics
 force force ace_cargo_enable = true;

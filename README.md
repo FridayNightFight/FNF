@@ -1,20 +1,74 @@
-# Mission files for FNF
+# Friday Night Fight Mission Framework
 
-Note: If this is your first mission, or one of your first, it is recommended that you keep the mission fairly simple (light assets, uncomplicated terrain, daytime, etc.) until you get a good feel for how players tend to play the missions at FNF.
+<p align="center">
+  <a href="https://github.com/FridayNightFight/FNF/releases/latest">
+    <img src="https://img.shields.io/github/v/release/FridayNightFight/FNF?style=plastic&label=version&sort=semver" alt="version">
+  </a>
+  <a href="null">
+    <img src="https://img.shields.io/github/languages/code-size/FridayNightFight/FNF?style=plastic" alt="code size">
+  </a>
+  <a href="https://www.codefactor.io/repository/github/fridaynightfight/fnf">
+    <img src="https://img.shields.io/codefactor/grade/github/FridayNightFight/FNF/master?style=plastic" alt="code quality">
+  </a>
+  <a href="https://github.com/FridayNightFight/FNF/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/FridayNightFight/FNF?style=plastic" alt="contributors">
+  </a>
+  <br/>
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1551644814">
+    <img src="https://img.shields.io/steam/collection-files/1551644814?label=required%20mods&logo=steam&style=plastic" alt="required mods collection">
+  </a>
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1551644814">
+    <img src="https://img.shields.io/steam/views/1551644814?logo=steam&style=plastic" alt="mod collection views">
+  </a>
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1551644814">
+    <img src="https://img.shields.io/steam/subscriptions/2100378754?logo=steam&style=plastic" alt="fnf mod subscriptions">
+  </a>
+  <br/>
+    <a href="https://twitter.com/armafnf">
+    <img src="https://img.shields.io/twitter/follow/armafnf?style=social" alt="twitter">
+  </a>
+  <br/>
+  <a href="https://discord.gg/y4Rygfd">
+    <img src="https://img.shields.io/discord/106475368495484928?logo=discord&style=social" alt="discord">
+  </a>
+  <br/>
+</p>
 
-Steps:
+<p align="center">
+  <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1551644814">FNF Required Mods</a>
+  <br/>
+  <a href="https://docs.google.com/document/d/1D_3Bfv4CshksOpXxsbW0u-FJKxUTSga1gCSSDYjFcOg/edit?usp=sharing">FNF Mission Making Guide</a>
+</p>
 
-1. Configure "config.sqf" in the root mission directory and the respective file for your chosen game mode in the "mode_config" directory.
-2. Move the objectives to your wanted locations.
-- Do not delete any objective objects in the editor. Unused ones will be deleted by the server.
-3. Move your wanted sides to their starting location and configure their start zone marker.
-4. Delete any unwanted sides and their start zone marker.
-5. Place vehicles and other assets if you wish.
-6. Set the role description for crewable vehicles in order to have those roles selectable from the game lobby. For example, if you place a BTR-80 for OPFOR, name one of the OPFOR Echo teams something like: BTR-80 Commander, BTR-80 Driver, BTR-80 Gunner, and delete the unused units. Humvees and UAZs are not crewed vehicles and should not have dedicated crews present.
-7. Delete the crew/pilot units for roles not present in your mission.
-8. Configure mission start time, weather, etc.
-9. Configure the play boundary trigger (zoneTrigger).
-10. Set the Lobby Summary (Attributes > Multiplayer > Lobby > Summary ) to include the attacking & defending sides, the player-count ratio for the mission, and the assets available to each side. You don't need to include transport vehicles. Example: ATK:DEF OPF:BLU - 25% OPF adv - OPF: 1x BTR-80, 1x UAZ DShKM - BLU: 1x M113 M2, 1x UH-60M
-- Do not change any other Multiplayer settings
-11. Do a quick play-through of your mission from all sides to make sure that there are no weird bugs or interactions not visible in 3den editor.
-12. Export your mission to MP to create a mission .pbo and send that file over to FNF Staff (default export location is in MPMissions folder in root Arma directory).
+## USAGE
+All configuration changes should be made in [config.sqf](FNF_MissionTemplate.VR/config.sqf)
+
+Some options available for use are present in [configGuide.txt](FNF_MissionTemplate.VR/configGuide.txt)
+
+## FEATURES
+This framework includes the following features:
+
+- preset editor units for ease of setup
+- custom MissionInfo UI panel
+- ACE Spectator, Fortify, Crew-served weapons, Trenches, Vehicle lock integration
+- Discord webhook integration
+- config-defined uniform and gear sets loaded at mission start / on-demand
+- TFAR radio preset according to ORBAT structure + vehicle radio side association
+- admin contact system
+- support for TvT or 2v1 team Atk/Def modes, as well as TvT and TvTvT Neutral game modes
+
+
+===ATK/DEF===
+- adSector
+- assassin
+- captureTheFlag
+- destroy
+- rush
+- uplink
+
+===NEUTRAL===
+- connection
+- neutralSector
+- scavHunt
+
+and much more
