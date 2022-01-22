@@ -52,14 +52,22 @@ _fnc_doCount = {
   )
 };
 
-_bluPlayers = if (playableSlotsNumber west == 0) then {0} else {
-  playersNumber west;
+
+private ["_bluPlayers", "_opfPlayers", "_indPlayers"];
+if (playableSlotsNumber west == 0) then {
+  _bluPlayers = 0;
+} else {
+  _bluPlayers = str(count(allPlayers select {[_x, west] call _fnc_doCount}));
 };
-_opfPlayers = if (playableSlotsNumber east == 0) then {0} else {
-  playersNumber east;
+if (playableSlotsNumber east == 0) then {
+  _opfPlayers = 0;
+} else {
+  _opfPlayers = str(count(allPlayers select {[_x, east] call _fnc_doCount}));
 };
-_indPlayers = if (playableSlotsNumber independent == 0) then {0} else {
-  playersNumber independent;
+if (playableSlotsNumber independent == 0) then {
+  _indPlayers = 0;
+} else {
+  _indPlayers = str(count(allPlayers select {[_x, independent] call _fnc_doCount}));
 };
 
 
@@ -69,7 +77,7 @@ _indPlayers = if (playableSlotsNumber independent == 0) then {0} else {
 	_gameMode,
 	_connectedPlayerCount,
 	_missionDuration,
-	str(_bluPlayers),
-	str(_opfPlayers),
-	str(_indPlayers)
+	_bluPlayers,
+	_opfPlayers,
+	_indPlayers
 ]] call DiscordEmbedBuilder_fnc_buildCfg;

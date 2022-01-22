@@ -29,20 +29,14 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
   [] call phx_server_fnc_webhook_roundStart;
 
-  {
-    if !(getMarkerColor _x isEqualTo "") then {
-      deleteMarker _x;
-    };
-  } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
-
-  [{cba_missionTime > 300}, {
+  [{!(missionNamespace getVariable ["phx_safetyEnabled", true])}, {
     if !(phx_gameMode == "sustainedAssault") then {
       call phx_server_fnc_lockVehicles;
     };
     {
-      if !(getMarkerColor _x isEqualTo "") then {
-        deleteMarker _x;
-      };
+      // if !(getMarkerColor _x isEqualTo "") then {
+        _x remoteExec ["deleteMarker", 0];
+      // };
     } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
   }] call CBA_fnc_waitUntilAndExecute;
 }] call CBA_fnc_waitUntilAndExecute;

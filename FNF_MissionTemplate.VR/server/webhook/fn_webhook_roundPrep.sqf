@@ -11,7 +11,7 @@ if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connect
 	_connectedPlayerCount = str(count allPlayers);
 
 	["RoundPrep", [
-		briefingName,
+		missionName,
 		_gameMode,
 		_connectedPlayerCount
 	]] call DiscordEmbedBuilder_fnc_buildCfg;

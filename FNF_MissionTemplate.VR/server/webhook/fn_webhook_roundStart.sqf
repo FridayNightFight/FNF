@@ -123,9 +123,9 @@ if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gam
 
 
 _info = missionNamespace getVariable ["fnf_staffInfo", []];
-_staffPlayers = allPlayers select {!isNil {_info get (getPlayerUID _x)}};
-_staffCount = count _staffPlayers;
-_spectatorCount = count (call ace_spectator_fnc_players);
+_staffPlayers = allPlayers select {(getPlayerUID _x) in _info};
+_staffCount = str(count _staffPlayers);
+_spectatorCount = str(count (call ace_spectator_fnc_players));
 
 _fnc_doCount = {
   params [
@@ -142,31 +142,34 @@ _fnc_doCount = {
   )
 };
 
-_bluPlayers = if (playableSlotsNumber west == 0) then {""} else {
-  // count(allPlayers select {[_x, west] call _fnc_doCount})
-  playersNumber west;
+private ["_bluPlayers", "_opfPlayers", "_indPlayers"];
+if (playableSlotsNumber west == 0) then {
+  _bluPlayers = 0;
+} else {
+  _bluPlayers = str(count(allPlayers select {[_x, west] call _fnc_doCount}));
 };
-_opfPlayers = if (playableSlotsNumber east == 0) then {""} else {
-  // count(allPlayers select {[_x, east] call _fnc_doCount})
-  playersNumber east;
+if (playableSlotsNumber east == 0) then {
+  _opfPlayers = 0;
+} else {
+  _opfPlayers = str(count(allPlayers select {[_x, east] call _fnc_doCount}));
 };
-_indPlayers = if (playableSlotsNumber independent == 0) then {""} else {
-  // count(allPlayers select {[_x, independent] call _fnc_doCount})
-  playersNumber independent;
+if (playableSlotsNumber independent == 0) then {
+  _indPlayers = 0;
+} else {
+  _indPlayers = str(count(allPlayers select {[_x, independent] call _fnc_doCount}));
 };
-// _playingPlayerCount = count (playableUnits select {alive _x});
 _playingPlayerCount = _bluPlayers + _opfPlayers + _indPlayers;
 
 
 ["RoundStart", [
   missionName,
   _gameMode,
-  str(_playingPlayerCount),
-  str(_spectatorCount),
-  str(_staffCount),
-  str(_bluPlayers),
-  str(_opfPlayers),
-  str(_indPlayers),
+  _playingPlayerCount,
+  _spectatorCount,
+  _staffCount,
+  _bluPlayers,
+  _opfPlayers,
+  _indPlayers,
   _bluAssets,
   _opfAssets,
   _indAssets
