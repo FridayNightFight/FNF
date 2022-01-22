@@ -3,23 +3,63 @@ Server component to the safety system
 */
 
 missionNamespace setVariable ["phx_safetyEnabled",true,true];
-f_var_mission_timer = phx_safeStartTime * 60 + 20;
+f_var_mission_timer = phx_safeStartTime * 60;
 missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
 call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
 [{time > 1}, {
   [{
-    if (f_var_mission_timer < 0) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
+    ["f_var_mission_timer", f_var_mission_timer - 5] call CBA_fnc_publicVariable;
 
+
+    if (f_var_mission_timer > 295 && f_var_mission_timer < 304) then {
+      ["SafeStart",["5 minutes remaining"]] remoteExec ["bis_fnc_showNotification",0,false];
+    };
     if (f_var_mission_timer > 115 && f_var_mission_timer < 124) then {
-      ["SafeStart",["2 minutes remaining."]] remoteExec ["bis_fnc_showNotification",0,false];
+      ["SafeStart",["2 minutes remaining"]] remoteExec ["bis_fnc_showNotification",0,false];
+    };
+    if (f_var_mission_timer > 55 && f_var_mission_timer < 64) then {
+      ["SafeStart",["1 minute remaining"]] remoteExec ["bis_fnc_showNotification",0,false];
     };
 
-    f_var_mission_timer = f_var_mission_timer - 10;
-    publicVariable "f_var_mission_timer";
-  }, 10] call CBA_fnc_addPerFrameHandler;
+    if (f_var_mission_timer < 21) exitWith {
+      [{
+        ["f_var_mission_timer", f_var_mission_timer - 1] call CBA_fnc_publicVariable;
+        if (f_var_mission_timer < 0) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
+      }, 1] call CBA_fnc_addPerFrameHandler;
+
+      [_this select 1] call CBA_fnc_removePerFrameHandler;
+    };
+
+    if (f_var_mission_timer < 0) exitWith {[_this select 1] call CBA_fnc_removePerFrameHandler};
+  }, 5] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
+
+["FNF_Safety_Reduce1Minute", {
+  if (f_var_mission_timer >= 0) then {
+    ["f_var_mission_timer", f_var_mission_timer - (60*1)] call CBA_fnc_publicVariable;
+    format ["New safe start time: %1 mins", [f_var_mission_timer, "MM:SS"] call BIS_fnc_secondsToString] remoteExec ["systemChat",0];
+  } else {
+    [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+  };
+}] call CBA_fnc_addEventHandlerArgs;
+
+["FNF_Safety_Add1Minute", {
+  if (f_var_mission_timer >= 0) then {
+    ["f_var_mission_timer", f_var_mission_timer + (60*1)] call CBA_fnc_publicVariable;
+    format ["New safe start time: %1 mins", [f_var_mission_timer, "MM:SS"] call BIS_fnc_secondsToString] remoteExec ["systemChat",0];
+  } else {
+    [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+  };
+}] call CBA_fnc_addEventHandlerArgs;
+
+["FNF_Safety_EndNow", {
+  ["f_var_mission_timer", -1] call CBA_fnc_publicVariable;
+  "Safestart manually ended by an admin" remoteExec ["systemChat", 0];
+  [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+}] call CBA_fnc_addEventHandlerArgs;
+
 
 [{f_var_mission_timer < 0}, {
   missionNamespace setVariable ["phx_safetyEnabled",false,true];
@@ -29,14 +69,12 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
   [] call phx_server_fnc_webhook_roundStart;
 
-  [{!(missionNamespace getVariable ["phx_safetyEnabled", true])}, {
-    if !(phx_gameMode == "sustainedAssault") then {
-      call phx_server_fnc_lockVehicles;
-    };
-    {
-      // if !(getMarkerColor _x isEqualTo "") then {
-        _x remoteExec ["deleteMarker", 0];
-      // };
-    } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
-  }] call CBA_fnc_waitUntilAndExecute;
+  if !(phx_gameMode == "sustainedAssault") then {
+    call phx_server_fnc_lockVehicles;
+  };
+  {
+    // if !(getMarkerColor _x isEqualTo "") then {
+      _x remoteExec ["deleteMarkerLocal", 0, true];
+    // };
+  } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
 }] call CBA_fnc_waitUntilAndExecute;

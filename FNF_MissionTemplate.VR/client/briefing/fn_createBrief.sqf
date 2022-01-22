@@ -49,18 +49,12 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 
   //-1 minute to safety
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
-    if !(f_var_mission_timer / 60 <= 1) then {
-      f_var_mission_timer = f_var_mission_timer - 60;
-      publicVariableServer ""f_var_mission_timer"";
-    };
-    systemChat format [""New safe start time: %1 mins"", [f_var_mission_timer, ""MM:SS""] call BIS_fnc_secondsToString];
+    [""FNF_Safety_Reduce1Minute""] call CBA_fnc_serverEvent;
   '>-1 Minute to Safe Start</execute>"]];
 
   //+1 minute to safety
   player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
-    f_var_mission_timer = f_var_mission_timer + 60;
-    publicVariableServer ""f_var_mission_timer"";
-    systemChat format [""New safe start time: %1 mins"", [f_var_mission_timer, ""MM:SS""] call BIS_fnc_secondsToString];
+    [""FNF_Safety_Add1Minute""] call CBA_fnc_serverEvent;
   '>+1 Minute to Safe Start</execute>"]];
 
   //remove admin diary subject once safety ends

@@ -27,7 +27,8 @@ call phx_admin_fnc_serverCommands;
     if (markerColor _x != "") then {
       _ogMark = _x call BIS_fnc_markerToString;
       deleteMarker _x;
-      [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
+      _ogMark call BIS_fnc_stringToMarker;
+      // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
     };
   } forEach ["bluforSafeMarker", "opforSafeMarker", "indforSafeMarker"];
   missionNamespace setVariable ["phx_markCustomObjs_done", true, true];
