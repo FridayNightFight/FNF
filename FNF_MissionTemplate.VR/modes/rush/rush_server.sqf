@@ -139,8 +139,8 @@ _terminalHacking = {
   };
 
   if (_timer <= 0) then {
-    _termTimeText = format ["Terminal %1 hack complete",[str _term, 4, 4] call BIS_fnc_trimString];
-    // _termTimeText remoteExec ["hintSilent",0,false];
+    _termTimeText = format ["<t align='center'>Terminal %1 hack complete</t>",[str _term, 4, 4] call BIS_fnc_trimString];
+    "" remoteExec ["hintSilent",0,false];
     [_termTimeText, "warning", 7] remoteExec ["phx_ui_fnc_notify",0,false];
     switch (_term) do {
       case term1: {[_term, "defendTask1", "attackTask1", "term1Mark"] spawn _terminalHackComplete};
@@ -183,7 +183,8 @@ phx_serverTerminalAction = {
       };
 
       [{
-        [format ["%1 hack paused!", _this], "warning", 7] remoteExec ["phx_ui_fnc_notify", 0]
+        "" remoteExec ["hintSilent", 0];
+        [format ["<t align='center'>%1 hack paused!</t>", _this], "warning", 7] remoteExec ["phx_ui_fnc_notify", 0]
       }, _message, 1] call CBA_fnc_waitAndExecute;
       if ((typeOf _term) isEqualTo "Land_DataTerminal_01_F") then {
         [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];

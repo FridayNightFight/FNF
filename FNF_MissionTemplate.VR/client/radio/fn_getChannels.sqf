@@ -53,24 +53,10 @@ phx_ch1 = phx_playerBaseChannel; //All players will be able to switch to channel
 //        Try to keep offsets single digit or the channel may not be set if playerBaseChannel is a high number.
 //        Frequencies can only have one decimal place.
 //     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.
-_radioSettings = (group player) getVariable ["phx_radioSettings",[1,2,[0]]];
-phx_curChan = _radioSettings select 0;
-phx_altChan = _radioSettings select 1;
-_channelArray = _radioSettings select 2;
-if (count _channelArray > 0) then {phx_ch1 = phx_playerBaseChannel + (_channelArray select 0)};
-if (count _channelArray > 1) then {phx_ch2 = phx_playerBaseChannel + (_channelArray select 1)};
-if (count _channelArray > 2) then {phx_ch3 = phx_playerBaseChannel + (_channelArray select 2)};
-if (count _channelArray > 3) then {phx_ch4 = phx_playerBaseChannel + (_channelArray select 3)};
-if (count _channelArray > 4) then {phx_ch5 = phx_playerBaseChannel + (_channelArray select 4)};
-if (count _channelArray > 5) then {phx_ch6 = phx_playerBaseChannel + (_channelArray select 5)};
-if (count _channelArray > 6) then {phx_ch7 = phx_playerBaseChannel + (_channelArray select 6)};
-if (count _channelArray > 7) then {phx_ch8 = phx_playerBaseChannel + (_channelArray select 7)};
+phx_radioSettingsStart = (group player) getVariable ["phx_radioSettings",[1,2,[0]]];
 
-//player isn't part of any template group
-if (isNil "phx_curChan") then {
-    phx_curChan = 1;
-    phx_altChan = 8;
-};
+// this call is also in setRadios, to allow recalc if playerBaseChannel changes due to allegiance change
+call phx_radio_fnc_calcBaseFreqs;
 
 //Generate Mission Notes
 phx_radioNoteString = "<font size='24'>Your Radio's Default Settings</font><br/><br/>Channel 1: " + str(phx_ch1) + " MHz<br/>";
@@ -98,6 +84,7 @@ if (!isNil "phx_ch9") then {_structStartingRadios pushBack ("Channel 9: " + str(
 //Let player know what channels he starts on.
 // PHX_Diary_Radio = player createDiarySubject ["PHX_Diary_Radio", "Radio Preset", "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa"];
 phx_radioNoteString = phx_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(phx_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(phx_altChan) + "</font>";
+
 phx_briefing_startingRadios = {
   player createDiaryRecord ["Diary", ["My Radio Settings", phx_radioNoteString]];
 };
@@ -105,12 +92,24 @@ phx_briefing_startingRadios = {
 _structStartingRadios pushBack ("<br/>Main Channel (left ear): <t color='#90ee90'>CH " + str(phx_curChan) + "</t><br/>Alt. Channel (right ear): <t color='#90ee90'>CH " + str(phx_altChan) + "</t>");
 [phx_ui_structTextRef, "My Starting Radios", _structStartingRadios joinString ""] call BIS_fnc_setToPairs;
 
+
 //Next step - wait for loadout
-[{!isNil "phx_hasSW" && !isNil "phx_hasLR" && call TFAR_fnc_isAbleToUseRadio}, {
-  [true] call TFAR_fnc_requestRadios;
-  // call phx_radio_fnc_setRadios;
-  [{call phx_radio_fnc_setRadios},[],5] call CBA_fnc_waitAndExecute;
-}, [], 60, {
-  // systemChat "Radio preset timeout";
-  ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
-}] call CBA_fnc_waitUntilAndExecute;
+// [{
+//   !isNil "phx_hasSW" && !isNil "phx_hasLR"
+// }, {
+//   call TFAR_fnc_requestRadios;
+//   // call phx_radio_fnc_setRadios;
+//   [{
+
+//   },[],5] call CBA_fnc_waitAndExecute;
+// }, [], 60, {
+//   // systemChat "Radio preset timeout";
+//   ["<t color='#00CC44'>Radio preset timeout.</t>", "error", 10] call phx_ui_fnc_notify;
+// }] call CBA_fnc_waitUntilAndExecute;
+
+// This will automatically set radios to FNF freqs when any new radio is instantiated from the server
+["TFAR_event_OnRadiosReceived", {
+  [{
+    call phx_radio_fnc_setRadios;
+  },[],1] call CBA_fnc_waitAndExecute;
+}] call CBA_fnc_addEventHandler;

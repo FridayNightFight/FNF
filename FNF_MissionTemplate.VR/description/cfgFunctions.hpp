@@ -83,7 +83,7 @@ class CfgFunctions {
       class objectiveRecon{};
     };
     class tools {
-      file = "client\briefing\tools"
+      file = "client\briefing\tools";
       class parseLoadout{};
       class parseGear{};
       class parseMAT{};
@@ -160,6 +160,7 @@ class CfgFunctions {
       file = "client\radio";
       class waitGear{};
       class getChannels{};
+      class calcBaseFreqs{};
       class setRadios{};
       class cleanup{};
     };

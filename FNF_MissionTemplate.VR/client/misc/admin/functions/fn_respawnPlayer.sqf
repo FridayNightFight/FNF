@@ -29,6 +29,13 @@ params [["_targetIDs", [], [[]]], ["_adminId", "", [""]]];
 
 private _out = [];
 
+if (phx_gameMode == "sustainedAssault") exitWith {
+  [
+    "FNF_UIPanelAdmin_ReturnStatus",
+    "Respawn admin action unavailable in sustainedAssault"
+  ] call CBA_fnc_globalEvent;
+};
+
 (getUserInfo _adminId) params ["_admin_networkId","_admin_owner","_admin_playerUID","_admin_soldierName","_admin_soldierNameInclSquad","_admin_steamProfileName","_admin_clientStateNumber","_admin_isHeadless","_admin_adminState","_admin_netPerf","_admin_playerObject"];
 _out pushBack format["ACTOR: %1", _admin_soldierName];
 _out pushBack format["ACTION: %1", "RespawnPlayer"];
@@ -91,21 +98,6 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
         setPlayerRespawnTime -1;
         uiSleep 1;
         setPlayerRespawnTime 9999;
-
-        // teleport and loadout application
-        private _pos = missionNamespace getVariable ["phx_startGoodPos", [0,0,0]];
-        if (surfaceIsWater _pos) then {
-          player setPosASLW _pos;
-        } else {
-          player setPosATL _pos;
-        };
-        [false] call ace_spectator_fnc_setSpectator;
-        [player getVariable ["phxLoadout", "BASE"]] call phx_loadout_fnc_applyLoadout;
-        [player, {phx_playersInMission pushBack _this}] remoteExecCall ["call", 2];
-        phx_safeStartNoFire = nil;
-        call phx_restrictions_fnc_init;
-        call phx_safety_fnc_init;
-
         uiSleep 2;
 
         // notify
@@ -121,7 +113,6 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
   "FNF_UIPanelAdmin_ReturnStatus",
   _out joinString "<br/>"
 ] call CBA_fnc_globalEvent;
-
 
 // sends event to server w/ information
 // used for Discord report

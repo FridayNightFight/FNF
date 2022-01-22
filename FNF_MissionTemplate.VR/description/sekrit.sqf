@@ -1,4 +1,8 @@
-phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
+if !(phx_gameMode == "sustainedAssault") then {
+  phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
+} else {
+  phx_missionTimeLimit = 60;
+};
 phx_safeStartTime = 15; //Safestart time in minutes
 
 phx_templateVersion = call compile preprocessFile "version.txt";
@@ -13,9 +17,60 @@ phx_ui_structTextRef_AssetsOther = [];
 _rules = call compile preprocessFile "description\RulesAndPolicies.txt";
 [phx_ui_structTextRef, "Rules", _rules] call BIS_fnc_setToPairs;
 
-
+#define COLOR1 "#944509"
+#define COLOR2 "#FF8E38"
+#define COLOR3 "#E0701B"
+#define COLOR4 "#008394"
+#define COLOR5 "#1BCAE0"
 
 phx_ui_changelogText = ([
+  "NEW:",
+  "  - major code refactor for a number of functions including inline documentation",
+  "  - additional notifications for vetters if mission has a bad configuration",
+  "",
+  "  Admin Panel",
+  "    - shows notification to staff when a staff action is performed",
+  "    - also sends a message to Discord documenting it",
+  "    - full menu where everything except game clock works",
+  "    - foundation is present to migrate playersList to config instead, and allow multiple selection and feed multiple IDs to button functions",
+  "    - players acted on will receive notifications informing them that they were",
+  "    - admins with panel open will see results of action by any admin in their result panel, to reduce duplicate actions",
+  "    - radio system now allows dynamic base channel change, completing the indfor allegiance change control in admin panel (will enter the radio freq structure of the allied side, or their own if not allied)",
+  "",
+  "  COMING SOON: Updated Mission SQM",
+  "    - migrated everything into layers for organization and better in-game management",
+  "    - more descriptive commenting for new MMs",
+  "",
+  "  COMING SOON: Sustained Assault integration",
+  "    - 1 framework that works with both standard and SA mission files",
+  "    - mission templates for creating more content",
+  "    - Vietnam template now available, Modern coming soon",
+  "    Now with:",
+  "      - mobile spawn points",
+  "      - better respawn handling",
+  "",
+  "FIXED:",
+  "  - now delays radio assignment until core loadout is done to avoid potential issues w/ server not instantiating, plus revamp of handling",
+  "  - ammo choices for OPFOR loadouts updated",
+  "<br/>",
+  "///////////////////////",
+  "",
+  "v3.1.01",
+  "",
+  "NEW:",
+  "  - removes extraneous addon-based diary tabs",
+  "  - now recreates safezone markers to place them atop custom object markers",
+  "  - Iraqi Army and Dutch Army loadouts",
+  "",
+  "FIXED:",
+  "  - fixes My Starting Loadout during briefing phase",
+  "  - fixes enableEnvironment call",
+  "  - when the initial primary weapon a player was assigned at mission start did not support any available optics, the selector failed to initialize",
+  "  - fixes ammo types for some opfor/indfor factions",
+  "<br/>",
+  "///////////////////////",
+  "",
+  "v3.1.0",
   "- adds CSW configuration to diary",
   "- adds custom UI mission info panel for alive/dead player and spectators (Ctrl-J or click button while spectating)",
   "- reworks spectator init to support missionInfoPanel data",
@@ -45,7 +100,6 @@ phx_ui_frameworkCreditsText = ([
   "Map Unit Icons/Blufor Tracker: QS Icons by Quiksilver"
 ] joinString "<br/>");
 
-#define COLOR2 "#FF8E38"
 private _changelogStruct = format [
   "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/><br/>%2<br/><br/><t size='1.2' shadow='1' color='" + COLOR2 + "'>Credits</t><br/>%3",
   phx_templateVersion,
@@ -89,8 +143,9 @@ private _credits = [
   " - Mazz38 - Mission Vetter",
   " - Bae - Mission Vetter",
   " - Ghoster - Previous Mission Vetter",
+  "and all of our community mission makers for creating fresh content every week!",
   "",
-  "And a huge thank you to previous staff:",
+  "Finally, a huge thank you to previous staff:",
   " - Dingo",
   " - Firefighter",
   " - Drake",
