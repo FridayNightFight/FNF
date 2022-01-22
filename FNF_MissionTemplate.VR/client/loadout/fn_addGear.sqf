@@ -1,3 +1,27 @@
+/*
+* Author: Martin, IndigoFox
+*
+* Description:
+* Add single item if single string, and add multiple instances if "className:count" format is supplied. Takes array.
+* Uses CBA functionality to disregard max load, and instead reference max container capacity to determine if something can be added.
+*
+* Arguments:
+* 0: Single classname or array of classnames, in one of two formats. <STRING> or <ARRAY>
+* 1: Preferred container (defaults to trying each container in order) <STRING>, one of "uniform","vest","backpack"
+* 2: Unit to add the item to (default: player) <OBJECT>
+*
+* Return Value:
+* true on success <BOOLEAN>
+* nil on failure with warning <NIL>
+*
+* Example:
+* "FirstAidKit" call phx_loadout_fnc_addGear;
+* "FirstAidKit:5" call phx_loadout_fnc_addGear;
+* ["FirstAidKit:3","ItemMap","ItemCompass"] call phx_loadout_fnc_addGear;
+*
+* Public: Yes
+*/
+
 _itemStr = _this;
 
 if (_itemStr isEqualTo "") exitWith {};
@@ -11,6 +35,7 @@ _err = {
   titleText [_msg, "PLAIN"];
   titleFadeOut 20;
   systemChat ("Error adding " + _item);
+  nil
 };
 
 if (typeName _itemStr isEqualTo "STRING") then {
@@ -65,7 +90,7 @@ if (typeName _itemStr isEqualTo "STRING") then {
         };
       };
     };
-    case "uniform": {
+    default {
       for "_i" from 1 to _numToAdd do {
         if ([_unit, _item, 1, true, false, false] call CBA_fnc_canAddItem) then {
           _unit addItemToUniform _item;
@@ -84,3 +109,4 @@ if (typeName _itemStr isEqualTo "STRING") then {
     };
   };
 };
+true

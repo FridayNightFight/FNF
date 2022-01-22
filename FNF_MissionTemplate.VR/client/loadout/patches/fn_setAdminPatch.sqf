@@ -17,5 +17,5 @@
 _staffIDs = missionNamespace getVariable ["fnf_staffInfo",[]];
 
 if ((getPlayerUID player) in _staffIDs) then {
-	[player, "FNFPatchAdmin"] call BIS_fnc_setUnitInsignia;
+  [player, "FNFPatchAdmin"] call BIS_fnc_setUnitInsignia;
 };

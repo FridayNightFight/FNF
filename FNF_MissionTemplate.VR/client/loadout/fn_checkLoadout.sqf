@@ -1,3 +1,22 @@
+/*
+* Author: Martin
+*
+* Description:
+* Validates that a unit has received a valid loadout at least once upon loading in.
+* If loadout application fails, it will end the mission and not allow them to play.
+*
+* Arguments:
+* <NONE>
+*
+* Return Value:
+* <NONE>
+*
+* Example:
+* call phx_loadout_fnc_checkLoadout;
+*
+* Public: No
+*/
+
 if !(hasInterface) exitWith {};
 
 [{

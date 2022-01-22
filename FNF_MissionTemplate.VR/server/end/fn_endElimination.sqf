@@ -7,4 +7,4 @@ params ["_sideWon"];
 phx_gameEnd = true;
 publicVariable "phx_gameEnd";
 
-[_sideWon, "has won by elimination!"] spawn phx_fnc_gameEnd;
+[_sideWon, "has won by elimination!"] spawn phx_server_fnc_gameEnd;

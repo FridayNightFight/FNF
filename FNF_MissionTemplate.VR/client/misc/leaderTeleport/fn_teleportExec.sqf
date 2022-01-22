@@ -70,7 +70,7 @@ _getTLs = {
 		{
 			// select only the first leader found in A, A1, A2
 			private _groupChar = _x;
-			private _groupsThatExist = _allGroups select {(groupId _x) in [(_groupId + "1"), (_groupId + "2")]};
+			private _groupsThatExist = _allGroups select {(groupId _x) in [(_groupChar + "1"), (_groupChar + "2")]};
 			if (count _groupsThatExist > 0) then {
 				{
 					_result pushBack (leader _x);

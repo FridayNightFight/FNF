@@ -1,4 +1,4 @@
-class InfoPanelSpectatorButton : RscShortcutButton
+class FNF_MissionInfoPanelSpectatorButton : RscShortcutButton
 {
   deletable = 0;
   fade = 0;
@@ -68,7 +68,7 @@ class InfoPanelSpectatorButton : RscShortcutButton
 };
 
 
-class InfoPanel
+class FNF_MissionInfoPanel
 {
   idd = 2525;
   x = 0;

@@ -14,74 +14,6 @@ class CfgFunctions {
       class teleportInit{};
       class teleportExec{};
     }
-    class clientInit {
-      file = "client\init";
-      class clientInit{};
-      class clientCanPlay{};
-      class clientSetupGame{};
-      class staggeredLoad{};
-      class drawStaffIcons{};
-      class drawCmdIcons{};
-      class drawSLIcons{};
-      class assetDiaryInfo{};
-      class assetDiaryInfoStruct{};
-      class clientInitCall{postInit = 1;};
-    };
-    class briefing {
-      file = "client\briefing";
-      class briefInit{};
-      class setGroupIDs{};
-      class createBrief{};
-      class createBriefSpec{};
-      class notesItems{};
-      class briefNews{};
-      class createOrbat{};
-      class objectiveRecon{};
-    };
-    class briefingLoadouts {
-      file = "client\briefing\loadoutPrep";
-      class briefingParseLoadout{};
-      class briefingWeaponDetails{};
-      class briefingGear{};
-    };
-    class radio {
-      file = "client\radio";
-      class radio_waitGear{};
-      class radio_getChannels{};
-      class radio_setRadios{};
-      class radio_cleanup{};
-    };
-    class spectator {
-      file = "client\spectator";
-      class spectatorInit{};
-    };
-    class loadout {
-      file = "client\loadout";
-      class applyCfgLoadout{};
-      class applyCfgLoadoutScreenshots{};
-      class addGear{};
-      class checkLoadout{};
-      class setMAT{};
-    };
-    class restrictions {
-      file = "client\restrictions";
-      class restrictions{};
-      class disableMisc{};
-      class afkCheck{};
-      class disableTyping{postInit = 1;};
-      class removeRespawnButton{};
-      class hideMarkers{};
-      class restrictUniform{};
-      class zoneBoundary{};
-      class startBoundary{};
-      class restrictETool{};
-      class restrictGamma{};
-    };
-    class safety {
-      file = "client\safety";
-      class safety{};
-      class handleSafetyVics{};
-    };
     class misc {
       file = "client\misc";
       class hintThenClear{};
@@ -106,14 +38,195 @@ class CfgFunctions {
       class unflipVehicle{};
       class unflipVehicleAddAction{};
     };
+  };
+  class phx_admin {
+    class adminPatches {
+      file = "client\loadout\patches";
+      class setAdminPatch{};
+    };
+    class adminMenu {
+      file = "client\misc\admin\menu";
+      class addAdminUIButton{};
+      class adminUI{};
+      class serverCommands{};
+    };
+    class diaryActions {
+      file = "client\misc\admin";
+      class safetyEndExpression{};
+    };
+    class functions {
+      file = "client\misc\admin\functions";
+      class adminAdjustGameClock{};
+      class adminSetLoadout{};
+      class copyPlayerUIDs{};
+      class killPlayer{};
+      class resetAnimState{};
+      class respawnPlayer{};
+      class setIndforAllegiance{};
+    };
+    class gameEnd {
+      file = "client\misc\admin";
+      class adminGameEnd{};
+    };
+  };
+  class phx_briefing {
+    class core {
+      file = "client\briefing";
+      class init{};
+      class setGroupIDs{};
+      class createBrief{};
+      class createBriefSpec{};
+      class assetDiary{};
+      class assetDiaryStruct{};
+      class createOrbat{};
+      class news{};
+      class objectiveRecon{};
+    };
+    class tools {
+      file = "client\briefing\tools";
+      class parseLoadout{};
+      class parseGear{};
+      class parseMAT{};
+      class parseCSW{};
+      class weaponDetails{};
+      class notesItems{};
+      class getItemInfo{};
+    };
+  };
+  class phx_article {
+    class articles {
+      file = "client\briefing\articles";
+      class NewYear2022{};
+    };
+  };
+  class phx_client {
+    class core {
+      file = "client\init";
+      class initCall{postInit = 1;};
+      class init{};
+      class canPlay{};
+      class setupGame{};
+      class staggeredLoad{};
+    };
+  };
+  class phx_selector {
+    class selectors {
+      file = "client\loadout\selector";
+      class init{};
+      class weapons{};
+      class optics{};
+      class grenades{};
+      class charges{};
+      class csw{};
+    };
+  };
+  class phx_loadout {
+    class core {
+      file = "client\loadout";
+      class applyLoadout{};
+      class checkLoadout{};
+      class addGear{};
+    };
+    class tools {
+      file = "client\loadout\tools";
+      class handleSHQAUX{};
+      class screenshotLoadout{};
+      class getWeaponMagazines{};
+      class setMAT{};
+    };
+    class procedure {
+      file = "client\loadout\procedure";
+      class addUniform{};
+      class giveRadios{};
+      class giveGear{};
+      class givePrimaryWeapon{};
+      class prepWeaponsSelector{};
+      class giveSidearmWeapon{};
+      class giveSilencer{};
+      class giveNVG{};
+      class giveAT{};
+      class prepOpticsSelector{};
+      class giveCECharges{};
+      class giveCEGrenades{};
+      class setAttributes{};
+      class giveSideKey{};
+      class giveBinoculars{};
+      class loadWeapons{};
+      class setRank{};
+    };
+  };
+  class phx_radio {
+    class functions {
+      file = "client\radio";
+      class waitGear{};
+      class getChannels{};
+      class calcBaseFreqs{};
+      class setRadios{};
+      class cleanup{};
+    };
+  };
+  class phx_restrictions {
+    class functions {
+      file = "client\restrictions";
+      class init{};
+      class disableTyping{postInit = 1;};
+      class zoneBoundary{};
+      class startBoundary{};
+      class disableMisc{};
+      class afkCheck{};
+      class removeRespawnButton{};
+      class hideMarkers{};
+      class restrictUniform{};
+      class restrictETool{};
+      class restrictGamma{};
+    };
+  };
+  class phx_safety {
+    class safety {
+      file = "client\safety";
+      class init{};
+      class handleVics{};
+    };
+  };
+  class phx_spectator {
+    class functions {
+      file = "client\spectator";
+      class init{};
+    };
+  };
+  class phx_ui {
+    class safeStartMenu {
+      file = "client\ui\safeStartMenu";
+      class safeStartMain{};
+      class weaponSelector{};
+      class opticSelector{};
+      class chargesSelector{};
+      class grenadesSelector{};
+    };
+    class notifications {
+      file = "client\ui\notifications";
+      class notify{};
+    };
+    class draw3D {
+      file = "client\ui\draw3D";
+      class drawStaffIcons{};
+      class drawCmdIcons{};
+      class drawSLIcons{};
+    };
+    class scripts {
+      file = "client\ui";
+      class missionInfoPanel{};
+    };
+  };
+  class phx_server {
     class initServer {
       file = "server\init";
-      class serverSafety{};
+      class safety{};
       class sendUniforms{};
       class markCustomObjs{};
       class fortifyServer{};
-      class server_setupGame{};
-      class radio_genFreqs{};
+      class setupGame{};
+      class genRadioFreqs{};
       class populateORBATS{};
       class keyVehicles{};
       class lockVehicles{};
@@ -136,51 +249,6 @@ class CfgFunctions {
       class webhook_roundPrep;
       class webhook_roundStart;
       class webhook_roundEnd;
-    };
-  };
-  class phx_ui {
-    class safeStartMenu {
-      file = "client\ui\safeStartMenu";
-      class safeStartMain{};
-      class weaponSelector{};
-      class opticSelector{};
-      class chargesSelector{};
-      class grenadesSelector{};
-    };
-    class notifications {
-      file = "client\ui\notifications";
-      class notify{};
-    };
-    class scripts {
-      file = "client\ui";
-      class missionInfoPanel{};
-    };
-  };
-  class phx_admin {
-    class adminPatches {
-      file = "client\loadout\patches";
-      class setAdminPatch{};
-    };
-    class adminKick {
-      file = "client\misc\admin\adminKick";
-      class addAdminKickButton{};
-      class adminKickUI{};
-      class kickPlayer{};
-    };
-    class gameEnd {
-      file = "client\misc\admin";
-      class adminGameEnd{};
-    };
-  };
-  class phx_selector {
-    class selectors {
-      file = "client\loadout\selector";
-      class init{};
-      class weapons{};
-      class optics{};
-      class grenades{};
-      class charges{};
-      class csw{};
     };
   };
 };

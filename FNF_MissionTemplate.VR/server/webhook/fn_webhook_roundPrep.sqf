@@ -1,8 +1,9 @@
-if (isNil "DiscordEmbedBuilder_fnc_buildCfg") exitWith {diag_log text "Failed to send RoundPrep webhook -- mod not loaded!"};
+if !(isClass (configFile >> "CfgPatches" >>  "CAU_DiscordEmbedBuilder")) exitWith {diag_log text "Failed to send RoundPrep webhook -- mod not loaded!"};
+if !(isDedicated) exitWith {diag_log text "Not running on FNF Dedicated -- skipping RoundPrep Discord post"};
 if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundPrep Discord post"};
 
-[{cba_missionTime > 300}, {
-	if (!(missionNamespace getVariable ["phx_safetyEnabled", false])) exitWith {diag_log text "Safe Start already ended -- skipping RoundPrep Discord post"};
+[{time > 300}, {
+	if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {diag_log text "Safe Start already ended -- skipping RoundPrep Discord post"};
 
 	private ["_gameMode", "_connectedPlayerCount"];
 	if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gameMode};
@@ -10,7 +11,7 @@ if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connect
 	_connectedPlayerCount = str(count allPlayers);
 
 	["RoundPrep", [
-		missionName,
+		briefingName,
 		_gameMode,
 		_connectedPlayerCount
 	]] call DiscordEmbedBuilder_fnc_buildCfg;

@@ -88,7 +88,7 @@ phx_checkAlive_count = {
       default {civilian};
     };
 
-    [_sideWon, "has won by elimination!"] spawn phx_fnc_gameEnd;
+    [_sideWon, "has won by elimination!"] spawn phx_server_fnc_gameEnd;
   };
   */
 }, 10] call CBA_fnc_addPerFrameHandler;

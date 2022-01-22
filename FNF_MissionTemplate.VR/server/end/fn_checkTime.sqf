@@ -25,7 +25,7 @@ phx_alertEnd = false;
       phx_alertEnd = true;
       missionNamespace setVariable ["phx_overTime",true,true];
 
-      [] spawn phx_fnc_overTimeEnd;
+      [] spawn phx_server_fnc_overTimeEnd;
       [_handle] call CBA_fnc_removePerFrameHandler
   };
 }, 0.5, _missionRuntimeSecs] call CBA_fnc_addPerFrameHandler;

@@ -1,3 +1,21 @@
+/*
+* Author: ferstaberinde.com, modified by Martin, IndigoFox
+*
+* Description:
+* Generates ORBAT of roles & assigned frequencies by squad and team. Creates or updates diary record & sets UI reference array pair.
+*
+* Arguments:
+* /NONE/
+*
+* Return Value:
+* true on success <BOOLEAN>
+*
+* Example:
+* call phx_briefing_fnc_createOrbat
+*
+* Public: No
+*/
+
 // F3 - ORBAT Notes (Heavily Modified)
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // This script has been modified from it's original form.
@@ -269,3 +287,4 @@ if !(typeOf player == "ace_spectator_virtual") then {
 
 phx_orbat_lastUsedColor = nil;
 phx_writtenORBAT = true;
+true

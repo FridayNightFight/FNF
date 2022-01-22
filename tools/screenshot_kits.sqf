@@ -167,7 +167,7 @@ _screenRight = safezoneX + safezoneW;
 
     phx_bluforUniform = _uniformSelection;
     phx_bluforGear = _gearSelection;
-    [_role, _object] call phx_fnc_applyCfgLoadoutScreenshots;
+    [_role, _object] call phx_loadout_fnc_applyLoadoutScreenshots;
 
 
     if (primaryweapon _object != "") then {_object switchmove "amovpercmstpslowwrfldnon"} else {_object switchmove "amovpercmstpsnonwnondnon";};
