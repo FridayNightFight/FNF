@@ -1,71 +1,66 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "vn_sks", "vn_type56"
+#define RIFLE "rhs_weap_akmn"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "vn_sks_mag:9","vn_sks_t_mag:6","vn_type56_mag:7","vn_type56_t_mag:4"
+#define RIFLE_MAG "rhs_30Rnd_762x39mm_polymer_89:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "vn_sks_mag:14","vn_sks_t_mag:9","vn_type56_mag:12","vn_type56_t_mag:7"
+#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_polymer_89:12","rhs_30Rnd_762x39mm_polymer_tracer:6"
 
-#define SIDEARM "vn_tt33"
-#define SIDEARM_MAG "vn_tt33_mag:3"
+#define SIDEARM "rhs_weap_makarov_pm"
+#define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
 
 // put all GL weapons
-#define RIFLE_GL "vn_sks_gl"
+#define RIFLE_GL "rhs_weap_akmn_gp25"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
-#define UGL_FRAG vn_22mm_m60_frag_mag
-#define UGL_SMOKEWHITE vn_22mm_m22_smoke_mag
-#define UGL_FLAREWHITE vn_22mm_lume_mag
+#define UGL_FRAG rhs_VOG25
+#define UGL_SMOKEWHITE rhs_GRD40_White
+#define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "vn_m4956"
-#define CARBINE_MAG "vn_m4956_10_mag:12"
-#define CARBINE_MAG_RI "vn_m4956_10_mag:16"
-#define CARBINE_MAG_CREW "vn_m4956_10_mag:6"
+#define CARBINE "rhs_weap_aks74n_2"
+#define CARBINE_MAG "rhs_30Rnd_545x39_7N10_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
+#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
+#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
 
-#define SMG_RIFLE "vn_mat49"
-#define SMG_MAG "vn_mat49_mag:11"
-#define SMG_MAG_CREW "vn_mat49_mag:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
-#define SHOTGUN "vn_izh54"
-#define SHOTGUN_MAG "vn_izh54_mag:16"
+#define AR_RIFLE "fnf_rpk"
+#define AR_MAG "fnf_45rnd_rpk_green:6"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
 
-#define AR_RIFLE "vn_k50m"
-#define AR_MAG "vn_ppsh41_71_t_mag:8"
-#define AR_MAG_ASST "vn_ppsh41_71_t_mag:4"
+#define AT_LAUNCHER RPG26(1)
 
-#define AT_LAUNCHER VN_RPG7(2)
+#define MAT1_LAUNCHER RPG7(4,2)
+#define MAT2_LAUNCHER RPG7(4,2)
 
-#define MAT1_LAUNCHER VN_RPG7(3)
-#define MAT2_LAUNCHER VN_RPG7(3)
+#define DM_RIFLE "rhs_weap_svdp_wd_npz"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define MMG_RIFLE "rhs_weap_pkp"
+#define MMG_MAG "rhs_100Rnd_762x54mmR:8"
+#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
 
-#define MMG_RIFLE "vn_pk"
-#define MMG_MAG "vn_pk_100_mag:8"
-#define MMG_MAG_ASST "vn_pk_100_mag:7"
+#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
+#define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
 
-#define SPOTTER_RIFLE "vn_m45","vn_m3a1"
-#define SPOTTER_MAG "vn_m45_mag:11","vn_m3a1_mag:8"
-
-#define SNP_RIFLE "vn_m9130"
-#define SNP_MAG "vn_m38_mag:12"
-
+#define SNP_RIFLE "rhs_weap_t5000"
+#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class VN_GEAR_NVA_VC1970 {
+class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
   author = "Mazz38";
-  description = "NVA: North Vietnamese Army 1970";
+  description = "ID: 2003 IRAQI ARMY AKMN Kits";
 
   class BASE {
     backpackItems[] = {};
-    launchers[] = {};
     sidearms[] = {
       {{SIDEARM},{SIDEARM_MAG}}
     };
@@ -73,9 +68,11 @@ class VN_GEAR_NVA_VC1970 {
       {{RIFLE},{RIFLE_MAG}},
       {{CARBINE},{CARBINE_MAG}}
     };
-    magazines[] = {VN_O_BASE_GRENADES};
+    launchers[] = {};
+    defaultMAT[] = {};
+    magazines[] = {BASE_GRENADES};
     items[] = {TOOLS,GRUNT_MEDICAL};
-    linkedItems[] = {VN_O_LINKED};
+    linkedItems[] = {LINKED};
     attachments[] = {};
     launcherAttachments[] = {};
     explosiveChoices[] = {};
@@ -106,21 +103,23 @@ class VN_GEAR_NVA_VC1970 {
       }
     };
     magazines[] += {
-      VN_LEADER_SMOKES
+      LEADER_SMOKES
     };
-    linkedItems[] += {VN_BINOCULARS};
+    items[] += {LEADER_TOOLS};
+    linkedItems[] += {VECTOR};
     giveSideKey = 1;
     giveLRRadio = 1;
   };
 
   class SL : TL {};
-  class SGT : TL {};
-  class PL : TL {};
+  class SGT : SL {};
+  class PL : SGT {};
 
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
   };
   class AR : ARA {
+    weapons[] = {AR_RIFLE};
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
     };
@@ -150,15 +149,16 @@ class VN_GEAR_NVA_VC1970 {
           UGL_MAGS(UGL_FRAG,10),
           UGL_MAGS(UGL_SMOKEWHITE,4),
           UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FLAREWHITE,2),
+          UGL_MAGS(BASE_UGL_HUNTIR,4)
         }
       }
     };
+    items[] += {HUNTIR_MONITOR};
   };
 
   class MGA : BASE {
     backpackItems[] += {MMG_MAG_ASST,TRIPOD,SHOVEL};
-    linkedItems[] += {VN_BINOCULARS};
   };
 
   class MG : BASE {
@@ -168,15 +168,11 @@ class VN_GEAR_NVA_VC1970 {
   };
 
   class CE : BASE {
-    magazines[] = {VN_O_SMOKE_GRENADES};
+    magazines[] = {SMOKE_GRENADES};
     items[] += {CE_TRIGGER,CE_DEFUSE};
     backpackItems[] += {CE_DETECTOR,CE_FORTIFYTOOL,SHOVEL};
-    weaponChoices[] = {
-      {{CARBINE},{CARBINE_MAG}},
-      {{SHOTGUN},{SHOTGUN_MAG}}
-    };
-    explosiveChoices[] = {{VN_CE_SATCHEL},{VN_O_MINEAP},{VN_O_MINEAT},{VN_O_MINEAT_TRIPWIRE},{VN_CE_DEMOCHARGE}};
-    grenadeChoices[] = {{VN_O_CE_FRAG_GRENADES},{VN_O_CE_INCEN_GRENADES}};
+    explosiveChoices[] = {{CE_SATCHEL},{CE_MINEAP},{CE_MINEAT},{CE_DEMOCHARGE}};
+    grenadeChoices[] = {{CE_FRAG_GRENADES},{CE_INCEN_GRENADES}};
   };
 
   class LAT : BASE {
@@ -185,12 +181,10 @@ class VN_GEAR_NVA_VC1970 {
 
   class MATA1 : BASE {
     defaultMAT[] = {MAT1_LAUNCHER};
-    linkedItems[] += {VN_BINOCULARS};
   };
   class MAT1 : MATA1 {};
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};
-    linkedItems[] += {VN_BINOCULARS};
   };
   class MAT2 : MATA2 {};
 
@@ -215,9 +209,10 @@ class VN_GEAR_NVA_VC1970 {
     backpackItems[] += {SNIPER_TOOLS};
   };
 
-    class CR : BASE {
+  class CR : BASE {
     weaponChoices[] = {
-      {{SMG_RIFLE},{SMG_MAG_CREW}}
+      {{SMG_RIFLE},{SMG_MAG_CREW}},
+      {{CARBINE},{CARBINE_MAG_CREW}}
     };
     giveSideKey = 1;
   };
@@ -231,7 +226,7 @@ class VN_GEAR_NVA_VC1970 {
   class MED : BASE {
     backpackItems[] += {MEDIC_MEDICAL};
     magazines[] += {
-      VN_MEDIC_SMOKES
+      MEDIC_SMOKES
     };
   };
 };

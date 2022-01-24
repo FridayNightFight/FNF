@@ -28,7 +28,9 @@ if (count _pylons == count _pylonPaths) then {
           ["Failed to set pylon", _forEAchIndex + 1, _x, _pylonPaths select _forEachIndex]
         };
       } else {
-        _vehicle addWeaponTurret [getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon"), _pylonPaths select _forEachIndex];
+        if (getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") != "") then {
+          _vehicle addWeaponTurret [getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon"), _pylonPaths select _forEachIndex];
+        };
       };
     } catch {
       // "debug_console" callExtension format["index %1: %2", 4, _exception];
