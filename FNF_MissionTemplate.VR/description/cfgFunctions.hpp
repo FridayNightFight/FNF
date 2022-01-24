@@ -107,7 +107,7 @@ class CfgFunctions {
       class canPlay{};
       class setupGame{};
       class staggeredLoad{};
-      class initMSPTeleport{};
+      class teleportActions{};
     };
   };
   class phx_selector {
@@ -154,6 +154,7 @@ class CfgFunctions {
       class giveBinoculars{};
       class loadWeapons{};
       class setRank{};
+      class setFace{};
     };
   };
   class phx_radio {
@@ -187,6 +188,7 @@ class CfgFunctions {
       file = "client\safety";
       class init{};
       class handleVics{};
+      class reapplySafetyVic{};
     };
   };
   class phx_spectator {

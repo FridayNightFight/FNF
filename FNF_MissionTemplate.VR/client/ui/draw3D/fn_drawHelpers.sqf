@@ -11,6 +11,8 @@ if (isNil "fnf_ui") then {
   #define MSG_SERVICEPOINT "Vehicle Repair Station"
   #define MSG_PLANES "Planes"
   #define MSG_SUPPLY "ACE Arsenal"
+  #define MSG_GUNSHIPS "Gunships"
+  #define MSG_PBOATS "Patrol Boats"
 
   #define ICON_AA "\A3\ui_f\data\map\vehicleicons\iconStaticAA_ca.paa"
   #define ICON_APC "\A3\ui_f\data\map\vehicleicons\iconAPC_ca.paa"
@@ -21,6 +23,7 @@ if (isNil "fnf_ui") then {
   #define ICON_RALLY "\A3\ui_f\data\map\vehicleicons\iconobject_ca.paa"
   #define ICON_REPAIR "\A3\ui_f\data\map\vehicleicons\pictureRepair_ca.paa"
   #define ICON_SUPPLY "\A3\ui_f\data\map\vehicleicons\iconCrateWpns_ca.paa"
+  #define ICON_BOATS "\A3\ui_f\data\map\vehicleicons\iconShip_ca.paa"
 
 
   fnf_ui setVariable ["eastHelperTargets",[
@@ -33,6 +36,8 @@ if (isNil "fnf_ui") then {
     [OPF_jeeps,MSG_JEEPS,ICON_CAR,true],
     [OPF_planes,MSG_PLANES,ICON_PLANE,true],
     [OPF_IFV,MSG_IFV,ICON_APC,true],
+    [OPF_gunships,MSG_GUNSHIPS,ICON_HELICOPTER,true],
+    [OPF_pBoats,MSG_PBOATS,ICON_BOATS,true],
     [rallybase_east,MSG_RALLY,ICON_RALLY],
     [east_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
     [east_MSP_1,"MSP",ICON_RALLY,false,east],
@@ -49,6 +54,8 @@ if (isNil "fnf_ui") then {
     [BLU_jeeps,MSG_JEEPS,ICON_CAR,true],
     [BLU_planes,MSG_PLANES,ICON_PLANE,true],
     [BLU_IFV,MSG_IFV,ICON_APC,true],
+    [BLU_gunships,MSG_GUNSHIPS,ICON_HELICOPTER,true],
+    [BLU_pBoats,MSG_PBOATS,ICON_BOATS,true],
     [rallybase_west,MSG_RALLY,ICON_RALLY],
     [west_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
     [west_MSP_1,"MSP",ICON_RALLY,false,west],

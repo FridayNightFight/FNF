@@ -331,6 +331,8 @@ if (isNil {[player, PLAYERLOADOUTVAR] call phx_loadout_fnc_loadWeapons}) then {
 // set rank from phx_loadout_roles (for Nametags)
 [PLAYERLOADOUTVAR] call phx_loadout_fnc_setRank;
 
+call phx_loadout_fnc_setFace;
+
 // if during safe start and role is being changed, reset ACE self-interact selectors
 [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Optic_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
 [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Weapon_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;

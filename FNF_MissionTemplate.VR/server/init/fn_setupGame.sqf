@@ -165,4 +165,22 @@ if (phx_gameMode == "sustainedAssault") then {
     phx_safeZone_Independent_marker setMarkerColor "ColorGUER";
     phx_safeZone_Independent_marker setMarkerBrush "FDiagonal";
   };
+
+
+  #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+  [{
+    {
+      if (
+        (_x inArea safeZone_BLUFOR || _x inArea "rally_west_marker") ||
+        (_x inArea safeZone_OPFOR || _x inArea "rally_east_marker") ||
+        (_x inArea safeZone_Independent || _x inArea "rally_independent_marker")
+      ) then {
+        _x setVariable ["fnf_zoneProtectionActive", true, true];
+        [_x, false] remoteExec ["allowDamage", _x];
+      } else {
+        _x setVariable ["fnf_zoneProtectionActive", false, true];
+        [_x, true] remoteExec ["allowDamage", _x];
+      };
+    } forEach MISSIONVICS;
+  }, 10] call CBA_fnc_addPerFrameHandler;
 };

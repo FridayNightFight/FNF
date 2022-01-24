@@ -449,23 +449,46 @@ _getVehicleData = {
 
 // put vehicles into a hashmap based on who they belong to (if anyone)
 phx_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
-{
-  private _vehicle = _x;
-  switch (true) do {
-    case (_vehicle inArea "bluforSafeMarker"): {
-      [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
-    };
-    case (_vehicle inArea "opforSafeMarker"): {
-      [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
-    };
-    case (_vehicle inArea "indforSafeMarker"): {
-      [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
-    };
-    default {
-      [phx_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
-    };
+switch (phx_gameMode == "sustainedAssault") do {
+  case false: {
+    {
+      private _vehicle = _x;
+      switch (true) do {
+        case (_vehicle inArea "bluforSafeMarker"): {
+          [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case (_vehicle inArea "opforSafeMarker"): {
+          [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case (_vehicle inArea "indforSafeMarker"): {
+          [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+        };
+        default {
+          [phx_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+        };
+      };
+    } forEach MISSIONVICS;
   };
-} forEach MISSIONVICS;
+  case true: {
+    {
+      private _vehicle = _x;
+      switch (true) do {
+        case (_vehicle inArea safeZone_BLUFOR || _vehicle inArea "rally_west_marker"): {
+          [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case (_vehicle inArea safeZone_OPFOR || _vehicle inArea "rally_east_marker"): {
+          [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case (_vehicle inArea safeZone_Independent || _vehicle inArea "rally_independent_marker"): {
+          [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+        };
+        default {
+          [phx_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+        };
+      };
+    } forEach MISSIONVICS;
+  };
+};
 
 
 // create diary records

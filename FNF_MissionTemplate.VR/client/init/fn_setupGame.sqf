@@ -39,43 +39,4 @@ if (phx_gameMode == "sustainedAssault") then {
   [[1,2],[0]] call ace_spectator_fnc_updateCameraModes;
 
   ["init"] call phx_ui_fnc_drawHelpers;
-
-  player addEventHandler ["FiredMan",{
-    private _vehicle = param [7,objNull];
-    _this spawn {
-      private _unit = param [0,objNull];
-      private _weapon = param [1,objNull];
-      private _projectile = param [6,objNull];
-      private _vehicle = param [7,objNull];
-      private _badPos = false;
-      while {alive _projectile} do {
-        if (side _unit == east) then {
-          if (_projectile inArea safeZone_BLUFOR || _projectile inArea "rally_west_marker") exitWith {
-            _badPos = true;
-          };
-        };
-        if (side _unit == west) then {
-          if (_projectile inArea safeZone_OPFOR || _projectile inArea "rally_east_marker") exitWith {
-            _badPos = true;
-          };
-        };
-        uiSleep 0.5;
-      };
-
-      if (_badPos) then {
-        deleteVehicle _projectile;
-        if (_vehicle in [
-          missionNamespace getVariable ["west_howitzer", objNull],
-          missionNamespace getVariable ["east_howitzer", objNull]
-        ]) then {
-          [format[
-            "<t align='center'>Deleted a round from a<br/>%1<br/> fired by<br/>%2 (%3)<br/><br/>Please do NOT fire at the enemy base!</t>",
-            getText(configFile >> "CfgWeapons" >> _weapon >> "displayName"),
-            name _unit,
-            (side (group _unit)) call BIS_fnc_sideName
-          ], "warning", 7] remoteExecCall ["phx_ui_fnc_notify",0];
-        };
-      };
-    };
-  }];
 };

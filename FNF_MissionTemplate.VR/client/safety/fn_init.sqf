@@ -62,4 +62,54 @@ phx_switchToMeleeDisablePFH = [{
 [{!(missionNamespace getVariable ["phx_safetyEnabled", true])}, {
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
+
+
+  // Sustained Assault zoneProtection for safezones and rally markers
+  if (phx_gameMode == "sustainedAssault") then {
+    player setVariable ["fnf_zoneProtectionActive", false, true];
+    switch (playerSide) do {
+      case west: {
+        phx_safety_handle_zoneProtection = [{
+          if ((player inArea safeZone_BLUFOR || player inArea "rally_west_marker") && !(player getVariable "fnf_zoneProtectionActive")) then {
+            player setVariable ["fnf_zoneProtectionActive", true, true];
+            player allowDamage false;
+            ["<t align='center'>Safe zone protection is active</t>", "info", 5] call phx_ui_fnc_notify;
+          };
+          if (!(player inArea safeZone_BLUFOR || player inArea "rally_west_marker") && (player getVariable "fnf_zoneProtectionActive")) then {
+            player setVariable ["fnf_zoneProtectionActive", false, true];
+            player allowDamage true;
+            ["<t align='center'>Safe zone protection has been removed</t>", "info", 5] call phx_ui_fnc_notify;
+          };
+        }, 3] call CBA_fnc_addPerFrameHandler;
+      };
+      case east: {
+        phx_safety_handle_zoneProtection = [{
+          if ((player inArea safeZone_OPFOR || player inArea "rally_east_marker") && !(player getVariable "fnf_zoneProtectionActive")) then {
+            player setVariable ["fnf_zoneProtectionActive", true, true];
+            player allowDamage false;
+            ["<t align='center'>Safe zone protection is active</t>", "info", 5] call phx_ui_fnc_notify;
+          };
+          if (!(player inArea safeZone_OPFOR || player inArea "rally_east_marker") && (player getVariable "fnf_zoneProtectionActive")) then {
+            player setVariable ["fnf_zoneProtectionActive", false, true];
+            player allowDamage true;
+            ["<t align='center'>Safe zone protection has been removed</t>", "info", 5] call phx_ui_fnc_notify;
+          };
+        }, 3] call CBA_fnc_addPerFrameHandler;
+      };
+      case independent: {
+        phx_safety_handle_zoneProtection = [{
+          if ((player inArea safeZone_Independent || player inArea "rally_independent_marker") && !(player getVariable "fnf_zoneProtectionActive")) then {
+            player setVariable ["fnf_zoneProtectionActive", true, true];
+            player allowDamage false;
+            ["<t align='center'>Safe zone protection is active</t>", "info", 5] call phx_ui_fnc_notify;
+          };
+          if (!(player inArea safeZone_Independent || player inArea "rally_independent_marker") && (player getVariable "fnf_zoneProtectionActive")) then {
+            player setVariable ["fnf_zoneProtectionActive", false, true];
+            player allowDamage true;
+            ["<t align='center'>Safe zone protection has been removed</t>", "info", 5] call phx_ui_fnc_notify;
+          };
+        }, 3] call CBA_fnc_addPerFrameHandler;
+      };
+    };
+  };
 }] call CBA_fnc_waitUntilAndExecute;

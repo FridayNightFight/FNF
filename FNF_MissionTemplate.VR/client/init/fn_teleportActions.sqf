@@ -1,6 +1,7 @@
 
 if !(phx_gameMode == "sustainedAssault") exitWith {};
 
+
 if (playerSide == west) then {
   private _process = true;
   if (isNil "rallybase_west") then {
@@ -11,30 +12,55 @@ if (playerSide == west) then {
     systemChat "Warning: west_MSP_1 not present! MSP teleport failed to initialize for BLUFOR.";
     _process = false;
   };
+
   if (_process) then {
+    // parent action
+    private _action = ["FNF_BLU_TeleportOptions","BLUFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
+    [rallybase_west,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
+
     private _action = [
       "BLU_MSP_Teleport_1",
-      "Teleport to MSP (BLUFOR)",
+      "Mobile Spawn Point",
       "",
       { // statement
         _pos = (position west_MSP_1) findEmptyPosition [0, 20, typeOf _player];
         _player setPosATL _pos;
       },
       { // condition
-        alive west_MSP_1 && side _player == west && vehicle _player == _player
-      },
-      {},
-      [], // arg to be used in param, arg is array
-      [-0.05,-0.35,-2], // position
-      4 // distance
+        alive west_MSP_1 && side _player == west && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
+      }
     ] call ace_interact_menu_fnc_createAction;
 
     [
       rallybase_west,
       0,
-      [],
+      ["FNF_BLU_TeleportOptions"],
       _action
     ] call ace_interact_menu_fnc_addActionToObject;
+
+
+    // airfield teleport if icon marker "west_airfield_1" exists
+    if (markerColor "west_airfield_1" != "") then {
+      private _action = [
+        "BLU_Airfield_Teleport_1",
+        "Airfield",
+        "",
+        { // statement
+          _pos = (markerPos "west_airfield_1") findEmptyPosition [0, 20, typeOf _player];
+          _player setPosATL _pos;
+        },
+        { // condition
+          side _player == west && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
+        }
+      ] call ace_interact_menu_fnc_createAction;
+
+      [
+        rallybase_west,
+        0,
+        ["FNF_BLU_TeleportOptions"],
+        _action
+      ] call ace_interact_menu_fnc_addActionToObject;
+    };
   };
 };
 
@@ -49,29 +75,50 @@ if (playerSide == east) then {
     _process = false;
   };
   if (_process) then {
+
+    // add parent option
+    private _action = ["FNF_OPF_TeleportOptions","OPFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
+    [rallybase_east,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
+
     private _action = [
       "OPF_MSP_Teleport_1",
-      "Teleport to MSP (OPFOR)",
+      "Mobile Spawn Point",
       "",
       { // statement
         _pos = (position east_MSP_1) findEmptyPosition [0, 20, typeOf _player];
         _player setPosATL _pos;
       },
       { // condition
-        alive east_MSP_1 && side _player == east && vehicle _player == _player
-      },
-      {},
-      [], // arg to be used in param, arg is array
-      [-0.05,-0.35,-2], // position
-      4 // distance
+        alive east_MSP_1 && side _player == east && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
+      }
     ] call ace_interact_menu_fnc_createAction;
 
     [
       rallybase_east,
       0,
-      [],
+      ["FNF_OPF_TeleportOptions"],
       _action
     ] call ace_interact_menu_fnc_addActionToObject;
+
+    // private _action = [
+    //   "OPF_Airfield_Teleport_1",
+    //   "Airfield",
+    //   "",
+    //   { // statement
+    //     _pos = (markerPos "east_airfield_1") findEmptyPosition [0, 20, typeOf _player];
+    //     _player setPosATL _pos;
+    //   },
+    //   { // condition
+    //     side _player == east && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
+    //   }
+    // ] call ace_interact_menu_fnc_createAction;
+
+    // [
+    //   rallybase_east,
+    //   0,
+    //   ["FNF_OPF_TeleportOptions"],
+    //   _action
+    // ] call ace_interact_menu_fnc_addActionToObject;
   };
 };
 
