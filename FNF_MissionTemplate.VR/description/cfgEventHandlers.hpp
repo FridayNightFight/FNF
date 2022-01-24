@@ -32,7 +32,7 @@ class Extended_InitPost_EventHandlers {
 // run once at mission PostInit
 class Extended_PostInit_Eventhandlers {
   class FNF_saveAirLoadouts {
-    serverInit = "{private _vehicle= _x;_vehicle setVariable[""fnf_pylonLoadout"",getPylonMagazines _vehicle,true];[_vehicle] spawn phx_server_fnc_restoreAirLoadouts;}forEach(entities[[""Air""],[],false,true]);""[FNF] (saveAirLoadouts) Inited air vehicle pylon settings"" remoteExec [""systemChat"", 0];"
+    serverInit = "{private _vehicle= _x;_vehicle setVariable[""fnf_pylonLoadout"",getPylonMagazines _vehicle,true];_vehicle setVariable [""ace_pylons_magazineWhitelist"", getPylonMagazines _vehicle select {_x != """"}, true];[_vehicle] spawn phx_server_fnc_restoreAirLoadouts;}forEach(entities[[""Air""],[],false,true]);""[FNF] (saveAirLoadouts) Inited air vehicle pylon settings"" remoteExec [""systemChat"", 0];"
   };
 };
 
