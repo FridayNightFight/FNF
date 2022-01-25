@@ -30,8 +30,12 @@ if (_role == "MED") then {
   _unit setVariable ["ace_medical_medicClass", 1, true];
   _unit setUnitTrait ["medic", true, true];
 };
-if (_role in ["CE","CR","PI"]) then {
+if (_role in ["CE","CR"]) then {
   _unit setVariable ["ace_isEngineer", 1, true];
+  _unit setUnitTrait ["engineer", true, true];
+};
+if (_role in ["CRL","PI"]) then {
+  _unit setVariable ["ace_isEngineer", 2, true];
   _unit setUnitTrait ["engineer", true, true];
 };
 if (_role == "SGT" && side (group _unit) isEqualTo phx_vnArtillerySide) then {

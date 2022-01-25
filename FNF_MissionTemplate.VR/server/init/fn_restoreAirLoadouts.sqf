@@ -13,8 +13,13 @@ if (count _pylons == count _pylonPaths) then {
   // "debug_console" callExtension format["Respawn ran on %1", (configOf _vehicle) call BIS_fnc_displayName];
   {
     try {
-      _vehicle removeWeaponTurret [getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon"), _pylonPaths select _forEachIndex];
-      _vehicle removeWeaponTurret [getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon"), [-1]];
+      _pylonWeapon = getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon");
+      if (_pylonWeapon != "") then {
+        if (isClass (configFile >> "CfgWeapons" >> _pylonWeapon)) then {
+          _vehicle removeWeaponTurret [_pylonWeapon, _pylonPaths select _forEachIndex];
+          _vehicle removeWeaponTurret [_pylonWeapon, [-1]];
+        };
+      };
     } catch {
       // "debug_console" callExtension format["index %1: %2", 3, _exception];
       continue
@@ -28,8 +33,11 @@ if (count _pylons == count _pylonPaths) then {
           ["Failed to set pylon", _forEAchIndex + 1, _x, _pylonPaths select _forEachIndex]
         };
       } else {
-        if (getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") != "") then {
+        _pylonWeapon = getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon");
+        if (_pylonWeapon != "") then {
+          if (isClass (configFile >> "CfgWeapons" >> _pylonWeapon)) then {
           _vehicle addWeaponTurret [getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon"), _pylonPaths select _forEachIndex];
+          };
         };
       };
     } catch {

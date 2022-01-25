@@ -94,6 +94,57 @@ private _changelogStruct = format [
 
 
 
+phx_ui_gameMechanicsDiary = [
+  ["Rearm/Repair", (
+    "<font size='14' shadow='1' color='" + COLOR3 + "'>Rearm/Repair</font><br/>" +
+    "
+- Rearm is possible via rearm trucks<br/>
+- ACE Interact with the truck and, provided your vehicle is close enough and is not already full on ammo, you will have the option to rearm it to full<br/>
+- ACE Interact with a plane while a rearm truck is nearby, and you will be able to reconfigure its pylons<br/>
+- You will only be able to select from the initial weapons it was given by the mission maker<br/>
+<br/><br/>
+- Only Engineers can repair all individual components of a vehicle, except for wheels which anyone can do<br/>
+- They will not need a toolkit to do so<br/>
+- Having an ACE Repair Facility placed will make anyone into an engineer, so they can park beside it and repair<br/>
+- Full Repairs, which is a main interaction > Full Repair option, will heal the whole vehicle at once (30s) and can only be initiated near a Repair Facility (by anyone, since the repair facility boosts them to Engineer)<br/>
+"
+  )],
+  ["Zone Protection/Restrictions", (
+    "<font size='14' shadow='1' color='" + COLOR3 + "'>Zone Safety and Restrictions</font><br/>" +
+    "
+- hashed markers on the map indicate safe zones, colored to reflect their owner<br/>
+- players are invincible inside of their own safe zones<br/>
+- players are restricted from entering enemy safe zones<br/>
+"
+  )]
+];
+reverse phx_ui_gameMechanicsDiary;
+
+phx_ui_gameMechanicsText = (
+  "<t size='1.4' shadow='1' color='" + COLOR2 + "'>Game Mechanics</t><br/>" +
+  "<t size='1.2' shadow='1' color='" + COLOR3 + "'>Rearm/Repair</t><br/>" +
+  "
+- Rearm is possible via rearm trucks
+- ACE Interact with the truck and, provided your vehicle is close enough and is not already full on ammo, you will have the option to rearm it to full
+- ACE Interact with a plane while a rearm truck is nearby, and you will be able to reconfigure its pylons
+- You will only be able to select from the initial weapons it was given by the mission maker
+<br/><br/>
+- Only Engineers can repair all individual components of a vehicle, except for wheels which anyone can do<br/>
+- They will not need a toolkit to do so<br/>
+- Having an ACE Repair Facility placed will make anyone into an engineer, so they can park beside it and repair<br/>
+- Full Repairs, which is a main interaction > Full Repair option, will heal the whole vehicle at once (30s) and can only be initiated near a Repair Facility (by anyone, since the repair facility boosts them to Engineer)<br/>
+<br/><br/>
+" +
+    "<t size='1.2' shadow='1' color='" + COLOR3 + "'>Zone Safety and Restrictions</t><br/>" +
+    "
+- hashed markers on the map indicate safe zones, colored to reflect their owner<br/>
+- players are invincible inside of their own safe zones<br/>
+- players are restricted from entering enemy safe zones<br/>
+"
+);
+
+[phx_ui_structTextRef, "Game Mechanics", phx_ui_gameMechanicsText] call BIS_fnc_setToPairs;
+
 
 private _credits = [
   // "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Credits</t>",

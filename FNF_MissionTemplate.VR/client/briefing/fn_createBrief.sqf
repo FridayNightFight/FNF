@@ -542,7 +542,23 @@ phx_briefing_MMNotes = {
 };
 
 
+
+if (phx_gameMode == "sustainedAssault") then {
+  PHX_Diary_GameMechanics = player createDiarySubject ["PHX_Diary_GameMechanics", "Game Mechanics"];
+  {
+    player createDiaryRecord [
+      "PHX_Diary_GameMechanics",
+      [
+        _x # 0,
+        _x # 1
+      ]
+    ];
+  } forEach phx_ui_gameMechanicsDiary;
+};
+
+
 call phx_briefing_fnc_news;
+
 
 PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
 player createDiaryRecord [

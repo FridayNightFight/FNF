@@ -27,13 +27,8 @@ if !(phx_gameMode == "sustainedAssault") then {
   }] remoteExecCall ["call", 2];
 };
 
-if (!isNil "phx_restrictUniformHandle") then {
-  if !(scriptDone phx_restrictUniformHandle) then {
-    [phx_restrictUniformHandle] call CBA_fnc_removePerFrameHandler;
-  };
-};
-call phx_restrictions_fnc_init;
-call phx_safety_fnc_init;
+
+
 
 if (phx_gameMode == "sustainedAssault") then {
   _newUnit setVariable ["ACE_canMoveRallypoint", false, true];
@@ -41,6 +36,10 @@ if (phx_gameMode == "sustainedAssault") then {
     call phx_ui_fnc_drawHelpers;
   };
 };
+
+
+call phx_restrictions_fnc_init;
+call phx_safety_fnc_init;
 
 // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool
 // remove ETool-less trench from all

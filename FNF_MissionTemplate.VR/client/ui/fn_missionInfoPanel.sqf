@@ -50,6 +50,11 @@ _INDFORIndexCSW = _tree tvAdd [[_INDFORIndex],"CSW"];
 _INDFORIndexAssets = _tree tvAdd [[_INDFORIndex],"Assets"];
 
 _OtherAssetsIndex = _tree tvAdd [[],"Other Assets"];
+
+private "_GameMechanicsIndex";
+if (phx_gameMode == "sustainedAssault") then {
+  _GameMechanicsIndex = _tree tvAdd[[],"Game Mechanics"];
+};
 _ChangelogIndex = _tree tvAdd[[],"Framework Info"];
 _CreditsIndex = _tree tvAdd[[],"Credits"];
 _RulesIndex = _tree tvAdd[[],"Rules"];

@@ -66,6 +66,13 @@ phx_switchToMeleeDisablePFH = [{
 
   // Sustained Assault zoneProtection for safezones and rally markers
   if (phx_gameMode == "sustainedAssault") then {
+
+    if (!isNil "phx_safety_handle_zoneProtection") then {
+      if !(scriptDone phx_safety_handle_zoneProtection) then {
+        [phx_safety_handle_zoneProtection] call CBA_fnc_removePerFrameHandler;
+      };
+    };
+
     player setVariable ["fnf_zoneProtectionActive", false, true];
     switch (playerSide) do {
       case west: {
