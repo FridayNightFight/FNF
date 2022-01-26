@@ -113,8 +113,24 @@ phx_ui_gameMechanicsDiary = [
     "<font size='14' shadow='1' color='" + COLOR3 + "'>Zone Safety and Restrictions</font><br/>" +
     "
 - hashed markers on the map indicate safe zones, colored to reflect their owner<br/>
-- players are invincible inside of their own safe zones<br/>
-- players are restricted from entering enemy safe zones<br/>
+- players are invincible and have access to the FNF Gear Selector while inside of their own safe zones<br/>
+- players are restricted from entering enemy safe zones<br/><br/>
+
+- during safe start, players may teleport to their forward zones, but must stay in main base or forward zone
+"
+  )],
+  ["Teleport Flagpoles", (
+    "<font size='14' shadow='1' color='" + COLOR3 + "'>Teleport Flagpoles</font><br/>" +
+    "
+- a teleportation flagpole is present within each main base zone<br/>
+- this is the respawn point for each side -- you'll go here if you die<br/><br/>
+
+- at mission start, players can use the basic rallypoint teleport at this flag via ACE-interact<br/>
+- this rallypoint teleport can take someone to their forward zone as well as back to base<br/><br/>
+
+- when safe start ends, additional teleport options may become available<br/>
+  - Mobile Spawn Point (a movable, destructible vehicle that will respawn itself when destroyed)<br/>
+  - in some cases, an airfield teleport where planes and helicopters may be kept<br/><br/>
 "
   )]
 ];
@@ -124,10 +140,10 @@ phx_ui_gameMechanicsText = (
   "<t size='1.4' shadow='1' color='" + COLOR2 + "'>Game Mechanics</t><br/>" +
   "<t size='1.2' shadow='1' color='" + COLOR3 + "'>Rearm/Repair</t><br/>" +
   "
-- Rearm is possible via rearm trucks
-- ACE Interact with the truck and, provided your vehicle is close enough and is not already full on ammo, you will have the option to rearm it to full
-- ACE Interact with a plane while a rearm truck is nearby, and you will be able to reconfigure its pylons
-- You will only be able to select from the initial weapons it was given by the mission maker
+- Rearm is possible via rearm trucks<br/>
+- ACE Interact with the truck and, provided your vehicle is close enough and is not already full on ammo, you will have the option to rearm it to full<br/>
+- ACE Interact with a plane while a rearm truck is nearby, and you will be able to reconfigure its pylons<br/>
+- You will only be able to select from the initial weapons it was given by the mission maker<br/>
 <br/><br/>
 - Only Engineers can repair all individual components of a vehicle, except for wheels which anyone can do<br/>
 - They will not need a toolkit to do so<br/>
@@ -135,11 +151,26 @@ phx_ui_gameMechanicsText = (
 - Full Repairs, which is a main interaction > Full Repair option, will heal the whole vehicle at once (30s) and can only be initiated near a Repair Facility (by anyone, since the repair facility boosts them to Engineer)<br/>
 <br/><br/>
 " +
-    "<t size='1.2' shadow='1' color='" + COLOR3 + "'>Zone Safety and Restrictions</t><br/>" +
-    "
+  "<t size='1.2' shadow='1' color='" + COLOR3 + "'>Zone Safety and Restrictions</t><br/>" +
+  "
 - hashed markers on the map indicate safe zones, colored to reflect their owner<br/>
-- players are invincible inside of their own safe zones<br/>
-- players are restricted from entering enemy safe zones<br/>
+- players are invincible and have access to the FNF Gear Selector while inside of their own safe zones<br/>
+- players are restricted from entering enemy safe zones<br/><br/>
+
+- during safe start, players may teleport to their forward zones, but must stay in main base or forward zone
+<br/><br/>
+" +
+"<t size='1.2' shadow='1' color='" + COLOR3 + "'>Teleport Flagpoles</t><br/>" +
+  "
+- a teleportation flagpole is present within each main base zone<br/>
+- this is the respawn point for each side -- you'll go here if you die<br/><br/>
+
+- at mission start, players can use the basic rallypoint teleport at this flag via ACE-interact<br/>
+- this rallypoint teleport can take someone to their forward zone as well as back to base<br/><br/>
+
+- when safe start ends, additional teleport options may become available<br/>
+  - Mobile Spawn Point (a movable, destructible vehicle that will respawn itself when destroyed)<br/>
+  - in some cases, an airfield teleport where planes and helicopters may be kept<br/><br/>
 "
 );
 

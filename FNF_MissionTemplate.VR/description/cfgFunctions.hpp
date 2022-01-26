@@ -26,6 +26,8 @@ class CfgFunctions {
       class fixUniformBug{};
       class SCUDFired{};
       class lobbyTextGenerator{};
+      class inSafeZone{};
+      class inRestrictedZone{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";
@@ -174,6 +176,7 @@ class CfgFunctions {
       class disableTyping{postInit = 1;};
       class zoneBoundary{};
       class startBoundary{};
+      class restrictedZones{};
       class disableMisc{};
       class afkCheck{};
       class removeRespawnButton{};

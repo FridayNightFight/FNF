@@ -27,7 +27,7 @@ if (playerSide == west) then {
         _player setPosATL _pos;
       },
       { // condition
-        alive west_MSP_1 && side _player == west && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
+        alive west_MSP_1 && side _player == west && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
       }
     ] call ace_interact_menu_fnc_createAction;
 
@@ -50,7 +50,7 @@ if (playerSide == west) then {
           _player setPosATL _pos;
         },
         { // condition
-          side _player == west && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
+          side _player == west && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
         }
       ] call ace_interact_menu_fnc_createAction;
 
@@ -89,7 +89,7 @@ if (playerSide == east) then {
         _player setPosATL _pos;
       },
       { // condition
-        alive east_MSP_1 && side _player == east && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
+        alive east_MSP_1 && side _player == east && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
       }
     ] call ace_interact_menu_fnc_createAction;
 

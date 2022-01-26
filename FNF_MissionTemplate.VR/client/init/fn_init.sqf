@@ -27,6 +27,31 @@ phx_loadout_roles = [
   ["BASE",["Crew/Wpn Operator","PRIVATE"]]
 ];
 
+
+phx_safeZones = [
+  ["STD_WEST", [
+    "bluforSafeMarker"
+  ]],
+  ["STD_EAST", [
+    "opforSafeMarker"
+  ]],
+  ["STD_GUER", [
+    "indforSafeMarker"
+  ]],
+  ["SA_WEST", [
+    safeZone_BLUFOR,
+    "rally_west_marker"
+  ]],
+  ["SA_EAST", [
+    safeZone_OPFOR,
+    "rally_east_marker"
+  ]],
+  ["SA_GUER", [
+    safeZone_Independent,
+    "rally_independent_marker"
+  ]]
+];
+
 //Determine if client can play the round, if not, spectate
 if !(call phx_client_fnc_canplay) exitWith {
   diag_log formatText [
@@ -71,6 +96,7 @@ call phx_client_fnc_teleportActions; // Add MSP teleport option to flagpole if s
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
   call phx_fnc_showTimeOnMap;
   [player getVariable "phxLoadout"] call phx_loadout_fnc_applyLoadout;
+  call phx_selector_fnc_init;
 }] call CBA_fnc_waitUntilAndExecute;
 
 // Wait for mission to start, then execute various restrictions and make sure player has gear

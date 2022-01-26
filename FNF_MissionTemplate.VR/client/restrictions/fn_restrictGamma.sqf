@@ -10,7 +10,12 @@ if (dayTime > _sunrise && dayTime < _sunset) exitWith {};
 
 phx_gammaWarn = false;
 phx_gammaMax = 1.3;
-[{
+
+if (!isNil "phx_restrictions_handle_restrictGamma") then {
+  [phx_restrictions_handle_restrictGamma] call CBA_fnc_removePerFrameHandler;
+  phx_restrictions_handle_restrictGamma = nil;
+};
+phx_restrictions_handle_restrictGamma = [{
   if (isNull findDisplay 5) exitWith {};
   _gamma = parseNumber (ctrlText (findDisplay 5 displayCtrl 109));
   if (_gamma > phx_gammaMax && !phx_gammaWarn) then {

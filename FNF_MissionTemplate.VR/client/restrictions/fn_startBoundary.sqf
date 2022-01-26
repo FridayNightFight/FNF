@@ -7,39 +7,19 @@ private _maxTime = 10;
 phx_startTimer = 10;
 phx_startGoodPos = getpos vehicle player;
 
-if !(phx_gameMode == "sustainedAssault") then {
-  switch (playerSide) do {
-    case east: {
-      _marker = "opforSafeMarker";
-    };
-    case west: {
-      _marker = "bluforSafeMarker";
-    };
-    case independent: {
-      _marker = "indforSafeMarker";
-    };
-  };
-} else {
-  switch (playerSide) do {
-    case east: {
-      _marker = "safeZone_OPFOR_marker";
-    };
-    case west: {
-      _marker = "safeZone_BLUFOR_marker";
-    };
-    case independent: {
-      _marker = "safeZone_Independent_marker";
-    };
-  };
+// clear previous instance if it exists (respawn)
+if (!isNil "phx_restrictions_handle_startBoundary") then {
+    [phx_restrictions_handle_startBoundary] call CBA_fnc_removePerFrameHandler;
+    phx_restrictions_handle_startBoundary = nil;
 };
 
-[{
-  _this select 0 params ["_marker","_maxTime"];
+phx_restrictions_handle_startBoundary = [{
+  _this select 0 params ["_maxTime"];
   if (!phx_safetyEnabled || !alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler; hintSilent ""};
 
   if (missionNamespace getVariable ["f_var_mission_timer",10] < 1) then {_maxTime = 0};
 
-  if (vehicle player inArea _marker) then {
+  if ([vehicle player, playerSide] call phx_fnc_inSafeZone) then {
     phx_startGoodPos = getpos vehicle player;
 
     if (phx_startTimer != _maxTime) then {phx_startTimer = _maxTime; hintSilent ""};
@@ -55,4 +35,4 @@ if !(phx_gameMode == "sustainedAssault") then {
       phx_startTimer = phx_startTimer - 1;
     };
   };
-}, 1, [_marker,_maxTime]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_maxTime]] call CBA_fnc_addPerFrameHandler;

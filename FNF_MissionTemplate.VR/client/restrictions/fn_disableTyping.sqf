@@ -9,7 +9,11 @@ Disables typing in global, side and spectator chat if player is not staff
     0 enableChannel false;
 
     //Disable chat typing if channel is side
-    [{
+    if (!isNil "phx_restrictions_handle_typingMission") then {
+      [phx_restrictions_handle_typingMission] call CBA_fnc_removePerFrameHandler;
+      phx_restrictions_handle_typingMission = nil;
+    };
+    phx_restrictions_handle_typingMission = [{
       params ["_display","_handle"];
       if (!isNull (findDisplay _display)) exitWith {
         _handle call CBA_fnc_removePerFrameHandler;
@@ -17,7 +21,11 @@ Disables typing in global, side and spectator chat if player is not staff
       };
     }, 1, 46] call CBA_fnc_addPerFrameHandler; //Mission display
 
-    [{
+    if (!isNil "phx_restrictions_handle_typingSpectator") then {
+      [phx_restrictions_handle_typingSpectator] call CBA_fnc_removePerFrameHandler;
+      phx_restrictions_handle_typingSpectator = nil;
+    };
+    phx_restrictions_handle_typingSpectator = [{
       params ["_display","_handle"];
       if (!isNull (findDisplay _display)) exitWith {
         _handle call CBA_fnc_removePerFrameHandler;

@@ -27,7 +27,11 @@ phx_afkCheck_idle = {
   };
 };
 
-[{
+if (!isNil "phx_restrictions_handle_afkCheck") then {
+    [phx_restrictions_handle_afkCheck] call CBA_fnc_removePerFrameHandler;
+    phx_restrictions_handle_afkCheck = nil;
+};
+phx_restrictions_handle_afkCheck = [{
   if (!(alive player) || missionNamespace getVariable ["ace_spectator_isset",false]) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
   if (phx_idleTime < diag_tickTime) then {
     if (scriptDone (missionNamespace getVariable ["phx_idleHandle",scriptNull])) then {

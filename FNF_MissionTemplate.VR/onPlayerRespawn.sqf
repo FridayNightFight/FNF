@@ -12,6 +12,10 @@ if (typeOf player == "ace_spectator_virtual") exitWith {};
 [{time > 2}, {call phx_admin_fnc_setAdminPatch}] call CBA_fnc_waitUntilAndExecute; // Admin player patch
 // [false] call ace_spectator_fnc_setSpectator;
 
+if (missionNamespace getVariable ["ace_spectator_isset", false]) then {
+  [false] call ace_spectator_fnc_setSpectator;
+};
+
 if !(phx_gameMode == "sustainedAssault") then {
   // teleport to safe start if able
   private _pos = missionNamespace getVariable ["phx_startGoodPos", [0,0,0]];
@@ -36,7 +40,6 @@ if (phx_gameMode == "sustainedAssault") then {
     call phx_ui_fnc_drawHelpers;
   };
 };
-
 
 call phx_restrictions_fnc_init;
 call phx_safety_fnc_init;

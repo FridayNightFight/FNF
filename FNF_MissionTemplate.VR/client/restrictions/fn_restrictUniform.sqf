@@ -4,9 +4,8 @@ Disables access to removing helmet and uniform. Ensures that the player has the 
 
 if (isServer) exitWith {}; //Don't need to run this function for local testing
 if (!isNil "phx_restrictions_handle_restrictUniform") then {
-  if !(scriptDone phx_restrictions_handle_restrictUniform) then {
-    [phx_restrictions_handle_restrictUniform] call CBA_fnc_removePerFrameHandler;
-  };
+  [phx_restrictions_handle_restrictUniform] call CBA_fnc_removePerFrameHandler;
+  phx_restrictions_handle_restrictUniform = nil;
 };
 
 private _playerUniform = uniform player;

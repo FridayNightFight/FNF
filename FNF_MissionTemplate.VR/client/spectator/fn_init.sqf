@@ -16,8 +16,8 @@ Draws 3D icons on alive objectives.
   }];
 }] call CBA_fnc_addPlayerEventHandler;
 
-disableSerialization;
 [{!isNull findDisplay 60000}, {
+  disableSerialization;
   _display = findDisplay 60000;
   if (isNull _display) exitWith {};
 
@@ -39,7 +39,12 @@ private _lastDamage = player getVariable ["ace_medical_lastDamageSource",objNull
 if (!isNull _lastDamage) then {
   [2, _lastDamage] call ace_spectator_fnc_setCameraAttributes;
 } else {
-  [2, allUnits select {side (group _x) isEqualTo playerSide && alive _x] call ace_spectator_fnc_setCameraAttributes;
+  _aliveFriendlyUnits = allUnits select {side (group _x) isEqualTo playerSide && alive _x};
+  if (count _aliveFriendlyUnits > 0) then {
+    [2, selectRandom(_aliveFriendlyUnits)] call ace_spectator_fnc_setCameraAttributes;
+  } else {
+    [2, objNull] call ace_spectator_fnc_setCameraAttributes;
+  };
 };
 
 //Set up objectives for 3d icon draws

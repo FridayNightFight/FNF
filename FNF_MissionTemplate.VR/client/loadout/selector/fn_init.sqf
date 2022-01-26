@@ -28,8 +28,26 @@ if (
 ) exitWith {};
 
 //Create base actions
-_action = ["Gear_Selector","Gear Selector","",{},{phx_safetyEnabled}] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions"],_action] call ace_interact_menu_fnc_addActionToClass;
+switch (phx_gameMode == "sustainedAssault") do {
+  case false: {
+    _action = ["Gear_Selector","Gear Selector","",{},{
+      // limit gear selector in Standard to when:
+      // - safeStart enabled (phx_server_fnc_safety)
+      phx_safetyEnabled
+    }] call ace_interact_menu_fnc_createAction;
+    [(typeOf player), 1, ["ACE_SelfActions"],_action] call ace_interact_menu_fnc_addActionToClass;
+  };
+  case true: {
+    _action = ["Gear_Selector","Gear Selector","",{},{
+      // limit gear selector in SA to when:
+      // - in safe zone (phx_safety_fnc_init) OR
+      // - safeStart enabled, forcing them to be in a safe zone anyway (phx_safety_fnc_startBoundary)
+      (player getVariable ["fnf_zoneProtectionActive", false]) || (missionNamespace getVariable ["phx_safetyEnabled", true])
+    }] call ace_interact_menu_fnc_createAction;
+    [(typeOf player), 1, ["ACE_SelfActions"],_action] call ace_interact_menu_fnc_addActionToClass;
+  };
+};
+
 
 _action = ["Optic_Selector","Optic","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
@@ -49,86 +67,82 @@ _action = ["CSW_Selector","Crew-Served Weapons","",{},{phx_safetyEnabled}] call 
 // Add actions if there are items to select from
 
 // Weapons actions
-if (count (phx_selector_weapons) > 1) then {
-  {
-    // "debug_console" callExtension ("ForEach phx_selector_weapons: " + str(_x));
-    _action = [
-      "Weapon_Selector",
-      getText (configFile >> "cfgWeapons" >> _x # 0 >> "displayName"),
-      "",
-      { // param to code above
+{
+  // "debug_console" callExtension ("ForEach phx_selector_weapons: " + str(_x));
+  _action = [
+    "Weapon_Selector",
+    getText (configFile >> "cfgWeapons" >> _x # 0 >> "displayName"),
+    "",
+    { // param to code above
 
-        (_this select 2) call phx_selector_fnc_weapons;
-      },
-      { // condition
-        primaryWeapon player != "" && count phx_selector_weapons > 1 && fnf_pref_loadoutInterface == "ACE"
-      },
-      {},
-      _x // arg to be used in param, arg is array
-    ] call ace_interact_menu_fnc_createAction;
-    [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Weapon_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
-  } forEach phx_selector_weapons;
-};
+      (_this select 2) call phx_selector_fnc_weapons;
+    },
+    { // condition
+      primaryWeapon player != "" && count phx_selector_weapons > 1 && fnf_pref_loadoutInterface == "ACE"
+    },
+    {},
+    _x // arg to be used in param, arg is array
+  ] call ace_interact_menu_fnc_createAction;
+  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Weapon_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
+} forEach phx_selector_weapons;
 
 
 // optics actions
-if (count (phx_selector_optics) > 1) then {
-  {
-    private _thisCfg = _x call CBA_fnc_getItemConfig;
-    private _dispName = [_thisCfg] call BIS_fnc_displayName;
-    // show magnification
-    if (isClass (_thisCfg >> "ItemInfo" >> "OpticsModes")) then {
-      private _opticsModes = "true" configClasses (_thisCfg >> "ItemInfo" >> "OpticsModes");
-      _dispName = _dispName + " (";
-      private _zoomsArr = [];
-      {
-        // _fovAt1xZoom = ([] call CBA_fnc_getFov) select 0;
-        _fovAt1xZoom = 0.75;
-        private _zoomMax = _fovAt1xZoom / getNumber(_x >> "opticsZoomMax");
-        if (_zoomMax > 1) then {
-          _zoomMax = ceil(_zoomMax / 2) - 1 max 1;
-        } else {
-          _zoomMax = ceil(_zoomMax);
-        };
-        _zoomsArr pushBack _zoomMax;
-      } forEach _opticsModes;
-      _zoomsArr sort false;
-      _zoomsArr = _zoomsArr apply {str(_x) + "x"};
-      _dispName = _dispName + (_zoomsArr joinString "/") + ")";
-    };
-
-    _action = [
-      "Optic_Selector",
-      _dispName,
-      "",
-      { // statement
-        _this call phx_selector_fnc_optics;
-      },
-      { // condition
-        (_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems) &&
-        fnf_pref_loadoutInterface == "ACE"
-      },
-      {}, // child code
-      _x
-    ] call ace_interact_menu_fnc_createAction;
-    [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
-  } forEach phx_selector_optics;
+{
+  private _thisCfg = _x call CBA_fnc_getItemConfig;
+  private _dispName = [_thisCfg] call BIS_fnc_displayName;
+  // show magnification
+  if (isClass (_thisCfg >> "ItemInfo" >> "OpticsModes")) then {
+    private _opticsModes = "true" configClasses (_thisCfg >> "ItemInfo" >> "OpticsModes");
+    _dispName = _dispName + " (";
+    private _zoomsArr = [];
+    {
+      // _fovAt1xZoom = ([] call CBA_fnc_getFov) select 0;
+      _fovAt1xZoom = 0.75;
+      private _zoomMax = _fovAt1xZoom / getNumber(_x >> "opticsZoomMax");
+      if (_zoomMax > 1) then {
+        _zoomMax = ceil(_zoomMax / 2) - 1 max 1;
+      } else {
+        _zoomMax = ceil(_zoomMax);
+      };
+      _zoomsArr pushBack _zoomMax;
+    } forEach _opticsModes;
+    _zoomsArr sort false;
+    _zoomsArr = _zoomsArr apply {str(_x) + "x"};
+    _dispName = _dispName + (_zoomsArr joinString "/") + ")";
+  };
 
   _action = [
     "Optic_Selector",
-    "None",
+    _dispName,
     "",
     { // statement
-      player removePrimaryWeaponItem ((primaryWeaponItems player) select 2);
-      player setVariable ["phx_ChosenOptic", ""];
+      _this call phx_selector_fnc_optics;
     },
     { // condition
-      player getVariable "phx_ChosenOptic" != "" &&
+      (_this select 2) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems) &&
       fnf_pref_loadoutInterface == "ACE"
-    }
+    },
+    {}, // child code
+    _x
   ] call ace_interact_menu_fnc_createAction;
   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
-};
+} forEach phx_selector_optics;
+
+_action = [
+  "Optic_Selector",
+  "None",
+  "",
+  { // statement
+    player removePrimaryWeaponItem ((primaryWeaponItems player) select 2);
+    player setVariable ["phx_ChosenOptic", ""];
+  },
+  { // condition
+    player getVariable "phx_ChosenOptic" != "" &&
+    fnf_pref_loadoutInterface == "ACE"
+  }
+] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
 
 
 // Charges selector
@@ -174,11 +188,15 @@ if (count (missionNamespace getVariable ["phx_selector_grenades",[]]) > 0 && LOA
   } forEach phx_selector_grenades;
 };
 
+// selector removal has been removed, as their parent Gear Selector has its own conditions now
+// these actions persist through respawn, because the player respawns as the same 'typeOf' object and
+// refer to arrays that are updated by the loadout script each run
+
 //Remove selector when safe start ends
-[{!phx_safetyEnabled}, {
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Optic_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Weapon_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Explosives_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Grenades_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
-}] call CBA_fnc_waitUntilAndExecute;
+// [{!phx_safetyEnabled}, {
+//   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Optic_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+//   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Weapon_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+//   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Explosives_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+//   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector", "Grenades_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+//   [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+// }] call CBA_fnc_waitUntilAndExecute;
