@@ -82,7 +82,7 @@ class VN_GEAR_US_SOG1970 {
     grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
     giveSilencer = 0; // 0 for no silencer, 1 to equip silencer on primary weapon
-    giveSRRadio = 1;
+    giveSRRadio = 0;
     giveLRRadio = 0;
   };
 

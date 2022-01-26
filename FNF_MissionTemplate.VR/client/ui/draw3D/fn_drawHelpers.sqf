@@ -1,28 +1,30 @@
 if (isNil "fnf_ui") then {
   fnf_ui = call CBA_fnc_createNamespace;
 
-  #define MSG_ARMEDTRUCKS "Armed Vehicles"
-  #define MSG_BASEAA "Base AA"
-  #define MSG_HELICOPTERS "Helicopters"
+  #define MSG_RALLY "ACE Interact here to teleport to the AO"
+  #define MSG_SUPPLY "ACE Arsenal"
+  #define MSG_SERVICEPOINT "Vehicle Repair Station"
   #define MSG_HOWITZER "Base artillery"
   #define MSG_JEEPS "Transport"
+  #define MSG_ARMEDTRUCKS "Armed Vehicles"
+  #define MSG_BASEAA "Base AA"
   #define MSG_IFV "Tanks"
-  #define MSG_RALLY "ACE Interact here to teleport to the AO"
-  #define MSG_SERVICEPOINT "Vehicle Repair Station"
+  #define MSG_HELICOPTERS "Helicopters"
   #define MSG_PLANES "Planes"
-  #define MSG_SUPPLY "ACE Arsenal"
   #define MSG_GUNSHIPS "Gunships"
+  #define MSG_BOATS "Boats"
+  #define MSG_ARMEDBOATS "Armed Boats"
   #define MSG_PBOATS "Patrol Boats"
 
+  #define ICON_RALLY "\A3\modules_f\data\portraitModule_ca.paa"
+  #define ICON_SUPPLY "\A3\ui_f\data\map\vehicleicons\iconCrateWpns_ca.paa"
   #define ICON_AA "\A3\ui_f\data\map\vehicleicons\iconStaticAA_ca.paa"
   #define ICON_APC "\A3\ui_f\data\map\vehicleicons\iconAPC_ca.paa"
   #define ICON_ARTILLERY "\A3\ui_f\data\map\vehicleicons\iconStaticMortar_ca.paa"
   #define ICON_CAR "\A3\ui_f\data\map\vehicleicons\iconCar_ca.paa"
   #define ICON_HELICOPTER "\A3\ui_f\data\map\vehicleicons\iconHelicopter_ca.paa"
   #define ICON_PLANE "\A3\ui_f\data\map\vehicleicons\iconPlane_ca.paa"
-  #define ICON_RALLY "\A3\ui_f\data\map\vehicleicons\iconobject_ca.paa"
   #define ICON_REPAIR "\A3\ui_f\data\map\vehicleicons\pictureRepair_ca.paa"
-  #define ICON_SUPPLY "\A3\ui_f\data\map\vehicleicons\iconCrateWpns_ca.paa"
   #define ICON_BOATS "\A3\ui_f\data\map\vehicleicons\iconShip_ca.paa"
 
 
@@ -37,11 +39,13 @@ if (isNil "fnf_ui") then {
     [OPF_planes,MSG_PLANES,ICON_PLANE,true],
     [OPF_IFV,MSG_IFV,ICON_APC,true],
     [OPF_gunships,MSG_GUNSHIPS,ICON_HELICOPTER,true],
-    [OPF_pBoats,MSG_PBOATS,ICON_BOATS,true],
     [rallybase_east,MSG_RALLY,ICON_RALLY],
     [east_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
     [east_MSP_1,"MSP",ICON_RALLY,false,east],
-    [OPF_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR]
+    [OPF_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR],
+    [OPF_boats,MSG_BOATS,ICON_BOATS, true],
+    [OPF_armedBoats,MSG_ARMEDBOATS,ICON_BOATS, true],
+    [OPF_pBoats,MSG_PBOATS,ICON_BOATS,true]
   ]];
 
   fnf_ui setVariable ["westHelperTargets",[
@@ -55,11 +59,13 @@ if (isNil "fnf_ui") then {
     [BLU_planes,MSG_PLANES,ICON_PLANE,true],
     [BLU_IFV,MSG_IFV,ICON_APC,true],
     [BLU_gunships,MSG_GUNSHIPS,ICON_HELICOPTER,true],
-    [BLU_pBoats,MSG_PBOATS,ICON_BOATS,true],
     [rallybase_west,MSG_RALLY,ICON_RALLY],
     [west_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
     [west_MSP_1,"MSP",ICON_RALLY,false,west],
-    [BLU_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR]
+    [BLU_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR],
+    [BLU_boats,MSG_BOATS,ICON_BOATS, true],
+    [BLU_armedBoats,MSG_ARMEDBOATS,ICON_BOATS, true],
+    [BLU_pBoats,MSG_PBOATS,ICON_BOATS,true]
   ]];
 };
 

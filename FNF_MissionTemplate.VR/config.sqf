@@ -51,6 +51,12 @@ phx_vnArtillerySide = sideEmpty; // west/east/independent
 // which side's PLT SGT will have access to VN Artillery interface (requires Prairie Fire)
 // use sideEmpty to not give anyone access
 
+phx_SWRadioForAll = -1;
+// override loadout-based radio settings
+// -1 means the loadout setting will be used (default)
+// 0 means nobody will receive a SW Radio (Vietnam, not sustainedAssault)
+// 1 means everyone will receive a SW Radio (sustainedAssault, etc)
+
 phx_enemyStartVisible = true; // Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500;
 /*
@@ -161,6 +167,7 @@ phx_grnAT_Delta = GEARDEFAULT;
 
 // Show/Hide unit / group icons on map, GPS for players
 // Used in limited-intel scenarios like WWII and Vietnam
+// i.e. showUnitIcons should be true for Modern and sustainedAssault VN missions
 phx_showUnitIcons = true;
 phx_showGroupIcons = true;
 phx_showAlliedFactions = true;
