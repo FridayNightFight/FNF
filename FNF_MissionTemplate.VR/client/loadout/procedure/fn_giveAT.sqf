@@ -37,6 +37,8 @@ if (_role in _matRoleVarArr) then {
     nil
   };
 
+  if (phx_loadout_mediumantitank_weapon == "") exitWith {true};
+
   // add mags & load one
   // "debug_console" callExtension str(phx_loadout_mediumantitank_mag);
   private "_compatMag";
@@ -86,9 +88,13 @@ if (_role in _matRoleVarArr) then {
   } else {
     phx_loadout_launcher = "";
   };
+
+
+
   // "debug_console" callExtension str(phx_loadout_launcher);
   if (phx_loadout_launcher isEqualType []) then {
     phx_loadout_launcher params ["_launcher", "_mags", "_optics"];
+    if (_launcher == "") exitWith {true};
     _unit addWeapon _launcher;
     diag_log text format["[FNF] (loadout) INFO: Equipped AT weapon ""%1""", _launcher];
 

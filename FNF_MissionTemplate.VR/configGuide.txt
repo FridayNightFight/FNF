@@ -96,6 +96,9 @@ Possible launcher values (and recommended counts)
   or, you can set GEARDEFAULT to use that side's gear set's recommended MAT settings for each squad.
     GEARDEFAULT
 
+  or, you can use `NOMAT()` to not give a launcher
+    NOMAT()
+
   EXAMPLE:
   format:
     phx_bluAT_Bravo = CARLG(2,0);

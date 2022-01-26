@@ -132,6 +132,14 @@ phx_ui_gameMechanicsDiary = [
   - Mobile Spawn Point (a movable, destructible vehicle that will respawn itself when destroyed)<br/>
   - in some cases, an airfield teleport where planes and helicopters may be kept<br/><br/>
 "
+  )],
+  ["Respawn System", (
+    "<font size='14' shadow='1' color='" + COLOR3 + "'>Respawn System</font><br/>" +
+    "
+- each side starts with a set number of tickets
+- a side's tickets will decrease by 1 when a player on that side dies
+- when one side reaches 0, the opposing side will win
+"
   )]
 ];
 reverse phx_ui_gameMechanicsDiary;
@@ -171,6 +179,12 @@ phx_ui_gameMechanicsText = (
 - when safe start ends, additional teleport options may become available<br/>
   - Mobile Spawn Point (a movable, destructible vehicle that will respawn itself when destroyed)<br/>
   - in some cases, an airfield teleport where planes and helicopters may be kept<br/><br/>
+" +
+"<font size='14' shadow='1' color='" + COLOR3 + "'>Respawn System</font><br/>" +
+  "
+- each side starts with a set number of tickets
+- a side's tickets will decrease by 1 when a player on that side dies
+- when one side reaches 0, the opposing side will win
 "
 );
 
