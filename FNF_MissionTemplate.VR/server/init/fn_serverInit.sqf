@@ -21,21 +21,25 @@ call phx_server_fnc_fortifyServer;
 call phx_server_fnc_markCustomObjs;
 call phx_admin_fnc_serverCommands;
 
-// after custom building markers are up, recreate safe markers so they're on top and visible
-[{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {
-  {
-    if (markerColor _x != "") then {
-      _ogMark = _x call BIS_fnc_markerToString;
-      deleteMarker _x;
-      _ogMark call BIS_fnc_stringToMarker;
-      // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
-    };
-  } forEach ["bluforSafeMarker", "opforSafeMarker", "indforSafeMarker"];
-  missionNamespace setVariable ["phx_markCustomObjs_done", true, true];
-}] call CBA_fnc_waitUntilAndExecute;
-
 call phx_server_fnc_setupGame;
 call phx_server_fnc_webhook_roundPrep;
+
+// after custom building markers are up, recreate safe markers so they're on top and visible
+[{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {
+  [] spawn {
+    uiSleep 0.1;
+    private _safeMarkers = [objNull, nil, true] call phx_fnc_inSafeZone;
+    {
+      if (markerColor _x != "") then {
+        _ogMark = _x call BIS_fnc_markerToString;
+        deleteMarker _x;
+        _ogMark call BIS_fnc_stringToMarker;
+        // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
+      };
+    } forEach _safeMarkers;
+    missionNamespace setVariable ["phx_markCustomObjs_done", true, true];
+  };
+}] call CBA_fnc_waitUntilAndExecute;
 
 call phx_server_fnc_populateORBATS;
 call phx_server_fnc_keyVehicles;

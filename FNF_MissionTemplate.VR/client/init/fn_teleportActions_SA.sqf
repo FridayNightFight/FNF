@@ -1,4 +1,5 @@
 
+// this is SA, don't run if Standard
 if !(phx_gameMode == "sustainedAssault") exitWith {};
 
 

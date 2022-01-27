@@ -3,6 +3,9 @@ params [["_unit", objNull, [objNull]], ["_side", sideEmpty, [sideEmpty]]];
 
 // check if a unit is in a zone that should be restricted from their side
 
+// this functionality is only used in SA
+if (phx_gameMode != "sustainedAssault") exitWith {};
+
 if (isNull _unit) exitWith {
   ["Warning: Unit is null"] call BIS_fnc_error;
   false
