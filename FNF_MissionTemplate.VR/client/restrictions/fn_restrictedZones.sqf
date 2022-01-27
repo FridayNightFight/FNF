@@ -26,7 +26,7 @@ phx_safeZone_fnc_moveOutside = {
 
 if (!isNil "phx_restrictions_handle_restrictedZones") then {
   [phx_restrictions_handle_restrictedZones] call CBA_fnc_removePerFrameHandler;
-  phx_restrictions_handlerestrictedZoness = nil;
+  phx_restrictions_handle_restrictedZones = nil;
 };
 
 phx_restrictions_handle_restrictedZones = [{

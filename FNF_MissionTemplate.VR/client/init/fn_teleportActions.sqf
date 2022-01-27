@@ -13,30 +13,56 @@ if (playerSide == west) then {
     _process = false;
   };
 
+
   if (_process) then {
-    // parent action
-    private _action = ["FNF_BLU_TeleportOptions","BLUFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
+
+    private _MSPprefix = "west_MSP_";
+
+    #define MSPOBJ (missionNamespace getVariable [(_MSPprefix + str(_i)), nil])
+    private _MSPPresent = [];
+    for "_i" from 1 to 5 do {
+      if (!isNil {MSPOBJ}) then {
+        _MSPPresent pushBack MSPOBJ;
+      };
+    };
+
+    #define PARENTACTION "FNF_BLU_TeleportOptions"
+    // create parent ACE Action for teleport options
+    private _action = [PARENTACTION,"BLUFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
     [rallybase_west,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
 
-    private _action = [
-      "BLU_MSP_Teleport_1",
-      "Mobile Spawn Point",
-      "",
-      { // statement
-        _pos = (position west_MSP_1) findEmptyPosition [0, 20, typeOf _player];
-        _player setPosATL _pos;
-      },
-      { // condition
-        alive west_MSP_1 && side _player == west && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
-      }
-    ] call ace_interact_menu_fnc_createAction;
 
-    [
-      rallybase_west,
-      0,
-      ["FNF_BLU_TeleportOptions"],
-      _action
-    ] call ace_interact_menu_fnc_addActionToObject;
+    {
+      private _thisObj = _x;
+      private _MSPNum = str(_x) select [(count str(_x)) - 1, 1];
+
+      private _action = [
+        format["BLU_MSP_Teleport_%1", _MSPNum],
+        format["Mobile Spawn Point %1", _MSPNum],
+        "",
+        { // statement
+          params ["_target", "_player", "_params"];
+          _params params ["_MSPObj"];
+          _pos = (position _MSPObj) findEmptyPosition [0, 20, typeOf _player];
+          _player setPosATL _pos;
+        },
+        { // condition
+          params ["_target", "_player", "_params"];
+          _params params ["_MSPObj"];
+          alive _MSPObj && side _player == west && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
+        },
+        {},
+        [_thisObj]
+      ] call ace_interact_menu_fnc_createAction;
+
+      [
+        rallybase_west,
+        0,
+        [PARENTACTION],
+        _action
+      ] call ace_interact_menu_fnc_addActionToObject;
+
+    } forEach _MSPPresent;
 
 
     // airfield teleport if icon marker "west_airfield_1" exists
@@ -57,12 +83,15 @@ if (playerSide == west) then {
       [
         rallybase_west,
         0,
-        ["FNF_BLU_TeleportOptions"],
+        [PARENTACTION],
         _action
       ] call ace_interact_menu_fnc_addActionToObject;
     };
   };
 };
+
+#undef PARENTACTION
+#undef MSPOBJ
 
 if (playerSide == east) then {
   private _process = true;
@@ -76,29 +105,52 @@ if (playerSide == east) then {
   };
   if (_process) then {
 
-    // add parent option
-    private _action = ["FNF_OPF_TeleportOptions","OPFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
+    private _MSPprefix = "east_MSP_";
+
+    #define MSPOBJ (missionNamespace getVariable [(_MSPprefix + str(_i)), nil])
+    private _MSPPresent = [];
+    for "_i" from 1 to 5 do {
+      if (!isNil {MSPOBJ}) then {
+        _MSPPresent pushBack MSPOBJ;
+      };
+    };
+
+    #define PARENTACTION "FNF_OPF_TeleportOptions"
+    // create parent ACE Action for teleport options
+    private _action = [PARENTACTION,"OPFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
     [rallybase_east,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
 
-    private _action = [
-      "OPF_MSP_Teleport_1",
-      "Mobile Spawn Point",
-      "",
-      { // statement
-        _pos = (position east_MSP_1) findEmptyPosition [0, 20, typeOf _player];
-        _player setPosATL _pos;
-      },
-      { // condition
-        alive east_MSP_1 && side _player == east && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
-      }
-    ] call ace_interact_menu_fnc_createAction;
+    {
+      private _thisObj = _x;
+      private _MSPNum = str(_x) select [(count str(_x)) - 1, 1];
 
-    [
-      rallybase_east,
-      0,
-      ["FNF_OPF_TeleportOptions"],
-      _action
-    ] call ace_interact_menu_fnc_addActionToObject;
+      private _action = [
+        format["OPF_MSP_Teleport_%1", _MSPNum],
+        format["Mobile Spawn Point %1", _MSPNum],
+        "",
+        { // statement
+          params ["_target", "_player", "_params"];
+          _params params ["_MSPObj"];
+          _pos = (position _MSPObj) findEmptyPosition [0, 20, typeOf _player];
+          _player setPosATL _pos;
+        },
+        { // condition
+          params ["_target", "_player", "_params"];
+          _params params ["_MSPObj"];
+          alive _MSPObj && side _player == east && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
+        },
+        {},
+        [_thisObj]
+      ] call ace_interact_menu_fnc_createAction;
+
+      [
+        rallybase_east,
+        0,
+        [PARENTACTION],
+        _action
+      ] call ace_interact_menu_fnc_addActionToObject;
+
+    } forEach _MSPPresent;
 
     // private _action = [
     //   "OPF_Airfield_Teleport_1",
