@@ -200,7 +200,7 @@ if (isNil {
 //   }] call CBA_fnc_waitUntilAndExecute;
 // };
 
-[{
+[{call TFAR_fnc_isAbleToUseRadio}, {
   params [["_swRadio", true], ["_lrRadio", false]];
   [
     player,
@@ -208,7 +208,7 @@ if (isNil {
     _lrRadio
   ] call phx_loadout_fnc_giveRadios;
   diag_log text "[FNF] (loadoutRadio) Completed radio assignment.";
-}, [_cfgGiveSRRadio, _cfgGiveLRRadio], 5] call CBA_fnc_waitAndExecute;
+}, [_cfgGiveSRRadio, _cfgGiveLRRadio], 30] call CBA_fnc_waitUntilAndExecute;
 
 
 if (isNil {
