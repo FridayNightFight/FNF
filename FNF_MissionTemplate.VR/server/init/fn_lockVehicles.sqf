@@ -4,15 +4,15 @@
 private _vics = MISSIONVICS;
 
 if (phx_gameMode != "sustainedAssault") then {
-  _vics inAreaArray "bluforSafeMarker"
+  (_vics select {[_x, west] call phx_fnc_inSafeZone})
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 
-  _vics inAreaArray "opforSafeMarker"
+  (_vics select {[_x, east] call phx_fnc_inSafeZone});
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 
-  _vics inAreaArray "indforSafeMarker"
+  (_vics select {[_x, independent] call phx_fnc_inSafeZone});
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 };

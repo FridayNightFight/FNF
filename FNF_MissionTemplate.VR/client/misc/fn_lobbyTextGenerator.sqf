@@ -80,21 +80,21 @@ _getVic = {
   if (!isNull _x) then {
     private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _x));
     private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
-    if (_x inArea "bluforSafeMarker") then {
+    if ([_x, west] call phx_fnc_inSafeZone) then {
       if ((_threat # 0) < 0.1) then {
         _transportsPresentBLU = _transportsPresentBLU + 1;
       } else {
         [_x, "BLU", _vehiclesToProcessBLUFOR] call _getVic;
       };
     };
-    if (_x inArea "opforSafeMarker") then {
+    if ([_x, east] call phx_fnc_inSafeZone) then {
       if ((_threat # 0) < 0.1) then {
         _transportsPresentOPF = _transportsPresentOPF + 1;
       } else {
         [_x, "OPF", _vehiclesToProcessOPFOR] call _getVic;
       };
     };
-    if (_x inArea "indforSafeMarker") then {
+    if ([_x, independent] call phx_fnc_inSafeZone) then {
       if ((_threat # 0) < 0.1) then {
         _transportsPresentIND = _transportsPresentIND + 1;
       } else {

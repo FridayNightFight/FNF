@@ -454,13 +454,13 @@ switch (phx_gameMode == "sustainedAssault") do {
     {
       private _vehicle = _x;
       switch (true) do {
-        case (_vehicle inArea "bluforSafeMarker"): {
+        case ([_vehicle, west] call phx_fnc_inSafeZone): {
           [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
         };
-        case (_vehicle inArea "opforSafeMarker"): {
+        case ([_vehicle, east] call phx_fnc_inSafeZone): {
           [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
         };
-        case (_vehicle inArea "indforSafeMarker"): {
+        case ([_vehicle, independent] call phx_fnc_inSafeZone): {
           [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
         };
         default {
@@ -473,13 +473,13 @@ switch (phx_gameMode == "sustainedAssault") do {
     {
       private _vehicle = _x;
       switch (true) do {
-        case (_vehicle inArea safeZone_BLUFOR || _vehicle inArea "rally_west_marker"): {
+        case ([_vehicle, west] call phx_fnc_inSafeZone): {
           [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
         };
-        case (_vehicle inArea safeZone_OPFOR || _vehicle inArea "rally_east_marker"): {
+        case ([_vehicle, east] call phx_fnc_inSafeZone): {
           [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
         };
-        case (_vehicle inArea safeZone_Independent || _vehicle inArea "rally_independent_marker"): {
+        case ([_vehicle, independent] call phx_fnc_inSafeZone): {
           [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
         };
         default {

@@ -10,7 +10,7 @@ private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], fa
       [_x, "_bluefor"] call TFAR_fnc_setLrRadioCode;
     } forEach _radios;
   }, [_x], 10, {}] call CBA_fnc_waitUntilAndExecute;
-} forEach (_vics inAreaArray "bluforSafeMarker");
+} forEach (_vics select {[_x, west] call phx_fnc_inSafeZone});
 
 {
   _x setVariable ["tf_side", "east", true];
@@ -21,7 +21,7 @@ private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], fa
       [_x, "_opfor"] call TFAR_fnc_setLrRadioCode;
     } forEach _radios;
   }, [_x], 10, {}] call CBA_fnc_waitUntilAndExecute;
-} forEach (_vics inAreaArray "opforSafeMarker");
+} forEach (_vics select {[_x, east] call phx_fnc_inSafeZone});
 
 {
   _x setVariable ["tf_side", "independent", true];
@@ -32,7 +32,7 @@ private _vics = entities [["Car", "Tank", "Ship", "Plane", "Helicopter"], [], fa
       [_x, "_independent"] call TFAR_fnc_setLrRadioCode;
     } forEach _radios;
   }, [_x], 10, {}] call CBA_fnc_waitUntilAndExecute;
-} forEach (_vics inAreaArray "indforSafeMarker");
+} forEach (_vics select {[_x, independent] call phx_fnc_inSafeZone});
 
 
 

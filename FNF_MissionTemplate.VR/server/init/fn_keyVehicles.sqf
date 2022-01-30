@@ -6,40 +6,21 @@ private _vics = MISSIONVICS;
 
 _sideSpecific = [];
 
-switch (phx_gameMode == "sustainedAssault") do {
-  case false: {
-    {
-      _x setVariable ["ace_vehiclelock_lockSide", west, true];
-      _sideSpecific pushBack _x;
-    } forEach (_vics inAreaArray "bluforSafeMarker");
+{
+  _x setVariable ["ace_vehiclelock_lockSide", west, true];
+  _sideSpecific pushBack _x;
+} forEach (_vics select {[_x, west] call phx_fnc_inSafeZone});
 
-    {
-      _x setVariable ["ace_vehiclelock_lockSide", east, true];
-      _sideSpecific pushBack _x;
-    } forEach (_vics inAreaArray "opforSafeMarker");
+{
+  _x setVariable ["ace_vehiclelock_lockSide", east, true];
+  _sideSpecific pushBack _x;
+} forEach (_vics select {[_x, east] call phx_fnc_inSafeZone});
 
-    {
-      _x setVariable ["ace_vehiclelock_lockSide", independent, true];
-      _sideSpecific pushBack _x;
-    } forEach (_vics inAreaArray "indforSafeMarker");
-  };
-  case true: {
-    {
-      _x setVariable ["ace_vehiclelock_lockSide", west, true];
-      _sideSpecific pushBack _x;
-    } forEach ((_vics inAreaArray safeZone_BLUFOR) + (_vics inAreaArray "rally_west_marker"));
+{
+  _x setVariable ["ace_vehiclelock_lockSide", independent, true];
+  _sideSpecific pushBack _x;
+} forEach (_vics select {[_x, independent] call phx_fnc_inSafeZone});
 
-    {
-      _x setVariable ["ace_vehiclelock_lockSide", east, true];
-      _sideSpecific pushBack _x;
-    } forEach ((_vics inAreaArray safeZone_OPFOR) + (_vics inAreaArray "rally_east_marker"));
-
-    {
-      _x setVariable ["ace_vehiclelock_lockSide", independent, true];
-      _sideSpecific pushBack _x;
-    } forEach ((_vics inAreaArray safeZone_Independent) + (_vics inAreaArray "rally_independent_marker"));
-  };
-};
 
 // non-safestart vehicles should be locked to combat factions
 {

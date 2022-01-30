@@ -225,7 +225,7 @@ if (phx_gameMode == "sustainedAssault") then {
   };
 
 
-  {
+  { // set marker text for aux markers so TP actions on clients makes sense
     private _thisSide = _x;
     private _thisSideStr = toLower(_thisSide call BIS_fnc_sideNameUnlocalized);
     private _thisSideStrLoc = _thisSide call BIS_fnc_sideName;
