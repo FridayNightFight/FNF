@@ -241,7 +241,7 @@ class CfgFunctions {
       class vehicleRadios{};
       class ambientFlyby{};
       class restoreAirLoadouts{};
-      class safeZoneTeleportInit{};
+      class safeZoneTeleportInit_STD{};
     };
     class end {
       file = "server\end";

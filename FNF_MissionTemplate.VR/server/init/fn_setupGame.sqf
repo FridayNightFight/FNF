@@ -146,7 +146,7 @@ if !(phx_gameMode isEqualTo "assassin") then {
 
 if (phx_gameMode != "sustainedAssault") then {
 
-  call phx_server_fnc_safeZoneTeleportInit;
+  call phx_server_fnc_safeZoneTeleportInit_STD;
 
 
   { // set flag textures for flags
@@ -224,19 +224,44 @@ if (phx_gameMode == "sustainedAssault") then {
     phx_safeZone_Independent_marker setMarkerBrush "FDiagonal";
   };
 
+
+  {
+    private _thisSide = _x;
+    private _thisSideStr = toLower(_thisSide call BIS_fnc_sideNameUnlocalized);
+    private _thisSideStrLoc = _thisSide call BIS_fnc_sideName;
+
+    // Aux markers
+    // west_teleportAux_1
+    // east_teleportAux_1
+    // guer_teleportAux_1
+    // civ_teleportAux_1
+    private _auxMarkersPresent = [];
+    for "_i" from 1 to 5 do {
+      private _markStr = format["%1_teleportAux_%2", _thisSideStr, _i];
+      if (markerColor _markStr != "") then {
+        private _markNumber = _markStr select [(count _markStr) - 1, 1];
+        _markStr setMarkerText format["Aux Teleport %1", _markNumber];
+      };
+    };
+  } forEach [west, east, independent, civilian];
+
   // add handler for zoneProtection on vehicles
   #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
   [{
-    {
-      if ([_x] call phx_fnc_inSafeZone) then {
-        _x setVariable ["fnf_zoneProtectionActive", true, true];
-        [_x, false] remoteExec ["allowDamage", _x];
-      } else {
-        _x setVariable ["fnf_zoneProtectionActive", false, true];
-        [_x, true] remoteExec ["allowDamage", _x];
-      };
-    } forEach MISSIONVICS;
-  }, 10] call CBA_fnc_addPerFrameHandler;
+    MISSIONVICS spawn {
+      {
+        _inSafeZone = [_x] call phx_fnc_inSafeZone;
+        if (_inSafeZone && _x getVariable ["fnf_zoneProtectionActive", false]) then {
+          _x setVariable ["fnf_zoneProtectionActive", true];
+          [_x, false] remoteExec ["allowDamage", _x];
+        };
+        if (!_inSafezone && _x getVariable ["fnf_zoneProtectionActive", true]) then {
+          _x setVariable ["fnf_zoneProtectionActive", false];
+          [_x, true] remoteExec ["allowDamage", _x];
+        };
+      } forEach _this;
+    };
+  }, 15] call CBA_fnc_addPerFrameHandler;
 };
 
 

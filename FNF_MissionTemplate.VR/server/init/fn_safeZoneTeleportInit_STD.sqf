@@ -6,14 +6,12 @@
   private _thisSideStr = toLower (_thisSide call BIS_fnc_sideNameUnlocalized);
   private _flagPrefix = format["%1_safeZone_flag_", _thisSideStr];
   private _safeMarkerPrefix = format["%1_safeZone_marker_", _thisSideStr];
-  private _process = true;
 
   // check if flag 1 exists and if not, warn if in mission preview
   if (isNull (missionNamespace getVariable [_flagPrefix + "1", objNull])) then {
     if (is3DENPreview) then {
       format["[PreviewOnly] %1_safeZone_flag_1 not present. Safezone teleport disabled for %2", _thisSideStr, _thisSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
     };
-    _process = false;
 
     // set empty array for this var
     missionNamespace setVariable [

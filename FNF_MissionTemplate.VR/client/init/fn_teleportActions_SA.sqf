@@ -1,127 +1,136 @@
 
-// this is SA, don't run if Standard
 if !(phx_gameMode == "sustainedAssault") exitWith {};
 
+#define PARENTACTION (format["FNF_%1_TeleportOptions", _thisSideStr])
+#define RALLYBASEOBJ (missionNamespace getVariable [_rallyBase, objNull])
+#define MSPOBJ (missionNamespace getVariable [(_MSPprefix + str(_i)), nil])
 
-if (playerSide == west) then {
-  private _process = true;
-  if (isNil "rallybase_west") then {
-    systemChat "Warning: rallybase_west not present! MSP teleport failed to initialize for BLUFOR.";
-    _process = false;
+{
+  private _thisSide = _x;
+  private _thisSideStr = toLower(_thisSide call BIS_fnc_sideNameUnlocalized);
+  private _thisSideStrLoc = _thisSide call BIS_fnc_sideName;
+  private _rallyBase = format["rallybase_%1", _thisSideStr];
+  private _MSPPrefix = format["%1_MSP_", _thisSideStr];
+
+  if (isNull RALLYBASEOBJ) then {
+    if (is3DENPreview) then {
+      format["[PreviewOnly] rallybase_%1 not present. Safezone teleport disabled for %2", _thisSideStr, _thisSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
+    };
+    continue
   };
-  if (isNil "west_MSP_1") then {
-    systemChat "Warning: west_MSP_1 not present! MSP teleport failed to initialize for BLUFOR.";
-    _process = false;
+  if (isNull (missionNamespace getVariable [_MSPPrefix + "1", objNull])) then {
+    if (is3DENPreview) then {
+      format["[PreviewOnly] %1_MSP_1 not present. Safezone teleport disabled for %2", _thisSideStr, _thisSide call BIS_fnc_sideName] remoteExec ["systemChat", 0];
+    };
+    continue
   };
+  if (playerSide != _thisSide) then {continue};
 
-  if (_process) then {
-    // parent action
-    private _action = ["FNF_BLU_TeleportOptions","BLUFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
-    [rallybase_west,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
-
-    private _action = [
-      "BLU_MSP_Teleport_1",
-      "Mobile Spawn Point",
-      "",
-      { // statement
-        _pos = (position west_MSP_1) findEmptyPosition [0, 20, typeOf _player];
-        _player setPosATL _pos;
-      },
-      { // condition
-        alive west_MSP_1 && side _player == west && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
-      }
-    ] call ace_interact_menu_fnc_createAction;
-
-    [
-      rallybase_west,
-      0,
-      ["FNF_BLU_TeleportOptions"],
-      _action
-    ] call ace_interact_menu_fnc_addActionToObject;
-
-
-    // airfield teleport if icon marker "west_airfield_1" exists
-    if (markerColor "west_airfield_1" != "") then {
-      private _action = [
-        "BLU_Airfield_Teleport_1",
-        "Airfield",
-        "",
-        { // statement
-          _pos = (markerPos "west_airfield_1") findEmptyPosition [0, 20, typeOf _player];
-          _player setPosATL _pos;
-        },
-        { // condition
-          side _player == west && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
-        }
-      ] call ace_interact_menu_fnc_createAction;
-
-      [
-        rallybase_west,
-        0,
-        ["FNF_BLU_TeleportOptions"],
-        _action
-      ] call ace_interact_menu_fnc_addActionToObject;
+  private _MSPPresent = [];
+  for "_i" from 1 to 5 do {
+    if (!isNil {MSPOBJ}) then {
+      _MSPPresent pushBack MSPOBJ;
     };
   };
-};
 
-if (playerSide == east) then {
-  private _process = true;
-  if (isNil "rallybase_east") then {
-    systemChat "Warning: rallybase_east not present! MSP teleport failed to initialize for BLUFOR.";
-    _process = false;
-  };
-  if (isNil "east_MSP_1") then {
-    systemChat "Warning: east_MSP_1 not present! MSP teleport failed to initialize for BLUFOR.";
-    _process = false;
-  };
-  if (_process) then {
 
-    // add parent option
-    private _action = ["FNF_OPF_TeleportOptions","OPFOR Teleport Options","",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
-    [rallybase_east,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
+  // create parent ACE Action for teleport options
+  private _action = [PARENTACTION,format["%1 Teleport Options", _thisSideStrLoc],"",{},{true},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
+  [RALLYBASEOBJ,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
+
+
+  { // add MSP options
+    private _thisObj = _x;
+    private _MSPNum = str(_x) select [(count str(_x)) - 1, 1];
 
     private _action = [
-      "OPF_MSP_Teleport_1",
-      "Mobile Spawn Point",
+      format["%1_MSP_Teleport_%2", _thisSideStr, _MSPNum],
+      format["Mobile Spawn Point %1", _MSPNum],
       "",
       { // statement
-        _pos = (position east_MSP_1) findEmptyPosition [0, 20, typeOf _player];
-        _player setPosATL _pos;
+        params ["_target", "_player", "_params"];
+        _params params ["_eligibleSide","_MSPObj"];
+        if (!alive _MSPObj) exitWith {
+          ["<t align='center'>This MSP is dead! Wait for it to respawn.</t>", "error", 7] call phx_ui_fnc_notify;
+        };
+
+        // find empty cargo (passenger) spots on MSP
+        _cargoSpots = (fullCrew [_MSPObj, "cargo", true]) select {isNull (_x # 0)};
+        if (count _cargoSpots > 0) then {
+          // if any free cargo spots open, move player to that
+          _mySpot = selectRandom(_cargoSpots);
+          _mySpot params ["_unit", "_role", "_cargoIndex"];
+          _player moveInCargo [_MSPObj, _cargoIndex];
+        } else {
+          // otherwise, place them beside it
+          _pos = (position _MSPObj) findEmptyPosition [0, 20, typeOf _player];
+          _player setPosATL _pos;
+        };
       },
       { // condition
-        alive east_MSP_1 && side _player == east && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
-      }
+        params ["_target", "_player", "_params"];
+        _params params ["_eligibleSide","_MSPObj"];
+        !isNil "_MSPObj" && side _player == _eligibleSide && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
+      },
+      {},
+      [_thisSide, _thisObj]
     ] call ace_interact_menu_fnc_createAction;
 
     [
-      rallybase_east,
+      RALLYBASEOBJ,
       0,
-      ["FNF_OPF_TeleportOptions"],
+      [PARENTACTION],
       _action
     ] call ace_interact_menu_fnc_addActionToObject;
+  } forEach _MSPPresent;
 
-    // private _action = [
-    //   "OPF_Airfield_Teleport_1",
-    //   "Airfield",
-    //   "",
-    //   { // statement
-    //     _pos = (markerPos "east_airfield_1") findEmptyPosition [0, 20, typeOf _player];
-    //     _player setPosATL _pos;
-    //   },
-    //   { // condition
-    //     side _player == east && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true]) isEqualTo false
-    //   }
-    // ] call ace_interact_menu_fnc_createAction;
 
-    // [
-    //   rallybase_east,
-    //   0,
-    //   ["FNF_OPF_TeleportOptions"],
-    //   _action
-    // ] call ace_interact_menu_fnc_addActionToObject;
+
+  // Aux markers
+  // west_teleportAux_1
+  // east_teleportAux_1
+  // guer_teleportAux_1
+  // civ_teleportAux_1
+  private _auxMarkersPresent = [];
+  for "_i" from 1 to 5 do {
+    private _markStr = format["%1_teleportAux_%2", _thisSideStr, _i];
+    if (markerColor _markStr != "") then {
+      _auxMarkersPresent pushBack _markStr;
+    };
   };
-};
+
+
+  { // add Aux marker options
+    private _thisMark = _x;
+    private _markNumber = str(_x) select [(count str(_x)) - 1, 1];
+
+    private _action = [
+      format["FNF_%1_auxTeleport_%2", _thisSideStr, _markNumber],
+      format["Go to Aux Teleport %1", _markNumber],
+      "",
+      { // statement
+        params ["_target", "_player", "_params"];
+        _params params ["_eligibleSide", "_thisMark"];
+        _pos = (markerPos _thisMark) findEmptyPosition [0, 20, typeOf _player];
+        _player setPosATL _pos;
+      },
+      { // condition
+        params ["_target", "_player", "_params"];
+        _params params ["_eligibleSide", "_thisMark"];
+        side _player == _eligibleSide && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
+      },
+      {},
+      [_thisSide, _thisMark]
+    ] call ace_interact_menu_fnc_createAction;
+
+    [
+      RALLYBASEOBJ,
+      0,
+      [PARENTACTION],
+      _action
+    ] call ace_interact_menu_fnc_addActionToObject;
+  } forEach _auxMarkersPresent;
+} forEach [west, east, independent, civilian];
 
 
 // this setFlagTexture "\A3\ui_f\data\map\markers\flags\USA_ca.paa";
