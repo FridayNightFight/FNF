@@ -24,9 +24,9 @@ phx_viewDistanceHandler = [{
   if (!alive player) exitWith {};
   if (viewDistance > phx_maxViewDistance) then {
     setViewDistance phx_maxViewDistance;
-    // setViewDistance (phx_maxViewDistance + 1000);
-    // setObjectViewDistance phx_maxViewDistance;
+    // setViewDistance (phx_maxViewDistance + 2000);
   };
+
   if (getTerrainGrid > 25) then {
     setTerrainGrid 25;
   };

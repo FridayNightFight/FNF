@@ -114,7 +114,12 @@ if (phx_gameMode != "sustainedAssault") then {
   call phx_restrictions_fnc_init;
   call phx_loadout_fnc_checkLoadout;
   [false] call phx_briefing_fnc_parseGear;
+
+  // disable ambient life
   [] spawn {sleep 0.1; enableEnvironment [false, true]};
+
+  // disable raycast CPU processing of visibility between entities, not needed in all-PvP
+  [] spawn {sleep 0.1; disableRemoteSensors true};
 
   // Compile Date text
   date params ["_year", "_month", "_day", "_hour", "_minute"];
