@@ -28,30 +28,6 @@ phx_loadout_roles = [
 ];
 
 
-phx_safeZones = [
-  ["STD_WEST", [
-    "bluforSafeMarker"
-  ]],
-  ["STD_EAST", [
-    "opforSafeMarker"
-  ]],
-  ["STD_GUER", [
-    "indforSafeMarker"
-  ]],
-  ["SA_WEST", [
-    safeZone_BLUFOR,
-    "rally_west_marker"
-  ]],
-  ["SA_EAST", [
-    safeZone_OPFOR,
-    "rally_east_marker"
-  ]],
-  ["SA_GUER", [
-    safeZone_Independent,
-    "rally_independent_marker"
-  ]]
-];
-
 //Determine if client can play the round, if not, spectate
 if !(call phx_client_fnc_canplay) exitWith {
   diag_log formatText [
@@ -90,7 +66,17 @@ call phx_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
 call phx_server_fnc_populateORBATS;
 call phx_fnc_teleportInit; // Add leadership teleport options
-call phx_client_fnc_teleportActions; // Add MSP teleport option to flagpole if sustainedAssault
+
+
+if (phx_gameMode != "sustainedAssault") then {
+  [{missionNamespace getVariable ["phx_serverSetupGame", false]}, {
+    // Add teleport option to flagpole between safezones in Standard
+    // must wait until global vars initialized by server
+    call phx_client_fnc_teleportActions_STD;
+  }] call CBA_fnc_waitUntilAndExecute;
+} else {
+  call phx_client_fnc_teleportActions_SA; // Add MSP teleport option to flagpole if sustainedAssault
+};
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {

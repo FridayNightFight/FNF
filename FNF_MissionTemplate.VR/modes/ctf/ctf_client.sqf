@@ -52,11 +52,6 @@ if (playerSide == phx_attackingSide) then {
   ] call BIS_fnc_holdActionAdd;
 };
 
-private _attackSpawnMark = switch (phx_attackingSide) do {
-  case east: {"opforSafeMarker"};
-  case west: {"bluforSafeMarker"};
-  case independent: {"indforSafeMarker"};
-};
 
 phx_clientFlagAction = [
   player,

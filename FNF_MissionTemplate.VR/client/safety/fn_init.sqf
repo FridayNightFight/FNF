@@ -56,7 +56,7 @@ phx_switchToMeleeDisablePFH = [{
   if (_tempWeaponState select 1 == "vn_melee_muzzle" || _tempWeaponState select 1 == "vn_hand_melee_muzzle") then {
     player selectWeapon (_tempWeaponState select 0);
   };
-  if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
+  if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
 }] call CBA_fnc_addPerFrameHandler;
 
 [{!(missionNamespace getVariable ["phx_safetyEnabled", true])}, {

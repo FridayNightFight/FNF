@@ -1,3 +1,6 @@
+// don't allow fortify on SA
+if (phx_gameMode == "sustainedAssault") exitWith {};
+
 phx_fortify_objArr = [];
 
 [{!isNil "term1"}, {phx_fortify_objArr append [term1]}, [], 10] call CBA_fnc_waitUntilAndExecute;
@@ -19,15 +22,15 @@ if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
 #define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
 if (PLAYERLOADOUTVAR != "CE") exitWith {
   [{
-    if (!phx_safetyEnabled) then {[_handle] call CBA_fnc_removePerFrameHandler};
+    if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {[_handle] call CBA_fnc_removePerFrameHandler};
     if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
   }, 1] call CBA_fnc_addPerFrameHandler;
 };
 
 switch (playerSide) do {
-  case east: {phx_fortifyMarker = "opforSafeMarker";};
-  case west: {phx_fortifyMarker = "bluforSafeMarker";};
-  case independent: {phx_fortifyMarker = "indforSafeMarker";};
+  case east: {phx_fortifyMarkers = [nil, west, true] call phx_fnc_inSafeZone};
+  case west: {phx_fortifyMarkers = [nil, east, true] call phx_fnc_inSafeZone};
+  case independent: {phx_fortifyMarkers = [nil, independent, true] call phx_fnc_inSafeZone};
 };
 
 [{
@@ -64,7 +67,7 @@ switch (playerSide) do {
       _errorStr = "Cannot place object. Object cannot be near a road";
     };
 
-    if !(_pos inArea phx_fortifyMarker) then {
+    if (phx_fortifyMarkers findIf {_pos inArea _x} == -1) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Object needs to be within start zone boundary."
     };

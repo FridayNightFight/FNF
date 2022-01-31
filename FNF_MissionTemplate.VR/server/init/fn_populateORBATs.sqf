@@ -36,13 +36,13 @@ _getVic = {
 {
   private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _x));
   private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
-  if (_x inArea "bluforSafeMarker") then {
+  if ([_x, west] call phx_fnc_inSafeZone) then {
     [_x, "BLU", _vehiclesToProcessBLUFOR] call _getVic;
   };
-  if (_x inArea "opforSafeMarker") then {
+  if ([_x, east] call phx_fnc_inSafeZone) then {
     [_x, "OPF", _vehiclesToProcessOPFOR] call _getVic;
   };
-  if (_x inArea "indforSafeMarker") then {
+  if ([_x, independent] call phx_fnc_inSafeZone) then {
     [_x, "IND", _vehiclesToProcessINDFOR] call _getVic;
   };
 
@@ -201,6 +201,6 @@ phx_ORBATHandlers = [];
   };
 } forEach [east, west, independent];
 
-[{!phx_safetyEnabled && time > 0}, {
+[{!(missionNamespace getVariable ["phx_safetyEnabled", true]) && time > 0}, {
   missionNamespace setVariable ["BIS_fnc_moduleStrategicMapORBAT_drawIcon", nil];
 }] call CBA_fnc_waitUntilAndExecute;

@@ -10,7 +10,7 @@ private _play = true;
 
 if !(phx_gameMode == "sustainedAssault") then {
   if (typeOf player == "ace_spectator_virtual") then {_play = false};
-  if (didJIP && !phx_safetyEnabled) then {_play = false};
+  if (didJIP && !(missionNamespace getVariable ["phx_safetyEnabled", true])) then {_play = false};
 } else {
   if (typeOf player == "ace_spectator_virtual") then {_play = false};
 };

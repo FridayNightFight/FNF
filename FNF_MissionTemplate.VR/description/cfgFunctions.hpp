@@ -109,7 +109,8 @@ class CfgFunctions {
       class canPlay{};
       class setupGame{};
       class staggeredLoad{};
-      class teleportActions{};
+      class teleportActions_SA{};
+      class teleportActions_STD{};
     };
   };
   class phx_selector {
@@ -240,6 +241,7 @@ class CfgFunctions {
       class vehicleRadios{};
       class ambientFlyby{};
       class restoreAirLoadouts{};
+      class safeZoneTeleportInit_STD{};
     };
     class end {
       file = "server\end";

@@ -33,7 +33,7 @@ switch (phx_gameMode == "sustainedAssault") do {
     _action = ["Gear_Selector","Gear Selector","",{},{
       // limit gear selector in Standard to when:
       // - safeStart enabled (phx_server_fnc_safety)
-      phx_safetyEnabled
+      (missionNamespace getVariable ["phx_safetyEnabled", true])
     }] call ace_interact_menu_fnc_createAction;
     [(typeOf player), 1, ["ACE_SelfActions"],_action] call ace_interact_menu_fnc_addActionToClass;
   };
@@ -61,7 +61,7 @@ _action = ["Explosives_Selector","Explosives","",{},{true}] call ace_interact_me
 _action = ["Grenades_Selector","Grenades","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
 
-_action = ["CSW_Selector","Crew-Served Weapons","",{},{phx_safetyEnabled}] call ace_interact_menu_fnc_createAction;
+_action = ["CSW_Selector","Crew-Served Weapons","",{},{(missionNamespace getVariable ["phx_safetyEnabled", true])}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions"],_action] call ace_interact_menu_fnc_addActionToClass;
 
 // Add actions if there are items to select from

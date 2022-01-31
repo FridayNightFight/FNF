@@ -144,6 +144,64 @@ if !(phx_gameMode isEqualTo "assassin") then {
 };
 
 
+if (phx_gameMode != "sustainedAssault") then {
+
+  call phx_server_fnc_safeZoneTeleportInit_STD;
+
+
+  { // set flag textures for flags
+    private _thisSide = _x;
+    private _thisSideStr = toLower (_thisSide call BIS_fnc_sideNameUnlocalized);
+    _sideFlagsPresent = missionNamespace getVariable [
+      format["fnf_%1_safeZone_flags", _thisSideStr],
+      []
+    ];
+
+    { // for each side flag present
+      private _thisFlag = _x;
+
+      // Set flag appropriate to faction on owner side
+
+      // get uniform meta settings passed from server via phx_server_fnc_sendUniforms
+      private "_thisSideUniform";
+      switch (_thisSide) do {
+        case east: {
+          _thisSideUniform = missionNamespace getVariable ["phx_briefing_east_uniformMeta", [""]];
+        };
+        case west: {
+          _thisSideUniform = missionNamespace getVariable ["phx_briefing_west_uniformMeta", [""]];
+        };
+        case independent: {
+          _thisSideUniform = missionNamespace getVariable ["phx_briefing_ind_uniformMeta", [""]];
+        };
+      };
+
+      // then based on the uniform, set flag texture
+      #define SIDEUNIFORM (_thisSideUniform select 0)
+      switch (true) do {
+        case (SIDEUNIFORM find "_US_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\USA_ca.paa"};
+        case (SIDEUNIFORM find "_NATO_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\nato_ca.paa"};
+        case (SIDEUNIFORM find "_RU_" > -1): {_thisFlag setFlagTexture "\a3\UI_F_Enoch\Data\CfgMarkers\Russia_CA.paa"};
+        case (SIDEUNIFORM find "_GER_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\Germany_ca.paa"};
+        case (SIDEUNIFORM find "_NL_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\Netherlands_ca.paa"};
+        case (SIDEUNIFORM find "_ID_" > -1): {_thisFlag setFlagTexture "\rhsgref\addons\rhsgref_main\data\Flags\flag_NAPA_co.paa"};
+        case (SIDEUNIFORM find "_CROATIAN_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\Croatia_ca.paa"};
+        case (SIDEUNIFORM find "_SERBIAN_" > -1): {_thisFlag setFlagTexture "\rhssaf\addons\rhssaf_main\data\flags\flag_serbia_co.paa"};
+        case (SIDEUNIFORM find "_YUGOSLAVIA_" > -1): {_thisFlag setFlagTexture "\rhssaf\addons\rhssaf_main\data\flags\flag_yugoslavia_co.paa"};
+        case (SIDEUNIFORM find "_CZECHFORCES_" > -1): {_thisFlag setFlagTexture "ca\Ca_E\data\flag_cz_co.paa"};
+        default {
+          switch (_thisSide) do {
+            case east: {_thisFlag setFlagTexture "ca\Ca_E\data\flag_opfor_co.paa"};
+            case west: {_thisFlag setFlagTexture "ca\Ca_E\data\flag_blufor_co.paa"};
+            case independent: {_thisFlag setFlagTexture "ca\Ca_E\data\flag_indfor_co.paa"};
+          };
+        };
+      };
+    } forEach _sideFlagsPresent;
+  } forEach [west, east, independent];
+};
+
+
 if (phx_gameMode == "sustainedAssault") then {
   call phx_server_fnc_ambientFlyby;
 
@@ -167,20 +225,44 @@ if (phx_gameMode == "sustainedAssault") then {
   };
 
 
+  { // set marker text for aux markers so TP actions on clients makes sense
+    private _thisSide = _x;
+    private _thisSideStr = toLower(_thisSide call BIS_fnc_sideNameUnlocalized);
+    private _thisSideStrLoc = _thisSide call BIS_fnc_sideName;
+
+    // Aux markers
+    // west_teleportAux_1
+    // east_teleportAux_1
+    // guer_teleportAux_1
+    // civ_teleportAux_1
+    private _auxMarkersPresent = [];
+    for "_i" from 1 to 5 do {
+      private _markStr = format["%1_teleportAux_%2", _thisSideStr, _i];
+      if (markerColor _markStr != "") then {
+        private _markNumber = _markStr select [(count _markStr) - 1, 1];
+        _markStr setMarkerText format["Aux Teleport %1", _markNumber];
+      };
+    };
+  } forEach [west, east, independent, civilian];
+
+  // add handler for zoneProtection on vehicles
   #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
   [{
-    {
-      if (
-        (_x inArea safeZone_BLUFOR || _x inArea "rally_west_marker") ||
-        (_x inArea safeZone_OPFOR || _x inArea "rally_east_marker") ||
-        (_x inArea safeZone_Independent || _x inArea "rally_independent_marker")
-      ) then {
-        _x setVariable ["fnf_zoneProtectionActive", true, true];
-        [_x, false] remoteExec ["allowDamage", _x];
-      } else {
-        _x setVariable ["fnf_zoneProtectionActive", false, true];
-        [_x, true] remoteExec ["allowDamage", _x];
-      };
-    } forEach MISSIONVICS;
-  }, 10] call CBA_fnc_addPerFrameHandler;
+    MISSIONVICS spawn {
+      {
+        _inSafeZone = [_x] call phx_fnc_inSafeZone;
+        if (_inSafeZone && _x getVariable ["fnf_zoneProtectionActive", false]) then {
+          _x setVariable ["fnf_zoneProtectionActive", true];
+          [_x, false] remoteExec ["allowDamage", _x];
+        };
+        if (!_inSafezone && _x getVariable ["fnf_zoneProtectionActive", true]) then {
+          _x setVariable ["fnf_zoneProtectionActive", false];
+          [_x, true] remoteExec ["allowDamage", _x];
+        };
+      } forEach _this;
+    };
+  }, 15] call CBA_fnc_addPerFrameHandler;
 };
+
+
+missionNamespace setVariable ["phx_serverSetupGame", true, true];

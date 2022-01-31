@@ -80,7 +80,7 @@ _fnc_gatherObjects = {
 
   publicVariable "phx_assassinationTargets";
   [{
-    if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
+    if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
     ["REFRESH_BRIEF_GAMEMODE"] call CBA_fnc_globalEvent;
   // }, (random(20) + 50)] call CBA_fnc_addPerFrameHandler;
   }, 60] call CBA_fnc_addPerFrameHandler;

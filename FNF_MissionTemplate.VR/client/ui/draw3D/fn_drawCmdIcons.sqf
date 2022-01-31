@@ -4,7 +4,7 @@
 	commandIconsHelper = [{
 
 		// remove if not safe start
-		if (!phx_safetyEnabled) then {_handle call CBA_fnc_removePerFrameHandler};
+		if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
 
 		_cmdUnits = (units playerSide) select {
 			["officer", typeOf _x] call BIS_fnc_inString
@@ -14,13 +14,13 @@
 		private _cameraPositionASL = AGLtoASL _cameraPositionAGL;
 		private _zoom = (
 					(
-						[0.5,0.5] 
-						distance2D  
-						worldToScreen 
-						positionCameraToWorld 
+						[0.5,0.5]
+						distance2D
+						worldToScreen
+						positionCameraToWorld
 						[0,3,4]
 					) * (
-						getResolution 
+						getResolution
 						select 5
 					) / 2
 		) + 0.66666;
@@ -36,7 +36,7 @@
 			// referenced https://github.com/Quailsnap/WHA-Nametags
 			_targetPositionAGLTopRef = _x modelToWorldVisual (_x selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _x))];
 			_targetPositionAGLBotRef = _x modelToWorldVisual [0,0,0] vectorAdd [0,0,((0.1 * (player distance _x)))];
-			
+
 			private _camDistance = _cameraPositionAGL distance _targetPositionAGLTopRef;
 			private _distance = _player distance _targetPositionAGLTopRef;
 

@@ -11,6 +11,31 @@ missionNamespace setVariable [
   true
 ];
 
+phx_safeZones = [
+  ["STD_WEST", [
+    "west_safeZone_marker_"
+  ]],
+  ["STD_EAST", [
+    "east_safeZone_marker_"
+  ]],
+  ["STD_GUER", [
+    "guer_safeZone_marker_"
+  ]],
+  ["SA_WEST", [
+    "safeZone_BLUFOR_marker",
+    "rally_west_marker"
+  ]],
+  ["SA_EAST", [
+    "safeZone_OPFOR_marker",
+    "rally_east_marker"
+  ]],
+  ["SA_GUER", [
+    "safeZone_Independent_marker",
+    "rally_independent_marker"
+  ]]
+];
+publicVariable "phx_safeZones";
+
 estimatedTimeLeft (60 * (phx_safeStartTime + phx_missionTimeLimit));
 
 call phx_server_fnc_safety;
@@ -21,21 +46,25 @@ call phx_server_fnc_fortifyServer;
 call phx_server_fnc_markCustomObjs;
 call phx_admin_fnc_serverCommands;
 
-// after custom building markers are up, recreate safe markers so they're on top and visible
-[{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {
-  {
-    if (markerColor _x != "") then {
-      _ogMark = _x call BIS_fnc_markerToString;
-      deleteMarker _x;
-      _ogMark call BIS_fnc_stringToMarker;
-      // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
-    };
-  } forEach ["bluforSafeMarker", "opforSafeMarker", "indforSafeMarker"];
-  missionNamespace setVariable ["phx_markCustomObjs_done", true, true];
-}] call CBA_fnc_waitUntilAndExecute;
-
 call phx_server_fnc_setupGame;
 call phx_server_fnc_webhook_roundPrep;
+
+// after custom building markers are up, recreate safe markers so they're on top and visible
+[{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {
+  [] spawn {
+    uiSleep 0.1;
+    private _safeMarkers = [objNull, nil, true] call phx_fnc_inSafeZone;
+    {
+      if (markerColor _x != "") then {
+        _ogMark = _x call BIS_fnc_markerToString;
+        deleteMarker _x;
+        _ogMark call BIS_fnc_stringToMarker;
+        // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
+      };
+    } forEach _safeMarkers;
+    missionNamespace setVariable ["phx_markCustomObjs_done", true, true];
+  };
+}] call CBA_fnc_waitUntilAndExecute;
 
 call phx_server_fnc_populateORBATS;
 call phx_server_fnc_keyVehicles;
@@ -195,7 +224,7 @@ addMissionEventHandler ["PlayerDisconnected", {
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
 
-  if (phx_safetyEnabled) then {
+  if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {
     deleteVehicle _unit;
   } else {
     //Not needed with ace_respawn_removeDeadBodiesDisconnected = false

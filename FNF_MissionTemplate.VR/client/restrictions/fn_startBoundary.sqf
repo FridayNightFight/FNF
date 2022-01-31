@@ -15,7 +15,7 @@ if (!isNil "phx_restrictions_handle_startBoundary") then {
 
 phx_restrictions_handle_startBoundary = [{
   _this select 0 params ["_maxTime"];
-  if (!phx_safetyEnabled || !alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler; hintSilent ""};
+  if (!(missionNamespace getVariable ["phx_safetyEnabled", true]) || !alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler; hintSilent ""};
 
   if (missionNamespace getVariable ["f_var_mission_timer",10] < 1) then {_maxTime = 0};
 

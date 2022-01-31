@@ -68,6 +68,7 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
   ["off"] call acex_fortify_fnc_handleChatCommand;
 
   [] call phx_server_fnc_webhook_roundStart;
+  ["FNF_Safety_Ended"] call CBA_fnc_globalEventJIP;
 
   if !(phx_gameMode == "sustainedAssault") then {
     [{ // if not SA, lock unoccupied vehicles 5 minutes after safe start ends
@@ -78,6 +79,6 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
       // if !(getMarkerColor _x isEqualTo "") then {
         _x remoteExec ["deleteMarkerLocal", 0, true];
       // };
-    } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+    } forEach ([nil, nil, true] call phx_fnc_inSafeZone);
   };
 }] call CBA_fnc_waitUntilAndExecute;
