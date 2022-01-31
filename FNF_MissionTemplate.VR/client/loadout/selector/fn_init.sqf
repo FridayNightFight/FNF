@@ -48,9 +48,20 @@ switch (phx_gameMode == "sustainedAssault") do {
   };
 };
 
-
+// optics
+// parent
 _action = ["Optic_Selector","Optic","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+// lo
+_action = ["Optic_Selector_Lo","Low Zoom","",{},{true}] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector", "Optic_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+// med
+_action = ["Optic_Selector_Med","Med Zoom","",{},{true}] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector", "Optic_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+// hi
+_action = ["Optic_Selector_Hi","Hi Zoom","",{},{true}] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector", "Optic_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
+
 
 _action = ["Weapon_Selector","Weapon","",{},{true}] call ace_interact_menu_fnc_createAction;
 [(typeOf player), 1, ["ACE_SelfActions", "Gear_Selector"],_action] call ace_interact_menu_fnc_addActionToClass;
@@ -91,14 +102,16 @@ _action = ["CSW_Selector","Crew-Served Weapons","",{},{(missionNamespace getVari
 {
   private _thisCfg = _x call CBA_fnc_getItemConfig;
   private _dispName = [_thisCfg] call BIS_fnc_displayName;
+
+  private _maxZoomOverall = 0;
   // show magnification
   if (isClass (_thisCfg >> "ItemInfo" >> "OpticsModes")) then {
     private _opticsModes = "true" configClasses (_thisCfg >> "ItemInfo" >> "OpticsModes");
     _dispName = _dispName + " (";
     private _zoomsArr = [];
     {
-      // _fovAt1xZoom = ([] call CBA_fnc_getFov) select 0;
-      _fovAt1xZoom = 0.75;
+      _fovAt1xZoom = ([] call CBA_fnc_getFov) select 0;
+      // _fovAt1xZoom = 0.75;
       private _zoomMax = _fovAt1xZoom / getNumber(_x >> "opticsZoomMax");
       if (_zoomMax > 1) then {
         _zoomMax = ceil(_zoomMax / 2) - 1 max 1;
@@ -107,13 +120,21 @@ _action = ["CSW_Selector","Crew-Served Weapons","",{},{(missionNamespace getVari
       };
       _zoomsArr pushBack _zoomMax;
     } forEach _opticsModes;
-    _zoomsArr sort false;
+    _zoomsArr sort true;
+    _maxZoomOverall = _zoomsArr select (count _zoomsArr - 1);
     _zoomsArr = _zoomsArr apply {str(_x) + "x"};
     _dispName = _dispName + (_zoomsArr joinString "/") + ")";
   };
 
+  private _actionName = "";
+  switch (true) do {
+    case (_maxZoomOverall <= 2): {_actionName = "Optic_Selector_Lo"};
+    case (_maxZoomOverall > 2 && _maxZoomOverall <= 5): {_actionName = "Optic_Selector_Med"};
+    case (_maxZoomOverall > 5): {_actionName = "Optic_Selector_Hi"};
+  };
+
   _action = [
-    "Optic_Selector",
+    _actionName,
     _dispName,
     "",
     { // statement
@@ -126,7 +147,8 @@ _action = ["CSW_Selector","Crew-Served Weapons","",{},{(missionNamespace getVari
     {}, // child code
     _x
   ] call ace_interact_menu_fnc_createAction;
-  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector"], _action] call ace_interact_menu_fnc_addActionToClass;
+
+  [(typeOf player), 1, ["ACE_SelfActions","Gear_Selector","Optic_Selector",_actionName], _action] call ace_interact_menu_fnc_addActionToClass;
 } forEach phx_selector_optics;
 
 _action = [
