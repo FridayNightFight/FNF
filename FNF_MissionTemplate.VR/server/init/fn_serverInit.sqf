@@ -11,6 +11,31 @@ missionNamespace setVariable [
   true
 ];
 
+phx_safeZones = [
+  ["STD_WEST", [
+    "west_safeZone_marker_"
+  ]],
+  ["STD_EAST", [
+    "east_safeZone_marker_"
+  ]],
+  ["STD_GUER", [
+    "guer_safeZone_marker_"
+  ]],
+  ["SA_WEST", [
+    "safeZone_BLUFOR_marker",
+    "rally_west_marker"
+  ]],
+  ["SA_EAST", [
+    "safeZone_OPFOR_marker",
+    "rally_east_marker"
+  ]],
+  ["SA_GUER", [
+    "safeZone_Independent_marker",
+    "rally_independent_marker"
+  ]]
+];
+publicVariable "phx_safeZones";
+
 estimatedTimeLeft (60 * (phx_safeStartTime + phx_missionTimeLimit));
 
 call phx_server_fnc_safety;
@@ -199,7 +224,7 @@ addMissionEventHandler ["PlayerDisconnected", {
 phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
 
-  if (phx_safetyEnabled) then {
+  if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {
     deleteVehicle _unit;
   } else {
     //Not needed with ace_respawn_removeDeadBodiesDisconnected = false

@@ -110,7 +110,7 @@ phx_loadout_fnc_handleSHQAUX = {
           (_this select 2) call phx_selector_fnc_csw;
         },
         { // condition
-          phx_safetyEnabled &&
+          (missionNamespace getVariable ["phx_safetyEnabled", true]) &&
           (_setUnit getVariable "phxLoadout") isEqualTo "SHQAUX"
         },
         {},

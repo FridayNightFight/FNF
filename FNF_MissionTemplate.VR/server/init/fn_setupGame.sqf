@@ -265,4 +265,4 @@ if (phx_gameMode == "sustainedAssault") then {
 };
 
 
-missionNamespace setVariable ["phx_serverGameSetup", true, true];
+missionNamespace setVariable ["phx_serverSetupGame", true, true];

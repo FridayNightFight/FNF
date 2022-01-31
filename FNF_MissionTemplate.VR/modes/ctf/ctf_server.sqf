@@ -193,7 +193,7 @@ phx_server_flagOutZone = {
   };
 };
 
-waitUntil {!phx_safetyEnabled};
+waitUntil {!(missionNamespace getVariable ["phx_safetyEnabled", true])};
 
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];

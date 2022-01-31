@@ -28,30 +28,6 @@ phx_loadout_roles = [
 ];
 
 
-phx_safeZones = [
-  ["STD_WEST", [
-    "west_safeZone_marker_"
-  ]],
-  ["STD_EAST", [
-    "east_safeZone_marker_"
-  ]],
-  ["STD_GUER", [
-    "guer_safeZone_marker_"
-  ]],
-  ["SA_WEST", [
-    "safeZone_BLUFOR_marker",
-    "rally_west_marker"
-  ]],
-  ["SA_EAST", [
-    "safeZone_OPFOR_marker",
-    "rally_east_marker"
-  ]],
-  ["SA_GUER", [
-    "safeZone_Independent_marker",
-    "rally_independent_marker"
-  ]]
-];
-
 //Determine if client can play the round, if not, spectate
 if !(call phx_client_fnc_canplay) exitWith {
   diag_log formatText [

@@ -201,6 +201,6 @@ phx_ORBATHandlers = [];
   };
 } forEach [east, west, independent];
 
-[{!phx_safetyEnabled && time > 0}, {
+[{!(missionNamespace getVariable ["phx_safetyEnabled", true]) && time > 0}, {
   missionNamespace setVariable ["BIS_fnc_moduleStrategicMapORBAT_drawIcon", nil];
 }] call CBA_fnc_waitUntilAndExecute;

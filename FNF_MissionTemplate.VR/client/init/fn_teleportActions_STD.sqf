@@ -66,6 +66,15 @@ if !(phx_gameMode != "sustainedAssault") exitWith {};
 } forEach [west, east, independent];
 
 
+["FNF_Safety_Ended", {
+  {
+    _marks = [format["safeZone_flagmarker_%1_", _x]] call BIS_fnc_getMarkers;
+    _marks apply {deleteMarkerLocal _x};
+  } forEach ([west, east, independent] apply {_x call BIS_fnc_sideNameUnlocalized});
+  [_thisType, _thisId] call CBA_fnc_removeEventHandler;
+}] call CBA_fnc_addEventHandlerArgs;
+
+
 
 // this setFlagTexture "\vn\objects_f_vietnam\markers\vn_mrk_usa_ca.paa";
 // this setFlagTexture "\vn\objects_f_vietnam\markers\vn_mrk_pavn_ca.paa";

@@ -22,7 +22,7 @@ if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
 #define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
 if (PLAYERLOADOUTVAR != "CE") exitWith {
   [{
-    if (!phx_safetyEnabled) then {[_handle] call CBA_fnc_removePerFrameHandler};
+    if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {[_handle] call CBA_fnc_removePerFrameHandler};
     if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
   }, 1] call CBA_fnc_addPerFrameHandler;
 };

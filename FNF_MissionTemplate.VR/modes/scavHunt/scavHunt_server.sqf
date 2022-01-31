@@ -336,7 +336,7 @@ phx_scavHuntAnyScore = {
 
 [ // at 15 minutes after safe start, or when first score is made, reveal cap zones
   {
-    (!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
+    (!(missionNamespace getVariable ["phx_safetyEnabled", true]) && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
     (call phx_scavHuntAnyScore)
   },
   {
@@ -354,7 +354,7 @@ phx_scavHuntAnyScore = {
 
 
 [ // after safe start
-  {(!phx_safetyEnabled && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) >= 2)}, {
+  {(!(missionNamespace getVariable ["phx_safetyEnabled", true]) && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) >= 2)}, {
 
     // remind trucks they should be invincible
     {

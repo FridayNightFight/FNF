@@ -5,7 +5,7 @@
 
 	staffIdentifier = [] spawn {
 		// remove if not safe start
-		while {phx_safetyEnabled} do {
+		while {(missionNamespace getVariable ["phx_safetyEnabled", true])} do {
 
 			_info = missionNamespace getVariable "fnf_staffInfo";
 
@@ -30,7 +30,7 @@
 	staffIconHelper = [{
 
 		// remove if not safe start
-		if (!phx_safetyEnabled) then {_handle call CBA_fnc_removePerFrameHandler};
+		if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
 
 		// skip if ACE spectator is drawing group/name icons so as not to clash
 		if (missionNamespace getVariable ["ace_spectator_drawunits", false] && ace_spectator_isSet) exitWith {};
@@ -42,13 +42,13 @@
 		private _cameraPositionASL = AGLtoASL _cameraPositionAGL;
 		private _zoom = (
 					(
-						[0.5,0.5] 
-						distance2D  
-						worldToScreen 
-						positionCameraToWorld 
+						[0.5,0.5]
+						distance2D
+						worldToScreen
+						positionCameraToWorld
 						[0,3,4]
 					) * (
-						getResolution 
+						getResolution
 						select 5
 					) / 2
 		) + 0.66666;
@@ -62,7 +62,7 @@
 			// referenced https://github.com/Quailsnap/WHA-Nametags
 			_targetPositionAGLTopRef = _staffMember modelToWorldVisual (_staffMember selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _staffMember))];
 			_targetPositionAGLBotRef = _staffMember modelToWorldVisual [0,0,0] vectorAdd [0,0,((0.1 * (player distance _staffMember)))];
-			
+
 			private _camDistance = _cameraPositionAGL distance _targetPositionAGLTopRef;
 			private _distance = _player distance _targetPositionAGLTopRef;
 

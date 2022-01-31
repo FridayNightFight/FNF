@@ -8,11 +8,11 @@ if (phx_gameMode != "sustainedAssault") then {
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 
-  (_vics select {[_x, east] call phx_fnc_inSafeZone});
+  (_vics select {[_x, east] call phx_fnc_inSafeZone})
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 
-  (_vics select {[_x, independent] call phx_fnc_inSafeZone});
+  (_vics select {[_x, independent] call phx_fnc_inSafeZone})
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 };
