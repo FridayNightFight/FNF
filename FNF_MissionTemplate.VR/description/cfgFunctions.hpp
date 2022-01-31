@@ -185,6 +185,7 @@ class CfgFunctions {
       class restrictUniform{};
       class restrictETool{};
       class restrictGamma{};
+      class viewDistance{};
     };
   };
   class phx_safety {

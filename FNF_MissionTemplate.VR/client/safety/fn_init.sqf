@@ -59,6 +59,7 @@ phx_switchToMeleeDisablePFH = [{
   if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
 }] call CBA_fnc_addPerFrameHandler;
 
+// this var check ensures that on re-run from onPlayerRespawn.sqf, end of restrictions will apply immediately if respawned after safestart
 [{!(missionNamespace getVariable ["phx_safetyEnabled", true])}, {
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
