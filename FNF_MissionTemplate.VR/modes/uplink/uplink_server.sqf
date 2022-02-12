@@ -5,24 +5,24 @@ _hackedObjectives = 0;
 _term1Counted = false;
 _term2Counted = false;
 _term3Counted = false;
-phx_term1Hacking = false;
-phx_term2Hacking = false;
-phx_term3Hacking = false;
+fnf_term1Hacking = false;
+fnf_term2Hacking = false;
+fnf_term3Hacking = false;
 
 switch (typeName _terminalHackTime) do {
   case "ARRAY": {
-    phx_term1Time = _terminalHackTime select 0;
+    fnf_term1Time = _terminalHackTime select 0;
     if !(isNil {_terminalHackTime select 1}) then {
-      phx_term2Time = _terminalHackTime select 1;
+      fnf_term2Time = _terminalHackTime select 1;
     };
     if !(isNil {_terminalHackTime select 2}) then {
-      phx_term3Time = _terminalHackTime select 2;
+      fnf_term3Time = _terminalHackTime select 2;
     };
   };
   case "SCALAR": {
-    phx_term1Time = _terminalHackTime;
-    phx_term2Time = _terminalHackTime;
-    phx_term3Time = _terminalHackTime;
+    fnf_term1Time = _terminalHackTime;
+    fnf_term2Time = _terminalHackTime;
+    fnf_term3Time = _terminalHackTime;
   };
   default {
     hint "Terminal hack timer not set correctly.";
@@ -31,7 +31,7 @@ switch (typeName _terminalHackTime) do {
 
 _termMarkSetup = {
   _mark = "";
-  _markColor = switch (phx_defendingSide) do {
+  _markColor = switch (fnf_defendingSide) do {
       case east: {"ColorEAST"};
       case west: {"ColorWEST"};
       case independent: {"ColorGUER"};
@@ -67,14 +67,14 @@ _termTaskSetup = {
   _mark = "";
 
   switch (_term) do {
-    case term1: {_time = phx_term1Time; _mark = "term1Mark"};
-    case term2: {_time = phx_term2Time; _mark = "term2Mark"};
-    case term3: {_time = phx_term3Time; _mark = "term3Mark"};
+    case term1: {_time = fnf_term1Time; _mark = "term1Mark"};
+    case term2: {_time = fnf_term2Time; _mark = "term2Mark"};
+    case term3: {_time = fnf_term3Time; _mark = "term3Mark"};
   };
 
   switch (_side) do {
-    case phx_attackingSide: {_title = "Hack the data terminal"};
-    case phx_defendingSide: {_title = "Defend the data terminal"};
+    case fnf_attackingSide: {_title = "Hack the data terminal"};
+    case fnf_defendingSide: {_title = "Defend the data terminal"};
   };
 
   [_side,_taskID,[format ["%1 second hack time",_time],_title,_mark],_term,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
@@ -85,27 +85,27 @@ switch (_numberOfTerminals) do {
     term1 call _termMarkSetup;
     {deleteVehicle _x} forEach [term2,term3];
 
-    [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
-    [term1, phx_defendingSide, "defendTask1"] call _termTaskSetup;
+    [term1, fnf_attackingSide, "attackTask1"] call _termTaskSetup;
+    [term1, fnf_defendingSide, "defendTask1"] call _termTaskSetup;
   };
   case 2: {
     {_x call _termMarkSetup;} forEach [term1,term2];
     deleteVehicle term3;
 
-    [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
-    [term1, phx_defendingSide, "defendTask1"] call _termTaskSetup;
-    [term2, phx_attackingSide, "attackTask2"] call _termTaskSetup;
-    [term2, phx_defendingSide, "defendTask2"] call _termTaskSetup;
+    [term1, fnf_attackingSide, "attackTask1"] call _termTaskSetup;
+    [term1, fnf_defendingSide, "defendTask1"] call _termTaskSetup;
+    [term2, fnf_attackingSide, "attackTask2"] call _termTaskSetup;
+    [term2, fnf_defendingSide, "defendTask2"] call _termTaskSetup;
   };
   case 3: {
     {_x call _termMarkSetup;} forEach [term1,term2,term3];
 
-    [term1, phx_attackingSide, "attackTask1"] call _termTaskSetup;
-    [term1, phx_defendingSide, "defendTask1"] call _termTaskSetup;
-    [term2, phx_attackingSide, "attackTask2"] call _termTaskSetup;
-    [term2, phx_defendingSide, "defendTask2"] call _termTaskSetup;
-    [term3, phx_attackingSide, "attackTask3"] call _termTaskSetup;
-    [term3, phx_defendingSide, "defendTask3"] call _termTaskSetup;
+    [term1, fnf_attackingSide, "attackTask1"] call _termTaskSetup;
+    [term1, fnf_defendingSide, "defendTask1"] call _termTaskSetup;
+    [term2, fnf_attackingSide, "attackTask2"] call _termTaskSetup;
+    [term2, fnf_defendingSide, "defendTask2"] call _termTaskSetup;
+    [term3, fnf_attackingSide, "attackTask3"] call _termTaskSetup;
+    [term3, fnf_defendingSide, "defendTask3"] call _termTaskSetup;
   };
   default {
     hint "Terminal number not set correctly";
@@ -119,22 +119,22 @@ _hackComplete = {
 
   switch (_term) do {
     case term1: {
-      phx_term1Hacking = false;
-      phx_term1Time = 99;
+      fnf_term1Hacking = false;
+      fnf_term1Time = 99;
       ["defendTask1", "FAILED", true] call BIS_fnc_taskSetState;
       ["attackTask1", "SUCCEEDED", true] call BIS_fnc_taskSetState;
       "term1Mark" remoteExec ["deleteMarkerLocal",0,true];
     };
     case term2: {
-      phx_term2Hacking = false;
-      phx_term2Time = 99;
+      fnf_term2Hacking = false;
+      fnf_term2Time = 99;
       ["defendTask2", "FAILED", true] call BIS_fnc_taskSetState;
       ["attackTask2", "SUCCEEDED", true] call BIS_fnc_taskSetState;
       "term2Mark" remoteExec ["deleteMarkerLocal",0,true];
     };
     case term3: {
-      phx_term3Hacking = false;
-      phx_term3Time = 99;
+      fnf_term3Hacking = false;
+      fnf_term3Time = 99;
       ["defendTask3", "FAILED", true] call BIS_fnc_taskSetState;
       ["attackTask3", "SUCCEEDED", true] call BIS_fnc_taskSetState;
       "term3Mark" remoteExec ["deleteMarkerLocal",0,true];
@@ -149,7 +149,7 @@ _hackComplete = {
   deleteVehicle _term;
 };
 
-phx_serverTerminalAction = {
+fnf_serverTerminalAction = {
   _term = _this select 0;
   _hacking = _this select 1;
   _message = "";
@@ -165,63 +165,63 @@ phx_serverTerminalAction = {
       [_term,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
       switch (_term) do {
         case term1: {
-          missionNamespace setVariable ["phx_term1Hacking", true, true];
+          missionNamespace setVariable ["fnf_term1Hacking", true, true];
         };
         case term2: {
-          missionNamespace setVariable ["phx_term2Hacking", true, true];
+          missionNamespace setVariable ["fnf_term2Hacking", true, true];
         };
         case term3: {
-          missionNamespace setVariable ["phx_term3Hacking", true, true];
+          missionNamespace setVariable ["fnf_term3Hacking", true, true];
         };
       };
-      [format ["%1 hack started!", _message]] remoteExec ["phx_fnc_hintThenClear", 0];
+      [format ["%1 hack started!", _message]] remoteExec ["fnf_fnc_hintThenClear", 0];
     };
     case false: {
       [_term,0] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
       switch (_term) do {
         case term1: {
-          missionNamespace setVariable ["phx_term1Hacking", false, true];
+          missionNamespace setVariable ["fnf_term1Hacking", false, true];
         };
         case term2: {
-          missionNamespace setVariable ["phx_term2Hacking", false, true];
+          missionNamespace setVariable ["fnf_term2Hacking", false, true];
         };
         case term3: {
-          missionNamespace setVariable ["phx_term3Hacking", false, true];
+          missionNamespace setVariable ["fnf_term3Hacking", false, true];
         };
       };
-      [format ["%1 hack paused!", _message]] remoteExec ["phx_fnc_hintThenClear", 0];
+      [format ["%1 hack paused!", _message]] remoteExec ["fnf_fnc_hintThenClear", 0];
     };
   };
 };
 
-waitUntil {phx_term1Hacking || phx_term2Hacking || phx_term3Hacking};
+waitUntil {fnf_term1Hacking || fnf_term2Hacking || fnf_term3Hacking};
 
 sleep 3;
 
-while {!phx_gameEnd} do {
+while {!fnf_gameEnd} do {
   _hackString = "";
 
-  if (phx_term1Hacking || phx_term2Hacking || phx_term3Hacking) then {
-    if (phx_term1Hacking) then {
-      if (phx_term1Time > 0) then {
-        phx_term1Time = phx_term1Time - 1;
-        _hackString = _hackString + "Terminal 1 time remaining: " + ([phx_term1Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+  if (fnf_term1Hacking || fnf_term2Hacking || fnf_term3Hacking) then {
+    if (fnf_term1Hacking) then {
+      if (fnf_term1Time > 0) then {
+        fnf_term1Time = fnf_term1Time - 1;
+        _hackString = _hackString + "Terminal 1 time remaining: " + ([fnf_term1Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
       } else {
         _hackString = _hackString + "Terminal 1 hack complete" + "\n";
       };
     };
-    if (phx_term2Hacking) then {
-      phx_term2Time = phx_term2Time - 1;
-      if (phx_term2Time > 0) then {
-        _hackString = _hackString + "Terminal 2 time remaining: " + ([phx_term2Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+    if (fnf_term2Hacking) then {
+      fnf_term2Time = fnf_term2Time - 1;
+      if (fnf_term2Time > 0) then {
+        _hackString = _hackString + "Terminal 2 time remaining: " + ([fnf_term2Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
       } else {
         _hackString = _hackString + "Terminal 2 hack complete" + "\n";
       };
     };
-    if (phx_term3Hacking) then {
-      phx_term3Time = phx_term3Time - 1;
-      if (phx_term3Time > 0) then {
-        _hackString = _hackString + "Terminal 3 time remaining: " + ([phx_term3Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
+    if (fnf_term3Hacking) then {
+      fnf_term3Time = fnf_term3Time - 1;
+      if (fnf_term3Time > 0) then {
+        _hackString = _hackString + "Terminal 3 time remaining: " + ([fnf_term3Time, "MM:SS"] call BIS_fnc_secondsToString) + "\n";
       } else {
         _hackString = _hackString + "Terminal 3 hack complete";
       };
@@ -232,34 +232,34 @@ while {!phx_gameEnd} do {
     _hackString remoteExec ["hintSilent", 0, false];
   };
 
-  if (phx_term1Hacking) then {
-    if ((phx_term1Time % 5 == 0 || phx_term1Time <= 10) && phx_term1Time > 0) then {
+  if (fnf_term1Hacking) then {
+    if ((fnf_term1Time % 5 == 0 || fnf_term1Time <= 10) && fnf_term1Time > 0) then {
       playSound3D ["A3\Sounds_F\sfx\alarm.wss", term1, false, getposasl term1, 0.6, 1, 175];
     };
   };
-  if (phx_term2Hacking) then {
-    if ((phx_term2Time % 5 == 0 || phx_term2Time <= 10) && phx_term2Time > 0) then {
+  if (fnf_term2Hacking) then {
+    if ((fnf_term2Time % 5 == 0 || fnf_term2Time <= 10) && fnf_term2Time > 0) then {
       playSound3D ["A3\Sounds_F\sfx\alarm.wss", term2, false, getposasl term2, 0.6, 1, 175];
     };
   };
-  if (phx_term3Hacking) then {
-    if ((phx_term3Time % 5 == 0 || phx_term3Time <= 10) && phx_term3Time > 0) then {
+  if (fnf_term3Hacking) then {
+    if ((fnf_term3Time % 5 == 0 || fnf_term3Time <= 10) && fnf_term3Time > 0) then {
       playSound3D ["A3\Sounds_F\sfx\alarm.wss", term3, false, getposasl term3, 0.6, 1, 175];
     };
   };
 
-  if (phx_term1Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term1 spawn _hackComplete};
-  if (phx_term2Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term2 spawn _hackComplete};
-  if (phx_term3Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term3 spawn _hackComplete};
+  if (fnf_term1Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term1 spawn _hackComplete};
+  if (fnf_term2Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term2 spawn _hackComplete};
+  if (fnf_term3Time <= 0) then {_hackedObjectives = _hackedObjectives + 1; term3 spawn _hackComplete};
 
   uiSleep 1;
 
   if (_hackedObjectives >= _numberOfTerminals) then {
     uiSleep 13;
 
-    phx_gameEnd = true;
-    publicVariable "phx_gameEnd";
+    fnf_gameEnd = true;
+    publicVariable "fnf_gameEnd";
 
-    [phx_attackingSide, "has successfully hacked all objectives and won!"] spawn phx_server_fnc_gameEnd;
+    [fnf_attackingSide, "has successfully hacked all objectives and won!"] spawn fnf_server_fnc_gameEnd;
   };
 };

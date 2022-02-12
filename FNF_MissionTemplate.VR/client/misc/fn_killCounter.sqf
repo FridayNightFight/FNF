@@ -9,7 +9,7 @@ disableSerialization;
 //If displays weren't created then exit the script
 if (uiNameSpace getVariable "killcountStructText" isEqualTo displayNull) exitWith {hint "KILLCOUNT display not defined in description.ext"};
 
-phx_killCountUI_PFH = [{
+fnf_killCountUI_PFH = [{
   params ["_handle"];
 
   //Update text in the displays to match the points markers

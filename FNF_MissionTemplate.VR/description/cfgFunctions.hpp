@@ -1,5 +1,5 @@
 class CfgFunctions {
-  class PHX {
+  class fnf {
     class vars {
       class varsInit{file = "config.sqf"; preInit = 1;};
       class sekritVars{file = "description\sekrit.sqf"; preInit = 1;};
@@ -41,7 +41,7 @@ class CfgFunctions {
       class unflipVehicleAddAction{};
     };
   };
-  class phx_admin {
+  class fnf_admin {
     class adminPatches {
       file = "client\loadout\patches";
       class setAdminPatch{};
@@ -71,7 +71,7 @@ class CfgFunctions {
       class adminGameEnd{};
     };
   };
-  class phx_briefing {
+  class fnf_briefing {
     class core {
       file = "client\briefing";
       class init{};
@@ -95,13 +95,13 @@ class CfgFunctions {
       class getItemInfo{};
     };
   };
-  class phx_article {
+  class fnf_article {
     class articles {
       file = "client\briefing\articles";
       class NewYear2022{};
     };
   };
-  class phx_client {
+  class fnf_client {
     class core {
       file = "client\init";
       class initCall{postInit = 1;};
@@ -113,7 +113,7 @@ class CfgFunctions {
       class teleportActions_STD{};
     };
   };
-  class phx_selector {
+  class fnf_selector {
     class selectors {
       file = "client\loadout\selector";
       class init{};
@@ -124,7 +124,7 @@ class CfgFunctions {
       class csw{};
     };
   };
-  class phx_loadout {
+  class fnf_loadout {
     class core {
       file = "client\loadout";
       class applyLoadout{};
@@ -160,7 +160,7 @@ class CfgFunctions {
       class setFace{};
     };
   };
-  class phx_radio {
+  class fnf_radio {
     class functions {
       file = "client\radio";
       class waitGear{};
@@ -170,7 +170,7 @@ class CfgFunctions {
       class cleanup{};
     };
   };
-  class phx_restrictions {
+  class fnf_restrictions {
     class functions {
       file = "client\restrictions";
       class init{};
@@ -188,7 +188,7 @@ class CfgFunctions {
       class viewDistance{};
     };
   };
-  class phx_safety {
+  class fnf_safety {
     class safety {
       file = "client\safety";
       class init{};
@@ -196,13 +196,13 @@ class CfgFunctions {
       class reapplySafetyVic{};
     };
   };
-  class phx_spectator {
+  class fnf_spectator {
     class functions {
       file = "client\spectator";
       class init{};
     };
   };
-  class phx_ui {
+  class fnf_ui {
     class safeStartMenu {
       file = "client\ui\safeStartMenu";
       class safeStartMain{};
@@ -227,7 +227,7 @@ class CfgFunctions {
       class missionInfoPanel{};
     };
   };
-  class phx_server {
+  class fnf_server {
     class initServer {
       file = "server\init";
       class safety{};

@@ -8,24 +8,24 @@ private _sunset = (date call BIS_fnc_sunriseSunsetTime) select 1;
 
 if (dayTime > _sunrise && dayTime < _sunset) exitWith {};
 
-phx_gammaWarn = false;
-phx_gammaMax = 1.3;
+fnf_gammaWarn = false;
+fnf_gammaMax = 1.3;
 
-if (!isNil "phx_restrictions_handle_restrictGamma") then {
-  [phx_restrictions_handle_restrictGamma] call CBA_fnc_removePerFrameHandler;
-  phx_restrictions_handle_restrictGamma = nil;
+if (!isNil "fnf_restrictions_handle_restrictGamma") then {
+  [fnf_restrictions_handle_restrictGamma] call CBA_fnc_removePerFrameHandler;
+  fnf_restrictions_handle_restrictGamma = nil;
 };
-phx_restrictions_handle_restrictGamma = [{
+fnf_restrictions_handle_restrictGamma = [{
   if (isNull findDisplay 5) exitWith {};
   _gamma = parseNumber (ctrlText (findDisplay 5 displayCtrl 109));
-  if (_gamma > phx_gammaMax && !phx_gammaWarn) then {
-    _msg = format ["Gamma setting cannot exceed %1 for this mission, please go into settings and lower the value", phx_gammaMax];
+  if (_gamma > fnf_gammaMax && !fnf_gammaWarn) then {
+    _msg = format ["Gamma setting cannot exceed %1 for this mission, please go into settings and lower the value", fnf_gammaMax];
     cutText [_msg, "BLACK"];
-    phx_gammaWarn = true;
+    fnf_gammaWarn = true;
   } else {
-    if (_gamma <= phx_gammaMax && phx_gammaWarn) then {
+    if (_gamma <= fnf_gammaMax && fnf_gammaWarn) then {
       cutText ["", "BLACK IN"];
-      phx_gammaWarn = false;
+      fnf_gammaWarn = false;
     };
   };
 } , 0.3] call CBA_fnc_addPerFrameHandler;

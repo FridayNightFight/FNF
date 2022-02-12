@@ -17,7 +17,7 @@ _fnc_getMAT = {
 		if ((_configured # 0) isEqualTo "GEARDEFAULT") then {
 			// We're using the gear set -- validate it
 			if (_config isEqualTo []) exitWith {
-				["No default MAT configured for " + phx_bluforGear, "error", 10] call phx_ui_fnc_notify;
+				["No default MAT configured for " + fnf_bluforGear, "error", 10] call fnf_ui_fnc_notify;
 			};
 			// Save valid info
 			_selectedMAT pushBack selectRandom(_config);
@@ -80,21 +80,21 @@ _getVic = {
   if (!isNull _x) then {
     private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _x));
     private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
-    if ([_x, west] call phx_fnc_inSafeZone) then {
+    if ([_x, west] call fnf_fnc_inSafeZone) then {
       if ((_threat # 0) < 0.1) then {
         _transportsPresentBLU = _transportsPresentBLU + 1;
       } else {
         [_x, "BLU", _vehiclesToProcessBLUFOR] call _getVic;
       };
     };
-    if ([_x, east] call phx_fnc_inSafeZone) then {
+    if ([_x, east] call fnf_fnc_inSafeZone) then {
       if ((_threat # 0) < 0.1) then {
         _transportsPresentOPF = _transportsPresentOPF + 1;
       } else {
         [_x, "OPF", _vehiclesToProcessOPFOR] call _getVic;
       };
     };
-    if ([_x, independent] call phx_fnc_inSafeZone) then {
+    if ([_x, independent] call fnf_fnc_inSafeZone) then {
       if ((_threat # 0) < 0.1) then {
         _transportsPresentIND = _transportsPresentIND + 1;
       } else {
@@ -106,14 +106,14 @@ _getVic = {
 
 
 
-_gameMode = toUpper(phx_gameMode select [0,4]);
+_gameMode = toUpper(fnf_gameMode select [0,4]);
 if (_gameMode == "") then {_gameMode = "CUST"};
 outArr pushBack format["(%1) // ",_gameMode];
 
-if (phx_attackingSide == sideEmpty && phx_defendingSide == sideEmpty) then {
+if (fnf_attackingSide == sideEmpty && fnf_defendingSide == sideEmpty) then {
 	outArr pushBack "NEUTRAL";
 } else {
-	outArr pushBack format["ATK: %1 x%2 adv - DEF: %3", phx_attackingSide call BIS_fnc_sideName, "%", phx_defendingSide call BIS_fnc_sideName];
+	outArr pushBack format["ATK: %1 x%2 adv - DEF: %3", fnf_attackingSide call BIS_fnc_sideName, "%", fnf_defendingSide call BIS_fnc_sideName];
 };
 
 // BLUFOR VEHICLES
@@ -132,7 +132,7 @@ if (_transportsPresentBLU > 0) then {outArr pushBack format[" + %1 transports", 
 
 // BLUFOR MAT
 if (count _prepArrBLU > 0 || _transportsPresentBLU > 0) then {
-	[phx_bluforGear, phx_bluAT_Bravo, phx_bluAT_Delta] call _fnc_getMAT;
+	[fnf_bluforGear, fnf_bluAT_Bravo, fnf_bluAT_Delta] call _fnc_getMAT;
 };
 
 
@@ -152,7 +152,7 @@ if (_transportsPresentOPF > 0) then {outArr pushBack format[" + %1 transports", 
 
 // OPFOR MAT
 if (count _prepArrOPF > 0 || _transportsPresentOPF > 0) then {
-	[phx_opforGear, phx_redAT_Bravo, phx_redAT_Delta] call _fnc_getMAT;
+	[fnf_opforGear, fnf_redAT_Bravo, fnf_redAT_Delta] call _fnc_getMAT;
 };
 
 
@@ -172,7 +172,7 @@ if (_transportsPresentIND > 0) then {outArr pushBack format[" + %1 transports", 
 
 // INDFOR MAT
 if (count _prepArrIND > 0 || _transportsPresentIND > 0) then {
-	[phx_indforGear, phx_grnAT_Bravo, phx_grnAT_Delta] call _fnc_getMAT;
+	[fnf_indforGear, fnf_grnAT_Bravo, fnf_grnAT_Delta] call _fnc_getMAT;
 };
 
 _out = (outArr joinString "");

@@ -14,7 +14,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, PLAYERLOADOUTVAR, CFGOPTICS] call phx_loadout_fnc_prepOpticsSelector
+* [player, PLAYERLOADOUTVAR, CFGOPTICS] call fnf_loadout_fnc_prepOpticsSelector
 *
 * Public: No
 */
@@ -27,9 +27,9 @@ params [
 
 if (isNull _unit) exitWith {nil};
 
-// Optic selections based on phx_magnifiedOptics setting
+// Optic selections based on fnf_magnifiedOptics setting
 private "_cfgOpticChoices";
-switch (phx_magnifiedOptics) do {
+switch (fnf_magnifiedOptics) do {
   // Nobody should have optics
   case -1: {_cfgOpticChoices = []};
   // All should have magnified
@@ -54,14 +54,14 @@ switch (phx_magnifiedOptics) do {
   };
 };
 // "debug_console" callExtension ("Optics choices: " + str(_cfgOpticChoices));
-if (count _cfgOpticChoices > 0 && !isNil "phx_loadout_weapon") then {
-  private _optic = selectRandom(_cfgOpticChoices select {_x in ([phx_loadout_weapon, "optic"] call CBA_fnc_compatibleItems)});
+if (count _cfgOpticChoices > 0 && !isNil "fnf_loadout_weapon") then {
+  private _optic = selectRandom(_cfgOpticChoices select {_x in ([fnf_loadout_weapon, "optic"] call CBA_fnc_compatibleItems)});
   if (!isNil "_optic") then {
     // _unit addPrimaryWeaponItem _optic;
-    // player setVariable ["phx_ChosenOptic", _optic];
+    // player setVariable ["fnf_ChosenOptic", _optic];
     // diag_log text format["[FNF] (loadout) INFO: Equipped optic ""%1""", _optic];
   };
-  player setVariable ["phx_ChosenOptic", ""];
-  missionNamespace setVariable ["phx_selector_optics", _cfgOpticChoices];
+  player setVariable ["fnf_ChosenOptic", ""];
+  missionNamespace setVariable ["fnf_selector_optics", _cfgOpticChoices];
 };
 true

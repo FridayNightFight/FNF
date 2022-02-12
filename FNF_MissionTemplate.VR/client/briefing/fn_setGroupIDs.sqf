@@ -11,7 +11,7 @@
 * true on success <BOOLEAN>
 *
 * Example:
-* call phx_briefing_fnc_createOrbat
+* call fnf_briefing_fnc_createOrbat
 *
 * Public: No
 */
@@ -28,10 +28,10 @@
 _groups = nil;
 _groups = [
     // ====================================================================================
-    // - format: [group,groupID,phx_LongName,unitSize,radioSettings]
+    // - format: [group,groupID,fnf_LongName,unitSize,radioSettings]
     // group: defined in initialization field of units in editor. Also used as the group's identifier in scripts ex: Red_HQ = group this;
     // groupID: ID given to group for use in things such as GPS, nametags, etc. (string)
-    // phx_LongName: Longer version of the groupID used in things such as the radios, etc. (string)
+    // fnf_LongName: Longer version of the groupID used in things such as the radios, etc. (string)
     // unitSize: Number telling what level the group is. Company = 3, Platoon = 2, Squad = 1, Fireteam = 0 (0-3)
     // radioSettings: Tells radio script which channels to set for group. [altChannel,mainChannel,[channelArray]] (array)
     //     mainChannel: Which channel the radio will start on. (1-8)
@@ -208,7 +208,7 @@ _groups = [
     ["Green_H3","H3","Hotel 3",1, [4, 1, [10, 10.1, 10.2, 10.3]] ]
 ];
 
-missionNamespace setVariable ["phx_templateGroupsList", _groups apply {_x select 0}, true];
+missionNamespace setVariable ["fnf_templateGroupsList", _groups apply {_x select 0}, true];
 
 private ["_grp"];
 {
@@ -218,17 +218,17 @@ private ["_grp"];
     if (!isNull _grp) then {
         if !((groupID _grp) isEqualTo _shortName) then {
             _grp setGroupIdGlobal [_shortName,"GroupColor0"];
-            //_grp setVariable ["phx_groupIDSet",true,true];
+            //_grp setVariable ["fnf_groupIDSet",true,true];
         };
-        _grp setVariable ["phx_groupIdentifier",_identifier,true];
-        _grp setVariable ["phx_LongName",_longName,true];
-        _grp setVariable ["phx_gps_groupSize",_groupSize,true];
-        _grp setVariable ["phx_radioSettings",_radioArray,true];
+        _grp setVariable ["fnf_groupIdentifier",_identifier,true];
+        _grp setVariable ["fnf_LongName",_longName,true];
+        _grp setVariable ["fnf_gps_groupSize",_groupSize,true];
+        _grp setVariable ["fnf_radioSettings",_radioArray,true];
 
         // for AI testing
         // private _groupSide = [(side _grp) call BIS_fnc_sideID] call BIS_fnc_sideName;
         // {_x setVariable [
-        //   "phx_startGroup",
+        //   "fnf_startGroup",
         //   format[
         //     "%1 [%2]",
         //     _shortName,
@@ -241,19 +241,19 @@ private ["_grp"];
 
 {
   player setVariable [
-    "phx_startGroup",
-    (group player) getVariable ["phx_groupIdentifier", groupID (group player)],
+    "fnf_startGroup",
+    (group player) getVariable ["fnf_groupIdentifier", groupID (group player)],
     true
   ];
 } remoteExecCall ["call", 0, true];
 
 {
   _x setVariable [
-    "phx_startGroup",
-    (group _x) getVariable ["phx_groupIdentifier", groupID (group _x)],
+    "fnf_startGroup",
+    (group _x) getVariable ["fnf_groupIdentifier", groupID (group _x)],
     true
   ];
 } forEach (allUnits select {!isPlayer _x});
 
-missionNamespace setVariable ["phx_groupIDset", true, true];
+missionNamespace setVariable ["fnf_groupIDset", true, true];
 true

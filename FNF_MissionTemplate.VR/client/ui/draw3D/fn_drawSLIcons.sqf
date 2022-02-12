@@ -1,4 +1,4 @@
-[{!(isNull findDisplay 46) && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+[{!(isNull findDisplay 46) && missionNamespace getVariable ["fnf_staggeredLoaded",false]}, {
 	_facColor = [playerSide, false] call BIS_fnc_sideColor;
 	_facColor = _facColor apply {
 		if (_x != 0) then {
@@ -13,16 +13,16 @@
 	squadLeadIconsHelper = [{
 
 		// remove if not safe start
-		if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
+		if (!(missionNamespace getVariable ["fnf_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
 
 		// skip if ACE spectator is drawing group/name icons so as not to clash
 		if (missionNamespace getVariable ["ace_spectator_drawunits", false] && ace_spectator_isSet) exitWith {};
 
 		// skip if in objectivePreviewCamera
-		if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
+		if (!isNil "fnf_fnc_objectivePreview_Cam") exitWith {};
 
 		_slUnits = (units playerSide) select {
-			(_x getVariable ["phxLoadout", ""]) isEqualTo ROLE_SL &&
+			(_x getVariable ["fnfLoadout", ""]) isEqualTo ROLE_SL &&
 			_x == leader (group _x)
 		};
 

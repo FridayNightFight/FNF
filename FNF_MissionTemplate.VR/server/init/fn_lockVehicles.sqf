@@ -3,16 +3,16 @@
 
 private _vics = MISSIONVICS;
 
-if (phx_gameMode != "sustainedAssault") then {
-  (_vics select {[_x, west] call phx_fnc_inSafeZone})
+if (fnf_gameMode != "sustainedAssault") then {
+  (_vics select {[_x, west] call fnf_fnc_inSafeZone})
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 
-  (_vics select {[_x, east] call phx_fnc_inSafeZone})
+  (_vics select {[_x, east] call fnf_fnc_inSafeZone})
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 
-  (_vics select {[_x, independent] call phx_fnc_inSafeZone})
+  (_vics select {[_x, independent] call fnf_fnc_inSafeZone})
     select { count crew _x == 0 }
     apply { _x setVehicleLock "LOCKED" };
 };

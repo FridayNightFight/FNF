@@ -3,9 +3,9 @@ Disables access to removing helmet and uniform. Ensures that the player has the 
 */
 
 if (isServer) exitWith {}; //Don't need to run this function for local testing
-if (!isNil "phx_restrictions_handle_restrictUniform") then {
-  [phx_restrictions_handle_restrictUniform] call CBA_fnc_removePerFrameHandler;
-  phx_restrictions_handle_restrictUniform = nil;
+if (!isNil "fnf_restrictions_handle_restrictUniform") then {
+  [fnf_restrictions_handle_restrictUniform] call CBA_fnc_removePerFrameHandler;
+  fnf_restrictions_handle_restrictUniform = nil;
 };
 
 private _playerUniform = uniform player;
@@ -13,7 +13,7 @@ private _playerHead = headgear player;
 private _playerVest = vest player;
 
 //Handle player not having the right uniform, vest, or helmet on
-phx_restrictions_handle_restrictUniform = [{
+fnf_restrictions_handle_restrictUniform = [{
   params ["_args","_handle"];
   _args params ["_playerUniform","_playerHead","_playerVest"];
 

@@ -5,11 +5,11 @@ if (!isServer) exitWith {};
 
 //Init vars
 _taskCount = 1;
-phx_aliveObjectives = 0;
+fnf_aliveObjectives = 0;
 
 //Create array of objectives and global var for use in other scripts
 _objArr = [_obj1,_obj2,_obj3];
-phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
+fnf_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 
 //Delete pre-made objectives if not using
 {
@@ -25,7 +25,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
   _obj = _x select 0;
   _marker = _x select 1;
 
-  switch (phx_defendingSide) do {
+  switch (fnf_defendingSide) do {
     case east: {_marker setMarkerColor "ColorEAST"};
     case west: {_marker setMarkerColor "ColorWEST"};
     case independent: {_marker setMarkerColor "ColorGUER"};
@@ -34,10 +34,10 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 
 } forEach _objArr;
 
-//Increase phx_aliveObjectives for each active objective
+//Increase fnf_aliveObjectives for each active objective
 {
   if !(isNull (_x select 0)) then {
-    phx_aliveObjectives = phx_aliveObjectives + 1;
+    fnf_aliveObjectives = fnf_aliveObjectives + 1;
 
     //Reduce damage if obj is default cache
     if (typeOf (_x select 0) isEqualTo "Box_FIA_Ammo_F") then {
@@ -66,8 +66,8 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
     _defendTaskID = "defendTask" + str _taskCount;
     _attackTaskID = "attackTask" + str _taskCount;
 
-    [phx_defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
-    [phx_attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
 
     [(_x select 0), -1] call ace_cargo_fnc_setSize;
 
@@ -80,7 +80,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
       [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
       [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-      phx_aliveObjectives = phx_aliveObjectives - 1;
+      fnf_aliveObjectives = fnf_aliveObjectives - 1;
       [_markerName] remoteExec ["deleteMarkerLocal",0,true];
     };
 
@@ -107,7 +107,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
           _marker setMarkerPosLocal _newPos;
           _marker setMarkerAlphaLocal 1;
 
-          [_marker,_newPos] remoteExec ["setMarkerPosLocal",phx_attackingSide,_obj];
+          [_marker,_newPos] remoteExec ["setMarkerPosLocal",fnf_attackingSide,_obj];
           [_attackTaskID, _marker] call BIS_fnc_taskSetDestination;
         };
         sleep _objMarkerUpdateTime;
@@ -119,10 +119,10 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
 } forEach _objArr;
 
 //Check for win condition and end game if all objectives are destroyed
-waitUntil {uiSleep 1; phx_aliveObjectives < 1 && !phx_gameEnd};
+waitUntil {uiSleep 1; fnf_aliveObjectives < 1 && !fnf_gameEnd};
 
 //Send var to other scripts and clients to signal that the game has ended
-phx_gameEnd = true;
-publicVariable "phx_gameEnd";
+fnf_gameEnd = true;
+publicVariable "fnf_gameEnd";
 
-[phx_attackingSide, "has successfully destroyed all objectives and won!"] spawn phx_server_fnc_gameEnd;
+[fnf_attackingSide, "has successfully destroyed all objectives and won!"] spawn fnf_server_fnc_gameEnd;

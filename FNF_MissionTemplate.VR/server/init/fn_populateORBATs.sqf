@@ -36,13 +36,13 @@ _getVic = {
 {
   private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _x));
   private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
-  if ([_x, west] call phx_fnc_inSafeZone) then {
+  if ([_x, west] call fnf_fnc_inSafeZone) then {
     [_x, "BLU", _vehiclesToProcessBLUFOR] call _getVic;
   };
-  if ([_x, east] call phx_fnc_inSafeZone) then {
+  if ([_x, east] call fnf_fnc_inSafeZone) then {
     [_x, "OPF", _vehiclesToProcessOPFOR] call _getVic;
   };
-  if ([_x, independent] call phx_fnc_inSafeZone) then {
+  if ([_x, independent] call fnf_fnc_inSafeZone) then {
     [_x, "IND", _vehiclesToProcessINDFOR] call _getVic;
   };
 
@@ -50,7 +50,7 @@ _getVic = {
 
 
 
-phx_ORBATHandlers = [];
+fnf_ORBATHandlers = [];
 {
   private _side = _x;
   private [
@@ -88,8 +88,8 @@ phx_ORBATHandlers = [];
     };
   };
 
-  if (playableSlotsNumber _side > 3 && phx_enemyStartVisible) then {
-    _PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "phxLoadout" isEqualTo "PL"};
+  if (playableSlotsNumber _side > 3 && fnf_enemyStartVisible) then {
+    _PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "fnfLoadout" isEqualTo "PL"};
     [ // PLTHQ
       missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTHQ", _sideShort],
       _sideColorStr,
@@ -107,8 +107,8 @@ phx_ORBATHandlers = [];
       ), // commander name
       "", // rank
       format["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
-        missionNamespace getVariable [format["phx_%1Gear",_sideNameStr], "N/A"],
-        missionNamespace getVariable [format["phx_%1Uniform",_sideNameStr], "N/A"]
+        missionNamespace getVariable [format["fnf_%1Gear",_sideNameStr], "N/A"],
+        missionNamespace getVariable [format["fnf_%1Uniform",_sideNameStr], "N/A"]
       ], // description
       _vehicles
     ] call BIS_fnc_ORBATSetGroupParams;
@@ -201,6 +201,6 @@ phx_ORBATHandlers = [];
   };
 } forEach [east, west, independent];
 
-[{!(missionNamespace getVariable ["phx_safetyEnabled", true]) && time > 0}, {
+[{!(missionNamespace getVariable ["fnf_safetyEnabled", true]) && time > 0}, {
   missionNamespace setVariable ["BIS_fnc_moduleStrategicMapORBAT_drawIcon", nil];
 }] call CBA_fnc_waitUntilAndExecute;

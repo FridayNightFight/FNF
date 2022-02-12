@@ -57,7 +57,7 @@
 #define SNP_MAG "vn_m40a1_mag:12"
 
 
-// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class VN_GEAR_US_ARMY1970 {
   author = "Mazz38";

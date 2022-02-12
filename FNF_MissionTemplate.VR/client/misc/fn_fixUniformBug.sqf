@@ -1,5 +1,5 @@
 /*
-    Name: phx_fnc_fixUniformBug
+    Name: fnf_fnc_fixUniformBug
 
     Author(s):
 		Ezhuk

@@ -1,27 +1,27 @@
 //If ORBAT is written, destroy all global variables that aren't in use anymore
-if (phx_writtenORBAT) then {
-    phx_hasSWitem = nil;
-    phx_hasLRitem = nil;
-    phx_radHandle1 = nil;
+if (fnf_writtenORBAT) then {
+    fnf_hasSWitem = nil;
+    fnf_hasLRitem = nil;
+    fnf_radHandle1 = nil;
 
-    phx_curChan = nil;
-    phx_altChan = nil;
-    phx_ch1 = nil;
-    phx_ch2 = nil;
-    phx_ch3 = nil;
-    phx_ch4 = nil;
-    phx_ch5 = nil;
-    phx_ch6 = nil;
-    phx_ch7 = nil;
-    phx_ch8 = nil;
-    phx_ch9 = nil;
-    phx_radioNoteString = nil;
-    phx_radHandle2 = nil;
+    fnf_curChan = nil;
+    fnf_altChan = nil;
+    fnf_ch1 = nil;
+    fnf_ch2 = nil;
+    fnf_ch3 = nil;
+    fnf_ch4 = nil;
+    fnf_ch5 = nil;
+    fnf_ch6 = nil;
+    fnf_ch7 = nil;
+    fnf_ch8 = nil;
+    fnf_ch9 = nil;
+    fnf_radioNoteString = nil;
+    fnf_radHandle2 = nil;
 
-    phx_hasLR = nil;
-    phx_LRsetup = nil;
-    phx_hasSW = nil;
-    phx_SWsetup = nil;
+    fnf_hasLR = nil;
+    fnf_LRsetup = nil;
+    fnf_hasSW = nil;
+    fnf_SWsetup = nil;
 
-    phx_curSettings = nil;
+    fnf_curSettings = nil;
 };

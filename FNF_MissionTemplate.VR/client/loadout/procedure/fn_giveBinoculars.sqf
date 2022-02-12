@@ -13,7 +13,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, PLAYERLOADOUTVAR] call phx_loadout_fnc_giveBinoculars
+* [player, PLAYERLOADOUTVAR] call fnf_loadout_fnc_giveBinoculars
 *
 * Public: No
 */

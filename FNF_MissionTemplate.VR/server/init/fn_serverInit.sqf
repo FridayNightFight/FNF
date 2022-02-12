@@ -11,7 +11,7 @@ missionNamespace setVariable [
   true
 ];
 
-phx_safeZones = [
+fnf_safeZones = [
   ["STD_WEST", [
     "west_safeZone_marker_"
   ]],
@@ -34,26 +34,26 @@ phx_safeZones = [
     "rally_independent_marker"
   ]]
 ];
-publicVariable "phx_safeZones";
+publicVariable "fnf_safeZones";
 
-estimatedTimeLeft (60 * (phx_safeStartTime + phx_missionTimeLimit));
+estimatedTimeLeft (60 * (fnf_safeStartTime + fnf_missionTimeLimit));
 
-call phx_server_fnc_safety;
-call phx_briefing_fnc_setGroupIDs;
-call phx_server_fnc_genRadioFreqs;
-call phx_server_fnc_sendUniforms;
-call phx_server_fnc_fortifyServer;
-call phx_server_fnc_markCustomObjs;
-call phx_admin_fnc_serverCommands;
+call fnf_server_fnc_safety;
+call fnf_briefing_fnc_setGroupIDs;
+call fnf_server_fnc_genRadioFreqs;
+call fnf_server_fnc_sendUniforms;
+call fnf_server_fnc_fortifyServer;
+call fnf_server_fnc_markCustomObjs;
+call fnf_admin_fnc_serverCommands;
 
-call phx_server_fnc_setupGame;
-call phx_server_fnc_webhook_roundPrep;
+call fnf_server_fnc_setupGame;
+call fnf_server_fnc_webhook_roundPrep;
 
 // after custom building markers are up, recreate safe markers so they're on top and visible
-[{missionNamespace getVariable ["phx_markCustomObjs_ready", false]}, {
+[{missionNamespace getVariable ["fnf_markCustomObjs_ready", false]}, {
   [] spawn {
     uiSleep 0.1;
-    private _safeMarkers = [objNull, nil, true] call phx_fnc_inSafeZone;
+    private _safeMarkers = [objNull, nil, true] call fnf_fnc_inSafeZone;
     {
       if (markerColor _x != "") then {
         _ogMark = _x call BIS_fnc_markerToString;
@@ -62,20 +62,20 @@ call phx_server_fnc_webhook_roundPrep;
         // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
       };
     } forEach _safeMarkers;
-    missionNamespace setVariable ["phx_markCustomObjs_done", true, true];
+    missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
   };
 }] call CBA_fnc_waitUntilAndExecute;
 
-call phx_server_fnc_populateORBATS;
-call phx_server_fnc_keyVehicles;
-call phx_server_fnc_vehicleRadios;
+call fnf_server_fnc_populateORBATS;
+call fnf_server_fnc_keyVehicles;
+call fnf_server_fnc_vehicleRadios;
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;
 zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
 [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
 
-if !(phx_gameMode == "sustainedAssault") then {
+if !(fnf_gameMode == "sustainedAssault") then {
   // Create respawn markers in bottom left corner of map
   {
     private _marker = createMarker [_x, [-1000,-1000,0]];
@@ -83,8 +83,8 @@ if !(phx_gameMode == "sustainedAssault") then {
     _marker setMarkerType "Empty";
   } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
 
-  [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
-  [{!isNil "phx_safetyEndTime"}, {call phx_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
+  [{!(missionNamespace getVariable ["fnf_safetyEnabled",true])}, {call fnf_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+  [{!isNil "fnf_safetyEndTime"}, {call fnf_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
 };
 
 // turn on collision lights for air vehicles if it's night
@@ -180,34 +180,34 @@ MISSION: `%10`",
 }] call CBA_fnc_addEventHandler;
 
 // Staff channel
-phx_adminChannelId = radioChannelCreate [
+fnf_adminChannelId = radioChannelCreate [
 	[1,1,0,1], // RGBA color
 	"Staff Channel", // channel name
 	"[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME", // callsign
   allPlayers select {getPlayerUID _x in fnf_staffInfo}
 ];
-publicVariable "phx_adminChannelId";
+publicVariable "fnf_adminChannelId";
 
 addMissionEventHandler ["PlayerConnected", {
-  if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerConnected", _thisEventHandler]};
+  if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerConnected", _thisEventHandler]};
 
   [{!isNull ((_this # 1) call BIS_fnc_getUnitByUid)}, {
     params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
-    if !(missionNamespace getVariable ["phx_safetyEnabled",true]) exitWith {};
+    if !(missionNamespace getVariable ["fnf_safetyEnabled",true]) exitWith {};
     if (!_jip) exitWith {};
     private _unit = (_uid call BIS_fnc_getUnitByUid);
     private _sides = _unit call BIS_fnc_friendlySides select {_x != sideFriendly};
     [{
       params [["_unit", objNull], ["_sides", [sideUnknown]]];
       {
-        [] remoteExec ["phx_briefing_fnc_createOrbat", units _x];
+        [] remoteExec ["fnf_briefing_fnc_createOrbat", units _x];
       } forEach _sides;
     }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
   }, _this] call CBA_fnc_waitUntilAndExecute;
 }];
 
 addMissionEventHandler ["PlayerDisconnected", {
-  if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerDisconnected", _thisEventHandler]};
+  if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerDisconnected", _thisEventHandler]};
 
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
   private _unit = (_uid call BIS_fnc_getUnitByUid);
@@ -215,16 +215,16 @@ addMissionEventHandler ["PlayerDisconnected", {
   [{
     params [["_unit", objNull], ["_sides", [sideUnknown]]];
     {
-      [] remoteExec ["phx_briefing_fnc_createOrbat", units _x];
+      [] remoteExec ["fnf_briefing_fnc_createOrbat", units _x];
     } forEach _sides;
   }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
 }];
 
 //Delete player bodies during safe start
-phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
+fnf_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
 
-  if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {
+  if (missionNamespace getVariable ["fnf_safetyEnabled", true]) then {
     deleteVehicle _unit;
   } else {
     //Not needed with ace_respawn_removeDeadBodiesDisconnected = false
@@ -236,7 +236,7 @@ phx_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
 
 // Receives event when a player submits a report
 // Determines logged-in admin and sends Discord embed with contents of report and the admin @'ed
-phxAdminMessageReceiver = ["phxAdminMessageServer", {
+fnfAdminMessageReceiver = ["fnfAdminMessageServer", {
   private _arr = +_this;
 
   _loggedInAdmins = allPlayers select {
@@ -254,4 +254,4 @@ phxAdminMessageReceiver = ["phxAdminMessageServer", {
 }] call CBA_fnc_addEventHandler;
 
 //Let clients know that server is done setting up
-missionNamespace setVariable ["phx_serverGameSetup",true,true];
+missionNamespace setVariable ["fnf_serverGameSetup",true,true];

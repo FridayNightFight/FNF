@@ -12,9 +12,9 @@ joinUnassigned = 1;
 disableChannels[] = {2};
 
 onPauseScript[] = {\
-    phx_fnc_addStaffContactButton,\
-    phx_admin_fnc_adminGameEnd,\
-    phx_admin_fnc_addAdminUIButton\
+    fnf_fnc_addStaffContactButton,\
+    fnf_admin_fnc_adminGameEnd,\
+    fnf_admin_fnc_addAdminUIButton\
 };
 
 // change game type if appropriate

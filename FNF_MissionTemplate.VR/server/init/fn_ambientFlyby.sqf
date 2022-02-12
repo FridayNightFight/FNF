@@ -11,7 +11,7 @@
 
 private _airGroups = [];
 
-if (["VN_UNI_", phx_bluforUniform] call BIS_fnc_inString) then {
+if (["VN_UNI_", fnf_bluforUniform] call BIS_fnc_inString) then {
   // VIETNAM
   // get config groups to potentially spawn
   {
@@ -54,7 +54,7 @@ fnf_ambient_randomFlyby = [{
       params ["_cfgGroups","_paths"];
       selectRandom(_paths) params ["_startPos","_endPos"];
 
-    if !(["VN_UNI_", phx_bluforUniform] call BIS_fnc_inString) then {
+    if !(["VN_UNI_", fnf_bluforUniform] call BIS_fnc_inString) then {
       // MODERN
       {
         [_startPos, _endPos, random(50) + 100, "NORMAL", _x, independent] call BIS_fnc_ambientFlyby;

@@ -475,34 +475,34 @@ _getVehicleData = {
 
 
 
-phx_assetDiaryBLU = player createDiarySubject ["BLUAssets", "BLU Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
-phx_assetDiaryOPF = player createDiarySubject ["OPFAssets", "OPF Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
-phx_assetDiaryIND = player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
-phx_assetDiaryOther = player createDiarySubject ["OtherAssets", "Other Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+fnf_assetDiaryBLU = player createDiarySubject ["BLUAssets", "BLU Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+fnf_assetDiaryOPF = player createDiarySubject ["OPFAssets", "OPF Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+fnf_assetDiaryIND = player createDiarySubject ["INDAssets", "IND Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
+fnf_assetDiaryOther = player createDiarySubject ["OtherAssets", "Other Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 
 
 #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
 #define MISSIONVICS_SORTED ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy)
 
 // put vehicles into a hashmap based on who they belong to (if anyone)
-phx_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
 
-switch (phx_gameMode == "sustainedAssault") do {
+switch (fnf_gameMode == "sustainedAssault") do {
   case false: {
     {
       private _vehicle = _x;
       switch (true) do {
-        case ([_vehicle, west] call phx_fnc_inSafeZone): {
-          [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
         };
-        case ([_vehicle, east] call phx_fnc_inSafeZone): {
-          [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
         };
-        case ([_vehicle, independent] call phx_fnc_inSafeZone): {
-          [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
         };
         default {
-          [phx_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
         };
       };
     } forEach MISSIONVICS;
@@ -511,17 +511,17 @@ switch (phx_gameMode == "sustainedAssault") do {
     {
       private _vehicle = _x;
       switch (true) do {
-        case ([_vehicle, west] call phx_fnc_inSafeZone): {
-          [phx_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
         };
-        case ([_vehicle, east] call phx_fnc_inSafeZone): {
-          [phx_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
         };
-        case ([_vehicle, independent] call phx_fnc_inSafeZone): {
-          [phx_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
         };
         default {
-          [phx_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
         };
       };
     } forEach MISSIONVICS;
@@ -532,7 +532,7 @@ switch (phx_gameMode == "sustainedAssault") do {
 // create diary records
 {
   private _querySide = _x;
-  private _objects = [phx_vehiclesToProcess, _querySide, []] call BIS_fnc_getFromPairs;
+  private _objects = [fnf_vehiclesToProcess, _querySide, []] call BIS_fnc_getFromPairs;
   if (count _objects > 0) then {
     {
       _x params ["_vehicle", "_count"];

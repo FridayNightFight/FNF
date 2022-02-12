@@ -11,7 +11,7 @@ Draws 3D icons on alive objectives.
   _infoButton = _display ctrlCreate ["FNF_MissionInfoPanelSpectatorButton", 2524];
   _infoButton ctrlAddEventHandler ["ButtonClick", {
     if (!dialog) then {
-      [] spawn phx_ui_fnc_missionInfoPanel;
+      [] spawn fnf_ui_fnc_missionInfoPanel;
     };
   }];
 }] call CBA_fnc_addPlayerEventHandler;
@@ -24,7 +24,7 @@ Draws 3D icons on alive objectives.
   _infoButton = _display ctrlCreate ["FNF_MissionInfoPanelSpectatorButton", 2524];
   _infoButton ctrlAddEventHandler ["ButtonClick", {
     if (!dialog) then {
-      [] spawn phx_ui_fnc_missionInfoPanel;
+      [] spawn fnf_ui_fnc_missionInfoPanel;
     };
   }];
 }] call CBA_fnc_waitUntilAndExecute;
@@ -48,17 +48,17 @@ if (!isNull _lastDamage) then {
 };
 
 //Set up objectives for 3d icon draws
-phx_specObjectives = [];
+fnf_specObjectives = [];
 
-if (!isNil "term1") then {phx_specObjectives pushBack term1};
-if (!isNil "term2") then {phx_specObjectives pushBack term2};
-if (!isNil "term3") then {phx_specObjectives pushBack term3};
+if (!isNil "term1") then {fnf_specObjectives pushBack term1};
+if (!isNil "term2") then {fnf_specObjectives pushBack term2};
+if (!isNil "term3") then {fnf_specObjectives pushBack term3};
 
-if (!isNil "destroy_obj_1") then {phx_specObjectives pushBack destroy_obj_1};
-if (!isNil "destroy_obj_2") then {phx_specObjectives pushBack destroy_obj_2};
-if (!isNil "destroy_obj_3") then {phx_specObjectives pushBack destroy_obj_3};
+if (!isNil "destroy_obj_1") then {fnf_specObjectives pushBack destroy_obj_1};
+if (!isNil "destroy_obj_2") then {fnf_specObjectives pushBack destroy_obj_2};
+if (!isNil "destroy_obj_3") then {fnf_specObjectives pushBack destroy_obj_3};
 
-if (!isNil "ctf_flag") then {phx_specObjectives pushBack ctf_flag};
+if (!isNil "ctf_flag") then {fnf_specObjectives pushBack ctf_flag};
 
 call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
@@ -86,32 +86,32 @@ _showObj = {
       };
     } , 0, _x] call CBA_fnc_addPerFrameHandler;
   };
-} forEach phx_specObjectives;
+} forEach fnf_specObjectives;
 
 
-phx_spectatorVisiblePrevinput = true;
-phx_spectatorPrevVisibleCtrls = [];
+fnf_spectatorVisiblePrevinput = true;
+fnf_spectatorPrevVisibleCtrls = [];
 
 [{
-  private _missionRuntimeSecs = (phx_missionTimelimit * 60) + phx_safetyEndTime;
+  private _missionRuntimeSecs = (fnf_missionTimelimit * 60) + fnf_safetyEndTime;
   private _visible = ace_spectator_uiVisible;
-  if (_visible != phx_spectatorVisiblePrevinput) then {
-    phx_spectatorVisiblePrevinput = _visible;
+  if (_visible != fnf_spectatorVisiblePrevinput) then {
+    fnf_spectatorVisiblePrevinput = _visible;
     if !(_visible) then {
       showChat false;
 
-      phx_spectatorPrevVisibleCtrls = [];
+      fnf_spectatorPrevVisibleCtrls = [];
       {
         if (ctrlShown _x) then {
           _x ctrlShow false;
-          phx_spectatorPrevVisibleCtrls append [_x];
+          fnf_spectatorPrevVisibleCtrls append [_x];
         };
       } forEach allControls findDisplay 60000;
 
       showHUD [false,false,false,false,false,false,false,false,false,false,false];
 
       if ((_missionRuntimeSecs - (15 * 60)) <= CBA_missionTime) then {
-      	[phx_missionTimeUI_PFH] call CBA_fnc_removePerFrameHandler;
+      	[fnf_missionTimeUI_PFH] call CBA_fnc_removePerFrameHandler;
         uiNameSpace getVariable "timeleftStructText" closeDisplay 1;
   		};
     } else {
@@ -119,14 +119,14 @@ phx_spectatorPrevVisibleCtrls = [];
 
       {
         _x ctrlShow true;
-      } forEach phx_spectatorPrevVisibleCtrls;
+      } forEach fnf_spectatorPrevVisibleCtrls;
 
       showHUD [true,true,true,true,true,true,false,true,true,true,false];
 
-      phx_spectatorPrevVisibleCtrls = [];
+      fnf_spectatorPrevVisibleCtrls = [];
 
       if ((_missionRuntimeSecs - (15 * 60)) <= CBA_missionTime) then {
-      	call phx_fnc_clientTime;
+      	call fnf_fnc_clientTime;
   		};
     };
   };

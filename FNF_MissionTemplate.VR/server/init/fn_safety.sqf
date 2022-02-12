@@ -2,11 +2,11 @@
 Server component to the safety system
 */
 
-missionNamespace setVariable ["phx_safetyEnabled",true,true];
-f_var_mission_timer = phx_safeStartTime * 60;
+missionNamespace setVariable ["fnf_safetyEnabled",true,true];
+f_var_mission_timer = fnf_safeStartTime * 60;
 missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
 
-call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
+call fnf_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
 [{time > 1}, {
   [{
@@ -62,23 +62,23 @@ call phx_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
 
 [{f_var_mission_timer < 0}, {
-  missionNamespace setVariable ["phx_safetyEnabled",false,true];
-  missionNamespace setVariable ["phx_safetyEndTime", round CBA_missionTime, true];
+  missionNamespace setVariable ["fnf_safetyEnabled",false,true];
+  missionNamespace setVariable ["fnf_safetyEndTime", round CBA_missionTime, true];
   ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
   ["off"] call acex_fortify_fnc_handleChatCommand;
 
-  [] call phx_server_fnc_webhook_roundStart;
+  [] call fnf_server_fnc_webhook_roundStart;
   ["FNF_Safety_Ended"] call CBA_fnc_globalEventJIP;
 
-  if !(phx_gameMode == "sustainedAssault") then {
+  if !(fnf_gameMode == "sustainedAssault") then {
     [{ // if not SA, lock unoccupied vehicles 5 minutes after safe start ends
-      call phx_server_fnc_lockVehicles;
+      call fnf_server_fnc_lockVehicles;
     }, [], 300] call CBA_fnc_waitAndExecute;
 
     { // if not SA, delete safeStart markers
       // if !(getMarkerColor _x isEqualTo "") then {
         _x remoteExec ["deleteMarkerLocal", 0, true];
       // };
-    } forEach ([nil, nil, true] call phx_fnc_inSafeZone);
+    } forEach ([nil, nil, true] call fnf_fnc_inSafeZone);
   };
 }] call CBA_fnc_waitUntilAndExecute;

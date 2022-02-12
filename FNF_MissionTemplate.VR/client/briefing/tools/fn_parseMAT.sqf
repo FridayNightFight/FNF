@@ -13,7 +13,7 @@
 * <STRING> or <Structured Text>
 *
 * Example:
-* [independent, phx_grnAT_Bravo, phx_grnAT_Delta] call phx_briefing_fnc_parseMAT
+* [independent, fnf_grnAT_Bravo, fnf_grnAT_Delta] call fnf_briefing_fnc_parseMAT
 *
 * Public: No
 */
@@ -28,9 +28,9 @@ params ["_side", "_bravoOption", "_deltaOption", ["_structText", false]];
 
 private "_gearLoadout";
 switch (_side) do {
-  case east: {_gearLoadout = phx_opforGear};
-  case west: {_gearLoadout = phx_bluforGear};
-  case independent: {_gearLoadout = phx_indforGear};
+  case east: {_gearLoadout = fnf_opforGear};
+  case west: {_gearLoadout = fnf_bluforGear};
+  case independent: {_gearLoadout = fnf_indforGear};
 };
 
 private _textOut = [];
@@ -42,7 +42,7 @@ private _textOut = [];
   // "debug_console" callExtension str(_x);
   if (count _setting > 0) then {
     if (_setting # 0 isEqualTo "GEARDEFAULT") then {
-      // "debug_console" callExtension str([_gearLoadout,_role,phx_bluAT_Bravo]);
+      // "debug_console" callExtension str([_gearLoadout,_role,fnf_bluAT_Bravo]);
       _MATData = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
       //  "debug_console" callExtension str(_data);
       // _textOut pushBack (_data # 0);
@@ -57,7 +57,7 @@ private _textOut = [];
   // "debug_console" callExtension str(_MATData);
 
   _MATData params ["_launcher", "_ammo", "_optics", "_type"];
-  private _launcherInfo = _launcher call phx_briefing_fnc_getItemInfo;
+  private _launcherInfo = _launcher call fnf_briefing_fnc_getItemInfo;
 
   if (!_structText) then {
     _textOut pushBack format [
@@ -66,7 +66,7 @@ private _textOut = [];
       _role,
       [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
       [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-      (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call phx_briefing_fnc_notesItems]} else {""}),
+      (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call fnf_briefing_fnc_notesItems]} else {""}),
       [_launcherInfo, "description"] call BIS_fnc_getFromPairs
     ] + "<br/><br/>";
   } else {
@@ -76,7 +76,7 @@ private _textOut = [];
       _role,
       [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
       [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-      (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true, true] call phx_briefing_fnc_notesItems]} else {""}),
+      (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true, true] call fnf_briefing_fnc_notesItems]} else {""}),
       [_launcherInfo, "description"] call BIS_fnc_getFromPairs
     ];
   };

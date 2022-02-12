@@ -13,7 +13,7 @@ private [
 	"_indPlayers"
 ];
 
-if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gameMode};
+if (isNil "fnf_gameMode") then {_gameMode = "unknown"} else {_gameMode = fnf_gameMode};
 
 _connectedPlayerCount = str(count allPlayers);
 

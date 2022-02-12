@@ -2,9 +2,9 @@
 
 //Create diary subject and remove it after safe start ends
 player createDiarySubject["Recon", "Reconnaissance", "\A3\ui_f\data\igui\cfg\simpleTasks\types\scout_ca.paa"];
-[{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "Recon"}] call CBA_fnc_waitUntilAndExecute;
+[{!(missionNamespace getVariable ["fnf_safetyEnabled",true])}, {player removeDiarySubject "Recon"}] call CBA_fnc_waitUntilAndExecute;
 
-switch (phx_gameMode) do {
+switch (fnf_gameMode) do {
     case "destroy":{
         #include "..\..\mode_config\destroy.sqf"
 
@@ -30,7 +30,7 @@ switch (phx_gameMode) do {
                         _objNumber
                     ],
                     format[
-                        "<font face='PuristaMedium'>Objective %1 - <marker name='%2'>%3</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""%3""] spawn phx_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
+                        "<font face='PuristaMedium'>Objective %1 - <marker name='%2'>%3</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""%3""] spawn fnf_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
                         _objNumber,
                         _mark,
                         (
@@ -47,14 +47,14 @@ switch (phx_gameMode) do {
     case "neutralSector":{
       #include "..\..\mode_config\neutralSector.sqf"
 
-        _sectors = [phx_sector1];
+        _sectors = [fnf_sector1];
         switch (_numberOfSectors) do {
             case 2: {
-                _sectors pushBack phx_sector2;
+                _sectors pushBack fnf_sector2;
             };
             case 3: {
-                _sectors pushBack phx_sector2;
-                _sectors pushBack phx_sector3;
+                _sectors pushBack fnf_sector2;
+                _sectors pushBack fnf_sector3;
             };
         };
 
@@ -76,7 +76,7 @@ switch (phx_gameMode) do {
                         _objNumber
                     ],
                     format[
-                        "<font face='PuristaMedium'>Sector %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Capture the Sector""] spawn phx_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
+                        "<font face='PuristaMedium'>Sector %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Capture the Sector""] spawn fnf_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
                         _objNumber,
                         _mark
                     ]
@@ -91,16 +91,16 @@ switch (phx_gameMode) do {
 
         switch (_numberOfSectors) do {
             case 1:{
-                    _sectors pushBack phx_sec1
+                    _sectors pushBack fnf_sec1
                 };
             case 2:{
-                    _sectors pushBack phx_sec1;
-                    _sectors pushBack phx_sec2
+                    _sectors pushBack fnf_sec1;
+                    _sectors pushBack fnf_sec2
                 };
             case 3:{
-                    _sectors pushBack phx_sec1;
-                    _sectors pushBack phx_sec2;
-                    _sectors pushBack phx_sec3
+                    _sectors pushBack fnf_sec1;
+                    _sectors pushBack fnf_sec2;
+                    _sectors pushBack fnf_sec3
                 };
         };
 
@@ -121,7 +121,7 @@ switch (phx_gameMode) do {
                         _objNumber
                     ],
                     format[
-                        "<font face='PuristaMedium'>Sector %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Capture the Sector""] spawn phx_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
+                        "<font face='PuristaMedium'>Sector %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Capture the Sector""] spawn fnf_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
                         _objNumber,
                         _mark
                     ]
@@ -160,7 +160,7 @@ switch (phx_gameMode) do {
                         _objNumber
                     ],
                     format[
-                        "<font face='PuristaMedium'>Terminal %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Hack the Terminal""] spawn phx_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
+                        "<font face='PuristaMedium'>Terminal %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Hack the Terminal""] spawn fnf_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
                         _objNumber,
                         _mark
                     ]
@@ -199,7 +199,7 @@ switch (phx_gameMode) do {
                         _objNumber
                     ],
                     format[
-                        "<font face='PuristaMedium'>Terminal %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Hack the Terminal""] spawn phx_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
+                        "<font face='PuristaMedium'>Terminal %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Hack the Terminal""] spawn fnf_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
                         _objNumber,
                         _mark
                     ]
@@ -238,7 +238,7 @@ switch (phx_gameMode) do {
                         _objNumber
                     ],
                     format[
-                        "<font face='PuristaMedium'>Terminal %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Hack and Hold the Terminal""] spawn phx_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
+                        "<font face='PuristaMedium'>Terminal %1 - <marker name='%2'>Location</marker><br/><br/>Notes:<br/><font size='12'>Recon cam will always be oriented approximately north.<br/>Enemy players and non-objective vehicles/items will be hidden.</font></font><br/><br/><executeClose expression='[%1, ""Hack and Hold the Terminal""] spawn fnf_fnc_objectivePreview;'>Show reconnaissance image</executeClose>",
                         _objNumber,
                         _mark,
                         _fileName

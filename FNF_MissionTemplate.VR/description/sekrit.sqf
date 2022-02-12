@@ -1,21 +1,21 @@
-if !(phx_gameMode == "sustainedAssault") then {
-  phx_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
+if !(fnf_gameMode == "sustainedAssault") then {
+  fnf_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
 } else {
-  phx_missionTimeLimit = 60;
+  fnf_missionTimeLimit = 60;
 };
-phx_safeStartTime = 15; //Safestart time in minutes
+fnf_safeStartTime = 15; //Safestart time in minutes
 
-phx_templateVersion = call compile preprocessFile "version.txt";
+fnf_templateVersion = call compile preprocessFile "version.txt";
 
-phx_ui_structTextRef = [];
-phx_ui_structTextRef_staffReports = [];
-phx_ui_structTextRef_AssetsBLU = [];
-phx_ui_structTextRef_AssetsOPF = [];
-phx_ui_structTextRef_AssetsIND = [];
-phx_ui_structTextRef_AssetsOther = [];
+fnf_ui_structTextRef = [];
+fnf_ui_structTextRef_staffReports = [];
+fnf_ui_structTextRef_AssetsBLU = [];
+fnf_ui_structTextRef_AssetsOPF = [];
+fnf_ui_structTextRef_AssetsIND = [];
+fnf_ui_structTextRef_AssetsOther = [];
 
 _rules = call compile preprocessFile "description\RulesAndPolicies.txt";
-[phx_ui_structTextRef, "Rules", _rules] call BIS_fnc_setToPairs;
+[fnf_ui_structTextRef, "Rules", _rules] call BIS_fnc_setToPairs;
 
 #define COLOR1 "#944509"
 #define COLOR2 "#FF8E38"
@@ -23,7 +23,7 @@ _rules = call compile preprocessFile "description\RulesAndPolicies.txt";
 #define COLOR4 "#008394"
 #define COLOR5 "#1BCAE0"
 
-phx_ui_changelogText = ([
+fnf_ui_changelogText = ([
   "NEW:",
   "  - major code refactor for a number of functions including inline documentation",
   "  - additional notifications for vetters if mission has a bad configuration",
@@ -79,22 +79,22 @@ phx_ui_changelogText = ([
   "- adds some cool media to the diary"
 ] joinString "<br/>");
 
-phx_ui_frameworkCreditsText = ([
+fnf_ui_frameworkCreditsText = ([
   "UI Notification System: Aquaman, TanKode, Lucian",
   "Map Unit Icons/Blufor Tracker: QS Icons by Quiksilver"
 ] joinString "<br/>");
 
 private _changelogStruct = format [
   "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/><br/>%2<br/><br/><t size='1.2' shadow='1' color='" + COLOR2 + "'>Credits</t><br/>%3",
-  phx_templateVersion,
-  phx_ui_changelogText,
-  phx_ui_frameworkCreditsText
+  fnf_templateVersion,
+  fnf_ui_changelogText,
+  fnf_ui_frameworkCreditsText
 ];
-[phx_ui_structTextRef, "Framework Info", _changelogStruct] call BIS_fnc_setToPairs;
+[fnf_ui_structTextRef, "Framework Info", _changelogStruct] call BIS_fnc_setToPairs;
 
 
 
-phx_ui_gameMechanicsDiary = [
+fnf_ui_gameMechanicsDiary = [
   ["Rearm/Repair", (
     "<font size='14' shadow='1' color='" + COLOR3 + "'>Rearm/Repair</font><br/>" +
     "
@@ -142,9 +142,9 @@ phx_ui_gameMechanicsDiary = [
 "
   )]
 ];
-reverse phx_ui_gameMechanicsDiary;
+reverse fnf_ui_gameMechanicsDiary;
 
-phx_ui_gameMechanicsText = (
+fnf_ui_gameMechanicsText = (
   "<t size='1.4' shadow='1' color='" + COLOR2 + "'>Game Mechanics</t><br/>" +
   "<t size='1.2' shadow='1' color='" + COLOR3 + "'>Rearm/Repair</t><br/>" +
   "
@@ -188,7 +188,7 @@ phx_ui_gameMechanicsText = (
 "
 );
 
-[phx_ui_structTextRef, "Game Mechanics", phx_ui_gameMechanicsText] call BIS_fnc_setToPairs;
+[fnf_ui_structTextRef, "Game Mechanics", fnf_ui_gameMechanicsText] call BIS_fnc_setToPairs;
 
 
 private _credits = [
@@ -237,4 +237,4 @@ private _credits = [
   " - Cyrus"
 ] joinString "<br/>";
 
-[phx_ui_structTextRef, "Credits", _credits] call BIS_fnc_setToPairs;
+[fnf_ui_structTextRef, "Credits", _credits] call BIS_fnc_setToPairs;

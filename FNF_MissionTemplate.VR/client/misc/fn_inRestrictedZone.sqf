@@ -4,7 +4,7 @@ params [["_unit", objNull, [objNull]], ["_side", sideEmpty, [sideEmpty]]];
 // check if a unit is in a zone that should be restricted from their side
 
 // this functionality is only used in SA
-if (phx_gameMode != "sustainedAssault") exitWith {};
+if (fnf_gameMode != "sustainedAssault") exitWith {};
 
 if (isNull _unit) exitWith {
   ["Warning: Unit is null"] call BIS_fnc_error;
@@ -17,12 +17,12 @@ if (_side == sideEmpty) then {_side = side (group _unit)};
 
 // copy array without friendly safe zones in order to search all others
 private "_restrictedZones";
-switch (phx_gameMode == "sustainedAssault") do {
+switch (fnf_gameMode == "sustainedAssault") do {
   case false: {
-    _restrictedZones = [phx_safeZones, "STD_" + (_side call BIS_fnc_sideNameUnlocalized), true] call BIS_fnc_removeFromPairs;
+    _restrictedZones = [fnf_safeZones, "STD_" + (_side call BIS_fnc_sideNameUnlocalized), true] call BIS_fnc_removeFromPairs;
   };
   case true: {
-    _restrictedZones = [phx_safeZones, "SA_" + (_side call BIS_fnc_sideNameUnlocalized), true] call BIS_fnc_removeFromPairs;
+    _restrictedZones = [fnf_safeZones, "SA_" + (_side call BIS_fnc_sideNameUnlocalized), true] call BIS_fnc_removeFromPairs;
   };
 };
 

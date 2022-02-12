@@ -1,28 +1,28 @@
 /*
 * Author: IndigoFox
-* Used in tandem with phx_loadout_fnc_applyLoadout to produce a diary record and structured text reference that contains
+* Used in tandem with fnf_loadout_fnc_applyLoadout to produce a diary record and structured text reference that contains
 * a readout of a player's gear that they've been assigned.
 *
 * Arguments:
-* 0: Show a UI notification via phx_ui_fnc_notify of assigned items and role <BOOLEAN>
+* 0: Show a UI notification via fnf_ui_fnc_notify of assigned items and role <BOOLEAN>
 *
 * Return Value:
 * true on success <BOOLEAN>
 *
 * Example:
-* [false] call phx_briefing_fnc_parseGear;
+* [false] call fnf_briefing_fnc_parseGear;
 *
 * Public: No
 */
 
 params [["_showNotification", false]];
-private _loadoutRole = player getVariable ["phx_lastLoadout", "UNKNOWN"];
+private _loadoutRole = player getVariable ["fnf_lastLoadout", "UNKNOWN"];
 #define PLAYERLOADOUTVAR _LOADOUTROLE
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
 
 // roles list in fn_clientInit.sqf
 private _strRole = " ";
-_strRole = [phx_loadout_roles, PLAYERLOADOUTVAR, "Unknown"] call BIS_fnc_getFromPairs;
+_strRole = [fnf_loadout_roles, PLAYERLOADOUTVAR, "Unknown"] call BIS_fnc_getFromPairs;
 if (typeName _strRole isEqualTo "ARRAY") then {_strRole = _strRole select 0};
 // if (LOADOUTROLE("PL")) then {_strRole = " Platoon Leader"};
 // if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {_strRole = " Squad Leader"};
@@ -90,7 +90,7 @@ _fnc_hintDetails = {
     "</font>"
   ];
 
-  // [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+  // [_textArr joinString '<br/>', "success", 5] call fnf_ui_fnc_notify;
   _notifyString pushBack (_notifyArr joinString '<br/>');
   _uiString pushBack (_uiArr joinString '<br/>');
   _diaryString pushBack (_diaryArr joinString '<br/>');
@@ -221,7 +221,7 @@ _fnc_notesWeapon = {
     "</font>"
   ];
 
-  // [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+  // [_textArr joinString '<br/>', "success", 5] call fnf_ui_fnc_notify;
   _notifyString pushBack (_notifyArr joinString '<br/>');
   _uiString pushBack (_uiArr joinString '<br/>');
   _diaryString pushBack (_diaryArr joinString '<br/>');
@@ -245,9 +245,9 @@ _diaryString pushBack (STYLE_HEADER_DIARY + "General Equipment</font>");
 _uiString pushBack (STYLE_HEADER_UI + "General Equipment</font>");
 
 // [{time > 2}, {
-//     ["<t align='center'>Uniform and gear assigned.</t>", "success", 5] call phx_ui_fnc_notify;
+//     ["<t align='center'>Uniform and gear assigned.</t>", "success", 5] call fnf_ui_fnc_notify;
 // }] call CBA_fnc_waitUntilAndExecute;
-["<t align='center'>Uniform and gear assigned.</t>", "success", 5] call phx_ui_fnc_notify;
+["<t align='center'>Uniform and gear assigned.</t>", "success", 5] call fnf_ui_fnc_notify;
 
 _diaryString pushBack ([_playerMagazines, true] call _fnc_notesItems);
 _diaryString pushBack ([items player, true] call _fnc_notesItems);
@@ -324,7 +324,7 @@ if (LOADOUTROLE("CE")) then {
   {
     (_x splitString ':') params ["_class", "_count"];
     [_class, _count, _notifyString, _diaryString, _uiString] call _fnc_hintDetails;
-  } forEach (phx_selector_currentExplosives select [1,2]);
+  } forEach (fnf_selector_currentExplosives select [1,2]);
 
   _notifyString pushBack (STYLE_HEADER_NOTIFY + "Grenades</t>");
   _uiString pushBack (STYLE_HEADER_UI + "Grenades</t>");
@@ -332,31 +332,31 @@ if (LOADOUTROLE("CE")) then {
   {
     (_x splitString ':') params ["_class", "_count"];
     [_class, _count, _notifyString, _diaryString, _uiString] call _fnc_hintDetails;
-  } forEach (phx_selector_currentGrenades select [1,2]);
+  } forEach (fnf_selector_currentGrenades select [1,2]);
 };
 
 if (_showNotification) then {
   [{time > 2}, {
-    [_this joinString '<br/>', "success", 15] call phx_ui_fnc_notify;
+    [_this joinString '<br/>', "success", 15] call fnf_ui_fnc_notify;
   }, _notifyString] call CBA_fnc_waitUntilAndExecute;
 };
 
-[phx_ui_structTextRef, "My Starting Loadout", _uiString joinString '<br/>'] call BIS_fnc_setToPairs;
+[fnf_ui_structTextRef, "My Starting Loadout", _uiString joinString '<br/>'] call BIS_fnc_setToPairs;
 
-phx_briefing_loadoutString = _diaryString;
+fnf_briefing_loadoutString = _diaryString;
 
-if (isNil "phx_briefing_loadoutInfo") then {
-  phx_briefing_loadoutInfo = player createDiaryRecord [
+if (isNil "fnf_briefing_loadoutInfo") then {
+  fnf_briefing_loadoutInfo = player createDiaryRecord [
     "Diary",
     [
       "My Starting Loadout",
-      phx_briefing_loadoutString joinString "<br/>"
+      fnf_briefing_loadoutString joinString "<br/>"
     ]
   ];
   [{getClientStateNumber > 8}, {
-    player setDiaryRecordText [["Diary", phx_briefing_loadoutInfo], ["My Starting Loadout", phx_briefing_loadoutString joinString "<br/>"]];
+    player setDiaryRecordText [["Diary", fnf_briefing_loadoutInfo], ["My Starting Loadout", fnf_briefing_loadoutString joinString "<br/>"]];
   }] call CBA_fnc_waitUntilAndExecute;
 } else {
-  player setDiaryRecordText [["Diary", phx_briefing_loadoutInfo], ["My Starting Loadout", phx_briefing_loadoutString joinString "<br/>"]];
+  player setDiaryRecordText [["Diary", fnf_briefing_loadoutInfo], ["My Starting Loadout", fnf_briefing_loadoutString joinString "<br/>"]];
 };
 true

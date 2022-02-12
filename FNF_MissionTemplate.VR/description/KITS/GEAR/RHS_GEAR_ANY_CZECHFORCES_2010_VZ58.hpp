@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_t5000"
 #define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
-// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ANY_CZECHFORCES_2010_VZ58 {
   author = "Mazz38";

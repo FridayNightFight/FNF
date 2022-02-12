@@ -1,10 +1,10 @@
-[{!(isNull findDisplay 46) && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+[{!(isNull findDisplay 46) && missionNamespace getVariable ["fnf_staggeredLoaded",false]}, {
 
 	// [commandIconsHelper] call CBA_fnc_removePerFrameHandler;
 	commandIconsHelper = [{
 
 		// remove if not safe start
-		if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
+		if (!(missionNamespace getVariable ["fnf_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
 
 		_cmdUnits = (units playerSide) select {
 			["officer", typeOf _x] call BIS_fnc_inString
@@ -31,7 +31,7 @@
 			if (missionNamespace getVariable ["ace_spectator_drawunits", false] && ace_spectator_isSet) exitWith {};
 
 			// skip if in objectivePreviewCamera
-			if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
+			if (!isNil "fnf_fnc_objectivePreview_Cam") exitWith {};
 
 			// referenced https://github.com/Quailsnap/WHA-Nametags
 			_targetPositionAGLTopRef = _x modelToWorldVisual (_x selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _x))];

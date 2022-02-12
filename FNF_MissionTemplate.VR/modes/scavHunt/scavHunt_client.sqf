@@ -1,29 +1,29 @@
 
 
 // Get present sides
-phx_sidesInMission = [east, west, independent] select {playableSlotsNumber _x > 3};
+fnf_sidesInMission = [east, west, independent] select {playableSlotsNumber _x > 3};
 
 
 // CAP ZONE MARKERS
-phx_scavHuntCapZones = [];
+fnf_scavHuntCapZones = [];
 {
 	private _marker = ("scavHuntCap" + str _x);
 	if (((markerPos _marker) select 0) != 0) then {
 
-		phx_scavHuntCapZones pushBack _marker;
+		fnf_scavHuntCapZones pushBack _marker;
 
 		// hide if side isn't playerside, so long as the player isn't spectating
 		if (!(_x isEqualTo playerSide) && !ace_spectator_isset) then {
 			_marker setMarkerAlphaLocal 0;
 		};
 	};
-} forEach phx_sidesInMission;
+} forEach fnf_sidesInMission;
 
 
 
 
 
-[{!isNil "phx_scavHuntTransports" && !isNil "phx_scavHuntObjs"}, {
+[{!isNil "fnf_scavHuntTransports" && !isNil "fnf_scavHuntObjs"}, {
 	// OBJECTIVES
 	{
 		// ensure invincibility of objectives
@@ -33,7 +33,7 @@ phx_scavHuntCapZones = [];
 				_obj allowDamage false;
 			};
 		}];
-	} forEach phx_scavHuntObjs;
+	} forEach fnf_scavHuntObjs;
 
 
 	// TRANSPORTS
@@ -106,7 +106,7 @@ phx_scavHuntCapZones = [];
 		}, 5, [_x]] call CBA_fnc_addPerFrameHandler;
 
 
-	} forEach phx_scavHuntTransports;
+	} forEach fnf_scavHuntTransports;
 }] call CBA_fnc_waitUntilAndExecute;
 
 
@@ -115,11 +115,11 @@ phx_scavHuntCapZones = [];
 
 
 
-phx_scavHuntAnyScore = {
+fnf_scavHuntAnyScore = {
   private _scores = [
-    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east}),
-    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west}),
-    count(phx_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
+    count(fnf_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo east}),
+    count(fnf_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo west}),
+    count(fnf_scavHuntObjs select {(_x getVariable ["capturedBy", sideUnknown]) isEqualTo independent})
   ];
 
   private _highScore = selectMax _scores;
@@ -128,13 +128,13 @@ phx_scavHuntAnyScore = {
 
 [ // at 15 minutes after safe start, or when first score is made, reveal cap zones
   {
-    (!(missionNamespace getVariable ["phx_safetyEnabled", true]) && (cba_missiontime - (missionNamespace getVariable ["phx_safetyEndTime", 1])) / 60 >= 15) ||
-    (call phx_scavHuntAnyScore)
+    (!(missionNamespace getVariable ["fnf_safetyEnabled", true]) && (cba_missiontime - (missionNamespace getVariable ["fnf_safetyEndTime", 1])) / 60 >= 15) ||
+    (call fnf_scavHuntAnyScore)
   },
   {
     {
       _x setMarkerAlphaLocal 1;
-    } forEach phx_scavHuntCapZones;
-    ["All capture zones have been revealed!"] remoteExec ["phx_fnc_hintThenClear",0];
+    } forEach fnf_scavHuntCapZones;
+    ["All capture zones have been revealed!"] remoteExec ["fnf_fnc_hintThenClear",0];
   }
 ] call CBA_fnc_waitUntilAndExecute;

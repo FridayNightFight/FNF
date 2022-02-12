@@ -56,9 +56,9 @@ _out pushBack format["ACTION: %1", "SetLoadout"];
 
   if (_continue) then {
     // remoteExec instructions to client
-    [_classToSet] remoteExec ["phx_loadout_fnc_applyLoadout", _owner];
+    [_classToSet] remoteExec ["fnf_loadout_fnc_applyLoadout", _owner];
     // change loadout var (for selector scripts etc)
-    _playerObject setVariable ["phxLoadout", _classToSet, true];
+    _playerObject setVariable ["fnfLoadout", _classToSet, true];
 
     // notify
     [[_classDisplayName, _admin_soldierName], {
@@ -67,7 +67,7 @@ _out pushBack format["ACTION: %1", "SetLoadout"];
           format["<t align='center'>Loadout manually set to <br/>%1<br/> by an admin.<br/>Performed by %2</t>", _this # 0, _this # 1],
           "warning",
           10
-        ] call phx_ui_fnc_notify;
+        ] call fnf_ui_fnc_notify;
       }, _this, 2] call CBA_fnc_waitAndExecute;
     }] remoteExecCall ["call", _owner];
 
@@ -83,7 +83,7 @@ _out pushBack format["ACTION: %1", "SetLoadout"];
 
 // sends event to server w/ information
 // used for Discord report
-["phxAdminMessageServer", [
+["fnfAdminMessageServer", [
   "",
   _admin_soldierName,
   (_out joinString "\n"),

@@ -36,15 +36,15 @@ switch (_sideWon) do {
   ],
   "info",
   20
-] remoteExec ["phx_ui_fnc_notify", 0];
+] remoteExec ["fnf_ui_fnc_notify", 0];
 
-[format["%1 %2", _sideWonName, _condition]] call phx_server_fnc_webhook_roundEnd;
+[format["%1 %2", _sideWonName, _condition]] call fnf_server_fnc_webhook_roundEnd;
 
 sleep 10;
 ["end1", [
   format ["%1 wins!", _sideWonName], // title
   format ["%1 %2", _sideWonName, _condition], // description
-  format ["Game mode: %1", toUpper phx_gameMode], // subtitle
+  format ["Game mode: %1", toUpper fnf_gameMode], // subtitle
   getMissionPath "description\images\fnf.paa" // title image
   // getMissionPath "description\images\fnf_bg1.paa" // background image
 ]] remoteExecCall ["setDebriefingText", 0];

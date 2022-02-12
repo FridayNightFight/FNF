@@ -27,7 +27,7 @@ _ctrlEdit ctrlCommit 0;
 _ctrlButton ctrlSetPosition [0.185, 0.42, 0.13, 0.05];
 _ctrlButton ctrlCommit 0;
 _ctrlButton ctrlSetText "SUBMIT";
-_ctrlButton ctrlAddEventHandler ["ButtonClick", 
+_ctrlButton ctrlAddEventHandler ["ButtonClick",
 {
 	params ["_ctrl"];
 	_display = ctrlParent _ctrl;
@@ -49,7 +49,7 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 			(playerSide call BIS_fnc_sideID) call BIS_fnc_sideName
 		];
 		_infoText pushBack _prefix;
-		// ["phxAdminMessageSent", [player, _prefix]] call CBA_fnc_globalEvent;
+		// ["fnfAdminMessageSent", [player, _prefix]] call CBA_fnc_globalEvent;
 
 		_prefix = format [
 			"ROLE: %1 in %2",
@@ -57,8 +57,8 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 			groupId (group player)
 		];
 		_infoText pushBack _prefix;
-		// ["phxAdminMessageSent", [player, _prefix]] call CBA_fnc_globalEvent;
-		
+		// ["fnfAdminMessageSent", [player, _prefix]] call CBA_fnc_globalEvent;
+
 		if (_msgLength > 300) then {
 
 			private _index = 0;
@@ -67,13 +67,13 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 			while {_msgLength > 0} do {
 				_thisPart = _text select [_index * 300, 300];
 				_msgText pushBack _thisPart;
-				// ["phxAdminMessageSent", [player, _thisPart]] call CBA_fnc_globalEvent;
+				// ["fnfAdminMessageSent", [player, _thisPart]] call CBA_fnc_globalEvent;
 				_msgLength = _msgLength - 300;
 				_index = _index + 1;
 			};
 		} else {
 			_msgText pushBack _text;
-			// ["phxAdminMessageSent", [player, _message]] call CBA_fnc_globalEvent;
+			// ["fnfAdminMessageSent", [player, _message]] call CBA_fnc_globalEvent;
 		};
 
 
@@ -83,11 +83,11 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 		// [_minutes, _seconds]
 
 		// send global event -- staff will have a handler to deal with it
-		["phxAdminMessageSent", [player, _infoText, _msgText]] call CBA_fnc_globalEvent;
+		["fnfAdminMessageSent", [player, _infoText, _msgText]] call CBA_fnc_globalEvent;
 
 		// sends event to server w/ information
 		// server resolves currently logged in admin then publishes Discord embed with report
-		["phxAdminMessageServer", [
+		["fnfAdminMessageServer", [
 			"",
 			name player,
 			(_msgText joinString "\n"),

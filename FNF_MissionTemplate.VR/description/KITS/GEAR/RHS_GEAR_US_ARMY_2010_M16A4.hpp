@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
 #define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
 
-// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_US_ARMY_2010_M16A4 {
   author = "Mazz38";

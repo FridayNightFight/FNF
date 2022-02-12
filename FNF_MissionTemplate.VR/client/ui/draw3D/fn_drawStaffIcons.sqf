@@ -1,11 +1,11 @@
-[{!(isNull findDisplay 46) && (!isNil "fnf_staffInfo") && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
+[{!(isNull findDisplay 46) && (!isNil "fnf_staffInfo") && missionNamespace getVariable ["fnf_staggeredLoaded",false]}, {
 
 	missionNamespace setVariable ["staffPlayers", createHashMap];
-	phx_fnfIconSmall = getMissionPath "description\images\fnfsmall.paa";
+	fnf_fnfIconSmall = getMissionPath "description\images\fnfsmall.paa";
 
 	staffIdentifier = [] spawn {
 		// remove if not safe start
-		while {(missionNamespace getVariable ["phx_safetyEnabled", true])} do {
+		while {(missionNamespace getVariable ["fnf_safetyEnabled", true])} do {
 
 			_info = missionNamespace getVariable "fnf_staffInfo";
 
@@ -30,13 +30,13 @@
 	staffIconHelper = [{
 
 		// remove if not safe start
-		if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
+		if (!(missionNamespace getVariable ["fnf_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
 
 		// skip if ACE spectator is drawing group/name icons so as not to clash
 		if (missionNamespace getVariable ["ace_spectator_drawunits", false] && ace_spectator_isSet) exitWith {};
 
 		// skip if in objectivePreviewCamera
-		if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
+		if (!isNil "fnf_fnc_objectivePreview_Cam") exitWith {};
 
 		private _cameraPositionAGL = positionCameraToWorld[0,0,0];
 		private _cameraPositionASL = AGLtoASL _cameraPositionAGL;
@@ -79,10 +79,10 @@
 			if (alive _staffMember && !(player isEqualTo _staffMember)) then {
 				switch (true) do {
 					case (player distance _staffMember <= 15): {
-						drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 1], _targetPositionAGLTop, 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+						drawIcon3D[fnf_fnfIconSmall, [1, 1, 1, 1], _targetPositionAGLTop, 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
 					};
 					case (player distance _staffMember <= 300): {
-						drawIcon3D[phx_fnfIconSmall, [1, 1, 1, 0.3], _targetPositionAGLTop, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, "", true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+						drawIcon3D[fnf_fnfIconSmall, [1, 1, 1, 0.3], _targetPositionAGLTop, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, "", true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
 					};
 				};
 			};

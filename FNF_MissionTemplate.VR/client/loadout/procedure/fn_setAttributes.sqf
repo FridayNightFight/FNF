@@ -13,7 +13,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, PLAYERLOADOUTVAR] call phx_loadout_fnc_setAttributes
+* [player, PLAYERLOADOUTVAR] call fnf_loadout_fnc_setAttributes
 *
 * Public: No
 */
@@ -38,7 +38,7 @@ if (_role in ["CRL","PI"]) then {
   _unit setVariable ["ace_isEngineer", 2, true];
   _unit setUnitTrait ["engineer", true, true];
 };
-if (_role == "SGT" && side (group _unit) isEqualTo phx_vnArtillerySide) then {
+if (_role == "SGT" && side (group _unit) isEqualTo fnf_vnArtillerySide) then {
   _unit setUnitTrait ["vn_artillery", true, true];
 };
 true

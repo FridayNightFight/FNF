@@ -1,8 +1,6 @@
 params [
   ["_newUnit", objNull, [objNull], 1],
-  ["_oldUnit", objNull, [objNull], 1],
-  ["_respawnType", 3, [0]],
-  ["_respawnDelay", 0, [0]]
+  ["_oldUnit", objNull, [objNull], 1]
 ];
 
 if (typeOf player == "ace_spectator_virtual") exitWith {};
@@ -27,7 +25,9 @@ if !(fnf_gameMode == "sustainedAssault") then {
 
   // fn_checkAlive
   [player, {
+  if (!isNil "fnf_playersInMission") then {
     fnf_playersInMission pushBack _this;
+  };
   }] remoteExecCall ["call", 2];
 };
 

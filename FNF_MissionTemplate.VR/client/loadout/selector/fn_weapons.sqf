@@ -1,5 +1,5 @@
 //If player doesn't have tracer mags at start, ignore for mag count checks
-// if !((phx_loadout_rifle_mag_tracer splitString ":" select 0) in magazines player) then {phx_loadout_rifle_mag_tracer = "0:0"};
+// if !((fnf_loadout_rifle_mag_tracer splitString ":" select 0) in magazines player) then {fnf_loadout_rifle_mag_tracer = "0:0"};
 
 // //add player's current weapon to selector
 // _curAllMags = (magazinesAmmo player);
@@ -21,8 +21,8 @@
 //   };
 // } forEach _toProcess;
 
-// phx_selector_weapons pushBack _curSet;
-// reverse phx_selector_weapons;
+// fnf_selector_weapons pushBack _curSet;
+// reverse fnf_selector_weapons;
 
 params ["_weapon","_mags"];
 
@@ -38,18 +38,18 @@ _fnc_hintDetails = {
     format["<img size='3' image='%1'/>", _pic],
     "</t>"
   ];
-  [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+  [_textArr joinString '<br/>', "success", 5] call fnf_ui_fnc_notify;
 };
 
 
-if (isNil "_mags") then {_mags = phx_loadout_weaponMagazines};
-_mags = [_mags, _weapon] call phx_loadout_fnc_getWeaponMagazines;
+if (isNil "_mags") then {_mags = fnf_loadout_weaponMagazines};
+_mags = [_mags, _weapon] call fnf_loadout_fnc_getWeaponMagazines;
 
 if (_weapon == primaryWeapon player) exitWith {};
 
 {
   player removePrimaryWeaponItem _x;
-  [_x, "vest", player] call phx_loadout_fnc_addGear;
+  [_x, "vest", player] call fnf_loadout_fnc_addGear;
 } forEach primaryWeaponMagazine player;
 
 private _weaponItems = primaryWeaponItems player;
@@ -67,7 +67,7 @@ _oldMags = [];
   for "_i" from 1 to _count do {
     _oldMags pushBack _magClass;
   };
-} forEach phx_loadout_weaponMagazines;
+} forEach fnf_loadout_weaponMagazines;
 
 _oldMags = _oldMags call BIS_fnc_consolidateArray;
 
@@ -82,21 +82,21 @@ if (!_allOldMagsPresent) exitWith {hint "Missing magazines"};
 
 {player removeMagazines _x} forEach (_oldMags apply {_x # 0});
 
-{[_x, "vest", player] call phx_loadout_fnc_addGear} forEach _mags;
+{[_x, "vest", player] call fnf_loadout_fnc_addGear} forEach _mags;
 player addWeapon _weapon;
 
-phx_loadout_weaponMagazines = _mags;
+fnf_loadout_weaponMagazines = _mags;
 
 {
   player addPrimaryWeaponItem _x;
 } forEach _weaponItems;
 
 // if previous optic doesn't fit new weapon, null prior selection so they can pick a new one
-if !((player getVariable ["phx_chosenOptic",""]) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)) then {
-  player setVariable ["phx_chosenOptic", ""];
+if !((player getVariable ["fnf_chosenOptic",""]) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)) then {
+  player setVariable ["fnf_chosenOptic", ""];
 };
 
-if ((player getVariable "phxLoadout") == "RIS") then {
+if ((player getVariable "fnfLoadout") == "RIS") then {
   // add silencer if avail
   _muzzleAcc = [_weapon, "muzzle"] call CBA_fnc_compatibleItems;
   _silencers = _muzzleAcc select {getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "soundTypeIndex") > 0};

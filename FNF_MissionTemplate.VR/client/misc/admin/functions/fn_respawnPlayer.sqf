@@ -8,7 +8,7 @@
       - respawn them by temporarily adjusting playerRespawnTime
       - take them out of spectator
       - teleport them to their last safeStart position
-      - apply their loadout based on phxLoadout var
+      - apply their loadout based on fnfLoadout var
       - notify them that the logged-in admin may teleport them again in a moment
 
   Arguments:
@@ -29,7 +29,7 @@ params [["_targetIDs", [], [[]]], ["_adminId", "", [""]]];
 
 private _out = [];
 
-if (phx_gameMode == "sustainedAssault") exitWith {
+if (fnf_gameMode == "sustainedAssault") exitWith {
   [
     "FNF_UIPanelAdmin_ReturnStatus",
     "Respawn admin action unavailable in sustainedAssault"
@@ -89,7 +89,7 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
         // initial notify, 10 sec timer
         private _timer = 10;
         while {_timer >= 1} do {
-          [format["You're being respawned in %1 seconds.", _timer], "warning", 1] call phx_ui_fnc_notify;
+          [format["You're being respawned in %1 seconds.", _timer], "warning", 1] call fnf_ui_fnc_notify;
           uiSleep 1;
           _timer = _timer - 1;
         };
@@ -101,7 +101,7 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
         uiSleep 2;
 
         // notify
-        [format["<t align='center'>You've been returned<br/>to your side's safe start zone.<br/>The logged-in admin<br/>(%1)<br/>may teleport you momentarily.<br/>Performed by %2</t>", _this # 0, _this # 1], "success", 15] call phx_ui_fnc_notify;
+        [format["<t align='center'>You've been returned<br/>to your side's safe start zone.<br/>The logged-in admin<br/>(%1)<br/>may teleport you momentarily.<br/>Performed by %2</t>", _this # 0, _this # 1], "success", 15] call fnf_ui_fnc_notify;
       };
     }] remoteExecCall ["call", _owner];
 
@@ -116,7 +116,7 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
 
 // sends event to server w/ information
 // used for Discord report
-["phxAdminMessageServer", [
+["fnfAdminMessageServer", [
   "",
   _admin_soldierName,
   (_out joinString "\n"),

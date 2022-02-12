@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_m24sws"
 #define SNP_MAG "rhsusf_5Rnd_762x51_m118_special_Mag:12"
 
-// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ID_INSURGENTS_2000_AK74N {
   author = "Mazz38";

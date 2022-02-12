@@ -2,19 +2,19 @@
 Hide enemy start zone markers if config is set to do so
 */
 
-if (isNil "phx_enemyStartVisible") exitWith {};
+if (isNil "fnf_enemyStartVisible") exitWith {};
 
 // Don't run for SA
-if (phx_gameMode == "sustainedAssault") exitWith {};
+if (fnf_gameMode == "sustainedAssault") exitWith {};
 
 //Ensure that players don't see start zone markers in neutral objective types, regardless of setting in config
-if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") then {phx_enemyStartVisible = false};
-if (phx_enemyStartVisible) exitWith {};
+if (fnf_gameMode == "connection" || fnf_gameMode == "neutralSector") then {fnf_enemyStartVisible = false};
+if (fnf_enemyStartVisible) exitWith {};
 
 //Hides markers the client shouldn't be able to see.
-_opforMarks = [nil, east, true] call phx_fnc_inSafeZone;
-_bluforMarks = [nil, west, true] call phx_fnc_inSafeZone;
-_indforMarks = [nil, independent, true] call phx_fnc_inSafeZone;
+_opforMarks = [nil, east, true] call fnf_fnc_inSafeZone;
+_bluforMarks = [nil, west, true] call fnf_fnc_inSafeZone;
+_indforMarks = [nil, independent, true] call fnf_fnc_inSafeZone;
 
 _handleMarker = {
   if !(getMarkerColor _this isEqualTo "") then {

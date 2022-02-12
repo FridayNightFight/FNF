@@ -3,7 +3,7 @@
 if ( !canSuspend ) exitWith
 {
 	["Can not call this function, attempting to spawn it instead."] call BIS_fnc_error;
-	[] spawn phx_fnc_unflipVehicleAddAction;
+	[] spawn fnf_fnc_unflipVehicleAddAction;
 };
 
 private ["_vehicleUnflipRange","_vehicle","_unflipVehicleActionID","_isFlipped"];
@@ -32,7 +32,7 @@ while { alive player } do
 					_unflipVehicleActionID = _vehicle addaction
 					[
 						format["<img image='client\misc\unflip\action_unflip.paa' /><t color='#E5E500' shadow='2'>&#160;Unflip %1</t>", _vehicleName],
-						"_this select 3 call phx_fnc_unflipVehicle;", [_vehicle], 12, true, false, "", "isNull objectParent player", _vehicleUnflipRange
+						"_this select 3 call fnf_fnc_unflipVehicle;", [_vehicle], 12, true, false, "", "isNull objectParent player", _vehicleUnflipRange
 					];
 					//systemChat format[ "Addaction %1 added to %2 (%3).", _unflipVehicleActionID, _vehicleName, _vehicle];
 				};

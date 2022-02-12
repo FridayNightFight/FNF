@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_t5000"
 #define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
-// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK {
   author = "Mazz38";

@@ -11,7 +11,7 @@
 * <NONE>
 *
 * Example:
-* "<execute expression='call phx_admin_fnc_safetyEndExpression'>End Safe Start</execute>"
+* "<execute expression='call fnf_admin_fnc_safetyEndExpression'>End Safe Start</execute>"
 *
 * Public: No
 */

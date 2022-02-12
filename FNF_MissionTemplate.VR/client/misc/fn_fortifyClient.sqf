@@ -1,36 +1,36 @@
 // don't allow fortify on SA
-if (phx_gameMode == "sustainedAssault") exitWith {};
+if (fnf_gameMode == "sustainedAssault") exitWith {};
 
-phx_fortify_objArr = [];
+fnf_fortify_objArr = [];
 
-[{!isNil "term1"}, {phx_fortify_objArr append [term1]}, [], 10] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "term2"}, {phx_fortify_objArr append [term2]}, [], 10] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "term3"}, {phx_fortify_objArr append [term3]}, [], 10] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "phx_destroyObjs"}, {phx_fortify_objArr append phx_destroyObjs}, [], 10] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "ctf_flag"}, {phx_fortify_objArr append [ctf_flag]}, [], 10] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "ctf_attackTrig"}, {phx_fortify_objArr append [ctf_attackTrig]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term1"}, {fnf_fortify_objArr append [term1]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term2"}, {fnf_fortify_objArr append [term2]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term3"}, {fnf_fortify_objArr append [term3]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "fnf_destroyObjs"}, {fnf_fortify_objArr append fnf_destroyObjs}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_flag"}, {fnf_fortify_objArr append [ctf_flag]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_attackTrig"}, {fnf_fortify_objArr append [ctf_attackTrig]}, [], 10] call CBA_fnc_waitUntilAndExecute;
 
 [{
   {
-    if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
-  } forEach phx_fortify_objArr;
+    if (isNull _x) then {fnf_fortify_objArr = fnf_fortify_objArr - [_x]};
+  } forEach fnf_fortify_objArr;
 }, [], 15] call CBA_fnc_waitAndExecute;
 
-if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
-if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
+if (fnf_gameMode == "connection" || fnf_gameMode == "neutralSector") exitWith {};
+if (!(playerSide == fnf_defendingSide) || fnf_fortifyPoints <= 0) exitWith {};
 
-#define PLAYERLOADOUTVAR (player getVariable "phxLoadout")
+#define PLAYERLOADOUTVAR (player getVariable "fnfLoadout")
 if (PLAYERLOADOUTVAR != "CE") exitWith {
   [{
-    if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {[_handle] call CBA_fnc_removePerFrameHandler};
+    if (!(missionNamespace getVariable ["fnf_safetyEnabled", true])) then {[_handle] call CBA_fnc_removePerFrameHandler};
     if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
   }, 1] call CBA_fnc_addPerFrameHandler;
 };
 
 switch (playerSide) do {
-  case east: {phx_fortifyMarkers = [nil, west, true] call phx_fnc_inSafeZone};
-  case west: {phx_fortifyMarkers = [nil, east, true] call phx_fnc_inSafeZone};
-  case independent: {phx_fortifyMarkers = [nil, independent, true] call phx_fnc_inSafeZone};
+  case east: {fnf_fortifyMarkers = [nil, west, true] call fnf_fnc_inSafeZone};
+  case west: {fnf_fortifyMarkers = [nil, east, true] call fnf_fnc_inSafeZone};
+  case independent: {fnf_fortifyMarkers = [nil, independent, true] call fnf_fnc_inSafeZone};
 };
 
 [{
@@ -60,25 +60,25 @@ switch (playerSide) do {
 
         if (_pos inArea _x) then {_errorStr = "Cannot place object within objective area."};
       };
-    } forEach phx_fortify_objArr;
+    } forEach fnf_fortify_objArr;
 
     if ((count (_object nearRoads 12) > 0) || (isOnRoad _object)) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Object cannot be near a road";
     };
 
-    if (phx_fortifyMarkers findIf {_pos inArea _x} == -1) then {
+    if (fnf_fortifyMarkers findIf {_pos inArea _x} == -1) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Object needs to be within start zone boundary."
     };
 
-    if (_cost > phx_fortifyPoints) then {
+    if (_cost > fnf_fortifyPoints) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Not enough funds.";
     };
 
     // hintSilent _errorStr;
-    [_errorStr, "error", 7] call phx_ui_fnc_notify;
+    [_errorStr, "error", 7] call fnf_ui_fnc_notify;
 
     if (_canPlace) then {
       switch (playerSide) do {
@@ -92,9 +92,9 @@ switch (playerSide) do {
           missionNamespace setVariable ["ace_fortify_budget_guer", -1, false];
         };
       };
-      phx_fortifyPoints = phx_fortifyPoints - _cost;
-      // hintSilent format ["Fortify Budget: $%1", phx_fortifyPoints];
-      [format ["Fortify Budget: $%1", phx_fortifyPoints], "info", 7] call phx_ui_fnc_notify;
+      fnf_fortifyPoints = fnf_fortifyPoints - _cost;
+      // hintSilent format ["Fortify Budget: $%1", fnf_fortifyPoints];
+      [format ["Fortify Budget: $%1", fnf_fortifyPoints], "info", 7] call fnf_ui_fnc_notify;
     };
 
     _canPlace
@@ -130,9 +130,9 @@ switch (playerSide) do {
     };
   } forEach _fortifyObjsArr;
 
-  phx_fortifyPoints = phx_fortifyPoints + _cost;
+  fnf_fortifyPoints = fnf_fortifyPoints + _cost;
 
-  hintSilent format ["Fortify Budget: $%1", phx_fortifyPoints];
+  hintSilent format ["Fortify Budget: $%1", fnf_fortifyPoints];
 }] call CBA_fnc_addEventHandler;
 
 ["ace_interactMenuOpened", {
@@ -140,13 +140,13 @@ switch (playerSide) do {
 
   switch (playerSide) do {
     case east: {
-      missionNamespace setVariable ["ace_fortify_budget_east", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_east", fnf_fortifyPoints, false];
     };
     case west: {
-      missionNamespace setVariable ["ace_fortify_budget_west", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_west", fnf_fortifyPoints, false];
     };
     case independent: {
-      missionNamespace setVariable ["ace_fortify_budget_guer", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_guer", fnf_fortifyPoints, false];
     };
   };
 }] call CBA_fnc_addEventHandler;

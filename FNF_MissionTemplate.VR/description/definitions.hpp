@@ -12,10 +12,10 @@ respawnTemplates[] = {};
 joinUnassigned = 1;
 
 onPauseScript[] = {\
-    phx_restrictions_fnc_removeRespawnButton,\
-    phx_fnc_addStaffContactButton,\
-    phx_admin_fnc_adminGameEnd,\
-    phx_admin_fnc_addAdminUIButton\
+    fnf_restrictions_fnc_removeRespawnButton,\
+    fnf_fnc_addStaffContactButton,\
+    fnf_admin_fnc_adminGameEnd,\
+    fnf_admin_fnc_addAdminUIButton\
 };
 
 // change game type if appropriate

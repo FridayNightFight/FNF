@@ -3,10 +3,10 @@ if !(isDedicated) exitWith {diag_log text "Not running on FNF Dedicated -- skipp
 if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundPrep Discord post"};
 
 [{time > 300}, {
-	if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {diag_log text "Safe Start already ended -- skipping RoundPrep Discord post"};
+	if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {diag_log text "Safe Start already ended -- skipping RoundPrep Discord post"};
 
 	private ["_gameMode", "_connectedPlayerCount"];
-	if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gameMode};
+	if (isNil "fnf_gameMode") then {_gameMode = "unknown"} else {_gameMode = fnf_gameMode};
 
 	_connectedPlayerCount = str(count allPlayers);
 

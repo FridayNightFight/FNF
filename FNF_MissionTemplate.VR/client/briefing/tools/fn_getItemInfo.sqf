@@ -9,7 +9,7 @@
 * <ARRAY>
 *
 * Example:
-* "ace_compat_rhs_usf3_m2_carry" call phx_briefing_fnc_getItemInfo;
+* "ace_compat_rhs_usf3_m2_carry" call fnf_briefing_fnc_getItemInfo;
 *
 *
 * Public: Yes

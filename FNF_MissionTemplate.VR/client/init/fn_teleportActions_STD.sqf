@@ -1,9 +1,9 @@
-// see also phx_server_fnc_setupGame
+// see also fnf_server_fnc_setupGame
 
 
 
 // this is Standard, don't run if SA
-if !(phx_gameMode != "sustainedAssault") exitWith {};
+if !(fnf_gameMode != "sustainedAssault") exitWith {};
 
 
 {
@@ -23,7 +23,7 @@ if !(phx_gameMode != "sustainedAssault") exitWith {};
       private _action = [
         PARENTACTION,
         format["%1 Teleport Options", _thisSide call BIS_fnc_sideName],
-        "",{},{(missionNamespace getVariable ["phx_safetyEnabled", true])},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
+        "",{},{(missionNamespace getVariable ["fnf_safetyEnabled", true])},{},[],[-0.05,-0.35,-2],6] call ace_interact_menu_fnc_createAction;
       [_thisFlag,0,[],_action] call ace_interact_menu_fnc_addActionToObject;
 
 
@@ -46,7 +46,7 @@ if !(phx_gameMode != "sustainedAssault") exitWith {};
           { // condition
             params ["_target", "_player", "_params"];
             _params params ["_eligibleSide", "_otherFlag", "_otherFlagNum"];
-            side _player == _eligibleSide && vehicle _player == _player && (missionNamespace getVariable ["phx_safetyEnabled", true])
+            side _player == _eligibleSide && vehicle _player == _player && (missionNamespace getVariable ["fnf_safetyEnabled", true])
           },
           {},
           [_thisSide, _otherFlag, _otherFlagNum]

@@ -2,7 +2,7 @@ This text file serves as a reference for options available in config.sqf
 
 // GAME MODES //
 Change this to whatever game mode you want and configure the respective file in mode_config
-If you don't want to use one of the template modes, you can set phx_gameMode = "";
+If you don't want to use one of the template modes, you can set fnf_gameMode = "";
   ===ATK/DEF===
   adSector
   assassin
@@ -101,8 +101,8 @@ Possible launcher values (and recommended counts)
 
   EXAMPLE:
   format:
-    phx_bluAT_Bravo = CARLG(2,0);
-    phx_bluAT_Delta = JAVELIN(1);
+    fnf_bluAT_Bravo = CARLG(2,0);
+    fnf_bluAT_Delta = JAVELIN(1);
 
   CARLG would give the MAT gunner a Carl Gustav
   The 2 refers to how many HEAT rockets/missiles for each: gunner, assistant, assistant.
@@ -131,12 +131,12 @@ Possible launcher values (and recommended counts)
     for BLUFOR Bravo Squad:
       format:
         // crewman
-        phx_westBravoAuxRole = 0;
+        fnf_westBravoAuxRole = 0;
 
         // M2, short tripod, 4 boxes of ammo total
-        phx_westBravoAuxRole = HMG_M2_LO(4);
+        fnf_westBravoAuxRole = HMG_M2_LO(4);
 
         // M252 mortar with 10 HE, 5 smoke, 5 flares
-        phx_westBravoAuxRole = MORTAR_M252(10,5,5);
+        fnf_westBravoAuxRole = MORTAR_M252(10,5,5);
 
 

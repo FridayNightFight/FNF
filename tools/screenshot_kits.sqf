@@ -165,9 +165,9 @@ _screenRight = safezoneX + safezoneW;
       _object setdir 270;
     };
 
-    phx_bluforUniform = _uniformSelection;
-    phx_bluforGear = _gearSelection;
-    [_role, _object] call phx_loadout_fnc_applyLoadoutScreenshots;
+    fnf_bluforUniform = _uniformSelection;
+    fnf_bluforGear = _gearSelection;
+    [_role, _object] call fnf_loadout_fnc_applyLoadoutScreenshots;
 
 
     if (primaryweapon _object != "") then {_object switchmove "amovpercmstpslowwrfldnon"} else {_object switchmove "amovpercmstpsnonwnondnon";};

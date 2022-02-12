@@ -51,14 +51,14 @@ _opticsMenu = [
 		(
 			pRole == ROLE_SNP &&
 			(
-				((primaryWeaponItems player) select 2) in phx_loadout_sniper_optics ||
+				((primaryWeaponItems player) select 2) in fnf_loadout_sniper_optics ||
 				((primaryWeaponItems player) select 2) == ""
 			)
 		)
 	) then {
 		(_opticsMenu # 1) pushBack [
 			_dispName,
-			format["['','', '%1'] call phx_selector_fnc_optics", _className],
+			format["['','', '%1'] call fnf_selector_fnc_optics", _className],
 			_pic,
 			_typeOf
 		];

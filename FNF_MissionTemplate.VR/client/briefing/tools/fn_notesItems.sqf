@@ -13,7 +13,7 @@
 * <STRING> or <Structured Text>
 *
 * Example:
-* [["FirstAidKit:5","ACE_MapTools","ACE_CableTie:2"]] call phx_briefing_fnc_notesItems;
+* [["FirstAidKit:5","ACE_MapTools","ACE_CableTie:2"]] call fnf_briefing_fnc_notesItems;
 * "<img height='30' image='\A3\Weapons_F\Items\data\UI\gear_FirstAidKit_CA.paa'/><execute expression='systemChat ""First Aid Kit"";'>x5</execute><img height='30' image='\z\ace\addons\captives\UI\ace_cabletie_ca.paa'/><execute expression='systemChat ""Cable Tie"";'>x2</execute>"
 *
 *

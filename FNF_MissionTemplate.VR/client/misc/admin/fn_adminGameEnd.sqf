@@ -7,8 +7,8 @@ params ["_display"];
 
 //Don't show display if not admin, still safestart, or game has already ended
 if !(serverCommandAvailable "#kick") exitWith {};
-if (missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {};
-if (missionNamespace getVariable ["phx_gameEnd",false]) exitWith {};
+if (missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {};
+if (missionNamespace getVariable ["fnf_gameEnd",false]) exitWith {};
 
 //Create side-selection combo control and populate
 private _listCtrl = _display ctrlCreate ["RscCombo", 34768];
@@ -46,7 +46,7 @@ _buttonCtrl ctrlSetText "End Game";
 
 //Add script to button selection
 _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
-  if (missionNamespace getVariable ["phx_gameEnd",false]) exitWith {};
+  if (missionNamespace getVariable ["fnf_gameEnd",false]) exitWith {};
 
   private _ctrl = (findDisplay 49) displayCtrl 34768; //Get side-selection control
   private _selectionIndex = lbCurSel _ctrl;
@@ -72,7 +72,7 @@ _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
     private _result = [format ["Are you sure you want %1 to win?", _sideWonText], "Confirm", true, true, _parentDisplay] call BIS_fnc_guiMessage;
 
     if (_result) then {
-      [_sideWon] remoteExec ["phx_server_fnc_endElimination",2];
+      [_sideWon] remoteExec ["fnf_server_fnc_endElimination",2];
     };
   };
 }];

@@ -69,7 +69,7 @@ if (is3DENPreview) then {
     // set up markers for appropriate side, add to JIP queue (until flag is null)
     // The JIP parameter can only be used if the targets parameter is 0 or a negative number.
     // wait until safe zones have been recreated (markCustomObjs script)
-    [{missionNamespace getVariable ["phx_markCustomObjs_done", false]}, {
+    [{missionNamespace getVariable ["fnf_markCustomObjs_done", false]}, {
       params ["_thisSide", "_markParam", "_thisFlag"];
 
       [[_thisSide, _markParam], {

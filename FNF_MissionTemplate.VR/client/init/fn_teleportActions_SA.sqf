@@ -1,5 +1,5 @@
 
-if !(phx_gameMode == "sustainedAssault") exitWith {};
+if !(fnf_gameMode == "sustainedAssault") exitWith {};
 
 #define PARENTACTION (format["FNF_%1_TeleportOptions", _thisSideStr])
 #define RALLYBASEOBJ (missionNamespace getVariable [_rallyBase, objNull])
@@ -51,7 +51,7 @@ if !(phx_gameMode == "sustainedAssault") exitWith {};
         params ["_target", "_player", "_params"];
         _params params ["_eligibleSide","_MSPObj"];
         if (!alive _MSPObj) exitWith {
-          ["<t align='center'>This MSP is dead! Wait for it to respawn.</t>", "error", 7] call phx_ui_fnc_notify;
+          ["<t align='center'>This MSP is dead! Wait for it to respawn.</t>", "error", 7] call fnf_ui_fnc_notify;
         };
 
         // find empty cargo (passenger) spots on MSP
@@ -70,7 +70,7 @@ if !(phx_gameMode == "sustainedAssault") exitWith {};
       { // condition
         params ["_target", "_player", "_params"];
         _params params ["_eligibleSide","_MSPObj"];
-        !isNil "_MSPObj" && side _player == _eligibleSide && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
+        !isNil "_MSPObj" && side _player == _eligibleSide && vehicle _player == _player && !(missionNamespace getVariable ["fnf_safetyEnabled", true])
       },
       {},
       [_thisSide, _thisObj]
@@ -117,7 +117,7 @@ if !(phx_gameMode == "sustainedAssault") exitWith {};
       { // condition
         params ["_target", "_player", "_params"];
         _params params ["_eligibleSide", "_thisMark"];
-        side _player == _eligibleSide && vehicle _player == _player && !(missionNamespace getVariable ["phx_safetyEnabled", true])
+        side _player == _eligibleSide && vehicle _player == _player && !(missionNamespace getVariable ["fnf_safetyEnabled", true])
       },
       {},
       [_thisSide, _thisMark]

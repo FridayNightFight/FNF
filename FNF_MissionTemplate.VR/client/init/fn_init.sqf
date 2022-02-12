@@ -1,4 +1,4 @@
-phx_loadout_roles = [
+fnf_loadout_roles = [
   ["PL",["Platoon Leader","LIEUTENANT"]],
   ["SGT",["Platoon Sergeant","SERGEANT"]],
   ["SL",["Squad Leader","SERGEANT"]],
@@ -29,67 +29,67 @@ phx_loadout_roles = [
 
 
 //Determine if client can play the round, if not, spectate
-if !(call phx_client_fnc_canplay) exitWith {
+if !(call fnf_client_fnc_canplay) exitWith {
   diag_log formatText [
     "[FNF] (clientInit) typeOf ""%1"" player %2 was placed in spectator at join. Safestart %3",
     typeOf player,
     name player,
-    (if (missionNamespace getVariable ["phx_safetyEnabled", true]) then {"is active"} else {"is not active"})
+    (if (missionNamespace getVariable ["fnf_safetyEnabled", true]) then {"is active"} else {"is not active"})
   ];
-  call phx_fnc_contactStaffInit; // Init handling for player reports
-  call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
-  call phx_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
-  call phx_spectator_fnc_init;
+  call fnf_fnc_contactStaffInit; // Init handling for player reports
+  call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
+  call fnf_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
+  call fnf_spectator_fnc_init;
 };
 player enableSimulation false;
 
 
-call phx_client_fnc_setupGame; //Client portion of game modes
-[{missionNamespace getVariable ["phx_markCustomObjs_done", false]}, {
-  call phx_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
-  call phx_briefing_fnc_init; //Briefing
-  call phx_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
-  call phx_briefing_fnc_assetDiary; // Add diary entries for assets
+call fnf_client_fnc_setupGame; //Client portion of game modes
+[{missionNamespace getVariable ["fnf_markCustomObjs_done", false]}, {
+  call fnf_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
+  call fnf_briefing_fnc_init; //Briefing
+  call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
+  call fnf_briefing_fnc_assetDiary; // Add diary entries for assets
 }] call CBA_fnc_waitUntilAndExecute;
-call phx_safety_fnc_init; //Enable safety
-call phx_client_fnc_staggeredLoad; //Start staggered load timer
-call phx_radio_fnc_waitGear; //Start radio preset functions
-call phx_fnc_contactStaffInit; // Init handling for player reports
+call fnf_safety_fnc_init; //Enable safety
+call fnf_client_fnc_staggeredLoad; //Start staggered load timer
+call fnf_radio_fnc_waitGear; //Start radio preset functions
+call fnf_fnc_contactStaffInit; // Init handling for player reports
 
-[{missionNamespace getVariable ["phx_briefCreated", false]}, {
-  call phx_briefing_fnc_assetDiaryStruct; // Prep global vars for UI info panel
+[{missionNamespace getVariable ["fnf_briefCreated", false]}, {
+  call fnf_briefing_fnc_assetDiaryStruct; // Prep global vars for UI info panel
 }] call CBA_fnc_waitUntilAndExecute;
 
-call phx_ui_fnc_drawStaffIcons; // Draw labels over staff members
-call phx_ui_fnc_drawCmdIcons; // Draw labels over CMD, PL
-call phx_ui_fnc_drawSLIcons; // Draw labels over squad leaders
+call fnf_ui_fnc_drawStaffIcons; // Draw labels over staff members
+call fnf_ui_fnc_drawCmdIcons; // Draw labels over CMD, PL
+call fnf_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
-call phx_server_fnc_populateORBATS;
-call phx_fnc_teleportInit; // Add leadership teleport options
+call fnf_server_fnc_populateORBATS;
+call fnf_fnc_teleportInit; // Add leadership teleport options
 
 
-if (phx_gameMode != "sustainedAssault") then {
-  [{missionNamespace getVariable ["phx_serverSetupGame", false]}, {
+if (fnf_gameMode != "sustainedAssault") then {
+  [{missionNamespace getVariable ["fnf_serverSetupGame", false]}, {
     // Add teleport option to flagpole between safezones in Standard
     // must wait until global vars initialized by server
-    call phx_client_fnc_teleportActions_STD;
+    call fnf_client_fnc_teleportActions_STD;
   }] call CBA_fnc_waitUntilAndExecute;
 } else {
-  call phx_client_fnc_teleportActions_SA; // Add MSP teleport option to flagpole if sustainedAssault
+  call fnf_client_fnc_teleportActions_SA; // Add MSP teleport option to flagpole if sustainedAssault
 };
 
 //Set player loadout after stagger time
-[{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
-  call phx_fnc_showTimeOnMap;
-  [player getVariable "phxLoadout"] call phx_loadout_fnc_applyLoadout;
-  call phx_selector_fnc_init;
+[{missionNamespace getVariable ["fnf_staggeredLoaded",false]}, {
+  call fnf_fnc_showTimeOnMap;
+  [player getVariable "fnfLoadout"] call fnf_loadout_fnc_applyLoadout;
+  call fnf_selector_fnc_init;
 }] call CBA_fnc_waitUntilAndExecute;
 
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {
-  call phx_restrictions_fnc_init;
-  call phx_loadout_fnc_checkLoadout;
-  [false] call phx_briefing_fnc_parseGear;
+  call fnf_restrictions_fnc_init;
+  call fnf_loadout_fnc_checkLoadout;
+  [false] call fnf_briefing_fnc_parseGear;
 
   // disable ambient life
   [] spawn {sleep 0.1; enableEnvironment [false, true]};
@@ -126,7 +126,7 @@ if (phx_gameMode != "sustainedAssault") then {
     "Welcome to ", serverName, lineBreak,
     briefingName, lineBreak,
     _date, " ", _time, " ", _locationText, lineBreak,
-    "Game mode: ", (toUpper phx_gameMode), lineBreak
+    "Game mode: ", (toUpper fnf_gameMode), lineBreak
   ];
 
   [
@@ -139,21 +139,21 @@ if (phx_gameMode != "sustainedAssault") then {
 }] call CBA_fnc_waitUntilAndExecute;
 
 //Client-side fortify, and gear selector
-[{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {
-  if !(phx_gameMode == "sustainedAssault") then {
-    call phx_fnc_fortifyClient;
+[{missionNamespace getVariable ["fnf_loadoutAssigned",false]}, {
+  if !(fnf_gameMode == "sustainedAssault") then {
+    call fnf_fnc_fortifyClient;
   };
   player enableSimulation true;
 }] call CBA_fnc_waitUntilAndExecute;
 
 
-phx_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
+fnf_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
 
-if !(phx_gameMode == "sustainedAssault") then {
+if !(fnf_gameMode == "sustainedAssault") then {
   //Start kill counter when game ends or player is dead
-  //[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
+  //[{missionNamespace getVariable ["fnf_gameEnd",false] || !alive player}, {call fnf_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
   //Start spectator fnc when player is killed
-  player addEventHandler ["Killed", {[{call phx_spectator_fnc_init}, [], 3] call cba_fnc_waitAndExecute;}];
+  player addEventHandler ["Killed", {[{call fnf_spectator_fnc_init}, [], 3] call cba_fnc_waitAndExecute;}];
 
 
   player addEventHandler ["Killed", {
@@ -178,10 +178,10 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
       ],
       "warning",
       10
-    ] call phx_ui_fnc_notify;
+    ] call fnf_ui_fnc_notify;
 
-    if (isNil "phx_adminDisplay") exitWith {};
-    private _display = (phx_adminDisplay select 0);
+    if (isNil "fnf_adminDisplay") exitWith {};
+    private _display = (fnf_adminDisplay select 0);
     private "_resultBox";
     if (_display == displayNull) exitWith {
       // [_thisType, _thisId] call CBA_fnc_removeEventHandler;
@@ -195,14 +195,14 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 //Marking
 [] execVM "client\icons\QS_icons.sqf";
 //Unflip - by KiloSwiss (https://steamcommunity.com/sharedfiles/filedetails/?id=1383176987)
-[] spawn phx_fnc_unflipVehicleAddAction;
+[] spawn fnf_fnc_unflipVehicleAddAction;
 
 // adds ACE Self-interact to fix uniform bug
 private _action = [
   "FixUniformBug",
   "Fix ""No Uniform"" Bug",
   "",
-  {[player] call phx_fnc_fixUniformBug},
+  {[player] call fnf_fnc_fixUniformBug},
   {true}
 ] call ace_interact_menu_fnc_createAction;
 [
@@ -234,7 +234,7 @@ _action = [
   "\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa",
   {
     [] spawn {
-      (missionNamespace getVariable ["phx_lastAdminReporter", [objNull, [0,0,0]]]) params ["_player", "_pos"];
+      (missionNamespace getVariable ["fnf_lastAdminReporter", [objNull, [0,0,0]]]) params ["_player", "_pos"];
       if (!isNull _player && !(_player in ([] call ace_spectator_fnc_players))) then {
         [
           ((_player getPos [50, 180]) vectorAdd [0,0,30]),

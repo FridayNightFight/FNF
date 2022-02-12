@@ -12,35 +12,35 @@ private _safeZones = [];
 if (_side != sideEmpty) then {
 
   // if _side IS provided, check only safezones for the side being queried
-  switch (phx_gameMode == "sustainedAssault") do {
+  switch (fnf_gameMode == "sustainedAssault") do {
     case false: {
       // standard markers are on a prefix system.
       // first get any prefixes specific to the side for standard, since _side != sideEmpty
       // then get any markers in mission which match any of the prefixes and add them to safe zones.
-      _safeZonePrefixes = [phx_safeZones, "STD_" + (_side call BIS_fnc_sideNameUnlocalized), []] call BIS_fnc_getFromPairs;
+      _safeZonePrefixes = [fnf_safeZones, "STD_" + (_side call BIS_fnc_sideNameUnlocalized), []] call BIS_fnc_getFromPairs;
       {
         {_safeZones pushBackUnique _x} forEach ([_x] call BIS_fnc_getMarkers);
       } forEach _safeZonePrefixes;
     };
     case true: {
-      _safeZones = [phx_safeZones, "SA_" + (_side call BIS_fnc_sideNameUnlocalized), []] call BIS_fnc_getFromPairs;
+      _safeZones = [fnf_safeZones, "SA_" + (_side call BIS_fnc_sideNameUnlocalized), []] call BIS_fnc_getFromPairs;
     };
   };
 } else {
 
   // if _side isn't provided, we're checking ALL safe zones for all sides (like vehicles)
-  switch (phx_gameMode == "sustainedAssault") do {
+  switch (fnf_gameMode == "sustainedAssault") do {
     case false: {
       // standard markers are on a prefix system.
       // first get any prefixes for any side for standard mode
       // then get any markers in mission which match any of the prefixes and add them to safe zones.
-      _safeZonePrefixes = flatten(phx_safeZones select {(_x select 0) find "STD_" > -1} apply {_x select 1});
+      _safeZonePrefixes = flatten(fnf_safeZones select {(_x select 0) find "STD_" > -1} apply {_x select 1});
       {
         {_safeZones pushBackUnique _x} forEach ([_x] call BIS_fnc_getMarkers);
       } forEach _safeZonePrefixes;
     };
     case true: {
-      _safeZones = flatten(phx_safeZones select {(_x select 0) find "SA_" > -1} apply {_x select 1});
+      _safeZones = flatten(fnf_safeZones select {(_x select 0) find "SA_" > -1} apply {_x select 1});
     };
   };
 };

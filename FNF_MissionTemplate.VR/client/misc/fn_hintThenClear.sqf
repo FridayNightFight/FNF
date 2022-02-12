@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: phx_fnc_hintThenClear
+Function: fnf_fnc_hintThenClear
 Description:
      Display a hint then after some delay display another empty hint to clear any existing hint from the player's screen.
 Parameters:
@@ -9,18 +9,18 @@ Optional Parameters:
 Examples:
     (begin example)
         // Call a hint and then clear it after the default 10 seconds.
-        ["BLUFOR are victorious!"] call phx_fnc_hintThenClear;
+        ["BLUFOR are victorious!"] call fnf_fnc_hintThenClear;
 
         // Call a hint and then clear it after 45 seconds.
-        ["You are dead.",45] call phx_fnc_hintThenClear;
+        ["You are dead.",45] call fnf_fnc_hintThenClear;
 
         // Call a hint from a stored variable and then clear it after 5 seconds.
-        [_str,5] call phx_fnc_hintThenClear;
+        [_str,5] call fnf_fnc_hintThenClear;
     (end)
 ---------------------------------------------------------------------------- */
 params ["_hintStr",["_delay", 10]];
 // hint _hintStr;
-[format["<t align='center'>%1</t>", _hintStr], "info", _delay] call phx_ui_fnc_notify;
+[format["<t align='center'>%1</t>", _hintStr], "info", _delay] call fnf_ui_fnc_notify;
 // _delayedTime = diag_tickTime + _delay;
 // [{
 //     params ["_args","_handle"];

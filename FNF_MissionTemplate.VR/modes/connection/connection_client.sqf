@@ -2,19 +2,19 @@
 
 //Terminal 1 actions
 if !(isNull term1) then {
-  phx_term1HackingSide = sideEmpty;
+  fnf_term1HackingSide = sideEmpty;
 
   [
     term1,
     "Connect",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && !(playerSide == phx_term1HackingSide) && !(playerSide == civilian)",
+    "(_this distance _target < 3) && !(playerSide == fnf_term1HackingSide) && !(playerSide == civilian)",
     "_caller distance _target < 3",
     {},
     {},
     {
-      [term1, playerSide] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term1, playerSide] remoteExec ["fnf_serverTerminalAction", 2, false];
     },
     {},
     [],
@@ -27,19 +27,19 @@ if !(isNull term1) then {
 
 //Terminal 2 actions
 if !(isNull term2) then {
-  phx_term2HackingSide = sideEmpty;
+  fnf_term2HackingSide = sideEmpty;
 
   [
     term2,
     "Connect",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && !(playerSide == phx_term2HackingSide) && !(playerSide == civilian)",
+    "(_this distance _target < 3) && !(playerSide == fnf_term2HackingSide) && !(playerSide == civilian)",
     "_caller distance _target < 3",
     {},
     {},
     {
-      [term2, playerSide] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term2, playerSide] remoteExec ["fnf_serverTerminalAction", 2, false];
     },
     {},
     [],
@@ -52,19 +52,19 @@ if !(isNull term2) then {
 
 //Terminal 3 actions
 if !(isNull term3) then {
-  phx_term3HackingSide = sideEmpty;
+  fnf_term3HackingSide = sideEmpty;
 
   [
     term3,
     "Connect",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && !(playerSide == phx_term3HackingSide) && !(playerSide == civilian)",
+    "(_this distance _target < 3) && !(playerSide == fnf_term3HackingSide) && !(playerSide == civilian)",
     "_caller distance _target < 3",
     {},
     {},
     {
-      [term3, playerSide] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term3, playerSide] remoteExec ["fnf_serverTerminalAction", 2, false];
     },
     {},
     [],
