@@ -564,15 +564,25 @@ fnf_Diary_UpdateInfo = player createDiarySubject ["fnf_Diary_UpdateInfo", "Frame
 player createDiaryRecord [
   "fnf_Diary_UpdateInfo",
   [
-    "Changelog",
+    "Credits",
     format [
-      "<font size='18' shadow='1' color='" + COLOR2 + "'>Changelog</font><br/>Template Version: %1<br/><br/>%2<br/><br/><font size='18' shadow='1' color='" + COLOR2 + "'>Credits</font><br/>%3",
-      fnf_templateVersion,
-      fnf_ui_changelogText,
+      "<font size='18' shadow='1' color='" + COLOR2 + "'>Framework Credits</font><br/><br/>%1",
       fnf_ui_frameworkCreditsText
     ]
   ]
 ];
+player createDiaryRecord [
+  "fnf_Diary_UpdateInfo",
+  [
+    "Changelog",
+    format [
+      "<font size='18' shadow='1' color='" + COLOR2 + "'>Changelog</font><br/>Template Version: %1<br/><br/>%2<br/><br/><font size='18' shadow='1' color='" + COLOR2 + "'>Credits</font><br/>%3",
+      fnf_templateVersion,
+      fnf_ui_changelogText
+    ]
+  ]
+];
+
 
 fnf_Diary_Credits = player createDiarySubject ["fnf_Diary_Credits", "Credits"];
 player createDiaryRecord [

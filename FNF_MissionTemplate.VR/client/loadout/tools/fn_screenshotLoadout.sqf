@@ -127,7 +127,7 @@ fnf_loadout_fnc_handleSHQAUX = {
     // KIT APPLIES HERE
     ["BASE"] call fnf_loadout_fnc_applyLoadout;
 
-    private _mortarGear = (missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray;
+    private _mortarGear = (missionConfigFile >> "CfgFNFLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray;
 
     // add hint to remind _setUnits to take their CSW gear
     [{time > 10}, {
@@ -509,7 +509,7 @@ fnf_loadout_fnc_prepOpticsSelector = {
   params [
     ["_unit", objNull],
     ["_role", "BASE"],
-    ["_cfgOptics", (missionConfigFile >> "CfgLoadouts" >> "optics")]
+    ["_cfgOptics", (missionConfigFile >> "CfgFNFLoadouts" >> "optics")]
   ];
 
   // Optic selections based on fnf_magnifiedOptics setting
@@ -556,7 +556,7 @@ fnf_loadout_fnc_giveCECharges = {
   // CE Explosives
   params [
     ["_unit", objNull],
-    ["_cfgExplosiveChoices", (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> (_setUnit getVariable "fnfLoadout") >> "explosiveChoices") call BIS_fnc_getCfgDataArray]
+    ["_cfgExplosiveChoices", (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> (_setUnit getVariable "fnfLoadout") >> "explosiveChoices") call BIS_fnc_getCfgDataArray]
   ];
 
   if (count _cfgExplosiveChoices > 0) then {
@@ -575,7 +575,7 @@ fnf_loadout_fnc_giveCEGrenades = {
   // CE Grenades
   params [
     ["_unit", objNull],
-    ["_cfgGrenadeChoices", (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> (_setUnit getVariable "fnfLoadout") >> "grenadeChoices") call BIS_fnc_getCfgDataArray]
+    ["_cfgGrenadeChoices", (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> (_setUnit getVariable "fnfLoadout") >> "grenadeChoices") call BIS_fnc_getCfgDataArray]
   ];
 
   if (count _cfgGrenadeChoices > 0) then {
@@ -645,7 +645,7 @@ fnf_loadout_fnc_giveBinoculars = {
     ["_role", "BASE"]
   ];
 
-  private _binocs = (missionConfigFile >> "CfgLoadouts" >> "common" >> "binoculars");
+  private _binocs = (missionConfigFile >> "CfgFNFLoadouts" >> "common" >> "binoculars");
 
   private _hasBinoc = (((assigneditems _unit) findIf {getText(configFile >> "CfgWeapons" >> _x >> "simulation") == "Binocular"}) > -1);
   if (_hasBinoc) exitWith {true};
@@ -736,10 +736,10 @@ fnf_loadout_fnc_loadWeapons = {
 
 
 #define LOADOUTROLE(_str) (LOADOUTVAR isEqualTo _str)
-#define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> LOADOUTVAR
-#define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> LOADOUTVAR
-#define CFGCOMMON missionConfigFile >> "CfgLoadouts" >> "common"
-#define CFGOPTICS missionConfigFile >> "CfgLoadouts" >> "optics"
+#define CFGUNIFORM missionConfigFile >> "CfgFNFLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> LOADOUTVAR
+#define CFGGEAR missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> LOADOUTVAR
+#define CFGCOMMON missionConfigFile >> "CfgFNFLoadouts" >> "common"
+#define CFGOPTICS missionConfigFile >> "CfgFNFLoadouts" >> "optics"
 
 // "debug_console" callExtension format["
 // ----- LOADED -----

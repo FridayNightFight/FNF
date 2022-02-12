@@ -98,10 +98,10 @@ if (PLAYERLOADOUTVAR == "SHQAUX") exitWith {
 
 
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
-#define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
-#define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
-#define CFGCOMMON missionConfigFile >> "CfgLoadouts" >> "common"
-#define CFGOPTICS missionConfigFile >> "CfgLoadouts" >> "optics"
+#define CFGUNIFORM missionConfigFile >> "CfgFNFLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
+#define CFGGEAR missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
+#define CFGCOMMON missionConfigFile >> "CfgFNFLoadouts" >> "common"
+#define CFGOPTICS missionConfigFile >> "CfgFNFLoadouts" >> "optics"
 
 // "debug_console" callExtension format["
 // ----- LOADED -----

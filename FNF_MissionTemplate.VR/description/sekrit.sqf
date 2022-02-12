@@ -79,10 +79,10 @@ fnf_ui_changelogText = ([
   "- adds some cool media to the diary"
 ] joinString "<br/>");
 
-fnf_ui_frameworkCreditsText = ([
-  "UI Notification System: Aquaman, TanKode, Lucian",
-  "Map Unit Icons/Blufor Tracker: QS Icons by Quiksilver"
-] joinString "<br/>");
+fnf_ui_frameworkCreditsText = "Credits file could not be loaded.";
+if (fileExists "credits.txt") then {
+  fnf_ui_frameworkCreditsText = (loadFile "credits.txt") regexReplace ["\n", "<br/>"];
+};
 
 private _changelogStruct = format [
   "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/><br/>%2<br/><br/><t size='1.2' shadow='1' color='" + COLOR2 + "'>Credits</t><br/>%3",

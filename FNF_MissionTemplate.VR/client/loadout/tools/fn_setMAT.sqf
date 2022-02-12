@@ -25,10 +25,10 @@
 params [["_LOADOUTROLE", "BASE"]];
 #define PLAYERLOADOUTVAR _LOADOUTROLE
 #define LOADOUTROLE(_str) (PLAYERLOADOUTVAR isEqualTo _str)
-#define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
-#define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
-#define CFGCOMMON missionConfigFile >> "CfgLoadouts" >> "common"
-#define CFGOPTICS missionConfigFile >> "CfgLoadouts" >> "optics"
+#define CFGUNIFORM missionConfigFile >> "CfgFNFLoadouts" >> "UNIFORMS" >> mySideUniformSelection >> PLAYERLOADOUTVAR
+#define CFGGEAR missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> PLAYERLOADOUTVAR
+#define CFGCOMMON missionConfigFile >> "CfgFNFLoadouts" >> "common"
+#define CFGOPTICS missionConfigFile >> "CfgFNFLoadouts" >> "optics"
 
 fnc_notify_noDefaultConfigured = {
   [{time > 2}, {["<t align='center'>Error:<br/>GEARDEFAULT selected as MAT,<br/>but no default MAT is configured for this gearset</t>", "error", 20] call fnf_ui_fnc_notify}] call CBA_fnc_waitUntilAndExecute;

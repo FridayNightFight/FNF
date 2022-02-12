@@ -81,7 +81,7 @@ if (isNil "fnf_cswItems") then {
   // KIT APPLIES HERE
   ["BASE"] call fnf_loadout_fnc_applyLoadout;
 
-  private _mortarGear = (missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray;
+  private _mortarGear = (missionConfigFile >> "CfgFNFLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray;
 
   // add hint to remind players to take their CSW gear
   [{time > 10}, {

@@ -5,12 +5,12 @@ if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connect
 params ["_endMessage"];
 
 private [
-	"_gameMode",
-	"_connectedPlayerCount",
-	"_missionDuration",
-	"_bluPlayers",
-	"_opfPlayers",
-	"_indPlayers"
+  "_gameMode",
+  "_connectedPlayerCount",
+  "_missionDuration",
+  "_bluPlayers",
+  "_opfPlayers",
+  "_indPlayers"
 ];
 
 if (isNil "fnf_gameMode") then {_gameMode = "unknown"} else {_gameMode = fnf_gameMode};
@@ -72,12 +72,12 @@ if (playableSlotsNumber independent == 0) then {
 
 
 ["RoundEnd", [
-	_endMessage,
-	missionName,
-	_gameMode,
-	_connectedPlayerCount,
-	_missionDuration,
-	_bluPlayers,
-	_opfPlayers,
-	_indPlayers
+  _endMessage,
+  missionName,
+  _gameMode,
+  _connectedPlayerCount,
+  _missionDuration,
+  _bluPlayers,
+  _opfPlayers,
+  _indPlayers
 ]] call DiscordEmbedBuilder_fnc_buildCfg;

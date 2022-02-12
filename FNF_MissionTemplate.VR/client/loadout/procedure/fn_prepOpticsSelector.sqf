@@ -22,7 +22,7 @@
 params [
   ["_unit", objNull],
   ["_role", "BASE"],
-  ["_cfgOptics", (missionConfigFile >> "CfgLoadouts" >> "optics")]
+  ["_cfgOptics", (missionConfigFile >> "CfgFNFLoadouts" >> "optics")]
 ];
 
 if (isNull _unit) exitWith {nil};

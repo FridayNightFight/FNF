@@ -1,4 +1,4 @@
-class CfgLoadouts {
+class CfgFNFLoadouts {
   #include "KITS\GEAR\common.hpp"
 
   class UNIFORMS {

@@ -21,7 +21,7 @@
 // CE Grenades
 params [
   ["_unit", objNull],
-  ["_cfgGrenadeChoices", (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> (player getVariable "fnfLoadout") >> "grenadeChoices") call BIS_fnc_getCfgDataArray]
+  ["_cfgGrenadeChoices", (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> (player getVariable "fnfLoadout") >> "grenadeChoices") call BIS_fnc_getCfgDataArray]
 ];
 
 if (isNull _unit) exitWith {nil};

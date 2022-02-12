@@ -33,7 +33,7 @@ _loadoutRolesToCheck = [];
   _loadoutRolesToCheck pushBack [
     _x # 0,
     _x # 1,
-    (missionConfigFile >> "CfgLoadouts" >> "UNIFORMS" >> (_x # 0)) call Bis_fnc_getCfgSubClasses
+    (missionConfigFile >> "CfgFNFLoadouts" >> "UNIFORMS" >> (_x # 0)) call Bis_fnc_getCfgSubClasses
   ];
 } forEach [
   ["RHS_UNI_CROATIAN_ARMY_2010","RHS_GEAR_HS_CROATIAN_2010_VHS"],

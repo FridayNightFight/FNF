@@ -91,7 +91,7 @@ fnf_ORBATHandlers = [];
   if (playableSlotsNumber _side > 3 && fnf_enemyStartVisible) then {
     _PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "fnfLoadout" isEqualTo "PL"};
     [ // PLTHQ
-      missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTHQ", _sideShort],
+      missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTHQ", _sideShort],
       _sideColorStr,
       "Platoon",
       "HQ",
@@ -114,7 +114,7 @@ fnf_ORBATHandlers = [];
     ] call BIS_fnc_ORBATSetGroupParams;
 
     [ // X
-      missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTX", _sideShort],
+      missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTX", _sideShort],
       _sideColorStr,
       "Squad",
       "Recon",
@@ -136,7 +136,7 @@ fnf_ORBATHandlers = [];
       private _squadName = _x;
       private _squadChar = _x select [0,1];
       [ // Alpha
-        missionConfigFile >> "CfgORBAT" >> format["FNF%1PLT%2", _sideShort, _squadChar],
+        missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLT%2", _sideShort, _squadChar],
         _sideColorStr,
         "Squad",
         "MotorizedInfantry",
@@ -157,7 +157,7 @@ fnf_ORBATHandlers = [];
     { // G
       private _number = str(_x);
       [ // Alpha
-        missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTG%2", _sideShort, _number],
+        missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTG%2", _sideShort, _number],
         _sideColorStr,
         "Fireteam",
         "MechanizedInfantry",
@@ -178,7 +178,7 @@ fnf_ORBATHandlers = [];
     { // H
       private _number = str(_x);
       [ // Alpha
-        missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTH%2", _sideShort, _number],
+        missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTH%2", _sideShort, _number],
         _sideColorStr,
         "Fireteam",
         "AviationSupport",

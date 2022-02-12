@@ -21,7 +21,7 @@
 // CE Explosives
 params [
   ["_unit", objNull],
-  ["_cfgExplosiveChoices", (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> mySideGearSelection >> (player getVariable "fnfLoadout") >> "explosiveChoices") call BIS_fnc_getCfgDataArray]
+  ["_cfgExplosiveChoices", (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> (player getVariable "fnfLoadout") >> "explosiveChoices") call BIS_fnc_getCfgDataArray]
 ];
 
 if (isNull _unit) exitWith {nil};

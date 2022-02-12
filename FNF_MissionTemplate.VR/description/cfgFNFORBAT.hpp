@@ -1,4 +1,4 @@
-class CfgORBAT
+class CfgFNFORBAT
 {
 	class FNFBLUPLTHQ
 	{

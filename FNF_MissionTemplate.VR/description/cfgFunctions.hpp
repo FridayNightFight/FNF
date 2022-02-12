@@ -20,6 +20,7 @@ class CfgFunctions {
       class fortifyClient{};
       class clientTime{};
       class clientSafeStartTime{};
+      class handleRespawn{};
       class killCounter{};
       class showTimeOnMap{};
       class objectivePreview{};

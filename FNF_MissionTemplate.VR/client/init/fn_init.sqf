@@ -148,6 +148,7 @@ if (fnf_gameMode != "sustainedAssault") then {
 
 
 fnf_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
+player addEventHandler ["Respawn", {_this call fnf_fnc_handleRespawn}];
 
 if !(fnf_gameMode == "sustainedAssault") then {
   //Start kill counter when game ends or player is dead

@@ -43,7 +43,7 @@ private _textOut = [];
   if (count _setting > 0) then {
     if (_setting # 0 isEqualTo "GEARDEFAULT") then {
       // "debug_console" callExtension str([_gearLoadout,_role,fnf_bluAT_Bravo]);
-      _MATData = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
+      _MATData = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
       //  "debug_console" callExtension str(_data);
       // _textOut pushBack (_data # 0);
     } else {

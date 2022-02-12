@@ -65,6 +65,6 @@ switch (_toLoad) do {
   if (count (items player select {_x == _item}) == 0) then {
     [_x, "uniform", player] call fnf_loadout_fnc_addGear;
   };
-} forEach ((missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray);
+} forEach ((missionConfigFile >> "CfgFNFLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray);
 
 player setVariable ["fnf_cswMagsCurrent", _addedMags];

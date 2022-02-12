@@ -60,7 +60,7 @@ fnf_briefing_fnc_parseMAT = {
 
     if (count _setting > 0) then {
       if (_setting # 0 isEqualTo "GEARDEFAULT") then {
-        _MATData = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
+        _MATData = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
       } else {
         _MATData = _setting;
       };

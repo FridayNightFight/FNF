@@ -8,7 +8,7 @@ _transportsPresentIND = 0;
 
 _fnc_getMAT = {
 	params ["_gearset","_bravo","_delta"];
-	private _CFGGEAR = missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearset;
+	private _CFGGEAR = missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> _gearset;
 	private _cfgDefaultMATBravo = (_CFGGEAR >> "MAT1" >> "defaultMAT") call BIS_fnc_getCfgDataArray;
 	private _cfgDefaultMATDelta = (_CFGGEAR >> "MAT2" >> "defaultMAT") call BIS_fnc_getCfgDataArray;
 	private _selectedMAT = [];

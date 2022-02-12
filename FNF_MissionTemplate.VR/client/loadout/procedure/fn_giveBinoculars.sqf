@@ -27,7 +27,7 @@ params [
 
 if (isNull _unit) exitWith {nil};
 
-private _binocs = (missionConfigFile >> "CfgLoadouts" >> "common" >> "binoculars");
+private _binocs = (missionConfigFile >> "CfgFNFLoadouts" >> "common" >> "binoculars");
 
 private _hasBinoc = (((assigneditems _unit) findIf {getText(configFile >> "CfgWeapons" >> _x >> "simulation") == "Binocular"}) > -1);
 if (_hasBinoc) exitWith {true};

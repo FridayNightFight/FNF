@@ -3,17 +3,17 @@ if !(isDedicated) exitWith {diag_log text "Not running on FNF Dedicated -- skipp
 if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundPrep Discord post"};
 
 [{time > 300}, {
-	if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {diag_log text "Safe Start already ended -- skipping RoundPrep Discord post"};
+  if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {diag_log text "Safe Start already ended -- skipping RoundPrep Discord post"};
 
-	private ["_gameMode", "_connectedPlayerCount"];
-	if (isNil "fnf_gameMode") then {_gameMode = "unknown"} else {_gameMode = fnf_gameMode};
+  private ["_gameMode", "_connectedPlayerCount"];
+  if (isNil "fnf_gameMode") then {_gameMode = "unknown"} else {_gameMode = fnf_gameMode};
 
-	_connectedPlayerCount = str(count allPlayers);
+  _connectedPlayerCount = str(count allPlayers);
 
-	["RoundPrep", [
-		missionName,
-		_gameMode,
-		_connectedPlayerCount
-	]] call DiscordEmbedBuilder_fnc_buildCfg;
+  ["RoundPrep", [
+    missionName,
+    _gameMode,
+    _connectedPlayerCount
+  ]] call DiscordEmbedBuilder_fnc_buildCfg;
 }] call CBA_fnc_waitUntilAndExecute;
 

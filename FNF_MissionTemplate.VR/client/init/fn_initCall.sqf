@@ -44,6 +44,6 @@ if ([west, independent] call BIS_fnc_sideIsFriendly && [east, independent] call 
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-[{!isNil "fnf_serverGameSetup" && !isNil "fnf_safetyEnabled" && !isNil "fnf_safeZones"},{
+[{!isNil "fnf_serverSetupGame" && !isNil "fnf_safetyEnabled" && !isNil "fnf_safeZones"},{
   fnf_client_fnc_init call CBA_fnc_directCall;
 }] call CBA_fnc_waitUntilAndExecute;

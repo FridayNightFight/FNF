@@ -13,8 +13,8 @@ _sidePresent = {
 _getLoadoutFromConfig = {
   params ["_uniformVar", "_gearVar"];
 
-  #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS"
-  #define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR"
+  #define CFGUNIFORM missionConfigFile >> "CfgFNFLoadouts" >> "UNIFORMS"
+  #define CFGGEAR missionConfigFile >> "CfgFNFLoadouts" >> "GEAR"
 
   private _uniformMeta = [
     configName (CFGUNIFORM >> _uniformVar),
