@@ -12,7 +12,7 @@
 
 // put all GL weapons
 #define RIFLE_GL "rhs_weap_hk416d145_m320"
-#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:6", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
+#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.

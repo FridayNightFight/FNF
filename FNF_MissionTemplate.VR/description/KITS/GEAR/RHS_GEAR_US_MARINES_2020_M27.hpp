@@ -3,9 +3,9 @@
 // put all rifle weapons
 #define RIFLE "rhs_weap_m27iar"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:7","rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red:4"
+#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:7","rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_PMAG:12","rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red:6"
+#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_PMAG:12","rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:6"
 
 #define SIDEARM "rhsusf_weap_m9"
 #define SIDEARM_MAG "rhsusf_mag_15Rnd_9x19_JHP:2"
