@@ -505,12 +505,13 @@ fnf_briefing_MMNotes = {
         {
           (_x # 0) params ["_targetHeader"];
           (_x # 1) params ["_role", "_name", "_obj"];
-          if (!isNil "_obj") then {
+          if (isNil "_obj") then {continue};
+          if (!isNull _obj) then {
             _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           } else {
-            _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by [NOT FILLED])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+            _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, [slot isn't filled])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           };
-        } forEach fnf_assassinationTargets;
+        } forEach fnf_assassin_targets;
 
         player setDiaryRecordText [["Diary", fnf_diary_gamemode], [
           format["Gamemode - %1", toUpper fnf_gameMode],
