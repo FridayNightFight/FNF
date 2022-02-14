@@ -49,7 +49,8 @@ if !(fnf_gameMode == "sustainedAssault") exitWith {};
       "",
       { // statement
         params ["_target", "_player", "_params"];
-        _params params ["_eligibleSide","_MSPObj"];
+        _params params ["_thisSide", "_thisSideStr","_MSPNum"];
+        private _MSPObj = missionNamespace getVariable [format["%1_MSP_%2", _thisSideStr, _MSPNum], objNull];
         if (!alive _MSPObj) exitWith {
           ["<t align='center'>This MSP is dead! Wait for it to respawn.</t>", "error", 7] call fnf_ui_fnc_notify;
         };
@@ -69,11 +70,15 @@ if !(fnf_gameMode == "sustainedAssault") exitWith {};
       },
       { // condition
         params ["_target", "_player", "_params"];
-        _params params ["_eligibleSide","_MSPObj"];
-        !isNil "_MSPObj" && side _player == _eligibleSide && vehicle _player == _player && !(missionNamespace getVariable ["fnf_safetyEnabled", true])
+        _params params ["_thisSide", "_thisSideStr","_MSPNum"];
+        private _MSPObj = missionNamespace getVariable [format["%1_MSP_%2", _thisSideStr, _MSPNum], objNull];
+        !isNil "_MSPObj" &&
+        side _player == _thisSide &&
+        vehicle _player == _player &&
+        !(missionNamespace getVariable ["fnf_safetyEnabled", true])
       },
       {},
-      [_thisSide, _thisObj]
+      [_thisSide, _thisSideStr, _MSPNum]
     ] call ace_interact_menu_fnc_createAction;
 
     [

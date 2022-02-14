@@ -5,7 +5,11 @@ if !(fnf_gameMode == "sustainedAssault") then {
 };
 fnf_safeStartTime = 15; //Safestart time in minutes
 
-fnf_templateVersion = call compile preprocessFile "version.txt";
+if (fileExists "version.txt") then {
+  fnf_templateVersion = call compile preprocessFile "version.txt";
+} else {
+  fnf_templateVersion = "Unknown";
+};
 
 fnf_ui_structTextRef = [];
 fnf_ui_structTextRef_staffReports = [];

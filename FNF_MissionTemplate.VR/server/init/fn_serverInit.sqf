@@ -50,12 +50,16 @@ call fnf_server_fnc_setupGame;
 call fnf_server_fnc_webhook_roundPrep;
 
 // after custom building markers are up, recreate safe markers so they're on top and visible
-[{missionNamespace getVariable ["fnf_markCustomObjs_ready", false]}, {
-  [] spawn {
-    uiSleep 0.1;
+[
+  {
+    missionNamespace getVariable ["fnf_markCustomObjs_ready", false] &&
+    missionNamespace getVariable ["fnf_serverSetupGame", false]
+  }, {
     private _safeMarkers = [objNull, nil, true] call fnf_fnc_inSafeZone;
+
     {
-      if (markerColor _x != "") then {
+      if (markerShape _x != "") then {
+        _x setMarkerType "mil_dot";
         _ogMark = _x call BIS_fnc_markerToString;
         deleteMarker _x;
         _ogMark call BIS_fnc_stringToMarker;
@@ -63,7 +67,6 @@ call fnf_server_fnc_webhook_roundPrep;
       };
     } forEach _safeMarkers;
     missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
-  };
 }] call CBA_fnc_waitUntilAndExecute;
 
 call fnf_server_fnc_populateORBATS;

@@ -29,51 +29,51 @@ if (isNil "fnf_ui") then {
 
 
   fnf_ui setVariable ["eastHelperTargets",[
-    [OPF_supplyBox,MSG_SUPPLY,ICON_SUPPLY],
-    [OPF_armedTrucks,MSG_ARMEDTRUCKS,ICON_APC,true],
-    [OPF_baseAA_1,MSG_BASEAA,ICON_AA,true],
-    [OPF_baseAA_2,MSG_BASEAA,ICON_AA,true],
-    [OPF_helicopters,MSG_HELICOPTERS,ICON_HELICOPTER,true],
-    [OPF_howitzer,MSG_HOWITZER,ICON_ARTILLERY,true],
-    [OPF_jeeps,MSG_JEEPS,ICON_CAR,true],
-    [OPF_planes,MSG_PLANES,ICON_PLANE,true],
-    [OPF_IFV,MSG_IFV,ICON_APC,true],
-    [OPF_gunships,MSG_GUNSHIPS,ICON_HELICOPTER,true],
-    [rallybase_east,MSG_RALLY,ICON_RALLY],
-    [east_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
-    [east_MSP_1,"MSP 1",ICON_RALLY,false,east],
-    [east_MSP_2,"MSP 2",ICON_RALLY,false,east],
-    [east_MSP_3,"MSP 3",ICON_RALLY,false,east],
-    [east_MSP_4,"MSP 4",ICON_RALLY,false,east],
-    [east_MSP_5,"MSP 5",ICON_RALLY,false,east],
-    [OPF_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR],
-    [OPF_boats,MSG_BOATS,ICON_BOATS, true],
-    [OPF_armedBoats,MSG_ARMEDBOATS,ICON_BOATS, true],
-    [OPF_pBoats,MSG_PBOATS,ICON_BOATS,true]
+    [{missionNamespace getVariable ["OPF_supplyBox", objNull]},MSG_SUPPLY,ICON_SUPPLY],
+    [{missionNamespace getVariable ["OPF_armedTrucks", objNull]},MSG_ARMEDTRUCKS,ICON_APC,true],
+    [{missionNamespace getVariable ["OPF_baseAA_1", objNull]},MSG_BASEAA,ICON_AA,true],
+    [{missionNamespace getVariable ["OPF_baseAA_2", objNull]},MSG_BASEAA,ICON_AA,true],
+    [{missionNamespace getVariable ["OPF_helicopters", objNull]},MSG_HELICOPTERS,ICON_HELICOPTER,true],
+    [{missionNamespace getVariable ["OPF_howitzer", objNull]},MSG_HOWITZER,ICON_ARTILLERY,true],
+    [{missionNamespace getVariable ["OPF_jeeps", objNull]},MSG_JEEPS,ICON_CAR,true],
+    [{missionNamespace getVariable ["OPF_planes", objNull]},MSG_PLANES,ICON_PLANE,true],
+    [{missionNamespace getVariable ["OPF_IFV", objNull]},MSG_IFV,ICON_APC,true],
+    [{missionNamespace getVariable ["OPF_gunships", objNull]},MSG_GUNSHIPS,ICON_HELICOPTER,true],
+    [{missionNamespace getVariable ["rallybase_east", objNull]},MSG_RALLY,ICON_RALLY],
+    [{missionNamespace getVariable ["east_MSPRespawn_1", objNull]},"Mobile Spawn Point",ICON_RALLY,true],
+    [{missionNamespace getVariable ["east_MSP_1", objNull]},"MSP 1",ICON_RALLY,false,east],
+    [{missionNamespace getVariable ["east_MSP_2", objNull]},"MSP 2",ICON_RALLY,false,east],
+    [{missionNamespace getVariable ["east_MSP_3", objNull]},"MSP 3",ICON_RALLY,false,east],
+    [{missionNamespace getVariable ["east_MSP_4", objNull]},"MSP 4",ICON_RALLY,false,east],
+    [{missionNamespace getVariable ["east_MSP_5", objNull]},"MSP 5",ICON_RALLY,false,east],
+    [{missionNamespace getVariable ["OPF_servicePoint", objNull]},MSG_SERVICEPOINT,ICON_REPAIR],
+    [{missionNamespace getVariable ["OPF_boats", objNull]},MSG_BOATS,ICON_BOATS, true],
+    [{missionNamespace getVariable ["OPF_armedBoats", objNull]},MSG_ARMEDBOATS,ICON_BOATS, true],
+    [{missionNamespace getVariable ["OPF_pBoats", objNull]},MSG_PBOATS,ICON_BOATS,true]
   ]];
 
   fnf_ui setVariable ["westHelperTargets",[
-    [BLU_supplyBox,MSG_SUPPLY,ICON_SUPPLY],
-    [BLU_armedTrucks,MSG_ARMEDTRUCKS,ICON_APC,true],
-    [BLU_baseAA_1,MSG_BASEAA,ICON_AA,true],
-    [BLU_baseAA_2,MSG_BASEAA,ICON_AA,true],
-    [BLU_helicopters,MSG_HELICOPTERS,ICON_HELICOPTER,true],
-    [BLU_howitzer,MSG_HOWITZER,ICON_ARTILLERY,true],
-    [BLU_jeeps,MSG_JEEPS,ICON_CAR,true],
-    [BLU_planes,MSG_PLANES,ICON_PLANE,true],
-    [BLU_IFV,MSG_IFV,ICON_APC,true],
-    [BLU_gunships,MSG_GUNSHIPS,ICON_HELICOPTER,true],
-    [rallybase_west,MSG_RALLY,ICON_RALLY],
-    [west_MSPRespawn_1,"Mobile Spawn Point",ICON_RALLY,true],
-    [west_MSP_1,"MSP 1",ICON_RALLY,false,west],
-    [west_MSP_2,"MSP 2",ICON_RALLY,false,west],
-    [west_MSP_3,"MSP 3",ICON_RALLY,false,west],
-    [west_MSP_4,"MSP 4",ICON_RALLY,false,west],
-    [west_MSP_5,"MSP 5",ICON_RALLY,false,west],
-    [BLU_servicePoint,MSG_SERVICEPOINT,ICON_REPAIR],
-    [BLU_boats,MSG_BOATS,ICON_BOATS, true],
-    [BLU_armedBoats,MSG_ARMEDBOATS,ICON_BOATS, true],
-    [BLU_pBoats,MSG_PBOATS,ICON_BOATS,true]
+    [{missionNamespace getVariable ["BLU_supplyBox", objNull]},MSG_SUPPLY,ICON_SUPPLY],
+    [{missionNamespace getVariable ["BLU_armedTrucks", objNull]},MSG_ARMEDTRUCKS,ICON_APC,true],
+    [{missionNamespace getVariable ["BLU_baseAA_1", objNull]},MSG_BASEAA,ICON_AA,true],
+    [{missionNamespace getVariable ["BLU_baseAA_2", objNull]},MSG_BASEAA,ICON_AA,true],
+    [{missionNamespace getVariable ["BLU_helicopters", objNull]},MSG_HELICOPTERS,ICON_HELICOPTER,true],
+    [{missionNamespace getVariable ["BLU_howitzer", objNull]},MSG_HOWITZER,ICON_ARTILLERY,true],
+    [{missionNamespace getVariable ["BLU_jeeps", objNull]},MSG_JEEPS,ICON_CAR,true],
+    [{missionNamespace getVariable ["BLU_planes", objNull]},MSG_PLANES,ICON_PLANE,true],
+    [{missionNamespace getVariable ["BLU_IFV", objNull]},MSG_IFV,ICON_APC,true],
+    [{missionNamespace getVariable ["BLU_gunships", objNull]},MSG_GUNSHIPS,ICON_HELICOPTER,true],
+    [{missionNamespace getVariable ["rallybase_west", objNull]},MSG_RALLY,ICON_RALLY],
+    [{missionNamespace getVariable ["west_MSPRespawn_1", objNull]},"Mobile Spawn Point",ICON_RALLY,true],
+    [{missionNamespace getVariable ["west_MSP_1", objNull]},"MSP 1",ICON_RALLY,false,west],
+    [{missionNamespace getVariable ["west_MSP_2", objNull]},"MSP 2",ICON_RALLY,false,west],
+    [{missionNamespace getVariable ["west_MSP_3", objNull]},"MSP 3",ICON_RALLY,false,west],
+    [{missionNamespace getVariable ["west_MSP_4", objNull]},"MSP 4",ICON_RALLY,false,west],
+    [{missionNamespace getVariable ["west_MSP_5", objNull]},"MSP 5",ICON_RALLY,false,west],
+    [{missionNamespace getVariable ["BLU_servicePoint", objNull]},MSG_SERVICEPOINT,ICON_REPAIR],
+    [{missionNamespace getVariable ["BLU_boats", objNull]},MSG_BOATS,ICON_BOATS, true],
+    [{missionNamespace getVariable ["BLU_armedBoats", objNull]},MSG_ARMEDBOATS,ICON_BOATS, true],
+    [{missionNamespace getVariable ["BLU_pBoats", objNull]},MSG_PBOATS,ICON_BOATS,true]
   ]];
 };
 
@@ -98,7 +98,8 @@ fnf_ui setVariable ["fnf_drawHelpersHandle", (
 
     {
       _x params ["_target", "_text", "_icon", ["_respawn",false], ["_side",sideEmpty]];
-      if (!isNil "_target") then {
+      _target = call _target;
+      if (!isNull _target) then {
         if (_respawn) then {
           _text = format ["%1 (%2 minute respawn)",_text, ceil(parseNumber(_target getVariable ["delay","0"]) / 60)];
         };
