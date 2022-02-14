@@ -25,8 +25,8 @@ params [
 ];
 
 if (isNull _unit) exitWith {nil};
-
-private _category = selectRandom(_cfgChoices);
+if (count _cfgChoices == 0) exitWith {nil};
+private _category = _cfgChoices # 0;
 if (isNil "_category") exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call fnf_ui_fnc_notify;
@@ -35,7 +35,7 @@ if (isNil "_category") exitWith {
   }] call CBA_fnc_waitUntilAndExecute;
 };
 _category params ["_sidearms","_mags"];
-fnf_loadout_sidearm = selectRandom(_sidearms);
+fnf_loadout_sidearm = _sidearms # 0;
 fnf_loadout_sidearmMagazines = [_mags, fnf_loadout_sidearm] call fnf_loadout_fnc_getWeaponMagazines;
 
 if !(fnf_loadout_sidearm isEqualTo "" || (count fnf_loadout_sidearmMagazines) isEqualTo 0) then {

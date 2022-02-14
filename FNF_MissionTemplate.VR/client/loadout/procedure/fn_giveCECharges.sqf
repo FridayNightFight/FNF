@@ -27,7 +27,7 @@ params [
 if (isNull _unit) exitWith {nil};
 
 if (count _cfgExplosiveChoices > 0) then {
-  fnf_selector_currentExplosives = selectRandom(_cfgExplosiveChoices);
+  fnf_selector_currentExplosives = _cfgExplosiveChoices # 0;
   // "debug_console" callExtension str(fnf_loadout_explosives);
   {
     [_x, "backpack", _unit] call fnf_loadout_fnc_addGear;
