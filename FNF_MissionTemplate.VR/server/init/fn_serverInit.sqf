@@ -47,6 +47,7 @@ call fnf_server_fnc_markCustomObjs;
 call fnf_admin_fnc_serverCommands;
 
 call fnf_server_fnc_setupGame;
+call fnf_server_fnc_newPlayers;
 call fnf_server_fnc_webhook_roundPrep;
 
 // after custom building markers are up, recreate safe markers so they're on top and visible
