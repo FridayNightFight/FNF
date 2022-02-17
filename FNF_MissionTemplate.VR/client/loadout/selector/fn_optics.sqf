@@ -1,5 +1,5 @@
 //Add magnified optics if enabled
-// player setVariable ["fnf_ChosenOptic", (primaryWeaponItems player) select 2];
+// fnf_loadout_chosenOptic = (primaryWeaponItems player) select 2;
 
 _fnc_hintDetails = {
   private _thisCfg = _this call CBA_fnc_getItemConfig;
@@ -16,8 +16,8 @@ _fnc_hintDetails = {
   [_textArr joinString '<br/>', "success", 5] call fnf_ui_fnc_notify;
 };
 
-private _optic = _this select 2;
-private _previousOptic = player getVariable ["fnf_ChosenOptic", ""];
+private _optic = _this;
+private _previousOptic = fnf_loadout_chosenOptic;
 // Every player should have 1 optic on the field. No sense to trade.
 _loadoutWeapons = uniformItems player;
 _loadoutWeapons append (vestItems player);
@@ -49,7 +49,7 @@ if (_oldOpticPresent || _previousOptic isEqualTo "") then {
 
   player removePrimaryWeaponItem _previousOptic;
   player addPrimaryWeaponItem _optic;
-  player setVariable ["fnf_ChosenOptic", _optic];
+  fnf_loadout_chosenOptic = _optic;
 
   _optic call _fnc_hintDetails;
 } else {

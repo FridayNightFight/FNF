@@ -58,10 +58,11 @@ if (count _cfgOpticChoices > 0 && !isNil "fnf_loadout_weapon") then {
   private _optic = selectRandom(_cfgOpticChoices select {_x in ([fnf_loadout_weapon, "optic"] call CBA_fnc_compatibleItems)});
   if (!isNil "_optic") then {
     // _unit addPrimaryWeaponItem _optic;
-    // player setVariable ["fnf_ChosenOptic", _optic];
+    // fnf_loadout_chosenOptic = _optic;
     // diag_log text format["[FNF] (loadout) INFO: Equipped optic ""%1""", _optic];
   };
-  player setVariable ["fnf_ChosenOptic", ""];
+
+  fnf_loadout_chosenOptic = "";
   missionNamespace setVariable ["fnf_selector_optics", _cfgOpticChoices];
 };
 true

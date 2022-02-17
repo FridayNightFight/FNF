@@ -82,7 +82,6 @@ if (fnf_gameMode != "sustainedAssault") then {
 [{missionNamespace getVariable ["fnf_staggeredLoaded",false]}, {
   call fnf_fnc_showTimeOnMap;
   [player getVariable "fnfLoadout"] call fnf_loadout_fnc_applyLoadout;
-  call fnf_selector_fnc_init;
 }] call CBA_fnc_waitUntilAndExecute;
 
 // Wait for mission to start, then execute various restrictions and make sure player has gear

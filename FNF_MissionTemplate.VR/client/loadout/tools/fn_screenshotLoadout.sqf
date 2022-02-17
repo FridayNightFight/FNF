@@ -543,7 +543,7 @@ fnf_loadout_fnc_prepOpticsSelector = {
     private _optic = selectRandom(_cfgOpticChoices select {_x in ([fnf_loadout_weapon, "optic"] call CBA_fnc_compatibleItems)});
     if (!isNil "_optic") then {
       _unit addPrimaryWeaponItem _optic;
-      _setUnit setVariable ["fnf_ChosenOptic", _optic];
+      fnf_loadout_chosenOptic = _optic;
       diag_log text format["[FNF] (loadout) INFO: Equipped optic ""%1""", _optic];
       missionNamespace setVariable ["fnf_selector_optics", _cfgOpticChoices];
     };

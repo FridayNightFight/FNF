@@ -84,6 +84,7 @@ if (!_allOldMagsPresent) exitWith {hint "Missing magazines"};
 
 {[_x, "vest", player] call fnf_loadout_fnc_addGear} forEach _mags;
 player addWeapon _weapon;
+fnf_loadout_weapon = _weapon;
 
 fnf_loadout_weaponMagazines = _mags;
 
@@ -92,8 +93,8 @@ fnf_loadout_weaponMagazines = _mags;
 } forEach _weaponItems;
 
 // if previous optic doesn't fit new weapon, null prior selection so they can pick a new one
-if !((player getVariable ["fnf_chosenOptic",""]) in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)) then {
-  player setVariable ["fnf_chosenOptic", ""];
+if !(fnf_loadout_chosenOptic in ([primaryWeapon player, "optic"] call CBA_fnc_compatibleItems)) then {
+  fnf_loadout_chosenOptic = "";
 };
 
 if ((player getVariable "fnfLoadout") == "RIS") then {

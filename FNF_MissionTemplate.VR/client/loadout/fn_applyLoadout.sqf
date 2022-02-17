@@ -335,6 +335,11 @@ if (isNil {[player, PLAYERLOADOUTVAR] call fnf_loadout_fnc_loadWeapons}) then {
 call fnf_loadout_fnc_setFace;
 
 
+// reset selector init
+[(typeOf player), 1, ["ACE_SelfActions","Gear_Selector"]] call ace_interact_menu_fnc_removeActionFromClass;
+call fnf_selector_fnc_init;
+
+
 if (uniform player != "") then {
   player setVariable ["fnf_lastLoadout", PLAYERLOADOUTVAR];
   [true] call fnf_briefing_fnc_parseGear;

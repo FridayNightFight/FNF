@@ -55,28 +55,28 @@ if (isNil "fnf_cswItems") then {
   missionNamespace setVariable ["fnf_cswItems", [_weapon,_tripod]];
   missionNamespace setVariable ["fnf_cswMags", _mags];
 
-  {
-    private _action = [
-      "CSW_Selector",
-      (if (_x isEqualTo "") then {"Ammo only"} else {getText (configFile >> "cfgWeapons" >> _x >> "displayName")}),
-      "",
-      { // statement (pass arg)
-        (_this select 2) call fnf_selector_fnc_csw;
-      },
-      { // condition
-        (missionNamespace getVariable ["fnf_safetyEnabled", true]) &&
-        (player getVariable "fnfLoadout") isEqualTo "SHQAUX"
-      },
-      {},
-      _x // arg to be used in param, arg is array
-    ] call ace_interact_menu_fnc_createAction;
-    [
-      player,
-      1,
-      ["ACE_SelfActions","CSW_Selector"],
-      _action
-    ] call ace_interact_menu_fnc_addActionToObject;
-  } forEach fnf_cswItems;
+  // {
+  //   private _action = [
+  //     "CSW_Selector",
+  //     (if (_x isEqualTo "") then {"Ammo only"} else {getText (configFile >> "cfgWeapons" >> _x >> "displayName")}),
+  //     "",
+  //     { // statement (pass arg)
+  //       (_this select 2) call fnf_selector_fnc_csw;
+  //     },
+  //     { // condition
+  //       (missionNamespace getVariable ["fnf_safetyEnabled", true]) &&
+  //       (player getVariable "fnfLoadout") isEqualTo "SHQAUX"
+  //     },
+  //     {},
+  //     _x // arg to be used in param, arg is array
+  //   ] call ace_interact_menu_fnc_createAction;
+  //   [
+  //     player,
+  //     1,
+  //     ["ACE_SelfActions","CSW_Selector"],
+  //     _action
+  //   ] call ace_interact_menu_fnc_addActionToObject;
+  // } forEach fnf_cswItems;
 
   // KIT APPLIES HERE
   ["BASE"] call fnf_loadout_fnc_applyLoadout;
