@@ -28,8 +28,8 @@ if (PLAYERLOADOUTVAR != "CE") exitWith {
 };
 
 switch (playerSide) do {
-  case east: {fnf_fortifyMarkers = [nil, west, true] call fnf_fnc_inSafeZone};
-  case west: {fnf_fortifyMarkers = [nil, east, true] call fnf_fnc_inSafeZone};
+  case east: {fnf_fortifyMarkers = [nil, east, true] call fnf_fnc_inSafeZone};
+  case west: {fnf_fortifyMarkers = [nil, west, true] call fnf_fnc_inSafeZone};
   case independent: {fnf_fortifyMarkers = [nil, independent, true] call fnf_fnc_inSafeZone};
 };
 

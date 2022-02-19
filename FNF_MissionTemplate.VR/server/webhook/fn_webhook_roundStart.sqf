@@ -132,7 +132,7 @@ _fnc_doCount = {
     ["_unit", objNull],
     ["_side", sideEmpty]
   ];
-  if (isNull _unit || _side isEqualTo sideEmpty) exitWith {false};
+  if (isNull _unit || _side isEqualTo sideEmpty || !(_unit isKindOf "CAManBase")) exitWith {false};
 
   (
     side (group _unit) isEqualTo _side &&
@@ -146,17 +146,17 @@ private ["_bluPlayers", "_opfPlayers", "_indPlayers"];
 if (playableSlotsNumber west == 0) then {
   _bluPlayers = 0;
 } else {
-  _bluPlayers = str(count(allPlayers select {[_x, west] call _fnc_doCount}));
+  _bluPlayers = count(allPlayers select {[_x, west] call _fnc_doCount});
 };
 if (playableSlotsNumber east == 0) then {
   _opfPlayers = 0;
 } else {
-  _opfPlayers = str(count(allPlayers select {[_x, east] call _fnc_doCount}));
+  _opfPlayers = count(allPlayers select {[_x, east] call _fnc_doCount});
 };
 if (playableSlotsNumber independent == 0) then {
   _indPlayers = 0;
 } else {
-  _indPlayers = str(count(allPlayers select {[_x, independent] call _fnc_doCount}));
+  _indPlayers = count(allPlayers select {[_x, independent] call _fnc_doCount});
 };
 _playingPlayerCount = _bluPlayers + _opfPlayers + _indPlayers;
 
@@ -167,9 +167,9 @@ _playingPlayerCount = _bluPlayers + _opfPlayers + _indPlayers;
   _playingPlayerCount,
   _spectatorCount,
   _staffCount,
-  _bluPlayers,
-  _opfPlayers,
-  _indPlayers,
+  str(_bluPlayers),
+  str(_opfPlayers),
+  str(_indPlayers),
   _bluAssets,
   _opfAssets,
   _indAssets

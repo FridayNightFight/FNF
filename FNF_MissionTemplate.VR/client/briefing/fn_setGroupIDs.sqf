@@ -209,6 +209,7 @@ _groups = [
 ];
 
 missionNamespace setVariable ["fnf_templateGroupsList", _groups apply {_x select 0}, true];
+missionNamespace setVariable ["fnf_templateGroupsListExtended", _groups, true];
 
 private ["_grp"];
 {
