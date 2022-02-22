@@ -43,9 +43,9 @@
 #define DM_RIFLE "rhs_weap_hk416d145"
 #define DM_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:11"
 
-#define MMG_RIFLE "rhs_weap_mg42"
-#define MMG_MAG "rhsgref_296Rnd_792x57_SmE_belt:6"
-#define MMG_MAG_ASST "rhsgref_296Rnd_792x57_SmE_belt:4"
+#define MMG_RIFLE "UK3CB_MG3"
+#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:8"
+#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:6"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhsusf_weap_MP7A2"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhsusf_mag_40Rnd_46x30_FMJ:8"
@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
 #define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_NATO_BUNDESWEHR_2010_G36 {
   author = "Mazz38";

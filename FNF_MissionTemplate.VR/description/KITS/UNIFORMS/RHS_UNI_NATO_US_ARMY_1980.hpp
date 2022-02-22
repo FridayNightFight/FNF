@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_altis_lizard", "rhsgref_uniform_altis_lizard_olive"
+#define UNIFORM "UK3CB_CW_US_B_LATE_U_CombatUniform_01_WDL", "UK3CB_CW_US_B_LATE_U_CombatUniform_03_WDL", "UK3CB_CW_US_B_LATE_U_CombatUniform_04_WDL"
 
-#define VEST "rhsgref_otv_khaki"
+#define VEST "UK3CB_CW_US_B_LATE_V_PASGT_Rif_Vest"
 #define VEST_LEADER VEST
-#define VEST_AR VEST
-#define VEST_MEDIC VEST
-#define VEST_CREWMAN VEST
-#define VEST_PILOT VEST
+#define VEST_AR "UK3CB_CW_US_B_LATE_V_PASGT_MG_Vest"
+#define VEST_MEDIC "UK3CB_CW_US_B_LATE_V_PASGT_Medic_Vest"
+#define VEST_CREWMAN "UK3CB_CW_US_B_LATE_V_PASGT_Crew_Vest"
+#define VEST_PILOT "UK3CB_V_Pilot_Vest"
 
-#define HELMET "rhsgref_helmet_pasgt_altis_lizard"
-#define HELMET_CMDR "rhsusf_Bowman"
+#define HELMET "UK3CB_CW_US_B_LATE_H_PASGT_01_WDL", "UK3CB_CW_US_B_LATE_H_PASGT_02_WDL"
+#define HELMET_CMDR "UK3CB_CW_US_B_LATE_H_JNR_OFF_Patrol_Cap_WDL_01"
 #define HELMET_RECON "rhssaf_booniehat_woodland"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET_CREWMAN "rhsusf_cvc_green_helmet"
+#define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
 
-#define BACKPACK "B_Kitbag_rgr"
-#define BACKPACK_RADIO "TFAR_rt1523g_sage"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "B_FieldPack_khk"
+#define BACKPACK "UK3CB_B_Alice_K"
+#define BACKPACK_RADIO "UK3CB_B_B_Radio_Backpack"
+#define BACKPACK_AR "rhsgref_hidf_alicepack"
+#define BACKPACK_AT "rhsgref_hidf_alicepack"
+#define BACKPACK_MEDIC "UK3CB_B_US_Medic_Backpack"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_GREEKFORCES_2010 {
+class RHS_UNI_NATO_US_ARMY_1980 {
   author = "Mazz38";
-  description = "GR: Modern Greek Armed Forces Lizard Camouflage";
+  description = "USA: 1980s American ARMY Woodland Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -46,6 +46,7 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
   class SGT : SL {};
   class PL : SGT {
     headgear[] = {HELMET_CMDR};
+    uniform[] = {"UK3CB_CW_US_B_LATE_U_JNR_OFFICER_Uniform_01_WDL"};
   };
 
   class ARA : BASE {
@@ -88,7 +89,6 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
@@ -105,6 +105,7 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
     backpack[] = {BACKPACK_RADIO};
+    uniform[] = {"UK3CB_CW_US_B_LATE_U_H_Pilot_Uniform_01_NATO"};
   };
 
   class MED : BASE {

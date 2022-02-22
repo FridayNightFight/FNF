@@ -22,7 +22,7 @@
 #define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_aks74n_2"
+#define CARBINE "rhs_weap_aks74un"
 #define CARBINE_MAG "rhs_30Rnd_545x39_7N10_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
 #define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
 #define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_t5000"
 #define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ID_MEC_2010_AK103 {
   author = "Mazz38";
