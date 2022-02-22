@@ -52,7 +52,13 @@ if (
     _thisBinoc = getText(_binocs >> "rangefinder");
   };
   if (_role in _binocRolesVector) then {
-    _thisBinoc = getText(_binocs >> "vector21");
+    // X-Ray SL gets binoculars
+    if ((roleDescription _unit) find "X-Ray" > -1) then {
+      _thisBinoc = getText(_binocs >> "standard");
+    } else {
+      // all other SLs get Vector21
+      _thisBinoc = getText(_binocs >> "vector21");
+    };
   };
 };
 
