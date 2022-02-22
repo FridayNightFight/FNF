@@ -143,9 +143,9 @@ fnf_grnAT_Delta = GEARDEFAULT;
 // Adjusts what loadout the two extra Squad HQ members will receive
 // Set to 0 to make default crewman, set to one of the options to enable equipment for it.
 // BLUFOR
-  fnf_westAlphaAuxRole = 0;
-  fnf_westBravoAuxRole = 0;
-  fnf_westCharlieAuxRole = 0;
+  fnf_westAlphaAuxRole = HMG_DSHKM(6);
+  fnf_westBravoAuxRole = AT_TOW(4);
+  fnf_westCharlieAuxRole = MORTAR_M252(10,5,5);
   fnf_westDeltaAuxRole = 0;
 
 // OPFOR

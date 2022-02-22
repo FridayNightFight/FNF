@@ -627,12 +627,13 @@ fnf_briefing_MMNotes = {
         {
           (_x # 0) params ["_targetHeader"];
           (_x # 1) params ["_role", "_name", "_obj"];
-          if (!isNil "_obj") then {
-            _mmNotesStructGamemode pushBack format ["<t color='%1'>  %2:</t> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+          if (isNil "_obj") then {continue};
+          if (!isNull _obj) then {
+            _mmNotesStructGamemode pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           } else {
-            _mmNotesStructGamemode pushBack format ["<t color='%1'>  %2:</t> %3 (%4, played by [NOT FILLED])<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+            _mmNotesStructGamemode pushBack format ["<font color='%1'>  %2:</font> %3 (%4, [slot isn't filled])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           };
-        } forEach fnf_assassinationTargets;
+        } forEach fnf_assassin_targets;
 
         [fnf_ui_structTextRef, "Gamemode", _mmNotesStructGamemode joinString ""] call BIS_fnc_setToPairs;
       }] call CBA_fnc_addEventHandler;

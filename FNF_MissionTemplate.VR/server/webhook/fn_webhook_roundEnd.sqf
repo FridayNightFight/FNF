@@ -42,7 +42,7 @@ _fnc_doCount = {
     ["_unit", objNull],
     ["_side", sideEmpty]
   ];
-  if (isNull _unit || _side isEqualTo sideEmpty) exitWith {false};
+  if (isNull _unit || _side isEqualTo sideEmpty || !(_unit isKindOf "CAManBase")) exitWith {false};
 
   (
     side (group _unit) isEqualTo _side &&

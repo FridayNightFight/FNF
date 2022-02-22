@@ -35,9 +35,11 @@ if (isNil "_category") exitWith {
   }] call CBA_fnc_waitUntilAndExecute;
   nil
 };
+
 _category params ["_weapons","_mags"];
 fnf_loadout_weapon = _weapons # 0;
 fnf_loadout_weaponMagazines = [_mags, fnf_loadout_weapon] call fnf_loadout_fnc_getWeaponMagazines;
+
 
 if !(fnf_loadout_weapon isEqualTo "" || (count fnf_loadout_weaponMagazines) isEqualTo 0) then {
   _unit addWeapon fnf_loadout_weapon;

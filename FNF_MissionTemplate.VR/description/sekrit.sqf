@@ -18,7 +18,11 @@ fnf_ui_structTextRef_AssetsOPF = [];
 fnf_ui_structTextRef_AssetsIND = [];
 fnf_ui_structTextRef_AssetsOther = [];
 
-_rules = call compile preprocessFile "description\RulesAndPolicies.txt";
+
+_rules = "Framework changelog file could not be loaded.";
+if (fileExists "description\RulesAndPolicies.txt") then {
+  _rules = (loadFile "description\RulesAndPolicies.txt") regexReplace ["\n", "<br/>"];
+};
 [fnf_ui_structTextRef, "Rules", _rules] call BIS_fnc_setToPairs;
 
 #define COLOR1 "#944509"
@@ -27,72 +31,21 @@ _rules = call compile preprocessFile "description\RulesAndPolicies.txt";
 #define COLOR4 "#008394"
 #define COLOR5 "#1BCAE0"
 
-fnf_ui_changelogText = ([
-  "NEW:",
-  "  - major code refactor for a number of functions including inline documentation",
-  "  - additional notifications for vetters if mission has a bad configuration",
-  "",
-  "  Updated Mission SQM",
-  "    - migrated everything into layers for organization and better in-game management",
-  "    - more descriptive commenting for new MMs",
-  "  Admin Panel",
-  "    - shows notification to staff when a staff action is performed",
-  "    - also sends a message to Discord documenting it",
-  "    - full menu where everything except game clock works",
-  "    - foundation is present to migrate playersList to config instead, and allow multiple selection and feed multiple IDs to button functions",
-  "    - players acted on will receive notifications informing them that they were",
-  "    - admins with panel open will see results of action by any admin in their result panel, to reduce duplicate actions",
-  "    - radio system now allows dynamic base channel change, completing the indfor allegiance change control in admin panel (will enter the radio freq structure of the allied side, or their own if not allied)",
-  "  Sustained Assault integration",
-  "    - 1 framework that works with both standard and SA mission files",
-  "    - mission templates for creating more content",
-  "    - Vietnam template now available, Modern coming soon",
-  "    Now with:",
-  "      - mobile spawn points",
-  "      - better respawn handling",
-  "",
-  "FIXED:",
-  "  - when the initial primary weapon a player was assigned at mission start did not support any available optics, the selector failed to initialize",
-  "  - now delays radio assignment until core loadout is done to avoid potential issues w/ server not instantiating, plus revamp of handling",
-  "  - ammo choices for OPFOR loadouts updated",
-  "<br/>",
-  "///////////////////////",
-  "",
-  "v3.1.0",
-  "- adds CSW configuration to diary",
-  "- adds custom UI mission info panel for alive/dead player and spectators (Ctrl-J or click button while spectating)",
-  "- reworks spectator init to support missionInfoPanel data",
-  "- adds safe start timer (only visible while map is open during safestart)",
-  "- adds Assassination game mode",
-  "- CTF",
-  "  - players are no longer able to pick up the flag while in a vehicle",
-  "  - players may no longer get into armed vehicles while carrying the flag",
-  "- Rush/Uplink",
-  "  - 'side eliminated' notifications will not appear while a terminal is being hacked",
-  "  - if a side was eliminated while a terminal was active, the notification will be delayed until it's paused or its time runs out",
-  "- fix for safeStart leadership teleport - SLs will now be properly detected and teleported",
-  "- minor loadout updates",
-  "- adds debriefing text",
-  "- disable ambient life for players (rabbits, snakes, etc)",
-  "- set unit ranks for players based on their role (for nametag's sake and future squad (loadout ref)",
-  "- adds small mission intro using textTiles",
-  "- auto-selects Briefing tab of missionInfoPanel",
-  "- auto turn on collision lights of aircraft and helos if the ambient light level at their position is below a certain threshold, to make them easier to find",
-  "- auto disable vehicle sensors (Jets DLC, radar, etc)",
-  "- blufor tracker icon configuration updated so that all sides will see Civilian unit markers",
-  "- adds some cool media to the diary"
-] joinString "<br/>");
 
 fnf_ui_frameworkCreditsText = "Credits file could not be loaded.";
-if (fileExists "credits.txt") then {
-  fnf_ui_frameworkCreditsText = (loadFile "credits.txt") regexReplace ["\n", "<br/>"];
+if (fileExists "description\credits.txt") then {
+  fnf_ui_frameworkCreditsText = (loadFile "description\credits.txt") regexReplace ["\n", "<br/>"];
+};
+
+fnf_ui_changelogText = "Framework changelog file could not be loaded.";
+if (fileExists "description\changelog.txt") then {
+  fnf_ui_changelogText = (loadFile "description\changelog.txt") regexReplace ["\n", "<br/>"];
 };
 
 private _changelogStruct = format [
   "<t size='1.2' shadow='1' color='" + COLOR2 + "'>Changelog</t><br/>Template Version: %1<br/><br/>%2<br/><br/><t size='1.2' shadow='1' color='" + COLOR2 + "'>Credits</t><br/>%3",
   fnf_templateVersion,
-  fnf_ui_changelogText,
-  fnf_ui_frameworkCreditsText
+  fnf_ui_changelogText
 ];
 [fnf_ui_structTextRef, "Framework Info", _changelogStruct] call BIS_fnc_setToPairs;
 
