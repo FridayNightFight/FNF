@@ -29,6 +29,7 @@ class CfgFunctions {
       class lobbyTextGenerator{};
       class inSafeZone{};
       class inRestrictedZone{};
+      class windowBreak{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";

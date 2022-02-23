@@ -60,6 +60,11 @@ if (
       _thisBinoc = getText(_binocs >> "vector21");
     };
   };
+
+  // X-Ray RI (not RIS) should get Vector
+  if (_role == "RI" && ((roleDescription _unit) find "X-Ray" > -1)) then {
+    _thisBinoc = getText(_binocs >> "vector21");
+  };
 };
 
 if (!isNil "_thisBinoc") then {
