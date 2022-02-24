@@ -84,6 +84,15 @@ if (fnf_gameMode != "sustainedAssault") then {
   [player getVariable "fnfLoadout"] call fnf_loadout_fnc_applyLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 
+// at end of staggered load, check the player's limited FNF play count & notify server if they're new
+[{missionNamespace getVariable ["fnf_staggeredLoaded",false] && time > 0}, {
+  private _timesPlayed = profileNamespace getVariable ["fnf_isNewPlayer", 0];
+  if (_timesPlayed >= 0 && _timesPlayed <= 3) then {
+    ["FNF_NewPlayers_AddToGroup", [group player, player, _timesPlayed]] call CBA_fnc_serverEvent;
+    profileNamespace setVariable ["fnf_isNewPlayer", _timesPlayed + 1];
+  };
+}] call CBA_fnc_waitUntilAndExecute;
+
 // Wait for mission to start, then execute various restrictions and make sure player has gear
 [{time > 0}, {
   call fnf_restrictions_fnc_init;
@@ -98,6 +107,8 @@ if (fnf_gameMode != "sustainedAssault") then {
   // disable raycast CPU processing of visibility between entities, not needed in all-PvP
   [] spawn {sleep 0.1; disableRemoteSensors true};
 
+
+  // show tiled panel with mission context
   // Compile Date text
   date params ["_year", "_month", "_day", "_hour", "_minute"];
 
@@ -135,7 +146,7 @@ if (fnf_gameMode != "sustainedAssault") then {
     true, // position
     10, // tileSize
     10, // duration
-    3 // fadeInOutTime
+    1 // fadeInOutTime
   ] spawn BIS_fnc_textTiles;
 }] call CBA_fnc_waitUntilAndExecute;
 
