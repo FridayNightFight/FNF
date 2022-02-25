@@ -245,6 +245,34 @@ if (fnf_gameMode == "sustainedAssault") then {
     };
   } forEach [west, east, independent, civilian];
 
+  #define MSPOBJ (missionNamespace getVariable [(_MSPprefix + str(_i)), nil])
+  fnf_MSPInWater_handle = [{
+    {
+      private _thisSide = _x;
+      private _thisSideStr = toLower(_thisSide call BIS_fnc_sideNameUnlocalized);
+      private _thisSideStrLoc = _thisSide call BIS_fnc_sideName;
+      private _MSPPrefix = format["%1_MSP_", _thisSideStr];
+      private _MSPPresent = [];
+      for "_i" from 1 to 5 do {
+        if (!isNil {MSPOBJ}) then {
+          _MSPPresent pushBack MSPOBJ;
+        };
+      };
+      {
+        _MSP = _x;
+        if ((getPosASLW _MSP select 2) >= 0) then {
+          _MSP setVariable ["fnf_isUnderwater", false];
+        };
+        if (_MSP getVariable ["fnf_isUnderwater", false]) then {
+          _MSP setDamage 1;
+        };
+        if ((getPosASLW _MSP select 2) < 0) then {
+          _MSP setVariable ["fnf_isUnderwater", true];
+        };
+      } forEach _MSPPresent;
+    } forEach [west, east, independent, civilian];
+  }, 15] call CBA_fnc_addPerFrameHandler;
+
   // add handler for zoneProtection on vehicles
   #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
   [{
