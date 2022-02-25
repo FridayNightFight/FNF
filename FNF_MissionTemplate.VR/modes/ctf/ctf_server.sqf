@@ -3,8 +3,10 @@ if (!isServer) exitWith {};
 
 #include "..\..\mode_config\ctf.sqf"
 
+
 fnf_firstFlag = false;
 fnf_flagCaptureTime = _flagCaptureTime;
+publicVariable "fnf_ctf_allowAirVehicleCarry";
 
 ctf_flag = createVehicle ["rhs_Flag_chdkz", getPosATL ctf_flagPole, [], 0, "CAN_COLLIDE"];
 publicVariable "ctf_flag";

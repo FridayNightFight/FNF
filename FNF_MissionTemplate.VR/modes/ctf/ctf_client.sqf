@@ -79,8 +79,25 @@ CTFNoArmedVehicles = player addEventHandler ["GetInMan", {
   params ["_unit", "_role", "_vehicle", "_turret"];
   private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _vehicle));
   private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
-  if (_threat select 0 > 0.2 && player getVariable ["fnf_flagUnit",false]) then {
-    _unit action ["Eject", _vehicle];
+
+  // if not carrying the flag, disregard restriction
+  if !(player getVariable ["fnf_flagUnit",false]) exitWith {};
+
+  // check by air
+  if (_vehicle isKindOf "Air") exitWith {
+    _unit action ["getOut", _vehicle];
+    ["<t align='center'>You cannot board an air vehicle while carrying the flag!</t>", "warning", 7] call fnf_ui_fnc_notify;
+  };
+
+  // check by threat
+  // _armedVehiclesManual = ["m1165a1_gmv"];
+  // if ((_threat select 0 > 0.2 || ({(typeOf _vehicle) find _x > -1} count _armedVehiclesManual) > 0)) exitWith {
+
+  // check if primary turret exists, is not FFV, and has a weapon
+  private _allTurrets = allTurrets _vehicle;
+  if ((_allTurrets find [0] > -1) && count (_vehicle weaponsTurret [0]) > 0) then {
+    _unit action ["getOut", _vehicle];
     ["<t align='center'>You cannot board an armed vehicle while carrying the flag!</t>", "warning", 7] call fnf_ui_fnc_notify;
   };
+
 }];

@@ -99,7 +99,7 @@ if !(fnf_gameMode == "sustainedAssault") then {
 } forEach (entities[["Air"], [], false, true]);
 
 //Clear vehicle inventories
-["AllVehicles", "init", {
+["All", "InitPost", {
   private _vic = (_this select 0);
   if (_vic isKindOf "Man") exitWith {}; //Exit so the code below doesn't run for infantry units
 
@@ -115,7 +115,7 @@ if !(fnf_gameMode == "sustainedAssault") then {
     _sensors = _sensors apply {_x # 0};
     {_vic enableVehicleSensor [_x, false]} forEach _sensors;
   };
-}, true, [], true] call CBA_fnc_addClassEventHandler;
+}, true, ["CAManBase", "Static"], true] call CBA_fnc_addClassEventHandler;
 
 
 ["TeamkillDetected", {
