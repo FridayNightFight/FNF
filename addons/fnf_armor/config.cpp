@@ -15,6 +15,41 @@ class CfgWeapons
 	/* Begin Vanilla and RHS */
 	class Vest_Camo_Base;
 	class Vest_NoCamo_Base;
+
+	class V_Pocketed_base_F: Vest_Camo_Base
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
 	class V_PlateCarrier1_rgr: Vest_NoCamo_Base
 	{
 		class ItemInfo: ItemInfo
@@ -3066,8 +3101,37 @@ class CfgWeapons
 		};
 	};
 
-	class V_Pocketed_base_F: Vest_Camo_Base
+	class UK3CB_PASGT_Vest_Base: V_PlateCarrier1_rgr
 	{
-		
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
+			};
+		};
 	};
 };
