@@ -22,6 +22,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -56,6 +62,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -89,6 +101,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -122,6 +140,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -155,6 +179,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -188,6 +218,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -221,6 +257,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -254,6 +296,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -287,6 +335,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -320,6 +374,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -353,6 +413,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -386,6 +452,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -419,6 +491,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -452,6 +530,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -485,6 +569,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -518,6 +608,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -551,6 +647,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -584,6 +686,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -617,6 +725,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -650,6 +764,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -683,6 +803,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -716,6 +842,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -749,6 +881,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -782,6 +920,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -815,6 +959,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -848,6 +998,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -881,6 +1037,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -914,6 +1076,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -947,6 +1115,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -980,6 +1154,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1013,6 +1193,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1046,6 +1232,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1079,6 +1271,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1112,6 +1310,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1145,6 +1349,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1178,6 +1388,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1211,6 +1427,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1244,6 +1466,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1277,6 +1505,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1310,6 +1544,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1343,6 +1583,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1376,6 +1622,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1409,6 +1661,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1442,6 +1700,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1475,6 +1739,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1508,6 +1778,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1541,6 +1817,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1574,6 +1856,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1607,6 +1895,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1640,6 +1934,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1673,6 +1973,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1706,6 +2012,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1739,6 +2051,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1772,6 +2090,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1805,6 +2129,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1838,6 +2168,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1871,6 +2207,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1904,6 +2246,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1937,6 +2285,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -1970,6 +2324,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2003,6 +2363,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2036,6 +2402,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2069,6 +2441,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2102,6 +2480,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2135,6 +2519,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2168,6 +2558,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2201,6 +2597,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2234,6 +2636,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2267,6 +2675,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2300,6 +2714,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2333,6 +2753,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2366,6 +2792,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2399,6 +2831,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2432,6 +2870,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2465,6 +2909,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2498,6 +2948,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2531,6 +2987,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2564,6 +3026,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2597,6 +3065,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2630,6 +3104,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2663,6 +3143,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2696,6 +3182,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2729,6 +3221,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2767,6 +3265,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2801,6 +3305,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2835,6 +3345,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2869,6 +3385,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2903,6 +3425,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2937,6 +3465,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -2971,6 +3505,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -3005,6 +3545,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -3039,6 +3585,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -3073,6 +3625,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
@@ -3107,6 +3665,12 @@ class CfgWeapons
 		{
 			class HitpointsProtectionInfo
 			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 0;
+					passThrough = 0.5;
+				};
 				class Chest
 				{
 					hitpointName = "HitChest";
