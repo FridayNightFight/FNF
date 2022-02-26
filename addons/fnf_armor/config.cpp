@@ -39,6 +39,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -64,6 +70,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -93,6 +105,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -118,6 +136,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -147,6 +171,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -172,6 +202,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -201,6 +237,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -226,6 +268,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -255,6 +303,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -280,6 +334,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -309,6 +369,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -334,6 +400,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -363,6 +435,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -388,6 +466,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -417,6 +501,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -442,6 +532,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -471,6 +567,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -496,6 +598,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -525,6 +633,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -550,6 +664,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -579,6 +699,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -604,6 +730,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -633,6 +765,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -658,6 +796,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -687,6 +831,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -712,6 +862,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -741,6 +897,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -766,6 +928,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -795,6 +963,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -820,6 +994,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -849,6 +1029,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -874,6 +1060,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -903,6 +1095,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -928,6 +1126,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -957,6 +1161,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -982,6 +1192,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1011,6 +1227,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1036,6 +1258,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1065,6 +1293,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1090,6 +1324,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1119,6 +1359,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1144,6 +1390,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1173,6 +1425,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1198,6 +1456,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1227,6 +1491,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1252,6 +1522,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1281,6 +1557,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1306,6 +1588,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1335,6 +1623,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1360,6 +1654,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1389,6 +1689,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1414,6 +1720,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1443,6 +1755,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1468,6 +1786,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1497,6 +1821,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1522,6 +1852,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1551,6 +1887,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1576,6 +1918,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1605,6 +1953,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1630,6 +1984,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1659,6 +2019,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1684,6 +2050,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1713,6 +2085,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1738,6 +2116,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1767,6 +2151,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1792,6 +2182,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1821,6 +2217,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1846,6 +2248,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1875,6 +2283,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1900,6 +2314,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1929,6 +2349,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -1954,6 +2380,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -1983,6 +2415,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2008,6 +2446,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -2037,6 +2481,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2062,6 +2512,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -2091,6 +2547,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2116,6 +2578,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -2145,6 +2613,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2170,6 +2644,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -2199,6 +2679,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2224,6 +2710,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -2258,6 +2750,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2284,6 +2782,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -2314,6 +2818,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2340,6 +2850,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
@@ -2370,6 +2886,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2398,6 +2920,12 @@ class CfgWeapons
 					armor = 15;
 					passThrough = 0.1;
 				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
+					passThrough = 0.1;
+				};
 			};
 		};
 	};
@@ -2424,6 +2952,12 @@ class CfgWeapons
 				{
 					hitpointName = "HitAbdomen";
 					armor = 15;
+					passThrough = 0.1;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 0;
 					passThrough = 0.1;
 				};
 			};
