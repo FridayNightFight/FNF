@@ -5,12 +5,14 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Data_F","A3_Characters_F","rhs_main","rhs_c_troops","rhsusf_c_troops","rhsgref_c_troops","rhssaf_c_troops"};
+		requiredAddons[] = {"A3_Data_F","A3_Characters_F","rhs_main","rhs_c_troops","rhsusf_c_troops","rhsgref_c_troops","rhssaf_c_troops","uk3cb_factions_Weapons","uk3cb_factions_ANP","uk3cb_factions_TKA", "uk3cb_factions_TKP"};
 	};
 };
 class ItemInfo;
 class CfgWeapons
 {
+
+	/* Begin Vanilla and RHS */
 	class Vest_Camo_Base;
 	class Vest_NoCamo_Base;
 	class V_PlateCarrier1_rgr: Vest_NoCamo_Base
@@ -2201,6 +2203,290 @@ class CfgWeapons
 		};
 	};
 	class rhssaf_vest_otv_md2camo: rhssaf_balistic_vest_base
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	/* End Vanilla and RHS */
+
+	/* Begin 3CB Factions */
+
+	class UK3CB_V_Chestrig_Base: Vest_NoCamo_Base
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_Eagle_Vest_Base: V_PlateCarrier1_rgr
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_Eagle_Vest_GL_Base: UK3CB_Eagle_Vest_Base
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_Falcon_Vest_Base: V_PlateCarrier1_rgr
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_TKA_B_V_GA_LITE_TAN: V_PlateCarrierIA1_dgtl
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_TKP_B_V_GA_LITE_BLK: V_PlateCarrierIA1_dgtl
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_ANP_B_V_GA_LITE_BLK: V_PlateCarrierIA1_dgtl
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_TKA_B_V_GA_HEAVY_TAN: V_PlateCarrierIA2_dgtl
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_TKP_B_V_GA_HEAVY_BLK: V_PlateCarrierIA2_dgtl
+	{
+		class ItemInfo: ItemInfo
+		{
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 15;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 15;
+					passThrough = 0.1;
+				};
+			};
+		};
+	};
+
+	class UK3CB_ANP_B_V_GA_HEAVY_BLK: V_PlateCarrierIA2_dgtl
 	{
 		class ItemInfo: ItemInfo
 		{
