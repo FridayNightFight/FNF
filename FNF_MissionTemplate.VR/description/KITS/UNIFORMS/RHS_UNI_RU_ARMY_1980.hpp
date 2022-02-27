@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_3color_desert"
+#define UNIFORM "rhs_uniform_m88_patchless"
 
-#define VEST "rhssaf_vest_md98_rifleman"
-#define VEST_LEADER VEST
+#define VEST "rhs_6b5_rifleman_khaki", "rhs_chicom_khk"
+#define VEST_LEADER "rhs_lifchik_vog"
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
-#define VEST_PILOT VEST
+#define VEST_PILOT "rhsgref_6b23_khaki"
 
-#define HELMET "rhsusf_ach_helmet_DCU", "rhsgref_helmet_pasgt_3color_desert_rhino"
-#define HELMET_CMDR "H_MilCap_gry"
-#define HELMET_RECON "rhsusf_Bowman"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "rhs_ssh68_2"
+#define HELMET_CMDR "UK3CB_CW_SOV_O_EARLY_H_FieldCap_KHK"
+#define HELMET_RECON "rhs_pilotka"
+#define HELMET_CREWMAN "rhs_tsh4"
+#define HELMET_PILOT "rhs_zsh7a_mike"
 
-#define BACKPACK "B_TacticalPack_blk"
-#define BACKPACK_RADIO "TFAR_rt1523g_big_bwmod_tropen"
-#define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_Kitbag_rgr"
+#define BACKPACK "rhs_sidor"
+#define BACKPACK_RADIO "UK3CB_B_O_Tactical_Backpack_Radio"
+#define BACKPACK_AR "B_Carryall_khk"
+#define BACKPACK_AT "rhs_rpg_empty"
+#define BACKPACK_MEDIC "rhs_medic_bag"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_NL_DUTCH_ARMY_2010 {
+class RHS_UNI_RU_ARMY_1980 {
   author = "Mazz38";
-  description = "DE: Modern Dutch ARMY Desert Camouflage";
+  description = "RU: 1980s Russian ARMY Khaki";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -46,6 +46,7 @@ class RHS_UNI_NATO_NL_DUTCH_ARMY_2010 {
   class SGT : SL {};
   class PL : SGT {
     headgear[] = {HELMET_CMDR};
+    uniform[] = {"UK3CB_CW_SOV_O_Late_U_JNR_OFFICER_Uniform_01_KHK"};
   };
 
   class ARA : BASE {
@@ -88,23 +89,24 @@ class RHS_UNI_NATO_NL_DUTCH_ARMY_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
-    uniform[] = {UNIFORM};
+    uniform[] = {"UK3CB_CW_SOV_O_Early_U_Crew_Uniform_01_KHK"};
     vest[] = {VEST_CREWMAN};
     headgear[] = {HELMET_CREWMAN};
   };
 
   class CRL : CR {
     backpack[] = {BACKPACK_RADIO};
+    uniform[] = {"UK3CB_CW_SOV_O_Early_U_Crew_Uniform_03_KHK"};
   };
 
   class PI : BASE {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
     backpack[] = {BACKPACK_RADIO};
+    uniform[] = {"UK3CB_CW_SOV_O_Early_U_H_Pilot_Uniform_01_KHK"};
   };
 
   class MED : BASE {

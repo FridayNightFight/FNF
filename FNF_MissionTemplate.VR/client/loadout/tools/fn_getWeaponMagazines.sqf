@@ -13,7 +13,7 @@
 * Array of magazines:count format compatible with the weapon <ARRAY> of <STRING>
 *
 * Example:
-* [_mags, phx_loadout_weapon] call phx_loadout_fnc_getWeaponMagazines;
+* [_mags, fnf_loadout_weapon] call fnf_loadout_fnc_getWeaponMagazines;
 *
 * Public: No
 */

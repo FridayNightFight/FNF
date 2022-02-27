@@ -2,7 +2,7 @@
 
 //Terminal 1 actions
 if !(isNull term1) then {
-  phx_term1Hacking = false;
+  fnf_term1Hacking = false;
 
   //Start
   [
@@ -10,12 +10,12 @@ if !(isNull term1) then {
     "Start Hack",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && (playerSide == phx_attackingSide) && !phx_term1Hacking",
+    "(_this distance _target < 3) && (playerSide == fnf_attackingSide) && !fnf_term1Hacking",
     "_caller distance _target < 3",
     {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      [term1, true] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term1, true] remoteExec ["fnf_serverTerminalAction", 2, false];
       ["Terminal", "Hack Started"] call BIS_fnc_showSubtitle;
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
@@ -32,12 +32,12 @@ if !(isNull term1) then {
     "Stop Hack",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && (playerSide == phx_defendingSide) && phx_term1Hacking",
+    "(_this distance _target < 3) && (playerSide == fnf_defendingSide) && fnf_term1Hacking",
     "_caller distance _target < 3",
     {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      [term1, false] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term1, false] remoteExec ["fnf_serverTerminalAction", 2, false];
       ["Terminal", "Hack Stopped"] call BIS_fnc_showSubtitle;
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
@@ -51,7 +51,7 @@ if !(isNull term1) then {
 
 //Terminal 2 actions
 if !(isNull term2) then {
-  phx_term2Hacking = false;
+  fnf_term2Hacking = false;
 
   //Start
   [
@@ -59,12 +59,12 @@ if !(isNull term2) then {
     "Start Hack",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && (playerSide == phx_attackingSide) && !phx_term2Hacking",
+    "(_this distance _target < 3) && (playerSide == fnf_attackingSide) && !fnf_term2Hacking",
     "_caller distance _target < 3",
     {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      [term2, true] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term2, true] remoteExec ["fnf_serverTerminalAction", 2, false];
       ["Terminal", "Hack Started"] call BIS_fnc_showSubtitle;
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
@@ -81,12 +81,12 @@ if !(isNull term2) then {
     "Stop Hack",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && (playerSide == phx_defendingSide) && phx_term2Hacking",
+    "(_this distance _target < 3) && (playerSide == fnf_defendingSide) && fnf_term2Hacking",
     "_caller distance _target < 3",
     {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      [term2, false] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term2, false] remoteExec ["fnf_serverTerminalAction", 2, false];
       ["Terminal", "Hack Stopped"] call BIS_fnc_showSubtitle;
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
@@ -100,7 +100,7 @@ if !(isNull term2) then {
 
 //Terminal 3 actions
 if !(isNull term3) then {
-  phx_term3Hacking = false;
+  fnf_term3Hacking = false;
 
   //Start
   [
@@ -108,12 +108,12 @@ if !(isNull term3) then {
     "Start Hack",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && (playerSide == phx_attackingSide) && !phx_term3Hacking",
+    "(_this distance _target < 3) && (playerSide == fnf_attackingSide) && !fnf_term3Hacking",
     "_caller distance _target < 3",
     {["Terminal", "Configuring Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      [term3, true] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term3, true] remoteExec ["fnf_serverTerminalAction", 2, false];
       ["Terminal", "Hack Stopped"] call BIS_fnc_showSubtitle;
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},
@@ -130,12 +130,12 @@ if !(isNull term3) then {
     "Stop Hack",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
     "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-    "(_this distance _target < 3) && (playerSide == phx_defendingSide) && phx_term3Hacking",
+    "(_this distance _target < 3) && (playerSide == fnf_defendingSide) && fnf_term3Hacking",
     "_caller distance _target < 3",
     {["Terminal", "Stopping Hack"] call BIS_fnc_showSubtitle},
     {},
     {
-      [term3, false] remoteExec ["phx_serverTerminalAction", 2, false];
+      [term3, false] remoteExec ["fnf_serverTerminalAction", 2, false];
       ["Terminal", "Hack Stopped"] call BIS_fnc_showSubtitle;
     },
     {["Terminal", ""] call BIS_fnc_showSubtitle},

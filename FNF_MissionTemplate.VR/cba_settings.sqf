@@ -148,17 +148,18 @@ force force ace_rearm_supply = 0;
 force force ace_refuel_hoseLength = 12;
 force force ace_refuel_rate = 1;
 force force ace_repair_addSpareParts = true;
-force force ace_repair_autoShutOffEngineWhenStartingRepair = false;
+force force ace_repair_autoShutOffEngineWhenStartingRepair = true;
 force force ace_repair_consumeItem_toolKit = 0;
 ace_repair_displayTextOnRepair = true;
 force force ace_repair_engineerSetting_fullRepair = 1;
 force force ace_repair_engineerSetting_repair = 1;
 force force ace_repair_engineerSetting_wheel = 0;
+force force ace_repair_locationsBoostTraining = true;
 force force ace_repair_fullRepairLocation = 2;
 force force ace_repair_fullRepairRequiredItems = [];
 force force ace_repair_miscRepairRequiredItems = [];
-force force ace_repair_repairDamageThreshold = 0.3;
-force force ace_repair_repairDamageThreshold_engineer = 0.2;
+force force ace_repair_repairDamageThreshold = 0.2;
+force force ace_repair_repairDamageThreshold_engineer = 0.5;
 force force ace_repair_wheelRepairRequiredItems = [];
 
 // ACE Magazine Repack

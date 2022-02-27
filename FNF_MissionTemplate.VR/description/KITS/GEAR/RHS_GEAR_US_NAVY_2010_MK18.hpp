@@ -12,7 +12,7 @@
 
 // put all GL weapons
 #define RIFLE_GL "rhs_weap_mk18_m320","rhs_weap_m4a1_m320"
-#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
@@ -23,9 +23,9 @@
 
 // put all Carbine-style (shorter) weapons
 #define CARBINE "rhs_weap_mk18"
-#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
-#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
-#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
 
 #define SMG_RIFLE "rhsusf_weap_MP7A2_aor1"
 #define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
@@ -35,7 +35,7 @@
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
 #define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)

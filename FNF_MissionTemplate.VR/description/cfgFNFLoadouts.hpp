@@ -1,4 +1,4 @@
-class CfgLoadouts {
+class CfgFNFLoadouts {
   #include "KITS\GEAR\common.hpp"
 
   class UNIFORMS {
@@ -23,14 +23,24 @@ class CfgLoadouts {
     #include "KITS\UNIFORMS\RHS_UNI_ID_NAVSOG_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_ID_REBELS_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_ID_INSURGENTS_2000.hpp"
-    #include "KITS\UNIFORMS\RHS_UNI_NATO_NL_DUTCH_ARMY_2010.hpp"
-    #include "KITS\UNIFORMS\RHS_UNI_ID_IRAQI_ARMY_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_NATO_NL_DUTCH_ARMY_2000.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_ID_IRAQI_ARMY_2000.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_ID_TRIBAL_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_ID_TURKISH_ARMY_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_NATO_US_ARMY_1980.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_RU_ARMY_1980.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_NATO_DE_WESTGERMAN_1980.hpp"
+    #include "KITS\UNIFORMS\APEX_UNI_ANY_AFRICAN_POLICE_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_ID_AFRICAN_MILITIA_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_NATO_FRANCE_2010.hpp"
 
     #include "KITS\UNIFORMS\VN_UNI_NLF_Vietcong.hpp"
     #include "KITS\UNIFORMS\VN_UNI_PAVN_NVA.hpp"
+    #include "KITS\UNIFORMS\VN_UNI_PAVN_NVA_Early.hpp"
     #include "KITS\UNIFORMS\VN_UNI_SVA_ARVN.hpp"
     #include "KITS\UNIFORMS\VN_UNI_US_MACV.hpp"
     #include "KITS\UNIFORMS\VN_UNI_US_SOG.hpp"
+
 
   };
 
@@ -52,12 +62,21 @@ class CfgLoadouts {
     #include "KITS\GEAR\RHS_GEAR_ID_REBELS_2010_AKMN.hpp"
     #include "KITS\GEAR\RHS_GEAR_ID_INSURGENTS_2000_AK74N.hpp"
     #include "KITS\GEAR\RHS_GEAR_ID_NAVSOG_2010_M16A4.hpp"
-    #include "KITS\GEAR\RHS_GEAR_ID_IRAQI_ARMY_2010_AKMN.hpp"
-    #include "KITS\GEAR\RHS_GEAR_NATO_DUTCH_ARMY_2010_M4.hpp"
+    #include "KITS\GEAR\RHS_GEAR_ID_IRAQI_ARMY_2000_AKMN.hpp"
+    #include "KITS\GEAR\RHS_GEAR_NATO_DUTCH_ARMY_2000_M4.hpp"
+    #include "KITS\GEAR\RHS_GEAR_RU_ARMY_1980_AK74.hpp"
+    #include "KITS\GEAR\RHS_GEAR_US_ARMY_1980_M16A1.hpp"
+    #include "KITS\GEAR\RHS_GEAR_ID_TURKISH_2010_HK33A2.hpp"
+    #include "KITS\GEAR\RHS_GEAR_ID_TRIBAL_2010_AKMN.hpp"
+    #include "KITS\GEAR\RHS_GEAR_NATO_WESTGERMAN_1980_G3.hpp"
+    #include "KITS\GEAR\RHS_GEAR_ANY_AFRICAN_POLICE_2010_FAMAS.hpp"
+    #include "KITS\GEAR\RHS_GEAR_ID_AFRICAN_MILITIA_2010_AKMN.hpp"
+    #include "KITS\GEAR\RHS_GEAR_NATO_FRANCE_2010_FAMAS.hpp"
 
     #include "KITS\GEAR\VN_GEAR_NVA_VC1970.hpp"
     #include "KITS\GEAR\VN_GEAR_US_ARMY1970.hpp"
     #include "KITS\GEAR\VN_GEAR_US_SOG1970.hpp"
+    #include "KITS\GEAR\VN_GEAR_NVA_VC1946.hpp"
 
   };
 };

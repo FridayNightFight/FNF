@@ -40,21 +40,21 @@ _getVic = {
 {
 	private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _x));
 	private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
-	if (_x inArea "bluforSafeMarker") then {
+	if ([_x, west] call fnf_fnc_inSafeZone) then {
 		if ((_threat # 0) < 0.1) then {
 			_transportsPresentBLU = _transportsPresentBLU + 1;
 		} else {
 			[_x, "BLU", _vehiclesToProcessBLUFOR] call _getVic;
 		};
 	};
-	if (_x inArea "opforSafeMarker") then {
+	if ([_x, east] call fnf_fnc_inSafeZone) then {
 		if ((_threat # 0) < 0.1) then {
 			_transportsPresentOPF = _transportsPresentOPF + 1;
 		} else {
 			[_x, "OPF", _vehiclesToProcessOPFOR] call _getVic;
 		};
 	};
-	if (_x inArea "indforSafeMarker") then {
+	if ([_x, independent] call fnf_fnc_inSafeZone) then {
 		if ((_threat # 0) < 0.1) then {
 			_transportsPresentIND = _transportsPresentIND + 1;
 		} else {
@@ -119,20 +119,20 @@ _indAssets = (_indArr joinString "");
 
 
 private ["_gameMode"];
-if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gameMode};
+if (isNil "fnf_gameMode") then {_gameMode = "unknown"} else {_gameMode = fnf_gameMode};
 
 
 _info = missionNamespace getVariable ["fnf_staffInfo", []];
-_staffPlayers = allPlayers select {!isNil {_info get (getPlayerUID _x)}};
-_staffCount = count _staffPlayers;
-_spectatorCount = count (call ace_spectator_fnc_players);
+_staffPlayers = allPlayers select {(getPlayerUID _x) in _info};
+_staffCount = str(count _staffPlayers);
+_spectatorCount = str(count (call ace_spectator_fnc_players));
 
 _fnc_doCount = {
   params [
     ["_unit", objNull],
     ["_side", sideEmpty]
   ];
-  if (isNull _unit || _side isEqualTo sideEmpty) exitWith {false};
+  if (isNull _unit || _side isEqualTo sideEmpty || !(_unit isKindOf "CAManBase")) exitWith {false};
 
   (
     side (group _unit) isEqualTo _side &&
@@ -142,28 +142,31 @@ _fnc_doCount = {
   )
 };
 
-_bluPlayers = if (playableSlotsNumber west == 0) then {""} else {
-  // count(allPlayers select {[_x, west] call _fnc_doCount})
-  playersNumber west;
+private ["_bluPlayers", "_opfPlayers", "_indPlayers"];
+if (playableSlotsNumber west == 0) then {
+  _bluPlayers = 0;
+} else {
+  _bluPlayers = count(allPlayers select {[_x, west] call _fnc_doCount});
 };
-_opfPlayers = if (playableSlotsNumber east == 0) then {""} else {
-  // count(allPlayers select {[_x, east] call _fnc_doCount})
-  playersNumber east;
+if (playableSlotsNumber east == 0) then {
+  _opfPlayers = 0;
+} else {
+  _opfPlayers = count(allPlayers select {[_x, east] call _fnc_doCount});
 };
-_indPlayers = if (playableSlotsNumber independent == 0) then {""} else {
-  // count(allPlayers select {[_x, independent] call _fnc_doCount})
-  playersNumber independent;
+if (playableSlotsNumber independent == 0) then {
+  _indPlayers = 0;
+} else {
+  _indPlayers = count(allPlayers select {[_x, independent] call _fnc_doCount});
 };
-// _playingPlayerCount = count (playableUnits select {alive _x});
 _playingPlayerCount = _bluPlayers + _opfPlayers + _indPlayers;
 
 
 ["RoundStart", [
   missionName,
   _gameMode,
-  str(_playingPlayerCount),
-  str(_spectatorCount),
-  str(_staffCount),
+  _playingPlayerCount,
+  _spectatorCount,
+  _staffCount,
   str(_bluPlayers),
   str(_opfPlayers),
   str(_indPlayers),

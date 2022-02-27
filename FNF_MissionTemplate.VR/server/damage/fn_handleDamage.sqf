@@ -10,7 +10,7 @@
  * N/A
  *
  * Usage:
- * [vehicle] spawn phx_server_fnc_handleDamage
+ * [vehicle] spawn fnf_server_fnc_handleDamage
  *
  * Public: no
  */

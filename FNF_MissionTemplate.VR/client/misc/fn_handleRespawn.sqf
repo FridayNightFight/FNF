@@ -1,20 +1,22 @@
 params [
   ["_newUnit", objNull, [objNull], 1],
-  ["_oldUnit", objNull, [objNull], 1],
-  ["_respawnType", 3, [0]],
-  ["_respawnDelay", 0, [0]]
+  ["_oldUnit", objNull, [objNull], 1]
 ];
 
 if (typeOf player == "ace_spectator_virtual") exitWith {};
 
 // loadout
-[player getVariable ["phxLoadout", "BASE"]] call phx_loadout_fnc_applyLoadout;
-[{time > 2}, {call phx_admin_fnc_setAdminPatch}] call CBA_fnc_waitUntilAndExecute; // Admin player patch
+[player getVariable ["fnfLoadout", "BASE"]] call fnf_loadout_fnc_applyLoadout;
+[{time > 2}, {call fnf_admin_fnc_setAdminPatch}] call CBA_fnc_waitUntilAndExecute; // Admin player patch
 // [false] call ace_spectator_fnc_setSpectator;
 
-if !(phx_gameMode == "sustainedAssault") then {
+if (missionNamespace getVariable ["ace_spectator_isset", false]) then {
+  [false] call ace_spectator_fnc_setSpectator;
+};
+
+if !(fnf_gameMode == "sustainedAssault") then {
   // teleport to safe start if able
-  private _pos = missionNamespace getVariable ["phx_startGoodPos", [0,0,0]];
+  private _pos = missionNamespace getVariable ["fnf_startGoodPos", [0,0,0]];
   if (surfaceIsWater _pos) then {
     player setPosASLW _pos;
   } else {
@@ -23,20 +25,24 @@ if !(phx_gameMode == "sustainedAssault") then {
 
   // fn_checkAlive
   [player, {
-    phx_playersInMission pushBack _this;
+  if (!isNil "fnf_playersInMission") then {
+    fnf_playersInMission pushBack _this;
+  };
   }] remoteExecCall ["call", 2];
 };
 
-phx_safeStartNoFire = nil;
-call phx_restrictions_fnc_init;
-call phx_safety_fnc_init;
 
-if (phx_gameMode == "sustainedAssault") then {
+
+
+if (fnf_gameMode == "sustainedAssault") then {
   _newUnit setVariable ["ACE_canMoveRallypoint", false, true];
   if (isNil {fnf_ui getVariable ["fnf_drawHelpersHandle",nil]}) then {
-    call phx_ui_fnc_drawHelpers;
+    call fnf_ui_fnc_drawHelpers;
   };
 };
+
+call fnf_restrictions_fnc_init;
+call fnf_safety_fnc_init;
 
 // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool
 // remove ETool-less trench from all

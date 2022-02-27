@@ -3,9 +3,9 @@
 // put all rifle weapons
 #define RIFLE "vn_sks", "vn_type56"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "vn_sks_mag:7","vn_sks_t_mag:4","vn_type56_mag:7","vn_type56_t_mag:4"
+#define RIFLE_MAG "vn_sks_mag:9","vn_sks_t_mag:6","vn_type56_mag:7","vn_type56_t_mag:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "vn_sks_mag:12","vn_sks_t_mag:7","vn_type56_mag:12","vn_type56_t_mag:7"
+#define RIFLE_MAG_RI "vn_sks_mag:14","vn_sks_t_mag:9","vn_type56_mag:12","vn_type56_t_mag:7"
 
 #define SIDEARM "vn_tt33"
 #define SIDEARM_MAG "vn_tt33_mag:3"
@@ -82,7 +82,7 @@ class VN_GEAR_NVA_VC1970 {
     grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
     giveSilencer = 0; // 0 for no silencer, 1 to equip silencer on primary weapon
-    giveSRRadio = 0;
+    giveSRRadio = 1;
     giveLRRadio = 0;
   };
 

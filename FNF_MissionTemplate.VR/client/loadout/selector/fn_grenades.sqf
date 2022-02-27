@@ -12,12 +12,12 @@ _fnc_hintDetails = {
     format["<img size='3' image='%1'/>", _pic],
     "</t>"
   ];
-  [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+  [_textArr joinString '<br/>', "success", 5] call fnf_ui_fnc_notify;
 };
 
 private _expArr = _this;
 
-if (_expArr isEqualTo phx_selector_currentGrenades) exitWith {};
+if (_expArr isEqualTo fnf_selector_currentGrenades) exitWith {};
 
 
 private _missing = false;
@@ -39,17 +39,17 @@ private _missing = false;
       _missing = true;
     };
   };
-} forEach phx_selector_currentGrenades;
+} forEach fnf_selector_currentGrenades;
 
 //removes old grenades and adds new ones if player still has old ones
 if (!_missing) then {
   {
     player removeMagazines (_x splitString ":" select 0);
-  } forEach phx_selector_currentGrenades;
+  } forEach fnf_selector_currentGrenades;
 
   {
     if (_forEachIndex != 0) then {
-      _x call phx_loadout_fnc_addGear;
+      _x call fnf_loadout_fnc_addGear;
     };
   } forEach _expArr;
 
@@ -65,7 +65,7 @@ if (!_missing) then {
   } forEach _granted;
 
 
-  phx_selector_currentGrenades = _expArr;
+  fnf_selector_currentGrenades = _expArr;
 } else {
 
   // warn player they are missing grenades
@@ -79,7 +79,7 @@ if (!_missing) then {
         getText(configFile >> "CfgMagazines" >> _class >> "picture")
       ]
     ] joinString "<br/>");
-  } forEach (phx_selector_currentGrenades select [1, 3]);
+  } forEach (fnf_selector_currentGrenades select [1, 3]);
   _mustReturn = _mustReturn joinString "<br/>";
 
   [
@@ -92,5 +92,5 @@ if (!_missing) then {
     ] joinString "<br/>",
     "warning",
     10
-  ] call phx_ui_fnc_notify;
+  ] call fnf_ui_fnc_notify;
 };

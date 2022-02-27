@@ -4,45 +4,45 @@ if (!isServer) exitWith {};
 
 ["off"] call acex_fortify_fnc_handleChatCommand;
 
-_sectors = [phx_sector1];
+_sectors = [fnf_sector1];
 _sideWon = sideEmpty;
-phx_neutralSector_pointAddTime = _pointAddTime;
+fnf_neutralSector_pointAddTime = _pointAddTime;
 
 switch (_numberOfSectors) do {
   case 1: {
-    deleteVehicle phx_sector2;
-    deleteVehicle phx_sector3;
+    deleteVehicle fnf_sector2;
+    deleteVehicle fnf_sector3;
   };
   case 2: {
-    deleteVehicle phx_sector3;
-    _sectors pushBack phx_sector2;
+    deleteVehicle fnf_sector3;
+    _sectors pushBack fnf_sector2;
   };
   case 3: {
-    _sectors pushBack phx_sector2;
-    _sectors pushBack phx_sector3;
+    _sectors pushBack fnf_sector2;
+    _sectors pushBack fnf_sector3;
   };
 };
 
 _win = {
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
+  fnf_gameEnd = true;
+  publicVariable "fnf_gameEnd";
 
   _side = _this;
 
-  [_sideWon, "has reached 100 points and won!"] spawn phx_server_fnc_gameEnd;
+  [_sideWon, "has reached 100 points and won!"] spawn fnf_server_fnc_gameEnd;
 };
 
 waitUntil {
   sleep 1;
-  phx_sector1 getVariable ["owner", sideUnknown] != sideUnknown ||
-  phx_sector2 getVariable ["owner", sideUnknown] != sideUnknown ||
-  phx_sector3 getVariable ["owner", sideUnknown] != sideUnknown
+  fnf_sector1 getVariable ["owner", sideUnknown] != sideUnknown ||
+  fnf_sector2 getVariable ["owner", sideUnknown] != sideUnknown ||
+  fnf_sector3 getVariable ["owner", sideUnknown] != sideUnknown
 };
 
-["First sector captured<br/>Points will be begin to be awarded in 5 minutes"] remoteExec ["phx_fnc_hintThenClear"];
+["First sector captured<br/>Points will be begin to be awarded in 5 minutes"] remoteExec ["fnf_fnc_hintThenClear"];
 uiSleep 300;
 
-while {!phx_gameEnd} do {
+while {!fnf_gameEnd} do {
   {
     if !((_x getVariable "owner") == sideUnknown) then {
       [_x getVariable "owner", 1] call BIS_fnc_respawnTickets;
@@ -71,5 +71,5 @@ while {!phx_gameEnd} do {
     _sideWon call _win;
   };
 
-  sleep phx_neutralSector_pointAddTime;
+  sleep fnf_neutralSector_pointAddTime;
 };

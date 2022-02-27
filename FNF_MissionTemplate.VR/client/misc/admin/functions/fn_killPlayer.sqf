@@ -69,7 +69,7 @@ _out pushBack format["ACTION: %1", "KillPlayer"];
           format["<t align='center'>You've been killed by an admin.<br/>Performed by %1</t>", _this],
           "warning",
           10
-        ] call phx_ui_fnc_notify;
+        ] call fnf_ui_fnc_notify;
       }, _this] call CBA_fnc_waitUntilAndExecute;
     }] remoteExecCall ["call", _owner];
 
@@ -85,7 +85,7 @@ _out pushBack format["ACTION: %1", "KillPlayer"];
 
 // sends event to server w/ information
 // used for Discord report
-["phxAdminMessageServer", [
+["fnfAdminMessageServer", [
   "",
   _admin_soldierName,
   (_out joinString "\n"),

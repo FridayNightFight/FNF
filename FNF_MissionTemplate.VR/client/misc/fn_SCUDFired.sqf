@@ -2,7 +2,7 @@ params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projecti
 
 // "debug_console" callExtension ("Launcher fired");
 
-phx_server_playRocketSiren = {
+fnf_server_playRocketSiren = {
 	params ["_unit", "_ammo"];
 	_projectile = (position _unit nearObjects [_ammo,250]) select 0;
 	for "_i" from 1 to 12 do {
@@ -20,8 +20,8 @@ phx_server_playRocketSiren = {
 };
 
 if (isServer) then {
-	[_unit, _ammo] spawn phx_server_playRocketSiren;
+	[_unit, _ammo] spawn fnf_server_playRocketSiren;
 };
 if (hasInterface) then {
-	["<t align='center' size='1.75' face='EtelkaMonospacePro'><t size='2.5' face='EtelkaMonospaceProBold' color='#EE3333'>WARNING</t><br/>SCUD launch detected.</t>", "error", 20] call phx_ui_fnc_notify;
+	["<t align='center' size='1.75' face='EtelkaMonospacePro'><t size='2.5' face='EtelkaMonospaceProBold' color='#EE3333'>WARNING</t><br/>SCUD launch detected.</t>", "error", 20] call fnf_ui_fnc_notify;
 };

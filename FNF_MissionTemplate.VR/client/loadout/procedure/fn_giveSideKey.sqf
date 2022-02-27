@@ -13,7 +13,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, _cfgGiveSideKey] call phx_loadout_fnc_giveSideKey
+* [player, _cfgGiveSideKey] call fnf_loadout_fnc_giveSideKey
 *
 * Public: No
 */

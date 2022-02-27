@@ -13,7 +13,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, _cfgSidearms] call phx_loadout_fnc_giveSidearmWeapon
+* [player, _cfgSidearms] call fnf_loadout_fnc_giveSidearmWeapon
 *
 * Public: No
 */
@@ -25,24 +25,24 @@ params [
 ];
 
 if (isNull _unit) exitWith {nil};
-
-private _category = selectRandom(_cfgChoices);
+if (count _cfgChoices == 0) exitWith {nil};
+private _category = _cfgChoices # 0;
 if (isNil "_category") exitWith {
   [{time > 2}, {
-    ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call phx_ui_fnc_notify;
+    ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call fnf_ui_fnc_notify;
     diag_log text "[FNF] (loadout) ERROR: Failed to process sidearm weapon settings.";
     diag_log text format["[FNF] (loadout) DEBUG: Choices %1", _cfgChoices];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 _category params ["_sidearms","_mags"];
-phx_loadout_sidearm = selectRandom(_sidearms);
-phx_loadout_sidearmMagazines = [_mags, phx_loadout_sidearm] call phx_loadout_fnc_getWeaponMagazines;
+fnf_loadout_sidearm = _sidearms # 0;
+fnf_loadout_sidearmMagazines = [_mags, fnf_loadout_sidearm] call fnf_loadout_fnc_getWeaponMagazines;
 
-if !(phx_loadout_sidearm isEqualTo "" || (count phx_loadout_sidearmMagazines) isEqualTo 0) then {
-  _unit addWeapon phx_loadout_sidearm;
-  {[_x, "uniform", _unit] call phx_loadout_fnc_addGear} forEach phx_loadout_sidearmMagazines;
-  diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon ""%1""", phx_loadout_sidearm];
+if !(fnf_loadout_sidearm isEqualTo "" || (count fnf_loadout_sidearmMagazines) isEqualTo 0) then {
+  _unit addWeapon fnf_loadout_sidearm;
+  {[_x, "uniform", _unit] call fnf_loadout_fnc_addGear} forEach fnf_loadout_sidearmMagazines;
+  diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon ""%1""", fnf_loadout_sidearm];
   diag_log text format["[FNF] (loadout) INFO: Equipped secondary weapon magazines"];
-  diag_log text format["[FNF] (loadout) DEBUG: %1", phx_loadout_sidearmMagazines];
+  diag_log text format["[FNF] (loadout) DEBUG: %1", fnf_loadout_sidearmMagazines];
 };
 true

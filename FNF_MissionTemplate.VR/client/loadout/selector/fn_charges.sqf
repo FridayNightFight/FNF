@@ -12,12 +12,12 @@ _fnc_hintDetails = {
     format["<img size='3' image='%1'/>", _pic],
     "</t>"
   ];
-  [_textArr joinString '<br/>', "success", 5] call phx_ui_fnc_notify;
+  [_textArr joinString '<br/>', "success", 5] call fnf_ui_fnc_notify;
 };
 
 private _expArr = _this;
 
-if (_expArr isEqualTo phx_selector_currentExplosives) exitWith {};
+if (_expArr isEqualTo fnf_selector_currentExplosives) exitWith {};
 
 private _missing = false;
 
@@ -38,17 +38,17 @@ private _missing = false;
       _missing = true;
     };
   };
-} forEach phx_selector_currentExplosives;
+} forEach fnf_selector_currentExplosives;
 
 //removes old charges and adds new ones if player still has old ones
 if (!_missing) then {
   {
     player removeMagazines (_x splitString ":" select 0);
-  } forEach phx_selector_currentExplosives;
+  } forEach fnf_selector_currentExplosives;
 
   {
     if (_forEachIndex != 0) then {
-      _x call phx_loadout_fnc_addGear;
+      _x call fnf_loadout_fnc_addGear;
     };
   } forEach _expArr;
 
@@ -63,7 +63,7 @@ if (!_missing) then {
     [_expArr # 0, _x] call _fnc_hintDetails;
   } forEach _granted;
 
-  phx_selector_currentExplosives = _expArr;
+  fnf_selector_currentExplosives = _expArr;
 } else {
 
   // warn player they are missing charges
@@ -77,7 +77,7 @@ if (!_missing) then {
         getText(configFile >> "CfgMagazines" >> _class >> "picture")
       ]
     ] joinString "<br/>");
-  } forEach (phx_selector_currentExplosives select [1, 3]);
+  } forEach (fnf_selector_currentExplosives select [1, 3]);
   _mustReturn = _mustReturn joinString "<br/>";
 
   [
@@ -90,5 +90,5 @@ if (!_missing) then {
     ] joinString "<br/>",
     "warning",
     10
-  ] call phx_ui_fnc_notify;
+  ] call fnf_ui_fnc_notify;
 };

@@ -1,63 +1,63 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_ak74mr"
+#define RIFLE "UK3CB_G3SG1"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_30Rnd_545x39_7N10_AK:7","rhs_30Rnd_545x39_AK_plum_green:4"
+#define RIFLE_MAG "UK3CB_G3_20rnd_762x51:9","UK3CB_G3_20rnd_762x51_R:6"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12","rhs_30Rnd_545x39_AK_plum_green:6"
+#define RIFLE_MAG_RI "UK3CB_G3_20rnd_762x51:14","UK3CB_G3_20rnd_762x51_R:8"
 
-#define SIDEARM "rhs_weap_pya"
-#define SIDEARM_MAG "rhs_mag_9x19_17:2"
+#define SIDEARM "rhsusf_weap_m9"
+#define SIDEARM_MAG "rhsusf_mag_15Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_ak74mr_gp25"
-#define RIFLE_GL_MAG RIFLE_MAG
+#define RIFLE_GL "UK3CB_M16A2_UGL"
+#define RIFLE_GL_MAG "rhs_mag_20Rnd_556x45_M855A1_Stanag:8", "rhs_mag_20Rnd_556x45_M196_Stanag_Tracer_Red:6"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
-#define UGL_FRAG rhs_VOG25
-#define UGL_SMOKEWHITE rhs_GRD40_White
-#define UGL_FLAREWHITE rhs_VOG25P
+#define UGL_FRAG 1Rnd_HE_Grenade_shell
+#define UGL_SMOKEWHITE 1Rnd_Smoke_Grenade_shell
+#define UGL_FLAREWHITE UGL_FlareWhite_F
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_aks74n_2"
-#define CARBINE_MAG "rhs_30Rnd_545x39_7N6M_plum_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
-#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N6M_plum_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
-#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N6M_plum_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
+#define CARBINE "UK3CB_M16_Carbine"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
+#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
 
-#define SMG_RIFLE "rhs_weap_aks74n_2"
-#define SMG_MAG "rhs_30Rnd_545x39_7N10_AK:8"
-#define SMG_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4"
+#define SMG_RIFLE "UK3CB_MP5N"
+#define SMG_MAG "UK3CB_MP5_30Rnd_9x19_Magazine:8"
+#define SMG_MAG_CREW "UK3CB_MP5_30Rnd_9x19_Magazine:4"
 
-#define AR_RIFLE "fnf_rpk"
-#define AR_MAG "fnf_45rnd_rpk_green:6"
-#define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
+#define AR_RIFLE "rhs_weap_mg42"
+#define AR_MAG "rhsgref_296Rnd_792x57_SmE_belt:6"
+#define AR_MAG_ASST "rhsgref_296Rnd_792x57_SmE_belt:4"
 
-#define AT_LAUNCHER RPG26(1)
+#define AT_LAUNCHER M72LAW(1)
 
-#define MAT1_LAUNCHER RPG32(2,0)
-#define MAT2_LAUNCHER RPG32(2,0)
+#define MAT1_LAUNCHER CARLG(2,0)
+#define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE RIFLE
-#define DM_MAG RIFLE_MAG
+#define DM_RIFLE "UK3CB_M14DMR"
+#define DM_MAG "UK3CB_DMR_20rnd_762x51:8", "UK3CB_DMR_20rnd_762x51_R:4"
 
-#define MMG_RIFLE "rhs_weap_pkp"
-#define MMG_MAG "rhs_100Rnd_762x54mmR:8"
-#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
+#define MMG_RIFLE "UK3CB_MG3"
+#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:8"
+#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:6"
 
-#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
-#define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
+#define SPOTTER_RIFLE "rhs_weap_m14", "UK3CB_MP5SD6"
+#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "UK3CB_MP5_30Rnd_9x19_Magazine:8"
 
-#define SNP_RIFLE "rhs_weap_t5000"
-#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
+#define SNP_RIFLE "rhs_weap_m24sws"
+#define SNP_MAG "rhsusf_5Rnd_762x51_m118_special_Mag:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_ID_MEC_2010_AK74MR {
+class RHS_GEAR_NATO_WESTGERMAN_1980_G3 {
   author = "Mazz38";
-  description = "ID: 2010 Middle Eastern Coalition ARMY AK74MR Kits";
+  description = "NATO: DE ARMY G3 Kits";
 
   class BASE {
     backpackItems[] = {};

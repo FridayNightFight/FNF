@@ -1,10 +1,10 @@
 private _baseClasses = ["Static","Cargo_base_F"]; //anything that is a subtype of these classes and is big enough will be marked
 private _classBlacklist = ["Land_DataTerminal_01_F","Wreck_Base","FlagCarrierCore","Base_CUP_Plant"]; //blacklist of item or parent classes to never mark
-private _markerBlacklist = switch (phx_attackingSide) do {
-  case west: {["bluforSafeMarker"]};
-  case east: {["opforSafeMarker"]};
-  case independent: {["indforSafeMarker"]};
-  case sideEmpty: {["bluforSafeMarker", "opforSafeMarker","indforSafeMarker"]};
+private _markerBlacklist = switch (fnf_attackingSide) do {
+  case west: {[nil, west, true] call fnf_fnc_inSafeZone};
+  case east: {[nil, east, true] call fnf_fnc_inSafeZone};
+  case independent: {[nil, independent, true] call fnf_fnc_inSafeZone};
+  case sideEmpty: {[nil, nil, true] call fnf_fnc_inSafeZone};
 };
 
 //checks bounding sphere value to see if object is large enough, not in the blacklist, and not in an excluded start zone
@@ -60,4 +60,4 @@ _createMarker = {
 
 {_x call _createMarker} forEach _objectsToMark;
 
-missionNamespace setVariable ["phx_markCustomObjs_ready", true, true];
+missionNamespace setVariable ["fnf_markCustomObjs_ready", true, true];

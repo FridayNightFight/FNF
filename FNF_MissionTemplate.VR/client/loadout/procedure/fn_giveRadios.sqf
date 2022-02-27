@@ -15,7 +15,7 @@
 * nil on fail <NIL>
 *
 * Example:
-* [player, _cfgGiveSRRadio, _cfgGiveLRRadio] call phx_loadout_fnc_giveRadios
+* [player, _cfgGiveSRRadio, _cfgGiveLRRadio] call fnf_loadout_fnc_giveRadios
 *
 * Public: Yes
 */
@@ -25,24 +25,32 @@ params [["_unit", objNull], ["_srRadio", true], ["_lrRadio", false]];
 
 if (isNull _unit) exitWith {nil};
 
-if (_srRadio) then {
-  if (!(call TFAR_fnc_haveSWRadio)) then {
-    _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
-    diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1""", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
-  };
-  // missionNamespace setVariable ["phx_hasSW", true];
+if (_srRadio || (missionNamespace getVariable ["fnf_SWRadioForAll", -1]) == 1) then {
+  _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
+  diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1""", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
+  // missionNamespace setVariable ["fnf_hasSW", true];
 } else {
   if (call TFAR_fnc_haveSWRadio) then {
     player unlinkItem (call TFAR_fnc_activeSwRadio);
+    diag_log text format["[FNF] (loadout) INFO: Removed SW radio (loadout says this role shouldn't receive one)"];
   };
-  // missionNamespace setVariable ["phx_hasSW", false];
+  // missionNamespace setVariable ["fnf_hasSW", false];
 };
 
 
 if (_lrRadio) then {
   // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
   // This is to ensure leadership receives LR radios if they should, even if the loadout-assigned backpack isn't a radio
-  if (!(call TFAR_fnc_haveLRRadio)) then {
+  private _backpack = backpack _unit;
+  if (_backpack call TFAR_fnc_isBackpackRadio) then {
+    private _items = backpackItems _unit;
+    removeBackpack _unit;
+    _unit addBackpack _backpack;
+    {
+      _unit addItemToBackpack _x;
+    } forEach _items;
+    diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1""", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
+  } else {
     private _items = backpackItems _unit;
     removeBackpack _unit;
     _unit addBackpack ([side (group _unit), 0] call TFAR_fnc_getSideRadio);
@@ -51,7 +59,7 @@ if (_lrRadio) then {
     } forEach _items;
     diag_log text format["[FNF] (loadout) INFO: Equipped LR radio ""%1""", [side (group _unit), 0] call TFAR_fnc_getSideRadio];
   };
-  // missionNamespace setVariable ["phx_hasLR", true];
+  // missionNamespace setVariable ["fnf_hasLR", true];
 } else {
   if (call TFAR_fnc_haveLRRadio) then {
     private _items = backpackItems _unit;
@@ -60,7 +68,8 @@ if (_lrRadio) then {
     {
       _unit addItemToBackpack _x;
     } forEach _items;
+    diag_log text format["[FNF] (loadout) INFO: Removed LR radio (loadout says this role shouldn't receive one)"];
   };
-  // missionNamespace setVariable ["phx_hasLR", false];
+  // missionNamespace setVariable ["fnf_hasLR", false];
 };
 true

@@ -25,7 +25,7 @@ _BriefingIndex = _tree tvAdd [[],"Briefing"];
 _GamemodeIndex = _tree tvAdd [[],"Gamemode"];
 _MissionVarIndex = _tree tvAdd [[],"Mission Variables"];
 
-if (call phx_client_fnc_canplay) then {
+if (call fnf_client_fnc_canplay) then {
   _MyLoadoutIndex = _tree tvAdd [[],"My Starting Loadout"];
   _MyRadiosIndex = _tree tvAdd [[],"My Starting Radios"];
   _ORBATIndex = _tree tvAdd [[],"ORBAT"];
@@ -50,6 +50,11 @@ _INDFORIndexCSW = _tree tvAdd [[_INDFORIndex],"CSW"];
 _INDFORIndexAssets = _tree tvAdd [[_INDFORIndex],"Assets"];
 
 _OtherAssetsIndex = _tree tvAdd [[],"Other Assets"];
+
+private "_GameMechanicsIndex";
+if (fnf_gameMode == "sustainedAssault") then {
+  _GameMechanicsIndex = _tree tvAdd[[],"Game Mechanics"];
+};
 _ChangelogIndex = _tree tvAdd[[],"Framework Info"];
 _CreditsIndex = _tree tvAdd[[],"Credits"];
 _RulesIndex = _tree tvAdd[[],"Rules"];
@@ -57,22 +62,22 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
   _ReportsIndex = _tree tvAdd[[],"Staff Reports"];
   {
     _tree tvAdd [[_ReportsIndex], _x # 0];
-  } forEach phx_ui_structTextRef_staffReports;
+  } forEach fnf_ui_structTextRef_staffReports;
 };
 
 
 {
   _tree tvAdd [[_BLUFORIndex, _BLUFORIndexAssets], _x # 0];
-} forEach phx_ui_structTextRef_AssetsBLU;
+} forEach fnf_ui_structTextRef_AssetsBLU;
 {
   _tree tvAdd [[_OPFORIndex, _OPFORIndexAssets], _x # 0];
-} forEach phx_ui_structTextRef_AssetsOPF;
+} forEach fnf_ui_structTextRef_AssetsOPF;
 {
   _tree tvAdd [[_INDFORIndex, _INDFORIndexAssets], _x # 0];
-} forEach phx_ui_structTextRef_AssetsIND;
+} forEach fnf_ui_structTextRef_AssetsIND;
 {
   _tree tvAdd [[_OtherAssetsIndex], _x # 0];
-} forEach phx_ui_structTextRef_AssetsOther;
+} forEach fnf_ui_structTextRef_AssetsOther;
 
 
 
@@ -100,28 +105,28 @@ _tree ctrlAddEventHandler [ "TreeSelChanged", {
   if (["Assets ", _selected] call BIS_fnc_inString) then {
     switch (true) do {
       case (["BLUFOR", _selected] call BIS_fnc_inString): {
-        _data = +phx_ui_structTextRef_AssetsBLU;
+        _data = +fnf_ui_structTextRef_AssetsBLU;
         _prefix = "BLUFOR Assets ";
       };
       case (["OPFOR", _selected] call BIS_fnc_inString): {
-        _data = +phx_ui_structTextRef_AssetsOPF;
+        _data = +fnf_ui_structTextRef_AssetsOPF;
         _prefix = "OPFOR Assets ";
       };
       case (["INDFOR", _selected] call BIS_fnc_inString): {
-        _data = +phx_ui_structTextRef_AssetsIND;
+        _data = +fnf_ui_structTextRef_AssetsIND;
         _prefix = "INDFOR Assets ";
       };
       case (["Other", _selected] call BIS_fnc_inString): {
-        _data = +phx_ui_structTextRef_AssetsOther;
+        _data = +fnf_ui_structTextRef_AssetsOther;
         _prefix = "Other Assets ";
       };
     };
   } else {
     if (["Staff Reports ", _selected] call BIS_fnc_inString) then {
-      _data = +phx_ui_structTextRef_staffReports;
+      _data = +fnf_ui_structTextRef_staffReports;
       _prefix = "Staff Reports ";
     } else {
-      _data = +phx_ui_structTextRef;
+      _data = +fnf_ui_structTextRef;
     };
   };
 

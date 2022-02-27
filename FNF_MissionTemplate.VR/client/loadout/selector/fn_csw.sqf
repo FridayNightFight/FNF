@@ -1,8 +1,8 @@
 // enable ACE selection of SHQ Aux Role CSW setting
 private _toLoad = _this;
 
-phx_cswItems params ["_weapon", "_tripod"];
-private _mags = +phx_cswMags;
+fnf_cswItems params ["_weapon", "_tripod"];
+private _mags = +fnf_cswMags;
 
 
 private _totalMags = [];
@@ -15,7 +15,7 @@ private _totalMags = [];
 // [_totalMags, true] call CBA_fnc_shuffle;
 private _halfMags = floor((count _totalMags) / 2) + ((count _totalMags) % 2);
 
-private _curMags = (player getVariable ["phx_cswMagsCurrent", []]);
+private _curMags = (player getVariable ["fnf_cswMagsCurrent", []]);
 
 private _equipped = magazines player select {_x in _curMags};
 if (
@@ -25,10 +25,10 @@ if (
   ) ||
   (
     count _curMags > 0 &&
-    !((secondaryWeapon player) in phx_cswItems)
+    !((secondaryWeapon player) in fnf_cswItems)
   )
 ) exitWith {
-  ["<t align='center'>Error:<br/>Missing ammo, tripod, or weapon -- cannot re-equip.</t>", "error", 7] call phx_ui_fnc_notify;
+  ["<t align='center'>Error:<br/>Missing ammo, tripod, or weapon -- cannot re-equip.</t>", "error", 7] call fnf_ui_fnc_notify;
 };
 
 
@@ -48,13 +48,13 @@ private _addedMags = [];
 switch (_toLoad) do {
   case _weapon: {
     {
-      [_x, "backpack", player] call phx_loadout_fnc_addGear;
+      [_x, "backpack", player] call fnf_loadout_fnc_addGear;
       _addedMags pushBack _x;
     } forEach (_totalMags select [_halfMags, count _totalMags - 1]);
   };
   case _tripod: {
     {
-      [_x, "backpack", player] call phx_loadout_fnc_addGear;
+      [_x, "backpack", player] call fnf_loadout_fnc_addGear;
       _addedMags pushBack _x;
     } forEach (_totalMags select [0, _halfMags]);
   };
@@ -63,8 +63,8 @@ switch (_toLoad) do {
 {
   private _item = _x;
   if (count (items player select {_x == _item}) == 0) then {
-    [_x, "uniform", player] call phx_loadout_fnc_addGear;
+    [_x, "uniform", player] call fnf_loadout_fnc_addGear;
   };
-} forEach ((missionConfigFile >> "CfgLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray);
+} forEach ((missionConfigFile >> "CfgFNFLoadouts" >> "common" >> "mortarGear") call BIS_fnc_getCfgDataArray);
 
-player setVariable ["phx_cswMagsCurrent", _addedMags];
+player setVariable ["fnf_cswMagsCurrent", _addedMags];

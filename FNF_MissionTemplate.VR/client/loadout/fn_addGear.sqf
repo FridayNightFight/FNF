@@ -15,9 +15,9 @@
 * nil on failure with warning <NIL>
 *
 * Example:
-* "FirstAidKit" call phx_loadout_fnc_addGear;
-* "FirstAidKit:5" call phx_loadout_fnc_addGear;
-* ["FirstAidKit:3","ItemMap","ItemCompass"] call phx_loadout_fnc_addGear;
+* "FirstAidKit" call fnf_loadout_fnc_addGear;
+* "FirstAidKit:5" call fnf_loadout_fnc_addGear;
+* ["FirstAidKit:3","ItemMap","ItemCompass"] call fnf_loadout_fnc_addGear;
 *
 * Public: Yes
 */

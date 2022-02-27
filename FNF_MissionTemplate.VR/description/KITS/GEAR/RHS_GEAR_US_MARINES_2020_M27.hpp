@@ -11,7 +11,7 @@
 #define SIDEARM_MAG "rhsusf_mag_15Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203","rhs_weap_m4a1_blockII_M203_bk"
+#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203","rhs_weap_m4_m320"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
@@ -35,7 +35,7 @@
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
 #define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER SMAW(2,0)
 #define MAT2_LAUNCHER SMAW(2,0)

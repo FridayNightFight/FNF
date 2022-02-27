@@ -63,9 +63,9 @@ private [
 
 //================== MASTER SWITCHES
 
-_QS_ST_map_enableUnitIcons = phx_showUnitIcons;							// BOOL. TRUE to enable MAP unit/vehicle Icons. Default TRUE.
-_QS_ST_gps_enableUnitIcons = phx_showUnitIcons;							// BOOL. TRUE to enable GPS unit/vehicle Icons. Default TRUE.
-_QS_ST_enableGroupIcons = phx_showGroupIcons;								// BOOL. TRUE to enable Map+GPS+HUD GROUP Icons. Default TRUE.
+_QS_ST_map_enableUnitIcons = fnf_showUnitIcons;							// BOOL. TRUE to enable MAP unit/vehicle Icons. Default TRUE.
+_QS_ST_gps_enableUnitIcons = fnf_showUnitIcons;							// BOOL. TRUE to enable GPS unit/vehicle Icons. Default TRUE.
+_QS_ST_enableGroupIcons = fnf_showGroupIcons;								// BOOL. TRUE to enable Map+GPS+HUD GROUP Icons. Default TRUE.
 
 //================= ADMIN
 
@@ -144,7 +144,7 @@ _QS_ST_colorInjured = [0.75,0.55,0,0.75];						// ARRAY (NUMBER). RGBA color cod
 //=========================== CONFIGURE MAP (UNIT/VEHICLE) ICONS ===================//
 //==================================================================================//
 
-_QS_ST_showFactionOnly = (!phx_showAlliedFactions);									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
+_QS_ST_showFactionOnly = (!fnf_showAlliedFactions);									// BOOL. will override ST_showFriendlySides TRUE. If TRUE then will only show players faction. If FALSE then can show friendly factions. Default FALSE.
 _QS_ST_showAI = TRUE;											// BOOL. FALSE = players only, TRUE = players and AI. Default TRUE.
 _QS_ST_AINames = FALSE;											// BOOL. Set TRUE to show human names for AI with the map/vehicle icons. Set FALSE and will be named 'AI'. Default FALSE.
 _QS_ST_showCivilianIcons = FALSE;// BOOL. Set TRUE to allow showing of civilians, only works if Dynamic Diplomacy is enabled above. Default FALSE.

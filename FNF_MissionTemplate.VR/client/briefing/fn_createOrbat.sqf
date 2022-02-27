@@ -11,7 +11,7 @@
 * true on success <BOOLEAN>
 *
 * Example:
-* call phx_briefing_fnc_createOrbat
+* call fnf_briefing_fnc_createOrbat
 *
 * Public: No
 */
@@ -37,10 +37,10 @@ _generateORBAT = {
     {
         // if !((count units _x) isEqualTo 0) then {
             // Don't apply leading line breaks to first group.
-            private _groupSize = _x getVariable ["phx_gps_groupSize",0];
-            private _identity = _x getVariable ["phx_groupIdentifier", groupID _x];
+            private _groupSize = _x getVariable ["fnf_gps_groupSize",0];
+            private _identity = _x getVariable ["fnf_groupIdentifier", groupID _x];
             private _name = groupID _x;
-            private _longName = _x getVariable ["phx_LongName",groupID _x];
+            private _longName = _x getVariable ["fnf_LongName",groupID _x];
             private _shortName = groupID _x;
             private _groupSide = [(side _x) call BIS_fnc_sideID] call BIS_fnc_sideName;
             private _groupString = "";
@@ -76,29 +76,29 @@ _generateORBAT = {
 
             private _color = "#FFFFFF";
             if (_changeColor) then {
-                if (isNil "phx_orbat_lastUsedColor") then {
-                    phx_orbat_lastUsedColor = ["#FFFFFF"];
+                if (isNil "fnf_orbat_lastUsedColor") then {
+                    fnf_orbat_lastUsedColor = ["#FFFFFF"];
                 };
-                phx_colorArray = (phx_colorArrayBase - phx_colorArrayUsed);
-                if (count phx_colorArray isEqualTo 0) then {
-                    phx_colorArrayUsed = [];
-                    phx_colorArray = phx_colorArrayBase;
+                fnf_colorArray = (fnf_colorArrayBase - fnf_colorArrayUsed);
+                if (count fnf_colorArray isEqualTo 0) then {
+                    fnf_colorArrayUsed = [];
+                    fnf_colorArray = fnf_colorArrayBase;
                 };
-                _color = phx_colorArray select 0;
-                phx_colorArrayUsed pushBack _color;
-                phx_orbat_lastUsedColor = [_color];
+                _color = fnf_colorArray select 0;
+                fnf_colorArrayUsed pushBack _color;
+                fnf_orbat_lastUsedColor = [_color];
             } else {
-                if (isNil "phx_orbat_lastUsedColor") then {
-                    phx_orbat_lastUsedColor = ["#FFFFFF"];
+                if (isNil "fnf_orbat_lastUsedColor") then {
+                    fnf_orbat_lastUsedColor = ["#FFFFFF"];
                 };
-                if (count phx_colorArray isEqualTo 0) then {
-                    phx_colorArrayUsed = [];
+                if (count fnf_colorArray isEqualTo 0) then {
+                    fnf_colorArrayUsed = [];
                 };
-                _color = phx_orbat_lastUsedColor select 0;
+                _color = fnf_orbat_lastUsedColor select 0;
             };
             // TFR
             // Get group's radio frequency
-            private _freq = _x getVariable ["phx_radioSettings",nil];
+            private _freq = _x getVariable ["fnf_radioSettings",nil];
             if (isNil "_freq") then {
                 _freq = "UNK";
             } else {
@@ -118,7 +118,7 @@ _generateORBAT = {
                     };
                 };
                 if (!(_freq isEqualTo "UNK")) then {
-                    _freq = _freq + phx_playerBaseChannel;
+                    _freq = _freq + fnf_playerBaseChannel;
                 };
             };
 
@@ -151,7 +151,7 @@ _generateORBAT = {
                 // };
                 private _colorUsed = _color;
                 if (player isEqualTo _x) then {_colorUsed = _highlightColor};
-                _roleName = [phx_loadout_roles, _x getVariable ["phxLoadout","RI"], "RI"] call BIS_fnc_getFromPairs;
+                _roleName = [fnf_loadout_roles, _x getVariable ["fnfLoadout","RI"], "RI"] call BIS_fnc_getFromPairs;
                 if (typeName _roleName isEqualTo "ARRAY") then {_roleName = _roleName select 0};
                 private _spacesCount = 21 - count (_roleName);
                 private _thisSpaces = "";
@@ -174,7 +174,7 @@ _generateORBAT = {
                   _colorUsed,
                   _thisSpaces
                 ];
-            } forEach (allUnits select {_x getVariable ["phx_startGroup","UNK"] == _identity});
+            } forEach (allUnits select {_x getVariable ["fnf_startGroup","UNK"] == _identity});
 
             _groupString = _groupString + "<br/><br/>";
             _groupStringStruct = _groupStringStruct + "<br/><br/>";
@@ -193,7 +193,7 @@ private _side = player call BIS_fnc_friendlySides select {_x != sideFriendly};
 private _orbatText = "";
 private _orbatTextStruct = "";
 
-phx_colorArrayBase = [
+fnf_colorArrayBase = [
     "#8080FF", // light blue
     "#80FF80", // light green
     "#FF8080", // light red
@@ -205,8 +205,8 @@ phx_colorArrayBase = [
     "#B960FF", //light purple
     "#FF8181" //beige red
 ];
-phx_colorArray = [];
-phx_colorArrayUsed = [];
+fnf_colorArray = [];
+fnf_colorArrayUsed = [];
 
 private _groups = [];
 private _templateGroups = [];
@@ -217,7 +217,7 @@ private _templateGroups = [];
 
 {
   // Add to ORBAT if side matches, group isn't already listed, and group has players
-  private _identity = _x getVariable ["phx_groupIdentifier",groupID _x];
+  private _identity = _x getVariable ["fnf_groupIdentifier",groupID _x];
   private _groupId = groupID _x;
   private _groupSide = side _x;
   if (
@@ -225,10 +225,10 @@ private _templateGroups = [];
     {!(_x in _groups)} &&
     (
       ({_x in (switchableUnits + playableUnits) && !(_x in ([] call ace_spectator_fnc_players))} count units _x > 0) ||
-      ((units _groupSide) findIf {_x getVariable ["phx_startGroup","UNK"] == _identity} > -1)
+      ((units _groupSide) findIf {_x getVariable ["fnf_startGroup","UNK"] == _identity} > -1)
     )
   ) then {
-    if (_identity in phx_templateGroupsList) then {
+    if (_identity in fnf_templateGroupsList) then {
       _templateGroups pushBack _x;
     } else {
       _groups pushBack _x;
@@ -243,17 +243,17 @@ private _templateText = _tempRef # 0;
 private _templateTextStruct = _tempRef # 1;
 
 // Use next color in the chain when switching between template and non-template groups
-if (isNil "phx_orbat_lastUsedColor") then {
-  phx_orbat_lastUsedColor = ["#FFFFFF"];
+if (isNil "fnf_orbat_lastUsedColor") then {
+  fnf_orbat_lastUsedColor = ["#FFFFFF"];
 };
-phx_colorArray = (phx_colorArrayBase - phx_colorArrayUsed);
-if (count phx_colorArray isEqualTo 0) then {
-  phx_colorArrayUsed = [];
-  phx_colorArray = phx_colorArrayBase;
+fnf_colorArray = (fnf_colorArrayBase - fnf_colorArrayUsed);
+if (count fnf_colorArray isEqualTo 0) then {
+  fnf_colorArrayUsed = [];
+  fnf_colorArray = fnf_colorArrayBase;
 };
-private _color = phx_colorArray select 0;
-phx_colorArrayUsed pushBack _color;
-phx_orbat_lastUsedColor = [_color];
+private _color = fnf_colorArray select 0;
+fnf_colorArrayUsed pushBack _color;
+fnf_orbat_lastUsedColor = [_color];
 
 // Generate ORBAT text for non-template groups
 _orbatText = _orbatText + _templateText;
@@ -283,8 +283,8 @@ if !(typeOf player == "ace_spectator_virtual") then {
   playerORBATRecord = player createDiaryRecord ["ORBAT_Diary", ["Allied ORBAT", _orbatText]];
 };
 
-[phx_ui_structTextRef, "ORBAT", _orbatTextStruct] call BIS_fnc_setToPairs;
+[fnf_ui_structTextRef, "ORBAT", _orbatTextStruct] call BIS_fnc_setToPairs;
 
-phx_orbat_lastUsedColor = nil;
-phx_writtenORBAT = true;
+fnf_orbat_lastUsedColor = nil;
+fnf_writtenORBAT = true;
 true

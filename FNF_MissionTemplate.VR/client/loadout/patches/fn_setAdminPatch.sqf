@@ -9,7 +9,7 @@
  * N/A
  *
  * Usage:
- * call phx_admin_fnc_setAdminPatch
+ * call fnf_admin_fnc_setAdminPatch
  *
  * Public: no
  */

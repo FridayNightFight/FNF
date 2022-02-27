@@ -52,7 +52,7 @@ copyToClipboard str(_out);
 
 // sends event to server w/ information
 // used for Discord report
-["phxAdminMessageServer", [
+["fnfAdminMessageServer", [
   "",
   _admin_soldierName,
   (_out joinString "\n"),

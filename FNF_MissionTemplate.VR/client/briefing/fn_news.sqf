@@ -11,17 +11,17 @@
 * <NIL>
 *
 * Example:
-* call phx_briefing_fnc_news
+* call fnf_briefing_fnc_news
 *
 * Public: No
 */
 
 // https://community.bistudio.com/wiki/BIS_fnc_showAANArticle
 
-PHX_Diary_News = player createDiarySubject ["PHX_Diary_News", "News", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
+fnf_Diary_News = player createDiarySubject ["fnf_Diary_News", "News", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 player createDiaryRecord [
-  "PHX_Diary_News",
+  "fnf_Diary_News",
   [
     "Trailers",
     [
@@ -34,11 +34,11 @@ player createDiaryRecord [
 ];
 
 player createDiaryRecord [
-  "PHX_Diary_News",
+  "fnf_Diary_News",
   [
     "Articles",
     [
-      "<executeClose expression='call phx_article_fnc_NewYear2022'>Happy New Year 2022</execute>"
+      "<executeClose expression='call fnf_article_fnc_NewYear2022'>Happy New Year 2022</execute>"
     ] joinString "<br/>"
   ]
 ];

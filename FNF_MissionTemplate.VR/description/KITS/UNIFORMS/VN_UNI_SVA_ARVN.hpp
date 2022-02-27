@@ -94,9 +94,9 @@ class VN_UNI_SVA_ARVN {
   class SNP : BASE {};
 
   class CR : BASE {
-    uniform[] = {UNIFORM};
-    vest[] = {VEST_CREWMAN};
-    headgear[] = {HELMET_CREWMAN};
+    uniform[] = {"vn_b_uniform_macv_06_07"};
+    vest[] = {"vn_b_vest_usarmy_14"};
+    headgear[] = {"vn_b_helmet_m1_01_01", "vn_b_beret_01_02"};
   };
 
   class CRL : CR {

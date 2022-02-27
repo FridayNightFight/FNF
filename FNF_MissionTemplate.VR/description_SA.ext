@@ -2,13 +2,13 @@ author = "YOUR_NAME";
 onLoadName = "MISSION_NAME";
 onLoadMission = "SHORT_DESCRIPTION";
 
-#include "description\definitions.hpp"
+#include "description\definitions_SA.hpp"
 #include "description\cfgEventHandlers.hpp"
 #include "description\cfgNotifications.hpp"
 #include "description\cfgSounds.hpp"
 #include "description\cfgFunctions.hpp"
-#include "description\cfgORBAT.hpp"
-#include "description\cfgLoadouts.hpp"
+#include "description\cfgFNFORBAT.hpp"
+#include "description\cfgFNFLoadouts.hpp"
 #include "description\cfgVNArtillery.hpp"
 #include "client\ui\defines.hpp"
 #include "client\ui\RscTitlesDisplay.hpp"
