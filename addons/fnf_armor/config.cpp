@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Data_F","A3_Characters_F","rhs_main","rhs_c_troops","rhsusf_c_troops","rhsgref_c_troops","rhssaf_c_troops","uk3cb_factions_Weapons","uk3cb_factions_ANP","uk3cb_factions_TKA", "uk3cb_factions_TKP"};
+		requiredAddons[] = {"A3_Data_F","A3_Characters_F","rhs_main","rhs_c_troops","rhsusf_c_troops","rhsgref_c_troops","rhssaf_c_troops","uk3cb_factions_Weapons","uk3cb_factions_ANP","uk3cb_factions_TKA","uk3cb_factions_TKP"};
 	};
 };
 class ItemInfo;
@@ -3698,4 +3698,6 @@ class CfgWeapons
 			};
 		};
 	};
+
+	/* End 3CB Factions */
 };
