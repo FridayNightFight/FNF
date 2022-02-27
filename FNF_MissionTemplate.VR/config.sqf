@@ -111,12 +111,12 @@ fnf_bluforUniform = "RHS_UNI_NATO_US_ARMY_2020";
 fnf_bluforGear = "RHS_GEAR_US_ARMY_2010_M16A4";
 
 //OPFOR
-fnf_opforUniform = "RHS_UNI_RU_RATNIK_2020";
+fnf_opforUniform = "RHS_UNI_RU_COSSACKS_2010";
 fnf_opforGear = "RHS_GEAR_RU_ARMY_2010_AK74M";
 
 //INDFOR
-fnf_indforUniform = "RHS_UNI_ID_IRAQI_ARMY_2003";
-fnf_indforGear = "RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN";
+fnf_indforUniform = "RHS_UNI_ID_IRAQI_ARMY_2000";
+fnf_indforGear = "RHS_GEAR_ID_IRAQI_ARMY_2000_AKMN";
 
 
 ////////////////////////////////////////////////////////////
@@ -143,9 +143,9 @@ fnf_grnAT_Delta = GEARDEFAULT;
 // Adjusts what loadout the two extra Squad HQ members will receive
 // Set to 0 to make default crewman, set to one of the options to enable equipment for it.
 // BLUFOR
-  fnf_westAlphaAuxRole = HMG_DSHKM(6);
-  fnf_westBravoAuxRole = AT_TOW(4);
-  fnf_westCharlieAuxRole = MORTAR_M252(10,5,5);
+  fnf_westAlphaAuxRole = 0;
+  fnf_westBravoAuxRole = 0;
+  fnf_westCharlieAuxRole = 0;
   fnf_westDeltaAuxRole = 0;
 
 // OPFOR
