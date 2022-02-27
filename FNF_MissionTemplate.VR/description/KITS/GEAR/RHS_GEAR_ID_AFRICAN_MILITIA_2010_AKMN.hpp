@@ -1,63 +1,63 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_mk18_KAC"
+#define RIFLE "rhs_weap_akmn"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define RIFLE_MAG "rhs_30Rnd_762x39mm_polymer_89:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
+#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_polymer_89:12","rhs_30Rnd_762x39mm_polymer_tracer:6"
 
-#define SIDEARM "rhsusf_weap_glock17g4"
-#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
+#define SIDEARM "rhs_weap_makarov_pm"
+#define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_mk18_m320","rhs_weap_m4a1_m320"
-#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define RIFLE_GL "rhs_weap_akmn_gp25"
+#define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
-#define UGL_FRAG 1Rnd_HE_Grenade_shell
-#define UGL_SMOKEWHITE 1Rnd_Smoke_Grenade_shell
-#define UGL_FLAREWHITE UGL_FlareWhite_F
+#define UGL_FRAG rhs_VOG25
+#define UGL_SMOKEWHITE rhs_GRD40_White
+#define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_mk18"
-#define CARBINE_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
-#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
-#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
+#define CARBINE "rhs_weap_aks74un"
+#define CARBINE_MAG "rhs_30Rnd_545x39_7N10_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
+#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
+#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
 
-#define SMG_RIFLE "rhsusf_weap_MP7A2_aor1"
-#define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
-#define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
-#define AR_RIFLE "rhs_weap_m249_pip_L"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
+#define AR_RIFLE "fnf_rpk"
+#define AR_MAG "fnf_45rnd_rpk_green:6"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
 
-#define AT_LAUNCHER AT4(1)
+#define AT_LAUNCHER RPG26(1)
 
-#define MAT1_LAUNCHER CARLG(2,0)
-#define MAT2_LAUNCHER CARLG(2,0)
+#define MAT1_LAUNCHER RPG7(4,2)
+#define MAT2_LAUNCHER RPG7(4,2)
 
-#define DM_RIFLE "rhs_weap_sr25_ec"
-#define DM_MAG "rhsusf_20Rnd_762x51_SR25_m118_special_Mag:8", "rhsusf_20Rnd_762x51_SR25_m62_Mag:4"
+#define DM_RIFLE "rhs_weap_svdp_wd_npz"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
-#define MMG_RIFLE "rhs_weap_m240G"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
+#define MMG_RIFLE "rhs_weap_pkp"
+#define MMG_MAG "rhs_100Rnd_762x54mmR:8"
+#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
 
-#define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhs_weap_m14_socom"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:6", "rhsusf_20Rnd_762x51_m993_Mag:4"
+#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
+#define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
 
-#define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
-#define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
+#define SNP_RIFLE "rhs_weap_t5000"
+#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_US_NAVY_2010_MK18 {
+class RHS_GEAR_ID_AFRICAN_MILITIA_2010_AKMN {
   author = "Mazz38";
-  description = "USA: US NAVY MK18 Kits";
+  description = "ID: 2010 AFRICAN MILITIA AKMN Kits";
 
   class BASE {
     backpackItems[] = {};

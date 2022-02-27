@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_altis_lizard", "rhsgref_uniform_altis_lizard_olive"
+#define UNIFORM "UK3CB_MDF_B_U_SF_Uniform_01_CE"
 
-#define VEST "rhsgref_otv_khaki"
+#define VEST "UK3CB_MDF_B_V_TacVest_LIZ"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_altis_lizard"
-#define HELMET_CMDR "rhsusf_Bowman"
-#define HELMET_RECON "rhssaf_booniehat_woodland"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "H_HelmetB_camo", "H_HelmetSpecB_paint1"
+#define HELMET_CMDR "UK3CB_ADP_B_H_Beret"
+#define HELMET_RECON "UK3CB_TKA_B_H_BoonieHat_WDL"
+#define HELMET_CREWMAN "rhsusf_cvc_green_alt_helmet"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask_skull"
 
-#define BACKPACK "B_Kitbag_rgr"
-#define BACKPACK_RADIO "TFAR_rt1523g_sage"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "B_FieldPack_khk"
+#define BACKPACK "B_Kitbag_cbr"
+#define BACKPACK_RADIO "TFAR_rt1523g_big_bwmod"
+#define BACKPACK_AR "B_Carryall_cbr"
+#define BACKPACK_AT "B_Carryall_cbr"
+#define BACKPACK_MEDIC "B_FieldPack_cbr"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_GREEKFORCES_2010 {
+class RHS_UNI_NATO_FRANCE_2010 {
   author = "Mazz38";
-  description = "GR: Modern Greek Armed Forces Lizard Camouflage";
+  description = "NATO: Modern French ARMY CE Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,7 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
+    uniform[] = {"UK3CB_MDF_B_U_CombatUniform_Ghillie_CE"};
   };
 
   class CR : BASE {

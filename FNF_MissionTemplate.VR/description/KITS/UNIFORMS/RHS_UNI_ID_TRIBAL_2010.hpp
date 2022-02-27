@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_altis_lizard", "rhsgref_uniform_altis_lizard_olive"
+#define UNIFORM "UK3CB_TKM_B_U_01", "UK3CB_TKM_B_U_01_B", "UK3CB_TKM_B_U_01_C", "UK3CB_TKC_C_U_03_E", "UK3CB_TKC_C_U_06_E", "UK3CB_TKC_C_U_01_E"
 
-#define VEST "rhsgref_otv_khaki"
+#define VEST "rhs_chicom_khk"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_altis_lizard"
-#define HELMET_CMDR "rhsusf_Bowman"
-#define HELMET_RECON "rhssaf_booniehat_woodland"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "UK3CB_TKM_O_H_Turban_01_1", "UK3CB_TKM_O_H_Turban_03_1", "UK3CB_TKM_O_H_Turban_04_1", "UK3CB_TKM_O_H_Turban_05_1", "UK3CB_TKM_B_H_Turban_03_1", "UK3CB_TKM_B_H_Turban_04_1"
+#define HELMET_CMDR "UK3CB_TKM_O_H_Turban_02_1"
+#define HELMET_RECON "UK3CB_H_Mil_Turban_Wrap"
+#define HELMET_CREWMAN "UK3CB_H_Mil_Turban_Wrap"
+#define HELMET_PILOT "UK3CB_H_Mil_Turban_Wrap"
 
-#define BACKPACK "B_Kitbag_rgr"
-#define BACKPACK_RADIO "TFAR_rt1523g_sage"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "B_FieldPack_khk"
+#define BACKPACK "rhs_sidor"
+#define BACKPACK_RADIO "TFAR_rt1523g_fabric"
+#define BACKPACK_AR "B_Carryall_oli"
+#define BACKPACK_AT "rhs_rpg_empty"
+#define BACKPACK_MEDIC "UK3CB_TKP_I_B_ASS_MED_TAN"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_GREEKFORCES_2010 {
+class RHS_UNI_ID_TRIBAL_2010 {
   author = "Mazz38";
-  description = "GR: Modern Greek Armed Forces Lizard Camouflage";
+  description = "ID: 2010 Tribal Militia";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,6 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

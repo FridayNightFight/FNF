@@ -23,8 +23,8 @@
 
 // put all Carbine-style (shorter) weapons
 #define CARBINE "rhs_weap_mk18"
-#define CARBINE_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
-#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 #define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
 
 #define SMG_RIFLE "rhsusf_weap_MP7A2"
@@ -35,7 +35,7 @@
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
 #define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
 #define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_US_RANGERS_2010_SCAR {
   author = "Mazz38";

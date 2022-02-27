@@ -35,7 +35,7 @@
 #define AR_MAG "fnf_45rnd_rpk_green:6"
 #define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
 
-#define AT_LAUNCHER RPG26(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER RPG32(2,0)
 #define MAT2_LAUNCHER RPG32(2,0)
@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_t5000"
 #define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK {
   author = "Mazz38";
