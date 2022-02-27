@@ -1,17 +1,33 @@
 v3.2.0
 
 - move optics selectors into categories for menu cleanliness
-- support for more than one safezone
+- support for more than one safezone in standard play
 - friendlier gear selector ACE interact menu
 - assassin rework for disconnect/reconnect resiliency
 - no longer randomizes initial gear selector options
 - force refreshes radios at applyLoadout
 - better respawn handling
 - vehicle respawn pylon loadout handling
+- forced ironsights MM choice now still allows DM and Sniper to take optics
+- new kits using 3CB assets
+- CTF no longer allows flag carriers to enter aircraft
+- implements safe zone and restricted zone testing globally or by side
+- changes X-Ray grenadier to spotter, who now has a Vector21 (SL now has binoculars)
+- ammo changes
+- adds radio override option to declare SW assignment regardless of loadout setting
+- SA now has gear selector conditions that qualify based on safezones
+- changes air loadout system to track individual ammo counts to account for custom object init changes
+
+
 - webhook fixes
 - asset diary duplication fix when using same classname of vehicle in and out of safe zones
 - fix draw3D and ACE interactions for respawning MSPs in SA
 - fix CMD and SL draw3D
+- CTF armed vehicle detection fixed
+- fixes sensor disablement of air vehicles
+- fixes safe zone deletion at end of safe start
+- fixes serialization issue with SA trigger to marker process to support custom building marker z-index management
+
 
 Sustained Assault integration
   Now with:
