@@ -55,7 +55,7 @@
 #define SNP_MAG "vn_m40a1_mag:12"
 
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class VN_US_SOG1970 {
   author = "YourNameHere";

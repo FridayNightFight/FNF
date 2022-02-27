@@ -1,36 +1,36 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "vn_b_uniform_macv_01_06", "vn_b_uniform_macv_02_06", "vn_b_uniform_macv_04_06", "vn_b_uniform_macv_03_06"
+#define UNIFORM "rhsgref_uniform_TLA_1", "rhsgref_uniform_TLA_2"
 
-#define UNIFORM_PILOT "vn_b_uniform_k2b_02_01"
+#define UNIFORM_PILOT "vn_b_uniform_sog_01_01"
 
-#define VEST "vn_b_vest_usarmy_02", "vn_b_vest_usarmy_03", "vn_b_vest_usarmy_14"
+#define VEST "vn_b_vest_usarmy_02", "vn_b_vest_usarmy_03"
 #define VEST_LEADER "vn_b_vest_usarmy_09"
 #define VEST_TL "vn_b_vest_usarmy_13"
 #define VEST_AR "vn_b_vest_usarmy_06"
 #define VEST_DM "vn_b_vest_usarmy_04"
 #define VEST_MEDIC "vn_b_vest_usarmy_07"
-#define VEST_CREWMAN "vn_b_vest_usarmy_04"
+#define VEST_CREWMAN "vn_b_vest_usarmy_11"
 #define VEST_PILOT VEST
 
-#define HELMET "vn_i_helmet_m1_01_01", "vn_i_helmet_m1_02_02", "vn_i_helmet_m1_03_02"
-#define HELMET_CREWMAN "vn_b_helmet_t56_02_01"
-#define HELMET_PILOT "vn_b_helmet_svh4_02_05"
+#define HELMET "vn_i_helmet_m1_02_01", "vn_i_helmet_m1_03_01", "vn_b_helmet_m1_10_01", "vn_b_helmet_m1_11_01", "vn_b_helmet_m1_12_01", "vn_b_helmet_m1_12_01"
+#define HELMET_CREWMAN "vn_b_helmet_m1_01_01"
+#define HELMET_PILOT "vn_b_boonie_01_01"
 
 #define BACKPACK "vn_b_pack_trp_02_02"
 #define BACKPACK_RADIO "vn_b_pack_trp_04_02"
 #define BACKPACK_AR "vn_b_pack_lw_05"
 #define BACKPACK_AT "vn_b_pack_lw_04"
 #define BACKPACK_CE "vn_b_pack_trp_03_02"
-#define BACKPACK_DM "vn_b_pack_lw_03"
+#define BACKPACK_DM "vn_b_pack_lw_01"
 #define BACKPACK_MEDIC "vn_b_pack_lw_07"
-#define BACKPACK_CREWMAN BACKPACK_RADIO
-#define BACKPACK_PILOT BACKPACK_RADIO
+#define BACKPACK_CREWMAN BACKPACK
+#define BACKPACK_PILOT BACKPACK
 
 
-class VN_UNI_SVA_ARVN {
+class VN_UNI_FR_ARMY {
   author = "Mazz38";
-  description = "South Vietnamese Army: Vietnam Era ARVN";
+  description = "USA: Vietnam Era French Army";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -94,9 +94,10 @@ class VN_UNI_SVA_ARVN {
   class SNP : BASE {};
 
   class CR : BASE {
-    uniform[] = {"vn_b_uniform_macv_06_07"};
-    vest[] = {"vn_b_vest_usarmy_14"};
-    headgear[] = {"vn_b_helmet_m1_01_01", "vn_b_beret_01_02"};
+    uniform[] = {UNIFORM};
+    vest[] = {VEST_CREWMAN};
+    headgear[] = {HELMET_CREWMAN};
+    backpack[] = {BACKPACK_CREWMAN};
   };
 
   class CRL : CR {
@@ -107,7 +108,7 @@ class VN_UNI_SVA_ARVN {
     uniform[] = {UNIFORM_PILOT};
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
-    backpack[] = {BACKPACK_RADIO};
+    backpack[] = {BACKPACK_PILOT};
   };
 
   class MED : BASE {

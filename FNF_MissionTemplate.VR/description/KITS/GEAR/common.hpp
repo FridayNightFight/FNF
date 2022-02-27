@@ -2,9 +2,9 @@
 #define GRUNT_MEDICAL "FirstAidKit:4"
 #define MEDIC_MEDICAL "ACE_fieldDressing:32","ACE_morphine:16","ACE_epinephrine:8","ACE_tourniquet:4","ACE_bloodIV_500:12","ACE_bloodIV_250:4","ACE_personalAidKit"
 #define LINKED "ItemMap","ItemCompass","ItemWatch","ItemGPS","TFAR_microdagr"
-#define VN_B_LINKED_SOG "ItemMap","vn_b_item_compass_sog","vn_b_item_watch"
-#define VN_B_LINKED "ItemMap","vn_b_item_compass","vn_b_item_watch"
-#define VN_O_LINKED "ItemMap","vn_b_item_compass","vn_b_item_watch"
+#define VN_B_LINKED_SOG "vn_b_item_map","vn_b_item_compass_sog","vn_b_item_watch"
+#define VN_B_LINKED "vn_b_item_map","vn_b_item_compass","vn_b_item_watch"
+#define VN_O_LINKED "vn_o_item_map","vn_b_item_compass","vn_b_item_watch"
 #define TOOLS "ACE_MapTools","ACE_CableTie:2"
 #define LEADER_TOOLS "ACE_microDAGR"
 #define SPOTTER_TOOLS "ACE_SpottingScope"
@@ -61,7 +61,6 @@
 // #define HALF_AMMO(_count) __EVAL((_count) / (2));
 // classname,magazines,optics,reloadable,shortname
 #define STRINGIFY(s) #s
-#define NOMAT() {"",{},{},"",""}
 #define M72LAW(_count) {"rhs_weap_m72a7",{},{},"DISPOSABLE","M72"}
 #define AT4(_count) {"rhs_weap_M136",{},{},"DISPOSABLE","AT4"}
 #define RPG26(_count) {"rhs_weap_rpg26",{},{},"DISPOSABLE","RPG26"}

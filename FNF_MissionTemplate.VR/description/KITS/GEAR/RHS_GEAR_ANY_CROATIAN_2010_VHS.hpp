@@ -53,7 +53,7 @@
 #define SNP_RIFLE "rhs_weap_m40a5", "rhs_weap_m40a5_wd", "rhs_weap_m40a5_d"
 #define SNP_MAG "rhsusf_5Rnd_762x51_AICS_m118_special_Mag:12"
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class RHS_GEAR_ANY_CROATIAN_2010_VHS {
   author = "Mazz38";

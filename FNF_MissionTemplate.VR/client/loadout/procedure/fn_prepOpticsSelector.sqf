@@ -31,7 +31,15 @@ if (isNull _unit) exitWith {nil};
 private "_cfgOpticChoices";
 switch (fnf_magnifiedOptics) do {
   // Nobody should have optics
-  case -1: {_cfgOpticChoices = []};
+  case -1: {
+    _cfgOpticChoices = [];
+    if (_role in ["DM"]) then {
+      _cfgOpticChoices = (_cfgOptics >> "magnified") call BIS_fnc_getCfgDataArray;
+    };
+    if (_role in ["SNP"]) then {
+      _cfgOpticChoices = (_cfgOptics >> "sniper") call BIS_fnc_getCfgDataArray;
+    };
+  };
   // All should have magnified
   case 1: {
     _cfgOpticChoices = (_cfgOptics >> "standard") call BIS_fnc_getCfgDataArray;

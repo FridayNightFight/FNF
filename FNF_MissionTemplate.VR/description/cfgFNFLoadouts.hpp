@@ -1,4 +1,4 @@
-class CfgLoadouts {
+class CfgFNFLoadouts {
   #include "KITS\GEAR\common.hpp"
 
   class UNIFORMS {
@@ -33,8 +33,6 @@ class CfgLoadouts {
     #include "KITS\UNIFORMS\APEX_UNI_ANY_AFRICAN_POLICE_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_ID_AFRICAN_MILITIA_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_NATO_FRANCE_2010.hpp"
-
-
 
     #include "KITS\UNIFORMS\VN_UNI_NLF_Vietcong.hpp"
     #include "KITS\UNIFORMS\VN_UNI_PAVN_NVA.hpp"

@@ -57,7 +57,7 @@
 #define SNP_MAG "vn_m40a1_mag:12"
 
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
 class VN_GEAR_US_ARMY1970 {
   author = "Mazz38";
@@ -82,7 +82,7 @@ class VN_GEAR_US_ARMY1970 {
     grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
     giveSilencer = 0; // 0 for no silencer, 1 to equip silencer on primary weapon
-    giveSRRadio = 0;
+    giveSRRadio = 1;
     giveLRRadio = 0;
   };
 

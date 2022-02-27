@@ -1,66 +1,71 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_akmn"
+#define RIFLE "rhs_weap_m1garand_sa43"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_30Rnd_762x39mm_polymer_89:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
+#define RIFLE_MAG "rhsgref_8Rnd_762x63_M2B_M1rifle:11","rhsgref_8Rnd_762x63_Tracer_M1T_M1rifle:8"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_polymer_89:12","rhs_30Rnd_762x39mm_polymer_tracer:6"
+#define RIFLE_MAG_RI "rhsgref_8Rnd_762x63_M2B_M1rifle:16","rhsgref_8Rnd_762x63_Tracer_M1T_M1rifle:8"
 
-#define SIDEARM "rhs_weap_makarov_pm"
-#define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
+#define SIDEARM "vn_m1911"
+#define SIDEARM_MAG "vn_m1911_mag:3"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_akmn_gp25"
-#define RIFLE_GL_MAG RIFLE_MAG
+#define RIFLE_GL "vn_m1carbine_gl"
+#define RIFLE_GL_MAG "vn_carbine_15_mag:12","vn_carbine_15_t_mag:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
-#define UGL_FRAG rhs_VOG25
-#define UGL_SMOKEWHITE rhs_GRD40_White
-#define UGL_FLAREWHITE rhs_VG40OP_white
+#define UGL_FRAG vn_22mm_m17_frag_mag
+#define UGL_SMOKEWHITE vn_22mm_m22_smoke_mag
+#define UGL_FLAREWHITE vn_22mm_lume_mag
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_aks74n_2"
-#define CARBINE_MAG "rhs_30Rnd_545x39_7N10_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
-#define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
-#define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
+#define CARBINE "vn_m1carbine"
+#define CARBINE_MAG "vn_carbine_15_mag:12"
+#define CARBINE_MAG_RI "vn_carbine_15_mag:16"
+#define CARBINE_MAG_CREW "vn_carbine_15_mag:6"
 
-#define SMG_RIFLE "rhs_weap_pp2000"
-#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
-#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
+#define SMG_RIFLE "vn_m3a1"
+#define SMG_MAG "vn_m3a1_mag:8"
+#define SMG_MAG_CREW "vn_m3a1_mag:4"
 
-#define AR_RIFLE "fnf_rpk"
-#define AR_MAG "fnf_45rnd_rpk_green:6"
-#define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
+#define SHOTGUN "vn_m1897"
+#define SHOTGUN_MAG "vn_m1897_fl_mag:6", "vn_m1897_buck_mag:6"
 
-#define AT_LAUNCHER RPG26(1)
+#define AR_RIFLE "vn_m1928_tommy"
+#define AR_MAG "vn_m1928_mag:6"
+#define AR_MAG_ASST "vn_m1928_t_mag:6"
 
-#define MAT1_LAUNCHER RPG7(4,2)
-#define MAT2_LAUNCHER RPG7(4,2)
+#define AT_LAUNCHER VN_LAW(1)
 
-#define DM_RIFLE "rhs_weap_svdp_wd_npz"
-#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
+#define MAT1_LAUNCHER VN_LAW(1)
+#define MAT2_LAUNCHER VN_LAW(1)
 
-#define MMG_RIFLE "rhs_weap_pkp"
-#define MMG_MAG "rhs_100Rnd_762x54mmR:8"
-#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
+#define DM_RIFLE RIFLE
+#define DM_MAG RIFLE_MAG
 
-#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
-#define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
+#define MMG_RIFLE "vn_m1928_tommy"
+#define MMG_MAG "vn_m1928_mag:11"
+#define MMG_MAG_ASST "vn_m1928_t_mag:9"
 
-#define SNP_RIFLE "rhs_weap_t5000"
-#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
+#define SPOTTER_RIFLE "vn_sten", "vn_m3a1"
+#define SPOTTER_MAG "vn_sten_mag:11", "vn_m3a1_mag:8"
 
-// [player getVariable "fnfLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+#define SNP_RIFLE "vn_m40a1_camo"
+#define SNP_MAG "vn_m40a1_mag:12"
 
-class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
+
+// [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
+
+class VN_GEAR_FRA_FRENCH1946 {
   author = "Mazz38";
-  description = "ID: 2003 IRAQI ARMY AKMN Kits";
+  description = "FRA: First-Indochina Era French Army";
 
   class BASE {
     backpackItems[] = {};
+    launchers[] = {};
     sidearms[] = {
       {{SIDEARM},{SIDEARM_MAG}}
     };
@@ -68,18 +73,16 @@ class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
       {{RIFLE},{RIFLE_MAG}},
       {{CARBINE},{CARBINE_MAG}}
     };
-    launchers[] = {};
-    defaultMAT[] = {};
-    magazines[] = {BASE_GRENADES};
+    magazines[] = {VN_B_BASE_GRENADES};
     items[] = {TOOLS,GRUNT_MEDICAL};
-    linkedItems[] = {LINKED};
+    linkedItems[] = {VN_B_LINKED};
     attachments[] = {};
     launcherAttachments[] = {};
     explosiveChoices[] = {};
     grenadeChoices[] = {};
     giveSideKey = 0; // 0 for no key, 1 for side key, 2 for GLOBAL key
     giveSilencer = 0; // 0 for no silencer, 1 to equip silencer on primary weapon
-    giveSRRadio = 1;
+    giveSRRadio = 0;
     giveLRRadio = 0;
   };
 
@@ -103,27 +106,24 @@ class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
       }
     };
     magazines[] += {
-      LEADER_SMOKES
+      VN_LEADER_SMOKES
     };
-    items[] += {LEADER_TOOLS};
-    linkedItems[] += {VECTOR};
+    linkedItems[] += {VN_BINOCULARS};
     giveSideKey = 1;
     giveLRRadio = 1;
   };
 
   class SL : TL {};
-  class SGT : SL {};
-  class PL : SGT {};
+  class SGT : TL {};
+  class PL : TL {};
 
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
   };
   class AR : ARA {
-    weapons[] = {AR_RIFLE};
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
     };
-    attachments[] = {};
   };
 
   class GR : BASE {
@@ -149,12 +149,10 @@ class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
           UGL_MAGS(UGL_FRAG,10),
           UGL_MAGS(UGL_SMOKEWHITE,4),
           UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FLAREWHITE,2)
         }
       }
     };
-    items[] += {HUNTIR_MONITOR};
   };
 
   class MGA : BASE {
@@ -168,11 +166,15 @@ class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
   };
 
   class CE : BASE {
-    magazines[] = {SMOKE_GRENADES};
+    magazines[] = {VN_B_SMOKE_GRENADES};
     items[] += {CE_TRIGGER,CE_DEFUSE};
     backpackItems[] += {CE_DETECTOR,CE_FORTIFYTOOL,SHOVEL};
-    explosiveChoices[] = {{CE_SATCHEL},{CE_MINEAP},{CE_MINEAT},{CE_DEMOCHARGE}};
-    grenadeChoices[] = {{CE_FRAG_GRENADES},{CE_INCEN_GRENADES}};
+    weaponChoices[] = {
+      {{CARBINE},{CARBINE_MAG}},
+      {{SHOTGUN},{SHOTGUN_MAG}}
+    };
+    explosiveChoices[] = {{VN_CE_SATCHEL},{VN_B_MINEAP},{VN_B_MINEAT},{VN_CE_DEMOCHARGE}};
+    grenadeChoices[] = {{VN_B_CE_FRAG_GRENADES},{VN_B_CE_WP_GRENADES}};
   };
 
   class LAT : BASE {
@@ -181,10 +183,12 @@ class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
 
   class MATA1 : BASE {
     defaultMAT[] = {MAT1_LAUNCHER};
+    linkedItems[] += {VN_BINOCULARS};
   };
   class MAT1 : MATA1 {};
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};
+    linkedItems[] += {VN_BINOCULARS};
   };
   class MAT2 : MATA2 {};
 
@@ -209,10 +213,9 @@ class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
     backpackItems[] += {SNIPER_TOOLS};
   };
 
-  class CR : BASE {
+    class CR : BASE {
     weaponChoices[] = {
-      {{SMG_RIFLE},{SMG_MAG_CREW}},
-      {{CARBINE},{CARBINE_MAG_CREW}}
+      {{SMG_RIFLE},{SMG_MAG_CREW}}
     };
     giveSideKey = 1;
   };
@@ -226,7 +229,7 @@ class RHS_GEAR_ID_IRAQI_ARMY_2003_AKMN {
   class MED : BASE {
     backpackItems[] += {MEDIC_MEDICAL};
     magazines[] += {
-      MEDIC_SMOKES
+      VN_MEDIC_SMOKES
     };
   };
 };

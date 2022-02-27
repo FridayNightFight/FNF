@@ -1,9 +1,9 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "vn_o_uniform_nva_army_01_04", "vn_o_uniform_nva_army_02_04", "vn_o_uniform_nva_army_03_04", "vn_o_uniform_nva_army_04_04", "vn_o_uniform_nva_army_06_04", "vn_o_uniform_nva_army_08_04"
-#define UNIFORM_LEADER "vn_o_uniform_nva_army_01_03"
+#define UNIFORM "vn_o_uniform_nva_army_04_01", "vn_o_uniform_nva_army_03_01", "vn_o_uniform_nva_army_02_01", "vn_o_uniform_nva_army_01_01"
+#define UNIFORM_LEADER "vn_o_uniform_nva_army_01_01"
 #define UNIFORM_PILOT "vn_o_uniform_nva_air_01"
-#define UNIFORM_SNP "vn_o_uniform_nva_army_09_04"
+#define UNIFORM_SNP "vn_o_uniform_nva_army_12_01"
 
 #define VEST "vn_o_vest_02"
 #define VEST_LEADER "vn_o_vest_07"
@@ -17,9 +17,9 @@
 #define VEST_CREWMAN "vn_o_vest_02"
 #define VEST_PILOT "vn_o_vest_05"
 
-#define HELMET "vn_o_helmet_nva_01", "vn_o_helmet_nva_04", "vn_o_helmet_nva_03", "vn_o_helmet_nva_07", "vn_o_helmet_nva_02"
-#define HELMET_SNP "vn_o_helmet_nva_04"
-#define HELMET_CREWMAN "vn_o_helmet_tsh3_01"
+#define HELMET "vn_o_helmet_nva_03", 
+#define HELMET_SNP "vn_o_boonie_nva_02_01"
+#define HELMET_CREWMAN "vn_o_helmet_nva_05"
 #define HELMET_PILOT "vn_o_helmet_zsh3_01"
 
 #define BACKPACK "vn_o_pack_01","vn_o_pack_02"
@@ -29,11 +29,11 @@
 #define BACKPACK_CE "vn_o_pack_05"
 #define BACKPACK_DM BACKPACK
 #define BACKPACK_MEDIC BACKPACK
-#define BACKPACK_CREWMAN BACKPACK_RADIO
-#define BACKPACK_PILOT BACKPACK_RADIO
+#define BACKPACK_CREWMAN BACKPACK
+#define BACKPACK_PILOT BACKPACK
 
 
-class VN_UNI_PAVN_NVA {
+class VN_UNI_PAVN_NVA_Early {
   author = "Mazz38";
   description = "North Vietnam: North Vietnamese Army";
 
@@ -105,9 +105,10 @@ class VN_UNI_PAVN_NVA {
   };
 
   class CR : BASE {
-    uniform[] = {"vn_o_uniform_nva_navy_03"};
+    uniform[] = {UNIFORM};
     vest[] = {VEST_CREWMAN};
-    headgear[] = {"vn_o_helmet_nva_09", "vn_o_cap_navy_01"};
+    headgear[] = {HELMET_CREWMAN};
+    backpack[] = {BACKPACK_CREWMAN};
   };
 
   class CRL : CR {
@@ -118,7 +119,7 @@ class VN_UNI_PAVN_NVA {
     uniform[] = {UNIFORM_PILOT};
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
-    backpack[] = {BACKPACK_RADIO};
+    backpack[] = {BACKPACK_PILOT};
   };
 
   class MED : BASE {
