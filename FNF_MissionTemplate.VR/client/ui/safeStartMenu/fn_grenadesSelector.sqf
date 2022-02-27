@@ -30,7 +30,7 @@ diag_log text str(_grenades);
 
 	(_grenadesMenu # 1) pushBack [
 		_dispName,
-		format["%1 call phx_selector_fnc_grenades", _x],
+		format["%1 call fnf_selector_fnc_grenades", _x],
 		_pic,
 		_typeOf
 	];

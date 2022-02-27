@@ -10,7 +10,7 @@
 #define VEST_PILOT VEST
 
 #define HELMET "rhsusf_opscore_mc_cover", "rhsusf_opscore_mc", "rhsusf_ach_helmet_camo_ocp"
-#define HELMET_CMDR "H_Beret_02"
+#define HELMET_CMDR "rhsusf_patrolcap_ocp"
 #define HELMET_RECON "rhs_Booniehat_ocp"
 #define HELMET_CREWMAN "rhsusf_cvc_ess"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask_green"

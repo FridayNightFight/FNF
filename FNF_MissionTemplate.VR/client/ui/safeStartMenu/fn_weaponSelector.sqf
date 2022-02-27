@@ -26,7 +26,7 @@ _wepMenu = [
 	];
 	(_wepMenu # 1) pushBack [
 		_dispName,
-		format["%1 call phx_selector_fnc_weapons", _x],
+		format["%1 call fnf_selector_fnc_weapons", _x],
 		_pic,
 		_typeOf
 	];

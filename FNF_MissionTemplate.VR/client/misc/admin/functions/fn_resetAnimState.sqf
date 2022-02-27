@@ -58,7 +58,7 @@ _out pushBack format["ACTION: %1", "ResetAnimState"];
       format["<t align='center'>Standby, fixing bugged animation state.<br/>Performed by %1</t>", _admin_soldierName],
       "success",
       10
-    ] remoteExec ["phx_ui_fnc_notify", _owner];
+    ] remoteExec ["fnf_ui_fnc_notify", _owner];
 
     _out pushBack format["SUCCESS: Reset anims on %1", _soldierName];
   };
@@ -72,7 +72,7 @@ _out pushBack format["ACTION: %1", "ResetAnimState"];
 
 // sends event to server w/ information
 // used for Discord report
-["phxAdminMessageServer", [
+["fnfAdminMessageServer", [
   "",
   _admin_soldierName,
   (_out joinString "\n"),

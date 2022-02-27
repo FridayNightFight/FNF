@@ -36,13 +36,13 @@ _getVic = {
 {
   private _thisConfig = (configFile >> "CfgVehicles" >> (typeOf _x));
   private _threat = [_thisConfig, "threat"] call BIS_fnc_returnConfigEntry;
-  if (_x inArea "bluforSafeMarker") then {
+  if ([_x, west] call fnf_fnc_inSafeZone) then {
     [_x, "BLU", _vehiclesToProcessBLUFOR] call _getVic;
   };
-  if (_x inArea "opforSafeMarker") then {
+  if ([_x, east] call fnf_fnc_inSafeZone) then {
     [_x, "OPF", _vehiclesToProcessOPFOR] call _getVic;
   };
-  if (_x inArea "indforSafeMarker") then {
+  if ([_x, independent] call fnf_fnc_inSafeZone) then {
     [_x, "IND", _vehiclesToProcessINDFOR] call _getVic;
   };
 
@@ -50,7 +50,7 @@ _getVic = {
 
 
 
-phx_ORBATHandlers = [];
+fnf_ORBATHandlers = [];
 {
   private _side = _x;
   private [
@@ -88,10 +88,10 @@ phx_ORBATHandlers = [];
     };
   };
 
-  if (playableSlotsNumber _side > 3 && phx_enemyStartVisible) then {
-    _PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "phxLoadout" isEqualTo "PL"};
+  if (playableSlotsNumber _side > 3 && fnf_enemyStartVisible) then {
+    _PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "fnfLoadout" isEqualTo "PL"};
     [ // PLTHQ
-      missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTHQ", _sideShort],
+      missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTHQ", _sideShort],
       _sideColorStr,
       "Platoon",
       "HQ",
@@ -107,14 +107,14 @@ phx_ORBATHandlers = [];
       ), // commander name
       "", // rank
       format["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
-        missionNamespace getVariable [format["phx_%1Gear",_sideNameStr], "N/A"],
-        missionNamespace getVariable [format["phx_%1Uniform",_sideNameStr], "N/A"]
+        missionNamespace getVariable [format["fnf_%1Gear",_sideNameStr], "N/A"],
+        missionNamespace getVariable [format["fnf_%1Uniform",_sideNameStr], "N/A"]
       ], // description
       _vehicles
     ] call BIS_fnc_ORBATSetGroupParams;
 
     [ // X
-      missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTX", _sideShort],
+      missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTX", _sideShort],
       _sideColorStr,
       "Squad",
       "Recon",
@@ -136,7 +136,7 @@ phx_ORBATHandlers = [];
       private _squadName = _x;
       private _squadChar = _x select [0,1];
       [ // Alpha
-        missionConfigFile >> "CfgORBAT" >> format["FNF%1PLT%2", _sideShort, _squadChar],
+        missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLT%2", _sideShort, _squadChar],
         _sideColorStr,
         "Squad",
         "MotorizedInfantry",
@@ -157,7 +157,7 @@ phx_ORBATHandlers = [];
     { // G
       private _number = str(_x);
       [ // Alpha
-        missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTG%2", _sideShort, _number],
+        missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTG%2", _sideShort, _number],
         _sideColorStr,
         "Fireteam",
         "MechanizedInfantry",
@@ -178,7 +178,7 @@ phx_ORBATHandlers = [];
     { // H
       private _number = str(_x);
       [ // Alpha
-        missionConfigFile >> "CfgORBAT" >> format["FNF%1PLTH%2", _sideShort, _number],
+        missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTH%2", _sideShort, _number],
         _sideColorStr,
         "Fireteam",
         "AviationSupport",
@@ -201,6 +201,6 @@ phx_ORBATHandlers = [];
   };
 } forEach [east, west, independent];
 
-[{!phx_safetyEnabled && time > 0}, {
+[{!(missionNamespace getVariable ["fnf_safetyEnabled", true]) && time > 0}, {
   missionNamespace setVariable ["BIS_fnc_moduleStrategicMapORBAT_drawIcon", nil];
 }] call CBA_fnc_waitUntilAndExecute;

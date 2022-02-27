@@ -24,23 +24,23 @@ if (!isServer) exitWith {};
     };
     case "setIndforAllegiance": {
       private _sideFriendly = ([west, east, sideEmpty] select {(_x call BIS_fnc_sideID) isEqualTo parseNumber(_args)}) select 0;
-      [_sideFriendly, _callerID] call phx_admin_fnc_setIndforAllegiance;
+      [_sideFriendly, _callerID] call fnf_admin_fnc_setIndforAllegiance;
     };
     case "setLoadout": {
       _args params ["_targets", "_classDisplayName", "_classToSet"];
-      [[_targets], _classDisplayName, _classToSet, _callerID] call phx_admin_fnc_adminSetLoadout;
+      [[_targets], _classDisplayName, _classToSet, _callerID] call fnf_admin_fnc_adminSetLoadout;
     };
     case "resetAnimState": {
-      [[_args], _callerID] call phx_admin_fnc_resetAnimState;
+      [[_args], _callerID] call fnf_admin_fnc_resetAnimState;
     };
     case "respawnPlayer": {
-      [[_args], _callerID] call phx_admin_fnc_respawnPlayer;
+      [[_args], _callerID] call fnf_admin_fnc_respawnPlayer;
     };
     case "killPlayer": {
-      [[_args], _callerID] call phx_admin_fnc_killPlayer;
+      [[_args], _callerID] call fnf_admin_fnc_killPlayer;
     };
     case "copyPlayerUIDs": {
-      [[_args], _callerID] call phx_admin_fnc_copyPlayerUIDs;
+      [[_args], _callerID] call fnf_admin_fnc_copyPlayerUIDs;
     };
   };
 }] call CBA_fnc_addEventHandlerArgs;

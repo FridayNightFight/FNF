@@ -3,7 +3,7 @@
 // put all rifle weapons
 #define RIFLE "rhs_weap_mk18_KAC"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define RIFLE_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 // give Riflemen extra mags
 #define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
 
@@ -35,7 +35,7 @@
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
 #define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)

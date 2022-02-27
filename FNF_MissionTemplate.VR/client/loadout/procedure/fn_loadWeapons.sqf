@@ -13,7 +13,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, PLAYERLOADOUTVAR] call phx_loadout_fnc_loadWeapons
+* [player, PLAYERLOADOUTVAR] call fnf_loadout_fnc_loadWeapons
 *
 * Public: No
 */
@@ -37,12 +37,12 @@ if (isNull _unit) exitWith {nil};
   {
     private _thisMuzzle = _x;
     private "_compatMag";
-    // "debug_console" callExtension str([_weaponClass, _mags, configName(_cfgWeapon >> _thisMuzzle), [_mags, _cfgWeapon >> _thisMuzzle, false] call phx_loadout_fnc_getWeaponMagazines]);
+    // "debug_console" callExtension str([_weaponClass, _mags, configName(_cfgWeapon >> _thisMuzzle), [_mags, _cfgWeapon >> _thisMuzzle, false] call fnf_loadout_fnc_getWeaponMagazines]);
 
     if (_thisMuzzle == "this") then {
-      _compatMag = ([_mags, _cfgWeapon, false] call phx_loadout_fnc_getWeaponMagazines) select 0;
+      _compatMag = ([_mags, _cfgWeapon, false] call fnf_loadout_fnc_getWeaponMagazines) select 0;
     } else {
-      _compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call phx_loadout_fnc_getWeaponMagazines) select 0;
+      _compatMag = ([_mags, _cfgWeapon >> _thisMuzzle, false] call fnf_loadout_fnc_getWeaponMagazines) select 0;
     };
     _compatMag = _compatMag splitString ':' select 0;
     // "debug_console" callExtension str([_weaponClass, _thisMuzzle, _compatMag]);
@@ -58,7 +58,7 @@ if (isNull _unit) exitWith {nil};
     };
   } forEach _muzzles;
 } forEach [
-  [primaryWeapon _unit, phx_loadout_weaponMagazines],
-  [handgunWeapon _unit, phx_loadout_sidearmMagazines]
+  [primaryWeapon _unit, fnf_loadout_weaponMagazines],
+  [handgunWeapon _unit, fnf_loadout_sidearmMagazines]
 ];
 true

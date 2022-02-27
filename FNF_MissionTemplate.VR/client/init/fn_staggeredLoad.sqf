@@ -4,22 +4,22 @@ Prevents the player from moving or seeing until the timer is finished
 */
 
 //Don't stagger for small player count or after mission start
-if (CBA_missionTime > 30 || count (call BIS_fnc_listPlayers) < 60) exitWith {phx_staggeredLoaded = true};
+if (CBA_missionTime > 30 || count (call BIS_fnc_listPlayers) < 60) exitWith {fnf_staggeredLoaded = true};
 
-phx_staggeredLoaded = false;
-phx_screenBlack = false;
-private _time = 10 + (random 15); //keep this below 30 for phx_loadout_fnc_checkLoadout
+fnf_staggeredLoaded = false;
+fnf_screenBlack = false;
+private _time = 10 + (random 15); //keep this below 30 for fnf_loadout_fnc_checkLoadout
 player enableSimulation false;
 
 [{time > 0}, {
-  ["phx_blackScreenID",false] call BIS_fnc_blackOut;
+  ["fnf_blackScreenID",false] call BIS_fnc_blackOut;
   ["Please wait",-1,-1,_this-1.5] spawn BIS_fnc_dynamicText;
-  phx_screenBlack = true;
+  fnf_screenBlack = true;
 }, _time] call CBA_fnc_waitUntilAndExecute;
 
-[{(time > _this) && phx_screenBlack}, {
-  ["phx_blackScreenID", true, 1] call BIS_fnc_blackIn;
+[{(time > _this) && fnf_screenBlack}, {
+  ["fnf_blackScreenID", true, 1] call BIS_fnc_blackIn;
   player enableSimulation true;
-  phx_staggeredLoaded = true;
-  phx_screenBlack = false;
+  fnf_staggeredLoaded = true;
+  fnf_screenBlack = false;
 }, _time] call CBA_fnc_waitUntilAndExecute;

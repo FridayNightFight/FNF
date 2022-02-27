@@ -2,12 +2,12 @@
 
 ["off"] call acex_fortify_fnc_handleChatCommand;
 
-phx_term1HackingSide = sideEmpty;
-phx_term2HackingSide = sideEmpty;
-phx_term3HackingSide = sideEmpty;
-phx_term1Animate = false;
-phx_term2Animate = false;
-phx_term3Animate = false;
+fnf_term1HackingSide = sideEmpty;
+fnf_term2HackingSide = sideEmpty;
+fnf_term3HackingSide = sideEmpty;
+fnf_term1Animate = false;
+fnf_term2Animate = false;
+fnf_term3Animate = false;
 
 //Show ticket counter
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
@@ -28,31 +28,31 @@ switch (_numberOfTerminals) do {
 };
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
-phx_serverTerminalAction = {
+fnf_serverTerminalAction = {
   _term = _this select 0;
   _side = _this select 1;
   _animate = false;
 
   switch (_term) do {
     case term1: {
-      missionNamespace setVariable ["phx_term1HackingSide",_side,true];
-      if (!phx_term1Animate) then {
+      missionNamespace setVariable ["fnf_term1HackingSide",_side,true];
+      if (!fnf_term1Animate) then {
         _animate = true;
-        phx_term1Animate = true;
+        fnf_term1Animate = true;
       };
     };
     case term2: {
-      missionNamespace setVariable ["phx_term2HackingSide",_side,true];
-      if (!phx_term2Animate) then {
+      missionNamespace setVariable ["fnf_term2HackingSide",_side,true];
+      if (!fnf_term2Animate) then {
         _animate = true;
-        phx_term2Animate = true;
+        fnf_term2Animate = true;
       };
     };
     case term3: {
-      missionNamespace setVariable ["phx_term3HackingSide",_side,true];
-      if (!phx_term3Animate) then {
+      missionNamespace setVariable ["fnf_term3HackingSide",_side,true];
+      if (!fnf_term3Animate) then {
         _animate = true;
-        phx_term3Animate = true;
+        fnf_term3Animate = true;
       };
     };
   };
@@ -92,18 +92,18 @@ phx_serverTerminalAction = {
     };
   };
 
-//  format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["phx_fnc_hintThenClear", 0, false];
+//  format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}] remoteExec ["fnf_fnc_hintThenClear", 0, false];
   private _str = format ["Terminal %1 connected for %2", _termNum, switch (_side) do {case east: {"OPFOR"}; case west: {"BLUFOR"}; case independent: {"INDFOR"};}];
-  [_str, "warning", 7] remoteExec ["phx_ui_fnc_notify",0,false];
+  [_str, "warning", 7] remoteExec ["fnf_ui_fnc_notify",0,false];
 };
 
-phx_connectionWin = {
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
+fnf_connectionWin = {
+  fnf_gameEnd = true;
+  publicVariable "fnf_gameEnd";
 
   _side = _this;
 
-  [_sideWon, "has reached 100 points and won!"] spawn phx_server_fnc_gameEnd;
+  [_sideWon, "has reached 100 points and won!"] spawn fnf_server_fnc_gameEnd;
 
   {
     if (!isNull _x) then {
@@ -114,12 +114,12 @@ phx_connectionWin = {
 };
 
 _sideWon = sideEmpty;
-waitUntil {phx_term1HackingSide != sideEmpty || phx_term2HackingSide != sideEmpty || phx_term3HackingSide != sideEmpty};
+waitUntil {fnf_term1HackingSide != sideEmpty || fnf_term2HackingSide != sideEmpty || fnf_term3HackingSide != sideEmpty};
 
-while {!(missionNamespace getVariable ["phx_gameEnd",false])} do {
-  [phx_term1HackingSide, 1] call BIS_fnc_respawnTickets;
-  [phx_term2HackingSide, 1] call BIS_fnc_respawnTickets;
-  [phx_term3HackingSide, 1] call BIS_fnc_respawnTickets;
+while {!(missionNamespace getVariable ["fnf_gameEnd",false])} do {
+  [fnf_term1HackingSide, 1] call BIS_fnc_respawnTickets;
+  [fnf_term2HackingSide, 1] call BIS_fnc_respawnTickets;
+  [fnf_term3HackingSide, 1] call BIS_fnc_respawnTickets;
 
   _sideWon = [[west,[west] call BIS_fnc_respawnTickets], [east,[east] call BIS_fnc_respawnTickets], [independent,[independent] call BIS_fnc_respawnTickets]] select {(_x select 1) >= 100};
   _sideWonCount = count _sideWon;
@@ -140,7 +140,7 @@ while {!(missionNamespace getVariable ["phx_gameEnd",false])} do {
     };
   };
   if (_winCall) then {
-    _sideWon call phx_connectionWin;
+    _sideWon call fnf_connectionWin;
   };
   sleep _pointAddTime;
 };

@@ -5,7 +5,7 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 		"Teleport Subordinates",
 		"",
 		{},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,
@@ -20,9 +20,9 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 		"Teleport SL/X/Assets",
 		"",
 		{
-			["Platoon Leader", "leaders"] spawn phx_fnc_teleportExec;
+			["Platoon Leader", "leaders"] spawn fnf_fnc_teleportExec;
 		},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,
@@ -37,9 +37,9 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 		"Teleport SLs",
 		"",
 		{
-			["Platoon Leader", "sl"] spawn phx_fnc_teleportExec;
+			["Platoon Leader", "sl"] spawn fnf_fnc_teleportExec;
 		},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,
@@ -54,9 +54,9 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 		"Teleport SLs + TLs",
 		"",
 		{
-			["Platoon Leader", "sltl"] spawn phx_fnc_teleportExec;
+			["Platoon Leader", "sltl"] spawn fnf_fnc_teleportExec;
 		},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,
@@ -71,9 +71,9 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 		format["Teleport ALL %1", (playerSide call BIS_fnc_sideID) call BIS_fnc_sideName],
 		"",
 		{
-			["Platoon Leader", "all"] spawn phx_fnc_teleportExec;
+			["Platoon Leader", "all"] spawn fnf_fnc_teleportExec;
 		},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,
@@ -91,7 +91,7 @@ if (["Squad Leader", roleDescription player] call BIS_fnc_inString) then {
 		"Teleport Subordinates",
 		"",
 		{},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,
@@ -106,9 +106,9 @@ if (["Squad Leader", roleDescription player] call BIS_fnc_inString) then {
 		"Teleport TLs",
 		"",
 		{
-			["Squad Leader", "tl"] spawn phx_fnc_teleportExec;
+			["Squad Leader", "tl"] spawn fnf_fnc_teleportExec;
 		},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,
@@ -123,9 +123,9 @@ if (["Squad Leader", roleDescription player] call BIS_fnc_inString) then {
 		"Teleport All Squad Members",
 		"",
 		{
-			["Squad Leader", "all"] spawn phx_fnc_teleportExec;
+			["Squad Leader", "all"] spawn fnf_fnc_teleportExec;
 		},
-		{missionNamespace getVariable ["phx_safetyEnabled", false]}
+		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
 	[
 		player,

@@ -11,7 +11,7 @@
 * true on success <BOOLEAN>
 *
 * Example:
-* call phx_briefing_fnc_createBriefSpec
+* call fnf_briefing_fnc_createBriefSpec
 *
 * Public: No
 */
@@ -29,7 +29,7 @@ _getName = {
   getText (configFile >> "cfgWeapons" >> _this >> "displayName");
 };
 
-phx_briefing_fnc_getItemInfo = {
+fnf_briefing_fnc_getItemInfo = {
   private _thisCfg = _this call CBA_fnc_getItemConfig;
   private _dispName = [_thisCfg] call BIS_fnc_displayName;
   private _desc = getText(_thisCfg >> "descriptionShort");
@@ -42,14 +42,14 @@ phx_briefing_fnc_getItemInfo = {
   ]
 };
 
-phx_briefing_fnc_parseMAT = {
+fnf_briefing_fnc_parseMAT = {
   params ["_side", "_bravoOption", "_deltaOption", ["_structText", false]];
 
   private "_gearLoadout";
   switch (_side) do {
-    case east: {_gearLoadout = phx_opforGear};
-    case west: {_gearLoadout = phx_bluforGear};
-    case independent: {_gearLoadout = phx_indforGear};
+    case east: {_gearLoadout = fnf_opforGear};
+    case west: {_gearLoadout = fnf_bluforGear};
+    case independent: {_gearLoadout = fnf_indforGear};
   };
 
   private _textOut = [];
@@ -60,7 +60,7 @@ phx_briefing_fnc_parseMAT = {
 
     if (count _setting > 0) then {
       if (_setting # 0 isEqualTo "GEARDEFAULT") then {
-        _MATData = (missionConfigFile >> "CfgLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
+        _MATData = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
       } else {
         _MATData = _setting;
       };
@@ -69,7 +69,7 @@ phx_briefing_fnc_parseMAT = {
     };
 
     _MATData params ["_launcher", "_ammo", "_optics", "_type"];
-    private _launcherInfo = _launcher call phx_briefing_fnc_getItemInfo;
+    private _launcherInfo = _launcher call fnf_briefing_fnc_getItemInfo;
 
     if (!_structText) then {
       _textOut pushBack format [
@@ -78,7 +78,7 @@ phx_briefing_fnc_parseMAT = {
         _role,
         [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
         [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call phx_briefing_fnc_notesItems]} else {""}),
+        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true] call fnf_briefing_fnc_notesItems]} else {""}),
         [_launcherInfo, "description"] call BIS_fnc_getFromPairs
       ] + "<br/><br/>";
     } else {
@@ -88,7 +88,7 @@ phx_briefing_fnc_parseMAT = {
         _role,
         [_launcherInfo, "displayName"] call BIS_fnc_getFromPairs,
         [_launcherInfo, "picture"] call BIS_fnc_getFromPairs,
-        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true, true] call phx_briefing_fnc_notesItems]} else {""}),
+        (if (_type == "RELOAD") then {format["%1 (per person)", [_ammo, true, true] call fnf_briefing_fnc_notesItems]} else {""}),
         [_launcherInfo, "description"] call BIS_fnc_getFromPairs
       ];
     };
@@ -102,7 +102,7 @@ phx_briefing_fnc_parseMAT = {
 };
 
 
-phx_briefing_fnc_parseCSW = {
+fnf_briefing_fnc_parseCSW = {
   params ["_side", ["_structText", false]];
 
   private _sideStr = str(_side);
@@ -118,20 +118,20 @@ phx_briefing_fnc_parseCSW = {
       };
     } else {
       if (count _setting > 0) then {
-        private _cswPrimaryInfo = (_setting # 0) call phx_briefing_fnc_getItemInfo;
+        private _cswPrimaryInfo = (_setting # 0) call fnf_briefing_fnc_getItemInfo;
 
         private _mags = [];
         {
           if (!_structText) then {
-            _mags pushBack ([_x, true] call phx_briefing_fnc_notesItems);
+            _mags pushBack ([_x, true] call fnf_briefing_fnc_notesItems);
           } else {
-            _mags pushBack ([_x, true, true] call phx_briefing_fnc_notesItems);
+            _mags pushBack ([_x, true, true] call fnf_briefing_fnc_notesItems);
           };
         } forEach (_setting select {typeName _x == "ARRAY"});
 
         private _cswSecondaryName = "Ammo only";
         if (_setting # 1 != "") then {
-          private _temp = (_setting # 1) call phx_briefing_fnc_getItemInfo;
+          private _temp = (_setting # 1) call fnf_briefing_fnc_getItemInfo;
           _cswSecondaryName = [_temp, "displayName"] call BIS_fnc_getFromPairs;
         };
 
@@ -159,10 +159,10 @@ phx_briefing_fnc_parseCSW = {
       };
     };
   } forEach [
-    missionNamespace getVariable [format["phx_%1AlphaAuxRole",_sideStr], 0],
-    missionNamespace getVariable [format["phx_%1BravoAuxRole",_sideStr], 0],
-    missionNamespace getVariable [format["phx_%1CharlieAuxRole",_sideStr], 0],
-    missionNamespace getVariable [format["phx_%1DeltaAuxRole",_sideStr], 0]
+    missionNamespace getVariable [format["fnf_%1AlphaAuxRole",_sideStr], 0],
+    missionNamespace getVariable [format["fnf_%1BravoAuxRole",_sideStr], 0],
+    missionNamespace getVariable [format["fnf_%1CharlieAuxRole",_sideStr], 0],
+    missionNamespace getVariable [format["fnf_%1DeltaAuxRole",_sideStr], 0]
   ];
 
   _textOut pushBack "<br/>";
@@ -171,50 +171,50 @@ phx_briefing_fnc_parseCSW = {
 
 
 //show blufor uniform and headgear if side is present
-if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" || !isNil "phx_briefing_west_uniformMeta" && !isNil "phx_briefing_west_loadout") then {
+if (!isNil "fnf_briefing_west_uniform" || !isNil "fnf_briefing_west_headgear" || !isNil "fnf_briefing_west_uniformMeta" && !isNil "fnf_briefing_west_loadout") then {
 
-  private _uiMAT = [phx_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
-  _uiMAT = _uiMAT + ([west, phx_bluAT_Bravo, phx_bluAT_Delta, true]  call phx_briefing_fnc_parseMAT);
-  phx_ui_structTextRef = [phx_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
+  private _uiMAT = [fnf_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
+  _uiMAT = _uiMAT + ([west, fnf_bluAT_Bravo, fnf_bluAT_Delta, true]  call fnf_briefing_fnc_parseMAT);
+  fnf_ui_structTextRef = [fnf_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show BLUFOR loadout
-  phx_briefing_loadoutBLU = {
-    private _meta = +phx_briefing_west_uniformMeta;
+  fnf_briefing_loadoutBLU = {
+    private _meta = +fnf_briefing_west_uniformMeta;
 
     _helmetImg = [];
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_west_headgear;
+      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_west_headgear;
     {
-      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_west_vest;
+      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_west_vest;
     {
-      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_west_uniform;
+      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_west_uniform;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "BLUFOR",
       format ["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
-        missionNamespace getVariable [format["phx_%1Gear","blufor"], "N/A"],
-        missionNamespace getVariable [format["phx_%1Uniform","blufor"], "N/A"]
+        missionNamespace getVariable [format["fnf_%1Gear","blufor"], "N/A"],
+        missionNamespace getVariable [format["fnf_%1Uniform","blufor"], "N/A"]
       ]
     ] call BIS_fnc_setToPairs;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "BLUFOR Loadout",
       format [
         "<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>%2",
-        phx_briefing_west_loadout # 0 # 0,
-        [phx_briefing_west_loadout, true] call phx_briefing_fnc_parseLoadout
+        fnf_briefing_west_loadout # 0 # 0,
+        [fnf_briefing_west_loadout, true] call fnf_briefing_fnc_parseLoadout
       ]
     ] call BIS_fnc_setToPairs;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "BLUFOR Uniform",
       format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
 <t size='1.1'>%5</t><br/>
@@ -233,9 +233,9 @@ Author: %6<br/><br/>
     ] call BIS_fnc_setToPairs;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "BLUFOR CSW",
-      [west, true] call phx_briefing_fnc_parseCSW
+      [west, true] call fnf_briefing_fnc_parseCSW
     ] call BIS_fnc_setToPairs;
   };
 };
@@ -243,50 +243,50 @@ Author: %6<br/><br/>
 
 
 //show opfor uniform and headgear if side is present
-if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" || !isNil "phx_briefing_east_uniformMeta" && !isNil "phx_briefing_east_loadout") then {
+if (!isNil "fnf_briefing_east_uniform" || !isNil "fnf_briefing_east_headgear" || !isNil "fnf_briefing_east_uniformMeta" && !isNil "fnf_briefing_east_loadout") then {
 
-  private _uiMAT = [phx_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
-  _uiMAT = _uiMAT + ([east, phx_redAT_Bravo, phx_redAT_Delta, true] call phx_briefing_fnc_parseMAT);
-  phx_ui_structTextRef = [phx_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
+  private _uiMAT = [fnf_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
+  _uiMAT = _uiMAT + ([east, fnf_redAT_Bravo, fnf_redAT_Delta, true] call fnf_briefing_fnc_parseMAT);
+  fnf_ui_structTextRef = [fnf_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show OPFOR loadout
-  phx_briefing_loadoutOPF = {
-    private _meta = +phx_briefing_east_uniformMeta;
+  fnf_briefing_loadoutOPF = {
+    private _meta = +fnf_briefing_east_uniformMeta;
 
     _helmetImg = [];
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_east_headgear;
+      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_east_headgear;
     {
-      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_east_vest;
+      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_east_vest;
     {
-      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_east_uniform;
+      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_east_uniform;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "OPFOR",
       format ["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
-        missionNamespace getVariable [format["phx_%1Gear","OPFOR"], "N/A"],
-        missionNamespace getVariable [format["phx_%1Uniform","OPFOR"], "N/A"]
+        missionNamespace getVariable [format["fnf_%1Gear","OPFOR"], "N/A"],
+        missionNamespace getVariable [format["fnf_%1Uniform","OPFOR"], "N/A"]
       ]
     ] call BIS_fnc_setToPairs;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "OPFOR Loadout",
       format [
         "<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>%2",
-        phx_briefing_east_loadout # 0 # 0,
-        [phx_briefing_east_loadout, true] call phx_briefing_fnc_parseLoadout
+        fnf_briefing_east_loadout # 0 # 0,
+        [fnf_briefing_east_loadout, true] call fnf_briefing_fnc_parseLoadout
       ]
     ] call BIS_fnc_setToPairs;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "OPFOR Uniform",
       format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
 <t size='1.1'>%5</t><br/>
@@ -305,9 +305,9 @@ Author: %6<br/><br/>
     ] call BIS_fnc_setToPairs;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "OPFOR CSW",
-      [east, true] call phx_briefing_fnc_parseCSW
+      [east, true] call fnf_briefing_fnc_parseCSW
     ] call BIS_fnc_setToPairs;
   };
 };
@@ -315,48 +315,48 @@ Author: %6<br/><br/>
 
 
 //show indfor uniform and headgear if side is present
-if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !isNil "phx_briefing_ind_uniformMeta" && !isNil "phx_briefing_ind_loadout") then {
+if (!isNil "fnf_briefing_ind_uniform" || !isNil "fnf_briefing_ind_headgear" || !isNil "fnf_briefing_ind_uniformMeta" && !isNil "fnf_briefing_ind_loadout") then {
 
-  private _uiMAT = [phx_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
-  _uiMAT = _uiMAT + ([independent, phx_grnAT_Bravo, phx_grnAT_Delta, true] call phx_briefing_fnc_parseMAT);
-  phx_ui_structTextRef = [phx_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
+  private _uiMAT = [fnf_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
+  _uiMAT = _uiMAT + ([independent, fnf_grnAT_Bravo, fnf_grnAT_Delta, true] call fnf_briefing_fnc_parseMAT);
+  fnf_ui_structTextRef = [fnf_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show INDFOR loadout
-  phx_briefing_loadoutIND = {
-    private _meta = +phx_briefing_ind_uniformMeta;
+  fnf_briefing_loadoutIND = {
+    private _meta = +fnf_briefing_ind_uniformMeta;
 
     _helmetImg = [];
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_ind_headgear;
+      _helmetImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_ind_headgear;
     {
-      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_ind_vest;
+      _vestImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_ind_vest;
     {
-      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_ind_uniform;
+      _uniformImg pushBack format["<img size='6' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_ind_uniform;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "INDFOR",
       format ["GEAR:<br/>  %1<br/>UNIFORM:<br/>  %2",
-        missionNamespace getVariable [format["phx_%1Gear","indfor"], "N/A"],
-        missionNamespace getVariable [format["phx_%1Uniform","indfor"], "N/A"]
+        missionNamespace getVariable [format["fnf_%1Gear","indfor"], "N/A"],
+        missionNamespace getVariable [format["fnf_%1Uniform","indfor"], "N/A"]
       ]
     ] call BIS_fnc_setToPairs;
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "INDFOR Loadout",
       format [
         "<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>%2",
-        phx_briefing_ind_loadout # 0 # 0,
-        [phx_briefing_ind_loadout, true] call phx_briefing_fnc_parseLoadout
+        fnf_briefing_ind_loadout # 0 # 0,
+        [fnf_briefing_ind_loadout, true] call fnf_briefing_fnc_parseLoadout
       ]
     ] call BIS_fnc_setToPairs;
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "INDFOR Uniform",
       format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
 <t size='1.1'>%5</t><br/>
@@ -375,9 +375,9 @@ Author: %6<br/><br/>
     ] call BIS_fnc_setToPairs;
 
     [
-      phx_ui_structTextRef,
+      fnf_ui_structTextRef,
       "INDFOR CSW",
-      [independent, true] call phx_briefing_fnc_parseCSW
+      [independent, true] call fnf_briefing_fnc_parseCSW
     ] call BIS_fnc_setToPairs;
   };
 };
@@ -390,36 +390,36 @@ _varStrStruct pushBack format[
   "Mission Variables"
 ];
 
-_varStrStruct pushBack format ["Safe start time: %1 minutes", phx_safeStartTime];
-_varStrStruct pushBack format ["Time limit: %1 minutes", phx_missionTimeLimit];
+_varStrStruct pushBack format ["Safe start time: %1 minutes", fnf_safeStartTime];
+_varStrStruct pushBack format ["Time limit: %1 minutes", fnf_missionTimeLimit];
 _varStrStruct pushBack "<br/>";
 
-_varStrStruct pushBack format ["Maximum view distance: %1m", phx_maxViewDistance];
+_varStrStruct pushBack format ["Maximum view distance: %1m", fnf_maxViewDistance];
 
 private _magOpticsStr = "";
-switch (phx_magnifiedOptics) do {
+switch (fnf_magnifiedOptics) do {
   case 1: {_magOpticsStr = "Yes"};
   case 0: {_magOpticsStr = "No"};
 };
 
 _varStrStruct pushBack format ["Magnified optics: %1", _magOpticsStr];
 
-if (phx_defendingSide != sideEmpty) then {
-  _varStrStruct pushBack format ["Defender fortify points: %1", phx_fortifyPoints];
+if (fnf_defendingSide != sideEmpty) then {
+  _varStrStruct pushBack format ["Defender fortify points: %1", fnf_fortifyPoints];
 };
 
 private _addNVGStr = "";
-switch (phx_addNVG) do {
+switch (fnf_addNVG) do {
   case 1: {_addNVGStr = "Yes"};
   case 0: {_addNVGStr = "No"};
 };
 _varStrStruct pushBack format ["NVGs equipped: %1", _addNVGStr];
 
-[phx_ui_structTextRef, "Mission Variables", _varStrStruct joinString "<br/>"] call BIS_fnc_setToPairs;
+[fnf_ui_structTextRef, "Mission Variables", _varStrStruct joinString "<br/>"] call BIS_fnc_setToPairs;
 
 
 
-phx_briefing_MMNotes = {
+fnf_briefing_MMNotes = {
   // MM briefing notes
   private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
   _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
@@ -444,42 +444,42 @@ phx_briefing_MMNotes = {
   _mmNotesStructBrief pushBack "<br/>";
   _mmNotesStructBrief pushBack "<br/>";
 
-  if (count phx_briefingBackground > 0) then {
+  if (count fnf_briefingBackground > 0) then {
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>BACKGROUND</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack (phx_briefingBackground call CBA_fnc_sanitizeHTML);
+    _mmNotesStructBrief pushBack (fnf_briefingBackground call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
-  if (count phx_briefingWorldInfo > 0) then {
+  if (count fnf_briefingWorldInfo > 0) then {
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>AREA OF OPERATIONS</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack (phx_briefingWorldInfo call CBA_fnc_sanitizeHTML);
+    _mmNotesStructBrief pushBack (fnf_briefingWorldInfo call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
-  if (count phx_briefingNotes > 0) then {
+  if (count fnf_briefingNotes > 0) then {
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>NOTES</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack (phx_briefingNotes call CBA_fnc_sanitizeHTML);
+    _mmNotesStructBrief pushBack (fnf_briefingNotes call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
-  if (count phx_briefingRules > 0) then {
+  if (count fnf_briefingRules > 0) then {
     _mmNotesStructBrief pushBack "<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>MISSION RULES</t>";
     _mmNotesStructBrief pushBack "<br/>";
-    _mmNotesStructBrief pushBack (phx_briefingRules call CBA_fnc_sanitizeHTML);
+    _mmNotesStructBrief pushBack (fnf_briefingRules call CBA_fnc_sanitizeHTML);
     _mmNotesStructBrief pushBack "<br/>";
   };
 
   // game mode details
   _mmNotesStructGamemode = [];
-  _mmNotesStructGamemode pushBack format ["<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</t>", toUpper phx_gameMode];
+  _mmNotesStructGamemode pushBack format ["<t size='1.2' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</t>", toUpper fnf_gameMode];
   _mmNotesStructGamemode pushBack "<br/>";
   _mmNotesStructGamemode pushBack "<br/>";
 
-  if (!isNil "phx_overTimeConStr") then {
-    _mmNotesStructGamemode pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
+  if (!isNil "fnf_overTimeConStr") then {
+    _mmNotesStructGamemode pushBack "OVERTIME CONDITIONS:<br/>" + fnf_overTimeConStr;
     _mmNotesStructGamemode pushBack "<br/>";
     _mmNotesStructGamemode pushBack "<br/>";
   } else {
@@ -487,7 +487,7 @@ phx_briefing_MMNotes = {
     _mmNotesStructGamemode pushBack "<br/>";
   };
 
-  switch (phx_gameMode) do {
+  switch (fnf_gameMode) do {
     case "destroy": {
       #include "..\..\mode_config\destroy.sqf";
       _objArr = [_obj1,_obj2,_obj3];
@@ -604,12 +604,12 @@ phx_briefing_MMNotes = {
 
         private _mmNotesStructGamemode = [];
 
-        _mmNotesStructGamemode pushBack format ["<t size='1.2' color='" + COLOR3 + "' font='PuristaBold'>GAMEMODE: %1</t>", toUpper phx_gameMode];
+        _mmNotesStructGamemode pushBack format ["<t size='1.2' color='" + COLOR3 + "' font='PuristaBold'>GAMEMODE: %1</t>", toUpper fnf_gameMode];
         _mmNotesStructGamemode pushBack "<br/>";
         _mmNotesStructGamemode pushBack "<br/>";
 
-        if (!isNil "phx_overTimeConStr") then {
-          _mmNotesStructGamemode pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
+        if (!isNil "fnf_overTimeConStr") then {
+          _mmNotesStructGamemode pushBack "OVERTIME CONDITIONS:<br/>" + fnf_overTimeConStr;
           _mmNotesStructGamemode pushBack "<br/>";
           _mmNotesStructGamemode pushBack "<br/>";
         } else {
@@ -618,7 +618,7 @@ phx_briefing_MMNotes = {
         };
 
         _mmNotesStructGamemode pushBack format ["HVT Count: %1<br/>", count _targets];
-        _mmNotesStructGamemode pushBack format ["%1 needs to kill %2 of them to win.<br/>", phx_attackingSide call BIS_fnc_sideName, _requiredKills];
+        _mmNotesStructGamemode pushBack format ["%1 needs to kill %2 of them to win.<br/>", fnf_attackingSide call BIS_fnc_sideName, _requiredKills];
         _mmNotesStructGamemode pushBack "<br/><br/>";
         _mmNotesStructGamemode pushBack "Jammers are in place to secure 1 or more specifically marked areas in which the HVTs can safely hide. If an HVT moves outside of any protected zone, their position will be revealed on the enemy's map until they return to safety. HVT locations will ALWAYS be revealed to their allies to aid them in tactical defense.";
         _mmNotesStructGamemode pushBack "<br/><br/>";
@@ -627,37 +627,38 @@ phx_briefing_MMNotes = {
         {
           (_x # 0) params ["_targetHeader"];
           (_x # 1) params ["_role", "_name", "_obj"];
-          if (!isNil "_obj") then {
-            _mmNotesStructGamemode pushBack format ["<t color='%1'>  %2:</t> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+          if (isNil "_obj") then {continue};
+          if (!isNull _obj) then {
+            _mmNotesStructGamemode pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           } else {
-            _mmNotesStructGamemode pushBack format ["<t color='%1'>  %2:</t> %3 (%4, played by [NOT FILLED])<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+            _mmNotesStructGamemode pushBack format ["<font color='%1'>  %2:</font> %3 (%4, [slot isn't filled])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           };
-        } forEach phx_assassinationTargets;
+        } forEach fnf_assassin_targets;
 
-        [phx_ui_structTextRef, "Gamemode", _mmNotesStructGamemode joinString ""] call BIS_fnc_setToPairs;
+        [fnf_ui_structTextRef, "Gamemode", _mmNotesStructGamemode joinString ""] call BIS_fnc_setToPairs;
       }] call CBA_fnc_addEventHandler;
 
       ["REFRESH_BRIEF_GAMEMODE"] call CBA_fnc_localEvent;
     };
   };
 
-  [phx_ui_structTextRef, "Briefing", _mmNotesStructBrief joinString ""] call BIS_fnc_setToPairs;
-  [phx_ui_structTextRef, "Gamemode", _mmNotesStructGamemode joinString ""] call BIS_fnc_setToPairs;
+  [fnf_ui_structTextRef, "Briefing", _mmNotesStructBrief joinString ""] call BIS_fnc_setToPairs;
+  [fnf_ui_structTextRef, "Gamemode", _mmNotesStructGamemode joinString ""] call BIS_fnc_setToPairs;
 
 };
 
 
-if (!isNil "phx_briefing_loadoutIND") then {
-  call phx_briefing_loadoutIND;
+if (!isNil "fnf_briefing_loadoutIND") then {
+  call fnf_briefing_loadoutIND;
 };
-if (!isNil "phx_briefing_loadoutOPF") then {
-  call phx_briefing_loadoutOPF;
+if (!isNil "fnf_briefing_loadoutOPF") then {
+  call fnf_briefing_loadoutOPF;
 };
-if (!isNil "phx_briefing_loadoutBLU") then {
-  call phx_briefing_loadoutBLU;
+if (!isNil "fnf_briefing_loadoutBLU") then {
+  call fnf_briefing_loadoutBLU;
 };
 
-[false] call phx_briefing_fnc_parseGear;
-call phx_briefing_MMNotes;
-call phx_briefing_fnc_createOrbat;
+[false] call fnf_briefing_fnc_parseGear;
+call fnf_briefing_MMNotes;
+call fnf_briefing_fnc_createOrbat;
 true

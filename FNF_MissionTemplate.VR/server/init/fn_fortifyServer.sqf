@@ -5,7 +5,7 @@ private _desert = ["Desert_E","pja319","tem_kujari","porto","intro","Shapur_BAF"
 if (worldName in _desert) then {_fortifyColor = 1};
 
 
-phx_fortify_ModernGreen = [
+fnf_fortify_ModernGreen = [
   ["Land_BagFence_01_short_green_F",3],
   ["Land_BagFence_01_long_green_F",4],
   ["Land_BagFence_01_round_green_F",4],
@@ -22,7 +22,7 @@ phx_fortify_ModernGreen = [
   ["Land_Bunker_01_HQ_F",100],
   ["Land_Bunker_01_tall_F",130]
 ];
-phx_fortify_ModernTan = [
+fnf_fortify_ModernTan = [
   ["Land_BagFence_Short_F",3],
   ["Land_BagFence_Long_F",4],
   ["Land_BagFence_Round_F",4],
@@ -39,7 +39,7 @@ phx_fortify_ModernTan = [
   ["Land_Bunker_01_HQ_F",100],
   ["Land_Bunker_01_tall_F",130]
 ];
-phx_fortify_NVA = [
+fnf_fortify_NVA = [
   ["Land_Plank_01_4m_F",5],
   ["Land_Plank_01_8m_F",5],
   // ["vn_o_NVA_spiderhole_01",12], // straight cover
@@ -53,7 +53,7 @@ phx_fortify_NVA = [
   ["Land_vn_o_tower_02",50],
   ["Land_vn_o_snipertree_02",100]
 ];
-phx_fortify_MACV = [
+fnf_fortify_MACV = [
   ["Land_vn_BagFence_01_short_green_F",3],
   ["Land_vn_BagFence_01_long_green_F",4],
   ["Land_vn_BagFence_01_round_green_F",4],
@@ -72,19 +72,19 @@ phx_fortify_MACV = [
 
 
 
-switch (phx_fortifyStyle) do {
+switch (fnf_fortifyStyle) do {
   case "Modern": {
     switch (_fortifyColor) do {
       case 1: {
-        [phx_defendingSide, phx_fortifyPoints, phx_fortify_ModernTan] call ace_fortify_fnc_registerObjects;
+        [fnf_defendingSide, fnf_fortifyPoints, fnf_fortify_ModernTan] call ace_fortify_fnc_registerObjects;
       };
       default {
-        [phx_defendingSide, phx_fortifyPoints, phx_fortify_ModernGreen] call ace_fortify_fnc_registerObjects;
+        [fnf_defendingSide, fnf_fortifyPoints, fnf_fortify_ModernGreen] call ace_fortify_fnc_registerObjects;
       };
     };
   };
   default {
-    private _set = missionNamespace getVariable format["phx_fortify_%1", phx_fortifyStyle];
-    [phx_defendingSide, phx_fortifyPoints, _set] call ace_fortify_fnc_registerObjects;
+    private _set = missionNamespace getVariable format["fnf_fortify_%1", fnf_fortifyStyle];
+    [fnf_defendingSide, fnf_fortifyPoints, _set] call ace_fortify_fnc_registerObjects;
   };
 };

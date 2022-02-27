@@ -13,8 +13,8 @@ _sidePresent = {
 _getLoadoutFromConfig = {
   params ["_uniformVar", "_gearVar"];
 
-  #define CFGUNIFORM missionConfigFile >> "CfgLoadouts" >> "UNIFORMS"
-  #define CFGGEAR missionConfigFile >> "CfgLoadouts" >> "GEAR"
+  #define CFGUNIFORM missionConfigFile >> "CfgFNFLoadouts" >> "UNIFORMS"
+  #define CFGGEAR missionConfigFile >> "CfgFNFLoadouts" >> "GEAR"
 
   private _uniformMeta = [
     configName (CFGUNIFORM >> _uniformVar),
@@ -116,35 +116,35 @@ _getLoadoutFromConfig = {
     };
   };
 
-  private _sideUniform = missionNamespace getVariable ("phx_" + _optionLabel + "Uniform");
-  private _sideGear = missionNamespace getVariable ("phx_" + _optionLabel + "Gear");
+  private _sideUniform = missionNamespace getVariable ("fnf_" + _optionLabel + "Uniform");
+  private _sideGear = missionNamespace getVariable ("fnf_" + _optionLabel + "Gear");
 
   _parsedSet = [_sideUniform, _sideGear] call _getLoadoutFromConfig;
   _parsedSet params ["_uniformMeta", "_uniform", "_vest", "_headgear", "_gearMeta", "_gearList"];
 
   missionNamespace setVariable [
-    ("phx_briefing_" + _varLabel + "_uniformMeta"),
+    ("fnf_briefing_" + _varLabel + "_uniformMeta"),
     _uniformMeta,
     true
   ];
   missionNamespace setVariable [
-    ("phx_briefing_" + _varLabel + "_uniform"),
+    ("fnf_briefing_" + _varLabel + "_uniform"),
     _uniform,
     true
   ];
   missionNamespace setVariable [
-    ("phx_briefing_" + _varLabel + "_vest"),
+    ("fnf_briefing_" + _varLabel + "_vest"),
     _vest,
     true
   ];
   missionNamespace setVariable [
-    ("phx_briefing_" + _varLabel + "_headgear"),
+    ("fnf_briefing_" + _varLabel + "_headgear"),
     _headgear,
     true
   ];
 
   missionNamespace setVariable [
-    "phx_briefing_" + _varLabel + "_loadout",
+    "fnf_briefing_" + _varLabel + "_loadout",
     [_gearMeta, _gearList],
     true
   ];
@@ -154,38 +154,38 @@ _getLoadoutFromConfig = {
 
 // if (east call _sidePresent) then {
 
-//   _parsedSet = [phx_opforUniform, phx_opforGear] call _getLoadoutFromConfig;
+//   _parsedSet = [fnf_opforUniform, fnf_opforGear] call _getLoadoutFromConfig;
 //   _parsedSet params ["_uniformMeta", "_uniform", "_headgear", "_gearMeta", "_gearList"];
 
-//   missionNamespace setVariable ["phx_briefing_east_uniformMeta", _uniform, true];
-//   missionNamespace setVariable ["phx_briefing_east_uniform", _uniform, true];
-//   missionNamespace setVariable ["phx_briefing_east_headgear", _headgear, true];
+//   missionNamespace setVariable ["fnf_briefing_east_uniformMeta", _uniform, true];
+//   missionNamespace setVariable ["fnf_briefing_east_uniform", _uniform, true];
+//   missionNamespace setVariable ["fnf_briefing_east_headgear", _headgear, true];
 
-//   _loadout = missionNamespace getVariable format["%1_GEAR", phx_opforGear];
-//   missionNamespace setVariable ["phx_briefing_east_loadout", _weaponChoices, true];
+//   _loadout = missionNamespace getVariable format["%1_GEAR", fnf_opforGear];
+//   missionNamespace setVariable ["fnf_briefing_east_loadout", _weaponChoices, true];
 // };
 
 // if (west call _sidePresent) then {
-//   _parsedSet = [phx_bluforUniform, phx_bluforGear] call _getLoadoutFromConfig;
+//   _parsedSet = [fnf_bluforUniform, fnf_bluforGear] call _getLoadoutFromConfig;
 //   _parsedSet params ["_uniformMeta", "_uniform", "_headgear", "_gearMeta", "_gearList"];
 
-//   missionNamespace setVariable ["phx_briefing_west_uniformMeta", _uniform, true];
-//   missionNamespace setVariable ["phx_briefing_west_uniform", _uniform, true];
-//   missionNamespace setVariable ["phx_briefing_west_headgear", _headgear, true];
+//   missionNamespace setVariable ["fnf_briefing_west_uniformMeta", _uniform, true];
+//   missionNamespace setVariable ["fnf_briefing_west_uniform", _uniform, true];
+//   missionNamespace setVariable ["fnf_briefing_west_headgear", _headgear, true];
 
-//   _loadout = missionNamespace getVariable format["%1_GEAR", phx_bluforGear];
-//   missionNamespace setVariable ["phx_briefing_west_loadout", _weaponChoices, true];
+//   _loadout = missionNamespace getVariable format["%1_GEAR", fnf_bluforGear];
+//   missionNamespace setVariable ["fnf_briefing_west_loadout", _weaponChoices, true];
 //   "debug_console" callExtension str(_weaponChoices);
 // };
 
 // if (independent call _sidePresent) then {
-//   _parsedSet = [phx_independentUniform, phx_independentGear] call _getLoadoutFromConfig;
+//   _parsedSet = [fnf_independentUniform, fnf_independentGear] call _getLoadoutFromConfig;
 //   _parsedSet params ["_uniformMeta", "_uniform", "_headgear", "_gearMeta", "_gearList"];
 
-//   missionNamespace setVariable ["phx_briefing_ind_uniformMeta", _uniform, true];
-//   missionNamespace setVariable ["phx_briefing_ind_uniform", _uniform, true];
-//   missionNamespace setVariable ["phx_briefing_ind_headgear", _headgear, true];
+//   missionNamespace setVariable ["fnf_briefing_ind_uniformMeta", _uniform, true];
+//   missionNamespace setVariable ["fnf_briefing_ind_uniform", _uniform, true];
+//   missionNamespace setVariable ["fnf_briefing_ind_headgear", _headgear, true];
 
-//   _loadout = missionNamespace getVariable format["%1_GEAR", phx_independentGear];
-//   missionNamespace setVariable ["phx_briefing_ind_loadout", [_gearMeta, _gearList], true];
+//   _loadout = missionNamespace getVariable format["%1_GEAR", fnf_independentGear];
+//   missionNamespace setVariable ["fnf_briefing_ind_loadout", [_gearMeta, _gearList], true];
 // };

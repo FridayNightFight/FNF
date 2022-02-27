@@ -29,7 +29,7 @@ class CfgVehicles {
   class rhs_9k79: OTR21_Base {
     class UserActions: UserActions {
       class ControlPanel: ControlPanel {
-        condition = "(alive this)&&((call rhs_fnc_findPlayer)==(gunner this))&&!(missionNamespace getVariable ['phx_safetyEnabled', true])";
+        condition = "(alive this)&&((call rhs_fnc_findPlayer)==(gunner this))&&!(missionNamespace getVariable ['fnf_safetyEnabled', true])";
       };
     };
   };

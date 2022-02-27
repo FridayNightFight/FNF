@@ -16,7 +16,7 @@
 * nil if _unit is null <NIL>
 *
 * Example:
-* [_mags, phx_loadout_weapon] call phx_loadout_fnc_getWeaponMagazines;
+* [_mags, fnf_loadout_weapon] call fnf_loadout_fnc_getWeaponMagazines;
 *
 * Public: Yes
 */

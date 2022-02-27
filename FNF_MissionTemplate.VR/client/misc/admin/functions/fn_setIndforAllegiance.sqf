@@ -19,15 +19,15 @@ private _fixedBaseChannel = 0; // the base channel for the side to base freqs of
 switch (_sideFriendly) do {
   case west: {
     _fixedEncryptionCode = "_bluefor";
-    _fixedBaseChannel = phx_bluforBaseChannel;
+    _fixedBaseChannel = fnf_bluforBaseChannel;
   };
   case east: {
     _fixedEncryptionCode = "_opfor";
-    _fixedBaseChannel = phx_opforBaseChannel;
+    _fixedBaseChannel = fnf_opforBaseChannel;
   };
   case sideEmpty: {
     _fixedEncryptionCode = "_independent";
-    _fixedBaseChannel = phx_indforBaseChannel;
+    _fixedBaseChannel = fnf_indforBaseChannel;
   };
 };
 
@@ -37,9 +37,9 @@ private _playersToFix = (allPlayers select {alive _x && side _x == independent})
 // apply the radio changes clientside
 [[_fixedBaseChannel, _fixedEncryptionCode], {
   params ["_baseChannel", "_encryptionCode"];
-  phx_playerBaseChannel = _baseChannel;
-  phx_loadout_TFAREncryptionCode = _encryptionCode;
-  call phx_radio_fnc_setRadios;
+  fnf_playerBaseChannel = _baseChannel;
+  fnf_loadout_TFAREncryptionCode = _encryptionCode;
+  call fnf_radio_fnc_setRadios;
   diag_log formatText["[FNF] (admin) Fixed radio codes due to Independent side association change."];
 }] remoteExecCall ["call", _playersToFix];
 
@@ -65,7 +65,7 @@ if !(_sideFriendly isEqualTo sideEmpty) then {
     ],
     "info",
     10
-  ] remoteExecCall ["phx_ui_fnc_notify", 0];
+  ] remoteExecCall ["fnf_ui_fnc_notify", 0];
 } else {
   [
     format[
@@ -73,7 +73,7 @@ if !(_sideFriendly isEqualTo sideEmpty) then {
     ],
     "info",
     10
-  ] remoteExecCall ["phx_ui_fnc_notify", 0];
+  ] remoteExecCall ["fnf_ui_fnc_notify", 0];
 };
 
 (getUserInfo _adminId) params ["_networkId","_owner","_playerUID","_soldierName","_soldierNameInclSquad","_steamProfileName","_clientStateNumber","_isHeadless","_adminState","_netPerf","_playerObject"];
@@ -95,7 +95,7 @@ _out pushBack format["hostile to %1", _enemySide apply {_x call BIS_fnc_sideName
 
 // sends event to server w/ information
 // used for Discord report
-["phxAdminMessageServer", [
+["fnfAdminMessageServer", [
   "",
   _admin_soldierName,
   (_out joinString "\n"),

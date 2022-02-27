@@ -13,7 +13,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, PLAYERLOADOUTVAR] call phx_loadout_fnc_giveBinoculars
+* [player, PLAYERLOADOUTVAR] call fnf_loadout_fnc_giveBinoculars
 *
 * Public: No
 */
@@ -27,7 +27,7 @@ params [
 
 if (isNull _unit) exitWith {nil};
 
-private _binocs = (missionConfigFile >> "CfgLoadouts" >> "common" >> "binoculars");
+private _binocs = (missionConfigFile >> "CfgFNFLoadouts" >> "common" >> "binoculars");
 
 private _hasBinoc = (((assigneditems _unit) findIf {getText(configFile >> "CfgWeapons" >> _x >> "simulation") == "Binocular"}) > -1);
 if (_hasBinoc) exitWith {true};
@@ -52,6 +52,17 @@ if (
     _thisBinoc = getText(_binocs >> "rangefinder");
   };
   if (_role in _binocRolesVector) then {
+    // X-Ray SL gets binoculars
+    if ((roleDescription _unit) find "X-Ray" > -1) then {
+      _thisBinoc = getText(_binocs >> "standard");
+    } else {
+      // all other SLs get Vector21
+      _thisBinoc = getText(_binocs >> "vector21");
+    };
+  };
+
+  // X-Ray RI (not RIS) should get Vector
+  if (_role == "RI" && ((roleDescription _unit) find "X-Ray" > -1)) then {
     _thisBinoc = getText(_binocs >> "vector21");
   };
 };

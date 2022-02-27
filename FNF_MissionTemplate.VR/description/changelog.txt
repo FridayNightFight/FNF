@@ -1,0 +1,68 @@
+v3.2.0
+
+- move optics selectors into categories for menu cleanliness
+- support for more than one safezone
+- friendlier gear selector ACE interact menu
+- assassin rework for disconnect/reconnect resiliency
+- no longer randomizes initial gear selector options
+- force refreshes radios at applyLoadout
+- better respawn handling
+- vehicle respawn pylon loadout handling
+- webhook fixes
+- asset diary duplication fix when using same classname of vehicle in and out of safe zones
+- fix draw3D and ACE interactions for respawning MSPs in SA
+- fix CMD and SL draw3D
+
+Sustained Assault integration
+  Now with:
+  - 1 framework that works with both standard and SA mission files
+  - mission templates for creating more content
+  - mobile spawn points
+
+
+v3.1.2
+
+NEW:
+  - major code refactor for a number of functions including inline documentation
+  - additional notifications for vetters if mission has a bad configuration
+
+  Updated Mission SQM
+    - migrated everything into layers for organization and better in-game management
+    - more descriptive commenting for new MMs
+  Admin Panel
+    - shows notification to staff when a staff action is performed
+    - also sends a message to Discord documenting it
+    - full menu where everything except game clock works
+    - foundation is present to migrate playersList to config instead, and allow multiple selection and feed multiple IDs to button functions
+    - players acted on will receive notifications informing them that they were
+    - admins with panel open will see results of action by any admin in their result panel, to reduce duplicate actions
+    - radio system now allows dynamic base channel change, completing the indfor allegiance change control in admin panel (will enter the radio freq f the allied side, or their own if not allied)
+FIXED:
+  - when the initial primary weapon a player was assigned at mission start did not support any available optics, the selector failed to initialize
+  - now delays radio assignment until core loadout is done to avoid potential issues w/ server not instantiating, plus revamp of handling
+  - ammo choices for OPFOR loadouts updated
+
+
+v3.1.0
+- adds CSW configuration to diary
+- adds custom UI mission info panel for alive/dead player and spectators (Ctrl-J or click button while spectating)
+- reworks spectator init to support missionInfoPanel data
+- adds safe start timer (only visible while map is open during safestart)
+- adds Assassination game mode
+- CTF
+  - players are no longer able to pick up the flag while in a vehicle
+  - players may no longer get into armed vehicles while carrying the flag
+- Rush/Uplink
+  - 'side eliminated' notifications will not appear while a terminal is being hacked
+  - if a side was eliminated while a terminal was active, the notification will be delayed until it's paused or its time runs out
+- fix for safeStart leadership teleport - SLs will now be properly detected and teleported
+- minor loadout updates
+- adds debriefing text
+- disable ambient life for players (rabbits, snakes, etc)
+- set unit ranks for players based on their role (for nametag's sake and future squad (loadout ref)
+- adds small mission intro using textTiles
+- auto-selects Briefing tab of missionInfoPanel
+- auto turn on collision lights of aircraft and helos if the ambient light level at their position is below a certain threshold, to make them easier to find
+- auto disable vehicle sensors (Jets DLC, radar, etc)
+- blufor tracker icon configuration updated so that all sides will see Civilian unit markers
+- adds some cool media to the diar

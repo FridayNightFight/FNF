@@ -16,7 +16,7 @@
 * nil on fail <NIL>
 *
 * Example:
-* [player, _cfgMagazines, _cfgItems, _cfgBackpackItems, _cfgLinkedItems] call phx_loadout_fnc_giveGear
+* [player, _cfgMagazines, _cfgItems, _cfgBackpackItems, _cfgLinkedItems] call fnf_loadout_fnc_giveGear
 *
 * Public: Yes
 */
@@ -32,13 +32,13 @@ params [
 
 if (isNull _unit) exitWith {nil};
 
-{[_x, "vest", _unit] call phx_loadout_fnc_addGear} forEach _mags;
+{[_x, "vest", _unit] call fnf_loadout_fnc_addGear} forEach _mags;
 diag_log text format["[FNF] (loadout) INFO: Equipped gear (magazines)."];
 diag_log text format["[FNF] (loadout) DEBUG: %1", _mags];
-{[_x, "uniform", _unit] call phx_loadout_fnc_addGear} forEach _items;
+{[_x, "uniform", _unit] call fnf_loadout_fnc_addGear} forEach _items;
 diag_log text format["[FNF] (loadout) INFO: Equipped gear (items)."];
 diag_log text format["[FNF] (loadout) DEBUG: %1", _items];
-{[_x, "backpack", _unit] call phx_loadout_fnc_addGear} forEach _backpackItems;
+{[_x, "backpack", _unit] call fnf_loadout_fnc_addGear} forEach _backpackItems;
 diag_log text format["[FNF] (loadout) INFO: Equipped gear (backpackitems)."];
 diag_log text format["[FNF] (loadout) DEBUG: %1", _backpackItems];
 {_unit linkItem _x} forEach _linkedItems;

@@ -1,5 +1,5 @@
 
-[{!isNil "phx_adminChannelId" && !isNull player}, {
+[{!isNil "fnf_adminChannelId" && !isNull player}, {
 
   private _isStaff = true;
   if (!isNil "fnf_staffInfo") then {
@@ -11,25 +11,27 @@
   if !(_isStaff) exitWith {};
 
 
-  phx_adminChannelId radioChannelAdd [player];
-  (5 + phx_adminChannelId) enableChannel [true, false];
-  PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_MessageLog", "STAFF - Reports", getMissionPath "description\images\fnfsmall.paa"];
-  phx_adminChannelId radioChannelSetCallSign "NOTICE:";
-  player customChat [phx_adminChannelId, "Administrative channel initialized. Listening for user reports."];
-  phx_adminChannelId radioChannelSetCallSign "[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME";
+  fnf_adminChannelId radioChannelAdd [player];
+  (5 + fnf_adminChannelId) enableChannel [true, false];
+  fnf_briefing_fnc_adminDiary = {
+    fnf_Diary = player createDiarySubject ["fnf_Diary_Admin_MessageLog", "STAFF - Reports", getMissionPath "description\images\fnfsmall.paa"];
+  };
+  fnf_adminChannelId radioChannelSetCallSign "NOTICE:";
+  player customChat [fnf_adminChannelId, "Administrative channel initialized. Listening for user reports."];
+  fnf_adminChannelId radioChannelSetCallSign "[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME";
 
 
-  phxAdminMessageReceiver = ["phxAdminMessageSent", {
+  fnfAdminMessageReceiver = ["fnfAdminMessageSent", {
     params ["_sender", "_infoText", "_msgText"];
 
     showChat true;
     // enableRadio true;
-    phx_adminChannelId radioChannelSetCallSign "[REPORT] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME";
-    _sender customChat [phx_adminChannelId, _infoText # 0];
+    fnf_adminChannelId radioChannelSetCallSign "[REPORT] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME";
+    _sender customChat [fnf_adminChannelId, _infoText # 0];
     {
-      _sender customChat [phx_adminChannelId, _x];
+      _sender customChat [fnf_adminChannelId, _x];
     } forEach _msgText;
-    phx_adminChannelId radioChannelSetCallSign "[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME";
+    fnf_adminChannelId radioChannelSetCallSign "[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME";
 
     date apply {
       if (count str(_x) isEqualTo 1) then {
@@ -39,14 +41,14 @@
       };
     } params ["_year", "_month", "_day", "_hours", "_minutes"];
 
-    missionNamespace setVariable ["phx_lastAdminReporter", [_sender, position _sender]];
+    missionNamespace setVariable ["fnf_lastAdminReporter", [_sender, position _sender]];
     private _mark = createMarkerLocal ["AdminReportMrk_" + str(random(36000) + 14000), position _sender];
 
     ["AdminMessage", [name _sender]] call BIS_fnc_showNotification;
 
     if (playerSide != sideLogic) then {
       player createDiaryRecord [
-        "PHX_Diary_Admin_MessageLog",
+        "fnf_Diary_Admin_MessageLog",
         [
           format [
             "[%1:%2] %3",
@@ -66,7 +68,7 @@
     };
 
     [
-      phx_ui_structTextRef_staffReports,
+      fnf_ui_structTextRef_staffReports,
       format [
         "[%1:%2] %3",
         _hours,

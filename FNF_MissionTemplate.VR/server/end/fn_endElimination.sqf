@@ -4,7 +4,7 @@ Ends the game due to elimination. Admin triggered by onPause control.
 
 params ["_sideWon"];
 
-phx_gameEnd = true;
-publicVariable "phx_gameEnd";
+fnf_gameEnd = true;
+publicVariable "fnf_gameEnd";
 
-[_sideWon, "has won by elimination!"] spawn phx_server_fnc_gameEnd;
+[_sideWon, "has won by elimination!"] spawn fnf_server_fnc_gameEnd;

@@ -5,15 +5,15 @@ if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connect
 params ["_endMessage"];
 
 private [
-	"_gameMode",
-	"_connectedPlayerCount",
-	"_missionDuration",
-	"_bluPlayers",
-	"_opfPlayers",
-	"_indPlayers"
+  "_gameMode",
+  "_connectedPlayerCount",
+  "_missionDuration",
+  "_bluPlayers",
+  "_opfPlayers",
+  "_indPlayers"
 ];
 
-if (isNil "phx_gameMode") then {_gameMode = "unknown"} else {_gameMode = phx_gameMode};
+if (isNil "fnf_gameMode") then {_gameMode = "unknown"} else {_gameMode = fnf_gameMode};
 
 _connectedPlayerCount = str(count allPlayers);
 
@@ -42,7 +42,7 @@ _fnc_doCount = {
     ["_unit", objNull],
     ["_side", sideEmpty]
   ];
-  if (isNull _unit || _side isEqualTo sideEmpty) exitWith {false};
+  if (isNull _unit || _side isEqualTo sideEmpty || !(_unit isKindOf "CAManBase")) exitWith {false};
 
   (
     side (group _unit) isEqualTo _side &&
@@ -52,24 +52,32 @@ _fnc_doCount = {
   )
 };
 
-_bluPlayers = if (playableSlotsNumber west == 0) then {0} else {
-  playersNumber west;
+
+private ["_bluPlayers", "_opfPlayers", "_indPlayers"];
+if (playableSlotsNumber west == 0) then {
+  _bluPlayers = 0;
+} else {
+  _bluPlayers = str(count(allPlayers select {[_x, west] call _fnc_doCount}));
 };
-_opfPlayers = if (playableSlotsNumber east == 0) then {0} else {
-  playersNumber east;
+if (playableSlotsNumber east == 0) then {
+  _opfPlayers = 0;
+} else {
+  _opfPlayers = str(count(allPlayers select {[_x, east] call _fnc_doCount}));
 };
-_indPlayers = if (playableSlotsNumber independent == 0) then {0} else {
-  playersNumber independent;
+if (playableSlotsNumber independent == 0) then {
+  _indPlayers = 0;
+} else {
+  _indPlayers = str(count(allPlayers select {[_x, independent] call _fnc_doCount}));
 };
 
 
 ["RoundEnd", [
-	_endMessage,
-	missionName,
-	_gameMode,
-	_connectedPlayerCount,
-	_missionDuration,
-	str(_bluPlayers),
-	str(_opfPlayers),
-	str(_indPlayers)
+  _endMessage,
+  missionName,
+  _gameMode,
+  _connectedPlayerCount,
+  _missionDuration,
+  _bluPlayers,
+  _opfPlayers,
+  _indPlayers
 ]] call DiscordEmbedBuilder_fnc_buildCfg;

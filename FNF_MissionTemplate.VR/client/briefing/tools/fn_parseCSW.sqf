@@ -1,6 +1,6 @@
 /*
 * Author: IndigoFox
-* Parses config.sqf settings (phx_westAlphaAuxRole, phx_westBravoAuxRole, etc) to generate diary string or structured text representing what's selected.
+* Parses config.sqf settings (fnf_westAlphaAuxRole, fnf_westBravoAuxRole, etc) to generate diary string or structured text representing what's selected.
 *
 * Arguments:
 * 0: The side to parse CSW settings for <SIDE>
@@ -10,7 +10,7 @@
 * <STRING> or <Structured Text>
 *
 * Example:
-* [west] call phx_briefing_fnc_parseCSW
+* [west] call fnf_briefing_fnc_parseCSW
 *
 *
 * Public: No
@@ -37,16 +37,16 @@ private _textOut = [];
     };
   } else {
     if (count _setting > 0) then {
-      private _cswPrimaryInfo = (_setting # 0) call phx_briefing_fnc_getItemInfo;
+      private _cswPrimaryInfo = (_setting # 0) call fnf_briefing_fnc_getItemInfo;
 
       private _mags = [];
       {
-        _mags pushBack ([_x, true] call phx_briefing_fnc_notesItems);
+        _mags pushBack ([_x, true] call fnf_briefing_fnc_notesItems);
       } forEach (_setting select {typeName _x == "ARRAY"});
 
       private _cswSecondaryName = "Ammo only";
       if (_setting # 1 != "") then {
-        private _temp = (_setting # 1) call phx_briefing_fnc_getItemInfo;
+        private _temp = (_setting # 1) call fnf_briefing_fnc_getItemInfo;
         _cswSecondaryName = [_temp, "displayName"] call BIS_fnc_getFromPairs;
       };
 
@@ -74,10 +74,10 @@ private _textOut = [];
     };
   };
 } forEach [
-  missionNamespace getVariable [format["phx_%1AlphaAuxRole",_sideStr], 0],
-  missionNamespace getVariable [format["phx_%1BravoAuxRole",_sideStr], 0],
-  missionNamespace getVariable [format["phx_%1CharlieAuxRole",_sideStr], 0],
-  missionNamespace getVariable [format["phx_%1DeltaAuxRole",_sideStr], 0]
+  missionNamespace getVariable [format["fnf_%1AlphaAuxRole",_sideStr], 0],
+  missionNamespace getVariable [format["fnf_%1BravoAuxRole",_sideStr], 0],
+  missionNamespace getVariable [format["fnf_%1CharlieAuxRole",_sideStr], 0],
+  missionNamespace getVariable [format["fnf_%1DeltaAuxRole",_sideStr], 0]
 ];
 
 _textOut pushBack "<br/>";

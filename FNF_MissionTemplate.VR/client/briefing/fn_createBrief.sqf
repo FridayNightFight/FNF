@@ -11,7 +11,7 @@
 * true on success <BOOLEAN>
 *
 * Example:
-* call phx_briefing_fnc_createBrief;
+* call fnf_briefing_fnc_createBrief;
 *
 * Public: No
 */
@@ -40,36 +40,30 @@ _getName = {
 //Admin end start trigger
 // if (serverCommandAvailable "#kick") then {
 if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick") then {
-  PHX_Diary = player createDiarySubject ["PHX_Diary_Admin_Safestart", "Admin", "\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa"];
+  fnf_Diary = player createDiarySubject ["fnf_Diary_Admin_Safestart", "Admin", "\A3\ui_f\data\igui\cfg\simpleTasks\types\defend_ca.paa"];
 
   //display template version
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin",format ["Template Version: %1", phx_templateVersion]]];
+  player createDiaryRecord ["fnf_Diary_Admin_Safestart", ["Admin",format ["Template Version: %1", fnf_templateVersion]]];
   //end safety
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='call phx_admin_fnc_safetyEndExpression'>End Safe Start</execute>"]];
+  player createDiaryRecord ["fnf_Diary_Admin_Safestart", ["Admin","<execute expression='call fnf_admin_fnc_safetyEndExpression'>End Safe Start</execute>"]];
 
   //-1 minute to safety
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
-    if !(f_var_mission_timer / 60 <= 1) then {
-      f_var_mission_timer = f_var_mission_timer - 60;
-      publicVariableServer ""f_var_mission_timer"";
-    };
-    systemChat format [""New safe start time: %1 mins"", [f_var_mission_timer, ""MM:SS""] call BIS_fnc_secondsToString];
+  player createDiaryRecord ["fnf_Diary_Admin_Safestart", ["Admin","<execute expression='
+    [""FNF_Safety_Reduce1Minute""] call CBA_fnc_serverEvent;
   '>-1 Minute to Safe Start</execute>"]];
 
   //+1 minute to safety
-  player createDiaryRecord ["PHX_Diary_Admin_Safestart", ["Admin","<execute expression='
-    f_var_mission_timer = f_var_mission_timer + 60;
-    publicVariableServer ""f_var_mission_timer"";
-    systemChat format [""New safe start time: %1 mins"", [f_var_mission_timer, ""MM:SS""] call BIS_fnc_secondsToString];
+  player createDiaryRecord ["fnf_Diary_Admin_Safestart", ["Admin","<execute expression='
+    [""FNF_Safety_Add1Minute""] call CBA_fnc_serverEvent;
   '>+1 Minute to Safe Start</execute>"]];
 
   //remove admin diary subject once safety ends
-  [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "PHX_Diary_Admin_Safestart"}] call CBA_fnc_waitUntilAndExecute;
+  [{!(missionNamespace getVariable ["fnf_safetyEnabled",true])}, {player removeDiarySubject "fnf_Diary_Admin_Safestart"}] call CBA_fnc_waitUntilAndExecute;
 
 };
 
 
-// PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
+// fnf_Diary_Details = player createDiarySubject ["fnf_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 
 private _MATDataString = "";
@@ -77,32 +71,32 @@ _varStr = "";
 _varStrStruct = [];
 
 //show blufor uniform and headgear if side is present
-if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" || !isNil "phx_briefing_west_uniformMeta" && !isNil "phx_briefing_west_loadout") then {
+if (!isNil "fnf_briefing_west_uniform" || !isNil "fnf_briefing_west_headgear" || !isNil "fnf_briefing_west_uniformMeta" && !isNil "fnf_briefing_west_loadout") then {
 
-  _MATDataString = _MATDataString + ([west, phx_bluAT_Bravo, phx_bluAT_Delta] call phx_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([west, fnf_bluAT_Bravo, fnf_bluAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show BLUFOR loadout
-  phx_briefing_loadoutBLU = {
+  fnf_briefing_loadoutBLU = {
     _helmetImg = [];
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_west_headgear;
+      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_west_headgear;
     {
-      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_west_vest;
+      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_west_vest;
     {
-      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_west_uniform;
+      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_west_uniform;
 
-    private _meta = +phx_briefing_west_uniformMeta;
+    private _meta = +fnf_briefing_west_uniformMeta;
 
     player createDiaryRecord [
       "Diary",
       [
         "BLUFOR CSW Settings",
-        [west] call phx_briefing_fnc_parseCSW
+        [west] call fnf_briefing_fnc_parseCSW
       ]
     ];
 
@@ -112,8 +106,8 @@ if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear" ||
         "BLUFOR Loadout",
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
-          phx_briefing_west_loadout # 0 # 0,
-          [phx_briefing_west_loadout] call phx_briefing_fnc_parseLoadout
+          fnf_briefing_west_loadout # 0 # 0,
+          [fnf_briefing_west_loadout] call fnf_briefing_fnc_parseLoadout
         ]
       ]
     ];
@@ -143,32 +137,32 @@ Author: %6<br/><br/>
 
 
 //show opfor uniform and headgear if side is present
-if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" || !isNil "phx_briefing_east_uniformMeta" && !isNil "phx_briefing_east_loadout") then {
+if (!isNil "fnf_briefing_east_uniform" || !isNil "fnf_briefing_east_headgear" || !isNil "fnf_briefing_east_uniformMeta" && !isNil "fnf_briefing_east_loadout") then {
 
-  _MATDataString = _MATDataString + ([east, phx_redAT_Bravo, phx_redAT_Delta] call phx_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([east, fnf_redAT_Bravo, fnf_redAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show OPFOR loadout
-  phx_briefing_loadoutOPF = {
+  fnf_briefing_loadoutOPF = {
     _helmetImg = [];
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_east_headgear;
+      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_east_headgear;
     {
-      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_east_vest;
+      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_east_vest;
     {
-      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_east_uniform;
+      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_east_uniform;
 
-    private _meta = +phx_briefing_east_uniformMeta;
+    private _meta = +fnf_briefing_east_uniformMeta;
 
     player createDiaryRecord [
       "Diary",
       [
         "OPFOR CSW Settings",
-        [east] call phx_briefing_fnc_parseCSW
+        [east] call fnf_briefing_fnc_parseCSW
       ]
     ];
 
@@ -178,8 +172,8 @@ if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear" ||
         "OPFOR Loadout",
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
-          phx_briefing_east_loadout # 0 # 0,
-          [phx_briefing_east_loadout] call phx_briefing_fnc_parseLoadout
+          fnf_briefing_east_loadout # 0 # 0,
+          [fnf_briefing_east_loadout] call fnf_briefing_fnc_parseLoadout
         ]
       ]
     ];
@@ -209,32 +203,32 @@ Author: %6<br/><br/>
 
 
 //show indfor uniform and headgear if side is present
-if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !isNil "phx_briefing_ind_uniformMeta" && !isNil "phx_briefing_ind_loadout") then {
+if (!isNil "fnf_briefing_ind_uniform" || !isNil "fnf_briefing_ind_headgear" || !isNil "fnf_briefing_ind_uniformMeta" && !isNil "fnf_briefing_ind_loadout") then {
 
-  _MATDataString = _MATDataString + ([independent, phx_grnAT_Bravo, phx_grnAT_Delta] call phx_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([independent, fnf_grnAT_Bravo, fnf_grnAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show INDFOR loadout
-  phx_briefing_loadoutIND = {
+  fnf_briefing_loadoutIND = {
     _helmetImg = [];
     _vestImg = [];
     _uniformImg = [];
     {
-      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_ind_headgear;
+      _helmetImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_ind_headgear;
     {
-      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_ind_vest;
+      _vestImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_ind_vest;
     {
-      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call phx_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
-    } forEach phx_briefing_ind_uniform;
+      _uniformImg pushBack format["<img width='110' image='%1'/>", [_x call fnf_briefing_fnc_getItemInfo, "picture"] call BIS_fnc_getFromPairs];
+    } forEach fnf_briefing_ind_uniform;
 
-    private _meta = +phx_briefing_ind_uniformMeta;
+    private _meta = +fnf_briefing_ind_uniformMeta;
 
     player createDiaryRecord [
       "Diary",
       [
         "INDFOR CSW Settings",
-        [independent] call phx_briefing_fnc_parseCSW
+        [independent] call fnf_briefing_fnc_parseCSW
       ]
     ];
 
@@ -244,8 +238,8 @@ if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear" || !
         "INDFOR Loadout",
         format [
           "<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>%2",
-          phx_briefing_ind_loadout # 0 # 0,
-          [phx_briefing_ind_loadout] call phx_briefing_fnc_parseLoadout
+          fnf_briefing_ind_loadout # 0 # 0,
+          [fnf_briefing_ind_loadout] call fnf_briefing_fnc_parseLoadout
         ]
       ]
     ];
@@ -282,30 +276,30 @@ Author: %6<br/><br/>
 // _varStr = _varStr + "<br/>";
 // _varStr = _varStr + "<br/>";
 
-_varStr = _varStr + format ["Safe start time: %1 minutes", phx_safeStartTime];
+_varStr = _varStr + format ["Safe start time: %1 minutes", fnf_safeStartTime];
 _varStr = _varStr + "<br/>";
-_varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
+_varStr = _varStr + format ["Time limit: %1 minutes", fnf_missionTimeLimit];
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + "<br/>";
 
-_varStr = _varStr + format ["Maximum view distance: %1m", phx_maxViewDistance];
+_varStr = _varStr + format ["Maximum view distance: %1m", fnf_maxViewDistance];
 _varStr = _varStr + "<br/>";
 
 private _magOpticsStr = "";
-switch (phx_magnifiedOptics) do {
+switch (fnf_magnifiedOptics) do {
   case 1: {_magOpticsStr = "Yes"};
   case 0: {_magOpticsStr = "No"};
 };
 _varStr = _varStr + format ["Magnified optics: %1", _magOpticsStr];
 _varStr = _varStr + "<br/>";
 
-if (phx_defendingSide != sideEmpty) then {
-  _varStr = _varStr + format ["Defender fortify points: %1", phx_fortifyPoints];
+if (fnf_defendingSide != sideEmpty) then {
+  _varStr = _varStr + format ["Defender fortify points: %1", fnf_fortifyPoints];
   _varStr = _varStr + "<br/>";
 };
 
 private _addNVGStr = "";
-switch (phx_addNVG) do {
+switch (fnf_addNVG) do {
   case 1: {_addNVGStr = "Yes"};
   case 0: {_addNVGStr = "No"};
 };
@@ -313,7 +307,7 @@ _varStr = _varStr + format ["NVGs equipped: %1", _addNVGStr];
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + "<br/>";
 
-phx_briefing_MMNotes = {
+fnf_briefing_MMNotes = {
   // MM briefing notes
   private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
   _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
@@ -333,43 +327,43 @@ phx_briefing_MMNotes = {
   _mmNotes pushBack "<br/>";
   _mmNotes pushBack "<br/>";
 
-  if (count phx_briefingBackground > 0) then {
+  if (count fnf_briefingBackground > 0) then {
     _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>BACKGROUND</font>";
     _mmNotes pushBack "<br/>";
-    _mmNotes pushBack (phx_briefingBackground call CBA_fnc_sanitizeHTML);
+    _mmNotes pushBack (fnf_briefingBackground call CBA_fnc_sanitizeHTML);
     _mmNotes pushBack "<br/>";
   };
 
-  if (count phx_briefingWorldInfo > 0) then {
+  if (count fnf_briefingWorldInfo > 0) then {
     _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>AREA OF OPERATIONS</font>";
     _mmNotes pushBack "<br/>";
-    _mmNotes pushBack (phx_briefingWorldInfo call CBA_fnc_sanitizeHTML);
+    _mmNotes pushBack (fnf_briefingWorldInfo call CBA_fnc_sanitizeHTML);
     _mmNotes pushBack "<br/>";
   };
 
-  if (count phx_briefingNotes > 0) then {
+  if (count fnf_briefingNotes > 0) then {
     _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>NOTES</font>";
     _mmNotes pushBack "<br/>";
-    _mmNotes pushBack (phx_briefingNotes call CBA_fnc_sanitizeHTML);
+    _mmNotes pushBack (fnf_briefingNotes call CBA_fnc_sanitizeHTML);
     _mmNotes pushBack "<br/>";
   };
 
-  if (count phx_briefingRules > 0) then {
+  if (count fnf_briefingRules > 0) then {
     _mmNotes pushBack "<font size='18' color='" + COLOR3 + "' face='PuristaBold'>MISSION RULES</font>";
     _mmNotes pushBack "<br/>";
-    _mmNotes pushBack phx_briefingRules;
+    _mmNotes pushBack fnf_briefingRules;
     _mmNotes pushBack "<br/>";
     _mmNotes pushBack "<br/>";
     _mmNotes pushBack "<br/>";
   };
 
   // game mode details
-  _mmNotes pushBack format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
+  _mmNotes pushBack format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper fnf_gameMode];
   _mmNotes pushBack "<br/>";
   _mmNotes pushBack "<br/>";
 
-  if (!isNil "phx_overTimeConStr") then {
-    _mmNotes pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
+  if (!isNil "fnf_overTimeConStr") then {
+    _mmNotes pushBack "OVERTIME CONDITIONS:<br/>" + fnf_overTimeConStr;
     _mmNotes pushBack "<br/>";
     _mmNotes pushBack "<br/>";
   } else {
@@ -377,7 +371,7 @@ phx_briefing_MMNotes = {
     _mmNotes pushBack "<br/>";
   };
 
-  switch (phx_gameMode) do {
+  switch (fnf_gameMode) do {
     case "destroy": {
       #include "..\..\mode_config\destroy.sqf";
       _objArr = [_obj1,_obj2,_obj3];
@@ -487,12 +481,12 @@ phx_briefing_MMNotes = {
         private _mmNotes = [];
         private _mmNotesStructGamemode = [];
 
-        _mmNotes pushBack format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper phx_gameMode];
+        _mmNotes pushBack format ["<font size='16' color='" + COLOR3 + "' face='PuristaBold'>GAMEMODE: %1</font>", toUpper fnf_gameMode];
         _mmNotes pushBack "<br/>";
         _mmNotes pushBack "<br/>";
 
-        if (!isNil "phx_overTimeConStr") then {
-          _mmNotes pushBack "OVERTIME CONDITIONS:<br/>" + phx_overTimeConStr;
+        if (!isNil "fnf_overTimeConStr") then {
+          _mmNotes pushBack "OVERTIME CONDITIONS:<br/>" + fnf_overTimeConStr;
           _mmNotes pushBack "<br/>";
           _mmNotes pushBack "<br/>";
         } else {
@@ -501,7 +495,7 @@ phx_briefing_MMNotes = {
         };
 
         _mmNotes pushBack format ["HVT Count: %1<br/>", count _targets];
-        _mmNotes pushBack format ["%1 needs to kill %2 of them to win.<br/>", phx_attackingSide call BIS_fnc_sideName, _requiredKills];
+        _mmNotes pushBack format ["%1 needs to kill %2 of them to win.<br/>", fnf_attackingSide call BIS_fnc_sideName, _requiredKills];
         _mmNotes pushBack "<br/><br/>";
         _mmNotes pushBack "Jammers are in place to secure 1 or more specifically marked areas in which the HVTs can safely hide. If an HVT moves outside of any protected zone, their position will be revealed on the enemy's map until they return to safety. HVT locations will ALWAYS be revealed to their allies to aid them in tactical defense.";
         _mmNotes pushBack "<br/><br/>";
@@ -511,21 +505,22 @@ phx_briefing_MMNotes = {
         {
           (_x # 0) params ["_targetHeader"];
           (_x # 1) params ["_role", "_name", "_obj"];
-          if (!isNil "_obj") then {
+          if (isNil "_obj") then {continue};
+          if (!isNull _obj) then {
             _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by %5)<br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           } else {
-            _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, played by [NOT FILLED])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
+            _mmNotes pushBack format ["<font color='%1'>  %2:</font> %3 (%4, [slot isn't filled])</font><br/>", COLOR3, _targetHeader, _name, _role, name _obj];
           };
-        } forEach phx_assassinationTargets;
+        } forEach fnf_assassin_targets;
 
-        player setDiaryRecordText [["Diary", phx_diary_gamemode], [
-          format["Gamemode - %1", toUpper phx_gameMode],
+        player setDiaryRecordText [["Diary", fnf_diary_gamemode], [
+          format["Gamemode - %1", toUpper fnf_gameMode],
           _mmNotes joinString ""
           ]
         ];
       }] call CBA_fnc_addEventHandler;
 
-      phx_diary_gamemode = player createDiaryRecord ["Diary",
+      fnf_diary_gamemode = player createDiaryRecord ["Diary",
         [
           // getText(missionConfigFile >> "Author"),
           "Gamemode",
@@ -537,7 +532,7 @@ phx_briefing_MMNotes = {
     };
   };
 
-  phx_diary_briefing = player createDiaryRecord ["Diary",
+  fnf_diary_briefing = player createDiaryRecord ["Diary",
     [
       // getText(missionConfigFile >> "Author"),
       "Briefing",
@@ -548,40 +543,66 @@ phx_briefing_MMNotes = {
 };
 
 
-call phx_briefing_fnc_news;
 
-PHX_Diary_UpdateInfo = player createDiarySubject ["PHX_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
+if (fnf_gameMode == "sustainedAssault") then {
+  fnf_Diary_GameMechanics = player createDiarySubject ["fnf_Diary_GameMechanics", "Game Mechanics"];
+  {
+    player createDiaryRecord [
+      "fnf_Diary_GameMechanics",
+      [
+        _x # 0,
+        _x # 1
+      ]
+    ];
+  } forEach fnf_ui_gameMechanicsDiary;
+};
+
+
+call fnf_briefing_fnc_news;
+
+
+fnf_Diary_UpdateInfo = player createDiarySubject ["fnf_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
 player createDiaryRecord [
-  "PHX_Diary_UpdateInfo",
+  "fnf_Diary_UpdateInfo",
+  [
+    "Credits",
+    format [
+      "<font size='18' shadow='1' color='" + COLOR2 + "'>Framework Credits</font><br/><br/>%1",
+      fnf_ui_frameworkCreditsText
+    ]
+  ]
+];
+player createDiaryRecord [
+  "fnf_Diary_UpdateInfo",
   [
     "Changelog",
     format [
       "<font size='18' shadow='1' color='" + COLOR2 + "'>Changelog</font><br/>Template Version: %1<br/><br/>%2<br/><br/><font size='18' shadow='1' color='" + COLOR2 + "'>Credits</font><br/>%3",
-      phx_templateVersion,
-      phx_ui_changelogText,
-      phx_ui_frameworkCreditsText
+      fnf_templateVersion,
+      fnf_ui_changelogText
     ]
   ]
 ];
 
-PHX_Diary_Credits = player createDiarySubject ["PHX_Diary_Credits", "Credits"];
+
+fnf_Diary_Credits = player createDiarySubject ["fnf_Diary_Credits", "Credits"];
 player createDiaryRecord [
-  "PHX_Diary_Credits",
+  "fnf_Diary_Credits",
   [
     "Credits",
-    [phx_ui_structTextRef, "Credits"] call BIS_fnc_getFromPairs
+    [fnf_ui_structTextRef, "Credits"] call BIS_fnc_getFromPairs
   ]
 ];
 
 
-if (!isNil "phx_briefing_loadoutIND") then {
-  call phx_briefing_loadoutIND;
+if (!isNil "fnf_briefing_loadoutIND") then {
+  call fnf_briefing_loadoutIND;
 };
-if (!isNil "phx_briefing_loadoutOPF") then {
-  call phx_briefing_loadoutOPF;
+if (!isNil "fnf_briefing_loadoutOPF") then {
+  call fnf_briefing_loadoutOPF;
 };
-if (!isNil "phx_briefing_loadoutBLU") then {
-  call phx_briefing_loadoutBLU;
+if (!isNil "fnf_briefing_loadoutBLU") then {
+  call fnf_briefing_loadoutBLU;
 };
 
 MAT_Diary = player createDiaryRecord ["Diary",["MAT Selection",_MATDataString]];
@@ -590,26 +611,26 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
 
 [{
   getClientStateNumber >= 8 &&
-  !isNil "phx_templateGroupsList" &&
-  !isNil "phx_playerBaseChannel" &&
-  !isNil "phx_briefing_startingRadios" &&
-  missionNamespace getVariable ["phx_groupIDset", false]
+  !isNil "fnf_templateGroupsList" &&
+  !isNil "fnf_playerBaseChannel" &&
+  !isNil "fnf_briefing_startingRadios" &&
+  missionNamespace getVariable ["fnf_groupIDset", false]
 }, {
   params ["_varStr"];
-  call phx_briefing_startingRadios;
-  [false] call phx_briefing_fnc_parseGear;
+  call fnf_briefing_startingRadios;
+  [false] call fnf_briefing_fnc_parseGear;
   player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
-  call phx_briefing_MMNotes;
-  call phx_briefing_fnc_createOrbat;
+  call fnf_briefing_MMNotes;
+  call fnf_briefing_fnc_createOrbat;
   if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]])) then {
-    call phx_briefing_fnc_adminDiary;
+    call fnf_briefing_fnc_adminDiary;
   };
   [{
-    [] spawn phx_briefing_fnc_createOrbat;
+    [] spawn fnf_briefing_fnc_createOrbat;
     if (getClientStateNumber >= 10) then {[_handle] call CBA_fnc_removePerFrameHandler};
   }, 7] call CBA_fnc_addPerFrameHandler;
 
-  if (phx_gameMode == "sustainedAssault") then {
+  if (fnf_gameMode == "sustainedAssault") then {
     [{count (allDiarySubjects player select {(_x # 0) == "BIS_fnc_moduleMPTypeSectorControl" && (_x # 5) == true}) > 0}, {
       [] spawn {
         private _briefingEntry = (allDiarySubjects player) select {_x # 0 == "Diary"};
@@ -636,7 +657,7 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
 //   ]
 // ];
 
-//call phx_briefing_fnc_objectiveRecon;
+//call fnf_briefing_fnc_objectiveRecon;
 
-phx_briefCreated = true; //let phx_briefing_fnc_init know the briefing is created
+fnf_briefCreated = true; //let fnf_briefing_fnc_init know the briefing is created
 true

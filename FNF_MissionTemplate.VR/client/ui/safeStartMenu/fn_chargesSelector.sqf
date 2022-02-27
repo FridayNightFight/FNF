@@ -28,7 +28,7 @@ _chargesMenu = [
 
 	(_chargesMenu # 1) pushBack [
 		_dispName,
-		format["%1 call phx_selector_fnc_explosives", _x],
+		format["%1 call fnf_selector_fnc_explosives", _x],
 		_pic,
 		_typeOf
 	];

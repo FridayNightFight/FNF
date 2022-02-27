@@ -9,6 +9,8 @@
 #define assassination "assassin"
 #define assassin "assassin"
 #define ass "assassin"
+#define sustainedAssault "sustainedAssault"
+#define sustainedassault "sustainedAssault"
 
 // AT Launchers
 // [launcher,[mags],[optics]]
@@ -16,6 +18,7 @@
 // #define HALF_AMMO(_count) __EVAL((_count) / (2));
 // classname,magazines,optics,reloadable,shortname
 #define STRINGIFY(s) #s
+#define NOMAT() ["",[],[],"",""]
 #define M72LAW(_count) ["rhs_weap_m72a7",[],[],"DISPOSABLE","M72"]
 #define RPG26(_count) ["rhs_weap_rpg26",[],[],"DISPOSABLE","RPG26"]
 

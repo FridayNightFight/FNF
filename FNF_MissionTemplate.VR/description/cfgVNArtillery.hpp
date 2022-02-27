@@ -67,7 +67,7 @@ class vn_artillery_settings {
                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_ILLUMINATION_GNAT_NAME;
                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_a101_ca.paa";
                 description = $STR_VN_ARTILLERY_AIRCRAFT_ILLUMINATION_GNAT_DESCRIPTION;
-                condition = "!(missionNamespace getVariable [""phx_safetyEnabled"",true])";
+                condition = "!(missionNamespace getVariable [""fnf_safetyEnabled"",true])";
                 magazines[] = {};
                 vehicleclass = "vn_b_air_uh1d_02_03";
                 allow_double = 0;
@@ -95,7 +95,7 @@ class vn_artillery_settings {
                 displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_BAKER_1_NAME;
                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l176_ca.paa";
                 description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_BAKER_1_DESCRIPTION;
-                condition = "!(missionNamespace getVariable [""phx_safetyEnabled"",true])";
+                condition = "!(missionNamespace getVariable [""fnf_safetyEnabled"",true])";
                 ammo[] = {
                     "vn_flare_plane_med_w_ammo",
                     "vn_flare_plane_med_w_ammo",
@@ -113,7 +113,7 @@ class vn_artillery_settings {
                 displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_MIKE_1_NAME;
                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l119_ca.paa";
                 description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_MIKE_1_DESCRIPTION;
-                condition = "!(missionNamespace getVariable [""phx_safetyEnabled"",true])";
+                condition = "!(missionNamespace getVariable [""fnf_safetyEnabled"",true])";
                 ammo[] = {
                     "vn_flare_plane_med_w_ammo",
                     "vn_flare_plane_med_w_ammo",
@@ -133,7 +133,7 @@ class vn_artillery_settings {
                 displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_EASY_1_NAME;
                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_hmm362_ca.paa";
                 description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_EASY_1_DESCRIPTION;
-                condition = "!(missionNamespace getVariable [""phx_safetyEnabled"",true])";
+                condition = "!(missionNamespace getVariable [""fnf_safetyEnabled"",true])";
                 ammo[] = {
                     "vn_flare_plane_med_w_ammo",
                     "vn_flare_plane_med_w_ammo",
@@ -158,7 +158,7 @@ class vn_artillery_settings {
                 displayname = $STR_VN_ARTILLERY_ARTILLERY_WP_BAKER_2_NAME;
                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l176_ca.paa";
                 description = $STR_VN_ARTILLERY_ARTILLERY_WP_BAKER_2_DESCRIPTION;
-                condition = "!(missionNamespace getVariable [""phx_safetyEnabled"",true])";
+                condition = "!(missionNamespace getVariable [""fnf_safetyEnabled"",true])";
                 ammo[] = {
                     "vn_shell_105mm_m60_wp_ammo",
                     "vn_shell_105mm_m60_wp_ammo",
@@ -175,7 +175,7 @@ class vn_artillery_settings {
                 displayname = $STR_VN_ARTILLERY_ARTILLERY_WP_EASY_2_NAME;
                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_hmm362_ca.paa";
                 description = $STR_VN_ARTILLERY_ARTILLERY_WP_EASY_2_DESCRIPTION;
-                condition = "!(missionNamespace getVariable [""phx_safetyEnabled"",true])";
+                condition = "!(missionNamespace getVariable [""fnf_safetyEnabled"",true])";
                 ammo[] = {
                     "vn_shell_60mm_m302_wp_ammo",
                     "vn_shell_60mm_m302_wp_ammo",
@@ -196,7 +196,7 @@ class vn_artillery_settings {
                 displayname = $STR_VN_ARTILLERY_ARTILLERY_WP_MIKE_2_NAME;
                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l119_ca.paa";
                 description = $STR_VN_ARTILLERY_ARTILLERY_WP_MIKE_2_DESCRIPTION;
-                condition = "!(missionNamespace getVariable [""phx_safetyEnabled"",true])";
+                condition = "!(missionNamespace getVariable [""fnf_safetyEnabled"",true])";
                 ammo[] = {
                     "vn_shell_105mm_m60_wp_ammo",
                     "vn_shell_105mm_m60_wp_ammo",

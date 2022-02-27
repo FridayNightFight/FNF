@@ -14,7 +14,7 @@
 * nil if _unit is null or invalid data <NIL>
 *
 * Example:
-* [player, phx_addNVG, getText(CFGCOMMON >> "NVG")] call phx_loadout_fnc_giveNVG
+* [player, fnf_addNVG, getText(CFGCOMMON >> "NVG")] call fnf_loadout_fnc_giveNVG
 *
 * Public: No
 */
@@ -28,16 +28,16 @@ params [
 
 if (isNull _unit) exitWith {nil};
 
-switch (typeName phx_addNVG) do {
+switch (typeName fnf_addNVG) do {
   case "SCALAR": {
-    if (phx_addNVG == 1) then {
+    if (fnf_addNVG == 1) then {
       _unit linkItem _NVGType;
       {_unit addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];
       diag_log text format["[FNF] (loadout) INFO: Gave NVGs ""%1""", _NVGType];
     };
   };
   case "ARRAY": {
-    if (side (group _unit) in phx_addNVG) then {
+    if (side (group _unit) in fnf_addNVG) then {
       _unit linkItem _NVGType;
       {_unit addPrimaryWeaponItem _x} forEach ["rhs_acc_perst1ik", "rhsusf_acc_anpeq15A"];
       diag_log text format["[FNF] (loadout) INFO: Gave NVGs ""%1""", _NVGType];

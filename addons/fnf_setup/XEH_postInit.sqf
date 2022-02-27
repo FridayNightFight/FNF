@@ -14,14 +14,14 @@ if (!hasInterface) exitWith {};
     "Friday Night Fight",
     "User Interface"
   ],
-  "phx_key_hideUI",
+  "fnf_key_hideUI",
   [
     "Hide UI",
     "Pressing this key will hide HUD elements for screenshot or recording purposes."
   ],
   { // key down code
-    if (isNil "phx_safetyEnabled") exitWith {};
-    private _missionRuntimeSecs = (phx_missionTimelimit * 60) + phx_safetyEndTime;
+    if (isNil "fnf_safetyEnabled") exitWith {};
+    private _missionRuntimeSecs = (fnf_missionTimelimit * 60) + fnf_safetyEndTime;
     if (count (shownHUD select {_x isEqualTo true}) > 0) then {
       // if any HUD elements currently visible, we need to hide all
       showHUD [false,false,false,false,false,false,false,false,false,false,false];
@@ -32,7 +32,7 @@ if (!hasInterface) exitWith {};
       ctrlDelete _staminaBarContainer;
       ace_advanced_fatigue_enableStaminaBar = false;
 
-      [phx_missionTimeUI_PFH] call CBA_fnc_removePerFrameHandler;
+      [fnf_missionTimeUI_PFH] call CBA_fnc_removePerFrameHandler;
       uiNameSpace getVariable "timeleftStructText" closeDisplay 1;
     } else {
       // in any other case, we should show
@@ -43,7 +43,7 @@ if (!hasInterface) exitWith {};
       ace_advanced_fatigue_enableStaminaBar = true;
       call ace_advanced_fatigue_fnc_createStaminaBar;
       if ((_missionRuntimeSecs - (15 * 60)) <= CBA_missionTime) then {
-        call phx_fnc_clientTime;
+        call fnf_fnc_clientTime;
       };
     };
   },
@@ -64,16 +64,16 @@ if (!hasInterface) exitWith {};
     "Friday Night Fight",
     "User Interface"
   ],
-  "phx_key_openLoadoutFleximenu",
+  "fnf_key_openLoadoutFleximenu",
   [
     "Open Loadout Selector (CBA only)",
     "If the CBA Fleximenu loadout interface is chosen, this key will be used to open it during safe start."
   ],
   { // key down code
-    if (isNil "phx_safetyEnabled") exitWith {};
-    if (fnf_pref_LoadoutInterface isEqualTo "CBA" && phx_safetyEnabled) then {
-      ["player", [], -100, "call phx_ui_fnc_safeStartMain"] call cba_fnc_flexiMenu_add;
-      ["player", [], -100, "call phx_ui_fnc_safeStartMain"] call cba_fnc_fleximenu_openMenuByDef;
+    if (isNil "fnf_safetyEnabled") exitWith {};
+    if (fnf_pref_LoadoutInterface isEqualTo "CBA" && fnf_safetyEnabled) then {
+      ["player", [], -100, "call fnf_ui_fnc_safeStartMain"] call cba_fnc_flexiMenu_add;
+      ["player", [], -100, "call fnf_ui_fnc_safeStartMain"] call cba_fnc_fleximenu_openMenuByDef;
     };
   },
   "", // no up code
@@ -92,14 +92,14 @@ if (!hasInterface) exitWith {};
     "Friday Night Fight",
     "User Interface"
   ],
-  "phx_key_missionInfoPanel",
+  "fnf_key_missionInfoPanel",
   [
     "Open Mission Info Panel",
     "View mission details, including in spectator"
   ],
   { // key down code
     if (!dialog) then {
-      [] spawn phx_ui_fnc_missionInfoPanel;
+      [] spawn fnf_ui_fnc_missionInfoPanel;
     };
   },
   "", // no up code
@@ -118,14 +118,14 @@ if (!hasInterface) exitWith {};
     "Friday Night Fight",
     "Administration"
   ],
-  "phx_key_adminPanel",
+  "fnf_key_adminPanel",
   [
     "Open Admin Panel",
     "Perform routine administrative tasks to the mission and players in it"
   ],
   { // key down code
     if (!dialog && (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) || serverCommandAvailable "#kick")) then {
-      [] spawn phx_admin_fnc_adminUI;
+      [] spawn fnf_admin_fnc_adminUI;
     };
   },
   "", // no up code

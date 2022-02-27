@@ -105,9 +105,9 @@ class VN_UNI_PAVN_NVA {
   };
 
   class CR : BASE {
-    uniform[] = {UNIFORM};
+    uniform[] = {"vn_o_uniform_nva_navy_03"};
     vest[] = {VEST_CREWMAN};
-    headgear[] = {HELMET_CREWMAN};
+    headgear[] = {"vn_o_helmet_nva_09", "vn_o_cap_navy_01"};
   };
 
   class CRL : CR {
