@@ -111,26 +111,47 @@ if (!isNil "fnf_briefing_west_uniform" || !isNil "fnf_briefing_west_headgear" ||
         ]
       ]
     ];
+
+    private _uniformImages = [west] call fnf_briefing_fnc_getUniformPics;
+    if (typeName _uniformImages == "STRING") then {
       player createDiaryRecord [
-      "Diary",
-      [
-        "BLUFOR Uniform",
-        format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
+        "Diary",
+        [
+          "BLUFOR Uniform",
+          format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>
+<font size='14'>%2</font><br/>
+Author: %3<br/><br/>
+%4
+",
+            _meta # 0,
+            _meta # 1,
+            _meta # 2,
+            _uniformImages
+          ]
+        ]
+      ];
+    } else {
+      player createDiaryRecord [
+        "Diary",
+        [
+          "BLUFOR Uniform",
+          format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
 <font size='14'>%5</font><br/>
 Author: %6<br/><br/>
 %1<br/>
 %2<br/>
 %3
 ",
-          _helmetImg joinString "",
-          _vestImg joinString "",
-          _uniformImg joinString "",
-          _meta # 0,
-          _meta # 1,
-          _meta # 2
+            _helmetImg joinString "",
+            _vestImg joinString "",
+            _uniformImg joinString "",
+            _meta # 0,
+            _meta # 1,
+            _meta # 2
+          ]
         ]
-      ]
-    ];
+      ];
+    };
   };
 };
 
@@ -177,26 +198,48 @@ if (!isNil "fnf_briefing_east_uniform" || !isNil "fnf_briefing_east_headgear" ||
         ]
       ]
     ];
-    player createDiaryRecord [
-      "Diary",
-      [
-        "OPFOR Uniform",
-        format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
+
+
+    private _uniformImages = [east] call fnf_briefing_fnc_getUniformPics;
+    if (typeName _uniformImages == "STRING") then {
+      player createDiaryRecord [
+        "Diary",
+        [
+          "OPFOR Uniform",
+          format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>
+<font size='14'>%2</font><br/>
+Author: %3<br/><br/>
+%4
+",
+            _meta # 0,
+            _meta # 1,
+            _meta # 2,
+            _uniformImages
+          ]
+        ]
+      ];
+    } else {
+      player createDiaryRecord [
+        "Diary",
+        [
+          "OPFOR Uniform",
+          format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
 <font size='14'>%5</font><br/>
 Author: %6<br/><br/>
 %1<br/>
 %2<br/>
 %3
 ",
-          _helmetImg joinString "",
-          _vestImg joinString "",
-          _uniformImg joinString "",
-          _meta # 0,
-          _meta # 1,
-          _meta # 2
+            _helmetImg joinString "",
+            _vestImg joinString "",
+            _uniformImg joinString "",
+            _meta # 0,
+            _meta # 1,
+            _meta # 2
+          ]
         ]
-      ]
-    ];
+      ];
+    };
   };
 };
 
@@ -243,26 +286,47 @@ if (!isNil "fnf_briefing_ind_uniform" || !isNil "fnf_briefing_ind_headgear" || !
         ]
       ]
     ];
-    player createDiaryRecord [
-      "Diary",
-      [
-        "INDFOR Uniform",
-        format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
+
+    private _uniformImages = [independent] call fnf_briefing_fnc_getUniformPics;
+    if (typeName _uniformImages == "STRING") then {
+      player createDiaryRecord [
+        "Diary",
+        [
+          "INDFOR Uniform",
+          format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</font><br/>
+<font size='14'>%2</font><br/>
+Author: %3<br/><br/>
+%4
+",
+            _meta # 0,
+            _meta # 1,
+            _meta # 2,
+            _uniformImages
+          ]
+        ]
+      ];
+    } else {
+      player createDiaryRecord [
+        "Diary",
+        [
+          "INDFOR Uniform",
+          format ["<font size='18' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</font><br/>
 <font size='14'>%5</font><br/>
 Author: %6<br/><br/>
 %1<br/>
 %2<br/>
 %3
 ",
-          _helmetImg joinString "",
-          _vestImg joinString "",
-          _uniformImg joinString "",
-          _meta # 0,
-          _meta # 1,
-          _meta # 2
+            _helmetImg joinString "",
+            _vestImg joinString "",
+            _uniformImg joinString "",
+            _meta # 0,
+            _meta # 1,
+            _meta # 2
+          ]
         ]
-      ]
-    ];
+      ];
+    };
   };
 };
 

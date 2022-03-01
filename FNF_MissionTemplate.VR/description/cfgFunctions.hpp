@@ -94,6 +94,7 @@ class CfgFunctions {
       class weaponDetails{};
       class notesItems{};
       class getItemInfo{};
+      class getUniformPics{};
     };
   };
   class fnf_article {
