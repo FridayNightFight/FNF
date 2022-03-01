@@ -40,7 +40,7 @@ class Extended_PostInit_Eventhandlers {
 class Extended_Local_EventHandlers {
   class AllVehicles {
     class FNF_applySafetyOnLocalitySwitch {
-      local = "if (_this select 1) then {_this call fnf_safety_fnc_reapplySafetyVic};";
+      local = "_this call fnf_safety_fnc_reapplySafetyVic;";
     };
   };
 };
