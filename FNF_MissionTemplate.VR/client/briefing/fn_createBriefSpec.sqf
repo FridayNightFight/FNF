@@ -213,24 +213,43 @@ if (!isNil "fnf_briefing_west_uniform" || !isNil "fnf_briefing_west_headgear" ||
       ]
     ] call BIS_fnc_setToPairs;
 
-    [
-      fnf_ui_structTextRef,
-      "BLUFOR Uniform",
-      format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
+
+    private _uniformImages = [west, true] call fnf_briefing_fnc_getUniformPics;
+    if (typeName _uniformImages == "STRING") then {
+      [
+        fnf_ui_structTextRef,
+        "BLUFOR Uniform",
+        format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>
+<t size='1.1'>%2</t><br/>
+Author: %3<br/><br/>
+%4
+",
+          _meta # 0,
+          _meta # 1,
+          _meta # 2,
+          _uniformImages
+        ]
+      ] call BIS_fnc_setToPairs;
+    } else {
+      [
+        fnf_ui_structTextRef,
+        "BLUFOR Uniform",
+        format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
 <t size='1.1'>%5</t><br/>
 Author: %6<br/><br/>
 %1<br/>
 %2<br/>
 %3
 ",
-        _helmetImg joinString "",
-        _vestImg joinString "",
-        _uniformImg joinString "",
-        _meta # 0,
-        _meta # 1,
-        _meta # 2
-      ]
-    ] call BIS_fnc_setToPairs;
+          _helmetImg joinString "",
+          _vestImg joinString "",
+          _uniformImg joinString "",
+          _meta # 0,
+          _meta # 1,
+          _meta # 2
+        ]
+      ] call BIS_fnc_setToPairs;
+    };
 
     [
       fnf_ui_structTextRef,
@@ -285,24 +304,43 @@ if (!isNil "fnf_briefing_east_uniform" || !isNil "fnf_briefing_east_headgear" ||
       ]
     ] call BIS_fnc_setToPairs;
 
-    [
-      fnf_ui_structTextRef,
-      "OPFOR Uniform",
-      format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
-<t size='1.1'>%5</t><br/>
-Author: %6<br/><br/>
-%1<br/>
-%2<br/>
-%3
+
+    private _uniformImages = [east, true] call fnf_briefing_fnc_getUniformPics;
+    if (typeName _uniformImages == "STRING") then {
+      [
+        fnf_ui_structTextRef,
+        "OPFOR Uniform",
+        format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>
+<t size='1.1'>%2</t><br/>
+Author: %3<br/><br/>
+%4
 ",
-        _helmetImg joinString "",
-        _vestImg joinString "",
-        _uniformImg joinString "",
-        _meta # 0,
-        _meta # 1,
-        _meta # 2
-      ]
-    ] call BIS_fnc_setToPairs;
+          _meta # 0,
+          _meta # 1,
+          _meta # 2,
+          _uniformImages
+        ]
+      ] call BIS_fnc_setToPairs;
+    } else {
+      [
+        fnf_ui_structTextRef,
+        "OPFOR Uniform",
+        format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
+  <t size='1.1'>%5</t><br/>
+  Author: %6<br/><br/>
+  %1<br/>
+  %2<br/>
+  %3
+  ",
+          _helmetImg joinString "",
+          _vestImg joinString "",
+          _uniformImg joinString "",
+          _meta # 0,
+          _meta # 1,
+          _meta # 2
+        ]
+      ] call BIS_fnc_setToPairs;
+    };
 
     [
       fnf_ui_structTextRef,
@@ -355,24 +393,44 @@ if (!isNil "fnf_briefing_ind_uniform" || !isNil "fnf_briefing_ind_headgear" || !
         [fnf_briefing_ind_loadout, true] call fnf_briefing_fnc_parseLoadout
       ]
     ] call BIS_fnc_setToPairs;
-    [
-      fnf_ui_structTextRef,
-      "INDFOR Uniform",
-      format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
-<t size='1.1'>%5</t><br/>
-Author: %6<br/><br/>
-%1<br/>
-%2<br/>
-%3
+
+
+    private _uniformImages = [independent, true] call fnf_briefing_fnc_getUniformPics;
+    if (typeName _uniformImages == "STRING") then {
+      [
+        fnf_ui_structTextRef,
+        "INDFOR Uniform",
+        format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>
+<t size='14'>%2</t><br/>
+Author: %3<br/><br/>
+%4
 ",
-        _helmetImg joinString "",
-        _vestImg joinString "",
-        _uniformImg joinString "",
-        _meta # 0,
-        _meta # 1,
-        _meta # 2
-      ]
-    ] call BIS_fnc_setToPairs;
+          _meta # 0,
+          _meta # 1,
+          _meta # 2,
+          _uniformImages
+        ]
+      ] call BIS_fnc_setToPairs;
+    } else {
+      [
+        fnf_ui_structTextRef,
+        "INDFOR Uniform",
+        format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%4</t><br/>
+  <t size='1.1'>%5</t><br/>
+  Author: %6<br/><br/>
+  %1<br/>
+  %2<br/>
+  %3
+  ",
+          _helmetImg joinString "",
+          _vestImg joinString "",
+          _uniformImg joinString "",
+          _meta # 0,
+          _meta # 1,
+          _meta # 2
+        ]
+      ] call BIS_fnc_setToPairs;
+    };
 
     [
       fnf_ui_structTextRef,

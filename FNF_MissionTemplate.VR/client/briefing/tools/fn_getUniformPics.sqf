@@ -1,4 +1,4 @@
-params [["_side", sideEmpty, [sideEmpty]]];
+params [["_side", sideEmpty, [sideEmpty]], ["_structText", false, [false]]];
 
 private _sideUnloc = _side call BIS_fnc_sideNameUnlocalized;
 if (_sideUnloc == "GUER") then {_sideUnloc = "IND"};
@@ -19,10 +19,17 @@ private _outText = "";
   private _roleAbbr = _x # 0;
   private _imagePath = format["fnf_media\images\kits\%1\%2.paa", _imageFolderName, _roleAbbr];
   if (fileExists _imagePath) then {
-    _outText = _outText + format[
-      "<img image='%1' width='174'/>",
-      _imagePath
-    ];
+    if !(_structText) then {
+      _outText = _outText + format[
+        "<img image='%1' width='174'/>",
+        _imagePath
+      ];
+    } else {
+      _outText = _outText + format[
+        "<img image='%1' size='11'/>",
+        _imagePath
+      ];
+    };
     if ((_forEachIndex + 1) % 2 == 0) then {_outText = _outText + "<br/>"};
   };
 } forEach fnf_loadout_roles;
