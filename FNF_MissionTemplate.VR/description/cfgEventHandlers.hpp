@@ -2,6 +2,41 @@
 
 // run on every vehicle just after it's inited
 class Extended_InitPost_EventHandlers {
+///*
+  // automated turret weapon loadout changes
+  // M1117
+  class rhsusf_M1117_base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_M1117";
+    };
+  };
+  // AH1Z
+  class RHS_AH1Z_base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_AH1Z";
+    };
+  };
+  // MkVSOC
+  class rhsusf_mkvsoc {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_MkVSOC";
+    };
+  };
+  // speedboat HMG
+  class O_Boat_Armed_01_hmg_F {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_speedboatHMG";
+    };
+  };
+  // speedboat minigun
+  class I_Boat_Armed_01_minigun_F {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_speedboatMinigun";
+    };
+  };
+//*/
+
+  // other init settings
   class CAManBase {
     class fnf_FixFriendlyFire { clientInit = "(_this select 0) addRating 100000;";};
   };

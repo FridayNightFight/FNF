@@ -266,4 +266,16 @@ class CfgFunctions {
       class webhook_roundEnd;
     };
   };
+  class fnf_vehicleLoadouts {
+    class functions {
+      file = "description\vehicleLoadouts";
+      class getVehicleLoadout{};
+      class clearAll{};
+      class M1117{};
+      class AH1Z{};
+      class speedboatHMG{};
+      class speedboatMinigun{};
+      class MkVSOC{};
+    };
+  };
 };
