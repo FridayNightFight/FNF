@@ -125,6 +125,16 @@ if !(fnf_gameMode isEqualTo "adSector") then {
   };
 };
 
+if !(fnf_gameMode isEqualTo "neutralSector") then {
+  _test = (getMissionLayerEntities "FNF Gamemode: NSector");
+  if (count _test > 0) then {
+    _test params ["_objects", "_markers"];
+    {_x call _deleteObj} forEach _objects;
+    {_x remoteExec ["deleteMarkerLocal", 0, true]} forEach _markers;
+  };
+  // reference CfgEventHandlers PostInit for additional
+};
+
 if !(fnf_gameMode isEqualTo "scavHunt") then {
   _test = (getMissionLayerEntities "FNF Gamemode: ScavHunt");
   if (count _test > 0) then {
