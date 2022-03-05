@@ -27,6 +27,7 @@ fnf_loadout_roles = [
   ["BASE",["Crew/Wpn Operator","PRIVATE"]]
 ];
 
+player linkItem "ItemMap";
 
 //Determine if client can play the round, if not, spectate
 if !(call fnf_client_fnc_canplay) exitWith {
@@ -42,7 +43,6 @@ if !(call fnf_client_fnc_canplay) exitWith {
   call fnf_spectator_fnc_init;
 };
 player enableSimulation false;
-
 
 call fnf_client_fnc_setupGame; //Client portion of game modes
 [{missionNamespace getVariable ["fnf_markCustomObjs_done", false]}, {
@@ -161,6 +161,8 @@ if (fnf_gameMode != "sustainedAssault") then {
 
 fnf_showMissionStatusHandleMap = ["visibleMap", {call BIS_fnc_showMissionStatus}, true] call CBA_fnc_addPlayerEventHandler;
 player addEventHandler ["Respawn", {_this call fnf_fnc_handleRespawn}];
+// disable rating adjustments
+player addEventHandler ["HandleRating", {0}];
 
 if !(fnf_gameMode == "sustainedAssault") then {
   //Start kill counter when game ends or player is dead
