@@ -10,8 +10,8 @@
 #define VEST_PILOT VEST
 
 #define HELMET "rhsgref_helmet_pasgt_flecktarn"
-#define HELMET_CMDR "rhsgref_hat_m43cap_heer"
-#define HELMET_RECON "rhsusf_Bowman"
+#define HELMET_CMDR "UK3CB_NFA_B_H_M88_Field_Cap_FLK"
+#define HELMET_RECON "UK3CB_NFA_B_H_BoonieHat_FLK"
 #define HELMET_CREWMAN "H_HelmetCrew_I"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
