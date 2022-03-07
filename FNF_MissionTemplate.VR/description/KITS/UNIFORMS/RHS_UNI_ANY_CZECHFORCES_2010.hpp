@@ -1,6 +1,6 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_afghanka_wdl"
+#define UNIFORM "rhsgref_uniform_para_ttsko_urban"
 
 #define VEST "rhs_chicom"
 #define VEST_LEADER VEST
@@ -9,13 +9,13 @@
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhssaf_helmet_m97_veil_woodland"
+#define HELMET "rhsgref_6b27m_ttsko_urban"
 #define HELMET_CMDR "rhs_fieldcap_m88_woodland"
 #define HELMET_RECON "rhssaf_booniehat_woodland"
 #define HELMET_CREWMAN "rhsusf_cvc_green_ess"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "rhssaf_kitbag_md2camo"
+#define BACKPACK "UK3CB_B_Hiker_Camo"
 #define BACKPACK_RADIO "TFAR_rt1523g_sage"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"

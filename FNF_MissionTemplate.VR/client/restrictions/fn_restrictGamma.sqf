@@ -3,10 +3,8 @@ Prevents player from going into video settings to increase gamma beyond a certai
 Not a perfect solution, but best that can be done via scripting, afaik.
 Only takes into account the daytime at mission start.
 */
-private _sunrise = (date call BIS_fnc_sunriseSunsetTime) select 0;
-private _sunset = (date call BIS_fnc_sunriseSunsetTime) select 1;
 
-if (dayTime > _sunrise && dayTime < _sunset) exitWith {};
+if !(fnf_environment_isDaytime) exitWith {};
 
 fnf_gammaWarn = false;
 fnf_gammaMax = 1.3;

@@ -5,7 +5,7 @@ enableDebugConsole = 1;
 
 respawn = 3;
 respawnDialog = 0;
-respawnButton = 0;
+respawnButton = 1;
 respawndelay = 99999;
 respawnOnStart = -1;
 respawnTemplates[] = {};

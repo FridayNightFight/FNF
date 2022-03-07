@@ -33,6 +33,8 @@ class CfgFNFLoadouts {
     #include "KITS\UNIFORMS\APEX_UNI_ANY_AFRICAN_POLICE_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_ID_AFRICAN_MILITIA_2010.hpp"
     #include "KITS\UNIFORMS\RHS_UNI_NATO_FRANCE_2010.hpp"
+    #include "KITS\UNIFORMS\RHS_UNI_NATO_UK_PARA_1980.hpp"
+
 
     #include "KITS\UNIFORMS\VN_UNI_NLF_Vietcong.hpp"
     #include "KITS\UNIFORMS\VN_UNI_PAVN_NVA.hpp"
@@ -72,6 +74,8 @@ class CfgFNFLoadouts {
     #include "KITS\GEAR\RHS_GEAR_ANY_AFRICAN_POLICE_2010_FAMAS.hpp"
     #include "KITS\GEAR\RHS_GEAR_ID_AFRICAN_MILITIA_2010_AKMN.hpp"
     #include "KITS\GEAR\RHS_GEAR_NATO_FRANCE_2010_FAMAS.hpp"
+    #include "KITS\GEAR\RHS_GEAR_UK_PARA_1980_FAL.hpp"
+
 
     #include "KITS\GEAR\VN_GEAR_NVA_VC1970.hpp"
     #include "KITS\GEAR\VN_GEAR_US_ARMY1970.hpp"

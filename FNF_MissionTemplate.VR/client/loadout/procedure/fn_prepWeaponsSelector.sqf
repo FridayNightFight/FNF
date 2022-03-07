@@ -21,10 +21,13 @@
 // iterate through _cfgWeaponChoices and add each weapon and appropriate mags to fnf_selector_weapons so they can be chosen from
 params [
   ["_unit", objNull],
-  ["_cfgChoices", []]
+  ["_cfgChoices", []],
+  ["_toSet", 0, [0]]
 ];
 
 if (isNull _unit) exitWith {nil};
+
+private _selectorVar = ["fnf_selector_weapons", "fnf_selector_sidearm"] select _toSet;
 
 private _weaponChoices = [];
 {
@@ -37,5 +40,16 @@ private _weaponChoices = [];
 } forEach _cfgChoices;
 
 // "debug_console" callExtension str(_weaponChoices);
-missionNamespace setVariable ["fnf_selector_weapons", _weaponChoices];
+
+// add flare launcher choices for sidearm if nighttime
+if (_toSet isEqualTo 1 && !(missionNamespace getVariable ["fnf_environment_isDaytime", true])) then {
+  {
+    _weaponChoices pushBack _x;
+  } forEach [
+    ["rhs_weap_rsp30_white", []],
+    ["rhs_weap_rsp30_green", []],
+    ["rhs_weap_rsp30_red", []]
+  ];
+};
+missionNamespace setVariable [_selectorVar, _weaponChoices];
 true

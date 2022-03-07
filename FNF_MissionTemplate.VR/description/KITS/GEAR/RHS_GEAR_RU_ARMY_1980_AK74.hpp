@@ -7,8 +7,8 @@
 // give Riflemen extra mags
 #define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12","rhs_30Rnd_545x39_AK_plum_green:6"
 
-#define SIDEARM "rhs_weap_6p53"
-#define SIDEARM_MAG "rhs_18rnd_9x21mm_7N28:2"
+#define SIDEARM "rhs_weap_makarov_pm"
+#define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
 
 // put all GL weapons
 #define RIFLE_GL "rhs_weap_ak74_gp25"
@@ -148,12 +148,11 @@ class RHS_GEAR_RU_ARMY_1980_AK74 {
           UGL_MAGS(UGL_FRAG,10),
           UGL_MAGS(UGL_SMOKEWHITE,4),
           UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FLAREWHITE,2)
         }
       }
     };
-    items[] += {HUNTIR_MONITOR};
+    items[] += {};
   };
 
   class MGA : BASE {

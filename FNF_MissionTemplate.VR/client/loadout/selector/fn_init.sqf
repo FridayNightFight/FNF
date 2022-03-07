@@ -106,6 +106,50 @@ _mainAction = [
     _actions pushBack [_weaponsAction, [], _target]; // New action, it's children, and the action's target
 
 
+
+    private _sidearmAction = [
+      "Sidearm_Selector",
+      "Sidearm",
+      (
+        if (missionNamespace getVariable ["fnf_loadout_sidearm", ""] != "") then {
+          getText(configFile >> "CfgWeapons" >> fnf_loadout_sidearm >> "picture")
+        } else {
+          "\a3\weapons_f\data\ui\icon_mg_ca.paa"
+        }
+      ), // icon
+      {}, // statement
+      {handgunWeapon player != "" && count fnf_selector_sidearm > 1 && fnf_pref_loadoutInterface == "ACE"}, // condition
+      {
+        params ["_target", "_player", "_params"];
+        // diag_log format ["_insertChildren [%1, %2, %3]", _target, _player, _params];
+
+        // Add children to this action
+        private _actions = [];
+        {
+          _x params ["_sidearm", "_mags"];
+          private _childStatement = {
+            params ["_target", "_player", "_params"];
+            _params call fnf_selector_fnc_sidearm;
+          };
+          private _action = [
+            getText (configFile >> "cfgWeapons" >> _sidearm >> "displayName"),
+            getText (configFile >> "cfgWeapons" >> _sidearm >> "displayName"),
+            getText (configFile >> "cfgWeapons" >> _sidearm >> "picture"),
+            _childStatement,
+            {true},
+            {},
+            _x
+          ] call ace_interact_menu_fnc_createAction;
+          _actions pushBack [_action, [], _target]; // New action, it's children, and the action's target
+        } forEach (missionNamespace getVariable ["fnf_selector_sidearm", []]);
+
+        _actions
+      }, // populate child items
+      []
+    ] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_sidearmAction, [], _target]; // New action, it's children, and the action's target
+
+
     private _opticsAction = [
       "Optic_Selector",
       "Optics",

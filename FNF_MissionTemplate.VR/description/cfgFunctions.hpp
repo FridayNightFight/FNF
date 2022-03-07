@@ -94,6 +94,7 @@ class CfgFunctions {
       class weaponDetails{};
       class notesItems{};
       class getItemInfo{};
+      class getUniformPics{};
     };
   };
   class fnf_article {
@@ -119,6 +120,7 @@ class CfgFunctions {
       file = "client\loadout\selector";
       class init{};
       class weapons{};
+      class sidearm{};
       class optics{};
       class grenades{};
       class charges{};

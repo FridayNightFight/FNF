@@ -92,6 +92,15 @@ fnf_magnifiedOptics = 0;
   -1 will force ironsights.
 */
 
+fnf_isNightMission = -1;
+/*
+  State if this intended as a night mission.
+  Used to enable flare/sidearm choice and (future) a mix of flare and smoke grenades.
+  -1 will auto-detect based on the environment at mission start.
+  0 will force day mission.
+  1 will force night mission.
+*/
+
 fnf_addNVG = 0;
 /*
   Automatically add NVGs & lasers to players (Gen3, Black)

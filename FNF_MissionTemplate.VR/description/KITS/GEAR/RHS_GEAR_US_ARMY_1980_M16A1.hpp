@@ -149,12 +149,11 @@ class RHS_GEAR_US_ARMY_1980_M16A1 {
           UGL_MAGS(UGL_FRAG,10),
           UGL_MAGS(UGL_SMOKEWHITE,4),
           UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FLAREWHITE,2)
         }
       }
     };
-    items[] += {HUNTIR_MONITOR};
+    items[] += {};
   };
 
   class MGA : BASE {
