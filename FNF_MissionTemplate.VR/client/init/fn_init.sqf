@@ -99,8 +99,6 @@ if (fnf_gameMode != "sustainedAssault") then {
   call fnf_loadout_fnc_checkLoadout;
   [false] call fnf_briefing_fnc_parseGear;
 
-  call fnf_fnc_windowBreak;
-
   // disable ambient life
   [] spawn {sleep 0.1; enableEnvironment [false, true]};
 

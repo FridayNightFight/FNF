@@ -96,6 +96,12 @@ class CfgFunctions {
       class getItemInfo{};
       class getUniformPics{};
     };
+    class briefingtable {
+      file = "client\briefing\table";
+      class setupTables{};
+      class createTable{};
+      class clearTable{};
+    };
   };
   class fnf_article {
     class articles {

@@ -84,9 +84,54 @@ call fnf_server_fnc_keyVehicles;
 call fnf_server_fnc_vehicleRadios;
 
 //Create map cover for zone boundary
-private _zoneArea = triggerArea zoneTrigger;
-zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
-[zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
+if (!isNil "zoneTrigger") then {
+  // if zoneTrigger exists, use standard functionality
+  private _zoneArea = triggerArea zoneTrigger;
+  zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
+  [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
+} else {
+  // if not, use markers
+  fnf_zoneBoundary_boundsLine_marker = createMarker ["fnf_zoneBoundary_boundsLine", [0,0,0], -1];
+  fnf_zoneBoundary_boundsLine_marker setMarkerShape "POLYLINE";
+  fnf_zoneBoundary_boundsLine_marker setMarkerColor "ColorORANGE";
+  fnf_zoneBoundary_boundaryMarks = [];
+  fnf_zoneBoundary_boundaryPos = [];
+
+  for "_i" from 1 to 50 do {
+    private _markerName = format["fnf_zoneBoundary_marker_%1", _i];
+    if (markerShape _markerName != "") then {
+      _markerName setMarkerType "mil_dot";
+      _markerName setMarkerAlpha 0;
+      fnf_zoneBoundary_boundaryMarks pushBack (_markerName);
+      fnf_zoneBoundary_boundaryPos pushBack (markerPos _markerName);
+    };
+  };
+
+  publicVariable "fnf_zoneBoundary_boundaryMarks";
+  publicVariable "fnf_zoneBoundary_boundaryPos";
+  publicVariable "fnf_zoneBoundary_boundsLine_marker";
+
+  {
+    _x setMarkerText "";
+  } forEach fnf_zoneBoundary_boundaryMarks;
+
+  fnf_zoneBoundary_boundsLine_points = [];
+  {
+    if (_forEachIndex + 1 < (count fnf_zoneBoundary_boundaryPos)) then {
+      fnf_zoneBoundary_boundsLine_points append (_x select [0, 2]);
+      fnf_zoneBoundary_boundsLine_points append ((fnf_zoneBoundary_boundaryPos select (_forEachIndex + 1)) select [0, 2]);
+    } else {
+      fnf_zoneBoundary_boundsLine_points append (_x select [0, 2]);
+      fnf_zoneBoundary_boundsLine_points append ((fnf_zoneBoundary_boundaryPos select 0) select [0, 2]);
+    }
+  } forEach fnf_zoneBoundary_boundaryPos;
+  fnf_zoneBoundary_boundsLine_marker setMarkerPolyline fnf_zoneBoundary_boundsLine_points;
+
+
+  if (count fnf_zoneBoundary_boundaryMarks < 3) then {
+    "[FNF] (ZoneBoundary) Warning: If not using zoneTrigger, must place at least 3 ""fnf_zoneBoundary_marker_x"" markers" remoteExecCall ["systemChat", 0, true];
+  };
+};
 
 if !(fnf_gameMode == "sustainedAssault") then {
   // Create respawn markers in bottom left corner of map
