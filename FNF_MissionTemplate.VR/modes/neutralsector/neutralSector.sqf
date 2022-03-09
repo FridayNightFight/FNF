@@ -36,16 +36,11 @@ switch (_numberOfSectors) do {
 };
 
 
-private _objectiveMarkers = [];
+private _objectives = [];
 {
-  _marker = createMarker [format["fnf_objectiveArea_%1", _forEachIndex + 1], _x];
-  _marker setMarkerColor "ColorBlack";
-  // _marker setMarkerAlpha 0;
-  _marker setMarkerShape "RECTANGLE";
-  _marker setMarkerSize [200, 200];
-  _objectiveMarkers pushBack _marker;
-} forEach (fnf_gamemode_sectors apply {getPos _x});
-[_objectiveMarkers] call fnf_briefing_fnc_setupTables;
+  _objectives pushBack [format["Sector %1", _forEachIndex + 1], getPos _x];
+} forEach fnf_gamemode_sectors;
+[_objectives] call fnf_briefing_fnc_setupTables;
 
 
 _win = {

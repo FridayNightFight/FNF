@@ -66,6 +66,7 @@ call fnf_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
 call fnf_server_fnc_populateORBATS;
 call fnf_fnc_teleportInit; // Add leadership teleport options
+[] spawn fnf_briefing_fnc_setupTablesClient;
 
 
 if (fnf_gameMode != "sustainedAssault") then {
@@ -98,6 +99,8 @@ if (fnf_gameMode != "sustainedAssault") then {
   call fnf_restrictions_fnc_init;
   call fnf_loadout_fnc_checkLoadout;
   [false] call fnf_briefing_fnc_parseGear;
+
+  ["init"] call fnf_ui_fnc_drawHelpers;
 
   // disable ambient life
   [] spawn {sleep 0.1; enableEnvironment [false, true]};

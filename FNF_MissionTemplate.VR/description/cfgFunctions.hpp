@@ -99,6 +99,9 @@ class CfgFunctions {
     class briefingtable {
       file = "client\briefing\table";
       class setupTables{};
+      class setupTablesClient{};
+      class removeTables{};
+      class removeTablesClient{};
       class createTable{};
       class clearTable{};
     };

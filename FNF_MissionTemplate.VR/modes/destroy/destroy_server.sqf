@@ -20,6 +20,9 @@ fnf_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
   };
 } forEach [destroy_obj_1, destroy_obj_2];
 
+private _objectivePositions = fnf_destroyObjs apply {getPos _x};
+[_objectivePositions] call fnf_briefing_fnc_setupTables;
+
 //Set objective marker to defending side color
 {
   _obj = _x select 0;

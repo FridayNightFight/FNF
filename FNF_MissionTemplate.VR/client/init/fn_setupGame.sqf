@@ -62,5 +62,4 @@ if !(fnf_gameMode == "sustainedAssault") then {
   };
   [[1,2],[0]] call ace_spectator_fnc_updateCameraModes;
 
-  ["init"] call fnf_ui_fnc_drawHelpers;
 };

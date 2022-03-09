@@ -93,7 +93,7 @@ if (!isNil "zoneTrigger") then {
   // if not, use markers
   fnf_zoneBoundary_boundsLine_marker = createMarker ["fnf_zoneBoundary_boundsLine", [0,0,0], -1];
   fnf_zoneBoundary_boundsLine_marker setMarkerShape "POLYLINE";
-  fnf_zoneBoundary_boundsLine_marker setMarkerColor "ColorORANGE";
+  fnf_zoneBoundary_boundsLine_marker setMarkerColor "ColorCIV";
   fnf_zoneBoundary_boundaryMarks = [];
   fnf_zoneBoundary_boundaryPos = [];
 

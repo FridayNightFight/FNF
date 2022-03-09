@@ -27,7 +27,7 @@ if (isNil "fnf_ui") then {
   #define ICON_REPAIR "\A3\ui_f\data\map\vehicleicons\pictureRepair_ca.paa"
   #define ICON_BOATS "\A3\ui_f\data\map\vehicleicons\iconShip_ca.paa"
 
-
+  // ["_target", "_text", "_icon", ["_respawn",false], ["_side",sideEmpty]];
   fnf_ui setVariable ["eastHelperTargets",[
     [{missionNamespace getVariable ["OPF_supplyBox", objNull]},MSG_SUPPLY,ICON_SUPPLY],
     [{missionNamespace getVariable ["OPF_armedTrucks", objNull]},MSG_ARMEDTRUCKS,ICON_APC,true],
@@ -75,27 +75,13 @@ if (isNil "fnf_ui") then {
     [{missionNamespace getVariable ["BLU_armedBoats", objNull]},MSG_ARMEDBOATS,ICON_BOATS, true],
     [{missionNamespace getVariable ["BLU_pBoats", objNull]},MSG_PBOATS,ICON_BOATS,true]
   ]];
+
+  fnf_ui setVariable ["guerHelperTargets",[]];
 };
 
-fnf_ui setVariable ["fnf_drawHelpersHandle", (
-  [{
-    if (!alive player) exitWith {fnf_ui setVariable ["fnf_drawHelpersHandle", nil]};
 
-    private _cameraPositionAGL = positionCameraToWorld[0,0,0];
-    private _cameraPositionASL = AGLtoASL _cameraPositionAGL;
-    private _zoom = (
-          (
-            [0.5,0.5]
-            distance2D
-            worldToScreen
-            positionCameraToWorld
-            [0,3,4]
-          ) * (
-            getResolution
-            select 5
-          ) / 2
-    ) + 0.66666;
-
+private _handle = [
+  {
     {
       _x params ["_target", "_text", "_icon", ["_respawn",false], ["_side",sideEmpty]];
       _target = call _target;
@@ -105,18 +91,8 @@ fnf_ui setVariable ["fnf_drawHelpersHandle", (
         };
         if (_side == sideEmpty) then {_side = playerSide};
 
-        // referenced https://github.com/Quailsnap/WHA-Nametags
-        // _targetPositionAGLTopRef = _target modelToWorldVisual (_target selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _target))];
-        _targetPositionAGLTopRef = getPos _target vectorAdd [0,0,5];
-        // _targetPositionAGLBotRef = _target modelToWorldVisual [0,0,0] vectorAdd [0,0,((0.1 * (player distance _target)))];
-
-        private _camDistance = _cameraPositionAGL distance _targetPositionAGLTopRef;
-        private _distance = _player distance _targetPositionAGLTopRef;
-
-        private _vectorDir = eyePos player vectorFromTo (positionCameraToWorld[0,0,1]);
-        private _vectorDiff = vectorNormalized (((_vectorDir) vectorCrossProduct (vectorUp player)) vectorCrossProduct (_targetPositionAGLTopRef vectorDiff _cameraPositionAGL));
-        private _targetPositionAGLTop = _targetPositionAGLTopRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply 1.3);
-        private _targetPositionAGLBottom = _targetPositionAGLBotRef vectorAdd ((_vectorDiff vectorMultiply (0.1 * _camDistance / _zoom)) vectorMultiply -1);
+        private _targetPositionAGLTop = _target modelToWorldVisual [0,0,1];
+        _targetPositionAGLTop set [2, (_targetPositionAGLTop select 2) + 2.5];
 
         if (alive _target && vehicle player == player) then {
           switch (true) do {
@@ -124,16 +100,24 @@ fnf_ui setVariable ["fnf_drawHelpersHandle", (
             //   // drawIcon3D["", [1, 1, 1, 1], _targetPositionAGLTop, 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
             //   drawIcon3D["", [1, 1, 1, 1], _targetPositionAGLTopRef, 0.5 / (getResolution select 5), 0.5 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
             // };
-            case (player distance _target <= 300 && _side == playerSide): {
+            case (player distance _target <= 150 && _side == playerSide): {
               // drawIcon3D["", [1, 1, 1, 0.3], _targetPositionAGLTop, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, "", true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
-              drawIcon3D[_icon, [1, 1, 1, 0.8], _targetPositionAGLTopRef, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+              drawIcon3D[_icon, [1, 1, 1, 0.8], _targetPositionAGLTop, 0.3 / (getResolution select 5), 0.3 / (getResolution select 5), 0, _text, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
             };
           };
         };
       };
     } forEach (fnf_ui getVariable format["%1HelperTargets",side (group player)]);
-  }, 0] call CBA_fnc_addPerFrameHandler
-)];
+  },
+  0, // delay
+  [], // args
+  {}, // start code
+  {}, // deletion code
+  {alive player && (typeOf player != "ace_spectator_virtual") && !ace_spectator_isset}, // run condition
+  {fnf_gamemode != "sustainedAssault" && !(missionNamespace getVariable ["fnf_safetyEnabled", true])} // delete condition
+] call CBA_fnc_createPerFrameHandlerObject;
+
+fnf_ui setVariable ["drawPFH", _handle];
 
 true
 // [fnf_drawHelpersHandle] call CBA_fnc_removePerFrameHandler;
