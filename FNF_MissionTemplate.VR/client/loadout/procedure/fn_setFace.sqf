@@ -1,41 +1,98 @@
 /*
   this script runs clientside and, based on the uniform their side is wearing, will
-  assign their unit a white or asian face available from Prairie Fire
+  assign their unit a face based on uniform selection
 
   this is called from the applyLoadout script
-  this will only run if a VN uniform set is in use
 */
 
-if (mySideUniformSelection find "VN_" == -1) exitWith {};
+_possibleCategories = [
+  "WhiteHead",
+  "CamoHead",
+  "LivonianHead",
+  "GreekHead",
+  "AsianHead",
+  "AfricanHead",
+  "TanoanHead",
+  "PersianHead",
+  "RussianHead"
+];
+
+fnf_faces_categories = createHashMap;
+{
+  private _categoryName = _x;
+  private _faces = [];
+  private _searchString = format[
+    "configName _x find '%1' > -1 && configName _x find 'sick' == -1",
+    _categoryName
+  ];
+
+  if (mySideUniformSelection find "VN_" > -1) then {
+    _searchString = format["%1 && configName _x find 'vn' == 0", _searchString];
+  };
+
+  _faces = _searchString configClasses (configFile >> "CfgFaces" >> "Man_A3") apply {
+    [configName _x, getText (_x >> "displayName")]
+  };
+
+  (fnf_faces_categories getOrDefault [_categoryName, [], true]) pushBack _faces;
+} forEach _possibleCategories;
+
+fnf_faces_categories = fnf_faces_categories toArray false;
+// fnf_faces_categories = [fnf_faces_categories, []] call CBA_fnc_hashCreate;
+// text ([fnf_faces_categories] call CBA_fnc_encodeJson);
+
+
+private "_primaryCategory";
+
 switch (true) do {
-  case (mySideUniformSelection find "_US_" > -1): {
-    // US uniforms will use VN White faces
-    _USFaces = "configName _x find 'vn' == 0 && configName _x find 'WhiteHead' > -1" configClasses (configFile >> "CfgFaces" >> "Man_A3") apply {
-      [configName _x, getText (_x >> "displayName")]
-    };
-    private _myFace = selectRandom(_USFaces);
-    _myFace params ["_faceCfgName", "_faceDisplayName"];
-    diag_log text format["[FNF] (loadout) INFO: Assigned face ""%1""", _faceDisplayName];
-    [player, _faceCfgName] remoteExec ["setFace", 0, player];
-  };
-  case (mySideUniformSelection find "_FR_" > -1): {
-    // FR uniforms will use vanilla + VN Livonian faces
-    _FRFaces = "configName _x find 'LivonianHead' > -1" configClasses (configFile >> "CfgFaces" >> "Man_A3") apply {
-      [configName _x, getText (_x >> "displayName")]
-    };
-    private _myFace = selectRandom(_FRFaces);
-    _myFace params ["_faceCfgName", "_faceDisplayName"];
-    diag_log text format["[FNF] (loadout) INFO: Assigned face ""%1""", _faceDisplayName];
-    [player, _faceCfgName] remoteExec ["setFace", 0, player];
-  };
-  default {
-    // Anything else will use VN Asian faces
-    _VCFaces = "configName _x find 'vn' == 0 && configName _x find 'AsianHead' > -1" configClasses (configFile >> "CfgFaces" >> "Man_A3") apply {
-      [configName _x, getText (_x >> "displayName")]
-    };
-    private _myFace = selectRandom(_VCFaces);
-    _myFace params ["_faceCfgName", "_faceDisplayName"];
-    diag_log text format["[FNF] (loadout) INFO: Assigned face ""%1""", _faceDisplayName];
-    [player, _faceCfgName] remoteExec ["setFace", 0, player];
-  };
+  case (mySideUniformSelection find "_GER_" > -1);
+  case (mySideUniformSelection find "_DE_" > -1);
+  case (mySideUniformSelection find "_FRANCE_" > -1);
+  case (mySideUniformSelection find "_FR_" > -1);
+  case (mySideUniformSelection find "_US_" > -1): {_primaryCategory = "WhiteHead"};
+
+
+  case (mySideUniformSelection find "_GREEKFORCES_" > -1);
+  case (mySideUniformSelection find "_NL_" > -1);
+  case (mySideUniformSelection find "_CROATIAN_" > -1);
+  case (mySideUniformSelection find "_CZECHFORCES_" > -1);
+  case (mySideUniformSelection find "_SERBIANFORCES_" > -1);
+  case (mySideUniformSelection find "_YUGOSLAVIA_" > -1);
+  case (mySideUniformSelection find "_INSURGENTS_" > -1);
+  case (mySideUniformSelection find "_UKRAINIAN_" > -1): {_primaryCategory = "LivonianHead"};
+
+  case (mySideUniformSelection find "_AFRICAN_" > -1): {_primaryCategory = "AfricanHead"};
+
+  case (mySideUniformSelection find "_RU_" > -1): {_primaryCategory = "RussianHead"};
+
+  case (mySideUniformSelection find "_MEC_" > -1);
+  case (mySideUniformSelection find "_TRIBAL_" > -1);
+  case (mySideUniformSelection find "_TURKISH_" > -1);
+  case (mySideUniformSelection find "_IRAQI_" > -1): {_primaryCategory = "PersianHead"};
+
+  case (mySideUniformSelection find "_PAVN_" > -1);
+  case (mySideUniformSelection find "_NLF_" > -1);
+  case (mySideUniformSelection find "_SVA_" > -1);
+  case (mySideUniformSelection find "_NAVSOG_" > -1): {_primaryCategory = "AsianHead"};
+
+  default {_primaryCategory = selectRandom (_possibleCategories)};
 };
+
+_primaryCats = fnf_faces_categories select {_x#0 find _primaryCategory > -1} apply {_x#1#0} select 0;
+_otherCats = fnf_faces_categories select {_x#0 find _primaryCategory == -1} apply {_x#1#0} apply {selectRandom(_x)};
+
+// demo of uniform and randomized face selections
+// [selectRandom _primaryCats, selectRandom(_otherCats)];
+
+// demo of randomization across 50 players
+// _arr = [];
+// for "_i" from 1 to 50 do {
+//   _arr pushBack ([selectRandom _primaryCats, selectRandom(_otherCats)] selectRandomWeighted [0.8, 0.3]);
+// };
+// _arr
+
+
+private _myFace = [selectRandom _primaryCats, selectRandom(_otherCats)] selectRandomWeighted [0.8, 0.15];
+_myFace params ["_faceCfgName", "_faceDisplayName"];
+diag_log text format["[FNF] (loadout) INFO: Assigned face ""%1""", _faceDisplayName];
+[player, _faceCfgName] remoteExec ["setFace", 0, player];
