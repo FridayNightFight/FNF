@@ -91,46 +91,7 @@ if (!isNil "zoneTrigger") then {
   [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
 } else {
   // if not, use markers
-  fnf_zoneBoundary_boundsLine_marker = createMarker ["fnf_zoneBoundary_boundsLine", [0,0,0], -1];
-  fnf_zoneBoundary_boundsLine_marker setMarkerShape "POLYLINE";
-  fnf_zoneBoundary_boundsLine_marker setMarkerColor "ColorCIV";
-  fnf_zoneBoundary_boundaryMarks = [];
-  fnf_zoneBoundary_boundaryPos = [];
-
-  for "_i" from 1 to 50 do {
-    private _markerName = format["fnf_zoneBoundary_marker_%1", _i];
-    if (markerShape _markerName != "") then {
-      _markerName setMarkerType "mil_dot";
-      _markerName setMarkerAlpha 0;
-      fnf_zoneBoundary_boundaryMarks pushBack (_markerName);
-      fnf_zoneBoundary_boundaryPos pushBack (markerPos _markerName);
-    };
-  };
-
-  publicVariable "fnf_zoneBoundary_boundaryMarks";
-  publicVariable "fnf_zoneBoundary_boundaryPos";
-  publicVariable "fnf_zoneBoundary_boundsLine_marker";
-
-  {
-    _x setMarkerText "";
-  } forEach fnf_zoneBoundary_boundaryMarks;
-
-  fnf_zoneBoundary_boundsLine_points = [];
-  {
-    if (_forEachIndex + 1 < (count fnf_zoneBoundary_boundaryPos)) then {
-      fnf_zoneBoundary_boundsLine_points append (_x select [0, 2]);
-      fnf_zoneBoundary_boundsLine_points append ((fnf_zoneBoundary_boundaryPos select (_forEachIndex + 1)) select [0, 2]);
-    } else {
-      fnf_zoneBoundary_boundsLine_points append (_x select [0, 2]);
-      fnf_zoneBoundary_boundsLine_points append ((fnf_zoneBoundary_boundaryPos select 0) select [0, 2]);
-    }
-  } forEach fnf_zoneBoundary_boundaryPos;
-  fnf_zoneBoundary_boundsLine_marker setMarkerPolyline fnf_zoneBoundary_boundsLine_points;
-
-
-  if (count fnf_zoneBoundary_boundaryMarks < 3) then {
-    "[FNF] (ZoneBoundary) Warning: If not using zoneTrigger, must place at least 3 ""fnf_zoneBoundary_marker_x"" markers" remoteExecCall ["systemChat", 0, true];
-  };
+  call fnf_server_fnc_genIrregularZone;
 };
 
 if !(fnf_gameMode == "sustainedAssault") then {
@@ -174,6 +135,27 @@ if !(fnf_gameMode == "sustainedAssault") then {
     {_vic enableVehicleSensor [_x, false]} forEach _sensors;
   };
 }, true, [], true] remoteExec ["CBA_fnc_addClassEventHandler", 0, true];
+
+
+// OBJECT AND FORTIFY MANAGEMENT FOR BRIEFING TABLES
+
+// listen for fortify events, catalogue them for exclusion in object overviews
+missionNamespace setVariable ["fnf_placedFortifications", [], true];
+["acex_fortify_objectPlaced", {
+  params ["_placer", "_side", "_object"];
+  _object setVariable ["fnf_isFortifyObject", true, true];
+}] call CBA_fnc_addEventHandler;
+
+addMissionEventHandler ["BuildingChanged", {
+	params ["_from", "_to", "_isRuin"];
+  private _ogModel = _from getVariable ["originalModel", ""];
+  if (_ogModel isEqualTo "") then {
+    _to setVariable ["originalModel", (getModelInfo _from)#1, true];
+  } else {
+    _to setVariable ["originalModel", _ogModel];
+  };
+  // "debug_console" callExtension str([_from, _to, _to getVariable "originalModel"]);
+}];
 
 
 ["TeamkillDetected", {

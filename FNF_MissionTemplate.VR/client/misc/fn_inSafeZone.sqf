@@ -1,11 +1,7 @@
-params [["_unit", objNull, [objNull]], ["_side", sideEmpty, [sideEmpty]], ["_justReturnMarkers", false, [false]]];
+params [["_unit", objNull, [objNull, []]], ["_side", sideEmpty, [sideEmpty]], ["_justReturnMarkers", false, [false]]];
 
 // check if a unit is inside a zone that is a safeZone for their side
 
-if (isNull _unit && !_justReturnMarkers) exitWith {
-  ["Warning: Unit is null"] call BIS_fnc_error;
-  false
-};
 
 private _safeZones = [];
 
@@ -55,5 +51,12 @@ _safeZones = _safeZones select {
 if (_justReturnMarkers) then {
   _safeZones
 } else {
-  _safeZones findIf {vehicle _unit inArea _x} > -1
+  switch (typeName _unit) do {
+    case "OBJECT": {
+      _safeZones findIf {vehicle _unit inArea _x} > -1
+    };
+    case "ARRAY": {
+      _safeZones findIf {_unit inArea _x} > -1
+    };
+  };
 };

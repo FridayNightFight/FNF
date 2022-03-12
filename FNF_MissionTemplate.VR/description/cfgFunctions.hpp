@@ -101,7 +101,6 @@ class CfgFunctions {
       class setupTables{};
       class setupTablesClient{};
       class removeTables{};
-      class removeTablesClient{};
       class createTable{};
       class clearTable{};
     };
@@ -256,6 +255,7 @@ class CfgFunctions {
       class restoreAirLoadouts{};
       class safeZoneTeleportInit_STD{};
       class newPlayers{};
+      class genIrregularZone{};
     };
     class end {
       file = "server\end";

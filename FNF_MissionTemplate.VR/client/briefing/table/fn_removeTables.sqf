@@ -5,7 +5,8 @@ if (isNil "fnf_briefing_table_objects" || !isServer) exitWith {};
   _x params ["_thisSide", "_sideTables"];
   {
     private _table = _x;
-    [{deleteVehicle _this}, _table, 15] call CBA_fnc_waitAndExecute;
+    // [_table] spawn fnf_briefing_fnc_clearTable;
+    deleteVehicle _table;
   } forEach (_sideTables select {!isNull _x});
 } forEach [
   [west, _west],

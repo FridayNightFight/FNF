@@ -16,10 +16,20 @@
  * Public: No
  */
 
-params ["_table"];
-private _tableObjects = _table getVariable ["sebs_briefing_table_tableObjects", []];
+params ["_table", "_tableObjects", ["_replacing", false, [false]]];
+
+if (isNil "_tableObjects") then {
+  _tableObjects = _table getVariable ["sebs_briefing_table_tableObjects", []];
+};
+
+
+// if safe start active, use loading screen to hasten the process
+// if safe start ended, gradually delete objects w generous sleep value
+_safetyOn = missionNamespace getVariable ["fnf_safetyEnabled", false];
+if (_safetyOn) then {["ClearTable", ""] call BIS_fnc_startLoadingScreen};
 {
   deleteVehicle _x;
-  // if (canSuspend) then {sleep 0.1};
+  if !(_safetyOn) then {sleep 0.01};
 } forEach _tableObjects;
 _table setVariable ["sebs_briefing_table_tableObjects", []];
+if (_safetyOn) then {"ClearTable" call BIS_fnc_endLoadingScreen};
