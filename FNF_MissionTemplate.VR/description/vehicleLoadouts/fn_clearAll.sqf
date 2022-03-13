@@ -18,5 +18,5 @@ params ["_vehicle"];
 // clear pylon mags
 {
   _x params ["_pylonIndex", "_pylonName", "_turretPath", "_magazine", "_magAmmo"];
-  _vehicle setPylonLoadout [_pylonName, "", true, [-1]];
+  _vehicle setPylonLoadout [_pylonIndex, "", true, [-1]];
 } forEach (getAllPylonsInfo _vehicle);
