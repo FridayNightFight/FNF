@@ -20,11 +20,11 @@ _pylons = getAllPylonsInfo _vehicle;
   {
     private _weapon = _x;
 
-    private _compatMags = [_weapon] call CBA_fnc_compatibleMagazines;
+    private _compatMags = [_weapon, true] call BIS_fnc_compatibleMagazines;
     private _presentMags = [];
     {
       _x params ["_magClassName", "_magTurretPath", "_magAmmoCount"];
-      if (_magClassName in _compatMags && _magTurretPath isEqualTo _turretPath) then {
+      if ((toLowerANSI _magClassName) in _compatMags && _magTurretPath isEqualTo _turretPath) then {
         _magDisplayName = getText(configFile >> "CfgMagazines" >> _magClassName >> "displayName");
         _presentMags pushBack [_magClassName, _magDisplayName, _magAmmoCount];
         _countedMags pushBackUnique _magClassName;

@@ -1177,5 +1177,530 @@
       },
       "incompatibleMags": []
     }
+  },
+  "AAVP-7A1": {
+    "className": "UK3CB_B_AAV_US_WDL",
+    "displayName": "AAVP-7A1",
+    "hierarchy": [
+      "UK3CB_B_AAV_US_WDL",
+      "UK3CB_AAV",
+      "APC_Tracked_01_base_F",
+      "Tank_F",
+      "Tank",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "UK3CB_Factions_MK19",
+            "MK19",
+            [
+              [["RHS_48Rnd_40mm_MK19", "Mk. 19 40mm M384 HE", 48], 8],
+              [
+                ["RHS_48Rnd_40mm_MK19_M1001", "Mk. 19 40mm M1001 Canister", 48],
+                1
+              ],
+              [["RHS_48Rnd_40mm_MK19_M430I", "Mk. 19 40mm M430I HEDP", 48], 2]
+            ]
+          ],
+          [
+            "UK3CB_Factions_M2_AAV",
+            "M2",
+            [[["uk3cb_mag_100rnd_127x99_red", "12.7mm M2 HMG Belt", 100], 10]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": { "weapons": [], "pylons": [] },
+      "[3]": { "weapons": [], "pylons": [] },
+      "[4]": { "weapons": [], "pylons": [] },
+      "[5]": { "weapons": [], "pylons": [] },
+      "[6]": { "weapons": [], "pylons": [] },
+      "[7]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "UK3CB_Factions_M2_AAV",
+            "M2",
+            [[["uk3cb_mag_100rnd_127x99_red", "12.7mm M2 HMG Belt", 100], 2]]
+          ],
+          [
+            "uk3cb_weap_m240veh",
+            "M240",
+            [[["rhs_mag_762x51_M240_200", "7.62x51mm EPR", 200], 12]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": { "weapons": [], "pylons": [] },
+      "[3]": { "weapons": [], "pylons": [] },
+      "[4]": { "weapons": [], "pylons": [] },
+      "[5]": { "weapons": [], "pylons": [] },
+      "[6]": { "weapons": [], "pylons": [] },
+      "[7]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    }
+  },
+  "LAV-25": {
+    "className": "UK3CB_B_LAV25_US_WDL",
+    "displayName": "LAV-25",
+    "hierarchy": [
+      "UK3CB_B_LAV25_US_WDL",
+      "UK3CB_LAV25",
+      "UK3CB_LAV25_Base",
+      "Wheeled_Apc_F",
+      "Car_F",
+      "Car",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhsusf_weap_duke",
+            "DUKE offline",
+            [[["rhsusf_mag_duke", "Smoke Screen", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "uk3cb_weap_m242bc_lav",
+            "25mm M242",
+            [
+              [
+                [
+                  "rhs_mag_70Rnd_25mm_M242_APFSDS",
+                  "25x137mm M919 APFSDS-T",
+                  70
+                ],
+                3
+              ],
+              [["rhs_mag_230Rnd_25mm_M242_HEI", "25x137mm M792 HEI-T", 230], 1]
+            ]
+          ],
+          [
+            "uk3cb_weap_m240veh",
+            "M240",
+            [[["uk3cb_m240_1200Rnd_762x51_red", "7.62x51mm EPR", 1200], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": { "weapons": [], "pylons": [] },
+      "[2]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhsusf_weap_duke",
+            "DUKE offline",
+            [[["rhsusf_mag_duke", "Smoke Screen", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "UK3CB_Factions_M2_AAV",
+            "M2",
+            [[["uk3cb_mag_100rnd_127x99_red", "12.7mm M2 HMG Belt", 100], 2]]
+          ],
+          [
+            "uk3cb_weap_m240veh",
+            "M240",
+            [[["uk3cb_m240_1200Rnd_762x51_red", "7.62x51mm EPR", 1200], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": { "weapons": [], "pylons": [] },
+      "[2]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    }
+  },
+  "LAV-C2": {
+    "className": "UK3CB_B_LAV25_HQ_US_WDL",
+    "displayName": "LAV-C2",
+    "hierarchy": [
+      "UK3CB_B_LAV25_HQ_US_WDL",
+      "UK3CB_LAV25_HQ",
+      "UK3CB_LAV25_Base",
+      "Wheeled_Apc_F",
+      "Car_F",
+      "Car",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhsusf_weap_duke",
+            "DUKE offline",
+            [[["rhsusf_mag_duke", "Smoke Screen", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "uk3cb_weap_m240_lav",
+            "M240C",
+            [[["uk3cb_m240_200Rnd_762x51_red", "7.62x51mm EPR", 200], 5]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": { "weapons": [], "pylons": [] },
+      "[3]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhsusf_weap_duke",
+            "DUKE offline",
+            [[["rhsusf_mag_duke", "Smoke Screen", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "UK3CB_Factions_M2_AAV",
+            "M2",
+            [[["uk3cb_mag_100rnd_127x99_red", "12.7mm M2 HMG Belt", 100], 2]]
+          ],
+          [
+            "uk3cb_weap_m240_lav",
+            "M240C",
+            [[["uk3cb_m240_200Rnd_762x51_red", "7.62x51mm EPR", 200], 4]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": { "weapons": [], "pylons": [] },
+      "[3]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    }
+  },
+  "FV510 Warrior": {
+    "className": "UK3CB_MDF_B_Warrior",
+    "displayName": "FV510 Warrior",
+    "hierarchy": [
+      "UK3CB_MDF_B_Warrior",
+      "UK3CB_B_Warrior_MDF",
+      "UK3CB_Warrior_Base",
+      "APC_Tracked_03_base_F",
+      "Tank_F",
+      "Tank",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "UK3CB_L21A1_Rarden",
+            "L21A1 Rarden",
+            [
+              [["UK3CB_6Rnd_30mm_L21A1_APDS_red", "30mm APDS", 6], 17],
+              [["UK3CB_6Rnd_30mm_L21A1_HE_red", "30mm HE", 6], 17]
+            ]
+          ],
+          [
+            "UK3CB_L94A1_veh",
+            "L94A1",
+            [[["uk3cb_m240_800Rnd_762x51_red", "7.62x51mm EPR", 800], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "UK3CB_Factions_M2_AAV",
+            "M2",
+            [[["uk3cb_mag_100rnd_127x99_red", "12.7mm M2 HMG Belt", 100], 2]]
+          ],
+          [
+            "UK3CB_L94A1_veh",
+            "L94A1",
+            [[["uk3cb_m240_800Rnd_762x51_red", "7.62x51mm EPR", 800], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag", "Smoke Screen", 2], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "BMP-1": {
+    "className": "UK3CB_ANA_B_BMP1",
+    "displayName": "BMP-1",
+    "hierarchy": [
+      "UK3CB_ANA_B_BMP1",
+      "UK3CB_B_BMP1_ANA",
+      "UK3CB_BMP1Tank_Base",
+      "rhs_bmp1tank_base",
+      "Tank_F",
+      "Tank",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhs_weap_smokegen",
+            "",
+            [[["rhs_mag_smokegen", "Smokegen", 999], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_2a28",
+            "2A28",
+            [
+              [["rhs_mag_pg15v_20", "HEAT PG15V", 20], 1],
+              [["rhs_mag_og15v_20", "HE-FRAG OG15V", 20], 1]
+            ]
+          ],
+          [
+            "rhs_weap_pkt",
+            "PKT",
+            [[["rhs_mag_762x54mm_250", "7.62x54mm", 250], 8]]
+          ],
+          ["rhs_weap_9k11", "9K11", [[["rhs_mag_9m14m", "ATGM 9M14M", 1], 4]]]
+        ],
+        "pylons": []
+      },
+      "[1]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhs_weap_smokegen",
+            "",
+            [[["rhs_mag_smokegen", "Smokegen", 999], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_pkt",
+            "PKT",
+            [[["rhs_mag_762x54mm_250", "7.62x54mm", 250], 4]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    }
+  },
+  "BMP-2": {
+    "className": "UK3CB_KDF_B_BMP2",
+    "displayName": "BMP-2",
+    "hierarchy": [
+      "UK3CB_KDF_B_BMP2",
+      "UK3CB_B_BMP2",
+      "UK3CB_BMP2Tank_Base",
+      "rhs_bmp2_vdv",
+      "rhs_bmp2e_vdv",
+      "rhs_bmp1_vdv",
+      "rhs_bmp_base",
+      "rhs_bmp1tank_base",
+      "Tank_F",
+      "Tank",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhs_weap_smokegen",
+            "",
+            [[["rhs_mag_smokegen", "Smokegen", 999], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_2a42",
+            "2A42",
+            [
+              [["rhs_mag_3uof8_340", "HE-T 3UOF8", 340], 1],
+              [["rhs_mag_3ubr8_160", "APDS 3UBR8", 160], 1]
+            ]
+          ],
+          [
+            "rhs_weap_pkt",
+            "PKT",
+            [[["rhs_mag_762x54mm_2000", "7.62x54mm", 2000], 1]]
+          ],
+          [
+            "rhs_weap_9m113",
+            "9M113",
+            [[["rhs_mag_9m113M", "ATGM 9M113M", 1], 4]]
+          ],
+          [
+            "rhs_weap_902a",
+            "Smoke 902A",
+            [[["rhs_mag_3d17_6", "Smoke 3D17", 6], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          [
+            "rhs_weap_smokegen",
+            "",
+            [[["rhs_mag_smokegen", "Smokegen", 999], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_pkt",
+            "PKT",
+            [[["rhs_mag_762x54mm_2000", "7.62x54mm", 2000], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    }
   }
 }

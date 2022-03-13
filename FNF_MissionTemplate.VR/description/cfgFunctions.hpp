@@ -283,10 +283,16 @@ class CfgFunctions {
     class functions {
       file = "description\vehicleLoadouts\functions";
       class 2B14Podnos{};
+      class AAV{};
       class AH1Z{};
       class AH6M{};
+      class BMP1{};
+      class BMP2{};
+      class FV510{};
       class GAZ{};
       class Ka52{};
+      class LAV25{};
+      class LAVC2{};
       class M252{};
       class M1117{};
       class Mi24P{};
