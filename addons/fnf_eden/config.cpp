@@ -48,7 +48,7 @@ class Cfg3DEN
             property = "FNF_vehicleLoadouts_useDefault";
             control = "Checkbox";
             displayName = "Use Default Loadout";
-            tooltip = "If checked, the vehicle will be given a standardized FNF weapon set.";
+            tooltip = "If checked, the vehicle will be given a standardized FNF weapon set (if one is defined).";
             expression = "_this setVariable ['%s',_value];";
             typeName = "BOOL";
             condition = "objectVehicle";

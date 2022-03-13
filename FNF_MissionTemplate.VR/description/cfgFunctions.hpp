@@ -266,16 +266,34 @@ class CfgFunctions {
       class webhook_roundEnd;
     };
   };
-  class fnf_vehicleLoadouts {
+  class fnf_debug {
     class functions {
+      file = "server\debug";
+      class init{postInit=1;};
+    };
+  };
+  class fnf_vehicleLoadouts {
+    class tools {
       file = "description\vehicleLoadouts";
-      class getVehicleLoadout{};
+      class getLoadout{};
+      class getTurretWeps{};
+      class shouldModify{};
       class clearAll{};
-      class M1117{};
+    };
+    class functions {
+      file = "description\vehicleLoadouts\functions";
+      class 2B14Podnos{};
       class AH1Z{};
+      class AH6M{};
+      class GAZ{};
+      class Ka52{};
+      class M252{};
+      class M1117{};
+      class Mi24P{};
+      class Mi24V{};
+      class MkVSOC{};
       class speedboatHMG{};
       class speedboatMinigun{};
-      class MkVSOC{};
     };
   };
 };

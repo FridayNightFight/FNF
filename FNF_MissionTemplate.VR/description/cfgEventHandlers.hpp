@@ -4,22 +4,11 @@
 class Extended_InitPost_EventHandlers {
 ///*
   // automated turret weapon loadout changes
-  // M1117
-  class rhsusf_M1117_base {
+
+  // speedboat minigun
+  class Boat_Armed_01_minigun_base_F {
     class FNF_SetLoadout {
-      serverInit = "_this call fnf_vehicleLoadouts_fnc_M1117";
-    };
-  };
-  // AH1Z
-  class RHS_AH1Z_base {
-    class FNF_SetLoadout {
-      serverInit = "_this call fnf_vehicleLoadouts_fnc_AH1Z";
-    };
-  };
-  // MkVSOC
-  class rhsusf_mkvsoc {
-    class FNF_SetLoadout {
-      serverInit = "_this call fnf_vehicleLoadouts_fnc_MkVSOC";
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_speedboatMinigun";
     };
   };
   // speedboat HMG
@@ -28,12 +17,67 @@ class Extended_InitPost_EventHandlers {
       serverInit = "_this call fnf_vehicleLoadouts_fnc_speedboatHMG";
     };
   };
-  // speedboat minigun
-  class I_Boat_Armed_01_minigun_F {
+  // M252
+  class rhs_2b14_82mm_Base {
     class FNF_SetLoadout {
-      serverInit = "_this call fnf_vehicleLoadouts_fnc_speedboatMinigun";
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_2B14Podnos";
     };
   };
+  // AH1Z
+  class RHS_AH1Z_base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_AH1Z";
+    };
+  };
+  // Ka52
+  class RHS_Ka52_base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_Ka52";
+    };
+  };
+    // GAZ Tigr
+  class rhs_tigr_base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_GAZ";
+    };
+  };
+  // M252
+  class RHS_M252_Base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_M252";
+    };
+  };
+  // AH6M Littlebird
+  class RHS_MELB_AH6M {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_AH6M";
+    };
+  };
+    // Mi-24P
+  class RHS_Mi24P_VVS_Base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_Mi24P";
+    };
+  };
+  // Mi-24V, Mi-24Vt
+  class RHS_Mi24V_Base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_Mi24V";
+    };
+  };
+  // MkVSOC
+  class rhsusf_mkvsoc {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_MkVSOC";
+    };
+  };
+    // M1117
+  class rhsusf_M1117_base {
+    class FNF_SetLoadout {
+      serverInit = "_this call fnf_vehicleLoadouts_fnc_M1117";
+    };
+  };
+
 //*/
 
   // other init settings

@@ -1,568 +1,56 @@
 {
-  "rhsusf_M1117_base": {
-    "className": "rhsusf_M1117",
-    "displayName": "M1117 ASV",
+  "2B14-1 'Podnos'": {
+    "className": "rhs_2b14_82mm_msv",
+    "displayName": "2B14-1 'Podnos'",
     "hierarchy": [
-      "rhsusf_M1117",
-      "rhsusf_M1117_base",
-      "Wheeled_Apc_F",
-      "Car_F",
-      "Car",
+      "rhs_2b14_82mm_msv",
+      "rhs_2b14_82mm_Base",
+      "StaticMortar",
+      "StaticWeapon",
       "LandVehicle",
       "Land",
       "AllVehicles",
       "All"
     ],
-    "turretsOriginal": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["TruckHorn", []]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
+    "turretsOriginal": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
           [
-            "weapons",
+            "rhs_weap_2b14",
+            "2B14-1 'Podnos'",
             [
-              [
-                "RHS_M2_M1117",
-                [
-                  ["rhs_mag_200rnd_127x99_mag_Tracer_Red", 200],
-                  ["rhs_mag_200rnd_127x99_mag_Tracer_Red", 200],
-                  ["rhs_mag_200rnd_127x99_mag_Tracer_Red", 200],
-                  ["rhs_mag_200rnd_127x99_mag_Tracer_Red", 200],
-                  ["rhs_mag_200rnd_127x99_mag_Tracer_Red", 200]
-                ]
-              ],
-              [
-                "RHS_MK19",
-                [
-                  ["RHS_96Rnd_40mm_MK19_M430A1", 96],
-                  ["RHS_96Rnd_40mm_MK19_M430A1", 96],
-                  ["RHS_96Rnd_40mm_MK19_M430A1", 96],
-                  ["RHS_96Rnd_40mm_MK19_M430A1", 96],
-                  ["RHS_96Rnd_40mm_MK19_M430A1", 96],
-                  ["RHS_96Rnd_40mm_MK19_M430A1", 96],
-                  ["RHS_96Rnd_40mm_MK19_M1001", 96]
-                ]
-              ],
-              ["rhsusf_weap_M257_8", [["rhsusf_mag_L8A3_8", 8]]]
+              [["rhs_mag_3vo18_10", "HE 3VO18", 10], 2],
+              [["rhs_mag_3vs25m_10", "Flare 3VS25M", 10], 1],
+              [["rhs_mag_d832du_10", "Smoke D-832DU", 10], 1]
             ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0,0]",
-        [
-          ["weapons", [["rhsusf_weap_duke", [["rhsusf_mag_duke", 1]]]]],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ],
-    "turretsModified": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["TruckHorn", []]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": [["FakeWeapon", "", "[-1]", 1]]
+    },
+    "turretsModified": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
           [
-            "weapons",
+            "rhs_weap_2b14",
+            "2B14-1 'Podnos'",
             [
-              ["rhsusf_weap_M257_8", [["rhsusf_mag_L8A3_8", 8]]],
-              [
-                "RHS_M2_M1117",
-                [
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100]
-                ]
-              ],
-              [
-                "rhs_weap_m240_m113",
-                [
-                  ["rhs_mag_762x51_M240_200", 200],
-                  ["rhs_mag_762x51_M240_200", 200],
-                  ["rhs_mag_762x51_M240_200", 200],
-                  ["rhs_mag_762x51_M240_200", 200],
-                  ["rhs_mag_762x51_M240_200", 200],
-                  ["rhs_mag_762x51_M240_200", 200],
-                  ["rhs_mag_762x51_M240_200", 200]
-                ]
-              ]
+              [["rhs_mag_3vo18_10", "HE 3VO18", 10], 2],
+              [["rhs_mag_3vo18_10", "HE 3VO18", 4], 1],
+              [["rhs_mag_d832du_10", "Smoke D-832DU", 8], 2],
+              [["rhs_mag_3vs25m_10", "Flare 3VS25M", 8], 2]
             ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0,0]",
-        [
-          ["weapons", [["rhsusf_weap_duke", [["rhsusf_mag_duke", 1]]]]],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
   },
-  "O_Boat_Armed_01_hmg_F": {
-    "className": "O_Boat_Armed_01_hmg_F",
-    "displayName": "Speedboat HMG",
-    "hierarchy": [
-      "O_Boat_Armed_01_hmg_F",
-      "Boat_Armed_01_base_F",
-      "Boat_F",
-      "Ship_F",
-      "Ship",
-      "AllVehicles",
-      "All"
-    ],
-    "turretsOriginal": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["SmokeLauncher", [["SmokeLauncherMag_boat", 2]]]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "GMG_40mm",
-                [
-                  ["96Rnd_40mm_G_belt", 96],
-                  ["96Rnd_40mm_G_belt", 96]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[1]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "HMG_01",
-                [
-                  ["100Rnd_127x99_mag_Tracer_Green", 100],
-                  ["100Rnd_127x99_mag_Tracer_Green", 100],
-                  ["100Rnd_127x99_mag_Tracer_Green", 100],
-                  ["100Rnd_127x99_mag_Tracer_Green", 100]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[2]",
-        [
-          ["weapons", []],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ],
-    "turretsModified": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["SmokeLauncher", [["SmokeLauncherMag_boat", 2]]]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "LMG_Minigun",
-                [
-                  ["2000Rnd_762x51_Belt_T_Green", 2000],
-                  ["2000Rnd_762x51_Belt_T_Green", 2000]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[1]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "HMG_01",
-                [
-                  ["100Rnd_127x99_mag_Tracer_Green", 100],
-                  ["100Rnd_127x99_mag_Tracer_Green", 100],
-                  ["100Rnd_127x99_mag_Tracer_Green", 100],
-                  ["100Rnd_127x99_mag_Tracer_Green", 100]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[2]",
-        [
-          ["weapons", []],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ]
-  },
-  "I_Boat_Armed_01_minigun_F": {
-    "className": "I_Boat_Armed_01_minigun_F",
-    "displayName": "Speedboat Minigun",
-    "hierarchy": [
-      "I_Boat_Armed_01_minigun_F",
-      "Boat_Armed_01_minigun_base_F",
-      "Boat_Armed_01_base_F",
-      "Boat_F",
-      "Ship_F",
-      "Ship",
-      "AllVehicles",
-      "All"
-    ],
-    "turretsOriginal": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["SmokeLauncher", [["SmokeLauncherMag_boat", 2]]]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "GMG_40mm",
-                [
-                  ["96Rnd_40mm_G_belt", 96],
-                  ["96Rnd_40mm_G_belt", 96]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[1]",
-        [
-          [
-            "weapons",
-            [["LMG_Minigun", [["2000Rnd_762x51_Belt_T_Yellow", 2000]]]]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ],
-    "turretsModified": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["SmokeLauncher", [["SmokeLauncherMag_boat", 2]]]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "LMG_Minigun",
-                [
-                  ["2000Rnd_762x51_Belt_T_Yellow", 2000],
-                  ["2000Rnd_762x51_Belt_T_Yellow", 2000]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[1]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "LMG_Minigun",
-                [
-                  ["2000Rnd_762x51_Belt_T_Yellow", 2000],
-                  ["2000Rnd_762x51_Belt_T_Yellow", 2000]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ]
-  },
-  "rhsusf_mkvsoc": {
-    "className": "rhsusf_mkvsoc",
-    "displayName": "Mk.V SOC",
-    "hierarchy": [
-      "rhsusf_mkvsoc",
-      "RHS_Ship",
-      "Ship_F",
-      "Ship",
-      "AllVehicles",
-      "All"
-    ],
-    "turretsOriginal": [
-      [
-        "[-1]",
-        [
-          ["weapons", []],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "RHS_MKV_M2_p",
-                [
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[1]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "RHS_MKV_M2_s",
-                [
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[2]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "RHS_MKV_M134",
-                [
-                  ["2000Rnd_762x51_Belt_T_Red", 2000],
-                  ["2000Rnd_762x51_Belt_T_Red", 2000]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[3]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "RHS_MKV_MK19",
-                [
-                  ["RHS_48Rnd_40mm_MK19_M430A1", 48],
-                  ["RHS_48Rnd_40mm_MK19_M430A1", 48],
-                  ["RHS_48Rnd_40mm_MK19_M430A1", 48],
-                  ["RHS_48Rnd_40mm_MK19_M430A1", 48]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[4]",
-        [
-          ["weapons", [["Laserdesignator_mounted", [["Laserbatteries", 1]]]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[5]",
-        [
-          ["weapons", []],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ],
-    "turretsModified": [
-      [
-        "[-1]",
-        [
-          ["weapons", []],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[0]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "RHS_MKV_M2_p",
-                [
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[1]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "RHS_MKV_M2_s",
-                [
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100],
-                  ["rhs_mag_100rnd_127x99_mag_Tracer_Red", 100]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[2]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "LMG_Minigun",
-                [
-                  ["2000Rnd_762x51_Belt_T_Red", 2000],
-                  ["2000Rnd_762x51_Belt_T_Red", 2000]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[3]",
-        [
-          [
-            "weapons",
-            [
-              [
-                "LMG_Minigun",
-                [
-                  ["2000Rnd_762x51_Belt_T_Red", 2000],
-                  ["2000Rnd_762x51_Belt_T_Red", 2000]
-                ]
-              ]
-            ]
-          ],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[4]",
-        [
-          ["weapons", [["Laserdesignator_mounted", [["Laserbatteries", 1]]]]],
-          ["pylons", []]
-        ]
-      ],
-      [
-        "[5]",
-        [
-          ["weapons", []],
-          ["pylons", []]
-        ]
-      ],
-      ["incompatibleMags", []]
-    ]
-  },
-  "RHS_AH1Z_base": {
+  "AH-1Z": {
     "className": "RHS_AH1Z",
     "displayName": "AH-1Z",
     "hierarchy": [
@@ -575,85 +63,1119 @@
       "AllVehicles",
       "All"
     ],
-    "turretsOriginal": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["rhs_weap_MASTERSAFE", []]]],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [["rhs_weap_MASTERSAFE", "MASTERSAFE", []]],
+        "pylons": [
+          [1, "pylonTip1", "rhs_mag_Sidewinder_heli_2", "AIM-9M", 1],
+          [3, "pylon3", "rhs_mag_M151_19_green", "M151 Hydra (LAU-61)", 19],
+          [4, "pylon4", "rhs_mag_M151_19_green", "M151 Hydra (LAU-61)", 19],
+          [6, "pylonTip6", "rhs_mag_Sidewinder_heli_2", "AIM-9M", 1],
           [
-            "pylons",
-            [
-              [1, "rhs_mag_Sidewinder_heli_2", 1],
-              [3, "rhs_mag_M151_19_green", 19],
-              [4, "rhs_mag_M151_19_green", 19],
-              [6, "rhs_mag_Sidewinder_heli_2", 1],
-              [7, "rhsusf_ANALE39_CMFlare_Chaff_Magazine_x4", 60]
-            ]
+            7,
+            "cmDispenser",
+            "rhsusf_ANALE39_CMFlare_Chaff_Magazine_x4",
+            "4x30 MJU-32 Flare/RR-144 Chaff",
+            60
           ]
         ]
-      ],
-      [
-        "[0]",
-        [
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
           [
-            "weapons",
-            [
-              ["rhs_weap_MASTERSAFE", []],
-              ["rhs_weap_fcs_ah64", [["rhs_LaserFCSMag", 99]]],
-              ["rhs_weap_M197", [["rhs_mag_M197_750", 750]]],
-              ["rhs_weap_laserDesignator_AI", [["rhs_LaserMag_ai", 1]]]
-            ]
+            "rhs_weap_fcs_ah64",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
           ],
           [
-            "pylons",
-            [
-              [2, "rhs_mag_AGM114K_4", 4],
-              [5, "rhs_mag_AGM114K_4", 4]
-            ]
+            "rhs_weap_M197",
+            "M197",
+            [[["rhs_mag_M197_750", "20x102mm PGU-28/B SAPHEI", 750], 1]]
+          ],
+          [
+            "rhs_weap_laserDesignator_AI",
+            "Laser Marker",
+            [[["rhs_LaserMag_ai", "Designator Batteries", 1], 1]]
+          ]
+        ],
+        "pylons": [
+          [2, "pylon2", "rhs_mag_AGM114K_4", "AGM-114K (M299)", 4],
+          [5, "pylon5", "rhs_mag_AGM114K_4", "AGM-114K (M299)", 4]
+        ]
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [["rhs_weap_MASTERSAFE", "MASTERSAFE", []]],
+        "pylons": [
+          [
+            7,
+            "cmDispenser",
+            "rhsusf_ANALE39_CMFlare_Chaff_Magazine_x4",
+            "4x30 MJU-32 Flare/RR-144 Chaff",
+            60
           ]
         ]
-      ],
-      ["incompatibleMags", []]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_fcs_ah64",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ],
+          [
+            "RHS_weap_m134_pylon",
+            "M134D-H",
+            [[["rhs_mag_m134_pylon_3000", "M134", 3000], 1]]
+          ],
+          [
+            "rhs_weap_laserDesignator_AI",
+            "Laser Marker",
+            [[["rhs_LaserMag_ai", "Designator Batteries", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "AH-6M Little Bird": {
+    "className": "RHS_MELB_AH6M",
+    "displayName": "AH-6M Little Bird",
+    "hierarchy": [
+      "RHS_MELB_AH6M",
+      "RHS_MELB_base",
+      "Helicopter_Base_H",
+      "Helicopter_Base_F",
+      "Helicopter",
+      "Air",
+      "AllVehicles",
+      "All"
     ],
-    "turretsModified": [
-      [
-        "[-1]",
-        [
-          ["weapons", [["rhs_weap_MASTERSAFE", []]]],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
           [
-            "pylons",
+            "rhsusf_weap_LWIRCM",
+            "LWIRCM",
+            [[["rhsusf_mag_LWIRCM", "", 120], 10]]
+          ]
+        ],
+        "pylons": [
+          [1, "pylon1", "rhs_mag_M151_7", "M151 Hydra (M260)", 7],
+          [2, "pylon2", "rhs_mag_m134_pylon_3000", "M134", 3000],
+          [3, "pylon3", "rhs_mag_m134_pylon_3000", "M134", 3000],
+          [4, "pylon4", "rhs_mag_M151_7", "M151 Hydra (M260)", 7]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_laserDesignator_AI",
+            "Laser Marker",
+            [[["rhs_LaserMag_ai", "Designator Batteries", 1], 1]]
+          ],
+          [
+            "rhs_weap_fcs_ah64",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhsusf_weap_LWIRCM",
+            "LWIRCM",
+            [[["rhsusf_mag_LWIRCM", "", 120], 10]]
+          ]
+        ],
+        "pylons": [
+          [2, "pylon2", "rhs_mag_m134_pylon_3000", "M134", 1200],
+          [3, "pylon3", "rhsusf_mag_gau19_melb_right", "GAU-19/A", 700]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_laserDesignator_AI",
+            "Laser Marker",
+            [[["rhs_LaserMag_ai", "Designator Batteries", 1], 1]]
+          ],
+          [
+            "rhs_weap_fcs_ah64",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "M252": {
+    "className": "RHS_M252_D",
+    "displayName": "M252",
+    "hierarchy": [
+      "RHS_M252_D",
+      "RHS_M252_Base",
+      "StaticMortar",
+      "StaticWeapon",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_mortar_81mm",
+            "81mm Mortar",
+            [[["rhs_12Rnd_m821_HE", "81mm M821 HE Mortar Shell", 12], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": [["FakeWeapon", "", "[-1]", 1]]
+    },
+    "turretsModified": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_mortar_81mm",
+            "81mm Mortar",
             [
-              [1, "", -1],
-              [3, "", -1],
-              [4, "", -1],
-              [6, "", -1],
-              [7, "rhsusf_ANALE39_CMFlare_Chaff_Magazine_x4", 60]
+              [["rhs_12Rnd_m821_HE", "81mm M821 HE Mortar Shell", 12], 2],
+              [["8Rnd_82mm_Mo_Smoke_white", "Smoke Shell (White)", 8], 2],
+              [["8Rnd_82mm_Mo_Flare_white", "Flare (White)", 8], 2]
             ]
           ]
-        ]
-      ],
-      [
-        "[0]",
-        [
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "M1117 ASV (OD)": {
+    "className": "rhsusf_M1117_O",
+    "displayName": "M1117 ASV (OD)",
+    "hierarchy": [
+      "rhsusf_M1117_O",
+      "rhsusf_M1117_W",
+      "rhsusf_M1117_D",
+      "rhsusf_M1117_base",
+      "Wheeled_Apc_F",
+      "Car_F",
+      "Car",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": { "weapons": [["TruckHorn", "Horn", []]], "pylons": [] },
+      "[0]": {
+        "weapons": [
           [
-            "weapons",
+            "RHS_M2_M1117",
+            "M2",
             [
-              ["rhs_weap_MASTERSAFE", []],
-              ["rhs_weap_fcs_ah64", [["rhs_LaserFCSMag", 99]]],
-              ["RHS_weap_m134_pylon", [["rhs_mag_m134_pylon_3000", 3000]]],
-              ["rhs_weap_laserDesignator_AI", [["rhs_LaserMag_ai", 1]]]
+              [
+                [
+                  "rhs_mag_200rnd_127x99_mag_Tracer_Red",
+                  "12.7mm M2 HMG Tracer (Red) Belt",
+                  200
+                ],
+                5
+              ]
             ]
           ],
           [
-            "pylons",
+            "RHS_MK19",
+            "Mk. 19",
             [
-              [2, "", -1],
-              [5, "", -1]
+              [
+                ["RHS_96Rnd_40mm_MK19_M430A1", "Mk. 19 40mm M430A1 HEDP", 96],
+                6
+              ],
+              [
+                ["RHS_96Rnd_40mm_MK19_M1001", "Mk. 19 40mm M1001 Canister", 96],
+                1
+              ]
+            ]
+          ],
+          [
+            "rhsusf_weap_M257_8",
+            "Smoke Screen",
+            [[["rhsusf_mag_L8A3_8", "Smoke Screen", 8], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": {
+        "weapons": [
+          [
+            "rhsusf_weap_duke",
+            "DUKE offline",
+            [[["rhsusf_mag_duke", "Smoke Screen", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": { "weapons": [["TruckHorn", "Horn", []]], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "RHS_M2_M1117",
+            "M2",
+            [
+              [
+                [
+                  "rhs_mag_100rnd_127x99_mag_Tracer_Red",
+                  "12.7mm M2 HMG Tracer (Red) Belt",
+                  100
+                ],
+                8
+              ]
+            ]
+          ],
+          [
+            "rhs_weap_m240_m113",
+            "M240B",
+            [[["rhs_mag_762x51_M240_200", "7.62x51mm EPR", 200], 7]]
+          ],
+          [
+            "rhsusf_weap_M257_8",
+            "Smoke Screen",
+            [[["rhsusf_mag_L8A3_8", "Smoke Screen", 8], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0,0]": {
+        "weapons": [
+          [
+            "rhsusf_weap_duke",
+            "DUKE offline",
+            [[["rhsusf_mag_duke", "Smoke Screen", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "Mk.V SOC": {
+    "className": "rhsusf_mkvsoc",
+    "displayName": "Mk.V SOC",
+    "hierarchy": [
+      "rhsusf_mkvsoc",
+      "RHS_Ship",
+      "Ship_F",
+      "Ship",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "RHS_MKV_M2_p",
+            "Port M2",
+            [
+              [
+                [
+                  "rhs_mag_100rnd_127x99_mag_Tracer_Red",
+                  "12.7mm M2 HMG Tracer (Red) Belt",
+                  100
+                ],
+                6
+              ]
             ]
           ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "RHS_MKV_M2_s",
+            "Stbd M2",
+            [
+              [
+                [
+                  "rhs_mag_100rnd_127x99_mag_Tracer_Red",
+                  "12.7mm M2 HMG Tracer (Red) Belt",
+                  100
+                ],
+                6
+              ]
+            ]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": {
+        "weapons": [
+          [
+            "RHS_MKV_M134",
+            "Port M134",
+            [[["2000Rnd_762x51_Belt_T_Red", "7.62 mm Minigun Belt", 2000], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[3]": {
+        "weapons": [
+          [
+            "RHS_MKV_MK19",
+            "Stbd MK19",
+            [[["RHS_48Rnd_40mm_MK19_M430A1", "Mk. 19 40mm M430A1 HEDP", 48], 4]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[4]": {
+        "weapons": [
+          [
+            "Laserdesignator_mounted",
+            "Laser Marker",
+            [[["Laserbatteries", "Designator Batteries", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[5]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": { "weapons": [], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "RHS_MKV_M2_p",
+            "Port M2",
+            [
+              [
+                [
+                  "rhs_mag_100rnd_127x99_mag_Tracer_Red",
+                  "12.7mm M2 HMG Tracer (Red) Belt",
+                  100
+                ],
+                6
+              ]
+            ]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "RHS_MKV_M2_s",
+            "Stbd M2",
+            [
+              [
+                [
+                  "rhs_mag_100rnd_127x99_mag_Tracer_Red",
+                  "12.7mm M2 HMG Tracer (Red) Belt",
+                  100
+                ],
+                6
+              ]
+            ]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": {
+        "weapons": [
+          [
+            "LMG_Minigun",
+            "M134 Minigun",
+            [[["2000Rnd_762x51_Belt_T_Red", "7.62 mm Minigun Belt", 2000], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[3]": {
+        "weapons": [
+          [
+            "LMG_Minigun",
+            "M134 Minigun",
+            [[["2000Rnd_762x51_Belt_T_Red", "7.62 mm Minigun Belt", 2000], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[4]": {
+        "weapons": [
+          [
+            "Laserdesignator_mounted",
+            "Laser Marker",
+            [[["Laserbatteries", "Designator Batteries", 1], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[5]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    }
+  },
+  "Speedboat Minigun": {
+    "className": "B_Boat_Armed_01_minigun_F",
+    "displayName": "Speedboat Minigun",
+    "hierarchy": [
+      "B_Boat_Armed_01_minigun_F",
+      "Boat_Armed_01_minigun_base_F",
+      "Boat_Armed_01_base_F",
+      "Boat_F",
+      "Ship_F",
+      "Ship",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag_boat", "Smoke Screen", 2], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "GMG_40mm",
+            "Mk 19",
+            [[["96Rnd_40mm_G_belt", "40 mm HE Grenade Mag", 96], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "LMG_Minigun",
+            "M134 Minigun",
+            [[["2000Rnd_762x51_Belt_T_Red", "7.62 mm Minigun Belt", 2000], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag_boat", "Smoke Screen", 2], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "LMG_Minigun",
+            "M134 Minigun",
+            [
+              [
+                ["2000Rnd_762x51_Belt_T_Yellow", "7.62 mm Minigun Belt", 2000],
+                2
+              ]
+            ]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "LMG_Minigun",
+            "M134 Minigun",
+            [
+              [
+                ["2000Rnd_762x51_Belt_T_Yellow", "7.62 mm Minigun Belt", 2000],
+                2
+              ]
+            ]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "Speedboat HMG": {
+    "className": "O_Boat_Armed_01_hmg_F",
+    "displayName": "Speedboat HMG",
+    "hierarchy": [
+      "O_Boat_Armed_01_hmg_F",
+      "Boat_Armed_01_base_F",
+      "Boat_F",
+      "Ship_F",
+      "Ship",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag_boat", "Smoke Screen", 2], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "GMG_40mm",
+            "Mk 19",
+            [[["96Rnd_40mm_G_belt", "40 mm HE Grenade Mag", 96], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "HMG_01",
+            "XM312",
+            [
+              [
+                [
+                  "100Rnd_127x99_mag_Tracer_Green",
+                  "12.7 mm M2 HMG Tracer (Green) Belt",
+                  100
+                ],
+                4
+              ]
+            ]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          [
+            "SmokeLauncher",
+            "Smoke Screen",
+            [[["SmokeLauncherMag_boat", "Smoke Screen", 2], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[0]": {
+        "weapons": [
+          [
+            "LMG_Minigun",
+            "M134 Minigun",
+            [[["2000Rnd_762x51_Belt_T_Green", "7.62 mm Minigun Belt", 2000], 2]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "HMG_01",
+            "XM312",
+            [
+              [
+                [
+                  "100Rnd_127x99_mag_Tracer_Green",
+                  "12.7 mm M2 HMG Tracer (Green) Belt",
+                  100
+                ],
+                4
+              ]
+            ]
+          ]
+        ],
+        "pylons": []
+      },
+      "[2]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": []
+    }
+  },
+  "GAZ-233014": {
+    "className": "rhs_tigr_sts_msv",
+    "displayName": "GAZ-233014",
+    "hierarchy": [
+      "rhs_tigr_sts_msv",
+      "rhs_tigr_sts_vdv",
+      "rhs_tigr_vdv",
+      "rhs_tigr_base",
+      "MRAP_02_base_F",
+      "Car_F",
+      "Car",
+      "LandVehicle",
+      "Land",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": { "weapons": [["TruckHorn", "Horn", []]], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_pkm_tigr",
+            "PKM",
+            [[["rhs_mag_762x54mm_100", "7.62x54mm", 100], 19]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": {
+        "weapons": [
+          [
+            "RHS_weap_Ags30_tigr",
+            "AGS-30",
+            [[["RHS_mag_VOG30_30", "VOG30", 30], 12]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": [
+        ["rhs_proxy_ags30_12_mag", "", "[-1]", 12],
+        ["rhs_proxy_pkm_18_mag", "", "[-1]", 18]
+      ]
+    },
+    "turretsModified": {
+      "[-1]": { "weapons": [["TruckHorn", "Horn", []]], "pylons": [] },
+      "[0]": {
+        "weapons": [
+          [
+            "rhs_weap_pkm_tigr",
+            "PKM",
+            [[["rhs_mag_762x54mm_100", "7.62x54mm", 100], 18]]
+          ]
+        ],
+        "pylons": []
+      },
+      "[1]": { "weapons": [], "pylons": [] },
+      "incompatibleMags": [["rhs_proxy_pkm_18_mag", "", "[-1]", 18]]
+    }
+  },
+  "Ka-52": {
+    "className": "RHS_Ka52_vvsc",
+    "displayName": "Ka-52",
+    "hierarchy": [
+      "RHS_Ka52_vvsc",
+      "RHS_Ka52_base",
+      "Heli_Attack_02_base_F",
+      "Helicopter_Base_F",
+      "Helicopter",
+      "Air",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Vitebsk",
+            "Vitebsk DIRCM",
+            [[["rhs_mag_DIRCM_Vitebsk", "", 120], 10]]
+          ]
+        ],
+        "pylons": [
+          [1, "pylon1", "rhs_mag_b8v20a_ka52_s8kom", "S-8 KOM HEAT", 20],
+          [2, "pylon2", "rhs_mag_b8v20a_ka52_s8kom", "S-8 KOM HEAT", 20],
+          [
+            5,
+            "cmDispenser",
+            "rhs_UV26_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
         ]
-      ],
-      ["incompatibleMags", []]
-    ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE_Holdster15", "MASTERSAFE", []],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ],
+          [
+            "rhs_weap_2a42",
+            "2A42",
+            [
+              [["rhs_mag_3uor6_230", "HEI-T 3UOR6", 230], 1],
+              [["rhs_mag_3ubr8_230", "APDS 3UBR8", 230], 1]
+            ]
+          ]
+        ],
+        "pylons": [
+          [3, "pylon3", "rhs_mag_apu6_9m127m_ka52", "9M127M", 6],
+          [4, "pylon4", "rhs_mag_apu6_9m127m_ka52", "9M127M", 6]
+        ]
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Vitebsk",
+            "Vitebsk DIRCM",
+            [[["rhs_mag_DIRCM_Vitebsk", "", 120], 10]]
+          ]
+        ],
+        "pylons": [
+          [
+            5,
+            "cmDispenser",
+            "rhs_UV26_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE_Holdster15", "MASTERSAFE", []],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ],
+          [
+            "LMG_Minigun",
+            "M134 Minigun",
+            [[["2000Rnd_762x51_Belt_T_Green", "7.62 mm Minigun Belt", 1200], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "Mi-24V": {
+    "className": "RHS_Mi24V_vvsc",
+    "displayName": "Mi-24V",
+    "hierarchy": [
+      "RHS_Mi24V_vvsc",
+      "RHS_Mi24V_vvs",
+      "RHS_Mi24V_VVS_Base",
+      "RHS_Mi24V_Base",
+      "RHS_Mi24_base",
+      "Heli_Attack_02_base_F",
+      "Helicopter_Base_F",
+      "Helicopter",
+      "Air",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Lipa",
+            "Lipa DIRCM",
+            [[["rhs_mag_DIRCM_Lipa", "", 80], 10]]
+          ]
+        ],
+        "pylons": [
+          [1, "pylon1", "rhs_mag_b8v20a_s8kom", "S-8 KOM HEAT", 20],
+          [2, "pylon2", "rhs_mag_b8v20a_s8kom", "S-8 KOM HEAT", 20],
+          [3, "pylon3", "rhs_mag_b8v20a_s8df", "S-8 DF FAE", 20],
+          [4, "pylon4", "rhs_mag_b8v20a_s8df", "S-8 DF FAE", 20],
+          [
+            7,
+            "cmDispenser",
+            "rhs_ASO2_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_yakB",
+            "YakBYu",
+            [[["rhs_mag_127x108mm_1slt_1470", "1SLT 12.7x108mm", 1470], 1]]
+          ],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": [
+          [5, "pylon5", "rhs_mag_9M120M_Mi24_2x", "9M120M", 2],
+          [6, "pylon6", "rhs_mag_9M120M_Mi24_2x", "9M120M", 2]
+        ]
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Lipa",
+            "Lipa DIRCM",
+            [[["rhs_mag_DIRCM_Lipa", "", 80], 10]]
+          ]
+        ],
+        "pylons": [
+          [
+            7,
+            "cmDispenser",
+            "rhs_ASO2_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_yakB",
+            "YakBYu",
+            [[["rhs_mag_127x108mm_1slt_1470", "1SLT 12.7x108mm", 1470], 1]]
+          ],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "Mi-24VT": {
+    "className": "RHS_Mi24Vt_vvsc",
+    "displayName": "Mi-24VT",
+    "hierarchy": [
+      "RHS_Mi24Vt_vvsc",
+      "RHS_Mi24Vt_vvs",
+      "RHS_Mi24V_vvs",
+      "RHS_Mi24V_VVS_Base",
+      "RHS_Mi24V_Base",
+      "RHS_Mi24_base",
+      "Heli_Attack_02_base_F",
+      "Helicopter_Base_F",
+      "Helicopter",
+      "Air",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Lipa",
+            "Lipa DIRCM",
+            [[["rhs_mag_DIRCM_Lipa", "", 80], 10]]
+          ]
+        ],
+        "pylons": [
+          [
+            1,
+            "cmDispenser",
+            "rhs_ASO2_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_yakB",
+            "YakBYu",
+            [[["rhs_mag_127x108mm_1slt_1470", "1SLT 12.7x108mm", 1470], 1]]
+          ],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Lipa",
+            "Lipa DIRCM",
+            [[["rhs_mag_DIRCM_Lipa", "", 80], 10]]
+          ]
+        ],
+        "pylons": [
+          [
+            1,
+            "cmDispenser",
+            "rhs_ASO2_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_yakB",
+            "YakBYu",
+            [[["rhs_mag_127x108mm_1slt_1470", "1SLT 12.7x108mm", 1470], 1]]
+          ],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
+  },
+  "Mi-24P": {
+    "className": "RHS_Mi24P_vvsc",
+    "displayName": "Mi-24P",
+    "hierarchy": [
+      "RHS_Mi24P_vvsc",
+      "RHS_Mi24P_vvs",
+      "RHS_Mi24P_VVS_Base",
+      "RHS_Mi24_base",
+      "Heli_Attack_02_base_F",
+      "Helicopter_Base_F",
+      "Helicopter",
+      "Air",
+      "AllVehicles",
+      "All"
+    ],
+    "turretsOriginal": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Lipa",
+            "Lipa DIRCM",
+            [[["rhs_mag_DIRCM_Lipa", "", 80], 10]]
+          ],
+          [
+            "rhs_weap_gsh30",
+            "GSh-30-2K",
+            [[["rhs_mag_gsh30_ofzt_750", "HE-T OFZT-30-Gsh", 750], 1]]
+          ]
+        ],
+        "pylons": [
+          [3, "pylon3", "rhs_mag_b8v20a_s8kom", "S-8 KOM HEAT", 20],
+          [4, "pylon4", "rhs_mag_b8v20a_s8kom", "S-8 KOM HEAT", 20],
+          [
+            7,
+            "cmDispenser",
+            "rhs_ASO2_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": [
+          [1, "pylon1", "rhs_mag_fab250", "FAB-250", 1],
+          [2, "pylon2", "rhs_mag_fab250", "FAB-250", 1],
+          [5, "pylon5", "rhs_mag_9M120M_Mi24_2x", "9M120M", 2],
+          [6, "pylon6", "rhs_mag_9M120M_Mi24_2x", "9M120M", 2]
+        ]
+      },
+      "incompatibleMags": []
+    },
+    "turretsModified": {
+      "[-1]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_DIRCM_Lipa",
+            "Lipa DIRCM",
+            [[["rhs_mag_DIRCM_Lipa", "", 80], 10]]
+          ],
+          [
+            "rhs_weap_yakB",
+            "YakBYu",
+            [[["rhs_mag_127x108mm_1slt_1470", "1SLT 12.7x108mm", 1470], 1]]
+          ]
+        ],
+        "pylons": [
+          [
+            7,
+            "cmDispenser",
+            "rhs_ASO2_CMFlare_Chaff_Magazine_x4",
+            "4x32 PPI-26 Flare/PPR-26 Chaff",
+            64
+          ]
+        ]
+      },
+      "[0]": {
+        "weapons": [
+          ["rhs_weap_MASTERSAFE", "MASTERSAFE", []],
+          [
+            "rhs_weap_fcs_mi24",
+            "",
+            [[["rhs_LaserFCSMag", "Designator Batteries", 99], 1]]
+          ]
+        ],
+        "pylons": []
+      },
+      "incompatibleMags": []
+    }
   }
 }

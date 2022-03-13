@@ -1,6 +1,12 @@
 params ["_vehicle"];
 
-if !(_vehicle getVariable ["fnf_vehicleLoadouts_useDefault", true]) exitWith {false};
+if !([_vehicle] call fnf_vehicleLoadouts_fnc_shouldModify) exitWith {};
+
+if (missionNamespace getVariable ["fnf_debug", false]) then {
+  [_vehicle, "turretsOriginal"] call fnf_vehicleLoadouts_fnc_getTurretWeps;
+};
+
+//////////////////////////////////////////////////////////
 
 [_vehicle] call fnf_vehicleLoadouts_fnc_clearAll;
 
@@ -26,5 +32,11 @@ for "_i" from 1 to 2 do {
 
 _vehicle addWeaponTurret["Laserdesignator_mounted",[4]];
 _vehicle addMagazineTurret["Laserbatteries", [4]];
+
+//////////////////////////////////////////////////////////
+
+if (missionNamespace getVariable ["fnf_debug", false]) then {
+  [_vehicle, "turretsModified"] call fnf_vehicleLoadouts_fnc_getTurretWeps;
+};
 
 true
