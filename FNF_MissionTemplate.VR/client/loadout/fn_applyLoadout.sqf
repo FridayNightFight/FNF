@@ -234,19 +234,24 @@ if (isNil {[player, _cfgWeaponChoices] call fnf_loadout_fnc_givePrimaryWeapon}) 
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (isNil {[player, _cfgWeaponChoices] call fnf_loadout_fnc_prepWeaponsSelector}) exitWith {
+if (isNil {[player, _cfgWeaponChoices, 0] call fnf_loadout_fnc_prepWeaponsSelector}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process weapon selector settings.</t>", "error", 20] call fnf_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process weapon selector settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-
-
 if (isNil {[player, _cfgSidearms] call fnf_loadout_fnc_giveSidearmWeapon}) exitWith {
   [{time > 2}, {
     ["<t align='center'>Error:<br/>Failed to process sidearm weapon settings.</t>", "error", 20] call fnf_ui_fnc_notify;
     diag_log text format["[FNF] (loadout) ERROR: Failed to process sidearm weapon settings."];
+  }] call CBA_fnc_waitUntilAndExecute;
+};
+
+if (isNil {[player, _cfgSidearms, 1] call fnf_loadout_fnc_prepWeaponsSelector}) exitWith {
+  [{time > 2}, {
+    ["<t align='center'>Error:<br/>Failed to process weapon selector settings.</t>", "error", 20] call fnf_ui_fnc_notify;
+    diag_log text format["[FNF] (loadout) ERROR: Failed to process weapon selector settings."];
   }] call CBA_fnc_waitUntilAndExecute;
 };
 

@@ -120,6 +120,7 @@ class CfgFunctions {
       file = "client\loadout\selector";
       class init{};
       class weapons{};
+      class sidearm{};
       class optics{};
       class grenades{};
       class charges{};

@@ -36,6 +36,15 @@ fnf_safeZones = [
 ];
 publicVariable "fnf_safeZones";
 
+// Is this a night mission?
+private _sunrise = (date call BIS_fnc_sunriseSunsetTime) select 0;
+private _sunset = (date call BIS_fnc_sunriseSunsetTime) select 1;
+if (fnf_isNightMission isEqualTo -1) then {
+  missionNamespace setVariable ["fnf_environment_isDaytime", dayTime > _sunrise && dayTime < _sunset, true];
+} else {
+  missionNamespace setVariable ["fnf_environment_isDaytime", [false, true] select fnf_isNightMission, true];
+};
+
 estimatedTimeLeft (60 * (fnf_safeStartTime + fnf_missionTimeLimit));
 
 call fnf_server_fnc_safety;

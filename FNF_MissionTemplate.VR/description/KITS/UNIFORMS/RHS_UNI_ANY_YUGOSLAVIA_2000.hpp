@@ -1,15 +1,15 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_olive"
+#define UNIFORM "UK3CB_KDF_B_U_Crew_Uniform_01_VSR_GRN", "UK3CB_KDF_B_U_Crew_Uniform_02_GRN_VSR"
 
-#define VEST "V_I_G_resistanceLeader_F"
+#define VEST "rhsgref_chicom"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_M1_erdl"
+#define HELMET "rhssaf_helmet_m59_85_nocamo"
 #define HELMET_CMDR "rhssaf_beret_green"
 #define HELMET_RECON "H_Watchcap_camo"
 #define HELMET_CREWMAN "rhs_tsh4_ess_bala"
@@ -26,7 +26,7 @@
 
 class RHS_UNI_ANY_YUGOSLAVIA_2000 {
   author = "Mazz38";
-  description = "CS: 2000s Post-Yugoslavia ARMY Olive Camouflage";
+  description = "CS: 2000s Yugoslavia ARMY Olive VSR Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};

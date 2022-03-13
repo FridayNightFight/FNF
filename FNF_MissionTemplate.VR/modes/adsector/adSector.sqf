@@ -2,16 +2,24 @@ if (!isServer) exitWith {};
 
 #include "..\..\mode_config\adSector.sqf"
 
-fnf_capNum = 0;
-fnf_sectorNum = _numberOfSectors;
-fnf_sectorInOrder = _inOrder;
-_sectors = [];
-
-switch (_numberOfSectors) do {
-  case 1: {_sectors pushBack fnf_sec1};
-  case 2: {_sectors pushBack fnf_sec1; _sectors pushBack fnf_sec2};
-  case 3: {_sectors pushBack fnf_sec1; _sectors pushBack fnf_sec2; _sectors pushBack fnf_sec3};
+_validateSectors = ["fnf_sec1", "fnf_sec2", "fnf_sec3"] select [0, _numberOfSectors];
+_validateSectors = _validateSectors apply {missionNamespace getVariable [_x, objNull]} select {!isNull _x};
+if (count _validateSectors < _numberOfSectors) exitWith {
+  "[FNF] (Gamemode) Failed to initialize ADSector: Fewer sector modules present than number set in mode_config!" remoteExec ["systemChat", 0, true];
 };
+
+fnf_gamemode_sectors = _validateSectors;
+
+fnf_gamemode_capNum = 0;
+fnf_gamemode_sectorNum = _numberOfSectors;
+fnf_gamemode_sectorInOrder = _inOrder;
+
+// // fnf_gamemode_sectors = [];
+// switch (_numberOfSectors) do {
+//   case 1: {fnf_gamemode_sectors pushBack fnf_sec1};
+//   case 2: {fnf_gamemode_sectors pushBack fnf_sec1; fnf_gamemode_sectors pushBack fnf_sec2};
+//   case 3: {fnf_gamemode_sectors pushBack fnf_sec1; fnf_gamemode_sectors pushBack fnf_sec2; fnf_gamemode_sectors pushBack fnf_sec3};
+// };
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
 fnf_server_sectorWin = {
@@ -45,8 +53,8 @@ _sectorNum = 0;
   [_x,_mark,_textMark,_sectorNum] spawn {
     params ["_sector","_mark","_textMark","_sectorNum","_dTask","_aTask"];
 
-    if (fnf_sectorInOrder) then {
-      waitUntil {fnf_capNum == (_sectorNum - 1)};
+    if (fnf_gamemode_sectorInOrder) then {
+      waitUntil {fnf_gamemode_capNum == (_sectorNum - 1)};
     };
 
     switch (fnf_defendingSide) do {
@@ -87,7 +95,7 @@ _sectorNum = 0;
       } forEach _units;
 
       if (_aPresent && !_dPresent) then {
-        fnf_capNum = fnf_capNum + 1;
+        fnf_gamemode_capNum = fnf_gamemode_capNum + 1;
 
         [
           _sectorNum - 1, // id
@@ -101,13 +109,14 @@ _sectorNum = 0;
 
         deleteVehicle _sector;
         // deleteMarker _textMark;
-        [_mark,_atkColorStr,10] spawn BIS_fnc_changeColorMarker;
+        _textMark setMarkerText format["Sector %1 - Captured", _sectorNum];
+        [_mark,_atkColorStr,7] spawn BIS_fnc_changeColorMarker;
         // [{deleteMarker _this},_mark,10] call CBA_fnc_waitAndExecute;
 
         [_dTask,"FAILED"] call BIS_fnc_taskSetState;
         [_aTask,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
-        if (fnf_capNum >= fnf_sectorNum) then {call fnf_server_sectorWin} else {
+        if (fnf_gamemode_capNum >= fnf_gamemode_sectorNum) then {call fnf_server_sectorWin} else {
           [format[
             "<t align='center'>Attackers have captured Sector %1</t>",
             (str _sectorNum)
@@ -128,4 +137,4 @@ _sectorNum = 0;
       sleep 3;
     };
   };
-} forEach _sectors;
+} forEach fnf_gamemode_sectors;

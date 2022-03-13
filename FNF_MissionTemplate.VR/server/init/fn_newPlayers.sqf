@@ -30,7 +30,7 @@
     _notificationText pushBack "<t size='1.2' color='#CCFFCC'>Welcome!</t></t>";
 
     if (count _newPlayers > 0) then {
-      [(_notificationText joinString "<br/>"), "info", 10] remoteExecCall ["fnf_ui_fnc_notify", _thisGroup];
+      [(_notificationText joinString "<br/>"), "info", 20] remoteExecCall ["fnf_ui_fnc_notify", _thisGroup];
     };
 
   } forEach (allGroups select {leader _x isKindOf "CAManBase"});

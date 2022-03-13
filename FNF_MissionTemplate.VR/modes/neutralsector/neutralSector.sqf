@@ -4,23 +4,35 @@ if (!isServer) exitWith {};
 
 ["off"] call acex_fortify_fnc_handleChatCommand;
 
-_sectors = [fnf_sector1];
+
+_validateSectors = ["fnf_sector1", "fnf_sector2", "fnf_sector3"] select [0, _numberOfSectors];
+_validateSectors = _validateSectors apply {missionNamespace getVariable [_x, objNull]} select {!isNull _x};
+if (count _validateSectors < _numberOfSectors) exitWith {
+  "[FNF] (Gamemode) Failed to initialize NSector: Fewer sector modules present than number set in mode_config!" remoteExec ["systemChat", 0, true];
+};
+
+fnf_gamemode_sectors = _validateSectors;
 _sideWon = sideEmpty;
 fnf_neutralSector_pointAddTime = _pointAddTime;
 
 switch (_numberOfSectors) do {
   case 1: {
-    deleteVehicle fnf_sector2;
-    deleteVehicle fnf_sector3;
+    {
+      private _module = missionNamespace getVariable [_x, objNull];
+      if (!isNull _module) then {
+        deleteVehicle _module;
+      };
+    } forEach ["fnf_sector2", "fnf_sector3"];
   };
   case 2: {
-    deleteVehicle fnf_sector3;
-    _sectors pushBack fnf_sector2;
+    {
+      private _module = missionNamespace getVariable [_x, objNull];
+      if (!isNull _module) then {
+        deleteVehicle _module;
+      };
+    } forEach ["fnf_sector3"];
   };
-  case 3: {
-    _sectors pushBack fnf_sector2;
-    _sectors pushBack fnf_sector3;
-  };
+  case 3: {};
 };
 
 _win = {
@@ -34,9 +46,7 @@ _win = {
 
 waitUntil {
   sleep 1;
-  fnf_sector1 getVariable ["owner", sideUnknown] != sideUnknown ||
-  fnf_sector2 getVariable ["owner", sideUnknown] != sideUnknown ||
-  fnf_sector3 getVariable ["owner", sideUnknown] != sideUnknown
+  ({_x getVariable ["owner", sideUnknown] != sideUnknown} count fnf_gamemode_sectors) > 0
 };
 
 ["First sector captured<br/>Points will be begin to be awarded in 5 minutes"] remoteExec ["fnf_fnc_hintThenClear"];
@@ -47,7 +57,7 @@ while {!fnf_gameEnd} do {
     if !((_x getVariable "owner") == sideUnknown) then {
       [_x getVariable "owner", 1] call BIS_fnc_respawnTickets;
     };
-  } forEach _sectors;
+  } forEach fnf_gamemode_sectors;
 
   _sideWon = [[west,[west] call BIS_fnc_respawnTickets], [east,[east] call BIS_fnc_respawnTickets], [independent,[independent] call BIS_fnc_respawnTickets]] select {(_x select 1) >= 100};
   _sideWonCount = count _sideWon;

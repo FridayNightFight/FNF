@@ -1,3 +1,17 @@
+v3.2.1
+
+- adds NATO UK PARA 1980 kit
+- adds RU MARINES 2020 kit
+- removes HuntIR capabilities from 1980s kits
+- updates some uniforms with 3CB gear
+- changes Yardage450 to vanilla rangefinder
+- adds option to select a single shot flare launcher in place of a sidearm when a mission takes place at night
+- SQM updates to fix nSector/ADSector objects
+- fixes deferred map assignment that interfered with briefing phase of a mission
+- improves vehicle invincibility during safe start to account for locality changes in Standard
+- adds actual screenshots as a uniform set reference in map diary and mission info panel
+
+
 v3.2.0
 
 - move optics selectors into categories for menu cleanliness
