@@ -92,7 +92,7 @@ class common {
 
   class binoculars {
     standard = "Binocular";
-    rangefinder = "Rangefinder";
+    rangefinder = "ACE_VectorDay";
     vector21 = "ACE_VectorDay";
   };
 };
