@@ -10,10 +10,10 @@
   <a href="https://github.com/FridayNightFight/FNF/releases/latest">
     <img src="https://img.shields.io/github/license/FridayNightFight/FNF?style=plastic" alt="code size">
   </a>
-  <br/>
   <a href="https://github.com/FridayNightFight/FNF/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/FridayNightFight/FNF?style=plastic" alt="contributors">
   </a>
+  <br/>
   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1551644814">
     <img src="https://img.shields.io/steam/collection-files/1551644814?label=required%20mods&logo=steam&style=plastic" alt="required mods collection">
   </a>
@@ -28,10 +28,10 @@
   </a>
   <br/>
   <a href="https://docs.google.com/document/d/19-7s9YslwOBQ_sjh1Gi7y9NhOfRzHSYqqd7MKQXNI1A/edit?usp=sharing">
-    <img src="https://img.shields.io/badge/GDocs-FNF%20Rules%20and%20Policies-orange" alt="fnf rules and policies">
+    <img src="https://img.shields.io/badge/GDocs-FNF%20Rules%20and%20Policies-orange?style=plastic&logo=#4285F4" alt="fnf rules and policies">
   </a>
   <a href="https://docs.google.com/document/d/1D_3Bfv4CshksOpXxsbW0u-FJKxUTSga1gCSSDYjFcOg/edit?usp=sharing">
-    <img src="https://img.shields.io/badge/GDocs-FNF%20Mission%20Making%20Guide-orange" alt="fnf mission making guide">
+    <img src="https://img.shields.io/badge/GDocs-FNF%20Mission%20Making%20Guide-orange?style=plastic" alt="fnf mission making guide">
   </a>
   <br/>
   <a href="https://twitter.com/armafnf">
@@ -42,10 +42,6 @@
     <img src="https://img.shields.io/discord/106475368495484928?logo=discord&style=social" alt="discord">
   </a>
   <br/>
-</p>
-
-<p align="center">
-  <a href="https://docs.google.com/document/d/1D_3Bfv4CshksOpXxsbW0u-FJKxUTSga1gCSSDYjFcOg/edit?usp=sharing">FNF Mission Making Guide</a>
 </p>
 
 ## USAGE
