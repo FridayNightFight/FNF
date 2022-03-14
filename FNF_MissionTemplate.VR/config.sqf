@@ -180,3 +180,7 @@ fnf_grnAT_Delta = GEARDEFAULT;
 fnf_showUnitIcons = true;
 fnf_showGroupIcons = true;
 fnf_showAlliedFactions = true;
+
+
+// debug
+fnf_debug = false;

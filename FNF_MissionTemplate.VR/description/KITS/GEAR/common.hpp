@@ -5,7 +5,7 @@
 #define VN_B_LINKED_SOG "vn_b_item_map","vn_b_item_compass_sog","vn_b_item_watch"
 #define VN_B_LINKED "vn_b_item_map","vn_b_item_compass","vn_b_item_watch"
 #define VN_O_LINKED "vn_o_item_map","vn_b_item_compass","vn_b_item_watch"
-#define TOOLS "ACE_MapTools","ACE_CableTie:2"
+#define TOOLS "ACE_MapTools"
 #define LEADER_TOOLS "ACE_microDAGR"
 #define SPOTTER_TOOLS "ACE_SpottingScope"
 #define SNIPER_TOOLS "ACE_Tripod","ACE_RangeCard"
@@ -92,7 +92,7 @@ class common {
 
   class binoculars {
     standard = "Binocular";
-    rangefinder = "Rangefinder";
+    rangefinder = "ACE_VectorDay";
     vector21 = "ACE_VectorDay";
   };
 };
