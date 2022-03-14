@@ -1,6 +1,9 @@
 params ["_vehicle"];
 // "debug_console" callExtension "attempt 3265";
 // "debug_console" callExtension format["_this = %1", _this];
+
+// don't run if not SA
+if (missionNamespace getVariable ["fnf_gamemode", "destroy"] != "sustainedAssault") exitWith {};
 waitUntil {!isNull _vehicle};
 
 private _pylonInfo = _vehicle getVariable ["fnf_pylonLoadout", []];

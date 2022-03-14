@@ -2,6 +2,10 @@
 
 // run on every vehicle just after it's inited
 class Extended_InitPost_EventHandlers {
+
+  #include "cfgFNFVehicleLoadouts.hpp"
+
+  // other init settings
   class CAManBase {
     class fnf_FixFriendlyFire { clientInit = "(_this select 0) addRating 100000;";};
   };
