@@ -174,8 +174,8 @@
         } forEach [
           [30, "(low-end)"],
           [50, "(gaming pc)"],
-          [75, "(enthusiast)"],
-          [100, "(insane!)"]
+          [75, "(enthusiast)"]
+          // [100, "(insane!)"]
         ];
         _loadActions
       },
