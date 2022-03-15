@@ -303,4 +303,16 @@ class CfgFunctions {
       class speedboatMinigun{};
     };
   };
+  class fnf_missionSpecials {
+    class functions {
+      file = "missionSpecials";
+      class config{postInit=1;};
+      class ambientAirdrop{};
+    };
+    class tools {
+      file = "missionSpecials\tools";
+      class ambientAirdrop_plane{};
+      class ambientAirdrop_box{};
+    };
+  };
 };
