@@ -77,11 +77,45 @@ call fnf_server_fnc_webhook_roundPrep;
       };
     } forEach _safeMarkers;
     missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
+
+
+}] call CBA_fnc_waitUntilAndExecute;
+
+[{getClientStateNumber == 10}, {
+  if (isDedicated) then { // clients already run this code
+    #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+    // put vehicles into a hashmap based on who they belong to (if anyone)
+    fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+    {
+      private _vehicle = _x;
+      "debug_console" callExtension str([typeOf _vehicle]);
+      switch (true) do {
+        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+        };
+        default {
+          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+        };
+      };
+    } forEach MISSIONVICS;
+  };
+
+  if (count (missionNamespace getVariable ["fnf_airdropAssets", []]) > 0) then {
+    call fnf_server_fnc_airdropAssets;
+  };
 }] call CBA_fnc_waitUntilAndExecute;
 
 call fnf_server_fnc_populateORBATS;
 call fnf_server_fnc_keyVehicles;
 call fnf_server_fnc_vehicleRadios;
+
+
 
 //Create map cover for zone boundary
 private _zoneArea = triggerArea zoneTrigger;
@@ -270,5 +304,5 @@ fnfAdminMessageReceiver = ["fnfAdminMessageServer", {
   ["AdminMsg", _arr] call DiscordEmbedBuilder_fnc_buildCfg;
 }] call CBA_fnc_addEventHandler;
 
-//Let clients know that server is done setting up
+// Let clients know that server is done setting up
 missionNamespace setVariable ["fnf_serverGameSetup",true,true];

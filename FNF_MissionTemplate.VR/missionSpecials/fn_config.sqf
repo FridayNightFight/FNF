@@ -6,13 +6,19 @@ if !(isServer) exitWith {};
 
 _settings = [
   ["ambientAirdrop", [
-    true, // is enabled
-    [
-      45, // bearing of travel for WEST/BLUFOR planes
-      300 // bearing of travel for EAST/OPFOR planes
-    ],
-    4, // numPlanes: number of planes to spawn (adds lateral spread to the formation - keep this in mind when setting dropSpread
-    500 // dropSpread: how wide of an area around the marker boxes will drop in
+    false, // is enabled
+    false, // items are required to reach ground/intact/usable
+    true, // hide markers from players that were placed as reference in editor
+    [ // drop targets
+      [
+        west,
+        []
+      ],
+      [
+        east,
+        []
+      ]
+    ]
   ]]
 ];
 
@@ -33,7 +39,27 @@ Marker names:
   fnf_ambientAirdrop_east_N | (OPFOR)
   fnf_ambientAirdrop_west_N | (BLUFOR)
 
-
+[ // drop targets
+  [
+    west,
+    [
+      [3, 750, "fnf_ambientAirdrop_west_1", 90, [ // 3 planes will drop cargo in a 750 meter radius around the fnf_ambientAirdrop_west_1 marker flying at a 90 degree heading // number of planes to spawn adds lateral spread to the formation - keep this in mind
+        [["CargoNet_01_box_F", 15], ["CargoNet_01_barrels_F", 15]] // will attempt to drop 15 boxes and 15 barrels total
+      ]]
+    ]
+  ],
+  [
+    east,
+    [
+      [4, 750, "fnf_ambientAirdrop_east_1", 270, [
+        [["CargoNet_01_box_F", 20], ["CargoNet_01_barrels_F", 15]] // will attempt to drop 20 boxes and 30 barrels total
+      ]],
+      // [4, 270, [1000, 800], 750, [
+      //   [["CargoNet_01_box_F", 20], ["CargoNet_01_barrels_F", 15]]
+      // ]] // 4 planes will drop cargo in a 750 meter radius around position [1000, 800] flying at a 270 degree heading
+    ]
+  ]
+]
 
 
 
@@ -54,9 +80,10 @@ private _activatedSpecials = [];
 {
   _x params ["_key", "_value"];
   if (_value#0) then {
+    "debug_console" callExtension str(_value#0);
     _activatedSpecials pushBack _key;
     _fnc = missionNamespace getVariable format["fnf_missionSpecials_fnc_%1", _key];
-    _value spawn _fnc;
+    _value call _fnc;
   };
 } forEach _settings;
 
