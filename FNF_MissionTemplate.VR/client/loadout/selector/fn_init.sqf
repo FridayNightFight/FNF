@@ -351,10 +351,7 @@ _mainAction = [
       "CSW_Selector",
       _cswWepName,
       _cswWepPic, // icon
-      {
-        params ["_target", "_player", "_params"];
-        _params call fnf_selector_fnc_csw;
-      }, // statement
+      {}, // statement
       {LOADOUTROLE("SHQAUX") && fnf_pref_loadoutInterface == "ACE"}, // condition
       {
         params ["_target", "_player", "_params"];
