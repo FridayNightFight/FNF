@@ -271,6 +271,7 @@ class CfgFunctions {
     class functions {
       file = "server\debug";
       class init{postInit=1;};
+      class config{preInit=1;};
     };
   };
   class fnf_vehicleLoadouts {
