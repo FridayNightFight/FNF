@@ -44,7 +44,7 @@ Marker names:
     west,
     [
       [3, 750, "fnf_ambientAirdrop_west_1", 90, [ // 3 planes will drop cargo in a 750 meter radius around the fnf_ambientAirdrop_west_1 marker flying at a 90 degree heading // number of planes to spawn adds lateral spread to the formation - keep this in mind
-        [["CargoNet_01_box_F", 15], ["CargoNet_01_barrels_F", 15]] // will attempt to drop 15 boxes and 15 barrels total
+        ["CargoNet_01_box_F", 15], ["CargoNet_01_barrels_F", 15] // will attempt to drop 15 boxes and 15 barrels total
       ]]
     ]
   ],
@@ -52,10 +52,10 @@ Marker names:
     east,
     [
       [4, 750, "fnf_ambientAirdrop_east_1", 270, [
-        [["CargoNet_01_box_F", 20], ["CargoNet_01_barrels_F", 15]] // will attempt to drop 20 boxes and 30 barrels total
+        ["CargoNet_01_box_F", 20], ["CargoNet_01_barrels_F", 15] // will attempt to drop 20 boxes and 30 barrels total
       ]],
       // [4, 270, [1000, 800], 750, [
-      //   [["CargoNet_01_box_F", 20], ["CargoNet_01_barrels_F", 15]]
+      //   ["CargoNet_01_box_F", 20], ["CargoNet_01_barrels_F", 15]
       // ]] // 4 planes will drop cargo in a 750 meter radius around position [1000, 800] flying at a 270 degree heading
     ]
   ]
@@ -80,7 +80,6 @@ private _activatedSpecials = [];
 {
   _x params ["_key", "_value"];
   if (_value#0) then {
-    "debug_console" callExtension str(_value#0);
     _activatedSpecials pushBack _key;
     _fnc = missionNamespace getVariable format["fnf_missionSpecials_fnc_%1", _key];
     _value call _fnc;
