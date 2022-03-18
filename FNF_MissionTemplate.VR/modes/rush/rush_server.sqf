@@ -19,6 +19,12 @@ switch (_numberOfTerminals) do {
   default {hint "Terminal number not set correctly"};
 };
 
+private _objectives = [];
+{
+  _objectives pushBack [format["Terminal %1", _forEachIndex + 1], getPos _x];
+} forEach _terminals;
+[_objectives] call fnf_briefing_fnc_setupTables;
+
 switch (typeName _terminalHackTime) do {
   case "ARRAY": {
     fnf_term1Time = _terminalHackTime select 0;

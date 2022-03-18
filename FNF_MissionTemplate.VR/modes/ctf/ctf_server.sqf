@@ -43,7 +43,11 @@ createMarker ["capZoneMarkText", position ctf_attackTrig];
 //Hide capture zone if set to hidden in config and show to spectators and attackers
 if !(_showCapZoneGlobal) then {
   {_x setMarkerAlpha 0} forEach ["capZoneMark","capZoneMarkText"];
-};
+} else {
+  private _objectives = [];
+  _objectives pushBack ["Flag Capture Zone", getPos ctf_attackTrig];
+  [_objectives] call fnf_briefing_fnc_setupTables;
+}
 
 ["capZoneMark",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, fnf_attackingSide], true];
 ["capZoneMarkText",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, fnf_attackingSide], true];

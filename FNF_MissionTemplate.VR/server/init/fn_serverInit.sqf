@@ -86,6 +86,13 @@ call fnf_server_fnc_vehicleRadios;
 //Create map cover for zone boundary
 if (!isNil "zoneTrigger") then {
   // if zoneTrigger exists, use standard functionality
+  for "_i" from 1 to 50 do {
+    private _markerName = format["fnf_zoneBoundary_marker_%1", _i];
+    if (markerShape _markerName != "") then {
+      deleteMarker _markerName;
+    };
+  };
+
   private _zoneArea = triggerArea zoneTrigger;
   zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
   [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
