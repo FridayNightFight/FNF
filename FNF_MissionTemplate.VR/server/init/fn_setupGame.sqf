@@ -190,7 +190,6 @@ if (fnf_gameMode != "sustainedAssault") then {
       #define SIDEUNIFORM (_thisSideUniform select 0)
       switch (true) do {
         case (SIDEUNIFORM find "_US_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\USA_ca.paa"};
-        case (SIDEUNIFORM find "_NATO_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\nato_ca.paa"};
         case (SIDEUNIFORM find "_RU_" > -1): {_thisFlag setFlagTexture "\a3\UI_F_Enoch\Data\CfgMarkers\Russia_CA.paa"};
         case (SIDEUNIFORM find "_GER_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\Germany_ca.paa"};
         case (SIDEUNIFORM find "_NL_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\Netherlands_ca.paa"};
@@ -199,6 +198,8 @@ if (fnf_gameMode != "sustainedAssault") then {
         case (SIDEUNIFORM find "_SERBIAN_" > -1): {_thisFlag setFlagTexture "\rhssaf\addons\rhssaf_main\data\flags\flag_serbia_co.paa"};
         case (SIDEUNIFORM find "_YUGOSLAVIA_" > -1): {_thisFlag setFlagTexture "\rhssaf\addons\rhssaf_main\data\flags\flag_yugoslavia_co.paa"};
         case (SIDEUNIFORM find "_CZECHFORCES_" > -1): {_thisFlag setFlagTexture "ca\Ca_E\data\flag_cz_co.paa"};
+        case (SIDEUNIFORM find "_UK_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\UK_ca.paa"};
+        case (SIDEUNIFORM find "_NATO_" > -1): {_thisFlag setFlagTexture "\A3\ui_f\data\map\markers\flags\nato_ca.paa"};
         default {
           switch (_thisSide) do {
             case east: {_thisFlag setFlagTexture "ca\Ca_E\data\flag_opfor_co.paa"};

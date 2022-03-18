@@ -2,6 +2,10 @@
 
 // run on every vehicle just after it's inited
 class Extended_InitPost_EventHandlers {
+
+  #include "cfgFNFVehicleLoadouts.hpp"
+
+  // other init settings
   class CAManBase {
     class fnf_FixFriendlyFire { clientInit = "(_this select 0) addRating 100000;";};
   };
@@ -35,7 +39,7 @@ class Extended_PostInit_Eventhandlers {
     serverInit = "{private _vehicle= _x;_vehicle setVariable[""fnf_pylonLoadout"",getAllPylonsInfo _vehicle,true];_vehicle setVariable [""ace_pylons_magazineWhitelist"", getPylonMagazines _vehicle select {_x != """"}, true];[_vehicle] spawn fnf_server_fnc_restoreAirLoadouts;}forEach(entities[[""Air""],[],false,true]);if(is3DENPreview) then {""[FNF] (saveAirLoadouts) [PreviewOnly] Inited air vehicle pylon settings"" remoteExec [""systemChat"", 0];};";
   };
   class FNF_cleanModules {
-    serverInit = "if !(fnf_gameMode isEqualTo ""neutralSector"")then{{deleteVehicle _x}forEach([""fnf_sector1"",""fnf_sector2"",""fnf_sector3""]apply{missionNamespace getVariable[_x,objNull]}select{!isNull _x});};"
+    serverInit = "if !(fnf_gameMode isEqualTo ""neutralSector"")then{{deleteVehicle _x}forEach([""fnf_sector1"",""fnf_sector2"",""fnf_sector3""]apply{missionNamespace getVariable[_x,objNull]}select{!isNull _x});};";
   };
 };
 
