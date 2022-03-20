@@ -1,5 +1,5 @@
 params [
-  ["_unit", objNull, [objNull]],
+  ["_unit", objNull, [objNull, []]],
   ["_side", sideEmpty, [sideEmpty]],
   ["_justReturnMarkers", false, [false]],
   ["_returnBool", true, [true]]
@@ -53,7 +53,15 @@ _safeZones = _safeZones select {
 
 if (_justReturnMarkers) exitWith {_safeZones};
 
-private _checkIndex = _safeZones findIf {vehicle _unit inArea _x};
+private _checkIndex = switch (typeName _unit) do {
+  case "OBJECT": {
+    _safeZones findIf {vehicle _unit inArea _x}
+  };
+  case "ARRAY": {
+    _safeZones findIf {_unit inArea _x}
+  };
+};
+
 if (_returnBool) exitWith {_checkIndex > -1};
 
 if (!_returnBool) exitWith {

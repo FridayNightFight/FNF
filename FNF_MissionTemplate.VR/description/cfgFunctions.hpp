@@ -229,6 +229,10 @@ class CfgFunctions {
       file = "client\ui";
       class missionInfoPanel{};
     };
+    class map {
+      file = "client\ui\map";
+      class mapZoneAssets{};
+    };
   };
   class fnf_server {
     class initServer {

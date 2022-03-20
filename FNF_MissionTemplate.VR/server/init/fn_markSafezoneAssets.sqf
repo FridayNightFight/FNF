@@ -4,6 +4,12 @@ private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
 _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
 "debug_console" callExtension format _systemTimeFormat;
 
+fnf_safeZoneAssets = createHashMapFromArray [
+  [west, []],
+  [east, []],
+  [independent, []]
+];
+
 {
   private _thisSide = _x;
   private _thisSideKey = switch (_thisSide) do {
@@ -36,7 +42,6 @@ _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} 
     } forEach _thisSideAssetsObjects;
   } forEach _sideSafeMarkers;
 
-
   {
     private _markerName = _x;
     // "debug_console" callExtension str(_x);
@@ -50,6 +55,7 @@ _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} 
     private _labelPosOffset = ((getMarkerSize _markerName)#0) max ((getMarkerSize _markerName)#1);
     private _labelPos = (getMarkerPos _markerName) vectorAdd [_labelPosOffset, _labelPosOffset, 0];
 
+    private _thisZoneMarkers = [];
     {
       _x params ["_displayName", "_count"];
       private _label = createMarker [format["%1_assetList_%2", _markerName, _forEachIndex], _labelPos, 1, _markerPlayer];
@@ -60,8 +66,17 @@ _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} 
       _label setMarkerTextLocal format["%1x %2", _count, _displayName];
       _label setMarkerSize [0.1,0.1];
 
-      _labelPos = _labelPos vectorAdd [0, -50, 0];
+      _thisZoneMarkers pushBack _label;
+
+      _labelPos = _labelPos vectorAdd [0, -15, 0];
     } forEach _objectLabels;
 
+    _safeZoneContents set [_markerName, _thisZoneMarkers];
+
   } forEach _safeZoneContents;
+
+  fnf_safeZoneAssets set [_thisSide, _safeZoneContents];
+
 } forEach [west, east, independent];
+
+publicVariable "fnf_safeZoneAssets";
