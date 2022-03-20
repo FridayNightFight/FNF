@@ -247,6 +247,7 @@ class CfgFunctions {
       class restoreAirLoadouts{};
       class safeZoneTeleportInit_STD{};
       class newPlayers{};
+      class markSafezoneAssets{};
     };
     class end {
       file = "server\end";

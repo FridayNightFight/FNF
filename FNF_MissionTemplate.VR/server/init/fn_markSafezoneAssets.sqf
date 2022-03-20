@@ -1,0 +1,67 @@
+"debug_console" callExtension "----------------------------";
+"debug_console" callExtension (_fnc_scriptName);
+private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
+_systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
+"debug_console" callExtension format _systemTimeFormat;
+
+{
+  private _thisSide = _x;
+  private _thisSideKey = switch (_thisSide) do {
+    case west: {"BLU"};
+    case east: {"OPF"};
+    case independent: {"IND"};
+  };
+
+
+  private _thisSideAssetsObjects = [fnf_vehiclesToProcess, _thisSideKey, []] call BIS_fnc_getFromPairs;
+  if (count _thisSideAssetsObjects == 0 || playableSlotsNumber _thisSide < 4) then {continue};
+
+
+  private _PLTplayers = (units _thisSide) select {"PLTHQ" in (roleDescription _x)};
+  private _markerPlayer = if (count _PLTplayers > 0) then {selectRandom(_PLTplayers)} else {selectRandom (units _thisSide)};
+
+  // iterate through this side's assets and use a hashmap to group vehicles under which safezone they belong to
+  private _sideSafeMarkers = [nil, _thisSide, true] call fnf_fnc_inSafeZone;
+  private _safeZoneContents = createHashMap;
+  {
+
+    _safeMarkerName = _x;
+    _safeZoneContents set [_safeMarkerName, []];
+
+    {
+      private _markerImIn = [_x, _thisSide, false, false] call fnf_fnc_inSafeZone;
+      if (_markerImIn == "") then {continue};
+      // "debug_console" callExtension str([_markerImIn, _x]);
+      (_safeZoneContents get _markerImIn) pushBack _x;
+    } forEach _thisSideAssetsObjects;
+  } forEach _sideSafeMarkers;
+
+
+  {
+    private _markerName = _x;
+    // "debug_console" callExtension str(_x);
+    if (_markerName == "") then {continue};
+    private _objects = +_y;
+    // "debug_console" callExtension str(_objects);
+
+    _objects = _objects apply {getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")};
+    private _objectLabels = _objects call BIS_fnc_consolidateArray;
+
+    private _labelPosOffset = ((getMarkerSize _markerName)#0) max ((getMarkerSize _markerName)#1);
+    private _labelPos = (getMarkerPos _markerName) vectorAdd [_labelPosOffset, _labelPosOffset, 0];
+
+    {
+      _x params ["_displayName", "_count"];
+      private _label = createMarker [format["%1_assetList_%2", _markerName, _forEachIndex], _labelPos, 1, _markerPlayer];
+      _label setMarkerShapeLocal "ICON";
+      _label setMarkerTypeLocal "mil_dot";
+      _label setMarkerColorLocal "ColorBlack";
+      _label setMarkerAlphaLocal 0.8;
+      _label setMarkerTextLocal format["%1x %2", _count, _displayName];
+      _label setMarkerSize [0.1,0.1];
+
+      _labelPos = _labelPos vectorAdd [0, -50, 0];
+    } forEach _objectLabels;
+
+  } forEach _safeZoneContents;
+} forEach [west, east, independent];
