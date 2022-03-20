@@ -37,8 +37,8 @@
 
 #define AT_LAUNCHER M80(1)
 
-#define MAT1_LAUNCHER RPG7(4,2)
-#define MAT2_LAUNCHER RPG7(4,2)
+#define MAT1_LAUNCHER RPG7(2,1)
+#define MAT2_LAUNCHER RPG7(2,1)
 
 #define DM_RIFLE "rhs_weap_m76"
 #define DM_MAG "rhsgref_10Rnd_792x57_m76:11"
