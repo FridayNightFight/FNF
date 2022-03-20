@@ -20,7 +20,6 @@
     private _tableVar = _table getVariable "checkVar";
     // "debug_console" callExtension str(_var);
 
-
     // add tables to the UI helpers
     (fnf_ui getVariable "HelperTargets") pushBack [
       compile format["missionNamespace getVariable [""%1"", objNull]", _tableVar],
@@ -211,6 +210,22 @@
       [format["%1_actions", _tableVar], "Load_Clear"],
       _action
     ] call ace_interact_menu_fnc_addActionToObject;
+
+
+
+
+
+
+
+
+    // safestart cleanup waiter
+    [{!(missionNamespace getVariable ["fnf_safetyEnabled", true])}, {
+      {
+        if (typeName _x == "STRING") then {
+          deleteMarker _x;
+        };
+      } forEach (_this getVariable ["tableTarget", []]);
+    }, _table] call CBA_fnc_waitUntilAndExecute;
 
   } forEach (_sideTables select {!isNull _x});
 

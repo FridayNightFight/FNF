@@ -18,10 +18,10 @@ for "_i" from 1 to 50 do {
   };
 };
 
-// publicVariable "fnf_zoneBoundary_boundaryMarks";
-// publicVariable "fnf_zoneBoundary_boundaryPos";
-// publicVariable "fnf_zoneBoundary_boundsLine_marker_1";
-// publicVariable "fnf_zoneBoundary_boundsLine_marker_2";
+publicVariable "fnf_zoneBoundary_boundaryMarks";
+publicVariable "fnf_zoneBoundary_boundaryPos";
+publicVariable "fnf_zoneBoundary_boundsLine_marker_1";
+publicVariable "fnf_zoneBoundary_boundsLine_marker_2";
 
 {
   _x setMarkerText "";

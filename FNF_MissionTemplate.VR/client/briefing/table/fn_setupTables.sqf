@@ -58,11 +58,12 @@ private _squads = ["PLT", "ALPHA", "BRAVO", "CHARLIE", "DELTA", "GOLF", "HOTEL"]
     private _table = "Land_PortableDesk_01_black_F" createVehicle _thisPos;
     if (isNull _table) then {diag_log text format["Failed to create table %1 for %2", _forEachIndex + 1, _sideString]; continue};
     missionNamespace setVariable [_var, _table, true];
-    _table animateSource ["wing_l_hide_source", 2, true];
-    _table animateSource ["wing_r_hide_source", 2, true];
+    (missionNamespace getVariable _var) animateSource ["wing_l_hide_source", 2, true];
+    (missionNamespace getVariable _var) animateSource ["wing_r_hide_source", 2, true];
     _table enableSimulationGlobal false;
     _table setPos (getPos _table vectorAdd [0,0,-0.25]);
     _table setVectorUp [0,0,1];
+    createVehicle ["Land_ClutterCutter_medium_F", getPos _table, [], 0, "CAN_COLLIDE"];
 
     (fnf_briefing_table_objects getOrDefault [_sideStringVar, [], true]) pushBack _table;
     // private _name = format["Briefing Table %1", _forEachIndex + 1];
@@ -78,6 +79,11 @@ private _squads = ["PLT", "ALPHA", "BRAVO", "CHARLIE", "DELTA", "GOLF", "HOTEL"]
       _tableMark setMarkerTypeLocal "mil_box_noShadow";
       _tableMark setMarkerTextLocal _thisSquad;
       _tableMark setMarkerSizeLocal [0.4, 0.4];
+      [{!(missionNamespace getVariable ["fnf_safetyEnabled", true])}, {
+        if (typeName _this == "STRING") then {
+          deleteMarkerLocal _this;
+        };
+      }, _tableMark] call CBA_fnc_waitUntilAndExecute;
     }] remoteExec ["call", 0, true];
 
   } forEach _squads;
