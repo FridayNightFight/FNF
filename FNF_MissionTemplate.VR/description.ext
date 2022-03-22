@@ -1,0 +1,16 @@
+author = "YOUR_NAME";
+onLoadName = "MISSION_NAME";
+onLoadMission = "SHORT_DESCRIPTION";
+
+#include "description\definitions.hpp"
+#include "description\cfgEventHandlers.hpp"
+#include "description\cfgNotifications.hpp"
+#include "description\cfgSounds.hpp"
+#include "description\cfgFunctions.hpp"
+#include "description\cfgFNFORBAT.hpp"
+#include "description\cfgFNFLoadouts.hpp"
+#include "description\cfgVNArtillery.hpp"
+#include "client\ui\defines.hpp"
+#include "client\ui\RscTitlesDisplay.hpp"
+#include "client\ui\PauseMenuDisplays.hpp"
+#include "client\ui\InfoPanel.hpp"

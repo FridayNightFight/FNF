@@ -11,8 +11,8 @@
 
 #define HELMET "rhsgref_helmet_M1_liner"
 #define HELMET_CMDR "UK3CB_TKA_I_H_Patrolcap_OLI"
-#define HELMET_RECON "rhssaf_booniehat_woodland"
-#define HELMET_CREWMAN "rhsusf_cvc_green_alt_helmet"
+#define HELMET_RECON "rhsgref_hat_m43cap_heer"
+#define HELMET_CREWMAN "H_HelmetCrew_I"
 #define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
 
 #define BACKPACK "UK3CB_B_Alice_K"

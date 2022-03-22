@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_vkpo_gloves"
+#define UNIFORM "rhsgref_uniform_3color_desert"
 
-#define VEST "rhs_6b45_rifleman", "rhs_6b45_rifleman_2"
-#define VEST_LEADER "rhs_6b45_off"
-#define VEST_AR "rhs_6b45_mg"
-#define VEST_MEDIC VEST
-#define VEST_CREWMAN VEST
-#define VEST_PILOT VEST
+#define VEST "UK3CB_CW_US_B_LATE_V_PASGT_Rif_Vest"
+#define VEST_LEADER VEST
+#define VEST_AR "UK3CB_CW_US_B_LATE_V_PASGT_MG_Vest"
+#define VEST_MEDIC "UK3CB_CW_US_B_LATE_V_PASGT_Medic_Vest"
+#define VEST_CREWMAN "UK3CB_CW_US_B_LATE_V_PASGT_Crew_Vest"
+#define VEST_PILOT "UK3CB_V_Pilot_Vest"
 
-#define HELMET "rhs_6b47_bala" "rhs_6b47_6m2", "rhs_6b47_6m2_1"
-#define HELMET_CMDR "rhs_vkpo_cap_alt"
-#define HELMET_RECON "rhs_Booniehat_digi"
-#define HELMET_CREWMAN "rhs_6b48"
-#define HELMET_PILOT "rhs_zsh7a_mike_green_alt"
+#define HELMET "UK3CB_CW_US_B_LATE_H_PASGT_01_WDL", "rhsgref_helmet_pasgt_3color_desert"
+#define HELMET_CMDR "UK3CB_CW_US_B_LATE_H_JNR_OFF_Patrol_Cap_WDL_01"
+#define HELMET_RECON "rhssaf_booniehat_woodland"
+#define HELMET_CREWMAN "rhsusf_cvc_green_helmet"
+#define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
 
-#define BACKPACK "rhs_rk_sht_30_emr"
-#define BACKPACK_RADIO "TFAR_mr3000_rhs"
-#define BACKPACK_AR "rhs_tortila_emr"
-#define BACKPACK_AT "rhs_tortila_emr"
-#define BACKPACK_MEDIC "rhs_medic_bag"
+#define BACKPACK "UK3CB_CW_US_B_LATE_B_RIF"
+#define BACKPACK_RADIO "UK3CB_B_B_Radio_Backpack"
+#define BACKPACK_AR "rhsgref_hidf_alicepack"
+#define BACKPACK_AT "rhsgref_hidf_alicepack"
+#define BACKPACK_MEDIC "UK3CB_B_US_Medic_Backpack"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_RU_RATNIK_2020 {
+class RHS_UNI_NATO_US_ARMY_2000 {
   author = "Mazz38";
-  description = "RU: Modern Russian ARMY EMR Camouflage";
+  description = "USA: 2000s American ARMY Desert Storm Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -46,6 +46,7 @@ class RHS_UNI_RU_RATNIK_2020 {
   class SGT : SL {};
   class PL : SGT {
     headgear[] = {HELMET_CMDR};
+    uniform[] = {"UK3CB_CW_US_B_LATE_U_JNR_OFFICER_Uniform_01_WDL"};
   };
 
   class ARA : BASE {
@@ -104,6 +105,7 @@ class RHS_UNI_RU_RATNIK_2020 {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
     backpack[] = {BACKPACK_RADIO};
+    uniform[] = {"UK3CB_CW_US_B_LATE_U_H_Pilot_Uniform_01_NATO"};
   };
 
   class MED : BASE {

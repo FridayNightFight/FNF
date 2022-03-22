@@ -50,6 +50,7 @@ call fnf_client_fnc_setupGame; //Client portion of game modes
   call fnf_briefing_fnc_init; //Briefing
   call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
   call fnf_briefing_fnc_assetDiary; // Add diary entries for assets
+  call fnf_ui_fnc_mapZoneAssets; // show safezone assets on hover
 }] call CBA_fnc_waitUntilAndExecute;
 call fnf_safety_fnc_init; //Enable safety
 call fnf_client_fnc_staggeredLoad; //Start staggered load timer

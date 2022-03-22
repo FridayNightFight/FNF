@@ -1,8 +1,11 @@
-params [["_unit", objNull, [objNull, []]], ["_side", sideEmpty, [sideEmpty]], ["_justReturnMarkers", false, [false]]];
+params [
+  ["_unit", objNull, [objNull, []]],
+  ["_side", sideEmpty, [sideEmpty]],
+  ["_justReturnMarkers", false, [false]],
+  ["_returnBool", true, [true]]
+];
 
 // check if a unit is inside a zone that is a safeZone for their side
-
-
 private _safeZones = [];
 
 if (_side != sideEmpty) then {
@@ -48,15 +51,23 @@ _safeZones = _safeZones select {
   };
 };
 
-if (_justReturnMarkers) then {
-  _safeZones
-} else {
-  switch (typeName _unit) do {
-    case "OBJECT": {
-      _safeZones findIf {vehicle _unit inArea _x} > -1
-    };
-    case "ARRAY": {
-      _safeZones findIf {_unit inArea _x} > -1
-    };
+if (_justReturnMarkers) exitWith {_safeZones};
+
+private _checkIndex = switch (typeName _unit) do {
+  case "OBJECT": {
+    _safeZones findIf {vehicle _unit inArea _x}
+  };
+  case "ARRAY": {
+    _safeZones findIf {_unit inArea _x}
   };
 };
+
+if (_returnBool) exitWith {_checkIndex > -1};
+
+if (!_returnBool) exitWith {
+  if (_checkIndex == -1) exitWith {""};
+  _safeZones select _checkIndex;
+};
+
+format["%1 :: %2: Improper parameters", _fnc_scriptNameParent, _fnc_scriptName] remoteExec ["systemChat", 0];
+false

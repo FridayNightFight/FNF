@@ -1,7 +1,7 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "UK3CB_M16A3"
+#define RIFLE "rhs_weap_m16a4_carryhandle","rhs_weap_m4a1_blockII_bk"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
 #define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 // give Riflemen extra mags
@@ -11,7 +11,7 @@
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "UK3CB_M16A2_UGL","rhs_weap_m4a1_m320"
+#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203","rhs_weap_m4a1_m320"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
@@ -22,42 +22,42 @@
 #define UGL_FLAREWHITE UGL_FlareWhite_F
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_m4_carryhandle"
-#define CARBINE_MAG RIFLE_MAG
-#define CARBINE_MAG_RI RIFLE_MAG_RI
-#define CARBINE_MAG_CREW "rhssaf_30rnd_556x45_EPR_G36:4","rhssaf_30rnd_556x45_Tracers_G36:2"
+#define CARBINE "arifle_TRG21_F"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:7", "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_PMAG:12", "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:6"
+#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_PMAG:4","rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:2"
 
-#define SMG_RIFLE "rhsusf_weap_MP7A2"
-#define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
-#define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
-#define AR_RIFLE "rhs_weap_minimi_para_railed"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
+#define AR_RIFLE "fnf_rpk"
+#define AR_MAG "fnf_45rnd_rpk_green:6"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER AT4(1)
 
-#define MAT1_LAUNCHER CARLG(2,0)
-#define MAT2_LAUNCHER CARLG(2,0)
+#define MAT1_LAUNCHER RPG32(2,0)
+#define MAT2_LAUNCHER RPG32(2,0)
 
-#define DM_RIFLE "rhs_weap_SCARH_FDE_LB"
-#define DM_MAG "rhs_mag_20Rnd_SCAR_762x51_m80_ball:11"
+#define DM_RIFLE "rhs_weap_svdp_wd_npz"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
-#define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
+#define MMG_RIFLE "rhs_weap_pkp"
+#define MMG_MAG "rhs_100Rnd_762x54mmR:8"
+#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
 
-#define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhsusf_weap_MP7A2"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhsusf_mag_40Rnd_46x30_FMJ:8"
+#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
+#define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
 
-#define SNP_RIFLE "rhs_weap_m24sws_d"
-#define SNP_MAG "rhsusf_5Rnd_762x51_m118_special_Mag:12"
+#define SNP_RIFLE "rhs_weap_t5000"
+#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
+class RHS_GEAR_NATO_UKRAINIAN_2020_M16A4 {
   author = "Mazz38";
-  description = "DE: Dutch ARMY M4 Kits";
+  description = "UA: 2020 Ukrainian ARMY M16A4 Kits";
 
   class BASE {
     backpackItems[] = {};
@@ -106,6 +106,7 @@ class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
       LEADER_SMOKES
     };
     items[] += {LEADER_TOOLS};
+    linkedItems[] += {VECTOR};
     giveSideKey = 1;
     giveLRRadio = 1;
   };
@@ -117,7 +118,7 @@ class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
   };
-  class AR : BASE {
+  class AR : ARA {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
@@ -181,15 +182,11 @@ class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
   class MATA1 : BASE {
     defaultMAT[] = {MAT1_LAUNCHER};
   };
-  class MAT1 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
-  };
+  class MAT1 : MATA1 {};
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};
   };
-  class MAT2 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
-  };
+  class MAT2 : MATA2 {};
 
   class RIS : BASE {
     weaponChoices[] = {
