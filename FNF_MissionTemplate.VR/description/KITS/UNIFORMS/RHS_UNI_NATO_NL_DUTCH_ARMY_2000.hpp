@@ -1,6 +1,6 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_3color_desert"
+#define UNIFORM "UK3CB_ADM_B_U_CombatUniform_01_TCC"
 
 #define VEST "rhssaf_vest_md98_rifleman"
 #define VEST_LEADER VEST
@@ -9,9 +9,9 @@
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsusf_ach_helmet_DCU", "rhsgref_helmet_pasgt_3color_desert_rhino"
+#define HELMET "rhsusf_ach_helmet_DCU"
 #define HELMET_CMDR "H_MilCap_gry"
-#define HELMET_RECON "rhsusf_Bowman"
+#define HELMET_RECON "UK3CB_ADA_B_H_BoonieHat_TTC"
 #define HELMET_CREWMAN "rhsusf_cvc_green_ess"
 #define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 

@@ -18,10 +18,10 @@ for "_i" from 1 to 10 do {
 };
 
 _vehicle setPylonLoadout [2, "rhs_mag_m134_pylon_3000", true, [-1]];
-_vehicle setAmmoOnPylon [2, 1200];
+_vehicle setAmmoOnPylon [2, 2000];
 
-_vehicle setPylonLoadout [3, "rhsusf_mag_gau19_melb_right", true, [-1]];
-_vehicle setAmmoOnPylon [3, 700];
+// _vehicle setPylonLoadout [3, "rhsusf_mag_gau19_melb_right", true, [-1]];
+// _vehicle setAmmoOnPylon [3, 700];
 
 _vehicle addWeaponTurret["rhs_weap_laserDesignator_AI",[0]];
 _vehicle addMagazineTurret["rhs_LaserMag_ai", [0], 1];

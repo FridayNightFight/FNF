@@ -111,6 +111,33 @@ call fnf_server_fnc_webhook_roundPrep;
   };
 }] call CBA_fnc_waitUntilAndExecute;
 
+[{getClientStateNumber > 8}, {
+  if (isDedicated) then { // clients already run this code
+    #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+    // put vehicles into a hashmap based on who they belong to (if anyone)
+    fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+    {
+      private _vehicle = _x;
+      switch (true) do {
+        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+        };
+        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+        };
+        default {
+          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+        };
+      };
+    } forEach MISSIONVICS;
+  };
+
+  call fnf_server_fnc_markSafeZoneAssets;
+}] call CBA_fnc_waitUntilAndExecute;
+
 call fnf_server_fnc_populateORBATS;
 call fnf_server_fnc_keyVehicles;
 call fnf_server_fnc_vehicleRadios;
@@ -118,9 +145,22 @@ call fnf_server_fnc_vehicleRadios;
 
 
 //Create map cover for zone boundary
-private _zoneArea = triggerArea zoneTrigger;
-zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
-[zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
+if (!isNil "zoneTrigger") then {
+  // if zoneTrigger exists, use standard functionality
+  for "_i" from 1 to 50 do {
+    private _markerName = format["fnf_zoneBoundary_marker_%1", _i];
+    if (markerShape _markerName != "") then {
+      deleteMarker _markerName;
+    };
+  };
+
+  private _zoneArea = triggerArea zoneTrigger;
+  zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
+  [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
+} else {
+  // if not, use markers
+  call fnf_server_fnc_genIrregularZone;
+};
 
 if !(fnf_gameMode == "sustainedAssault") then {
   // Create respawn markers in bottom left corner of map
@@ -163,6 +203,27 @@ if !(fnf_gameMode == "sustainedAssault") then {
     {_vic enableVehicleSensor [_x, false]} forEach _sensors;
   };
 }, true, [], true] remoteExec ["CBA_fnc_addClassEventHandler", 0, true];
+
+
+// OBJECT AND FORTIFY MANAGEMENT FOR BRIEFING TABLES
+
+// listen for fortify events, catalogue them for exclusion in object overviews
+missionNamespace setVariable ["fnf_placedFortifications", [], true];
+["acex_fortify_objectPlaced", {
+  params ["_placer", "_side", "_object"];
+  _object setVariable ["fnf_isFortifyObject", true, true];
+}] call CBA_fnc_addEventHandler;
+
+addMissionEventHandler ["BuildingChanged", {
+	params ["_from", "_to", "_isRuin"];
+  private _ogModel = _from getVariable ["originalModel", ""];
+  if (_ogModel isEqualTo "") then {
+    _to setVariable ["originalModel", (getModelInfo _from)#1, true];
+  } else {
+    _to setVariable ["originalModel", _ogModel];
+  };
+  // "debug_console" callExtension str([_from, _to, _to getVariable "originalModel"]);
+}];
 
 
 ["TeamkillDetected", {

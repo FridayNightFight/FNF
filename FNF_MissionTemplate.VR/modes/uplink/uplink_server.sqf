@@ -80,8 +80,10 @@ _termTaskSetup = {
   [_side,_taskID,[format ["%1 second hack time",_time],_title,_mark],_term,"AUTOASSIGNED"] call BIS_fnc_taskCreate;
 };
 
+private _terminals = [];
 switch (_numberOfTerminals) do {
   case 1: {
+    _terminals pushback term1;
     term1 call _termMarkSetup;
     {deleteVehicle _x} forEach [term2,term3];
 
@@ -89,7 +91,10 @@ switch (_numberOfTerminals) do {
     [term1, fnf_defendingSide, "defendTask1"] call _termTaskSetup;
   };
   case 2: {
-    {_x call _termMarkSetup;} forEach [term1,term2];
+    {
+      _terminals pushback _x;
+      _x call _termMarkSetup;
+    } forEach [term1,term2];
     deleteVehicle term3;
 
     [term1, fnf_attackingSide, "attackTask1"] call _termTaskSetup;
@@ -98,7 +103,10 @@ switch (_numberOfTerminals) do {
     [term2, fnf_defendingSide, "defendTask2"] call _termTaskSetup;
   };
   case 3: {
-    {_x call _termMarkSetup;} forEach [term1,term2,term3];
+    {
+      _terminals pushback _x;
+      _x call _termMarkSetup;
+    } forEach [term1,term2,term3];
 
     [term1, fnf_attackingSide, "attackTask1"] call _termTaskSetup;
     [term1, fnf_defendingSide, "defendTask1"] call _termTaskSetup;
@@ -111,6 +119,12 @@ switch (_numberOfTerminals) do {
     hint "Terminal number not set correctly";
   };
 };
+
+private _objectives = [];
+{
+  _objectives pushBack [format["Terminal %1", _forEachIndex + 1], getPos _x];
+} forEach _terminals;
+[_objectives] call fnf_briefing_fnc_setupTables;
 
 _hackComplete = {
   _term = _this;

@@ -39,8 +39,9 @@ if !(fnf_gameMode != "sustainedAssault") exitWith {};
           { // statement
             params ["_target", "_player", "_params"];
             _params params ["_eligibleSide", "_otherFlag", "_otherFlagNum"];
-            _pos = (position _otherFlag) findEmptyPosition [0, 20, typeOf _player];
-            _player setPosATL _pos;
+            _pos = (getPos _otherFlag) findEmptyPosition [0, 20, typeOf _player];
+            _pos set [2, (getPosASL _otherFlag)#2];
+            _player setPosASL _pos;
             systemChat format["You've teleported to SafeZone %1", _otherFlagNum];
           },
           { // condition

@@ -17,6 +17,12 @@ if (fnf_defendingSide == sideEmpty || fnf_attackingSide == sideEmpty) exitWith {
   ] remoteExec ["fnf_ui_fnc_notify", 0];
 };
 
+private _objectives = [];
+{
+  _objectives pushBack [format["HVT Zone %1", _forEachIndex + 1], markerPos _x];
+} forEach (["fnf_assassin_boundaries_"] call BIS_fnc_getMarkers);
+[_objectives] call fnf_briefing_fnc_setupTables;
+
 
 // create tasks
 {

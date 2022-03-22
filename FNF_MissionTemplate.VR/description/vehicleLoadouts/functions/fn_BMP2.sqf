@@ -13,6 +13,11 @@ if (missionNamespace getVariable ["fnf_debug", false]) then {
 _vehicle addWeaponTurret["rhs_weap_smokegen",[-1]];
 _vehicle addMagazineTurret["rhs_mag_smokegen", [-1], 999];
 
+_vehicle addWeaponTurret["rhs_weap_kpvt",[0]];
+for "_i" from 1 to 10 do {
+  _vehicle addMagazineTurret["rhs_mag_145x115mm_50", [0], 50];
+};
+
 _vehicle addWeaponTurret["rhs_weap_pkt",[0]];
 _vehicle addMagazineTurret["rhs_mag_762x54mm_2000", [0], 2000];
 

@@ -35,6 +35,14 @@ switch (_numberOfSectors) do {
   case 3: {};
 };
 
+
+private _objectives = [];
+{
+  _objectives pushBack [format["Sector %1", _forEachIndex + 1], getPos _x];
+} forEach fnf_gamemode_sectors;
+[_objectives] call fnf_briefing_fnc_setupTables;
+
+
 _win = {
   fnf_gameEnd = true;
   publicVariable "fnf_gameEnd";

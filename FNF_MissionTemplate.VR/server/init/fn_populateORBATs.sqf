@@ -88,7 +88,7 @@ fnf_ORBATHandlers = [];
     };
   };
 
-  if (playableSlotsNumber _side > 3 && fnf_enemyStartVisible) then {
+  if (playableSlotsNumber _side > 3 && missionNamespace getVariable ["fnf_enemyStartVisible", true]) then {
     _PLTLeader = allPlayers select {side _x isEqualTo _side && _x getVariable "fnfLoadout" isEqualTo "PL"};
     [ // PLTHQ
       missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTHQ", _sideShort],
