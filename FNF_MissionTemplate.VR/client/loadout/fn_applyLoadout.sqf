@@ -18,7 +18,7 @@
 * Public: Yes
 */
 
-if (!hasInterface || isDedicated) exitWith {};
+if (!hasInterface) exitWith {};
 waitUntil {!isNull player};
 
 if (playerSide isEqualTo civilian) exitWith {

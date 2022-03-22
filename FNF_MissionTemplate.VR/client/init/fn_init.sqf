@@ -67,6 +67,7 @@ call fnf_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
 call fnf_server_fnc_populateORBATS;
 call fnf_fnc_teleportInit; // Add leadership teleport options
+[] spawn fnf_briefing_fnc_setupTablesClient;
 
 
 if (fnf_gameMode != "sustainedAssault") then {
@@ -80,13 +81,13 @@ if (fnf_gameMode != "sustainedAssault") then {
 };
 
 //Set player loadout after stagger time
-[{missionNamespace getVariable ["fnf_staggeredLoaded",false]}, {
+[{missionNamespace getVariable ["fnf_staggeredLoaded",false] && !(call BIS_fnc_isLoading)}, {
   call fnf_fnc_showTimeOnMap;
   [player getVariable "fnfLoadout"] call fnf_loadout_fnc_applyLoadout;
 }] call CBA_fnc_waitUntilAndExecute;
 
 // at end of staggered load, check the player's limited FNF play count & notify server if they're new
-[{missionNamespace getVariable ["fnf_staggeredLoaded",false] && time > 0}, {
+[{missionNamespace getVariable ["fnf_staggeredLoaded",false] && time > 0 && !(call BIS_fnc_isLoading)}, {
   private _timesPlayed = profileNamespace getVariable ["fnf_isNewPlayer", 0];
   if (_timesPlayed >= 0 && _timesPlayed <= 3) then {
     ["FNF_NewPlayers_AddToGroup", [group player, player, _timesPlayed]] call CBA_fnc_serverEvent;
@@ -100,7 +101,7 @@ if (fnf_gameMode != "sustainedAssault") then {
   call fnf_loadout_fnc_checkLoadout;
   [false] call fnf_briefing_fnc_parseGear;
 
-  call fnf_fnc_windowBreak;
+  ["init"] call fnf_ui_fnc_drawHelpers;
 
   // disable ambient life
   [] spawn {sleep 0.1; enableEnvironment [false, true]};

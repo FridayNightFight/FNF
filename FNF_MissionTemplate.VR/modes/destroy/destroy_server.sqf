@@ -20,6 +20,13 @@ fnf_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
   };
 } forEach [destroy_obj_1, destroy_obj_2];
 
+// position briefing table view on marker offset rather than direct on objective pos
+private _objectives = [];
+{
+  _objectives pushBack [format["Objective %1", _forEachIndex + 1], markerPos ((str _x) + "_mark")];
+} forEach (fnf_destroyObjs select {!isNull _x});
+[_objectives] call fnf_briefing_fnc_setupTables;
+
 //Set objective marker to defending side color
 {
   _obj = _x select 0;

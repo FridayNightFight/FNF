@@ -22,6 +22,13 @@ fnf_gamemode_sectorInOrder = _inOrder;
 // };
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
+
+private _objectives = [];
+{
+  _objectives pushBack [format["Sector %1", _forEachIndex + 1], getPos _x];
+} forEach fnf_gamemode_sectors;
+[_objectives] call fnf_briefing_fnc_setupTables;
+
 fnf_server_sectorWin = {
   fnf_gameEnd = true;
   publicVariable "fnf_gameEnd";
