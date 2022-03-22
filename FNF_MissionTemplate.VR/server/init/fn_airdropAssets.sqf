@@ -18,7 +18,7 @@ private _objectsToDeleteAfter = [];
   private _thisSideAssetsObjects = [fnf_vehiclesToProcess, _thisSideKey, []] call BIS_fnc_getFromPairs;
   if (count _thisSideAssetsObjects == 0 || playableSlotsNumber _thisSide < 4) then {continue};
 
-  _thisSideAssetsObjects = _thisSideAssetsObjects select {!(_x isKindOf "Air")};
+  _thisSideAssetsObjects = _thisSideAssetsObjects select {!(_x isKindOf "Air") && !(_x isKindOf "Ship")};
   _thisSideAssetTypes = _thisSideAssetsObjects apply {typeOf _x};
   private _thisSideAssets = _thisSideAssetTypes call BIS_fnc_consolidateArray;
 

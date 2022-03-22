@@ -7,16 +7,21 @@ if !(isServer) exitWith {};
 _settings = [
   ["ambientAirdrop", [
     false, // is enabled
-    false, // items are required to reach ground/intact/usable
-    true, // hide markers from players that were placed as reference in editor
+    false, // items are required to reach ground/intact/usable -- will condense the drop and ensure all arrive in zone. designed for function over ambience
+    false, // hide markers from players that were placed as reference in editor
+    0, // delay in seconds from mission start before beginning (planes will take ~30 seconds to arrive)
     [ // drop targets
       [
         west,
-        []
+        [
+
+        ]
       ],
       [
         east,
-        []
+        [
+
+        ]
       ]
     ]
   ]]

@@ -3,6 +3,7 @@ params [
   ["_enabled", true, [true]],
   ["_requiredItems", true, [true]], // guarantee items are delivered by ramping up speed per object from planes
   ["_hideMarkers", true, [true]],
+  ["_startDelay", 0, [0]],
   ["_dropTargets", [], [[]]] // [[west, [[500,500]]], [east, [[1000,1000]]]]
 ];
 
@@ -67,25 +68,30 @@ if (isNil "fnf_ambientAirdrop") then {
 
     // "debug_console" callExtension str([_startDropPos, _endDropPos]);
 
-    // private _startPos = _startDropPos getPos [worldSize*0.25, _bearingRev];
-    // private _endPos = _endDropPos getPos [worldSize*0.25, [_startDropPos, _endDropPos] call BIS_fnc_dirTo];
-    private _startPos = _startDropPos getPos [800, _bearingRev];
-    private _endPos = _endDropPos getPos [800, [_startDropPos, _endDropPos] call BIS_fnc_dirTo];
+    private _startPos = _startDropPos getPos [worldSize*0.25, _bearingRev];
+    private _endPos = _endDropPos getPos [worldSize*0.25, [_startDropPos, _endDropPos] call BIS_fnc_dirTo];
+    // private _startPos = _startDropPos getPos [800, _bearingRev];
+    // private _endPos = _endDropPos getPos [800, [_startDropPos, _endDropPos] call BIS_fnc_dirTo];
 
     private _flyHeight = 150;
 
-    [
-      [_startPos, _startDropPos, _dropTarget, _dropTargetAdjusted, _endDropPos, _endPos],
-      [_bearing, _bearingRev],
-      _dropSpread,
-      _objects,
-      _flyHeight,
-      "NORMAL",
-      _planeClass,
-      _numPlanes,
-      _thisSide,
-      _requiredItems
-    ] call fnf_missionSpecials_fnc_ambientAirdrop_plane;
+    [ // wait until start delay has passed before calling
+      {
+        _this call fnf_missionSpecials_fnc_ambientAirdrop_plane;
+      }, [
+        [_startPos, _startDropPos, _dropTarget, _dropTargetAdjusted, _endDropPos, _endPos],
+        [_bearing, _bearingRev],
+        _dropSpread,
+        _objects,
+        _flyHeight,
+        "NORMAL",
+        _planeClass,
+        _numPlanes,
+        _thisSide,
+        _requiredItems
+      ],
+      _startDelay
+    ] call CBA_fnc_waitAndExecute;
 
   } forEach _dropDetails;
 } forEach _dropTargets;
