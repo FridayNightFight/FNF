@@ -45,6 +45,7 @@ private _objectsToDeleteAfter = [];
   true,
   true,
   false,
+  0, // no delay
   _dropTargets
 ] call fnf_missionSpecials_fnc_ambientAirdrop;
 
