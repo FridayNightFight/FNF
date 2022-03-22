@@ -183,4 +183,4 @@ fnf_showAlliedFactions = true;
 
 
 // debug
-fnf_debug = true;
+fnf_debug = false;

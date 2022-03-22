@@ -1,13 +1,13 @@
-"debug_console" callExtension "----------------------------";
-"debug_console" callExtension (_fnc_scriptName);
-private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
-_systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
-"debug_console" callExtension format _systemTimeFormat;
+// "debug_console" callExtension "----------------------------";
+// "debug_console" callExtension (_fnc_scriptName);
+// private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
+// _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
+// "debug_console" callExtension format _systemTimeFormat;
 
 fnf_safeZoneAssets = createHashMapFromArray [
-  [west, []],
-  [east, []],
-  [independent, []]
+  [west, createHashMap],
+  [east, createHashMap],
+  [independent, createHashMap]
 ];
 
 {
@@ -60,11 +60,11 @@ fnf_safeZoneAssets = createHashMapFromArray [
       _x params ["_displayName", "_count"];
       private _label = createMarker [format["%1_assetList_%2", _markerName, _forEachIndex], _labelPos, 1, _markerPlayer];
       _label setMarkerShapeLocal "ICON";
-      _label setMarkerTypeLocal "mil_dot";
+      _label setMarkerTypeLocal "mil_dot_noShadow";
       _label setMarkerColorLocal "ColorBlack";
-      _label setMarkerAlphaLocal 0.8;
+      _label setMarkerAlphaLocal 0;
       _label setMarkerTextLocal format["%1x %2", _count, _displayName];
-      _label setMarkerSize [0.1,0.1];
+      _label setMarkerSize [0.3,0.3];
 
       _thisZoneMarkers pushBack _label;
 
