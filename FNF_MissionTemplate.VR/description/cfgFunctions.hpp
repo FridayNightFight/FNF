@@ -229,6 +229,10 @@ class CfgFunctions {
       file = "client\ui";
       class missionInfoPanel{};
     };
+    class map {
+      file = "client\ui\map";
+      class mapZoneAssets{};
+    };
   };
   class fnf_server {
     class initServer {
@@ -247,6 +251,7 @@ class CfgFunctions {
       class restoreAirLoadouts{};
       class safeZoneTeleportInit_STD{};
       class newPlayers{};
+      class markSafezoneAssets{};
     };
     class end {
       file = "server\end";

@@ -94,7 +94,7 @@ class UK3CB_BMP2Tank_Base {
   };
 };
 // LAV-25
-class UK3CB_LAV25_Base {
+class UK3CB_LAV25 {
   class FNF_SetLoadout {
     serverInit = "_this call fnf_vehicleLoadouts_fnc_LAV25";
   };
