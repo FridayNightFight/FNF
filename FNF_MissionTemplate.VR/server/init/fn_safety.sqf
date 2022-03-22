@@ -80,6 +80,7 @@ call fnf_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
     { // if not SA, delete safeStart markers
       // if !(getMarkerColor _x isEqualTo "") then {
+        deleteMarker _x;
         _x remoteExec ["deleteMarkerLocal", 0, true];
       // };
     } forEach ([nil, nil, true] call fnf_fnc_inSafeZone);

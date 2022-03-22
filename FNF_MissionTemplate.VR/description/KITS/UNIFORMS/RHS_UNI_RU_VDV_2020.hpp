@@ -9,7 +9,7 @@
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhs_6b7_1m_bala2_emr" "rhs_6b7_1m_bala2_olive", "rhs_6b7_1m_bala2_flora"
+#define HELMET "rhs_6b7_1m_bala2_emr", "rhs_6b7_1m_bala2_olive", "rhs_6b7_1m_bala2_flora"
 #define HELMET_CMDR "rhs_beret_vdv3"
 #define HELMET_RECON "rhs_Booniehat_digi"
 #define HELMET_CREWMAN "rhs_6b48"
