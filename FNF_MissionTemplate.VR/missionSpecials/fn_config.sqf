@@ -40,7 +40,7 @@ _settings = [
 This tool will let you place 1 or more markers on the map for spots you want an airdrop to happen in.
 OPFOR markers will use Antonov AN-2s. BLUFOR markers will use C-130Js.
 The items dropped will be a mix of boxes and barrels to represent general logistics supplies.
-Marker names:
+Recommended marker names:
   fnf_ambientAirdrop_east_N | (OPFOR)
   fnf_ambientAirdrop_west_N | (BLUFOR)
 
