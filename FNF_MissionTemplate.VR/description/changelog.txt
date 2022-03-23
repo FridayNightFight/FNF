@@ -1,3 +1,32 @@
+v3.3.0
+
+- safe zones will now have a list beside them, visible only to the side it belongs to, which displays all of the assets available in that safezone. to see the list for each friendly safezone, open your map and hover over the safe zone itself
+- adds framework functionality for ambient airdrops at arbitrary positions for MM creativity
+- expands on this functionality to enable an MM to airdrop a side's editor-placed assets at mission start
+- adds the ability for mission makers to create irregular zone boundaries for gameplay using a set of points instead of a square/elliptical default trigger, enabling more precise control over defining AOs relative to terrain
+- changes default RPG7 rocket count to 2 HEAT, 1 HE
+- gearset updates
+- safezone teleport flag functionality now accounts for waterborne vehicle altitudes
+- enhancements to export functionality of the FNF vehicle loadout management system
+
+BRIEFING TABLES
+- a pre-existing briefing table is placed in the mission SQM
+- mission makers place this table in a flattish area somewhere (preferably near the center of the main safestart zone), which makes a point of reference
+- at mission start, a briefing table is spawned within 50m of this reference point and no closer than 15m to each other for PLT, ALPHA, BRAVO, CHARLIE, DELTA, GOLF, HOTEL
+- marks are placed on the map, visible only to members of that side, that say something like ALPHA Brief. these act as gathering points for the different squads to hang out around while platoon brief is happening
+- within 10m, players will see a draw3D icon over the table to reassert they're in the right spot
+- grass cutters are added to avoid conflicts in grassy terrain
+
+using Alpha Brief as an example:
+- a player ACE interacts with the table and sets the "focus" of the table from one of multiple predefined spots representing the objective areas defined by the gamemode.
+- all players' draw3D label over the table will change from "ALPHA Brief" to "ALPHA Brief - Sector1" as an example. if the player currently doesn't have Sector 1 loaded, it will say "ALPHA Brief - Sector 1 - Please Re-load!" to notify them they should reload the table on their side to match what everyone else is looking at. a player can use the Load/Clear section > Load Table interaction to select what resolution their computer to handle, and view the same area those around them are seeing.
+- if the focus is changed again, a systemChat message will appear in the bottom left showing who did it and what they changed it to, and the UI icon will change to tell the players to reload the table if it doesn't match what the focus was changed to.
+- this keeps the action of resolution selections and when that happens completely in per-player control.
+- when a focus for a table is set, two map markers visible to players on that side are also made. one is a border representing the view area, and one is a text marker along the right side of that border stating that the table is focused there (i.e. "ALPHA Brief focus").
+
+at safe start end, all tables on all sides are deleted and a gradual process is begun on the clients to remove any objects that existed, slow enough to not cause performance issues but enough so that by 3-5 minutes in, all table objects will have been removed and will not affect gameplay in any way going forward. the map markers are also removed for an uncluttered origin point of that safe start zone and any plans that have been drawn around the objectives previously focused on.
+
+
 v3.2.2
 
 - fixes soldier weapons disappearing upon death, will now drop at body
