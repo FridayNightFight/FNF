@@ -23,22 +23,20 @@ fnf_safeZoneAssets = createHashMapFromArray [
   if (count _thisSideAssetsObjects == 0 || playableSlotsNumber _thisSide < 4) then {continue};
 
 
-  private _PLTplayers = (units _thisSide) select {"PLTHQ" in (roleDescription _x)};
-  private _markerPlayer = if (count _PLTplayers > 0) then {selectRandom(_PLTplayers)} else {selectRandom (units _thisSide)};
+  // private _PLTplayers = (units _thisSide) select {"PLTHQ" in (roleDescription _x)};
+  // private _markerPlayer = if (count _PLTplayers > 0) then {selectRandom(_PLTplayers)} else {selectRandom (units _thisSide)};
 
   // iterate through this side's assets and use a hashmap to group vehicles under which safezone they belong to
   private _sideSafeMarkers = [nil, _thisSide, true] call fnf_fnc_inSafeZone;
   private _safeZoneContents = createHashMap;
   {
-
     _safeMarkerName = _x;
     _safeZoneContents set [_safeMarkerName, []];
 
     {
-      private _markerImIn = [_x, _thisSide, false, false] call fnf_fnc_inSafeZone;
-      if (_markerImIn == "") then {continue};
-      // "debug_console" callExtension str([_markerImIn, _x]);
-      (_safeZoneContents get _markerImIn) pushBack _x;
+      if (_x inArea _safeMarkerName) then {
+        (_safeZoneContents get _safeMarkerName) pushBackUnique _x;
+      };
     } forEach _thisSideAssetsObjects;
   } forEach _sideSafeMarkers;
 
@@ -49,7 +47,8 @@ fnf_safeZoneAssets = createHashMapFromArray [
     private _objects = +_y;
     // "debug_console" callExtension str(_objects);
 
-    _objects = _objects apply {getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")};
+    _objects = _objects arrayIntersect _objects;
+    _objects = _objects select {!isNull _x} apply {getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")};
     private _objectLabels = _objects call BIS_fnc_consolidateArray;
 
     private _labelPosOffset = ((getMarkerSize _markerName)#0) max ((getMarkerSize _markerName)#1);
@@ -58,7 +57,7 @@ fnf_safeZoneAssets = createHashMapFromArray [
     private _thisZoneMarkers = [];
     {
       _x params ["_displayName", "_count"];
-      private _label = createMarker [format["%1_assetList_%2", _markerName, _forEachIndex], _labelPos, 1, _markerPlayer];
+      private _label = createMarker [format["%1_assetList_%2", _markerName, _forEachIndex], _labelPos, -1];
       _label setMarkerShapeLocal "ICON";
       _label setMarkerTypeLocal "mil_dot_noShadow";
       _label setMarkerColorLocal "ColorBlack";

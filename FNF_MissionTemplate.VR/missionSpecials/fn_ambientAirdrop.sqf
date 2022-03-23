@@ -51,7 +51,12 @@ if (isNil "fnf_ambientAirdrop") then {
     private _formationOffset = _bearing + 90;
     if (_formationOffset > 359) then {_formationOffset = _formationOffset - 360};
     private _dropTarget = _position;
-    private _dropTargetAdjusted = _dropTarget getPos [(_numPlanes - 1) * 100, _formationOffset];
+    private "_dropTargetAdjusted";
+    if (_requiredItems) then {
+      _dropTargetAdjusted = _dropTarget getPos [(_numPlanes - 1) * 25, _formationOffset];
+    } else {
+      _dropTargetAdjusted = _dropTarget getPos [(_numPlanes - 1) * 75, _formationOffset];
+    };
 
     private _bearingRev = _bearing + 180;
     if (_bearingRev > 359) then {_bearingRev = _bearingRev - 360};
@@ -59,8 +64,8 @@ if (isNil "fnf_ambientAirdrop") then {
     // start dropping cargo 150m before reaching the actual target
     private ["_startDropPos", "_endDropPos"];
     if (_requiredItems) then {
-      _startDropPos = _dropTargetAdjusted getPos [25, _bearingRev];
-      _endDropPos = _dropTargetAdjusted getPos [25, _bearing];
+      _startDropPos = _dropTargetAdjusted getPos [20, _bearingRev];
+      _endDropPos = _dropTargetAdjusted getPos [20, _bearing];
     } else {
       _startDropPos = _dropTargetAdjusted getPos [_dropSpread, _bearingRev];
       _endDropPos = _dropTargetAdjusted getPos [_dropSpread, _bearing];

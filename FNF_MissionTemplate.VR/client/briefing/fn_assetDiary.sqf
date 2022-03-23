@@ -481,52 +481,52 @@ fnf_assetDiaryIND = player createDiarySubject ["INDAssets", "IND Assets", "\A3\u
 fnf_assetDiaryOther = player createDiarySubject ["OtherAssets", "Other Assets", "\A3\ui_f\data\igui\cfg\simpleTasks\types\car_ca.paa"];
 
 
-#define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
-#define MISSIONVICS_SORTED ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy)
+// #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+// #define MISSIONVICS_SORTED ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy)
 
 // put vehicles into a hashmap based on who they belong to (if anyone)
-fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+// fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
 
-switch (fnf_gameMode == "sustainedAssault") do {
-  case false: {
-    {
-      private _vehicle = _x;
-      switch (true) do {
-        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
-        };
-        default {
-          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
-        };
-      };
-    } forEach MISSIONVICS;
-  };
-  case true: {
-    {
-      private _vehicle = _x;
-      switch (true) do {
-        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
-        };
-        default {
-          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
-        };
-      };
-    } forEach MISSIONVICS;
-  };
-};
+// switch (fnf_gameMode == "sustainedAssault") do {
+//   case false: {
+//     {
+//       private _vehicle = _x;
+//       switch (true) do {
+//         case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+//           [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//         case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+//           [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//         case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+//           [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//         default {
+//           [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//       };
+//     } forEach MISSIONVICS;
+//   };
+//   case true: {
+//     {
+//       private _vehicle = _x;
+//       switch (true) do {
+//         case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+//           [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//         case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+//           [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//         case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+//           [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//         default {
+//           [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+//         };
+//       };
+//     } forEach MISSIONVICS;
+//   };
+// };
 
 
 // create diary records
@@ -560,7 +560,7 @@ switch (fnf_gameMode == "sustainedAssault") do {
         false
       ];
 
-    } forEach ((_objects apply {typeOf _x}) call BIS_fnc_consolidateArray);
+    } forEach ((_objects select {!isNull _x} apply {typeOf _x}) call BIS_fnc_consolidateArray);
   };
 } forEach ["BLU", "OPF", "IND", "OTHER"];
 
@@ -573,3 +573,5 @@ _diarySubjectsToCheck = ["BLUAssets","OPFAssets","INDAssets","OtherAssets"];
     player removeDiarySubject _name;
   };
 } forEach (allDiarySubjects player);
+
+true

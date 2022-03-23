@@ -20,7 +20,7 @@ fnf_briefing_table_views = [];
   fnf_briefing_table_views pushBack [_name, _position];
 } forEach _objectives;
 
-
+private _missionVehicles = (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"});
 private _squads = ["PLT", "ALPHA", "BRAVO", "CHARLIE", "DELTA", "GOLF", "HOTEL"];
 
 {
@@ -44,12 +44,16 @@ private _squads = ["PLT", "ALPHA", "BRAVO", "CHARLIE", "DELTA", "GOLF", "HOTEL"]
     //   [markerPos (([nil, _side, true] call fnf_fnc_inSafeZone) select 0), 50]
     // ], [], {[_this, _side] call fnf_fnc_inSafeZone}] call BIS_fnc_randomPos;
 
+
+
     private _thisPos = [[
       [_briefingTableStartPos, 50]
     ], [], {
       private _pos = _this;
       [_pos, _side] call fnf_fnc_inSafeZone &&
-      (fnf_briefing_table_objects getOrDefault [_sideStringVar, [], true]) findIf {_pos distance2D _x < 20} == -1
+      (fnf_briefing_table_objects getOrDefault [_sideStringVar, [], true]) findIf {_pos distance2D _x < 20} == -1 &&
+      _missionVehicles findIf {_pos distance2D _x < 8} == -1 &&
+      !(isOnRoad _pos)
     }] call BIS_fnc_randomPos;
 
     _thisPos = _thisPos getPos [5, _thisPos getDir _briefingTableStartPos];

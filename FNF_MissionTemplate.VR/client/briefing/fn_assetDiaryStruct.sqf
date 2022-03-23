@@ -444,8 +444,8 @@ _getVehicleData = {
   [_dispName, _outArr joinString "<br/>"];
 };
 
-#define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
-#define MISSIONVICS_SORTED ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy)
+// #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+// #define MISSIONVICS_SORTED ([entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"}, [], {(configOf _x) call BIS_fnc_displayName}, "DESCEND"] call BIS_fnc_sortBy)
 
 
 // create diary records
@@ -474,7 +474,7 @@ _getVehicleData = {
         _processedText
       ] call BIS_fnc_setToPairs;
 
-    } forEach ((_objects apply {typeOf _x}) call BIS_fnc_consolidateArray);
+    } forEach ((_objects select {!isNull _x} apply {typeOf _x}) call BIS_fnc_consolidateArray);
   };
 } forEach ["BLU", "OPF", "IND", "OTHER"];
 

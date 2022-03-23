@@ -42,7 +42,7 @@ private _sunset = (date call BIS_fnc_sunriseSunsetTime) select 1;
 if (fnf_isNightMission isEqualTo -1) then {
   missionNamespace setVariable ["fnf_environment_isDaytime", dayTime > _sunrise && dayTime < _sunset, true];
 } else {
-  missionNamespace setVariable ["fnf_environment_isDaytime", [false, true] select fnf_isNightMission, true];
+  missionNamespace setVariable ["fnf_environment_isDaytime", [true, false] select fnf_isNightMission, true];
 };
 
 estimatedTimeLeft (60 * (fnf_safeStartTime + fnf_missionTimeLimit));
@@ -59,14 +59,43 @@ call fnf_server_fnc_setupGame;
 call fnf_server_fnc_newPlayers;
 call fnf_server_fnc_webhook_roundPrep;
 
+#define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+// put vehicles into a hashmap based on who they belong to (if anyone)
+fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+{
+  private _vehicle = _x;
+  if (isNull _vehicle) then {continue};
+  switch (true) do {
+    case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+      [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+    };
+    case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+      [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+    };
+    case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+      [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+    };
+    default {
+      [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+    };
+  };
+} forEach MISSIONVICS;
+
+publicVariable "fnf_vehiclesToProcess";
+
 // after custom building markers are up, recreate safe markers so they're on top and visible
 [
   {
     missionNamespace getVariable ["fnf_markCustomObjs_ready", false] &&
     missionNamespace getVariable ["fnf_serverSetupGame", false]
   }, {
-    private _safeMarkers = [objNull, nil, true] call fnf_fnc_inSafeZone;
+    call fnf_server_fnc_markSafeZoneAssets;
 
+    if (count (missionNamespace getVariable ["fnf_airdropAssets", []]) > 0) then {
+      [{getClientStateNumber >= 10}, {call fnf_server_fnc_airdropAssets}] call CBA_fnc_waitUntilAndExecute;
+    };
+
+    private _safeMarkers = [objNull, nil, true] call fnf_fnc_inSafeZone;
     {
       if (markerShape _x != "") then {
         _x setMarkerType "mil_dot";
@@ -77,65 +106,6 @@ call fnf_server_fnc_webhook_roundPrep;
       };
     } forEach _safeMarkers;
     missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
-
-
-}] call CBA_fnc_waitUntilAndExecute;
-
-[{getClientStateNumber == 10}, {
-  if (isDedicated) then { // clients already run this code
-    #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
-    // put vehicles into a hashmap based on who they belong to (if anyone)
-    fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
-    {
-      private _vehicle = _x;
-      "debug_console" callExtension str([typeOf _vehicle]);
-      switch (true) do {
-        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
-        };
-        default {
-          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
-        };
-      };
-    } forEach MISSIONVICS;
-  };
-
-  if (count (missionNamespace getVariable ["fnf_airdropAssets", []]) > 0) then {
-    call fnf_server_fnc_airdropAssets;
-  };
-}] call CBA_fnc_waitUntilAndExecute;
-
-[{getClientStateNumber > 8}, {
-  if (isDedicated) then { // clients already run this code
-    #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
-    // put vehicles into a hashmap based on who they belong to (if anyone)
-    fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
-    {
-      private _vehicle = _x;
-      switch (true) do {
-        case ([_vehicle, west] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, east] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
-        };
-        case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
-          [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
-        };
-        default {
-          [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
-        };
-      };
-    } forEach MISSIONVICS;
-  };
-
-  call fnf_server_fnc_markSafeZoneAssets;
 }] call CBA_fnc_waitUntilAndExecute;
 
 call fnf_server_fnc_populateORBATS;

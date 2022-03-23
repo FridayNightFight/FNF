@@ -50,7 +50,10 @@ private _totalObjectCount = 0;
 // "debug_console" callExtension str(_side);
 // "debug_console" callExtension str(_objects);
 
-private _formation = "WEDGE";
+private _formation = switch (_isRequired) do {
+  case false: {"WEDGE"};
+  case true: {"ECH LEFT"};
+};
 
 private _mainVehicleGroup = createGroup [_side, true];
 _mainVehicleGroup allowFleeing 0;
@@ -94,7 +97,16 @@ for "_i" from 1 to _vehicleCount do {
     _atLeastOneObjects = _objects select {_x#1 > 0};
     _thisObject = selectRandom(_atLeastOneObjects);
     if (isNil "_thisObject") exitWith {};
-    _objects set [(_objects findIf {_thisObject#0 == _x#0}), [_thisObject#0, _thisObject#1 - 1]];
+
+    switch (typeName (_thisObject select 0)) do {
+      case "STRING": {
+        _objects set [(_objects findIf {_thisObject#0 == _x#0}), [_thisObject#0, _thisObject#1 - 1]];
+      };
+      case "ARRAY": {
+        _objects set [(_objects findIf {_thisObject#0#0 == _x#0#0}), [_thisObject#0, _thisObject#1 - 1]];
+      };
+    };
+
     _vehicleObjects pushBack _thisObject#0;
   };
   _vehicle setVariable ["objectsToDrop", _vehicleObjects];
@@ -153,15 +165,37 @@ _startDropWaypoint setWaypointStatements [
       _vehicle distance2D _dropTarget < _dropSpread
     }, {
       params ['_vehicle', '_dropTarget', '_dropSpread', '_isRequired', '_vehiclesCount'];
+      private _groundPlanePos = (getPos _vehicle); _groundPlanePos set [2, 0];
+      if (fnf_environment_isDaytime) then {
+        ""SmokeShellPurple"" createVehicle _groundPlanePos;
+      } else {
+        ""F_20mm_White"" createVehicle _groundPlanePos;
+      };
       [
         {
           _args params ['_vehicle', '_dropTarget', '_dropSpread'];
           private _objectsToDrop = _vehicle getVariable 'objectsToDrop';
           private _thisRoundObject = selectRandom(_objectsToDrop);
-          if (isNil '_thisRoundObject') exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
+          if (isNil '_thisRoundObject') exitWith {
+            private _groundPlanePos = (getPos _vehicle); _groundPlanePos set [2, 0];
+            if (fnf_environment_isDaytime) then {
+              ""SmokeShellPurple"" createVehicle _groundPlanePos;
+            } else {
+              ""F_20mm_White"" createVehicle _groundPlanePos;
+            };
+            [_handle] call CBA_fnc_removePerFrameHandler
+          };
           _objectsToDrop deleteAt (_objectsToDrop find _thisRoundObject);
           [_vehicle, _thisRoundObject] call fnf_missionSpecials_fnc_ambientAirdrop_box;
-          if (_vehicle distance2D _dropTarget > _dropSpread) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
+          if (_vehicle distance2D _dropTarget > _dropSpread) exitWith {
+            private _groundPlanePos = (getPos _vehicle); _groundPlanePos set [2, 0];
+            if (fnf_environment_isDaytime) then {
+              ""SmokeShellPurple"" createVehicle _groundPlanePos;
+            } else {
+              ""F_20mm_White"" createVehicle _groundPlanePos;
+            };
+            [_handle] call CBA_fnc_removePerFrameHandler;
+          };
         },
         if (_isRequired) then {0.3} else {linearConversion [100, 500, speed _vehicle, 2.4, 0.3, true]},
         _this

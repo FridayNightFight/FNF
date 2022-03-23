@@ -19,7 +19,9 @@ private _objectsToDeleteAfter = [];
   if (count _thisSideAssetsObjects == 0 || playableSlotsNumber _thisSide < 4) then {continue};
 
   _thisSideAssetsObjects = _thisSideAssetsObjects select {!(_x isKindOf "Air") && !(_x isKindOf "Ship")};
-  _thisSideAssetTypes = _thisSideAssetsObjects apply {typeOf _x};
+  _thisSideAssetTypes = _thisSideAssetsObjects apply {
+    [typeOf _x, compile ([_x, ""] call BIS_fnc_exportVehicle)]
+  };
   private _thisSideAssets = _thisSideAssetTypes call BIS_fnc_consolidateArray;
 
   private _thisSideMainSafeMarker = ([nil, _thisSide, true] call fnf_fnc_inSafeZone)#0;
@@ -28,9 +30,9 @@ private _objectsToDeleteAfter = [];
     _thisSide,
     [
       [
-        2,
-        // (((markerSize _thisSideMainSafeMarker) select 0) min ((markerSize _thisSideMainSafeMarker) select 1)) - 30, // 30 inside of the smallest safestart edge
-        200,
+        3,
+        (((markerSize _thisSideMainSafeMarker) select 0) min ((markerSize _thisSideMainSafeMarker) select 1)) - 30, // 30 inside of the smallest safestart edge
+        // 200,
         markerPos _thisSideMainSafeMarker,
         random(359),
         _thisSideAssets
@@ -39,14 +41,19 @@ private _objectsToDeleteAfter = [];
   ];
 
   _objectsToDeleteAfter append _thisSideAssetsObjects;
-} forEach fnf_airdropAssets;
+} forEach fnf_airdropAssets; // config.sqf array [west, east] etc
 
-[
-  true,
-  true,
-  false,
-  0, // no delay
-  _dropTargets
-] call fnf_missionSpecials_fnc_ambientAirdrop;
+if (count _dropTargets > 0) then {
+  [
+    true,
+    true,
+    false,
+    0, // no delay
+    _dropTargets
+  ] call fnf_missionSpecials_fnc_ambientAirdrop;
 
-{deleteVehicle _x} forEach _objectsToDeleteAfter;
+  {deleteVehicle _x} forEach _objectsToDeleteAfter;
+  true;
+} else {
+  false;
+};
