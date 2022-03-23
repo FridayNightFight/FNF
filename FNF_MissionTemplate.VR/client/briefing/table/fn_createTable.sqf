@@ -135,9 +135,11 @@ private _vectorDiff = [0, 0, _tableHeight/2 + (_zOffset * _scale) + 0.05 + _manu
       ] call BIS_fnc_createSimpleObject;
 
       private _scaledPos = _relCentre vectorMultiply _scale;
-      private _newPos = if (_useTerrainHeight) then {(_table modelToWorldWorld (_scaledPos vectorAdd _vectorDiff))}
-      else
-      {_table modelToWorldWorld (_scaledPos vectorAdd _vectorDiff)};
+      private _newPos = if (_useTerrainHeight) then {
+        (_table modelToWorldWorld (_scaledPos vectorAdd _vectorDiff))
+      } else {
+        _table modelToWorldWorld (_scaledPos vectorAdd _vectorDiff)
+      };
       _tableObj setPosWorld _newPos;
       _tableObj setVectorDirAndUp [_table vectorModelToWorld _relVectDir, _table vectorModelToWorld _relVectUp];
       _tableObj setObjectScale _scale * getObjectScale _x;
@@ -145,6 +147,44 @@ private _vectorDiff = [0, 0, _tableHeight/2 + (_zOffset * _scale) + 0.05 + _manu
     };
   };
 } forEach _objects;
+
+if (!isNil "fnf_briefingTable_highlightAreas") then {
+  {
+    _x params ["_position", "_size"];
+    if !(_position inArea _marker) then {continue};
+    if (typeName _size == "ARRAY") then {_size = _size#0};
+    _size = _size * 2;
+
+    private _relCentre = _dummy worldToModel _position;
+    private _relVectDir = _dummy vectorWorldToModel [0,1,0];
+    private _relVectUp = _dummy vectorWorldToModel [0,0,1];
+    // private _tableObj = [[
+    //     "",
+    //     "a3\structures_f_heli\vr\helpers\sign_sphere100cm_f.p3d"
+    //   ],
+    //   [0,0,0],
+    //   0,
+    //   false, // followTerrain
+    //   false, // force superSimpleObject
+    //   true // local
+    // ] call BIS_fnc_createSimpleObject;
+
+    private _tableObj = createSimpleObject ["Sign_Sphere100cm_F", [0,0,0], true];
+    _tableObj enableSimulation false;
+
+    private _scaledPos = _relCentre vectorMultiply _scale;
+    private _newPos = if (_useTerrainHeight) then {
+      (_table modelToWorldWorld (_scaledPos vectorAdd _vectorDiff))
+    } else {
+      _table modelToWorldWorld (_scaledPos vectorAdd _vectorDiff)
+    };
+    _tableObj setPosWorld _newPos;
+    _tableObj setVectorDirAndUp [_table vectorModelToWorld _relVectDir, _table vectorModelToWorld _relVectUp];
+    _tableObj setObjectScale (_size * _scale);
+    _tableObj setObjectTexture [0, "#(argb,8,8,3)color(1,0.8,0.1,0.03,ca)"];
+    _tableObjects pushBack _tableObj;
+  } forEach fnf_briefingTable_highlightAreas;
+};
 
 // private _roadsToRender = [];
 private _roadMaterials = createHashMapFromArray [

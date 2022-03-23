@@ -29,7 +29,10 @@ private _squads = ["PLT", "ALPHA", "BRAVO", "CHARLIE", "DELTA", "GOLF", "HOTEL"]
   private _sideString = format["%1", _x call BIS_fnc_sideNameUnlocalized];
   private _sideStringVar = format["_%1", _x call BIS_fnc_sideNameUnlocalized];
   private _briefingTableStart = missionNamespace getVariable [format["fnf_briefingTable_%1", _sideString], objNull];
-  if (isNull _briefingTableStart) then {continue};
+  if (isNull _briefingTableStart) then {
+    deleteVehicle _briefingTableStart;
+    continue;
+  };
 
   private _briefingTableStartPos = getPos _briefingTableStart;
   deleteVehicle _briefingTableStart;

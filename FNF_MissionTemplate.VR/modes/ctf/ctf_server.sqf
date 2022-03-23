@@ -44,10 +44,13 @@ createMarker ["capZoneMarkText", position ctf_attackTrig];
 if !(_showCapZoneGlobal) then {
   {_x setMarkerAlpha 0} forEach ["capZoneMark","capZoneMarkText"];
 } else {
+  fnf_briefingTable_highlightAreas = []; // contains places that should be highlighted with a sphere
   private _objectives = [];
   _objectives pushBack ["Flag Capture Zone", getPos ctf_attackTrig];
+  fnf_briefingTable_highlightAreas pushBack [getPos ctf_attackTrig, ((triggerArea ctf_attackTrig)#0) max ((triggerArea ctf_attackTrig)#1)];
   [_objectives] call fnf_briefing_fnc_setupTables;
-}
+  publicVariable "fnf_briefingTable_highlightAreas";
+};
 
 ["capZoneMark",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, fnf_attackingSide], true];
 ["capZoneMarkText",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, fnf_attackingSide], true];

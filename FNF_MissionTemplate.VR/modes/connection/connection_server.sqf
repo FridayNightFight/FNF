@@ -40,11 +40,14 @@ switch (_numberOfTerminals) do {
   default {hint "Terminal number not set correctly";};
 };
 
+fnf_briefingTable_highlightAreas = []; // contains places that should be highlighted with a sphere
 private _objectives = [];
 {
   _objectives pushBack [format["Terminal %1", _forEachIndex + 1], getPos _x];
+  fnf_briefingTable_highlightAreas pushBack [getPos _x, 25];
 } forEach _terminals;
 [_objectives] call fnf_briefing_fnc_setupTables;
+publicVariable "fnf_briefingTable_highlightAreas";
 
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
