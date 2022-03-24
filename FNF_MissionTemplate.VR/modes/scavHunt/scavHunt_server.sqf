@@ -37,6 +37,9 @@ private _objectives = [];
 } forEach _scavHuntObjectives;
 [_objectives] call fnf_briefing_fnc_setupTables;
 
+fnf_specObjectives = _scavHuntObjectives apply {_x#0};
+publicVariable "fnf_specObjectives";
+
 private _scavHuntTransports = [];
 for "_i" from 1 to (_numberOfTransportsPerSide * (count fnf_sidesInMission)) do {
 	private _obj = missionNamespace getVariable [format["scav_transport_%1", _i], objNull];

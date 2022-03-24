@@ -30,6 +30,9 @@ private _objectives = [];
 [_objectives] call fnf_briefing_fnc_setupTables;
 publicVariable "fnf_briefingTable_highlightAreas";
 
+fnf_specObjectives = fnf_destroyObjs select {!isNull _x};
+publicVariable "fnf_specObjectives";
+
 //Set objective marker to defending side color
 {
   _obj = _x select 0;
@@ -76,19 +79,25 @@ publicVariable "fnf_briefingTable_highlightAreas";
     _defendTaskID = "defendTask" + str _taskCount;
     _attackTaskID = "attackTask" + str _taskCount;
 
-    [fnf_defendingSide,_defendTaskID,["",format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
-    [fnf_attackingSide,_attackTaskID,["",format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
+    private _itemConfig = [_x # 0] call CBA_fnc_getObjectConfig;
+    private _itemPic = [_itemConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+
+    [fnf_defendingSide,_defendTaskID,[format["<img image='%1' width='300'>", _itemPic],format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_attackingSide,_attackTaskID,[format["<img image='%1' width='300'>", _itemPic],format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
 
     [(_x select 0), -1] call ace_cargo_fnc_setSize;
 
     //Check for alive objective
-    [_x select 0, _x select 1, _defendTaskID, _attackTaskID] spawn {
-      params ["_object","_markerName","_defendTaskID","_attackTaskID"];
+    [_x select 0, _x select 1, _defendTaskID, _attackTaskID, _taskCount] spawn {
+      params ["_object","_markerName","_defendTaskID","_attackTaskID", "_taskCount"];
 
       waitUntil {!alive _object};
 
       [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
       [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+
+
+      [format["Objective %1 has been destroyed!", _taskCount], "info", 7] remoteExec ["fnf_ui_fnc_notify",0,false];
 
       fnf_aliveObjectives = fnf_aliveObjectives - 1;
       [_markerName] remoteExec ["deleteMarkerLocal",0,true];

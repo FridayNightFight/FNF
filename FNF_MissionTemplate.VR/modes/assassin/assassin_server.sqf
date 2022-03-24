@@ -23,6 +23,8 @@ private _objectives = [];
 } forEach (["fnf_assassin_boundaries_"] call BIS_fnc_getMarkers);
 [_objectives] call fnf_briefing_fnc_setupTables;
 
+fnf_specObjectives = [];
+publicVariable "fnf_specObjectives";
 
 // create tasks
 {
@@ -66,7 +68,7 @@ private _objectives = [];
     // if object hasn't been saved or isn't alive or is null, try to save
     // will either save correct object, or objNull
     private _newObj = HVTXOBJ;
-    if (isNil "_object") then {
+    if (!isNull _newObj) then {
       (_x # 1) set [2, _newObj];
     };
 

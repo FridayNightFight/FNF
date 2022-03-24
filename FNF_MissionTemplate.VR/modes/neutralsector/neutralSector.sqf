@@ -44,6 +44,9 @@ private _objectives = [];
 [_objectives] call fnf_briefing_fnc_setupTables;
 publicVariable "fnf_briefingTable_highlightAreas";
 
+fnf_specObjectives = [];
+publicVariable "fnf_specObjectives";
+
 
 _win = {
   fnf_gameEnd = true;

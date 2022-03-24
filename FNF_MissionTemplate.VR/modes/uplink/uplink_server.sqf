@@ -129,6 +129,9 @@ private _objectives = [];
 [_objectives] call fnf_briefing_fnc_setupTables;
 publicVariable "fnf_briefingTable_highlightAreas";
 
+fnf_specObjectives = _terminals;
+publicVariable "fnf_specObjectives";
+
 _hackComplete = {
   _term = _this;
 

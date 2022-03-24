@@ -49,6 +49,9 @@ private _objectives = [];
 [_objectives] call fnf_briefing_fnc_setupTables;
 publicVariable "fnf_briefingTable_highlightAreas";
 
+fnf_specObjectives = _terminals;
+publicVariable "fnf_specObjectives";
+
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
 fnf_serverTerminalAction = {

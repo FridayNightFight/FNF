@@ -52,6 +52,9 @@ if !(_showCapZoneGlobal) then {
   publicVariable "fnf_briefingTable_highlightAreas";
 };
 
+fnf_specObjectives = [ctf_flag];
+publicVariable "fnf_specObjectives";
+
 ["capZoneMark",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, fnf_attackingSide], true];
 ["capZoneMarkText",1] remoteExec ["setMarkerAlphaLocal", [sideLogic, fnf_attackingSide], true];
 

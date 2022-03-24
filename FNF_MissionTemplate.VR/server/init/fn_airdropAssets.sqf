@@ -30,11 +30,11 @@ private _objectsToDeleteAfter = [];
     _thisSide,
     [
       [
-        3,
+        2,
         (((markerSize _thisSideMainSafeMarker) select 0) min ((markerSize _thisSideMainSafeMarker) select 1)) - 30, // 30 inside of the smallest safestart edge
         // 200,
         markerPos _thisSideMainSafeMarker,
-        random(359),
+        120,
         _thisSideAssets
       ]
     ]

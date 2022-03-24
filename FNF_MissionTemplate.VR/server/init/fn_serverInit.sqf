@@ -120,7 +120,7 @@ if (!isNil "zoneTrigger") then {
   for "_i" from 1 to 50 do {
     private _markerName = format["fnf_zoneBoundary_marker_%1", _i];
     if (markerShape _markerName != "") then {
-      deleteMarker _markerName;
+      _markerName remoteExec ["deleteMarkerLocal", 0, true];
     };
   };
 

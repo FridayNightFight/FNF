@@ -28,6 +28,9 @@ private _objectives = [];
 [_objectives] call fnf_briefing_fnc_setupTables;
 publicVariable "fnf_briefingTable_highlightAreas";
 
+fnf_specObjectives = _terminals;
+publicVariable "fnf_specObjectives";
+
 switch (typeName _terminalHackTime) do {
   case "ARRAY": {
     fnf_term1Time = _terminalHackTime select 0;
