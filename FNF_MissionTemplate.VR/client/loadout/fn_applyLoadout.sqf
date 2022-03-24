@@ -19,7 +19,6 @@
 */
 
 if (!hasInterface) exitWith {};
-waitUntil {!isNull player};
 
 if (playerSide isEqualTo civilian) exitWith {
   fnf_selector_optics = [];

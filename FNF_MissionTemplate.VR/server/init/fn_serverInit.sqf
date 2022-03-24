@@ -184,7 +184,7 @@ missionNamespace setVariable ["fnf_placedFortifications", [], true];
   _object setVariable ["fnf_isFortifyObject", true, true];
 }] call CBA_fnc_addEventHandler;
 
-addMissionEventHandler ["BuildingChanged", {
+fnf_briefingTable_buildingChangedEH = addMissionEventHandler ["BuildingChanged", {
 	params ["_from", "_to", "_isRuin"];
   private _ogModel = _from getVariable ["originalModel", ""];
   if (_ogModel isEqualTo "") then {
@@ -194,7 +194,9 @@ addMissionEventHandler ["BuildingChanged", {
   };
   // "debug_console" callExtension str([_from, _to, _to getVariable "originalModel"]);
 }];
-
+[{!(missionNamespace getVariable ["fnf_safetyEnabled", true])}, {
+  removeMissionEventHandler ["BuildingChanged", fnf_briefingTable_buildingChangedEH];
+}] call CBA_fnc_waitUntilAndExecute;
 
 ["TeamkillDetected", {
   params ["_killed", "_killer"];
