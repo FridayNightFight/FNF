@@ -12,7 +12,7 @@
 #define HELMET "UK3CB_ANA_B_H_Beret_MAR"
 #define HELMET_CMDR "UK3CB_ANA_B_H_OFF_Beret_MAR"
 #define HELMET_RECON "UK3CB_H_Beanie_01"
-#define HELMET_CREWMAN "rhsusf_cvc_green_helmet"
+#define HELMET_CREWMAN "H_HelmetCrew_I"
 #define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
 
 #define BACKPACK "UK3CB_B_Fieldpack"
@@ -46,7 +46,6 @@ class RHS_UNI_NATO_UK_PARA_1980 {
   class SGT : SL {};
   class PL : SGT {
     headgear[] = {HELMET_CMDR};
-    uniform[] = {"UK3CB_CW_US_B_LATE_U_JNR_OFFICER_Uniform_01_WDL"};
   };
 
   class ARA : BASE {
