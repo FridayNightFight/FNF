@@ -52,7 +52,7 @@ private _totalObjectCount = 0;
 
 private _formation = switch (_isRequired) do {
   case false: {"WEDGE"};
-  case true: {"ECH LEFT"};
+  case true: {"COLUMN"};
 };
 
 private _mainVehicleGroup = createGroup [_side, true];
@@ -67,7 +67,7 @@ for "_i" from 1 to _vehicleCount do {
   private _thisStartPos = _startPos getPos [100 + (_i*200), _directionRev];
   _thisStartPos set [2, _height];
 
-  _vehicleContainer	= [_thisStartPos, _direction, _class, _mainVehicleGroup] call BIS_fnc_spawnVehicle;
+  _vehicleContainer = [_thisStartPos, _direction, _class, _mainVehicleGroup] call BIS_fnc_spawnVehicle;
   _vehicleContainer params ["_vehicle", "_vehicleCrew", "_vehicleGroup"];
   _vehicleGroupLeader = leader _vehicleGroup;
   _vehicle setVectorUp [0, 0, 1];

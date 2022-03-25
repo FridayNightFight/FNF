@@ -1,5 +1,6 @@
 v3.3.0
 
+RC1
 - safe zones will now have a list beside them, visible only to the side it belongs to, which displays all of the assets available in that safezone. to see the list for each friendly safezone, open your map and hover over the safe zone itself
 - adds framework functionality for ambient airdrops at arbitrary positions for MM creativity
 - expands on this functionality to enable an MM to airdrop a side's editor-placed assets at mission start
@@ -9,6 +10,26 @@ v3.3.0
 - safezone teleport flag functionality now accounts for waterborne vehicle altitudes
 - enhancements to export functionality of the FNF vehicle loadout management system
 - ACE3 Window Break improvements - selection now in center of hitpoint bounding box, should no longer 'respawn'
+
+RC2
+- fixes hovered safezone markers not hiding after safe start ends
+- changes specObjectives to be determined by gamemode
+- changes asset airdrop to use 2 planes, static flying at 120 deg
+- changes unused irreg zone marker deletion to remoteExec for JIP support
+
+RC3
+- fixes JIP handling of assassin mode, when HVTs leave and join during safestart
+- adds notifications when destroy objectives are blown up
+- adds destroy objective photos to related tasks
+- re-remove cable ties
+- remove unnecessary waitUntil in applyloadout
+- remove buildingChanged EH after safe start
+
+RC4
+- fixes for airdropAssets & crate management, include local small smoke to mark dropped crates/vehicles
+- adds ambient artillery to missionSpecials framework
+- turns off AI show for QS_icons
+
 
 BRIEFING TABLES
 - a pre-existing briefing table is placed in the mission SQM
@@ -135,4 +156,4 @@ v3.1.0
 - auto turn on collision lights of aircraft and helos if the ambient light level at their position is below a certain threshold, to make them easier to find
 - auto disable vehicle sensors (Jets DLC, radar, etc)
 - blufor tracker icon configuration updated so that all sides will see Civilian unit markers
-- adds some cool media to the diar
+- adds some cool media to the diary

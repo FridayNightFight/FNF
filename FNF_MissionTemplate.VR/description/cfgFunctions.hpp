@@ -324,11 +324,13 @@ class CfgFunctions {
       file = "missionSpecials";
       class config{postInit=1;};
       class ambientAirdrop{};
+      class ambientArtillery{};
     };
     class tools {
       file = "missionSpecials\tools";
       class ambientAirdrop_plane{};
       class ambientAirdrop_box{};
+      class ambientAirdrop_smoke{};
     };
   };
 };

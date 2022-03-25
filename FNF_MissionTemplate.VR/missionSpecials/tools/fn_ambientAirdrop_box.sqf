@@ -1,5 +1,5 @@
-
-params ["_vehicle", "_objectData"];
+// some code taken from BIS_fnc_supplyDrop
+params ["_veh", "_objectData"];
 
 private ["_objectClass", "_objectCustomization"];
 switch (typeName _objectData) do {
@@ -12,96 +12,107 @@ switch (typeName _objectData) do {
   };
 };
 
-private _box = createVehicle [_objectClass, [0,0,0], [], 0, "NONE"];
+
+_dropPos = position _veh;
+_pos = [(_dropPos select 0), (_dropPos select 1), (_dropPos select 2) - 20];
+private _crate = createVehicle [_objectClass, _pos, [], 0, "NONE"];
+_crate setVelocity [(((velocity _veh) select 0) / 2),(((velocity _veh) select 1) / 2),((velocity _veh) select 2)-25];
+_crate setDir (direction _veh);
 if (!isNil "_objectCustomization") then {
-  _box call _objectCustomization;
+  _crate call _objectCustomization;
 };
-private _para = createVehicle ["B_parachute_02_F", _vehicle modelToWorldVisual [0,-10,-10], [], 0, "CAN_COLLIDE"];
 
-_para disableCollisionWith _vehicle;
-_box setDir getDir _vehicle;
-_para setDir getDir _box;
+[_crate, _makeSmoke] remoteExecCall ["fnf_missionSpecials_fnc_ambientAirdrop_smoke", [0, -2] select isDedicated];
+_cratePos = position _crate;
 
-// _para setPos getPos _box;
-_box lock false;
-_box attachTo [_para, [0,0,0]];
-_para setVelocity [0, 2, -5];
+
+private _paraSide = switch ([_crate, true] call BIS_fnc_objectSide) do {
+  case east: {"O"};
+  case independent: {"I"};
+  default {"B"}
+};
+private _paraName = format["%1_Parachute_02_F", _paraSide];
+
+private _para = createVehicle [_paraName, _cratePos, [], 0, "NONE"];
+_para setDir (direction _veh);
+_para setVelocity [((velocity _crate) select 0),((velocity _crate) select 1) ,((velocity _crate) select 2) ];
+
+_para setVectorUp [0,0,1];
+_crate setVectorUp [0,0,1];
+_crate attachTo [_para,[0,0,0]];
 
 [
   {// wait until velocity meets threshold then monitor velocity/altitude to detect when near ground
-    params ["_box","_para"];
-    ((velocity _box) select 2) < -0.5
+    params ["_crate","_para"];
+    _para setVectorUp [0,0,1];
+    _crate setVectorUp [0,0,1];
+    ((((position _crate) select 2) < 5) || (isNil "_para"));
   },
   {
     [ // start monitoring
       {
-        params ["_box","_para"];
-        ((getPos _box) select 2) < 2 ||
-        ((velocity _box) select 2) > -0.2 ||
+        params ["_crate","_para"];
+        ((getPos _crate) select 2) < 2 ||
+        ((velocity _crate) select 2) > -0.2 ||
         isNull _para ||
-        (count (lineIntersectsWith [getPosASL _box, (getPosASL _box) vectorAdd [0, 0, -0.5], _box, _para])) > 0
+        (count (lineIntersectsWith [getPosASL _crate, (getPosASL _crate) vectorAdd [0, 0, -0.5], _crate, _para])) > 0
       },
       {
-        params ["_box","_para"];
-        _box allowDamage false;
-        _para disableCollisionWith _box;
-        _box setVectorUp [0,0,1];
-        // _box setVelocity [-2,0,-0.5];
-        detach _box;
-        _safePos = ((getPos _box) select [0, 2]) findEmptyPosition [0, 50, "Land_Offices_01_V1_F"];
+        params ["_crate","_para"];
+        _crate allowDamage false;
+        _para disableCollisionWith _crate;
+        _crate setVectorUp [0,0,1];
+        // _crate setVelocity [-2,0,-0.5];
+        detach _crate;
+        _safePos = ((getPos _crate) select [0, 2]) findEmptyPosition [0, 50, "Land_Offices_01_V1_F"];
         if (count _safePos > 0) then {
-          _box setPos _safePos;
+          _safePos set [2, 0.6];
+          _crate setPos _safePos;
         };
-
-        if (!isNull _para) then {deleteVehicle _para};
-
-
-        // add smoke/flare/chemlights to aid in retrieval
-        // _box = cursorObject;
-        (boundingBoxReal _box) params ["_min", "_max", "_diameter"];
-        private _midHeight = (_min#2 + _max#2) / 2;
-        _boxCorners = [
-          [_min#0, _min#1, _midHeight],
-          [_min#0, _max#1, _midHeight],
-          [_max#0, _min#1, _midHeight],
-          [_max#0, _max#1, _midHeight]
-        ];
-
-        private _attachedAids = [];
-        if !(fnf_environment_isDaytime) then {
-          // if nighttime, chemlights
-          {
-            _chemlight = "ACE_G_Chemlight_HiYellow_infinite" createVehicle (_box modelToWorld _x);
-            // _chemlight attachTo [_box, _x];
-            _attachedAids pushBack _chemlight;
-          } forEach _boxCorners;
-        };
-        // _box setVariable ["attachedAids", _attachedAids];
-        [{
-          {
-            deleteVehicle _x;
-          } forEach (_this select {!isNull _x});
-        }, _attachedAids, 300] call CBA_fnc_waitAndExecute;
 
         // make box vulnerable to damage again after 10 seconds
-        [{_this allowDamage true}, _box, 10] call CBA_fnc_waitAndExecute;
+        [{_this allowDamage true}, _crate, 10] call CBA_fnc_waitAndExecute;
       },
       _this
     ] call CBA_fnc_waitUntilAndExecute;
   },
-  [_box, _para]
+  [_crate, _para]
 ] call CBA_fnc_waitUntilAndExecute;
 
 
 [
   {
-    params ["_box","_para"];
-    isTouchingGround _box
+    params ["_crate","_para"];
+    (getPos _crate) select 2 == 0;
   },
   {
-    params ["_box","_para"];
+    params ["_crate","_para"];
+    // add smoke/flare/chemlights to aid in retrieval
+    // _crate = cursorObject;
+    (boundingBoxReal _crate) params ["_min", "_max", "_diameter"];
+    private _midHeight = (_min#2 + _max#2) / 2;
+    _crateCorners = [
+      [_min#0, _min#1, _midHeight],
+      [_min#0, _max#1, _midHeight],
+      [_max#0, _min#1, _midHeight],
+      [_max#0, _max#1, _midHeight]
+    ];
 
-
+    private _attachedAids = [];
+    if !(fnf_environment_isDaytime) then {
+      // if nighttime, chemlights
+      {
+        _chemlight = "ACE_G_Chemlight_HiYellow_infinite" createVehicle (_crate modelToWorld _x);
+        // _chemlight attachTo [_crate, _x];
+        _attachedAids pushBack _chemlight;
+      } forEach _crateCorners;
+    };
+    // _crate setVariable ["attachedAids", _attachedAids];
+    [{
+      {
+        deleteVehicle _x;
+      } forEach (_this select {!isNull _x});
+    }, _attachedAids, 300] call CBA_fnc_waitAndExecute;
   },
-  [_box, _para]
+  [_crate, _para]
 ] call CBA_fnc_waitUntilAndExecute;
