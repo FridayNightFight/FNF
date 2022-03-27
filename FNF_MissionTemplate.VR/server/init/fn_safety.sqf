@@ -70,6 +70,9 @@ call fnf_safety_fnc_handleVics; //Make vehicles invincible until safety ends
   [] call fnf_server_fnc_webhook_roundStart;
   ["FNF_Safety_Ended"] call CBA_fnc_globalEventJIP;
 
+
+  call fnf_briefing_fnc_removeTables;
+
   if !(fnf_gameMode == "sustainedAssault") then {
     [{ // if not SA, lock unoccupied vehicles 5 minutes after safe start ends
       call fnf_server_fnc_lockVehicles;
@@ -77,6 +80,7 @@ call fnf_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
     { // if not SA, delete safeStart markers
       // if !(getMarkerColor _x isEqualTo "") then {
+        deleteMarker _x;
         _x remoteExec ["deleteMarkerLocal", 0, true];
       // };
     } forEach ([nil, nil, true] call fnf_fnc_inSafeZone);

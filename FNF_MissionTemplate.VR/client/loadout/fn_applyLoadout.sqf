@@ -18,8 +18,7 @@
 * Public: Yes
 */
 
-if (!hasInterface || isDedicated) exitWith {};
-waitUntil {!isNull player};
+if (!hasInterface) exitWith {};
 
 if (playerSide isEqualTo civilian) exitWith {
   fnf_selector_optics = [];

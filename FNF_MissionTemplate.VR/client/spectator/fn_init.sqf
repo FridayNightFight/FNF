@@ -48,17 +48,7 @@ if (!isNull _lastDamage) then {
 };
 
 //Set up objectives for 3d icon draws
-fnf_specObjectives = [];
-
-if (!isNil "term1") then {fnf_specObjectives pushBack term1};
-if (!isNil "term2") then {fnf_specObjectives pushBack term2};
-if (!isNil "term3") then {fnf_specObjectives pushBack term3};
-
-if (!isNil "destroy_obj_1") then {fnf_specObjectives pushBack destroy_obj_1};
-if (!isNil "destroy_obj_2") then {fnf_specObjectives pushBack destroy_obj_2};
-if (!isNil "destroy_obj_3") then {fnf_specObjectives pushBack destroy_obj_3};
-
-if (!isNil "ctf_flag") then {fnf_specObjectives pushBack ctf_flag};
+// MOVED TO GAMEMODES
 
 call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
@@ -75,18 +65,20 @@ _showObj = {
 };
 
 //Draw 3d icons for objectives
-{
-  if (_x call _showObj) then {
-    [{
-      params ["_obj"];
-      if (isNull _obj || !alive _obj || alive player) then {
-        [_handle] call CBA_fnc_removePerFrameHandler;
-      } else {
-        drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
-      };
-    } , 0, _x] call CBA_fnc_addPerFrameHandler;
-  };
-} forEach fnf_specObjectives;
+[{!isNil "fnf_specObjectives"}, {
+  {
+    if (_x call _showObj) then {
+      [{
+        params ["_obj"];
+        if (isNull _obj || !alive _obj || alive player) then {
+          [_handle] call CBA_fnc_removePerFrameHandler;
+        } else {
+          drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
+        };
+      } , 0, _x] call CBA_fnc_addPerFrameHandler;
+    };
+  } forEach fnf_specObjectives;
+}] call CBA_fnc_waitUntilAndExecute;
 
 
 fnf_spectatorVisiblePrevinput = true;

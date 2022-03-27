@@ -111,6 +111,18 @@ fnf_addNVG = 0;
     fnf_addNVG = [east,west] will give sides east and west NVGs
 */
 
+fnf_airdropAssets = [];
+/*
+  Perform an airdrop of one or more side's assets for added effect.
+  Examples:
+    fnf_airdropAssets = [east] // airdrop only for OPFOR
+    fnf_airdropAssets = [west, east] // airdrop for BLUFOR and OPFOR
+  Choices:
+    west // BLUFOR
+    east // OPFOR
+    independent // INDFOR
+*/
+
 ////////////////////////////////////////////////////////////
 
 // UNIFORM AND GEAR CHOICES //

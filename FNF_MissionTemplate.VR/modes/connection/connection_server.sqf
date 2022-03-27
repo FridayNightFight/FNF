@@ -21,11 +21,37 @@ _markerSetup = {
   _mark setMarkerText format ["Terminal %1", [str _term, 4, 4] call BIS_fnc_trimString];
 };
 
+private _terminals = [];
+
 switch (_numberOfTerminals) do {
-  case 2: {deleteVehicle term3; {_x call _markerSetup;} forEach [term1,term2];};
-  case 3: {{_x call _markerSetup;} forEach [term1,term2,term3];};
+  case 2: {
+    deleteVehicle term3;
+    {
+      _terminals pushback _x;
+      _x call _markerSetup;
+    } forEach [term1,term2];
+  };
+  case 3: {
+    {
+      _terminals pushback _x;
+      _x call _markerSetup;
+    } forEach [term1,term2,term3];
+  };
   default {hint "Terminal number not set correctly";};
 };
+
+fnf_briefingTable_highlightAreas = []; // contains places that should be highlighted with a sphere
+private _objectives = [];
+{
+  _objectives pushBack [format["Terminal %1", _forEachIndex + 1], getPos _x];
+  fnf_briefingTable_highlightAreas pushBack [getPos _x, 25];
+} forEach _terminals;
+[_objectives] call fnf_briefing_fnc_setupTables;
+publicVariable "fnf_briefingTable_highlightAreas";
+
+fnf_specObjectives = _terminals;
+publicVariable "fnf_specObjectives";
+
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
 fnf_serverTerminalAction = {

@@ -65,6 +65,9 @@ fnf_switchToMeleeDisablePFH = [{
   player allowDamage true;
 
 
+  [] spawn fnf_briefing_fnc_removeTablesClient;
+
+
   // Sustained Assault zoneProtection for safezones and rally markers
   if (fnf_gameMode == "sustainedAssault") then {
 

@@ -96,6 +96,14 @@ class CfgFunctions {
       class getItemInfo{};
       class getUniformPics{};
     };
+    class briefingtable {
+      file = "client\briefing\table";
+      class setupTables{};
+      class setupTablesClient{};
+      class removeTables{};
+      class createTable{};
+      class clearTable{};
+    };
   };
   class fnf_article {
     class articles {
@@ -229,6 +237,10 @@ class CfgFunctions {
       file = "client\ui";
       class missionInfoPanel{};
     };
+    class map {
+      file = "client\ui\map";
+      class mapZoneAssets{};
+    };
   };
   class fnf_server {
     class initServer {
@@ -247,6 +259,9 @@ class CfgFunctions {
       class restoreAirLoadouts{};
       class safeZoneTeleportInit_STD{};
       class newPlayers{};
+      class markSafezoneAssets{};
+      class genIrregularZone{};
+      class airdropAssets{};
     };
     class end {
       file = "server\end";
@@ -271,6 +286,7 @@ class CfgFunctions {
     class functions {
       file = "server\debug";
       class init{postInit=1;};
+      class config{preInit=1;};
     };
   };
   class fnf_vehicleLoadouts {
@@ -301,6 +317,20 @@ class CfgFunctions {
       class MkVSOC{};
       class speedboatHMG{};
       class speedboatMinigun{};
+    };
+  };
+  class fnf_missionSpecials {
+    class functions {
+      file = "missionSpecials";
+      class config{postInit=1;};
+      class ambientAirdrop{};
+      class ambientArtillery{};
+    };
+    class tools {
+      file = "missionSpecials\tools";
+      class ambientAirdrop_plane{};
+      class ambientAirdrop_box{};
+      class ambientAirdrop_smoke{};
     };
   };
 };

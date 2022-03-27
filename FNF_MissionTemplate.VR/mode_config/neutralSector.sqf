@@ -1,4 +1,4 @@
-_numberOfSectors = 1; //Number of active sectors (1-3)
+_numberOfSectors = 3; //Number of active sectors (1-3)
 
 _pointAddTime = 11; //How often points are added (seconds)
 

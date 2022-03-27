@@ -25,13 +25,15 @@ UNI = Uniform, GEAR = Gear
       RHS_UNI_NATO_GER_BUNDESWEHR_2010       +  RHS_GEAR_NATO_BUNDESWEHR_2010_G36
       RHS_UNI_NATO_GREEKFORCES_2010          +  RHS_GEAR_NATO_GREEKFORCES_2010_L1A1
       RHS_UNI_NATO_NL_DUTCH_ARMY_2000        +  RHS_GEAR_NATO_DUTCH_ARMY_2000_M4
-      RHS_UNI_NATO_UKRAINIAN_2010            +  RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK
+      RHS_UNI_NATO_UKRAINIAN_2010            +  RHS_GEAR_NATO_UKRAINIAN_2020_M16A4
       RHS_UNI_NATO_US_ARMY_2020              +  RHS_GEAR_US_ARMY_2010_M16A4
       RHS_UNI_NATO_US_MARINES_DESERT_2010    +  RHS_GEAR_US_MARINES_2020_M27
       RHS_UNI_NATO_US_MARINES_WOODLAND_2010  +  RHS_GEAR_US_MARINES_2020_M27
       RHS_UNI_NATO_US_NAVY_2010              +  RHS_GEAR_US_NAVY_2010_MK18
       RHS_UNI_NATO_US_RANGERS_2020           +  RHS_GEAR_US_RANGERS_2010_SCAR
       RHS_UNI_NATO_FRANCE_2010               +  RHS_GEAR_NATO_FRANCE_2010_FAMAS
+      RHS_UNI_NATO_US_ARMY_2000              +  RHS_GEAR_US_ARMY_2000_M16A3
+      RHS_UNI_NATO_US_MARINES_RECON_2010     +  RHS_GEAR_US_MARINES_RECON_2020_M27
 
      ANY UNIFORMS AND GEAR:
       RHS_UNI_ANY_CROATIAN_2010              +  RHS_GEAR_ANY_CROATIAN_2010_VHS
@@ -42,10 +44,11 @@ UNI = Uniform, GEAR = Gear
 
      RU UNIFORMS AND GEAR:
       RHS_UNI_RU_COSSACKS_2010               +  RHS_GEAR_RU_ARMY_2010_AK74M
-      RHS_UNI_RU_RATNIK_2020                 +  RHS_GEAR_RU_ARMY_2010_AK74M
-      RHS_UNI_RU_RATNIK_D_2020               +  RHS_GEAR_RU_ARMY_2010_AK74M
-      RHS_UNI_RU_SPETSNAZ_2010               +  RHS_GEAR_RU_ARMY_2010_AK74M
+      RHS_UNI_RU_RATNIK_2020                 +  RHS_GEAR_RU_RATNIK_2010_AK74MR
+      RHS_UNI_RU_RATNIK_D_2020               +  RHS_GEAR_RU_RATNIK_2010_AK74MR
+      RHS_UNI_RU_SPETSNAZ_2010               +  RHS_GEAR_RU_RATNIK_2010_AK74MR
       RHS_UNI_RU_MARINES_2020                +  RHS_GEAR_RU_ARMY_2010_AK74M
+      RHS_UNI_RU_VDV_2020                    +  RHS_GEAR_RU_ARMY_2010_AK74M
 
      ID UNIFORMS AND GEAR:
       RHS_UNI_ID_INSURGENTS_2000             +  RHS_GEAR_ID_INSURGENTS_2000_AK74N
@@ -93,7 +96,7 @@ Possible launcher values (and recommended counts)
     CARLG(2,0)
     SMAW(2,0)
     RPG32(2,0)
-    RPG7(4,2)
+    RPG7(2,1)
 
   Supports LAUNCHER(_HEATCount)
     TITAN(1)
@@ -133,19 +136,22 @@ Possible launcher values (and recommended counts)
   OPTIONS
     HMG_M2(_boxes) // 100 rd mags
     HMG_M2_LO(_boxes) // 100 rd mags
-    HMG_KORD(_boxes) // 50 rd mags
-    HMG_KORD_LO(_boxes) // 50 rd mags
-    HMG_DSHKM(_boxes) // 50 rd mags
-    HMG_DSHKM_LO(_boxes) // 50 rd mags
     MORTAR_2B14(_he,_smk,_illum)
     MORTAR_M252(_he,_smk,_illum)
     AT_SPG9(_he,_heat)
     AT_METIS(_he,_heat)
     AT_TOW(_tow)
 
-    VN_MORTAR_TYPE53(_he,_smk,_illum)
-    VN_MORTAR_M2_60mm(_hecnt,_smk,_illum)
-    VN_MORTAR_M29_81mm(_hecnt,_smk,_illum)
+    VIETNAM ONLY:
+      VN_MORTAR_TYPE53(_he,_smk,_illum)
+      VN_MORTAR_M2_60mm(_hecnt,_smk,_illum)
+      VN_MORTAR_M29_81mm(_hecnt,_smk,_illum)
+
+    BROKEN:
+      HMG_KORD(_boxes) // 50 rd mags
+      HMG_KORD_LO(_boxes) // 50 rd mags
+      HMG_DSHKM(_boxes) // 50 rd mags
+      HMG_DSHKM_LO(_boxes) // 50 rd mags
 
   EXAMPLE:
     for BLUFOR Bravo Squad:

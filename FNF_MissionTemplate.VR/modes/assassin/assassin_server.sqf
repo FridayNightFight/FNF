@@ -17,6 +17,14 @@ if (fnf_defendingSide == sideEmpty || fnf_attackingSide == sideEmpty) exitWith {
   ] remoteExec ["fnf_ui_fnc_notify", 0];
 };
 
+private _objectives = [];
+{
+  _objectives pushBack [format["HVT Zone %1", _forEachIndex + 1], markerPos _x];
+} forEach (["fnf_assassin_boundaries_"] call BIS_fnc_getMarkers);
+[_objectives] call fnf_briefing_fnc_setupTables;
+
+fnf_specObjectives = [];
+publicVariable "fnf_specObjectives";
 
 // create tasks
 {
@@ -60,7 +68,7 @@ if (fnf_defendingSide == sideEmpty || fnf_attackingSide == sideEmpty) exitWith {
     // if object hasn't been saved or isn't alive or is null, try to save
     // will either save correct object, or objNull
     private _newObj = HVTXOBJ;
-    if (isNil "_object") then {
+    if (!isNull _newObj) then {
       (_x # 1) set [2, _newObj];
     };
 

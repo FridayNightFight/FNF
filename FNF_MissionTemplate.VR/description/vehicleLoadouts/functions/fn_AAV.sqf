@@ -11,7 +11,7 @@ if (missionNamespace getVariable ["fnf_debug", false]) then {
 [_vehicle] call fnf_vehicleLoadouts_fnc_clearAll;
 
 _vehicle addWeaponTurret["UK3CB_Factions_M2_AAV",[0]];
-for "_i" from 1 to 2 do {
+for "_i" from 1 to 6 do {
   _vehicle addMagazineTurret["uk3cb_mag_100rnd_127x99_red", [0], 100];
 };
 

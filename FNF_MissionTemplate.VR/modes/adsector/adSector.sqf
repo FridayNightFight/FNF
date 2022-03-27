@@ -22,6 +22,18 @@ fnf_gamemode_sectorInOrder = _inOrder;
 // };
 [] remoteExec ["BIS_fnc_showMissionStatus",0,true];
 
+fnf_briefingTable_highlightAreas = []; // contains places that should be highlighted with a sphere
+private _objectives = [];
+{
+  _objectives pushBack [format["Sector %1", _forEachIndex + 1], getPos _x];
+  fnf_briefingTable_highlightAreas pushBack [getPos _x, ((triggerArea _x)#0) max ((triggerArea _x)#1)];
+} forEach fnf_gamemode_sectors;
+[_objectives] call fnf_briefing_fnc_setupTables;
+publicVariable "fnf_briefingTable_highlightAreas";
+
+fnf_specObjectives = [];
+publicVariable "fnf_specObjectives";
+
 fnf_server_sectorWin = {
   fnf_gameEnd = true;
   publicVariable "fnf_gameEnd";

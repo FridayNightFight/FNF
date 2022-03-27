@@ -1,7 +1,7 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_m16a4_carryhandle"
+#define RIFLE "UK3CB_M16A3"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
 #define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 // give Riflemen extra mags
@@ -11,7 +11,7 @@
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203"
+#define RIFLE_GL "UK3CB_M16A2_UGL","rhs_weap_m4a1_m320"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
