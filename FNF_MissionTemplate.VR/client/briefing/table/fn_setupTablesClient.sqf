@@ -162,7 +162,15 @@
                 systemChat format["[%1ing Table] No focus is set for this table yet.", _table getVariable "helperName"];
               };
 
-              [_table, _targetInfo#1, _targetInfo#0, _resolution, 2, true] spawn fnf_briefing_fnc_createTable;
+              if (!isNil "fnf_briefingTable_creationHandle") then {
+                if (scriptDone fnf_briefingTable_creationHandle) then {
+                  fnf_briefingTable_creationHandle = [_table, _targetInfo#1, _targetInfo#0, _resolution, 2, true] spawn fnf_briefing_fnc_createTable;
+                } else {
+                  systemChat "Briefing table isn't done loading! Please try again soon.";
+                };
+              } else {
+                fnf_briefingTable_creationHandle = [_table, _targetInfo#1, _targetInfo#0, _resolution, 2, true] spawn fnf_briefing_fnc_createTable;
+              };
             },
             {true},
             {},

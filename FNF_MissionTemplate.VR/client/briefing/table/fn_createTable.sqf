@@ -62,7 +62,9 @@ if (isNull _table) exitWith {
 
 _table enableSimulation false;
 [_table, nil, true] call fnf_briefing_fnc_clearTable;
-private _tableObjects = [];
+// private _tableObjects = [];
+
+_table setVariable ["sebs_briefing_table_tableObjects", []];
 
 private _bbr = 2 boundingBoxReal _table;
 private _p1 = _bbr#0;
@@ -143,7 +145,8 @@ private _vectorDiff = [0, 0, _tableHeight/2 + (_zOffset * _scale) + 0.05 + _manu
       _tableObj setPosWorld _newPos;
       _tableObj setVectorDirAndUp [_table vectorModelToWorld _relVectDir, _table vectorModelToWorld _relVectUp];
       _tableObj setObjectScale _scale * getObjectScale _x;
-      _tableObjects pushBack _tableObj;
+      // _tableObjects pushBack _tableObj;
+      (_table getVariable "sebs_briefing_table_tableObjects") pushBack _tableObj;
     };
   };
 } forEach _objects;
@@ -181,8 +184,9 @@ if (!isNil "fnf_briefingTable_highlightAreas") then {
     _tableObj setPosWorld _newPos;
     _tableObj setVectorDirAndUp [_table vectorModelToWorld _relVectDir, _table vectorModelToWorld _relVectUp];
     _tableObj setObjectScale (_size * _scale);
-    _tableObj setObjectTexture [0, "#(argb,8,8,3)color(1,0.8,0.1,0.03,ca)"];
-    _tableObjects pushBack _tableObj;
+    _tableObj setObjectTexture [0, "#(argb,8,8,3)color(1,0.8,0.1,0.01,ca)"];
+    // _tableObjects pushBack _tableObj;
+    (_table getVariable "sebs_briefing_table_tableObjects") pushBack _tableObj;
   } forEach fnf_briefingTable_highlightAreas;
 };
 
@@ -248,6 +252,7 @@ for "_posX" from -1 to 1 step _step do {
           // _normal = _normal vectorMultiply 1/count _normals;
           // I have no idea why.
           _normal = [_normal, _tableDir -_markerDir, 2] call BIS_fnc_rotateVector3D; // Not sure why I have to do this.
+          if (isNil "_table") exitWith {};
           private _cos = abs (vectorUp _table vectorCos _normal);
           private _dynamicSize = 1.1/_cos; // scale cubes based on angle
           _cubeSize = _cubeSize * _dynamicSize; //
@@ -266,7 +271,8 @@ for "_posX" from -1 to 1 step _step do {
             _groundObject setObjectTexture [_selection, _texture];
         };
         _groundObject setObjectScale _cubeSize;
-        _tableObjects pushBack _groundObject;
+        // _tableObjects pushBack _groundObject;
+        (_table getVariable "sebs_briefing_table_tableObjects") pushBack _groundObject;
       };
     };
   };
@@ -274,7 +280,7 @@ for "_posX" from -1 to 1 step _step do {
 };
 
 
-_table setVariable ["sebs_briefing_table_tableObjects", _tableObjects];
+// _table setVariable ["sebs_briefing_table_tableObjects", _tableObjects];
 _table setVariable ["loadedView", _viewName];
 deleteVehicle _dummy;
 
@@ -291,18 +297,25 @@ if (_createTrigger) then {
     "enableEnvironment sebs_briefing_table_originalEnv"
   ];
   _trg setTriggerInterval 1;
-  _tableObjects pushBack _trg;
+  // _tableObjects pushBack _trg;
+  (_table getVariable "sebs_briefing_table_tableObjects") pushBack _trg;
 };
 
 if !(_table getVariable ["seb_briefing_table_hasDeletedEH", false]) then {
   _table addEventHandler ["Deleted", {
     params ["_entity"];
+    terminate fnf_briefingTable_creationHandle;
     _tableObjects = _entity getVariable ["sebs_briefing_table_tableObjects", []];
-    reverse _tableObjects;
-    [{_this spawn fnf_briefing_fnc_clearTable}, [_entity, _tableObjects], 3] call CBA_fnc_waitAndExecute;
     _markers = _entity getVariable ["tableTarget", []];
-    if (count _markers == 3) then {
-      {deleteMarkerLocal _x} forEach (_markers select [1, 2]);
+    [_entity, _tableObjects, _markers] spawn {
+      params ["_table", "_tableObjects", "_markers"];
+      waitUntil {scriptDone fnf_briefingTable_creationHandle};
+      reverse _tableObjects;
+      [{_this spawn fnf_briefing_fnc_clearTable}, [_table, _tableObjects], 3] call CBA_fnc_waitAndExecute;
+
+      if (count _markers == 3) then {
+        {deleteMarkerLocal _x} forEach (_markers select [1, 2]);
+      };
     };
   }];
   _table setVariable ["seb_briefing_table_hasDeletedEH", true];
