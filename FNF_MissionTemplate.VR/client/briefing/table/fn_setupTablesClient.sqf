@@ -179,9 +179,9 @@
 
           _loadActions pushBack [_subAction, [], _table]; // New action, it's children, and the action's target
         } forEach [
+          [10, "(laptop)"],
           [30, "(low-end)"],
-          [50, "(gaming pc)"],
-          [75, "(enthusiast)"]
+          [50, "(gaming pc)"]
           // [100, "(insane!)"]
         ];
         _loadActions
