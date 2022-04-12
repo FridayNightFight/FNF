@@ -59,29 +59,32 @@ call fnf_server_fnc_setupGame;
 call fnf_server_fnc_newPlayers;
 call fnf_server_fnc_webhook_roundPrep;
 
-#define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
-// put vehicles into a hashmap based on who they belong to (if anyone)
-fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
-{
-  private _vehicle = _x;
-  if (isNull _vehicle) then {continue};
-  switch (true) do {
-    case ([_vehicle, west] call fnf_fnc_inSafeZone): {
-      [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
-    };
-    case ([_vehicle, east] call fnf_fnc_inSafeZone): {
-      [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
-    };
-    case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
-      [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
-    };
-    default {
-      [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
-    };
-  };
-} forEach MISSIONVICS;
 
-publicVariable "fnf_vehiclesToProcess";
+[{getClientStateNumber > 8}, {
+  #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+  // put vehicles into a hashmap based on who they belong to (if anyone)
+  fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+  {
+    private _vehicle = _x;
+    if (isNull _vehicle) then {continue};
+    switch (true) do {
+      case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+        [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
+      };
+      case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+        [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
+      };
+      case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+        [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
+      };
+      default {
+        [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+      };
+    };
+  } forEach MISSIONVICS;
+
+  publicVariable "fnf_vehiclesToProcess";
+}] call CBA_fnc_waitUntilAndExecute;
 
 // after custom building markers are up, recreate safe markers so they're on top and visible
 [
