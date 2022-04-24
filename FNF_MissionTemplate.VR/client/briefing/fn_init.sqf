@@ -19,7 +19,9 @@
 // if (pRole == ROLE_CIV) exitWith {};
 
 // call fnf_briefing_fnc_setGroupIDs;
-[{getClientStateNumber >= 8 && missionNamespace getVariable ["fnf_groupIDset", false] && !isNil "fnf_vehiclesToProcess"}, {
+[{
+  getClientStateNumber >= 8 && missionNamespace getVariable ["fnf_groupIDset", false]
+}, {
   call fnf_briefing_fnc_createBrief;
 }] call CBA_fnc_waitUntilAndExecute;
 

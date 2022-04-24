@@ -64,8 +64,8 @@ fnf_switchToMeleeDisablePFH = [{
   ace_advanced_throwing_enabled = true;
   player allowDamage true;
 
-
-  [] spawn fnf_briefing_fnc_removeTablesClient;
+  // handled via per table EH
+  // [] spawn fnf_briefing_fnc_removeTablesClient;
 
 
   // Sustained Assault zoneProtection for safezones and rally markers
