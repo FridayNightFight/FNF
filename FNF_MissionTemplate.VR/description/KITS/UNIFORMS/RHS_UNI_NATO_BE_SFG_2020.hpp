@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_og107", "rhsgref_uniform_olive"
+#define UNIFORM "U_B_CombatUniform_mcam_tshirt"
 
-#define VEST "rhsgref_chicom"
+#define VEST "V_TacVest_khk"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "UK3CB_ARD_B_H_SSh68_Des", "rhs_ssh68_2"
-#define HELMET_CMDR "rhs_beret_milp"
-#define HELMET_RECON "UK3CB_H_Shemag_red"
-#define HELMET_CREWMAN "rhs_tsh4_bala"
-#define HELMET_PILOT "H_Cap_headphones"
+#define HELMET "rhsusf_opscore_mc_cover_pelt_nsw"
+#define HELMET_CMDR "rhssaf_beret_blue_un"
+#define HELMET_RECON "H_Booniehat_khk_hs"
+#define HELMET_CREWMAN "H_HelmetCrew_I"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
 
-#define BACKPACK "B_TacticalPack_rgr"
-#define BACKPACK_RADIO "TFAR_rt1523g_fabric"
-#define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_TacticalPack_rgr"
+#define BACKPACK "UK3CB_B_Backpack_Pocket"
+#define BACKPACK_RADIO "UK3CB_B_B_Backpack_Radio_Chem"
+#define BACKPACK_AR "B_Carryall_cbr"
+#define BACKPACK_AT "B_Carryall_cbr"
+#define BACKPACK_MEDIC "UK3CB_B_Backpack_Med"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_ID_IRAQI_ARMY_2000 {
+class RHS_UNI_NATO_BE_SFG_2020 {
   author = "Mazz38";
-  description = "ID: 2000 IRAQI ARMY OD Camouflage";
+  description = "BE: Modern Belgian SPECIAL FORCES GROUP Multicam Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,6 +88,7 @@ class RHS_UNI_ID_IRAQI_ARMY_2000 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

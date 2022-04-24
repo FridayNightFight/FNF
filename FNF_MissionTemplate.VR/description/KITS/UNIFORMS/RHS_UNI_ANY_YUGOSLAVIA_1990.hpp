@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_og107", "rhsgref_uniform_olive"
+#define UNIFORM "UK3CB_TKA_I_U_CombatUniform_02_GREY"
 
-#define VEST "rhsgref_chicom"
+#define VEST "rhs_suspender_AK8_chestrig"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "UK3CB_ARD_B_H_SSh68_Des", "rhs_ssh68_2"
-#define HELMET_CMDR "rhs_beret_milp"
-#define HELMET_RECON "UK3CB_H_Shemag_red"
-#define HELMET_CREWMAN "rhs_tsh4_bala"
-#define HELMET_PILOT "H_Cap_headphones"
+#define HELMET "rhssaf_helmet_m59_85_nocamo"
+#define HELMET_CMDR "rhssaf_beret_green"
+#define HELMET_RECON "H_Watchcap_camo"
+#define HELMET_CREWMAN "rhs_tsh4_ess_bala"
+#define HELMET_PILOT "rhs_gssh18"
 
-#define BACKPACK "B_TacticalPack_rgr"
-#define BACKPACK_RADIO "TFAR_rt1523g_fabric"
-#define BACKPACK_AR "B_Carryall_oli"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_TacticalPack_rgr"
+#define BACKPACK "UK3CB_B_Bedroll_Backpack"
+#define BACKPACK_RADIO "UK3CB_B_O_Tactical_Backpack_Radio"
+#define BACKPACK_AR "UK3CB_B_Largepack"
+#define BACKPACK_AT "rhs_rpg_empty"
+#define BACKPACK_MEDIC "UK3CB_TKP_O_B_ASS_BLK"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_ID_IRAQI_ARMY_2000 {
+class RHS_UNI_ANY_YUGOSLAVIA_1990 {
   author = "Mazz38";
-  description = "ID: 2000 IRAQI ARMY OD Camouflage";
+  description = "YU: 1990s Yugoslavia ARMY Olive VSR Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
