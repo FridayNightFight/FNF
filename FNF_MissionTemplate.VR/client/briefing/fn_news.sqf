@@ -25,10 +25,10 @@ player createDiaryRecord [
   [
     "Trailers",
     [
-      "<executeClose expression=""openYoutubeVideo 'watch?v=sZnAiEfqLO0'"">Vietnam Trailer</execute>",
-      "<executeClose expression=""openYoutubeVideo 'watch?v=REpD_Y7SsQk'"">WWII Trailer</execute>",
-      "<executeClose expression=""openYoutubeVideo 'watch?v=ADVe2fzKsJU'"">FNF Titans Trailer</execute>",
-      "<executeClose expression=""openYoutubeVideo 'watch?v=E-cQRWSxH80'"">FNF Promo</execute>"
+      "<executeClose expression=""openYoutubeVideo 'watch?v=sZnAiEfqLO0'"">Vietnam Trailer</executeClose>",
+      "<executeClose expression=""openYoutubeVideo 'watch?v=REpD_Y7SsQk'"">WWII Trailer</executeClose>",
+      "<executeClose expression=""openYoutubeVideo 'watch?v=ADVe2fzKsJU'"">FNF Titans Trailer</executeClose>",
+      "<executeClose expression=""openYoutubeVideo 'watch?v=E-cQRWSxH80'"">FNF Promo</executeClose>"
     ] joinString "<br/>"
   ]
 ];
@@ -38,7 +38,7 @@ player createDiaryRecord [
   [
     "Articles",
     [
-      "<executeClose expression='call fnf_article_fnc_NewYear2022'>Happy New Year 2022</execute>"
+      "<executeClose expression='call fnf_article_fnc_NewYear2022'>Happy New Year 2022</executeClose>"
     ] joinString "<br/>"
   ]
 ];

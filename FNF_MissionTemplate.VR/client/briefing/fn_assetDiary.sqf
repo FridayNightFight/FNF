@@ -74,13 +74,13 @@ _getMagsForWep = {
     "TruckHorn",
     "TruckHorn2",
     "TruckHorn3"
-  ]) exitWith {};
+  ]) exitWith {[[]]};
 
   private _thisArr = [];
   _wepConfig = (configFile >> "CfgWeapons" >> _wep);
   _wepDisp = [(_wepConfig >> "displayName"), "STRING", "Weapon"] call CBA_fnc_getConfigEntry;
   if (_wep == "rhs_weap_smokegen") then {_wepDisp = "Smoke Generator"};
-  if (_wepDisp isEqualTo "") exitWith {};
+  if (_wepDisp isEqualTo "") exitWith {[[]]};
 
   // "debug_console" callExtension (_wepDisp + "#0100");
   _magsToCheck = (_vic magazinesTurret _path);

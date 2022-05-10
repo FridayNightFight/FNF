@@ -716,7 +716,7 @@ if (!isNil "fnf_briefing_loadoutBLU") then {
   call fnf_briefing_loadoutBLU;
 };
 
-[false] call fnf_briefing_fnc_parseGear;
+// [false] call fnf_briefing_fnc_parseGear;
 call fnf_briefing_MMNotes;
 call fnf_briefing_fnc_createOrbat;
 true

@@ -682,7 +682,7 @@ player setDiarySubjectPicture ["Diary", "\A3\ui_f\data\igui\cfg\simpleTasks\type
 }, {
   params ["_varStr"];
   call fnf_briefing_startingRadios;
-  [false] call fnf_briefing_fnc_parseGear;
+  // [false] call fnf_briefing_fnc_parseGear;
   player createDiaryRecord ["Diary",["Mission Variables",_varStr]];
   call fnf_briefing_MMNotes;
   call fnf_briefing_fnc_createOrbat;
