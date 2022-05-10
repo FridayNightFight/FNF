@@ -150,7 +150,6 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
           UGL_MAGS(UGL_SMOKEWHITE,4),
           UGL_MAGS(UGL_FLAREWHITE,2),
           UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
         }
       }
     };

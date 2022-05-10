@@ -5,7 +5,7 @@
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
 #define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan:7", "rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhssaf_30rnd_556x45_EPR_G36:12","rhssaf_30rnd_556x45_Tracers_G36:6"
+#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan:12","rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red:6"
 
 #define SIDEARM "UK3CB_BHP"
 #define SIDEARM_MAG "UK3CB_BHP_9_13Rnd:2"

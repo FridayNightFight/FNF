@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_3color_desert"
+#define UNIFORM "UK3CB_MEI_B_U_Jeans_Tshirt_01", "UK3CB_MEE_O_U_06", "UK3CB_MEI_B_U_Jeans_Tshirt_05", "UK3CB_MEI_B_U_Jeans_Tshirt_12", "UK3CB_MEI_B_U_Jeans_Tshirt_04", "UK3CB_MEI_B_U_Pants_09", "UK3CB_ADC_C_Pants_U_21", "UK3CB_ADE_O_U_02_E", "UK3CB_CHC_C_U_COACH_04"
 
-#define VEST "UK3CB_CW_US_B_LATE_V_PASGT_Rif_Vest"
+#define VEST "rhsgref_chicom"
 #define VEST_LEADER VEST
-#define VEST_AR "UK3CB_CW_US_B_LATE_V_PASGT_MG_Vest"
-#define VEST_MEDIC "UK3CB_CW_US_B_LATE_V_PASGT_Medic_Vest"
-#define VEST_CREWMAN "UK3CB_CW_US_B_LATE_V_PASGT_Crew_Vest"
-#define VEST_PILOT "UK3CB_V_Pilot_Vest"
+#define VEST_AR VEST
+#define VEST_MEDIC VEST
+#define VEST_CREWMAN VEST
+#define VEST_PILOT VEST
 
-#define HELMET "UK3CB_CW_US_B_LATE_H_PASGT_01_WDL", "rhsgref_helmet_pasgt_3color_desert"
-#define HELMET_CMDR "UK3CB_CW_US_B_LATE_H_JNR_OFF_Patrol_Cap_WDL_01"
-#define HELMET_RECON "rhsusf_protech_helmet_rhino_ess"
-#define HELMET_CREWMAN "rhsusf_cvc_green_helmet"
-#define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
+#define HELMET "UK3CB_H_Shemag_red_02", "UK3CB_H_Shemag_red", "UK3CB_TKA_I_H_SSh68_Khk", "UK3CB_H_Shemag_white", "UK3CB_H_Profiteer_Cap_01",
+#define HELMET_CMDR "UK3CB_TKA_B_H_Beret"
+#define HELMET_RECON "UK3CB_H_Woolhat_GRN", "UK3CB_H_Woolhat_KHK"
+#define HELMET_CREWMAN "rhs_tsh4_bala"
+#define HELMET_PILOT "H_Cap_headphones"
 
-#define BACKPACK "UK3CB_CW_US_B_LATE_B_RIF"
-#define BACKPACK_RADIO "UK3CB_B_B_Radio_Backpack"
-#define BACKPACK_AR "rhsgref_hidf_alicepack"
-#define BACKPACK_AT "rhsgref_hidf_alicepack"
-#define BACKPACK_MEDIC "UK3CB_B_US_Medic_Backpack"
+#define BACKPACK "B_TacticalPack_rgr"
+#define BACKPACK_RADIO "TFAR_rt1523g_fabric"
+#define BACKPACK_AR "B_Carryall_oli"
+#define BACKPACK_AT "B_Carryall_oli"
+#define BACKPACK_MEDIC "B_TacticalPack_rgr"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_US_ARMY_2000 {
+class RHS_UNI_ID_IRAQI_INSURGENTS_2000 {
   author = "Mazz38";
-  description = "USA: 2000s American ARMY Iraqi Freedom Camouflage";
+  description = "ID: 2000 IRAQI INSURGENTS Random Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -46,7 +46,6 @@ class RHS_UNI_NATO_US_ARMY_2000 {
   class SGT : SL {};
   class PL : SGT {
     headgear[] = {HELMET_CMDR};
-    uniform[] = {"UK3CB_CW_US_B_LATE_U_JNR_OFFICER_Uniform_01_WDL"};
   };
 
   class ARA : BASE {
@@ -105,7 +104,6 @@ class RHS_UNI_NATO_US_ARMY_2000 {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
     backpack[] = {BACKPACK_RADIO};
-    uniform[] = {"UK3CB_CW_US_B_LATE_U_H_Pilot_Uniform_01_NATO"};
   };
 
   class MED : BASE {

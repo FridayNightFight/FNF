@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_3color_desert"
+#define UNIFORM "rhsgref_uniform_alpenflage"
 
-#define VEST "UK3CB_CW_US_B_LATE_V_PASGT_Rif_Vest"
+#define VEST "rhsgref_alice_webbing"
 #define VEST_LEADER VEST
-#define VEST_AR "UK3CB_CW_US_B_LATE_V_PASGT_MG_Vest"
-#define VEST_MEDIC "UK3CB_CW_US_B_LATE_V_PASGT_Medic_Vest"
-#define VEST_CREWMAN "UK3CB_CW_US_B_LATE_V_PASGT_Crew_Vest"
+#define VEST_AR VEST
+#define VEST_MEDIC VEST
+#define VEST_CREWMAN VEST
 #define VEST_PILOT "UK3CB_V_Pilot_Vest"
 
-#define HELMET "UK3CB_CW_US_B_LATE_H_PASGT_01_WDL", "rhsgref_helmet_pasgt_3color_desert"
-#define HELMET_CMDR "UK3CB_CW_US_B_LATE_H_JNR_OFF_Patrol_Cap_WDL_01"
-#define HELMET_RECON "rhsusf_protech_helmet_rhino_ess"
-#define HELMET_CREWMAN "rhsusf_cvc_green_helmet"
+#define HELMET "UK3CB_MDF_B_H_M1", "UK3CB_MDF_B_H_M1_ALT"
+#define HELMET_CMDR "UK3CB_NFA_B_H_M88_Field_Cap_ALP"
+#define HELMET_RECON "rhsgref_hat_m43cap_heer"
+#define HELMET_CREWMAN "H_HelmetCrew_I"
 #define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
 
-#define BACKPACK "UK3CB_CW_US_B_LATE_B_RIF"
+#define BACKPACK "UK3CB_B_Bedroll_Backpack"
 #define BACKPACK_RADIO "UK3CB_B_B_Radio_Backpack"
 #define BACKPACK_AR "rhsgref_hidf_alicepack"
 #define BACKPACK_AT "rhsgref_hidf_alicepack"
-#define BACKPACK_MEDIC "UK3CB_B_US_Medic_Backpack"
+#define BACKPACK_MEDIC "B_FieldPack_oli"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_US_ARMY_2000 {
+class RHS_UNI_NATO_CH_SWISS_ARMY_1980 {
   author = "Mazz38";
-  description = "USA: 2000s American ARMY Iraqi Freedom Camouflage";
+  description = "CH: 1980s Swiss ARMY Alpenflage Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -46,7 +46,6 @@ class RHS_UNI_NATO_US_ARMY_2000 {
   class SGT : SL {};
   class PL : SGT {
     headgear[] = {HELMET_CMDR};
-    uniform[] = {"UK3CB_CW_US_B_LATE_U_JNR_OFFICER_Uniform_01_WDL"};
   };
 
   class ARA : BASE {
@@ -111,5 +110,6 @@ class RHS_UNI_NATO_US_ARMY_2000 {
   class MED : BASE {
     vest[] = {VEST_MEDIC};
     backpack[] = {BACKPACK_MEDIC};
+    headgear[] = {"UK3CB_MDF_B_H_M1_MED", "UK3CB_MDF_B_H_M1_ALT_MED"};
   };
 };
