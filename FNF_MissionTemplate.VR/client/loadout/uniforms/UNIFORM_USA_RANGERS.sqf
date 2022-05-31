@@ -1,18 +1,23 @@
 //Global customization - will be applied to every role
-phx_loadout_uniform = "U_LIB_US_Rangers_Uniform";
+phx_loadout_uniform = "U_LIB_US_Rangers_Private_1st";
 phx_loadout_vest = "V_LIB_US_Vest_Carbine";
-phx_loadout_backpack = "B_LIB_US_M36";
-phx_loadout_headgear = "H_LIB_US_Helmet";
+phx_loadout_backpack = "B_LIB_US_Backpack";
+phx_loadout_headgear = "H_LIB_US_Rangers_Helmet";
 
-if (pRole == ROLE_PL || pRole == ROLE_SL) then {
+if (pRole == ROLE_PL) then {
+  phx_loadout_uniform = "U_LIB_US_Rangers_Uniform";
+  phx_loadout_headgear = "H_LIB_US_Rangers_Helmet_First_lieutenant";
+  phx_loadout_vest = "V_LIB_US_Assault_Vest_Light";
+};
+
+if (pRole == ROLE_SL) then {
   phx_loadout_uniform = "U_LIB_US_Rangers_Sergeant";
-  phx_loadout_headgear = "H_LIB_US_Helmet_CO";
+  phx_loadout_headgear = "H_LIB_US_Rangers_Helmet_NCO";
   phx_loadout_vest = "V_LIB_US_Assault_Vest_Light";
 };
 
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
   phx_loadout_uniform = "U_LIB_US_Rangers_Corp";
-  phx_loadout_headgear = "H_LIB_US_Helmet_NCO";
 };
 
 if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_US_Vest_Bar"};

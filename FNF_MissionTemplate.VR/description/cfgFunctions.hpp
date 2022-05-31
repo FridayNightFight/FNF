@@ -42,6 +42,7 @@ class CfgFunctions {
     class loadout {
       file = "client\loadout";
       class setLoadout{};
+      class setGearset{};
       class setUniform{};
       class setWeapons{};
       class addUniform{};

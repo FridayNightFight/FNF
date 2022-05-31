@@ -1,31 +1,26 @@
 //Global customization - will be applied to every role
-phx_loadout_uniform = selectRandom ["U_LIB_WP_Soldier_camo_1", "U_LIB_WP_Soldier_camo_3"];
-phx_loadout_vest = "V_LIB_WP_Kar98Vest";
-phx_loadout_backpack = "B_LIB_GER_Backpack";
-phx_loadout_headgear = "H_LIB_WP_Helmet";
+phx_loadout_uniform = "fow_u_uk_bd40_private";
+phx_loadout_vest = "V_LIB_UK_P37_Rifleman_Blanco";
+phx_loadout_backpack = "B_LIB_UK_HSack";
+phx_loadout_headgear = selectRandom ["H_LIB_UK_Helmet_Mk2_Beachgroup", "fow_h_uk_mk3_net_camo", "fow_h_uk_mk3"];
 
 if (pRole == ROLE_PL) then {
-  phx_loadout_uniform = "U_LIB_WP_Soldier_camo_2";
-  phx_loadout_vest = "V_LIB_WP_OfficerVest";
-  phx_loadout_headgear = "H_LIB_WP_Beret";
+  phx_loadout_uniform = "fow_u_uk_bd40_lieutenant";
+  phx_loadout_vest = "V_LIB_UK_P37_Officer";
+  phx_loadout_headgear = "fow_h_uk_bp_beret";
 };
 
 if (pRole == ROLE_SL) then {
-  phx_loadout_uniform = "U_LIB_WP_Soldier_camo_2";
-  phx_loadout_vest = "V_LIB_WP_OfficerVest";
-  phx_loadout_headgear = "H_LIB_WP_Cap";
+  phx_loadout_uniform = "fow_u_uk_bd40_sergeant";
+  phx_loadout_vest = "V_LIB_UK_P37_Officer";
 };
 
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
-  phx_loadout_uniform = "U_LIB_WP_Soldier_camo_3";
-  phx_loadout_vest = "V_LIB_WP_OfficerVest";
+  phx_loadout_uniform = "fow_u_uk_bd40_lance_corporal";
+  phx_loadout_headgear = "fow_h_uk_woolen_hat02";
 };
 
-if (pRole == ROLE_CLS) then {
-  phx_loadout_headgear = "H_LIB_WP_Helmet_med";
-};
-
-if (pRole == ROLE_AR || pRole == ROLE_MG) then {phx_loadout_vest = "V_LIB_WP_MGVest"};
+if (pRole == ROLE_AR || pRole == ROLE_MG) then {phx_loadout_vest = "fow_v_uk_bren"};
 //if (pRole == ROLE_MG) then {};
 
 //Use if you want to customize more
@@ -53,9 +48,8 @@ switch (pRole) do {
     phx_loadout_headgear = "fow_h_us_flight_helmet";
     }; //Pilot
   case ROLE_CR: {
-    phx_loadout_vest = "fow_v_uk_base_green";
+    phx_loadout_backpack = "";
     phx_loadout_headgear = "H_LIB_UK_Beret_Tankist";
-    phx_loadout_uniform = "fow_u_uk_bd40_seac_02_private";
     }; //Crewman
   case ROLE_MK: {}; //Marksman
 };

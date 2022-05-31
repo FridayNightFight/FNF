@@ -26,16 +26,13 @@ phx_attackingSide = sideEmpty; //west/east/independent
 ////////////////////////////////////////////////////////////
 
 //BLUFOR
-phx_bluforUniform = "UNIFORM_GERMANY";
-phx_bluforWeapons = "WEAPONS_GERMANY";
+phx_gearset_blufor = GERMANY_LATE;
 
 //OPFOR
-phx_opforUniform = "UNIFORM_SOVIET";
-phx_opforWeapons = "WEAPONS_SOVIET";
+phx_gearset_opfor = SOVIET;
 
 //INDFOR
-phx_indforUniform = "UNIFORM_USA";
-phx_indforWeapons = "WEAPONS_USA";
+phx_gearset_indfor = USA_ARMY;
 
 /*
 You can also use the civilian unit 'C_man_1'
@@ -48,25 +45,35 @@ phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
 
 /*
-==========UNIFORM VALUES========== -- ==========WEAPON VALUES==========
+==========GEARSETS==========
 
 =====BLUFOR=====
-UNIFORM_GERMANY                    -- WEAPONS_GERMANY
-UNIFORM_JAPAN                      -- WEAPONS_JAPAN
-UNIFORM_GERMANY_WINTER
-UNIFORM_GERMANY_TROPICAL
-UNIFORM_GERMANY_FSJ
+GERMANY_EARLY
+GERMANY_LATE
+GERMANY_DAK
+GERMANY_WINTER
+GERMANY_FSJ
+GERMANY_STORMTROOPER
 
+JAPAN
 
 =====OPFOR=====
-UNIFORM_SOVIET                     -- WEAPONS_SOVIET
-UNIFORM_SOVIET_WINTER
+SOVIET
+SOVIET_WINTER
 
 =====INDFOR=====
-UNIFORM_USA                        -- WEAPONS_USA
-UNIFORM_USMC                       -- WEAPONS_BRITAIN
-UNIFORM_BRITAIN                    -- WEAPONS_POLISH
-UNIFORM_BRITAIN_DESERT
-UNIFORM_POLISH
+USA_ARMY
+USA_AIRBORNE
+USA_RANGERS
+USA_TORCH
+USMC
+
+BRITAIN_EARLY
+BRITAIN_DESERT
+BRITAIN_JUNGLE
+BRITAIN_LATE
+BRITAIN_PARA
+
+POLISH
 =========================================================================================================================
 */

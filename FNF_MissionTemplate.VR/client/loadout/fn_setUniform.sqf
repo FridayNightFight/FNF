@@ -1,9 +1,9 @@
 phx_loadout_lrRadio = "";
 
 switch (playerSide) do {
-  case east: {pUniform = phx_opforUniform; phx_loadout_lrRadio = "B_LIB_SOV_RA_Radio"};
-  case west: {pUniform = phx_bluforUniform; phx_loadout_lrRadio = "B_LIB_GER_Radio"};
-  case independent: {pUniform = phx_indforUniform; phx_loadout_lrRadio = "B_LIB_US_Radio"};
+  case east: {phx_loadout_lrRadio = "B_LIB_SOV_RA_Radio"};
+  case west: {phx_loadout_lrRadio = "B_LIB_GER_Radio"};
+  case independent: {phx_loadout_lrRadio = "B_LIB_US_Radio"};
 };
 
 _incStr = "client\loadout\uniforms\" + pUniform + ".sqf";

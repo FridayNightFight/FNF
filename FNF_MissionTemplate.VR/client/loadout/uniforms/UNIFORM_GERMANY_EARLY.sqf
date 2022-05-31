@@ -1,20 +1,27 @@
 //Global customization - will be applied to every role
-phx_loadout_uniform = "U_LIB_GER_Recruit";
+phx_loadout_uniform = "U_LIB_GER_Schutze";
 phx_loadout_vest = "V_LIB_GER_VestKar98";
-phx_loadout_backpack = "B_LIB_GER_A_frame";
-phx_loadout_headgear = "H_LIB_GER_Helmet";
+phx_loadout_backpack = "B_LIB_GER_Tonister34_cowhide";
+phx_loadout_headgear = selectRandom ["fow_h_ger_m40_heer_01", "fow_h_ger_m40_heer_02", "fow_h_ger_m40_heer_camo"];
 
-if (pRole == ROLE_PL || pRole == ROLE_SL) then {
+if (pRole == ROLE_PL) then {
+  phx_loadout_uniform = "U_LIB_GER_Leutnant";
+  phx_loadout_vest = "V_LIB_GER_VestMP40";
+  phx_loadout_headgear = "fow_h_ger_officer_cap";
+};
+
+if (pRole == ROLE_SL) then {
   phx_loadout_uniform = "U_LIB_GER_Unterofficer";
   phx_loadout_vest = "V_LIB_GER_VestMP40";
+  phx_loadout_headgear = "fow_h_ger_m38_feldmutze";
 };
 
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
-  phx_loadout_uniform = "U_LIB_GER_Schutze";
+  phx_loadout_uniform = "U_LIB_GER_Oberschutze";
   phx_loadout_vest = "V_LIB_GER_VestG43";
 };
 
-if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_GER_VestSTG"};
+if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_GER_VestMP40"};
 if (pRole == ROLE_MG) then {phx_loadout_vest = "V_LIB_GER_VestMG"; phx_loadout_backpack = "B_LIB_GER_SapperBackpack_empty"};
 
 //Use if you want to customize more

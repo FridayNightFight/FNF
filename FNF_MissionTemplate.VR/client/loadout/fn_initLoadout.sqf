@@ -72,5 +72,6 @@ phx_loadout_ATMines,
 ["4x 250g charge", "LIB_Ladung_Small_MINE_mag:4"]
 ];
 
+call phx_fnc_setGearset;
 call phx_fnc_setUniform;
 call phx_fnc_setWeapons;

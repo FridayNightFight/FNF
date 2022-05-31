@@ -1,28 +1,28 @@
 //Global customization - will be applied to every role
-phx_loadout_uniform = "U_LIB_GER_Soldier_camo_w";
+phx_loadout_uniform = "U_LIB_DAK_Soldier_3";
 phx_loadout_vest = "V_LIB_GER_VestKar98";
 phx_loadout_backpack = "B_LIB_GER_A_frame";
-phx_loadout_headgear = "H_LIB_GER_HelmetCamo_w";
+phx_loadout_headgear = "H_LIB_DAK_Helmet";
 
 if (pRole == ROLE_PL) then {
-  phx_loadout_uniform = "U_LIB_GER_Leutnant";
-  phx_loadout_vest = "V_LIB_GER_VestMP40";
-  phx_loadout_headgear = "fow_h_ger_officer_cap";
+  phx_loadout_uniform = "U_LIB_DAK_Lieutenant";
+  phx_loadout_vest = "V_LIB_GER_FieldOfficer";
 };
 
 if (pRole == ROLE_SL) then {
-  phx_loadout_vest = "V_LIB_GER_VestMP40";
-  phx_loadout_headgear = "H_LIB_GER_Fieldcap_w";
+  phx_loadout_uniform = "U_LIB_DAK_NCO_2";
+  phx_loadout_vest = "V_LIB_GER_VestUnterofficer";
 };
 
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
+  phx_loadout_uniform = "U_LIB_DAK_NCO";
   phx_loadout_vest = "V_LIB_GER_VestG43";
 };
 
 if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_GER_VestSTG"};
 if (pRole == ROLE_MG) then {phx_loadout_vest = "V_LIB_GER_VestMG"; phx_loadout_backpack = "B_LIB_GER_SapperBackpack_empty"};
 
-if (pRole == ROLE_CLS) then {phx_loadout_vest = "V_LIB_GER_VestG43"; phx_loadout_headgear = "H_LIB_GER_Helmet_Medic";};
+if (pRole == ROLE_CLS) then {phx_loadout_vest = "V_LIB_GER_VestG43"; phx_loadout_headgear = "H_LIB_GER_Helmet_Medic"; phx_loadout_uniform = "U_LIB_DAK_Medic";};
 
 //Use if you want to customize more
 switch (pRole) do {

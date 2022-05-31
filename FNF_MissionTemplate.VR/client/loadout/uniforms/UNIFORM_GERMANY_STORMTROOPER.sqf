@@ -1,17 +1,29 @@
 //Global customization - will be applied to every role
-phx_loadout_uniform = "U_LIB_DAK_Soldier_3";
+phx_loadout_uniform = selectRandom ["U_LIB_ST_Soldier_E44_Camo2", "U_LIB_ST_Soldier_E44_Camo", "U_LIB_ST_MGunner_E44", "U_LIB_ST_Soldier_E44", "U_LIB_ST_Soldier_Camo2"];
 phx_loadout_vest = "V_LIB_GER_VestKar98";
-phx_loadout_backpack = "B_LIB_GER_A_frame";
-phx_loadout_headgear = "H_LIB_DAK_Helmet";
+phx_loadout_backpack = "B_LIB_GER_Backpack";
+phx_loadout_headgear = selectRandom ["H_LIB_ST_Helmet2", "H_LIB_ST_Helmet", "H_LIB_GER_HelmetUtility_Oak", "H_LIB_GER_HelmetUtility_Grass"];
 
-if (pRole == ROLE_PL || pRole == ROLE_SL) then {
-  phx_loadout_uniform = "U_LIB_DAK_NCO_2";
+if (pRole == ROLE_PL) then {
+  phx_loadout_uniform = "U_LIB_GER_Leutnant";
   phx_loadout_vest = "V_LIB_GER_VestMP40";
+  phx_loadout_headgear = "fow_h_ger_officer_cap";
+};
+
+if (pRole == ROLE_SL) then {
+  phx_loadout_uniform = "U_LIB_ST_Unterofficier_E44";
+  phx_loadout_vest = "V_LIB_GER_VestMP40";
+  phx_loadout_headgear = selectRandom ["H_LIB_GER_Fieldcap2", "H_LIB_GER_Fieldcap"];
 };
 
 if (pRole == ROLE_TL || pRole == ROLE_MGTL) then {
-  phx_loadout_uniform = "U_LIB_DAK_NCO";
+  phx_loadout_uniform = "U_LIB_GER_Oberschutze";
   phx_loadout_vest = "V_LIB_GER_VestG43";
+};
+
+if (pRole == ROLE_CLS) then {
+  phx_loadout_uniform = "U_LIB_ST_Medic_E44";
+  phx_loadout_headgear = "H_LIB_GER_Helmet_Medic";
 };
 
 if (pRole == ROLE_AR) then {phx_loadout_vest = "V_LIB_GER_VestSTG"};
