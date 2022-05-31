@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={499.37781,30,545.76953};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={515.41272,173.14355,348.63004};
+		dir[]={-0.0024221952,-0.55180871,0.83397412};
+		up[]={-0.0016024816,0.8339718,0.55180758};
+		aside[]={1.0000002,1.5988917e-009,0.0029042866};
 	};
 };
 binarizationWanted=0;
@@ -24058,7 +24058,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={299.81821,5.0014391,718.53882};
+						position[]={299.81799,5.0014391,718.539};
 						angles[]={-0,3.142221,0};
 					};
 					side="East";
@@ -24067,7 +24067,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="call{Red_PR = group this;}";
-						description="Recon Leader@Company Recon";
+						description="Recon Leader@Recon";
 						isPlayable=1;
 						class Inventory
 						{
@@ -24185,7 +24185,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={299.85721,5.0014391,720.96985};
+						position[]={299.85699,5.0014391,720.96997};
 						angles[]={0,3.1008391,0};
 					};
 					side="East";
@@ -24193,7 +24193,7 @@ class Mission
 					class Attributes
 					{
 						init="call{Red_PR = group this;}";
-						description="Marksman@Company Recon";
+						description="Marksman@Recon";
 						isPlayable=1;
 						class Inventory
 						{
@@ -24292,7 +24292,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={301.89722,5.0014391,718.58185};
+						position[]={301.897,5.0014391,718.58197};
 						angles[]={-0,3.142221,0};
 					};
 					side="East";
@@ -24301,7 +24301,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="call{Red_PR = group this;}";
-						description="Medic@Company Recon";
+						description="Medic@Recon";
 						isPlayable=1;
 						class Inventory
 						{
@@ -24419,15 +24419,15 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={302.01419,5.0014391,720.87683};
-						angles[]={-0,3.1157269,0};
+						position[]={302.01401,5.0014391,720.87701};
+						angles[]={0,3.1157269,0};
 					};
 					side="East";
 					flags=4;
 					class Attributes
 					{
 						init="call{Red_PR = group this;}";
-						description="Rifleman@Company Recon";
+						description="Rifleman@Recon";
 						isPlayable=1;
 						class Inventory
 						{
