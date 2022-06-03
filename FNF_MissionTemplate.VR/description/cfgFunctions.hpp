@@ -84,6 +84,7 @@ class CfgFunctions {
     class safety {
       file = "client\safety";
       class safety{};
+      class handleSafetyVics{};
     };
     class misc {
       file = "client\misc";

@@ -5,6 +5,7 @@ Removed at safe start end.
 
 //Make player invincible
 player allowDamage false;
+call phx_fnc_handleSafetyVics;
 
 //Heal player if they were damaged on start
 [player] call ace_medical_treatment_fnc_fullHealLocal;
@@ -38,7 +39,15 @@ phx_acePlacing = [{
     };
   };
 
-  if (!phx_safetyEnabled) then {[_this select 1] call CBA_fnc_removePerFrameHandler};
+  if (isManualFire vehicle player) then {
+    player action ["manualFireCancel", vehicle player];
+  };
+
+  if (!phx_safetyEnabled) then {
+    [_this select 1] call CBA_fnc_removePerFrameHandler;
+    player removeAction fnf_safeStartNoFire;
+    fnf_safeStartNoFire = nil;
+  };
 } , 0] call CBA_fnc_addPerFrameHandler;
 
 [{!phx_safetyEnabled}, {
