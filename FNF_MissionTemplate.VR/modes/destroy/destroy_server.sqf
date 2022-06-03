@@ -119,5 +119,4 @@ switch (phx_attackingSide) do {
 phx_gameEnd = true;
 publicVariable "phx_gameEnd";
 
-uisleep 20;
-"end1" call bis_fnc_endMissionServer;
+[phx_attackingSide, "has successfully destroyed all objectives and won!"] spawn phx_server_fnc_gameEnd;

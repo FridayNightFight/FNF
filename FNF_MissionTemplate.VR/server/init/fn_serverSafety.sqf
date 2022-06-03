@@ -27,6 +27,8 @@ missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
   ["SafeStartMissionStarting",["Mission starting now!"]] remoteExec ["bis_fnc_showNotification",0,false];
   ["off"] call acex_fortify_fnc_handleChatCommand;
 
+  [] call phx_server_fnc_webhook_roundStart;
+
   {_x allowDamage true;} forEach vehicles;
 
   {
