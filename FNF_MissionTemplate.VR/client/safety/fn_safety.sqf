@@ -3,9 +3,9 @@ Creates a safety for the player. Restricts shooting and throwing grenades.
 Removed at safe start end.
 */
 
-//Make player invincible
 player allowDamage false;
-call phx_fnc_handleSafetyVics;
+
+[] spawn phx_fnc_handleSafetyVics; //Handle vehicle damage
 
 //Heal player if they were damaged on start
 [player] call ace_medical_treatment_fnc_fullHealLocal;

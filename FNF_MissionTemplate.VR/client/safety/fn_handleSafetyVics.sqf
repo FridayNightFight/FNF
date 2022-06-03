@@ -1,16 +1,23 @@
 /*
-Makes any vehicle that isn't already invincible invincible until safe start ends
+Continuously sets the player's vehicle to be invincible during safe start, allows damage once safety ends
 */
+if (!canSuspend) exitWith {[] spawn phx_fnc_handleSafetyVics};
 
-if !(missionNamespace getVariable ["phx_safetyEnabled", true]) exitWith {};
+phx_safetyVics = [];
 
-private _safetyVics = vehicles select {isDamageAllowed _x};
-if (count _safetyVics == 0) exitWith {};
+while {phx_safetyEnabled} do {
+  _vic = vehicle player;
 
-{_x allowDamage false} forEach _safetyVics;
+  if (isDamageAllowed _vic) then {
+    _vic allowDamage false;
+    phx_safetyVics pushBack _vic;
+  };
 
-[{!(missionNamespace getVariable ["phx_safetyEnabled", true])}, {
-  params ["_safetyVics"];
+  sleep 0.2;
+};
 
-  {_x allowDamage true} forEach _safetyVics;
-}, [_safetyVics]] call CBA_fnc_waitUntilAndExecute;
+{
+  _x allowDamage true;
+} forEach phx_safetyVics;
+
+phx_safetyVics = nil;
