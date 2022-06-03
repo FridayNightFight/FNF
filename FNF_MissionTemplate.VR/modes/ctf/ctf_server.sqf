@@ -142,7 +142,15 @@ phx_server_dropFlag = {
       ["ctfDefendID", "FAILED", true] call BIS_fnc_taskSetState;
       ["ctfAttackID", "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-      [phx_attackingSide, "has successfully captured and held the flag!"] spawn phx_server_fnc_gameEnd;
+      [format ["%1 has successfully held the flag.\n%1 wins!",
+      switch (phx_attackingSide) do {
+        case east: {"OPFOR"};
+        case west: {"BLUFOR"};
+        case independent: {"INDFOR"};
+      }]] remoteExec ["hint"];
+
+      sleep 15;
+      "end1" call bis_fnc_endmissionserver;
     };
 
     if (phx_flagCaptureTime > 0 && (ctf_flag inArea ctf_attackTrig) && (isNull attachedTo ctf_flag)) then {

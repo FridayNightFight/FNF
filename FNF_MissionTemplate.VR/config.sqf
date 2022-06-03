@@ -19,8 +19,8 @@ neutralSector
 */
 
 /************************* DON'T FORGET TO FILL THIS OUT IF YOUR GAME MODE IS NOT NEUTRAL *************************/
-phx_defendingSide = west; //west/east/independent
-phx_attackingSide = east; //west/east/independent
+phx_defendingSide = sideEmpty; //west/east/independent
+phx_attackingSide = sideEmpty; //west/east/independent
 //Leave it as sideEmpty if chosen mode is neutral
 
 ////////////////////////////////////////////////////////////

@@ -13,13 +13,19 @@ switch (_numberOfSectors) do {
   case 3: {_sectors pushBack phx_sec1; _sectors pushBack phx_sec2; _sectors pushBack phx_sec3};
 };
 
-phx_gamemode_sectors = _sectors;
-
 phx_server_sectorWin = {
+  [format ["%1 has captured all sectors.\n%1 wins!",
+  switch (phx_attackingSide) do {
+    case east: {"OPFOR"};
+    case west: {"BLUFOR"};
+    case independent: {"INDFOR"};
+  }]] remoteExec ["hint"];
+
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  [phx_attackingSide, "has captured all sectors and wins!"] spawn phx_server_fnc_gameEnd;
+  sleep 20;
+  "end1" call bis_fnc_endmissionserver;
 };
 
 _sectorNum = 0;
