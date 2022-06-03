@@ -1,3 +1,6 @@
+# WW2 v5 beta
+Beta release of 2022 WW2 template
+
 # WW2 v4
 1. Switch FoW G43 to IFA3 version due to low sound
 2. Fix desert terrain fortify array
