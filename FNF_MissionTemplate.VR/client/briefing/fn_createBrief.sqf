@@ -1,8 +1,6 @@
 ORBAT_Diary = player createDiarySubject ["ORBAT_Diary", "ORBAT", "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa"];
-
-_getName = {
-  getText (configFile >> "cfgWeapons" >> _this >> "displayName");
-};
+PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
+PHX_Diary_Uniforms = player createDiarySubject ["PHX_Diary_Uniforms", "Uniforms", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
 //Admin end start trigger
 if (serverCommandAvailable "#kick") then {
@@ -20,51 +18,28 @@ if (serverCommandAvailable "#kick") then {
   [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {player removeDiarySubject "PHX_Diary_Admin_Safestart"}] call CBA_fnc_waitUntilAndExecute;
 };
 
-PHX_Diary_Details = player createDiarySubject ["PHX_Diary_Details", "Mission Details", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
+//Populate uniform diary record with an image of the uniform for each present side
+_createUniformRecord = {
+  _gearStr = "phx_gearset_" + _this;
+  _gearVar = missionNamespace getVariable [_gearStr,""];
 
-_varStr = "";
-
-if (!isNil "phx_briefing_west_uniform" || !isNil "phx_briefing_west_headgear") then {
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_west_headgear >> "picture");
-
-  player createDiaryRecord ["PHX_Diary_Details",["BLUFOR Uniform",
-  format ["BLUFOR Helmet:<br/><br/>
-  <img width='178' height='178' image='%2'/>
-  <br/><br/>
-  BLUFOR Uniform:<br/><br/>
-  <img width='356' height='356' image='%1'/>
-  ", _uniformImg, _helmetImg]
+  player createDiaryRecord ["PHX_Diary_Uniforms", [toUpper _this,
+  format ["<img width='400' height='400' image='%1'/>", format ["\fnf_ww2\images\gear\%1.paa", _gearVar]]
   ]];
 };
 
-if (!isNil "phx_briefing_east_uniform" || !isNil "phx_briefing_east_headgear") then {
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_east_headgear >> "picture");
-
-  player createDiaryRecord ["PHX_Diary_Details",["OPFOR Uniform",
-  format ["OPFOR Helmet:<br/><br/>
-  <img width='178' height='178' image='%2'/>
-  <br/><br/>
-  OPFOR Uniform:<br/><br/>
-  <img width='356' height='356' image='%1'/>
-  ", _uniformImg, _helmetImg]
-  ]];
+if (playableSlotsNumber independent > 0) then {
+  "indfor" call _createUniformRecord;
+};
+if (playableSlotsNumber opfor > 0) then {
+  "opfor" call _createUniformRecord;
+};
+if (playableSlotsNumber blufor > 0) then {
+  "blufor" call _createUniformRecord;
 };
 
-if (!isNil "phx_briefing_ind_uniform" || !isNil "phx_briefing_ind_headgear") then {
-  _uniformImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_uniform >> "picture");
-  _helmetImg = getText (configFile >> "cfgWeapons" >> phx_briefing_ind_headgear >> "picture");
-
-  player createDiaryRecord ["PHX_Diary_Details",["INDFOR Uniform",
-  format ["INDFOR Helmet:<br/><br/>
-  <img width='178' height='178' image='%2'/>
-  <br/><br/>
-  INDFOR Uniform:<br/><br/>
-  <img width='356' height='356' image='%1'/>
-  ", _uniformImg, _helmetImg]
-  ]];
-};
+//Populate mission details diary record
+private _varStr = "";
 
 if (phx_defendingSide != sideEmpty) then {
   _varStr = _varStr + "<br/>";
@@ -72,9 +47,6 @@ if (phx_defendingSide != sideEmpty) then {
 };
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
-_varStr = _varStr + "<br/>";
-_varStr = _varStr + format ["Safe start time: %1 minutes", phx_safeStartTime];
-_varStr = _varStr + "<br/>";
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Maximum view distance: %1m", phx_maxViewDistance];
 

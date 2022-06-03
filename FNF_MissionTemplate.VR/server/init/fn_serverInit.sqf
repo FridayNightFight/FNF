@@ -2,7 +2,7 @@ if (!isServer) exitWith {};
 
 call phx_fnc_serverSafety;
 call phx_fnc_radio_genFreqs;
-call phx_fnc_sendUniforms;
+//call phx_fnc_sendUniforms;
 call phx_fnc_fortifyServer;
 call phx_fnc_markCustomObjs;
 call phx_fnc_server_setupGame;
