@@ -120,8 +120,7 @@ _generateORBAT = {
 
 //----------------------------------------------------------------------------------------------------
 private _side = side group player;
-private _orbatText = "<br />NOTE: This ORBAT is only valid at mission start.<br />
-<br />";
+private _orbatText = "<br />";
 
 phx_colorArrayBase = [
     "#8080FF", // light blue
@@ -141,9 +140,9 @@ phx_colorArrayUsed = [];
 private _groups = [];
 private _templateGroups = [];
 private _templateGroupList = [
-    "Blue_CC", "Blue_CR", "Blue_P1HQ", "Blue_P2HQ", "Blue_P", "Blue_A", "Blue_A1", "Blue_A2", "Blue_B", "Blue_B1", "Blue_B2", "Blue_C", "Blue_C1", "Blue_C2", "Blue_D", "Blue_D1", "Blue_D2", "Blue_D3", "Blue_D4", "Blue_E", "Blue_E1", "Blue_E2", "Blue_E3", "Blue_E4", "Blue_F", "Blue_F1", "Blue_F2", "Blue_G", "Blue_G1", "Blue_G2", "Blue_G3", "Blue_G4", "Blue_H", "Blue_H1", "Blue_H2", "Blue_H3", "Blue_H4",
-    "Red_CC", "Red_CR", "Red_P1HQ", "Red_P2HQ", "Red_P", "Red_A", "Red_A1", "Red_A2", "Red_B", "Red_B1", "Red_B2", "Red_C", "Red_C1", "Red_C2", "Red_D", "Red_D1", "Red_D2", "Red_D3", "Red_D4", "Red_E", "Red_E1", "Red_E2", "Red_E3", "Red_E4", "Red_F", "Red_F1", "Red_F2", "Red_G", "Red_G1", "Red_G2", "Red_G3", "Red_G4", "Red_H", "Red_H1", "Red_H2", "Red_H3", "Red_H4",
-    "Green_CC", "Green_CR", "Green_P1HQ", "Green_P2HQ", "Green_P", "Green_A", "Green_A1", "Green_A2", "Green_B", "Green_B1", "Green_B2", "Green_C", "Green_C1", "Green_C2", "Green_D", "Green_D1", "Green_D2", "Green_D3", "Green_D4", "Green_E", "Green_E1", "Green_E2", "Green_E3", "Green_E4", "Green_F", "Green_F1", "Green_F2", "Green_G", "Green_G1", "Green_G2", "Green_G3", "Green_G4", "Green_H", "Green_H1", "Green_H2", "Green_H3", "Green_H4"
+    "Blue_CC", "Blue_PLHQ", "Blue_PR","Blue_P2HQ", "Blue_P", "Blue_A", "Blue_A1", "Blue_A2", "Blue_B", "Blue_B1", "Blue_B2", "Blue_C", "Blue_C1", "Blue_C2", "Blue_D", "Blue_D1", "Blue_D2", "Blue_D3", "Blue_D4", "Blue_E", "Blue_E1", "Blue_E2", "Blue_E3", "Blue_E4", "Blue_F", "Blue_F1", "Blue_F2", "Blue_G", "Blue_G1", "Blue_G2", "Blue_G3", "Blue_G4", "Blue_H", "Blue_H1", "Blue_H2", "Blue_H3", "Blue_H4",
+    "Red_CC", "Red_PLHQ", "Red_PR", "Red_P2HQ", "Red_P", "Red_A", "Red_A1", "Red_A2", "Red_B", "Red_B1", "Red_B2", "Red_C", "Red_C1", "Red_C2", "Red_D", "Red_D1", "Red_D2", "Red_D3", "Red_D4", "Red_E", "Red_E1", "Red_E2", "Red_E3", "Red_E4", "Red_F", "Red_F1", "Red_F2", "Red_G", "Red_G1", "Red_G2", "Red_G3", "Red_G4", "Red_H", "Red_H1", "Red_H2", "Red_H3", "Red_H4",
+    "Green_CC", "Green_PLHQ", "Green_PR", "Green_P2HQ", "Green_P", "Green_A", "Green_A1", "Green_A2", "Green_B", "Green_B1", "Green_B2", "Green_C", "Green_C1", "Green_C2", "Green_D", "Green_D1", "Green_D2", "Green_D3", "Green_D4", "Green_E", "Green_E1", "Green_E2", "Green_E3", "Green_E4", "Green_F", "Green_F1", "Green_F2", "Green_G", "Green_G1", "Green_G2", "Green_G3", "Green_G4", "Green_H", "Green_H1", "Green_H2", "Green_H3", "Green_H4"
 ];
 
 {
