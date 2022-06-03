@@ -13,6 +13,8 @@ switch (_numberOfSectors) do {
   case 3: {_sectors pushBack phx_sec1; _sectors pushBack phx_sec2; _sectors pushBack phx_sec3};
 };
 
+phx_gamemode_sectors = _sectors;
+
 phx_server_sectorWin = {
   [format ["%1 has captured all sectors.\n%1 wins!",
   switch (phx_attackingSide) do {

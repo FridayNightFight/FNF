@@ -23,7 +23,7 @@ call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient}] call CBA_fnc_waitUntilAndExecute;
 
 //Start kill counter when game ends or player is dead
-//[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
+[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
 //Start spectator fnc when player is killed
 player addEventHandler ["Killed", {call phx_fnc_spectatorInit;}];
 

@@ -109,18 +109,24 @@ switch (true) do {
   //RUSH END
 
   case (phx_gameMode == "adSector"): {
+    _activeSectors = phx_gamemode_sectors select {!isNull _x};
     _finalSector = objNull;
-    switch (phx_sectorNum) do {
-      case 1: {_finalSector = phx_sec1};
-      case 2: {_finalSector = phx_sec2};
-      case 3: {_finalSector = phx_sec3};
+    _overtimeAlert = false;
+
+    if (count _activeSectors == 1) then {
+      _finalSector = _activeSectors select 0;
     };
 
     while {!phx_gameEnd} do {
       _attackersInside = {(alive _x) && (lifeState _x != "INCAPACITATED") && (side _x == phx_attackingSide) && (_x inArea _finalSector)} count playableUnits;
 
       if (_attackersInside == 0) then {
-        "The sectors have been defended." call _endGame;
+        "has successfully defended the sectors and won!" call _endGame;
+      } else {
+        if (_attackersInside > 0 && !_overtimeAlert) then {
+          ["<t align='center'>Overtime enabled!<br/>Attackers must remain within the zone and eliminate all defenders in order to win.</t>","warning",10] remoteExec ["phx_ui_fnc_notify", 0, false];
+          _overtimeAlert = true;
+        };
       };
       sleep 3;
     };
