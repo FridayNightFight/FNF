@@ -18,7 +18,6 @@ class CfgFunctions {
       class drawStaffIcons{};
       class drawCmdIcons{};
       class drawSLIcons{};
-      class assetDiaryInfo{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -27,6 +26,7 @@ class CfgFunctions {
       class setGroupIDs{};
       class createBrief{};
       class createOrbat{};
+      class assetDiary{};
     };
     class radio {
       file = "client\radio";
@@ -106,6 +106,8 @@ class CfgFunctions {
       class fortifyServer{};
       class server_setupGame{};
       class radio_genFreqs{};
+      class processVehicles{};
+      class clearVics{};
     };
     class end {
       file = "server\end";
