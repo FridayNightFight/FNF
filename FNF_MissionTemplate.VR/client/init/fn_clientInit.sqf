@@ -1,5 +1,6 @@
 //Determine if client can play the round, if not, spectate
 if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
+player setVariable ["phx_startGroup", group player, true]; //Set player's starting group
 
 call phx_fnc_hideMarkers; //Hide markers player shouldn't see
 call phx_fnc_briefInit; //Briefing
@@ -8,10 +9,10 @@ call phx_fnc_safety; //Enable safety
 call phx_fnc_staggeredLoad; //Start staggered load timer
 call phx_fnc_initLoadout; //Loadout vars
 call phx_fnc_radio_waitGear; //Start radio preset functions
-call phx_fnc_defineStaff; // define staff values
 call phx_fnc_assetDiaryInfo; // Add diary entries for assets
 call phx_fnc_drawStaffIcons; // Draw labels over staff members
 call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
+call phx_fnc_drawSLIcons; // Draw labels over squad leaders
 
 //Disable chat typing for mission display
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
@@ -23,9 +24,9 @@ call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient}] call CBA_fnc_waitUntilAndExecute;
 
 //Start kill counter when game ends or player is dead
-[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
+//[{missionNamespace getVariable ["phx_gameEnd",false] || !alive player}, {call phx_fnc_killCounter}] call CBA_fnc_waitUntilAndExecute;
 //Start spectator fnc when player is killed
-player addEventHandler ["Killed", {call phx_fnc_spectatorInit;}];
+player addEventHandler ["Killed", {[{call fnf_spectator_fnc_init}, [], 3] call cba_fnc_waitAndExecute}];
 
 //Marking
 [] execVM "client\icons\QS_icons.sqf";

@@ -1,30 +1,36 @@
-[{!(isNull findDisplay 46) && (!isNil {missionNamespace getVariable ["staffInfo", nil]}) && phx_staggeredLoaded == true}, {
-	unitIconsHelperSpec = [{
+[{!(isNull findDisplay 46) && missionNamespace getVariable ["phx_staggeredLoaded",false]}, {
 
-		// skip if not safe start
-		if (!phx_safetyEnabled) then {_handle call CBA_fnc_removePerFrameHandler};
+  // [fnf_ui_handle_commandIcons] call CBA_fnc_removePerFrameHandler;
+  fnf_ui_handle_commandIcons = [{
 
-		_cmdUnits = (units playerSide) select {
-			["officer", typeOf _x] call BIS_fnc_inString
-		};
+    // remove if not safe start
+    if (!(missionNamespace getVariable ["phx_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
 
-		// address officers (CMD, PL)
-		{
-			// skip draw beyond 300m
-			if (player distance _x >= 300) exitWith {};
+    _cmdUnits = (units playerSide) select {
+      // ["officer", typeOf _x] call BIS_fnc_inString
+      typeOf _x in ["B_officer_F","O_officer_F","I_officer_F"]
+    };
 
-			// skip if ACE spectator is drawing group/name icons so as not to clash
-			if (missionNamespace getVariable "ace_spectator_drawunits" && ace_spectator_isSet) exitWith {};
+    // address officers (CMD, PL)
+    {
+      // skip if ACE spectator is drawing group/name icons so as not to clash
+      if (missionNamespace getVariable ["ace_spectator_drawunits", false] && ace_spectator_isSet) exitWith {};
 
-			// skip if in objectivePreviewCamera
-			if (!isNil "phx_fnc_objectivePreview_Cam") exitWith {};
+      // skip if in objectivePreviewCamera
+      if (!isNil "fnf_fnc_objectivePreview_Cam") exitWith {};
 
-			_iconType = getText(configFile >> "CfgVehicles" >> (typeOf(vehicle _x)) >> "icon");
-			_thisName = format["%1: %2", ((roleDescription _x) splitString "@")# 0, name _x];
+				private _targetPositionAGLTop = _x modelToWorldVisual (_x selectionPosition "Head");
+	      _targetPositionAGLTop set [2, (_targetPositionAGLTop select 2) + 1.5];
 
-			_pos = _x modelToWorldVisual [0,0,0];
+      // _thisName = format["%1: %2", ((roleDescription _x) splitString "@")# 0, name _x];
+      // _thisName = groupId (group _x);
+      private _thisName = "PL";
+			_color = [playerSide] call BIS_fnc_sideColor;
+			_color set [3,1];
 
-			drawIcon3D[_iconType, [1, 1, 1, 0.7], [(_pos select 0), (_pos select 1), (_pos select 2) + 2.3], 0.6, 0.6, 0, _thisName, true, 0.03, "PuristaBold", "center"];
-		} forEach _cmdUnits;
-	}, 0] call CBA_fnc_addPerFrameHandler;
+      if (player distance _x <= 120) then {
+        drawIcon3D["", _color, _targetPositionAGLTop, 0.6 / (getResolution select 5), 0.6 / (getResolution select 5), 0, _thisName, true, 0.02 / (getResolution select 5), "PuristaBold", "center"];
+      };
+    } forEach _cmdUnits;
+  }] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
