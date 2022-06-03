@@ -18,10 +18,8 @@ _endGame = {
   phx_gameEnd = true;
   publicVariable "phx_gameEnd";
 
-  if (phx_gameMode in ["destroy","uplink"]) then {
-    sleep 10;
-    "end1" call bis_fnc_endmissionserver;
-  };
+  sleep 10;
+  "end1" call bis_fnc_endmissionserver;
 };
 
 switch (true) do {
