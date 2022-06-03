@@ -34,4 +34,6 @@ switch (_gearset) do {
   case BRITAIN_PARA: {pUniform = "UNIFORM_BRITAIN_PARA"; pWeapons = "WEAPONS_BRITAIN_LATE"};
 
   case POLISH: {pUniform = "UNIFORM_POLISH"; pWeapons = "WEAPONS_POLISH"};
+
+  default {["Gearset not found"] call BIS_fnc_errorMsg};
 };
