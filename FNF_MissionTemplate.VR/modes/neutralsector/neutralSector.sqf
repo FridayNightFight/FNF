@@ -24,20 +24,8 @@ switch (_numberOfSectors) do {
 };
 
 _win = {
-  phx_gameEnd = true;
-  publicVariable "phx_gameEnd";
-
-  _side = _this;
-
-  [format ["%1 has reached 100 points.\n%1 wins!",
-  switch (_sideWon) do {
-    case east: {"OPFOR"};
-    case west: {"BLUFOR"};
-    case independent: {"INDFOR"};
-  }]] remoteExec ["hint"];
-
-  sleep 20;
-  "end1" call BIS_fnc_endMissionServer;
+  _sideWon = _this;
+  [_sideWon, "has reached 100 points and won!"] spawn phx_fnc_gameEnd;
 };
 
 waitUntil {
