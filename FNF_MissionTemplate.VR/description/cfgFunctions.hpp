@@ -94,6 +94,7 @@ class CfgFunctions {
       class killCounter{};
       class showTimeOnMap{};
       class notify{};
+      class lobbyTextGenerator{};
     };
     class unflip {
       file = "client\misc\unflip";

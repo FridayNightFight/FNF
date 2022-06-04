@@ -11,8 +11,10 @@ _getWeaponry = {
       private _wepMags = [];
       {
         _wepDet = [_vic, _path, _x, _magsHere, _pylons] call _getMagsForWep;
-        if (!(_wepDet isEqualTo [[]])) then {
-          _wepMags pushBack _wepDet;
+        if (!isNil "_wepDet") then {
+          if (!(_wepDet isEqualTo [[]])) then {
+            _wepMags pushBack _wepDet;
+          };
         };
       } forEach _weps;
 
