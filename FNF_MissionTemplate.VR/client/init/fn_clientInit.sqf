@@ -15,7 +15,7 @@ call phx_fnc_drawSLIcons; // Draw labels over squad leaders
 
 [{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {call phx_fnc_setLoadout}] call CBA_fnc_waitUntilAndExecute;
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient}] call CBA_fnc_waitUntilAndExecute;
-[{!isNil "fnf_vehiclesToProcess"}, {[] spawn {uisleep 1; call phx_fnc_assetDiary}}] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "fnf_vehiclesToProcess"}, {[] spawn {uisleep 2; call phx_fnc_assetDiary}}] call CBA_fnc_waitUntilAndExecute;
 [{time > 0}, {call phx_fnc_restrictions; call phx_fnc_checkLoadout;}] call CBA_fnc_waitUntilAndExecute;
 [{!(isNull findDisplay 46) && !(isNull player)}, {46 call phx_fnc_disableTyping}] call CBA_fnc_waitUntilAndExecute;
 
