@@ -95,6 +95,7 @@ class CfgFunctions {
       class showTimeOnMap{};
       class notify{};
       class lobbyTextGenerator{};
+      class adminGameEnd{};
     };
     class unflip {
       file = "client\misc\unflip";
