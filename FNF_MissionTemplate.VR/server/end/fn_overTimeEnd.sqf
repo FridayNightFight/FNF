@@ -122,7 +122,7 @@ switch (true) do {
         "has successfully defended the sectors and won!" call _endGame;
       } else {
         if (_attackersInside > 0 && !_overtimeAlert) then {
-          ["<t align='center'>Overtime enabled!<br/>Attackers must remain within the zone and eliminate all defenders in order to win.</t>","warning",10] remoteExec ["phx_ui_fnc_notify", 0, false];
+          ["<t align='center'>Overtime enabled!<br/>Attackers must remain within the zone and eliminate all defenders in order to win.</t>","warning",10] remoteExec ["phx_fnc_notify", 0, false];
           _overtimeAlert = true;
         };
       };
