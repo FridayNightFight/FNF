@@ -1,20 +1,17 @@
 phx_fortify_objArr = [];
 
-if (!isNil "term1") then {
- phx_fortify_objArr append [term1];
-};
-if (!isNil "term2") then {
- phx_fortify_objArr append [term2];
-};
-if (!isNil "term3") then {
- phx_fortify_objArr append [term3];
-};
-if (!isNil "phx_destroyObjs") then {
- phx_fortify_objArr append phx_destroyObjs;
-};
-if (!isNil "ctf_flag") then {
-  phx_fortify_objArr append [ctf_flag];
-};
+[{!isNil "term1"}, {phx_fortify_objArr append [term1]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term2"}, {phx_fortify_objArr append [term2]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "term3"}, {phx_fortify_objArr append [term3]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "phx_destroyObjs"}, {phx_fortify_objArr append phx_destroyObjs}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_flag"}, {phx_fortify_objArr append [ctf_flag]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+[{!isNil "ctf_attackTrig"}, {phx_fortify_objArr append [ctf_attackTrig]}, [], 10] call CBA_fnc_waitUntilAndExecute;
+
+[{
+  {
+    if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
+  } forEach phx_fortify_objArr;
+}, [], 15] call CBA_fnc_waitAndExecute;
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
 if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};
@@ -33,10 +30,6 @@ switch (playerSide) do {
   case independent: {phx_fortifyMarker = "indforSafeMarker";};
 };
 
-{
-  if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
-} forEach phx_fortify_objArr;
-
 [{
     params ["_unit", "_object", "_cost"];
     private _canPlace = true;
@@ -51,16 +44,18 @@ switch (playerSide) do {
     };
 
     if (_type != "Land_Plank_01_4m_F" && _type != "Land_Plank_01_8m_F" && (_type find "BagFence" == -1)) then {
-      if ((_pos select 2) > 0.35) then {
+      if ((getPosATL _object) select 2 > 0.35) then {
         _canPlace = false;
-        _errorStr = "Cannot place object. Object must be on a surface."
+        _errorStr = "Cannot place object. Object must be on the terrain."
       };
     };
 
     {
-      if (_pos distance (position _x) < _minDistance) then {
+      if (_pos distance (position _x) < _minDistance || _pos inArea _x) then {
         _canPlace = false;
         _errorStr = format ["Cannot place object. Object needs to be at least %1 meters away from an objective.", _minDistance];
+
+        if (_pos inArea _x) then {_errorStr = "Cannot place object within objective area."};
       };
     } forEach phx_fortify_objArr;
 
@@ -69,27 +64,34 @@ switch (playerSide) do {
       _errorStr = "Cannot place object. Object cannot be near a road";
     };
 
-    if !(_pos inArea phx_fortifyMarker) then {
+    if (phx_fortifyMarkers findIf {_pos inArea _x} == -1) then {
       _canPlace = false;
       _errorStr = "Cannot place object. Object needs to be within start zone boundary."
     };
 
-    hintSilent _errorStr;
+    if (_cost > phx_fortifyPoints) then {
+      _canPlace = false;
+      _errorStr = "Cannot place object. Not enough funds.";
+    };
+
+    // hintSilent _errorStr;
+    [_errorStr, "error", 7] call phx_ui_fnc_notify;
 
     if (_canPlace) then {
       switch (playerSide) do {
         case east: {
-          missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_east", -1, false];
         };
         case west: {
-          missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_west", -1, false];
         };
         case independent: {
-          missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
+          missionNamespace setVariable ["ace_fortify_budget_guer", -1, false];
         };
       };
       phx_fortifyPoints = phx_fortifyPoints - _cost;
-      hintSilent format ["Fortify Budget: $%1", phx_fortifyPoints];
+      // hintSilent format ["Fortify Budget: $%1", phx_fortifyPoints];
+      [format ["Fortify Budget: $%1", phx_fortifyPoints], "info", 7] call phx_ui_fnc_notify;
     };
 
     _canPlace
@@ -104,16 +106,16 @@ switch (playerSide) do {
 
   switch (playerSide) do {
     case east: {
-      _fortifyVarStr = "acex_fortify_objects_east";
-      missionNamespace setVariable ["acex_fortify_budget_east", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_east";
+      missionNamespace setVariable ["ace_fortify_budget_east", -1, false];
     };
     case west: {
-      _fortifyVarStr = "acex_fortify_objects_west";
-      missionNamespace setVariable ["acex_fortify_budget_west", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_west";
+      missionNamespace setVariable ["ace_fortify_budget_west", -1, false];
     };
     case independent: {
-      _fortifyVarStr = "acex_fortify_objects_guer";
-      missionNamespace setVariable ["acex_fortify_budget_guer", -1, false];
+      _fortifyVarStr = "ace_fortify_objects_guer";
+      missionNamespace setVariable ["ace_fortify_budget_guer", -1, false];
     };
   };
 
@@ -135,13 +137,13 @@ switch (playerSide) do {
 
   switch (playerSide) do {
     case east: {
-      missionNamespace setVariable ["acex_fortify_budget_east", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_east", phx_fortifyPoints, false];
     };
     case west: {
-      missionNamespace setVariable ["acex_fortify_budget_west", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_west", phx_fortifyPoints, false];
     };
     case independent: {
-      missionNamespace setVariable ["acex_fortify_budget_guer", phx_fortifyPoints, false];
+      missionNamespace setVariable ["ace_fortify_budget_guer", phx_fortifyPoints, false];
     };
   };
 }] call CBA_fnc_addEventHandler;
