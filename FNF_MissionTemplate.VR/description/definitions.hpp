@@ -7,7 +7,7 @@ respawn = 3;
 respawnDialog = 0;
 respawndelay = 99999;
 respawnOnStart = -1;
-respawnTemplates[] = {"ace_spectator"};
+respawnTemplates[] = {};
 joinUnassigned = 1;
 
 onPauseScript[] = {phx_fnc_removeRespawnButton, phx_fnc_adminGameEnd};
