@@ -21,7 +21,7 @@ call TFAR_fnc_updateSpeakVolumeUI;
   if (getTerrainGrid > 25) then {
     setTerrainGrid 25;
   };
-} , 1] call CBA_fnc_addPerFrameHandler;
+} , 0.1] call CBA_fnc_addPerFrameHandler;
 
 //Disable zeus ping
 missionnamespace setvariable ["bis_fnc_curatorPinged_time", 9999, false];

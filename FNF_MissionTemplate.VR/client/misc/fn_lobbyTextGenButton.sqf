@@ -21,5 +21,5 @@ _buttonCtrl ctrlSetText "Generate Lobby Text";
 //Add script to button selection
 _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
   call phx_fnc_lobbyTextGenerator;
-  hint "Lobby text copied to clipboard";
+  hint "Lobby text copied to clipboard\nDon't forget to change the attacker's advantage (10% is standard)";
 }];

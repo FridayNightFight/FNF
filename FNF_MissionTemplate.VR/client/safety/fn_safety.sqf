@@ -45,8 +45,8 @@ phx_acePlacing = [{
 
   if (!phx_safetyEnabled) then {
     [_this select 1] call CBA_fnc_removePerFrameHandler;
-    player removeAction fnf_safeStartNoFire;
-    fnf_safeStartNoFire = nil;
+    player removeAction phx_safeStartNoFire;
+    phx_safeStartNoFire = nil;
   };
 } , 0] call CBA_fnc_addPerFrameHandler;
 
