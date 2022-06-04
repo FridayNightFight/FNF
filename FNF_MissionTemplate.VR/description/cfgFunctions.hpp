@@ -120,6 +120,7 @@ class CfgFunctions {
       class checkTime{};
       class overTimeEnd{};
       class gameEnd{};
+      class endElimination{};
     };
     class webhook {
       file = "server\webhook";

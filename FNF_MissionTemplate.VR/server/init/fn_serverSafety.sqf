@@ -34,4 +34,6 @@ missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
       [_x] remoteExec ["deleteMarkerLocal",0,true];
     };
   } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+
+  [] call phx_fnc_webhook_roundStart;
 }] call CBA_fnc_waitUntilAndExecute;
