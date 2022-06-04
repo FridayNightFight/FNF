@@ -10,7 +10,7 @@ phx_loadout_grenade = "LIB_US_Mk_2:2";
 phx_loadout_CEGrenade = "fow_e_tnt_halfpound:2";
 
 if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
-  phx_loadout_rifle_weapon = "fow_w_m1_thompson";
+  phx_loadout_rifle_weapon = "LIB_M1A1_Thompson";
   phx_loadout_rifle_mag_tracer = "fow_30Rnd_45acp_T:4";
   phx_loadout_rifle_mag = "fow_30Rnd_45acp:9";
 };
