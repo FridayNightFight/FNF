@@ -1,7 +1,7 @@
 //Global primary weapon and magazine classes
 phx_loadout_rifle_weapon = "fow_w_k98";
 phx_loadout_rifle_mag_tracer = "LIB_5Rnd_792x57_t:5";
-phx_loadout_rifle_mag = "LIB_5Rnd_792x57:10";
+phx_loadout_rifle_mag = "LIB_5Rnd_792x57:15";
 
 phx_loadout_sidearm_weapon = "LIB_P38";
 phx_loadout_sidearm_mag = "LIB_8Rnd_9x19:2";
@@ -11,8 +11,8 @@ phx_loadout_CEGrenade = "LIB_Pwm:2";
 
 if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
   phx_loadout_rifle_weapon = "fow_w_mp40";
-  phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:3";
-  phx_loadout_rifle_mag = "LIB_32Rnd_9x19:7";
+  phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:4";
+  phx_loadout_rifle_mag = "LIB_32Rnd_9x19:11";
 };
 
 if (pRole == ROLE_GR) then {
@@ -23,17 +23,17 @@ if (pRole == ROLE_GR) then {
 
 if (pRole == ROLE_AR) then {
   phx_loadout_rifle_weapon = "LIB_FG42G";
-  phx_loadout_rifle_mag = "fow_20Rnd_792x57:14";
+  phx_loadout_rifle_mag = "fow_20Rnd_792x57:20";
 };
 
 if (pRole == ROLE_MG) then {
   phx_loadout_rifle_weapon = "LIB_MG34";
-  phx_loadout_rifle_mag = "LIB_50Rnd_792x57:9";
+  phx_loadout_rifle_mag = "LIB_50Rnd_792x57:11";
 };
 
 //Magazine classnames for assistant AR and MMG ammo man roles
-phx_loadout_aar_mag = "fow_30Rnd_792x33:5";
-phx_loadout_am_mag = "LIB_50Rnd_792x57:3";
+phx_loadout_aar_mag = "fow_30Rnd_792x33:7";
+phx_loadout_am_mag = "LIB_50Rnd_792x57:10";
 
 //Light AT
 phx_loadout_antitank_weapon = "LIB_PzFaust_30m";
@@ -52,8 +52,8 @@ switch (pRole) do {
   case ROLE_SL: {}; //Squad leader
   case ROLE_TL: {
     phx_loadout_rifle_weapon = "LIB_G43";
-    phx_loadout_rifle_mag_tracer = "LIB_10Rnd_792x57_T:5";
-    phx_loadout_rifle_mag = "LIB_10Rnd_792x57:10";
+    phx_loadout_rifle_mag_tracer = "LIB_10Rnd_792x57_T:6";
+    phx_loadout_rifle_mag = "LIB_10Rnd_792x57:12";
     }; //Team leader
   case ROLE_MGTL: {}; //Machine gun team leader
   case ROLE_CLS: {}; //Medic
