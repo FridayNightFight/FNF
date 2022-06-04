@@ -96,6 +96,7 @@ class CfgFunctions {
       class notify{};
       class lobbyTextGenerator{};
       class adminGameEnd{};
+      class lobbyTextGenButton{};
     };
     class unflip {
       file = "client\misc\unflip";
