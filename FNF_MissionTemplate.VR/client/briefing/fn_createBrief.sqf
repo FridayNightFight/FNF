@@ -49,6 +49,8 @@ _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Time limit: %1 minutes", phx_missionTimeLimit];
 _varStr = _varStr + "<br/>";
 _varStr = _varStr + format ["Maximum view distance: %1m", phx_maxViewDistance];
+_varStr = _varStr + "<br/><br/>";
+_varStr = _varStr + format ["Template version: %1", call compile preprocessFile "version.txt"];
 
 player createDiaryRecord ["PHX_Diary_Details",["Vars",_varStr]];
 [{!isNil "phx_overTimeConStr"}, {

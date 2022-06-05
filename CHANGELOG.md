@@ -1,3 +1,6 @@
+# WW2 v5
+Initial release of 2022 WW2 template
+
 # WW2 v5 beta
 Beta release of 2022 WW2 template
 
