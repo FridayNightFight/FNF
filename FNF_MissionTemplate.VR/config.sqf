@@ -40,6 +40,7 @@ Those units will not be touched by the tempalte loadout system, so they will kee
 If they have a radio, they will all be preset to the same frequency
 */
 
+phx_removeHE = true; //Automatically remove HE magazines from all vehicles - mortars are excluded
 phx_fortifyPoints = 125; //Currency for fortify - individual to each Combat Engineer - set to 0 to disable
 phx_enemyStartVisible = true; //Set to false to hide enemy start zone markers
 phx_maxViewDistance = 1500; //Maximum client view distance (meters)
