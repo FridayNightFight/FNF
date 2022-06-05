@@ -2,31 +2,38 @@
 Forces the player to stay within their starting zone until safe start ends.
 */
 
-private "_marker";
+private "_markers";
 private _maxTime = 10;
 phx_startTimer = 10;
 phx_startGoodPos = getpos vehicle player;
 
 switch (playerSide) do {
   case east: {
-    _marker = "opforSafeMarker";
+    _markers = phx_opforSafeMarkers;
   };
   case west: {
-    _marker = "bluforSafeMarker";
+    _markers = phx_bluforSafeMarkers;
   };
   case independent: {
-    _marker = "indforSafeMarker";
+    _markers = phx_indforSafeMarkers;
   };
 };
 
 
 [{
-  _this select 0 params ["_marker","_maxTime"];
+  _this select 0 params ["_markers","_maxTime"];
   if (!phx_safetyEnabled || !alive player) exitWith {[_handle] call CBA_fnc_removePerFrameHandler; hintSilent ""};
-
   if (missionNamespace getVariable ["f_var_mission_timer",10] < 1) then {_maxTime = 0};
 
-  if (vehicle player inArea _marker) then {
+  _playerInSafe = false;
+
+  {
+    if (vehicle player inArea _x) exitWith {
+      _playerInSafe = true;
+    };
+  } forEach _markers;
+
+  if (_playerInSafe) then {
     phx_startGoodPos = getpos vehicle player;
 
     if (phx_startTimer != _maxTime) then {phx_startTimer = _maxTime; hintSilent ""};
@@ -41,4 +48,4 @@ switch (playerSide) do {
       phx_startTimer = phx_startTimer - 1;
     };
   };
-}, 1, [_marker,_maxTime]] call CBA_fnc_addPerFrameHandler;
+}, 1, [_markers,_maxTime]] call CBA_fnc_addPerFrameHandler;

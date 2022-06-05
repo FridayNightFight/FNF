@@ -30,10 +30,8 @@ missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
   {_x allowDamage true;} forEach vehicles;
 
   {
-    if !(getMarkerColor _x isEqualTo "") then {
-      [_x] remoteExec ["deleteMarkerLocal",0,true];
-    };
-  } forEach ["opforSafeMarker", "bluforSafeMarker", "indforSafeMarker"];
+    deleteMarker _x;
+  } forEach (allMapMarkers select {"SafeMarker" in _x});
 
   [] call phx_fnc_webhook_roundStart;
 }] call CBA_fnc_waitUntilAndExecute;

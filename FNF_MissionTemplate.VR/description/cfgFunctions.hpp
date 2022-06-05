@@ -18,6 +18,7 @@ class CfgFunctions {
       class drawStaffIcons{};
       class drawCmdIcons{};
       class drawSLIcons{};
+      class safeZoneActions{};
       class clientInitCall{postInit = 1;};
     };
     class briefing {
@@ -74,7 +75,6 @@ class CfgFunctions {
       class afkCheck{};
       class disableTyping{};
       class removeRespawnButton{};
-      class hideMarkers{};
       class restrictUniform{};
       class zoneBoundary{};
       class startBoundary{};
@@ -127,6 +127,10 @@ class CfgFunctions {
       class webhook_roundPrep;
       class webhook_roundStart;
       class webhook_roundEnd;
+    };
+    class shared {
+      file = "shared";
+      class handleSafeMarkers{};
     };
   };
 };

@@ -1,5 +1,6 @@
 if (!isServer) exitWith {};
 
+call phx_fnc_handleSafeMarkers;
 call phx_fnc_clearVics;
 call phx_fnc_serverSafety;
 call phx_fnc_radio_genFreqs;

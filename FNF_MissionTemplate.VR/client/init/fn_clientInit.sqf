@@ -2,7 +2,8 @@
 if !(call phx_fnc_clientCanPlay) exitWith {call phx_fnc_spectatorInit};
 player setVariable ["phx_startGroup", group player, true]; //Set player's starting group
 
-call phx_fnc_hideMarkers; //Hide markers player shouldn't see
+call phx_fnc_handleSafeMarkers; //Handle safety markers
+call phx_fnc_safeZoneActions; //Creates TP actions to each player safe zone
 call phx_fnc_briefInit; //Briefing
 call phx_fnc_clientSetupGame; //Client portion of game modes
 call phx_fnc_safety; //Enable safety

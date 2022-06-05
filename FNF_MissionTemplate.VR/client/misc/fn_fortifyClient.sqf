@@ -1,4 +1,5 @@
 phx_fortify_objArr = [];
+phx_fortifyMarkers = [];
 
 [{!isNil "term1"}, {phx_fortify_objArr append [term1]}, [], 10] call CBA_fnc_waitUntilAndExecute;
 [{!isNil "term2"}, {phx_fortify_objArr append [term2]}, [], 10] call CBA_fnc_waitUntilAndExecute;
@@ -25,9 +26,9 @@ if (!(typeOf player == "B_soldier_exp_F") && !(typeOf player == "O_soldier_exp_F
 player addItem "ACE_Fortify";
 
 switch (playerSide) do {
-  case east: {phx_fortifyMarker = "opforSafeMarker";};
-  case west: {phx_fortifyMarker = "bluforSafeMarker";};
-  case independent: {phx_fortifyMarker = "indforSafeMarker";};
+  case east: {phx_fortifyMarkers = phx_opforSafeMarkers};
+  case west: {phx_fortifyMarkers = phx_bluforSafeMarkers};
+  case independent: {phx_fortifyMarkers = phx_indforSafeMarkers};
 };
 
 [{

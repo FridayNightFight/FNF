@@ -1,10 +1,10 @@
 private _baseClasses = ["Static"]; //anything that is a subtype of these classes and is big enough will be marked
 private _classBlacklist = ["Land_DataTerminal_01_F","Wreck_Base","FlagCarrierCore"]; //blacklist of item or parent classes to never mark
 private _markerBlacklist = switch (phx_attackingSide) do {
-  case west: {["bluforSafeMarker"]};
-  case east: {["opforSafeMarker"]};
-  case independent: {["indforSafeMarker"]};
-  case sideEmpty: {["bluforSafeMarker", "opforSafeMarker","indforSafeMarker"]};
+  case west: {phx_bluforSafeMarkers};
+  case east: {phx_opforSafeMarkers};
+  case independent: {phx_indforSafeMarkers};
+  case sideEmpty: {phx_bluforSafeMarkers + phx_opforSafeMarkers + phx_indforSafeMarkers};
 };
 
 //checks bounding sphere value to see if object is large enough, not in the blacklist, and not in an excluded start zone
