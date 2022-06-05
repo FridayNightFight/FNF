@@ -172,7 +172,6 @@ if !(fnf_gameMode == "sustainedAssault") then {
   //Start spectator fnc when player is killed
   player addEventHandler ["Killed", {
     params ["_unit", "_killer", "_instigator", "_useEffects"];
-    {[_unit, _x] call CBA_fnc_dropWeapon} forEach [primaryWeapon _unit, secondaryWeapon _unit, handgunWeapon _unit];
     [{call fnf_spectator_fnc_init}, [], 3] call cba_fnc_waitAndExecute;
   }];
 
