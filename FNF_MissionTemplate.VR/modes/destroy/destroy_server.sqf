@@ -40,7 +40,7 @@ phx_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
         if (_selection != "") then {_curDamage = _unit getHit _selection};
         _newDamage = _damage - _curDamage;
 
-        _damage - _newDamage * 0.8;
+        _damage - _newDamage * 0.65;
       }];
     };
   };

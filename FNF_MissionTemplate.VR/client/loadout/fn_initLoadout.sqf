@@ -67,9 +67,9 @@ phx_selector_optics = ["optic_Holosight_blk_F", "rhsusf_acc_eotech_xps3", "rhsus
 phx_selector_magOptics = ["rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"];
 phx_selector_explosives = [
 phx_loadout_explosives,
-phx_loadout_APMines,
-phx_loadout_ATMines,
-["4x 250g charge", "LIB_Ladung_Small_MINE_mag:4"]
+//phx_loadout_APMines,
+phx_loadout_ATMines
+//["4x 250g charge", "LIB_Ladung_Small_MINE_mag:4"]
 ];
 
 call phx_fnc_setGearset;

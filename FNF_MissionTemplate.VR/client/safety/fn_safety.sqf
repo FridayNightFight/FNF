@@ -19,7 +19,7 @@ phx_safetyMuzzles = getArray (configFile >> "CfgWeapons" >> "Throw" >> "muzzles"
 phx_acePlacing = [{
   if (
     (missionNamespace getVariable ["ace_explosives_placeaction",0] == -1) ||
-    (missionNamespace getVariable ["acex_fortify_isPlacing",0] == -1) ||
+    (missionNamespace getVariable ["ace_fortify_isPlacing",0] == -1) ||
     (player getVariable ["ace_dragging_iscarrying",false]) ||
     (player getVariable ["ace_dragging_isdragging",false]) ||
     (player getVariable ["ace_trenches_isplacing",false]) ||
