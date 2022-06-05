@@ -63,16 +63,16 @@ _groups = [
 
     //Vehicle teams - under Company freq
     //["Blue_G","G","Golf Squad (Vic)",1, [2, 1, [0, 9, 9.1, 9.2, 9.3, 9.4]] ],
-    ["Blue_G1","G1","Golf One (Vic)",0, [2, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
-    ["Blue_G2","G2","Golf Two (Vic)",0, [3, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
-    ["Blue_G3","G3","Golf Three (Vic)",0, [4, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
-    ["Blue_G4","G4","Golf Four (Vic)",0, [5, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G1","G1","Golf One (Vic)",1, [2, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G2","G2","Golf Two (Vic)",1, [3, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G3","G3","Golf Three (Vic)",1, [4, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
+    ["Blue_G4","G4","Golf Four (Vic)",1, [5, 1, [0, 9.1, 9.2, 9.3, 9.4]] ],
 
     //Pilot teams - under Company freq
     //["Blue_H","H","Hotel Squad (Air)",1, [2, 1, [0, 10, 10.1, 10.2, 10.3]] ],
-    ["Blue_H1","H1","Hotel One (Air)",0, [2, 1, [0, 10.1, 10.2, 10.3]] ],
-    ["Blue_H2","H2","Hotel Two (Air)",0, [3, 1, [0, 10.1, 10.2, 10.3]] ],
-    ["Blue_H3","H3","Hotel Three (Air)",0, [4, 1, [0, 10.1, 10.2, 10.3]] ],
+    ["Blue_H1","H1","Hotel One (Air)",1, [2, 1, [0, 10.1, 10.2, 10.3]] ],
+    ["Blue_H2","H2","Hotel Two (Air)",1, [3, 1, [0, 10.1, 10.2, 10.3]] ],
+    ["Blue_H3","H3","Hotel Three (Air)",1, [4, 1, [0, 10.1, 10.2, 10.3]] ],
 
     // REDFOR
     //["Red_CC","CMD","Company Command",3, [1, 8, [0, 1, 2, 3, 4, 5, 6, .1]] ],
