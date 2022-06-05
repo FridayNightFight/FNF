@@ -17,4 +17,5 @@ Steps:
 #### Do not change any other Multiplayer settings. Only the mission summary should be edited.
 11. Do a play-through of your mission from all sides to ensure the mission plays correctly. Check vehicle loadouts, make sure they are as you intended.
 
+#### Air vehicles automatically get an action that allows the pilot to takeoff from any location (available once safe start ends). A runway isn't needed.
 #### If you wish to add custom script or edit any template files other than the configuration files, let the FNF missions team know of your edits/additions.
