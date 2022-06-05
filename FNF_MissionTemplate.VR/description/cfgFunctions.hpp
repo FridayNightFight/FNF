@@ -132,5 +132,9 @@ class CfgFunctions {
       file = "shared";
       class handleSafeMarkers{};
     };
+    class tools {
+      file = "tools";
+      class autoTakeoff{};
+    };
   };
 };

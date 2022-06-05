@@ -29,4 +29,9 @@
       _vic removeMagazine _x;
     } forEach _heMags;
   };
+
+  //Apply auto-takeoff script to unlocked air vehicles
+  if (_vic isKindOf "Air" && (locked _vic == 0 || locked _vic == 1) && !("parachute" in toLower (typeOf _vic))) then {
+    [_vic] remoteExec ["phx_fnc_autoTakeoff",0,true];
+  };
 }, true, ["CAManBase", "Static"], true] call CBA_fnc_addClassEventHandler;
