@@ -5,7 +5,8 @@ Steps:
 1. Configure "config.sqf" in the root mission directory and the respective file for your chosen game mode in the "mode_config" directory.
 2. Move the objectives to your wanted locations.
 #### Do not delete any objective objects in the editor. Unused ones will be deleted by the server. The only objects that should be deleted are unused sides and units.
-3. Move each side to their starting location and configure their start zone marker.
+3. Move each side to their starting location and configure their start zone marker. You can create multiple safe zones that players can teleport between by copying the original safe zone marker.
+#### If you use multiple safe zones, make sure all of the side's assets are placed within the original safe zone marker. Do not place assets in the new zones as they will not be counted.
 4. Delete any unwanted sides and their start zone marker.
 5. Place vehicles and other assets that you wish to use. Make sure vehicles are placed within their side's safe zone marker.
 6. Set the role description for crewed vehicles in order to have those roles selectable from the game lobby. For example, if you place a BTR-80 for OPFOR, name one of the OPFOR Golf teams something like: BTR-80 Commander@Golf 1, BTR-80 Driver@Golf 1, BTR-80 Gunner@Golf 1.
