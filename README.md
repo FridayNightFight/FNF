@@ -15,6 +15,6 @@ Steps:
 9. Configure the play boundary trigger (zoneTrigger). This trigger has to be rectangular; ellipses are not supported.
 10. Go in game, hit Escape, and click the button on the left side to generate the mission summary text. This will be copied to your clipboard. Make sure you change the attacker's advantage percentage (10% is a standard advantage).
 #### Do not change any other Multiplayer settings. Only the mission summary should be edited.
-11. Do a play-through of your mission from all sides to ensure the mission plays correctly.
+11. Do a play-through of your mission from all sides to ensure the mission plays correctly. Check vehicle loadouts, make sure they are as you intended.
 
 #### If you wish to add custom script or edit any template files other than the configuration files, let the FNF missions team know of your edits/additions.
