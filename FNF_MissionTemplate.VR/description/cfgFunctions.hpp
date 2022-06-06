@@ -113,6 +113,7 @@ class CfgFunctions {
       class radio_genFreqs{};
       class processVehicles{};
       class clearVics{};
+      class getZoneBoundary{};
     };
     class end {
       file = "server\end";

@@ -12,7 +12,7 @@ Steps:
 6. Set the role description for crewed vehicles in order to have those roles selectable from the game lobby. For example, if you place a BTR-80 for OPFOR, name one of the OPFOR Golf teams something like: BTR-80 Commander@Golf 1, BTR-80 Driver@Golf 1, BTR-80 Gunner@Golf 1.
 7. Delete the crew/pilot units for roles not present in your mission.
 8. Configure mission start time, weather, etc.
-9. Configure the play boundary trigger (zoneTrigger). This trigger has to be rectangular; ellipses are not supported.
+9. Configure the play boundary trigger (zoneTrigger). This trigger has to be rectangular; ellipses are not supported. You can also create a zone boundary from a custom polygon by copy/pasting the marker "phx_zonePoly_1" to create the boundary. The boundary lines will be created in the order of the marker names. That is, a line will be drawn between phx_zonePoly_1 and phx_zonePoly_2, then between phx_zonePoly_2 and phx_zonePoly_3, etc.
 10. Go in game, hit Escape, and click the button on the left side to generate the mission summary text. This will be copied to your clipboard. Make sure you change the attacker's advantage percentage (10% is a standard advantage).
 #### Do not change any other Multiplayer settings. Only the mission summary should be edited.
 11. Do a play-through of your mission from all sides to ensure the mission plays correctly. Check vehicle loadouts, make sure they are as you intended.

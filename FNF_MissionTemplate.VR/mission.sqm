@@ -8,26 +8,26 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=8110;
+		nextID=8171;
 	};
 	class MarkerIDProvider
 	{
-		nextID=25;
+		nextID=30;
 	};
 	class LayerIndexProvider
 	{
-		nextID=95;
+		nextID=98;
 	};
 	class Camera
 	{
-		pos[]={501.55304,173.14355,331.56406};
-		dir[]={0.032044366,-0.52736843,0.84903222};
-		up[]={0.019889897,0.84963673,0.52699322};
-		aside[]={0.99928856,0,-0.037715375};
+		pos[]={502.43607,189.58826,143.91924};
+		dir[]={0.00010254594,-0.47665796,0.87908882};
+		up[]={5.5602271e-005,0.87908888,0.47665793};
+		aside[]={1,0,-0.00011665026};
 	};
 };
 binarizationWanted=0;
-sourceName="FNF_MissionTemplate";
+sourceName="fnf_missiontemplate";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -273,7 +273,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=164;
+		items=166;
 		class Item0
 		{
 			dataType="Logic";
@@ -57425,6 +57425,24 @@ class Mission
 			{
 			};
 			id=8106;
+		};
+		class Item164
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={400,5,400};
+			};
+			description="Zone boundary polygon marker. Copy/paste this as many times as you want to create a boundary. A minimum of 3 markers is needed. The boundary lines will be created in the order of the marker names. That is, a line will be drawn between phx_zonePoly_1 and phx_zonePoly_2, then between phx_zonePoly_2 and phx_zonePoly_3, etc.";
+			id=8149;
+		};
+		class Item165
+		{
+			dataType="Marker";
+			position[]={500,5,400};
+			name="phx_zonePoly_1";
+			type="mil_dot";
+			id=8161;
 		};
 	};
 	class Connections

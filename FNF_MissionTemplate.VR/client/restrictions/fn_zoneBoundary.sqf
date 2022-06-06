@@ -6,7 +6,13 @@ phx_zoneTimer = 15;
 
 phx_zonePFH = [{
   if !(alive player) exitWith {if (phx_zoneTimer < 15) then {titleText ["", "PLAIN"];}; phx_zonePFH call CBA_fnc_removePerFrameHandler;};
-  if (!(vehicle player inArea zoneTrigger) && !(vehicle player isKindOf "Air")) then {
+
+  _condition =
+  vehicle player inArea (missionNamespace getVariable ["zoneTrigger",objNull]) ||
+  getpos (vehicle player) inPolygon (missionNamespace getVariable ["phx_zoneBoundary_polygon",[]]) ||
+  vehicle player isKindOf "Air";
+
+  if (!_condition) then {
     if (phx_zoneTimer == 0) exitWith {phx_zonePFH call CBA_fnc_removePerFrameHandler; titleText ["", "PLAIN"]; player setDamage 1};
     _msg = format ["You have %1 seconds to get back into the mission zone.", phx_zoneTimer];
     titleText [_msg, "PLAIN"];

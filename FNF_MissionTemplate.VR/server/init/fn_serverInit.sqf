@@ -1,5 +1,6 @@
 if (!isServer) exitWith {};
 
+call phx_fnc_getZoneBoundary;
 call phx_fnc_handleSafeMarkers;
 call phx_fnc_clearVics;
 call phx_fnc_serverSafety;
@@ -13,11 +14,6 @@ call phx_fnc_processVehicles;
 
 [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
 [{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
-
-//Create map cover for zone boundary
-private _zoneArea = triggerArea zoneTrigger;
-zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
-[zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
 
 // Create respawn markers in bottom left corner of map
 {
