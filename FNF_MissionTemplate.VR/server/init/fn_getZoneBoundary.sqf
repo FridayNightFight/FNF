@@ -4,11 +4,16 @@ _polygonMarkers = allMapMarkers select {"phx_zonePoly" in _x};
 _usingPolygon = count _polygonMarkers > 2;
 phx_zoneBoundary_polygon = [];
 
-_polygonMarkers sort true;
+//Sort the polygon markers in ascending order by marker number
+_arrSplit = _polygonMarkers apply {_x splitString "_"};
+_markerNums = _arrSplit apply {parseNumber (_x select 2)};
+_markerNums sort true;
+
+_markersSorted = _markerNums apply {"phx_zonePoly_" + str _x};
 
 {
   phx_zoneBoundary_polygon pushBack (getMarkerPos _x);
-} forEach _polygonMarkers;
+} forEach _markersSorted;
 
 publicVariable "phx_zoneBoundary_polygon";
 
