@@ -22,10 +22,10 @@ _markNum = 1;
 _localMarks = [];
 {
   if (count phx_playerSafeMarkers == 1) exitWith {};
-    
+
   _marker = createMarkerLocal [_x + "_text_" + str _markNum, getMarkerPos _x];
-  _marker setMarkerType "mil_dot";
-  _marker setMarkerText format ["Safe Zone %1", _markNum];
+  _marker setMarkerTypeLocal "mil_dot";
+  _marker setMarkerTextLocal format ["Safe Zone %1", _markNum];
   _localMarks pushBack _marker;
 
   _markNum = _markNum + 1;
