@@ -1,3 +1,6 @@
+# WW2 v5.1.2
+1. Fixed an issue where some code for handling multiple safe zones was not local. 
+
 # WW2 v5.1.1
 1. Fixed an issue where if more than 9 polygon zone boundary markers were present, the markers wouldn't be sorted correctly
 
