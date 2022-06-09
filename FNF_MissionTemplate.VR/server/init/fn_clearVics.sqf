@@ -1,9 +1,10 @@
 // Clear vehicle inventories
 ["All", "InitPost", {
   private _vic = (_this select 0);
+  private _objectType = (_vic call BIS_fnc_objectType) select 1;
   if (_vic isKindOf "Man" || typeOf _vic == "WeaponHolderSimulated") exitWith {}; //Exit so the code below doesn't run for infantry units
 
-  if (_vic getVariable ["fnf_clearInventory", true]) then {
+  if (_vic getVariable ["fnf_clearInventory", true] && !(_objectType == "AmmoBox")) then {
     clearBackpackCargoGlobal _vic;
     clearWeaponCargoGlobal _vic;
     clearItemCargoGlobal _vic;
