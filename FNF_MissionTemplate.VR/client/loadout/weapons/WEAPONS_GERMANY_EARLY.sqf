@@ -9,8 +9,8 @@ phx_loadout_sidearm_mag = "LIB_8Rnd_9x19:2";
 phx_loadout_grenade = "LIB_Shg24:2";
 phx_loadout_CEGrenade = "LIB_Pwm:2";
 
-if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
-  phx_loadout_rifle_weapon = "fow_w_mp40";
+if (pRole == ROLE_PL || pROLE == ROLE_SL || pROLE == ROLE_TL) then {
+  phx_loadout_rifle_weapon = "LIB_MP40";
   phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:4";
   phx_loadout_rifle_mag = "LIB_32Rnd_9x19:11";
 };
@@ -22,7 +22,7 @@ if (pRole == ROLE_GR) then {
 };
 
 if (pRole == ROLE_AR) then {
-  phx_loadout_rifle_weapon = "fow_w_mp40";
+  phx_loadout_rifle_weapon = "LIB_MP40";
   phx_loadout_rifle_mag = "LIB_32Rnd_9x19:15";
 };
 
@@ -51,9 +51,6 @@ switch (pRole) do {
   case ROLE_PL: {}; //Platoon leader
   case ROLE_SL: {}; //Squad leader
   case ROLE_TL: {
-    phx_loadout_rifle_weapon = "fow_w_mp40";
-    phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:3";
-    phx_loadout_rifle_mag = "LIB_32Rnd_9x19:11";
     }; //Team leader
   case ROLE_MGTL: {}; //Machine gun team leader
   case ROLE_CLS: {}; //Medic
