@@ -564,7 +564,7 @@ fnf_assetDiaryOther = player createDiarySubject ["OtherAssets", "Other Assets", 
 
     } forEach ((_objects select {!isNull _x} apply {typeOf _x}) call BIS_fnc_consolidateArray);
   };
-} forEach ["BLU", "OPF", "IND", "OTHER"];
+} forEach ["BLU", "OPF", "IND"];
 
 
 // cleanup sections that weren't used
