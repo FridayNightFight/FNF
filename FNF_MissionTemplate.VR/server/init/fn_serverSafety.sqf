@@ -30,7 +30,7 @@ missionNamespace setVariable ["f_var_mission_timer",f_var_mission_timer,true];
   {_x allowDamage true;} forEach vehicles;
 
   {
-    deleteMarker _x;
+    _x remoteExec ["deleteMarkerLocal",0,true];
   } forEach (allMapMarkers select {"SafeMarker" in _x});
 
   [] call phx_fnc_webhook_roundStart;
