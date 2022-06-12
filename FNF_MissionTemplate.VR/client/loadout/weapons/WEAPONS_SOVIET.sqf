@@ -8,6 +8,7 @@ phx_loadout_sidearm_mag = "LIB_8Rnd_762x25:2";
 
 phx_loadout_grenade = "LIB_F1:2";
 phx_loadout_CEGrenade = "LIB_Rpg6:2";
+phx_loadout_smoke = "LIB_RDG:2";
 
 if (pRole == ROLE_PL) then {
   phx_loadout_rifle_weapon = "LIB_M38";
