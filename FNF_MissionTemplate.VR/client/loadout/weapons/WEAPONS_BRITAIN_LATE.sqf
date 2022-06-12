@@ -11,9 +11,9 @@ phx_loadout_CEGrenade = "LIB_No82:2";
 phx_loadout_smoke = "fow_e_no79:2";
 
 if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
-  phx_loadout_rifle_weapon = "LIB_Sten_Mk5";
+  phx_loadout_rifle_weapon = "fow_w_sten_mk5";
   phx_loadout_rifle_mag_tracer = "";
-  phx_loadout_rifle_mag = "LIB_32Rnd_9x19_Sten:11";
+  phx_loadout_rifle_mag = "fow_32Rnd_9x19_sten:11";
 };
 
 if (pRole == ROLE_AR) then {
