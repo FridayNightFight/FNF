@@ -12,7 +12,7 @@ phx_fortifyMarkers = [];
   {
     if (isNull _x) then {phx_fortify_objArr = phx_fortify_objArr - [_x]};
   } forEach phx_fortify_objArr;
-}, [], 15] call CBA_fnc_waitAndExecute;
+}, [], 5] call CBA_fnc_waitAndExecute;
 
 if (phx_gameMode == "connection" || phx_gameMode == "neutralSector") exitWith {};
 if (!(playerSide == phx_defendingSide) || phx_fortifyPoints <= 0) exitWith {};

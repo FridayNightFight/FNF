@@ -75,3 +75,5 @@ phx_loadout_ATMines
 call phx_fnc_setGearset;
 call phx_fnc_setUniform;
 call phx_fnc_setWeapons;
+
+phx_loadout_varsSet = true;

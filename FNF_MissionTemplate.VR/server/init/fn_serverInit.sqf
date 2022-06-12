@@ -10,10 +10,10 @@ call phx_fnc_fortifyServer;
 call phx_fnc_markCustomObjs;
 call phx_fnc_server_setupGame;
 call phx_fnc_webhook_roundPrep;
-call phx_fnc_processVehicles;
 
 [{!(missionNamespace getVariable ["phx_safetyEnabled",true])}, {call phx_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
 [{!isNil "phx_safetyEndTime"}, {call phx_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
+[] spawn {uiSleep 2; call phx_fnc_processVehicles};
 
 // Create respawn markers in bottom left corner of map
 {

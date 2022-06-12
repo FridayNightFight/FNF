@@ -14,7 +14,7 @@ call phx_fnc_drawStaffIcons; // Draw labels over staff members
 call phx_fnc_drawCmdIcons; // Draw labels over CMD, PL
 call phx_fnc_drawSLIcons; // Draw labels over squad leaders
 
-[{missionNamespace getVariable ["phx_staggeredLoaded",false]}, {call phx_fnc_setLoadout}] call CBA_fnc_waitUntilAndExecute;
+[{missionNamespace getVariable ["phx_staggeredLoaded",false] && missionNamespace getVariable ["phx_loadout_varsSet",false]}, {call phx_fnc_setLoadout}] call CBA_fnc_waitUntilAndExecute;
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_fortifyClient}] call CBA_fnc_waitUntilAndExecute;
 [{missionNamespace getVariable ["phx_loadoutAssigned",false]}, {call phx_fnc_selector_init}] call CBA_fnc_waitUntilAndExecute;
 [{!isNil "fnf_vehiclesToProcess"}, {[] spawn {uisleep 2; call phx_fnc_assetDiary}}] call CBA_fnc_waitUntilAndExecute;
