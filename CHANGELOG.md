@@ -1,5 +1,20 @@
+# WW2 v5.2
+1. Added an exclusion to the automatic vehicle inventory clearing for ammo boxes
+2. Fixed an issue where you could fire your weapon during safety if you were using ACE dragging
+3. Some changes to weapon sets
+  - Changed most FoW magazines to IFA3 magazines to ensure weapon damage similarity
+  - Changed some weapons to their FoW versions now that the zoom issue is fixed via the FNF addon
+  - Added more rockets to MAT
+  - Smoke grenades were changed to be accurate (was using vanilla smokes last year as a workaround as many of the WW2 smokes wouldn't fit in the loadouts, but not needed this year with the backpack size increase)
+  - Did a general pass of the weapons to fix some small issues
+4. Fixed an issue where the ORBAT was deleted at end of safe start
+5. Fixed an issue where safe zone markers weren't deleted for JIP players
+6. CBA Settings: Increased player damage threshold by ~40% to increase player survivability
+7. Fixed an issue where JIP groups were being marked on the map
+8. Fixed an issue where only the default loadouts of vehicles were shown in the asset diary
+
 # WW2 v5.1.2
-1. Fixed an issue where some code for handling multiple safe zones was not local. 
+1. Fixed an issue where some code for handling multiple safe zones was not local.
 
 # WW2 v5.1.1
 1. Fixed an issue where if more than 9 polygon zone boundary markers were present, the markers wouldn't be sorted correctly
