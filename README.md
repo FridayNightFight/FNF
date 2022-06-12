@@ -4,8 +4,8 @@ Steps:
 
 1. Configure "config.sqf" in the root mission directory and the respective file for your chosen game mode in the "mode_config" directory.
 2. Move the objectives to your wanted locations.
-#### Do not delete any objective objects in the editor. Unused ones will be deleted by the server. The only objects that should be deleted are unused sides and units.
-3. Move each side to their starting location and configure their start zone marker. You can create multiple safe zones that players can teleport between by copying the original safe zone marker.
+#### Do not delete any objects used for game mode objectives in the editor. Unused ones will be deleted by the server. The only objects that should be deleted are unused sides and units.
+3. Move each side to their starting location and configure their start zone marker. BLUFOR and INDFOR have 2 separate platoon compositions. BLUFOR is Germany and Japan. INDFOR is USA and the UK. OPFOR is the Soviet Union. If you're using BLUFOR or INDFOR, you must delete whichever platoon composition is not used for your faction. That is, if you're using Germany, you need to delete the six squads marked as Japan. If you're using the USA, you need to delete the six squads marked as British. Platoon, Recon, Hotel and Golf groups are shared between the different platoon compositions. You can create multiple safe zones that players can teleport between by copying the original safe zone marker.
 #### If you use multiple safe zones, make sure all of the side's assets are placed within the original safe zone marker. Do not place assets in the new zones as they will not be counted.
 4. Delete any unwanted sides and their start zone marker.
 5. Place vehicles and other assets that you wish to use. Make sure vehicles are placed within their side's safe zone marker.
