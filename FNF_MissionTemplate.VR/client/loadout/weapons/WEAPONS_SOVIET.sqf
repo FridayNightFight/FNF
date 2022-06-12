@@ -49,7 +49,7 @@ phx_loadout_antitank_weapon = "LIB_PzFaust_30m";
 
 //Medium AT
 phx_loadout_mediumantitank_weapon = "LIB_RPzB";
-phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB";
+phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB:3";
 
 //Marksman optic
 phx_loadout_rifle_optic = "";

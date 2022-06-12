@@ -10,7 +10,7 @@ phx_loadout_grenade = "LIB_Shg24:2";
 phx_loadout_CEGrenade = "LIB_Pwm:2";
 phx_loadout_smoke = "LIB_NB39:2";
 
-if (pRole == ROLE_PL || pROLE == ROLE_SL) then {
+if (pRole == ROLE_PL || pROLE == ROLE_SL || pROLE == ROLE_TL) then {
   phx_loadout_rifle_weapon = "fow_w_mp40";
   phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:4";
   phx_loadout_rifle_mag = "LIB_32Rnd_9x19:11";
@@ -28,7 +28,7 @@ if (pRole == ROLE_AR) then {
 };
 
 if (pRole == ROLE_MG) then {
-  phx_loadout_rifle_weapon = "LIB_MG34";
+  phx_loadout_rifle_weapon = "fow_w_mg34";
   phx_loadout_rifle_mag = "LIB_50Rnd_792x57:14";
 };
 
@@ -42,7 +42,7 @@ phx_loadout_antitank_mag = "";
 
 //Medium AT
 phx_loadout_mediumantitank_weapon = "LIB_RPzB";
-phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB";
+phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB:3";
 
 //Marksman optic
 phx_loadout_rifle_optic = "";
@@ -51,11 +51,7 @@ phx_loadout_rifle_optic = "";
 switch (pRole) do {
   case ROLE_PL: {}; //Platoon leader
   case ROLE_SL: {}; //Squad leader
-  case ROLE_TL: {
-    phx_loadout_rifle_weapon = "fow_w_mp40";
-    phx_loadout_rifle_mag_tracer = "LIB_32rnd_9x19_t:3";
-    phx_loadout_rifle_mag = "LIB_32Rnd_9x19:11";
-    }; //Team leader
+  case ROLE_TL: {}; //Team leader
   case ROLE_MGTL: {}; //Machine gun team leader
   case ROLE_CLS: {}; //Medic
   case ROLE_AR: {}; //Automatic rifleman
@@ -65,7 +61,7 @@ switch (pRole) do {
   case ROLE_MG: {}; //Machinegunner
   case ROLE_AM: {}; //Ammo man
   case ROLE_AT: {}; //Anti-tank
-  case ROLE_AAT: {phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB:3"}; //Assistant anti-tank
+  case ROLE_AAT: {}; //Assistant anti-tank
   case ROLE_P: {
     phx_loadout_grenade = ""; phx_loadout_smoke = "";
     phx_loadout_rifle_weapon = "";

@@ -35,7 +35,7 @@ phx_loadout_antitank_mag = "";
 
 //Medium AT
 phx_loadout_mediumantitank_weapon = "fow_w_m1a1_bazooka";
-phx_loadout_mediumantitank_mag = "fow_1Rnd_m6a1:2";
+phx_loadout_mediumantitank_mag = "LIB_1Rnd_60mm_M6:3";
 
 //Marksman optic
 phx_loadout_rifle_optic = "";

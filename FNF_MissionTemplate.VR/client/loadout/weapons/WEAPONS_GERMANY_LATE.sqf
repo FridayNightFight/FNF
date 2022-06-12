@@ -23,7 +23,7 @@ if (pRole == ROLE_GR) then {
 };
 
 if (pRole == ROLE_AR) then {
-  phx_loadout_rifle_weapon = "LIB_MP44";
+  phx_loadout_rifle_weapon = "fow_w_stg44";
   phx_loadout_rifle_mag = "LIB_30Rnd_792x33:20";
 };
 
@@ -42,7 +42,7 @@ phx_loadout_antitank_mag = "";
 
 //Medium AT
 phx_loadout_mediumantitank_weapon = "LIB_RPzB";
-phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB";
+phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB:3";
 
 //Marksman optic
 phx_loadout_rifle_optic = "";
@@ -65,7 +65,7 @@ switch (pRole) do {
   case ROLE_MG: {}; //Machinegunner
   case ROLE_AM: {}; //Ammo man
   case ROLE_AT: {}; //Anti-tank
-  case ROLE_AAT: {phx_loadout_mediumantitank_mag = "LIB_1Rnd_RPzB:3"}; //Assistant anti-tank
+  case ROLE_AAT: {}; //Assistant anti-tank
   case ROLE_P: {
     phx_loadout_grenade = ""; phx_loadout_smoke = "";
     phx_loadout_rifle_weapon = "";

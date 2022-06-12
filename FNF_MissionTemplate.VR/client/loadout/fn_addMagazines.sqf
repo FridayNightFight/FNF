@@ -6,7 +6,7 @@ if (!phx_loadout_hasSpecial) then {phx_loadout_rifle_mag_tracer call phx_fnc_add
 switch (pRole) do {
   case ROLE_AAR: {phx_loadout_aar_mag call phx_fnc_addGear};
   case ROLE_AM: {phx_loadout_am_mag call phx_fnc_addGear};
-  case ROLE_AT: {phx_loadout_mediumantitank_mag call phx_fnc_addGear; [{count secondaryWeaponMagazine player > 0}, {phx_loadout_mediumantitank_mag call phx_fnc_addGear}] call CBA_fnc_waitUntilAndExecute};
+  case ROLE_AT: {phx_loadout_mediumantitank_mag call phx_fnc_addGear};
   case ROLE_AAT: {phx_loadout_mediumantitank_mag call phx_fnc_addGear};
   case ROLE_RAT: {if (!isNil "phx_loadout_antitank_mag") then {phx_loadout_antitank_mag call phx_fnc_addGear}};
   case ROLE_GR: {if (!isNil "phx_loadout_gr_grenade") then {phx_loadout_gr_grenade call phx_fnc_addGear}};
