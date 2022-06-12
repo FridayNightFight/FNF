@@ -176,7 +176,7 @@ _QS_ST_showAIGroups = FALSE;										// BOOL. Show Groups with AI leaders. Defa
 _QS_ST_showAINames = FALSE;										// BOOL. Show AI Names. If FALSE, when names are listed with Group features, will only display as '[AI]'. Default FALSE.
 _QS_ST_groupInteractiveIcons = TRUE;							// BOOL. Group icons are interactable (mouse hover and mouse click for group details). Default TRUE.
 _QS_ST_groupInteractiveIcons_showClass = TRUE;					// BOOL. TRUE to show units vehicle class when revealing group details with interactive map group click. Default TRUE.
-_QS_ST_dynamicGroupID = TRUE;									// BOOL. If TRUE, Script tries to utilize BIS-Dynamic-Groups Group Name for group info display (only available with QS_ST_groupInteractiveIcons), if available. Default TRUE. EDIT: Obsolete as of A3 1.48
+_QS_ST_dynamicGroupID = FALSE;									// BOOL. If TRUE, Script tries to utilize BIS-Dynamic-Groups Group Name for group info display (only available with QS_ST_groupInteractiveIcons), if available. Default TRUE. EDIT: Obsolete as of A3 1.48
 _QS_ST_showGroupMapText = TRUE;									// BOOL. TRUE to show Group Name on the map. If FALSE, name can still be seen by clicking on the group icon, if QS_ST_groupInteractiveIcons = TRUE. Default FALSE.
 _QS_ST_groupIconScale = 0.75;										// NUMBER. Group Icon Scale. Default = 0.75
 _QS_ST_groupIconOffset = [0.65,0.65];							// ARRAY (NUMBERS). [X,Y], offset position of icon from group leaders position. Can be positive or negative numbers. Default = [0.65,0.65];
@@ -239,10 +239,10 @@ _QS_fnc_isIncapacitated = {
 					};
 				} else {
 					if (_med isEqualTo 'ACE') then {
-						if (!isNil {_u getVariable 'ACE_isUnconscious'}) then {
-							if ((_u getVariable 'ACE_isUnconscious')) then {
+						if !([_u] call ace_common_fnc_isAwake) then {
+							//if ((_u getVariable 'ACE_isUnconscious')) then {
 								_r = TRUE;
-							};
+							//};
 						};
 					};
 				};
@@ -1644,13 +1644,13 @@ if (_QS_ST_X select 2) then {
 								if (_showAIGroups) then {
 									if (isNil {_grp getVariable 'QS_ST_Group'}) then {
 										if (!isNull _grp) then {
-											if (!isNull _grpLeader) then {
+											if (!isNull _grpLeader && !isHidden _grpLeader) then {
 												[_grp,0,_QS_ST_X] call _configGroupIcon;
 											};
 										};
 									} else {
 										if (!isNull _grp) then {
-											if (!isNull _grpLeader) then {
+											if (!isNull _grpLeader && !isHidden _grpLeader) then {
 												[_grp,1,_QS_ST_X] call _configGroupIcon;
 											};
 										};
@@ -1659,13 +1659,13 @@ if (_QS_ST_X select 2) then {
 									if (isPlayer _grpLeader) then {
 										if (isNil {_grp getVariable 'QS_ST_Group'}) then {
 											if (!isNull _grp) then {
-												if (!isNull _grpLeader) then {
+												if (!isNull _grpLeader && !isHidden _grpLeader) then {
 													[_grp,0,_QS_ST_X] call _configGroupIcon;
 												};
 											};
 										} else {
 											if (!isNull _grp) then {
-												if (!isNull _grpLeader) then {
+												if (!isNull _grpLeader && !isHidden _grpLeader) then {
 													[_grp,1,_QS_ST_X] call _configGroupIcon;
 												};
 											};
