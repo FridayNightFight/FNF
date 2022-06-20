@@ -1,3 +1,6 @@
+# WW2 v5.2.1
+1. Crewman didn't have backpacks, which resulted in some crewman not having enough space for their ammo. Crewman have backpacks now.
+
 # WW2 v5.2
 1. Added an exclusion to the automatic vehicle inventory clearing for ammo boxes
 2. Fixed an issue where you could fire your weapon during safety if you were using ACE dragging
