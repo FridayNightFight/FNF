@@ -37,7 +37,7 @@ switch (pRole) do {
   case ROLE_AAR: {}; //Assistant automatic rifleman
   case ROLE_RAT: {}; //Rifleman (LAT)
   case ROLE_CE: {phx_loadout_backpack = "B_LIB_SOV_RA_Rucksack_Gas_Kit_Green"}; //Combat engineer
-  case ROLE_R: {phx_loadout_backpack = ""}; //Rifleman
+  case ROLE_R: {}; //Rifleman
   case ROLE_MG: {}; //Machinegunner
   case ROLE_AM: {}; //Ammo man
   case ROLE_MGTL: {}; //Machine gun team leader

@@ -41,7 +41,6 @@ switch (pRole) do {
     phx_loadout_headgear = "fow_h_us_flight_helmet";
     }; //Pilot
   case ROLE_CR: {
-    phx_loadout_backpack = "";
     phx_loadout_headgear = "H_LIB_UK_Beret_Tankist";
     }; //Crewman
   case ROLE_MK: {}; //Marksman

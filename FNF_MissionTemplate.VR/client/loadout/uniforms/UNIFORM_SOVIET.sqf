@@ -48,7 +48,6 @@ switch (pRole) do {
     }; //Pilot
   case ROLE_CR: {
     phx_loadout_uniform = "U_LIB_SOV_Tank_ryadovoi";
-    phx_loadout_backpack = "";
     phx_loadout_vest = "V_LIB_SOV_RAZV_MGBelt";
     phx_loadout_headgear = "H_LIB_SOV_TankHelmet";
     }; //Crewman

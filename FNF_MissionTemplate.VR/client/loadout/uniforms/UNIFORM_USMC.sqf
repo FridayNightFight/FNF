@@ -43,7 +43,6 @@ switch (pRole) do {
     }; //Pilot
   case ROLE_CR: {
     phx_loadout_uniform = "U_LIB_US_Tank_Crew";
-    phx_loadout_backpack = "";
     phx_loadout_vest = "V_LIB_US_Vest_45";
     }; //Crewman
   case ROLE_MK: {}; //Marksman
