@@ -17,7 +17,9 @@ _markersSorted = _markerNums apply {"phx_zonePoly_" + str _x};
 
 publicVariable "phx_zoneBoundary_polygon";
 
-//{_x remoteExec ["deleteMarkerLocal",0,true]} forEach _polygonMarkers;
+if (!_usingPolygon) then {
+  {_x remoteExec ["deleteMarkerLocal",0,true]} forEach _polygonMarkers;
+};
 
 //Boundary via zone trigger
 _zoneTrigger = missionNamespace getVariable ["zoneTrigger",objNull];
