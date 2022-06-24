@@ -203,7 +203,7 @@ ace_maptools_rotateModifierKey = 1;
 // ACE Medical
 force force ace_medical_ai_enabledFor = 0;
 force force ace_medical_AIDamageThreshold = 0.6;
-force force ace_medical_bleedingCoefficient = 0.6;
+force force ace_medical_bleedingCoefficient = 0.55;
 force force ace_medical_blood_bloodLifetime = 900;
 force force ace_medical_blood_enabledFor = 1;
 force force ace_medical_blood_maxBloodObjects = 100;
@@ -217,7 +217,7 @@ force force ace_medical_ivFlowRate = 3;
 force force ace_medical_limping = 1;
 force force ace_medical_painCoefficient = 0.5;
 force force ace_medical_painUnconsciousChance = 0.6;
-force force ace_medical_playerDamageThreshold = 2.2;
+force force ace_medical_playerDamageThreshold = 2.45;
 force force ace_medical_spontaneousWakeUpChance = 0.75;
 force force ace_medical_spontaneousWakeUpEpinephrineBoost = 5;
 force force ace_medical_statemachine_AIUnconsciousness = false;
