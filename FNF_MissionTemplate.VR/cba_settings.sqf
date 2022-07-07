@@ -27,6 +27,11 @@ force force ace_advanced_throwing_enablePickUpAttached = true;
 force force ace_advanced_throwing_showMouseControls = true;
 force force ace_advanced_throwing_showThrowArc = true;
 
+// ACE Advanced Vehicle Damage
+force force ace_vehicle_damage_enableCarDamage = false;
+force force ace_vehicle_damage_enabled = false;
+force force ace_vehicle_damage_removeAmmoDuringCookoff = true;
+
 // ACE Arsenal
 force force ace_arsenal_allowDefaultLoadouts = true;
 force force ace_arsenal_allowSharedLoadouts = true;
@@ -63,11 +68,12 @@ force force ace_noradio_enabled = true;
 ace_parachute_hideAltimeter = true;
 
 // ACE Cook off
-force force ace_cookoff_ammoCookoffDuration = 0.2;
-force force ace_cookoff_enable = 1;
+force force ace_cookoff_ammoCookoffDuration = 1;
+force force ace_cookoff_enable = 2;
 force force ace_cookoff_enableAmmobox = false;
 force force ace_cookoff_enableAmmoCookoff = false;
-force force ace_cookoff_probabilityCoef = 1;
+force force ace_cookoff_enableFire = true;
+force force ace_cookoff_probabilityCoef = 2;
 
 // ACE Crew Served Weapons
 force force ace_csw_ammoHandling = 1;
@@ -80,6 +86,12 @@ force force ace_csw_progressBarTimeCoefficent = 1;
 force force ace_explosives_explodeOnDefuse = false;
 force force ace_explosives_punishNonSpecialists = false;
 force force ace_explosives_requireSpecialist = false;
+
+// ACE Fire
+force force ace_fire_dropWeapon = 0;
+force force ace_fire_enabled = true;
+force force ace_fire_enableFlare = true;
+force force ace_fire_enableScreams = true;
 
 // ACE Fortify
 force force ace_fortify_markObjectsOnMap = 1;

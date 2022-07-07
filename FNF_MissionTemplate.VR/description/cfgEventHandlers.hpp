@@ -13,7 +13,7 @@ class Extended_InitPost_EventHandlers {
     class fnf_NoBitchZone { init = "(_this select 0) allowCrewInImmobile true;"; };
     class fnf_DisableThermals { serverInit = "(_this select 0) disableTIEquipment true;"; };
     class FNF_randomDamage { serverInit = "((_this select 0) addMPEventHandler ['MPKilled', {params ['_unit', '_killer', '_instigator', '_useEffects']; [_unit] spawn fnf_server_fnc_handleDamage;}])"; };
-    class fnf_ignoreCookoff { serverInit = "(this select 0) setVariable [""ace_cookoff_enable"", false, true]"; };
+    //class fnf_ignoreCookoff { serverInit = "(this select 0) setVariable [""ace_cookoff_enable"", false, true]"; }; doesn't seem to set the var
   };
   class Tank {
     class fnf_NoBitchZone { init = "(_this select 0) allowCrewInImmobile true;"; };
