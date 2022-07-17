@@ -13,8 +13,12 @@ _background ctrlSetPosition [0,0,1,0.8];
 _background ctrlSetBackgroundColor [0,0,0,0.5];
 _background ctrlCommit 0;
 
+_playerSearch = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlEdit", 10025 ];
+_playerSearch ctrlSetPosition[ 0.0125, 0.0125, 0.48125, 0.05 ];
+_playerSearch ctrlCommit 0;
+
 _playerList = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlListbox", 10000 ];
-_playerList ctrlSetPosition[ 0.0125, 0.0125, 0.48125, 0.48125 ];
+_playerList ctrlSetPosition[ 0.0125, 0.0750, 0.48125, 0.41875 ];
 _playerList ctrlCommit 0;
 _playerList lbAdd "===BLUFOR===";
 {
@@ -92,7 +96,7 @@ _banPlayerButton ctrlSetText "Ban Player";
 _banPlayerButton ctrlSetTextColor [1,0,0,1];
 
 _indiCombo = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlCombo", 10009 ];
-_indiCombo ctrlSetPosition[ 0.5125, 0.02, 0.17, 0.05 ];
+_indiCombo ctrlSetPosition[ 0.5125, 0.0125, 0.17, 0.05 ];
 _indiCombo ctrlCommit 0;
 
 // populate combo selection w/ sideIDs of west, east, sideEmpty
@@ -107,23 +111,18 @@ _indiCombo lbSetData [_index, str(sideEmpty call BIS_fnc_sideID)];
 _indiCombo lbSetCurSel 0;
 
 _setIndiButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10010 ];
-_setIndiButton ctrlSetPosition[ 0.7, 0.02, 0.29, 0.05 ];
+_setIndiButton ctrlSetPosition[ 0.7, 0.0125, 0.29, 0.05 ];
 _setIndiButton ctrlCommit 0;
 _setIndiButton ctrlSetText "Set Indfor Allegiance";
 
-_gameTimeSlider = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlXSliderH", 10011 ];
-_gameTimeSlider ctrlSetPosition[ 0.5125, 0.1, 0.475, 0.05 ];
-_gameTimeSlider ctrlCommit 0;
+_playerMessageBox = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlEdit", 10011 ];
+_playerMessageBox ctrlSetPosition[ 0.5125, 0.1, 0.475, 0.05 ];
+_playerMessageBox ctrlCommit 0;
 
-_gameTimeText = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlStructuredText", 10012 ];
-_gameTimeText ctrlSetPosition[ 0.6, 0.22, 0.3, 0.05 ];
-_gameTimeText ctrlCommit 0;
-_gameTimeText ctrlSetText "%1 Minutes";
-
-_gameTimeButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10013 ];
-_gameTimeButton ctrlSetPosition[ 0.6, 0.3, 0.3, 0.05 ];
-_gameTimeButton ctrlCommit 0;
-_gameTimeButton ctrlSetText "Adjust Game Clock";
+_playerMessageButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10012 ];
+_playerMessageButton ctrlSetPosition[ 0.6, 0.1625, 0.3, 0.05 ];
+_playerMessageButton ctrlCommit 0;
+_playerMessageButton ctrlSetText "Send Player Messsage";
 
 _resultReadout = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlStructuredText", 10020 ];
 _resultReadout ctrlSetPosition[ 0.5125, 0.58, 0.4775, 0.21 ];
@@ -131,6 +130,75 @@ _resultReadout ctrlSetBackgroundColor [0, 0, 0, 0.6];
 _resultReadout ctrlCommit 0;
 _resultReadout ctrlSetText "[RESULTS HERE]";
 
+fnf_admin_searchPFH = [{
+  _playerList = (fnf_adminDisplay select 0) displayCtrl 10000;
+  _searchBox = (fnf_adminDisplay select 0) displayCtrl 10025;
+  _searchTerm = ctrlText _searchBox;
+
+  lbClear _playerList;
+
+  if (_searchTerm == "") exitWith {
+    _playerList lbAdd "===BLUFOR===";
+    {
+	    private _index = _playerList lbAdd name _x;
+      _playerList lbSetData [_index, getPlayerID _x];
+    } forEach (allPlayers select {side (group _x) == west});
+    _playerList lbAdd "===OPFOR===";
+    {
+    	private _index = _playerList lbAdd name _x;
+      _playerList lbSetData [_index, getPlayerID _x];
+    } forEach (allPlayers select {side (group _x) == east});
+    _playerList lbAdd "===INDEPENDENT===";
+    {
+    	private _index = _playerList lbAdd name _x;
+      _playerList lbSetData [_index, getPlayerID _x];
+    } forEach (allPlayers select {side (group _x) == independent});
+    _playerList lbAdd "===CIVILIAN===";
+    {
+    	private _index = _playerList lbAdd name _x;
+      _playerList lbSetData [_index, getPlayerID _x];
+    } forEach (allPlayers select {side (group _x) == civilian});
+    _playerList lbAdd "===LOGIC===";
+    {
+    	private _index = _playerList lbAdd name _x;
+      _playerList lbSetData [_index, getPlayerID _x];
+    } forEach (allPlayers select {side (group _x) == sideLogic});
+  };
+
+  _playerList lbAdd "===BLUFOR===";
+  {
+	  private _index = _playerList lbAdd name _x;
+    _playerList lbSetData [_index, getPlayerID _x];
+  } forEach (allPlayers select {side (group _x) == west} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  _playerList lbAdd "===OPFOR===";
+  {
+	  private _index = _playerList lbAdd name _x;
+    _playerList lbSetData [_index, getPlayerID _x];
+  } forEach (allPlayers select {side (group _x) == east} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  _playerList lbAdd "===INDEPENDENT===";
+  {
+  	private _index = _playerList lbAdd name _x;
+    _playerList lbSetData [_index, getPlayerID _x];
+  } forEach (allPlayers select {side (group _x) == independent} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  _playerList lbAdd "===CIVILIAN===";
+  {
+  	private _index = _playerList lbAdd name _x;
+    _playerList lbSetData [_index, getPlayerID _x];
+  } forEach (allPlayers select {side (group _x) == civilian} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  _playerList lbAdd "===LOGIC===";
+  {
+  	private _index = _playerList lbAdd name _x;
+    _playerList lbSetData [_index, getPlayerID _x];
+  } forEach (allPlayers select {side (group _x) == sideLogic} select {[_searchTerm, name _x] call BIS_fnc_inString});
+
+}, 0.5] call CBA_fnc_addPerFrameHandler;
+
+_background ctrlAddEventHandler[ "Destroy", {
+  params ["_control", "_exitCode"];
+  if (!isNil "fnf_admin_searchPFH") then {
+    [fnf_admin_searchPFH] call CBA_fnc_removePerFrameHandler;
+  };
+}];
 
 _kickPlayerButton ctrlAddEventHandler[ "ButtonClick", {
 	params[ "_kickPlayerButton" ];
@@ -270,5 +338,24 @@ _copyUIDButton ctrlAddEventHandler[ "ButtonClick", {
   _dataToSend = ["copyPlayerUIDs", _selected, getPlayerId player];
 
 	// _dataToSend remoteExec ["fnf_admin_fnc_serverCommands", 2];
+  ["FNF_UIPanelAdmin_ButtonClicked", _dataToSend] call CBA_fnc_serverEvent;
+}];
+
+
+_playerMessageButton ctrlAddEventHandler[ "ButtonClick", {
+  params[ "_playerMessageButton" ];
+
+  private _selected = [];
+  _playerList = ctrlParent _playerMessageButton displayCtrl 10000;
+	_selectedIndex = lbCurSel _playerList;
+	_selected pushBack (_playerList lbData _selectedIndex);
+
+  _playerMessageBox = ctrlParent _playerMessageButton displayCtrl 10011;
+  _messageText = ctrlText _playerMessageBox;
+  _selected pushBack (_messageText);
+
+  _dataToSend = ["messagePlayer", _selected, getPlayerId player];
+
+  // _dataToSend remoteExec ["fnf_admin_fnc_serverCommands", 2];
   ["FNF_UIPanelAdmin_ButtonClicked", _dataToSend] call CBA_fnc_serverEvent;
 }];

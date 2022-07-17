@@ -63,6 +63,7 @@ class CfgFunctions {
       class adminSetLoadout{};
       class copyPlayerUIDs{};
       class killPlayer{};
+      class messagePlayer{};
       class resetAnimState{};
       class respawnPlayer{};
       class setIndforAllegiance{};
