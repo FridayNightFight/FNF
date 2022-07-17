@@ -65,7 +65,7 @@ publicVariable "fnf_specObjectives";
         if (_selection != "") then {_curDamage = _unit getHit _selection};
         _newDamage = _damage - _curDamage;
 
-        _damage - _newDamage * 0.9;
+        _damage - _newDamage * 0.65;
       }];
     };
   };
