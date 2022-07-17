@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "uk3cb_PPSH_71rnd_magazine:4"
 
 #define AR_RIFLE "rhs_weap_pkm"
-#define AR_MAG "rhs_100Rnd_762x54mmR:6"
-#define AR_MAG_ASST "rhs_100Rnd_762x54mmR_green:5"
+#define AR_MAG "rhs_100Rnd_762x54mmR:8"
+#define AR_MAG_ASST "rhs_100Rnd_762x54mmR_green:8"
 
 #define AT_LAUNCHER RPG26(1)
 

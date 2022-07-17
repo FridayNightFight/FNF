@@ -36,7 +36,7 @@
 
 #define AR_RIFLE "vn_k50m"
 #define AR_MAG "vn_ppsh41_71_t_mag:8"
-#define AR_MAG_ASST "vn_ppsh41_71_t_mag:4"
+#define AR_MAG_ASST "vn_ppsh41_71_t_mag:6"
 
 #define AT_LAUNCHER VN_RPG7(2)
 

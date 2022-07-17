@@ -35,8 +35,8 @@
 #define SHOTGUN_MAG "vn_m1897_fl_mag:6", "vn_m1897_buck_mag:6"
 
 #define AR_RIFLE "vn_m1928_tommy"
-#define AR_MAG "vn_m1928_mag:6"
-#define AR_MAG_ASST "vn_m1928_t_mag:6"
+#define AR_MAG "vn_m1928_mag:8"
+#define AR_MAG_ASST "vn_m1928_t_mag:8"
 
 #define AT_LAUNCHER VN_LAW(1)
 

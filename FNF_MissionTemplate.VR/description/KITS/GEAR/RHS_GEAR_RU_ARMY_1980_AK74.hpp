@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4"
 
 #define AR_RIFLE "fnf_rpk"
-#define AR_MAG "fnf_45rnd_rpk_green:6"
-#define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
+#define AR_MAG "fnf_45rnd_rpk_green:13"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:10"
 
 #define AT_LAUNCHER RPG26(1)
 

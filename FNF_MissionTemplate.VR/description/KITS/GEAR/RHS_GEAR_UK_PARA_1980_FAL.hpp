@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "UK3CB_Sten_34Rnd_Magazine:4"
 
 #define AR_RIFLE "UK3CB_Bren"
-#define AR_MAG "UK3CB_Bren_30Rnd_762x51_Magazine_R:6"
-#define AR_MAG_ASST "UK3CB_Bren_30Rnd_762x51_Magazine_R:5"
+#define AR_MAG "UK3CB_Bren_30Rnd_762x51_Magazine_R:16"
+#define AR_MAG_ASST "UK3CB_Bren_30Rnd_762x51_Magazine_R:12"
 
 #define AT_LAUNCHER M72LAW(1)
 

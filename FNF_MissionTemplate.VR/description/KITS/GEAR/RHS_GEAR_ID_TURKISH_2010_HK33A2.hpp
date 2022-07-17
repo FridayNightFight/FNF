@@ -33,7 +33,7 @@
 
 #define AR_RIFLE "rhs_weap_minimi_para_railed"
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
+#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:6"
 
 #define AT_LAUNCHER RPG26(1)
 
