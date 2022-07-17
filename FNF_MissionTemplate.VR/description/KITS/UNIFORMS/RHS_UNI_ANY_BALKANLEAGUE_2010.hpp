@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "UK3CB_KDF_B_U_Crew_Uniform_01_VSR_GRN", "UK3CB_KDF_B_U_Crew_Uniform_02_GRN_VSR"
+#define UNIFORM "UK3CB_ADE_O_U_04_F", "UK3CB_ADE_O_U_04_F", "UK3CB_ADE_O_U_04_C", "UK3CB_ADE_O_U_04", "UK3CB_ADE_O_U_04_D", "UK3CB_ADE_O_U_02_F"
 
-#define VEST "rhsgref_chicom"
-#define VEST_LEADER VEST
+#define VEST "V_TacVest_blk", "V_HarnessO_gry"
+#define VEST_LEADER "V_HarnessOGL_gry"
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhssaf_helmet_m59_85_nocamo"
-#define HELMET_CMDR "rhssaf_beret_green"
-#define HELMET_RECON "H_Watchcap_camo"
+#define HELMET "UK3CB_ANP_B_H_6b27m_bala_GREY", "UK3CB_ANP_B_H_6b27m_ess_bala_GREY", "UK3CB_ANP_B_H_6b27m_GREY", "UK3CB_TKA_I_H_SSh68_Grey"
+#define HELMET_CMDR "UK3CB_ADA_B_H_Off_Beret"
+#define HELMET_RECON "UK3CB_H_Beanie_02_GRY"
 #define HELMET_CREWMAN "rhs_tsh4_ess_bala"
-#define HELMET_PILOT "rhsusf_ihadss"
+#define HELMET_PILOT "UK3CB_H_Crew_Helmet"
 
-#define BACKPACK "B_Kitbag_rgr"
-#define BACKPACK_RADIO "TFAR_rt1523g_green"
-#define BACKPACK_AR "rhsgref_hidf_alicepack"
-#define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_FieldPack_oli"
+#define BACKPACK "UK3CB_B_Small_Pack"
+#define BACKPACK_RADIO "UK3CB_CW_SOV_O_LATE_B_ASS_BERGEN_Radio"
+#define BACKPACK_AR "rhs_tortila_grey"
+#define BACKPACK_AT "rhs_tortila_grey"
+#define BACKPACK_MEDIC "UK3CB_B_TacticalPack_Med_Oli"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_ANY_YUGOSLAVIA_2000 {
+class RHS_UNI_ANY_BALKANLEAGUE_2010 {
   author = "Mazz38";
-  description = "CS: 2000s Yugoslavia ARMY Olive VSR Camouflage";
+  description = "BDL: Fictional Balkan Defense League DUCK HUNTER Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,6 +88,7 @@ class RHS_UNI_ANY_YUGOSLAVIA_2000 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

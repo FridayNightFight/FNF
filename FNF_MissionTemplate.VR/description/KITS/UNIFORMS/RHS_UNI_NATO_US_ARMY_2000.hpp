@@ -11,7 +11,7 @@
 
 #define HELMET "UK3CB_CW_US_B_LATE_H_PASGT_01_WDL", "rhsgref_helmet_pasgt_3color_desert"
 #define HELMET_CMDR "UK3CB_CW_US_B_LATE_H_JNR_OFF_Patrol_Cap_WDL_01"
-#define HELMET_RECON "rhssaf_booniehat_woodland"
+#define HELMET_RECON "rhsusf_protech_helmet_rhino_ess"
 #define HELMET_CREWMAN "rhsusf_cvc_green_helmet"
 #define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
 
@@ -26,7 +26,7 @@
 
 class RHS_UNI_NATO_US_ARMY_2000 {
   author = "Mazz38";
-  description = "USA: 2000s American ARMY Desert Storm Camouflage";
+  description = "USA: 2000s American ARMY Iraqi Freedom Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};

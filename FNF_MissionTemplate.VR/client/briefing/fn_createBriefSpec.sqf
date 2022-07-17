@@ -401,7 +401,7 @@ if (!isNil "fnf_briefing_ind_uniform" || !isNil "fnf_briefing_ind_headgear" || !
         fnf_ui_structTextRef,
         "INDFOR Uniform",
         format ["<t size='1.2' shadow='1' color='" + COLOR2 + "' face='PuristaBold'>%1</t><br/>
-<t size='14'>%2</t><br/>
+<t size='1.1'>%2</t><br/>
 Author: %3<br/><br/>
 %4
 ",
@@ -716,7 +716,7 @@ if (!isNil "fnf_briefing_loadoutBLU") then {
   call fnf_briefing_loadoutBLU;
 };
 
-[false] call fnf_briefing_fnc_parseGear;
+// [false] call fnf_briefing_fnc_parseGear;
 call fnf_briefing_MMNotes;
 call fnf_briefing_fnc_createOrbat;
 true

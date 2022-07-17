@@ -1,6 +1,6 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_og107", "rhsgref_uniform_olive"
+#define UNIFORM "UK3CB_MEI_B_U_Jeans_Tshirt_01", "UK3CB_MEE_O_U_06", "UK3CB_MEI_B_U_Jeans_Tshirt_05", "UK3CB_MEI_B_U_Jeans_Tshirt_12", "UK3CB_MEI_B_U_Jeans_Tshirt_04", "UK3CB_MEI_B_U_Pants_09", "UK3CB_ADC_C_Pants_U_21", "UK3CB_ADE_O_U_02_E", "UK3CB_CHC_C_U_COACH_04"
 
 #define VEST "rhsgref_chicom"
 #define VEST_LEADER VEST
@@ -9,9 +9,9 @@
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "UK3CB_ARD_B_H_SSh68_Des", "rhs_ssh68_2"
-#define HELMET_CMDR "rhs_beret_milp"
-#define HELMET_RECON "UK3CB_H_Shemag_red"
+#define HELMET "UK3CB_H_Shemag_red_02", "UK3CB_H_Shemag_red", "UK3CB_TKA_I_H_SSh68_Khk", "UK3CB_H_Shemag_white", "UK3CB_H_Profiteer_Cap_01",
+#define HELMET_CMDR "UK3CB_TKA_B_H_Beret"
+#define HELMET_RECON "UK3CB_H_Woolhat_GRN", "UK3CB_H_Woolhat_KHK"
 #define HELMET_CREWMAN "rhs_tsh4_bala"
 #define HELMET_PILOT "H_Cap_headphones"
 
@@ -24,9 +24,9 @@
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_ID_IRAQI_ARMY_2000 {
+class RHS_UNI_ID_IRAQI_INSURGENTS_2000 {
   author = "Mazz38";
-  description = "ID: 2000 IRAQI ARMY OD Camouflage";
+  description = "ID: 2000 IRAQI INSURGENTS Random Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};

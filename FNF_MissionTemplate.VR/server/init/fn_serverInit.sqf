@@ -59,35 +59,39 @@ call fnf_server_fnc_setupGame;
 call fnf_server_fnc_newPlayers;
 call fnf_server_fnc_webhook_roundPrep;
 
-#define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
-// put vehicles into a hashmap based on who they belong to (if anyone)
-fnf_vehiclesToProcess = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
-{
-  private _vehicle = _x;
-  if (isNull _vehicle) then {continue};
-  switch (true) do {
-    case ([_vehicle, west] call fnf_fnc_inSafeZone): {
-      [fnf_vehiclesToProcess, "BLU", _vehicle] call BIS_fnc_addToPairs;
-    };
-    case ([_vehicle, east] call fnf_fnc_inSafeZone): {
-      [fnf_vehiclesToProcess, "OPF", _vehicle] call BIS_fnc_addToPairs;
-    };
-    case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
-      [fnf_vehiclesToProcess, "IND", _vehicle] call BIS_fnc_addToPairs;
-    };
-    default {
-      [fnf_vehiclesToProcess, "OTHER", _vehicle] call BIS_fnc_addToPairs;
-    };
-  };
-} forEach MISSIONVICS;
 
-publicVariable "fnf_vehiclesToProcess";
+[{getClientStateNumber > 8}, {
+  #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+  // put vehicles into a hashmap based on who they belong to (if anyone)
+  _vehicles = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+  {
+    private _vehicle = _x;
+    if (isNull _vehicle) then {continue};
+    switch (true) do {
+      case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+        [_vehicles, "BLU", _vehicle] call BIS_fnc_addToPairs;
+      };
+      case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+        [_vehicles, "OPF", _vehicle] call BIS_fnc_addToPairs;
+      };
+      case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+        [_vehicles, "IND", _vehicle] call BIS_fnc_addToPairs;
+      };
+      default {
+        [_vehicles, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+      };
+    };
+  } forEach MISSIONVICS;
+
+  missionNamespace setVariable ["fnf_vehiclesToProcess", _vehicles, true];
+}] call CBA_fnc_waitUntilAndExecute;
 
 // after custom building markers are up, recreate safe markers so they're on top and visible
 [
   {
     missionNamespace getVariable ["fnf_markCustomObjs_ready", false] &&
-    missionNamespace getVariable ["fnf_serverSetupGame", false]
+    missionNamespace getVariable ["fnf_serverSetupGame", false] &&
+    !isNil "fnf_vehiclesToProcess"
   }, {
     call fnf_server_fnc_markSafeZoneAssets;
 
@@ -108,9 +112,13 @@ publicVariable "fnf_vehiclesToProcess";
     missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
 }] call CBA_fnc_waitUntilAndExecute;
 
+[{!isNil "fnf_vehiclesToProcess"}, {
+  call fnf_server_fnc_keyVehicles;
+  call fnf_server_fnc_vehicleRadios;
+}] call CBA_fnc_waitUntilAndExecute;
+
 call fnf_server_fnc_populateORBATS;
-call fnf_server_fnc_keyVehicles;
-call fnf_server_fnc_vehicleRadios;
+
 
 
 

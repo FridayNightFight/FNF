@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_og107", "rhsgref_uniform_olive"
+#define UNIFORM "rhs_uniform_g3_rgr"
 
-#define VEST "rhsgref_chicom"
-#define VEST_LEADER VEST
-#define VEST_AR VEST
-#define VEST_MEDIC VEST
-#define VEST_CREWMAN VEST
-#define VEST_PILOT VEST
+#define VEST "UK3CB_LDF_B_V_RIF_ALT_Vest_KKZ10_OLI"
+#define VEST_LEADER "UK3CB_LDF_B_V_SL_Vest_KKZ10_OLI", "UK3CB_LDF_B_V_GREN_Vest_KKZ10_OLI"
+#define VEST_AR "UK3CB_LDF_B_V_MG_Vest_KKZ10_OLI"
+#define VEST_MEDIC "UK3CB_LDF_B_V_MD_Vest_KKZ10_OLI"
+#define VEST_CREWMAN "UK3CB_LDF_B_V_CREW_Vest_KKZ10_OLI"
+#define VEST_PILOT "UK3CB_LDF_B_V_CREW_Vest_KKZ10_OLI"
 
-#define HELMET "UK3CB_ARD_B_H_SSh68_Des", "rhs_ssh68_2"
-#define HELMET_CMDR "rhs_beret_milp"
-#define HELMET_RECON "UK3CB_H_Shemag_red"
-#define HELMET_CREWMAN "rhs_tsh4_bala"
-#define HELMET_PILOT "H_Cap_headphones"
+#define HELMET "UK3CB_LDF_I_H_MHB15_OLI"
+#define HELMET_CMDR "UK3CB_LDF_B_H_CP04_GEO"
+#define HELMET_RECON "UK3CB_LSM_B_H_BoonieHat_OLI"
+#define HELMET_CREWMAN "H_HelmetCrew_I"
+#define HELMET_PILOT "rhsusf_hgu56p_mask_green", "rhsusf_hgu56p_visor_mask_green"
 
-#define BACKPACK "B_TacticalPack_rgr"
-#define BACKPACK_RADIO "TFAR_rt1523g_fabric"
+#define BACKPACK "UK3CB_B_US_Backpack"
+#define BACKPACK_RADIO "UK3CB_B_B_Backpack_Radio_Chem_OLI"
 #define BACKPACK_AR "B_Carryall_oli"
 #define BACKPACK_AT "B_Carryall_oli"
-#define BACKPACK_MEDIC "B_TacticalPack_rgr"
+#define BACKPACK_MEDIC "UK3CB_B_Backpack_Med_OLI"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_ID_IRAQI_ARMY_2000 {
+class RHS_UNI_NATO_PL_SSW_2020 {
   author = "Mazz38";
-  description = "ID: 2000 IRAQI ARMY OD Camouflage";
+  description = "PL: Modern Polish Military Intelligence Service SPECIAL FORCES Olive Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,6 +88,7 @@ class RHS_UNI_ID_IRAQI_ARMY_2000 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
+    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {

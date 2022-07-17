@@ -27,7 +27,7 @@ fnf_loadout_roles = [
   ["BASE",["Crew/Wpn Operator","PRIVATE"]]
 ];
 
-player linkItem "ItemMap";
+[{getClientStateNumber > 8}, {player linkItem "ItemMap"}] call CBA_fnc_waitUntilAndExecute;
 
 //Determine if client can play the round, if not, spectate
 if !(call fnf_client_fnc_canplay) exitWith {
@@ -38,9 +38,14 @@ if !(call fnf_client_fnc_canplay) exitWith {
     (if (missionNamespace getVariable ["fnf_safetyEnabled", true]) then {"is active"} else {"is not active"})
   ];
   call fnf_fnc_contactStaffInit; // Init handling for player reports
-  call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
-  call fnf_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
   call fnf_spectator_fnc_init;
+  call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
+  [{missionNamespace getVariable ["fnf_markCustomObjs_done", false] && !isNil "fnf_vehiclesToProcess" && getClientStateNumber > 7}, {
+    [] spawn {
+      uisleep 2;
+      call fnf_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
+    };
+  }] call CBA_fnc_waitUntilAndExecute;
 };
 player enableSimulation false;
 
@@ -49,17 +54,21 @@ call fnf_client_fnc_setupGame; //Client portion of game modes
   call fnf_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
   call fnf_briefing_fnc_init; //Briefing
   call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
-  call fnf_briefing_fnc_assetDiary; // Add diary entries for assets
-  call fnf_ui_fnc_mapZoneAssets; // show safezone assets on hover
+  [] spawn {
+    uisleep 2;
+    call fnf_ui_fnc_mapZoneAssets; // show safezone assets on hover
+    call fnf_briefing_fnc_assetDiary; // Add diary entries for assets
+    call fnf_briefing_fnc_assetDiaryStruct; // Prep global vars for UI info panel
+  };
 }] call CBA_fnc_waitUntilAndExecute;
 call fnf_safety_fnc_init; //Enable safety
 call fnf_client_fnc_staggeredLoad; //Start staggered load timer
 call fnf_radio_fnc_waitGear; //Start radio preset functions
 call fnf_fnc_contactStaffInit; // Init handling for player reports
 
-[{missionNamespace getVariable ["fnf_briefCreated", false]}, {
-  call fnf_briefing_fnc_assetDiaryStruct; // Prep global vars for UI info panel
-}] call CBA_fnc_waitUntilAndExecute;
+// [{missionNamespace getVariable ["fnf_briefCreated", false]}, {
+
+// }] call CBA_fnc_waitUntilAndExecute;
 
 call fnf_ui_fnc_drawStaffIcons; // Draw labels over staff members
 call fnf_ui_fnc_drawCmdIcons; // Draw labels over CMD, PL
@@ -82,8 +91,11 @@ if (fnf_gameMode != "sustainedAssault") then {
 
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["fnf_staggeredLoaded",false] && !(call BIS_fnc_isLoading)}, {
-  call fnf_fnc_showTimeOnMap;
-  [player getVariable "fnfLoadout"] call fnf_loadout_fnc_applyLoadout;
+  [] spawn {
+    sleep 1;
+    call fnf_fnc_showTimeOnMap;
+    [player getVariable "fnfLoadout"] call fnf_loadout_fnc_applyLoadout;
+  };
 }] call CBA_fnc_waitUntilAndExecute;
 
 // at end of staggered load, check the player's limited FNF play count & notify server if they're new
@@ -99,7 +111,7 @@ if (fnf_gameMode != "sustainedAssault") then {
 [{time > 0}, {
   call fnf_restrictions_fnc_init;
   call fnf_loadout_fnc_checkLoadout;
-  [false] call fnf_briefing_fnc_parseGear;
+  // [false] call fnf_briefing_fnc_parseGear;
 
   ["init"] call fnf_ui_fnc_drawHelpers;
 

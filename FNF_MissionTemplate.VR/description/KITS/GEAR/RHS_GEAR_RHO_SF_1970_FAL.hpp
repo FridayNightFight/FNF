@@ -1,18 +1,18 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "UK3CB_M16A3"
+#define RIFLE "UK3CB_FNFAL_PARA"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define RIFLE_MAG "rhs_mag_20Rnd_762x51_m80_fnfal:7","UK3CB_FNFAL_20rnd_762x51_R:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
+#define RIFLE_MAG_RI "rhs_mag_20Rnd_762x51_m80_fnfal:12","UK3CB_FNFAL_20rnd_762x51_R:6"
 
-#define SIDEARM "rhsusf_weap_glock17g4"
-#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
+#define SIDEARM "UK3CB_BHP"
+#define SIDEARM_MAG "UK3CB_BHP_9_13Rnd:2"
 
 // put all GL weapons
-#define RIFLE_GL "UK3CB_M16A2_UGL","rhs_weap_m4a1_m320"
-#define RIFLE_GL_MAG RIFLE_MAG
+#define RIFLE_GL "UK3CB_M16A2_UGL"
+#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
@@ -23,41 +23,41 @@
 
 // put all Carbine-style (shorter) weapons
 #define CARBINE "UK3CB_M16_Carbine"
-#define CARBINE_MAG RIFLE_MAG
-#define CARBINE_MAG_RI RIFLE_MAG_RI
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
 #define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
 
-#define SMG_RIFLE "UK3CB_MP5N"
-#define SMG_MAG "UK3CB_MP5_30Rnd_9x19_Magazine:8"
-#define SMG_MAG_CREW "UK3CB_MP5_30Rnd_9x19_Magazine:4"
+#define SMG_RIFLE "UK3CB_Sten"
+#define SMG_MAG "UK3CB_Sten_34Rnd_Magazine:8"
+#define SMG_MAG_CREW "UK3CB_Sten_34Rnd_Magazine:4"
 
-#define AR_RIFLE "rhs_weap_m249"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
+#define AR_RIFLE "UK3CB_Bren"
+#define AR_MAG "UK3CB_Bren_30Rnd_762x51_Magazine_R:6"
+#define AR_MAG_ASST "UK3CB_Bren_30Rnd_762x51_Magazine_R:5"
 
-#define AT_LAUNCHER AT4(1)
+#define AT_LAUNCHER M72LAW(1)
 
-#define MAT1_LAUNCHER CARLG(2,0)
-#define MAT2_LAUNCHER CARLG(2,0)
+#define MAT1_LAUNCHER RPG7(2,1)
+#define MAT2_LAUNCHER RPG7(2,1)
 
 #define DM_RIFLE "UK3CB_M14DMR"
 #define DM_MAG "UK3CB_DMR_20rnd_762x51:8", "UK3CB_DMR_20rnd_762x51_R:4"
 
-#define MMG_RIFLE "rhs_weap_m240B"
+#define MMG_RIFLE "rhs_weap_fnmag"
 #define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
 #define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
 
-#define SPOTTER_RIFLE "rhs_weap_m14", "UK3CB_MP5SD6"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "UK3CB_MP5_30Rnd_9x19_Magazine:8"
+#define SPOTTER_RIFLE "rhs_weap_m14", "rhs_weap_m3a1_specops"
+#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhsgref_30rnd_1143x23_M1911B_SMG:8"
 
 #define SNP_RIFLE "rhs_weap_m24sws"
 #define SNP_MAG "rhsusf_5Rnd_762x51_m118_special_Mag:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_US_ARMY_2000_M16A3 {
+class RHS_GEAR_RHO_SF_1970_FAL {
   author = "Mazz38";
-  description = "USA: US ARMY M4/M16A3 Kits";
+  description = "Rhodesia: RHO SECURITY FORCES FAL Kits";
 
   class BASE {
     backpackItems[] = {};
@@ -149,12 +149,11 @@ class RHS_GEAR_US_ARMY_2000_M16A3 {
           UGL_MAGS(UGL_FRAG,10),
           UGL_MAGS(UGL_SMOKEWHITE,4),
           UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FLAREWHITE,2)
         }
       }
     };
-    items[] += {HUNTIR_MONITOR};
+    items[] += {};
   };
 
   class MGA : BASE {

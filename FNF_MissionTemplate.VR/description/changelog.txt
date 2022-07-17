@@ -26,7 +26,7 @@ RC3
 - remove buildingChanged EH after safe start
 
 RC4
-- fixes for airdropAssets & crate management, include local small smoke to mark dropped crates/vehicles
+- fixes for airdropAssets and crate management, include local small smoke to mark dropped crates/vehicles
 - adds ambient artillery to missionSpecials framework
 - turns off AI show for QS_icons
 
