@@ -44,8 +44,8 @@
 #define DM_MAG "rhs_mag_20Rnd_SCAR_762x51_m80_ball:11"
 
 #define MMG_RIFLE "UK3CB_MG3"
-#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:8"
-#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:6"
+#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:12"
+#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:10"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "UK3CB_MP5SD6"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:16", "UK3CB_MP5_30Rnd_9x19_Magazine:8"

@@ -44,8 +44,8 @@
 #define DM_MAG "rhsgref_10Rnd_792x57_m76:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51:8"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m62_tracer:6"
+#define MMG_MAG "rhsusf_100Rnd_762x51:12"
+#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m62_tracer:10"
 
 #define SPOTTER_RIFLE "rhs_weap_m14_rail", "rhs_weap_m92"
 #define SPOTTER_MAG "rhsusf_20Rnd_762x51_m993_Mag:8", "rhs_10Rnd_762x39mm_U:12"

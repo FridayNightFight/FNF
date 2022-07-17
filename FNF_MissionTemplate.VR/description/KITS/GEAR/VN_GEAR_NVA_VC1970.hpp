@@ -47,8 +47,8 @@
 #define DM_MAG RIFLE_MAG
 
 #define MMG_RIFLE "vn_pk"
-#define MMG_MAG "vn_pk_100_mag:8"
-#define MMG_MAG_ASST "vn_pk_100_mag:7"
+#define MMG_MAG "vn_pk_100_mag:12"
+#define MMG_MAG_ASST "vn_pk_100_mag:10"
 
 #define SPOTTER_RIFLE "vn_m45","vn_m3a1"
 #define SPOTTER_MAG "vn_m45_mag:11","vn_m3a1_mag:8"
