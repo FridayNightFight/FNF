@@ -12,7 +12,9 @@ if (!isNil "zoneTrigger") then {
     };
     fnf_zoneBoundary_PFH = [{
       if !(alive player) exitWith {};
-      if (!(vehicle player inArea zoneTrigger) && !(vehicle player isKindOf "Air")) then {
+      _condition = !(vehicle player inArea zoneTrigger) && !(vehicle player isKindOf "Air" || ropeAttachedTo vehicle player isKindOf "Air");
+      
+      if (_condition) then {
         if (fnf_zoneBoundary_timer == 0) exitWith {
           fnf_zoneBoundary_PFH call CBA_fnc_removePerFrameHandler; titleText ["", "PLAIN"];
           if (player == driver (vehicle player)) then {(vehicle player) call BIS_fnc_neutralizeUnit};
