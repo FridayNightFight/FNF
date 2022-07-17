@@ -120,9 +120,14 @@ _playerMessageBox ctrlSetPosition[ 0.5125, 0.1, 0.475, 0.05 ];
 _playerMessageBox ctrlCommit 0;
 
 _playerMessageButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10012 ];
-_playerMessageButton ctrlSetPosition[ 0.6, 0.1625, 0.3, 0.05 ];
+_playerMessageButton ctrlSetPosition[ 0.5125, 0.1625, 0.475, 0.05 ];
 _playerMessageButton ctrlCommit 0;
-_playerMessageButton ctrlSetText "Send Player Messsage";
+_playerMessageButton ctrlSetText "Send Messsage to Player";
+
+_playerMessageAllButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10012 ];
+_playerMessageAllButton ctrlSetPosition[ 0.5125, 0.225, 0.475, 0.05 ];
+_playerMessageAllButton ctrlCommit 0;
+_playerMessageAllButton ctrlSetText "Send Messsage to All Players";
 
 _resultReadout = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlStructuredText", 10020 ];
 _resultReadout ctrlSetPosition[ 0.5125, 0.58, 0.4775, 0.21 ];
@@ -355,6 +360,19 @@ _playerMessageButton ctrlAddEventHandler[ "ButtonClick", {
   _selected pushBack (_messageText);
 
   _dataToSend = ["messagePlayer", _selected, getPlayerId player];
+
+  // _dataToSend remoteExec ["fnf_admin_fnc_serverCommands", 2];
+  ["FNF_UIPanelAdmin_ButtonClicked", _dataToSend] call CBA_fnc_serverEvent;
+}];
+
+
+_playerMessageAllButton ctrlAddEventHandler[ "ButtonClick", {
+  params[ "_playerMessageAllButton" ];
+
+  _playerMessageBox = ctrlParent _playerMessageAllButton displayCtrl 10011;
+  _messageText = ctrlText _playerMessageBox;
+
+  _dataToSend = ["messageAllPlayers", _messageText, getPlayerId player];
 
   // _dataToSend remoteExec ["fnf_admin_fnc_serverCommands", 2];
   ["FNF_UIPanelAdmin_ButtonClicked", _dataToSend] call CBA_fnc_serverEvent;

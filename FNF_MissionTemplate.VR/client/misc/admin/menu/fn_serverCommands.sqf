@@ -46,5 +46,13 @@ if (!isServer) exitWith {};
       _args params ["_targets", "_message"];
       [[_targets], _message, _callerID] call fnf_admin_fnc_messagePlayer;
     };
+    case "messageAllPlayers": {
+      _args params ["_message"];
+      _targets = [];
+      {
+        _targets pushBack (getPlayerID _x);
+      } forEach allPlayers;
+      [_targets, _message, _callerID] call fnf_admin_fnc_messagePlayer;
+    };
   };
 }] call CBA_fnc_addEventHandlerArgs;
