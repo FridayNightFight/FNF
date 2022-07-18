@@ -105,8 +105,8 @@ _actionSpawnAvatar = [
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _actionSpawnAvatar] call ace_interact_menu_fnc_addActionToZeus;
 
-//Determine if client is spectator and set up for spectating
-if (typeOf player == "ace_spectator_virtual") exitWith {
+//Determine if client can play, if not, spectate
+if !(call fnf_client_fnc_canplay) exitWith {
   diag_log formatText [
     "[FNF] (clientInit) typeOf ""%1"" player %2 was placed in spectator at join. Safestart %3",
     typeOf player,
@@ -122,17 +122,6 @@ if (typeOf player == "ace_spectator_virtual") exitWith {
       call fnf_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
     };
   }] call CBA_fnc_waitUntilAndExecute;
-};
-
-//Determine if client can play, if not, spectate
-if !(call fnf_client_fnc_canplay) then {
-  diag_log formatText [
-    "[FNF] (clientInit) typeOf ""%1"" player %2 was placed in spectator at join. Safestart %3",
-    typeOf player,
-    name player,
-    (if (missionNamespace getVariable ["fnf_safetyEnabled", true]) then {"is active"} else {"is not active"})
-  ];
-  call fnf_spectator_fnc_init;
 };
 player enableSimulation false;
 
@@ -345,9 +334,3 @@ private _action = [
     [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_trenches_digEnvelopeSmall"]] call ace_interact_menu_fnc_removeActionFromClass;
   };
 }, [], 5] call CBA_fnc_waitUntilAndExecute;
-
-
-//Check if client can play, if not, kill player to allow respawn to work with JIP
-if !(call fnf_client_fnc_canplay) then {
-  player setDamage 1; //kill player to allow respawn later
-};
