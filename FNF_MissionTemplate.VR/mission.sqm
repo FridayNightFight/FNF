@@ -273,7 +273,7 @@ class Mission
 	assetType="Free";
 	class Intel
 	{
-		overviewText="Insert mission details shown at lobby screen here (Multiplayer attributes > Lobby > Summary)";
+		overviewText="Use the lobby text generator to fill this out (Go in game, hit Escape, and click the generator button on the left side. Make sure to change the attacking advantage percentage)";
 		resistanceWest=0;
 		timeOfChanges=28800;
 		startWeather=0;
