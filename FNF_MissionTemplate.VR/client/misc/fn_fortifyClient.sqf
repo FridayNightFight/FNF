@@ -33,6 +33,19 @@ switch (playerSide) do {
   case independent: {fnf_fortifyMarkers = [nil, independent, true] call fnf_fnc_inSafeZone};
 };
 
+//Function made by Killzone_Kid. From A3 Wiki.
+KK_fnc_inHouse = {
+  lineIntersectsSurfaces [
+    getPosWorld _this,
+    getPosWorld _this vectorAdd [0, 0, 50],
+    _this, objNull, true, 1, "GEOM", "NONE"
+  ] select 0 params ["","","","_house"];
+
+  if (_house isKindOf "House") exitWith { true };
+
+  false
+};
+
 [{
     params ["_unit", "_object", "_cost"];
     private _canPlace = true;
@@ -53,23 +66,28 @@ switch (playerSide) do {
       };
     };
 
+    if (_object call KK_fnc_inHouse) then {
+      _canPlace = false;
+      _errorStr = "Cannot place objects within buildings."
+    };
+
     {
       if (_pos distance (position _x) < _minDistance || _pos inArea _x) then {
         _canPlace = false;
-        _errorStr = format ["Cannot place object. Object needs to be at least %1 meters away from an objective.", _minDistance];
+        _errorStr = format ["Cannot place objects within %1 meters away from an objective.", _minDistance];
 
         if (_pos inArea _x) then {_errorStr = "Cannot place object within objective area."};
       };
     } forEach fnf_fortify_objArr;
 
-    if ((count (_object nearRoads 12) > 0) || (isOnRoad _object)) then {
+    if ((count (_object nearRoads 12) > 0 || isOnRoad _object) && (getPosATL _object) select 2 < 3.5) then {
       _canPlace = false;
-      _errorStr = "Cannot place object. Object cannot be near a road";
+      _errorStr = "Cannot place objects near roads.";
     };
 
     if (fnf_fortifyMarkers findIf {_pos inArea _x} == -1) then {
       _canPlace = false;
-      _errorStr = "Cannot place object. Object needs to be within start zone boundary."
+      _errorStr = "Cannot place objects outside the start zone boundary."
     };
 
     if (_cost > fnf_fortifyPoints) then {
