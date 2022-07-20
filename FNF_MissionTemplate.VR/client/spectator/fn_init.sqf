@@ -52,34 +52,20 @@ if (!isNull _lastDamage) then {
 
 call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
 
-//Returns true if obj can be drawn
-_showObj = {
-  params ["_obj"];
-  false;
-
-  if (!isNil "_obj") then {
-    if (!isNull _obj) then {
-      true;
-    };
-  };
-};
-
 //Draw 3d icons for objectives
 [{!isNil "fnf_specObjectives"}, {
   {
-    if (_x call _showObj) then {
-      [{
-        params ["_obj"];
-        if (isNull _obj || !alive _obj || alive player) then {
-          [_handle] call CBA_fnc_removePerFrameHandler;
-        } else {
-          drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
-        };
-      } , 0, _x] call CBA_fnc_addPerFrameHandler;
-    };
-  } forEach fnf_specObjectives;
-}] call CBA_fnc_waitUntilAndExecute;
+    [{
+      params ["_obj"];
 
+      drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
+
+      if (!alive _obj || !ace_spectator_isSet) then {
+        [_handle] call CBA_fnc_removePerFrameHandler;
+      };
+    } , 0, _x] call CBA_fnc_addPerFrameHandler;
+  } forEach fnf_specObjectives;
+}, [], 60] call CBA_fnc_waitUntilAndExecute;
 
 fnf_spectatorVisiblePrevinput = true;
 fnf_spectatorPrevVisibleCtrls = [];
