@@ -27,6 +27,7 @@ class CfgFunctions {
       class fixUniformBug{};
       class SCUDFired{};
       class lobbyTextGenerator{};
+      class lobbyTextGenButton{};
       class inSafeZone{};
       class inRestrictedZone{};
     };
