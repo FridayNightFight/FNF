@@ -622,7 +622,7 @@ if (fnf_gameMode == "sustainedAssault") then {
 };
 
 
-call fnf_briefing_fnc_news;
+//call fnf_briefing_fnc_news;
 
 
 fnf_Diary_UpdateInfo = player createDiarySubject ["fnf_Diary_UpdateInfo", "Framework Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\box_ca.paa"];
