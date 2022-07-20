@@ -5,7 +5,7 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1541;
+	toggles=513;
 	class ItemIDProvider
 	{
 		nextID=14525;
@@ -16,18 +16,18 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=660;
+		nextID=672;
 	};
 	class Camera
 	{
-		pos[]={509.75775,287.19037,242.34128};
-		dir[]={-0.0011231985,-0.67034984,0.74206358};
-		up[]={-0.0010146247,0.74202913,0.6703673};
-		aside[]={1.0000058,-1.114322e-007,0.0015130781};
+		pos[]={507.34714,172.85861,271.99847};
+		dir[]={-0.01088329,-0.52266592,0.85253865};
+		up[]={-0.00667215,0.85251766,0.52268034};
+		aside[]={0.99995798,-2.3601024e-007,0.012763544};
 	};
 };
 binarizationWanted=0;
-sourceName="fnf_missiontemplate";
+sourceName="FNF_MissionTemplate";
 addons[]=
 {
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
@@ -5546,7 +5546,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={506.09601,5.0014391,707.92297};
-								angles[]={-0,4.7357764,0};
+								angles[]={0,4.7357764,0};
 							};
 							side="West";
 							flags=6;
@@ -5669,7 +5669,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={506.103,5.0014391,706.06097};
-								angles[]={-0,4.7357764,0};
+								angles[]={0,4.7357764,0};
 							};
 							side="West";
 							flags=4;
@@ -5792,7 +5792,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={508.01801,5.0014391,705.89801};
-								angles[]={-0,4.6906772,0};
+								angles[]={0,4.6906772,0};
 							};
 							side="West";
 							flags=4;
@@ -5914,7 +5914,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={506.03699,5.0014391,709.90796};
-								angles[]={-0,4.7134361,0};
+								angles[]={0,4.7134361,0};
 							};
 							side="West";
 							flags=4;
@@ -6036,7 +6036,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={507.996,5.0014391,709.883};
-								angles[]={-0,4.7139072,0};
+								angles[]={0,4.7139072,0};
 							};
 							side="West";
 							flags=4;
@@ -6158,7 +6158,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={508.009,5.0014391,707.93201};
-								angles[]={-0,4.7139072,0};
+								angles[]={0,4.7139072,0};
 							};
 							side="West";
 							flags=4;
@@ -6324,7 +6324,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Alpha HQ ()";
+								description="Squad Leader@Alpha HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -8459,7 +8459,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Bravo HQ ()";
+								description="Squad Leader@Bravo HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -10652,7 +10652,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Charlie HQ ()";
+								description="Squad Leader@Charlie HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -12787,7 +12787,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Delta HQ ()";
+								description="Squad Leader@Delta HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -17909,7 +17909,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={301.13199,5.0014391,708.133};
-								angles[]={-0,3.1593602,0};
+								angles[]={0,3.1593602,0};
 							};
 							side="East";
 							flags=6;
@@ -18032,7 +18032,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={299.134,5.0014391,708.086};
-								angles[]={-0,3.1593602,0};
+								angles[]={0,3.1593602,0};
 							};
 							side="East";
 							flags=4;
@@ -18155,7 +18155,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={301.13101,5.0014391,710.14197};
-								angles[]={-0,3.1593602,0};
+								angles[]={0,3.1593602,0};
 							};
 							side="East";
 							flags=4;
@@ -18315,7 +18315,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={307.93201,5.0014391,710.17297};
-								angles[]={-0,4.7115688,0};
+								angles[]={0,4.7115688,0};
 							};
 							side="East";
 							flags=6;
@@ -18438,7 +18438,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={307.909,5.0014391,712.33099};
-								angles[]={-0,4.7115688,0};
+								angles[]={0,4.7115688,0};
 							};
 							side="East";
 							flags=4;
@@ -18864,7 +18864,7 @@ class Mission
 							class Attributes
 							{
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Alpha HQ ()";
+								description="Squad Leader@Alpha HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -20063,7 +20063,7 @@ class Mission
 							class Attributes
 							{
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Bravo HQ ()";
+								description="Squad Leader@Bravo HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -21262,7 +21262,7 @@ class Mission
 							class Attributes
 							{
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Charlie HQ ()";
+								description="Squad Leader@Charlie HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -22461,7 +22461,7 @@ class Mission
 							class Attributes
 							{
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Delta HQ ()";
+								description="Squad Leader@Delta HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -25026,7 +25026,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={301.19937,5.0014391,672.52301};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=6;
@@ -25129,7 +25129,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={301.27435,5.0014391,670.22705};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=4;
@@ -25232,7 +25232,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={301.34937,5.0014391,668.12402};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=4;
@@ -25372,7 +25372,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={303.10034,5.0014391,672.32202};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=6;
@@ -25475,7 +25475,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={303.06335,5.0014391,670.23602};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=4;
@@ -25578,7 +25578,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={303.14435,5.0014391,667.95801};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=4;
@@ -25718,7 +25718,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={304.81635,5.0014391,672.10706};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=6;
@@ -25821,7 +25821,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={304.78735,5.0014391,670.12903};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=4;
@@ -25924,7 +25924,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={304.92337,5.0014391,667.76904};
-								angles[]={-0,0.015132004,0};
+								angles[]={0,0.015132004,0};
 							};
 							side="East";
 							flags=4;
@@ -26290,7 +26290,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={697.90399,5.0014391,706.27899};
-								angles[]={-0,3.147614,0};
+								angles[]={0,3.147614,0};
 							};
 							side="Independent";
 							flags=4;
@@ -26573,7 +26573,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={707.81403,5.0014391,707.88397};
-								angles[]={-0,4.7463183,0};
+								angles[]={0,4.7463183,0};
 							};
 							side="Independent";
 							flags=6;
@@ -26884,7 +26884,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={707.83398,5.0014391,710.01398};
-								angles[]={-0,4.723175,0};
+								angles[]={0,4.723175,0};
 							};
 							side="Independent";
 							flags=4;
@@ -26949,7 +26949,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={709.78998,5.0014391,710.03296};
-								angles[]={-0,4.7302437,0};
+								angles[]={0,4.7302437,0};
 							};
 							side="Independent";
 							flags=4;
@@ -27014,7 +27014,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={709.68298,5.0014391,708.01099};
-								angles[]={-0,4.7854834,0};
+								angles[]={0,4.7854834,0};
 							};
 							side="Independent";
 							flags=4;
@@ -27161,7 +27161,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Alpha HQ ()";
+								description="Squad Leader@Alpha HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -29146,7 +29146,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Bravo HQ ()";
+								description="Squad Leader@Bravo HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -30957,7 +30957,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Charlie HQ ()";
+								description="Squad Leader@Charlie HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -32942,7 +32942,7 @@ class Mission
 							{
 								rank="SERGEANT";
 								init="this setVariable [""fnfLoadout"", ""SL""];";
-								description="Squad Leader@Delta HQ ()";
+								description="Squad Leader@Delta HQ";
 								isPlayable=1;
 								class Inventory
 								{
@@ -36130,7 +36130,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={699.38824,5.0014391,677.12048};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=6;
@@ -36233,7 +36233,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={699.42999,5.0014391,675.31299};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=4;
@@ -36336,7 +36336,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={699.53101,5.0014391,673.07898};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=4;
@@ -36476,7 +36476,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={701.30725,5.0014391,677.09039};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=6;
@@ -36579,7 +36579,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={701.32397,5.0014391,675.02997};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=4;
@@ -36682,7 +36682,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={701.29401,5.0014391,673.18896};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=4;
@@ -36822,7 +36822,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={703.14642,5.0014391,677.0174};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=6;
@@ -36925,7 +36925,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={703.14502,5.0014391,675.06};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=4;
@@ -37028,7 +37028,7 @@ class Mission
 							class PositionInfo
 							{
 								position[]={703.05902,5.0014391,673.17401};
-								angles[]={-0,0.022689279,0};
+								angles[]={0,0.022689279,0};
 							};
 							side="Independent";
 							flags=4;
