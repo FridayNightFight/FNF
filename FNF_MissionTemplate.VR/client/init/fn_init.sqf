@@ -83,11 +83,13 @@ _actionSpawnAvatar = [
     if (typeOf player == "ace_spectator_virtual") then {
       [false] call ace_spectator_fnc_setSpectator;
     };
+    player setVariable ["TFAR_controlledUnit",fnf_zues_avatar, true];
     findDisplay 46 displayAddEventHandler ["KeyDown", {
       params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
       if (_key isEqualTo 1) then {
         objNull remoteControl fnf_zues_avatar;
         switchCamera player;
+        player setVariable ["TFAR_controlledUnit",player, true];
         if (typeOf player == "ace_spectator_virtual") then {
           [true, true, true] call ace_spectator_fnc_setSpectator;
           [{!isNull findDisplay 60000}, {
