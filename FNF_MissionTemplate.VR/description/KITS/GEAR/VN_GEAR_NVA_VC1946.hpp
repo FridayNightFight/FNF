@@ -36,7 +36,7 @@
 
 #define AR_RIFLE "vn_ppsh41"
 #define AR_MAG "vn_ppsh41_71_mag:8"
-#define AR_MAG_ASST "vn_ppsh41_71_t_mag:4"
+#define AR_MAG_ASST "vn_ppsh41_71_t_mag:6"
 
 #define AT_LAUNCHER VN_RPG7(2)
 
@@ -47,8 +47,8 @@
 #define DM_MAG RIFLE_MAG
 
 #define MMG_RIFLE "vn_dp28"
-#define MMG_MAG "vn_dp28_mag:9"
-#define MMG_MAG_ASST "vn_dp28_mag:8"
+#define MMG_MAG "vn_dp28_mag:12"
+#define MMG_MAG_ASST "vn_dp28_mag:10"
 
 #define SPOTTER_RIFLE "vn_m45","vn_m3a1"
 #define SPOTTER_MAG "vn_m45_mag:11","vn_m3a1_mag:8"

@@ -11,11 +11,12 @@ respawnOnStart = -1;
 respawnTemplates[] = {};
 joinUnassigned = 1;
 
-onPauseScript[] = {\
-    fnf_restrictions_fnc_removeRespawnButton,\
-    fnf_fnc_addStaffContactButton,\
-    fnf_admin_fnc_adminGameEnd,\
-    fnf_admin_fnc_addAdminUIButton\
+onPauseScript[] = {
+  fnf_restrictions_fnc_removeRespawnButton,
+  fnf_fnc_addStaffContactButton,
+  fnf_admin_fnc_adminGameEnd,
+  fnf_admin_fnc_addAdminUIButton,
+  fnf_fnc_lobbyTextGenButton
 };
 
 // change game type if appropriate

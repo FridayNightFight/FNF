@@ -29,7 +29,85 @@ fnf_loadout_roles = [
 
 [{getClientStateNumber > 8}, {player linkItem "ItemMap"}] call CBA_fnc_waitUntilAndExecute;
 
-//Determine if client can play the round, if not, spectate
+// Zeus actions
+_actionGoToLastReport = [
+  "Zeus_GoToLastReport",
+  "Zoom to Last Admin Report",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa",
+  {
+    [] spawn {
+      (missionNamespace getVariable ["fnf_lastAdminReporter", [objNull, [0,0,0]]]) params ["_player", "_pos"];
+      if (!isNull _player && !(_player in ([] call ace_spectator_fnc_players))) then {
+        [
+          ((_player getPos [50, 180]) vectorAdd [0,0,30]),
+          _player,
+          true
+        ] spawn BIS_fnc_setCuratorCamera;
+      } else {
+        if (_pos isEqualTo [0,0,0]) exitWith {
+          ["Last Player Report", "Player/location not saved. Have any reports been sent?", 5] call BIS_fnc_curatorHint;
+        };
+        [
+          ((_pos getPos [50, 180]) vectorAdd [0,0,30]),
+          _pos,
+          true
+        ] spawn BIS_fnc_setCuratorCamera;
+      };
+    };
+  },
+  {true}
+] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions"], _actionGoToLastReport] call ace_interact_menu_fnc_addActionToZeus;
+
+
+_actionSpawnAvatar = [
+  "Zeus_SpawnAvatar",
+  "Spawn Avatar",
+  "",
+  {
+    _group = createGroup [civilian, true];
+    _group setGroupId ["Admin Avatar"];
+    fnf_zues_avatar = _group createUnit ["C_Soldier_VR_F", (screenToWorld [0.5, 0.5]), [], 0, "NONE"];
+    fnf_zues_avatar setName (name player);
+    fnf_zues_avatar allowDamage false;
+    fnf_zues_avatar linkItem "NVGoggles";
+    fnf_zues_avatar forceAddUniform "U_C_Protagonist_VR";
+    fnf_zues_avatar addMagazine "30Rnd_65x39_caseless_mag";
+    fnf_zues_avatar addWeapon "arifle_MX_F";
+    removeUniform fnf_zues_avatar;
+    player remoteControl fnf_zues_avatar;
+    findDisplay 312 closeDisplay 2;
+    [{isNull findDisplay 312}, {
+      switchCamera fnf_zues_avatar;
+    }] call CBA_fnc_waitUntilAndExecute;
+    if (typeOf player == "ace_spectator_virtual") then {
+      [false] call ace_spectator_fnc_setSpectator;
+    };
+    player setVariable ["TFAR_controlledUnit",fnf_zues_avatar, true];
+    findDisplay 46 displayAddEventHandler ["KeyDown", {
+      params ["_displayOrControl", "_key", "_shift", "_ctrl", "_alt"];
+      if (_key isEqualTo 1) then {
+        objNull remoteControl fnf_zues_avatar;
+        switchCamera player;
+        player setVariable ["TFAR_controlledUnit",player, true];
+        if (typeOf player == "ace_spectator_virtual") then {
+          [true, true, true] call ace_spectator_fnc_setSpectator;
+          [{!isNull findDisplay 60000}, {
+            openCuratorInterface;
+          }] call CBA_fnc_waitUntilAndExecute;
+        } else {
+          openCuratorInterface;
+        };
+        deleteVehicle fnf_zues_avatar;
+        findDisplay 46 displayRemoveEventHandler ["KeyDown", _thisEventHandler];
+      };
+    }];
+  },
+  {true}
+] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions"], _actionSpawnAvatar] call ace_interact_menu_fnc_addActionToZeus;
+
+//Determine if client can play, if not, spectate
 if !(call fnf_client_fnc_canplay) exitWith {
   diag_log formatText [
     "[FNF] (clientInit) typeOf ""%1"" player %2 was placed in spectator at join. Safestart %3",
@@ -258,33 +336,3 @@ private _action = [
     [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment", "ace_trenches_digEnvelopeSmall"]] call ace_interact_menu_fnc_removeActionFromClass;
   };
 }, [], 5] call CBA_fnc_waitUntilAndExecute;
-
-// Zeus actions
-_action = [
-  "Zeus_GoToLastReport",
-  "Zoom to Last Admin Report",
-  "\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa",
-  {
-    [] spawn {
-      (missionNamespace getVariable ["fnf_lastAdminReporter", [objNull, [0,0,0]]]) params ["_player", "_pos"];
-      if (!isNull _player && !(_player in ([] call ace_spectator_fnc_players))) then {
-        [
-          ((_player getPos [50, 180]) vectorAdd [0,0,30]),
-          _player,
-          true
-        ] spawn BIS_fnc_setCuratorCamera;
-      } else {
-        if (_pos isEqualTo [0,0,0]) exitWith {
-          ["Last Player Report", "Player/location not saved. Have any reports been sent?", 5] call BIS_fnc_curatorHint;
-        };
-        [
-          ((_pos getPos [50, 180]) vectorAdd [0,0,30]),
-          _pos,
-          true
-        ] spawn BIS_fnc_setCuratorCamera;
-      };
-    };
-  },
-  {true}
-] call ace_interact_menu_fnc_createAction;
-[["ACE_ZeusActions"], _action] call ace_interact_menu_fnc_addActionToZeus;

@@ -34,17 +34,26 @@ _fnc_getMAT = {
 	_delta params ["_dclassname","_dmagazines","_doptics","_dreloadable","_dshortname"];
 	_bmagazines = _bmagazines apply {_x splitString ':' select 1};
 	_dmagazines = _dmagazines apply {_x splitString ':' select 1};
+	_strStart = ", ";
+	_lastElement = outArr select (count outArr - 1);
+
+	//This changes the start of the MAT string depending on the last character in the current output array
+	//To get rid of the starting comma if the side has no other assets besides MAT
+	if (_lastElement select [count _lastElement - 1] == " ") then {_strStart = ""};
+
 	if (_bShortName isEqualTo _dShortName && _bMagazines isEqualTo _dMagazines) then {
-		outArr pushBack format[", MAT:2x%1[%2]",
+		outArr pushBack format["%3MAT:2x%1[%2]",
 			_bShortName,
-			_bMagazines joinString ","
+			_bMagazines joinString ",",
+			_strStart
 		];
 	} else {
-		outArr pushBack format[", MAT:%1[%2]+%3[%4]",
+		outArr pushBack format["%5MAT:%1[%2]+%3[%4]",
 			_bShortName,
 			_bMagazines joinString ",",
 			_dShortName,
-			_dMagazines joinString ","
+			_dMagazines joinString ",",
+			_strStart
 		];
 	};
 };
@@ -124,17 +133,19 @@ _prepArrBLU = [];
 	};
 } forEach ([_vehiclesToProcessBLUFOR, [], {_x # 0}] call BIS_fnc_sortBy);
 
-outArr pushBack " /" + "/ BLU: ";
-if (count _prepArrBLU > 0) then {
-	outArr pushBack (_prepArrBLU joinString ", ");
-};
-if (_transportsPresentBLU > 0) then {outArr pushBack format[" + %1 transports", _transportsPresentBLU]};
+if (playableSlotsNumber west > 0) then {
+	outArr pushBack " /" + "/ BLU: ";
 
-// BLUFOR MAT
-if (count _prepArrBLU > 0 || _transportsPresentBLU > 0) then {
+	if (count _prepArrBLU > 0) then {
+		outArr pushBack (_prepArrBLU joinString ", ");
+	};
+
+	if (_transportsPresentBLU > 0) then {
+		outArr pushBack format[" + %1 transports", _transportsPresentBLU];
+	};
+
 	[fnf_bluforGear, fnf_bluAT_Bravo, fnf_bluAT_Delta] call _fnc_getMAT;
 };
-
 
 // OPFOR VEHICLES
 _prepArrOPF = [];
@@ -144,17 +155,20 @@ _prepArrOPF = [];
 	};
 } forEach ([_vehiclesToProcessOPFOR, [], {_x # 0}] call BIS_fnc_sortBy);
 
-outArr pushBack " /" + "/ OPF: ";
-if (count _prepArrOPF > 0) then {
-	outArr pushBack (_prepArrOPF joinString ", ");
-};
-if (_transportsPresentOPF > 0) then {outArr pushBack format[" + %1 transports", _transportsPresentOPF]};
 
-// OPFOR MAT
-if (count _prepArrOPF > 0 || _transportsPresentOPF > 0) then {
+if (playableSlotsNumber east > 0) then {
+	outArr pushBack " /" + "/ OPF: ";
+
+	if (count _prepArrOPF > 0) then {
+		outArr pushBack (_prepArrOPF joinString ", ");
+	};
+
+	if (_transportsPresentOPF > 0) then {
+		outArr pushBack format[" + %1 transports", _transportsPresentOPF];
+	};
+
 	[fnf_opforGear, fnf_redAT_Bravo, fnf_redAT_Delta] call _fnc_getMAT;
 };
-
 
 // INDFOR VEHICLES
 _prepArrIND = [];
@@ -164,14 +178,17 @@ _prepArrIND = [];
 	};
 } forEach ([_vehiclesToProcessINDFOR, [], {_x # 0}] call BIS_fnc_sortBy);
 
-outArr pushBack " /" + "/ IND: ";
-if (count _prepArrIND > 0) then {
-	outArr pushBack (_prepArrIND joinString ", ");
-};
-if (_transportsPresentIND > 0) then {outArr pushBack format[" + %1 transports", _transportsPresentIND]};
+if (playableSlotsNumber independent > 0) then {
+	outArr pushBack " /" + "/ IND: ";
 
-// INDFOR MAT
-if (count _prepArrIND > 0 || _transportsPresentIND > 0) then {
+	if (count _prepArrIND > 0) then {
+		outArr pushBack (_prepArrIND joinString ", ");
+	};
+
+	if (_transportsPresentIND > 0) then {
+		outArr pushBack format[" + %1 transports", _transportsPresentIND];
+	};
+
 	[fnf_indforGear, fnf_grnAT_Bravo, fnf_grnAT_Delta] call _fnc_getMAT;
 };
 
@@ -179,4 +196,3 @@ _out = (outArr joinString "");
 outArr = nil;
 copyToClipboard _out;
 format["Copied to clipboard | %1", _out];
-

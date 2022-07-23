@@ -35,8 +35,8 @@
 #define SHOTGUN_MAG "vn_m1897_fl_mag:6", "vn_m1897_buck_mag:6"
 
 #define AR_RIFLE "vn_m63a_cdo"
-#define AR_MAG "vn_m63a_150_mag:6"
-#define AR_MAG_ASST "vn_m63a_150_mag:6"
+#define AR_MAG "vn_m63a_150_mag:7"
+#define AR_MAG_ASST "vn_m63a_150_mag:7"
 
 #define AT_LAUNCHER VN_LAW(1)
 
@@ -47,8 +47,8 @@
 #define DM_MAG RIFLE_MAG
 
 #define MMG_RIFLE "vn_m60_shorty"
-#define MMG_MAG "vn_m60_100_mag:8"
-#define MMG_MAG_ASST "vn_m60_100_mag:6"
+#define MMG_MAG "vn_m60_100_mag:12"
+#define MMG_MAG_ASST "vn_m60_100_mag:10"
 
 #define SPOTTER_RIFLE "vn_m45","vn_m3a1"
 #define SPOTTER_MAG "vn_m45_mag:11","vn_m3a1_mag:8"

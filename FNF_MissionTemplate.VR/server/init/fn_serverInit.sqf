@@ -60,7 +60,7 @@ call fnf_server_fnc_newPlayers;
 call fnf_server_fnc_webhook_roundPrep;
 
 
-[{getClientStateNumber > 8}, {
+[{getClientStateNumber >= 8}, {
   #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
   // put vehicles into a hashmap based on who they belong to (if anyone)
   _vehicles = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];

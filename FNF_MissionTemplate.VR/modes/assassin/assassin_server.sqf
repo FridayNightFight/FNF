@@ -146,7 +146,9 @@ addMissionEventHandler ["EntityKilled", {
     // use a variable to limit checks/avoid duplicate messages
     if (_unit getVariable ["fnf_inZone", true]) then {
       if (count _badLocations == count _goodLocations) then {
-        [format["atkTask%1", _forEachIndex + 1], [HVTXOBJ,true]] call BIS_fnc_taskSetDestination;
+        if (!(missionNamespace getVariable ["fnf_safetyEnabled", true])) then {
+          [format["atkTask%1", _forEachIndex + 1], [HVTXOBJ,true]] call BIS_fnc_taskSetDestination;
+        };
         ["<t align='center'>You're an HVT leaving a friendly jammer's radius.<br/>Your location has been revealed.</t>", "warning", 10] remoteExec ["fnf_ui_fnc_notify", _unit];
         _unit setVariable ["fnf_inZone", false];
       };

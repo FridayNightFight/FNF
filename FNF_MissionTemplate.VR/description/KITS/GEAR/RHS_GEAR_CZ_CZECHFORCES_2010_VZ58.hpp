@@ -33,7 +33,7 @@
 
 #define AR_RIFLE "rhs_weap_minimi_para_railed"
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
+#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:6"
 
 #define AT_LAUNCHER M72LAW(1)
 
@@ -44,8 +44,8 @@
 #define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
+#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:12"
+#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:10"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhs_weap_asval"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:16", "rhs_20rnd_9x39mm_SP6:11"

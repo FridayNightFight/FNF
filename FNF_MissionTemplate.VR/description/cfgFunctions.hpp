@@ -27,6 +27,7 @@ class CfgFunctions {
       class fixUniformBug{};
       class SCUDFired{};
       class lobbyTextGenerator{};
+      class lobbyTextGenButton{};
       class inSafeZone{};
       class inRestrictedZone{};
     };
@@ -63,6 +64,7 @@ class CfgFunctions {
       class adminSetLoadout{};
       class copyPlayerUIDs{};
       class killPlayer{};
+      class messagePlayer{};
       class resetAnimState{};
       class respawnPlayer{};
       class setIndforAllegiance{};
