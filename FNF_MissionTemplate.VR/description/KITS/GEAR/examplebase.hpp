@@ -119,9 +119,9 @@ class VN_US_SOG1970 {
   class PL : TL {};
 
   class ARA : BASE {
-    magazines[] += {AR_MAG_ASST};
+    backpackItems[] += {AR_MAG_ASST};
   };
-  class AR : ARA {
+  class AR : BASE {
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
     };
