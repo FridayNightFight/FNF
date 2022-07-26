@@ -116,9 +116,9 @@ class RHS_GEAR_US_ARMY_1980_M16A1 {
   class PL : SGT {};
 
   class ARA : BASE {
-    magazines[] += {AR_MAG_ASST};
+    backpackItems[] += {AR_MAG_ASST};
   };
-  class AR : ARA {
+  class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}

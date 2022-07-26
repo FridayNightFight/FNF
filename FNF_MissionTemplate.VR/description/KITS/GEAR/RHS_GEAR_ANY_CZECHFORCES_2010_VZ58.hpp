@@ -115,7 +115,7 @@ class RHS_GEAR_ANY_CZECHFORCES_2010_VZ58 {
   class PL : SGT {};
 
   class ARA : BASE {
-    magazines[] += {AR_MAG_ASST};
+    backpackItems[] += {AR_MAG_ASST};
   };
   class AR : BASE {
     weapons[] = {AR_RIFLE};

@@ -115,9 +115,9 @@ class RHS_GEAR_RU_RATNIK_2010_AK74MR {
   class PL : SGT {};
 
   class ARA : BASE {
-    magazines[] += {AR_MAG_ASST};
+    backpackItems[] += {AR_MAG_ASST};
   };
-  class AR : ARA {
+  class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}

@@ -115,7 +115,7 @@ class RHS_GEAR_ID_TURKISH_2010_HK33A2 {
   class PL : SGT {};
 
   class ARA : BASE {
-    magazines[] += {AR_MAG_ASST};
+    backpackItems[] += {AR_MAG_ASST};
   };
   class AR : BASE {
     weapons[] = {AR_RIFLE};

@@ -115,7 +115,7 @@ class RHS_GEAR_NATO_PL_SSW_2020_ACR {
   class PL : SGT {};
 
   class ARA : BASE {
-    magazines[] += {AR_MAG_ASST};
+    backpackItems[] += {AR_MAG_ASST};
   };
   class AR : BASE {
     weapons[] = {AR_RIFLE};
