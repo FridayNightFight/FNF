@@ -1,3 +1,24 @@
+3.3.2
+1. Fixed Automatic Rifleman loadout receiving extra ammo meant for the AR assistant.
+
+3.3.1
+1. Renamed normal description.ext and mission.sqm files to create useable defaults.
+2. Units in sling-loaded vehicles can now leave the zone boundary the same as air vehicles.
+3. Magazine counts for automatic rifleman and machine gunners were increased.
+4. Added some admin functionality: Message all players, message an individual player, player search functionality and the ability to quickly spawn a Zeus avatar.
+5. Added a button on the pause screen for easy execution of the mission summary generator.
+6. ACE fortify objects can no longer be placed inside of buildings.
+7. Increased the damage received by the default caches used for the Destroy game mode.
+8. Added new loadout sets.
+10. Vehicles with edited loadouts should now have their new loadouts accurately reflected in the briefing asset list.
+11. From 3.3.1-RC1, fixed player briefing not fully populating until mission start.
+12. Fixed objective objects not being marked in 3D for spectators.
+13. Fixed VIPs being revealed during safe start.
+14. Fixed player weapons being deleted upon death and removed the workaround used to make players drop their weapons when they die.
+15. Fixed overtime condition for AD Sector game mode not working properly.
+16. Fixed desync at safety end.
+17. Misc fixes and changes.
+
 v3.3.0
 
 RC1
