@@ -68,6 +68,7 @@ class CfgFunctions {
       class resetAnimState{};
       class respawnPlayer{};
       class setIndforAllegiance{};
+      class zuesAceOptions{};
     };
     class gameEnd {
       file = "client\misc\admin";
