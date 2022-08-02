@@ -21,6 +21,10 @@ private _out = [];
 _out pushBack format["ACTOR: %1", _admin_soldierName];
 _out pushBack format["ACTION: %1", "MessagePlayer"];
 
+if (count _targetIDs == 0) then {
+  _out pushBack format["FAIL: No players in side"];
+};
+
 {
   (getUserInfo _x) params [
     "_networkId",

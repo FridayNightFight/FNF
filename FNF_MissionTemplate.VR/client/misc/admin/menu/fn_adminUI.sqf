@@ -143,54 +143,64 @@ fnf_admin_searchPFH = [{
   lbClear _playerList;
 
   if (_searchTerm == "") exitWith {
-    _playerList lbAdd "===BLUFOR===";
+    _tempIndex = _playerList lbAdd "===BLUFOR===";
+    _playerList lbSetData [_tempIndex, "west"];
     {
 	    private _index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerID _x];
     } forEach (allPlayers select {side (group _x) == west});
-    _playerList lbAdd "===OPFOR===";
+    _tempIndex = _playerList lbAdd "===OPFOR===";
+    _playerList lbSetData [_tempIndex, "east"];
     {
     	private _index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerID _x];
     } forEach (allPlayers select {side (group _x) == east});
-    _playerList lbAdd "===INDEPENDENT===";
+    _tempIndex = _playerList lbAdd "===INDEPENDENT===";
+    _playerList lbSetData [_tempIndex, "independent"];
     {
     	private _index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerID _x];
     } forEach (allPlayers select {side (group _x) == independent});
-    _playerList lbAdd "===CIVILIAN===";
+    _tempIndex = _playerList lbAdd "===CIVILIAN===";
+    _playerList lbSetData [_tempIndex, "civilian"];
     {
     	private _index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerID _x];
     } forEach (allPlayers select {side (group _x) == civilian});
-    _playerList lbAdd "===LOGIC===";
+    _tempIndex = _playerList lbAdd "===LOGIC===";
+    _playerList lbSetData [_tempIndex, "sideLogic"];
     {
     	private _index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerID _x];
     } forEach (allPlayers select {side (group _x) == sideLogic});
   };
 
-  _playerList lbAdd "===BLUFOR===";
+  _tempIndex = _playerList lbAdd "===BLUFOR===";
+  _playerList lbSetData [_tempIndex, "west"];
   {
 	  private _index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerID _x];
   } forEach (allPlayers select {side (group _x) == west} select {[_searchTerm, name _x] call BIS_fnc_inString});
-  _playerList lbAdd "===OPFOR===";
+  _tempIndex = _playerList lbAdd "===OPFOR===";
+  _playerList lbSetData [_tempIndex, "east"];
   {
 	  private _index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerID _x];
   } forEach (allPlayers select {side (group _x) == east} select {[_searchTerm, name _x] call BIS_fnc_inString});
-  _playerList lbAdd "===INDEPENDENT===";
+  _tempIndex = _playerList lbAdd "===INDEPENDENT===";
+  _playerList lbSetData [_tempIndex, "independent"];
   {
   	private _index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerID _x];
   } forEach (allPlayers select {side (group _x) == independent} select {[_searchTerm, name _x] call BIS_fnc_inString});
-  _playerList lbAdd "===CIVILIAN===";
+  _tempIndex = _playerList lbAdd "===CIVILIAN===";
+  _playerList lbSetData [_tempIndex, "civilian"];
   {
   	private _index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerID _x];
   } forEach (allPlayers select {side (group _x) == civilian} select {[_searchTerm, name _x] call BIS_fnc_inString});
-  _playerList lbAdd "===LOGIC===";
+  _tempIndex = _playerList lbAdd "===LOGIC===";
+  _playerList lbSetData [_tempIndex, "sideLogic"];
   {
   	private _index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerID _x];
@@ -353,7 +363,27 @@ _playerMessageButton ctrlAddEventHandler[ "ButtonClick", {
   private _selected = [];
   _playerList = ctrlParent _playerMessageButton displayCtrl 10000;
 	_selectedIndex = lbCurSel _playerList;
-	_selected pushBack (_playerList lbData _selectedIndex);
+  _playerData = _playerList lbData _selectedIndex;
+
+  _sideToMessage = sideEmpty;
+  switch (_playerData) do
+  {
+    case "west": {_sideToMessage = west};
+    case "east": {_sideToMessage = east};
+    case "independent": {_sideToMessage = independent};
+    case "civilian": {_sideToMessage = civilian};
+    case "sideLogic": {_sideToMessage = sideLogic};
+  };
+
+  if !(_sideToMessage == sideEmpty) then {
+    _tempWriteTo = [];
+    {
+      _tempWriteTo pushBack (getPlayerID _x);
+    } forEach (allPlayers select {side (group _x) == _sideToMessage});
+    _selected pushBack (_tempWriteTo);
+  } else {
+    _selected pushBack ([_playerData]);
+  };
 
   _playerMessageBox = ctrlParent _playerMessageButton displayCtrl 10011;
   _messageText = ctrlText _playerMessageBox;
