@@ -122,12 +122,12 @@ _playerMessageBox ctrlCommit 0;
 _playerMessageButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10012 ];
 _playerMessageButton ctrlSetPosition[ 0.5125, 0.1625, 0.475, 0.05 ];
 _playerMessageButton ctrlCommit 0;
-_playerMessageButton ctrlSetText "Send Messsage to Player";
+_playerMessageButton ctrlSetText "Send Message to Player or Side";
 
 _playerMessageAllButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10012 ];
 _playerMessageAllButton ctrlSetPosition[ 0.5125, 0.225, 0.475, 0.05 ];
 _playerMessageAllButton ctrlCommit 0;
-_playerMessageAllButton ctrlSetText "Send Messsage to All Players";
+_playerMessageAllButton ctrlSetText "Send Message to All Players";
 
 _resultReadout = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlStructuredText", 10020 ];
 _resultReadout ctrlSetPosition[ 0.5125, 0.58, 0.4775, 0.21 ];
