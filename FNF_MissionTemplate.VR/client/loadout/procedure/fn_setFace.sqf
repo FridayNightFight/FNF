@@ -49,6 +49,10 @@ switch (true) do {
   case (mySideUniformSelection find "_DE_" > -1);
   case (mySideUniformSelection find "_FRANCE_" > -1);
   case (mySideUniformSelection find "_FR_" > -1);
+  case (mySideUniformSelection find "_BE_" > -1);
+  case (mySideUniformSelection find "_AUSTRIA_" > -1);
+  case (mySideUniformSelection find "_SWISS_" > -1);
+  case (mySideUniformSelection find "_RHODESIA_" > -1);
   case (mySideUniformSelection find "_US_" > -1): {_primaryCategory = "WhiteHead"};
 
 
@@ -58,16 +62,22 @@ switch (true) do {
   case (mySideUniformSelection find "_CZECHFORCES_" > -1);
   case (mySideUniformSelection find "_SERBIANFORCES_" > -1);
   case (mySideUniformSelection find "_YUGOSLAVIA_" > -1);
-  case (mySideUniformSelection find "_INSURGENTS_" > -1);
+  case (mySideUniformSelection find "_ID_INSURGENTS_" > -1);
+  case (mySideUniformSelection find "_BALKANLEAGUE_" > -1);
+  case (mySideUniformSelection find "_AAF_" > -1);
   case (mySideUniformSelection find "_UKRAINIAN_" > -1): {_primaryCategory = "LivonianHead"};
 
   case (mySideUniformSelection find "_AFRICAN_" > -1): {_primaryCategory = "AfricanHead"};
 
-  case (mySideUniformSelection find "_RU_" > -1): {_primaryCategory = "RussianHead"};
+  case (mySideUniformSelection find "_RU_" > -1);
+  case (mySideUniformSelection find "_PL_" > -1): {_primaryCategory = "RussianHead"};
 
   case (mySideUniformSelection find "_MEC_" > -1);
   case (mySideUniformSelection find "_TRIBAL_" > -1);
   case (mySideUniformSelection find "_TURKISH_" > -1);
+  case (mySideUniformSelection find "_IRANIAN_" > -1);
+  case (mySideUniformSelection find "_AFGH_" > -1);
+  case (mySideUniformSelection find "_IRAQI_INSURGENTS_" > -1);
   case (mySideUniformSelection find "_IRAQI_" > -1): {_primaryCategory = "PersianHead"};
 
   case (mySideUniformSelection find "_PAVN_" > -1);
