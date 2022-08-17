@@ -101,7 +101,7 @@ publicVariable "fnf_specObjectives";
     _x params ["_targetNumStr", "_data"];
     _data params ["_roleName", "_fictionalName", "_object"];
 
-    if (!alive _object || isNull _object) then {
+    if (!alive (missionNamespace getVariable [str _object, objNull])) then {
       [format["defTask%1", _forEachIndex + 1], "FAILED", true] call BIS_fnc_taskSetState;
       [format["atkTask%1", _forEachIndex + 1], "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
