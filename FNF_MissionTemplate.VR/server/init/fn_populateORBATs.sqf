@@ -113,6 +113,7 @@ fnf_ORBATHandlers = [];
       _vehicles
     ] call BIS_fnc_ORBATSetGroupParams;
 
+    /*
     [ // X
       missionConfigFile >> "CfgFNFORBAT" >> format["FNF%1PLTX", _sideShort],
       _sideColorStr,
@@ -130,6 +131,7 @@ fnf_ORBATHandlers = [];
       "", // description
       []
     ] call BIS_fnc_ORBATSetGroupParams;
+    */
 
 
     { // Squads

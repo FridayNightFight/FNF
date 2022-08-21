@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=14525;
+		nextID=14527;
 	};
 	class MarkerIDProvider
 	{
@@ -16,18 +16,18 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=672;
+		nextID=684;
 	};
 	class Camera
 	{
-		pos[]={507.34714,172.85861,271.99847};
-		dir[]={-0.01088329,-0.52266592,0.85253865};
-		up[]={-0.00667215,0.85251766,0.52268034};
-		aside[]={0.99995798,-2.3601024e-007,0.012763544};
+		pos[]={506.7037,207.92592,210.19016};
+		dir[]={-0.0014457958,-0.43491527,0.9004727};
+		up[]={-0.00069829699,0.90047067,0.43491551};
+		aside[]={0.99999928,6.4983396e-010,0.0016056193};
 	};
 };
 binarizationWanted=0;
-sourceName="FNF_MissionTemplate";
+sourceName="fnf_missiontemplate";
 addons[]=
 {
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
@@ -5050,7 +5050,7 @@ class Mission
 			name="FNF Units: BLUFOR";
 			class Entities
 			{
-				items=31;
+				items=30;
 				class Item0
 				{
 					dataType="Marker";
@@ -5539,777 +5539,6 @@ class Mission
 					side="West";
 					class Entities
 					{
-						items=6;
-						class Item0
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={506.09601,5.0014391,707.92297};
-								angles[]={0,4.7357764,0};
-							};
-							side="West";
-							flags=6;
-							class Attributes
-							{
-								rank="SERGEANT";
-								init="this setVariable [""fnfLoadout"", ""SL""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Recon Leader@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=12911;
-							type="B_Soldier_SL_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male09ENG";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.03;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item1
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={506.103,5.0014391,706.06097};
-								angles[]={0,4.7357764,0};
-							};
-							side="West";
-							flags=4;
-							class Attributes
-							{
-								rank="SERGEANT";
-								init="this setVariable [""fnfLoadout"", ""MED""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Medic@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=12912;
-							type="B_medic_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male09ENG";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.03;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item2
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={508.01801,5.0014391,705.89801};
-								angles[]={0,4.6906772,0};
-							};
-							side="West";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""SNP""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Sniper@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=12913;
-							type="B_sniper_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male08ENG";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.04;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item3
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={506.03699,5.0014391,709.90796};
-								angles[]={0,4.7134361,0};
-							};
-							side="West";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RI""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Spotter@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=12914;
-							type="B_spotter_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male11ENG";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.01;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item4
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={507.996,5.0014391,709.883};
-								angles[]={0,4.7139072,0};
-							};
-							side="West";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RIS""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Rifleman (Silenced)@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=12915;
-							type="B_spotter_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.04;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male05ENG";
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item5
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={508.009,5.0014391,707.93201};
-								angles[]={0,4.7139072,0};
-							};
-							side="West";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RIS""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Rifleman (Silenced)@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=12916;
-							type="B_spotter_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.04;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male05ENG";
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-					};
-					class Attributes
-					{
-						init="Blue_X = this;";
-					};
-					id=12910;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="groupID";
-							expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="BLU X-RAY";
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item8
-				{
-					dataType="Group";
-					side="West";
-					class Entities
-					{
 						items=3;
 						class Item0
 						{
@@ -6705,7 +5934,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item9
+				class Item8
 				{
 					dataType="Group";
 					side="West";
@@ -7592,7 +6821,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item10
+				class Item9
 				{
 					dataType="Group";
 					side="West";
@@ -8439,7 +7668,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item11
+				class Item10
 				{
 					dataType="Group";
 					side="West";
@@ -8840,7 +8069,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item12
+				class Item11
 				{
 					dataType="Group";
 					side="West";
@@ -9726,7 +8955,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item13
+				class Item12
 				{
 					dataType="Group";
 					side="West";
@@ -10632,7 +9861,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item14
+				class Item13
 				{
 					dataType="Group";
 					side="West";
@@ -11033,7 +10262,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item15
+				class Item14
 				{
 					dataType="Group";
 					side="West";
@@ -11920,7 +11149,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item16
+				class Item15
 				{
 					dataType="Group";
 					side="West";
@@ -12767,7 +11996,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item17
+				class Item16
 				{
 					dataType="Group";
 					side="West";
@@ -13168,7 +12397,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item18
+				class Item17
 				{
 					dataType="Group";
 					side="West";
@@ -14054,7 +13283,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item19
+				class Item18
 				{
 					dataType="Group";
 					side="West";
@@ -14960,7 +14189,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item20
+				class Item19
 				{
 					dataType="Group";
 					side="West";
@@ -15360,7 +14589,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item21
+				class Item20
 				{
 					dataType="Group";
 					side="West";
@@ -15760,7 +14989,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item22
+				class Item21
 				{
 					dataType="Group";
 					side="West";
@@ -16160,7 +15389,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item23
+				class Item22
 				{
 					dataType="Group";
 					side="West";
@@ -16560,7 +15789,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item24
+				class Item23
 				{
 					dataType="Group";
 					side="West";
@@ -16960,7 +16189,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item25
+				class Item24
 				{
 					dataType="Group";
 					side="West";
@@ -17360,7 +16589,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item26
+				class Item25
 				{
 					dataType="Group";
 					side="West";
@@ -17760,7 +16989,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item27
+				class Item26
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -17771,7 +17000,7 @@ class Mission
 					description="Place this in a flat area near the inner radius of the safe zone" \n "Squad tables will be placed around it using this one as a reference for position";
 					id=13276;
 				};
-				class Item28
+				class Item27
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -17782,7 +17011,7 @@ class Mission
 					description="Place this in a flat area near the inner radius of the safe zone" \n "Squad tables will be placed around it using this one as a reference for position";
 					id=13277;
 				};
-				class Item29
+				class Item28
 				{
 					dataType="Comment";
 					class PositionInfo
@@ -17793,7 +17022,7 @@ class Mission
 					description="Place this in a flat area near the inner radius of the safe zone" \n "Squad tables will be placed around it using this one as a reference for position";
 					id=13279;
 				};
-				class Item30
+				class Item29
 				{
 					dataType="Object";
 					class PositionInfo
@@ -17818,7 +17047,7 @@ class Mission
 			name="FNF Units: OPFOR";
 			class Entities
 			{
-				items=28;
+				items=27;
 				class Item0
 				{
 					dataType="Marker";
@@ -18308,549 +17537,6 @@ class Mission
 					side="East";
 					class Entities
 					{
-						items=6;
-						class Item0
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={307.93201,5.0014391,710.17297};
-								angles[]={0,4.7115688,0};
-							};
-							side="East";
-							flags=6;
-							class Attributes
-							{
-								skill=0.60000002;
-								init="this setVariable [""fnfLoadout"", ""SL""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Recon Leader@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13030;
-							type="O_Soldier_SL_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male03PER";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=0.97000003;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item1
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={307.909,5.0014391,712.33099};
-								angles[]={0,4.7115688,0};
-							};
-							side="East";
-							flags=4;
-							class Attributes
-							{
-								skill=0.60000002;
-								init="this setVariable [""fnfLoadout"", ""MED""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Medic@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13031;
-							type="O_medic_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male01PER";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.03;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item2
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={310.16299,5.0014391,712.26599};
-								angles[]={0,4.7369628,0};
-							};
-							side="East";
-							flags=5;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""SNP""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Sniper@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13032;
-							type="O_sniper_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male01PER";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=0.94999999;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-						class Item3
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={308.09698,5.0014391,708.00696};
-								angles[]={0,4.769444,0};
-							};
-							side="East";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RI""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Spotter@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13033;
-							type="O_spotter_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male03PER";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.01;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-						class Item4
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={310.04199,5.0014391,708.034};
-								angles[]={0,4.7282019,0};
-							};
-							side="East";
-							flags=5;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RIS""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Rifleman (Silenced)@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13034;
-							type="O_Soldier_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male01PER";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-						class Item5
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={310.048,5.0014391,710.21399};
-								angles[]={0,4.6892285,0};
-							};
-							side="East";
-							flags=5;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RIS""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Rifleman (Silenced)@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13035;
-							type="O_Soldier_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male02PER";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.01;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-					};
-					class Attributes
-					{
-						init="Red_X = this;";
-					};
-					id=13029;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="groupID";
-							expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="OPF X-RAY";
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item8
-				{
-					dataType="Group";
-					side="East";
-					class Entities
-					{
 						items=3;
 						class Item0
 						{
@@ -19074,7 +17760,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item9
+				class Item8
 				{
 					dataType="Group";
 					side="East";
@@ -19559,7 +18245,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item10
+				class Item9
 				{
 					dataType="Group";
 					side="East";
@@ -20044,7 +18730,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item11
+				class Item10
 				{
 					dataType="Group";
 					side="East";
@@ -20273,7 +18959,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item12
+				class Item11
 				{
 					dataType="Group";
 					side="East";
@@ -20758,7 +19444,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item13
+				class Item12
 				{
 					dataType="Group";
 					side="East";
@@ -21243,7 +19929,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item14
+				class Item13
 				{
 					dataType="Group";
 					side="East";
@@ -21472,7 +20158,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item15
+				class Item14
 				{
 					dataType="Group";
 					side="East";
@@ -21957,7 +20643,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item16
+				class Item15
 				{
 					dataType="Group";
 					side="East";
@@ -22442,7 +21128,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item17
+				class Item16
 				{
 					dataType="Group";
 					side="East";
@@ -22671,7 +21357,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item18
+				class Item17
 				{
 					dataType="Group";
 					side="East";
@@ -23156,7 +21842,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item19
+				class Item18
 				{
 					dataType="Group";
 					side="East";
@@ -23641,7 +22327,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item20
+				class Item19
 				{
 					dataType="Group";
 					side="East";
@@ -23984,7 +22670,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item21
+				class Item20
 				{
 					dataType="Group";
 					side="East";
@@ -24327,7 +23013,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item22
+				class Item21
 				{
 					dataType="Group";
 					side="East";
@@ -24670,7 +23356,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item23
+				class Item22
 				{
 					dataType="Group";
 					side="East";
@@ -25013,7 +23699,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item24
+				class Item23
 				{
 					dataType="Group";
 					side="East";
@@ -25359,7 +24045,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item25
+				class Item24
 				{
 					dataType="Group";
 					side="East";
@@ -25705,7 +24391,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item26
+				class Item25
 				{
 					dataType="Group";
 					side="East";
@@ -26051,7 +24737,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item27
+				class Item26
 				{
 					dataType="Object";
 					class PositionInfo
@@ -26069,7 +24755,7 @@ class Mission
 				};
 			};
 			id=7423;
-			atlOffset=4.7683716e-007;
+			atlOffset=9.5367432e-007;
 		};
 		class Item9
 		{
@@ -26077,7 +24763,7 @@ class Mission
 			name="FNF Units: INDEPENDENT";
 			class Entities
 			{
-				items=28;
+				items=27;
 				class Item0
 				{
 					dataType="Marker";
@@ -26566,587 +25252,6 @@ class Mission
 					side="Independent";
 					class Entities
 					{
-						items=6;
-						class Item0
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={707.81403,5.0014391,707.88397};
-								angles[]={0,4.7463183,0};
-							};
-							side="Independent";
-							flags=6;
-							class Attributes
-							{
-								rank="SERGEANT";
-								init="this setVariable [""fnfLoadout"", ""SL""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Recon Leader@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13149;
-							type="I_Soldier_SL_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male09ENG";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.03;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item1
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={707.90503,5.0014391,706.12897};
-								angles[]={0,4.7463183,0};
-							};
-							side="Independent";
-							flags=5;
-							class Attributes
-							{
-								rank="CORPORAL";
-								init="this setVariable [""fnfLoadout"", ""MED""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Medic@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13150;
-							type="I_medic_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_advanced_fatigue_performanceFactor";
-									expression="_this setVariable [""ace_advanced_fatigue_performanceFactor"", _value, true]";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male07ENG";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=0.99000001;
-										};
-									};
-								};
-								class Attribute4
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								nAttributes=5;
-							};
-						};
-						class Item2
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={709.74103,5.0014391,705.87201};
-								angles[]={0,4.6844988,0};
-							};
-							side="Independent";
-							flags=5;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""SNP""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Sniper@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13151;
-							type="I_Sniper_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male04GRE";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=0.99000001;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-						class Item3
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={707.83398,5.0014391,710.01398};
-								angles[]={0,4.723175,0};
-							};
-							side="Independent";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RI""];" \n "this spawn {_this assignTeam ""RED""};";
-								description="Spotter@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13152;
-							type="I_Spotter_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male05GRE";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.03;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-						class Item4
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={709.78998,5.0014391,710.03296};
-								angles[]={0,4.7302437,0};
-							};
-							side="Independent";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RIS""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Rifleman (Silenced)@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13153;
-							type="I_Spotter_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male03GRE";
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.03;
-										};
-									};
-								};
-								nAttributes=2;
-							};
-						};
-						class Item5
-						{
-							dataType="Object";
-							class PositionInfo
-							{
-								position[]={709.68298,5.0014391,708.01099};
-								angles[]={0,4.7854834,0};
-							};
-							side="Independent";
-							flags=4;
-							class Attributes
-							{
-								init="this setVariable [""fnfLoadout"", ""RIS""];" \n "this spawn {_this assignTeam ""BLUE""};";
-								description="Rifleman (Silenced)@X-Ray Reconnaissance";
-								isPlayable=1;
-								class Inventory
-								{
-									map="ItemMap";
-								};
-							};
-							id=13154;
-							type="I_Spotter_F";
-							class CustomAttributes
-							{
-								class Attribute0
-								{
-									property="ace_isMedic";
-									expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute1
-								{
-									property="ace_isEngineer";
-									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=-1;
-										};
-									};
-								};
-								class Attribute2
-								{
-									property="speaker";
-									expression="_this setspeaker _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"STRING"
-												};
-											};
-											value="Male08ENG";
-										};
-									};
-								};
-								class Attribute3
-								{
-									property="pitch";
-									expression="_this setpitch _value;";
-									class Value
-									{
-										class data
-										{
-											class type
-											{
-												type[]=
-												{
-													"SCALAR"
-												};
-											};
-											value=1.04;
-										};
-									};
-								};
-								nAttributes=4;
-							};
-						};
-					};
-					class Attributes
-					{
-						init="Green_X = this;";
-					};
-					id=13148;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="groupID";
-							expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="IND X-RAY";
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item8
-				{
-					dataType="Group";
-					side="Independent";
-					class Entities
-					{
 						items=3;
 						class Item0
 						{
@@ -27506,7 +25611,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item9
+				class Item8
 				{
 					dataType="Group";
 					side="Independent";
@@ -28355,7 +26460,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item10
+				class Item9
 				{
 					dataType="Group";
 					side="Independent";
@@ -29126,7 +27231,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item11
+				class Item10
 				{
 					dataType="Group";
 					side="Independent";
@@ -29491,7 +27596,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item12
+				class Item11
 				{
 					dataType="Group";
 					side="Independent";
@@ -30243,7 +28348,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item13
+				class Item12
 				{
 					dataType="Group";
 					side="Independent";
@@ -30937,7 +29042,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item14
+				class Item13
 				{
 					dataType="Group";
 					side="Independent";
@@ -31302,7 +29407,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item15
+				class Item14
 				{
 					dataType="Group";
 					side="Independent";
@@ -32151,7 +30256,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item16
+				class Item15
 				{
 					dataType="Group";
 					side="Independent";
@@ -32922,7 +31027,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item17
+				class Item16
 				{
 					dataType="Group";
 					side="Independent";
@@ -33287,7 +31392,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item18
+				class Item17
 				{
 					dataType="Group";
 					side="Independent";
@@ -34039,7 +32144,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item19
+				class Item18
 				{
 					dataType="Group";
 					side="Independent";
@@ -34733,7 +32838,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item20
+				class Item19
 				{
 					dataType="Group";
 					side="Independent";
@@ -35079,7 +33184,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item21
+				class Item20
 				{
 					dataType="Group";
 					side="Independent";
@@ -35425,7 +33530,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item22
+				class Item21
 				{
 					dataType="Group";
 					side="Independent";
@@ -35771,7 +33876,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item23
+				class Item22
 				{
 					dataType="Group";
 					side="Independent";
@@ -36117,7 +34222,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item24
+				class Item23
 				{
 					dataType="Group";
 					side="Independent";
@@ -36463,7 +34568,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item25
+				class Item24
 				{
 					dataType="Group";
 					side="Independent";
@@ -36809,7 +34914,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item26
+				class Item25
 				{
 					dataType="Group";
 					side="Independent";
@@ -37155,7 +35260,7 @@ class Mission
 						nAttributes=1;
 					};
 				};
-				class Item27
+				class Item26
 				{
 					dataType="Object";
 					class PositionInfo
@@ -37173,7 +35278,7 @@ class Mission
 				};
 			};
 			id=7424;
-			atlOffset=4.7683716e-007;
+			atlOffset=9.5367432e-007;
 		};
 		class Item10
 		{

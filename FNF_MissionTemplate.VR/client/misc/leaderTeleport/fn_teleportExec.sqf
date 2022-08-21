@@ -131,7 +131,7 @@ switch (_source) do {
 				_toTeleport append ([_allGroups] call _getPltHq);
 
 				// leader of X-Ray
-				_toTeleport append ([_allGroups] call _getXray);
+				//_toTeleport append ([_allGroups] call _getXray);
 
 				// leaders of Golf groups
 				_toTeleport append ([_allGroups] call _getGolfLeads);
@@ -216,4 +216,3 @@ if ([
 	};
 	sleep 4;
 };
-

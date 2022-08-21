@@ -25,6 +25,7 @@ class CfgFNFORBAT
 		subordinates[] = {}; // Subordinates, searched on the same level as this class.
 		assets[] = {};
 
+		/*
 		class FNFBLUPLTX
 		{
 			id = "X-Ray";
@@ -40,6 +41,7 @@ class CfgFNFORBAT
 			description = "";
 			assets[] = {};
 		};
+		*/
 
 		class FNFBLUPLTA
 		{
@@ -353,6 +355,7 @@ class CfgFNFORBAT
 		subordinates[] = {}; // Subordinates, searched on the same level as this class.
 		assets[] = {};
 
+		/*
 		class FNFOPFPLTX
 		{
 			id = "X-Ray";
@@ -367,6 +370,7 @@ class CfgFNFORBAT
 			textShort = "X-Ray - Recon";
 			description = "";
 		};
+		*/
 
 		class FNFOPFPLTA
 		{
@@ -676,6 +680,7 @@ class CfgFNFORBAT
 		subordinates[] = {}; // Subordinates, searched on the same level as this class.
 		assets[] = {};
 
+		/*
 		class FNFINDPLTX
 		{
 			id = "X-Ray";
@@ -690,6 +695,7 @@ class CfgFNFORBAT
 			textShort = "X-Ray - Recon";
 			description = "";
 		};
+		*/
 
 		class FNFINDPLTA
 		{
