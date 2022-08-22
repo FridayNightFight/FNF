@@ -1,3 +1,12 @@
+3.3.3
+1. Added new loadouts: RHS_UNI_NATO_AUSTRALIA_ARMY_2020, RHS_UNI_ANY_VIETNAMESE_2010, RHS_UNI_NATO_TAIWAN_ARMY_1980, RHS_UNI_NATO_CANADIAN_ARMY_1980, RHS_UNI_ANY_VIETNAMESE_JUNGLE_CAMO_1980, RHS_UNI_ANY_CHINA_PLA_1980
+2. Removed XRAY element.
+3. Vehicles locked at mission start will no longer be listed in a side's asset list and won't be able to be unlocked by players.
+4. Removed squad vehicle crewman slots. Added medic slot to squad HQ.
+5. Added a restriction to yelling voice volume during safe start. Only those in leadership roles will be able to switch to yelling during safe start.
+6. Added 7.62 version of SU-230 optic.
+7. Misc improvements and fixes.
+
 3.3.2
 1. Fixed Automatic Rifleman loadout receiving extra ammo meant for the AR assistant.
 
