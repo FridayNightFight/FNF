@@ -48,7 +48,7 @@ fnf_safeZoneAssets = createHashMapFromArray [
     // "debug_console" callExtension str(_objects);
 
     _objects = _objects arrayIntersect _objects;
-    _objects = _objects select {!isNull _x} apply {getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")};
+    _objects = _objects select {!isNull _x && locked _x < 2} apply {getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")};
     private _objectLabels = _objects call BIS_fnc_consolidateArray;
 
     private _labelPosOffset = ((getMarkerSize _markerName)#0) max ((getMarkerSize _markerName)#1);
