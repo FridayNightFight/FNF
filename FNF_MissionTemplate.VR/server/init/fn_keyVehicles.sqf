@@ -9,20 +9,20 @@ _sideSpecific = [];
 {
   _x setVariable ["ace_vehiclelock_lockSide", west, true];
   _sideSpecific pushBack _x;
-} forEach (_vics select {[_x, west] call fnf_fnc_inSafeZone});
+} forEach (_vics select {[_x, west] call fnf_fnc_inSafeZone && locked _x < 2});
 
 {
   _x setVariable ["ace_vehiclelock_lockSide", east, true];
   _sideSpecific pushBack _x;
-} forEach (_vics select {[_x, east] call fnf_fnc_inSafeZone});
+} forEach (_vics select {[_x, east] call fnf_fnc_inSafeZone && locked _x < 2});
 
 {
   _x setVariable ["ace_vehiclelock_lockSide", independent, true];
   _sideSpecific pushBack _x;
-} forEach (_vics select {[_x, independent] call fnf_fnc_inSafeZone});
+} forEach (_vics select {[_x, independent] call fnf_fnc_inSafeZone && locked _x < 2});
 
 
 // non-safestart vehicles should be locked to combat factions
 {
-  _x setVariable ["ace_vehiclelock_lockSide", civilian, true];
+  _x setVariable ["ace_vehiclelock_lockSide", sideUnknown, true];
 } forEach (_vics - _sideSpecific);
