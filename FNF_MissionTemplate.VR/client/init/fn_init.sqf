@@ -45,7 +45,7 @@ if !(call fnf_client_fnc_canplay) exitWith {
   call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
   [{missionNamespace getVariable ["fnf_markCustomObjs_done", false] && !isNil "fnf_vehiclesToProcess" && getClientStateNumber > 7}, {
     [] spawn {
-      uisleep 2;
+      uisleep 3;
       call fnf_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
     };
   }] call CBA_fnc_waitUntilAndExecute;
@@ -58,7 +58,7 @@ call fnf_client_fnc_setupGame; //Client portion of game modes
   call fnf_briefing_fnc_init; //Briefing
   call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
   [] spawn {
-    uisleep 2;
+    uisleep 3;
     call fnf_ui_fnc_mapZoneAssets; // show safezone assets on hover
     call fnf_briefing_fnc_assetDiary; // Add diary entries for assets
     call fnf_briefing_fnc_assetDiaryStruct; // Prep global vars for UI info panel
