@@ -68,6 +68,7 @@ class CfgFunctions {
       class resetAnimState{};
       class respawnPlayer{};
       class setIndforAllegiance{};
+      class zuesAceOptions{};
     };
     class gameEnd {
       file = "client\misc\admin";
@@ -199,6 +200,7 @@ class CfgFunctions {
       class restrictETool{};
       class restrictGamma{};
       class viewDistance{};
+      class restrictVoiceVolume{};
     };
   };
   class fnf_safety {

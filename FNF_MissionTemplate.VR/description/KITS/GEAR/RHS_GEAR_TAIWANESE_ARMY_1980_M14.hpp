@@ -1,18 +1,18 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "uk3cb_auga2","uk3cb_auga1"
+#define RIFLE "rhs_weap_m14"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:7","rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red:4"
+#define RIFLE_MAG "rhsusf_20Rnd_762x51_m80_Mag:7","rhsusf_20Rnd_762x51_m62_Mag:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_PMAG:12","rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red:6"
+#define RIFLE_MAG_RI "rhsusf_20Rnd_762x51_m80_Mag:12","rhsusf_20Rnd_762x51_m62_Mag:6"
 
-#define SIDEARM "rhsusf_weap_glock17g4"
-#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
+#define SIDEARM "rhsusf_weap_m1911a1"
+#define SIDEARM_MAG "rhsusf_mag_7x45acp_MHP:4"
 
 // put all GL weapons
-#define RIFLE_GL "uk3cb_auga3_gl"
-#define RIFLE_GL_MAG RIFLE_MAG
+#define RIFLE_GL "UK3CB_M16A2_UGL"
+#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
@@ -22,42 +22,42 @@
 #define UGL_FLAREWHITE UGL_FlareWhite_F
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "uk3cb_auga2_carb_tan"
-#define CARBINE_MAG RIFLE_MAG
-#define CARBINE_MAG_RI RIFLE_MAG_RI
+#define CARBINE "UK3CB_M16_Carbine"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 #define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
 
-#define SMG_RIFLE "SMG_03C_TR_khaki"
-#define SMG_MAG "50Rnd_570x28_SMG_03:8"
-#define SMG_MAG_CREW "50Rnd_570x28_SMG_03:4"
+#define SMG_RIFLE "UK3CB_MP5N"
+#define SMG_MAG "UK3CB_MP5_30Rnd_9x19_Magazine:8"
+#define SMG_MAG_CREW "UK3CB_MP5_30Rnd_9x19_Magazine:4"
 
-#define AR_RIFLE "rhs_weap_minimi_para_railed"
+#define AR_RIFLE "rhs_weap_m249"
 #define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:6"
+#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
-#define AT_LAUNCHER AT4(1)
+#define AT_LAUNCHER M72LAW(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE "rhs_weap_SCARH_FDE_CQC"
-#define DM_MAG "rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk:11"
+#define DM_RIFLE "UK3CB_M14DMR"
+#define DM_MAG "UK3CB_DMR_20rnd_762x51:8", "UK3CB_DMR_20rnd_762x51_R:4"
 
-#define MMG_RIFLE "UK3CB_MG3"
-#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:12"
-#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:10"
+#define MMG_RIFLE "UK3CB_M60"
+#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
+#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
 
-#define SPOTTER_RIFLE "rhs_weap_m14ebrri", "SMG_03C_TR_khaki"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "50Rnd_570x28_SMG_03:8"
+#define SPOTTER_RIFLE "rhs_weap_m14", "UK3CB_MP5SD6"
+#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "UK3CB_MP5_30Rnd_9x19_Magazine:8"
 
-#define SNP_RIFLE "rhs_weap_m24sws_d"
+#define SNP_RIFLE "rhs_weap_m24sws"
 #define SNP_MAG "rhsusf_5Rnd_762x51_m118_special_Mag:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_NATO_AT_ARMY_2020_AUG {
+class RHS_GEAR_TAIWANESE_ARMY_1980_M14 {
   author = "Mazz38";
-  description = "AT: Austria ARMY AUG Kits";
+  description = "ROC: TAIWANESE ARMY M14 Kits";
 
   class BASE {
     backpackItems[] = {};
@@ -116,7 +116,7 @@ class RHS_GEAR_NATO_AT_ARMY_2020_AUG {
   class PL : SGT {};
 
   class ARA : BASE {
-    backpackItems[] += {AR_MAG_ASST};
+    magazines[] += {AR_MAG_ASST};
   };
   class AR : BASE {
     weapons[] = {AR_RIFLE};
@@ -149,12 +149,11 @@ class RHS_GEAR_NATO_AT_ARMY_2020_AUG {
           UGL_MAGS(UGL_FRAG,10),
           UGL_MAGS(UGL_SMOKEWHITE,4),
           UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FLAREWHITE,2)
         }
       }
     };
-    items[] += {HUNTIR_MONITOR};
+    items[] += {};
   };
 
   class MGA : BASE {

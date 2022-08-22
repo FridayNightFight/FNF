@@ -1667,18 +1667,14 @@ if (_QS_ST_X select 2) then {
 								if (_showAIGroups) then {
 									if (isNil {_grp getVariable 'QS_ST_Group'}) then {
 										if (!isNull _grp) then {
-											if (!isNull _grpLeader) then {
-                        if (!(typeOf _grpLeader isEqualTo "Logic")) then {
-                          [_grp,0,_QS_ST_X] call _configGroupIcon;
-                        };
+											if (!isNull _grpLeader && !isHidden _grpLeader && !(typeOf _grpLeader isEqualTo "Logic")) then {
+												[_grp,0,_QS_ST_X] call _configGroupIcon;
 											};
 										};
 									} else {
 										if (!isNull _grp) then {
-											if (!isNull _grpLeader) then {
-                        if (!(typeOf _grpLeader isEqualTo "Logic")) then {
-                          [_grp,1,_QS_ST_X] call _configGroupIcon;
-                        };
+											if (!isNull _grpLeader && !isHidden _grpLeader && !(typeOf _grpLeader isEqualTo "Logic")) then {
+												[_grp,1,_QS_ST_X] call _configGroupIcon;
 											};
 										};
 									};
@@ -1686,18 +1682,14 @@ if (_QS_ST_X select 2) then {
 									if (isPlayer _grpLeader) then {
 										if (isNil {_grp getVariable 'QS_ST_Group'}) then {
 											if (!isNull _grp) then {
-												if (!isNull _grpLeader) then {
-                          if (!(typeOf _grpLeader isEqualTo "Logic")) then {
-                            [_grp,0,_QS_ST_X] call _configGroupIcon;
-                          };
+												if (!isNull _grpLeader && !isHidden _grpLeader && !(typeOf _grpLeader isEqualTo "Logic")) then {
+													[_grp,0,_QS_ST_X] call _configGroupIcon;
 												};
 											};
 										} else {
 											if (!isNull _grp) then {
-												if (!isNull _grpLeader) then {
-                          if (!(typeOf _grpLeader isEqualTo "Logic")) then {
-                            [_grp,1,_QS_ST_X] call _configGroupIcon;
-                          };
+												if (!isNull _grpLeader && !isHidden _grpLeader && !(typeOf _grpLeader isEqualTo "Logic")) then {
+													[_grp,1,_QS_ST_X] call _configGroupIcon;
 												};
 											};
 										};

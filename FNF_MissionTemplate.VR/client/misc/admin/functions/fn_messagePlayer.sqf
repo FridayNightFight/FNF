@@ -19,7 +19,11 @@ private _out = [];
 
 (getUserInfo _adminId) params ["_admin_networkId","_admin_owner","_admin_playerUID","_admin_soldierName","_admin_soldierNameInclSquad","_admin_steamProfileName","_admin_clientStateNumber","_admin_isHeadless","_admin_adminState","_admin_netPerf","_admin_playerObject"];
 _out pushBack format["ACTOR: %1", _admin_soldierName];
-_out pushBack format["ACTION: %1", "PlayerMessage"];
+_out pushBack format["ACTION: %1", "MessagePlayer"];
+
+if (count _targetIDs == 0) then {
+  _out pushBack format["FAIL: No players in side"];
+};
 
 {
   (getUserInfo _x) params [
@@ -53,6 +57,7 @@ _out pushBack format["ACTION: %1", "PlayerMessage"];
     ] remoteExec ["fnf_ui_fnc_notify", _owner];
 
     _out pushBack format["SUCCESS: message sent to %1", _soldierName];
+    _out pushBack format["MESSAGE: %1", _messageText];
   };
 } forEach _targetIDs;
 

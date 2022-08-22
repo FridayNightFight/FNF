@@ -560,7 +560,7 @@ fnf_assetDiaryOther = player createDiarySubject ["OtherAssets", "Other Assets", 
         false
       ];
 
-    } forEach ((_objects select {!isNull _x} apply {typeOf _x}) call BIS_fnc_consolidateArray);
+    } forEach ((_objects select {!isNull _x && locked _x < 2} apply {typeOf _x}) call BIS_fnc_consolidateArray);
   };
 } forEach ["BLU", "OPF", "IND", "OTHER"];
 
