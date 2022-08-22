@@ -200,6 +200,7 @@ class CfgFunctions {
       class restrictETool{};
       class restrictGamma{};
       class viewDistance{};
+      class restrictVoiceVolume{};
     };
   };
   class fnf_safety {
