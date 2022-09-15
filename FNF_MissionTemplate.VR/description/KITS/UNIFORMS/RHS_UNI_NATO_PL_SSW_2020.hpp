@@ -9,8 +9,8 @@
 #define VEST_CREWMAN "UK3CB_LDF_B_V_CREW_Vest_KKZ10_OLI"
 #define VEST_PILOT "UK3CB_LDF_B_V_CREW_Vest_KKZ10_OLI"
 
-#define HELMET "UK3CB_LDF_I_H_MHB15_OLI"
-#define HELMET_CMDR "UK3CB_LDF_B_H_CP04_GEO"
+#define HELMET "rhsusf_opscore_rg_cover"
+#define HELMET_CMDR "UK3CB_LSM_B_H_Field_Cap_OLI"
 #define HELMET_RECON "UK3CB_LSM_B_H_BoonieHat_OLI"
 #define HELMET_CREWMAN "H_HelmetCrew_I"
 #define HELMET_PILOT "rhsusf_hgu56p_mask_green", "rhsusf_hgu56p_visor_mask_green"
