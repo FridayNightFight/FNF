@@ -91,7 +91,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+   /* weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -101,7 +101,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

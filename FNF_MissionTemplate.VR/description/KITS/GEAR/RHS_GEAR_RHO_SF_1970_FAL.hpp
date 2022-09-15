@@ -91,7 +91,7 @@ class RHS_GEAR_RHO_SF_1970_FAL {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+   /* weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -101,7 +101,7 @@ class RHS_GEAR_RHO_SF_1970_FAL {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

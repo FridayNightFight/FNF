@@ -91,7 +91,7 @@ class RHS_GEAR_US_RANGERS_2010_SCAR {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+   /* weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -101,7 +101,7 @@ class RHS_GEAR_US_RANGERS_2010_SCAR {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

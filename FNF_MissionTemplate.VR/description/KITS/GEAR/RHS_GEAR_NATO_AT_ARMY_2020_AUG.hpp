@@ -91,7 +91,7 @@ class RHS_GEAR_NATO_AT_ARMY_2020_AUG {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+   /* weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -101,7 +101,7 @@ class RHS_GEAR_NATO_AT_ARMY_2020_AUG {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };
