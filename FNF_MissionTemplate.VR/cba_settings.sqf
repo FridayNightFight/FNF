@@ -1,7 +1,3 @@
-// Community Base Addons
-// fixes loadout bug / units appearing naked on locality switch
-force force cba_network_loadoutValidation = 2;
-
 // ACE Advanced Ballistics
 force force ace_advanced_ballistics_ammoTemperatureEnabled = false;
 force force ace_advanced_ballistics_barrelLengthInfluenceEnabled = false;
@@ -29,7 +25,7 @@ force force ace_advanced_throwing_showThrowArc = true;
 
 // ACE Advanced Vehicle Damage
 force force ace_vehicle_damage_enableCarDamage = false;
-force force ace_vehicle_damage_enabled = false;
+force force ace_vehicle_damage_enabled = true;
 force force ace_vehicle_damage_removeAmmoDuringCookoff = true;
 
 // ACE Arsenal
@@ -69,6 +65,7 @@ ace_parachute_hideAltimeter = true;
 
 // ACE Cook off
 force force ace_cookoff_ammoCookoffDuration = 1;
+force force ace_cookoff_destroyVehicleAfterCookoff = true;
 force force ace_cookoff_enable = 2;
 force force ace_cookoff_enableAmmobox = false;
 force force ace_cookoff_enableAmmoCookoff = false;
