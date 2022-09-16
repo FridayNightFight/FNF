@@ -53,6 +53,9 @@ switch (true) do {
   case (mySideUniformSelection find "_AUSTRIA_" > -1);
   case (mySideUniformSelection find "_SWISS_" > -1);
   case (mySideUniformSelection find "_RHODESIA_" > -1);
+  case (mySideUniformSelection find "_AUSTRALIA" > -1);
+  case (mySideUniformSelection find "_UK_" > -1);
+  case (mySideUniformSelection find "_CANADIAN_" > -1);
   case (mySideUniformSelection find "_US_" > -1): {_primaryCategory = "WhiteHead"};
 
 
@@ -83,6 +86,9 @@ switch (true) do {
   case (mySideUniformSelection find "_PAVN_" > -1);
   case (mySideUniformSelection find "_NLF_" > -1);
   case (mySideUniformSelection find "_SVA_" > -1);
+  case (mySideUniformSelection find "_VIETNAMESE_" > -1);
+  case (mySideUniformSelection find "_TAIWAN_" > -1);
+  case (mySideUniformSelection find "_CHINA_" > -1);
   case (mySideUniformSelection find "_NAVSOG_" > -1): {_primaryCategory = "AsianHead"};
 
   default {_primaryCategory = selectRandom (_possibleCategories)};
