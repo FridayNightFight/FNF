@@ -201,6 +201,7 @@ class CfgFunctions {
       class restrictGamma{};
       class viewDistance{};
       class restrictVoiceVolume{};
+      class restrictWeaponThermal{};
     };
   };
   class fnf_safety {
