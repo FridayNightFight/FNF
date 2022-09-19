@@ -3,7 +3,7 @@
 // put all rifle weapons
 #define RIFLE "uk3cb_sks_01_sling", "uk3cb_sks_01"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "uk3cb_10rnd_magazine_sks:7","uk3cb_10rnd_magazine_sks_GT:4"
+#define RIFLE_MAG "uk3cb_10rnd_magazine_sks:10","uk3cb_10rnd_magazine_sks_GT:5"
 // give Riflemen extra mags
 #define RIFLE_MAG_RI "uk3cb_10rnd_magazine_sks:12","uk3cb_10rnd_magazine_sks_GT:6"
 
