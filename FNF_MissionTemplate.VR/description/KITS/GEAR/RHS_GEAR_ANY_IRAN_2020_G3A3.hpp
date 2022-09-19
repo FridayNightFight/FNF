@@ -31,7 +31,7 @@
 #define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
 #define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
 
-#define AR_RIFLE "fnf_rpk"
+#define AR_RIFLE "rhs_weap_rpk74m"
 #define AR_MAG "fnf_45rnd_rpk_green:13"
 #define AR_MAG_ASST "fnf_45rnd_rpk_green:10"
 

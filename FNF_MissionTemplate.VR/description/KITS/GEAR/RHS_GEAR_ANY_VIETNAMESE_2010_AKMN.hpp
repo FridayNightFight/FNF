@@ -31,7 +31,7 @@
 #define SMG_MAG "uk3cb_PPSH_71rnd_magazine:6"
 #define SMG_MAG_CREW "uk3cb_PPSH_71rnd_magazine:4"
 
-#define AR_RIFLE "fnf_rpk"
+#define AR_RIFLE "rhs_weap_rpk74m"
 #define AR_MAG "fnf_45rnd_rpk_green:6"
 #define AR_MAG_ASST "fnf_45rnd_rpk_green:5"
 
