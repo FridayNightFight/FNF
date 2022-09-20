@@ -54,7 +54,7 @@ fnf_sector_fnc_setStatus = {
     0, // fade
     getPosATL _sector, // position
     _captureValue // barHeight (progress)
-  ] remoteExec ["BIS_fnc_setMissionStatusSlot",0];
+  ] remoteExec ["BIS_fnc_setMissionStatusSlot",0,"sectorStatusJIP_" + str(_sectorNum)];
 };
 
 // // fnf_gamemode_sectors = [];
@@ -127,8 +127,8 @@ private _sectorNum = 0;
     _dTaskTitle = "Defend Sector " + str(_sectorNum);
     _aTaskTitle = "Capture Sector " + str(_sectorNum);
 
-    [fnf_defendingSide, [_dTask], [_dTaskTitle, _dTaskTitle, ""], getPos _sector, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
-    [fnf_attackingSide, [_aTask], [_aTaskTitle, _aTaskTitle, ""], getPos _sector, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
+    [fnf_defendingSide, [_dTask], [format ["Capture time: %1 seconds", fnf_gamemode_sectorCaptureTime], _dTaskTitle, ""], getPos _sector, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
+    [fnf_attackingSide, [_aTask], [format ["Capture time: %1 seconds", fnf_gamemode_sectorCaptureTime], _aTaskTitle, ""], getPos _sector, "AUTOASSIGNED"] call BIS_fnc_taskCreate;
 
     while {alive _sector && !fnf_gameEnd} do {
       if (_sector call fnf_sector_fnc_capturing) then {
