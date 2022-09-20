@@ -1,10 +1,11 @@
-_numberOfSectors = 3; //Number of sectors. 1-3
-_inOrder = false; //Whether or not the sectors need to be captured in order.
+_numberOfSectors = 3; //Number of sectors (1-3)
+_inOrder = false; //Whether or not the sectors need to be captured in order
+_captureTime = 60; //How long attackers need to control a sector in order to capture it (seconds), 0 = instant capture
 
 /*
 Attack/defend sector control mode. Attackers need to capture all sectors to win.
 Sectors cannot be re-captured by defense. Only infantry can capture.
-A sector is captured if there is at least one attacker in the sector and no conscious defenders.
+A sector can be captured if there is at least one attacker in the sector and no conscious defenders.
 
 Usage:
 1. Choose how many sectors you want with the above variable.
