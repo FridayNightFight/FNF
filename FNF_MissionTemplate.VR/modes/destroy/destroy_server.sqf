@@ -47,14 +47,29 @@ publicVariable "fnf_specObjectives";
 
 } forEach _objArr;
 
+fnf_destroy_server_fnc_registerHit = {
+  params ["_object","_hitValue"];
+
+  _object setVariable ["hitValue", (_object getVariable ["hitValue",0]) + _hitValue];
+};
+
 //Increase fnf_aliveObjectives for each active objective
 {
-  if !(isNull (_x select 0)) then {
+  private _obj = _x select 0;
+
+  if !(isNull _obj) then {
     fnf_aliveObjectives = fnf_aliveObjectives + 1;
 
+    //Set hit value needed for objects of type "Thing" (objects that are not normally destructible, props, etc.)
+    if (_obj call BIS_fnc_objectType select 1 == "Thing") then {
+      _obj setVariable ["hitValue", 0];
+      _obj setVariable ["hitNeeded", ((boundingBoxReal _obj) select 2) * 250];
+      if (_obj getVariable "hitNeeded" < 50) then {_obj setVariable ["hitNeeded",50]};
+    };
+
     //Reduce damage if obj is default cache
-    if (typeOf (_x select 0) isEqualTo "Box_FIA_Ammo_F") then {
-      (_x select 0) addEventHandler ["HandleDamage", {
+    if (typeOf _obj isEqualTo "Box_FIA_Ammo_F") then {
+      _obj addEventHandler ["HandleDamage", {
         _unit = _this select 0;
         _selection = _this select 1;
         _damage = _this select 2;
@@ -91,13 +106,15 @@ publicVariable "fnf_specObjectives";
     [_x select 0, _x select 1, _defendTaskID, _attackTaskID, _taskCount] spawn {
       params ["_object","_markerName","_defendTaskID","_attackTaskID", "_taskCount"];
 
-      waitUntil {!alive _object};
+      waitUntil {!(alive _object) || (_object getVariable ["hitValue",-1]) >= (_object getVariable ["hitNeeded",0])};
 
       [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
       [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
 
       [format["Objective %1 has been destroyed!", _taskCount], "info", 7] remoteExec ["fnf_ui_fnc_notify",0,false];
+
+      if (_object call BIS_fnc_objectType select 1 == "Thing") then {deleteVehicle _object};
 
       fnf_aliveObjectives = fnf_aliveObjectives - 1;
       [_markerName] remoteExec ["deleteMarkerLocal",0,true];
