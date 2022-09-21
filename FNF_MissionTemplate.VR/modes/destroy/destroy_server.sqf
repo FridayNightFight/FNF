@@ -53,19 +53,52 @@ fnf_destroy_server_fnc_registerHit = {
   _object setVariable ["hitValue", (_object getVariable ["hitValue",0]) + _hitValue];
 };
 
-//Increase fnf_aliveObjectives for each active objective
+_destroy_server_fnc_damageTest = {
+  private _object = _this;
+  private _damageChanged = false;
+  private _sizeRatio = 500;
+  private _minDamage = 75;
+
+  private _damageTestEH = _object addEventHandler ["HandleDamage", {
+    params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+
+    _unit setVariable ["damageTest",true];
+  }];
+
+  //Trigger damage EH if object is damageable
+  if !(isDamageAllowed _object) then {_object allowDamage true; _damageChanged = true};
+  _object setDamage (damage _object + 0.01);
+  _object setDamage (damage _object - 0.01);
+
+  sleep 1; //Sleep due to HandleDamage EH not firing fast enough to register before object is made invincible again
+
+  if (_damageChanged) then {_object allowDamage false};
+
+  _object removeEventHandler ["HandleDamage", _damageTestEH];
+
+  //Set hit value needed for destruction and start custom damage system on clients
+  if !(_object getVariable ["damageTest",false]) then {
+    _object setVariable ["hitValue", 0];
+    _object setVariable ["hitNeeded", ((boundingBoxReal _object) select 2) * _sizeRatio];
+
+    if (_object getVariable ["hitNeeded",0] < _minDamage) then {_object setVariable ["hitNeeded",_minDamage]};
+
+    _object remoteExec ["fnf_destroy_client_fnc_customDamage",0,true];
+
+    systemChat format ["Using custom damage system for objective %1.", _object];
+  };
+};
+
+
+//Increase fnf_aliveObjectives for each active objective and conduct damage test
 {
   private _obj = _x select 0;
 
   if !(isNull _obj) then {
     fnf_aliveObjectives = fnf_aliveObjectives + 1;
 
-    //Set hit value needed for objects of type "Thing" (objects that are not normally destructible, props, etc.)
-    if (_obj call BIS_fnc_objectType select 1 == "Thing") then {
-      _obj setVariable ["hitValue", 0];
-      _obj setVariable ["hitNeeded", ((boundingBoxReal _obj) select 2) * 250];
-      if (_obj getVariable "hitNeeded" < 50) then {_obj setVariable ["hitNeeded",50]};
-    };
+    //Test if object is damageable. If not, use custom damage system
+    _obj spawn _destroy_server_fnc_damageTest;
 
     //Reduce damage if obj is default cache
     if (typeOf _obj isEqualTo "Box_FIA_Ammo_F") then {
@@ -114,7 +147,7 @@ fnf_destroy_server_fnc_registerHit = {
 
       [format["Objective %1 has been destroyed!", _taskCount], "info", 7] remoteExec ["fnf_ui_fnc_notify",0,false];
 
-      if (_object call BIS_fnc_objectType select 1 == "Thing") then {deleteVehicle _object};
+      if (!(_object getVariable ["damageTest",false]) && damage _object < 0.1) then {deleteVehicle _object};
 
       fnf_aliveObjectives = fnf_aliveObjectives - 1;
       [_markerName] remoteExec ["deleteMarkerLocal",0,true];
