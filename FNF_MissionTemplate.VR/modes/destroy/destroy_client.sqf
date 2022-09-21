@@ -41,7 +41,7 @@ fnf_destroy_client_fnc_customDamage = {
      if ("GrenadeHand" in _configParents) then {_damage = 500};
 
      if (_type in ["SatchelCharge_Remote_Ammo","ACE_SatchelCharge_Remote_Ammo_Thrown"]) then {_damage = 12000};
-     if (_type in ["DemoCharge_Remote_Ammo","ACE_DemoCharge_Remote_Ammo_Thrown"]) then {_damage = 4000};
+     if (_type in ["DemoCharge_Remote_Ammo","ACE_DemoCharge_Remote_Ammo_Thrown"]) then {_damage = 5000};
 
      _damage = _damage / (1 max ((_vehicle distance _source) ^ 2));
 

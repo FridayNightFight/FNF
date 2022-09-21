@@ -26,6 +26,6 @@ fnf_alertEnd = false;
       missionNamespace setVariable ["fnf_overTime",true,true];
 
       [] spawn fnf_server_fnc_overTimeEnd;
-      [_handle] call CBA_fnc_removePerFrameHandler
+      [_handle] call CBA_fnc_removePerFrameHandler;
   };
 }, 0.5, _missionRuntimeSecs] call CBA_fnc_addPerFrameHandler;

@@ -67,10 +67,11 @@ _destroy_server_fnc_damageTest = {
 
   //Trigger damage EH if object is damageable
   if !(isDamageAllowed _object) then {_object allowDamage true; _damageChanged = true};
+  sleep 1; //Sleeps are due to the EH not registering the changed damage states quickly enough
   _object setDamage (damage _object + 0.01);
   _object setDamage (damage _object - 0.01);
 
-  sleep 1; //Sleep due to HandleDamage EH not firing fast enough to register before object is made invincible again
+  sleep 1;
 
   if (_damageChanged) then {_object allowDamage false};
 

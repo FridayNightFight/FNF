@@ -140,7 +140,7 @@ if (!hasInterface) exitWith {};
   "Friday Night Fight",
   "Spectator"
 ], "fnf_key_spectatorMute", ["Mute Spectators", "Mute other spectators and only listen to alive players"], {
-  if (!isNil fnf_spectator_fnc_muteSpectators) then {
+  /*if (!isNil fnf_spectator_fnc_muteSpectators) then {
     call fnf_spectator_fnc_muteSpectators;
-  };
+  };*/
 }, {}, [DIK_RBRACKET, [false, false, false]]] call CBA_fnc_addKeybind;
