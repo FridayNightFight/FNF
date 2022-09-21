@@ -11,7 +11,7 @@ if (count _safetyVics == 0) exitWith {};
   _x allowDamage false;
 
   // add variable to vehicle so localitySwitch doesn't remove invincibility
-  _x setVariable ["fnf_zoneProtectionActive", true, true];
+  if (local _x) then {_x setVariable ["fnf_zoneProtectionActive", true, true]};
 } forEach _safetyVics;
 
 [{!(missionNamespace getVariable ["fnf_safetyEnabled", true])}, {
@@ -19,6 +19,6 @@ if (count _safetyVics == 0) exitWith {};
 
   {
     _x allowDamage true;
-    _x setVariable ["fnf_zoneProtectionActive", false, true];
+    if (local _x) then {_x setVariable ["fnf_zoneProtectionActive", false, true]};
   } forEach _safetyVics;
 }, [_safetyVics]] call CBA_fnc_waitUntilAndExecute;
