@@ -37,9 +37,7 @@ _object addEventHandler ["Explosion", {
    private _damage = 1000; //default damage
    private _dmgFalloffDistance = 0.3; //default
 
-   (getPosASL _source) params ["_sx","_sy","_sz"];
-   if (_sz < 0.2) then {_sz = 0.2};
-   _sourcePos = [_sx,_sy,_sz];
+   _sourcePos = (getPosASL _source) vectorAdd [0,0,0.2];
 
    {
      _distance = _sourcePos distance2d ((lineIntersectsSurfaces [_sourcePos, _x]) select {_vehicle in _x} select 0 select 0);
