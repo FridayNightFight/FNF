@@ -116,9 +116,11 @@ _destroy_server_fnc_damageTest = {
 
     private _itemConfig = [_x # 0] call CBA_fnc_getObjectConfig;
     private _itemPic = [_itemConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+    private _itemName = getText (_itemConfig >> "DisplayName");
+    if (_x select 2 != "") then {_itemName = _x select 2};
 
-    [fnf_defendingSide,_defendTaskID,[format["<img image='%1' width='300'>", _itemPic],format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
-    [fnf_attackingSide,_attackTaskID,[format["<img image='%1' width='300'>", _itemPic],format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_defendingSide,_defendTaskID,[format["<img image='%1' width='300'>", _itemPic],format ["Defend the %1",_itemName],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_attackingSide,_attackTaskID,[format["<img image='%1' width='300'>", _itemPic],format [_attackersTaskText + "%1",_itemName],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
 
     [(_x select 0), -1] call ace_cargo_fnc_setSize;
 

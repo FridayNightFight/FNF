@@ -1,9 +1,9 @@
-_obj1 = [destroy_obj_1,"destroy_obj_1_mark","weapons cache"];
-_obj2 = [destroy_obj_2,"destroy_obj_2_mark","weapons cache"];
+_obj1 = [destroy_obj_1,"destroy_obj_1_mark",""];
+_obj2 = [destroy_obj_2,"destroy_obj_2_mark",""];
 _obj3 = [objNull,"",""];
 
 /*
-[OBJECT_NAME, MARKER_NAME, OBJECT_DESCRIPTION]
+[OBJECT_NAME, MARKER_NAME, OBJECT_DESCRIPTION (defaults to object display name)]
 */
 
 /*
