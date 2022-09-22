@@ -33,7 +33,7 @@ _object addEventHandler ["Explosion", {
    private _type = typeOf _source;
    private _configParents = [configFile >> "CfgAmmo" >> _type, true] call BIS_fnc_returnParents;
    private _objectCorners = (_vehicle call BIS_fnc_boundingBoxCorner) apply {ATLToASL _x};
-   private _closestDistance = 3; //default distance in case it fails to be calculated
+   private _closestDistance = _source distance2d _vehicle; //default distance in case it fails to be calculated
    private _damage = 1000; //default damage
    private _dmgFalloffDistance = 0.3; //default
 
