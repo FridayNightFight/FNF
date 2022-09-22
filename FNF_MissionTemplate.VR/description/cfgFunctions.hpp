@@ -216,6 +216,7 @@ class CfgFunctions {
     class functions {
       file = "client\spectator";
       class init{};
+      class muteSpectators{};
     };
   };
   class fnf_ui {

@@ -51,6 +51,7 @@ if (!isNull _lastDamage) then {
 // MOVED TO GAMEMODES
 
 call BIS_fnc_showMissionStatus; //show tickets etc. to spectators
+[{!isNull findDisplay 60000}, {call fnf_spectator_fnc_muteSpectators}] call CBA_fnc_waitUntilAndExecute;
 
 //Draw 3d icons for objectives
 [{!isNil "fnf_specObjectives"}, {
