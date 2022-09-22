@@ -172,20 +172,20 @@ private _sectorNum = 0;
 
           if (fnf_gamemode_capNum >= fnf_gamemode_sectorNum) then {call fnf_server_sectorWin} else {
             [format[
-              "<t align='center'>Attackers have captured Sector %1</t>",
+              "<t align='center'>Attackers have captured Sector %1!</t>",
               (str _sectorNum)
             ]] remoteExec ["fnf_fnc_hintThenClear",0,false];
           };
         } else {
           [_sector, _sectorNum, false, 0] call fnf_sector_fnc_setStatus;
           [format[
-            "<t align='center'>Sector %1 is no longer being captured</t>",
+            "<t align='center'>Sector %1 is no longer being captured!</t>",
             (str _sectorNum)
           ]] remoteExec ["fnf_fnc_hintThenClear",0,false];
         };
       };
 
-      sleep 3;
+      sleep 1;
     };
   };
 } forEach fnf_gamemode_sectors;
