@@ -28,10 +28,18 @@ fnf_sector_fnc_sidePresent = {
   _present;
 };
 
+fnf_sector_fnc_sideCount = {
+  _sector = _this select 0;
+  _side = _this select 1;
+  _units = allUnits inAreaArray _sector;
+
+  count (_units select {_x call BIS_fnc_objectSide == _side && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x && [_x] call ace_common_fnc_isAwake});
+};
+
 fnf_sector_fnc_capturing = {
   _sector = _this;
 
-  if ([_sector, fnf_attackingSide] call fnf_sector_fnc_sidePresent && !([_sector, fnf_defendingSide] call fnf_sector_fnc_sidePresent))
+  if ([_sector, fnf_attackingSide] call fnf_sector_fnc_sideCount > [_sector, fnf_defendingSide] call fnf_sector_fnc_sideCount)
   then
   {true} else {false};
 };
