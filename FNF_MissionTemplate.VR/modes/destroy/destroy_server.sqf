@@ -48,7 +48,15 @@ publicVariable "fnf_specObjectives";
 } forEach _objArr;
 
 fnf_destroy_server_fnc_registerHit = {
-  params ["_object","_hitValue"];
+  params ["_object","_hitValue","_explosive"];
+
+  _hitValue = round _hitValue;
+  private _needsExplosive = _object getVariable ["hitNeeded",0] >= 1750;
+  private _nonExpThreshold = 1250;
+  private _maxNonExpDmg = 800;
+
+  if (_needsExplosive && !_explosive && _hitValue < _nonExpThreshold) exitWith {};
+  if (_needsExplosive && !_explosive && _hitValue >= _nonExpThreshold) then {_hitValue = _maxNonExpDmg};
 
   _object setVariable ["hitValue", (_object getVariable ["hitValue",0]) + _hitValue];
 };
@@ -58,7 +66,7 @@ _destroy_server_fnc_damageTest = {
   private _damageChanged = false;
   private _sizeRatio = 450;
   private _minDamage = 100;
-  private _maxDamage = 10000;
+  private _maxDamage = 13000;
 
   //Check if object can be damaged
   _canDamage = if (getText (configfile >> "CfgVehicles" >> typeOf _object >> "destrType") == "DestructNo") then {false} else {true};

@@ -14,9 +14,9 @@ _object addEventHandler ["HitPart", {
   if (scriptDone (missionNamespace getVariable ["fnf_destroy_hitCache",scriptNull])) then {
     fnf_destroy_hitCache = _target spawn {
       _target = _this;
-      sleep 1;
+      sleep 0.25;
 
-      [_target, _target getVariable ["hitCache",0]] remoteExec ["fnf_destroy_server_fnc_registerHit",2];
+      [_target, _target getVariable ["hitCache",0], false] remoteExec ["fnf_destroy_server_fnc_registerHit",2];
       _target setVariable ["hitCache",0];
     };
   };
@@ -29,24 +29,34 @@ _object addEventHandler ["HitPart", {
 _object addEventHandler ["Explosion", {
    params ["_vehicle", "_damage", "_source"];
 
-   private "_distance";
+   private ["_distance","_sourcePos"];
    private _type = typeOf _source;
    private _configParents = [configFile >> "CfgAmmo" >> _type, true] call BIS_fnc_returnParents;
-   private _distance = (getPosASLVisual _source) distance2d ((lineIntersectsSurfaces [getPosASLVisual _source, getPosASLVisual _vehicle]) select {_vehicle in _x} select 0 select 0);
+   private _objectCorners = (_vehicle call BIS_fnc_boundingBoxCorner) apply {ATLToASL _x};
+   private _closestDistance = 3; //default distance in case it fails to be calculated
    private _damage = 1000; //default damage
-   private _dmgFalloffDistance = 0.75; //default
+   private _dmgFalloffDistance = 0.3; //default
 
-   if (isNil "_distance") then {_distance = _source distance2d _vehicle;};
+   (getPosASL _source) params ["_sx","_sy","_sz"];
+   if (_sz < 0.1) then {_sz = 0.1};
+   _sourcePos = [_sx,_sy,_sz];
+
+   {
+     _distance = _sourcePos distance2d ((lineIntersectsSurfaces [_sourcePos, _x]) select {_vehicle in _x} select 0 select 0);
+     if (_forEachIndex == 0 || _distance < _closestDistance) then {_closestDistance = _distance};
+   } forEach _objectCorners + [getPosASL _vehicle];
 
    if ("PipeBombBase" in _configParents) then {_damage = 3000};
-   if ("GrenadeHand" in _configParents) then {_damage = 400; _dmgFalloffDistance = 0.5};
+   if ("GrenadeHand" in _configParents) then {_damage = 400};
 
    if (_type in ["SatchelCharge_Remote_Ammo","ACE_SatchelCharge_Remote_Ammo_Thrown"]) then {_damage = 8000; _dmgFalloffDistance = 2.5};
-   if (_type in ["DemoCharge_Remote_Ammo","ACE_DemoCharge_Remote_Ammo_Thrown"]) then {_damage = 3000; _dmgFalloffDistance = 1};
+   if (_type in ["DemoCharge_Remote_Ammo","ACE_DemoCharge_Remote_Ammo_Thrown"]) then {_damage = 3000; _dmgFalloffDistance = 1.25};
 
-   if (_distance > _dmgFalloffDistance) then {_damage = _damage / (_distance ^ 1.7)};
+   if (_closestDistance > _dmgFalloffDistance) then {
+     _damage = _damage / (exp (_closestDistance - _dmgFalloffDistance));
+   };
 
-   //hint format ["Object: %3 \nDistance: %1 \nDamage: %2", _distance, _damage, _vehicle];
+   if (isServer) then {hint format ["Destroy Explosive Damage Debug:\nObject: %3 \nDistance: %1 \nDamage: %2", _closestDistance, _damage, _vehicle]};
 
-   [_vehicle, round _damage] remoteExec ["fnf_destroy_server_fnc_registerHit",2];
+   [_vehicle, _damage, true] remoteExec ["fnf_destroy_server_fnc_registerHit",2];
 }];
