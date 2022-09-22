@@ -7,7 +7,7 @@ fnf_spectatorMute_nextChange = 0;
 fnf_spectatorMute_fnc_enable = {
   //Continuously mute all spectators while active
   fnf_spectatorMutePFH = [{
-    if (alive player || !ace_spectator_isSet) exitWith {call fnf_spectatorMute_fnc_disable};
+    if (!ace_spectator_isSet) exitWith {call fnf_spectatorMute_fnc_disable};
 
     {_x setVariable ["tf_voiceVolume", 0.0]} forEach (call ace_spectator_fnc_players);
   },0.25] call CBA_fnc_addPerFrameHandler;
