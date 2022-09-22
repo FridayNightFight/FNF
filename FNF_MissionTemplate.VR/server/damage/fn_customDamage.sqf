@@ -38,7 +38,7 @@ _object addEventHandler ["Explosion", {
    private _dmgFalloffDistance = 0.3; //default
 
    (getPosASL _source) params ["_sx","_sy","_sz"];
-   if (_sz < 0.1) then {_sz = 0.1};
+   if (_sz < 0.2) then {_sz = 0.2};
    _sourcePos = [_sx,_sy,_sz];
 
    {
