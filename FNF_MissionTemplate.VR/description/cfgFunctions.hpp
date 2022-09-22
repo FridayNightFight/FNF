@@ -279,6 +279,7 @@ class CfgFunctions {
     class damage {
       file = "server\damage";
       class handleDamage{};
+      class customDamage{};
     };
     class webhook {
       file = "server\webhook";
