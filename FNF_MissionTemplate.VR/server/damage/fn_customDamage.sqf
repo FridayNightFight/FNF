@@ -37,18 +37,18 @@ _object addEventHandler ["Explosion", {
    private _damage = 1000; //default damage
    private _dmgFalloffDistance = 0.3; //default
 
-   _sourcePos = (getPosASL _source) vectorAdd [0,0,0.2];
+   _sourcePos = (getPosASL _source) vectorAdd [0,0,0.2]; //Raise the line intersect start position up a bit so it doesn't get occluded by terrain
 
    {
-     _distance = _sourcePos distance2d ((lineIntersectsSurfaces [_sourcePos, _x]) select {_vehicle in _x} select 0 select 0);
+     _distance = _sourcePos distance ((lineIntersectsSurfaces [_sourcePos, _x]) select {_vehicle in _x} select 0 select 0);
      if (_forEachIndex == 0 || _distance < _closestDistance) then {_closestDistance = _distance};
-   } forEach _objectCorners + [getPosASL _vehicle];
+   } forEach (_objectCorners + (_objectCorners apply {_x vectorAdd [0,0,5]}) + [getPosASL _vehicle] + [(getPosASL _vehicle) vectorAdd [0,0,0.1]]);
 
    if ("PipeBombBase" in _configParents) then {_damage = 3000};
    if ("GrenadeHand" in _configParents) then {_damage = 400};
 
-   if (_type in ["SatchelCharge_Remote_Ammo","ACE_SatchelCharge_Remote_Ammo_Thrown"]) then {_damage = 8000; _dmgFalloffDistance = 2.5};
-   if (_type in ["DemoCharge_Remote_Ammo","ACE_DemoCharge_Remote_Ammo_Thrown"]) then {_damage = 3000; _dmgFalloffDistance = 1.25};
+   if (_type in ["SatchelCharge_Remote_Ammo","ACE_SatchelCharge_Remote_Ammo_Thrown"]) then {_damage = 8000; _dmgFalloffDistance = 2.75};
+   if (_type in ["DemoCharge_Remote_Ammo","ACE_DemoCharge_Remote_Ammo_Thrown"]) then {_damage = 3000; _dmgFalloffDistance = 1.5};
 
    if (_closestDistance > _dmgFalloffDistance) then {
      _damage = _damage / (exp (_closestDistance - _dmgFalloffDistance));
