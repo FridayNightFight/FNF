@@ -14,7 +14,7 @@ _object addEventHandler ["HitPart", {
   if (scriptDone (missionNamespace getVariable ["fnf_destroy_hitCache",scriptNull])) then {
     fnf_destroy_hitCache = _target spawn {
       _target = _this;
-      sleep 0.25;
+      sleep 0.15;
 
       [_target, _target getVariable ["hitCache",0], false] remoteExec ["fnf_destroy_server_fnc_registerHit",2];
       _target setVariable ["hitCache",0];

@@ -51,9 +51,9 @@ fnf_destroy_server_fnc_registerHit = {
   params ["_object","_hitValue","_explosive"];
 
   _hitValue = round _hitValue;
-  private _needsExplosive = _object getVariable ["hitNeeded",0] >= 1750;
-  private _nonExpThreshold = 1250;
-  private _maxNonExpDmg = 800;
+  private _needsExplosive = _object getVariable ["hitNeeded",0] >= 1000;
+  private _nonExpThreshold = 1000; //How much damage is required for non-explosive damage to register on a large object
+  private _maxNonExpDmg = 1500; //The maximum amount of damage a non-explosive hit can do
 
   if (_needsExplosive && !_explosive && _hitValue < _nonExpThreshold) exitWith {};
   if (_needsExplosive && !_explosive && _hitValue >= _nonExpThreshold) then {_hitValue = _maxNonExpDmg};
