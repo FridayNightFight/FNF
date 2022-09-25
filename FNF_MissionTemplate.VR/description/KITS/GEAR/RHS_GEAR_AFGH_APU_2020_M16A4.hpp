@@ -91,7 +91,7 @@ class RHS_GEAR_AFGH_APU_2020_M16A4 {
   };
 
   class TL : BASE {
-   /* weaponChoices[] = {
+    weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -101,7 +101,7 @@ class RHS_GEAR_AFGH_APU_2020_M16A4 {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };*/
+    };
     magazines[] += {
       LEADER_SMOKES
     };

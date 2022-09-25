@@ -91,7 +91,7 @@ class RHS_GEAR_RU_RATNIK_2010_AK74MR {
   };
 
   class TL : BASE {
-   /* weaponChoices[] = {
+    weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -101,7 +101,7 @@ class RHS_GEAR_RU_RATNIK_2010_AK74MR {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };*/
+    };
     magazines[] += {
       LEADER_SMOKES
     };

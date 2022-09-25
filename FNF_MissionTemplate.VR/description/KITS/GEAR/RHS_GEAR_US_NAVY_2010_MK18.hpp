@@ -91,7 +91,7 @@ class RHS_GEAR_US_NAVY_2010_MK18 {
   };
 
   class TL : BASE {
-   /* weaponChoices[] = {
+    weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -101,7 +101,7 @@ class RHS_GEAR_US_NAVY_2010_MK18 {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };*/
+    };
     magazines[] += {
       LEADER_SMOKES
     };

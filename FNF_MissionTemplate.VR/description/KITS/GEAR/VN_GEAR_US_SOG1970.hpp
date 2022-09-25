@@ -94,7 +94,7 @@ class VN_GEAR_US_SOG1970 {
   };
 
   class TL : BASE {
-   /* weaponChoices[] = {
+    weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -104,7 +104,7 @@ class VN_GEAR_US_SOG1970 {
           UGL_MAGS(UGL_FLAREWHITE,3)
         }
       }
-    };*/
+    };
     magazines[] += {
       LEADER_SMOKES
     };
