@@ -33,7 +33,7 @@ _object addEventHandler ["Explosion", {
    private _type = typeOf _source;
    private _configParents = [configFile >> "CfgAmmo" >> _type, true] call BIS_fnc_returnParents;
    private _objectCorners = (_vehicle call BIS_fnc_boundingBoxCorner) apply {ATLToASL _x};
-   private _closestDistance = _source distance2d _vehicle; //default distance in case it fails to be calculated
+   private _closestDistance = _source distance _vehicle; //default distance in case it fails to be calculated
    private _damage = 1000; //default damage
    private _dmgFalloffDistance = 0.3; //default
 
@@ -42,7 +42,7 @@ _object addEventHandler ["Explosion", {
    {
      _distance = _sourcePos distance ((lineIntersectsSurfaces [_sourcePos, _x]) select {_vehicle in _x} select 0 select 0);
      if (_forEachIndex == 0 || _distance < _closestDistance) then {_closestDistance = _distance};
-   } forEach (_objectCorners + (_objectCorners apply {_x vectorAdd [0,0,5]}) + [getPosASL _vehicle] + [(getPosASL _vehicle) vectorAdd [0,0,0.1]]);
+   } forEach (_objectCorners + (_objectCorners apply {_x vectorAdd [0,0,5]}) + [getPosASL _vehicle] + [(getPosASL _vehicle) vectorAdd [0,0,0.2]] + [(getPosASL _vehicle) vectorAdd [0,0,2]]);
 
    if ("PipeBombBase" in _configParents) then {_damage = 3000};
    if ("GrenadeHand" in _configParents) then {_damage = 400};
