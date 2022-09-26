@@ -11,7 +11,7 @@
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_m4a1_blockII_M203","rhs_weap_m4a1_blockII_M203_bk"
+#define RIFLE_GL "rhs_weap_mk18_M320","rhs_weap_m4a1_blockII_M203_bk"
 #define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_Mk318_SCAR_Ranger:8","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
@@ -96,9 +96,8 @@ class RHS_GEAR_US_RANGERS_2010_SCAR {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,6),
-          UGL_MAGS(UGL_SMOKEWHITE,3),
-          UGL_MAGS(UGL_FLAREWHITE,3)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
     };

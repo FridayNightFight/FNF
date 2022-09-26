@@ -96,9 +96,8 @@ class RHS_GEAR_NATO_GREEKFORCES_2010_L1A1 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,6),
-          UGL_MAGS(UGL_SMOKEWHITE,3),
-          UGL_MAGS(UGL_FLAREWHITE,3)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
     };

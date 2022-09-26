@@ -26,8 +26,6 @@ private _sidearm = [_loadout, "sidearm"] call BIS_fnc_getFromPairs;
 private _AR = [_loadout, "AR"] call BIS_fnc_getFromPairs;
 private _MG = [_loadout, "MG"] call BIS_fnc_getFromPairs;
 private _AT = [_loadout, "AT"] call BIS_fnc_getFromPairs;
-private _SNP = [_loadout, "SNP"] call BIS_fnc_getFromPairs;
-private _RIS = [_loadout, "RIS"] call BIS_fnc_getFromPairs;
 private _CR = [_loadout, "CR"] call BIS_fnc_getFromPairs;
 
 private _output = [];
@@ -47,9 +45,6 @@ switch (_structTxt) do {
       _output pushBack "<font size='18' color='#e1701a' face='PuristaBold'>LAT</font>";
       _output append ([_AT, false] call fnf_briefing_fnc_weaponDetails);
     };
-    _output pushBack "<font size='18' color='#e1701a' face='PuristaBold'>RECON</font>";
-    _output append ([_SNP, false] call fnf_briefing_fnc_weaponDetails);
-    _output append ([_RIS, false] call fnf_briefing_fnc_weaponDetails);
     _output pushBack "<font size='18' color='#e1701a' face='PuristaBold'>CREW/AVIATION</font>";
     _output append ([_CR, false] call fnf_briefing_fnc_weaponDetails);
   };
@@ -67,9 +62,6 @@ switch (_structTxt) do {
       _output pushBack "<t size='1.1' color='#e1701a' face='PuristaBold'>LAT</t>";
       _output append ([_AT, true] call fnf_briefing_fnc_weaponDetails);
     };
-    _output pushBack "<t size='1.1' color='#e1701a' face='PuristaBold'>RECON</t>";
-    _output append ([_SNP, true] call fnf_briefing_fnc_weaponDetails);
-    _output append ([_RIS, true] call fnf_briefing_fnc_weaponDetails);
     _output pushBack "<t size='1.1' color='#e1701a' face='PuristaBold'>CREW/AVIATION</t>";
     _output append ([_CR, true] call fnf_briefing_fnc_weaponDetails);
   };

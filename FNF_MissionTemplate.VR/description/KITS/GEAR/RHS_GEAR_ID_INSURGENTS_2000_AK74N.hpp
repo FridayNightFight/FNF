@@ -96,9 +96,8 @@ class RHS_GEAR_ID_INSURGENTS_2000_AK74N {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,6),
-          UGL_MAGS(UGL_SMOKEWHITE,3),
-          UGL_MAGS(UGL_FLAREWHITE,3)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
     };

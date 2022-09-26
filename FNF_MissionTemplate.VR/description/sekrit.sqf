@@ -1,7 +1,7 @@
 if !(fnf_gameMode == "sustainedAssault") then {
   fnf_missionTimeLimit = 50; //Mission time limit in minutes - starts after safe start ends
 } else {
-  fnf_missionTimeLimit = 60;
+  fnf_missionTimeLimit = 120;
 };
 fnf_safeStartTime = 15; //Safestart time in minutes
 

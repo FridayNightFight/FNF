@@ -23,7 +23,12 @@ if (!(playerSide == fnf_defendingSide) || fnf_fortifyPoints <= 0) exitWith {};
 if (PLAYERLOADOUTVAR != "CE") exitWith {
   [{
     if (!(missionNamespace getVariable ["fnf_safetyEnabled", true])) then {[_handle] call CBA_fnc_removePerFrameHandler};
-    if ("ACE_Fortify" in (items player)) then {player removeItem "ACE_Fortify"};
+    if ("ACE_Fortify" in (items player)) then {
+      _weaponHolder = createVehicle ["GroundWeaponHolder_Scripted", getPosATL player, [], 0, "CAN_COLLIDE"];
+      player removeItem "ACE_Fortify";
+      [_weaponHolder, "ACE_Fortify"] call CBA_fnc_addItemCargo;
+      hint "You cannot carry a fortify tool. It has been dropped on the ground."
+    };
   }, 1] call CBA_fnc_addPerFrameHandler;
 };
 

@@ -5,6 +5,7 @@ call fnf_restrictions_fnc_startBoundary;
 call fnf_restrictions_fnc_restrictedZones;
 call fnf_restrictions_fnc_viewDistance;
 call fnf_restrictions_fnc_restrictVoiceVolume;
+call fnf_restrictions_fnc_restrictWeaponThermal;
 
 //Uniform and etool restrictions
 [{missionNamespace getVariable ["fnf_loadoutAssigned",false]}, {call fnf_restrictions_fnc_restrictETool}] call CBA_fnc_waitUntilAndExecute;

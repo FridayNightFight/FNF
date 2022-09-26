@@ -31,7 +31,7 @@
 #define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
 #define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
 
-#define AR_RIFLE "fnf_rpk"
+#define AR_RIFLE "rhs_weap_rpk74m"
 #define AR_MAG "fnf_45rnd_rpk_green:13"
 #define AR_MAG_ASST "fnf_45rnd_rpk_green:10"
 
@@ -96,9 +96,8 @@ class RHS_GEAR_ANY_IRAN_2020_G3A3 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,6),
-          UGL_MAGS(UGL_SMOKEWHITE,3),
-          UGL_MAGS(UGL_FLAREWHITE,3)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
     };

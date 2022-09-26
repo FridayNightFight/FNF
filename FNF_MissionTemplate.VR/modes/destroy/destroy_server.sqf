@@ -47,14 +47,57 @@ publicVariable "fnf_specObjectives";
 
 } forEach _objArr;
 
-//Increase fnf_aliveObjectives for each active objective
+fnf_destroy_server_fnc_registerHit = {
+  params ["_object","_hitValue","_explosive"];
+
+  _hitValue = round _hitValue;
+  private _needsExplosive = _object getVariable ["hitNeeded",0] >= 1000;
+  private _nonExpThreshold = 1000; //How much damage is required for non-explosive damage to register on a large object
+  private _maxNonExpDmg = 1500; //The maximum amount of damage a non-explosive hit can do
+
+  if (_needsExplosive && !_explosive && _hitValue < _nonExpThreshold) exitWith {};
+  if (_needsExplosive && !_explosive && _hitValue >= _nonExpThreshold) then {_hitValue = _maxNonExpDmg};
+
+  _object setVariable ["hitValue", (_object getVariable ["hitValue",0]) + _hitValue];
+};
+
+_destroy_server_fnc_damageTest = {
+  private _object = _this;
+  private _damageChanged = false;
+  private _sizeRatio = 450;
+  private _minDamage = 100;
+  private _maxDamage = 13000;
+
+  //Check if object can be damaged
+  _canDamage = if (getText (configfile >> "CfgVehicles" >> typeOf _object >> "destrType") == "DestructNo") then {false} else {true};
+
+  //Set hit value needed for destruction and start custom damage system on clients for objects that cannot be damaged normally
+  if (!_canDamage) then {
+    _object setVariable ["hitValue", 0];
+    _object setVariable ["hitNeeded", round (_maxDamage min (((0 boundingBoxReal _object) select 2) * _sizeRatio))];
+
+    if (_object getVariable ["hitNeeded",0] < _minDamage) then {_object setVariable ["hitNeeded",_minDamage]};
+
+    [_object] remoteExec ["fnf_server_fnc_customDamage",0,true];
+
+    systemChat format ["Using custom damage system for objective %1.", _object];
+  };
+};
+
+
+//Increase fnf_aliveObjectives for each active objective and conduct damage test
 {
-  if !(isNull (_x select 0)) then {
+  private _obj = _x select 0;
+
+  if !(isNull _obj) then {
     fnf_aliveObjectives = fnf_aliveObjectives + 1;
 
+    //Test if object is damageable. If not, use custom damage system
+    _obj call _destroy_server_fnc_damageTest;
+
     //Reduce damage if obj is default cache
-    if (typeOf (_x select 0) isEqualTo "Box_FIA_Ammo_F") then {
-      (_x select 0) addEventHandler ["HandleDamage", {
+    if (typeOf _obj isEqualTo "Box_FIA_Ammo_F") then {
+      _obj addEventHandler ["HandleDamage", {
         _unit = _this select 0;
         _selection = _this select 1;
         _damage = _this select 2;
@@ -81,9 +124,11 @@ publicVariable "fnf_specObjectives";
 
     private _itemConfig = [_x # 0] call CBA_fnc_getObjectConfig;
     private _itemPic = [_itemConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+    private _itemName = getText (_itemConfig >> "DisplayName");
+    if (_x select 2 != "") then {_itemName = _x select 2};
 
-    [fnf_defendingSide,_defendTaskID,[format["<img image='%1' width='300'>", _itemPic],format ["Defend the %1",_x select 2],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
-    [fnf_attackingSide,_attackTaskID,[format["<img image='%1' width='300'>", _itemPic],format [_attackersTaskText + "%1",_x select 2],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_defendingSide,_defendTaskID,[format["<img image='%1' width='300'>", _itemPic],format ["Defend the %1",_itemName],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_attackingSide,_attackTaskID,[format["<img image='%1' width='300'>", _itemPic],format [_attackersTaskText + "%1",_itemName],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
 
     [(_x select 0), -1] call ace_cargo_fnc_setSize;
 
@@ -91,13 +136,15 @@ publicVariable "fnf_specObjectives";
     [_x select 0, _x select 1, _defendTaskID, _attackTaskID, _taskCount] spawn {
       params ["_object","_markerName","_defendTaskID","_attackTaskID", "_taskCount"];
 
-      waitUntil {!alive _object};
+      waitUntil {!(alive _object) || (_object getVariable ["hitValue",-1]) >= (_object getVariable ["hitNeeded",0])};
 
       [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
       [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
 
       [format["Objective %1 has been destroyed!", _taskCount], "info", 7] remoteExec ["fnf_ui_fnc_notify",0,false];
+
+      if (_object getVariable ["hitValue",-1] > 0) then {deleteVehicle _object};
 
       fnf_aliveObjectives = fnf_aliveObjectives - 1;
       [_markerName] remoteExec ["deleteMarkerLocal",0,true];

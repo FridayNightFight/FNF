@@ -201,6 +201,7 @@ class CfgFunctions {
       class restrictGamma{};
       class viewDistance{};
       class restrictVoiceVolume{};
+      class restrictWeaponThermal{};
     };
   };
   class fnf_safety {
@@ -215,6 +216,7 @@ class CfgFunctions {
     class functions {
       file = "client\spectator";
       class init{};
+      class muteSpectators{};
     };
   };
   class fnf_ui {
@@ -278,6 +280,7 @@ class CfgFunctions {
     class damage {
       file = "server\damage";
       class handleDamage{};
+      class customDamage{};
     };
     class webhook {
       file = "server\webhook";

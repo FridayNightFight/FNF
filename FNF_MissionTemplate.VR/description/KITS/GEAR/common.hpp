@@ -15,8 +15,9 @@
 #define SMOKE_GRENADES "SmokeShell:2"
 #define FRAG_GRENADES "rhs_mag_m67:2"
 #define BASE_GRENADES FRAG_GRENADES,SMOKE_GRENADES
-#define MEDIC_SMOKES "SmokeShellBlue:3"
+#define MEDIC_SMOKES "SmokeShellBlue:2"
 #define LEADER_SMOKES "SmokeShellGreen:2","SmokeShellPurple:2","SmokeShellRed:2"
+#define MARKING_SMOKES "rhs_mag_m713_Red:3","rhs_mag_m716_yellow:2","rhs_GRD40_Red:4","rhs_GRD40_Green:2"
 
 #define VN_B_FRAG_GRENADES "vn_m61_grenade_mag:2"
 #define VN_B_SMOKE_GRENADES "vn_m18_white_mag:2"

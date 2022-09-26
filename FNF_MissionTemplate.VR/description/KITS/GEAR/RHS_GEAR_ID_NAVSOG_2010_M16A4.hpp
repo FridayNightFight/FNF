@@ -11,7 +11,7 @@
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203","rhs_weap_m4a1_blockII_M203_bk"
+#define RIFLE_GL "rhs_weap_m16a4_carryhandle_M203","rhs_weap_mk18_M320"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
@@ -96,9 +96,8 @@ class RHS_GEAR_ID_NAVSOG_2010_M16A4 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,6),
-          UGL_MAGS(UGL_SMOKEWHITE,3),
-          UGL_MAGS(UGL_FLAREWHITE,3)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
     };
