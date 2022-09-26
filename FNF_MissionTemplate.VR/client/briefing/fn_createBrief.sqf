@@ -648,7 +648,7 @@ player createDiaryRecord [
   ]
 ];
 
-
+/*
 fnf_Diary_Credits = player createDiarySubject ["fnf_Diary_Credits", "Credits"];
 player createDiaryRecord [
   "fnf_Diary_Credits",
@@ -657,6 +657,7 @@ player createDiaryRecord [
     [fnf_ui_structTextRef, "Credits"] call BIS_fnc_getFromPairs
   ]
 ];
+*/
 
 
 if (!isNil "fnf_briefing_loadoutIND") then {
