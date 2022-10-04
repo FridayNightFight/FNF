@@ -44,9 +44,7 @@ class RHS_UNI_ANY_CHINA_PLA_1980 {
 
   class SL : TL {};
   class SGT : SL {};
-  class PL : SGT {
-    headgear[] = {HELMET_CMDR};
-  };
+  class PL : SGT {};
 
   class ARA : BASE {
     backpack[] = {BACKPACK_AR};

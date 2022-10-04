@@ -45,7 +45,6 @@ class RHS_UNI_NATO_US_ARMY_1980 {
   class SL : TL {};
   class SGT : SL {};
   class PL : SGT {
-    headgear[] = {HELMET_CMDR};
     uniform[] = {"UK3CB_CW_US_B_LATE_U_JNR_OFFICER_Uniform_01_WDL"};
   };
 

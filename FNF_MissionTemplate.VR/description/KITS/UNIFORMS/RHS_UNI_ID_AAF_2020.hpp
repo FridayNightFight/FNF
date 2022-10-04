@@ -45,7 +45,6 @@ class RHS_UNI_ID_AAF_2020 {
   class SL : TL {};
   class SGT : SL {};
   class PL : SGT {
-    headgear[] = {HELMET_CMDR};
     uniform[] = {"UK3CB_AAF_B_U_Officer_DIGI_GRN"};
   };
 

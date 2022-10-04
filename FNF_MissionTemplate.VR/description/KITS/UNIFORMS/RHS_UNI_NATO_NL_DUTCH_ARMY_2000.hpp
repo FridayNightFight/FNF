@@ -44,9 +44,7 @@ class RHS_UNI_NATO_NL_DUTCH_ARMY_2000 {
 
   class SL : TL {};
   class SGT : SL {};
-  class PL : SGT {
-    headgear[] = {HELMET_CMDR};
-  };
+  class PL : SGT {};
 
   class ARA : BASE {
     backpack[] = {BACKPACK_AR};

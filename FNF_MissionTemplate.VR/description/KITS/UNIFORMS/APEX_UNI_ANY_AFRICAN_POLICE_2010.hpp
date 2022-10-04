@@ -44,9 +44,7 @@ class APEX_UNI_ANY_AFRICAN_POLICE_2010 {
 
   class SL : TL {};
   class SGT : SL {};
-  class PL : SGT {
-    headgear[] = {HELMET_CMDR};
-  };
+  class PL : SGT {};
 
   class ARA : BASE {
     backpack[] = {BACKPACK_AR};

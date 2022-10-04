@@ -45,7 +45,6 @@ class RHS_UNI_RU_ARMY_1980 {
   class SL : TL {};
   class SGT : SL {};
   class PL : SGT {
-    headgear[] = {HELMET_CMDR};
     uniform[] = {"UK3CB_CW_SOV_O_Late_U_JNR_OFFICER_Uniform_01_KHK"};
   };
 

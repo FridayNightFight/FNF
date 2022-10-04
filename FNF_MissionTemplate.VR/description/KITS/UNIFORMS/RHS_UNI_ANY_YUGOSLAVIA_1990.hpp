@@ -44,9 +44,7 @@ class RHS_UNI_ANY_YUGOSLAVIA_1990 {
 
   class SL : TL {};
   class SGT : SL {};
-  class PL : SGT {
-    headgear[] = {HELMET_CMDR};
-  };
+  class PL : SGT {};
 
   class ARA : BASE {
     backpack[] = {BACKPACK_AR};
