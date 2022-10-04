@@ -7,8 +7,8 @@
     if (!(missionNamespace getVariable ["fnf_safetyEnabled", true])) then {_handle call CBA_fnc_removePerFrameHandler};
 
     _cmdUnits = (units playerSide) select {
-      // ["officer", typeOf _x] call BIS_fnc_inString
-      (_x getVariable ["fnfLoadout", "BASE"]) in ["PL","SGT"]
+      ["officer", typeOf _x] call BIS_fnc_inString &&
+      (_x getVariable ["fnfLoadout", "BASE"]) in ["CC","EO","SGT"]
     };
 
     // address officers (CMD, PL)
@@ -24,7 +24,7 @@
 
       // _thisName = format["%1: %2", ((roleDescription _x) splitString "@")# 0, name _x];
       // _thisName = groupId (group _x);
-      private _thisName = format["PLTHQ %1", _x getVariable ["fnfLoadout", "PL"]];
+      private _thisName = format["CMD %1", _x getVariable ["fnfLoadout", "CC"]];
 
       if (player distance _x <= 120) then {
         drawIcon3D["", [1, 1, 1, 0.9], _targetPositionAGLTop, 0.6 / (getResolution select 5), 0.6 / (getResolution select 5), 0, _thisName, true, 0.015 / (getResolution select 5), "PuristaBold", "center"];

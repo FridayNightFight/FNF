@@ -1,9 +1,8 @@
 fnf_loadout_roles = [
   ["CC",["Company Commander","CAPTAIN"]],
   ["EO",["Executive Officer","LIEUTENANT"]],
-  ["CSGT",["Company Sergeant","SERGEANT"]],
   ["PL",["Platoon Leader","LIEUTENANT"]],
-  ["SGT",["Platoon Sergeant","SERGEANT"]],
+  ["SGT",["Sergeant","SERGEANT"]],
   ["SL",["Squad Leader","SERGEANT"]],
   ["TL",["Team Leader","CORPORAL"]],
   ["AR",["Autorifleman","PRIVATE"]],

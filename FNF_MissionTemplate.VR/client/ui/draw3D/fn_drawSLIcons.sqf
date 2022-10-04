@@ -13,7 +13,7 @@
     if (!isNil "fnf_fnc_objectivePreview_Cam") exitWith {};
 
     _slUnits = (units playerSide) select {
-      (_x getVariable ["fnfLoadout", "BASE"]) isEqualTo "SL"
+      (_x getVariable ["fnfLoadout", "BASE"]) isEqualTo "PL"
     };
 
     private _templateGroups = (missionNamespace getVariable ["fnf_templateGroupsListExtended", []]);
