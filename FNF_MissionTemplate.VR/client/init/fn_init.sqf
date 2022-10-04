@@ -235,6 +235,7 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 [] spawn fnf_fnc_unflipVehicleAddAction;
 
 // adds ACE Self-interact to fix uniform bug
+/*
 private _action = [
   "FixUniformBug",
   "Fix ""No Uniform"" Bug",
@@ -248,6 +249,7 @@ private _action = [
   ["ACE_SelfActions"],
   _action
 ] call ace_interact_menu_fnc_addActionToObject;
+*/
 
 
 // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool
