@@ -7,10 +7,9 @@ _transportsPresentOPF = 0;
 _transportsPresentIND = 0;
 
 _fnc_getMAT = {
-	params ["_gearset","_bravo","_delta"];
+	params ["_gearset","_bravo"];
 	private _CFGGEAR = missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> _gearset;
 	private _cfgDefaultMATBravo = (_CFGGEAR >> "MAT1" >> "defaultMAT") call BIS_fnc_getCfgDataArray;
-	private _cfgDefaultMATDelta = (_CFGGEAR >> "MAT2" >> "defaultMAT") call BIS_fnc_getCfgDataArray;
 	private _selectedMAT = [];
 	{
 		_x params ["_configured",["_config",[]]];
@@ -26,14 +25,11 @@ _fnc_getMAT = {
 			_selectedMAT pushBack _configured;
 		};
 	} forEach [
-		[_bravo,_cfgDefaultMATBravo],
-		[_delta,_cfgDefaultMATDelta]
+		[_bravo,_cfgDefaultMATBravo]
 	];
-	_selectedMAT params ["_bravo","_delta"];
+	_selectedMAT params ["_bravo"];
 	_bravo params ["_bclassname","_bmagazines","_boptics","_breloadable","_bshortname"];
-	_delta params ["_dclassname","_dmagazines","_doptics","_dreloadable","_dshortname"];
 	_bmagazines = _bmagazines apply {_x splitString ':' select 1};
-	_dmagazines = _dmagazines apply {_x splitString ':' select 1};
 	_strStart = ", ";
 	_lastElement = outArr select (count outArr - 1);
 
@@ -41,7 +37,7 @@ _fnc_getMAT = {
 	//To get rid of the starting comma if the side has no other assets besides MAT
 	if (_lastElement select [count _lastElement - 1] == " ") then {_strStart = ""};
 
-	if (_bShortName isEqualTo _dShortName && _bMagazines isEqualTo _dMagazines) then {
+	if (true) then {
 		outArr pushBack format["%3MAT:2x%1[%2]",
 			_bShortName,
 			_bMagazines joinString ",",
@@ -51,8 +47,6 @@ _fnc_getMAT = {
 		outArr pushBack format["%5MAT:%1[%2]+%3[%4]",
 			_bShortName,
 			_bMagazines joinString ",",
-			_dShortName,
-			_dMagazines joinString ",",
 			_strStart
 		];
 	};
@@ -144,7 +138,7 @@ if (playableSlotsNumber west > 0) then {
 		outArr pushBack format[" + %1 transports", _transportsPresentBLU];
 	};
 
-	[fnf_bluforGear, fnf_bluAT_Bravo, fnf_bluAT_Delta] call _fnc_getMAT;
+	[fnf_bluforGear, fnf_bluAT] call _fnc_getMAT;
 };
 
 // OPFOR VEHICLES
@@ -167,7 +161,7 @@ if (playableSlotsNumber east > 0) then {
 		outArr pushBack format[" + %1 transports", _transportsPresentOPF];
 	};
 
-	[fnf_opforGear, fnf_redAT_Bravo, fnf_redAT_Delta] call _fnc_getMAT;
+	[fnf_opforGear, fnf_redAT] call _fnc_getMAT;
 };
 
 // INDFOR VEHICLES
@@ -189,7 +183,7 @@ if (playableSlotsNumber independent > 0) then {
 		outArr pushBack format[" + %1 transports", _transportsPresentIND];
 	};
 
-	[fnf_indforGear, fnf_grnAT_Bravo, fnf_grnAT_Delta] call _fnc_getMAT;
+	[fnf_indforGear, fnf_grnAT] call _fnc_getMAT;
 };
 
 _out = (outArr joinString "");

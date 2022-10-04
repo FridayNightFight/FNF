@@ -42,22 +42,9 @@ private ["_at","_configVarValue","_configVarName","_cfgDefaultMAT"];
 _cfgDefaultMAT = (CFGGEAR >> "defaultMAT") call BIS_fnc_getCfgDataArray;
 
 switch (playerSide) do {
-  case east: {_configVarName = "fnf_redAT_"};
-  case west: {_configVarName = "fnf_bluAT_"};
-  case independent: {_configVarName = "fnf_grnAT_"};
-};
-
-
-switch (true) do {
-  case (["Bravo", roleDescription player] call BIS_fnc_inString): {
-    _configVarName = _configVarName + "Bravo";
-  };
-  case (["Delta", roleDescription player] call BIS_fnc_inString): {
-    _configVarName = _configVarName + "Delta";
-  };
-  default {
-    _configVarName = _configVarName + "Bravo";
-  };
+  case east: {_configVarName = "fnf_redAT"};
+  case west: {_configVarName = "fnf_bluAT"};
+  case independent: {_configVarName = "fnf_grnAT"};
 };
 
 _configVarValue = missionNamespace getVariable [_configVarName, []];

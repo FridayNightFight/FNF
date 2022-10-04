@@ -43,7 +43,7 @@ fnf_briefing_fnc_getItemInfo = {
 };
 
 fnf_briefing_fnc_parseMAT = {
-  params ["_side", "_bravoOption", "_deltaOption", ["_structText", false]];
+  params ["_side", "_bravoOption", ["_structText", false]];
 
   private "_gearLoadout";
   switch (_side) do {
@@ -94,8 +94,7 @@ fnf_briefing_fnc_parseMAT = {
     };
 
   } forEach [
-    [_bravoOption, "MAT1"],
-    [_deltaOption, "MAT2"]
+    [_bravoOption, "MAT1"]
   ];
 
   _textOut joinString "<br/>"
@@ -174,7 +173,7 @@ fnf_briefing_fnc_parseCSW = {
 if (!isNil "fnf_briefing_west_uniform" || !isNil "fnf_briefing_west_headgear" || !isNil "fnf_briefing_west_uniformMeta" && !isNil "fnf_briefing_west_loadout") then {
 
   private _uiMAT = [fnf_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
-  _uiMAT = _uiMAT + ([west, fnf_bluAT_Bravo, fnf_bluAT_Delta, true]  call fnf_briefing_fnc_parseMAT);
+  _uiMAT = _uiMAT + ([west, fnf_bluAT, true]  call fnf_briefing_fnc_parseMAT);
   fnf_ui_structTextRef = [fnf_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show BLUFOR loadout
@@ -265,7 +264,7 @@ Author: %6<br/><br/>
 if (!isNil "fnf_briefing_east_uniform" || !isNil "fnf_briefing_east_headgear" || !isNil "fnf_briefing_east_uniformMeta" && !isNil "fnf_briefing_east_loadout") then {
 
   private _uiMAT = [fnf_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
-  _uiMAT = _uiMAT + ([east, fnf_redAT_Bravo, fnf_redAT_Delta, true] call fnf_briefing_fnc_parseMAT);
+  _uiMAT = _uiMAT + ([east, fnf_redAT, true] call fnf_briefing_fnc_parseMAT);
   fnf_ui_structTextRef = [fnf_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show OPFOR loadout
@@ -356,7 +355,7 @@ Author: %3<br/><br/>
 if (!isNil "fnf_briefing_ind_uniform" || !isNil "fnf_briefing_ind_headgear" || !isNil "fnf_briefing_ind_uniformMeta" && !isNil "fnf_briefing_ind_loadout") then {
 
   private _uiMAT = [fnf_ui_structTextRef, "MAT Settings", ""] call BIS_fnc_getFromPairs;
-  _uiMAT = _uiMAT + ([independent, fnf_grnAT_Bravo, fnf_grnAT_Delta, true] call fnf_briefing_fnc_parseMAT);
+  _uiMAT = _uiMAT + ([independent, fnf_grnAT, true] call fnf_briefing_fnc_parseMAT);
   fnf_ui_structTextRef = [fnf_ui_structTextRef, "MAT Settings", _uiMAT] call BIS_fnc_setToPairs;
 
   // show INDFOR loadout

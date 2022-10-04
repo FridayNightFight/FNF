@@ -142,8 +142,8 @@ Possible launcher values (and recommended counts)
 
   EXAMPLE:
   format:
-    fnf_bluAT_Bravo = CARLG(2,0);
-    fnf_bluAT_Delta = JAVELIN(1);
+    fnf_bluAT = CARLG(2,0);
+    fnf_bluAT = JAVELIN(1);
 
   CARLG would give the MAT gunner a Carl Gustav
   The 2 refers to how many HEAT rockets/missiles for each: gunner, assistant, assistant.
