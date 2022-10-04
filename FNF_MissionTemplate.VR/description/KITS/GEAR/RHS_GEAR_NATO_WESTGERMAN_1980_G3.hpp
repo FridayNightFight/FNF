@@ -117,6 +117,7 @@ class RHS_GEAR_NATO_WESTGERMAN_1980_G3 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

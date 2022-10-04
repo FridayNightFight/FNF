@@ -117,6 +117,7 @@ class RHS_GEAR_NATO_CANADIAN_ARMY_1980_CAL {
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

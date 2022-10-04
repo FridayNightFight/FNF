@@ -116,6 +116,7 @@ class RHS_GEAR_NATO_GREEKFORCES_2010_L1A1 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

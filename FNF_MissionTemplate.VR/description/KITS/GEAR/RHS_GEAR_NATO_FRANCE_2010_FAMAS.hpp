@@ -116,6 +116,7 @@ class RHS_GEAR_NATO_FRANCE_2010_FAMAS {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

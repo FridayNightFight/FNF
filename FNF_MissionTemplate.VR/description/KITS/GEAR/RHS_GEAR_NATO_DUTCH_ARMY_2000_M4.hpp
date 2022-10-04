@@ -116,6 +116,7 @@ class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

@@ -116,6 +116,7 @@ class RHS_GEAR_RU_COMMUNIST_MILITIA_1980_SKS {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

@@ -117,6 +117,7 @@ class RHS_GEAR_ID_MEC_2010_AK103 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

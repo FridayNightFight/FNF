@@ -116,6 +116,7 @@ class RHS_GEAR_ANY_VIETNAMESE_JUNGLE_1980_SKS {
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

@@ -117,6 +117,7 @@ class RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

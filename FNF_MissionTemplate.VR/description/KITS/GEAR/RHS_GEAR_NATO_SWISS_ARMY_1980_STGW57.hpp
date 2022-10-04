@@ -117,6 +117,7 @@ class RHS_GEAR_NATO_SWISS_ARMY_1980_STGW57 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

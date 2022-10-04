@@ -117,6 +117,7 @@ class RHS_GEAR_ANY_IRAN_2020_G3A3 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

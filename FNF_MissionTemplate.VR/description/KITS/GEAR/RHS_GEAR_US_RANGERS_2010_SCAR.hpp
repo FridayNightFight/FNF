@@ -117,6 +117,7 @@ class RHS_GEAR_US_RANGERS_2010_SCAR {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

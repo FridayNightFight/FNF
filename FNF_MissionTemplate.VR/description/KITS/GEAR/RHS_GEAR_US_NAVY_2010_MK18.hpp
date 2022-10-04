@@ -117,6 +117,7 @@ class RHS_GEAR_US_NAVY_2010_MK18 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

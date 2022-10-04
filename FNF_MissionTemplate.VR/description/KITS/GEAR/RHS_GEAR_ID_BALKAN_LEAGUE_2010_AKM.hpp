@@ -117,6 +117,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

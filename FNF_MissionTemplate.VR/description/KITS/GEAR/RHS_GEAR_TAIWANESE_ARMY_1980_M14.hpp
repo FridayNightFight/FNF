@@ -117,6 +117,7 @@ class RHS_GEAR_TAIWANESE_ARMY_1980_M14 {
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

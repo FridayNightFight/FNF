@@ -119,6 +119,7 @@ class VN_GEAR_US_SOG1970 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}

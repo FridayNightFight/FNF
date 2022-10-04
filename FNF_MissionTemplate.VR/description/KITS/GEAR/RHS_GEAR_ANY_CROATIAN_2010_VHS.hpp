@@ -116,6 +116,7 @@ class RHS_GEAR_ANY_CROATIAN_2010_VHS {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

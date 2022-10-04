@@ -117,6 +117,7 @@ class RHS_GEAR_UK_PARA_1980_FAL {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

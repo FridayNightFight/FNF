@@ -116,6 +116,7 @@ class RHS_GEAR_ANY_AFRICAN_POLICE_2010_FAMAS {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {

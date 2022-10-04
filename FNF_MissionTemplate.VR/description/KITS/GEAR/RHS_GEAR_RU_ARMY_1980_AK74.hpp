@@ -116,6 +116,7 @@ class RHS_GEAR_RU_ARMY_1980_AK74 {
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
