@@ -229,6 +229,14 @@ if (isNil {
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
+if (PLAYERLOADOUTVAR == "AB") then {
+  _abRifleMag = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> "BASE" >> "weaponChoices") call BIS_fnc_getCfgDataArray select 0 select 1 select 0 splitString ":" select 0;
+  _abARMags = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> "AR" >> "weaponChoices") call BIS_fnc_getCfgDataArray select 0 select 1 select 0;
+  _abARMags = _abARMags splitString ":";
+  _abARMags = (_abARMags select 0) + ":" + str (ceil (parseNumber (_abARMags select 1) / 2));
+  [_abRifleMag + ":13","backpack"] call fnf_loadout_fnc_addGear;
+  [_abARMags,"backpack"] call fnf_loadout_fnc_addGear;
+};
 
 if (isNil {[player, _cfgWeaponChoices] call fnf_loadout_fnc_givePrimaryWeapon}) exitWith {
   [{time > 2}, {

@@ -19,6 +19,7 @@ fnf_loadout_roles = [
   ["MATA2",["Asst. AT Specialist","PRIVATE"]],
   ["RI",["Rifleman","PRIVATE"]],
   ["RIS",["Sr. Rifleman","CORPORAL"]],
+  ["AB",["Ammo Bearer","PRIVATE"]],
   ["DM",["Marksman","PRIVATE"]],
   ["SNP",["Sniper","CORPORAL"]],
   ["CRL",["Vehicle Cmdr","SERGEANT"]],
