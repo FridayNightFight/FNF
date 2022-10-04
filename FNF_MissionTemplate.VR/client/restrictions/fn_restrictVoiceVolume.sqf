@@ -9,7 +9,7 @@ TF_speak_volume_level = "whispering";
 TF_speak_volume_meters = 5;
 call TFAR_fnc_updateSpeakVolumeUI;
 
-_leaderRoles = ["PL","SGT","SL","TL","CRL"];
+_leaderRoles = ["CC","EO","CSGT","PL","SGT","SL","TL","CRL"];
 if (player getVariable ["fnfLoadout",""] in _leaderRoles || leader group player == player) exitWith {};
 
 //Loop this fnc until safety ends

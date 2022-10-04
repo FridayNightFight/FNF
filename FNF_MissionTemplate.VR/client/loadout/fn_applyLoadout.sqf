@@ -53,6 +53,11 @@ removeGoggles player;
 params [["_LOADOUTROLE", (player getVariable "fnfLoadout")]];
 if (!isNil {(player getVariable "fnfLoadout")}) then {
   diag_log text format["[FNF] (loadout) INFO: Player role is %1.", (player getVariable "fnfLoadout")];
+  switch (_LOADOUTROLE) do {
+    case "CC": {_LOADOUTROLE = "PL"};
+    case "EO": {_LOADOUTROLE = "PL"};
+    case "CSGT": {_LOADOUTROLE = "SGT"};
+  };
 };
 if (isNil {_LOADOUTROLE}) exitWith {
   [{time > 2}, {
