@@ -1,5 +1,5 @@
-// PL
-if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
+// CC
+if (["Company Commander", roleDescription player] call BIS_fnc_inString) then {
 	_action = [
 		"PL_Teleport",
 		"Teleport Subordinates",
@@ -17,7 +17,7 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 
 	_action = [
 		"PL_Teleport_leaders",
-		"Teleport SL/X/Assets",
+		"Teleport PL/Assets",
 		"",
 		{
 			["Platoon Leader", "leaders"] spawn fnf_fnc_teleportExec;
@@ -34,7 +34,7 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 
 	_action = [
 		"PL_Teleport_SL",
-		"Teleport SLs",
+		"Teleport PLs",
 		"",
 		{
 			["Platoon Leader", "sl"] spawn fnf_fnc_teleportExec;
@@ -51,7 +51,7 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 
 	_action = [
 		"PL_Teleport_SLTL",
-		"Teleport SLs + TLs",
+		"Teleport PLs + SLs",
 		"",
 		{
 			["Platoon Leader", "sltl"] spawn fnf_fnc_teleportExec;
@@ -85,7 +85,7 @@ if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 
 
 // SL
-if (["Squad Leader", roleDescription player] call BIS_fnc_inString) then {
+if (["Platoon Leader", roleDescription player] call BIS_fnc_inString) then {
 	_action = [
 		"SL_Teleport",
 		"Teleport Subordinates",
@@ -103,10 +103,10 @@ if (["Squad Leader", roleDescription player] call BIS_fnc_inString) then {
 
 	_action = [
 		"PL_Teleport_Leads",
-		"Teleport TLs",
+		"Teleport SLs",
 		"",
 		{
-			["Squad Leader", "tl"] spawn fnf_fnc_teleportExec;
+			["Platoon Leader", "tl"] spawn fnf_fnc_teleportExec;
 		},
 		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;
@@ -120,10 +120,10 @@ if (["Squad Leader", roleDescription player] call BIS_fnc_inString) then {
 
 	_action = [
 		"PL_Teleport_Leads",
-		"Teleport All Squad Members",
+		"Teleport All Squads",
 		"",
 		{
-			["Squad Leader", "all"] spawn fnf_fnc_teleportExec;
+			["Platoon Leader", "all"] spawn fnf_fnc_teleportExec;
 		},
 		{missionNamespace getVariable ["fnf_safetyEnabled", false]}
 	] call ace_interact_menu_fnc_createAction;

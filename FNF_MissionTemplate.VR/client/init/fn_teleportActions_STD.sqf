@@ -134,4 +134,3 @@ if !(fnf_gameMode != "sustainedAssault") exitWith {};
  *
  * Public: Yes
  */
-
