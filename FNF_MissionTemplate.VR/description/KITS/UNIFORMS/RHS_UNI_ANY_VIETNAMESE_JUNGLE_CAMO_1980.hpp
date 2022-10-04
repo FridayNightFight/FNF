@@ -53,6 +53,8 @@ class RHS_UNI_ANY_VIETNAMESE_JUNGLE_CAMO_1980 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

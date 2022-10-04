@@ -55,6 +55,8 @@ class RHS_UNI_ANY_IRANIAN_ARMY_2020 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

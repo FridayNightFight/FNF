@@ -53,6 +53,8 @@ class RHS_UNI_RU_VDV_2020 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

@@ -53,6 +53,8 @@ class RHS_UNI_ID_RHO_RHODESIA_1970 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

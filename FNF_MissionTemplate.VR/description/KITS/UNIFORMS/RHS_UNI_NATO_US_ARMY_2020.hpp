@@ -52,6 +52,8 @@ class RHS_UNI_NATO_US_ARMY_2020 {
   class AR : ARA {
     vest[] = {VEST_AR};
   };
+  
+  class AB: BASE {};
 
   class GR : BASE {};
 

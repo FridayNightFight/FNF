@@ -53,6 +53,8 @@ class RHS_UNI_NATO_UKRAINIAN_2010 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

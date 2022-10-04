@@ -53,6 +53,8 @@ class APEX_UNI_ANY_AFRICAN_POLICE_2010 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

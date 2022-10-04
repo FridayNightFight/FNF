@@ -53,6 +53,8 @@ class RHS_UNI_NATO_NL_DUTCH_ARMY_2000 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

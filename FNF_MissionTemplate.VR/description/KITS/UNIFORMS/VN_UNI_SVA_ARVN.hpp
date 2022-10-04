@@ -59,6 +59,8 @@ class VN_UNI_SVA_ARVN {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

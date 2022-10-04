@@ -53,6 +53,8 @@ class RHS_UNI_ID_IRAQI_INSURGENTS_2000 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

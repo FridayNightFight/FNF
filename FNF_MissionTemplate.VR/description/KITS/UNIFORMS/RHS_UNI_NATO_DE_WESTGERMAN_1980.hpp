@@ -53,6 +53,8 @@ class RHS_UNI_NATO_DE_WESTGERMAN_1980 {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};
