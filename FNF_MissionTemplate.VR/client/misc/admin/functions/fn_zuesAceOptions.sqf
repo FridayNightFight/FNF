@@ -40,6 +40,7 @@ _actionSpawnAvatar = [
     [fnf_zues_avatar, _player_Name] remoteExec ["setName"];
     fnf_zues_avatar allowDamage false;
     fnf_zues_avatar linkItem "NVGoggles";
+    fnf_zues_avatar linkItem "ItemMap";
     fnf_zues_avatar forceAddUniform "U_C_Protagonist_VR";
     fnf_zues_avatar addMagazine "30Rnd_65x39_caseless_mag";
     fnf_zues_avatar addWeapon "arifle_MX_F";
