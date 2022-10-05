@@ -145,11 +145,9 @@ class RHS_GEAR_ANY_CROATIAN_2010_VHS {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4),
+          UGL_MAGS(BASE_UGL_HUNTIR,3)
         }
       }
     };

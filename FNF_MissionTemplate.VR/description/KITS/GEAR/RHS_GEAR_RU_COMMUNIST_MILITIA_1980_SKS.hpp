@@ -145,10 +145,8 @@ class RHS_GEAR_RU_COMMUNIST_MILITIA_1980_SKS {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
     };

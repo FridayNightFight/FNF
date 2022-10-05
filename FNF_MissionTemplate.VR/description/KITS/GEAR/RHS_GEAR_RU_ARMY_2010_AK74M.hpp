@@ -145,11 +145,9 @@ class RHS_GEAR_RU_ARMY_2010_AK74M {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4),
+          UGL_MAGS(BASE_UGL_HUNTIR,3)
         }
       }
     };

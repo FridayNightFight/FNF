@@ -56,6 +56,7 @@ if (!isNil {(player getVariable "fnfLoadout")}) then {
   switch (_LOADOUTROLE) do {
     case "CC": {_LOADOUTROLE = "PL"};
     case "EO": {_LOADOUTROLE = "PL"};
+    case "SGT": {_LOADOUTROLE = "GRIR"};
   };
 };
 if (isNil {_LOADOUTROLE}) exitWith {

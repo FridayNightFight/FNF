@@ -147,10 +147,8 @@ class VN_GEAR_US_SOG1970 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
     };
