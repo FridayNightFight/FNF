@@ -1,6 +1,6 @@
 // GEAR
-#define GRUNT_MEDICAL "FirstAidKit:4"
-#define MEDIC_MEDICAL "ACE_fieldDressing:32","ACE_morphine:16","ACE_epinephrine:8","ACE_tourniquet:4","ACE_bloodIV_500:12","ACE_bloodIV_250:4","ACE_personalAidKit"
+#define GRUNT_MEDICAL "ACE_fieldDressing:8","ACE_morphine:2"
+#define MEDIC_MEDICAL "ACE_fieldDressing:42","ACE_morphine:16","ACE_epinephrine:8","ACE_tourniquet:4","ACE_bloodIV:8","ACE_bloodIV_500:8","ACE_personalAidKit"
 #define LINKED "ItemMap","ItemCompass","ItemWatch","ItemGPS","TFAR_microdagr"
 #define VN_B_LINKED_SOG "vn_b_item_map","vn_b_item_compass_sog","vn_b_item_watch"
 #define VN_B_LINKED "vn_b_item_map","vn_b_item_compass","vn_b_item_watch"
