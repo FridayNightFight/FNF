@@ -202,6 +202,7 @@ class CfgFunctions {
       class viewDistance{};
       class restrictVoiceVolume{};
       class restrictWeaponThermal{};
+      class restrictTeamManagement{};
     };
   };
   class fnf_safety {
