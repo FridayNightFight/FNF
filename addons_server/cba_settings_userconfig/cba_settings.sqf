@@ -144,8 +144,8 @@ ace_interact_menu_useListMenu = true;
 ace_interact_menu_useListMenuSelf = true;
 
 // ACE Interaction Menu (Self) - Move to Root
-force force ace_interact_menu_moveToRoot__ACE_TeamManagement__ACE_RenameGroup = true;
-force force ace_interact_menu_moveToRoot__ACE_TeamManagement__ACE_BecomeLeader = true;
+force force ace_interact_menu_moveToRoot__ACE_TeamManagement__ACE_RenameGroup = false;
+force force ace_interact_menu_moveToRoot__ACE_TeamManagement__ACE_BecomeLeader = false;
 
 // ACE Logistics
 force force ace_cargo_enable = true;
