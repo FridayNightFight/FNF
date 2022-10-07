@@ -37,13 +37,6 @@ publicVariable "fnf_specObjectives";
     "CREATED"
   ] call BIS_fnc_taskCreate;
   [
-    independent,
-    format["defTask%1", _forEachIndex + 1],
-    ["", "Protect the " + _role, ""],
-    [HVTXOBJ,true],
-    "CREATED"
-  ] call BIS_fnc_taskCreate;
-  [
     fnf_attackingSide,
     format["atkTask%1", _forEachIndex + 1],
     ["", "Eliminate the enemy " + _role, ""],
