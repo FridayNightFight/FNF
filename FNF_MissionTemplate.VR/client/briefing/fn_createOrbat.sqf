@@ -127,14 +127,14 @@ _generateORBAT = {
                 _groupString = _groupString + format ["%1 --", _name];
                 _groupStringStruct = _groupStringStruct + format ["%1 --", _name];
             } else {
-              _groupString = _groupString + format ["<font size='12' face='EtelkaMonospacePro'><font color='%5'>%1 [%4]</font> - %2 MHz</font>  ",
+              _groupString = _groupString + format ["<font size='12' face='EtelkaMonospacePro'><font color='%5'>%1</font> - %2 MHz</font>  ",
                 _name,
                 _freq,
                 (count units _x),
                 toUpper(_groupSide select [0,3]),
                 "#FF8E38"
               ];
-              _groupStringStruct = _groupStringStruct + format ["<t size='1' font='EtelkaMonospacePro'><t color='%5'>%1 [%4]</t> - %2 MHz</t>  ",
+              _groupStringStruct = _groupStringStruct + format ["<t size='1' font='EtelkaMonospacePro'><t color='%5'>%1</t> - %2 MHz</t>  ",
                 _name,
                 _freq,
                 (count units _x),
