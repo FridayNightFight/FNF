@@ -63,9 +63,11 @@ private [
 
 //================== MASTER SWITCHES
 
-_QS_ST_map_enableUnitIcons = fnf_showUnitIcons;							// BOOL. TRUE to enable MAP unit/vehicle Icons. Default TRUE.
-_QS_ST_gps_enableUnitIcons = fnf_showUnitIcons;							// BOOL. TRUE to enable GPS unit/vehicle Icons. Default TRUE.
-_QS_ST_enableGroupIcons = fnf_showGroupIcons;								// BOOL. TRUE to enable Map+GPS+HUD GROUP Icons. Default TRUE.
+_QS_ST_map_enableUnitIcons = ["fnf_mapUnitIcons",1] call BIS_fnc_getParamValue == 1; //MAP unit/vehicle Icons.
+_QS_ST_gps_enableUnitIcons = ["fnf_gpsUnitIcons",1] call BIS_fnc_getParamValue == 1; //GPS unit/vehicle Icons.
+_QS_ST_enableGroupIcons = !(missionNamespace getVariable ["ace_map_BFT_Enabled",false]); //Map+GPS+HUD GROUP Icons.
+
+if (!_QS_ST_map_enableUnitIcons && !_QS_ST_gps_enableUnitIcons && !_QS_ST_enableGroupIcons) exitWith{}; //Exit if not using system
 
 //================= ADMIN
 

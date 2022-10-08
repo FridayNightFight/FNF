@@ -155,7 +155,7 @@ fnf_grnAT = GEARDEFAULT;
 
 ////////////////////////////////////////////////////////////
 
-// SQUAD HQ AUXILIARY ROLES //
+// SQUAD HQ AUXILIARY ROLES //*NOT USED*
 // "SHQAUX"
 // Adjusts what loadout the two extra Squad HQ members will receive
 // Set to 0 to make default crewman, set to one of the options to enable equipment for it.
@@ -182,12 +182,7 @@ fnf_grnAT = GEARDEFAULT;
 
 // SYSTEM SETTINGS //
 
-// Show/Hide unit / group icons on map, GPS for players
-// Used in limited-intel scenarios like WWII and Vietnam
-// i.e. showUnitIcons should be true for Modern and sustainedAssault VN missions
-fnf_showUnitIcons = true;
-fnf_showGroupIcons = true;
-fnf_showAlliedFactions = true;
+fnf_showAlliedFactions = true; //Show allied factions on map
 
 
 // debug

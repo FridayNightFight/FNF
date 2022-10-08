@@ -3,6 +3,7 @@ onLoadName = "MISSION_NAME";
 onLoadMission = "SHORT_DESCRIPTION";
 
 #include "description\definitions.hpp"
+#include "description\cfgParams.hpp"
 #include "description\cfgEventHandlers.hpp"
 #include "description\cfgNotifications.hpp"
 #include "description\cfgSounds.hpp"

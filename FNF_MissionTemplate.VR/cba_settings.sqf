@@ -177,17 +177,17 @@ force force ace_magazinerepack_timePerBeltLink = 4;
 force force ace_magazinerepack_timePerMagazine = 1;
 
 // ACE Map
-force force ace_map_BFT_Enabled = false;
-force force ace_map_BFT_HideAiGroups = false;
-force force ace_map_BFT_Interval = 1;
+force force ace_map_BFT_Enabled = true;
+force force ace_map_BFT_HideAiGroups = true;
+force force ace_map_BFT_Interval = 2;
 force force ace_map_BFT_ShowPlayerNames = false;
 force force ace_map_DefaultChannel = 1;
 force force ace_map_mapGlow = true;
-force force ace_map_mapIllumination = false;
+force force ace_map_mapIllumination = true;
 force force ace_map_mapLimitZoom = false;
-force force ace_map_mapShake = false;
+force force ace_map_mapShake = true;
 force force ace_map_mapShowCursorCoordinates = false;
-ace_markers_moveRestriction = 4;
+force force ace_markers_moveRestriction = 2;
 
 // ACE Map Gestures
 ace_map_gestures_allowCurator = true;
