@@ -132,7 +132,7 @@ class RHS_GEAR_ANY_SERBIAN_ARMY_2010_M21 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
           UGL_MAGS(UGL_SMOKEWHITE,6),
           UGL_MAGS(UGL_FLAREWHITE,2)
         }

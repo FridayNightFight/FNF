@@ -131,7 +131,7 @@ class RHS_GEAR_ID_TURKISH_2010_HK33A2 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
           UGL_MAGS(UGL_SMOKEWHITE,6),
           UGL_MAGS(UGL_FLAREWHITE,2)
         }
