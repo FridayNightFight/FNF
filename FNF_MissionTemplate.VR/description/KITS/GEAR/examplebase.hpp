@@ -135,8 +135,8 @@ class VN_US_SOG1970 {
         {
           RIFLE_GL_MAG,
           UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
-          UGL_MAGS(UGL_SMOKEWHITE,6),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
