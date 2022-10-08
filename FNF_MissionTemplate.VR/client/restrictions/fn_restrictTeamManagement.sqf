@@ -2,6 +2,14 @@
 Restricts ACE team management interaction (not self-interaction) if safety is enabled or there are no dead players on the player's side.
 */
 
+private _groupID = groupId group player;
+private _blacklistGroups = ["E"];
+
+[typeof player,1,["ACE_SelfActions","ACE_TeamManagement","ACE_LeaveGroup"]] call ace_interact_menu_fnc_removeActionFromClass; //Disable ACE group leave
+
+//Prevent the player from joining another group
+if (parseNumber _groupID == 0 && !(_groupID in _blacklistGroups)) exitWith {}; //Exit if player is in leader group
+
 fnf_teamManagementEH = ["ace_interactMenuOpened", {
   params ["_menuType"];
 
