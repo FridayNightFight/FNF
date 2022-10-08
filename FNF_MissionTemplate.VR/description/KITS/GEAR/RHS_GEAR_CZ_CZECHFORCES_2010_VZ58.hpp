@@ -110,7 +110,7 @@ class RHS_GEAR_CZ_CZECHFORCES_2010_VZ58 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

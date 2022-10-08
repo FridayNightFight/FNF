@@ -111,7 +111,7 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

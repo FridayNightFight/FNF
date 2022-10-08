@@ -111,7 +111,7 @@ class RHS_GEAR_NATO_SWISS_ARMY_1980_STGW57 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

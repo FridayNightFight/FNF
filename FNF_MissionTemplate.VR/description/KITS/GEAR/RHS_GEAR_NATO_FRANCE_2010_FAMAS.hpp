@@ -110,7 +110,7 @@ class RHS_GEAR_NATO_FRANCE_2010_FAMAS {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

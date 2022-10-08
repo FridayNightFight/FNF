@@ -111,7 +111,7 @@ class RHS_GEAR_RHO_SF_1970_FAL {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

@@ -113,7 +113,7 @@ class VN_GEAR_US_ARMY1970 {
   };
 
   class SL : TL {};
-  class SGT : TL {};
+  
   class PL : TL {};
 
   class ARA : BASE {

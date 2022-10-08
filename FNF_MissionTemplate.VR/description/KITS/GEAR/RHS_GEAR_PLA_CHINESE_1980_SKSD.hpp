@@ -110,7 +110,7 @@ class RHS_GEAR_PLA_CHINESE_1980_SKSD {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

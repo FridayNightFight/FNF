@@ -110,7 +110,7 @@ class RHS_GEAR_RU_RATNIK_2010_AK74MR {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

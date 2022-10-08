@@ -111,7 +111,7 @@ class RHS_GEAR_ID_INSURGENTS_2000_AK74N {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

@@ -111,7 +111,7 @@ class RHS_GEAR_NATO_AUSTRALIA_2020_AUGA3 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

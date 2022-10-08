@@ -113,7 +113,7 @@ class VN_GEAR_NVA_VC1946 {
   };
 
   class SL : TL {};
-  class SGT : TL {};
+  
   class PL : TL {};
 
   class ARA : BASE {

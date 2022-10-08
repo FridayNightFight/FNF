@@ -110,7 +110,7 @@ class RHS_GEAR_ID_TURKISH_2010_HK33A2 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

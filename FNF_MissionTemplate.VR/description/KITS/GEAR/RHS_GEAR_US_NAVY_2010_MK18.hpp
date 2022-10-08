@@ -111,7 +111,7 @@ class RHS_GEAR_US_NAVY_2010_MK18 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

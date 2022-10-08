@@ -111,7 +111,7 @@ class RHS_GEAR_US_ARMY_2010_M16A4 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

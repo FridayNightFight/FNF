@@ -111,7 +111,7 @@ class RHS_GEAR_ANY_IRAN_2020_G3A3 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

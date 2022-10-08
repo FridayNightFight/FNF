@@ -111,7 +111,7 @@ class RHS_GEAR_ID_MEC_2010_AK103 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

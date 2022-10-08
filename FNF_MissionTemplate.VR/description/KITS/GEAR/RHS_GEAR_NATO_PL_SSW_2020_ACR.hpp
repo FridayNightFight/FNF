@@ -110,7 +110,7 @@ class RHS_GEAR_NATO_PL_SSW_2020_ACR {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

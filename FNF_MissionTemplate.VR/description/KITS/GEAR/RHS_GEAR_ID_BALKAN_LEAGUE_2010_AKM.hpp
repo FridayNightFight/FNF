@@ -111,7 +111,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

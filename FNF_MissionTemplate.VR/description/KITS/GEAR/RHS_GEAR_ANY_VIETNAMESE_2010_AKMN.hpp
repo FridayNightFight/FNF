@@ -111,7 +111,7 @@ class RHS_GEAR_ANY_VIETNAMESE_2010_AKMN {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

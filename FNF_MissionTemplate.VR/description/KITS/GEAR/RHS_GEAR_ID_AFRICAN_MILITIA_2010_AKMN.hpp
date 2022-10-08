@@ -111,7 +111,7 @@ class RHS_GEAR_ID_AFRICAN_MILITIA_2010_AKMN {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

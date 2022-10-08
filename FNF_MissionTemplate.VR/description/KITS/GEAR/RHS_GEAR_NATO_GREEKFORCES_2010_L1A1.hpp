@@ -110,7 +110,7 @@ class RHS_GEAR_NATO_GREEKFORCES_2010_L1A1 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

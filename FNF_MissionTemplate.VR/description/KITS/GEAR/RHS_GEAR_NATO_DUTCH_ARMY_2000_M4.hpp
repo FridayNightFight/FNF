@@ -110,7 +110,7 @@ class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

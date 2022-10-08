@@ -111,7 +111,7 @@ class RHS_GEAR_US_ARMY_1980_M16A1 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

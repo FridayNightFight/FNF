@@ -111,7 +111,7 @@ class RHS_GEAR_NATO_CANADIAN_ARMY_1980_CAL {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

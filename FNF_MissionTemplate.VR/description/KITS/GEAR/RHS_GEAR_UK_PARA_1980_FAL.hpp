@@ -111,7 +111,7 @@ class RHS_GEAR_UK_PARA_1980_FAL {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

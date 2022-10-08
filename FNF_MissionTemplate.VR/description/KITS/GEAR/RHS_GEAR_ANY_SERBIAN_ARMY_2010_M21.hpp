@@ -111,7 +111,7 @@ class RHS_GEAR_ANY_SERBIAN_ARMY_2010_M21 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

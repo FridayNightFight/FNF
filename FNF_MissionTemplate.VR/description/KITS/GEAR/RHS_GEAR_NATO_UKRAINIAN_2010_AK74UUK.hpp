@@ -111,7 +111,7 @@ class RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

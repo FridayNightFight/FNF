@@ -110,7 +110,7 @@ class RHS_GEAR_NATO_BUNDESWEHR_2010_G36 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

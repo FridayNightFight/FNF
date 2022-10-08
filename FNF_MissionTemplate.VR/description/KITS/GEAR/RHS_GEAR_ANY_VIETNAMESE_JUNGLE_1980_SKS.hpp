@@ -110,7 +110,7 @@ class RHS_GEAR_ANY_VIETNAMESE_JUNGLE_1980_SKS {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

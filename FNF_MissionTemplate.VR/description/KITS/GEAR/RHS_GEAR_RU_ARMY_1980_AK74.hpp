@@ -110,7 +110,7 @@ class RHS_GEAR_RU_ARMY_1980_AK74 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

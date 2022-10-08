@@ -111,7 +111,7 @@ class RHS_GEAR_US_MARINES_RECON_2020_M27 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

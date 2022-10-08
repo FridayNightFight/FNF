@@ -111,7 +111,7 @@ class RHS_GEAR_AFGH_APU_2020_M16A4 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

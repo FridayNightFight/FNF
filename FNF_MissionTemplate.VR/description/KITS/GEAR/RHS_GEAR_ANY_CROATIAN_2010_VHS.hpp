@@ -110,7 +110,7 @@ class RHS_GEAR_ANY_CROATIAN_2010_VHS {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

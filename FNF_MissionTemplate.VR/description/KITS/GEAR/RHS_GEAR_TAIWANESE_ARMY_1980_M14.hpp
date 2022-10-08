@@ -111,7 +111,7 @@ class RHS_GEAR_TAIWANESE_ARMY_1980_M14 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

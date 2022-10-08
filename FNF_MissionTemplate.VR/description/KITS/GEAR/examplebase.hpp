@@ -114,7 +114,7 @@ class VN_US_SOG1970 {
   };
 
   class SL : TL {};
-  class SGT : TL {};
+  
   class PL : TL {};
 
   class ARA : BASE {

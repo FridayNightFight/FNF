@@ -111,7 +111,7 @@ class RHS_GEAR_NATO_AT_ARMY_2020_AUG {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

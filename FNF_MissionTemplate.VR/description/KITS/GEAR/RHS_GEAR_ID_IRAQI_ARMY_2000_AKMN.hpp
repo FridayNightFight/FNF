@@ -111,7 +111,7 @@ class RHS_GEAR_ID_IRAQI_ARMY_2000_AKMN {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

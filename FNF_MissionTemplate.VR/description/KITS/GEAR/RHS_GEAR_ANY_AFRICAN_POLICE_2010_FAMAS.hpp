@@ -110,7 +110,7 @@ class RHS_GEAR_ANY_AFRICAN_POLICE_2010_FAMAS {
   };
 
   class SL : TL {};
-  class SGT : SL {};
+  
   class PL : SGT {};
 
   class ARA : BASE {

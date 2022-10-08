@@ -113,7 +113,7 @@ class VN_GEAR_FRA_FRENCH1954 {
   };
 
   class SL : TL {};
-  class SGT : TL {};
+  
   class PL : TL {};
 
   class ARA : BASE {
