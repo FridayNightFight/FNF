@@ -111,7 +111,7 @@ class RHS_GEAR_RU_ARMY_2010_AK74M {
 
   class SL : TL {};
   
-  class PL : SGT {};
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
@@ -139,7 +139,7 @@ class RHS_GEAR_RU_ARMY_2010_AK74M {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},

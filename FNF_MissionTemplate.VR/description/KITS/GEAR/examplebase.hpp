@@ -142,7 +142,7 @@ class VN_US_SOG1970 {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},

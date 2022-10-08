@@ -111,7 +111,7 @@ class RHS_GEAR_NATO_FRANCE_2010_FAMAS {
 
   class SL : TL {};
   
-  class PL : SGT {};
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
@@ -139,7 +139,7 @@ class RHS_GEAR_NATO_FRANCE_2010_FAMAS {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},

@@ -141,7 +141,7 @@ class VN_GEAR_NVA_VC1946 {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},

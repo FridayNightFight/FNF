@@ -112,7 +112,7 @@ class RHS_GEAR_NATO_AUSTRALIA_2020_AUGA3 {
 
   class SL : TL {};
   
-  class PL : SGT {};
+  class PL : TL {};
 
   class ARA : BASE {
     magazines[] += {AR_MAG_ASST};
@@ -140,7 +140,7 @@ class RHS_GEAR_NATO_AUSTRALIA_2020_AUGA3 {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},

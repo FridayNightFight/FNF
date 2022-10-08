@@ -112,7 +112,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
 
   class SL : TL {};
   
-  class PL : SGT {};
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
@@ -140,7 +140,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},

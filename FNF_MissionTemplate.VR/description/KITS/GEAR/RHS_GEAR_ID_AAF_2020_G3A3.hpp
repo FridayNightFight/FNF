@@ -112,7 +112,7 @@ class RHS_GEAR_ID_AAF_2020_G3A3 {
 
   class SL : TL {};
   
-  class PL : SGT {};
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
@@ -140,7 +140,7 @@ class RHS_GEAR_ID_AAF_2020_G3A3 {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},

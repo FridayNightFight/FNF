@@ -140,7 +140,7 @@ class VN_GEAR_FRA_FRENCH1946 {
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},
