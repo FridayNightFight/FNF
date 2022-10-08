@@ -111,7 +111,7 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {
@@ -146,12 +146,13 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
           MARKING_SMOKES,
-          UGL_MAGS(UGL_FLAREWHITE,4)
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
-    items[] += {HUNTIR_MONITOR};
   };
 
   class MGA : BASE {

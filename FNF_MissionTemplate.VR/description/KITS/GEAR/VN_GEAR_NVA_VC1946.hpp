@@ -113,7 +113,7 @@ class VN_GEAR_NVA_VC1946 {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {
@@ -147,8 +147,10 @@ class VN_GEAR_NVA_VC1946 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
           MARKING_SMOKES,
-          UGL_MAGS(UGL_FLAREWHITE,4)
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
