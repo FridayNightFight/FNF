@@ -91,7 +91,7 @@ class RHS_GEAR_NATO_BE_SFG_2020_F2000 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_NATO_BE_SFG_2020_F2000 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

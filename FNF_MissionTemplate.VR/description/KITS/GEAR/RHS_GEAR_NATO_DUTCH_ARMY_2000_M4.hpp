@@ -91,7 +91,7 @@ class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_NATO_DUTCH_ARMY_2000_M4 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

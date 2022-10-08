@@ -91,7 +91,7 @@ class RHS_GEAR_ID_MEC_2010_AK103 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_ID_MEC_2010_AK103 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

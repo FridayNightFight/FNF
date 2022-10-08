@@ -91,7 +91,7 @@ class RHS_GEAR_PLA_CHINESE_1980_SKSD {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_PLA_CHINESE_1980_SKSD {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

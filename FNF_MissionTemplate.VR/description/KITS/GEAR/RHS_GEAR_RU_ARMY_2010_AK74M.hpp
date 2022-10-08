@@ -91,7 +91,7 @@ class RHS_GEAR_RU_ARMY_2010_AK74M {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_RU_ARMY_2010_AK74M {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

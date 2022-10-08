@@ -91,7 +91,7 @@ class RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_NATO_UKRAINIAN_2010_AK74UUK {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

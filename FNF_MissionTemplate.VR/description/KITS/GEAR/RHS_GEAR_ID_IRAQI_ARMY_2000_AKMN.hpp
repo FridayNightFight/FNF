@@ -91,7 +91,7 @@ class RHS_GEAR_ID_IRAQI_ARMY_2000_AKMN {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_ID_IRAQI_ARMY_2000_AKMN {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };

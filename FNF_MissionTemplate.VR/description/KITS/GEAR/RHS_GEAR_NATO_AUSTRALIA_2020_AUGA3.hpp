@@ -91,7 +91,7 @@ class RHS_GEAR_NATO_AUSTRALIA_2020_AUGA3 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_NATO_AUSTRALIA_2020_AUGA3 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };
