@@ -3,7 +3,12 @@
 2. Added Ammo Bearer role. A rifleman with extra rifle and AR magazines.
 3. Medics now have more equipment.
 4. Restricted the ACE team management menu interaction (join group) unless safe start is disabled and there's been at least one friendly death (combat has started).
-
+5. Individual unit icons will no longer be shown on the map and GPS. Only group icons will be displayed. These settings can be controlled via mission parameters.
+6. Switched to ACE BFT system for group marking.
+7. The ACE fatigue system has been changed to increase recovery time, along with slight increases to load factor and weapon sway.
+8. Removed GLs from CC, PL and SL roles.
+9. The sergeant role now has a few HE grenades.
+10. Reduced the amount of HE grenades given to grenadiers.
 
 3.4.0
 1. Added a sector capture timer to A/D sector game mode.
