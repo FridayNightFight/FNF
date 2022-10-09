@@ -17,7 +17,7 @@
 #define BASE_GRENADES FRAG_GRENADES,SMOKE_GRENADES
 #define MEDIC_SMOKES "SmokeShellBlue:2"
 #define LEADER_SMOKES "SmokeShellGreen:2","SmokeShellRed:2"
-#define MARKING_SMOKES "rhs_mag_m713_Red:3","rhs_mag_m716_yellow:2","rhs_GRD40_Red:4","rhs_GRD40_Green:2"
+#define MARKING_SMOKES "rhs_mag_m713_Red:2","rhs_mag_m716_yellow:2","rhs_GRD40_Red:3","rhs_GRD40_Green:2"
 #define GR_GRENADECOUNT 9
 #define GRIR_GRENADECOUNT 3
 #define UGL_SMOKECOUNT 6
