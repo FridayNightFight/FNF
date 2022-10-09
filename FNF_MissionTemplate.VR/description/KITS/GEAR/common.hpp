@@ -12,7 +12,7 @@
 #define TRIPOD "ACE_Tripod"
 #define SHOVEL "ACE_EntrenchingTool"
 
-#define SMOKE_GRENADES "SmokeShell:2"
+#define SMOKE_GRENADES "SmokeShell:3"
 #define FRAG_GRENADES "rhs_mag_m67:2"
 #define BASE_GRENADES FRAG_GRENADES,SMOKE_GRENADES
 #define MEDIC_SMOKES "SmokeShellBlue:2"
