@@ -20,7 +20,7 @@
 #define MARKING_SMOKES "rhs_mag_m713_Red:3","rhs_mag_m716_yellow:2","rhs_GRD40_Red:4","rhs_GRD40_Green:2"
 #define GR_GRENADECOUNT 9
 #define GRIR_GRENADECOUNT 3
-#define UGL_SMOKECOUNT 4
+#define UGL_SMOKECOUNT 6
 #define UGL_FLARECOUNT 3
 
 #define VN_B_FRAG_GRENADES "vn_m61_grenade_mag:2"
