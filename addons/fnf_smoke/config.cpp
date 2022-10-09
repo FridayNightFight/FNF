@@ -48,7 +48,7 @@ class CfgCloudlets {
   class Default;
 
   class SmokeShellWhite: Default {
-    sizeCoef = 1.3; //default 1
+		sizeCoef = 1.3; //default 1
 		lifeTime = 27; //default 20
 		weight = 1.2779; //default 1.2777
 		rubbing = 0.03; //default 0.05
