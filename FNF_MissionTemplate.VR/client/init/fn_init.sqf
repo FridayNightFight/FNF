@@ -80,7 +80,6 @@ call fnf_ui_fnc_drawStaffIcons; // Draw labels over staff members
 call fnf_ui_fnc_drawCmdIcons; // Draw labels over CMD, PL
 call fnf_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
-call fnf_server_fnc_populateORBATS;
 //call fnf_fnc_teleportInit; // Add leadership teleport options
 [] spawn fnf_briefing_fnc_setupTablesClient;
 

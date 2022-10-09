@@ -117,9 +117,6 @@ call fnf_server_fnc_webhook_roundPrep;
   call fnf_server_fnc_vehicleRadios;
 }] call CBA_fnc_waitUntilAndExecute;
 
-call fnf_server_fnc_populateORBATS;
-
-
 
 
 //Create map cover for zone boundary

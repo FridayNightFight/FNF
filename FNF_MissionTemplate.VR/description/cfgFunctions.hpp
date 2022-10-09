@@ -258,7 +258,6 @@ class CfgFunctions {
       class fortifyServer{};
       class setupGame{};
       class genRadioFreqs{};
-      class populateORBATS{};
       class keyVehicles{};
       class lockVehicles{};
       class vehicleRadios{};
