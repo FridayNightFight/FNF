@@ -30,6 +30,7 @@ class CfgFunctions {
       class lobbyTextGenButton{};
       class inSafeZone{};
       class inRestrictedZone{};
+      class grassCut{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";
