@@ -111,7 +111,7 @@ class RHS_GEAR_US_MARINES_RECON_2020_M27 {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {
@@ -134,6 +134,7 @@ class RHS_GEAR_US_MARINES_RECON_2020_M27 {
           RIFLE_GL_MAG,
           UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
           UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
           UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
