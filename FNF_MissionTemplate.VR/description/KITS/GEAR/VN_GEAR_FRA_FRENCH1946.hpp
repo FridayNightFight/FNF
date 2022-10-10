@@ -47,7 +47,7 @@
 #define DM_MAG RIFLE_MAG
 
 #define MMG_RIFLE "vn_m1928_tommy"
-#define MMG_MAG "vn_m1928_mag:12"
+#define MMG_MAG "vn_m1928_mag:8"
 #define MMG_MAG_ASST "vn_m1928_t_mag:10"
 
 #define SPOTTER_RIFLE "vn_sten", "vn_m3a1"
@@ -113,7 +113,7 @@ class VN_GEAR_FRA_FRENCH1946 {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {

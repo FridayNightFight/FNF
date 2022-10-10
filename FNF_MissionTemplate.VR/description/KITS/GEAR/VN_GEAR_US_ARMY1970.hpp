@@ -47,8 +47,8 @@
 #define DM_MAG RIFLE_MAG
 
 #define MMG_RIFLE "vn_m60"
-#define MMG_MAG "vn_m60_100_mag:12"
-#define MMG_MAG_ASST "vn_m60_100_mag:10"
+#define MMG_MAG "vn_m60_100_mag:4"
+#define MMG_MAG_ASST "vn_m60_100_mag:8"
 
 #define SPOTTER_RIFLE "vn_sten", "vn_m3a1"
 #define SPOTTER_MAG "vn_sten_mag:11", "vn_m3a1_mag:8"
@@ -113,7 +113,7 @@ class VN_GEAR_US_ARMY1970 {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {

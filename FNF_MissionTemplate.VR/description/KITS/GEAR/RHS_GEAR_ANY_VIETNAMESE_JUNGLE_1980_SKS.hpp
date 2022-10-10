@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "uk3cb_PPSH_71rnd_magazine:4"
 
 #define AR_RIFLE "rhs_weap_pkm"
-#define AR_MAG "rhs_100Rnd_762x54mmR:6"
-#define AR_MAG_ASST "rhs_100Rnd_762x54mmR_green:5"
+#define AR_MAG "rhs_100Rnd_762x54mmR:4"
+#define AR_MAG_ASST "rhs_100Rnd_762x54mmR_green:8"
 
 #define AT_LAUNCHER RPG26(1)
 
@@ -44,8 +44,8 @@
 #define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
 #define MMG_RIFLE "rhs_weap_pkm"
-#define MMG_MAG "rhs_100Rnd_762x54mmR:8"
-#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:6"
+#define MMG_MAG "rhs_100Rnd_762x54mmR:4"
+#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:8"
 
 #define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
 #define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
@@ -110,7 +110,7 @@ class RHS_GEAR_ANY_VIETNAMESE_JUNGLE_1980_SKS {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {

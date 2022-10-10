@@ -32,7 +32,7 @@
 #define SMG_MAG_CREW "50Rnd_570x28_SMG_03:4"
 
 #define AR_RIFLE "rhs_weap_minimi_para_railed"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
+#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:4"
 #define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
 #define AT_LAUNCHER AT4(1)
@@ -44,8 +44,8 @@
 #define DM_MAG "rhsusf_20Rnd_762x51_SR25_m118_special_Mag:8", "rhsusf_20Rnd_762x51_SR25_m62_Mag:4"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:8"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:6"
+#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:4"
+#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:8"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "SMG_03C_TR_khaki"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "50Rnd_570x28_SMG_03:8"

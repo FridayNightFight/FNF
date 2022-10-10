@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "UK3CB_MP5_30Rnd_9x19_Magazine:4"
 
 #define AR_RIFLE "rhs_weap_m249"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:6"
+#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:4"
+#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
 #define AT_LAUNCHER M72LAW(1)
 
@@ -44,8 +44,8 @@
 #define DM_MAG "UK3CB_DMR_20rnd_762x51:8", "UK3CB_DMR_20rnd_762x51_R:4"
 
 #define MMG_RIFLE "UK3CB_M60"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:12"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:10"
+#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:4"
+#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:8"
 
 #define SPOTTER_RIFLE "rhs_weap_m14", "UK3CB_MP5SD6"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "UK3CB_MP5_30Rnd_9x19_Magazine:8"
