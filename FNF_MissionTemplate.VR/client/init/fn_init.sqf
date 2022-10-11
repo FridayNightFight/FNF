@@ -71,7 +71,7 @@ call fnf_safety_fnc_init; //Enable safety
 call fnf_client_fnc_staggeredLoad; //Start staggered load timer
 call fnf_radio_fnc_waitGear; //Start radio preset functions
 call fnf_fnc_contactStaffInit; // Init handling for player reports
-call fnf_fnf_grassCut;
+call fnf_fnc_grassCut;
 
 // [{missionNamespace getVariable ["fnf_briefCreated", false]}, {
 
