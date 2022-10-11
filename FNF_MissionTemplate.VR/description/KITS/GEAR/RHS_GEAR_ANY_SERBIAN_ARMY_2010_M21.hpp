@@ -35,7 +35,7 @@
 #define AR_MAG "rhs_100Rnd_762x54mmR:4"
 #define AR_MAG_ASST "rhs_100Rnd_762x54mmR:8"
 
-#define AT_LAUNCHER M80(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)

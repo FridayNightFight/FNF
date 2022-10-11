@@ -35,7 +35,7 @@
 #define AR_MAG "rhs_100Rnd_762x54mmR:4"
 #define AR_MAG_ASST "rhs_100Rnd_762x54mmR_green:8"
 
-#define AT_LAUNCHER RPG26(1)
+#define AT_LAUNCHER RPG7(2,0)
 
 #define MAT1_LAUNCHER RPG7(2,1)
 #define MAT2_LAUNCHER RPG7(2,1)

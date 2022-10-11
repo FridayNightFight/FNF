@@ -35,7 +35,7 @@
 #define AR_MAG "fnf_45rnd_rpk_green:12"
 #define AR_MAG_ASST "fnf_45rnd_rpk_green:12"
 
-#define AT_LAUNCHER RPG26(1)
+#define AT_LAUNCHER RPG7(2,0)
 
 #define MAT1_LAUNCHER RPG7(2,1)
 #define MAT2_LAUNCHER RPG7(2,1)

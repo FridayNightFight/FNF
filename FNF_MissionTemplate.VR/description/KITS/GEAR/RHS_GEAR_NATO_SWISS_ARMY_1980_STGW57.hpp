@@ -35,7 +35,7 @@
 #define AR_MAG "rhsgref_296Rnd_792x57_SmE_belt:4"
 #define AR_MAG_ASST "rhsgref_296Rnd_792x57_SmE_belt:4"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
