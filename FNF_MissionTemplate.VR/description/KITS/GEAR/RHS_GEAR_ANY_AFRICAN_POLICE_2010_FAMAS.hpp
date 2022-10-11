@@ -44,7 +44,7 @@
 #define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:4"
+#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:6"
 #define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:8"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhs_weap_asval"

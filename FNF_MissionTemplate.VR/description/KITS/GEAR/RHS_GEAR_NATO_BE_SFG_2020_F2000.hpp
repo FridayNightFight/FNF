@@ -44,7 +44,7 @@
 #define DM_MAG "rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:4"
+#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:6"
 #define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:8"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "SMG_03C_TR_khaki"
