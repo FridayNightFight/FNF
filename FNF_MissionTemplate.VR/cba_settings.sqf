@@ -452,6 +452,9 @@ force force TFAR_Teamspeak_Channel_Password = "123";
 force force tfar_terrain_interception_coefficient = 4;
 force force TFAR_voiceCone = false;
 
+// DUI - Squad Radar - Radar
+force force diwako_dui_enable_compass_dir = 4;
+
 // Enhanced Movement Rework
 force force emr_main_allowMidairClimbing = true;
 force force emr_main_animSpeedCoef = 1;
