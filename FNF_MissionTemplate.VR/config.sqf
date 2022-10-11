@@ -61,9 +61,9 @@ fnf_enemyStartVisible = true; // Set to false to hide enemy start zone markers
 fnf_maxViewDistance = 1500;
 /*
   Maximum client view distance (meters)
-    LOW: 500 (for urban combat)
-    MEDIUM: 1000 (for hilly terrain, open areas)
-    HIGH: 1500 (for large open ground, mountains)
+    LOW: 500
+    MEDIUM: 1500
+    HIGH: 2000
 */
 
 fnf_fortifyPoints = 125;
