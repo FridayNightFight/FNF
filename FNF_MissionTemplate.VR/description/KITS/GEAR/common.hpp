@@ -42,8 +42,8 @@
 #define CE_FRAG_GRENADES "2x Frag grenades", "rhs_mag_m67:2"
 #define CE_INCEN_GRENADES "2x Thermite grenades", "ACE_M14:2"
 #define CE_SATCHEL "2x Satchel", "SatchelCharge_Remote_Mag:2"
-#define CE_MINEAP "2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"
-#define CE_MINEAT "2x AT mine", "ATMine_Range_Mag:2"
+#define CE_MINEAP "2x AP mine, 4x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:4"
+#define CE_MINEAT "3x AT mine", "ATMine_Range_Mag:3"
 #define CE_DEMOCHARGE "4x Demo charge", "DemoCharge_Remote_Mag:4"
 
 #define VN_B_CE_FRAG_GRENADES "2x Frag grenades",VN_B_FRAG_GRENADES
