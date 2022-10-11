@@ -14,4 +14,11 @@ class Params
 		values[] = {1,0};
 		default = 1;
 	};
+	class fnf_gpsParam
+	{
+		title = "GPS Distribution";
+		texts[] = { "All units get GPS", "Only leadership roles get GPS" };
+		values[] = {1,0};
+		default = 1;
+	};
 };

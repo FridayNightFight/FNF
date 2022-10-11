@@ -230,6 +230,12 @@ if (isNil {
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
+if (["fnf_gpsParam",1] call BIS_fnc_getParamValue == 0) then {
+  private _leaderRoles = ["CC","EO","CSGT","PL","SGT","SL","TL","CRL"];
+
+  if !(PLAYERLOADOUTVAR in _leaderRoles) then {player unlinkItem "ItemGPS"};
+};
+
 if (PLAYERLOADOUTVAR == "AB") then {
   _abRifleMag = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> "BASE" >> "weaponChoices") call BIS_fnc_getCfgDataArray select 0 select 1 select 0 splitString ":" select 0;
   _abARMags = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> "AR" >> "weaponChoices") call BIS_fnc_getCfgDataArray select 0 select 1 select 0;
