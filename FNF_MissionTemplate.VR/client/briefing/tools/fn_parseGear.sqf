@@ -22,7 +22,7 @@ private _loadoutRole = player getVariable ["fnf_lastLoadout", "UNKNOWN"];
 
 // roles list in fn_clientInit.sqf
 private _strRole = " ";
-_strRole = [fnf_loadout_roles, PLAYERLOADOUTVAR, "Unknown"] call BIS_fnc_getFromPairs;
+_strRole = (roleDescription player splitString "@") select 0;
 if (typeName _strRole isEqualTo "ARRAY") then {_strRole = _strRole select 0};
 // if (LOADOUTROLE("PL")) then {_strRole = " Platoon Leader"};
 // if (LOADOUTROLE("SL") || LOADOUTROLE("SGT")) then {_strRole = " Squad Leader"};

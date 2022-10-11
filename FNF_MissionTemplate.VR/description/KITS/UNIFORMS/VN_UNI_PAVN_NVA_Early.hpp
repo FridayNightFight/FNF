@@ -17,7 +17,7 @@
 #define VEST_CREWMAN "vn_o_vest_02"
 #define VEST_PILOT "vn_o_vest_05"
 
-#define HELMET "vn_o_helmet_nva_03", 
+#define HELMET "vn_o_helmet_nva_03"
 #define HELMET_SNP "vn_o_boonie_nva_02_01"
 #define HELMET_CREWMAN "vn_o_helmet_nva_05"
 #define HELMET_PILOT "vn_o_helmet_zsh3_01"
@@ -64,6 +64,8 @@ class VN_UNI_PAVN_NVA_Early {
   class AR : ARA {
     vest[] = {VEST_AR};
   };
+
+  class AB: BASE {};
 
   class GR : BASE {};
 

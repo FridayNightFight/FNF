@@ -13,7 +13,7 @@
 * <STRING> or <Structured Text>
 *
 * Example:
-* [independent, fnf_grnAT_Bravo, fnf_grnAT_Delta] call fnf_briefing_fnc_parseMAT
+* [independent, fnf_grnAT, fnf_grnAT_Delta] call fnf_briefing_fnc_parseMAT
 *
 * Public: No
 */
@@ -24,7 +24,7 @@
 #define COLOR4 "#008394"
 #define COLOR5 "#1BCAE0"
 
-params ["_side", "_bravoOption", "_deltaOption", ["_structText", false]];
+params ["_side", "_bravoOption", ["_structText", false]];
 
 private "_gearLoadout";
 switch (_side) do {
@@ -42,7 +42,7 @@ private _textOut = [];
   // "debug_console" callExtension str(_x);
   if (count _setting > 0) then {
     if (_setting # 0 isEqualTo "GEARDEFAULT") then {
-      // "debug_console" callExtension str([_gearLoadout,_role,fnf_bluAT_Bravo]);
+      // "debug_console" callExtension str([_gearLoadout,_role,fnf_bluAT]);
       _MATData = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> _gearLoadout >> _role >> "defaultMAT") call BIS_fnc_getCfgDataArray select 0;
       //  "debug_console" callExtension str(_data);
       // _textOut pushBack (_data # 0);
@@ -82,8 +82,7 @@ private _textOut = [];
   };
 
 } forEach [
-  [_bravoOption, "MAT1"],
-  [_deltaOption, "MAT2"]
+  [_bravoOption, "MAT1"]
 ];
 
 _textOut joinString "<br/>"

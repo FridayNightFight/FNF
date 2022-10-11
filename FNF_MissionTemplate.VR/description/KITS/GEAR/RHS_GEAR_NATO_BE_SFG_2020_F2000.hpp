@@ -32,10 +32,10 @@
 #define SMG_MAG_CREW "50Rnd_570x28_SMG_03:4"
 
 #define AR_RIFLE "rhs_weap_minimi_para_railed"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:6"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:6"
+#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:4"
+#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
 
-#define AT_LAUNCHER M72LAW(1)
+#define AT_LAUNCHER AT4(1)
 
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
@@ -44,8 +44,8 @@
 #define DM_MAG "rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:12"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:10"
+#define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:4"
+#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m80a1epr:8"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "SMG_03C_TR_khaki"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "50Rnd_570x28_SMG_03:8"
@@ -91,7 +91,7 @@ class RHS_GEAR_NATO_BE_SFG_2020_F2000 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_NATO_BE_SFG_2020_F2000 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };
@@ -110,12 +110,13 @@ class RHS_GEAR_NATO_BE_SFG_2020_F2000 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
-  class PL : SGT {};
+  
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
@@ -130,25 +131,26 @@ class RHS_GEAR_NATO_BE_SFG_2020_F2000 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
-          UGL_MAGS(UGL_SMOKEWHITE,6),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT),
+          UGL_MAGS(BASE_UGL_HUNTIR,3)
         }
       }
     };

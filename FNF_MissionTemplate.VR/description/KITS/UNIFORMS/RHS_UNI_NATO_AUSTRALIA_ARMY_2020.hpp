@@ -44,9 +44,7 @@ class RHS_UNI_NATO_AUSTRALIA_ARMY_2020 {
 
   class SL : TL {};
   class SGT : SL {};
-  class PL : SGT {
-    headgear[] = {HELMET_CMDR};
-  };
+  class PL : SGT {};
 
   class ARA : BASE {
     backpack[] = {BACKPACK_AR};
@@ -54,6 +52,8 @@ class RHS_UNI_NATO_AUSTRALIA_ARMY_2020 {
   class AR : ARA {
     vest[] = {VEST_AR};
   };
+
+  class AB: BASE {};
 
   class GR : BASE {};
 

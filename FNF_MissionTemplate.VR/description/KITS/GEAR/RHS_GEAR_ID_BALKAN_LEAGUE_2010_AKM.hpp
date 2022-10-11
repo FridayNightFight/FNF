@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
 #define AR_RIFLE "rhs_weap_rpk74m"
-#define AR_MAG "fnf_45rnd_rpk_green:13"
-#define AR_MAG_ASST "fnf_45rnd_rpk_green:10"
+#define AR_MAG "fnf_45rnd_rpk_green:12"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:12"
 
 #define AT_LAUNCHER AT4(1)
 
@@ -44,8 +44,8 @@
 #define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
 #define MMG_RIFLE "rhs_weap_pkp"
-#define MMG_MAG "rhs_100Rnd_762x54mmR:12"
-#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:10"
+#define MMG_MAG "rhs_100Rnd_762x54mmR:4"
+#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:8"
 
 #define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
 #define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
@@ -91,7 +91,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };
@@ -111,12 +111,13 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
   };
 
   class SL : TL {};
-  class SGT : SL {};
-  class PL : SGT {};
+
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
@@ -131,25 +132,26 @@ class RHS_GEAR_ID_BALKAN_LEAGUE_2010_AKM {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
-          UGL_MAGS(UGL_SMOKEWHITE,6),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT),
+          UGL_MAGS(BASE_UGL_HUNTIR,3)
         }
       }
     };

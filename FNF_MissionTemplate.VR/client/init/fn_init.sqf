@@ -1,6 +1,8 @@
 fnf_loadout_roles = [
+  ["CC",["Company Commander","CAPTAIN"]],
+  ["EO",["Executive Officer","LIEUTENANT"]],
   ["PL",["Platoon Leader","LIEUTENANT"]],
-  ["SGT",["Platoon Sergeant","SERGEANT"]],
+  ["SGT",["Sergeant","SERGEANT"]],
   ["SL",["Squad Leader","SERGEANT"]],
   ["TL",["Team Leader","CORPORAL"]],
   ["AR",["Autorifleman","PRIVATE"]],
@@ -17,6 +19,7 @@ fnf_loadout_roles = [
   ["MATA2",["Asst. AT Specialist","PRIVATE"]],
   ["RI",["Rifleman","PRIVATE"]],
   ["RIS",["Sr. Rifleman","CORPORAL"]],
+  ["AB",["Ammo Bearer","PRIVATE"]],
   ["DM",["Marksman","PRIVATE"]],
   ["SNP",["Sniper","CORPORAL"]],
   ["CRL",["Vehicle Cmdr","SERGEANT"]],
@@ -68,6 +71,7 @@ call fnf_safety_fnc_init; //Enable safety
 call fnf_client_fnc_staggeredLoad; //Start staggered load timer
 call fnf_radio_fnc_waitGear; //Start radio preset functions
 call fnf_fnc_contactStaffInit; // Init handling for player reports
+call fnf_fnc_grassCut;
 
 // [{missionNamespace getVariable ["fnf_briefCreated", false]}, {
 
@@ -77,8 +81,7 @@ call fnf_ui_fnc_drawStaffIcons; // Draw labels over staff members
 call fnf_ui_fnc_drawCmdIcons; // Draw labels over CMD, PL
 call fnf_ui_fnc_drawSLIcons; // Draw labels over squad leaders
 
-call fnf_server_fnc_populateORBATS;
-call fnf_fnc_teleportInit; // Add leadership teleport options
+//call fnf_fnc_teleportInit; // Add leadership teleport options
 [] spawn fnf_briefing_fnc_setupTablesClient;
 
 
@@ -233,6 +236,7 @@ if (getPlayerUID player in (missionNamespace getVariable ["fnf_staffInfo",[]]) |
 [] spawn fnf_fnc_unflipVehicleAddAction;
 
 // adds ACE Self-interact to fix uniform bug
+/*
 private _action = [
   "FixUniformBug",
   "Fix ""No Uniform"" Bug",
@@ -246,6 +250,7 @@ private _action = [
   ["ACE_SelfActions"],
   _action
 ] call ace_interact_menu_fnc_addActionToObject;
+*/
 
 
 // remove ACE SOG Compat digging additions of small trench and spiderholes that doesn't require ETool

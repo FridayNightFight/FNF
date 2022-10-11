@@ -32,10 +32,10 @@
 #define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
 
 #define AR_RIFLE "rhs_weap_rpk74m"
-#define AR_MAG "fnf_45rnd_rpk_green:13"
-#define AR_MAG_ASST "fnf_45rnd_rpk_green:10"
+#define AR_MAG "fnf_45rnd_rpk_green:12"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:12"
 
-#define AT_LAUNCHER RPG26(1)
+#define AT_LAUNCHER RPG7(2,0)
 
 #define MAT1_LAUNCHER RPG7(2,1)
 #define MAT2_LAUNCHER RPG7(2,1)
@@ -44,8 +44,8 @@
 #define DM_MAG "UK3CB_G3_20rnd_762x51:8", "UK3CB_G3_20rnd_762x51_R:4"
 
 #define MMG_RIFLE "UK3CB_MG3_KWS_T"
-#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:12"
-#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:10"
+#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:4"
+#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:8"
 
 #define SPOTTER_RIFLE "rhs_weap_m14ebrri", "UK3CB_MP5SD6"
 #define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:16", "UK3CB_MP5_30Rnd_9x19_Magazine:8"
@@ -91,7 +91,7 @@ class RHS_GEAR_ANY_IRAN_2020_G3A3 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_ANY_IRAN_2020_G3A3 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };
@@ -111,12 +111,13 @@ class RHS_GEAR_ANY_IRAN_2020_G3A3 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
-  class PL : SGT {};
+
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
@@ -131,25 +132,26 @@ class RHS_GEAR_ANY_IRAN_2020_G3A3 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
-          UGL_MAGS(UGL_SMOKEWHITE,6),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(BASE_UGL_HUNTIR,4)
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT),
+          UGL_MAGS(BASE_UGL_HUNTIR,3)
         }
       }
     };

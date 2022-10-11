@@ -59,6 +59,8 @@ class VN_UNI_FR_ARMY {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

@@ -65,6 +65,8 @@ class VN_UNI_NLF_Vietcong {
     vest[] = {VEST_AR};
   };
 
+  class AB: BASE {};
+
   class GR : BASE {};
 
   class GRIR : BASE {};

@@ -1,3 +1,22 @@
+3.5.0
+1. ORBAT change. https://i.imgur.com/ENWAoF1.png
+2. Added Ammo Bearer role. A rifleman with extra rifle and AR magazines.
+3. Medics now have more equipment.
+4. Restricted the ACE team management menu interaction (join group) unless safe start is disabled and there's been at least one friendly death (combat has started). Players in HQ groups are exempted from this restriction.
+5. Individual unit icons will no longer be shown on the map and GPS. Only group icons will be displayed. These settings can be controlled via mission parameters.
+6. Switched to ACE BFT system for group marking.
+7. The ACE fatigue system has been changed to increase recovery time, along with increases to load factor and weapon sway.
+8. Removed GLs from CC, PL and SL roles.
+9. The sergeant role now has a few HE grenades and a full smoke loadout.
+10. Reduced the amount of HE grenades given to grenadiers and added marking smokes to their loadout.
+11. Increased general hand smoke count to 3.
+12. Added the ability for players with entrenching tools to remove grass. Has a limited number of uses.
+13. Increased CE AT mine count to 3 and flare mine count to 4.
+14. Decreased trenches build time.
+15. Decreased the amount of magazines most ARs and MGs spawn with. The majority of the ammo is now held by the assistant role.
+16. Switched the RPG26 to the RPG7, and the M72 LAW to the M136.
+17. Added a mission parameter to control GPS distribution.
+
 3.4.0
 1. Added a sector capture timer to A/D sector game mode.
 2. Added functionality for any object that can't normally be damaged to be a destroy objective.

@@ -1,6 +1,6 @@
 // GEAR
-#define GRUNT_MEDICAL "FirstAidKit:4"
-#define MEDIC_MEDICAL "ACE_fieldDressing:32","ACE_morphine:16","ACE_epinephrine:8","ACE_tourniquet:4","ACE_bloodIV_500:12","ACE_bloodIV_250:4","ACE_personalAidKit"
+#define GRUNT_MEDICAL "ACE_fieldDressing:8","ACE_morphine:2"
+#define MEDIC_MEDICAL "ACE_fieldDressing:42","ACE_morphine:16","ACE_epinephrine:8","ACE_tourniquet:4","ACE_bloodIV:8","ACE_bloodIV_500:8","ACE_personalAidKit"
 #define LINKED "ItemMap","ItemCompass","ItemWatch","ItemGPS","TFAR_microdagr"
 #define VN_B_LINKED_SOG "vn_b_item_map","vn_b_item_compass_sog","vn_b_item_watch"
 #define VN_B_LINKED "vn_b_item_map","vn_b_item_compass","vn_b_item_watch"
@@ -12,12 +12,16 @@
 #define TRIPOD "ACE_Tripod"
 #define SHOVEL "ACE_EntrenchingTool"
 
-#define SMOKE_GRENADES "SmokeShell:2"
+#define SMOKE_GRENADES "SmokeShell:3"
 #define FRAG_GRENADES "rhs_mag_m67:2"
 #define BASE_GRENADES FRAG_GRENADES,SMOKE_GRENADES
 #define MEDIC_SMOKES "SmokeShellBlue:2"
-#define LEADER_SMOKES "SmokeShellGreen:2","SmokeShellPurple:2","SmokeShellRed:2"
-#define MARKING_SMOKES "rhs_mag_m713_Red:3","rhs_mag_m716_yellow:2","rhs_GRD40_Red:4","rhs_GRD40_Green:2"
+#define LEADER_SMOKES "SmokeShellGreen:2","SmokeShellRed:2"
+#define MARKING_SMOKES "rhs_mag_m713_Red:2","rhs_mag_m716_yellow:2","rhs_GRD40_Red:3","rhs_GRD40_Green:2"
+#define GR_GRENADECOUNT 9
+#define GRIR_GRENADECOUNT 3
+#define UGL_SMOKECOUNT 6
+#define UGL_FLARECOUNT 3
 
 #define VN_B_FRAG_GRENADES "vn_m61_grenade_mag:2"
 #define VN_B_SMOKE_GRENADES "vn_m18_white_mag:2"
@@ -38,8 +42,8 @@
 #define CE_FRAG_GRENADES "2x Frag grenades", "rhs_mag_m67:2"
 #define CE_INCEN_GRENADES "2x Thermite grenades", "ACE_M14:2"
 #define CE_SATCHEL "2x Satchel", "SatchelCharge_Remote_Mag:2"
-#define CE_MINEAP "2x AP mine, 2x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:2"
-#define CE_MINEAT "2x AT mine", "ATMine_Range_Mag:2"
+#define CE_MINEAP "2x AP mine, 4x flare mine","APERSTripMine_Wire_Mag:2","rhs_mine_sm320_red_mag:4"
+#define CE_MINEAT "3x AT mine", "ATMine_Range_Mag:3"
 #define CE_DEMOCHARGE "4x Demo charge", "DemoCharge_Remote_Mag:4"
 
 #define VN_B_CE_FRAG_GRENADES "2x Frag grenades",VN_B_FRAG_GRENADES

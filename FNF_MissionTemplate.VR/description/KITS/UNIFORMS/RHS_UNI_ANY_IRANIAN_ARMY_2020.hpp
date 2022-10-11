@@ -45,7 +45,6 @@ class RHS_UNI_ANY_IRANIAN_ARMY_2020 {
   class SL : TL {};
   class SGT : SL {};
   class PL : SGT {
-    headgear[] = {HELMET_CMDR};
     uniform[] = {"UK3CB_KRG_B_U_Officer_01_DDPM"};
   };
 
@@ -55,6 +54,8 @@ class RHS_UNI_ANY_IRANIAN_ARMY_2020 {
   class AR : ARA {
     vest[] = {VEST_AR};
   };
+
+  class AB: BASE {};
 
   class GR : BASE {};
 

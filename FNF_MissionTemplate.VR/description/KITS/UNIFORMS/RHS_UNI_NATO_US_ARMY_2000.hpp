@@ -45,7 +45,6 @@ class RHS_UNI_NATO_US_ARMY_2000 {
   class SL : TL {};
   class SGT : SL {};
   class PL : SGT {
-    headgear[] = {HELMET_CMDR};
     uniform[] = {"UK3CB_CW_US_B_LATE_U_JNR_OFFICER_Uniform_01_WDL"};
   };
 
@@ -55,6 +54,8 @@ class RHS_UNI_NATO_US_ARMY_2000 {
   class AR : ARA {
     vest[] = {VEST_AR};
   };
+
+  class AB: BASE {};
 
   class GR : BASE {};
 

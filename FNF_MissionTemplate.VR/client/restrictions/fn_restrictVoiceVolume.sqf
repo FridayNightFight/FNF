@@ -4,12 +4,17 @@ Restricts the player from switching to yelling voice volume during safe start un
 
 if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {};
 
-//Set TFAR volume to whisper
-TF_speak_volume_level = "whispering";
-TF_speak_volume_meters = 5;
-call TFAR_fnc_updateSpeakVolumeUI;
+if (TF_speak_volume_level == "yelling") then {
+  call TFAR_fnc_onSpeakVolumeChangePressed;
+} else {
+  //Start players on whisper
+  if (missionNamespace getVariable ["fnf_safetyEnabled", true]) then {
+    call TFAR_fnc_onSpeakVolumeChangePressed;
+    call TFAR_fnc_onSpeakVolumeChangePressed;
+  };
+};
 
-_leaderRoles = ["PL","SGT","SL","TL","CRL"];
+_leaderRoles = ["CC","EO","CSGT","PL","SGT","SL","TL","CRL"];
 if (player getVariable ["fnfLoadout",""] in _leaderRoles || leader group player == player) exitWith {};
 
 //Loop this fnc until safety ends

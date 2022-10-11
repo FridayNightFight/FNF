@@ -53,6 +53,11 @@ removeGoggles player;
 params [["_LOADOUTROLE", (player getVariable "fnfLoadout")]];
 if (!isNil {(player getVariable "fnfLoadout")}) then {
   diag_log text format["[FNF] (loadout) INFO: Player role is %1.", (player getVariable "fnfLoadout")];
+  switch (_LOADOUTROLE) do {
+    case "CC": {_LOADOUTROLE = "PL"};
+    case "EO": {_LOADOUTROLE = "PL"};
+    case "SGT": {_LOADOUTROLE = "SGT"};
+  };
 };
 if (isNil {_LOADOUTROLE}) exitWith {
   [{time > 2}, {
@@ -225,6 +230,20 @@ if (isNil {
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
+if (["fnf_gpsParam",1] call BIS_fnc_getParamValue == 0) then {
+  private _leaderRoles = ["CC","EO","CSGT","PL","SGT","SL","TL","CRL"];
+
+  if !(PLAYERLOADOUTVAR in _leaderRoles) then {player unlinkItem "ItemGPS"};
+};
+
+if (PLAYERLOADOUTVAR == "AB") then {
+  _abRifleMag = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> "BASE" >> "weaponChoices") call BIS_fnc_getCfgDataArray select 0 select 1 select 0 splitString ":" select 0;
+  _abARMags = (missionConfigFile >> "CfgFNFLoadouts" >> "GEAR" >> mySideGearSelection >> "AR" >> "weaponChoices") call BIS_fnc_getCfgDataArray select 0 select 1 select 0;
+  _abARMags = _abARMags splitString ":";
+  _abARMags = (_abARMags select 0) + ":" + str (ceil (parseNumber (_abARMags select 1) / 2));
+  [_abRifleMag + ":13","backpack"] call fnf_loadout_fnc_addGear;
+  [_abARMags,"backpack"] call fnf_loadout_fnc_addGear;
+};
 
 if (isNil {[player, _cfgWeaponChoices] call fnf_loadout_fnc_givePrimaryWeapon}) exitWith {
   [{time > 2}, {

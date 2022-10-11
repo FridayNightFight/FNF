@@ -73,7 +73,7 @@ _varStrStruct = [];
 //show blufor uniform and headgear if side is present
 if (!isNil "fnf_briefing_west_uniform" || !isNil "fnf_briefing_west_headgear" || !isNil "fnf_briefing_west_uniformMeta" && !isNil "fnf_briefing_west_loadout") then {
 
-  _MATDataString = _MATDataString + ([west, fnf_bluAT_Bravo, fnf_bluAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([west, fnf_bluAT] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show BLUFOR loadout
   fnf_briefing_loadoutBLU = {
@@ -160,7 +160,7 @@ Author: %6<br/><br/>
 //show opfor uniform and headgear if side is present
 if (!isNil "fnf_briefing_east_uniform" || !isNil "fnf_briefing_east_headgear" || !isNil "fnf_briefing_east_uniformMeta" && !isNil "fnf_briefing_east_loadout") then {
 
-  _MATDataString = _MATDataString + ([east, fnf_redAT_Bravo, fnf_redAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([east, fnf_redAT, fnf_redAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show OPFOR loadout
   fnf_briefing_loadoutOPF = {
@@ -248,7 +248,7 @@ Author: %6<br/><br/>
 //show indfor uniform and headgear if side is present
 if (!isNil "fnf_briefing_ind_uniform" || !isNil "fnf_briefing_ind_headgear" || !isNil "fnf_briefing_ind_uniformMeta" && !isNil "fnf_briefing_ind_loadout") then {
 
-  _MATDataString = _MATDataString + ([independent, fnf_grnAT_Bravo, fnf_grnAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
+  _MATDataString = _MATDataString + ([independent, fnf_grnAT, fnf_grnAT_Delta] call fnf_briefing_fnc_parseMAT) + "---------------------------------------------<br/>";
 
   // show INDFOR loadout
   fnf_briefing_loadoutIND = {

@@ -30,6 +30,7 @@ class CfgFunctions {
       class lobbyTextGenButton{};
       class inSafeZone{};
       class inRestrictedZone{};
+      class grassCut{};
     };
     class contactStaff {
       file = "client\misc\contactStaff";
@@ -202,6 +203,7 @@ class CfgFunctions {
       class viewDistance{};
       class restrictVoiceVolume{};
       class restrictWeaponThermal{};
+      class restrictTeamManagement{};
     };
   };
   class fnf_safety {
@@ -257,7 +259,6 @@ class CfgFunctions {
       class fortifyServer{};
       class setupGame{};
       class genRadioFreqs{};
-      class populateORBATS{};
       class keyVehicles{};
       class lockVehicles{};
       class vehicleRadios{};
@@ -279,7 +280,6 @@ class CfgFunctions {
     };
     class damage {
       file = "server\damage";
-      class handleDamage{};
       class customDamage{};
     };
     class webhook {

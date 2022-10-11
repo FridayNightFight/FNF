@@ -32,10 +32,10 @@
 #define SMG_MAG_CREW "rhsgref_20rnd_765x17_vz61:6"
 
 #define AR_RIFLE "rhs_weap_m84"
-#define AR_MAG "rhs_100Rnd_762x54mmR:8"
+#define AR_MAG "rhs_100Rnd_762x54mmR:4"
 #define AR_MAG_ASST "rhs_100Rnd_762x54mmR:8"
 
-#define AT_LAUNCHER M80(1)
+#define AT_LAUNCHER RPG7(2,0)
 
 #define MAT1_LAUNCHER RPG7(2,1)
 #define MAT2_LAUNCHER RPG7(2,1)
@@ -44,8 +44,8 @@
 #define DM_MAG "rhsgref_10Rnd_792x57_m76:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
-#define MMG_MAG "rhsusf_100Rnd_762x51:12"
-#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m62_tracer:10"
+#define MMG_MAG "rhsusf_100Rnd_762x51:4"
+#define MMG_MAG_ASST "rhsusf_100Rnd_762x51_m62_tracer:8"
 
 #define SPOTTER_RIFLE "rhs_weap_m14_rail", "rhs_weap_m92"
 #define SPOTTER_MAG "rhsusf_20Rnd_762x51_m993_Mag:8", "rhs_10Rnd_762x39mm_U:12"
@@ -91,7 +91,7 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -100,7 +100,7 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       LEADER_SMOKES
     };
@@ -111,12 +111,13 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
   };
 
   class SL : TL {};
-  class SGT : SL {};
-  class PL : SGT {};
+
+  class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weapons[] = {AR_RIFLE};
     weaponChoices[] = {
@@ -131,28 +132,28 @@ class RHS_GEAR_ANY_YUGOSLAVIA_1990_M70 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
-          UGL_MAGS(UGL_SMOKEWHITE,6),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2),
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
-    items[] += {HUNTIR_MONITOR};
   };
 
   class MGA : BASE {

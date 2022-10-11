@@ -47,7 +47,7 @@
 #define DM_MAG RIFLE_MAG
 
 #define MMG_RIFLE "vn_m1928_tommy"
-#define MMG_MAG "vn_m1928_mag:12"
+#define MMG_MAG "vn_m1928_mag:8"
 #define MMG_MAG_ASST "vn_m1928_t_mag:10"
 
 #define SPOTTER_RIFLE "vn_sten", "vn_m3a1"
@@ -94,7 +94,7 @@ class VN_GEAR_FRA_FRENCH1946 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -103,7 +103,7 @@ class VN_GEAR_FRA_FRENCH1946 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       VN_LEADER_SMOKES
     };
@@ -113,12 +113,13 @@ class VN_GEAR_FRA_FRENCH1946 {
   };
 
   class SL : TL {};
-  class SGT : TL {};
+
   class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
@@ -131,24 +132,25 @@ class VN_GEAR_FRA_FRENCH1946 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
-          UGL_MAGS(UGL_SMOKEWHITE,6),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };

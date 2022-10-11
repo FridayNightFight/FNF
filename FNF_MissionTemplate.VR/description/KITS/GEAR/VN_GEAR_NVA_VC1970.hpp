@@ -47,8 +47,8 @@
 #define DM_MAG RIFLE_MAG
 
 #define MMG_RIFLE "vn_pk"
-#define MMG_MAG "vn_pk_100_mag:12"
-#define MMG_MAG_ASST "vn_pk_100_mag:10"
+#define MMG_MAG "vn_pk_100_mag:4"
+#define MMG_MAG_ASST "vn_pk_100_mag:8"
 
 #define SPOTTER_RIFLE "vn_m45","vn_m3a1"
 #define SPOTTER_MAG "vn_m45_mag:11","vn_m3a1_mag:8"
@@ -94,7 +94,7 @@ class VN_GEAR_NVA_VC1970 {
   };
 
   class TL : BASE {
-    weaponChoices[] = {
+    /*weaponChoices[] = {
       {
         {RIFLE_GL},
         {
@@ -103,7 +103,7 @@ class VN_GEAR_NVA_VC1970 {
           UGL_MAGS(UGL_FLAREWHITE,4)
         }
       }
-    };
+    };*/
     magazines[] += {
       VN_LEADER_SMOKES
     };
@@ -113,12 +113,13 @@ class VN_GEAR_NVA_VC1970 {
   };
 
   class SL : TL {};
-  class SGT : TL {};
+
   class PL : TL {};
 
   class ARA : BASE {
     backpackItems[] += {AR_MAG_ASST};
   };
+  class AB: BASE {};
   class AR : BASE {
     weaponChoices[] = {
       {{AR_RIFLE},{AR_MAG}}
@@ -132,24 +133,25 @@ class VN_GEAR_NVA_VC1970 {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,15),
-          UGL_MAGS(UGL_SMOKEWHITE,6),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };
   };
 
-  class GRIR : BASE {
+  class SGT : TL {
     weaponChoices[] = {
       {
         {RIFLE_GL},
         {
           RIFLE_GL_MAG,
-          UGL_MAGS(UGL_FRAG,10),
-          UGL_MAGS(UGL_SMOKEWHITE,4),
-          UGL_MAGS(UGL_FLAREWHITE,2),
-          UGL_MAGS(UGL_FLAREWHITE,2)
+          UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
+          UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
+          MARKING_SMOKES,
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
         }
       }
     };

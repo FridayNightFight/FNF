@@ -61,9 +61,9 @@ fnf_enemyStartVisible = true; // Set to false to hide enemy start zone markers
 fnf_maxViewDistance = 1500;
 /*
   Maximum client view distance (meters)
-    LOW: 500 (for urban combat)
-    MEDIUM: 1000 (for hilly terrain, open areas)
-    HIGH: 1500 (for large open ground, mountains)
+    LOW: 500
+    MEDIUM: 1500
+    HIGH: 2000
 */
 
 fnf_fortifyPoints = 125;
@@ -145,21 +145,17 @@ fnf_indforGear = "RHS_GEAR_ID_IRAQI_ARMY_2000_AKMN";
 // MAT SELECTION //
 
 // BLUFOR
-fnf_bluAT_Bravo = GEARDEFAULT;
-fnf_bluAT_Delta = GEARDEFAULT;
+fnf_bluAT = GEARDEFAULT;
 
 // OPFOR
-fnf_redAT_Bravo = GEARDEFAULT;
-fnf_redAT_Delta = GEARDEFAULT;
+fnf_redAT = GEARDEFAULT;
 
 // INDFOR
-fnf_grnAT_Bravo = GEARDEFAULT;
-fnf_grnAT_Delta = GEARDEFAULT;
-
+fnf_grnAT = GEARDEFAULT;
 
 ////////////////////////////////////////////////////////////
 
-// SQUAD HQ AUXILIARY ROLES //
+// SQUAD HQ AUXILIARY ROLES //*NOT USED*
 // "SHQAUX"
 // Adjusts what loadout the two extra Squad HQ members will receive
 // Set to 0 to make default crewman, set to one of the options to enable equipment for it.
@@ -186,12 +182,7 @@ fnf_grnAT_Delta = GEARDEFAULT;
 
 // SYSTEM SETTINGS //
 
-// Show/Hide unit / group icons on map, GPS for players
-// Used in limited-intel scenarios like WWII and Vietnam
-// i.e. showUnitIcons should be true for Modern and sustainedAssault VN missions
-fnf_showUnitIcons = true;
-fnf_showGroupIcons = true;
-fnf_showAlliedFactions = true;
+fnf_showAlliedFactions = true; //Show allied factions on map
 
 
 // debug
