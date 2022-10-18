@@ -67,6 +67,11 @@ _QS_ST_map_enableUnitIcons = ["fnf_mapUnitIcons",1] call BIS_fnc_getParamValue =
 _QS_ST_gps_enableUnitIcons = ["fnf_gpsUnitIcons",1] call BIS_fnc_getParamValue == 1; //GPS unit/vehicle Icons.
 _QS_ST_enableGroupIcons = !(missionNamespace getVariable ["ace_map_BFT_Enabled",false]); //Map+GPS+HUD GROUP Icons.
 
+if (["fnf_gps_map_master",1] call BIS_fnc_getParamValue == 0) then {
+	_QS_ST_map_enableUnitIcons = false;
+	_QS_ST_gps_enableUnitIcons = false;
+};
+
 if (!_QS_ST_map_enableUnitIcons && !_QS_ST_gps_enableUnitIcons && !_QS_ST_enableGroupIcons) exitWith{}; //Exit if not using system
 
 //================= ADMIN

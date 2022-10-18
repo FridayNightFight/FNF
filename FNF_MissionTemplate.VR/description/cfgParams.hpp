@@ -21,4 +21,11 @@ class Params
 		values[] = {1,0};
 		default = 1;
 	};
+	class fnf_gps_map_master
+	{
+		title = "GPS/Map Master Switch";
+		texts[] = { "Default", "All off" };
+		values[] = {1,0};
+		default = 1;
+	};
 };
