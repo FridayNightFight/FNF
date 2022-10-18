@@ -67,6 +67,11 @@ _QS_ST_map_enableUnitIcons = ["fnf_mapUnitIcons",1] call BIS_fnc_getParamValue =
 _QS_ST_gps_enableUnitIcons = ["fnf_gpsUnitIcons",1] call BIS_fnc_getParamValue == 1; //GPS unit/vehicle Icons.
 _QS_ST_enableGroupIcons = !(missionNamespace getVariable ["ace_map_BFT_Enabled",false]); //Map+GPS+HUD GROUP Icons.
 
+if (["fnf_gps_map_master",1] call BIS_fnc_getParamValue == 0) then {
+	_QS_ST_map_enableUnitIcons = false;
+	_QS_ST_gps_enableUnitIcons = false;
+};
+
 if (!_QS_ST_map_enableUnitIcons && !_QS_ST_gps_enableUnitIcons && !_QS_ST_enableGroupIcons) exitWith{}; //Exit if not using system
 
 //================= ADMIN
@@ -202,8 +207,8 @@ _QS_ST_groupInteractiveIcons = TRUE;							// BOOL. Group icons are interactable
 _QS_ST_groupInteractiveIcons_showClass = TRUE;					// BOOL. TRUE to show units vehicle class when revealing group details with interactive map group click. Default TRUE.
 _QS_ST_dynamicGroupID = FALSE;									// BOOL. If TRUE, Script tries to utilize BIS-Dynamic-Groups Group Name for group info display (only available with QS_ST_groupInteractiveIcons), if available. Default TRUE. EDIT: Obsolete as of A3 1.48
 _QS_ST_showGroupMapText = TRUE;									// BOOL. TRUE to show Group Name on the map. If FALSE, name can still be seen by clicking on the group icon, if QS_ST_groupInteractiveIcons = TRUE. Default FALSE.
-_QS_ST_groupIconScale = 0.75;										// NUMBER. Group Icon Scale. Default = 0.75
-_QS_ST_groupIconOffset = [0.65,0.65];							// ARRAY (NUMBERS). [X,Y], offset position of icon from group leaders position. Can be positive or negative numbers. Default = [0.65,0.65];
+_QS_ST_groupIconScale = 0.9;										// NUMBER. Group Icon Scale. Default = 0.75
+_QS_ST_groupIconOffset = [0,0.65];							// ARRAY (NUMBERS). [X,Y], offset position of icon from group leaders position. Can be positive or negative numbers. Default = [0.65,0.65];
 _QS_ST_groupTextFactionOnly = TRUE;								// BOOL. TRUE to show group icon text from ONLY the PLAYERS faction. FALSE will show text for all friendly/revealed factions. Default TRUE.
 _QS_ST_showCivilianGroups = FALSE;								// BOOL. TRUE to show Civilian groups. Must be whitelisted above in friendlySides. Default FALSE.
 _QS_ST_showOwnGroup = TRUE;									// BOOL. TRUE to show the Players own group icon. Default FALSE.

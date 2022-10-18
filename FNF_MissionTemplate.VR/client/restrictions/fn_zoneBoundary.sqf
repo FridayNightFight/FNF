@@ -2,7 +2,7 @@
 Kills the player if they are outside of the mission boundary for too long.
 */
 
-fnf_zoneBoundary_timer = 15;
+fnf_zoneBoundary_timer = 20;
 
 if (!isNil "zoneTrigger") then {
   [{getClientStateNumber > 8}, {
@@ -13,7 +13,7 @@ if (!isNil "zoneTrigger") then {
     fnf_zoneBoundary_PFH = [{
       if !(alive player) exitWith {};
       _condition = !(vehicle player inArea zoneTrigger) && !(vehicle player isKindOf "Air" || ropeAttachedTo vehicle player isKindOf "Air");
-      
+
       if (_condition) then {
         if (fnf_zoneBoundary_timer == 0) exitWith {
           fnf_zoneBoundary_PFH call CBA_fnc_removePerFrameHandler; titleText ["", "PLAIN"];

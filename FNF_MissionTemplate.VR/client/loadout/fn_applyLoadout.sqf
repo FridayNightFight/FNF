@@ -230,7 +230,7 @@ if (isNil {
   }] call CBA_fnc_waitUntilAndExecute;
 };
 
-if (["fnf_gpsParam",1] call BIS_fnc_getParamValue == 0) then {
+if (["fnf_gpsParam",1] call BIS_fnc_getParamValue == 0 || ["fnf_gps_map_master",1] call BIS_fnc_getParamValue == 0) then {
   private _leaderRoles = ["CC","EO","CSGT","PL","SGT","SL","TL","CRL"];
 
   if !(PLAYERLOADOUTVAR in _leaderRoles) then {player unlinkItem "ItemGPS"};

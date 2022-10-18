@@ -38,7 +38,7 @@ _fnc_getMAT = {
 	if (_lastElement select [count _lastElement - 1] == " ") then {_strStart = ""};
 
 	if (true) then {
-		outArr pushBack format["%3MAT:2x%1[%2]",
+		outArr pushBack format["%3MAT:%1[%2]",
 			_bShortName,
 			_bMagazines joinString ",",
 			_strStart
