@@ -188,7 +188,7 @@ _generateORBAT = {
 };
 
 //----------------------------------------------------------------------------------------------------
-private _side = player call BIS_fnc_friendlySides select {_x != sideFriendly};
+private _side = player call BIS_fnc_friendlySides select {_x != civilian};
 // private _orbatText = "<br />NOTE: This ORBAT is only valid at mission start.<br /><br />";
 private _orbatText = "";
 private _orbatTextStruct = "";
