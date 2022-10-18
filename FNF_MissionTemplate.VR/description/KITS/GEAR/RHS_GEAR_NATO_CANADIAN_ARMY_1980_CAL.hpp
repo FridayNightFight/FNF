@@ -40,8 +40,8 @@
 #define MAT1_LAUNCHER CARLG(2,0)
 #define MAT2_LAUNCHER CARLG(2,0)
 
-#define DM_RIFLE "UK3CB_M14DMR"
-#define DM_MAG "UK3CB_DMR_20rnd_762x51:8", "UK3CB_DMR_20rnd_762x51_R:4"
+#define DM_RIFLE "rhs_weap_m14_rail"
+#define DM_MAG "rhsusf_20Rnd_762x51_m80_Mag:6", "rhsusf_20Rnd_762x51_m62_Mag:3"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
 #define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:6"
@@ -111,7 +111,7 @@ class RHS_GEAR_NATO_CANADIAN_ARMY_1980_CAL {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {
