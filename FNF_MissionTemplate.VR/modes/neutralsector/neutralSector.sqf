@@ -52,7 +52,7 @@ _win = {
   fnf_gameEnd = true;
   publicVariable "fnf_gameEnd";
 
-  _side = _this;
+  _sideWon = _this;
 
   [_sideWon, "has reached 100 points and won!"] spawn fnf_server_fnc_gameEnd;
 };
