@@ -66,6 +66,10 @@ class CfgFNFLoadouts {
     #include "KITS\UNIFORMS\VN_UNI_SVA_ARVN.hpp"
     #include "KITS\UNIFORMS\VN_UNI_US_MACV.hpp"
     #include "KITS\UNIFORMS\VN_UNI_US_SOG.hpp"
+    #include "KITS\UNIFORMS\VN_UNI_AUS_ANZAC.hpp"
+    #include "KITS\UNIFORMS\VN_UNI_LPL_PATHETLAO.hpp"
+    #include "KITS\UNIFORMS\VN_UNI_RLA.hpp"
+    #include "KITS\UNIFORMS\VN_UNI_ROK.hpp"
 
 
   };
@@ -125,6 +129,10 @@ class CfgFNFLoadouts {
     #include "KITS\GEAR\VN_GEAR_US_ARMY1970.hpp"
     #include "KITS\GEAR\VN_GEAR_US_SOG1970.hpp"
     #include "KITS\GEAR\VN_GEAR_NVA_VC1946.hpp"
+    #include "KITS\GEAR\VN_GEAR_AUS_ANZAC1970.hpp"
+    #include "KITS\GEAR\VN_GEAR_KR_ROK1970.hpp"
+    #include "KITS\GEAR\VN_GEAR_PL_PATHETLAO1960.hpp"
+    #include "KITS\GEAR\VN_GEAR_RLA1960.hpp"
 
   };
 };

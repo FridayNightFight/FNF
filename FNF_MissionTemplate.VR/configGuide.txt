@@ -102,11 +102,18 @@ UNI = Uniform, GEAR = Gear
       VN_UNI_SVA_ARVN (DONT USE)
       VN_UNI_US_MACV (DONT USE)
       VN_UNI_US_SOG (DONT USE)
+      VN_UNI_AUS_ANZAC
+      VN_UNI_LPL_PATHETLAO
+      VN_UNI_RLA
+      VN_UNI_ROK
     GEAR:
       VN_GEAR_NVA_VC1970 (DONT USE)
       VN_GEAR_US_ARMY1970 (DONT USE)
       VN_GEAR_US_SOG1970 (DONT USE)
-
+      VN_GEAR_AUS_ANZAC1970
+      VN_GEAR_KR_ROK1970
+      VN_GEAR_PL_PATHETLAO1960
+      VN_GEAR_RLA1960
 
 // MAT SELECTION //
 Possible launcher values (and recommended counts)
