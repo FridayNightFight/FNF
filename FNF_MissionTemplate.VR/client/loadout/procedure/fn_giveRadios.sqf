@@ -42,7 +42,30 @@ if (_lrRadio) then {
   // Compensation: if a role is configured in Gear Set to have a LR radio but their backpack config isn't classified as one to TFAR, it will replace their backpack with a default stand-in. Similarly, if they have a radio-enabled backpack but shouldn't, it's replaced with a general tactical backpack.
   // This is to ensure leadership receives LR radios if they should, even if the loadout-assigned backpack isn't a radio
   private _backpack = backpack _unit;
+
+  //Hardwired fix for Vietnam radios not being classed as LR radios by TFAR_fnc_isBackpackRadio
+  //This is likely a config issue that should be fixed however desperate times etc
+  _isLRRadioValid = false;
+  _vnRadios = [
+    "vn_b_pack_lw06",
+    "vn_b_pack_prc77_01",
+    "vn_b_pack_trp_04_02",
+    "vn_b_pack_03_02",
+    "vn_b_pack_03",
+    "vn_b_pack_trp_04",
+    "vn_o_pack_t884_01"
+  ];
   if (_backpack call TFAR_fnc_isBackpackRadio) then {
+    _isLRRadioValid = true;
+  } else {
+    {
+      if (_backpack == _x) then {
+        _isLRRadioValid = true;
+      };
+    } forEach _vnRadios
+  };
+
+  if (_isLRRadioValid) then {
     private _items = backpackItems _unit;
     removeBackpack _unit;
     _unit addBackpack _backpack;
