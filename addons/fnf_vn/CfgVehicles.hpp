@@ -127,4 +127,31 @@ class CfgVehicles
 	class vn_c_pack_02: vn_c_pack_01 {
 		maximumLoad = 850;
 	};
+
+  class vn_b_pack_pfield_01: vn_b_backpack_base {
+    maximumLoad = 850;
+  };
+  class vn_b_pack_pfield_02: vn_b_pack_pfield_01 {
+    maximumLoad = 850;
+  };
+
+  class vn_b_pack_p08_01: vn_b_backpack_base {
+    maximumLoad = 850;
+  };
+  class vn_b_pack_p08_02: vn_b_pack_p08_01 {
+    maximumLoad = 850;
+  };
+  class vn_b_pack_p08_03: vn_b_pack_p08_01 {
+    maximumLoad = 850;
+  };
+
+  class vn_b_pack_p44_01: vn_b_backpack_base {
+    maximumLoad = 850;
+  };
+  class vn_b_pack_p44_02: vn_b_pack_p44_01 {
+    maximumLoad = 850;
+  };
+  class vn_b_pack_p44_03: vn_b_pack_p44_01 {
+    maximumLoad = 850;
+  };
 };
