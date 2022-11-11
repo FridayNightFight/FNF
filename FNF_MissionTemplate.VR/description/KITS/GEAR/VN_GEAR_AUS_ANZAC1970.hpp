@@ -28,8 +28,8 @@
 #define CARBINE_MAG_CREW "vn_m14_mag:6"
 
 #define SMG_RIFLE "vn_f1_smg"
-#define SMG_MAG "vn_m3a1_mag:8"
-#define SMG_MAG_CREW "vn_m3a1_mag:4"
+#define SMG_MAG "vn_f1_smg_mag:8"
+#define SMG_MAG_CREW "vn_f1_smg_mag:4"
 
 #define SHOTGUN "vn_m1897"
 #define SHOTGUN_MAG "vn_m1897_fl_mag:6", "vn_m1897_buck_mag:6"
@@ -214,12 +214,12 @@ class VN_GEAR_AUS_ANZAC1970 {
     backpackItems[] += {SNIPER_TOOLS};
   };
 
-    class CR : BASE {
+  class CR : BASE {
     weaponChoices[] = {
       {{SMG_RIFLE},{SMG_MAG_CREW}}
     };
-    giveSideKey = 1;
   };
+
   class CRL : CR {
     giveLRRadio = 1;
   };
