@@ -107,7 +107,7 @@ class common {
 #define MAG_OPTICS "rhsusf_acc_ACOG", "rhsusf_acc_ACOG_RMR", "rhsusf_acc_su230", "rhsusf_acc_su230_mrds", "rhsusf_acc_su230a", "rhsusf_acc_su230a_mrds", "optic_MRCO", "optic_Hamr", "optic_Arco_blk_F", "rhsusf_acc_ELCAN", "rhs_acc_1p29", "rhs_acc_1p78", "rhs_acc_nita", "rhs_acc_pso1m2_ak"
 #define SNP_OPTICS "rhsusf_acc_M8541", "rhsusf_acc_M8541_wd"
 #define STD_VN_OPTICS
-#define MAG_VN_OPTICS "vn_o_4x_m16","vn_o_4x_m4956","vn_o_3x_m84","vn_o_3x_m9130"
+#define MAG_VN_OPTICS "vn_o_4x_m16","vn_o_4x_m4956","vn_o_3x_m84","vn_o_3x_m9130","vn_o_3x_l1a1"
 // "vn_o_9x_m16","vn_o_9x_m14"
 #define SNP_VN_OPTICS "vn_o_9x_m40a1","vn_o_3x_m9130"
 #define SNP_VN_NVG_OPTICS "vn_o_anpvs2_m40a1"
