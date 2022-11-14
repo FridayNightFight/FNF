@@ -25,7 +25,9 @@ params [["_unit", objNull], ["_srRadio", true], ["_lrRadio", false]];
 
 if (isNull _unit) exitWith {nil};
 
-if (_srRadio || (missionNamespace getVariable ["fnf_SWRadioForAll", -1]) == 1) then {
+private _swRadioForAll = missionNamespace getVariable ["fnf_SWRadioForAll", -1];
+
+if ((_srRadio || _swRadioForAll == 1) && !(_swRadioForAll == 0)) then {
   _unit linkItem ([side (group _unit), 1] call TFAR_fnc_getSideRadio);
   diag_log text format["[FNF] (loadout) INFO: Equipped SW radio ""%1""", [side (group _unit), 1] call TFAR_fnc_getSideRadio];
   // missionNamespace setVariable ["fnf_hasSW", true];
