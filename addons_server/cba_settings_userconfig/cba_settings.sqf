@@ -183,7 +183,7 @@ force force ace_map_mapIllumination = true;
 force force ace_map_mapLimitZoom = false;
 force force ace_map_mapShake = true;
 force force ace_map_mapShowCursorCoordinates = false;
-force force ace_markers_moveRestriction = 2;
+force force ace_markers_moveRestriction = 0;
 
 // ACE Map Gestures
 ace_map_gestures_allowCurator = true;
