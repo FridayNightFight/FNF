@@ -248,6 +248,10 @@ class CfgFunctions {
     class map {
       file = "client\ui\map";
       class mapZoneAssets{};
+      class initPolygonShading{};
+      class invertPolygon{};
+      class triangulatePolygon{};
+      class triangulateAndShadePolygon{};
     };
   };
   class fnf_server {

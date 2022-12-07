@@ -95,6 +95,19 @@ if (fnf_gameMode != "sustainedAssault") then {
   call fnf_client_fnc_teleportActions_SA; // Add MSP teleport option to flagpole if sustainedAssault
 };
 
+call fnf_ui_fnc_initPolygonShading;
+
+if (isNil "zoneTrigger") then {
+  _boundryMarkers = [];
+  for "_i" from 1 to 50 do {
+    private _markerName = format["fnf_zoneBoundary_marker_%1", _i];
+    if (markerShape _markerName != "") then {
+     _boundryMarkers pushBack (_markerName);
+    };
+  };
+  [_boundryMarkers, [0,0,0,0.5], true] call fnf_ui_fnc_triangulateAndShadePolygon;
+};
+
 //Set player loadout after stagger time
 [{missionNamespace getVariable ["fnf_staggeredLoaded",false] && !(call BIS_fnc_isLoading)}, {
   [] spawn {
