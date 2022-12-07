@@ -166,6 +166,4 @@ _output = [];
   }
 } forEach _markerList;
 
-testing = +_output;
-
 _output;
