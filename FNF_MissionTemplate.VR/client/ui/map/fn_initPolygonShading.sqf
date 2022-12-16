@@ -26,6 +26,19 @@ findDisplay 52 displayCtrl 51 ctrlAddEventHandler ["Draw",
 }];
 }] call CBA_fnc_waitUntilAndExecute;
 
+[{!isNull findDisplay 53},{
+findDisplay 53 displayCtrl 51 ctrlAddEventHandler ["Draw",
+{
+  _map = _this select 0;
+  {
+    _pos1 = getMarkerPos ((_x select 0) select 0);
+    _pos2 = getMarkerPos ((_x select 0) select 1);
+    _pos3 = getMarkerPos ((_x select 0) select 2);
+	  _map drawTriangle [[_pos1, _pos2, _pos3], _x select 1, _x select 2];
+  } forEach fnf_trianglesToDraw;
+}];
+}] call CBA_fnc_waitUntilAndExecute;
+
 [{!isNull findDisplay 60000},{
 findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
 {
