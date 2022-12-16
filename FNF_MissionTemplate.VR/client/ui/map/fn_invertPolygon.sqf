@@ -14,7 +14,12 @@ _invertedBox = [[-20000,-20000,0],[-20000,(worldSize + 20000),0],[(worldSize + 2
     {
       _checkingNextMarkerPos = getMarkerPos (_markerList select (_forEachIndex + 1));
     };
-    _checkingGradient = ((_checkingMarkerPos select 1) - (_checkingNextMarkerPos select 1)) / ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0));
+    if ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0) == 0) then
+    {
+      _checkingGradient = 3.4028235e38; //max integer in arma
+    } else {
+      _checkingGradient = ((_checkingMarkerPos select 1) - (_checkingNextMarkerPos select 1)) / ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0));
+    };
     if (_checkingGradient == _probableGradient) then {continue};
     _checkingOffset = (_checkingMarkerPos select 1) - (_checkingGradient * (_checkingMarkerPos select 0));
     _intersectPoint = [((_probableOffset - _checkingOffset) / (_checkingGradient - _probableGradient)),(_probableGradient * ((_probableOffset - _checkingOffset) / (_checkingGradient - _probableGradient)) + _probableOffset),0];
@@ -84,17 +89,18 @@ _invertedBox = [[-20000,-20000,0],[-20000,(worldSize + 20000),0],[(worldSize + 2
 
 //fix markers?
 _invertedBoxMarkerCounter = 0;
+_nameToUseForUniqueMarkerName = (_markerList select 0) + "_fixedInvertedBoxMarker";
 _invertedMarkerNames = [];
 {
   if (_forEachIndex == 0) then
   {
-    createMarkerLocal["fnf_invertedBoxMarker_" + str (count _invertedBox), [_x select 0, _x select 1, 0]];
+    createMarkerLocal[_nameToUseForUniqueMarkerName + str (count _invertedBox), [_x select 0, _x select 1, 0]];
   };
-  createMarkerLocal["fnf_invertedBoxMarker_" + (str _invertedBoxMarkerCounter), _x];
-  _invertedMarkerNames pushBack ("fnf_invertedBoxMarker_" + (str _invertedBoxMarkerCounter));
+  createMarkerLocal[_nameToUseForUniqueMarkerName + (str _invertedBoxMarkerCounter), _x];
+  _invertedMarkerNames pushBack (_nameToUseForUniqueMarkerName + (str _invertedBoxMarkerCounter));
   _invertedBoxMarkerCounter = _invertedBoxMarkerCounter + 1;
 } forEach _invertedBox;
-_invertedMarkerNames pushBack "fnf_invertedBoxMarker_" + str (count _invertedBox);
+_invertedMarkerNames pushBack _nameToUseForUniqueMarkerName + str (count _invertedBox);
 
 _output = [];
 
@@ -123,7 +129,7 @@ _output = [];
     _extraPointPos = [0,0,0];
 
     for "_i" from 0 to 359 do {
-      _extraPointOffset = [(0.00089 * (cos (_i - 90))), (0.00089 * (sin (_i + 90)))];
+      _extraPointOffset = [(0.01 * (cos (_i - 90))), (0.01 * (sin (_i + 90)))];
       _extraPointPos = [((_markerPos select 0) + (_extraPointOffset select 0)), ((_markerPos select 1) + (_extraPointOffset select 1)), 0];
       _probableGradient = ((_extraPointPos select 1) - (_nextMarkerPos select 1)) / ((_extraPointPos select 0) - (_nextMarkerPos select 0));
       _probableOffset = (_extraPointPos select 1) - (_probableGradient * (_extraPointPos select 0));
@@ -136,7 +142,12 @@ _output = [];
         {
           _checkingNextMarkerPos = getMarkerPos (_markerList select (_forEachIndex + 1));
         };
-        _checkingGradient = ((_checkingMarkerPos select 1) - (_checkingNextMarkerPos select 1)) / ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0));
+        if ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0) == 0) then
+        {
+          _checkingGradient = 3.4028235e38; //max integer in arma
+        } else {
+          _checkingGradient = ((_checkingMarkerPos select 1) - (_checkingNextMarkerPos select 1)) / ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0));
+        };
         if (_checkingGradient == _probableGradient) then {continue};
         _checkingOffset = (_checkingMarkerPos select 1) - (_checkingGradient * (_checkingMarkerPos select 0));
         _intersectPoint = [((_probableOffset - _checkingOffset) / (_checkingGradient - _probableGradient)),(_probableGradient * ((_probableOffset - _checkingOffset) / (_checkingGradient - _probableGradient)) + _probableOffset),0];
@@ -201,13 +212,14 @@ _output = [];
       };
     };
 
-    createMarkerLocal["fnf_invertedBoxMarker_fixMarker", _extraPointPos];
-    _fixMarker = "fnf_invertedBoxMarker_fixMarker";
+    createMarkerLocal[_nameToUseForUniqueMarkerName + "_fixMarker", _extraPointPos];
+    _fixMarker = _nameToUseForUniqueMarkerName + "_fixMarker";
+    _fixMarker setMarkerTypeLocal "Contact_defenseLineOver";
     _fixMarkerPos = getMarkerPos _fixMarker;
 
-    _spareMarkerBorder = "fnf_invertedBoxMarker_" + str (count _invertedBox);
+    _spareMarkerBorder = _nameToUseForUniqueMarkerName + str (count _invertedBox);
     _spareMarkerBorderPos = getMarkerPos _spareMarkerBorder;
-    _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) - 0.00089];
+    _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) - 0.01];
     _spareMarkerBorderPos = getMarkerPos _spareMarkerBorder;
 
     _probableGradient = ((_markerPos select 1) - ((_invertedBox select 0) select 1)) / ((_markerPos select 0) - ((_invertedBox select 0) select 0));
@@ -216,7 +228,7 @@ _output = [];
     _checkingGradient = ((_spareMarkerBorderPos select 1) - (_fixMarkerPos select 1)) / ((_spareMarkerBorderPos select 0) - (_fixMarkerPos select 0));
     if (_checkingGradient == _probableGradient) then {
       _output append _invertedMarkerNames;
-      _output pushBack "fnf_invertedBoxMarker_fixMarker";
+      _output pushBack _fixMarker;
       continue;
     };
     _checkingOffset = (_spareMarkerBorderPos select 1) - (_checkingGradient * (_spareMarkerBorderPos select 0));
@@ -271,18 +283,18 @@ _output = [];
     };
 
     if (_intersectOccursWithinLines) then {
-      _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) + 0.00178];
-
+      _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) + 0.02];
+      _copyOfInvertedMarkerNames = +_invertedMarkerNames;
       _invertedMarkerNames = [];
-      _invertedMarkerNames pushBack "fnf_invertedBoxMarker_0";
-      _invertedMarkerNames pushBack "fnf_invertedBoxMarker_3";
-      _invertedMarkerNames pushBack "fnf_invertedBoxMarker_2";
-      _invertedMarkerNames pushBack "fnf_invertedBoxMarker_1";
-      _invertedMarkerNames pushBack "fnf_invertedBoxMarker_4";
+      _invertedMarkerNames pushBack (_copyOfInvertedMarkerNames select 0);
+      _invertedMarkerNames pushBack (_copyOfInvertedMarkerNames select 3);
+      _invertedMarkerNames pushBack (_copyOfInvertedMarkerNames select 2);
+      _invertedMarkerNames pushBack (_copyOfInvertedMarkerNames select 1);
+      _invertedMarkerNames pushBack (_copyOfInvertedMarkerNames select 4);
     };
 
     _output append _invertedMarkerNames;
-    _output pushBack "fnf_invertedBoxMarker_fixMarker";
+    _output pushBack _fixMarker;
   }
 } forEach _markerList;
 

@@ -252,6 +252,7 @@ class CfgFunctions {
       class invertPolygon{};
       class triangulatePolygon{};
       class triangulateAndShadePolygon{};
+      class initUnregularZones{};
     };
   };
   class fnf_server {

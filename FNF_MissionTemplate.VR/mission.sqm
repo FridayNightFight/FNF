@@ -8,22 +8,22 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=15742;
+		nextID=15800;
 	};
 	class MarkerIDProvider
 	{
-		nextID=28;
+		nextID=32;
 	};
 	class LayerIndexProvider
 	{
-		nextID=888;
+		nextID=924;
 	};
 	class Camera
 	{
 		pos[]={509.28082,153.78806,301.26358};
-		dir[]={0.013837105,-0.45309195,0.891361};
-		up[]={0.0070327856,0.89146268,0.45303884};
-		aside[]={0.99988067,1.5170372e-009,-0.01552172};
+		dir[]={0.013837887,-0.45308945,0.89135766};
+		up[]={0.0070331418,0.89146501,0.45303485};
+		aside[]={0.99987948,4.6566129e-010,-0.015522635};
 	};
 };
 binarizationWanted=0;
@@ -201,7 +201,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category0
+	class Category1
 	{
 		name="Multiplayer";
 		class Attribute0
@@ -218,7 +218,7 @@ class CustomAttributes
 		};
 		nAttributes=1;
 	};
-	class Category1
+	class Category2
 	{
 		name="Scenario";
 		class Attribute0
@@ -293,7 +293,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=11;
+		items=51;
 		class Item0
 		{
 			dataType="Layer";
@@ -306,7 +306,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1200.114,6.3607702,400.151};
+						position[]={1200,6.3607702,400};
 					};
 					side="Empty";
 					flags=4;
@@ -339,7 +339,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1225.16,6.3607702,399.992};
+						position[]={1300,6.3607702,400};
 					};
 					side="Empty";
 					flags=4;
@@ -370,10 +370,11 @@ class Mission
 				class Item2
 				{
 					dataType="Marker";
-					position[]={1200.248,5,400.151};
+					position[]={1200,5,400};
 					name="destroy_obj_1_mark";
 					markerType="ELLIPSE";
 					type="ellipse";
+					colorName="ColorGrey";
 					fillName="SolidBorder";
 					a=50;
 					b=50;
@@ -383,10 +384,11 @@ class Mission
 				class Item3
 				{
 					dataType="Marker";
-					position[]={1225,5,400};
+					position[]={1300,5,400};
 					name="destroy_obj_2_mark";
 					markerType="ELLIPSE";
 					type="ellipse";
+					colorName="ColorBrown";
 					fillName="SolidBorder";
 					a=50;
 					b=50;
@@ -2545,7 +2547,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1200.015,5.0108399,500.108};
+						position[]={1200,5.0108399,500};
 					};
 					side="Empty";
 					flags=4;
@@ -2578,7 +2580,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1226.429,5.0108399,499.97601};
+						position[]={1250,5.0108399,500};
 					};
 					side="Empty";
 					flags=4;
@@ -2611,7 +2613,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1250,5.0108399,500};
+						position[]={1300,5.0108399,500};
 					};
 					side="Empty";
 					flags=4;
@@ -2687,7 +2689,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1199.7444,8.9768047,299.79248};
+						position[]={1200,8.9768047,300};
 					};
 					side="Empty";
 					flags=5;
@@ -2701,7 +2703,7 @@ class Mission
 				class Item1
 				{
 					dataType="Trigger";
-					position[]={1299.3617,5,299.11963};
+					position[]={1300,5,300};
 					class Attributes
 					{
 						name="ctf_attackTrig";
@@ -2742,7 +2744,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1215.2374,5,210.56331};
+						position[]={1190,5,205};
 					};
 					id=1343;
 					type="SideBLUFOR_F";
@@ -2752,7 +2754,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1318.3856,5,208.30745};
+						position[]={1290,5,205};
 					};
 					id=1346;
 					type="SideBLUFOR_F";
@@ -2762,7 +2764,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1420.7351,5,207.75667};
+						position[]={1390,5,205};
 					};
 					id=1349;
 					type="SideBLUFOR_F";
@@ -2772,7 +2774,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1215.1292,5,198.9847};
+						position[]={1200,5,205};
 					};
 					id=1344;
 					type="SideResistance_F";
@@ -2782,7 +2784,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1318.2773,5,196.72884};
+						position[]={1300,5,205};
 					};
 					id=1347;
 					type="SideResistance_F";
@@ -2792,7 +2794,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1420.6268,5,196.17805};
+						position[]={1400,5,205};
 					};
 					id=1350;
 					type="SideResistance_F";
@@ -2802,7 +2804,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1204.0913,5,191.5179};
+						position[]={1210,5,205};
 					};
 					id=1345;
 					type="SideOPFOR_F";
@@ -2812,7 +2814,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1307.2395,5,189.26204};
+						position[]={1310,5,205};
 					};
 					id=1348;
 					type="SideOPFOR_F";
@@ -2822,7 +2824,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1409.589,5,188.71126};
+						position[]={1410,5,205};
 					};
 					id=1351;
 					type="SideOPFOR_F";
@@ -2832,7 +2834,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1199.162,5,207.14301};
+						position[]={1200,5,200};
 					};
 					name="fnf_sector1";
 					areaSize[]={50,-1,50};
@@ -3044,7 +3046,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1298.349,5,206.836};
+						position[]={1300,5,200};
 					};
 					name="fnf_sector2";
 					areaSize[]={50,-1,50};
@@ -3256,7 +3258,7 @@ class Mission
 					dataType="Logic";
 					class PositionInfo
 					{
-						position[]={1398.832,5,205.922};
+						position[]={1400,5,200};
 					};
 					name="fnf_sector3";
 					areaSize[]={50,-1,50};
@@ -3487,7 +3489,7 @@ class Mission
 				class Item0
 				{
 					dataType="Trigger";
-					position[]={1199.816,5,99.439003};
+					position[]={1200,5,100};
 					class Attributes
 					{
 						name="fnf_sec1";
@@ -3498,7 +3500,7 @@ class Mission
 				class Item1
 				{
 					dataType="Trigger";
-					position[]={1300.377,5,99.834};
+					position[]={1300,5,100};
 					class Attributes
 					{
 						name="fnf_sec2";
@@ -3509,7 +3511,7 @@ class Mission
 				class Item2
 				{
 					dataType="Trigger";
-					position[]={1400.833,5,98.888};
+					position[]={1400,5,100};
 					class Attributes
 					{
 						name="fnf_sec3";
@@ -3689,7 +3691,7 @@ class Mission
 						position[]={250,5,300};
 					};
 					title="Spectator Start";
-					description="Spectator cameras will start at this location";
+					description="Spectator cameras will start at this location if no playyers are playing";
 					id=7436;
 				};
 				class Item8
@@ -3698,116 +3700,17 @@ class Mission
 					name="ZoneBoundary";
 					class Entities
 					{
-						items=15;
+						items=16;
 						class Item0
 						{
 							dataType="Marker";
 							position[]={600,5,400};
-							name="fnf_zoneBoundary_marker_1";
+							name="fnf_custom_zoneBoundary_1_marker_1";
 							text="1";
 							type="mil_marker";
 							id=13281;
 						};
 						class Item1
-						{
-							dataType="Marker";
-							position[]={600,5,327};
-							name="fnf_zoneBoundary_marker_10";
-							text="10";
-							type="mil_marker";
-							id=13290;
-						};
-						class Item2
-						{
-							dataType="Marker";
-							position[]={600,5,351};
-							name="fnf_zoneBoundary_marker_11";
-							text="11";
-							type="mil_marker";
-							id=13291;
-						};
-						class Item3
-						{
-							dataType="Marker";
-							position[]={600,5,376};
-							name="fnf_zoneBoundary_marker_12";
-							text="12";
-							type="mil_marker";
-							id=13292;
-						};
-						class Item4
-						{
-							dataType="Marker";
-							position[]={650,5,400};
-							name="fnf_zoneBoundary_marker_2";
-							text="2";
-							type="mil_marker";
-							id=13282;
-						};
-						class Item5
-						{
-							dataType="Marker";
-							position[]={700,5,399};
-							name="fnf_zoneBoundary_marker_3";
-							text="3";
-							type="mil_marker";
-							id=13283;
-						};
-						class Item6
-						{
-							dataType="Marker";
-							position[]={700,5,374};
-							name="fnf_zoneBoundary_marker_4";
-							text="4";
-							type="mil_marker";
-							id=13284;
-						};
-						class Item7
-						{
-							dataType="Marker";
-							position[]={700,5,349};
-							name="fnf_zoneBoundary_marker_5";
-							text="5";
-							type="mil_marker";
-							id=13285;
-						};
-						class Item8
-						{
-							dataType="Marker";
-							position[]={700,5,323};
-							name="fnf_zoneBoundary_marker_6";
-							text="6";
-							type="mil_marker";
-							id=13286;
-						};
-						class Item9
-						{
-							dataType="Marker";
-							position[]={699,5,300};
-							name="fnf_zoneBoundary_marker_7";
-							text="7";
-							type="mil_marker";
-							id=13287;
-						};
-						class Item10
-						{
-							dataType="Marker";
-							position[]={651,5,299};
-							name="fnf_zoneBoundary_marker_8";
-							text="8";
-							type="mil_marker";
-							id=13288;
-						};
-						class Item11
-						{
-							dataType="Marker";
-							position[]={599,5,300};
-							name="fnf_zoneBoundary_marker_9";
-							text="9";
-							type="mil_marker";
-							id=13289;
-						};
-						class Item12
 						{
 							dataType="Trigger";
 							position[]={500,5,400};
@@ -3822,27 +3725,137 @@ class Mission
 							id=221;
 							type="EmptyDetector";
 						};
-						class Item13
+						class Item2
 						{
 							dataType="Comment";
 							class PositionInfo
 							{
-								position[]={798,5,401};
+								position[]={650,5,450};
 							};
 							title="Zone Boundary (Custom)";
-							description="Used for non-square/circle zone boundaries. To use, delete or change the variable name of the zoneTrigger object.";
+							description="Used for non-square/circle zone boundaries. Reference custom boundarys for guidence";
 							id=13293;
+						};
+						class Item3
+						{
+							dataType="Comment";
+							class PositionInfo
+							{
+								position[]={500,5,450};
+							};
+							title="Zone Boundary";
+							description="This trigger's radius outlines the map borders -- players not in an air vehicle travelling outside of this zone will be killed after 20 seconds if they haven't returned to it.";
+							id=656;
+						};
+						class Item4
+						{
+							dataType="Marker";
+							position[]={650,5,399.89999};
+							name="fnf_custom_zoneBoundary_1_marker_2";
+							text="2";
+							type="mil_marker";
+							id=15746;
+						};
+						class Item5
+						{
+							dataType="Marker";
+							position[]={700,5,400};
+							name="fnf_custom_zoneBoundary_1_marker_3";
+							text="3";
+							type="mil_marker";
+							id=15747;
+						};
+						class Item6
+						{
+							dataType="Marker";
+							position[]={700.09998,5,375};
+							name="fnf_custom_zoneBoundary_1_marker_4";
+							text="4";
+							type="mil_marker";
+							id=15748;
+						};
+						class Item7
+						{
+							dataType="Marker";
+							position[]={700,5,350};
+							name="fnf_custom_zoneBoundary_1_marker_5";
+							text="5";
+							type="mil_marker";
+							id=15749;
+						};
+						class Item8
+						{
+							dataType="Marker";
+							position[]={700.09998,5,325};
+							name="fnf_custom_zoneBoundary_1_marker_6";
+							text="6";
+							type="mil_marker";
+							id=15750;
+						};
+						class Item9
+						{
+							dataType="Marker";
+							position[]={700,5,300};
+							name="fnf_custom_zoneBoundary_1_marker_7";
+							text="7";
+							type="mil_marker";
+							id=15751;
+						};
+						class Item10
+						{
+							dataType="Marker";
+							position[]={650,5,299.89999};
+							name="fnf_custom_zoneBoundary_1_marker_8";
+							text="8";
+							type="mil_marker";
+							id=15752;
+						};
+						class Item11
+						{
+							dataType="Marker";
+							position[]={600,5,300};
+							name="fnf_custom_zoneBoundary_1_marker_9";
+							text="9";
+							type="mil_marker";
+							id=15753;
+						};
+						class Item12
+						{
+							dataType="Marker";
+							position[]={600.09998,5,325};
+							name="fnf_custom_zoneBoundary_1_marker_10";
+							text="10";
+							type="mil_marker";
+							id=15754;
+						};
+						class Item13
+						{
+							dataType="Marker";
+							position[]={600,5,350};
+							name="fnf_custom_zoneBoundary_1_marker_11";
+							text="11";
+							type="mil_marker";
+							id=15755;
 						};
 						class Item14
 						{
+							dataType="Marker";
+							position[]={600.09998,5,375};
+							name="fnf_custom_zoneBoundary_1_marker_12";
+							text="12";
+							type="mil_marker";
+							id=15756;
+						};
+						class Item15
+						{
 							dataType="Comment";
 							class PositionInfo
 							{
-								position[]={400,5,400};
+								position[]={346.258,5,453.73999};
 							};
-							title="Zone Boundary";
-							description="This trigger's radius outlines the map borders -- players not in an air vehicle travelling outside of this zone will be killed after 15 seconds if they haven't returned to it.";
-							id=656;
+							title="Custom Boundarys";
+							description="Many boundarys will also have 3 or more markers next to them often with numbers 1, 2, 3, etc next to them, these are custom boundarys and allow you to create a zone not otherwise available with standard boundarys" \n "" \n "Every custom boundary will start with ""fnf_custom"", then followed by what it is, then followed by which boundary is being addressed in the case of multiple boundarys (such as safezones), then followed by ""marker"", and then the marker number" \n "" \n "Copying and pasting the markers will add on to the current boundary, to create another new boundary change the boundary number up one to 2 or 3 etc and change the marker number to 1, you can then copy and paste that marker to create the boundary" \n "" \n "All custom boundarys must have at least 3 markers, and none of the lines created by the markers must intersect, if they do you will know as the boundary created will look scuffed" \n "" \n "To activate a custom boundary simply delete the standard boundary/marker";
+							id=15771;
 						};
 					};
 					id=13381;
@@ -11280,7 +11293,7 @@ class Mission
 				class Item0
 				{
 					dataType="Marker";
-					position[]={700.27399,5,199.968};
+					position[]={700,5,200};
 					name="fnf_assassin_boundaries_1";
 					markerType="RECTANGLE";
 					type="";
@@ -26156,6 +26169,406 @@ class Mission
 			};
 			id=15520;
 			atlOffset=7.7375002;
+		};
+		class Item11
+		{
+			dataType="Marker";
+			position[]={750,5,650};
+			name="fnf_custom_safeZone_geur_1_marker_3";
+			text="3";
+			type="mil_destroy";
+			colorName="ColorGUER";
+			id=15742;
+		};
+		class Item12
+		{
+			dataType="Marker";
+			position[]={650,5,750};
+			name="fnf_custom_safeZone_geur_1_marker_1";
+			text="1";
+			type="mil_destroy";
+			colorName="ColorGUER";
+			id=15743;
+		};
+		class Item13
+		{
+			dataType="Marker";
+			position[]={750,5,750};
+			name="fnf_custom_safeZone_geur_1_marker_2";
+			text="2";
+			type="mil_destroy";
+			colorName="ColorGUER";
+			id=15744;
+		};
+		class Item14
+		{
+			dataType="Marker";
+			position[]={650,5,650};
+			name="fnf_custom_safeZone_geur_1_marker_4";
+			text="4";
+			type="mil_destroy";
+			colorName="ColorGUER";
+			id=15745;
+		};
+		class Item15
+		{
+			dataType="Marker";
+			position[]={450,5,750};
+			name="fnf_custom_safeZone_west_1_marker_1";
+			text="1";
+			type="mil_destroy";
+			colorName="ColorWEST";
+			id=15757;
+		};
+		class Item16
+		{
+			dataType="Marker";
+			position[]={250,5,750};
+			name="fnf_custom_safeZone_east_1_marker_1";
+			text="1";
+			type="mil_destroy";
+			colorName="ColorEAST";
+			id=15761;
+		};
+		class Item17
+		{
+			dataType="Marker";
+			position[]={350,5,750};
+			name="fnf_custom_safeZone_east_1_marker_2";
+			text="2";
+			type="mil_destroy";
+			colorName="ColorEAST";
+			id=15765;
+		};
+		class Item18
+		{
+			dataType="Marker";
+			position[]={350,5,650};
+			name="fnf_custom_safeZone_east_1_marker_3";
+			text="3";
+			type="mil_destroy";
+			colorName="ColorEAST";
+			id=15766;
+		};
+		class Item19
+		{
+			dataType="Marker";
+			position[]={250,5,650};
+			name="fnf_custom_safeZone_east_1_marker_4";
+			text="4";
+			type="mil_destroy";
+			colorName="ColorEAST";
+			id=15767;
+		};
+		class Item20
+		{
+			dataType="Marker";
+			position[]={550,5,750};
+			name="fnf_custom_safeZone_west_1_marker_2";
+			text="2";
+			type="mil_destroy";
+			colorName="ColorWEST";
+			id=15768;
+		};
+		class Item21
+		{
+			dataType="Marker";
+			position[]={550,5,650};
+			name="fnf_custom_safeZone_west_1_marker_3";
+			text="3";
+			type="mil_destroy";
+			colorName="ColorWEST";
+			id=15769;
+		};
+		class Item22
+		{
+			dataType="Marker";
+			position[]={450,5,650};
+			name="fnf_custom_safeZone_west_1_marker_4";
+			text="4";
+			type="mil_destroy";
+			colorName="ColorWEST";
+			id=15770;
+		};
+		class Item23
+		{
+			dataType="Marker";
+			position[]={1175,5,425};
+			name="fnf_custom_destroy_1_marker_1";
+			text="1";
+			type="mil_dot";
+			colorName="ColorGrey";
+			id=15772;
+		};
+		class Item24
+		{
+			dataType="Marker";
+			position[]={1175,5,125};
+			name="fnf_custom_adsector_1_marker_1";
+			text="1";
+			type="mil_box";
+			colorName="ColorKhaki";
+			id=15773;
+		};
+		class Item25
+		{
+			dataType="Marker";
+			position[]={675,5,220};
+			name="fnf_custom_assassin_1_marker_1";
+			text="1";
+			type="mil_triangle";
+			colorName="ColorUNKNOWN";
+			id=15774;
+		};
+		class Item26
+		{
+			dataType="Marker";
+			position[]={1225,5,425};
+			name="fnf_custom_destroy_1_marker_2";
+			text="2";
+			type="mil_dot";
+			colorName="ColorGrey";
+			id=15775;
+		};
+		class Item27
+		{
+			dataType="Marker";
+			position[]={1225,5,375};
+			name="fnf_custom_destroy_1_marker_3";
+			text="3";
+			type="mil_dot";
+			colorName="ColorGrey";
+			id=15776;
+		};
+		class Item28
+		{
+			dataType="Marker";
+			position[]={1175,5,375};
+			name="fnf_custom_destroy_1_marker_4";
+			text="4";
+			type="mil_dot";
+			colorName="ColorGrey";
+			id=15777;
+		};
+		class Item29
+		{
+			dataType="Marker";
+			position[]={1325,5,375};
+			name="fnf_custom_destroy_2_marker_3";
+			text="3";
+			type="mil_dot";
+			colorName="ColorBrown";
+			id=15778;
+		};
+		class Item30
+		{
+			dataType="Marker";
+			position[]={1275,5,375};
+			name="fnf_custom_destroy_2_marker_4";
+			text="4";
+			type="mil_dot";
+			colorName="ColorBrown";
+			id=15779;
+		};
+		class Item31
+		{
+			dataType="Marker";
+			position[]={1275,5,425};
+			name="fnf_custom_destroy_2_marker_1";
+			text="1";
+			type="mil_dot";
+			colorName="ColorBrown";
+			id=15780;
+		};
+		class Item32
+		{
+			dataType="Marker";
+			position[]={1325,5,425};
+			name="fnf_custom_destroy_2_marker_2";
+			text="2";
+			type="mil_dot";
+			colorName="ColorBrown";
+			id=15781;
+		};
+		class Item33
+		{
+			dataType="Marker";
+			position[]={725,5,220};
+			name="fnf_custom_assassin_1_marker_2";
+			text="2";
+			type="mil_triangle";
+			colorName="ColorUNKNOWN";
+			id=15782;
+		};
+		class Item34
+		{
+			dataType="Marker";
+			position[]={725,5,180};
+			name="fnf_custom_assassin_1_marker_3";
+			text="3";
+			type="mil_triangle";
+			colorName="ColorUNKNOWN";
+			id=15783;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={675,5,180};
+			name="fnf_custom_assassin_1_marker_4";
+			text="4";
+			type="mil_triangle";
+			colorName="ColorUNKNOWN";
+			id=15784;
+		};
+		class Item36
+		{
+			dataType="Marker";
+			position[]={875,5,220};
+			name="fnf_custom_assassin_2_marker_1";
+			text="1";
+			type="mil_triangle";
+			colorName="ColorCIV";
+			id=15785;
+		};
+		class Item37
+		{
+			dataType="Marker";
+			position[]={925,5,220};
+			name="fnf_custom_assassin_2_marker_2";
+			text="2";
+			type="mil_triangle";
+			colorName="ColorCIV";
+			id=15786;
+		};
+		class Item38
+		{
+			dataType="Marker";
+			position[]={925,5,180};
+			name="fnf_custom_assassin_2_marker_3";
+			text="3";
+			type="mil_triangle";
+			colorName="ColorCIV";
+			id=15787;
+		};
+		class Item39
+		{
+			dataType="Marker";
+			position[]={875,5,180};
+			name="fnf_custom_assassin_2_marker_4";
+			text="4";
+			type="mil_triangle";
+			colorName="ColorCIV";
+			id=15788;
+		};
+		class Item40
+		{
+			dataType="Marker";
+			position[]={1225,5,125};
+			name="fnf_custom_adsector_1_marker_2";
+			text="2";
+			type="mil_box";
+			colorName="ColorKhaki";
+			id=15789;
+		};
+		class Item41
+		{
+			dataType="Marker";
+			position[]={1225,5,75};
+			name="fnf_custom_adsector_1_marker_3";
+			text="3";
+			type="mil_box";
+			colorName="ColorKhaki";
+			id=15790;
+		};
+		class Item42
+		{
+			dataType="Marker";
+			position[]={1175,5,75};
+			name="fnf_custom_adsector_1_marker_4";
+			text="4";
+			type="mil_box";
+			colorName="ColorKhaki";
+			id=15791;
+		};
+		class Item43
+		{
+			dataType="Marker";
+			position[]={1275,5,125};
+			name="fnf_custom_adsector_2_marker_1";
+			text="1";
+			type="mil_box";
+			colorName="ColorPink";
+			id=15792;
+		};
+		class Item44
+		{
+			dataType="Marker";
+			position[]={1325,5,125};
+			name="fnf_custom_adsector_2_marker_2";
+			text="2";
+			type="mil_box";
+			colorName="ColorPink";
+			id=15793;
+		};
+		class Item45
+		{
+			dataType="Marker";
+			position[]={1325,5,75};
+			name="fnf_custom_adsector_2_marker_3";
+			text="3";
+			type="mil_box";
+			colorName="ColorPink";
+			id=15794;
+		};
+		class Item46
+		{
+			dataType="Marker";
+			position[]={1275,5,75};
+			name="fnf_custom_adsector_2_marker_4";
+			text="4";
+			type="mil_box";
+			colorName="ColorPink";
+			id=15795;
+		};
+		class Item47
+		{
+			dataType="Marker";
+			position[]={1375,5,125};
+			name="fnf_custom_adsector_3_marker_1";
+			text="1";
+			type="mil_box";
+			colorName="ColorOrange";
+			id=15796;
+		};
+		class Item48
+		{
+			dataType="Marker";
+			position[]={1425,5,125};
+			name="fnf_custom_adsector_3_marker_2";
+			text="2";
+			type="mil_box";
+			colorName="ColorOrange";
+			id=15797;
+		};
+		class Item49
+		{
+			dataType="Marker";
+			position[]={1425,5,75};
+			name="fnf_custom_adsector_3_marker_3";
+			text="3";
+			type="mil_box";
+			colorName="ColorOrange";
+			id=15798;
+		};
+		class Item50
+		{
+			dataType="Marker";
+			position[]={1375,5,75};
+			name="fnf_custom_adsector_3_marker_4";
+			text="4";
+			type="mil_box";
+			colorName="ColorOrange";
+			id=15799;
 		};
 	};
 	class Connections

@@ -1596,7 +1596,8 @@ if (_QS_ST_X select 1) then {
 				if (['311',(str _x),FALSE] call BIS_fnc_inString) then {
 					if (!isNull (_x displayCtrl 101)) exitWith {
 						_gps = (_x displayCtrl 101);
-						_gps ctrlRemoveAllEventHandlers 'Draw';
+						//_gps ctrlRemoveAllEventHandlers 'Draw';
+            //this was breaking GPS markers because QS_icons is greedy for no reason, it should work fine without this
 						_gps ctrlAddEventHandler ['Draw',(format ['_this call %1',(_QS_ST_X select 50)])];
 						_exit = TRUE;
 					};
