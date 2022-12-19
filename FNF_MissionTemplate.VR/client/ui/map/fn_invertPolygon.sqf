@@ -14,6 +14,7 @@ _invertedBox = [[-20000,-20000,0],[-20000,(worldSize + 20000),0],[(worldSize + 2
     {
       _checkingNextMarkerPos = getMarkerPos (_markerList select (_forEachIndex + 1));
     };
+    _checkingGradient = 0;
     if ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0) == 0) then
     {
       _checkingGradient = 3.4028235e38; //max integer in arma
@@ -142,6 +143,7 @@ _output = [];
         {
           _checkingNextMarkerPos = getMarkerPos (_markerList select (_forEachIndex + 1));
         };
+        _checkingGradient = 0;
         if ((_checkingMarkerPos select 0) - (_checkingNextMarkerPos select 0) == 0) then
         {
           _checkingGradient = 3.4028235e38; //max integer in arma
