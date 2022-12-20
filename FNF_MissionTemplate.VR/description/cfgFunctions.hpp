@@ -70,6 +70,7 @@ class CfgFunctions {
       class respawnPlayer{};
       class setIndforAllegiance{};
       class zuesAceOptions{};
+      class playerNumberTracker{};
     };
     class gameEnd {
       file = "client\misc\admin";
