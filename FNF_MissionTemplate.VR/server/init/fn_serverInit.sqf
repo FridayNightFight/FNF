@@ -132,9 +132,6 @@ if (!isNil "zoneTrigger") then {
   private _zoneArea = triggerArea zoneTrigger;
   zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
   [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
-} else {
-  // if not, use markers
-  call fnf_server_fnc_genIrregularZone;
 };
 
 if !(fnf_gameMode == "sustainedAssault") then {

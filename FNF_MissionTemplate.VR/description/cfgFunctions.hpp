@@ -254,6 +254,7 @@ class CfgFunctions {
       class triangulatePolygon{};
       class triangulateAndShadePolygon{};
       class initUnregularZones{};
+      class genPolylineFromMarkers{};
     };
   };
   class fnf_server {
@@ -273,7 +274,6 @@ class CfgFunctions {
       class safeZoneTeleportInit_STD{};
       class newPlayers{};
       class markSafezoneAssets{};
-      class genIrregularZone{};
       class airdropAssets{};
     };
     class end {
