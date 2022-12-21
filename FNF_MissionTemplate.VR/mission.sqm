@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=924;
+		nextID=936;
 	};
 	class Camera
 	{
 		pos[]={509.28082,153.78806,301.26358};
-		dir[]={0.013837887,-0.45308945,0.89135766};
-		up[]={0.0070331418,0.89146501,0.45303485};
-		aside[]={0.99987948,4.6566129e-010,-0.015522635};
+		dir[]={0.013837889,-0.45308924,0.89135778};
+		up[]={0.007033139,0.89146519,0.45303467};
+		aside[]={0.9998796,0,-0.015522636};
 	};
 };
 binarizationWanted=0;
@@ -201,7 +201,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category1
+	class Category0
 	{
 		name="Multiplayer";
 		class Attribute0
@@ -218,7 +218,7 @@ class CustomAttributes
 		};
 		nAttributes=1;
 	};
-	class Category2
+	class Category1
 	{
 		name="Scenario";
 		class Attribute0
@@ -26174,7 +26174,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={750,5,650};
-			name="fnf_custom_safeZone_geur_1_marker_3";
+			name="fnf_custom_safeZone_guer_1_marker_3";
 			text="3";
 			type="mil_destroy";
 			colorName="ColorGUER";
@@ -26184,7 +26184,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={650,5,750};
-			name="fnf_custom_safeZone_geur_1_marker_1";
+			name="fnf_custom_safeZone_guer_1_marker_1";
 			text="1";
 			type="mil_destroy";
 			colorName="ColorGUER";
@@ -26194,7 +26194,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={750,5,750};
-			name="fnf_custom_safeZone_geur_1_marker_2";
+			name="fnf_custom_safeZone_guer_1_marker_2";
 			text="2";
 			type="mil_destroy";
 			colorName="ColorGUER";
@@ -26204,7 +26204,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={650,5,650};
-			name="fnf_custom_safeZone_geur_1_marker_4";
+			name="fnf_custom_safeZone_guer_1_marker_4";
 			text="4";
 			type="mil_destroy";
 			colorName="ColorGUER";

@@ -94,21 +94,6 @@ call fnf_server_fnc_webhook_roundPrep;
     !isNil "fnf_vehiclesToProcess"
   }, {
     call fnf_server_fnc_markSafeZoneAssets;
-
-    if (count (missionNamespace getVariable ["fnf_airdropAssets", []]) > 0) then {
-      [{getClientStateNumber >= 10}, {call fnf_server_fnc_airdropAssets}] call CBA_fnc_waitUntilAndExecute;
-    };
-
-    private _safeMarkers = [objNull, nil, true] call fnf_fnc_inSafeZone;
-    {
-      if (markerShape _x != "") then {
-        _x setMarkerType "mil_dot";
-        _ogMark = _x call BIS_fnc_markerToString;
-        deleteMarker _x;
-        _ogMark call BIS_fnc_stringToMarker;
-        // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
-      };
-    } forEach _safeMarkers;
     missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
 }] call CBA_fnc_waitUntilAndExecute;
 

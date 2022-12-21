@@ -60,7 +60,6 @@ player enableSimulation false;
 
 call fnf_client_fnc_setupGame; //Client portion of game modes
 [{missionNamespace getVariable ["fnf_markCustomObjs_done", false]}, {
-  call fnf_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
   call fnf_briefing_fnc_init; //Briefing
   call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
   [] spawn {

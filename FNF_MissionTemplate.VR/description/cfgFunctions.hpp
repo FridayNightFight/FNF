@@ -197,7 +197,6 @@ class CfgFunctions {
       class disableMisc{};
       class afkCheck{};
       class removeRespawnButton{};
-      class hideMarkers{};
       class restrictUniform{};
       class restrictETool{};
       class restrictGamma{};
@@ -255,6 +254,7 @@ class CfgFunctions {
       class triangulateAndShadePolygon{};
       class initUnregularZones{};
       class genPolylineFromMarkers{};
+      class removeShadedPolygon{};
     };
   };
   class fnf_server {
@@ -274,7 +274,6 @@ class CfgFunctions {
       class safeZoneTeleportInit_STD{};
       class newPlayers{};
       class markSafezoneAssets{};
-      class airdropAssets{};
     };
     class end {
       file = "server\end";

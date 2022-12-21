@@ -15,10 +15,26 @@ _canMark = {
   //private _size = getNumber (configFile >> "CfgVehicles" >> typeOf _obj >> "mapSize");
   private _size = (boundingBox _x) select 2;
 
+  _inSafeZone = false;
+
+  {
+    if (typeName _x == "ARRAY") then
+    {
+      _polygonToCheck = [];
+      {
+        _polygonToCheck pushback (getMarkerPos _x);
+      } forEach _x;
+      _polygonToCheck pushback (getMarkerPos (_x select 0));
+      if ((getPos _obj) inPolygon _polygonToCheck) then {_inSafeZone = true;};
+    } else {
+      if (_obj inArea _x) then {_inSafeZone = true;};
+    };
+  } forEach _markerBlacklist;
+
   _size > 1.5
-  &&
-  {if (_obj inArea _x) exitWith {false}; true} forEach _markerBlacklist
-  &&
+  and
+  !_inSafeZone
+  and
   {if (_obj isKindOf _x) exitWith {false}; true} forEach _classBlacklist
 };
 
