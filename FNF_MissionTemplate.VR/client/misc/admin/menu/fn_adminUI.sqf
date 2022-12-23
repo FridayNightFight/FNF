@@ -4,8 +4,15 @@ disableSerialization;
 if (ace_spectator_isSet) then {
 	fnf_adminDisplay = [findDisplay 60000 createDisplay "RscDisplayEmpty"];
 } else {
-	fnf_adminDisplay = [findDisplay 46 createDisplay "RscDisplayEmpty"];
+  if (!isNull findDisplay 312) then
+  {
+    fnf_adminDisplay = [findDisplay 312 createDisplay "RscDisplayEmpty"];
+  } else {
+    fnf_adminDisplay = [findDisplay 46 createDisplay "RscDisplayEmpty"];
+  }
 };
+
+if (isnil fnf_playerNumberDisplayActive) then {call fnf_admin_fnc_playerNumberTracker};
 
 //Add pre defined buttons for each admin diary entry to be clicked on
 _background = (fnf_adminDisplay select 0) ctrlCreate ["IGUIBack", -1];
@@ -124,10 +131,20 @@ _playerMessageButton ctrlSetPosition[ 0.5125, 0.1625, 0.475, 0.05 ];
 _playerMessageButton ctrlCommit 0;
 _playerMessageButton ctrlSetText "Send Message to Player or Side";
 
-_playerMessageAllButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10012 ];
+_playerMessageAllButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10013 ];
 _playerMessageAllButton ctrlSetPosition[ 0.5125, 0.225, 0.475, 0.05 ];
 _playerMessageAllButton ctrlCommit 0;
 _playerMessageAllButton ctrlSetText "Send Message to All Players";
+
+_activateNumberTrackerButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10014 ];
+_activateNumberTrackerButton ctrlSetPosition[ 0.5125, 0.50625, 0.475, 0.05 ];
+_activateNumberTrackerButton ctrlCommit 0;
+if (fnf_playerNumberDisplayActive) then
+{
+  _activateNumberTrackerButton ctrlSetText "De-Activate player numbers display";
+} else {
+  _activateNumberTrackerButton ctrlSetText "Activate player numbers display";
+};
 
 _resultReadout = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlStructuredText", 10020 ];
 _resultReadout ctrlSetPosition[ 0.5125, 0.58, 0.4775, 0.21 ];
@@ -406,4 +423,19 @@ _playerMessageAllButton ctrlAddEventHandler[ "ButtonClick", {
 
   // _dataToSend remoteExec ["fnf_admin_fnc_serverCommands", 2];
   ["FNF_UIPanelAdmin_ButtonClicked", _dataToSend] call CBA_fnc_serverEvent;
+}];
+
+_activateNumberTrackerButton ctrlAddEventHandler[ "ButtonClick", {
+	params[ "_activateNumberTrackerButton" ];
+
+	if (!fnf_playerNumberDisplayActive) then
+  {
+    ("playerNumberRsc" call BIS_fnc_rscLayer) cutRsc ["playerNumberStructText", "PLAIN"];
+    _activateNumberTrackerButton ctrlSetText "De-Activate player numbers display";
+    fnf_playerNumberDisplayActive = true;
+  } else {
+    ("playerNumberRsc" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
+    _activateNumberTrackerButton ctrlSetText "Activate player numbers display";
+    fnf_playerNumberDisplayActive = false;
+  };
 }];

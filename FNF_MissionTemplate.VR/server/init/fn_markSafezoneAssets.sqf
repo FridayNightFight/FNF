@@ -30,14 +30,29 @@ fnf_safeZoneAssets = createHashMapFromArray [
   private _sideSafeMarkers = [nil, _thisSide, true] call fnf_fnc_inSafeZone;
   private _safeZoneContents = createHashMap;
   {
-    _safeMarkerName = _x;
-    _safeZoneContents set [_safeMarkerName, []];
-
+    if (typeName _x == "ARRAY") then
     {
-      if (_x inArea _safeMarkerName) then {
-        (_safeZoneContents get _safeMarkerName) pushBackUnique _x;
-      };
-    } forEach _thisSideAssetsObjects;
+      _safeMarkerName = (_x select 0);
+      _safeZoneContents set [_safeMarkerName, []];
+      _polygonToCheck = [];
+      {
+        _polygonToCheck pushback (getMarkerPos _x);
+      } forEach _x;
+      _polygonToCheck pushback (getMarkerPos (_x select 0));
+      {
+        if ((getPos _x) inPolygon _polygonToCheck) then {
+          (_safeZoneContents get _safeMarkerName) pushBackUnique _x;
+        };
+      } forEach _thisSideAssetsObjects;
+    } else {
+      _safeMarkerName = _x;
+      _safeZoneContents set [_safeMarkerName, []];
+      {
+        if (_x inArea _safeMarkerName) then {
+          (_safeZoneContents get _safeMarkerName) pushBackUnique _x;
+        };
+      } forEach _thisSideAssetsObjects;
+    };
   } forEach _sideSafeMarkers;
 
   {

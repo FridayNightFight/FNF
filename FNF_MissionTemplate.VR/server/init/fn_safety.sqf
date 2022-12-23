@@ -79,10 +79,12 @@ call fnf_safety_fnc_handleVics; //Make vehicles invincible until safety ends
     }, [], 300] call CBA_fnc_waitAndExecute;
 
     { // if not SA, delete safeStart markers
-      // if !(getMarkerColor _x isEqualTo "") then {
+      if (typeName _x == "ARRAY") then {
+        [[_x], fnf_ui_fnc_removeShadedPolygon] remoteExec ["call", 0, true];
+      } else {
         deleteMarker _x;
         _x remoteExec ["deleteMarkerLocal", 0, true];
-      // };
+      };
     } forEach ([nil, nil, true] call fnf_fnc_inSafeZone);
   };
 }] call CBA_fnc_waitUntilAndExecute;

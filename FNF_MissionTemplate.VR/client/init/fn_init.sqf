@@ -30,6 +30,9 @@ fnf_loadout_roles = [
   ["BASE",["Crew/Wpn Operator","PRIVATE"]]
 ];
 
+call fnf_ui_fnc_initPolygonShading;
+call fnf_ui_fnc_initUnregularZones;
+
 [{getClientStateNumber > 8}, {player linkItem "ItemMap"}] call CBA_fnc_waitUntilAndExecute;
 
 // Zeus actions
@@ -57,7 +60,6 @@ player enableSimulation false;
 
 call fnf_client_fnc_setupGame; //Client portion of game modes
 [{missionNamespace getVariable ["fnf_markCustomObjs_done", false]}, {
-  call fnf_restrictions_fnc_hideMarkers; //Hide markers player shouldn't see
   call fnf_briefing_fnc_init; //Briefing
   call fnf_briefing_fnc_createBriefSpec; // Set up briefing for UI panel
   [] spawn {

@@ -14,6 +14,11 @@
     private _worldCoord = (findDisplay 12 displayCtrl 51) ctrlMapScreenToWorld getMousePosition;
     private _markerImIn = [_worldCoord, playerSide, false, false] call fnf_fnc_inSafeZone;
 
+    if (typeName _markerImIn == "ARRAY") then
+    {
+      _markerImIn = _markerImIn select 0;
+    };
+
     if (_markerImIn == "") exitWith {
       {
         private _markers = _y;

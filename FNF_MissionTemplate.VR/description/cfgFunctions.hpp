@@ -70,6 +70,7 @@ class CfgFunctions {
       class respawnPlayer{};
       class setIndforAllegiance{};
       class zuesAceOptions{};
+      class playerNumberTracker{};
     };
     class gameEnd {
       file = "client\misc\admin";
@@ -196,7 +197,6 @@ class CfgFunctions {
       class disableMisc{};
       class afkCheck{};
       class removeRespawnButton{};
-      class hideMarkers{};
       class restrictUniform{};
       class restrictETool{};
       class restrictGamma{};
@@ -248,6 +248,13 @@ class CfgFunctions {
     class map {
       file = "client\ui\map";
       class mapZoneAssets{};
+      class initPolygonShading{};
+      class invertPolygon{};
+      class triangulatePolygon{};
+      class triangulateAndShadePolygon{};
+      class initUnregularZones{};
+      class genPolylineFromMarkers{};
+      class removeShadedPolygon{};
     };
   };
   class fnf_server {
@@ -267,8 +274,6 @@ class CfgFunctions {
       class safeZoneTeleportInit_STD{};
       class newPlayers{};
       class markSafezoneAssets{};
-      class genIrregularZone{};
-      class airdropAssets{};
     };
     class end {
       file = "server\end";

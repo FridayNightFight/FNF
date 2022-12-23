@@ -25,6 +25,7 @@ private _objectsToDeleteAfter = [];
   private _thisSideAssets = _thisSideAssetTypes call BIS_fnc_consolidateArray;
 
   private _thisSideMainSafeMarker = ([nil, _thisSide, true] call fnf_fnc_inSafeZone)#0;
+  //TODO disable this function (its bugged anyway and i dont want to fix it because me me no understand)
 
   _dropTargets pushBack [
     _thisSide,

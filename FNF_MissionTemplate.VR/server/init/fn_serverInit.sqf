@@ -94,21 +94,6 @@ call fnf_server_fnc_webhook_roundPrep;
     !isNil "fnf_vehiclesToProcess"
   }, {
     call fnf_server_fnc_markSafeZoneAssets;
-
-    if (count (missionNamespace getVariable ["fnf_airdropAssets", []]) > 0) then {
-      [{getClientStateNumber >= 10}, {call fnf_server_fnc_airdropAssets}] call CBA_fnc_waitUntilAndExecute;
-    };
-
-    private _safeMarkers = [objNull, nil, true] call fnf_fnc_inSafeZone;
-    {
-      if (markerShape _x != "") then {
-        _x setMarkerType "mil_dot";
-        _ogMark = _x call BIS_fnc_markerToString;
-        deleteMarker _x;
-        _ogMark call BIS_fnc_stringToMarker;
-        // [{_this call BIS_fnc_stringToMarker}, _ogMark, 1] call CBA_fnc_waitAndExecute;
-      };
-    } forEach _safeMarkers;
     missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
 }] call CBA_fnc_waitUntilAndExecute;
 
@@ -122,19 +107,9 @@ call fnf_server_fnc_webhook_roundPrep;
 //Create map cover for zone boundary
 if (!isNil "zoneTrigger") then {
   // if zoneTrigger exists, use standard functionality
-  for "_i" from 1 to 50 do {
-    private _markerName = format["fnf_zoneBoundary_marker_%1", _i];
-    if (markerShape _markerName != "") then {
-      _markerName remoteExec ["deleteMarkerLocal", 0, true];
-    };
-  };
-
   private _zoneArea = triggerArea zoneTrigger;
   zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
   [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
-} else {
-  // if not, use markers
-  call fnf_server_fnc_genIrregularZone;
 };
 
 if !(fnf_gameMode == "sustainedAssault") then {

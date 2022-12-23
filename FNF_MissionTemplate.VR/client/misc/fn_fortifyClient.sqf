@@ -89,8 +89,19 @@ KK_fnc_inHouse = {
       _canPlace = false;
       _errorStr = "Cannot place objects near roads.";
     };
-
-    if (fnf_fortifyMarkers findIf {_pos inArea _x} == -1) then {
+    if (fnf_fortifyMarkers findIf {
+      if (typeName _x == "ARRAY") then
+      {
+        _polygonToCheck = [];
+        {
+          _polygonToCheck pushback (getMarkerPos _x);
+        } forEach _x;
+        _polygonToCheck pushback (getMarkerPos (_x select 0));
+        if (true) exitWith {_pos inPolygon _polygonToCheck}
+      } else {
+        if (true) exitWith {_pos inArea _x}
+      };
+      } == -1) then {
       _canPlace = false;
       _errorStr = "Cannot place objects outside the start zone boundary."
     };
