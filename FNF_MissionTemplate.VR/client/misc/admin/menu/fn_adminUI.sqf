@@ -12,7 +12,7 @@ if (ace_spectator_isSet) then {
   }
 };
 
-if (isnil fnf_playerNumberDisplayActive) then {call fnf_admin_fnc_playerNumberTracker};
+if (isnil "fnf_playerNumberDisplayActive") then {call fnf_admin_fnc_playerNumberTracker};
 
 //Add pre defined buttons for each admin diary entry to be clicked on
 _background = (fnf_adminDisplay select 0) ctrlCreate ["IGUIBack", -1];

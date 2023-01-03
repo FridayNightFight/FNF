@@ -100,7 +100,7 @@ class RscTitles {
         x = 0.2 * safezoneW + safezoneX;
         y = 0.2 * safezoneH + safezoneY;
         h = 0.055 * safezoneH;
-        w = 0.06 * safezoneW; //w == h
+        w = 0.1 * safezoneW; //w == h
         size = 0.020;
         colorBackground[] = {0,0,0,0.85};
         colorText[] = {1,1,1,1};
