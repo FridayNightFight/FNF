@@ -53,7 +53,7 @@ class CfgCloudlets {
 		MoveVelocityVar[]={0.5,0.3,0.5};//{0.25,0.25,0.25}
   };
   class SmokeShellRed: SmokeShellWhite {
-    color[] = {{0.6,0.6,0.6,0.5},{0.6,0.6,0.6,0.25},[0.6,0.6,0.6,0]};
+    color[] = {{0.6,0.6,0.6,0.5},{0.6,0.6,0.6,0.25},{0.6,0.6,0.6,0}};
     particleFSFrameCount = 4;
     particleFSIndex = 12;
     particleFSLoop = 0;
