@@ -38,6 +38,7 @@ if (_side != sideEmpty) then {
                 {
                   _matchFound = true;
                   _x pushBack _markerName;
+                  _x sort true;
                 };
               };
             } forEach _safeZones;
@@ -70,6 +71,7 @@ if (_side != sideEmpty) then {
                 {
                   _matchFound = true;
                   _x pushBack _markerName;
+                  _x sort true;
                 };
               };
             } forEach _safeZones;
@@ -102,6 +104,7 @@ if (_side != sideEmpty) then {
                 {
                   _matchFound = true;
                   _x pushBack _markerName;
+                  _x sort true;
                 };
               };
             } forEach _safeZones;
@@ -145,6 +148,7 @@ if (_side != sideEmpty) then {
               {
                 _matchFound = true;
                 _x pushBack _markerName;
+                _x sort true;
               };
             };
           } forEach _safeZones;
@@ -168,6 +172,7 @@ if (_side != sideEmpty) then {
               {
                 _matchFound = true;
                 _x pushBack _markerName;
+                _x sort true;
               };
             };
           } forEach _safeZones;
@@ -191,6 +196,7 @@ if (_side != sideEmpty) then {
               {
                 _matchFound = true;
                 _x pushBack _markerName;
+                _x sort true;
               };
             };
           } forEach _safeZones;
