@@ -246,8 +246,9 @@ if (fnf_gameMode != "sustainedAssault") then
     } else {
       if (!fnf_enemyStartVisible && playerSide != west && playerSide != sideLogic) then
       {
-        (_x select 0) setMarkerTypeLocal "Empty";
-        (_x select 0) setMarkerTextLocal "";
+        _markerPos = getMarkerPos (_x select 0);
+        deleteMarkerLocal (_x select 0);
+        createMarkerLocal [(_x select 0), _markerPos];
       }
     };
   } forEach _westSafeZones;
@@ -273,8 +274,9 @@ if (fnf_gameMode != "sustainedAssault") then
     } else {
       if (!fnf_enemyStartVisible && playerSide != east && playerSide != sideLogic) then
       {
-        (_x select 0) setMarkerTypeLocal "Empty";
-        (_x select 0) setMarkerTextLocal "";
+        _markerPos = getMarkerPos (_x select 0);
+        deleteMarkerLocal (_x select 0);
+        createMarkerLocal [(_x select 0), _markerPos];
       }
     };
   } forEach _eastSafeZones;
@@ -300,8 +302,9 @@ if (fnf_gameMode != "sustainedAssault") then
     } else {
       if (!fnf_enemyStartVisible && playerSide != independent && playerSide != sideLogic) then
       {
-        (_x select 0) setMarkerTypeLocal "Empty";
-        (_x select 0) setMarkerTextLocal "";
+        _markerPos = getMarkerPos (_x select 0);
+        deleteMarkerLocal (_x select 0);
+        createMarkerLocal [(_x select 0), _markerPos];
       }
     };
   } forEach _guerSafeZones;
