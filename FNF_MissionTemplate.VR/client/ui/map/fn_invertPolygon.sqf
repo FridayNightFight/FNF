@@ -129,7 +129,7 @@ _output = [];
     _extraPointPos = [0,0,0];
 
     for "_i" from 0 to 359 do {
-      _extraPointOffset = [(0.1 * (cos (_i - 90))), (0.1 * (sin (_i + 90)))];
+      _extraPointOffset = [(1 * (cos (_i - 90))), (1 * (sin (_i + 90)))];
       _extraPointPos = [((_markerPos select 0) + (_extraPointOffset select 0)), ((_markerPos select 1) + (_extraPointOffset select 1)), 0];
       _probableGradient = ((_extraPointPos select 1) - (_nextMarkerPos select 1)) / ((_extraPointPos select 0) - (_nextMarkerPos select 0));
       _probableOffset = (_extraPointPos select 1) - (_probableGradient * (_extraPointPos select 0));
@@ -286,7 +286,7 @@ _output = [];
 
     _spareMarkerBorder = _nameToUseForUniqueMarkerName + str (count _invertedBox);
     _spareMarkerBorderPos = getMarkerPos _spareMarkerBorder;
-    _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) - 0.1];
+    _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) - 1];
     _spareMarkerBorderPos = getMarkerPos _spareMarkerBorder;
 
     _probableGradient = ((_markerPos select 1) - ((_invertedBox select 0) select 1)) / ((_markerPos select 0) - ((_invertedBox select 0) select 0));
@@ -350,7 +350,7 @@ _output = [];
     };
 
     if (_intersectOccursWithinLines) then {
-      _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) + 0.2];
+      _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) + 2];
       _copyOfInvertedMarkerNames = +_invertedMarkerNames;
       _invertedMarkerNames = [];
       _invertedMarkerNames pushBack (_copyOfInvertedMarkerNames select 0);
