@@ -38,10 +38,6 @@ if (_side != sideEmpty) then {
                 {
                   _matchFound = true;
                   _x pushBack _markerName;
-                  _x = [_x, [], {
-                  _results = _x regexFind ["\d+", 0];
-                  parseNumber (((_results select 1) select 0) select 0);
-                }, "ASCEND"] call BIS_fnc_sortBy;
                 };
               };
             } forEach _safeZones;
@@ -74,10 +70,6 @@ if (_side != sideEmpty) then {
                 {
                   _matchFound = true;
                   _x pushBack _markerName;
-                  _x = [_x, [], {
-                  _results = _x regexFind ["\d+", 0];
-                  parseNumber (((_results select 1) select 0) select 0);
-                }, "ASCEND"] call BIS_fnc_sortBy;
                 };
               };
             } forEach _safeZones;
@@ -110,10 +102,6 @@ if (_side != sideEmpty) then {
                 {
                   _matchFound = true;
                   _x pushBack _markerName;
-                  _x = [_x, [], {
-                  _results = _x regexFind ["\d+", 0];
-                  parseNumber (((_results select 1) select 0) select 0);
-                }, "ASCEND"] call BIS_fnc_sortBy;
                 };
               };
             } forEach _safeZones;
@@ -157,10 +145,6 @@ if (_side != sideEmpty) then {
               {
                 _matchFound = true;
                 _x pushBack _markerName;
-                _x = [_x, [], {
-                  _results = _x regexFind ["\d+", 0];
-                  parseNumber (((_results select 1) select 0) select 0);
-                }, "ASCEND"] call BIS_fnc_sortBy;
               };
             };
           } forEach _safeZones;
@@ -184,10 +168,6 @@ if (_side != sideEmpty) then {
               {
                 _matchFound = true;
                 _x pushBack _markerName;
-                _x = [_x, [], {
-                  _results = _x regexFind ["\d+", 0];
-                  parseNumber (((_results select 1) select 0) select 0);
-                }, "ASCEND"] call BIS_fnc_sortBy;
               };
             };
           } forEach _safeZones;
@@ -211,10 +191,6 @@ if (_side != sideEmpty) then {
               {
                 _matchFound = true;
                 _x pushBack _markerName;
-                _x = [_x, [], {
-                  _results = _x regexFind ["\d+", 0];
-                  parseNumber (((_results select 1) select 0) select 0);
-                }, "ASCEND"] call BIS_fnc_sortBy;
               };
             };
           } forEach _safeZones;
@@ -230,6 +206,23 @@ if (_side != sideEmpty) then {
     };
   };
 };
+
+_sortedSafeZones = [];
+
+{
+  if (typeName _x == "ARRAY") then
+  {
+    _tempArray = [_x, [], {
+      _results = _x regexFind ["\d+", 0];
+      parseNumber (((_results select 1) select 0) select 0);
+    }, "ASCEND"] call BIS_fnc_sortBy;
+    _sortedSafeZones pushBack +_tempArray;
+  } else {
+    _sortedSafeZones pushBack _x;
+  };
+} forEach _safeZones;
+
+_safeZones = _sortedSafeZones;
 
 if (_justReturnMarkers) exitWith {_safeZones};
 

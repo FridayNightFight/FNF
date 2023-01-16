@@ -2,6 +2,7 @@ params["_markerList"];
 _indexOfProbableLink = 0;
 _invertedBox = [[-20000,-20000,0],[-20000,(worldSize + 20000),0],[(worldSize + 20000),(worldSize + 20000),0],[(worldSize + 20000),-20000,0]];
 
+//find ankor marker
 {
   _markerPos = getMarkerPos _x;
   _probableGradient = ((_markerPos select 1) - ((_invertedBox select 0) select 1)) / ((_markerPos select 0) - ((_invertedBox select 0) select 0));
@@ -88,7 +89,7 @@ _invertedBox = [[-20000,-20000,0],[-20000,(worldSize + 20000),0],[(worldSize + 2
 } forEach _markerList;
 
 
-//fix markers?
+//add far boundry markers
 _invertedBoxMarkerCounter = 0;
 _nameToUseForUniqueMarkerName = (_markerList select 0) + "_fixedInvertedBoxMarker";
 _invertedMarkerNames = [];
@@ -105,24 +106,22 @@ _invertedMarkerNames pushBack _nameToUseForUniqueMarkerName + str (count _invert
 
 _output = [];
 
+//push output
 {
   _output pushBack _x;
+  //if link from box to zone marker add offset marker and add correct markers
   if (_forEachIndex == _indexOfProbableLink) then
   {
     _marker = _x;
-    _prevMarker = "";
-    _nextMarker = "";
+    _prevMarker = _markerList select (_forEachIndex - 1);
+    _nextMarker = _markerList select (_forEachIndex + 1);
     if (_forEachIndex == 0) then
     {
       _prevMarker = _markerList select ((count _markerList) - 1);
-    } else {
-      _prevMarker = _markerList select (_forEachIndex - 1);
     };
     if (_forEachIndex == (count _markerList) - 1) then
     {
       _nextMarker = _markerList select 0;
-    } else {
-      _nextMarker = _markerList select (_forEachIndex + 1);
     };
     _markerPos = getMarkerPos _marker;
     _prevMarkerPos = getMarkerPos _prevMarker;
@@ -130,7 +129,7 @@ _output = [];
     _extraPointPos = [0,0,0];
 
     for "_i" from 0 to 359 do {
-      _extraPointOffset = [(0.01 * (cos (_i - 90))), (0.01 * (sin (_i + 90)))];
+      _extraPointOffset = [(1 * (cos (_i - 90))), (1 * (sin (_i + 90)))];
       _extraPointPos = [((_markerPos select 0) + (_extraPointOffset select 0)), ((_markerPos select 1) + (_extraPointOffset select 1)), 0];
       _probableGradient = ((_extraPointPos select 1) - (_nextMarkerPos select 1)) / ((_extraPointPos select 0) - (_nextMarkerPos select 0));
       _probableOffset = (_extraPointPos select 1) - (_probableGradient * (_extraPointPos select 0));
@@ -208,6 +207,72 @@ _output = [];
           break;
         };
       } forEach _markerList;
+
+      //colision check for created link lines
+      _breakPos = getMarkerPos (_invertedMarkerNames select 0);
+      _breakGradient = 0;
+      if ((_markerPos select 0) - (_breakPos select 0) == 0) then
+      {
+        _breakGradient = 3.4028235e38; //max integer in arma
+      } else {
+        _breakGradient = ((_markerPos select 1) - (_breakPos select 1)) / ((_markerPos select 0) - (_breakPos select 0));
+      };
+      if (_breakGradient != _probableGradient) then
+      {
+        _breakOffset = (_markerPos select 1) - (_breakGradient * (_markerPos select 0));
+        _intersectPoint = [((_probableOffset - _breakOffset) / (_breakGradient - _probableGradient)),(_probableGradient * ((_probableOffset - _breakOffset) / (_breakGradient - _probableGradient)) + _probableOffset),0];
+        _badFinalCheck = true;
+
+        if ((_nextMarkerPos select 0) < (_extraPointPos select 0)) then {
+          if ((_intersectPoint select 0) >= (_extraPointPos select 0) or (_intersectPoint select 0) <= (_nextMarkerPos select 0)) then
+          {
+            _badFinalCheck = false;
+          }
+        } else {
+          if ((_intersectPoint select 0) <= (_extraPointPos select 0) or (_intersectPoint select 0) >= (_nextMarkerPos select 0)) then
+          {
+            _badFinalCheck = false;
+          }
+        };
+        if ((_nextMarkerPos select 1) < (_extraPointPos select 1)) then {
+          if ((_intersectPoint select 1) >= (_extraPointPos select 1) or (_intersectPoint select 1) <= (_nextMarkerPos select 1)) then
+          {
+            _badFinalCheck = false;
+          }
+        } else {
+          if ((_intersectPoint select 1) <= (_extraPointPos select 1) or (_intersectPoint select 1) >= (_nextMarkerPos select 1)) then
+          {
+            _badFinalCheck = false;
+          }
+        };
+
+        if ((_markerPos select 0) < (_breakPos select 0)) then {
+          if ((_intersectPoint select 0) >= (_breakPos select 0) or (_intersectPoint select 0) <= (_markerPos select 0)) then
+          {
+            _badFinalCheck = false;
+          }
+        } else {
+          if ((_intersectPoint select 0) <= (_breakPos select 0) or (_intersectPoint select 0) >= (_markerPos select 0)) then
+          {
+            _badFinalCheck = false;
+          }
+        };
+        if ((_markerPos select 1) < (_breakPos select 1)) then {
+          if ((_intersectPoint select 1) >= (_breakPos select 1) or (_intersectPoint select 1) <= (_markerPos select 1)) then
+          {
+            _badFinalCheck = false;
+          }
+        } else {
+          if ((_intersectPoint select 1) <= (_breakPos select 1) or (_intersectPoint select 1) >= (_markerPos select 1)) then
+          {
+            _badFinalCheck = false;
+          }
+        };
+        if (_badFinalCheck) then {
+          _intersectsWithPolygon = true;
+        };
+      };
+
       if (!_intersectsWithPolygon) then
       {
         break;
@@ -221,7 +286,7 @@ _output = [];
 
     _spareMarkerBorder = _nameToUseForUniqueMarkerName + str (count _invertedBox);
     _spareMarkerBorderPos = getMarkerPos _spareMarkerBorder;
-    _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) - 0.01];
+    _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) - 1];
     _spareMarkerBorderPos = getMarkerPos _spareMarkerBorder;
 
     _probableGradient = ((_markerPos select 1) - ((_invertedBox select 0) select 1)) / ((_markerPos select 0) - ((_invertedBox select 0) select 0));
@@ -285,7 +350,7 @@ _output = [];
     };
 
     if (_intersectOccursWithinLines) then {
-      _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) + 0.02];
+      _spareMarkerBorder setMarkerPosLocal [_spareMarkerBorderPos select 0, (_spareMarkerBorderPos select 1) + 2];
       _copyOfInvertedMarkerNames = +_invertedMarkerNames;
       _invertedMarkerNames = [];
       _invertedMarkerNames pushBack (_copyOfInvertedMarkerNames select 0);
