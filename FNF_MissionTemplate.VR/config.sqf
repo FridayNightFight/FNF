@@ -133,13 +133,13 @@ fnf_indforGear = "RHS_GEAR_ID_IRAQI_ARMY_2000_AKMN";
 // MAT SELECTION //
 
 // BLUFOR
-fnf_bluAT = GEARDEFAULT;
+fnf_bluAT = NOMAT();
 
 // OPFOR
-fnf_redAT = GEARDEFAULT;
+fnf_redAT = NOMAT();
 
 // INDFOR
-fnf_grnAT = GEARDEFAULT;
+fnf_grnAT = NOMAT();
 
 ////////////////////////////////////////////////////////////
 

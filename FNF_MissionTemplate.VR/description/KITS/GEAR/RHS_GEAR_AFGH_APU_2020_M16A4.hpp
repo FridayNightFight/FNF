@@ -110,7 +110,12 @@ class RHS_GEAR_AFGH_APU_2020_M16A4 {
     giveLRRadio = 1;
   };
 
-  class SL : TL {};
+  class SL : TL {
+    weaponChoices[] = {
+      {{SPOTTER_RIFLE},{SPOTTER_MAG}}
+    };
+    giveSilencer = 1;
+  };
 
   class PL : TL {};
 
@@ -169,11 +174,15 @@ class RHS_GEAR_AFGH_APU_2020_M16A4 {
   };
 
   class CE : BASE {
+    weaponChoices[] = {
+      {{SPOTTER_RIFLE},{SPOTTER_MAG}}
+    };
     magazines[] = {SMOKE_GRENADES};
     items[] += {CE_TRIGGER,CE_DEFUSE};
     backpackItems[] += {CE_DETECTOR,CE_FORTIFYTOOL,SHOVEL};
     explosiveChoices[] = {{CE_SATCHEL},{CE_MINEAP},{CE_MINEAT},{CE_DEMOCHARGE}};
     grenadeChoices[] = {{CE_FRAG_GRENADES},{CE_INCEN_GRENADES}};
+    giveSilencer = 1;
   };
 
   class LAT : BASE {
