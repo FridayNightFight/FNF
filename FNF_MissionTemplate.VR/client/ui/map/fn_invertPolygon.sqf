@@ -113,11 +113,11 @@ _output = [];
   if (_forEachIndex == _indexOfProbableLink) then
   {
     _marker = _x;
-    _prevMarker = _markerList select (_forEachIndex - 1);
+    _prevMarker = _markerList select ((count _markerList) - 1);
     _nextMarker = _markerList select (_forEachIndex + 1);
-    if (_forEachIndex == 0) then
+    if (_forEachIndex != 0) then
     {
-      _prevMarker = _markerList select ((count _markerList) - 1);
+      _prevMarker = _markerList select (_forEachIndex - 1);
     };
     if (_forEachIndex == (count _markerList) - 1) then
     {
