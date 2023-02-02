@@ -105,7 +105,7 @@ class RscDisplayMain: RscStandardDisplay {
             shadow = 1;
 			onSetFocus = "(_this select 0) ctrlsettextcolor [1,1,1,1];";
 			onKillFocus = "(_this select 0) ctrlsettextcolor [0.9,0.9,0.9,1];";
-			onButtonClick = "connectToServer ['51.81.56.169', 2302, ''];";
+			onButtonClick = "connectToServer ['3.210.166.73', 2302, ''];";
 			url = "";
 			x = "0.501969 * safezoneW + safezoneX";
 			y = "0.1556 * safezoneH + safezoneY";
