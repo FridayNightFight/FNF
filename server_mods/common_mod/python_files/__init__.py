@@ -3,7 +3,7 @@ import requests
 
 def roundStart(missionName, gamemode, staffNum, bluforNum, opforNum, indforNum, spectatorNum, url):
 
-  playing = bluforNum + opforNum + indforNum
+  playing = int(bluforNum) + int(opforNum) + int(indforNum)
 
   fields = [{
     "name": "Mission name",
