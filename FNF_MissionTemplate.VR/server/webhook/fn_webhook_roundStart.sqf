@@ -1,4 +1,3 @@
-if !(isClass (configFile >> "CfgPatches" >>  "CAU_DiscordEmbedBuilder")) exitWith {diag_log text "Failed to send RoundStart webhook -- mod not loaded!"};
 if !(isDedicated) exitWith {diag_log text "Not running on FNF Dedicated -- skipping RoundStart Discord post"};
 if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundStart Discord post"};
 
@@ -161,16 +160,16 @@ if (playableSlotsNumber independent == 0) then {
 _playingPlayerCount = _bluPlayers + _opfPlayers + _indPlayers;
 
 
-["RoundStart", [
+_url = ["fnf.grabURL.getRoundURL", []] call py3_fnc_callExtension;
+
+
+["fnf.roundStart", [
   missionName,
   _gameMode,
-  _playingPlayerCount,
-  _spectatorCount,
   _staffCount,
   str(_bluPlayers),
   str(_opfPlayers),
   str(_indPlayers),
-  _bluAssets,
-  _opfAssets,
-  _indAssets
-]] call DiscordEmbedBuilder_fnc_buildCfg;
+  _spectatorCount,
+  _url
+]] call py3_fnc_callExtension;

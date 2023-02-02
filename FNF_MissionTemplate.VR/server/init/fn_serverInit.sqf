@@ -57,7 +57,6 @@ call fnf_admin_fnc_serverCommands;
 
 call fnf_server_fnc_setupGame;
 call fnf_server_fnc_newPlayers;
-call fnf_server_fnc_webhook_roundPrep;
 
 
 [{getClientStateNumber >= 8}, {

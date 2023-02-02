@@ -1,4 +1,3 @@
-if !(isClass (configFile >> "CfgPatches" >>  "CAU_DiscordEmbedBuilder")) exitWith {diag_log text "Failed to send RoundEnd webhook -- mod not loaded!"};
 if !(isDedicated) exitWith {diag_log text "Not running on FNF Dedicated -- skipping RoundEnd Discord post"};
 if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping RoundEnd Discord post"};
 
@@ -70,14 +69,16 @@ if (playableSlotsNumber independent == 0) then {
   _indPlayers = str(count(allPlayers select {[_x, independent] call _fnc_doCount}));
 };
 
+_url = ["fnf.grabURL.getRoundURL", []] call py3_fnc_callExtension;
 
-["RoundEnd", [
-  _endMessage,
+["fnf.roundEnd", [
   missionName,
+  _endMessage,
   _gameMode,
   _connectedPlayerCount,
   _missionDuration,
-  _bluPlayers,
-  _opfPlayers,
-  _indPlayers
-]] call DiscordEmbedBuilder_fnc_buildCfg;
+  str(_bluPlayers),
+  str(_opfPlayers),
+  str(_indPlayers),
+  _url
+]] call py3_fnc_callExtension;
