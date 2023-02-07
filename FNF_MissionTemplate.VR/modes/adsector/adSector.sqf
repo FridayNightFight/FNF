@@ -22,7 +22,7 @@ fnf_sector_fnc_sidePresent = {
   _present = false;
 
   {
-    if (_x call BIS_fnc_objectSide == _side && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x && [_x] call ace_common_fnc_isAwake) exitWith {_present = true};
+    if (_x call BIS_fnc_objectSide == _side && lifeState _x != "INCAPACITATED" && !isObjectHidden _x && [_x] call ace_common_fnc_isAwake) exitWith {_present = true};
   } forEach _units;
 
   _present;
@@ -33,7 +33,7 @@ fnf_sector_fnc_sideCount = {
   _side = _this select 1;
   _units = allUnits inAreaArray _sector;
 
-  count (_units select {_x call BIS_fnc_objectSide == _side && vehicle _x isKindOf "Man" && lifeState _x != "INCAPACITATED" && !isObjectHidden _x && [_x] call ace_common_fnc_isAwake});
+  count (_units select {_x call BIS_fnc_objectSide == _side && lifeState _x != "INCAPACITATED" && !isObjectHidden _x && [_x] call ace_common_fnc_isAwake});
 };
 
 fnf_sector_fnc_capturing = {
