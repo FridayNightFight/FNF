@@ -1,18 +1,18 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_ak74"
+#define RIFLE "rhs_weap_akm"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhs_30Rnd_545x39_7N10_AK:7","rhs_30Rnd_545x39_AK_plum_green:4"
+#define RIFLE_MAG "rhs_30Rnd_762x39mm_polymer_89:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12","rhs_30Rnd_545x39_AK_plum_green:6"
+#define RIFLE_MAG_RI "rhs_30Rnd_762x39mm_polymer_89:12","rhs_30Rnd_762x39mm_polymer_tracer:6"
 
 #define SIDEARM "rhs_weap_makarov_pm"
 #define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_ak74_gp25"
-#define RIFLE_GL_MAG RIFLE_MAG
+#define RIFLE_GL "rhs_weap_akm_gp25"
+#define RIFLE_GL_MAG "rhs_30Rnd_762x39mm_polymer_89:7","rhs_30Rnd_762x39mm_polymer_tracer:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
@@ -43,9 +43,9 @@
 #define DM_RIFLE "UK3CB_SVD_OLD"
 #define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
-#define MMG_RIFLE "rhs_weap_pkm"
-#define MMG_MAG "rhs_100Rnd_762x54mmR:6"
-#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:8"
+#define MMG_RIFLE "UK3CB_UKM2000P"
+#define MMG_MAG "UK3CB_UKM_100rnd_762x51_GM:6"
+#define MMG_MAG_ASST "UK3CB_UKM_100rnd_762x51_GM:8"
 
 #define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
 #define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
@@ -55,9 +55,9 @@
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_RU_ARMY_1980_AK74 {
+class RHS_GEAR_PL_ARMY_1980_AKM {
   author = "Mazz38";
-  description = "RU: 1980 Russian ARMY AK74 Kits";
+  description = "PL: 1980 Polish ARMY AKM Kits";
 
   class BASE {
     backpackItems[] = {};
