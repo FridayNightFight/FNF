@@ -316,7 +316,23 @@ fnfAdminMessageReceiver = ["fnfAdminMessageServer", {
     _arr set [0, _adminDiscordID];
   };
 
-  ["AdminMsg", _arr] call DiscordEmbedBuilder_fnc_buildCfg;
+  //re-org for python script
+
+  _url = ["fnf.grabURL.getAdminURL", []] call py3_fnc_callExtension;
+
+  ["fnf.adminAction", [
+    _arr select 0,
+    _arr select 1,
+    _arr select 2,
+    _arr select 3,
+    _arr select 4,
+    _arr select 5,
+    _arr select 6,
+    _arr select 7,
+    _arr select 8,
+    _url
+  ]] call py3_fnc_callExtension;
+
 }] call CBA_fnc_addEventHandler;
 
 // Let clients know that server is done setting up
