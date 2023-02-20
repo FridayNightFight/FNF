@@ -1,13 +1,13 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_gorka_1_f"
+#define UNIFORM "UK3CB_LNM_B_U_CombatUniform_02"
 
-#define VEST "rhsgref_alice_webbing"
-#define VEST_LEADER VEST
-#define VEST_AR VEST
-#define VEST_MEDIC VEST
-#define VEST_CREWMAN VEST
-#define VEST_PILOT VEST
+#define VEST "UK3CB_LDF_B_V_RIF_ALT_Vest_KKZ10_OLI"
+#define VEST_LEADER "UK3CB_LDF_B_V_SL_Vest_KKZ10_OLI", "UK3CB_LDF_B_V_GREN_Vest_KKZ10_OLI"
+#define VEST_AR "UK3CB_LDF_B_V_MG_Vest_KKZ10_OLI"
+#define VEST_MEDIC "UK3CB_LDF_B_V_MD_Vest_KKZ10_OLI"
+#define VEST_CREWMAN "UK3CB_LDF_B_V_CREW_Vest_KKZ10_OLI"
+#define VEST_PILOT "UK3CB_LDF_B_V_CREW_Vest_KKZ10_OLI"
 
 #define HELMET "rhsgref_helmet_pasgt_flecktarn"
 #define HELMET_CMDR "UK3CB_NFA_B_H_M88_Field_Cap_FLK"

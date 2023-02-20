@@ -1,6 +1,6 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhs_uniform_gorka_r_g_gloves"
+#define UNIFORM "rhs_uniform_gorka_r_g_gloves", "rhs_uniform_gorka_r_y_gloves"
 
 #define VEST "rhs_vydra_3m"
 #define VEST_LEADER VEST
@@ -9,7 +9,7 @@
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhs_altyn_bala"
+#define HELMET "rhs_altyn_bala", "rhs_altyn_novisor_bala", "rhs_altyn_novisor_ess_bala"
 #define HELMET_CMDR "rhs_beanie"
 #define HELMET_RECON "rhs_beanie_green"
 #define HELMET_CREWMAN "rhs_tsh4_ess_bala"

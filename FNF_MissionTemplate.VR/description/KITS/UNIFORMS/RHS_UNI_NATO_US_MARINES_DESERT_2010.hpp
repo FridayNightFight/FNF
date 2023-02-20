@@ -2,10 +2,10 @@
 
 #define UNIFORM "rhs_uniform_FROG01_d"
 
-#define VEST "rhsusf_spc_corpsman"
+#define VEST "rhsusf_spc_rifleman"
 #define VEST_LEADER "rhsusf_spc_teamleader"
 #define VEST_AR "rhsusf_spc_iar"
-#define VEST_MEDIC "rhsusf_spc_rifleman"
+#define VEST_MEDIC "rhsusf_spc_corpsman"
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 

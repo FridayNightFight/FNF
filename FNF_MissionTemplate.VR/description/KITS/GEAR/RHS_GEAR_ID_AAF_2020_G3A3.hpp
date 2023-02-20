@@ -11,7 +11,7 @@
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "arifle_Mk20_GL_F"
+#define RIFLE_GL "arifle_Mk20_GL_F", "rhs_weap_hk416d145_m320"
 #define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag_Pull:7", "rhs_mag_30Rnd_556x45_M855A1_Stanag_Pull_Tracer_Red:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
