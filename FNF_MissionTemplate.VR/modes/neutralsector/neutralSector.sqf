@@ -5,7 +5,7 @@ if (!isServer) exitWith {};
 ["off"] call acex_fortify_fnc_handleChatCommand;
 
 
-_validateSectors = ["fnf_sector1", "fnf_sector2", "fnf_sector3"] select [0, _numberOfSectors];
+_validateSectors = ["fnf_sector1", "fnf_sector2", "fnf_sector3", "fnf_sector4"] select [0, _numberOfSectors];
 _validateSectors = _validateSectors apply {missionNamespace getVariable [_x, objNull]} select {!isNull _x};
 if (count _validateSectors < _numberOfSectors) exitWith {
   "[FNF] (Gamemode) Failed to initialize NSector: Fewer sector modules present than number set in mode_config!" remoteExec ["systemChat", 0, true];
@@ -22,7 +22,7 @@ switch (_numberOfSectors) do {
       if (!isNull _module) then {
         deleteVehicle _module;
       };
-    } forEach ["fnf_sector2", "fnf_sector3"];
+    } forEach ["fnf_sector2", "fnf_sector3", "fnf_sector4"];
   };
   case 2: {
     {
@@ -30,9 +30,16 @@ switch (_numberOfSectors) do {
       if (!isNull _module) then {
         deleteVehicle _module;
       };
-    } forEach ["fnf_sector3"];
+    } forEach ["fnf_sector3", "fnf_sector4"];
   };
-  case 3: {};
+  case 3: {
+    {
+      private _module = missionNamespace getVariable [_x, objNull];
+      if (!isNull _module) then {
+        deleteVehicle _module;
+      };
+    } forEach ["fnf_sector4"];
+  };
 };
 
 fnf_briefingTable_highlightAreas = []; // contains places that should be highlighted with a sphere
@@ -59,7 +66,7 @@ _win = {
 
 waitUntil {
   sleep 1;
-  ({_x getVariable ["owner", sideUnknown] != sideUnknown} count fnf_gamemode_sectors) > 0
+  ({_x getVariable ["owner", sideUnknown] != sideUnknown} count fnf_gamemode_sectors) > 0 and !(missionNamespace getVariable ["fnf_safetyEnabled", true])
 };
 
 ["First sector captured<br/>Points will be begin to be awarded in 5 minutes"] remoteExec ["fnf_fnc_hintThenClear"];

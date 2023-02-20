@@ -1,17 +1,17 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_ak74"
+#define RIFLE "rhs_weap_ak74mr"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
 #define RIFLE_MAG "rhs_30Rnd_545x39_7N10_AK:7","rhs_30Rnd_545x39_AK_plum_green:4"
 // give Riflemen extra mags
 #define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12","rhs_30Rnd_545x39_AK_plum_green:6"
 
-#define SIDEARM "rhs_weap_makarov_pm"
-#define SIDEARM_MAG "rhs_mag_9x18_8_57N181S:2"
+#define SIDEARM "rhs_weap_pya"
+#define SIDEARM_MAG "rhs_mag_9x19_17:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_ak74_gp25"
+#define RIFLE_GL "rhs_weap_ak74mr_gp25"
 #define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
@@ -22,14 +22,14 @@
 #define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_aks74u"
+#define CARBINE "rhs_weap_aks74un"
 #define CARBINE_MAG "rhs_30Rnd_545x39_7N10_AK:7", "rhs_30Rnd_545x39_AK_plum_green:4"
 #define CARBINE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12", "rhs_30Rnd_545x39_AK_plum_green:6"
 #define CARBINE_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4","rhs_30Rnd_545x39_AK_plum_green:2"
 
-#define SMG_RIFLE "rhs_weap_aks74u"
-#define SMG_MAG "rhs_30Rnd_545x39_7N10_AK:6"
-#define SMG_MAG_CREW "rhs_30Rnd_545x39_7N10_AK:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
 #define AR_RIFLE "rhs_weap_rpk74m"
 #define AR_MAG "fnf_45rnd_rpk_green:12"
@@ -37,27 +37,27 @@
 
 #define AT_LAUNCHER RPG7(2,0)
 
-#define MAT1_LAUNCHER RPG7(2,1)
-#define MAT2_LAUNCHER RPG7(2,1)
+#define MAT1_LAUNCHER RPG32(2,0)
+#define MAT2_LAUNCHER RPG32(2,0)
 
-#define DM_RIFLE "UK3CB_SVD_OLD"
-#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
+#define DM_RIFLE "rhs_weap_vss_npz"
+#define DM_MAG "rhs_10rnd_9x39mm_SP6:11"
 
-#define MMG_RIFLE "rhs_weap_pkm"
+#define MMG_RIFLE "rhs_weap_pkp"
 #define MMG_MAG "rhs_100Rnd_762x54mmR:6"
 #define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:8"
 
 #define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
 #define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
 
-#define SNP_RIFLE "rhs_weap_m38_rail"
-#define SNP_MAG "rhsgref_5Rnd_762x54_m38:12"
+#define SNP_RIFLE "rhs_weap_t5000"
+#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_RU_ARMY_1980_AK74 {
+class RHS_GEAR_RU_SPETSNAZ_2010_AK74M {
   author = "Mazz38";
-  description = "RU: 1980 Russian ARMY AK74 Kits";
+  description = "RU: Modern Russian SPETSNAZ AK74M Kits";
 
   class BASE {
     backpackItems[] = {};
@@ -110,7 +110,7 @@ class RHS_GEAR_RU_ARMY_1980_AK74 {
   };
 
   class SL : TL {};
-
+  
   class PL : TL {};
 
   class ARA : BASE {
@@ -149,10 +149,12 @@ class RHS_GEAR_RU_ARMY_1980_AK74 {
           UGL_MAGS(UGL_FRAG,GRIR_GRENADECOUNT),
           UGL_MAGS(UGL_SMOKEWHITE,UGL_SMOKECOUNT),
           MARKING_SMOKES,
-          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT)
+          UGL_MAGS(UGL_FLAREWHITE,UGL_FLARECOUNT),
+          UGL_MAGS(BASE_UGL_HUNTIR,3)
         }
       }
     };
+    items[] += {HUNTIR_MONITOR};
   };
 
   class MGA : BASE {

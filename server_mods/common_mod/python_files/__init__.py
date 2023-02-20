@@ -56,12 +56,7 @@ def roundStart(missionName, gamemode, staffNum, bluforNum, opforNum, indforNum, 
 
   payload = {"embeds": [embed]}
 
-  response = requests.post(url, json=payload)
-
-  if 200 <= response.status_code < 300:
-    print(f"Webhook sent {response.status_code}")
-  else:
-    print(f"Not sent with {response.status_code}, response:\n{response.json()}")
+  requests.post(url, json=payload)
 
 def roundEnd(missionName, endMessage, gamemode, playersRemaining, missionDuration, bluforNum, opforNum, indforNum, url):
 
@@ -116,9 +111,53 @@ def roundEnd(missionName, endMessage, gamemode, playersRemaining, missionDuratio
 
   payload = {"embeds": [embed]}
 
-  response = requests.post(url, json=payload)
+  requests.post(url, json=payload)
 
-  if 200 <= response.status_code < 300:
-    print(f"Webhook sent {response.status_code}")
-  else:
-    print(f"Not sent with {response.status_code}, response:\n{response.json()}")
+def adminAction(atID, playerName, description, side, role, missionName, mapName, grid, timeElapsed, url):
+  description = description.split("\\n")
+  stringOut = ""
+  for string in description:
+    stringOut = stringOut + string + "\n"
+  description = stringOut[:-1]
+  fields = [{
+    "name": "Assigned Side",
+    "value": side,
+    "inline": "true"
+  },
+  {
+    "name": "Role",
+    "value": role,
+    "inline": "true"
+  },
+  {
+    "name": "Mission Name",
+    "value": missionName,
+    "inline": "false"
+  },
+  {
+    "name": "Map Name",
+    "value": mapName,
+    "inline": "true"
+  },
+  {
+    "name": "Grid Location",
+    "value": grid,
+    "inline": "true"
+  },
+  {
+    "name": "Mission Time Elapsed",
+    "value": timeElapsed,
+    "inline": "true"
+  }]
+
+  embed = {
+    "description": description,
+    "title": "Message from " + playerName,
+    "fields": fields,
+    "timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z'),
+    "color": "16776960"
+    }
+
+  payload = {"embeds": [embed], "content": atID}
+
+  requests.post(url, json=payload)

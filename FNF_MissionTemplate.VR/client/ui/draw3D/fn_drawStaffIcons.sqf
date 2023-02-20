@@ -56,8 +56,7 @@
     {
       _staffMember = _y # 2;
       _name = _y # 0;
-      _role = _y # 1;
-      _text = format["STAFF | %1 | %2", _name, _role];
+      _text = format["STAFF | %1", _name];
 
       // referenced https://github.com/Quailsnap/WHA-Nametags
       _targetPositionAGLTopRef = _staffMember modelToWorldVisual (_staffMember selectionPosition "pilot") vectorAdd [0,0, 5 + (0.5 * (_player distance _staffMember))];

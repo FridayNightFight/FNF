@@ -19,11 +19,13 @@ fnf_killCountUI_PFH = [{
   _guerCount = 0;
 
   {
-    switch (side _x) do
-    {
-      case west: {_westCount = _westCount + 1};
-      case east: {_eastCount = _eastCount + 1};
-      case independent: {_guerCount = _guerCount + 1};
+    if (alive _x) then {
+      switch (side _x) do
+      {
+        case west: {_westCount = _westCount + 1};
+        case east: {_eastCount = _eastCount + 1};
+        case independent: {_guerCount = _guerCount + 1};
+      };
     };
   } forEach allPlayers;
 
@@ -45,7 +47,11 @@ fnf_killCountUI_PFH = [{
 
   _totalNumber = _attackingNumber + _defendingNumber;
 
-  _advantage = (((((_totalNumber / 2) - _defendingNumber) * 2) / _totalNumber) * 100);
+  if (_totalNumber != 0) then {
+    _advantage = (((((_totalNumber / 2) - _defendingNumber) * 2) / _totalNumber) * 100);
+  } else {
+    _advantage = 0;
+  };
 
   _setText ctrlSetStructuredText parseText (format ["%1: %2<br/>%3: %4<br/>ADVANTAGE: %5%6</t>", fnf_attackingSide, _attackingNumber, fnf_defendingSide, _defendingNumber, _advantage, "%"]);
 }, 1] call CBA_fnc_addPerFrameHandler;

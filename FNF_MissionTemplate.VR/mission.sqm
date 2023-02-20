@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=15800;
+		nextID=15804;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=948;
+		nextID=960;
 	};
 	class Camera
 	{
 		pos[]={506.25842,153.78806,193.09309};
-		dir[]={0.016071914,-0.38426137,0.92308599};
-		up[]={0.006689413,0.92322469,0.38420415};
-		aside[]={0.99985152,7.4942363e-010,-0.01740847};
+		dir[]={0.016071744,-0.38426077,0.92308474};
+		up[]={0.0066893161,0.92322463,0.38420254};
+		aside[]={0.99984854,-4.6566129e-010,-0.017408272};
 	};
 };
 binarizationWanted=0;
@@ -2738,7 +2738,7 @@ class Mission
 			name="FNF Gamemode: NSector";
 			class Entities
 			{
-				items=13;
+				items=17;
 				class Item0
 				{
 					dataType="Logic";
@@ -2852,7 +2852,7 @@ class Mission
 								class data
 								{
 									singleType="STRING";
-									value="-1";
+									value="1";
 								};
 							};
 						};
@@ -3475,6 +3475,248 @@ class Mission
 					title="NSector";
 					description="NEUTRAL SECTOR" \n "A neutral game mode that has between 1 and 3 sectors. Sectors are captured when one team has the majority of conscious, dismounted players within it. " \n "1 point will be added to a team's total score for each sector they control, for every _pointAddTime they control it. The first team to 100 points wins. ";
 					id=1352;
+				};
+				class Item13
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={1490,5,205};
+					};
+					id=15800;
+					type="SideBLUFOR_F";
+				};
+				class Item14
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={1500,5,205};
+					};
+					id=15801;
+					type="SideResistance_F";
+				};
+				class Item15
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={1510,5,205};
+					};
+					id=15802;
+					type="SideOPFOR_F";
+				};
+				class Item16
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={1500,5,200};
+					};
+					name="fnf_sector4";
+					areaSize[]={50,-1,50};
+					flags=1;
+					id=15803;
+					type="ModuleSector_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ModuleSector_F_DefaultOwner";
+							expression="_this setVariable ['DefaultOwner',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="-1";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ModuleSector_F_CostInfantry";
+							expression="_this setVariable ['CostInfantry',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0.1";
+								};
+							};
+						};
+						class Attribute2
+						{
+							property="ModuleSector_F_OnOwnerChange";
+							expression="_this setVariable ['OnOwnerChange',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="";
+								};
+							};
+						};
+						class Attribute3
+						{
+							property="ModuleSector_F_ScoreReward";
+							expression="_this setVariable ['ScoreReward',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0";
+								};
+							};
+						};
+						class Attribute4
+						{
+							property="ModuleSector_F_CostWheeled";
+							expression="_this setVariable ['CostWheeled',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0";
+								};
+							};
+						};
+						class Attribute5
+						{
+							property="ModuleSector_F_OwnerLimit";
+							expression="_this setVariable ['OwnerLimit',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="1";
+								};
+							};
+						};
+						class Attribute6
+						{
+							property="ModuleSector_F_TaskTitle";
+							expression="_this setVariable ['TaskTitle',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="";
+								};
+							};
+						};
+						class Attribute7
+						{
+							property="ModuleSector_F_Designation";
+							expression="_this setVariable ['Designation',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="D";
+								};
+							};
+						};
+						class Attribute8
+						{
+							property="ModuleSector_F_TaskOwner";
+							expression="_this setVariable ['TaskOwner',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="1";
+								};
+							};
+						};
+						class Attribute9
+						{
+							property="ModuleSector_F_CostAir";
+							expression="_this setVariable ['CostAir',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0";
+								};
+							};
+						};
+						class Attribute10
+						{
+							property="ModuleSector_F_CostPlayers";
+							expression="_this setVariable ['CostPlayers',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="1.5";
+								};
+							};
+						};
+						class Attribute11
+						{
+							property="ModuleSector_F_CostTracked";
+							expression="_this setVariable ['CostTracked',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0";
+								};
+							};
+						};
+						class Attribute12
+						{
+							property="ModuleSector_F_TaskDescription";
+							expression="_this setVariable ['TaskDescription',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="";
+								};
+							};
+						};
+						class Attribute13
+						{
+							property="ModuleSector_F_CostWater";
+							expression="_this setVariable ['CostWater',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0";
+								};
+							};
+						};
+						class Attribute14
+						{
+							property="ModuleSector_F_Name";
+							expression="_this setVariable ['Name',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Delta";
+								};
+							};
+						};
+						nAttributes=15;
+					};
 				};
 			};
 			id=7416;
@@ -26295,11 +26537,11 @@ class Mission
 	{
 		class LinkIDProvider
 		{
-			nextID=9;
+			nextID=12;
 		};
 		class Links
 		{
-			items=9;
+			items=12;
 			class Item0
 			{
 				linkID=0;
@@ -26385,6 +26627,36 @@ class Mission
 				linkID=8;
 				item0=1345;
 				item1=1340;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item9
+			{
+				linkID=9;
+				item0=15800;
+				item1=15803;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item10
+			{
+				linkID=10;
+				item0=15801;
+				item1=15803;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item11
+			{
+				linkID=11;
+				item0=15802;
+				item1=15803;
 				class CustomData
 				{
 					type="Sync";
