@@ -39,7 +39,7 @@ call fnf_ui_fnc_initUnregularZones;
 call fnf_admin_fnc_zuesAceOptions;
 
 //Determine if client can play, if not, spectate
-/*if !(call fnf_client_fnc_canplay) exitWith {
+if (typeOf player == "ace_spectator_virtual") exitWith {
   diag_log formatText [
     "[FNF] (clientInit) typeOf ""%1"" player %2 was placed in spectator at join. Safestart %3",
     typeOf player,
@@ -55,7 +55,7 @@ call fnf_admin_fnc_zuesAceOptions;
       call fnf_briefing_fnc_assetDiaryStruct; // Add diary entries for assets
     };
   }] call CBA_fnc_waitUntilAndExecute;
-};*/
+};
 player enableSimulation false;
 
 call fnf_client_fnc_setupGame; //Client portion of game modes
