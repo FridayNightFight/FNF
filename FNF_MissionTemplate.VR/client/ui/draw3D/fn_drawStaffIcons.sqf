@@ -12,7 +12,7 @@
       {
         private _staffMember = _x call BIS_fnc_getUnitByUID;
         if (!isNull _staffMember) then {
-          staffPlayers set [_x, [_y # 0, _y # 1, _staffMember]];
+          staffPlayers set [_x, [_y # 0, _staffMember]];
         };
       } forEach _info;
       sleep 15;
@@ -54,7 +54,7 @@
     ) + 0.66666;
 
     {
-      _staffMember = _y # 2;
+      _staffMember = _y # 1;
       _name = _y # 0;
       _text = format["STAFF | %1", _name];
 

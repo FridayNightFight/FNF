@@ -312,8 +312,10 @@ fnfAdminMessageReceiver = ["fnfAdminMessageServer", {
   private _adminDiscordID = "";
   if (count _loggedInAdmins > 0) then {
     _loggedInAdmin = fnf_staffInfo get (getPlayerUID (_loggedInAdmins # 0));
-    _adminDiscordID = _loggedInAdmin # 2;
+    _adminDiscordID = _loggedInAdmin # 1;
     _arr set [0, _adminDiscordID];
+  } else {
+    _arr set [0, ""];
   };
 
   //re-org for python script
