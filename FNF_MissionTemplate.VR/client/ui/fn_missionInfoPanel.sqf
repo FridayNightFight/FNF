@@ -25,7 +25,7 @@ _BriefingIndex = _tree tvAdd [[],"Briefing"];
 _GamemodeIndex = _tree tvAdd [[],"Gamemode"];
 _MissionVarIndex = _tree tvAdd [[],"Mission Variables"];
 
-if (call fnf_client_fnc_canplay) then {
+if (call fnf_client_fnc_canplay && typeOf player != "ace_spectator_virtual") then {
   _MyLoadoutIndex = _tree tvAdd [[],"My Starting Loadout"];
   _MyRadiosIndex = _tree tvAdd [[],"My Starting Radios"];
   _ORBATIndex = _tree tvAdd [[],"ORBAT"];
