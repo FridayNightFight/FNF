@@ -12,3 +12,5 @@ Disables typing in global, side and spectator chat if player is not staff
     1 enableChannel true;
   };
 }] call CBA_fnc_waitUntilAndExecute;
+
+setCurrentChannel 1;
