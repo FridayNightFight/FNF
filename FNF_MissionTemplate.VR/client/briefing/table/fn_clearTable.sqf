@@ -27,6 +27,7 @@ if (isNil "_tableObjects") then {
 // if safe start ended, gradually delete objects w generous sleep value
 _safetyOn = missionNamespace getVariable ["fnf_safetyEnabled", false];
 if (_safetyOn) then {["ClearTable", ""] call BIS_fnc_startLoadingScreen};
+enableEnvironment true;
 {
   deleteVehicle _x;
   if !(_safetyOn) then {sleep 0.01};
