@@ -41,7 +41,7 @@
 #define MAT2_LAUNCHER CARLG(2,0)
 
 #define DM_RIFLE "rhs_weap_svdp_wd_npz"
-#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N14:11"
 
 #define MMG_RIFLE "rhs_weap_fnmag"
 #define MMG_MAG "rhsusf_100Rnd_762x51_m80a1epr:6"
@@ -110,7 +110,7 @@ class RHS_GEAR_ANY_CZECHFORCES_2010_VZ58 {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {

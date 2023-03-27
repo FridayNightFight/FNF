@@ -41,7 +41,7 @@
 #define MAT2_LAUNCHER RPG7(2,1)
 
 #define DM_RIFLE "UK3CB_SVD_OLD"
-#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N14:11"
 
 #define MMG_RIFLE "rhs_weap_pkm"
 #define MMG_MAG "rhs_100Rnd_762x54mmR:6"

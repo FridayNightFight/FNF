@@ -41,7 +41,7 @@
 #define MAT2_LAUNCHER CARLG(2,0)
 
 #define DM_RIFLE "rhs_weap_svdp_wd_npz"
-#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N14:11"
 
 #define MMG_RIFLE "rhs_weap_pkp"
 #define MMG_MAG "rhs_100Rnd_762x54mmR:6"
