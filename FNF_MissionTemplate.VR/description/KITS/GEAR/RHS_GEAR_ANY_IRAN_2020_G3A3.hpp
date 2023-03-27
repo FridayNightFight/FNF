@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
 
 #define AR_RIFLE "rhs_weap_rpk74m"
-#define AR_MAG "fnf_45rnd_rpk_green:12"
-#define AR_MAG_ASST "fnf_45rnd_rpk_green:12"
+#define AR_MAG "fnf_45rnd_rpk_7N10:12"
+#define AR_MAG_ASST "fnf_45rnd_rpk_7N10:12"
 
 #define AT_LAUNCHER RPG7(2,0)
 

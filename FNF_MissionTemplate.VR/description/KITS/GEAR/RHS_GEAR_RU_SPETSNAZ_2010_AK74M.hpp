@@ -32,8 +32,8 @@
 #define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
 #define AR_RIFLE "rhs_weap_rpk74m"
-#define AR_MAG "fnf_45rnd_rpk_green:12"
-#define AR_MAG_ASST "fnf_45rnd_rpk_green:12"
+#define AR_MAG "fnf_45rnd_rpk_7N10:12"
+#define AR_MAG_ASST "fnf_45rnd_rpk_7N10:12"
 
 #define AT_LAUNCHER RPG7(2,0)
 
@@ -110,7 +110,7 @@ class RHS_GEAR_RU_SPETSNAZ_2010_AK74M {
   };
 
   class SL : TL {};
-  
+
   class PL : TL {};
 
   class ARA : BASE {
