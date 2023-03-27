@@ -9,7 +9,7 @@
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsusf_opscore_coy_cover_pelt"
+#define HELMET "rhsusf_opscore_coy_cover_pelt", "UK3CB_ION_B_H_OPSCORE_PELT_WIN"
 #define HELMET_CMDR "rhs_8point_marpatwd"
 #define HELMET_RECON "rhs_booniehat2_marpatwd"
 #define HELMET_CREWMAN "rhsusf_cvc_green_ess"

@@ -1,7 +1,7 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_l1a1"
+#define RIFLE "UK3CB_FNFAL_FULL_RAILS", "UK3CB_FNFAL_OSW"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
 #define RIFLE_MAG "rhs_mag_20Rnd_762x51_m80_fnfal:7","rhs_mag_20Rnd_762x51_m62_fnfal:4"
 // give Riflemen extra mags
@@ -11,8 +11,8 @@
 #define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_hk416d145_m320"
-#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
+#define RIFLE_GL "rhs_weap_hk416d145_m320", "UK3CB_FNFAL_OSW_GL"
+#define RIFLE_GL_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4", "rhs_mag_20Rnd_762x51_m80_fnfal:7","rhs_mag_20Rnd_762x51_m62_fnfal:4"
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
@@ -22,9 +22,9 @@
 #define UGL_FLAREWHITE UGL_FlareWhite_F
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_hk416d145"
-#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
-#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:7", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:4"
+#define CARBINE "UK3CB_M16A3"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
 #define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4", "rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red:2"
 
 #define SMG_RIFLE "rhsusf_weap_MP7A2"

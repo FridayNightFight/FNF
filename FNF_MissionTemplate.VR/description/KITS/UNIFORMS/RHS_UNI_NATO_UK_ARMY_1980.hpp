@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_altis_lizard", "rhsgref_uniform_altis_lizard_olive", "UK3CB_FIA_B_U_M10_CombatUniform_GRK_LIZ01_01"
+#define UNIFORM "rhsgref_uniform_dpm"
 
-#define VEST "rhsgref_otv_khaki", "UK3CB_GAF_B_MBAV_MEDIC_OLI_01"
+#define VEST "rhsgref_alice_webbing"
 #define VEST_LEADER VEST
 #define VEST_AR VEST
 #define VEST_MEDIC VEST
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_altis_lizard"
-#define HELMET_CMDR "UK3CB_H_MilCap_GRK_LIZ"
-#define HELMET_RECON "rhssaf_booniehat_woodland"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "UK3CB_H_HSAT_PTYPE"
+#define HELMET_CMDR "H_Beret_blk"
+#define HELMET_RECON "UK3CB_H_Beanie_01"
+#define HELMET_CREWMAN "H_HelmetCrew_I"
+#define HELMET_PILOT "UK3CB_H_Pilot_Helmet"
 
-#define BACKPACK "B_Kitbag_rgr", "UK3CB_B_Kitbag_GRK_LIZ"
-#define BACKPACK_RADIO "TFAR_rt1523g_sage"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "B_FieldPack_khk"
+#define BACKPACK "UK3CB_B_Fieldpack"
+#define BACKPACK_RADIO "UK3CB_B_B_Radio_Backpack"
+#define BACKPACK_AR "UK3CB_B_Hiker"
+#define BACKPACK_AT "UK3CB_B_Hiker"
+#define BACKPACK_MEDIC "UK3CB_B_US_Medic_Backpack"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_GREEKFORCES_2010 {
+class RHS_UNI_NATO_UK_ARMY_1980 {
   author = "Mazz38";
-  description = "GR: Modern Greek Armed Forces Lizard Camouflage";
+  description = "United Kingdom: 1980s British Army DPM Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,6 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
@@ -105,6 +104,7 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
     vest[] = {VEST_PILOT};
     headgear[] = {HELMET_PILOT};
     backpack[] = {BACKPACK_RADIO};
+    uniform[] = {"UK3CB_CW_US_B_LATE_U_H_Pilot_Uniform_01_NATO"};
   };
 
   class MED : BASE {

@@ -9,7 +9,7 @@
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "UK3CB_ANA_B_H_Beret_MAR"
+#define HELMET "UK3CB_H_HSAT_MKIII"
 #define HELMET_CMDR "UK3CB_ANA_B_H_OFF_Beret_MAR"
 #define HELMET_RECON "UK3CB_H_Beanie_01"
 #define HELMET_CREWMAN "H_HelmetCrew_I"

@@ -1,6 +1,6 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "UK3CB_TKA_I_U_CombatUniform_03_TKA_Brush", "UK3CB_TKA_I_U_CombatUniform_02_TKA_Brush", "UK3CB_TKA_I_U_CombatUniform_01_TKA_Brush"
+#define UNIFORM "UK3CB_FIA_B_U_M10_CombatUniform_TRK01_01"
 
 #define VEST "UK3CB_TKA_O_V_6b23_ml_Oli_TKA_Brush", "UK3CB_TKA_O_V_6b23_ML_6sh92_radio_Oli_TKA_Brush"
 #define VEST_LEADER "UK3CB_TKA_O_V_6b23_ml_6sh92_vog_Oli_TKA_Brush"
@@ -19,7 +19,7 @@
 #define BACKPACK_RADIO "TFAR_anprc155_coyote"
 #define BACKPACK_AR "UK3CB_B_Largepack_Des"
 #define BACKPACK_AT "rhs_rpg_empty"
-#define BACKPACK_MEDIC "UK3CB_B_Largepack_Med_Des"
+#define BACKPACK_MEDIC "UK3CB_B_Kitbag_TRK"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 

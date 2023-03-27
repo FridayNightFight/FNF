@@ -1,63 +1,63 @@
 #include "..\undef.hpp" // Reset defines
 
 // put all rifle weapons
-#define RIFLE "rhs_weap_g36kv", "rhs_weap_g36c", "UK3CB_G36E1"
+#define RIFLE "rhs_weap_ak74n_npz"
 // put all mags for the weapons above -- only the compatible ones for the player's weapon will be given
-#define RIFLE_MAG "rhssaf_30rnd_556x45_EPR_G36:7","rhssaf_30rnd_556x45_Tracers_G36:4"
+#define RIFLE_MAG "rhs_30Rnd_545x39_7N10_AK:7","rhs_30Rnd_545x39_AK_plum_green:4"
 // give Riflemen extra mags
-#define RIFLE_MAG_RI "rhssaf_30rnd_556x45_EPR_G36:12","rhssaf_30rnd_556x45_Tracers_G36:6"
+#define RIFLE_MAG_RI "rhs_30Rnd_545x39_7N10_AK:12","rhs_30Rnd_545x39_AK_plum_green:6"
 
-#define SIDEARM "rhsusf_weap_glock17g4"
-#define SIDEARM_MAG "rhsusf_mag_17Rnd_9x19_JHP:2"
+#define SIDEARM "rhs_weap_pya"
+#define SIDEARM_MAG "rhs_mag_9x19_17:2"
 
 // put all GL weapons
-#define RIFLE_GL "rhs_weap_g36kv_ag36", "rhs_weap_hk416d145_m320", "UK3CB_AG36E1"
-#define RIFLE_GL_MAG "rhssaf_30rnd_556x45_EPR_G36:7","rhssaf_30rnd_556x45_Tracers_G36:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Pull:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Pull_Tracer_Red:4"
+#define RIFLE_GL "rhs_weap_ak74n_gp25_npz"
+#define RIFLE_GL_MAG RIFLE_MAG
 
 // UGL types - these should be classnames of items compatible with RIFLE_GL
 // note: "type" here, if using a definition, MUST not have quotes around it. only the classname.
 #define UGL_MAGS(_type,_count) _type##:##_count
-#define UGL_FRAG 1Rnd_HE_Grenade_shell
-#define UGL_SMOKEWHITE 1Rnd_Smoke_Grenade_shell
-#define UGL_FLAREWHITE UGL_FlareWhite_F
+#define UGL_FRAG rhs_VOG25
+#define UGL_SMOKEWHITE rhs_GRD40_White
+#define UGL_FLAREWHITE rhs_VG40OP_white
 
 // put all Carbine-style (shorter) weapons
-#define CARBINE "rhs_weap_hk416d145"
-#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_Stanag:7","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:4"
-#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_Stanag:12","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:6"
-#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_Stanag:4","rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red:2"
+#define CARBINE "rhs_weap_m4a1_wd", "rhs_weap_m4a1_blockII_wd"
+#define CARBINE_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:7", "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:4"
+#define CARBINE_MAG_RI "rhs_mag_30Rnd_556x45_M855A1_PMAG:12", "rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:6"
+#define CARBINE_MAG_CREW "rhs_mag_30Rnd_556x45_M855A1_PMAG:4","rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red:2"
 
-#define SMG_RIFLE "rhsusf_weap_MP7A2"
-#define SMG_MAG "rhsusf_mag_40Rnd_46x30_FMJ:8"
-#define SMG_MAG_CREW "rhsusf_mag_40Rnd_46x30_FMJ:4"
+#define SMG_RIFLE "rhs_weap_pp2000"
+#define SMG_MAG "rhs_mag_9x19mm_7n31_44:8"
+#define SMG_MAG_CREW "rhs_mag_9x19mm_7n31_44:4"
 
-#define AR_RIFLE "rhs_weap_minimi_para_railed"
-#define AR_MAG "rhsusf_200rnd_556x45_mixed_box:4"
-#define AR_MAG_ASST "rhsusf_200rnd_556x45_mixed_box:5"
+#define AR_RIFLE "rhs_weap_rpk74m"
+#define AR_MAG "fnf_45rnd_rpk_green:12"
+#define AR_MAG_ASST "fnf_45rnd_rpk_green:12"
 
 #define AT_LAUNCHER AT4(1)
 
-#define MAT1_LAUNCHER CARLG(2,0)
-#define MAT2_LAUNCHER CARLG(2,0)
+#define MAT1_LAUNCHER RPG32(2,0)
+#define MAT2_LAUNCHER RPG32(2,0)
 
-#define DM_RIFLE "rhs_weap_hk416d145"
-#define DM_MAG "rhs_mag_30Rnd_556x45_M855A1_PMAG:11"
+#define DM_RIFLE "rhs_weap_svdp_wd_npz"
+#define DM_MAG "rhs_10Rnd_762x54mmR_7N1:11"
 
-#define MMG_RIFLE "UK3CB_MG3"
-#define MMG_MAG "UK3CB_MG3_100rnd_762x51_YM:6"
-#define MMG_MAG_ASST "UK3CB_MG3_100rnd_762x51_YM:8"
+#define MMG_RIFLE "rhs_weap_pkp"
+#define MMG_MAG "rhs_100Rnd_762x54mmR:6"
+#define MMG_MAG_ASST "rhs_100Rnd_762x54mmR:8"
 
-#define SPOTTER_RIFLE "rhs_weap_m14ebrri", "rhsusf_weap_MP7A2"
-#define SPOTTER_MAG "ACE_20Rnd_762x51_Mag_SD:11", "rhsusf_mag_40Rnd_46x30_FMJ:8"
+#define SPOTTER_RIFLE "rhs_weap_aks74n_2", "rhs_weap_asval"
+#define SPOTTER_MAG "rhs_45Rnd_545X39_7U1_AK:8", "rhs_20rnd_9x39mm_SP6:11"
 
-#define SNP_RIFLE "rhs_weap_XM2010", "rhs_weap_XM2010_wd", "rhs_weap_XM2010_d", "rhs_weap_XM2010_sa"
-#define SNP_MAG "rhsusf_5Rnd_300winmag_xm2010:12"
+#define SNP_RIFLE "rhs_weap_t5000"
+#define SNP_MAG "rhs_5Rnd_338lapua_t5000:12"
 
 // [player getVariable "phxLoadout", (configProperties [_cfgPath, "true", true]) apply {configName _x}]
 
-class RHS_GEAR_NATO_BUNDESWEHR_2010_G36 {
+class RHS_GEAR_NATO_GROZOVIAN_2020_AK74N {
   author = "Mazz38";
-  description = "DE: German BUNDESWEHR G36 Kits";
+  description = "GZ: 2020 Grozovian ARMY AK74N Kits";
 
   class BASE {
     backpackItems[] = {};
@@ -105,6 +105,7 @@ class RHS_GEAR_NATO_BUNDESWEHR_2010_G36 {
       LEADER_SMOKES
     };
     items[] += {LEADER_TOOLS};
+    linkedItems[] += {VECTOR};
     giveSideKey = 1;
     giveLRRadio = 1;
   };
@@ -182,15 +183,11 @@ class RHS_GEAR_NATO_BUNDESWEHR_2010_G36 {
   class MATA1 : BASE {
     defaultMAT[] = {MAT1_LAUNCHER};
   };
-  class MAT1 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
-  };
+  class MAT1 : MATA1 {};
   class MATA2 : BASE {
     defaultMAT[] = {MAT2_LAUNCHER};
   };
-  class MAT2 : BASE {
-    defaultMAT[] = {MAT2_LAUNCHER};
-  };
+  class MAT2 : MATA2 {};
 
   class RIS : BASE {
     weaponChoices[] = {

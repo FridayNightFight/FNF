@@ -1,32 +1,32 @@
 #include "..\undef.hpp" // Reset defines
 
-#define UNIFORM "rhsgref_uniform_altis_lizard", "rhsgref_uniform_altis_lizard_olive", "UK3CB_FIA_B_U_M10_CombatUniform_GRK_LIZ01_01"
+#define UNIFORM "UK3CB_GAF_B_U_CombatUniform_01_DIGI", "UK3CB_GAF_B_U_CombatUniform_02_DIGI", "UK3CB_GAF_B_U_CombatUniform_03_DIGI", "UK3CB_GAF_B_U_SF_CombatSmock_07_MULTICAM_OLIVE", "UK3CB_GAF_B_U_SF_CombatSmock_04_MULTICAM_OLIVE"
 
-#define VEST "rhsgref_otv_khaki", "UK3CB_GAF_B_MBAV_MEDIC_OLI_01"
+#define VEST "UK3CB_GAF_B_MBAV_RIFLEMAN_DIGI", "rhsusf_mbav_rifleman", "UK3CB_GAF_B_MBAV_RIFLEMAN_DIGI_OLI"
 #define VEST_LEADER VEST
-#define VEST_AR VEST
-#define VEST_MEDIC VEST
+#define VEST_AR "UK3CB_GAF_B_MBAV_MG_TAN_02", "UK3CB_GAF_B_MBAV_MG_TAN_01", "UK3CB_GAF_B_MBAV_MG_OLI_02", "UK3CB_GAF_B_MBAV_MG_OLI_01", "UK3CB_GAF_B_MBAV_MG_DIGI_02", "UK3CB_GAF_B_MBAV_MG_DIGI_03"
+#define VEST_MEDIC "UK3CB_GAF_B_MBAV_MEDIC_DIGI_OLI_02", "UK3CB_GAF_B_MBAV_MEDIC_DIGI_OLI_03"
 #define VEST_CREWMAN VEST
 #define VEST_PILOT VEST
 
-#define HELMET "rhsgref_helmet_pasgt_altis_lizard"
-#define HELMET_CMDR "UK3CB_H_MilCap_GRK_LIZ"
-#define HELMET_RECON "rhssaf_booniehat_woodland"
-#define HELMET_CREWMAN "rhsusf_cvc_green_ess"
-#define HELMET_PILOT "rhsusf_hgu56p_visor_mask"
+#define HELMET "UK3CB_GAF_B_H_Opscore_Mar_OLI_02", "UK3CB_GAF_B_H_Opscore_Mar_OLI_01", "UK3CB_GAF_B_H_Opscore_Mar_TAN_01", "UK3CB_GAF_B_H_Opscore_Mar_TAN_02", "rhsusf_ach_helmet_camo_ocp"
+#define HELMET_CMDR "rhsusf_patrolcap_ocp"
+#define HELMET_RECON "rhs_Booniehat_ocp"
+#define HELMET_CREWMAN "rhsusf_cvc_ess"
+#define HELMET_PILOT "rhsusf_hgu56p_visor_mask_green"
 
-#define BACKPACK "B_Kitbag_rgr", "UK3CB_B_Kitbag_GRK_LIZ"
-#define BACKPACK_RADIO "TFAR_rt1523g_sage"
-#define BACKPACK_AR "B_Carryall_khk"
-#define BACKPACK_AT "B_Carryall_khk"
-#define BACKPACK_MEDIC "B_FieldPack_khk"
+#define BACKPACK "UK3CB_GAF_B_B_RIF_DIGI", "UK3CB_GAF_B_B_RIF_OLI", "UK3CB_GAF_B_B_RIF_TAN"
+#define BACKPACK_RADIO "TFAR_rt1523g_big_bwmod"
+#define BACKPACK_AR "UK3CB_GAF_B_B_ENG_DIGI"
+#define BACKPACK_AT "UK3CB_GAF_B_B_ENG_DIGI"
+#define BACKPACK_MEDIC "UK3CB_GAF_B_B_RIF_MED_DIGI", "UK3CB_GAF_B_B_RIF_MED_OLI", "UK3CB_GAF_B_B_RIF_MED_TAN"
 #define BACKPACK_CREWMAN BACKPACK_RADIO
 #define BACKPACK_PILOT BACKPACK_RADIO
 
 
-class RHS_UNI_NATO_GREEKFORCES_2010 {
+class RHS_UNI_NATO_GROZOVIAN_2020 {
   author = "Mazz38";
-  description = "GR: Modern Greek Armed Forces Lizard Camouflage";
+  description = "GZ: Modern NATO Backed Grozovian Ruthenian ARMY GAF DIGITAL Camouflage";
 
   class BASE {
     uniform[] = {UNIFORM};
@@ -88,7 +88,6 @@ class RHS_UNI_NATO_GREEKFORCES_2010 {
 
   class SNP : BASE {
     headgear[] = {HELMET_RECON};
-    uniform[] = {UNIFORM};
   };
 
   class CR : BASE {
