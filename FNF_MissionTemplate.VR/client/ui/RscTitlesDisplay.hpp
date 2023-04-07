@@ -118,4 +118,48 @@ class RscTitles {
       };
     };
   };
+
+  //("FNF_spectatorUI" call BIS_fnc_rscLayer) cutRsc ["alivePlayers", "PLAIN"];	// show
+  //("FNF_spectatorUI" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];				    // remove
+  class alivePlayers {
+    idd = -1;
+    duration = 1e+011;
+    onLoad = "uiNamespace setVariable ['FNF_spectatorUI', _this #0]; FNF_spectator = true;";
+    onUnload = "FNF_spectator = false";
+
+    class Controls {
+      class alivePlayersCountWest: RscText {
+        idc = -1;
+        style = ST_CENTER;
+        onLoad = "[(_this #0), west] call FNF_UI_fnc_spectatorHandler;";
+        x   = 0.20 * safezoneW + safezoneX;
+        y   = 0.97 * safezoneH + safezoneY;
+        w   = 0.03 * safezoneW;
+        h   = 0.03 * safezoneH;
+        colorBackground[] = {0,0,0,0};
+      };
+
+      class alivePlayersCountEast: RscText {
+        idc = -1;
+        style = ST_CENTER;
+        onLoad = "[(_this #0), east] call FNF_UI_fnc_spectatorHandler;";
+        x   = 0.23 * safezoneW + safezoneX;
+        y   = 0.97 * safezoneH + safezoneY;
+        w   = 0.03 * safezoneW;
+        h   = 0.03 * safezoneH;
+        colorBackground[] = {0,0,0,0};
+      };
+
+      class alivePlayersCountRes: RscText {
+        idc = -1;
+        style = ST_CENTER;
+        onLoad = "[(_this #0), resistance] call fnf_ui_fnc_spectatorHandler;";
+        x   = 0.26 * safezoneW + safezoneX;
+        y   = 0.97 * safezoneH + safezoneY;
+        w   = 0.03 * safezoneW;
+        h   = 0.03 * safezoneH;
+        colorBackground[] = {0,0,0,0};
+      };
+    };
+  };
 };

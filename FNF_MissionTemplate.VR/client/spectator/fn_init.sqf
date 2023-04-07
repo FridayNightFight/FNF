@@ -111,4 +111,7 @@ fnf_spectatorPrevVisibleCtrls = [];
   };
 }] call CBA_fnc_addPerFrameHandler;
 
+// Start drawing number of alive players per side
+("FNF_spectatorUI" call BIS_fnc_rscLayer) cutRsc ["alivePlayers", "PLAIN"];
+
 true

@@ -94,6 +94,9 @@ _out pushBack format["ACTION: %1", "RespawnPlayer"];
           _timer = _timer - 1;
         };
 
+        // Turn off drawing number of alive players per side 
+        ("FNF_spectatorUI" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
+
         // respawn procedure
         setPlayerRespawnTime -1;
         uiSleep 1;

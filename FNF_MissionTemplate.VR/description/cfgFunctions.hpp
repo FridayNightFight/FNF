@@ -256,6 +256,10 @@ class CfgFunctions {
       class genPolylineFromMarkers{};
       class removeShadedPolygon{};
     };
+    class spectator {
+      file = "client\ui\spectator";
+      class spectatorHandler {};
+    };
   };
   class fnf_server {
     class initServer {
