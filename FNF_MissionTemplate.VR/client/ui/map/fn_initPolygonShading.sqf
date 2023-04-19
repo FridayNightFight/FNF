@@ -5,10 +5,14 @@ findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw",
 {
   _map = _this select 0;
   {
-    _pos1 = getMarkerPos ((_x select 0) select 0);
-    _pos2 = getMarkerPos ((_x select 0) select 1);
-    _pos3 = getMarkerPos ((_x select 0) select 2);
-	  _map drawTriangle [[_pos1, _pos2, _pos3], _x select 1, _x select 2];
+    _rgbaValues = _x select 1;
+    _textureCode = _x select 2;
+    {
+      _pos1 = getMarkerPos (_x select 0);
+      _pos2 = getMarkerPos (_x select 1);
+      _pos3 = getMarkerPos (_x select 2);
+	    _map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, _textureCode];
+    } forEach (_x select 0)
   } forEach fnf_trianglesToDraw;
 }];
 }] call CBA_fnc_waitUntilAndExecute;
@@ -18,10 +22,14 @@ findDisplay 52 displayCtrl 51 ctrlAddEventHandler ["Draw",
 {
   _map = _this select 0;
   {
-    _pos1 = getMarkerPos ((_x select 0) select 0);
-    _pos2 = getMarkerPos ((_x select 0) select 1);
-    _pos3 = getMarkerPos ((_x select 0) select 2);
-	  _map drawTriangle [[_pos1, _pos2, _pos3], _x select 1, _x select 2];
+    _rgbaValues = _x select 1;
+    _textureCode = _x select 2;
+    {
+      _pos1 = getMarkerPos (_x select 0);
+      _pos2 = getMarkerPos (_x select 1);
+      _pos3 = getMarkerPos (_x select 2);
+	    _map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, _textureCode];
+    } forEach (_x select 0)
   } forEach fnf_trianglesToDraw;
 }];
 }] call CBA_fnc_waitUntilAndExecute;
@@ -31,10 +39,14 @@ findDisplay 53 displayCtrl 51 ctrlAddEventHandler ["Draw",
 {
   _map = _this select 0;
   {
-    _pos1 = getMarkerPos ((_x select 0) select 0);
-    _pos2 = getMarkerPos ((_x select 0) select 1);
-    _pos3 = getMarkerPos ((_x select 0) select 2);
-	  _map drawTriangle [[_pos1, _pos2, _pos3], _x select 1, _x select 2];
+    _rgbaValues = _x select 1;
+    _textureCode = _x select 2;
+    {
+      _pos1 = getMarkerPos (_x select 0);
+      _pos2 = getMarkerPos (_x select 1);
+      _pos3 = getMarkerPos (_x select 2);
+	    _map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, _textureCode];
+    } forEach (_x select 0)
   } forEach fnf_trianglesToDraw;
 }];
 }] call CBA_fnc_waitUntilAndExecute;
@@ -57,10 +69,14 @@ findDisplay 53 displayCtrl 51 ctrlAddEventHandler ["Draw",
 			  _gps ctrlAddEventHandler ['Draw',{
           _map = _this select 0;
           {
-            _pos1 = getMarkerPos ((_x select 0) select 0);
-            _pos2 = getMarkerPos ((_x select 0) select 1);
-            _pos3 = getMarkerPos ((_x select 0) select 2);
-	          _map drawTriangle [[_pos1, _pos2, _pos3], _x select 1, _x select 2];
+            _rgbaValues = _x select 1;
+            _textureCode = _x select 2;
+            {
+              _pos1 = getMarkerPos (_x select 0);
+              _pos2 = getMarkerPos (_x select 1);
+              _pos3 = getMarkerPos (_x select 2);
+	            _map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, _textureCode];
+            } forEach (_x select 0)
           } forEach fnf_trianglesToDraw;
         }];
 		  };
@@ -73,10 +89,14 @@ findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
 {
   _map = _this select 0;
   {
-    _pos1 = getMarkerPos ((_x select 0) select 0);
-    _pos2 = getMarkerPos ((_x select 0) select 1);
-    _pos3 = getMarkerPos ((_x select 0) select 2);
-	  _map drawTriangle [[_pos1, _pos2, _pos3], _x select 1, _x select 2];
+    _rgbaValues = _x select 1;
+    _textureCode = _x select 2;
+    {
+      _pos1 = getMarkerPos (_x select 0);
+      _pos2 = getMarkerPos (_x select 1);
+      _pos3 = getMarkerPos (_x select 2);
+	    _map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, _textureCode];
+    } forEach (_x select 0)
   } forEach fnf_trianglesToDraw;
 }];
 }] call CBA_fnc_waitUntilAndExecute;

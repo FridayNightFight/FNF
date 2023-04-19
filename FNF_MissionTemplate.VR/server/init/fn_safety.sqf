@@ -80,7 +80,7 @@ call fnf_safety_fnc_handleVics; //Make vehicles invincible until safety ends
 
     { // if not SA, delete safeStart markers
       if (typeName _x == "ARRAY") then {
-        [[_x], fnf_ui_fnc_removeShadedPolygon] remoteExec ["call", 0, true];
+        [(_x select 0), fnf_ui_fnc_removeShadedPolygon] remoteExec ["call", 0, true];
       } else {
         deleteMarker _x;
         _x remoteExec ["deleteMarkerLocal", 0, true];
