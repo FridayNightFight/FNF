@@ -85,6 +85,10 @@ mySideGearSelection = missionNamespace getVariable ("fnf_" + _sideLabel + "Gear"
 // if MATA and the configured MAT for player's squad is not reloadable, assign Rifleman (RI) kit instead.
 if (PLAYERLOADOUTVAR in ["MAT1","MATA1","MAT2","MATA2"]) then {
   [PLAYERLOADOUTVAR] call fnf_loadout_fnc_setMAT;
+  if (isNil "fnf_loadout_mediumantitank_isReloadable") then
+  {
+    fnf_loadout_mediumantitank_isReloadable = false;
+  };
   if (
     !fnf_loadout_mediumantitank_isReloadable &&
     PLAYERLOADOUTVAR in ["MATA1","MATA2"]
