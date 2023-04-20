@@ -11,7 +11,7 @@ _independentItemsToProtect = 	[];
 //What Hiding Zones are available
 _hidingZonePrefixes = ["hidingzone_"];
 
-//Can players see what zone their objective is in (NOT WORKING)
+//Can players see what zone their objective is in
 _seeWhichTargetIsInWhichHidingZone = true;
 
 //What zones this side starts in

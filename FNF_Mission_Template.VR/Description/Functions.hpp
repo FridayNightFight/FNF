@@ -38,6 +38,13 @@ class CfgFunctions
 			file = "Server";
 			class endGame {};
 		};
+    class timer
+    {
+      file = "Server\Timer";
+      class createTimer {};
+      class addFunctionToTimer {};
+      class removeFunctionFromTimer {};
+    }
 	};
 	class FNF_Config
 	{

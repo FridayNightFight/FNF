@@ -65,7 +65,7 @@ if (count _independentStartZonePrefixs > 0) then
 	[_x] call FNF_ClientSide_fnc_addZone;
 } forEach _hidingZonePrefixes;
 
-
+//TODO: add system to notify mission maker if in Order is used incorrectly with conflicting starting things or players as destroy items
 
 
 
@@ -77,33 +77,42 @@ if (count _independentStartZonePrefixs > 0) then
 if (!isServer) exitWith {};
 
 //TODO: create timer system for startzones and mission timeout
-
-//TODO: set targets to invincible if in order is used
+//TODO: add system to obtain win if side is killed
 
 _targetsToWatch = [];
 
 //create tasks
+//for targets
 {
 	_isDuplicate = false;
 	_duplicateIndex = 0;
 	_toCompareAgainst = _x;
+  //check if object is already being watched
 	{
-		if (_x isEqualTo _toCompareAgainst) then
+		if ((_x select 0) isEqualTo _toCompareAgainst) then
 		{
 			_isDuplicate = true;
 			_duplicateIndex = _forEachIndex;
 		};
 	} forEach _targetsToWatch;
 
+  //if it is add the task created to the watched object
 	if (_isDuplicate) then
 	{
-		_targetsToWatch select _duplicateIndex pushBack "bluforDestroyTask" + str _forEachIndex;
+		((_targetsToWatch select _duplicateIndex) select 1) pushBack "bluforDestroyTask" + str _forEachIndex;
 	} else
+  //if not add object to be watched
 	{
 		_targetsToWatch pushBack [_x, ["bluforDestroyTask" + str _forEachIndex]];
 	};
 
-	[west, "bluforDestroyTask" + str _forEachIndex, ["Destroy the " + name _x, "Destroy", "destroy"]] call BIS_fnc_taskCreate;
+  //get object name and picture
+  private _targetConfig = _x call CBA_fnc_getObjectConfig;
+  private _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+  private _targetName = getText (_targetConfig >> "DisplayName");
+
+  //add task to destroy object
+	[west, "bluforDestroyTask" + str _forEachIndex, [format["<img image='%1' width='300'>", _targetPic], "Destroy the " + _targetName], objNull, "CREATED", 0, false, "Attack"] call BIS_fnc_taskCreate;
 } forEach _bluforTargets;
 
 {
@@ -111,7 +120,7 @@ _targetsToWatch = [];
 	_duplicateIndex = 0;
 	_toCompareAgainst = _x;
 	{
-		if (_x isEqualTo _toCompareAgainst) then
+		if ((_x select 0) isEqualTo _toCompareAgainst) then
 		{
 			_isDuplicate = true;
 			_duplicateIndex = _forEachIndex;
@@ -120,13 +129,17 @@ _targetsToWatch = [];
 
 	if (_isDuplicate) then
 	{
-		_targetsToWatch select _duplicateIndex pushBack "opforDestroyTask" + str _forEachIndex;
+		((_targetsToWatch select _duplicateIndex) select 1) pushBack "opforDestroyTask" + str _forEachIndex;
 	} else
 	{
 		_targetsToWatch pushBack [_x, ["opforDestroyTask" + str _forEachIndex]];
 	};
 
-	[east, "opforDestroyTask" + str _forEachIndex, ["Destroy the " + name _x, "Destroy", "destroy"]] call BIS_fnc_taskCreate;
+  private _targetConfig = _x call CBA_fnc_getObjectConfig;
+  private _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+  private _targetName = getText (_targetConfig >> "DisplayName");
+
+	[east, "opforDestroyTask" + str _forEachIndex, [format["<img image='%1' width='300'>", _targetPic], "Destroy the " + _targetName], objNull, "CREATED", 0, false, "Attack"] call BIS_fnc_taskCreate;
 } forEach _opforTargets;
 
 {
@@ -134,7 +147,7 @@ _targetsToWatch = [];
 	_duplicateIndex = 0;
 	_toCompareAgainst = _x;
 	{
-		if (_x isEqualTo _toCompareAgainst) then
+		if ((_x select 0) isEqualTo _toCompareAgainst) then
 		{
 			_isDuplicate = true;
 			_duplicateIndex = _forEachIndex;
@@ -143,22 +156,26 @@ _targetsToWatch = [];
 
 	if (_isDuplicate) then
 	{
-		_targetsToWatch select _duplicateIndex pushBack "independentDestroyTask" + str _forEachIndex;
+		((_targetsToWatch select _duplicateIndex) select 1) pushBack "independentDestroyTask" + str _forEachIndex;
 	} else
 	{
 		_targetsToWatch pushBack [_x, ["independentDestroyTask" + str _forEachIndex]];
 	};
 
-	[independent, "independentDestroyTask" + str _forEachIndex, ["Destroy the " + name _x, "Destroy", "destroy"]] call BIS_fnc_taskCreate;
+  private _targetConfig = _x call CBA_fnc_getObjectConfig;
+  private _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+  private _targetName = getText (_targetConfig >> "DisplayName");
+
+	[independent, "independentDestroyTask" + str _forEachIndex, [format["<img image='%1' width='300'>", _targetPic], "Destroy the " + _targetName], objNull, "CREATED", 0, false, "Attack"] call BIS_fnc_taskCreate;
 } forEach _independentTargets;
 
-
+//for protects
 {
 	_isDuplicate = false;
 	_duplicateIndex = 0;
 	_toCompareAgainst = _x;
 	{
-		if (_x isEqualTo _toCompareAgainst) then
+		if ((_x select 0) isEqualTo _toCompareAgainst) then
 		{
 			_isDuplicate = true;
 			_duplicateIndex = _forEachIndex;
@@ -167,13 +184,17 @@ _targetsToWatch = [];
 
 	if (_isDuplicate) then
 	{
-		_targetsToWatch select _duplicateIndex pushBack "bluforProtectTask" + str _forEachIndex;
+		((_targetsToWatch select _duplicateIndex) select 1) pushBack "bluforProtectTask" + str _forEachIndex;
 	} else
 	{
 		_targetsToWatch pushBack [_x, ["bluforProtectTask" + str _forEachIndex]];
 	};
 
-	[west, "bluforProtectTask" + str _forEachIndex, ["Protect the " + name _x, "Protect", "defend"],_x] call BIS_fnc_taskCreate;
+  private _targetConfig = _x call CBA_fnc_getObjectConfig;
+  private _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+  private _targetName = getText (_targetConfig >> "DisplayName");
+
+	[west, "bluforProtectTask" + str _forEachIndex, [format["<img image='%1' width='300'>", _targetPic], "Protect the " + _targetName],_x, "CREATED", 0, false, "Defend"] call BIS_fnc_taskCreate;
 } forEach _bluforItemsToProtect;
 
 {
@@ -181,7 +202,7 @@ _targetsToWatch = [];
 	_duplicateIndex = 0;
 	_toCompareAgainst = _x;
 	{
-		if (_x isEqualTo _toCompareAgainst) then
+		if ((_x select 0) isEqualTo _toCompareAgainst) then
 		{
 			_isDuplicate = true;
 			_duplicateIndex = _forEachIndex;
@@ -190,13 +211,17 @@ _targetsToWatch = [];
 
 	if (_isDuplicate) then
 	{
-		_targetsToWatch select _duplicateIndex pushBack "opforProtectTask" + str _forEachIndex;
+		((_targetsToWatch select _duplicateIndex) select 1) pushBack "opforProtectTask" + str _forEachIndex;
 	} else
 	{
 		_targetsToWatch pushBack [_x, ["opforProtectTask" + str _forEachIndex]];
 	};
 
-	[east, "opforProtectTask" + str _forEachIndex, ["Protect the " + name _x, "Protect", "defend"],_x] call BIS_fnc_taskCreate;
+	private _targetConfig = _x call CBA_fnc_getObjectConfig;
+  private _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+  private _targetName = getText (_targetConfig >> "DisplayName");
+
+	[east, "opforProtectTask" + str _forEachIndex, [format["<img image='%1' width='300'>", _targetPic], "Protect the " + _targetName],_x, "CREATED", 0, false, "Defend"] call BIS_fnc_taskCreate;
 } forEach _opforItemsToProtect;
 
 {
@@ -204,7 +229,7 @@ _targetsToWatch = [];
 	_duplicateIndex = 0;
 	_toCompareAgainst = _x;
 	{
-		if (_x isEqualTo _toCompareAgainst) then
+		if ((_x select 0) isEqualTo _toCompareAgainst) then
 		{
 			_isDuplicate = true;
 			_duplicateIndex = _forEachIndex;
@@ -213,18 +238,23 @@ _targetsToWatch = [];
 
 	if (_isDuplicate) then
 	{
-		_targetsToWatch select _duplicateIndex pushBack "independentProtectTask" + str _forEachIndex;
+		((_targetsToWatch select _duplicateIndex) select 1) pushBack "independentProtectTask" + str _forEachIndex;
 	} else
 	{
 		_targetsToWatch pushBack [_x, ["independentProtectTask" + str _forEachIndex]];
 	};
 
-	[independent, "independentProtectTask" + str _forEachIndex, ["Protect the " + name _x, "Protect", "defend"],_x] call BIS_fnc_taskCreate;
+	private _targetConfig = _x call CBA_fnc_getObjectConfig;
+  private _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+  private _targetName = getText (_targetConfig >> "DisplayName");
+
+	[independent, "independentProtectTask" + str _forEachIndex, [format["<img image='%1' width='300'>", _targetPic], "Protect the " + _targetName],_x, "CREATED", 0, false, "Defend"] call BIS_fnc_taskCreate;
 } forEach _independentItemsToProtect;
 
 fnf_targetsToWatch = _targetsToWatch;
 fnf_hidingZonePrefixes = _hidingZonePrefixes;
 fnf_seeWhichTargetIsInWhichHidingZone = _seeWhichTargetIsInWhichHidingZone;
+
 //watch items to see if they are in a hidden zone
 [{
 	{
@@ -266,7 +296,6 @@ fnf_seeWhichTargetIsInWhichHidingZone = _seeWhichTargetIsInWhichHidingZone;
 }, 1] call CBA_fnc_addPerFrameHandler;
 
 //watch items to see if they get destroyed
-//TODO: add task control if item is destroyed etc
 fnf_bluforTargets = _bluforTargets;
 fnf_opforTargets = _opforTargets;
 fnf_independentTargets = _independentTargets;
@@ -280,6 +309,21 @@ fnf_independentDestroyTargetsInOrder = _independentDestroyTargetsInOrder;
 		if (!alive (_x select 0) and !_deathProcessed) then
 		{
 			(_x select 0) setVariable ["deathProcessed", true, false];
+
+      //updates tasks' states
+      _tasksToUpdate = _x select 1;
+      {
+        if (["destroy",_x] call BIS_fnc_inString) then
+        {
+          [_x, "SUCCEEDED"] call BIS_fnc_taskSetState;
+        };
+        if (["protect",_x] call BIS_fnc_inString) then
+        {
+          [_x, "FAILED"] call BIS_fnc_taskSetState;
+        };
+      } forEach _tasksToUpdate;
+
+      //checks if side has any alive objectives to destroy left
 			_objectFoundStillAliveBlufor = false;
 			{
 				if (alive _x) then
@@ -288,23 +332,32 @@ fnf_independentDestroyTargetsInOrder = _independentDestroyTargetsInOrder;
 					break;
 				};
 			} forEach (fnf_bluforTargets);
+      //if no objects found and side has targets to destroy add to winning side
 			if (!_objectFoundStillAliveBlufor and count fnf_bluforTargets > 0) then
 			{
 				_winningTeams pushBack west;
 			};
 
+      //if blufor must destroy their targets in order
 			if (fnf_bluforDestroyTargetsInOrder) then
 			{
 				_objectKilled = (_x select 0);
 				_objectIndex = -1;
+        //check which object was destroyed
 				{
 					if (_x isEqualTo _objectKilled) then
 					{
 						_objectIndex = _forEachIndex;
 					};
 				} forEach (fnf_bluforTargets);
+        //get next object to destroy and allow its damage
 				_nextObject = (fnf_bluforTargets) select (_objectIndex + 1);
-				_nextObject allowDamage true;
+        if (not local _nextObject) then
+        {
+          [_nextObject, true] remoteExec ["allowDamage", _nextObject];
+        } else {
+          _nextObject allowDamage true;
+        };
 			};
 
 			_objectFoundStillAliveOpfor = false;
@@ -331,7 +384,12 @@ fnf_independentDestroyTargetsInOrder = _independentDestroyTargetsInOrder;
 					};
 				} forEach (fnf_opforTargets);
 				_nextObject = (fnf_opforTargets) select (_objectIndex + 1);
-				_nextObject allowDamage true;
+				if (not local _nextObject) then
+        {
+          [_nextObject, true] remoteExec ["allowDamage", _nextObject];
+        } else {
+          _nextObject allowDamage true;
+        };
 			};
 
 			_objectFoundStillAliveIndependent = false;
@@ -358,7 +416,12 @@ fnf_independentDestroyTargetsInOrder = _independentDestroyTargetsInOrder;
 					};
 				} forEach (fnf_independentTargets);
 				_nextObject = (fnf_independentTargets) select (_objectIndex + 1);
-				_nextObject allowDamage true;
+				if (not local _nextObject) then
+        {
+          [_nextObject, true] remoteExec ["allowDamage", _nextObject];
+        } else {
+          _nextObject allowDamage true;
+        };
 			};
 		};
 		if (count _winningTeams != 0) then
@@ -367,3 +430,52 @@ fnf_independentDestroyTargetsInOrder = _independentDestroyTargetsInOrder;
 		};
 	} forEach fnf_targetsToWatch;
 }, 1] call CBA_fnc_addPerFrameHandler;
+
+//make objects that are considered in order invincible apart from first one
+if (fnf_bluforDestroyTargetsInOrder) then
+{
+  {
+    if (_forEachIndex == 0) then
+    {
+      continue;
+    };
+    if (not local _x) then
+    {
+      [_x, false] remoteExec ["allowDamage", _x];
+    } else {
+      _x allowDamage false;
+    };
+  } forEach fnf_bluforTargets;
+};
+
+if (fnf_opforDestroyTargetsInOrder) then
+{
+  {
+    if (_forEachIndex == 0) then
+    {
+      continue;
+    };
+    if (not local _x) then
+    {
+      [_x, false] remoteExec ["allowDamage", _x];
+    } else {
+      _x allowDamage false;
+    };
+  } forEach fnf_opforTargets;
+};
+
+if (fnf_independentDestroyTargetsInOrder) then
+{
+  {
+    if (_forEachIndex == 0) then
+    {
+      continue;
+    };
+    if (not local _x) then
+    {
+      [_x, false] remoteExec ["allowDamage", _x];
+    } else {
+      _x allowDamage false;
+    };
+  } forEach fnf_independentTargets;
+};
