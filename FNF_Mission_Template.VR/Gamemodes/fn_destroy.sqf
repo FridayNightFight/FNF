@@ -251,6 +251,9 @@ _targetsToWatch = [];
 	[independent, "independentProtectTask" + str _forEachIndex, [format["<img image='%1' width='300'>", _targetPic], "Protect the " + _targetName],_x, "CREATED", 0, false, "Defend"] call BIS_fnc_taskCreate;
 } forEach _independentItemsToProtect;
 
+//start full timer system
+
+
 fnf_targetsToWatch = _targetsToWatch;
 fnf_hidingZonePrefixes = _hidingZonePrefixes;
 fnf_seeWhichTargetIsInWhichHidingZone = _seeWhichTargetIsInWhichHidingZone;
