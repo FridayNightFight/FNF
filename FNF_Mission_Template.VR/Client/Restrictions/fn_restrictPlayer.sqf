@@ -29,4 +29,4 @@ if (getTerrainGrid > 25) then
 };
 
 //set view distance to specified in Config.sqf
-setViewDistance fnf_viewDistance;
+//setViewDistance fnf_viewDistance;

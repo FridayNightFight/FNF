@@ -111,6 +111,22 @@ class CfgVehicles
         typeName = "STRING";
 				defaultValue = "fnf_marker_safezone_";
       };
+      class VisibleToAllies: Checkbox
+      {
+        property = "fnf_visibleToAllies"
+        expression = "_this setVariable ['fnf_visibleToAllies',_value];";
+        displayName = "Visible to Allies";
+        typeName = "BOOL";
+        defaultValue = "true";
+      };
+      class VisibleToEnemies: Checkbox
+      {
+        property = "fnf_visibleToEnemies"
+        expression = "_this setVariable ['fnf_visibleToEnemies',_value];";
+        displayName = "Visible to Enemies";
+        typeName = "BOOL";
+        defaultValue = "true";
+      };
     };
 	};
   class fnf_module_hidingZone: Module_F
@@ -157,7 +173,7 @@ class CfgVehicles
         class Values
         {
           class Destroy { name = "Destroy Object"; value = "des";};
-          class Destroy { name = "Protect Object"; value = "pro";};
+          class Protect { name = "Protect Object"; value = "pro";};
         };
       };
     };
@@ -179,8 +195,8 @@ class CfgVehicles
 				defaultValue = "cap";
         class Values
         {
-          class Destroy { name = "Capture Sector"; value = "cap";};
-          class Destroy { name = "Defend Sector"; value = "def";};
+          class Capture { name = "Capture Sector"; value = "cap";};
+          class Defend { name = "Defend Sector"; value = "def";};
         };
       };
     };
@@ -202,8 +218,8 @@ class CfgVehicles
 				defaultValue = "cap";
         class Values
         {
-          class Destroy { name = "Capture Sector"; value = "cap";};
-          class Destroy { name = "Defend Sector"; value = "def";};
+          class Capture { name = "Capture Sector"; value = "cap";};
+          class Defend { name = "Defend Sector"; value = "def";};
         };
       };
     };

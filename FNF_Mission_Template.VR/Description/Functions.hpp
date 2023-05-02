@@ -6,7 +6,6 @@ class CfgFunctions
 		{
 			file = "Client";
 			class init { postInit = 1; };
-			class gamemodeInit {};
 		};
 		class zones
 		{
@@ -30,6 +29,22 @@ class CfgFunctions
 			class startRequestWeaponDisable {};
 			class endRequestWeaponDisable {};
 		};
+    class objectives
+    {
+      file = "Client\Objectives";
+      class checkDestroy {};
+    };
+    class safeZones
+    {
+      file = "Client\Safezones";
+      class initSafeZones {};
+    };
+    class modules
+    {
+      file = "Client\Modules";
+      class findFNFModules {};
+      class findSpecificModules {};
+    };
 	};
 	class FNF_ServerSide
 	{
@@ -45,25 +60,5 @@ class CfgFunctions
       class addFunctionToTimer {};
       class removeFunctionFromTimer {};
     }
-	};
-	class FNF_Config
-	{
-		class variables
-		{
-			class config {file = "Config.sqf"; preInit = 1;}
-		};
-		class root
-		{
-			file = "Config";
-			class destroyConfig {file = "Config\Destroy.sqf";};
-		};
-	};
-	class FNF_Gamemodes
-	{
-		class modes
-		{
-			file = "Gamemodes";
-			class destroy {};
-		};
 	};
 };
