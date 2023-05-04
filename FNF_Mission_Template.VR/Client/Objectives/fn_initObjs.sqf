@@ -13,6 +13,8 @@
 
 params ["_modules"];
 
+fnf_objectives = [];
+
 {
   _syncedObjects = synchronizedObjects _x;
   _visibleToAllies = _x getVariable "fnf_visibleToAllies";
@@ -24,15 +26,15 @@ params ["_modules"];
     _objSide = sideEmpty;
     switch (_objectType) do
     {
-      case "sideBLUFOR_F":
+      case "SideBLUFOR_F":
       {
         _objSide = west;
       };
-      case "sideOPFOR_F":
+      case "SideOPFOR_F":
       {
         _objSide = east;
       };
-      case "sideResistance_F":
+      case "SideResistance_F":
       {
         _objSide = independent;
       };

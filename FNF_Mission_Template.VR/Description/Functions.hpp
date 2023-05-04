@@ -39,6 +39,7 @@ class CfgFunctions
     {
       file = "Client\Objectives\Destroy";
       class initDestroy {};
+      class watchDestroy {};
     };
     class safeZones
     {
@@ -50,6 +51,10 @@ class CfgFunctions
       file = "Client\Modules";
       class findFNFModules {};
       class findSpecificModules {};
+    };
+    class ui
+    {
+      file = "Client\UI";
     };
 	};
 	class FNF_ServerSide

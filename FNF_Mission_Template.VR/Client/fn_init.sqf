@@ -21,6 +21,8 @@ if (count _objModules == 0) then
   if (fnf_debug) then {
     systemChat "WARNING: No objectives present"
   };
+} else {
+  [_objModules] call FNF_ClientSide_fnc_initObjs;
 };
 
 //check if there is a playzone
@@ -43,4 +45,37 @@ if (count _safeZoneModules == 0) then
   };
 } else {
   [_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
+};
+
+//if there are objectives start watching them
+if (not isNil "fnf_objectives") then
+{
+  if (count fnf_objectives != 0) then
+  {
+    [{
+      _indexesToDeleteIfCompleted = [];
+      {
+        switch (_x select 0) do {
+          case "DESTROY":
+          {
+            _result = [(_x select 2), (_x select 3)] call FNF_ClientSide_fnc_watchDestroy;
+            if (_result) then
+            {
+              _indexesToDeleteIfCompleted pushBack _forEachIndex;
+            };
+          };
+          default
+          {
+            if (fnf_debug) then
+            {
+              systemChat "DANGER: Objective has no valid type code, contact FNF staff";
+            };
+          };
+        };
+      } forEach fnf_objectives;
+      {
+        fnf_objectives deleteAt (_x - _forEachIndex);
+      } forEach _indexesToDeleteIfCompleted;
+    },1] call CBA_fnc_addPerFrameHandler;
+  };
 };

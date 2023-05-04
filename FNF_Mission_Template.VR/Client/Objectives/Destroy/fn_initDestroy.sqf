@@ -9,10 +9,80 @@
     1: BOOLEAN -  Whether the objective is for the player, if not treat breifing and task control differently
 
 	Returns:
-		Boolean
+		None
 */
 
 params ["_objective", "_forPlayer"];
 
+_objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
+
+if (_objectiveType == "FAILED") exitWith
+{
+  if (fnf_debug) then
+  {
+    systemChat "DANGER: Destroy objective does not have objective type set, objective will NOT function"
+  };
+};
+
 _syncedObjects = synchronizedObjects _objective;
 
+_objectiveObject = "";
+{
+  _typeOfObject = typeOf _x;
+  if (_typeOfObject == "SideBLUFOR_F" or _typeOfObject == "SideOPFOR_F" or _typeOfObject == "SideResistance_F") then
+  {
+    continue;
+  };
+  if (_objectiveObject == "") then
+  {
+    _objectiveObject = _x;
+  } else {
+    if (fnf_debug) then
+    {
+      systemChat "WARNING: Destroy objective has more than one possible objects as target";
+    };
+  };
+} forEach _syncedObjects;
+
+_targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
+_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+_targetName = getText (_targetConfig >> "DisplayName");
+
+_task = "";
+
+if (isNil "fnf_myTasksParentTask") then
+{
+  fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
+  fnf_myTasksParentTask setSimpleTaskType "documents";
+};
+
+if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
+{
+  fnf_allyTasksParentTask = player createSimpleTask ["Ally Tasks"];
+  fnf_allyTasksParentTask setSimpleTaskType "documents";
+};
+
+if (_objectiveType == "des") then
+{
+  if (_forPlayer) then
+  {
+    _task = player createSimpleTask [("Destroy the " + _targetName), fnf_myTasksParentTask];
+  } else {
+    _task = player createSimpleTask [("Destroy the " + _targetName), fnf_allyTasksParentTask];
+  };
+  _task setSimpleTaskDescription [format["<img image='%1' width='300'>", _targetPic], "Destroy the " + _targetName, "Destroy the " + _targetName];
+  _task setSimpleTaskType "destroy";
+} else {
+  if (_forPlayer) then
+  {
+    _task = player createSimpleTask [("Defend the " + _targetName), fnf_myTasksParentTask];
+  } else {
+    _task = player createSimpleTask [("Defend the " + _targetName), fnf_allyTasksParentTask];
+  };
+  _task setSimpleTaskDescription [format["<img image='%1' width='300'>", _targetPic], "Defend the " + _targetName, "Defend the " + _targetName];
+  _task setSimpleTaskType "defend";
+  _task setSimpleTaskDestination (getpos _objectiveObject);
+};
+
+// [type, objective, task]
+fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _task];
