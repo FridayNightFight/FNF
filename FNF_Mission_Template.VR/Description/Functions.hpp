@@ -28,11 +28,17 @@ class CfgFunctions
 			class getRequestWeaponDisable {};
 			class startRequestWeaponDisable {};
 			class endRequestWeaponDisable {};
+      class initPlayZones {};
 		};
     class objectives
     {
       file = "Client\Objectives";
-      class checkDestroy {};
+      class initObjs {};
+    };
+    class objDestroy
+    {
+      file = "Client\Objectives\Destroy";
+      class initDestroy {};
     };
     class safeZones
     {

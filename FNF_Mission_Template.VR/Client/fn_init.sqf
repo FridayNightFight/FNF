@@ -3,8 +3,8 @@ _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found
 _initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _initModule == 0) exitWith {systemChat "WARNING: No FNF Init found, exiting mission prep"};
-if (count _initModule > 1) exitWith {systemChat "WARNING: Multiple FNF Init found, exiting mission prep"};
+if (count _initModule == 0) exitWith {systemChat "DANGER: No FNF Init found, exiting mission prep"};
+if (count _initModule > 1) exitWith {systemChat "DANGER: Multiple FNF Init found, exiting mission prep"};
 _initModule = _initModule select 0;
 fnf_debug = _initModule getVariable "fnf_debug";
 
@@ -15,7 +15,8 @@ call FNF_ClientSide_fnc_restrictPlayer;
 call FNF_ClientSide_fnc_initZones;
 
 //check there are objectives
-if (isnil "fnf_objectives") then
+_objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _objModules == 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No objectives present"
@@ -23,11 +24,14 @@ if (isnil "fnf_objectives") then
 };
 
 //check if there is a playzone
-if (isnil "fnf_playZone") then
+_playZoneModules = [_modules, "playZone"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _playZoneModules == 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No playzone present"
   };
+} else {
+  [_playZoneModules] call FNF_ClientSide_fnc_initPlayZones;
 };
 
 //check there are safe zones

@@ -19,7 +19,7 @@ _safeZoneRestrictionGroupSet = false;
   _syncedObjects = synchronizedObjects _x;
   _visibleToAllies = _x getVariable "fnf_visibleToAllies";
   _visibleToEnemies = _x getVariable "fnf_visibleToEnemies";
-  _zonePrefix = _x getVariable "fnf_prefix";;
+  _zonePrefix = _x getVariable "fnf_prefix";
 
   _showZone = false;
   _forPlayer = false;
