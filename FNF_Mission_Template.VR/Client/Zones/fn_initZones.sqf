@@ -11,8 +11,6 @@
 		None
 */
 
-call FNF_ClientSide_fnc_initWeaponDisable;
-
 //set up a list of all zones
 fnf_zoneList = [];
 

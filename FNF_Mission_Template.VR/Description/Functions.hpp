@@ -56,6 +56,12 @@ class CfgFunctions
     {
       file = "Client\UI";
     };
+    class spectator
+    {
+      file = "Client\Spectator";
+      class startSpectator {};
+      class initSpectatorSlot {};
+    };
 	};
 	class FNF_ServerSide
 	{

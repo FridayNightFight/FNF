@@ -14,6 +14,12 @@ call FNF_ClientSide_fnc_restrictPlayer;
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
+//if player is in a spectator slot get them out of here
+if (typeOf player == "ace_spectator_virtual") exitWith
+{
+  _modules call FNF_ClientSide_fnc_initSpectatorSlot;
+};
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules == 0) then
@@ -79,3 +85,8 @@ if (not isNil "fnf_objectives") then
     },1] call CBA_fnc_addPerFrameHandler;
   };
 };
+
+//handle if a player dies, put them into spectator
+player addEventHandler ["Killed", {
+  [{call FNF_ClientSide_fnc_startSpectator;}, [], 3] call CBA_fnc_waitAndExecute;
+}];

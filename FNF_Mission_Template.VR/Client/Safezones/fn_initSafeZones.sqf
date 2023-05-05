@@ -13,6 +13,8 @@
 
 params ["_modules"];
 
+call FNF_ClientSide_fnc_initWeaponDisable;
+
 _safeZoneRestrictionGroupSet = false;
 
 {
