@@ -14,8 +14,10 @@
 
 params ["_objective", "_forPlayer"];
 
+//get the objective type
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 
+//if no type found exit obj settup and inform mission maker
 if (_objectiveType == "FAILED") exitWith
 {
   if (fnf_debug) then
@@ -26,6 +28,7 @@ if (_objectiveType == "FAILED") exitWith
 
 _syncedObjects = synchronizedObjects _objective;
 
+//find the object thats supposed to be killed or protected
 _objectiveObject = "";
 {
   _typeOfObject = typeOf _x;
@@ -44,24 +47,28 @@ _objectiveObject = "";
   };
 } forEach _syncedObjects;
 
+//get objects name and picture
 _targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
 _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
 _targetName = getText (_targetConfig >> "DisplayName");
 
-_task = "";
-
+//if parent task for my tasks doesnt exist create it
 if (isNil "fnf_myTasksParentTask") then
 {
   fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
   fnf_myTasksParentTask setSimpleTaskType "documents";
 };
 
+//if parent task for ally tasks doesnt exist and its needed create it
 if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
 {
   fnf_allyTasksParentTask = player createSimpleTask ["Ally Tasks"];
   fnf_allyTasksParentTask setSimpleTaskType "documents";
 };
 
+_task = "";
+
+//create and setup objective task
 if (_objectiveType == "des") then
 {
   if (_forPlayer) then
@@ -84,5 +91,6 @@ if (_objectiveType == "des") then
   _task setSimpleTaskDestination (getpos _objectiveObject);
 };
 
+//add objective to objective stack
 // [type, objective, task]
 fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _task];

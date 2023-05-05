@@ -13,6 +13,7 @@
 
 params ["_modules"];
 
+//safe zones require weapon disabling
 call FNF_ClientSide_fnc_initWeaponDisable;
 
 _safeZoneRestrictionGroupSet = false;
@@ -26,11 +27,13 @@ _safeZoneRestrictionGroupSet = false;
   _showZone = false;
   _forPlayer = false;
   {
+    //check if safezone is for player
     if (_x == player) then
     {
       _forPlayer = true;
       break;
     };
+    //check if player should see safezone for other reasons
     if (isPlayer _x and not _showZone) then
     {
       _zoneSide = side _x;
@@ -49,8 +52,10 @@ _safeZoneRestrictionGroupSet = false;
     };
   } forEach _syncedObjects;
 
+  //if for the player setup the safe zone
   if (_forPlayer) then
   {
+    //check if the safezone group has been created, if not create it
     if (not _safeZoneRestrictionGroupSet) then
     {
       ["safeZoneGroup", true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
@@ -67,6 +72,7 @@ _safeZoneRestrictionGroupSet = false;
     continue;
   };
 
+  //add and remove zones to remove spare markers if zone is not for player
   [_zonePrefix] call FNF_ClientSide_fnc_addZone;
   [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
 } forEach _modules;

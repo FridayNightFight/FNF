@@ -19,8 +19,10 @@ fnf_disableGrenades = -1;
 [{
 	if (count fnf_weaponDisableRequestList > 0) then
 	{
+    //if player can be damaged
 		if (isDamageAllowed player) then
 		{
+      //restrict player damage and weapon firing
 			player allowDamage false;
 			fnf_disableFiring = player addAction ["", {}, nil, 0, false, true, "defaultAction"];
 			fnf_disableGrenades = player addEventHandler ["FiredMan",
@@ -33,6 +35,7 @@ fnf_disableGrenades = -1;
 		};
 	} else
 	{
+    //if player cant be damaged make them mortal and allow guns
 		if (!isDamageAllowed player) then
 		{
 			player allowDamage true;

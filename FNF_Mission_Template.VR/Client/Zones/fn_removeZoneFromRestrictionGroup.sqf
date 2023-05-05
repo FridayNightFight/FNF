@@ -17,6 +17,7 @@ params["_groupName", "_zonePrefix"];
 _groupIndex = -1;
 _zoneIndex = -1;
 
+//gets restriction group and zone mentioned
 {
 	if (_x select 0 == _groupName) then
 	{
@@ -32,8 +33,10 @@ _zoneIndex = -1;
 	};
 } forEach fnf_zoneRestrictionGroupsList;
 
+
 if (_groupIndex != -1 and _zoneIndex != -1) then
 {
+  //if zone currently has a weapondisable request end that request
 	if (fnf_zoneRestrictionGroupsList select _groupIndex select 2) then
 	{
 		if ([player ,_zonePrefix] call FNF_ClientSide_fnc_isObjectInZone) then
@@ -41,7 +44,8 @@ if (_groupIndex != -1 and _zoneIndex != -1) then
 			(fnf_zoneRestrictionGroupsList select _groupIndex select 0) call FNF_ClientSide_fnc_endRequestWeaponDisable;
 		};
 	};
-	if (fnf_zoneRestrictionGroupsList select _groupIndex select 3) then 
+  //if zone is part of group supposed to be containing a player move that player to next valid zone so they continue to satisy condition
+	if (fnf_zoneRestrictionGroupsList select _groupIndex select 3) then
 	{
 		_posToTPTo = [0,0,0];
 		if (_zoneIndex == 0) then

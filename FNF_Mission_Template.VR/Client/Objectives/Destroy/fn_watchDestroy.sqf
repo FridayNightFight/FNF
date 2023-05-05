@@ -19,6 +19,7 @@ if (alive _objectiveObject) exitWith
   false;
 };
 
+//if objective is dead fail or succeed task
 _taskType = taskType _task;
 if (_taskType == "destroy") then
 {

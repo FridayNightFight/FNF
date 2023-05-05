@@ -19,6 +19,7 @@ fnf_objectives = [];
   _syncedObjects = synchronizedObjects _x;
   _visibleToAllies = _x getVariable "fnf_visibleToAllies";
 
+  //check if objective module is for player or player's allys
   _showObj = false;
   _forPlayer = false;
   {
@@ -56,6 +57,7 @@ fnf_objectives = [];
     };
   } forEach _syncedObjects;
 
+  //if it is check what kind of objective it is and run corresponding init script
   if (_forPlayer or _showObj) then
   {
     _moduleType = typeOf _x;
@@ -65,6 +67,7 @@ fnf_objectives = [];
       {
         [_x, _forPlayer] call FNF_ClientSide_fnc_initDestroy
       };
+      //if no type found then objective must be part of a new mod update that framework isnt equipped to handle
       default
       {
         if (fnf_debug) then
