@@ -1,4 +1,5 @@
-//Due to modules all Objectives, Zones, and Selectors should be stored, will not be tracked etc yet
+if (isDedicated) exitWith {};
+
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found

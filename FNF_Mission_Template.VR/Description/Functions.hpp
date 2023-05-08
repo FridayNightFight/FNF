@@ -82,6 +82,7 @@ class CfgFunctions
 		class root
 		{
 			file = "Server";
+      class init { postInit = 1; };
 			class endGame {};
 		};
     class timer
@@ -91,5 +92,16 @@ class CfgFunctions
       class addFunctionToTimer {};
       class removeFunctionFromTimer {};
     }
+    class objectives
+    {
+      file = "Server\Objectives";
+      class initObjs {};
+    };
+    class objDestroy
+    {
+      file = "Server\Objectives\Destroy";
+      class initDestroy {};
+      class watchDestroy {};
+    };
 	};
 };
