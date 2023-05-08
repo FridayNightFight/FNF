@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=129;
 	class ItemIDProvider
 	{
-		nextID=204;
+		nextID=207;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={50.457836,12.817363,117.28816};
-		dir[]={0.1266412,-0.83193469,-0.54035556};
-		up[]={0.18984462,0.55480075,-0.81003201};
-		aside[]={-0.97368151,1.4873513e-006,-0.22819561};
+		pos[]={39.936573,17.930441,135.6192};
+		dir[]={0.32329923,-0.50280887,-0.80166131};
+		up[]={0.18805897,0.86439759,-0.46631598};
+		aside[]={-0.92742193,1.4901161e-008,-0.37401676};
 	};
 };
 binarizationWanted=0;
@@ -31,13 +31,14 @@ addons[]=
 	"A3_Modules_F_Curator_Curator",
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"ace_chemlights",
-	"fnf_eden"
+	"fnf_eden",
+	"A3_Modules_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=6;
+		items=7;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -78,6 +79,13 @@ class AddonsMetaData
 			className="fnf_eden";
 			name="fnf_eden";
 		};
+		class Item6
+		{
+			className="A3_Modules_F";
+			name="Arma 3 Alpha - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=479743;
@@ -100,18 +108,6 @@ class CustomAttributes
 				class data
 				{
 					singleType="ARRAY";
-					class value
-					{
-						items=1;
-						class Item0
-						{
-							class data
-							{
-								singleType="STRING";
-								value="None";
-							};
-						};
-					};
 				};
 			};
 		};
@@ -142,7 +138,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=21;
+		items=24;
 		class Item0
 		{
 			dataType="Group";
@@ -1034,7 +1030,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={54.14325,6.3607702,93.650879};
+				position[]={56.445454,6.3607702,91.330078};
 			};
 			side="Empty";
 			flags=4;
@@ -1153,16 +1149,93 @@ class Mission
 				nAttributes=3;
 			};
 		};
+		class Item21
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={61.138,5,90.230003};
+			};
+			id=204;
+			type="fnf_module_destroyObj";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="fnf_objectiveType";
+					expression="_this setVariable ['fnf_objectiveType',_value];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="des";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="fnf_zoneKnown";
+					expression="_this setVariable ['fnf_zoneKnown',_value];";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item22
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={63.672001,5,82.728996};
+			};
+			id=205;
+			type="fnf_module_hidingZone";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="fnf_prefix";
+					expression="_this setVariable ['fnf_prefix',_value];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="hidingzone_";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item23
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={70.564545,5,91.648926};
+			};
+			id=206;
+			type="SideBLUFOR_F";
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=36;
+			nextID=39;
 		};
 		class Links
 		{
-			items=36;
+			items=39;
 			class Item0
 			{
 				linkID=0;
@@ -1518,6 +1591,36 @@ class Mission
 				linkID=35;
 				item0=100;
 				item1=198;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item36
+			{
+				linkID=36;
+				item0=205;
+				item1=204;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item37
+			{
+				linkID=37;
+				item0=204;
+				item1=155;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item38
+			{
+				linkID=38;
+				item0=204;
+				item1=206;
 				class CustomData
 				{
 					type="Sync";

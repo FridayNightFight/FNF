@@ -41,9 +41,10 @@ _objectiveObject = "";
   if (_typeOfObject == "fnf_module_hidingZone") then
   {
     _hidingZones pushBack _x;
+    continue;
   };
 
-  if (_objectiveObject == "") then
+  if (_objectiveObject isEqualTo "") then
   {
     _objectiveObject = _x;
   } else {
@@ -55,7 +56,7 @@ _objectiveObject = "";
 } forEach _syncedObjects;
 
 //check if there is an object to do anything with
-if (_objectiveObject == "") exitWith
+if (_objectiveObject isEqualTo "") exitWith
 {
   if (fnf_debug) then
   {
@@ -99,7 +100,7 @@ if (_objectiveType == "des") then
   {
     _task setSimpleTaskTarget [_objectiveObject, true];
   } else {
-    _zoneKnown = _objective getVariable ["fnf_zoneKnown"];
+    _zoneKnown = _objective getVariable "fnf_zoneKnown";
     [_objectiveObject, _task, _zoneKnown, _hidingZones] call FNF_ClientSide_fnc_addObjectToHide;
   };
 } else {
