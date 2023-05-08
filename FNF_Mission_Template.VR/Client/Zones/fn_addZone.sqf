@@ -22,7 +22,7 @@ _markerCounter = 1;
 while {createMarkerLocal [(_zonePrefix + (str _markerCounter)), player] == ""} do
 {
 	_markerPos = getMarkerPos (_zonePrefix + (str _markerCounter));
-	deleteMarker (_zonePrefix + (str _markerCounter));
+	deleteMarkerLocal (_zonePrefix + (str _markerCounter));
 
 	_markerPosArray pushBack _markerPos;
 

@@ -176,6 +176,15 @@ class CfgVehicles
           class Protect { name = "Protect Object"; value = "pro";};
         };
       };
+      class ZoneKnown: Checkbox
+      {
+        property = "fnf_zoneKnown"
+        expression = "_this setVariable ['fnf_zoneKnown',_value];";
+        displayName = "Is hiding zone known";
+        tooltip = "If checked, when object is in a linked hiding zone the zone it is in will have the task attached to it";
+        typeName = "BOOL";
+        defaultValue = "true";
+      };
     };
 	};
   class fnf_module_sectorCaptureObj: fnf_module_objective

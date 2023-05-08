@@ -19,6 +19,7 @@ class CfgFunctions
 			class removeZoneFromRestrictionGroup {};
 			class isObjectInZone {};
 			class findValidPointWithinZone {};
+      class verifyZone {};
 		};
 		class restrictions
 		{
@@ -61,6 +62,13 @@ class CfgFunctions
       file = "Client\Spectator";
       class startSpectator {};
       class initSpectatorSlot {};
+    };
+    class hidingZones
+    {
+      file = "Client\HidingZones";
+      class initHidingZones {};
+      class addObjectToHide {};
+      class cleanUpSpareHidingZones {};
     };
 	};
 	class FNF_ServerSide

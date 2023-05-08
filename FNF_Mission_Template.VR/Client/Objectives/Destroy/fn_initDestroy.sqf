@@ -29,6 +29,7 @@ if (_objectiveType == "FAILED") exitWith
 _syncedObjects = synchronizedObjects _objective;
 
 //find the object thats supposed to be killed or protected
+_hidingZones = [];
 _objectiveObject = "";
 {
   _typeOfObject = typeOf _x;
@@ -36,6 +37,12 @@ _objectiveObject = "";
   {
     continue;
   };
+
+  if (_typeOfObject == "fnf_module_hidingZone") then
+  {
+    _hidingZones pushBack _x;
+  };
+
   if (_objectiveObject == "") then
   {
     _objectiveObject = _x;
@@ -46,6 +53,15 @@ _objectiveObject = "";
     };
   };
 } forEach _syncedObjects;
+
+//check if there is an object to do anything with
+if (_objectiveObject == "") exitWith
+{
+  if (fnf_debug) then
+  {
+    systemChat "DANGER: Destroy objective does not have object synced, objective will NOT function"
+  };
+};
 
 //get objects name and picture
 _targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
@@ -79,6 +95,13 @@ if (_objectiveType == "des") then
   };
   _task setSimpleTaskDescription [format["<img image='%1' width='300'>", _targetPic], "Destroy the " + _targetName, "Destroy the " + _targetName];
   _task setSimpleTaskType "destroy";
+  if (count _hidingZones == 0) then
+  {
+    _task setSimpleTaskTarget [_objectiveObject, true];
+  } else {
+    _zoneKnown = _objective getVariable ["fnf_zoneKnown"];
+    [_objectiveObject, _task, _zoneKnown, _hidingZones] call FNF_ClientSide_fnc_addObjectToHide;
+  };
 } else {
   if (_forPlayer) then
   {
@@ -88,7 +111,7 @@ if (_objectiveType == "des") then
   };
   _task setSimpleTaskDescription [format["<img image='%1' width='300'>", _targetPic], "Defend the " + _targetName, "Defend the " + _targetName];
   _task setSimpleTaskType "defend";
-  _task setSimpleTaskDestination (getpos _objectiveObject);
+  _task setSimpleTaskTarget [_objectiveObject, true];
 };
 
 //add objective to objective stack
