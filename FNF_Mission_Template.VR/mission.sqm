@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=129;
+	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=207;
+		nextID=217;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={39.936573,17.930441,135.6192};
-		dir[]={0.32329923,-0.50280887,-0.80166131};
-		up[]={0.18805897,0.86439759,-0.46631598};
-		aside[]={-0.92742193,1.4901161e-008,-0.37401676};
+		pos[]={75.607216,31.864542,56.973385};
+		dir[]={-0.018565211,-0.91670239,0.39916486};
+		up[]={-0.04259083,0.39954403,0.91572624};
+		aside[]={0.99893087,-7.0504029e-008,0.04645979};
 	};
 };
 binarizationWanted=0;
@@ -32,13 +32,14 @@ addons[]=
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"ace_chemlights",
 	"fnf_eden",
-	"A3_Modules_F"
+	"A3_Modules_F",
+	"A3_Soft_F_Quadbike_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=7;
+		items=8;
 		class Item0
 		{
 			className="A3_Characters_F";
@@ -83,6 +84,13 @@ class AddonsMetaData
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item7
+		{
+			className="A3_Soft_F";
+			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -138,7 +146,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=24;
+		items=25;
 		class Item0
 		{
 			dataType="Group";
@@ -1030,14 +1038,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={56.445454,6.3607702,91.330078};
+				position[]={57.539001,6.3607702,91.347};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				health=0.02734627;
-				name="destroy1";
 			};
 			id=155;
 			type="Box_FIA_Ammo_F";
@@ -1225,6 +1232,21 @@ class Mission
 			};
 			id=206;
 			type="SideBLUFOR_F";
+		};
+		class Item24
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={42.780869,6.6262865,83.315582};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=207;
+			type="B_Quadbike_01_F";
 		};
 	};
 	class Connections

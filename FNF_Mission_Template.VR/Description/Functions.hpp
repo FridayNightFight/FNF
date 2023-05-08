@@ -70,6 +70,12 @@ class CfgFunctions
       class addObjectToHide {};
       class cleanUpSpareHidingZones {};
     };
+    class selectors
+    {
+      file = "Client\Selectors";
+      class initSelectors {};
+      class switchSelection {};
+    };
 	};
 	class FNF_ServerSide
 	{

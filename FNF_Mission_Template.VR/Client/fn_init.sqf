@@ -53,6 +53,13 @@ if (count _safeZoneModules == 0) then
   [_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
 };
 
+//check there are selectors
+_selectorModules = [_modules, "selectorHost"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _selectorModules != 0) then
+{
+  [_selectorModules] call FNF_ClientSide_fnc_initSelectors;
+};
+
 //check there are hiding zones and clean up spares
 _hidingZoneModules = [_modules, "hidingZone"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _hidingZoneModules != 0) then

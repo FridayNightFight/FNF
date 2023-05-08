@@ -2,7 +2,7 @@ class CfgPatches
 {
   class fnf_eden
   {
-    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_hidingZone", "fnf_module_selector", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_sectorHoldObj"};
+    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_sectorHoldObj"};
     weapons[] = {};
     requiredVersion = 0.1;
     requiredAddons[] = {"A3_Modules_F", "cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
@@ -147,13 +147,67 @@ class CfgVehicles
       };
     };
 	};
-  class fnf_module_selector: Module_F
+  class fnf_module_selectorHost: Module_F
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
     displayName = "FNF Selector";
     scope = 2;
+    class Attributes: AttributesBase
+    {
+      class SelectorName: Edit
+      {
+        property = "fnf_selectorName"
+        expression = "_this setVariable ['fnf_selectorName',_value];";
+        displayName = "Selector Name";
+        typeName = "STRING";
+				defaultValue = "";
+      };
+      class ObjectiveType: Combo
+      {
+        property = "fnf_selectorType"
+        expression = "_this setVariable ['fnf_selectorType',_value];";
+        displayName = "Selector Type";
+        typeName = "STRING";
+				defaultValue = Item;
+        class Values
+        {
+          class Item { name = "Item"; value = "itm";};
+          class Optic { name = "Optic"; value = "opt";};
+          class PrimaryWeapon { name = "Primary Weapon"; value = "pri";};
+          class SecondaryWeapon { name = "Launcher"; value = "sec";};
+          class Handgun { name = "Handgun"; value = "hnd";};
+        };
+      };
+    };
 	};
+  class fnf_module_selectorOption: Module_F
+	{
+		author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "FNF Selector Option";
+    scope = 2;
+    class Attributes: AttributesBase
+    {
+      class OptionName: Edit
+      {
+        property = "fnf_optionName"
+        expression = "_this setVariable ['fnf_optionName',_value];";
+        displayName = "Option Name";
+        typeName = "STRING";
+				defaultValue = "";
+      };
+      class DefaultSelection: Checkbox
+      {
+        property = "fnf_defaultSelection"
+        expression = "_this setVariable ['fnf_defaultSelection',_value];";
+        displayName = "Default?";
+        tooltip = "If checked, this option will be treated as already selected";
+        typeName = "BOOL";
+        defaultValue = "false";
+      };
+    };
+  };
   class fnf_module_objective: Module_F {};
   class fnf_module_destroyObj: fnf_module_objective
 	{
@@ -169,7 +223,7 @@ class CfgVehicles
         expression = "_this setVariable ['fnf_objectiveType',_value];";
         displayName = "Objective Type";
         typeName = "STRING";
-				defaultValue = "des";
+				defaultValue = Destroy;
         class Values
         {
           class Destroy { name = "Destroy Object"; value = "des";};

@@ -17,6 +17,7 @@ params ["_modules"];
 call FNF_ClientSide_fnc_initWeaponDisable;
 
 _safeZoneRestrictionGroupSet = false;
+_spareSafeZones = [];
 
 {
   _syncedObjects = synchronizedObjects _x;
@@ -72,7 +73,17 @@ _safeZoneRestrictionGroupSet = false;
     continue;
   };
 
-  //add and remove zones to remove spare markers if zone is not for player
-  [_zonePrefix] call FNF_ClientSide_fnc_addZone;
-  [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+  //add zone to remove spare markers if zone is not for player
+  _spareSafeZones pushBack _zonePrefix;
+
 } forEach _modules;
+
+{
+  _zonePrefix = _x;
+  _result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
+  if (not _result) then
+  {
+    [_zonePrefix] call FNF_ClientSide_fnc_addZone;
+    [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+  };
+} forEach _spareSafeZones;
