@@ -101,7 +101,7 @@ class RscDisplayMain: RscStandardDisplay {
 			colorActive[] = {1,0,0,0.75};
 			style = 0x2;
 			text = "LATE SERVER";
-			onButtonClick="connectToServer ['51.81.56.169', 2302, ''];";
+			onButtonClick="connectToServer ['3.210.166.73', 2302, ''];";
 		};
 	};
 };
