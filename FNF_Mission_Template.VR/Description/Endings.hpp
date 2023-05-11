@@ -23,12 +23,12 @@ class CfgDebriefing
 	class bluforAndIndependentWin
 	{
 		title = "Blufor and Independent Win";
-		subtitle = "Blufor and Independent have completed their Objectives";
+		subtitle = "Blufor and Indi have completed their Objectives";
 	};
 	class opforAndIndependentWin
 	{
 		title = "Opfor and Independent Win";
-		subtitle = "Opfor and Independent have completed their Objectives";
+		subtitle = "Opfor and Indi have completed their Objectives";
 	};
 	class bluforAndOpforWin
 	{

@@ -12,7 +12,7 @@
 */
 
 params["_winningSides"];
-if (!isDedicated) exitWith {};
+if (!isServer) exitWith {};
 
 switch (count _winningSides) do
 {

@@ -14,7 +14,7 @@
 if (!isDedicated) exitWith {};
 
 [{
-  CBA_missionTime > 0;
+  time > 0;
 }, {
   missionNamespace setVariable ["fnf_startTime", serverTime, true];
   [{

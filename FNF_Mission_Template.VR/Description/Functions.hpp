@@ -60,6 +60,7 @@ class CfgFunctions
     {
       file = "Client\UI";
       class notificationSystem {};
+      class adminGameEnd {};
     };
     class spectator
     {
