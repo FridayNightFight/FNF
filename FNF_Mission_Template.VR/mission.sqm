@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={26.276455,18.420776,94.193893};
-		dir[]={0.66397154,-0.52846825,-0.52923435};
-		up[]={0.41347855,0.84877217,-0.32957065};
-		aside[]={-0.62335575,9.1595575e-007,-0.78206187};
+		pos[]={65.132019,22.215084,63.765903};
+		dir[]={-0.079789169,-0.54528219,0.83444655};
+		up[]={-0.051902749,0.83825254,0.54280639};
+		aside[]={0.99545962,-3.7252903e-009,0.095185116};
 	};
 };
 binarizationWanted=0;
@@ -1048,6 +1048,36 @@ class Mission
 			};
 			id=155;
 			type="Box_FIA_Ammo_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ace_cookoff_enableAmmoCookoff";
+					expression="if !(_value) then {_this setVariable ['ace_cookoff_enableAmmoCookoff', _value, true];};";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 		class Item19
 		{
@@ -1108,13 +1138,26 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={63.906731,5,70.967186};
+				position[]={63.907001,5,70.967003};
 			};
 			id=198;
 			type="fnf_module_safeZone";
 			class CustomAttributes
 			{
 				class Attribute0
+				{
+					property="fnf_timeZoneIsDeleted";
+					expression="_this setVariable ['fnf_timeZoneIsDeleted',_value];";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=1;
+						};
+					};
+				};
+				class Attribute1
 				{
 					property="fnf_visibleToEnemies";
 					expression="_this setVariable ['fnf_visibleToEnemies',_value];";
@@ -1127,7 +1170,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute1
+				class Attribute2
 				{
 					property="fnf_prefix";
 					expression="_this setVariable ['fnf_prefix',_value];";
@@ -1140,7 +1183,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute2
+				class Attribute3
 				{
 					property="fnf_visibleToAllies";
 					expression="_this setVariable ['fnf_visibleToAllies',_value];";
@@ -1153,7 +1196,7 @@ class Mission
 						};
 					};
 				};
-				nAttributes=3;
+				nAttributes=4;
 			};
 		};
 		class Item21

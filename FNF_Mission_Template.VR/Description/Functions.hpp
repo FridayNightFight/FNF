@@ -20,6 +20,7 @@ class CfgFunctions
 			class isObjectInZone {};
 			class findValidPointWithinZone {};
       class verifyZone {};
+      class areAnyZonesInRestrictionGroup {};
 		};
 		class restrictions
 		{
@@ -46,6 +47,8 @@ class CfgFunctions
     {
       file = "Client\Safezones";
       class initSafeZones {};
+      class startSafeZoneTimer {};
+      class checkSafeZoneIsValid {};
     };
     class modules
     {
@@ -56,6 +59,7 @@ class CfgFunctions
     class ui
     {
       file = "Client\UI";
+      class notificationSystem {};
     };
     class spectator
     {
@@ -84,14 +88,8 @@ class CfgFunctions
 			file = "Server";
       class init { postInit = 1; };
 			class endGame {};
+      class syncTimer {};
 		};
-    class timer
-    {
-      file = "Server\Timer";
-      class createTimer {};
-      class addFunctionToTimer {};
-      class removeFunctionFromTimer {};
-    }
     class objectives
     {
       file = "Server\Objectives";

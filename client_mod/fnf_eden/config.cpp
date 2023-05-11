@@ -111,6 +111,14 @@ class CfgVehicles
         typeName = "STRING";
 				defaultValue = "fnf_marker_safezone_";
       };
+      class TimeToBeDeleted: Edit
+      {
+        property = "fnf_timeZoneIsDeleted"
+        expression = "_this setVariable ['fnf_timeZoneIsDeleted',_value];";
+        displayName = "Time until Zone is Deleted";
+        typeName = "NUMBER";
+				defaultValue = "15";
+      };
       class VisibleToAllies: Checkbox
       {
         property = "fnf_visibleToAllies"

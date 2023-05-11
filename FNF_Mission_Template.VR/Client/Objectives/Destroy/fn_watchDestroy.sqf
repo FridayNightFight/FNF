@@ -25,11 +25,21 @@ if (_taskType == "destroy") then
 {
   _task setTaskState "Succeeded";
   _desc = taskDescription _task;
-  ["TaskSucceeded", ["", (_desc select 1)]] call BIS_fnc_showNotification;
+  _splitString = (_desc select 1) splitString " ";
+  _splitString deleteRange [0, 2];
+  _item = _splitString joinString " ";
+  _image = _desc select 0;
+  _image = _image regexReplace ["width='300'", "size='6' align='center'"];
+  ["<t size='1.5' align='center'>Objective Complete</t><br/><br/><t align='center'>" + _item + " has been destroyed</t><br/><br/>" + _image, "green", 10, 20] call FNF_ClientSide_fnc_notificationSystem;
 } else {
   _task setTaskState "Failed";
   _desc = taskDescription _task;
-  ["TaskFailed", ["", (_desc select 1)]] call BIS_fnc_showNotification;
+  _splitString = (_desc select 1) splitString " ";
+  _splitString deleteRange [0, 2];
+  _item = _splitString joinString " ";
+  _image = _desc select 0;
+  _image = _image regexReplace ["width='300'", "size='6' align='center'"];
+  ["<t size='1.5' align='center'>Objective Failed</t><br/><br/><t align='center'>" + _item + " has been destroyed</t><br/><br/>" + _image, "red", 10, 20] call FNF_ClientSide_fnc_notificationSystem;
 };
 
 true;

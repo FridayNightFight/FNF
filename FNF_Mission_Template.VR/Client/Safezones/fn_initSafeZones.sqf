@@ -24,6 +24,7 @@ _spareSafeZones = [];
   _visibleToAllies = _x getVariable "fnf_visibleToAllies";
   _visibleToEnemies = _x getVariable "fnf_visibleToEnemies";
   _zonePrefix = _x getVariable "fnf_prefix";
+  _timeZoneIsDeleted = _x getVariable "fnf_timeZoneIsDeleted";
 
   _showZone = false;
   _forPlayer = false;
@@ -64,12 +65,14 @@ _spareSafeZones = [];
     };
     [_zonePrefix] call FNF_ClientSide_fnc_addZone;
     ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+    [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
     continue;
   };
 
   if (_showZone) then
   {
     [_zonePrefix] call FNF_ClientSide_fnc_addZone;
+    [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
     continue;
   };
 
