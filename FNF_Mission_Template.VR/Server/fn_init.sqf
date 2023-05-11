@@ -1,4 +1,4 @@
-if (!isDedicated) exitWith {};
+if (!isServer) exitWith {};
 
 //start syncing timer for all players, important this is set up ASAP
 call FNF_ServerSide_fnc_syncTimer;
@@ -79,7 +79,7 @@ if (not isNil "fnf_objectives") then
 
       {
         _id = owner _x;
-        if (admin _id) then
+        if (admin _id == 2 or _x == player) then
         {
           _objectiveString = "Blufor Completed " + str(_completedBlufor) + " / " + str(_totalBlufor) + "\nOpfor Completed " + str(_completedOpfor) + " / " + str(_totalOpfor) + "\nIndipendent Completed " + str(_completedIndi) + " / " + str(_totalIndi);
           _alivePlayers = allPlayers select {alive _x};

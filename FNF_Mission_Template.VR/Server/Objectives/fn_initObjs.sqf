@@ -10,7 +10,7 @@
 	Returns:
 		None
 */
-if (!isDedicated) exitWith {};
+if (!isServer) exitWith {};
 
 params ["_modules"];
 

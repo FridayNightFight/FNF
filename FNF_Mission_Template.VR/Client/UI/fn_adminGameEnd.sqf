@@ -5,7 +5,7 @@
 		Shows a button to end the game in the pause screen
 
 	Parameter(s):
-	  1: DISPLAY -  The display object of the pause screen?
+	  1: DISPLAY -  The display object of the pause screen
 
 	Returns:
 		None
