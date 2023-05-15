@@ -15,7 +15,7 @@ params["_module"];
 
 if (!isServer) exitWith {};
 
-_fortifyColour = _module getVariable "fnf_fortifyColour";
+_fortifyColour = _module getVariable ["fnf_fortifyColour", "Green"];
 _fortifyPoints = _module getVariable "fnf_fortifyPoints";
 
 _ModernGreen = [
@@ -54,7 +54,7 @@ _ModernTan = [
   ["Land_Bunker_01_tall_F",130]
 ];
 
-if (_fortifyColour == "grn") then
+if (_fortifyColour == "Green") then
 {
   [west, _fortifyPoints, _ModernGreen] call ace_fortify_fnc_registerObjects;
   [east, _fortifyPoints, _ModernGreen] call ace_fortify_fnc_registerObjects;

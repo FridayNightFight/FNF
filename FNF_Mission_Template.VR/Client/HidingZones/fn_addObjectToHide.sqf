@@ -28,7 +28,7 @@ _zonePrefixs = [];
   _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
   if (not _result) then
   {
-    [_prefix] call FNF_ClientSide_fnc_addZone;
+    [_prefix, true, false] call FNF_ClientSide_fnc_addZone;
   };
   _zonePrefixs pushBack _prefix;
 } forEach _hidingZoneModules;

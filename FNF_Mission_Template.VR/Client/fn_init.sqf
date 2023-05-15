@@ -15,6 +15,15 @@ call FNF_ClientSide_fnc_restrictPlayer;
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
+//init breifing
+_breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _breifingModules != 0) then
+{
+  [_breifingModules, _initModule] call FNF_ClientSide_fnc_initBreifing;
+} else {
+  [[], _initModule] call FNF_ClientSide_fnc_initBreifing;
+};
+
 //if player is in a spectator slot get them out of here
 if (typeOf player == "ace_spectator_virtual") exitWith
 {

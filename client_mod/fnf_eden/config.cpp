@@ -2,7 +2,7 @@ class CfgPatches
 {
   class fnf_eden
   {
-    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_sectorHoldObj"};
+    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_sectorHoldObj"};
     weapons[] = {};
     requiredVersion = 0.1;
     requiredAddons[] = {"A3_Modules_F", "cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
@@ -75,9 +75,45 @@ class CfgVehicles
 				defaultValue = Green;
         class Values
         {
-          class Green { name = "Green"; value = "grn";};
-          class Tan { name = "Tan"; value = "tan";};
+          class Green { name = "Green"; value = "Green";};
+          class Tan { name = "Tan"; value = "Tan";};
         };
+      };
+      class BreifingNotes
+      {
+        control = "EditMulti5";
+				property = "fnf_breifingNotes";
+        expression = "_this setVariable ['fnf_breifingNotes',_value];";
+				displayName = "Notes";
+				typeName = "STRING";
+				defaultValue = "";
+      };
+      class BreifingAO
+      {
+        control = "EditMulti5";
+				property = "fnf_breifingAO";
+        expression = "_this setVariable ['fnf_breifingAO',_value];";
+				displayName = "Area of Operations";
+				typeName = "STRING";
+				defaultValue = "";
+      };
+      class BreifingBackground
+      {
+        control = "EditMulti5";
+				property = "fnf_breifingBackground";
+        expression = "_this setVariable ['fnf_breifingBackground',_value];";
+				displayName = "Background";
+				typeName = "STRING";
+				defaultValue = "";
+      };
+      class BreifingRules
+      {
+        control = "EditMulti5";
+				property = "fnf_breifingRules";
+        expression = "_this setVariable ['fnf_breifingRules',_value];";
+				displayName = "Mission Rules";
+				typeName = "STRING";
+				defaultValue = "";
       };
       class Debug: Checkbox
       {
@@ -229,6 +265,13 @@ class CfgVehicles
       };
     };
   };
+  class fnf_module_breifingAssets: Module_F
+	{
+		author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "FNF Breifing Assets";
+    scope = 2;
+	};
   class fnf_module_objective: Module_F {};
   class fnf_module_destroyObj: fnf_module_objective
 	{

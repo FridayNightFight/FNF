@@ -21,6 +21,8 @@ class CfgFunctions
 			class findValidPointWithinZone {};
       class verifyZone {};
       class areAnyZonesInRestrictionGroup {};
+      class shadeZone {};
+      class unShadeZone {};
 		};
 		class restrictions
 		{
@@ -86,6 +88,19 @@ class CfgFunctions
       file = "Client\Fortify";
       class initFortify {};
       class disableFortify {};
+    };
+    class breifing
+    {
+      file = "Client\Breifing";
+      class initBreifing {};
+    };
+    class mapShading
+    {
+      file = "Client\UI\MapShading";
+      class triangulatePolygon {};
+      class initMapShading {};
+      class invertPolygon {};
+      class combineOffsetPoints {};
     };
 	};
 	class FNF_ServerSide

@@ -17,6 +17,9 @@ fnf_zoneList = [];
 //set up a list of restriction zone groups (if in one, satisfy's condition of all others)
 fnf_zoneRestrictionGroupsList = [];
 
+//sets up map shading
+call FNF_ClientSide_fnc_initMapShading;
+
 //add handeler to check if player is in any zones
 fnf_zoneRestrictionsLastKnownPosition = getPos player;
 [{

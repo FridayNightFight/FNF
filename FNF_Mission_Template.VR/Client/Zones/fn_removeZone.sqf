@@ -26,3 +26,5 @@ if (_zoneToBeDeletedIndex != -1) then
 {
 	fnf_zoneList deleteAt _zoneToBeDeletedIndex;
 };
+
+[_zonePrefix] call FNF_ClientSide_fnc_unShadeZone;

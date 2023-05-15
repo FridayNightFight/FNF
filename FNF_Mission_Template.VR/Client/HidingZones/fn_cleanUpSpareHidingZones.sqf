@@ -18,7 +18,7 @@ params["_modules"];
   _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
   if (not _result) then
   {
-    [_prefix] call FNF_ClientSide_fnc_addZone;
-    [_prefix] call FNF_ClientSide_fnc_removeZone;
+    [_prefix, false, false] call FNF_ClientSide_fnc_addZone;
+    [_prefix, false, false] call FNF_ClientSide_fnc_removeZone;
   };
 } forEach _modules;

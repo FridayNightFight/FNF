@@ -63,7 +63,7 @@ _spareSafeZones = [];
       ["safeZoneGroup", true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
       _safeZoneRestrictionGroupSet = true;
     };
-    [_zonePrefix] call FNF_ClientSide_fnc_addZone;
+    [_zonePrefix, true, false] call FNF_ClientSide_fnc_addZone;
     ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
     [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
     continue;
@@ -71,7 +71,7 @@ _spareSafeZones = [];
 
   if (_showZone) then
   {
-    [_zonePrefix] call FNF_ClientSide_fnc_addZone;
+    [_zonePrefix, true, false] call FNF_ClientSide_fnc_addZone;
     [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
     continue;
   };
@@ -86,7 +86,7 @@ _spareSafeZones = [];
   _result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
   if (not _result) then
   {
-    [_zonePrefix] call FNF_ClientSide_fnc_addZone;
-    [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+    [_zonePrefix, false, false] call FNF_ClientSide_fnc_addZone;
+    [_zonePrefix, false, false] call FNF_ClientSide_fnc_removeZone;
   };
 } forEach _spareSafeZones;
