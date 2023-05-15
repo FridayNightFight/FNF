@@ -21,6 +21,9 @@ if (typeOf player == "ace_spectator_virtual") exitWith
   _modules call FNF_ClientSide_fnc_initSpectatorSlot;
 };
 
+//setup fortify options
+[_initModule] call FNF_ClientSide_fnc_initFortify;
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules == 0) then
@@ -50,6 +53,7 @@ if (count _safeZoneModules == 0) then
   if (fnf_debug) then {
     systemChat "WARNING: No safe zones present";
   };
+  call FNF_ClientSide_fnc_disableFortify;
 } else {
   [_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
 };

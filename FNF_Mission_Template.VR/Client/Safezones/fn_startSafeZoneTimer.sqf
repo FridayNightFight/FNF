@@ -31,6 +31,7 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
   if (not (["safeZoneGroup"] call FNF_ClientSide_fnc_areAnyZonesInRestrictionGroup)) then
   {
     ["<t size='1.5' align='center'>Safe Zones Dropped</t><br/><br/><t align='center'>The safe zones have been dropped and the mission is now starting</t><br/>", "teal"] call FNF_ClientSide_fnc_notificationSystem;
+    call FNF_ClientSide_fnc_disableFortify;
     ["safeZoneGroup"] call FNF_ClientSide_fnc_removeRestrictionGroup;
   };
   [_zonePrefix] call FNF_ClientSide_fnc_removeZone;

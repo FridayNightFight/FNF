@@ -81,6 +81,12 @@ class CfgFunctions
       class initSelectors {};
       class switchSelection {};
     };
+    class fortify
+    {
+      file = "Client\Fortify";
+      class initFortify {};
+      class disableFortify {};
+    };
 	};
 	class FNF_ServerSide
 	{
@@ -90,6 +96,7 @@ class CfgFunctions
       class init { postInit = 1; };
 			class endGame {};
       class syncTimer {};
+      class initFortify {};
 		};
     class objectives
     {

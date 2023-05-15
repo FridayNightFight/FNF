@@ -66,6 +66,19 @@ class CfgVehicles
         typeName = "NUMBER";
 				defaultValue = "100";
       };
+      class FortifyColour: Combo
+      {
+        property = "fnf_fortifyColour"
+        expression = "_this setVariable ['fnf_fortifyColour',_value];";
+        displayName = "Fortify Colour";
+        typeName = "STRING";
+				defaultValue = Green;
+        class Values
+        {
+          class Green { name = "Green"; value = "grn";};
+          class Tan { name = "Tan"; value = "tan";};
+        };
+      };
       class Debug: Checkbox
       {
         property = "fnf_debug"
