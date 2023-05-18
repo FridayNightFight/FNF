@@ -16,6 +16,7 @@ params ["_modules"];
 _playZoneRestrictionGroupSet = false;
 _playZonesReported = 0;
 _sparePlayZones = [];
+_mainPlayZones = [];
 
 {
   _syncedObjects = synchronizedObjects _x;
@@ -31,18 +32,11 @@ _sparePlayZones = [];
     };
   } forEach _syncedObjects;
 
-  //if it does create the playzone
+  //if it does set playzone to be created
   if (_forPlayer) then
   {
     _playZonesReported = _playZonesReported + 1;
-    //check if the playzone group has been created, if not create it
-    if (not _playZoneRestrictionGroupSet) then
-    {
-      ["playZoneGroup", false, true] call FNF_ClientSide_fnc_addRestrictionGroup;
-      _playZoneRestrictionGroupSet = true;
-    };
-    [_zonePrefix, true, true] call FNF_ClientSide_fnc_addZone;
-    ["playZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+    _mainPlayZones pushBack _zonePrefix;
     continue;
   };
 
@@ -60,7 +54,25 @@ _sparePlayZones = [];
   };
 } forEach _sparePlayZones;
 
-//warn mission maker if more than one playy zone is reported
+{
+  _zonePrefix = _x;
+  //check if the playzone group has been created, if not create it
+  if (not _playZoneRestrictionGroupSet) then
+  {
+    ["playZoneGroup", false, true] call FNF_ClientSide_fnc_addRestrictionGroup;
+    _playZoneRestrictionGroupSet = true;
+  };
+  _shadePlayZone = true;
+  if (_playZonesReported > 1) then
+  {
+    _shadePlayZone = false;
+  };
+  [_zonePrefix, _shadePlayZone, true] call FNF_ClientSide_fnc_addZone;
+  ["playZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+
+} forEach _mainPlayZones;
+
+//warn mission maker if more than one play zone is reported
 if (_playZonesReported > 1 and fnf_debug) then
 {
   systemChat "WARNING: Multiple play zones does not support complex shading, no shading has been applied";
