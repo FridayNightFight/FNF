@@ -9,5 +9,6 @@ respawnOnStart = -1;
 #include "Description\UiDescriptions.hpp"
 
 onPauseScript[] = {
-  FNF_ClientSide_fnc_adminGameEnd
+  FNF_ClientSide_fnc_adminGameEndButton,
+  FNF_ClientSide_fnc_contactStaffButton
 };

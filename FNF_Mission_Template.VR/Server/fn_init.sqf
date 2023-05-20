@@ -13,6 +13,9 @@ if (count _initModule > 1) exitWith {};
 //setup fortify structures
 [_initModule select 0] call FNF_ServerSide_fnc_initFortify;
 
+//start admin channel
+call FNF_ServerSide_fnc_initAdmin;
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules != 0) then
