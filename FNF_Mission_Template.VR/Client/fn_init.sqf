@@ -15,6 +15,9 @@ call FNF_ClientSide_fnc_restrictPlayer;
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
+//init Overall Timer
+[_initModule] call FNF_ClientSide_fnc_initOverallTimer;
+
 //init breifing
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _breifingModules != 0) then

@@ -50,6 +50,14 @@ class CfgVehicles
 
     class Attributes: AttributesBase
     {
+      class GameTime: Edit
+      {
+        property = "fnf_gameTime"
+        expression = "_this setVariable ['fnf_gameTime',_value];";
+        displayName = "Time Limit";
+        typeName = "NUMBER";
+				defaultValue = "60";
+      };
       class ViewDistance: Edit
       {
         property = "fnf_viewDistance"

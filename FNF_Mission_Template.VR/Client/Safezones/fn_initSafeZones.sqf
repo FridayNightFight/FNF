@@ -18,6 +18,7 @@ call FNF_ClientSide_fnc_initWeaponDisable;
 
 _safeZoneRestrictionGroupSet = false;
 _spareSafeZones = [];
+_maxTimeZoneIsDeleted = 0;
 
 {
   _syncedObjects = synchronizedObjects _x;
@@ -57,6 +58,11 @@ _spareSafeZones = [];
   //if for the player setup the safe zone
   if (_forPlayer) then
   {
+    if (_timeZoneIsDeleted > _maxTimeZoneIsDeleted) then
+    {
+      _maxTimeZoneIsDeleted = _timeZoneIsDeleted;
+    };
+
     //check if the safezone group has been created, if not create it
     if (not _safeZoneRestrictionGroupSet) then
     {
@@ -90,3 +96,35 @@ _spareSafeZones = [];
     [_zonePrefix, false, false] call FNF_ClientSide_fnc_removeZone;
   };
 } forEach _spareSafeZones;
+
+if (_maxTimeZoneIsDeleted != 0) then
+{
+  _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+
+  fnf_timerMessage = "Safe Start Remaining: %1";
+  fnf_timerEndTime = (_timeServerStarted + (_maxTimeZoneIsDeleted * 60));
+
+  _timeToNotify = (_timeServerStarted + (_maxTimeZoneIsDeleted * 60) - 300);
+
+  if (_timeToNotify > 0) then
+  {
+    [{
+      params["_timeToNotify"];
+      _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+      _result = objNull;
+      if (isServer and hasInterface) then
+      {
+        _result = time > _timeToNotify;
+      } else {
+        _result = (serverTime - _timeServerStarted) > _timeToNotify;
+      };
+      _result;
+    },{
+      true call FNF_ClientSide_fnc_showTimerInHUD;
+      ["<t size='1.5' align='center'>Safe Zones Drop in 5 Minutes</t>", "blue"] call FNF_ClientSide_fnc_notificationSystem;
+    }, _timeToNotify] call CBA_fnc_waitUntilAndExecute;
+
+  } else {
+    true call FNF_ClientSide_fnc_showTimerInHUD;
+  };
+};

@@ -6,6 +6,7 @@ respawnOnStart = -1;
 
 #include "Description\Functions.hpp"
 #include "Description\Endings.hpp"
+#include "Description\UiDescriptions.hpp"
 
 onPauseScript[] = {
   FNF_ClientSide_fnc_adminGameEnd

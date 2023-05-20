@@ -64,6 +64,12 @@ class CfgFunctions
       class notificationSystem {};
       class adminGameEnd {};
     };
+    class timer
+    {
+      file = "Client\UI\Timer";
+      class initOverallTimer {};
+      class showTimerInHUD {};
+    };
     class spectator
     {
       file = "Client\Spectator";
