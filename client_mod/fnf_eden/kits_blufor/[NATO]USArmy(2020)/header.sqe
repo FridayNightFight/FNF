@@ -1,0 +1,32 @@
+version=54;
+name="[NATO] US Army (2020)";
+author="Mazz";
+category="EdSubcat_Military";
+requiredAddons[]=
+{
+	"A3_Characters_F",
+	"rhsusf_c_weapons",
+	"ace_compat_rhs_usf3",
+	"ace_vector",
+	"A3_Weapons_F",
+	"tfar_handhelds",
+	"rhsusf_c_troops",
+	"ace_realisticnames",
+	"ace_medical_treatment",
+	"ace_maptools",
+	"ace_huntir",
+	"ace_optics",
+	"rhsusf_sounds",
+	"ace_explosives",
+	"ace_grenades",
+	"ace_trenches",
+	"ace_fortify",
+	"A3_Weapons_F_Orange",
+	"A3_Characters_F_Mark",
+	"ace_tripod",
+	"Desert",
+	"fnf_eden",
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging"
+};

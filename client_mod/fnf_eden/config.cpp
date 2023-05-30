@@ -361,8 +361,81 @@ class CfgVehicles
 	};
 };
 
+class CfgEditorCategories
+{
+	class fnf_Kits
+	{
+		displayName = "FNF - Kits";
+	};
+};
+
+class CfgEditorSubcategories
+{
+	class fnf_Blufor
+	{
+		displayName = "Blufor";
+	};
+  class fnf_Opfor
+	{
+		displayName = "Opfor";
+	};
+  class fnf_Indfor
+	{
+		displayName = "Independant";
+	};
+};
+
 class Cfg3DEN
 {
+  class Compositions
+	{
+		class fnf_NATOUSArmy2020 // one class per composition
+		{
+			path = "fnf_eden\kits_blufor\[NATO]USArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Blufor";				// link to CfgEditorSubcategories
+			displayName = "[NATO] US Army (2020)";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_RURussianMSV2020 // one class per composition
+		{
+			path = "fnf_eden\kits_opfor\[RU]RussianMSV(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Opfor";				// link to CfgEditorSubcategories
+			displayName = "[RU] Russian MSV (2020)";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_INDFORSyrianArmy2020_indfor // one class per composition
+		{
+			path = "fnf_eden\kits_indfor\[INDFOR]SyrianArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Indfor";				// link to CfgEditorSubcategories
+			displayName = "[INDFOR] Syrian Army (2020)";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_INDFORSyrianArmy2020_opfor // one class per composition
+		{
+			path = "fnf_eden\kits_indfor\[INDFOR]SyrianArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Opfor";				// link to CfgEditorSubcategories
+			displayName = "[INDFOR] Syrian Army (2020)";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_INDFORSyrianArmy2020_blufor // one class per composition
+		{
+			path = "fnf_eden\kits_indfor\[INDFOR]SyrianArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Blufor";				// link to CfgEditorSubcategories
+			displayName = "[INDFOR] Syrian Army (2020)";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+	};
+
   class Object
   {
     class AttributeCategories
