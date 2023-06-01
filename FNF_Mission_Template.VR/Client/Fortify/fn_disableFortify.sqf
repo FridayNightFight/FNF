@@ -24,7 +24,7 @@ if ([player, "ACE_Fortify"] call BIS_fnc_hasItem) then
   _result = [player, "ACE_Fortify"] call CBA_fnc_dropItem;
   if (_result) then
   {
-    ["<t align='center'>You cannot currently hold a fortify tool, it has been dropped at your feet</t>", "red"] call FNF_ClientSide_fnc_notificationSystem;
+    ["<t align='center'>You cannot currently hold a fortify tool, it has been dropped at your feet</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;
   };
   while {_result} do
   {

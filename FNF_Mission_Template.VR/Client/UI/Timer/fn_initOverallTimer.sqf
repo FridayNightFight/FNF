@@ -68,5 +68,5 @@ false call FNF_ClientSide_fnc_showTimerInHUD;
   _result;
 },{
   true call FNF_ClientSide_fnc_showTimerInHUD;
-  ["<t size='1.5' align='center'>Game Ends in 15 Minutes</t>", "amber"] call FNF_ClientSide_fnc_notificationSystem;
+  ["<t size='1.5' align='center'>Game Ends in 15 Minutes</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 }, _defaultEndTime] call CBA_fnc_waitUntilAndExecute;

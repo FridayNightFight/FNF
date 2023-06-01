@@ -82,9 +82,9 @@ _trueHostSelectorSet = false;
   {
     _statement = {
       params["_target", "_player", "_params"];
-      [_params select 0, _params select 1, _params select 2] call FNF_ClientSide_fnc_switchSelection;
+      [_params select 0, _params select 1, _params select 2, _params select 3] call FNF_ClientSide_fnc_switchSelection;
     };
-    _action = ["option" + str(_forEachIndex),_x select 1,"",_statement,{true},{},[_x select 0, _objID, _selectorType]] call ace_interact_menu_fnc_createAction;
+    _action = ["option" + str(_forEachIndex),_x select 1,"",_statement,{true},{},[_x select 0, _objID, _selectorType, _x select 1]] call ace_interact_menu_fnc_createAction;
     [player, 1, ["ACE_SelfActions", "trueHost", "host_" + str(_objID)], _action] call ace_interact_menu_fnc_addActionToObject;
     if (_x select 2) then
     {

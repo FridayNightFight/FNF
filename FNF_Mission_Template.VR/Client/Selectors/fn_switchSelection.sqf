@@ -7,12 +7,14 @@
 	Parameter(s):
 		0: ARRAY -  An array of items to switch to
     1: STRING -  The identifier of the selector
+    2: STRING -  The type of selector being used
+    3: STRING -  The Display name of the option
 
 	Returns:
 		None
 */
 
-params["_allItems", "_id", "_selectorType"];
+params["_allItems", "_id", "_selectorType", "_displayName"];
 
 _currentItems = "";
 _currentID = -1;
@@ -66,6 +68,9 @@ if (_currentItems isEqualTo "") then
     };
   } forEach _allitems;
 
+
+
+  ["<t size='1.5' align='center'>Switched to:<br/><br/>" + _displayName + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
   fnf_selections pushBack [_allItems, _id, _selectorType];
 } else {
 
@@ -81,7 +86,6 @@ if (_currentItems isEqualTo "") then
           player removePrimaryWeaponItem _x;
           _itemsToAdd pushBack _x;
         } else {
-          //TODO add notification system
           _hasRequiredItems = false;
         };
       };
@@ -105,7 +109,6 @@ if (_currentItems isEqualTo "") then
             } forEach _opticSelectors;
 
           } else {
-            //TODO add notification system
             _hasRequiredItems = false;
           };
         } else {
@@ -114,7 +117,6 @@ if (_currentItems isEqualTo "") then
             player removeItem _x;
             _itemsToAdd pushBack _x;
           } else {
-            //TODO add notification system
             _hasRequiredItems = false;
           };
         };
@@ -128,7 +130,6 @@ if (_currentItems isEqualTo "") then
             player removeWeapon _x;
             _itemsToAdd pushBack _x;
           } else {
-            //TODO add notification system
             _hasRequiredItems = false;
           };
         } else {
@@ -137,7 +138,6 @@ if (_currentItems isEqualTo "") then
             player removeItem _x;
             _itemsToAdd pushBack _x;
           } else {
-            //TODO add notification system
             _hasRequiredItems = false;
           };
         };
@@ -151,7 +151,6 @@ if (_currentItems isEqualTo "") then
             player removeWeapon _x;
             _itemsToAdd pushBack _x;
           } else {
-            //TODO add notification system
             _hasRequiredItems = false;
           };
         } else {
@@ -160,7 +159,6 @@ if (_currentItems isEqualTo "") then
             player removeItem _x;
             _itemsToAdd pushBack _x;
           } else {
-            //TODO add notification system
             _hasRequiredItems = false;
           };
         };
@@ -172,7 +170,6 @@ if (_currentItems isEqualTo "") then
           player removeItem _x;
           _itemsToAdd pushBack _x;
         } else {
-          //TODO add notification system
           _hasRequiredItems = false;
         };
       };
@@ -184,6 +181,9 @@ if (_currentItems isEqualTo "") then
     _itemsToAdd = _allItems;
     fnf_selections deleteAt _currentID;
     fnf_selections pushBack [_allItems, _id, _selectorType];
+    ["<t size='1.5' align='center'>Switched to:<br/><br/>" + _displayName + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
+  } else {
+    ["<t size='1.5' align='center'>Failed to switch selection, you do not have the items to switch out</t>", "warning"] call FNF_ClientSide_fnc_notificationSystem;
   };
 
   {

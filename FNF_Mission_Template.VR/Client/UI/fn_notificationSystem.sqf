@@ -29,17 +29,17 @@ if(typeName _type == "ARRAY" || typeName _type == "OBJECT") then {
     _color = _type;
 } else {
     switch (_type) do {
-        case "error": {
+        case "failure": {
             _colorName = "red";
         };
-        case "warning": {
+        case "error": {
             _colorName = "amber";
         };
         case "success": {
             _colorName = "green";
         };
         case "info": {
-            _colorName = "blue";
+            _colorName = "teal";
         };
         default {
             _colorName = _type;

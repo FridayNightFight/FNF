@@ -59,9 +59,9 @@ KK_fnc_inHouse = {
 
       fnf_fortifyPoints = fnf_fortifyPoints - _cost;
 
-      ["<t align='center'>Fortify Budget: " + str(fnf_fortifyPoints) + "</t>", "teal"] call FNF_ClientSide_fnc_notificationSystem;
+      ["<t align='center'>Fortify Budget: " + str(fnf_fortifyPoints) + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
     } else {
-      [_errorStr, "red"] call FNF_ClientSide_fnc_notificationSystem;
+      [_errorStr, "error"] call FNF_ClientSide_fnc_notificationSystem;
     };
 
     _canPlace
@@ -100,7 +100,7 @@ KK_fnc_inHouse = {
 
   fnf_fortifyPoints = fnf_fortifyPoints + _cost;
 
-  ["<t align='center'>Fortify Budget: " + str(fnf_fortifyPoints) + "</t>", "teal"] call FNF_ClientSide_fnc_notificationSystem;
+  ["<t align='center'>Fortify Budget: " + str(fnf_fortifyPoints) + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 }] call CBA_fnc_addEventHandler;
 
 ["ace_interactMenuOpened", {

@@ -30,7 +30,7 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
   ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
   if (not (["safeZoneGroup"] call FNF_ClientSide_fnc_areAnyZonesInRestrictionGroup)) then
   {
-    ["<t size='1.5' align='center'>Safe Zones Dropped</t><br/><br/><t align='center'>The safe zones have been dropped and the mission is now starting</t><br/>", "teal"] call FNF_ClientSide_fnc_notificationSystem;
+    ["<t size='1.5' align='center'>Safe Zones Dropped</t><br/><br/><t align='center'>The safe zones have been dropped and the mission is now starting</t><br/>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 
     fnf_timerMessage = nil;
     fnf_timerEndTime = nil;
