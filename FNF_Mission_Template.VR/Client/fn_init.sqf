@@ -95,7 +95,7 @@ if (not isNil "fnf_objectives") then
         switch (_x select 0) do {
           case "DESTROY":
           {
-            _result = [(_x select 2), (_x select 3)] call FNF_ClientSide_fnc_watchDestroy;
+            _result = [(_x select 2), (_x select 3), (_x select 4)] call FNF_ClientSide_fnc_watchDestroy;
             if (_result) then
             {
               _indexesToDeleteIfCompleted pushBack _forEachIndex;

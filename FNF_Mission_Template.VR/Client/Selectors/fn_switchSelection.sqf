@@ -183,7 +183,7 @@ if (_currentItems isEqualTo "") then
     fnf_selections pushBack [_allItems, _id, _selectorType];
     ["<t size='1.5' align='center'>Switched to:<br/><br/>" + _displayName + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
   } else {
-    ["<t size='1.5' align='center'>Failed to switch selection, you do not have the items to switch out</t>", "warning"] call FNF_ClientSide_fnc_notificationSystem;
+    ["<t size='1.5' align='center'>Failed to switch selection, you do not have the items to switch out</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;
   };
 
   {

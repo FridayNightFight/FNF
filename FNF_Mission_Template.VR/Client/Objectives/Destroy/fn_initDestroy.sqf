@@ -85,22 +85,53 @@ if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
 
 _task = "";
 
+_objNum = str((count fnf_objectives) + 1);
+
 //create and setup objective task
 if (_objectiveType == "des") then
 {
   if (_forPlayer) then
   {
-    _task = player createSimpleTask [("Destroy the " + _targetName), fnf_myTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Destroy the " + _targetName), fnf_myTasksParentTask];
   } else {
-    _task = player createSimpleTask [("Destroy the " + _targetName), fnf_allyTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Destroy the " + _targetName), fnf_allyTasksParentTask];
   };
-  _task setSimpleTaskDescription [format["<img image='%1' width='300'>", _targetPic], "Destroy the " + _targetName, "Destroy the " + _targetName];
+  _zoneKnown = _objective getVariable "fnf_zoneKnown";
+
+  if (_forPlayer) then
+  {
+    _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+
+    if (count _hidingZones != 0) then
+    {
+      _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
+      if (not _zoneKnown) then
+      {
+        _helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
+      };
+    };
+
+    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>To complete this objective you must destroy the %2<br/><br/>%3", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
+  } else {
+    _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+
+    if (count _hidingZones != 0) then
+    {
+      _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
+      if (not _zoneKnown) then
+      {
+        _helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
+      };
+    };
+
+    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>For your allies to complete this objective they must destroy the %2<br/><br/>%3", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
+  };
+
   _task setSimpleTaskType "destroy";
   if (count _hidingZones == 0) then
   {
     _task setSimpleTaskTarget [_objectiveObject, true];
   } else {
-    _zoneKnown = _objective getVariable "fnf_zoneKnown";
     [_objectiveObject, _task, _zoneKnown, _hidingZones] call FNF_ClientSide_fnc_addObjectToHide;
   };
 } else {
@@ -110,11 +141,32 @@ if (_objectiveType == "des") then
   } else {
     _task = player createSimpleTask [("Defend the " + _targetName), fnf_allyTasksParentTask];
   };
-  _task setSimpleTaskDescription [format["<img image='%1' width='300'>", _targetPic], "Defend the " + _targetName, "Defend the " + _targetName];
   _task setSimpleTaskType "defend";
   _task setSimpleTaskTarget [_objectiveObject, true];
+
+  _helperString = "";
+
+  if (count _hidingZones != 0) then
+  {
+    {
+      _prefix = _x getVariable "fnf_prefix";
+      _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+      if (not _result) then
+      {
+        [_prefix, true, false] call FNF_ClientSide_fnc_addZone;
+      };
+    } forEach _hidingZones;
+
+    _helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
+  };
+  if (_forPlayer) then
+  {
+    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>To complete this objective you must prevent the %2 from being destroyed for the duration of the game%3", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
+  } else {
+    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>For your allies to complete this objective they must prevent the %2 from being destroyed for the duration of the game%3", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
+  };
 };
 
 //add objective to objective stack
-// [type, objective, task]
-fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _task];
+// [type, objective, objectiveObject, task, for Player?]
+fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _task, _forPlayer];
