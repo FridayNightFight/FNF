@@ -26,11 +26,23 @@ _zonePrefixs = [];
 {
   _prefix = _x getVariable "fnf_prefix";
   _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+  _resultaddZone = true;
   if (not _result) then
   {
-    [_prefix, true, false] call FNF_ClientSide_fnc_addZone;
+    _resultaddZone = [_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
   };
-  _zonePrefixs pushBack _prefix;
+  if (_resultaddZone) then
+  {
+    _zonePrefixs pushBack _prefix;
+  };
 } forEach _hidingZoneModules;
 
-fnf_objectsToHide pushBack [_object, _task, _zoneKnown, _zonePrefixs];
+if (count _zonePrefixs > 0) then
+{
+  fnf_objectsToHide pushBack [_object, _task, _zoneKnown, _zonePrefixs];
+} else {
+  if (fnf_debug) then
+  {
+    systemChat "WARNING: No valid hiding zones detected, objective will not be hidden"
+  };
+};

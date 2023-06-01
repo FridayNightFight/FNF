@@ -137,9 +137,9 @@ if (_objectiveType == "des") then
 } else {
   if (_forPlayer) then
   {
-    _task = player createSimpleTask [("Defend the " + _targetName), fnf_myTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Defend the " + _targetName), fnf_myTasksParentTask];
   } else {
-    _task = player createSimpleTask [("Defend the " + _targetName), fnf_allyTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Defend the " + _targetName), fnf_allyTasksParentTask];
   };
   _task setSimpleTaskType "defend";
   _task setSimpleTaskTarget [_objectiveObject, true];
@@ -153,7 +153,7 @@ if (_objectiveType == "des") then
       _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
       if (not _result) then
       {
-        [_prefix, true, false] call FNF_ClientSide_fnc_addZone;
+        [_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
       };
     } forEach _hidingZones;
 

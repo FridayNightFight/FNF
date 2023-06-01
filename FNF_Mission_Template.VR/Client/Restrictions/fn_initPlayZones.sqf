@@ -49,8 +49,8 @@ _mainPlayZones = [];
   _result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
   if (not _result) then
   {
-    [_zonePrefix, false, false] call FNF_ClientSide_fnc_addZone;
-    [_zonePrefix, false, false] call FNF_ClientSide_fnc_removeZone;
+    [_zonePrefix, "", false, false] call FNF_ClientSide_fnc_addZone;
+    [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
   };
 } forEach _sparePlayZones;
 
@@ -67,8 +67,11 @@ _mainPlayZones = [];
   {
     _shadePlayZone = false;
   };
-  [_zonePrefix, _shadePlayZone, true] call FNF_ClientSide_fnc_addZone;
-  ["playZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+  _result = [_zonePrefix, "", _shadePlayZone, true] call FNF_ClientSide_fnc_addZone;
+  if (_result) then
+  {
+    ["playZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+  };
 
 } forEach _mainPlayZones;
 

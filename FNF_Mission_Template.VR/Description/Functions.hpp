@@ -23,6 +23,7 @@ class CfgFunctions
       class areAnyZonesInRestrictionGroup {};
       class shadeZone {};
       class unShadeZone {};
+      class getDisplayName {};
 		};
 		class restrictions
 		{
@@ -44,6 +45,12 @@ class CfgFunctions
       file = "Client\Objectives\Destroy";
       class initDestroy {};
       class watchDestroy {};
+    };
+    class objCaptureSector
+    {
+      file = "Client\Objectives\CaptureSector";
+      class initCaptureSector {};
+      class watchCaptureSector {};
     };
     class safeZones
     {

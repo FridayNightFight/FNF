@@ -69,16 +69,22 @@ _maxTimeZoneIsDeleted = 0;
       ["safeZoneGroup", true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
       _safeZoneRestrictionGroupSet = true;
     };
-    [_zonePrefix, true, false] call FNF_ClientSide_fnc_addZone;
-    ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
-    [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
+    _result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+    if (_result) then
+    {
+      ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+      [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
+    };
     continue;
   };
 
   if (_showZone) then
   {
-    [_zonePrefix, true, false] call FNF_ClientSide_fnc_addZone;
-    [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
+    _result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+    if (_result) then
+    {
+      [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
+    };
     continue;
   };
 
@@ -92,8 +98,8 @@ _maxTimeZoneIsDeleted = 0;
   _result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
   if (not _result) then
   {
-    [_zonePrefix, false, false] call FNF_ClientSide_fnc_addZone;
-    [_zonePrefix, false, false] call FNF_ClientSide_fnc_removeZone;
+    [_zonePrefix, "", false, false] call FNF_ClientSide_fnc_addZone;
+    [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
   };
 } forEach _spareSafeZones;
 

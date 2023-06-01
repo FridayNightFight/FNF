@@ -334,6 +334,14 @@ class CfgVehicles
           class Defend { name = "Defend Sector"; value = "def";};
         };
       };
+      class Prefix: Edit
+      {
+        property = "fnf_prefix"
+        expression = "_this setVariable ['fnf_prefix',_value];";
+        displayName = "Marker Prefix";
+        typeName = "STRING";
+				defaultValue = "fnf_marker_sector_";
+      };
     };
 	};
   class fnf_module_sectorHoldObj: fnf_module_objective

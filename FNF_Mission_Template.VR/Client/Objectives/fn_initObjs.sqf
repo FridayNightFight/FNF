@@ -65,8 +65,14 @@ fnf_objectives = [];
     {
       case "fnf_module_destroyObj":
       {
-        [_x, _forPlayer] call FNF_ClientSide_fnc_initDestroy
+        [_x, _forPlayer] call FNF_ClientSide_fnc_initDestroy;
       };
+
+      case "fnf_module_sectorCaptureObj":
+      {
+        [_x, _forPlayer] call FNF_ClientSide_fnc_initCaptureSector;
+      };
+
       //if no type found then objective must be part of a new mod update that framework isnt equipped to handle
       default
       {

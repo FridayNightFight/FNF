@@ -6,14 +6,15 @@
 
 	Parameter(s):
 		0: STRING -  The prefix used in the marker, should be followed by numbers starting from 1 (Example: testing_marker_)
+    1: String -  The name to be displayed on the zone
     1: BOOLEAN -  Whether the zone should be shaded or not
     2: BOOLEAN -  Whether the zone should be inverted
 
 	Returns:
-		None
+		Boolean
 */
 
-params ["_zonePrefix","_shaded","_inverted"];
+params ["_zonePrefix","_displayName","_shaded","_inverted"];
 
 //get all markers with _zonePrefix
 _markerPosArray = [];
@@ -33,6 +34,16 @@ while {createMarkerLocal [(_zonePrefix + (str _markerCounter)), player] == ""} d
 
 //remove the last marker that is created while checking
 deleteMarkerLocal (_zonePrefix + (str _markerCounter));
+
+//check if enough markers for a zone have been found
+if (count _markerPosArray < 3) exitWith
+{
+  if (fnf_debug) then
+  {
+    systemChat "WARNING: Zone with prefix '" + _zonePrefix + "' has less than 3 markers, zone has not generated";
+  };
+  false;
+};
 
 //set up the positions needed for polyline
 _polylineInputs = [];
@@ -58,5 +69,10 @@ if (_shaded) then
   [_markerPosArray, _zonePrefix, _inverted, _markerColor] call FNF_ClientSide_fnc_shadeZone;
 };
 
+//TODO create display name marker
+_markerDisplayName = "";
+
 //add to zone list
-fnf_zoneList pushBack [_zonePrefix, _markerPosArray, _markerPolyline];
+fnf_zoneList pushBack [_zonePrefix, _markerPosArray, _markerPolyline, _markerDisplayName];
+
+true;

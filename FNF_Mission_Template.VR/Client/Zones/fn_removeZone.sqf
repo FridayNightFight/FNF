@@ -18,6 +18,7 @@ _zoneToBeDeletedIndex = -1;
 	{
 		_zoneToBeDeletedIndex = _forEachIndex;
 		deleteMarkerLocal (_x select 2);
+    deleteMarkerLocal (_x select 3);
 		break;
 	};
 } forEach fnf_zoneList;
@@ -25,6 +26,5 @@ _zoneToBeDeletedIndex = -1;
 if (_zoneToBeDeletedIndex != -1) then
 {
 	fnf_zoneList deleteAt _zoneToBeDeletedIndex;
+  [_zonePrefix] call FNF_ClientSide_fnc_unShadeZone;
 };
-
-[_zonePrefix] call FNF_ClientSide_fnc_unShadeZone;

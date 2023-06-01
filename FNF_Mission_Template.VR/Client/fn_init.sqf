@@ -101,6 +101,14 @@ if (not isNil "fnf_objectives") then
               _indexesToDeleteIfCompleted pushBack _forEachIndex;
             };
           };
+          case "CAPTURESECTOR":
+          {
+            _result = [(_x select 1), (_x select 2), (_x select 3)] call FNF_ClientSide_fnc_watchCaptureSector;
+            if (_result) then
+            {
+              _indexesToDeleteIfCompleted pushBack _forEachIndex;
+            };
+          };
           default
           {
             if (fnf_debug) then
