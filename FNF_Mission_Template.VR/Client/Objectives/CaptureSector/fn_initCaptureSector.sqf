@@ -26,7 +26,7 @@ if (_objectiveType == "FAILED") exitWith
   };
 };
 
-_zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
+_zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker
 if (_objectiveType == "FAILED") exitWith
@@ -75,6 +75,10 @@ if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
   fnf_allyTasksParentTask setSimpleTaskType "documents";
 };
 
+_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_findValidPointWithinZone;
+
+_colour = [playerSide, false] call BIS_fnc_sideColor;
+
 //create and setup objective task
 if (_objectiveType == "cap") then
 {
@@ -87,8 +91,9 @@ if (_objectiveType == "cap") then
     _task setSimpleTaskDescription ["For your allies to complete this objective they must have more players on their or their allies sides than any enemies to capture the sector", _objNum + ": Capture sector " + _secNum, _objNum + ": Capture sector " + _secNum];
   };
 
+  _colour = [sideUnknown, false] call BIS_fnc_sideColor;
+
   _task setSimpleTaskType "meet";
-  _taskPos = [_zonePrefix] call FNF_ClientSide_fnc_findValidPointWithinZone;
   _task setSimpleTaskDestination _taskPos;
 } else {
   if (_forPlayer) then
@@ -100,10 +105,15 @@ if (_objectiveType == "cap") then
     _task setSimpleTaskDescription ["For your allies to complete this objective they must have more players on their or their allies sides than any enemies to defend the sector", _objNum + ": Defend sector " + _secNum, _objNum + ": Defend sector " + _secNum];
   };
   _task setSimpleTaskType "defend";
-  _taskPos = [_zonePrefix] call FNF_ClientSide_fnc_findValidPointWithinZone;
   _task setSimpleTaskDestination _taskPos;
 };
 
+_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _secNum];
+
+_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
+
+_statusSlotID = [-1, _text, _texture, _colour, 1, _taskPos, 0] call BIS_fnc_setMissionStatusSlot;
+
 //add objective to objective stack
 // [type, objective, objectiveObject, task, for Player?]
-fnf_objectives pushBack ["CAPTURESECTOR", _objective, _task, _forPlayer];
+fnf_objectives pushBack ["CAPTURESECTOR", _objective, _task, _forPlayer, _statusSlotID, _taskPos];

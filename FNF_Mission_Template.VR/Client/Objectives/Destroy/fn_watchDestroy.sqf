@@ -7,12 +7,15 @@
 	Parameter(s):
 		1: OBJECT -  The destroy objective object to be processed
     2: TASK -  The task to be processed
+    3: BOOLEAN -  Whether the task is for the player if not it is for an ally
 
 	Returns:
 		Boolean
 */
 
-params["_objectiveObject", "_task", "_forPlayer"];
+params["_objEntry"];
+
+_objEntry params["_objType","_objectiveModule","_objectiveObject", "_task", "_forPlayer"];
 
 if (alive _objectiveObject) exitWith
 {
