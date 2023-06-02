@@ -115,5 +115,4 @@ _texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 _statusSlotID = [-1, _text, _texture, _colour, 1, _taskPos, 0] call BIS_fnc_setMissionStatusSlot;
 
 //add objective to objective stack
-// [type, objective, objectiveObject, task, for Player?]
-fnf_objectives pushBack ["CAPTURESECTOR", _objective, _task, _forPlayer, _statusSlotID, _taskPos];
+fnf_objectives pushBack ["CAPTURESECTOR", _objective, _task, _forPlayer, _statusSlotID];

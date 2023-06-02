@@ -14,7 +14,7 @@
 
 params["_objEntry"];
 
-_objEntry params["_objType","_objectiveModule","_task","_forPlayer","_statusSlotID","_taskPos"];
+_objEntry params["_objType","_objectiveModule","_task","_forPlayer","_statusSlotID"];
 
 _zonePrefix = _objectiveModule getVariable "fnf_prefix";
 
@@ -28,6 +28,8 @@ _sectorOwner = missionNamespace getVariable ["fnf_sector_owner_" + _secNum, side
 
 _text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _secNum];
 _colour = [_sectorOwner, false] call BIS_fnc_sideColor;
+
+_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_findValidPointWithinZone;
 
 _taskType = taskType _task;
 
