@@ -19,6 +19,10 @@ params ["_zonePrefix","_displayName","_shaded","_inverted"];
 //get all markers with _zonePrefix
 _markerPosArray = [];
 _markerColor = getMarkerColor (_zonePrefix + "1");
+if (_zonePrefix == "hidingzone_") then
+{
+  testing = _markerColor;
+};
 
 _markerCounter = 1;
 //get all marker positions by seeing if i can create the marker, if i cant it exists
@@ -45,6 +49,8 @@ if (count _markerPosArray < 3) exitWith
   false;
 };
 
+_furthestXValue = [0,0,0];
+
 //set up the positions needed for polyline
 _polylineInputs = [];
 {
@@ -55,6 +61,11 @@ _polylineInputs = [];
 	{
 		_polylineInputs append [_x select 0, _x select 1, (_markerPosArray select (_forEachIndex + 1)) select 0, (_markerPosArray select (_forEachIndex + 1)) select 1];
 	};
+
+  if ((_x select 0) > (_furthestXValue select 0)) then
+  {
+    _furthestXValue = _x;
+  };
 } forEach _markerPosArray;
 
 //create polyline
@@ -63,14 +74,21 @@ _markerPolyline setMarkerShapeLocal "POLYLINE";
 _markerPolyline setMarkerPolylineLocal _polylineInputs;
 _markerPolyline setMarkerColorLocal _markerColor;
 
+//create display name marker
+_markerDisplayName = createMarkerLocal [(_zonePrefix + "displayName"),_furthestXValue];
+if (_displayName != "") then
+{
+  _markerDisplayName setMarkerShapeLocal "ICON";
+  _markerDisplayName setMarkerTextLocal _displayName;
+  _markerDisplayName setMarkerTypeLocal "DOT";
+  _markerDisplayName setMarkerColorLocal "ColorBlack";
+};
+
 //shade area
 if (_shaded) then
 {
   [_markerPosArray, _zonePrefix, _inverted, _markerColor] call FNF_ClientSide_fnc_shadeZone;
 };
-
-//TODO create display name marker
-_markerDisplayName = "";
 
 //add to zone list
 fnf_zoneList pushBack [_zonePrefix, _markerPosArray, _markerPolyline, _markerDisplayName];

@@ -77,6 +77,8 @@ if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
 
 _taskPos = [_zonePrefix] call FNF_ClientSide_fnc_findValidPointWithinZone;
 
+_task = "";
+
 _colour = [playerSide, false] call BIS_fnc_sideColor;
 
 //create and setup objective task
@@ -84,10 +86,10 @@ if (_objectiveType == "cap") then
 {
   if (_forPlayer) then
   {
-    _task = player createSimpleTask [(_objNum + ": Capture sector " + _secNum), fnf_myTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Capture Sector " + _secNum), fnf_myTasksParentTask];
     _task setSimpleTaskDescription ["To complete this objective you must have more players on yours or your allies sides than any enemies to capture the sector", _objNum + ": Capture sector " + _secNum, _objNum + ": Capture sector " + _secNum];
   } else {
-    _task = player createSimpleTask [(_objNum + ": Capture sector " + _secNum), fnf_allyTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Capture Sector " + _secNum), fnf_allyTasksParentTask];
     _task setSimpleTaskDescription ["For your allies to complete this objective they must have more players on their or their allies sides than any enemies to capture the sector", _objNum + ": Capture sector " + _secNum, _objNum + ": Capture sector " + _secNum];
   };
 
@@ -98,10 +100,10 @@ if (_objectiveType == "cap") then
 } else {
   if (_forPlayer) then
   {
-    _task = player createSimpleTask [(_objNum + ": Defend sector " + _secNum), fnf_myTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Defend Sector " + _secNum), fnf_myTasksParentTask];
     _task setSimpleTaskDescription ["To complete this objective you must have more players on yours or your allies sides than any enemies to defend the sector", _objNum + ": Defend sector " + _secNum, _objNum + ": Defend sector " + _secNum];
   } else {
-    _task = player createSimpleTask [(_objNum + ": Defend sector " + _secNum), fnf_allyTasksParentTask];
+    _task = player createSimpleTask [(_objNum + ": Defend Sector " + _secNum), fnf_allyTasksParentTask];
     _task setSimpleTaskDescription ["For your allies to complete this objective they must have more players on their or their allies sides than any enemies to defend the sector", _objNum + ": Defend sector " + _secNum, _objNum + ": Defend sector " + _secNum];
   };
   _task setSimpleTaskType "defend";
