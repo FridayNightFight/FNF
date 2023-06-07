@@ -383,6 +383,14 @@ class CfgEditorCategories
 	{
 		displayName = "FNF - Kits";
 	};
+  class fnf_Objectives
+	{
+		displayName = "FNF - Objectives";
+	};
+  class fnf_Systems
+	{
+		displayName = "FNF - Systems";
+	};
 };
 
 class CfgEditorSubcategories
@@ -399,12 +407,222 @@ class CfgEditorSubcategories
 	{
 		displayName = "Independant";
 	};
+  class fnf_CaptureSector
+	{
+		displayName = "Capture Sector";
+	};
+  class fnf_Destroy
+	{
+		displayName = "Destroy Object";
+	};
+  class fnf_SafeZones
+	{
+		displayName = "Safe Zones";
+	};
+  class fnf_PlayZones
+	{
+		displayName = "Play Zones";
+	};
+  class fnf_HidingZones
+	{
+		displayName = "Hiding Zones";
+	};
 };
 
 class Cfg3DEN
 {
   class Compositions
 	{
+    //play zones
+
+    class fnf_PlayZone_1 // one class per composition
+		{
+			path = "fnf_eden\systems\PlayZonePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_PlayZones";				// link to CfgEditorSubcategories
+			displayName = "Play Zone Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_PlayZone_2 // one class per composition
+		{
+			path = "fnf_eden\systems\PlayZonePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_PlayZones";				// link to CfgEditorSubcategories
+			displayName = "Play Zone Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_PlayZone_3 // one class per composition
+		{
+			path = "fnf_eden\systems\PlayZonePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_PlayZones";				// link to CfgEditorSubcategories
+			displayName = "Play Zone Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    //hiding zones
+
+    class fnf_HidingZone_1 // one class per composition
+		{
+			path = "fnf_eden\systems\HidingZonePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_HidingZones";				// link to CfgEditorSubcategories
+			displayName = "Hiding Zone Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_HidingZone_2 // one class per composition
+		{
+			path = "fnf_eden\systems\HidingZonePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_HidingZones";				// link to CfgEditorSubcategories
+			displayName = "Hiding Zone Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_HidingZone_3 // one class per composition
+		{
+			path = "fnf_eden\systems\HidingZonePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_HidingZones";				// link to CfgEditorSubcategories
+			displayName = "Hiding Zone Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    //safe zones
+
+    class fnf_BluforSafeZone_1 // one class per composition
+		{
+			path = "fnf_eden\systems\(Blufor)SafeZonePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Blufor) Safe Zone Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_BluforSafeZone_2 // one class per composition
+		{
+			path = "fnf_eden\systems\(Blufor)SafeZonePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Blufor) Safe Zone Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_BluforSafeZone_3 // one class per composition
+		{
+			path = "fnf_eden\systems\(Blufor)SafeZonePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Blufor) Safe Zone Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    class fnf_IndforSafeZone_1 // one class per composition
+		{
+			path = "fnf_eden\systems\(Indfor)SafeZonePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Indfor) Safe Zone Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_IndforSafeZone_2 // one class per composition
+		{
+			path = "fnf_eden\systems\(Indfor)SafeZonePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Indfor) Safe Zone Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_IndforSafeZone_3 // one class per composition
+		{
+			path = "fnf_eden\systems\(Indfor)SafeZonePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Indfor) Safe Zone Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    class fnf_OpforSafeZone_1 // one class per composition
+		{
+			path = "fnf_eden\systems\(Opfor)SafeZonePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Opfor) Safe Zone Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_OpforSafeZone_2 // one class per composition
+		{
+			path = "fnf_eden\systems\(Opfor)SafeZonePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Opfor) Safe Zone Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_OpforSafeZone_3 // one class per composition
+		{
+			path = "fnf_eden\systems\(Opfor)SafeZonePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
+			displayName = "(Opfor) Safe Zone Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    //objectives
+
+    class fnf_DestroyObjective // one class per composition
+		{
+			path = "fnf_eden\objectives\DestroyObjectivePreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Destroy";				// link to CfgEditorSubcategories
+			displayName = "Destroy Objective Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    class fnf_CaptureSectorObjective_1 // one class per composition
+		{
+			path = "fnf_eden\objectives\CaptureSectorObjectivePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_CaptureSector";				// link to CfgEditorSubcategories
+			displayName = "Capture Sector Objective Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_CaptureSectorObjective_2 // one class per composition
+		{
+			path = "fnf_eden\objectives\CaptureSectorObjectivePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_CaptureSector";				// link to CfgEditorSubcategories
+			displayName = "Capture Sector Objective Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_CaptureSectorObjective_3 // one class per composition
+		{
+			path = "fnf_eden\objectives\CaptureSectorObjectivePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_CaptureSector";				// link to CfgEditorSubcategories
+			displayName = "Capture Sector Objective Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    //#################################################################################################################################
+    //KITS START HERE
+    //#################################################################################################################################
+
 		class fnf_NATOUSArmy2020 // one class per composition
 		{
 			path = "fnf_eden\kits_blufor\[NATO]USArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
