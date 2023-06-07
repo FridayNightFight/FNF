@@ -95,9 +95,9 @@ if (not isNil "fnf_serverObjectives") then
         _id = owner _x;
         if (admin _id == 2 or _x == player) then
         {
-          _objectiveString = "Blufor Completed " + str(_completedBlufor) + " / " + str(_totalBlufor) + "\nOpfor Completed " + str(_completedOpfor) + " / " + str(_totalOpfor) + "\nIndipendent Completed " + str(_completedIndi) + " / " + str(_totalIndi);
+          _objectiveString = "Blufor Completed " + str(_completedBlufor) + " / " + str(_totalBlufor) + "\nOpfor Completed " + str(_completedOpfor) + " / " + str(_totalOpfor) + "\nIndependent Completed " + str(_completedIndi) + " / " + str(_totalIndi);
           _alivePlayers = allPlayers select {alive _x};
-          _deadSideString = "\nBlufor alive: " + str(west countSide _alivePlayers) + "\nOpfor alive: " + str(east countSide _alivePlayers) + "\nBlufor alive: " + str(independent countSide _alivePlayers);
+          _deadSideString = "\nBlufor alive: " + str(west countSide _alivePlayers) + "\nOpfor alive: " + str(east countSide _alivePlayers) + "\nIndependent alive: " + str(independent countSide _alivePlayers);
           (_objectiveString + _deadSideString) remoteExec ["hintSilent", _id];
         }
       } forEach allPlayers;
