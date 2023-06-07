@@ -56,16 +56,6 @@ if (not (_objective getVariable ["fnf_sector_indiAttack",false]) and not (_objec
   _indiCount = 0;
 };
 
-if (_westCount == 0 and _eastCount == 0 and _indiCount == 0) exitWith {false};
-
-
-//start making changes now data is gathered
-_timeToCapture = _objective getVariable ["fnf_TimeToCapture", 60];
-
-_currentPercent = _objective getVariable ["fnf_sector_percentage", 0];
-
-_currentTime = _timeToCapture * _currentPercent;
-
 _currentOwner = _objective getVariable ["fnf_sector_owner", sideUnknown];
 
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
@@ -78,6 +68,16 @@ if (_objectiveType == "def") then
     _currentOwner = _side;
   };
 };
+
+if (_westCount == 0 and _eastCount == 0 and _indiCount == 0) exitWith {false};
+
+
+//start making changes now data is gathered
+_timeToCapture = _objective getVariable ["fnf_TimeToCapture", 60];
+
+_currentPercent = _objective getVariable ["fnf_sector_percentage", 0];
+
+_currentTime = _timeToCapture * _currentPercent;
 
 _newOwner = sideUnknown;
 

@@ -76,7 +76,7 @@ if (_displayName != "") then
 {
   _markerDisplayName setMarkerShapeLocal "ICON";
   _markerDisplayName setMarkerTextLocal _displayName;
-  _markerDisplayName setMarkerTypeLocal "DOT";
+  _markerDisplayName setMarkerTypeLocal "mil_dot";
   _markerDisplayName setMarkerColorLocal "ColorBlack";
 };
 

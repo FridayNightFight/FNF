@@ -125,6 +125,11 @@ class CfgFunctions
       class invertPolygon {};
       class combineOffsetPoints {};
     };
+    class radio
+    {
+      file = "Client\Radio";
+      class initRadios {};
+    };
 	};
 	class FNF_ServerSide
 	{
