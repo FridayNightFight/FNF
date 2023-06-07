@@ -19,10 +19,6 @@ params ["_zonePrefix","_displayName","_shaded","_inverted"];
 //get all markers with _zonePrefix
 _markerPosArray = [];
 _markerColor = getMarkerColor (_zonePrefix + "1");
-if (_zonePrefix == "hidingzone_") then
-{
-  testing = _markerColor;
-};
 
 _markerCounter = 1;
 //get all marker positions by seeing if i can create the marker, if i cant it exists

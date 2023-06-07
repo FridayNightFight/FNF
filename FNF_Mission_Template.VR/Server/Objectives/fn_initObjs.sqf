@@ -14,7 +14,7 @@ if (!isServer) exitWith {};
 
 params ["_modules"];
 
-fnf_objectives = [];
+fnf_serverObjectives = [];
 
 {
   _syncedObjects = synchronizedObjects _x;
@@ -50,6 +50,10 @@ fnf_objectives = [];
     case "fnf_module_destroyObj":
     {
       [_x, _objSide] call FNF_ServerSide_fnc_initDestroy
+    };
+    case "fnf_module_sectorCaptureObj":
+    {
+      [_x, _objSide] call FNF_ServerSide_fnc_initCaptureSector
     };
     default {};
   };

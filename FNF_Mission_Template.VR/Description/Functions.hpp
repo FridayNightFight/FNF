@@ -148,5 +148,11 @@ class CfgFunctions
       class initDestroy {};
       class watchDestroy {};
     };
+    class objCaptureSector
+    {
+      file = "Server\Objectives\CaptureSector";
+      class initCaptureSector {};
+      class watchCaptureSector {};
+    };
 	};
 };

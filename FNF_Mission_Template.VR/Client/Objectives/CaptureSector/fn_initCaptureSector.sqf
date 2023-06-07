@@ -29,7 +29,7 @@ if (_objectiveType == "FAILED") exitWith
 _zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker
-if (_objectiveType == "FAILED") exitWith
+if (_zonePrefix == "FAILED") exitWith
 {
   if (fnf_debug) then
   {

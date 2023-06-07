@@ -16,8 +16,6 @@ if (count _initModule > 1) exitWith {};
 //start admin channel
 call FNF_ServerSide_fnc_initAdmin;
 
-if !(isDedicated) exitWith {};
-
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules != 0) then
@@ -26,9 +24,9 @@ if (count _objModules != 0) then
 };
 
 //if there are objectives start watching them
-if (not isNil "fnf_objectives") then
+if (not isNil "fnf_serverObjectives") then
 {
-  if (count fnf_objectives != 0) then
+  if (count fnf_serverObjectives != 0) then
   {
     [{
       _indexesToChangeIfCompleted = [];
@@ -50,17 +48,25 @@ if (not isNil "fnf_objectives") then
               _indexesToChangeIfCompleted pushBack _forEachIndex;
             };
           };
+          case "CAPTURESECTOR":
+          {
+            _result = [(_x select 2),(_x select 1)] call FNF_ServerSide_fnc_watchCaptureSector;
+            if (_result) then
+            {
+              _indexesToChangeIfCompleted pushBack _forEachIndex;
+            };
+          };
           default {};
         };
         {
-          fnf_objectives select _x set [4, true];
+          fnf_serverObjectives select _x set [0, true];
         } forEach _indexesToChangeIfCompleted;
 
         switch (_x select 1) do {
           case west:
           {
             _totalBlufor = _totalBlufor + 1;
-            if (_x select 4) then
+            if ((_x select 0) isEqualTo true) then
             {
               _completedBlufor = _completedBlufor + 1;
             };
@@ -68,7 +74,7 @@ if (not isNil "fnf_objectives") then
           case east:
           {
             _totalOpfor = _totalOpfor + 1;
-            if (_x select 4) then
+            if ((_x select 0) isEqualTo true) then
             {
               _completedOpfor = _completedOpfor + 1;
             };
@@ -76,14 +82,14 @@ if (not isNil "fnf_objectives") then
           case independent:
           {
             _totalIndi = _totalIndi + 1;
-            if (_x select 4) then
+            if ((_x select 0) isEqualTo true) then
             {
               _completedIndi = _completedIndi + 1;
             };
           };
           default {};
         };
-      } forEach fnf_objectives;
+      } forEach fnf_serverObjectives;
 
       {
         _id = owner _x;

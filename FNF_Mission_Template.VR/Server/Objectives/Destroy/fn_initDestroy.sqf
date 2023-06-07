@@ -14,12 +14,6 @@
 
 params ["_objective", "_side"];
 
-//get the objective type
-_objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
-
-//if no type found exit obj settup and inform mission maker
-if (_objectiveType == "FAILED") exitWith {};
-
 _syncedObjects = synchronizedObjects _objective;
 
 //find the object thats supposed to be killed or protected
@@ -42,4 +36,4 @@ if (_objectiveObject isEqualTo "") exitWith {};
 
 //add objective to objective stack
 // [type, objective, task]
-fnf_objectives pushBack ["DESTROY", _side, _objective, _objectiveObject, false];
+fnf_serverObjectives pushBack ["DESTROY", _side, _objective, _objectiveObject];

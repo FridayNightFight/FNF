@@ -6,7 +6,6 @@
 
 	Parameter(s):
 		1: OBJECT -  The destroy objective object to be processed
-    2: TASK -  The task to be processed
 
 	Returns:
 		Boolean

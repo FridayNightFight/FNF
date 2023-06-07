@@ -15,6 +15,8 @@ params ["_modules"];
 
 fnf_objectives = [];
 
+_missionStatusSet = false;
+
 {
   _syncedObjects = synchronizedObjects _x;
   _visibleToAllies = _x getVariable "fnf_visibleToAllies";
@@ -70,6 +72,11 @@ fnf_objectives = [];
 
       case "fnf_module_sectorCaptureObj":
       {
+        if (not _missionStatusSet) then
+        {
+          addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
+          call BIS_fnc_showMissionStatus;
+        };
         [_x, _forPlayer] call FNF_ClientSide_fnc_initCaptureSector;
       };
 

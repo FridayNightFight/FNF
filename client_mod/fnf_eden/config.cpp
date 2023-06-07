@@ -342,6 +342,14 @@ class CfgVehicles
         typeName = "STRING";
 				defaultValue = "fnf_marker_sector_";
       };
+      class TimeToCapture: Edit
+      {
+        property = "fnf_TimeToCapture"
+        expression = "_this setVariable ['fnf_TimeToCapture',_value];";
+        displayName = "Time to Capture";
+        typeName = "NUMBER";
+				defaultValue = "60";
+      };
     };
 	};
   class fnf_module_sectorHoldObj: fnf_module_objective
