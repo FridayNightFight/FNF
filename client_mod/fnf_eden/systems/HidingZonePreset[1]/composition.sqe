@@ -93,7 +93,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_prefix";
-				expression="_this setVariable ['fnf_prefix',_value];";
+				expression="_this setVariable ['fnf_prefix',_value, true];";
 				class Value
 				{
 					class data

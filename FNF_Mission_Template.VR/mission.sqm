@@ -157,7 +157,7 @@ class Mission
 				class Attribute0
 				{
 					property="fnf_breifingBackground";
-					expression="_this setVariable ['fnf_breifingBackground',_value];";
+					expression="_this setVariable ['fnf_breifingBackground',_value, true];";
 					class Value
 					{
 						class data
@@ -170,7 +170,7 @@ class Mission
 				class Attribute1
 				{
 					property="fnf_gameTime";
-					expression="_this setVariable ['fnf_gameTime',_value];";
+					expression="_this setVariable ['fnf_gameTime',_value, true];";
 					class Value
 					{
 						class data
@@ -183,7 +183,7 @@ class Mission
 				class Attribute2
 				{
 					property="fnf_breifingAO";
-					expression="_this setVariable ['fnf_breifingAO',_value];";
+					expression="_this setVariable ['fnf_breifingAO',_value, true];";
 					class Value
 					{
 						class data
@@ -196,7 +196,7 @@ class Mission
 				class Attribute3
 				{
 					property="fnf_breifingRules";
-					expression="_this setVariable ['fnf_breifingRules',_value];";
+					expression="_this setVariable ['fnf_breifingRules',_value, true];";
 					class Value
 					{
 						class data
@@ -209,7 +209,7 @@ class Mission
 				class Attribute4
 				{
 					property="fnf_fortifyColour";
-					expression="_this setVariable ['fnf_fortifyColour',_value];";
+					expression="_this setVariable ['fnf_fortifyColour',_value, true];";
 					class Value
 					{
 						class data
@@ -222,7 +222,7 @@ class Mission
 				class Attribute5
 				{
 					property="fnf_viewDistance";
-					expression="_this setVariable ['fnf_viewDistance',_value];";
+					expression="_this setVariable ['fnf_viewDistance',_value, true];";
 					class Value
 					{
 						class data
@@ -235,7 +235,7 @@ class Mission
 				class Attribute6
 				{
 					property="fnf_debug";
-					expression="_this setVariable ['fnf_debug',_value];";
+					expression="_this setVariable ['fnf_debug',_value, true];";
 					class Value
 					{
 						class data
@@ -248,7 +248,7 @@ class Mission
 				class Attribute7
 				{
 					property="fnf_breifingNotes";
-					expression="_this setVariable ['fnf_breifingNotes',_value];";
+					expression="_this setVariable ['fnf_breifingNotes',_value, true];";
 					class Value
 					{
 						class data
@@ -261,7 +261,7 @@ class Mission
 				class Attribute8
 				{
 					property="fnf_fortifyPoints";
-					expression="_this setVariable ['fnf_fortifyPoints',_value];";
+					expression="_this setVariable ['fnf_fortifyPoints',_value, true];";
 					class Value
 					{
 						class data

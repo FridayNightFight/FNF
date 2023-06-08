@@ -16,6 +16,8 @@ params ["_modules"];
 
 fnf_serverObjectives = [];
 
+call FNF_ClientSide_fnc_initZones;
+
 {
   _syncedObjects = synchronizedObjects _x;
   _objSide = sideEmpty;

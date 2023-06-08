@@ -93,7 +93,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_timeZoneIsDeleted";
-				expression="_this setVariable ['fnf_timeZoneIsDeleted',_value];";
+				expression="_this setVariable ['fnf_timeZoneIsDeleted',_value, true];";
 				class Value
 				{
 					class data
@@ -106,7 +106,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_visibleToEnemies";
-				expression="_this setVariable ['fnf_visibleToEnemies',_value];";
+				expression="_this setVariable ['fnf_visibleToEnemies',_value, true];";
 				class Value
 				{
 					class data
@@ -119,7 +119,7 @@ class items
 			class Attribute2
 			{
 				property="fnf_prefix";
-				expression="_this setVariable ['fnf_prefix',_value];";
+				expression="_this setVariable ['fnf_prefix',_value, true];";
 				class Value
 				{
 					class data
@@ -132,7 +132,7 @@ class items
 			class Attribute3
 			{
 				property="fnf_visibleToAllies";
-				expression="_this setVariable ['fnf_visibleToAllies',_value];";
+				expression="_this setVariable ['fnf_visibleToAllies',_value, true];";
 				class Value
 				{
 					class data

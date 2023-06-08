@@ -19200,7 +19200,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_selectorType";
-				expression="_this setVariable ['fnf_selectorType',_value];";
+				expression="_this setVariable ['fnf_selectorType',_value, true];";
 				class Value
 				{
 					class data
@@ -19213,7 +19213,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_selectorName";
-				expression="_this setVariable ['fnf_selectorName',_value];";
+				expression="_this setVariable ['fnf_selectorName',_value, true];";
 				class Value
 				{
 					class data
@@ -19240,7 +19240,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_selectorType";
-				expression="_this setVariable ['fnf_selectorType',_value];";
+				expression="_this setVariable ['fnf_selectorType',_value, true];";
 				class Value
 				{
 					class data
@@ -19253,7 +19253,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_selectorName";
-				expression="_this setVariable ['fnf_selectorName',_value];";
+				expression="_this setVariable ['fnf_selectorName',_value, true];";
 				class Value
 				{
 					class data
@@ -19408,7 +19408,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19421,7 +19421,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19448,7 +19448,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19461,7 +19461,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19488,7 +19488,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19501,7 +19501,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19528,7 +19528,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19541,7 +19541,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19696,7 +19696,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19709,7 +19709,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19736,7 +19736,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19749,7 +19749,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19776,7 +19776,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19789,7 +19789,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19816,7 +19816,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19829,7 +19829,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -19984,7 +19984,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -19997,7 +19997,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -20024,7 +20024,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -20037,7 +20037,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -20064,7 +20064,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -20077,7 +20077,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -20104,7 +20104,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -20117,7 +20117,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -20144,7 +20144,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_selectorType";
-				expression="_this setVariable ['fnf_selectorType',_value];";
+				expression="_this setVariable ['fnf_selectorType',_value, true];";
 				class Value
 				{
 					class data
@@ -20157,7 +20157,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_selectorName";
-				expression="_this setVariable ['fnf_selectorName',_value];";
+				expression="_this setVariable ['fnf_selectorName',_value, true];";
 				class Value
 				{
 					class data
@@ -20312,7 +20312,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -20325,7 +20325,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -20352,7 +20352,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -20365,7 +20365,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -20392,7 +20392,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -20405,7 +20405,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data
@@ -20432,7 +20432,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_optionName";
-				expression="_this setVariable ['fnf_optionName',_value];";
+				expression="_this setVariable ['fnf_optionName',_value, true];";
 				class Value
 				{
 					class data
@@ -20445,7 +20445,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_defaultSelection";
-				expression="_this setVariable ['fnf_defaultSelection',_value];";
+				expression="_this setVariable ['fnf_defaultSelection',_value, true];";
 				class Value
 				{
 					class data

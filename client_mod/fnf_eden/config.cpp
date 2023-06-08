@@ -1,4 +1,4 @@
-class CfgPatches
+class CfgPatches_value, true];
 {
   class fnf_eden
   {
@@ -53,7 +53,7 @@ class CfgVehicles
       class GameTime: Edit
       {
         property = "fnf_gameTime"
-        expression = "_this setVariable ['fnf_gameTime',_value];";
+        expression = "_this setVariable ['fnf_gameTime',_value, true];";
         displayName = "Time Limit";
         typeName = "NUMBER";
 				defaultValue = "60";
@@ -61,7 +61,7 @@ class CfgVehicles
       class ViewDistance: Edit
       {
         property = "fnf_viewDistance"
-        expression = "_this setVariable ['fnf_viewDistance',_value];";
+        expression = "_this setVariable ['fnf_viewDistance',_value, true];";
         displayName = "View Distance";
         typeName = "NUMBER";
 				defaultValue = "1000";
@@ -69,7 +69,7 @@ class CfgVehicles
       class FortifyPoints: Edit
       {
         property = "fnf_fortifyPoints"
-        expression = "_this setVariable ['fnf_fortifyPoints',_value];";
+        expression = "_this setVariable ['fnf_fortifyPoints',_value, true];";
         displayName = "Fortify Points";
         typeName = "NUMBER";
 				defaultValue = "100";
@@ -77,7 +77,7 @@ class CfgVehicles
       class FortifyColour: Combo
       {
         property = "fnf_fortifyColour"
-        expression = "_this setVariable ['fnf_fortifyColour',_value];";
+        expression = "_this setVariable ['fnf_fortifyColour',_value, true];";
         displayName = "Fortify Colour";
         typeName = "STRING";
 				defaultValue = Green;
@@ -91,7 +91,7 @@ class CfgVehicles
       {
         control = "EditMulti5";
 				property = "fnf_breifingNotes";
-        expression = "_this setVariable ['fnf_breifingNotes',_value];";
+        expression = "_this setVariable ['fnf_breifingNotes',_value, true];";
 				displayName = "Notes";
 				typeName = "STRING";
 				defaultValue = "";
@@ -100,7 +100,7 @@ class CfgVehicles
       {
         control = "EditMulti5";
 				property = "fnf_breifingAO";
-        expression = "_this setVariable ['fnf_breifingAO',_value];";
+        expression = "_this setVariable ['fnf_breifingAO',_value, true];";
 				displayName = "Area of Operations";
 				typeName = "STRING";
 				defaultValue = "";
@@ -109,7 +109,7 @@ class CfgVehicles
       {
         control = "EditMulti5";
 				property = "fnf_breifingBackground";
-        expression = "_this setVariable ['fnf_breifingBackground',_value];";
+        expression = "_this setVariable ['fnf_breifingBackground',_value, true];";
 				displayName = "Background";
 				typeName = "STRING";
 				defaultValue = "";
@@ -118,7 +118,7 @@ class CfgVehicles
       {
         control = "EditMulti5";
 				property = "fnf_breifingRules";
-        expression = "_this setVariable ['fnf_breifingRules',_value];";
+        expression = "_this setVariable ['fnf_breifingRules',_value, true];";
 				displayName = "Mission Rules";
 				typeName = "STRING";
 				defaultValue = "";
@@ -126,7 +126,7 @@ class CfgVehicles
       class Debug: Checkbox
       {
         property = "fnf_debug"
-        expression = "_this setVariable ['fnf_debug',_value];";
+        expression = "_this setVariable ['fnf_debug',_value, true];";
         displayName = "Debug";
         tooltip = "If checked, debug data will be shown";
         typeName = "BOOL";
@@ -145,7 +145,7 @@ class CfgVehicles
       class Prefix: Edit
       {
         property = "fnf_prefix"
-        expression = "_this setVariable ['fnf_prefix',_value];";
+        expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
 				defaultValue = "fnf_marker_playzone_";
@@ -163,7 +163,7 @@ class CfgVehicles
       class Prefix: Edit
       {
         property = "fnf_prefix"
-        expression = "_this setVariable ['fnf_prefix',_value];";
+        expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
 				defaultValue = "fnf_marker_safezone_";
@@ -171,7 +171,7 @@ class CfgVehicles
       class TimeToBeDeleted: Edit
       {
         property = "fnf_timeZoneIsDeleted"
-        expression = "_this setVariable ['fnf_timeZoneIsDeleted',_value];";
+        expression = "_this setVariable ['fnf_timeZoneIsDeleted',_value, true];";
         displayName = "Time until Zone is Deleted";
         typeName = "NUMBER";
 				defaultValue = "15";
@@ -179,7 +179,7 @@ class CfgVehicles
       class VisibleToAllies: Checkbox
       {
         property = "fnf_visibleToAllies"
-        expression = "_this setVariable ['fnf_visibleToAllies',_value];";
+        expression = "_this setVariable ['fnf_visibleToAllies',_value, true];";
         displayName = "Visible to Allies";
         typeName = "BOOL";
         defaultValue = "true";
@@ -187,7 +187,7 @@ class CfgVehicles
       class VisibleToEnemies: Checkbox
       {
         property = "fnf_visibleToEnemies"
-        expression = "_this setVariable ['fnf_visibleToEnemies',_value];";
+        expression = "_this setVariable ['fnf_visibleToEnemies',_value, true];";
         displayName = "Visible to Enemies";
         typeName = "BOOL";
         defaultValue = "true";
@@ -205,7 +205,7 @@ class CfgVehicles
       class Prefix: Edit
       {
         property = "fnf_prefix"
-        expression = "_this setVariable ['fnf_prefix',_value];";
+        expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
 				defaultValue = "fnf_marker_hidingzone_";
@@ -223,7 +223,7 @@ class CfgVehicles
       class SelectorName: Edit
       {
         property = "fnf_selectorName"
-        expression = "_this setVariable ['fnf_selectorName',_value];";
+        expression = "_this setVariable ['fnf_selectorName',_value, true];";
         displayName = "Selector Name";
         typeName = "STRING";
 				defaultValue = "";
@@ -231,7 +231,7 @@ class CfgVehicles
       class ObjectiveType: Combo
       {
         property = "fnf_selectorType"
-        expression = "_this setVariable ['fnf_selectorType',_value];";
+        expression = "_this setVariable ['fnf_selectorType',_value, true];";
         displayName = "Selector Type";
         typeName = "STRING";
 				defaultValue = Item;
@@ -257,7 +257,7 @@ class CfgVehicles
       class OptionName: Edit
       {
         property = "fnf_optionName"
-        expression = "_this setVariable ['fnf_optionName',_value];";
+        expression = "_this setVariable ['fnf_optionName',_value, true];";
         displayName = "Option Name";
         typeName = "STRING";
 				defaultValue = "";
@@ -265,7 +265,7 @@ class CfgVehicles
       class DefaultSelection: Checkbox
       {
         property = "fnf_defaultSelection"
-        expression = "_this setVariable ['fnf_defaultSelection',_value];";
+        expression = "_this setVariable ['fnf_defaultSelection',_value, true];";
         displayName = "Default?";
         tooltip = "If checked, this option will be treated as already selected";
         typeName = "BOOL";
@@ -292,7 +292,7 @@ class CfgVehicles
       class ObjectiveType: Combo
       {
         property = "fnf_objectiveType"
-        expression = "_this setVariable ['fnf_objectiveType',_value];";
+        expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
         typeName = "STRING";
 				defaultValue = Destroy;
@@ -305,7 +305,7 @@ class CfgVehicles
       class ZoneKnown: Checkbox
       {
         property = "fnf_zoneKnown"
-        expression = "_this setVariable ['fnf_zoneKnown',_value];";
+        expression = "_this setVariable ['fnf_zoneKnown',_value, true];";
         displayName = "Is hiding zone known";
         tooltip = "If checked, when object is in a linked hiding zone the zone it is in will have the task attached to it";
         typeName = "BOOL";
@@ -324,7 +324,7 @@ class CfgVehicles
       class ObjectiveType: Combo
       {
         property = "fnf_objectiveType"
-        expression = "_this setVariable ['fnf_objectiveType',_value];";
+        expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
         typeName = "STRING";
 				defaultValue = "cap";
@@ -337,7 +337,7 @@ class CfgVehicles
       class Prefix: Edit
       {
         property = "fnf_prefix"
-        expression = "_this setVariable ['fnf_prefix',_value];";
+        expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
 				defaultValue = "fnf_marker_sector_";
@@ -345,7 +345,7 @@ class CfgVehicles
       class TimeToCapture: Edit
       {
         property = "fnf_TimeToCapture"
-        expression = "_this setVariable ['fnf_TimeToCapture',_value];";
+        expression = "_this setVariable ['fnf_TimeToCapture',_value, true];";
         displayName = "Time to Capture";
         typeName = "NUMBER";
 				defaultValue = "60";
@@ -363,7 +363,7 @@ class CfgVehicles
       class ObjectiveType: Combo
       {
         property = "fnf_objectiveType"
-        expression = "_this setVariable ['fnf_objectiveType',_value];";
+        expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
         typeName = "STRING";
 				defaultValue = "cap";
@@ -686,7 +686,7 @@ class Cfg3DEN
             control = "Checkbox";
             displayName = "Exclude from Map Auto-Mark";
             tooltip = "If checked, this object will be excluded from the FNF custom object marking script.";
-            expression = "_this setVariable ['%s',_value];";
+            expression = "_this setVariable ['%s',_value, true];";
             typeName = "BOOL";
             condition = "1 - objectControllable - objectVehicle";
             defaultValue = "false";
@@ -697,7 +697,7 @@ class Cfg3DEN
             control = "Checkbox";
             displayName = "Clear Inventory";
             tooltip = "If checked, the vehicle's inventory will be cleared.";
-            expression = "_this setVariable ['%s',_value];";
+            expression = "_this setVariable ['%s',_value, true];";
             typeName = "BOOL";
             condition = "objectVehicle";
             defaultValue = "true";
@@ -708,7 +708,7 @@ class Cfg3DEN
             control = "Checkbox";
             displayName = "Use Default Loadout";
             tooltip = "If checked, the vehicle will be given a standardized FNF weapon set (if one is defined).";
-            expression = "_this setVariable ['%s',_value];";
+            expression = "_this setVariable ['%s',_value, true];";
             typeName = "BOOL";
             condition = "objectVehicle";
             defaultValue = "true";

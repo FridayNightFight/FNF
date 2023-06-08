@@ -17,7 +17,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_objectiveType";
-				expression="_this setVariable ['fnf_objectiveType',_value];";
+				expression="_this setVariable ['fnf_objectiveType',_value, true];";
 				class Value
 				{
 					class data
@@ -30,7 +30,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_prefix";
-				expression="_this setVariable ['fnf_prefix',_value];";
+				expression="_this setVariable ['fnf_prefix',_value, true];";
 				class Value
 				{
 					class data
@@ -43,7 +43,7 @@ class items
 			class Attribute2
 			{
 				property="fnf_TimeToCapture";
-				expression="_this setVariable ['fnf_TimeToCapture',_value];";
+				expression="_this setVariable ['fnf_TimeToCapture',_value, true];";
 				class Value
 				{
 					class data
@@ -70,7 +70,7 @@ class items
 			class Attribute0
 			{
 				property="fnf_objectiveType";
-				expression="_this setVariable ['fnf_objectiveType',_value];";
+				expression="_this setVariable ['fnf_objectiveType',_value, true];";
 				class Value
 				{
 					class data
@@ -83,7 +83,7 @@ class items
 			class Attribute1
 			{
 				property="fnf_prefix";
-				expression="_this setVariable ['fnf_prefix',_value];";
+				expression="_this setVariable ['fnf_prefix',_value, true];";
 				class Value
 				{
 					class data
@@ -96,7 +96,7 @@ class items
 			class Attribute2
 			{
 				property="fnf_TimeToCapture";
-				expression="_this setVariable ['fnf_TimeToCapture',_value];";
+				expression="_this setVariable ['fnf_TimeToCapture',_value, true];";
 				class Value
 				{
 					class data
