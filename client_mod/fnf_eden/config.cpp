@@ -1,4 +1,4 @@
-class CfgPatches_value, true];
+class CfgPatches_value
 {
   class fnf_eden
   {
@@ -52,7 +52,7 @@ class CfgVehicles
     {
       class GameTime: Edit
       {
-        property = "fnf_gameTime"
+        property = "fnf_gameTime";
         expression = "_this setVariable ['fnf_gameTime',_value, true];";
         displayName = "Time Limit";
         typeName = "NUMBER";
@@ -60,7 +60,7 @@ class CfgVehicles
       };
       class ViewDistance: Edit
       {
-        property = "fnf_viewDistance"
+        property = "fnf_viewDistance";
         expression = "_this setVariable ['fnf_viewDistance',_value, true];";
         displayName = "View Distance";
         typeName = "NUMBER";
@@ -68,7 +68,7 @@ class CfgVehicles
       };
       class FortifyPoints: Edit
       {
-        property = "fnf_fortifyPoints"
+        property = "fnf_fortifyPoints";
         expression = "_this setVariable ['fnf_fortifyPoints',_value, true];";
         displayName = "Fortify Points";
         typeName = "NUMBER";
@@ -76,7 +76,7 @@ class CfgVehicles
       };
       class FortifyColour: Combo
       {
-        property = "fnf_fortifyColour"
+        property = "fnf_fortifyColour";
         expression = "_this setVariable ['fnf_fortifyColour',_value, true];";
         displayName = "Fortify Colour";
         typeName = "STRING";
@@ -125,7 +125,7 @@ class CfgVehicles
       };
       class Debug: Checkbox
       {
-        property = "fnf_debug"
+        property = "fnf_debug";
         expression = "_this setVariable ['fnf_debug',_value, true];";
         displayName = "Debug";
         tooltip = "If checked, debug data will be shown";
@@ -144,7 +144,7 @@ class CfgVehicles
     {
       class Prefix: Edit
       {
-        property = "fnf_prefix"
+        property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
@@ -162,7 +162,7 @@ class CfgVehicles
     {
       class Prefix: Edit
       {
-        property = "fnf_prefix"
+        property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
@@ -170,7 +170,7 @@ class CfgVehicles
       };
       class TimeToBeDeleted: Edit
       {
-        property = "fnf_timeZoneIsDeleted"
+        property = "fnf_timeZoneIsDeleted";
         expression = "_this setVariable ['fnf_timeZoneIsDeleted',_value, true];";
         displayName = "Time until Zone is Deleted";
         typeName = "NUMBER";
@@ -178,7 +178,7 @@ class CfgVehicles
       };
       class VisibleToAllies: Checkbox
       {
-        property = "fnf_visibleToAllies"
+        property = "fnf_visibleToAllies";
         expression = "_this setVariable ['fnf_visibleToAllies',_value, true];";
         displayName = "Visible to Allies";
         typeName = "BOOL";
@@ -186,7 +186,7 @@ class CfgVehicles
       };
       class VisibleToEnemies: Checkbox
       {
-        property = "fnf_visibleToEnemies"
+        property = "fnf_visibleToEnemies";
         expression = "_this setVariable ['fnf_visibleToEnemies',_value, true];";
         displayName = "Visible to Enemies";
         typeName = "BOOL";
@@ -204,7 +204,7 @@ class CfgVehicles
     {
       class Prefix: Edit
       {
-        property = "fnf_prefix"
+        property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
@@ -222,7 +222,7 @@ class CfgVehicles
     {
       class SelectorName: Edit
       {
-        property = "fnf_selectorName"
+        property = "fnf_selectorName";
         expression = "_this setVariable ['fnf_selectorName',_value, true];";
         displayName = "Selector Name";
         typeName = "STRING";
@@ -230,7 +230,7 @@ class CfgVehicles
       };
       class ObjectiveType: Combo
       {
-        property = "fnf_selectorType"
+        property = "fnf_selectorType";
         expression = "_this setVariable ['fnf_selectorType',_value, true];";
         displayName = "Selector Type";
         typeName = "STRING";
@@ -256,7 +256,7 @@ class CfgVehicles
     {
       class OptionName: Edit
       {
-        property = "fnf_optionName"
+        property = "fnf_optionName";
         expression = "_this setVariable ['fnf_optionName',_value, true];";
         displayName = "Option Name";
         typeName = "STRING";
@@ -264,7 +264,7 @@ class CfgVehicles
       };
       class DefaultSelection: Checkbox
       {
-        property = "fnf_defaultSelection"
+        property = "fnf_defaultSelection";
         expression = "_this setVariable ['fnf_defaultSelection',_value, true];";
         displayName = "Default?";
         tooltip = "If checked, this option will be treated as already selected";
@@ -291,7 +291,7 @@ class CfgVehicles
     {
       class ObjectiveType: Combo
       {
-        property = "fnf_objectiveType"
+        property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
         typeName = "STRING";
@@ -304,7 +304,7 @@ class CfgVehicles
       };
       class ZoneKnown: Checkbox
       {
-        property = "fnf_zoneKnown"
+        property = "fnf_zoneKnown";
         expression = "_this setVariable ['fnf_zoneKnown',_value, true];";
         displayName = "Is hiding zone known";
         tooltip = "If checked, when object is in a linked hiding zone the zone it is in will have the task attached to it";
@@ -323,7 +323,7 @@ class CfgVehicles
     {
       class ObjectiveType: Combo
       {
-        property = "fnf_objectiveType"
+        property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
         typeName = "STRING";
@@ -336,7 +336,7 @@ class CfgVehicles
       };
       class Prefix: Edit
       {
-        property = "fnf_prefix"
+        property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
         typeName = "STRING";
@@ -344,7 +344,7 @@ class CfgVehicles
       };
       class TimeToCapture: Edit
       {
-        property = "fnf_TimeToCapture"
+        property = "fnf_TimeToCapture";
         expression = "_this setVariable ['fnf_TimeToCapture',_value, true];";
         displayName = "Time to Capture";
         typeName = "NUMBER";
@@ -362,7 +362,7 @@ class CfgVehicles
     {
       class ObjectiveType: Combo
       {
-        property = "fnf_objectiveType"
+        property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
         typeName = "STRING";
