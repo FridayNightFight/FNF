@@ -1,4 +1,5 @@
 if (isDedicated) exitWith {};
+test = allMapMarkers;
 
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 

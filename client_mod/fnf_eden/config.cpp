@@ -1,4 +1,4 @@
-class CfgPatches_value
+class CfgPatches
 {
   class fnf_eden
   {

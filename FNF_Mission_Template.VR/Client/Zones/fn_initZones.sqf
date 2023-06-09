@@ -11,6 +11,8 @@
 		None
 */
 
+if (not isNil "fnf_zoneList") exitWith {};
+
 //set up a list of all zones
 fnf_zoneList = [];
 

@@ -105,12 +105,10 @@ _maxTimeZoneIsDeleted = 0;
 
 if (_maxTimeZoneIsDeleted != 0) then
 {
-  _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
-
   fnf_timerMessage = "Safe Start Remaining: %1";
-  fnf_timerEndTime = (_timeServerStarted + (_maxTimeZoneIsDeleted * 60));
+  fnf_timerEndTime = _maxTimeZoneIsDeleted * 60;
 
-  _timeToNotify = (_timeServerStarted + (_maxTimeZoneIsDeleted * 60) - 300);
+  _timeToNotify = (_maxTimeZoneIsDeleted * 60) - 300;
 
   if (_timeToNotify > 0) then
   {
@@ -123,6 +121,10 @@ if (_maxTimeZoneIsDeleted != 0) then
         _result = time > _timeToNotify;
       } else {
         _result = (serverTime - _timeServerStarted) > _timeToNotify;
+      };
+      if (time < 1) then
+      {
+        _result = false;
       };
       _result;
     },{

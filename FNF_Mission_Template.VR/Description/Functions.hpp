@@ -5,7 +5,8 @@ class CfgFunctions
 		class root
 		{
 			file = "Client";
-			class init { postInit = 1; };
+			class init {};
+      class waitForInit { postInit = 1; };
 		};
 		class zones
 		{

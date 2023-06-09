@@ -15,10 +15,9 @@ params["_module"];
 disableSerialization;
 //Create displays in bottom left
 
-_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
 _MinutesToEnd = _module getVariable ["fnf_gameTime", 60];
 
-_defaultEndTime = (_timeServerStarted + (_MinutesToEnd * 60));
+_defaultEndTime = _MinutesToEnd * 60;
 _defaultMessage = "Mission Time Remaining: %1";
 
 [{
@@ -35,6 +34,10 @@ _defaultMessage = "Mission Time Remaining: %1";
   {
     _message = fnf_timerMessage;
   };
+
+  _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+
+  _timeToEnd = _timeToEnd + _timeServerStarted;
 
   _display = uiNameSpace getVariable ["timeleftStructText", "NOTFOUND"];
   if (_display isEqualTo "NOTFOUND") exitWith {};
@@ -57,13 +60,17 @@ false call FNF_ClientSide_fnc_showTimerInHUD;
 
 [{
   params["_defaultEndTime"];
-  _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+  _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];;
   _result = objNull;
   if (isServer and hasInterface) then
   {
     _result = time > (_defaultEndTime - 900);
   } else {
     _result = (serverTime - _timeServerStarted) > (_defaultEndTime - 900);
+  };
+  if (time < 1) then
+  {
+    _result = false;
   };
   _result;
 },{

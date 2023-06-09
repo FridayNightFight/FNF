@@ -290,11 +290,11 @@ if (playableSlotsNumber blufor > 0) then
   {
     player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
     [west, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{blufor countSide allPlayers > 0},{
+    [{blufor countSide (allPlayers select {alive _x}) > 0},{
       [west] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{blufor countSide allPlayers > 0},{
+    [{blufor countSide (allPlayers select {alive _x}) > 0},{
       player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
       [west] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
@@ -315,11 +315,11 @@ if (playableSlotsNumber opfor > 0) then
   {
     player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
     [east, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{east countSide allPlayers > 0},{
+    [{east countSide (allPlayers select {alive _x}) > 0},{
       [west] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{east countSide allPlayers > 0},{
+    [{east countSide (allPlayers select {alive _x}) > 0},{
       player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
       [east] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
@@ -340,11 +340,11 @@ if (playableSlotsNumber independent > 0) then
   {
     player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
     [independent, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{independent countSide allPlayers > 0},{
+    [{independent countSide (allPlayers select {alive _x}) > 0},{
       [west] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{independent countSide allPlayers > 0},{
+    [{independent countSide (allPlayers select {alive _x}) > 0},{
       player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
       [independent] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute

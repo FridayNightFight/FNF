@@ -31,7 +31,7 @@ _trueHostSelectorSet = false;
       continue;
     };
     //check if player should see safezone for other reasons
-    if (not isPlayer _x) then
+    if (typeOf _x == "fnf_module_selectorOption") then
     {
       _optionSyncedObjects = synchronizedObjects _x;
 

@@ -24,6 +24,10 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
   } else {
     _result = (serverTime - _timeServerStarted) > (_timeZoneIsDeleted * 60);
   };
+  if (time < 1) then
+  {
+    _result = false;
+  };
   _result;
 },{
   params["_zonePrefix", "_timeZoneIsDeleted"];

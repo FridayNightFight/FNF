@@ -27,16 +27,16 @@ _indiCount = 0;
 
   if ([_x, _zonePrefix] call FNF_ClientSide_fnc_isObjectInZone) then
   {
-    _side = side _x;
-    if (_side == west) then
+    _testSide = side _x;
+    if (_testSide == west) then
     {
       _westCount = _westCount + 1;
     };
-    if (_side == independent) then
+    if (_testSide == independent) then
     {
       _indiCount = _indiCount + 1;
     };
-    if (_side == east) then
+    if (_testSide == east) then
     {
       _eastCount = _eastCount + 1;
     };
