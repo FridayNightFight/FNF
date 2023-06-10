@@ -1,14 +1,14 @@
 if (!isServer) exitWith {};
 
-//start syncing timer for all players, important this is set up ASAP
-call FNF_ServerSide_fnc_syncTimer;
-
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found
 _initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _initModule == 0) exitWith {};
 if (count _initModule > 1) exitWith {};
+
+//start syncing timer for all players, important this is set up ASAP
+[_initModule select 0] call FNF_ServerSide_fnc_syncTimer;
 
 //setup fortify structures
 [_initModule select 0] call FNF_ServerSide_fnc_initFortify;
