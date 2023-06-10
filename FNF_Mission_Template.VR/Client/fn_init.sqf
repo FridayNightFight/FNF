@@ -132,3 +132,19 @@ if (not isNil "fnf_objectives") then
 player addEventHandler ["Killed", {
   [{call FNF_ClientSide_fnc_startSpectator;}, [], 3] call CBA_fnc_waitAndExecute;
 }];
+
+//handle if some one JIP and theres safezones whether they have expired
+if (count _safeZoneModules != 0 and didJIP) then
+{
+  [{
+    _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+    _timeServerStarted != 0;
+  },{
+    params["_safeZoneModules"];
+    _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
+    if (not _result) then
+    {
+      player setDamage 1;
+    };
+  }, _safeZoneModules] call CBA_fnc_waitUntilAndExecute;
+};

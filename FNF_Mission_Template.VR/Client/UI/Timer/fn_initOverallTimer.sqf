@@ -15,7 +15,7 @@ params["_module"];
 disableSerialization;
 //Create displays in bottom left
 
-_MinutesToEnd = _module getVariable ["fnf_gameTime", 60];
+_MinutesToEnd = _module getVariable ["fnf_gameTime", 65];
 
 _defaultEndTime = _MinutesToEnd * 60;
 _defaultMessage = "Mission Time Remaining: %1";

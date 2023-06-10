@@ -56,7 +56,7 @@ class CfgVehicles
         expression = "_this setVariable ['fnf_gameTime',_value, true];";
         displayName = "Time Limit";
         typeName = "NUMBER";
-				defaultValue = "60";
+				defaultValue = "65";
       };
       class ViewDistance: Edit
       {

@@ -58,6 +58,7 @@ class CfgFunctions
       file = "Client\Safezones";
       class initSafeZones {};
       class startSafeZoneTimer {};
+      class anyNonExpiredSafeZones {};
     };
     class modules
     {
