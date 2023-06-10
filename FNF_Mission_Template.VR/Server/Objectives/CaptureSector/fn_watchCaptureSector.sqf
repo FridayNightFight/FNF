@@ -43,15 +43,63 @@ _indiCount = 0;
   };
 } forEach allPlayers;
 
-if (not (_objective getVariable ["fnf_sector_westAttack",false]) and not (_objective getVariable ["fnf_sector_westDefend",false])) then
+_westAttack = false;
+_eastAttack = false;
+_indiAttack = false;
+
+_westDefend = false;
+_eastDefend = false;
+_indiDefend = false;
+
+{
+  if ((_x select 0) isNotEqualTo "CAPTURESECTOR") then {continue;};
+  _checkingZonePrefix = (_x select 2) getVariable ["fnf_prefix", "FAILED"];
+  if (_checkingZonePrefix != _zonePrefix) then {continue;};
+
+  _objSide = (_x select 1);
+
+  _objectiveType = (_x select 2) getVariable ["fnf_objectiveType", "FAILED"];
+
+  if (_objectiveType == "cap") then
+  {
+    if (_objSide == west) then
+    {
+      _westAttack = true;
+    };
+    if (_objSide == east) then
+    {
+      _eastAttack = true;
+    };
+    if (_objSide == independent) then
+    {
+      _indiAttack = true;
+    };
+  } else {
+    if (_objSide == west) then
+    {
+      _westDefend = true;
+    };
+    if (_objSide == east) then
+    {
+      _eastDefend = true;
+    };
+    if (_objSide == independent) then
+    {
+      _indiDefend = true;
+    };
+  };
+
+} foreach fnf_serverObjectives;
+
+if (not _westAttack and not _westDefend) then
 {
   _westCount = 0;
 };
-if (not (_objective getVariable ["fnf_sector_eastAttack",false]) and not (_objective getVariable ["fnf_sector_eastDefend",false])) then
+if (not _eastAttack and not _eastDefend) then
 {
   _eastCount = 0;
 };
-if (not (_objective getVariable ["fnf_sector_indiAttack",false]) and not (_objective getVariable ["fnf_sector_indiDefend",false])) then
+if (not _indiAttack and not _indiDefend) then
 {
   _indiCount = 0;
 };
@@ -99,21 +147,21 @@ _newTime = _currentTime;
 _attacking = false;
 if (_newOwner == west) then
 {
-  if (_objective getVariable ["fnf_sector_westAttack",false]) then
+  if (_westAttack) then
   {
     _attacking = true;
   };
 };
 if (_newOwner == east) then
 {
-  if (_objective getVariable ["fnf_sector_eastAttack",false]) then
+  if (_eastAttack) then
   {
     _attacking = true;
   };
 };
 if (_newOwner == independent) then
 {
-  if (_objective getVariable ["fnf_sector_indiAttack",false]) then
+  if (_indiAttack) then
   {
     _attacking = true;
   };
