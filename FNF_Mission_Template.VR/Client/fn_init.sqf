@@ -10,7 +10,7 @@ _initModule = _initModule select 0;
 fnf_debug = _initModule getVariable "fnf_debug";
 
 //restrict players vanilla actions
-call FNF_ClientSide_fnc_restrictPlayer;
+[_initModule] call FNF_ClientSide_fnc_restrictPlayer;
 
 //setup player radio stereo settings
 call FNF_ClientSide_fnc_initRadios;

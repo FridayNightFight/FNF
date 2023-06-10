@@ -623,7 +623,7 @@ class Cfg3DEN
     //KITS START HERE
     //#################################################################################################################################
 
-		class fnf_NATOUSArmy2020 // one class per composition
+		/*class fnf_NATOUSArmy2020 // one class per composition
 		{
 			path = "fnf_eden\kits_blufor\[NATO]USArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
 			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
@@ -650,7 +650,7 @@ class Cfg3DEN
 			displayName = "[INDFOR] Syrian Army (2020)";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
-    class fnf_INDFORSyrianArmy2020_opfor // one class per composition
+    /*class fnf_INDFORSyrianArmy2020_opfor // one class per composition
 		{
 			path = "fnf_eden\kits_indfor\[INDFOR]SyrianArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
 			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
@@ -667,8 +667,19 @@ class Cfg3DEN
 			editorSubcategory = "fnf_Blufor";				// link to CfgEditorSubcategories
 			displayName = "[INDFOR] Syrian Army (2020)";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};*/
+    class fnf_WW2Germany // one class per composition
+		{
+			path = "fnf_eden\kits_blufor\[WW2]Germany";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Blufor";				// link to CfgEditorSubcategories
+			displayName = "[WW2] Germany";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
 	};
+
+
 
   class Object
   {

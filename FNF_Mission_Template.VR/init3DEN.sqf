@@ -11,7 +11,15 @@
 		None
 */
 
+fnf_handelingSave = false;
+
 _addJIPitems = {
+  params ["_messageID"];
+  if (_messageID != 6) exitWith {};
+  if (fnf_handelingSave) exitWith {};
+
+  fnf_handelingSave = true;
+
   _currentItems = all3DENEntities;
   _objectsToLookAt = _currentItems select 0;
 
@@ -58,9 +66,24 @@ fnf_syncConnectionsComplete = fnf_syncConnectionsComplete + 1;"
     add3DENConnection ["Sync", _connectionItems, _logicAssignedToPlayer];
     remove3DENConnection ["Sync", _connectionItems, _x];
 
+    _unitsToDelete pushBack _logicAssignedToPlayer;
+
+    _unitsToConnect pushBack [_x, _connectionItems];
+
     _counter = _counter + 1;
   } forEach _unitsToProcess;
+
+  do3DENAction "MissionExportMP";
+
+  delete3DENEntities _unitsToDelete;
+
+  {
+    add3DENConnection ["Sync", _x select 1, _x select 0];
+  } forEach _unitsToConnect;
+
+  do3DENAction "MissionSave";
+
+  fnf_handelingSave = false;
 };
 
-add3DENEventHandler ["OnMissionSave", _addJIPitems];
-add3DENEventHandler ["OnMissionAutoSave", _addJIPitems];
+add3DENEventHandler ["OnMessage", _addJIPitems];

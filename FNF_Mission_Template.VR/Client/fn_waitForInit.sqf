@@ -1,3 +1,7 @@
+if (isDedicated) exitWith {};
+
+if (hasInterface and isServer) exitwith {call FNF_ClientSide_fnc_init;};
+
 [{
   _result = false;
   if (not isNil "fnf_syncConnectionsComplete") then
@@ -22,7 +26,6 @@
         };
       } forEach _remoteSync;
     } forEach _localSync;
-    systemChat "testing schema";
     {
       _x synchronizeObjectsAdd [player];
     } forEach (_localSync - _playerFoundAmount);

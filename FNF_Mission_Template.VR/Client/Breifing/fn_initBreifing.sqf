@@ -316,7 +316,7 @@ if (playableSlotsNumber opfor > 0) then
     player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
     [east, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
     [{east countSide (allPlayers select {alive _x}) > 0},{
-      [west] call (_this select 0);
+      [east] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
   } else {
     [{east countSide (allPlayers select {alive _x}) > 0},{
@@ -341,7 +341,7 @@ if (playableSlotsNumber independent > 0) then
     player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
     [independent, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
     [{independent countSide (allPlayers select {alive _x}) > 0},{
-      [west] call (_this select 0);
+      [independent] call (_this select 0);
     }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
   } else {
     [{independent countSide (allPlayers select {alive _x}) > 0},{
