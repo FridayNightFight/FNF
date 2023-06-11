@@ -1,0 +1,36 @@
+version=54;
+name="[WW2] Finnish Jaegers ";
+author="Mazz38";
+category="NORTH_NF_Misc";
+requiredAddons[]=
+{
+	"A3_Characters_F",
+	"NORTH_weapons_cfg",
+	"NORTH_opt_zoom_mod",
+	"NORTH_Misc_cfg",
+	"A3_Weapons_F",
+	"WW2_Assets_c_Weapons_InfantryWeapons_c",
+	"tfar_handhelds",
+	"H_NORTH_FIN_helmets",
+	"NF_FIN_Uniforms",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_microdagr",
+	"ace_vehiclelock",
+	"NORTH_Finnish_Gear",
+	"NF_explosives_cfg",
+	"ace_explosives",
+	"A3_Weapons_F_Explosives",
+	"ace_realisticnames",
+	"A3_Weapons_F_Orange",
+	"ace_fortify",
+	"ace_trenches",
+	"A3_Characters_F_Mark",
+	"ace_tripod",
+	"NORTH_FIN_caps",
+	"RSPN_Assets",
+	"fnf_eden",
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging"
+};

@@ -35,7 +35,6 @@ _viewDistance = _initModule getVariable ["fnf_viewDistance", 1000];
 
 [{
   params["_viewDistance"];
-  systemChat str(_viewDistance);
 
   if (!alive player) exitWith {};
 
