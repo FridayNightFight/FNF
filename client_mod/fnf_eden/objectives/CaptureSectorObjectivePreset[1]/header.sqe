@@ -1,0 +1,10 @@
+version=54;
+name="Capture Sector Objective Preset [ 1 ]";
+author="Mallen";
+category="EdSubcat_Default";
+requiredAddons[]=
+{
+	"fnf_eden",
+	"A3_Modules_F",
+	"A3_Ui_F"
+};
