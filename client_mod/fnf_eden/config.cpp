@@ -2,7 +2,7 @@ class CfgPatches
 {
   class fnf_eden
   {
-    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_sectorHoldObj"};
+    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_teleportPoles", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_sectorHoldObj"};
     weapons[] = {};
     requiredVersion = 0.1;
     requiredAddons[] = {"A3_Modules_F", "cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
@@ -194,6 +194,24 @@ class CfgVehicles
       };
     };
 	};
+  class fnf_module_teleportPoles: Module_F
+  {
+    author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "FNF Teleport Poles";
+    scope = 2;
+    class Attributes: AttributesBase
+    {
+      class TimeToBeDeleted: Edit
+      {
+        property = "fnf_timePolesAreDeleted";
+        expression = "_this setVariable ['fnf_timePolesAreDeleted',_value, true];";
+        displayName = "Time until Poles is Deleted";
+        typeName = "NUMBER";
+				defaultValue = "15";
+      };
+    };
+  };
   class fnf_module_hidingZone: Module_F
 	{
 		author = "Mallen";
@@ -427,6 +445,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Hiding Zones";
 	};
+  class fnf_TeleportPoles
+	{
+		displayName = "Teleport Poles";
+	};
 };
 
 class Cfg3DEN
@@ -576,6 +598,36 @@ class Cfg3DEN
 			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
 			editorSubcategory = "fnf_SafeZones";				// link to CfgEditorSubcategories
 			displayName = "(Opfor) Safe Zone Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    //teleports
+
+    class fnf_BluforTeleportPole // one class per composition
+		{
+			path = "fnf_eden\systems\(Blufor)TeleportPolePreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_TeleportPoles";				// link to CfgEditorSubcategories
+			displayName = "(Blufor) Teleport Pole Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_OpforTeleportPole // one class per composition
+		{
+			path = "fnf_eden\systems\(Opfor)TeleportPolePreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_TeleportPoles";				// link to CfgEditorSubcategories
+			displayName = "(Opfor) Teleport Pole Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_IndforTeleportPole // one class per composition
+		{
+			path = "fnf_eden\systems\(Indfor)TeleportPolePreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_TeleportPoles";				// link to CfgEditorSubcategories
+			displayName = "(Indfor) Teleport Pole Preset";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
 

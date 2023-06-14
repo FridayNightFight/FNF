@@ -18,6 +18,9 @@ call FNF_ClientSide_fnc_initRadios;
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
+//mark custom things
+call FNF_ClientSide_fnc_markEditorPlacedObjects;
+
 //init Overall Timer
 [_initModule] call FNF_ClientSide_fnc_initOverallTimer;
 
@@ -71,6 +74,13 @@ if (count _safeZoneModules == 0) then
   call FNF_ClientSide_fnc_disableFortify;
 } else {
   [_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
+};
+
+//check there are teleport poles
+_teleportModules = [_modules, "teleportPoles"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _teleportModules != 0) then
+{
+  [_teleportModules] call FNF_ClientSide_fnc_initTeleportPoles;
 };
 
 //check there are selectors
