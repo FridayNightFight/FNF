@@ -6,7 +6,14 @@ if (hasInterface and isServer) exitwith {call FNF_ClientSide_fnc_init;};
   _result = false;
   if (not isNil "fnf_syncConnectionsComplete") then
   {
-    if (fnf_syncConnectionsComplete == count (allMissionObjects "man")) then
+    _count = 0;
+    {
+      if (typeOf _x != "ace_spectator_virtual") then
+      {
+        _count = _count + 1;
+      };
+    } forEach (allMissionObjects "man");
+    if (fnf_syncConnectionsComplete == _count) then
     {
       _result = true;
     };
