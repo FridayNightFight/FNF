@@ -51,6 +51,11 @@
         ("FNF_spectatorUI" call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
       };
 
+      // Clear all controls if spectator UI is not visible
+      if (!ace_spectator_uiVisible) then {
+        _nbr = FNF_RSC_TEXT_1;
+      };
+
       // Clear the rest of the controls showing
       while {_nbr <= FNF_RSC_TEXT_4} do {
         private _control = _dialog displayCtrl _nbr;
