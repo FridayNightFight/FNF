@@ -100,6 +100,7 @@ class CfgFunctions
       file = "Client\Spectator";
       class startSpectator {};
       class initSpectatorSlot {};
+      class spectatorUIhandler {};
     };
     class hidingZones
     {

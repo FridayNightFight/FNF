@@ -13,3 +13,5 @@
 
 params["_modules"]
 
+// Start spectator interface rendering
+("FNF_spectatorUI" call BIS_fnc_rscLayer) cutRsc ["spectatorSideNumbers", "PLAIN"];
