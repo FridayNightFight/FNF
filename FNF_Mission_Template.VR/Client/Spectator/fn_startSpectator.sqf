@@ -20,3 +20,5 @@ if (!isNull _lastDamage) then {
 } else {
   [2, player] call ace_spectator_fnc_setCameraAttributes;
 };
+
+("FNF_spectatorUI" call BIS_fnc_rscLayer) cutRsc ["spectatorSideNumbers", "PLAIN"];
