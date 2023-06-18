@@ -42,13 +42,19 @@ _addJIPitems = {
     _logicAssignedToPlayer set3DENAttribute ["name", "fnf_handleJIPLogic_" + str(_counter)];
 
     _x set3DENAttribute ["init",
-"if (isNil 'fnf_syncConnectionsComplete') then
-{
-  fnf_syncConnectionsComplete = 0;
-};
+"if (not isServer) exitWith {};
+diag_log ['started sync for player " + str(_counter) + "', this, 'fnf_handleJIPLogic_" + str(_counter) + "'];
 _syncedObjects = synchronizedObjects fnf_handleJIPLogic_" + str(_counter) + ";
 this synchronizeObjectsAdd _syncedObjects;
-fnf_syncConnectionsComplete = fnf_syncConnectionsComplete + 1;"
+{
+  _x synchronizeObjectsAdd [this];
+} forEach _syncedObjects;
+[{
+  owner (_this select 0) != clientOwner;
+},{
+  diag_log ['finished sync for player " + str(_counter) + "'];
+  FNF_ClientSide_fnc_init remoteExec ['call', owner (_this select 0)];
+}, [this]] call CBA_fnc_waitUntilAndExecute"
     ];
 
     _connections = get3DENConnections _x;

@@ -60,6 +60,11 @@ class CfgFunctions
       class startSafeZoneTimer {};
       class anyNonExpiredSafeZones {};
     };
+    class teleportPoles
+    {
+      file = "Client\TeleportPoles";
+      class initTeleportPoles {};
+    };
     class modules
     {
       file = "Client\Modules";
@@ -70,6 +75,7 @@ class CfgFunctions
     {
       file = "Client\UI";
       class notificationSystem {};
+      class markEditorPlacedObjects {};
     };
     class pauseMenu
     {

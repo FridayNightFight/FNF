@@ -18,6 +18,9 @@ call FNF_ClientSide_fnc_initRadios;
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
+//mark custom things
+call FNF_ClientSide_fnc_markEditorPlacedObjects;
+
 //init Overall Timer
 [_initModule] call FNF_ClientSide_fnc_initOverallTimer;
 
@@ -71,6 +74,13 @@ if (count _safeZoneModules == 0) then
   call FNF_ClientSide_fnc_disableFortify;
 } else {
   [_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
+};
+
+//check there are teleport poles
+_teleportModules = [_modules, "teleportPoles"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _teleportModules != 0) then
+{
+  [_teleportModules] call FNF_ClientSide_fnc_initTeleportPoles;
 };
 
 //check there are selectors
@@ -136,15 +146,24 @@ player addEventHandler ["Killed", {
 //handle if some one JIP and theres safezones whether they have expired
 if (count _safeZoneModules != 0 and didJIP) then
 {
-  [{
-    _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
-    _timeServerStarted != 0;
-  },{
-    params["_safeZoneModules"];
+  if (missionNamespace getVariable ["fnf_startTime", 0] != 0) then
+  {
     _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
     if (not _result) then
     {
       player setDamage 1;
     };
-  }, _safeZoneModules] call CBA_fnc_waitUntilAndExecute;
+  } else {
+    [{
+      _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+      _timeServerStarted != 0;
+    },{
+      params["_safeZoneModules"];
+      _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
+      if (not _result) then
+      {
+        player setDamage 1;
+      };
+    }, _safeZoneModules] call CBA_fnc_waitUntilAndExecute;
+  };
 };
