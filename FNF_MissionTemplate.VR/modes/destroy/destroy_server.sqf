@@ -1,0 +1,194 @@
+//Only run server-side
+if (!isServer) exitWith {};
+
+#include "..\..\mode_config\destroy.sqf"
+
+//Init vars
+_taskCount = 1;
+fnf_aliveObjectives = 0;
+
+//Create array of objectives and global var for use in other scripts
+_objArr = [_obj1,_obj2,_obj3];
+fnf_destroyObjs = [_obj1 select 0, _obj2 select 0, _obj3 select 0];
+
+//Delete pre-made objectives if not using
+{
+  _obj = _x;
+  if (_objArr findIf {_x select 0 == _obj} == -1) then {
+    deleteVehicle _x;
+    deleteMarker ((str _x) + "_mark");
+  };
+} forEach [destroy_obj_1, destroy_obj_2];
+
+// position briefing table view on marker offset rather than direct on objective pos
+fnf_briefingTable_highlightAreas = []; // contains places that should be highlighted with a sphere
+private _objectives = [];
+{
+  _objectives pushBack [format["Objective %1", _forEachIndex + 1], markerPos ((str _x) + "_mark")];
+  fnf_briefingTable_highlightAreas pushBack [markerPos ((str _x) + "_mark"), markerSize ((str _x) + "_mark")];
+} forEach (fnf_destroyObjs select {!isNull _x});
+[_objectives] call fnf_briefing_fnc_setupTables;
+publicVariable "fnf_briefingTable_highlightAreas";
+
+fnf_specObjectives = fnf_destroyObjs select {!isNull _x};
+publicVariable "fnf_specObjectives";
+
+//Set objective marker to defending side color
+{
+  _obj = _x select 0;
+  _marker = _x select 1;
+
+  switch (fnf_defendingSide) do {
+    case east: {_marker setMarkerColor "ColorEAST"};
+    case west: {_marker setMarkerColor "ColorWEST"};
+    case independent: {_marker setMarkerColor "ColorGUER"};
+    default {_marker setMarkerColor "ColorCIV"};
+  };
+
+} forEach _objArr;
+
+fnf_destroy_server_fnc_registerHit = {
+  params ["_object","_hitValue","_explosive"];
+
+  _hitValue = round _hitValue;
+  private _needsExplosive = _object getVariable ["hitNeeded",0] >= 1000;
+  private _nonExpThreshold = 1000; //How much damage is required for non-explosive damage to register on a large object
+  private _maxNonExpDmg = 1500; //The maximum amount of damage a non-explosive hit can do
+
+  if (_needsExplosive && !_explosive && _hitValue < _nonExpThreshold) exitWith {};
+  if (_needsExplosive && !_explosive && _hitValue >= _nonExpThreshold) then {_hitValue = _maxNonExpDmg};
+
+  _object setVariable ["hitValue", (_object getVariable ["hitValue",0]) + _hitValue];
+};
+
+_destroy_server_fnc_damageTest = {
+  private _object = _this;
+  private _damageChanged = false;
+  private _sizeRatio = 450;
+  private _minDamage = 100;
+  private _maxDamage = 13000;
+
+  //Check if object can be damaged
+  _canDamage = if (getText (configfile >> "CfgVehicles" >> typeOf _object >> "destrType") == "DestructNo") then {false} else {true};
+
+  //Set hit value needed for destruction and start custom damage system on clients for objects that cannot be damaged normally
+  if (!_canDamage) then {
+    _object setVariable ["hitValue", 0];
+    _object setVariable ["hitNeeded", round (_maxDamage min (((0 boundingBoxReal _object) select 2) * _sizeRatio))];
+
+    if (_object getVariable ["hitNeeded",0] < _minDamage) then {_object setVariable ["hitNeeded",_minDamage]};
+
+    [_object] remoteExec ["fnf_server_fnc_customDamage",0,true];
+
+    systemChat format ["Using custom damage system for objective %1.", _object];
+  };
+};
+
+
+//Increase fnf_aliveObjectives for each active objective and conduct damage test
+{
+  private _obj = _x select 0;
+
+  if !(isNull _obj) then {
+    fnf_aliveObjectives = fnf_aliveObjectives + 1;
+
+    //Test if object is damageable. If not, use custom damage system
+    _obj call _destroy_server_fnc_damageTest;
+
+    //Reduce damage if obj is default cache
+    if (typeOf _obj isEqualTo "Box_FIA_Ammo_F") then {
+      _obj addEventHandler ["HandleDamage", {
+        _unit = _this select 0;
+        _selection = _this select 1;
+        _damage = _this select 2;
+
+        if (_selection == "?") exitWith {};
+
+        _curDamage = damage _unit;
+        if (_selection != "") then {_curDamage = _unit getHit _selection};
+        _newDamage = _damage - _curDamage;
+
+        _damage - _newDamage * 0.8;
+      }];
+    };
+  };
+} forEach _objArr;
+
+//Tasks and task handlers
+{
+  if !(isNull (_x select 0)) then {
+    _attackersTaskText = "Search for and destroy the ";
+
+    _defendTaskID = "defendTask" + str _taskCount;
+    _attackTaskID = "attackTask" + str _taskCount;
+
+    private _itemConfig = [_x # 0] call CBA_fnc_getObjectConfig;
+    private _itemPic = [_itemConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+    private _itemName = getText (_itemConfig >> "DisplayName");
+    if (_x select 2 != "") then {_itemName = _x select 2};
+
+    [fnf_defendingSide,_defendTaskID,[format["<img image='%1' width='300'>", _itemPic],format ["Defend the %1",_itemName],_x select 1],_x select 0,"CREATED"] call BIS_fnc_taskCreate;
+    [fnf_attackingSide,_attackTaskID,[format["<img image='%1' width='300'>", _itemPic],format [_attackersTaskText + "%1",_itemName],_x select 1],getMarkerPos (_x select 1),"CREATED"] call BIS_fnc_taskCreate;
+
+    [(_x select 0), -1] call ace_cargo_fnc_setSize;
+
+    //Check for alive objective
+    [_x select 0, _x select 1, _defendTaskID, _attackTaskID, _taskCount] spawn {
+      params ["_object","_markerName","_defendTaskID","_attackTaskID", "_taskCount"];
+
+      waitUntil {!(alive _object) || (_object getVariable ["hitValue",-1]) >= (_object getVariable ["hitNeeded",0])};
+
+      [_defendTaskID, "FAILED", true] call BIS_fnc_taskSetState;
+      [_attackTaskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+
+
+      [format["Objective %1 has been destroyed!", _taskCount], "info", 7] remoteExec ["fnf_ui_fnc_notify",0,false];
+
+      if (_object getVariable ["hitValue",-1] > 0) then {deleteVehicle _object};
+
+      fnf_aliveObjectives = fnf_aliveObjectives - 1;
+      [_markerName] remoteExec ["deleteMarkerLocal",0,true];
+    };
+
+    //Handle moving objective
+    [_x select 0,_x select 1,_attackTaskID] spawn {
+      _obj = _this select 0;
+      _marker = _this select 1;
+      _attackTaskID = _this select 2;
+      _objMarkerUpdateTime = 10; //Change this value to however often you want the objective markers to update (seconds)
+      _objMaxDistance = selectMin (getMarkerSize _marker);
+
+      //Sets marker position to a random area around the objective, keeping the objective inside the marker
+      if !(_obj inArea _marker) then {
+        _marker setMarkerPos ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
+      };
+      [_attackTaskID, _marker] call BIS_fnc_taskSetDestination;
+
+      //Loop over objective position every _objMarkerUpdateTime
+      //If objective moves more than _objMaxDistance meters away from it's last known position, the objective marker will update
+      while {alive _obj} do {
+        if !(_obj inArea _marker) then {
+          //Move the objective marker to a random position around the objective, while keeping the objective inside the marker's area
+          _newPos = ([[[position _obj,(_objMaxDistance * random [0.1,0.7,1])]],[]] call BIS_fnc_randomPos);
+          _marker setMarkerPosLocal _newPos;
+          _marker setMarkerAlphaLocal 1;
+
+          [_marker,_newPos] remoteExec ["setMarkerPosLocal",fnf_attackingSide,_obj];
+          [_attackTaskID, _marker] call BIS_fnc_taskSetDestination;
+        };
+        sleep _objMarkerUpdateTime;
+      };
+    };
+
+    _taskCount = _taskCount + 1;
+  };
+} forEach _objArr;
+
+//Check for win condition and end game if all objectives are destroyed
+waitUntil {uiSleep 1; fnf_aliveObjectives < 1 && !fnf_gameEnd};
+
+//Send var to other scripts and clients to signal that the game has ended
+fnf_gameEnd = true;
+publicVariable "fnf_gameEnd";
+
+[fnf_attackingSide, "has successfully destroyed all objectives and won!"] spawn fnf_server_fnc_gameEnd;

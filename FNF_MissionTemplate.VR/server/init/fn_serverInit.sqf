@@ -1,0 +1,341 @@
+if (!isServer) exitWith {};
+
+missionNamespace setVariable [
+  "TFAR_DefaultRadio_Personal_Guer",
+  TFAR_DefaultRadio_Personal_Independent,
+  true
+];
+missionNamespace setVariable [
+  "TFAR_DefaultRadio_Backpack_Guer",
+  TFAR_DefaultRadio_Backpack_Independent,
+  true
+];
+
+fnf_safeZones = [
+  ["STD_WEST", [
+    "west_safeZone_marker_"
+  ]],
+  ["STD_EAST", [
+    "east_safeZone_marker_"
+  ]],
+  ["STD_GUER", [
+    "guer_safeZone_marker_"
+  ]],
+  ["SA_WEST", [
+    "safeZone_BLUFOR_marker",
+    "rally_west_marker"
+  ]],
+  ["SA_EAST", [
+    "safeZone_OPFOR_marker",
+    "rally_east_marker"
+  ]],
+  ["SA_GUER", [
+    "safeZone_Independent_marker",
+    "rally_independent_marker"
+  ]]
+];
+publicVariable "fnf_safeZones";
+
+// Is this a night mission?
+private _sunrise = (date call BIS_fnc_sunriseSunsetTime) select 0;
+private _sunset = (date call BIS_fnc_sunriseSunsetTime) select 1;
+if (fnf_isNightMission isEqualTo -1) then {
+  missionNamespace setVariable ["fnf_environment_isDaytime", dayTime > _sunrise && dayTime < _sunset, true];
+} else {
+  missionNamespace setVariable ["fnf_environment_isDaytime", [true, false] select fnf_isNightMission, true];
+};
+
+estimatedTimeLeft (60 * (fnf_safeStartTime + fnf_missionTimeLimit));
+
+call fnf_server_fnc_safety;
+call fnf_briefing_fnc_setGroupIDs;
+call fnf_server_fnc_genRadioFreqs;
+call fnf_server_fnc_sendUniforms;
+call fnf_server_fnc_fortifyServer;
+call fnf_server_fnc_markCustomObjs;
+call fnf_admin_fnc_serverCommands;
+
+call fnf_server_fnc_setupGame;
+call fnf_server_fnc_newPlayers;
+
+
+[{getClientStateNumber >= 8}, {
+  #define MISSIONVICS (entities[["Air", "Truck", "Car", "Motorcycle", "Tank", "StaticWeapon", "Ship"], [], false, true] select {(_x call BIS_fnc_objectType select 0) == "Vehicle"})
+  // put vehicles into a hashmap based on who they belong to (if anyone)
+  _vehicles = [["BLU",[]],["OPF",[]],["IND",[]],["OTHER",[]]];
+  {
+    private _vehicle = _x;
+    if (isNull _vehicle) then {continue};
+    switch (true) do {
+      case ([_vehicle, west] call fnf_fnc_inSafeZone): {
+        [_vehicles, "BLU", _vehicle] call BIS_fnc_addToPairs;
+      };
+      case ([_vehicle, east] call fnf_fnc_inSafeZone): {
+        [_vehicles, "OPF", _vehicle] call BIS_fnc_addToPairs;
+      };
+      case ([_vehicle, independent] call fnf_fnc_inSafeZone): {
+        [_vehicles, "IND", _vehicle] call BIS_fnc_addToPairs;
+      };
+      default {
+        [_vehicles, "OTHER", _vehicle] call BIS_fnc_addToPairs;
+      };
+    };
+  } forEach MISSIONVICS;
+
+  missionNamespace setVariable ["fnf_vehiclesToProcess", _vehicles, true];
+}] call CBA_fnc_waitUntilAndExecute;
+
+// after custom building markers are up, recreate safe markers so they're on top and visible
+[
+  {
+    missionNamespace getVariable ["fnf_markCustomObjs_ready", false] &&
+    missionNamespace getVariable ["fnf_serverSetupGame", false] &&
+    !isNil "fnf_vehiclesToProcess"
+  }, {
+    call fnf_server_fnc_markSafeZoneAssets;
+    missionNamespace setVariable ["fnf_markCustomObjs_done", true, true];
+}] call CBA_fnc_waitUntilAndExecute;
+
+[{!isNil "fnf_vehiclesToProcess"}, {
+  call fnf_server_fnc_keyVehicles;
+  call fnf_server_fnc_vehicleRadios;
+}] call CBA_fnc_waitUntilAndExecute;
+
+
+
+//Create map cover for zone boundary
+if (!isNil "zoneTrigger") then {
+  // if zoneTrigger exists, use standard functionality
+  private _zoneArea = triggerArea zoneTrigger;
+  zoneTrigger setVariable ["objectArea", [_zoneArea select 0, _zoneArea select 1, _zoneArea select 2]];
+  [zoneTrigger,[],true] call BIS_fnc_moduleCoverMap;
+};
+
+if !(fnf_gameMode == "sustainedAssault") then {
+  // Create respawn markers in bottom left corner of map
+  {
+    private _marker = createMarker [_x, [-1000,-1000,0]];
+    _marker setMarkerShape "ICON";
+    _marker setMarkerType "Empty";
+  } forEach ["respawn","respawn_west","respawn_east","respawn_guerrila","respawn_civilian"];
+
+  [{!(missionNamespace getVariable ["fnf_safetyEnabled",true])}, {call fnf_server_fnc_checkAlive}] call CBA_fnc_waitUntilAndExecute;
+  [{!isNil "fnf_safetyEndTime"}, {call fnf_server_fnc_checkTime}] call CBA_fnc_waitUntilAndExecute;
+};
+
+// turn on collision lights for air vehicles if it's night
+{
+  if ((getLightingAt _x) select 1 <= 1500) then {
+    [_x, true] remoteExecCall ["setCollisionLight", _x];
+  };
+} forEach (entities[["Air"], [], false, true]);
+
+// Clear vehicle inventories
+["All", "InitPost", {
+  private _vic = (_this select 0);
+  if (_vic isKindOf "Man" || typeOf _vic == "WeaponHolderSimulated") exitWith {}; //Exit so the code below doesn't run for infantry units
+
+  _objectType = _vic call BIS_fnc_objectType;
+  _objectType = _objectType select 1;
+
+  if (_vic getVariable ["fnf_clearInventory", true] && !(_objectType == "Ammobox")) then {
+    clearBackpackCargoGlobal _vic;
+    clearWeaponCargoGlobal _vic;
+    clearItemCargoGlobal _vic;
+    clearMagazineCargoGlobal _vic;
+  };
+}, true, ["CAManBase", "Static"], true] call CBA_fnc_addClassEventHandler;
+
+// Disable sensors
+["Air", "InitPost", {
+  private _vic = (_this select 0);
+  private _sensors = listVehicleSensors _vic;
+  if (count _sensors > 0) then {
+    _sensors = _sensors apply {if (typeName _x == "ARRAY") then {_x # 0} else {_x}};
+    {_vic enableVehicleSensor [_x, false]} forEach _sensors;
+  };
+}, true, [], true] remoteExec ["CBA_fnc_addClassEventHandler", 0, true];
+
+
+// OBJECT AND FORTIFY MANAGEMENT FOR BRIEFING TABLES
+
+// listen for fortify events, catalogue them for exclusion in object overviews
+missionNamespace setVariable ["fnf_placedFortifications", [], true];
+["acex_fortify_objectPlaced", {
+  params ["_placer", "_side", "_object"];
+  _object setVariable ["fnf_isFortifyObject", true, true];
+}] call CBA_fnc_addEventHandler;
+
+fnf_briefingTable_buildingChangedEH = addMissionEventHandler ["BuildingChanged", {
+	params ["_from", "_to", "_isRuin"];
+  private _ogModel = _from getVariable ["originalModel", ""];
+  if (_ogModel isEqualTo "") then {
+    _to setVariable ["originalModel", (getModelInfo _from)#1, true];
+  } else {
+    _to setVariable ["originalModel", _ogModel];
+  };
+  // "debug_console" callExtension str([_from, _to, _to getVariable "originalModel"]);
+}];
+[{!(missionNamespace getVariable ["fnf_safetyEnabled", true])}, {
+  removeMissionEventHandler ["BuildingChanged", fnf_briefingTable_buildingChangedEH];
+}] call CBA_fnc_waitUntilAndExecute;
+
+["TeamkillDetected", {
+  params ["_killed", "_killer"];
+
+  if !(isClass (configFile >> "CfgPatches" >>  "CAU_DiscordEmbedBuilder")) exitWith {diag_log text "Failed to send Teamkill webhook -- mod not loaded!"};
+  if (count allPlayers < 14) exitWith {diag_log text "Less than 14 players connected -- skipping TeamKill Notification Discord post"};
+
+  private _systemTimeFormat = ["%1-%2-%3 %4:%5:%6"];
+  _systemTimeFormat append (systemTimeUTC apply {if (_x < 10) then {"0" + str _x} else {str _x}});
+  private _inVehicle = "N/A";
+  if (vehicle _killer != _killer) then {
+    _inVehicle = getText(configFile >> "CfgVehicles" >> (typeOf (vehicle _killer)) >> "displayName");
+  };
+
+  private _killerOrgGroup = groupId (group _killer);
+  if ((roleDescription _killer) find '@' > -1) then {
+    _killerOrgGroup = (roleDescription _killer) splitString '@' select 1;
+  };
+  private _killedOrgGroup = groupId (group _killed);
+  if ((roleDescription _killed) find '@' > -1) then {
+    _killedOrgGroup = (roleDescription _killed) splitString '@' select 1;
+  };
+
+  [
+    "BotNotifications",
+    // "Testing",
+    "",
+    "",
+    "",
+    false,
+    [
+      [
+        format["TEAMKILL [%1]",[side (group _killer)] call BIS_fnc_sideName],
+        format[
+          "KILLER: `%1 (%2)`
+VICTIM: `%4 (%5)`
+VEH: %3 | WEP: `%6` | RNG: `%7m`
+ELAPSED: `%8`
+UTC: `%9`
+MISSION: `%10`",
+          name _killer,
+          // groupId (group _killer),
+          _killerOrgGroup,
+          format["`%1`", _inVehicle],
+          name _killed,
+          // groupId (group _killed),
+          _killedOrgGroup,
+          getText(configFile >> "CfgWeapons" >> (weaponState _killer select 0) >> "displayName"),
+          str(ceil(_killer distance _killed)),
+          cba_missionTime,
+          format _systemTimeFormat,
+          missionName
+        ],
+        "",
+        "00FF00",
+        false,
+        "",
+        "",
+        [],
+        [],
+        []
+      ]
+    ]
+	] call DiscordEmbedBuilder_fnc_buildSqf;
+}] call CBA_fnc_addEventHandler;
+
+// Staff channel
+fnf_adminChannelId = radioChannelCreate [
+	[1,1,0,1], // RGBA color
+	"Staff Channel", // channel name
+	"[STAFF] %UNIT_SIDE %UNIT_GRP_NAME %UNIT_NAME", // callsign
+  allPlayers select {getPlayerUID _x in fnf_staffInfo}
+];
+publicVariable "fnf_adminChannelId";
+
+addMissionEventHandler ["PlayerConnected", {
+  if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerConnected", _thisEventHandler]};
+
+  [{!isNull ((_this # 1) call BIS_fnc_getUnitByUid)}, {
+    params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+    if !(missionNamespace getVariable ["fnf_safetyEnabled",true]) exitWith {};
+    if (!_jip) exitWith {};
+    private _unit = (_uid call BIS_fnc_getUnitByUid);
+    private _sides = _unit call BIS_fnc_friendlySides select {_x != sideFriendly};
+    [{
+      params [["_unit", objNull], ["_sides", [sideUnknown]]];
+      {
+        [] remoteExec ["fnf_briefing_fnc_createOrbat", units _x];
+      } forEach _sides;
+    }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
+  }, _this] call CBA_fnc_waitUntilAndExecute;
+}];
+
+addMissionEventHandler ["PlayerDisconnected", {
+  if !(missionNamespace getVariable ["fnf_safetyEnabled", true]) exitWith {removeMissionEventHandler ["PlayerDisconnected", _thisEventHandler]};
+
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+  private _unit = (_uid call BIS_fnc_getUnitByUid);
+  private _sides = _unit call BIS_fnc_friendlySides select {_x != sideFriendly};
+  [{
+    params [["_unit", objNull], ["_sides", [sideUnknown]]];
+    {
+      [] remoteExec ["fnf_briefing_fnc_createOrbat", units _x];
+    } forEach _sides;
+  }, [_unit, _sides], 5] call CBA_fnc_waitAndExecute;
+}];
+
+//Delete player bodies during safe start
+fnf_server_disconnectBodies = addMissionEventHandler ["HandleDisconnect", {
+	params ["_unit", "_id", "_uid", "_name"];
+
+  if (missionNamespace getVariable ["fnf_safetyEnabled", true]) then {
+    deleteVehicle _unit;
+  } else {
+    //Not needed with ace_respawn_removeDeadBodiesDisconnected = false
+    //After safety ends, keep player bodies by transfering ownership of the unit to the server and then killing it
+    //[{owner (_this select 0) == 2}, {(_this select 0) setDamage 1;}, [_unit], 15] call CBA_fnc_waitUntilAndExecute;
+    //true;
+  };
+}];
+
+// Receives event when a player submits a report
+// Determines logged-in admin and sends Discord embed with contents of report and the admin @'ed
+fnfAdminMessageReceiver = ["fnfAdminMessageServer", {
+  private _arr = +_this;
+
+  _loggedInAdmins = allPlayers select {
+    (admin owner _x) isEqualTo 2 &&
+    (getPlayerUID _x) in fnf_staffInfo;
+  };
+  private _adminDiscordID = "";
+  if (count _loggedInAdmins > 0) then {
+    _loggedInAdmin = fnf_staffInfo get (getPlayerUID (_loggedInAdmins # 0));
+    _adminDiscordID = _loggedInAdmin # 1;
+    _arr set [0, _adminDiscordID];
+  } else {
+    _arr set [0, ""];
+  };
+
+  //re-org for python script
+
+  _url = ["fnf.grabURL.getAdminURL", []] call py3_fnc_callExtension;
+
+  ["fnf.adminAction", [
+    _arr select 0,
+    _arr select 1,
+    _arr select 2,
+    _arr select 3,
+    _arr select 4,
+    _arr select 5,
+    _arr select 6,
+    _arr select 7,
+    _arr select 8,
+    _url
+  ]] call py3_fnc_callExtension;
+
+}] call CBA_fnc_addEventHandler;
+
+// Let clients know that server is done setting up
+missionNamespace setVariable ["fnf_serverGameSetup",true,true];

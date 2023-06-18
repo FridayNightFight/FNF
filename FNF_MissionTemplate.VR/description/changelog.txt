@@ -1,0 +1,271 @@
+3.6.8
+1. Misc bug fixes
+
+3.6.7
+1. Misc bug fixes
+2. Added MANY new kits
+3. Switched RPK ammo to 7N10 to bring inline with TTK of AK74
+4. Switched SVD ammo to 7N14 to increase 1 hit headshot kill chance
+5. Medical settings have been tweaked to increase bleedout and decrease TTU (Time to unconscious)
+
+3.6.6
+1. Misc bug fixes
+
+3.6.5
+1. Kit updates for: Bundeswehr, AAF, Spetsnaz, Marines
+2. Fixed a critical bug regarding spectators not loading correctly
+
+3.6.4
+1. Players can now be respawned when joining after safe start ends
+2. Added potential 4th sector to neutral sector
+3. Added new loadouts: RHS_UNI_RO_ARMY_1980, RHS_UNI_CZ_ARMY_1980, RHS_UNI_PL_ARMY_1980, RHS_UNI_NATO_US_MARINES_WINTER_2020, RHS_UNI_RU_RATNIK_WINTER_2020
+
+3.6.3
+1. Switched discord message system to use Python making it work on Linux and Windows
+
+3.6.2
+1. Various bug fixes related to custom zones
+
+3.6.1
+1. Various Bug fixes
+2. Default amount of White smoke grenades changed from 3 to 2
+
+3.6.0
+1. Added a shaded region around irregular play zones
+2. Added custom safezones
+3. Stamina has been changed to be more similar to before original stamina changes for Early segment only
+4. Smokes have been made more volumness and therefor more effective
+
+3.5.4
+1. Fixed sw radio config override not working
+2. Fixed JIP spectator groups being shown on map
+3. Few fixes for Vietnam loadouts
+
+3.5.3
+1. Added multiple new kits for vietnam
+
+3.5.2
+1. Fixed an issue that overwrote performance settings unintentionally
+
+3.5.1
+1. Miscellaneous tweaks and fixes.
+
+3.5.0
+1. ORBAT change. https://i.imgur.com/ENWAoF1.png
+2. Added Ammo Bearer role. A rifleman with extra rifle and AR magazines.
+3. Medics now have more equipment.
+4. Restricted the ACE team management menu interaction (join group) unless safe start is disabled and there's been at least one friendly death (combat has started). Players in HQ groups are exempted from this restriction.
+5. Individual unit icons will no longer be shown on the map and GPS. Only group icons will be displayed. These settings can be controlled via mission parameters.
+6. Switched to ACE BFT system for group marking.
+7. The ACE fatigue system has been changed to increase recovery time, along with increases to load factor and weapon sway.
+8. Removed GLs from CC, PL and SL roles.
+9. The sergeant role now has a few HE grenades and a full smoke loadout.
+10. Reduced the amount of HE grenades given to grenadiers and added marking smokes to their loadout.
+11. Increased general hand smoke count to 3.
+12. Added the ability for players with entrenching tools to remove grass. Has a limited number of uses.
+13. Increased CE AT mine count to 3 and flare mine count to 4.
+14. Decreased trenches build time.
+15. Decreased the amount of magazines most ARs and MGs spawn with. The majority of the ammo is now held by the assistant role.
+16. Switched the RPG26 to the RPG7, and the M72 LAW to the M136.
+17. Added a mission parameter to control GPS distribution.
+
+3.4.0
+1. Added a sector capture timer to A/D sector game mode.
+2. Added functionality for any object that can't normally be damaged to be a destroy objective.
+3. Added the ability to mute other spectators and only hear alive players. Default keybind ']' (right bracket)
+4. Added a restriction to prevent switching to thermal views for certain defined weapons, e.g., the Vorona (Metis) launcher.
+5. Changed A/D sector capture condition to a unit majority. Attackers now just need a majority of units within the sector to capture it.
+6. Removed HE UGL rounds from leadership roles (TL,SL,PL).
+7. Added colored UGL smoke to leadership roles.
+8. Changed default wind and wave environment values to be automatic.
+9. Various tweaks and fixes.
+
+3.3.3
+1. Added new loadouts: RHS_UNI_NATO_AUSTRALIA_ARMY_2020, RHS_UNI_ANY_VIETNAMESE_2010, RHS_UNI_NATO_TAIWAN_ARMY_1980, RHS_UNI_NATO_CANADIAN_ARMY_1980, RHS_UNI_ANY_VIETNAMESE_JUNGLE_CAMO_1980, RHS_UNI_ANY_CHINA_PLA_1980
+2. Removed XRAY element.
+3. Vehicles locked at mission start will no longer be listed in a side's asset list and won't be able to be unlocked by players.
+4. Removed squad vehicle crewman slots. Added medic slot to squad HQ.
+5. Added a restriction to yelling voice volume during safe start. Only those in leadership roles will be able to switch to yelling during safe start.
+6. Added 7.62 version of SU-230 optic.
+7. Misc improvements and fixes.
+
+3.3.2
+1. Fixed Automatic Rifleman loadout receiving extra ammo meant for the AR assistant.
+
+3.3.1
+1. Renamed normal description.ext and mission.sqm files to create useable defaults.
+2. Units in sling-loaded vehicles can now leave the zone boundary the same as air vehicles.
+3. Magazine counts for automatic rifleman and machine gunners were increased.
+4. Added some admin functionality: Message all players, message an individual player, player search functionality and the ability to quickly spawn a Zeus avatar.
+5. Added a button on the pause screen for easy execution of the mission summary generator.
+6. ACE fortify objects can no longer be placed inside of buildings.
+7. Increased the damage received by the default caches used for the Destroy game mode.
+8. Added new loadout sets.
+10. Vehicles with edited loadouts should now have their new loadouts accurately reflected in the briefing asset list.
+11. From 3.3.1-RC1, fixed player briefing not fully populating until mission start.
+12. Fixed objective objects not being marked in 3D for spectators.
+13. Fixed VIPs being revealed during safe start.
+14. Fixed player weapons being deleted upon death and removed the workaround used to make players drop their weapons when they die.
+15. Fixed overtime condition for AD Sector game mode not working properly.
+16. Fixed desync at safety end.
+17. Misc fixes and changes.
+
+v3.3.0
+
+RC1
+- safe zones will now have a list beside them, visible only to the side it belongs to, which displays all of the assets available in that safezone. to see the list for each friendly safezone, open your map and hover over the safe zone itself
+- adds framework functionality for ambient airdrops at arbitrary positions for MM creativity
+- expands on this functionality to enable an MM to airdrop a side's editor-placed assets at mission start
+- adds the ability for mission makers to create irregular zone boundaries for gameplay using a set of points instead of a square/elliptical default trigger, enabling more precise control over defining AOs relative to terrain
+- changes default RPG7 rocket count to 2 HEAT, 1 HE
+- gearset updates
+- safezone teleport flag functionality now accounts for waterborne vehicle altitudes
+- enhancements to export functionality of the FNF vehicle loadout management system
+- ACE3 Window Break improvements - selection now in center of hitpoint bounding box, should no longer 'respawn'
+
+RC2
+- fixes hovered safezone markers not hiding after safe start ends
+- changes specObjectives to be determined by gamemode
+- changes asset airdrop to use 2 planes, static flying at 120 deg
+- changes unused irreg zone marker deletion to remoteExec for JIP support
+
+RC3
+- fixes JIP handling of assassin mode, when HVTs leave and join during safestart
+- adds notifications when destroy objectives are blown up
+- adds destroy objective photos to related tasks
+- re-remove cable ties
+- remove unnecessary waitUntil in applyloadout
+- remove buildingChanged EH after safe start
+
+RC4
+- fixes for airdropAssets and crate management, include local small smoke to mark dropped crates/vehicles
+- adds ambient artillery to missionSpecials framework
+- turns off AI show for QS_icons
+
+
+BRIEFING TABLES
+- a pre-existing briefing table is placed in the mission SQM
+- mission makers place this table in a flattish area somewhere (preferably near the center of the main safestart zone), which makes a point of reference
+- at mission start, a briefing table is spawned within 50m of this reference point and no closer than 15m to each other for PLT, ALPHA, BRAVO, CHARLIE, DELTA, GOLF, HOTEL
+- marks are placed on the map, visible only to members of that side, that say something like ALPHA Brief. these act as gathering points for the different squads to hang out around while platoon brief is happening
+- within 10m, players will see a draw3D icon over the table to reassert they're in the right spot
+- grass cutters are added to avoid conflicts in grassy terrain
+
+using Alpha Brief as an example:
+- a player ACE interacts with the table and sets the "focus" of the table from one of multiple predefined spots representing the objective areas defined by the gamemode.
+- all players' draw3D label over the table will change from "ALPHA Brief" to "ALPHA Brief - Sector1" as an example. if the player currently doesn't have Sector 1 loaded, it will say "ALPHA Brief - Sector 1 - Please Re-load!" to notify them they should reload the table on their side to match what everyone else is looking at. a player can use the Load/Clear section > Load Table interaction to select what resolution their computer to handle, and view the same area those around them are seeing.
+- if the focus is changed again, a systemChat message will appear in the bottom left showing who did it and what they changed it to, and the UI icon will change to tell the players to reload the table if it doesn't match what the focus was changed to.
+- this keeps the action of resolution selections and when that happens completely in per-player control.
+- when a focus for a table is set, two map markers visible to players on that side are also made. one is a border representing the view area, and one is a text marker along the right side of that border stating that the table is focused there (i.e. "ALPHA Brief focus").
+
+at safe start end, all tables on all sides are deleted and a gradual process is begun on the clients to remove any objects that existed, slow enough to not cause performance issues but enough so that by 3-5 minutes in, all table objects will have been removed and will not affect gameplay in any way going forward. the map markers are also removed for an uncluttered origin point of that safe start zone and any plans that have been drawn around the objectives previously focused on.
+
+
+v3.2.2
+
+- fixes soldier weapons disappearing upon death, will now drop at body
+- removes cable ties from all gear sets
+- UK 1980 ammo fix for carbine weapons
+- sets unit faces to represent demographics of the faction their uniform set portrays
+- fix for safezone flag texture selection for certain factions
+- changes rangefinder item to Vector21
+
+
+v3.2.1
+
+- adds NATO UK PARA 1980 kit
+- adds RU MARINES 2020 kit
+- removes HuntIR capabilities from 1980s kits
+- updates some uniforms with 3CB gear
+- changes Yardage450 to vanilla rangefinder
+- adds option to select a single shot flare launcher in place of a sidearm when a mission takes place at night
+- SQM updates to fix nSector/ADSector objects
+- fixes deferred map assignment that interfered with briefing phase of a mission
+- improves vehicle invincibility during safe start to account for locality changes in Standard
+- adds actual screenshots as a uniform set reference in map diary and mission info panel
+
+
+v3.2.0
+
+- move optics selectors into categories for menu cleanliness
+- support for more than one safezone in standard play
+- friendlier gear selector ACE interact menu
+- assassin rework for disconnect/reconnect resiliency
+- no longer randomizes initial gear selector options
+- force refreshes radios at applyLoadout
+- better respawn handling
+- vehicle respawn pylon loadout handling
+- forced ironsights MM choice now still allows DM and Sniper to take optics
+- new kits using 3CB assets
+- CTF no longer allows flag carriers to enter aircraft
+- implements safe zone and restricted zone testing globally or by side
+- changes X-Ray grenadier to spotter, who now has a Vector21 (SL now has binoculars)
+- ammo changes
+- adds radio override option to declare SW assignment regardless of loadout setting
+- SA now has gear selector conditions that qualify based on safezones
+- changes air loadout system to track individual ammo counts to account for custom object init changes
+
+
+- webhook fixes
+- asset diary duplication fix when using same classname of vehicle in and out of safe zones
+- fix draw3D and ACE interactions for respawning MSPs in SA
+- fix CMD and SL draw3D
+- CTF armed vehicle detection fixed
+- fixes sensor disablement of air vehicles
+- fixes safe zone deletion at end of safe start
+- fixes serialization issue with SA trigger to marker process to support custom building marker z-index management
+
+
+Sustained Assault integration
+  Now with:
+  - 1 framework that works with both standard and SA mission files
+  - mission templates for creating more content
+  - mobile spawn points
+
+
+v3.1.2
+
+NEW:
+  - major code refactor for a number of functions including inline documentation
+  - additional notifications for vetters if mission has a bad configuration
+
+  Updated Mission SQM
+    - migrated everything into layers for organization and better in-game management
+    - more descriptive commenting for new MMs
+  Admin Panel
+    - shows notification to staff when a staff action is performed
+    - also sends a message to Discord documenting it
+    - full menu where everything except game clock works
+    - foundation is present to migrate playersList to config instead, and allow multiple selection and feed multiple IDs to button functions
+    - players acted on will receive notifications informing them that they were
+    - admins with panel open will see results of action by any admin in their result panel, to reduce duplicate actions
+    - radio system now allows dynamic base channel change, completing the indfor allegiance change control in admin panel (will enter the radio freq f the allied side, or their own if not allied)
+FIXED:
+  - when the initial primary weapon a player was assigned at mission start did not support any available optics, the selector failed to initialize
+  - now delays radio assignment until core loadout is done to avoid potential issues w/ server not instantiating, plus revamp of handling
+  - ammo choices for OPFOR loadouts updated
+
+
+v3.1.0
+- adds CSW configuration to diary
+- adds custom UI mission info panel for alive/dead player and spectators (Ctrl-J or click button while spectating)
+- reworks spectator init to support missionInfoPanel data
+- adds safe start timer (only visible while map is open during safestart)
+- adds Assassination game mode
+- CTF
+  - players are no longer able to pick up the flag while in a vehicle
+  - players may no longer get into armed vehicles while carrying the flag
+- Rush/Uplink
+  - 'side eliminated' notifications will not appear while a terminal is being hacked
+  - if a side was eliminated while a terminal was active, the notification will be delayed until it's paused or its time runs out
+- fix for safeStart leadership teleport - SLs will now be properly detected and teleported
+- minor loadout updates
+- adds debriefing text
+- disable ambient life for players (rabbits, snakes, etc)
+- set unit ranks for players based on their role (for nametag's sake and future squad (loadout ref)
+- adds small mission intro using textTiles
+- auto-selects Briefing tab of missionInfoPanel
+- auto turn on collision lights of aircraft and helos if the ambient light level at their position is below a certain threshold, to make them easier to find
+- auto disable vehicle sensors (Jets DLC, radar, etc)
+- blufor tracker icon configuration updated so that all sides will see Civilian unit markers
+- adds some cool media to the diary
