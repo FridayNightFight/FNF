@@ -14,6 +14,7 @@
 
 params["_zonePrefix", "_timeZoneIsDeleted"];
 
+//wait until the zone is said to be deleted
 [{
   params["_zonePrefix", "_timeZoneIsDeleted"];
   _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
@@ -32,8 +33,10 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 },{
   params["_zonePrefix", "_timeZoneIsDeleted"];
   ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
+  //check if any safe zones still in group
   if (not (["safeZoneGroup"] call FNF_ClientSide_fnc_areAnyZonesInRestrictionGroup)) then
   {
+    //if there are not this is the last safe zone and therefor the notification can be sent to player that they can play
     ["<t size='1.5' align='center'>Safe Zones Dropped</t><br/><br/><t align='center'>The safe zones have been dropped and the mission is now starting</t><br/>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 
     fnf_timerMessage = nil;

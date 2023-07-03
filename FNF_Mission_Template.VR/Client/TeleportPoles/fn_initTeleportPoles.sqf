@@ -14,10 +14,12 @@
 params ["_modules"];
 
 _tpCounter = 1;
+//TODO: make this deterministic via left to right numbering, can be done via sorting system?
 
 {
   _syncedObjects = synchronizedObjects _x;
   _timePolesAreDeleted = _x getVariable "fnf_timePolesAreDeleted";
+  //get side TP poles are wanted for
   _objSide = sideEmpty;
   {
     _objectType = typeOf _x;
@@ -42,6 +44,7 @@ _tpCounter = 1;
     };
   } forEach _syncedObjects;
 
+  //if side is not player side then pass, not our problem
   if (_objSide != playerSide) then {continue;};
 
   //[position, action]
@@ -50,16 +53,17 @@ _tpCounter = 1;
   {
     _objectType = typeOf _x;
     if (_objectType == "SideBLUFOR_F" or _objectType == "SideOPFOR_F" or _objectType == "SideResistance_F") then {continue;};
-    _pos = getPos _x;
-    _nearestLocation = nearestLocation [_pos, "Name"];
-    _locName = name _nearestLocation;
 
+    _pos = getPos _x;
+
+    //statement to tp player
     _statement = {
       params ["_target", "_player", "_params"];
       _posToTPTo = [_params, 0, 10] call BIS_fnc_findSafePos;
       player setPos _posToTPTo;
     };
 
+    //create ace action and marker for tp pole
     _action = ["teleportTo" + str(_pos),"Teleport to pole " + str(_tpCounter),"",_statement,{true},{},_x] call ace_interact_menu_fnc_createAction;
     _markerstr = createMarkerLocal ["fnf_tpPoleMarker_" + str(_tpCounter),_pos];
     _markerstr setMarkerShapeLocal "ICON";
@@ -71,14 +75,15 @@ _tpCounter = 1;
     _positionsAndActions pushBack [_pos, _action, _markerstr];
   } forEach _syncedObjects;
 
-  test = +_positionsAndActions;
-
   {
     _objectType = typeOf _x;
     if (_objectType == "SideBLUFOR_F" or _objectType == "SideOPFOR_F" or _objectType == "SideResistance_F") then {continue;};
+
     _pos = getPos _x;
     _object = _x;
     _markerstr = "";
+
+    //add the TP action per pole
     {
       if ((_x select 0) isNotEqualTo _pos) then
       {
@@ -88,6 +93,7 @@ _tpCounter = 1;
       };
     } forEach _positionsAndActions;
 
+    //add timer to delete when poles say theyy should
     [{
       params["_timePolesAreDeleted", "_object", "_markerstr"];
       _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];

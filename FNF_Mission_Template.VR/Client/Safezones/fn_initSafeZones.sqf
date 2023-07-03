@@ -93,6 +93,7 @@ _maxTimeZoneIsDeleted = 0;
 
 } forEach _modules;
 
+//remove all spare safe zones
 {
   _zonePrefix = _x;
   _result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
@@ -103,6 +104,7 @@ _maxTimeZoneIsDeleted = 0;
   };
 } forEach _spareSafeZones;
 
+//if safe zones have a time limit to them
 if (_maxTimeZoneIsDeleted != 0) then
 {
   fnf_timerMessage = "Safe Start Remaining: %1";
@@ -110,8 +112,10 @@ if (_maxTimeZoneIsDeleted != 0) then
 
   _timeToNotify = (_maxTimeZoneIsDeleted * 60) - 300;
 
+  //if time to notify player of 5 minutes remaining has yet to come
   if (_timeToNotify > 0) then
   {
+    //set timer to notify when time is reached
     [{
       params["_timeToNotify"];
       _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
@@ -133,6 +137,7 @@ if (_maxTimeZoneIsDeleted != 0) then
     }, _timeToNotify] call CBA_fnc_waitUntilAndExecute;
 
   } else {
+    //otherwise just keep the timer showing in HUD
     true call FNF_ClientSide_fnc_showTimerInHUD;
   };
 };

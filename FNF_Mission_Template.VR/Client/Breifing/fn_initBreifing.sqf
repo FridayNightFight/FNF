@@ -20,13 +20,17 @@ _indforPresent = false;
 
 _objectsToAddToDiary = [];
 
+//for each breifing asset modules
 {
   _syncedObjects = synchronizedObjects _x;
   _objectsToDisplay = [];
 
   _moduleSide = sideEmpty;
 
+  //for each object synced to the module
   {
+    //check if object is a side object, if it is set the module's side
+    //TODO: add check for multiple side objects per module
     _objectType = typeOf _x;
     switch (_objectType) do
     {
@@ -44,11 +48,14 @@ _objectsToAddToDiary = [];
       };
       default
       {
+        //if not a side object its hopefully an object to show in the breifing assets
+        //TODO: check if object is a vehicle and should be shown or if its just a random object
         _objectsToDisplay pushBack _x;
       };
     };
   } forEach _syncedObjects;
 
+  //TODO: comment rest of this / redo it as some things not working
   _alreadyAdding = -1;
   {
     if (_x select 0 == _moduleSide) then

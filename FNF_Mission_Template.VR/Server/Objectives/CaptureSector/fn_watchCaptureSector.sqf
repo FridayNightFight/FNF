@@ -19,6 +19,7 @@ _westCount = 0;
 _eastCount = 0;
 _indiCount = 0;
 
+//get which players are in the zone and what side they are on
 {
   if (not alive _x) then
   {
@@ -51,8 +52,10 @@ _westDefend = false;
 _eastDefend = false;
 _indiDefend = false;
 
+//figure out what sides are supposed to be attacking and defending the zone
 {
   if ((_x select 0) isNotEqualTo "CAPTURESECTOR") then {continue;};
+
   _checkingZonePrefix = (_x select 2) getVariable ["fnf_prefix", "FAILED"];
   if (_checkingZonePrefix != _zonePrefix) then {continue;};
 
@@ -91,6 +94,7 @@ _indiDefend = false;
 
 } foreach fnf_serverObjectives;
 
+//zero out sides who do not have a stake in the objective
 if (not _westAttack and not _westDefend) then
 {
   _westCount = 0;
@@ -117,6 +121,7 @@ if (_objectiveType == "def") then
   };
 };
 
+//if no one in the sector dont do anything
 if (_westCount == 0 and _eastCount == 0 and _indiCount == 0) exitWith {false};
 
 
@@ -129,6 +134,7 @@ _currentTime = _timeToCapture * _currentPercent;
 
 _newOwner = sideUnknown;
 
+//get new owner of sector
 if (_westCount > _eastCount and _westCount > _indiCount) then
 {
   _newOwner = west;
@@ -144,6 +150,7 @@ if (_indiCount > _eastCount and _indiCount > _westCount) then
 
 _newTime = _currentTime;
 
+//check if the owner is attacking the objective
 _attacking = false;
 if (_newOwner == west) then
 {
@@ -167,6 +174,7 @@ if (_newOwner == independent) then
   };
 };
 
+//if theyy are attacking and there is still time left before full capture is acheived add a second
 if (_attacking) then
 {
   if (_newOwner == _currentOwner and _currentTime != _timeToCapture) then
@@ -179,6 +187,7 @@ if (_attacking) then
   };
 };
 
+//if new owner is not the same as previous owner and the time isnt 0 detract time and keep owner
 if (_newOwner != sideUnknown and _newOwner != _currentOwner and _currentTime != 0) then
 {
   _newTime = _currentTime - 1;

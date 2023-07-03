@@ -18,6 +18,8 @@ params["_allItems", "_id", "_selectorType", "_displayName"];
 
 _currentItems = "";
 _currentID = -1;
+
+//if there is a selection made grab that info
 {
   if ((_x select 1) == _id) then
   {
@@ -26,9 +28,11 @@ _currentID = -1;
   };
 } forEach fnf_selections;
 
+//if no selection has been made
 if (_currentItems isEqualTo "") then
 {
   {
+    //depending on item type do different things and add things
     switch (_selectorType) do {
       case "opt":
       {
@@ -76,7 +80,7 @@ if (_currentItems isEqualTo "") then
 
   _hasRequiredItems = true;
   _itemsToAdd = [];
-
+  //check if player can and has removed items needed
   {
     switch (_selectorType) do {
       case "opt":
@@ -84,6 +88,7 @@ if (_currentItems isEqualTo "") then
         if ((primaryWeaponItems player) select 2 == _x) then
         {
           player removePrimaryWeaponItem _x;
+          //track which items have been removed so if things fail we can re-add them
           _itemsToAdd pushBack _x;
         } else {
           _hasRequiredItems = false;
@@ -176,6 +181,7 @@ if (_currentItems isEqualTo "") then
     };
   } forEach _currentItems;
 
+  //check if player had all the items needed to switch, if so add new items to add
   if (_hasRequiredItems) then
   {
     _itemsToAdd = _allItems;
@@ -186,6 +192,7 @@ if (_currentItems isEqualTo "") then
     ["<t size='1.5' align='center'>Failed to switch selection, you do not have the items to switch out</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;
   };
 
+  //add either current items or items previously removed to complete selection
   {
     switch (_selectorType) do {
       case "opt":

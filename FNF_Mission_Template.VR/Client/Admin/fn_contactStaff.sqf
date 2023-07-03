@@ -13,6 +13,7 @@
 
 disableSerialization;
 
+//if player is in spectator change which display to make button on
 _display = objNull;
 if (ace_spectator_isSet) then {
 	_display = findDisplay 60000 createDisplay "RscDisplayEmpty";
@@ -20,6 +21,7 @@ if (ace_spectator_isSet) then {
 	_display = findDisplay 46 createDisplay "RscDisplayEmpty";
 };
 
+//create text box to type message in to
 _ctrlGroup = _display ctrlCreate ["RscControlsGroupNoScrollbars", -1];
 _ctrlBackground = _display ctrlCreate ["RscTextMulti", -1, _ctrlGroup];
 _ctrlEdit = _display ctrlCreate ["RscEditMulti", 123, _ctrlGroup];
@@ -37,6 +39,8 @@ _ctrlEdit ctrlCommit 0;
 _ctrlButton ctrlSetPosition [0.185, 0.42, 0.13, 0.05];
 _ctrlButton ctrlCommit 0;
 _ctrlButton ctrlSetText "SUBMIT";
+
+//add eventhandeler for button
 _ctrlButton ctrlAddEventHandler ["ButtonClick",
 {
 	params ["_ctrl"];

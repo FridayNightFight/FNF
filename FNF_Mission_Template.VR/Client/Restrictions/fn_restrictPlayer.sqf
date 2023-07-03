@@ -31,6 +31,7 @@ if (getTerrainGrid > 25) then
     setTerrainGrid 25;
 };
 
+//restrict view distance
 _viewDistance = _initModule getVariable ["fnf_viewDistance", 1000];
 
 [{

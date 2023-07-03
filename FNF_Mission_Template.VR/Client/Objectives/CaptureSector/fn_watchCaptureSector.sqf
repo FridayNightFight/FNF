@@ -22,8 +22,8 @@ _displayName = [_zonePrefix] call FNF_ClientSide_fnc_getDisplayName;
 _displayNameArray = _displayName splitString " ";
 _secNum = _displayNameArray select 1;
 
+//get server controlled values
 _sectorPercentage = _objectiveModule getVariable ["fnf_sector_percentage", 0];
-
 _sectorOwner = _objectiveModule getVariable ["fnf_sector_owner", sideUnknown];
 
 _text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _secNum];
@@ -35,12 +35,18 @@ _taskType = taskType _task;
 
 _texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 _shownPercent = _sectorPercentage;
+
+//if the sector is fully captured, show the percentage as 0
 if (_sectorPercentage == 1) then
 {
   _shownPercent = 0;
 };
+
+//update the status slots
 _statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
 
+//check what the ally of the player is
+//TODO: calculate this once and store it somewhere?
 _allySide = sideUnknown;
 if ([playerSide, independent] call BIS_fnc_sideIsFriendly and playerSide != independent) then
 {
@@ -57,6 +63,7 @@ if ([playerSide, east] call BIS_fnc_sideIsFriendly and playerSide != east) then
 
 _output = false;
 
+//if percentage is 1 (ie captured by someone)
 if (_sectorPercentage == 1) then
 {
   _output = true;
@@ -66,10 +73,13 @@ if (_sectorPercentage == 1) then
   _objNumWithColon = _splitString select 0;
   _objNum = (_objNumWithColon splitString "") select 0;
 
+  //remove the sector zone
   [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
 
+  //if task is to attack the objective
   if (_taskType == "meet") then
   {
+    //pick relevent notification depending on whether the player has captured, ally has, or enemy has
     if (_sectorOwner == playerSide and _forPlayer) then
     {
       _task setTaskState "Succeeded";
@@ -104,8 +114,10 @@ if (_sectorPercentage == 1) then
     };
   };
 
+  //if defending the sector
   if (_taskType == "defend") then
   {
+    //check whether objective is for player or for ally and show notification
     _task setTaskState "Failed";
     if (_forPlayer) then
     {

@@ -13,6 +13,7 @@
 
 params["_modules"];
 
+//check if zone has been created, if it hasnt remove all the markers that would make up other zones
 {
   _prefix = _x getVariable "fnf_prefix";
   _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;

@@ -114,6 +114,7 @@ _sectorObjCleanup = [];
 
 _prefixesToCleanUp = [];
 
+//clean up sector objectives that aren't being used
 {
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
   if (_zonePrefix == "FAILED") then

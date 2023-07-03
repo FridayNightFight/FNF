@@ -17,12 +17,14 @@ _fortifyEnabled = true;
 
 fnf_fortifyPoints = _module getVariable "fnf_fortifyPoints";
 
+//if player does not spawn with a fortify tool, they cannot fortify, and therefor should have it disabled
 if !([player, "ACE_Fortify"] call BIS_fnc_hasItem) exitWith
 {
   call FNF_ClientSide_fnc_disableFortify;
 };
 
 //Function made by Killzone_Kid. From A3 Wiki.
+//TODO: make this local, reduce global space objects
 KK_fnc_inHouse = {
   lineIntersectsSurfaces [
     getPosWorld _this,
@@ -40,6 +42,7 @@ KK_fnc_inHouse = {
     _canPlace = true;
     _errorStr = "";
 
+    //if player is in a house, do not let them place
     if (_object call KK_fnc_inHouse) then {
       _canPlace = false;
       _errorStr = "<t align='center'>Cannot place objects within buildings</t>"
@@ -51,6 +54,7 @@ KK_fnc_inHouse = {
       _errorStr = "<t align='center'>Cannot place object, not enough funds</t>";
     };
 
+    //if can place, update the fortify points and allow, other wise error out and deny
     if (_canPlace) then {
 
       missionNamespace setVariable ["ace_fortify_budget_west", -1, false];
@@ -67,6 +71,7 @@ KK_fnc_inHouse = {
     _canPlace
 }] call acex_fortify_fnc_addDeployHandler;
 
+//when fortify object is deleted update custom fortify points
 ["acex_fortify_objectDeleted", {
   if !((_this select 0) == player) exitWith {};
   _type = typeOf (_this select 2);
@@ -103,6 +108,7 @@ KK_fnc_inHouse = {
   ["<t align='center'>Fortify Budget: " + str(fnf_fortifyPoints) + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 }] call CBA_fnc_addEventHandler;
 
+//when player starts fortify tool add the points they should have so its all accurate in native UI
 ["ace_interactMenuOpened", {
   if ((_this select 0) == 0) exitWith {};
 

@@ -13,16 +13,24 @@
 
 params["_playerName", "_pos", "_message"];
 
+//if player is not logged in admin, kick them
 if !(serverCommandAvailable "#kick") exitWith {};
+
+//if the admin messages section in the map doesnt exist, create it
 if !(player diarySubjectExists "adminMessages") then
 {
   player createDiarySubject ["adminMessages", "Staff Reports"];
 };
 
+//create local invisible marker at players location to allow locate button to work
+//TODO: this could fail due to REALLY rare circumstances but is possible, lets fix that
 _mark = createMarkerLocal ["AdminReportMrk_" + str(time) + str(_pos), _pos];
 
+//show notification of the message
 ["<t size='1.5' align='center'>New Staff Report</t><br/><br/><t align='center'>From " + _playerName + "</t><br/><br/>" + _message, "error"] call FNF_ClientSide_fnc_notificationSystem;
+//TODO: add sound for admin that is unique
 
+//creates the staff report to look at afterwards
 player createDiaryRecord [
 "adminMessages",
 [

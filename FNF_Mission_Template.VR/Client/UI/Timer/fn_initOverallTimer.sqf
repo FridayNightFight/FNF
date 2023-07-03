@@ -13,13 +13,13 @@
 params["_module"];
 
 disableSerialization;
-//Create displays in bottom left
 
 _MinutesToEnd = _module getVariable ["fnf_gameTime", 65];
 
 _defaultEndTime = _MinutesToEnd * 60;
 _defaultMessage = "Mission Time Remaining: %1";
 
+//set up overall timer
 [{
   (_this select 0) params["_defaultEndTime", "_defaultMessage"];
 
@@ -58,6 +58,7 @@ _defaultMessage = "Mission Time Remaining: %1";
 
 false call FNF_ClientSide_fnc_showTimerInHUD;
 
+//give notification when 15 mins of game time left
 [{
   params["_defaultEndTime"];
   _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];;

@@ -21,6 +21,7 @@ fnf_objectsToHide = [];
     _zoneKnown = _x select 2;
     _hidingZonesPrefixs = _x select 3;
 
+    //check if object is in any of the hiding zones it is assigned to
     _zoneHiddenInside = "";
     {
       _result = [_object, _x] call FNF_ClientSide_fnc_isObjectInZone;
@@ -31,12 +32,14 @@ fnf_objectsToHide = [];
       };
     } forEach _hidingZonesPrefixs;
 
+    //if it is not in any hiding zone simpley set the OBJ on the object
     if (_zoneHiddenInside == "") then
     {
       _task setSimpleTaskDestination (getPos _object);
       continue;
     };
 
+    //if the zone the objective is in is known, make sure that is shown correctly
     if (_zoneKnown) then
     {
       _validPoint =[ _zoneHiddenInside] call FNF_ClientSide_fnc_findValidPointWithinZone;

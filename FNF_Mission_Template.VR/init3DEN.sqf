@@ -15,9 +15,14 @@ fnf_handelingSave = false;
 
 _addJIPitems = {
   params ["_messageID"];
+
+  //if message is not mission exported exit
   if (_messageID != 6) exitWith {};
+
+  //if code is already running exit
   if (fnf_handelingSave) exitWith {};
 
+  //restrict further code form handeling save
   fnf_handelingSave = true;
 
   _currentItems = all3DENEntities;
@@ -25,6 +30,8 @@ _addJIPitems = {
 
   _unitsToProcess = [];
 
+  //get all objects considered a man
+  //TODO: make this handle AI by only adding items considered "Playable"
   {
     if (_x iskindof "man") then
     {
@@ -37,10 +44,14 @@ _addJIPitems = {
   _unitsToConnect = [];
 
   {
+
     _posToSpawn = getPos _x;
+
+    //add dummy logic and name it based on counter
     _logicAssignedToPlayer = create3DENEntity ["Object", "Logic", _posToSpawn];
     _logicAssignedToPlayer set3DENAttribute ["name", "fnf_handleJIPLogic_" + str(_counter)];
 
+    //set init via this:
     _x set3DENAttribute ["init",
 "if (not isServer) exitWith {};
 diag_log ['started sync for player " + str(_counter) + "', this, 'fnf_handleJIPLogic_" + str(_counter) + "'];
@@ -59,6 +70,8 @@ this synchronizeObjectsAdd _syncedObjects;
 
     _connections = get3DENConnections _x;
     _connectionItems = [];
+
+    //make sure connection is a sync and not group
     {
       if (typeName _x == "ARRAY" ) then
       {
@@ -69,9 +82,11 @@ this synchronizeObjectsAdd _syncedObjects;
       };
     } forEach _connections;
 
+    //add all syncs for dummy logc and remove from player
     add3DENConnection ["Sync", _connectionItems, _logicAssignedToPlayer];
     remove3DENConnection ["Sync", _connectionItems, _x];
 
+    //track what needs to be deleted (dummy logic), and what connections things should have
     _unitsToDelete pushBack _logicAssignedToPlayer;
 
     _unitsToConnect pushBack [_x, _connectionItems];

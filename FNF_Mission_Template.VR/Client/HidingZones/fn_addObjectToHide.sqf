@@ -16,6 +16,7 @@
 
 params["_object", "_task", "_zoneKnown", "_hidingZoneModules"];
 
+//if hiding zones have not been inited, init it
 if (isNil "fnf_objectsToHide") then
 {
   call FNF_ClientSide_fnc_initHidingZones;
@@ -23,6 +24,7 @@ if (isNil "fnf_objectsToHide") then
 
 _zonePrefixs = [];
 
+//for each hiding zone, make sure it exists, if it doesnt create it and add the zone for the object to be hidden in
 {
   _prefix = _x getVariable "fnf_prefix";
   _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
@@ -37,10 +39,12 @@ _zonePrefixs = [];
   };
 } forEach _hidingZoneModules;
 
+//add the zones for object to hide in for overall hiding zone system
 if (count _zonePrefixs > 0) then
 {
   fnf_objectsToHide pushBack [_object, _task, _zoneKnown, _zonePrefixs];
 } else {
+  //if no zones, let player know if debug enabled
   if (fnf_debug) then
   {
     systemChat "WARNING: No valid hiding zones detected, objective will not be hidden"
