@@ -31,11 +31,13 @@ _addJIPitems = {
   _unitsToProcess = [];
 
   //get all objects considered a man
-  //TODO: make this handle AI by only adding items considered "Playable"
   {
     if (_x iskindof "man") then
     {
-      _unitsToProcess pushBack _x;
+      if ((_x get3DENAttribute "ControlMP") select 0) then
+      {
+        _unitsToProcess pushBack _x;
+      };
     };
   } forEach _objectsToLookAt;
 
