@@ -1,3 +1,5 @@
+setViewDistance fnf_maxViewDistance; //Set all players to mission max view distance
+
 //View distance and terrain grid force & disable commanding menu
 if (!isNil "fnf_viewDistanceHandler") then {
   [fnf_viewDistanceHandler] call CBA_fnc_removePerFrameHandler;
@@ -11,9 +13,10 @@ fnf_viewDistanceHandler = [{
     // setViewDistance (fnf_maxViewDistance + 2000);
   };
 
+  //Enforce minimum grass setting
   if (getTerrainGrid > 25) then {
     setTerrainGrid 25;
   };
 
   if !(commandingMenu isEqualTo "") then {showCommandingMenu ""};
-} , 0.5] call CBA_fnc_addPerFrameHandler;
+} , 0.1] call CBA_fnc_addPerFrameHandler;
