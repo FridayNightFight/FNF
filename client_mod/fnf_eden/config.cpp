@@ -675,7 +675,7 @@ class Cfg3DEN
     //KITS START HERE
     //#################################################################################################################################
 
-		/*class fnf_NATOUSArmy2020 // one class per composition
+		class fnf_NATOUSArmy2020 // one class per composition
 		{
 			path = "fnf_eden\kits_blufor\[NATO]USArmy(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
 			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
@@ -720,42 +720,6 @@ class Cfg3DEN
 			displayName = "[INDFOR] Syrian Army (2020)";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};*/
-    class fnf_WW2Germany // one class per composition
-		{
-			path = "fnf_eden\kits_blufor\[WW2]Germany";	// pbo path to a folder containing header.sqe/composition.sqe files
-			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
-			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
-			editorSubcategory = "fnf_Blufor";				// link to CfgEditorSubcategories
-			displayName = "[WW2] Germany";
-			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
-		};
-    class fnf_WW2SovietWinter // one class per composition
-		{
-			path = "fnf_eden\kits_opfor\[WW2]SovietWinter(EARLY)";	// pbo path to a folder containing header.sqe/composition.sqe files
-			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
-			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
-			editorSubcategory = "fnf_Opfor";				// link to CfgEditorSubcategories
-			displayName = "[WW2] Soviet Winter (EARLY)";
-			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
-		};
-    class fnf_WW2NorwegianArmy // one class per composition
-		{
-			path = "fnf_eden\kits_indfor\[WW2]NorwegianArmy";	// pbo path to a folder containing header.sqe/composition.sqe files
-			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
-			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
-			editorSubcategory = "fnf_Indfor";				// link to CfgEditorSubcategories
-			displayName = "[WW2] Norwegian Army";
-			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
-		};
-    class fnf_WW2FinnishJaegers // one class per composition
-		{
-			path = "fnf_eden\kits_blufor\[WW2]FinnishJaegers";	// pbo path to a folder containing header.sqe/composition.sqe files
-			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
-			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
-			editorSubcategory = "fnf_Blufor";				// link to CfgEditorSubcategories
-			displayName = "[WW2] Finnish Jaegers";
-			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
-		};
 	};
 
 

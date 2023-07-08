@@ -6,7 +6,8 @@ class CfgFunctions
 		{
 			file = "Client";
 			class init {};
-      class waitForInit { postInit = 1; };
+      class singleplayerInitCall { postInit = 1; };
+      class multiplayerInitCall {};
 		};
 		class zones
 		{
