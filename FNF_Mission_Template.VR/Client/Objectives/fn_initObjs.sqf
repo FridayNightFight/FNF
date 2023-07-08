@@ -87,7 +87,7 @@ _sectorObjCleanup = [];
       {
         if (fnf_debug) then
         {
-          systemChat "DANGER: FNF Obj module " + _moduleType + " is of unknown type, make sure template is up to date";
+          systemChat ("DANGER: FNF Obj module " + _moduleType + " is of unknown type, make sure template is up to date");
         };
       };
     };
@@ -100,12 +100,16 @@ _sectorObjCleanup = [];
         _sectorObjCleanup pushBack _x;
       };
 
+      case "fnf_module_destroyObj":
+      {
+      };
+
       //if no type found then objective must be part of a new mod update that framework isnt equipped to handle
       default
       {
         if (fnf_debug) then
         {
-          systemChat "DANGER: FNF Obj module " + _moduleType + " is of unknown type, make sure template is up to date";
+          systemChat ("DANGER: FNF Obj module " + _moduleType + " is of unknown type, make sure template is up to date");
         };
       };
     };
