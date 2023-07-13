@@ -13,8 +13,13 @@
 
 params ["_modules"];
 
+_modules = [_modules, [], {
+  _loc = getPos _x;
+  _locX = _loc select 0;
+  _locX;
+}] call BIS_fnc_sortBy;
+
 _tpCounter = 1;
-//TODO: make this deterministic via left to right numbering, can be done via sorting system?
 
 {
   _syncedObjects = synchronizedObjects _x;
@@ -49,6 +54,12 @@ _tpCounter = 1;
 
   //[position, action]
   _positionsAndActions = [];
+
+  _syncedObjects = [_syncedObjects, [], {
+    _loc = getPos _x;
+    _locX = _loc select 0;
+    _locX;
+  }] call BIS_fnc_sortBy;
 
   {
     _objectType = typeOf _x;
