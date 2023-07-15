@@ -42,10 +42,10 @@ if (not isNil "fnf_serverObjectives") then
       _completedindi = 0;
 
       {
-        switch (_x select 0) do {
+        switch (_x select 1) do {
           case "DESTROY":
           {
-            _result = [(_x select 3)] call FNF_ServerSide_fnc_watchDestroy;
+            _result = [(_x select 4)] call FNF_ServerSide_fnc_watchDestroy;
             if (_result) then
             {
               _indexesToChangeIfCompleted pushBack _forEachIndex;
@@ -53,7 +53,7 @@ if (not isNil "fnf_serverObjectives") then
           };
           case "CAPTURESECTOR":
           {
-            _result = [(_x select 2),(_x select 1)] call FNF_ServerSide_fnc_watchCaptureSector;
+            _result = [(_x select 3),(_x select 2)] call FNF_ServerSide_fnc_watchCaptureSector;
             if (_result) then
             {
               _indexesToChangeIfCompleted pushBack _forEachIndex;
@@ -65,7 +65,7 @@ if (not isNil "fnf_serverObjectives") then
           fnf_serverObjectives select _x set [0, true];
         } forEach _indexesToChangeIfCompleted;
 
-        switch (_x select 1) do {
+        switch (_x select 2) do {
           case west:
           {
             _totalBlufor = _totalBlufor + 1;

@@ -54,14 +54,14 @@ _indiDefend = false;
 
 //figure out what sides are supposed to be attacking and defending the zone
 {
-  if ((_x select 0) isNotEqualTo "CAPTURESECTOR") then {continue;};
+  if ((_x select 1) isNotEqualTo "CAPTURESECTOR") then {continue;};
 
-  _checkingZonePrefix = (_x select 2) getVariable ["fnf_prefix", "FAILED"];
+  _checkingZonePrefix = (_x select 3) getVariable ["fnf_prefix", "FAILED"];
   if (_checkingZonePrefix != _zonePrefix) then {continue;};
 
-  _objSide = (_x select 1);
+  _objSide = (_x select 2);
 
-  _objectiveType = (_x select 2) getVariable ["fnf_objectiveType", "FAILED"];
+  _objectiveType = (_x select 3) getVariable ["fnf_objectiveType", "FAILED"];
 
   if (_objectiveType == "cap") then
   {

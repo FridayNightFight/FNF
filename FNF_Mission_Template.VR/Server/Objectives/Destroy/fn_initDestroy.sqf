@@ -36,4 +36,4 @@ if (_objectiveObject isEqualTo "") exitWith {};
 
 //add objective to objective stack
 // [type, objective, task]
-fnf_serverObjectives pushBack ["DESTROY", _side, _objective, _objectiveObject];
+fnf_serverObjectives pushBack [false, "DESTROY", _side, _objective, _objectiveObject];

@@ -31,4 +31,4 @@ if (not _result and isDedicated) then
 } else {};
 
 //add objective to objective stack
-fnf_serverObjectives pushBack ["CAPTURESECTOR", _side, _objective];
+fnf_serverObjectives pushBack [false, "CAPTURESECTOR", _side, _objective];
