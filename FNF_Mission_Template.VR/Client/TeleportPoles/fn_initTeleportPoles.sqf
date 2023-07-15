@@ -16,7 +16,10 @@ params ["_modules"];
 _modules = [_modules, [], {
   _loc = getPos _x;
   _locX = _loc select 0;
-  _locX;
+  _locY = _loc select 1;
+  _locZ = _loc select 2;
+  _locString = str(_locX) + str(_locY) + str(_locZ);
+  _locString;
 }] call BIS_fnc_sortBy;
 
 _tpCounter = 1;
@@ -58,7 +61,10 @@ _tpCounter = 1;
   _syncedObjects = [_syncedObjects, [], {
     _loc = getPos _x;
     _locX = _loc select 0;
-    _locX;
+    _locY = _loc select 1;
+    _locZ = _loc select 2;
+    _locString = str(_locX) + str(_locY) + str(_locZ);
+    _locString;
   }] call BIS_fnc_sortBy;
 
   {

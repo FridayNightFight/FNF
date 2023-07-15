@@ -13,6 +13,15 @@
 
 params ["_modules"];
 
+_modules = [_modules, [], {
+  _loc = getPos _x;
+  _locX = _loc select 0;
+  _locY = _loc select 1;
+  _locZ = _loc select 2;
+  _locString = str(_locX) + str(_locY) + str(_locZ);
+  _locString;
+}] call BIS_fnc_sortBy;
+
 fnf_objectives = [];
 
 _missionStatusSet = false;
