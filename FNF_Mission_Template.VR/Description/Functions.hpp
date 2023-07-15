@@ -150,6 +150,7 @@ class CfgFunctions
       class syncTimer {};
       class initFortify {};
       class initAdmin {};
+      class handleDisconnect {};
 		};
     class objectives
     {

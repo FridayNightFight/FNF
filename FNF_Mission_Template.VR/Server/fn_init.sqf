@@ -16,6 +16,9 @@ if (count _initModule > 1) exitWith {};
 //start admin channel
 call FNF_ServerSide_fnc_initAdmin;
 
+//start handeleing disconnects
+call FNF_ServerSide_fnc_handleDisconnect;
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules != 0) then
