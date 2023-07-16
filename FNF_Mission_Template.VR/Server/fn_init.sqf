@@ -16,6 +16,9 @@ if (count _initModule > 1) exitWith {};
 //start admin channel
 call FNF_ServerSide_fnc_initAdmin;
 
+//handel group Ids
+call FNF_ServerSide_fnc_handleGroupIds;
+
 //start handeleing disconnects
 call FNF_ServerSide_fnc_handleDisconnect;
 

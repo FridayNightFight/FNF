@@ -151,6 +151,7 @@ class CfgFunctions
       class initFortify {};
       class initAdmin {};
       class handleDisconnect {};
+      class handleGroupIds {};
 		};
     class objectives
     {
