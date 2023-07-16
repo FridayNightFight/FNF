@@ -29,6 +29,9 @@ _tpCounter = 1;
   _timePolesAreDeleted = _x getVariable "fnf_timePolesAreDeleted";
   //get side TP poles are wanted for
   _objSide = sideEmpty;
+
+  _sideCounter = 0;
+
   {
     _objectType = typeOf _x;
     switch (_objectType) do
@@ -50,7 +53,25 @@ _tpCounter = 1;
         continue;
       };
     };
+    _sideCounter = _sideCounter + 1;
   } forEach _syncedObjects;
+
+  if (_sideCounter == 0) then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Teleport pole module has no valid side synced to it, teleport poles will NOT function";
+    };
+    continue;
+  };
+  if (_sideCounter > 1) then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Teleport pole module has more than one side synced to it, teleport poles will NOT function";
+    };
+    continue;
+  };
 
   //if side is not player side then pass, not our problem
   if (_objSide != playerSide) then {continue;};
@@ -92,6 +113,23 @@ _tpCounter = 1;
     _positionsAndActions pushBack [_pos, _action, _markerstr];
   } forEach _syncedObjects;
 
+  if (count _positionsAndActions == 0) then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Teleport pole module has no objects to teleport to synced to it, teleport poles will NOT function";
+    };
+    continue;
+  };
+
+  if (count _positionsAndActions == 1) then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "WARNING: Teleport pole module has only one object to teleport to synced to it";
+    };
+  };
+
   {
     _objectType = typeOf _x;
     if (_objectType == "SideBLUFOR_F" or _objectType == "SideOPFOR_F" or _objectType == "SideResistance_F") then {continue;};
@@ -110,7 +148,7 @@ _tpCounter = 1;
       };
     } forEach _positionsAndActions;
 
-    //add timer to delete when poles say theyy should
+    //add timer to delete when poles say they should
     [{
       params["_timePolesAreDeleted", "_object", "_markerstr"];
       _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];

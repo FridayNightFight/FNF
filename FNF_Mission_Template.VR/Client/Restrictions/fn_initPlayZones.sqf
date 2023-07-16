@@ -20,7 +20,16 @@ _mainPlayZones = [];
 
 {
   _syncedObjects = synchronizedObjects _x;
-  _zonePrefix = _x getVariable "fnf_prefix";
+  _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+  if (_zonePrefix == "FAILED") then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Play zone does not have marker prefix set, play zone will NOT function"
+    };
+    continue;
+  };
 
   //check if this playzone module applies to the player
   _forPlayer = false;
@@ -71,6 +80,11 @@ _mainPlayZones = [];
   if (_result) then
   {
     ["playZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+  } else {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Play zone failed to be initialised, play zone will NOT function"
+    };
   };
 
 } forEach _mainPlayZones;

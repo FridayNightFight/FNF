@@ -38,6 +38,9 @@ _sectorObjCleanup = [];
   {
     _objectType = typeOf _x;
     _objSide = sideEmpty;
+
+    _sideCounter = 0;
+
     switch (_objectType) do
     {
       case "SideBLUFOR_F":
@@ -58,10 +61,11 @@ _sectorObjCleanup = [];
       };
     };
 
+    _sideCounter = _sideCounter + 1;
+
     if (_objSide == playerSide) then
     {
       _forPlayer = true;
-      break;
     };
 
     if ([playerSide, _objSide] call BIS_fnc_sideIsFriendly) then
@@ -69,6 +73,23 @@ _sectorObjCleanup = [];
       _showObj = true;
     };
   } forEach _syncedObjects;
+
+  if (_sideCounter == 0) then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Objective has no valid side synced to it, objective will NOT function";
+    };
+    continue;
+  };
+  if (_sideCounter > 1) then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Objective has more than one side synced to it, objective will NOT function";
+    };
+    continue;
+  };
 
   //if it is check what kind of objective it is and run corresponding init script
   _moduleType = typeOf _x;

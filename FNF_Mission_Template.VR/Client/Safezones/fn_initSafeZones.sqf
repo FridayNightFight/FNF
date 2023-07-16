@@ -24,8 +24,17 @@ _maxTimeZoneIsDeleted = 0;
   _syncedObjects = synchronizedObjects _x;
   _visibleToAllies = _x getVariable "fnf_visibleToAllies";
   _visibleToEnemies = _x getVariable "fnf_visibleToEnemies";
-  _zonePrefix = _x getVariable "fnf_prefix";
+  _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
   _timeZoneIsDeleted = _x getVariable "fnf_timeZoneIsDeleted";
+
+  if (_zonePrefix == "FAILED") then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Safe zone does not have marker prefix set, safe zone will NOT function"
+    };
+    continue;
+  };
 
   _showZone = false;
   _forPlayer = false;
@@ -84,6 +93,11 @@ _maxTimeZoneIsDeleted = 0;
     if (_result) then
     {
       [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
+    } else {
+      if (fnf_debug) then
+      {
+        systemChat "DANGER: Safe zone failed to be initialised, safe zone will NOT function"
+      };
     };
     continue;
   };

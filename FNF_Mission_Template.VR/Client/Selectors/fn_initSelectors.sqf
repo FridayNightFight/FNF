@@ -19,7 +19,16 @@ _trueHostSelectorSet = false;
 {
   _syncedObjects = synchronizedObjects _x;
   _selectorName = _x getVariable "fnf_selectorName";
-  _selectorType = _x getVariable "fnf_selectorType";
+  _selectorType = _x getVariable ["fnf_selectorType", "FAILED"];
+
+  if (_selectorType == "FAILED") exitWith
+  {
+    if (fnf_debug) then
+    {
+      systemChat "DANGER: Selector does not have selector type set, selector will NOT function"
+    };
+    continue;
+  };
 
   _forPlayer = false;
   _options = [];
