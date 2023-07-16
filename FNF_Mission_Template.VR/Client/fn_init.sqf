@@ -24,6 +24,9 @@ call FNF_ClientSide_fnc_markEditorPlacedObjects;
 //init Overall Timer
 [_initModule] call FNF_ClientSide_fnc_initOverallTimer;
 
+//init ORBAT
+call FNF_ClientSide_fnc_initOrbat;
+
 //init breifing
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _breifingModules != 0) then

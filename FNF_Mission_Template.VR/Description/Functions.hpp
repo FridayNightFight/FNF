@@ -125,6 +125,8 @@ class CfgFunctions
     {
       file = "Client\Breifing";
       class initBreifing {};
+      class initOrbat {};
+      class updateOrbat {};
     };
     class mapShading
     {
