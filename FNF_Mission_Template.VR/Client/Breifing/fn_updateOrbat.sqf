@@ -16,6 +16,7 @@ _orbatContent = "";
 
 _validGroups = [];
 
+//get all groups with players in them and on players side
 {
   if (count (units _x) == 0) then
   {
@@ -36,6 +37,7 @@ _validGroups = [];
 
   _playerFound = false;
 
+  //check if group consists entirely of AI, if so dont include it in the ORBAT
   {
     if (isPlayer _x) then
     {
@@ -51,7 +53,9 @@ _validGroups = [];
 
   _units = _units - [_leader];
 
+  //make sure Leader is always at the top of the ORBAT by doing them first
   _leaderRole = "AI";
+  //used to handle issues where AI dont have role descriptions and can break string logic
   if (isPlayer _leader) then
   {
     _leaderRoleDescription = roleDescription _leader;
@@ -79,6 +83,7 @@ _validGroups = [];
   _orbatContent = _orbatContent + _stringToAdd;
 } forEach _validGroups;
 
+//trims the ending breaks to keep tab size to a minimum
 _orbatContent = _orbatContent trim ["<br/>", 2];
 _orbatContent = _orbatContent + ">";
 

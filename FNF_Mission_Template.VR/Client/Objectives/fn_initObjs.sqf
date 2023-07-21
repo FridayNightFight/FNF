@@ -35,11 +35,11 @@ _sectorObjCleanup = [];
   //check if objective module is for player or player's allys
   _showObj = false;
   _forPlayer = false;
+
+  _sideCounter = 0;
   {
     _objectType = typeOf _x;
     _objSide = sideEmpty;
-
-    _sideCounter = 0;
 
     switch (_objectType) do
     {
