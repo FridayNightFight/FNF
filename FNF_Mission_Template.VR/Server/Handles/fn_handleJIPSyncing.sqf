@@ -2,7 +2,7 @@
 	Author: Mallen
 
 	Description:
-		starts handing over synced objects to the player as they join
+		Starts handing over synced objects to the player as they join
 
 	Parameter(s):
 		0: OBJECT -  The player object that has joined

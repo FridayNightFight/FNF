@@ -152,10 +152,15 @@ class CfgFunctions
       class syncTimer {};
       class initFortify {};
       class initAdmin {};
+		};
+    class handles
+    {
+      file = "Server\Handles";
       class handleDisconnect {};
       class handleGroupIds {};
       class handleJIPSyncing {};
-		};
+      class handleVehicleInventory {};
+    };
     class objectives
     {
       file = "Server\Objectives";

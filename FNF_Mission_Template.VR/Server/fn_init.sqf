@@ -22,6 +22,9 @@ call FNF_ServerSide_fnc_handleGroupIds;
 //start handeleing disconnects
 call FNF_ServerSide_fnc_handleDisconnect;
 
+//start handeleing vehicle inventories
+call FNF_ServerSide_fnc_handleVehicleInventory;
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules != 0) then
