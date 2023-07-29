@@ -399,6 +399,15 @@ force force ace_winddeflection_enabled = false;
 force force ace_winddeflection_simulationInterval = 0.05;
 force force ace_winddeflection_vehicleEnabled = false;
 
+// ACE Zues
+force force ace_zeus_zuesAscension = false;
+force force ace_zeus_zuesBird = false;
+force force ace_zeus_remoteWind = false;
+force force ace_zeus_radioOrdnance = false;
+force force ace_zeus_revealMines = 0;
+force force ace_zeus_autoAddObjects = true;
+force force ace_zeus_canCreateZeus = 0;
+
 // TFAR - Global settings
 force force TFAR_AICanHearPlayer = false;
 force force TFAR_AICanHearSpeaker = false;
