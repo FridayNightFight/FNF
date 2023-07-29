@@ -55,17 +55,7 @@ _addJIPitems = {
 
     //set init via this:
     _x set3DENAttribute ["init",
-"if (not isServer) exitWith {};
-_syncedObjects = synchronizedObjects fnf_handleJIPLogic_" + str(_counter) + ";
-this synchronizeObjectsAdd _syncedObjects;
-{
-  _x synchronizeObjectsAdd [this];
-} forEach _syncedObjects;
-[{
-  owner (_this select 0) != clientOwner and owner (_this select 0) != 0;
-},{
-  [[(_this select 1)], FNF_ClientSide_fnc_multiplayerInitCall] remoteExec ['call', owner (_this select 0)];
-}, [this, _syncedObjects]] call CBA_fnc_waitUntilAndExecute"
+"[this, fnf_handleJIPLogic_" + str(_counter) + "] call FNF_ServerSide_fnc_handleJIPSyncing;"
     ];
 
     _connections = get3DENConnections _x;

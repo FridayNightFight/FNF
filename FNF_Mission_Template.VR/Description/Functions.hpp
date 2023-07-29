@@ -154,6 +154,7 @@ class CfgFunctions
       class initAdmin {};
       class handleDisconnect {};
       class handleGroupIds {};
+      class handleJIPSyncing {};
 		};
     class objectives
     {
