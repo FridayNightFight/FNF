@@ -2,7 +2,7 @@ class CfgPatches
 {
   class fnf_eden
   {
-    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_teleportPoles", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_sectorHoldObj"};
+    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_teleportPoles", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_terminalObj", "fnf_module_sectorHoldObj"};
     weapons[] = {};
     requiredVersion = 0.1;
     requiredAddons[] = {"A3_Modules_F", "cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
@@ -370,6 +370,46 @@ class CfgVehicles
       };
     };
 	};
+  class fnf_module_terminalObj: fnf_module_objective
+	{
+		author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "FNF Terminal Objective";
+    scope = 2;
+    class Attributes: AttributesBase
+    {
+      class ObjectiveType: Combo
+      {
+        property = "fnf_objectiveType";
+        expression = "_this setVariable ['fnf_objectiveType',_value, true];";
+        displayName = "Objective Type";
+        typeName = "STRING";
+				defaultValue = Capture;
+        class Values
+        {
+          class Capture { name = "Hack Terminal"; value = "hck";};
+          class Defend { name = "Defend Terminal"; value = "def";};
+        };
+      };
+      class HackingTime: Edit
+      {
+        property = "fnf_hackingTime";
+        expression = "_this setVariable ['fnf_hackingTime',_value, true];";
+        displayName = "Time to Hack";
+        typeName = "NUMBER";
+				defaultValue = "90";
+      };
+      class ZoneKnown: Checkbox
+      {
+        property = "fnf_zoneKnown";
+        expression = "_this setVariable ['fnf_zoneKnown',_value, true];";
+        displayName = "Is hiding zone known";
+        tooltip = "If checked, when object is in a linked hiding zone the zone it is in will have the task attached to it";
+        typeName = "BOOL";
+        defaultValue = "true";
+      };
+    };
+	};
   class fnf_module_sectorHoldObj: fnf_module_objective
 	{
 		author = "Mallen";
@@ -432,6 +472,10 @@ class CfgEditorSubcategories
   class fnf_Destroy
 	{
 		displayName = "Destroy Object";
+	};
+  class fnf_Terminal
+	{
+		displayName = "Hack Terminal";
 	};
   class fnf_SafeZones
 	{
@@ -640,6 +684,16 @@ class Cfg3DEN
 			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
 			editorSubcategory = "fnf_Destroy";				// link to CfgEditorSubcategories
 			displayName = "Destroy Objective Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
+    class fnf_TerminalObjective // one class per composition
+		{
+			path = "fnf_eden\objectives\TerminalObjectivePreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Terminal";				// link to CfgEditorSubcategories
+			displayName = "Terminal Objective Preset";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
 

@@ -65,6 +65,14 @@ if (not isNil "fnf_serverObjectives") then
               _indexesToChangeIfCompleted pushBack _forEachIndex;
             };
           };
+          case "TERMINAL":
+          {
+            _result = [(_x select 4)] call FNF_ServerSide_fnc_watchTerminal;
+            if (_result) then
+            {
+              _indexesToChangeIfCompleted pushBack _forEachIndex;
+            };
+          };
           default {};
         };
         {

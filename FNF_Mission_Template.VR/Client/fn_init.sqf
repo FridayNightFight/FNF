@@ -125,6 +125,14 @@ if (not isNil "fnf_objectives") then
               _indexesToDeleteIfCompleted pushBack _forEachIndex;
             };
           };
+          case "TERMINAL":
+          {
+            _result = [_x] call FNF_ClientSide_fnc_watchTerminal;
+            if (_result) then
+            {
+              _indexesToDeleteIfCompleted pushBack _forEachIndex;
+            };
+          };
           default
           {
             if (fnf_debug) then

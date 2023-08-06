@@ -51,11 +51,15 @@ call FNF_ClientSide_fnc_initZones;
   {
     case "fnf_module_destroyObj":
     {
-      [_x, _objSide] call FNF_ServerSide_fnc_initDestroy
+      [_x, _objSide] call FNF_ServerSide_fnc_initDestroy;
     };
     case "fnf_module_sectorCaptureObj":
     {
-      [_x, _objSide] call FNF_ServerSide_fnc_initCaptureSector
+      [_x, _objSide] call FNF_ServerSide_fnc_initCaptureSector;
+    };
+    case "fnf_module_terminalObj":
+    {
+      [_x, _objSide] call FNF_ServerSide_fnc_initTerminal;
     };
     default {};
   };

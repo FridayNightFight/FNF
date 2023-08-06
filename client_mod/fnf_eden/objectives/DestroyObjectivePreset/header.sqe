@@ -4,7 +4,8 @@ author="Mallen";
 category="EdSubcat_Default";
 requiredAddons[]=
 {
-	"A3_Missions_F_Oldman",
 	"fnf_eden",
-	"A3_Modules_F"
+	"A3_Modules_F",
+	"A3_Weapons_F_Bootcamp_Ammoboxes",
+	"ace_chemlights"
 };

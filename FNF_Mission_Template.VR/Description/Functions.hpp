@@ -54,6 +54,13 @@ class CfgFunctions
       class initCaptureSector {};
       class watchCaptureSector {};
     };
+    class objTerminal
+    {
+      file = "Client\Objectives\Terminal";
+      class initTerminal {};
+      class watchTerminal {};
+      class notifyTerminal {};
+    };
     class safeZones
     {
       file = "Client\Safezones";
@@ -177,6 +184,13 @@ class CfgFunctions
       file = "Server\Objectives\CaptureSector";
       class initCaptureSector {};
       class watchCaptureSector {};
+    };
+    class objTerminal
+    {
+      file = "Server\Objectives\Terminal";
+      class switchTerminal {};
+      class initTerminal {};
+      class watchTerminal {};
     };
 	};
 };

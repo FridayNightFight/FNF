@@ -112,6 +112,11 @@ _sectorObjCleanup = [];
         [_x, _forPlayer] call FNF_ClientSide_fnc_initCaptureSector;
       };
 
+      case "fnf_module_terminalObj":
+      {
+        [_x, _forPlayer] call FNF_ClientSide_fnc_initTerminal;
+      };
+
       //if no type found then objective must be part of a new mod update that framework isnt equipped to handle
       default
       {
@@ -131,6 +136,10 @@ _sectorObjCleanup = [];
       };
 
       case "fnf_module_destroyObj":
+      {
+      };
+
+      case "fnf_module_terminalObj":
       {
       };
 
