@@ -22,7 +22,7 @@ if (_objectiveType == "FAILED") exitWith
 {
   if (fnf_debug) then
   {
-    systemChat "DANGER: Destroy objective does not have objective type set, objective will NOT function"
+    systemChat "DANGER: Destroy objective does not have objective type set, objective will NOT function";
   };
 };
 
@@ -60,7 +60,7 @@ if (_objectiveObject isEqualTo "") exitWith
 {
   if (fnf_debug) then
   {
-    systemChat "DANGER: Destroy objective does not have object synced, objective will NOT function"
+    systemChat "DANGER: Destroy objective does not have object synced, objective will NOT function";
   };
 };
 

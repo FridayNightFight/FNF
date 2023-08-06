@@ -2,11 +2,10 @@
 	Author: Mallen
 
 	Description:
-    watch a destroy objective including updating task, returns if objective has been completed (failed for protection objectives)
+    watch a capture sector objective including updating task, returns if objective has been completed (failed for protection objectives)
 
 	Parameter(s):
-		1: OBJECT -  The watch objective object to be processed
-    2: TASK -  The task to be processed
+		1: ARRAY - Array that objective is stored in
 
 	Returns:
 		Boolean
@@ -45,22 +44,6 @@ if (_sectorPercentage == 1) then
 //update the status slots
 _statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
 
-//check what the ally of the player is
-//TODO: calculate this once and store it somewhere?
-_allySide = sideUnknown;
-if ([playerSide, independent] call BIS_fnc_sideIsFriendly and playerSide != independent) then
-{
-  _allySide = independent;
-};
-if ([playerSide, west] call BIS_fnc_sideIsFriendly and playerSide != west) then
-{
-  _allySide = west;
-};
-if ([playerSide, east] call BIS_fnc_sideIsFriendly and playerSide != east) then
-{
-  _allySide = east;
-};
-
 _output = false;
 
 //if percentage is 1 (ie captured by someone)
@@ -85,7 +68,7 @@ if (_sectorPercentage == 1) then
       _task setTaskState "Succeeded";
       ["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your team</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
     };
-    if (_sectorOwner == _allySide and _forPlayer) then
+    if ([playerSide, _sectorOwner] call BIS_fnc_sideIsFriendly and _forPlayer) then
     {
       _task setTaskState "Succeeded";
       ["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your allies</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
@@ -96,7 +79,7 @@ if (_sectorPercentage == 1) then
         ["<t size='1.5' align='center'>Objective " + _objNum + " Failed</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;
       };
     };
-    if (_sectorOwner == _allySide and not _forPlayer) then
+    if ([playerSide, _sectorOwner] call BIS_fnc_sideIsFriendly and not _forPlayer) then
     {
       _task setTaskState "Succeeded";
       ["<t size='1.5' align='center'>Objective " + _objNum + " Complete<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your allies</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
@@ -106,7 +89,7 @@ if (_sectorPercentage == 1) then
       _task setTaskState "Succeeded";
       ["<t size='1.5' align='center'>Objective " + _objNum + " Complete<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your team</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
     } else {
-      if (_sectorOwner != _allySide and not _forPlayer) then
+      if (not ([playerSide, _sectorOwner] call BIS_fnc_sideIsFriendly) and not _forPlayer) then
       {
         _task setTaskState "Failed";
         ["<t size='1.5' align='center'>Objective " + _objNum + " Failed<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;

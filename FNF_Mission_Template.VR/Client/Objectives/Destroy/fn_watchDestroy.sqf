@@ -5,9 +5,7 @@
     watch a destroy objective including updating task, returns if objective has been completed (failed for protection objectives)
 
 	Parameter(s):
-		1: OBJECT -  The destroy objective object to be processed
-    2: TASK -  The task to be processed
-    3: BOOLEAN -  Whether the task is for the player if not it is for an ally
+		1: ARRAY - Array that objective is stored in
 
 	Returns:
 		Boolean

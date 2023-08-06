@@ -22,7 +22,7 @@ if (_objectiveType == "FAILED") exitWith
 {
   if (fnf_debug) then
   {
-    systemChat "DANGER: Capture Sector objective does not have objective type set, objective will NOT function"
+    systemChat "DANGER: Capture Sector objective does not have objective type set, objective will NOT function";
   };
 };
 
@@ -33,7 +33,7 @@ if (_zonePrefix == "FAILED") exitWith
 {
   if (fnf_debug) then
   {
-    systemChat "DANGER: Capture Sector objective does not have marker prefix set, objective will NOT function"
+    systemChat "DANGER: Capture Sector objective does not have marker prefix set, objective will NOT function";
   };
 };
 
@@ -52,7 +52,7 @@ if (not _result) then
   {
     if (fnf_debug) then
     {
-      systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function"
+      systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function";
     };
   };
 } else {
