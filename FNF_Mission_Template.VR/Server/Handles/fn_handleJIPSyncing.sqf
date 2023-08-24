@@ -23,20 +23,30 @@ _playerObject synchronizeObjectsAdd _syncedObjects;
   _x synchronizeObjectsAdd [_playerObject];
 } forEach _syncedObjects;
 
+//use units to loop through problem children and check if player owns any of them
+
 [{
-  _result = false;
-  if (leader (_this select 0) == (_this select 0)) then
+  _result = true;
+  if (owner (_this select 0) == clientOwner) then
   {
-    if (owner (_this select 0) != clientOwner and owner (_this select 0) != 0) then
-    {
-      _result = true;
-    };
-  } else {
-    if (owner (_this select 0) != clientOwner and owner (_this select 0) != 0 and owner (_this select 0) != owner (leader (_this select 0))) then
-    {
-      _result = true;
-    };
+    _result = false;
   };
+  if (owner (_this select 0) == 0) then
+  {
+    _result = false;
+  };
+  _unitsInGroup = units (_this select 0);
+  {
+    if (_x isEqualTo (_this select 0)) then
+    {
+      continue;
+    };
+    if (owner (_this select 0) == owner _x) then
+    {
+      _result = false;
+      break;
+    };
+  } forEach _unitsInGroup;
   _result;
 },{
   [[(_this select 1)], FNF_ClientSide_fnc_multiplayerInitCall] remoteExec ['call', owner (_this select 0)];
