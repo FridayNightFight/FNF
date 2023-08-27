@@ -51,6 +51,12 @@ _validGroups = [];
     continue;
   };
 
+  //get TFAR frequencies if they are set
+  _allSRFreq = _leader getVariable ["TFAR_freq_sr", ["N/A"]];
+  _mainSRFreq = _allSRFreq select 0;
+  _allLRFreq = _leader getVariable ["TFAR_freq_lr", ["N/A"]];
+  _mainLRFreq = _allLRFreq select 0;
+
   _units = _units - [_leader];
 
   //make sure Leader is always at the top of the ORBAT by doing them first
@@ -63,7 +69,7 @@ _validGroups = [];
   };
   _leaderName = name _leader;
 
-  _stringToAdd = "<font size='20' face='RobotoCondensedBold'>" + _groupName + "<font face='RobotoCondensed'> (" + str((count _units) + 1) + ")</font></font><br/><font size='14' face='RobotoCondensed'>    " + _leaderRole + ": " + _leaderName + "</font><br/>";
+  _stringToAdd = "<font size='20' face='RobotoCondensedBold'>" + _groupName + "<font face='RobotoCondensed'> (" + str((count _units) + 1) + ")  -  SR:" + _mainSRFreq + "  -  LR:" + _mainLRFreq + "</font></font><br/><font size='14' face='RobotoCondensed'>    " + _leaderRole + ": " + _leaderName + "</font><br/>";
 
   {
     _unitRole = "AI";
