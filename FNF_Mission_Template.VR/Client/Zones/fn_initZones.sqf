@@ -23,9 +23,9 @@ fnf_zoneRestrictionGroupsList = [];
 call FNF_ClientSide_fnc_initMapShading;
 
 //add handeler to check if player is in any zones
-fnf_zoneRestrictionsLastKnownPosition = getPos player;
+fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 [{
-	_playerPos = getPos player;
+	_playerPos = getPosASL player;
 	{
 		_restrictionSatisfied = false;
 		{
@@ -39,7 +39,7 @@ fnf_zoneRestrictionsLastKnownPosition = getPos player;
 		{
 			if (_x select 3) then
 			{
-				player setPos fnf_zoneRestrictionsLastKnownPosition;
+				player setPosASL fnf_zoneRestrictionsLastKnownPosition;
 			} else {
 				if ((_x select 0) call FNF_ClientSide_fnc_getRequestWeaponDisable) then
 				{
@@ -56,5 +56,5 @@ fnf_zoneRestrictionsLastKnownPosition = getPos player;
 			};
 		};
 	} forEach fnf_zoneRestrictionGroupsList;
-	fnf_zoneRestrictionsLastKnownPosition = getPos player;
+	fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 }, 1] call CBA_fnc_addPerFrameHandler;
