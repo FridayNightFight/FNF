@@ -148,6 +148,13 @@ class CfgFunctions
       file = "Client\Radio";
       class initRadios {};
     };
+    class newPlayerExperience
+    {
+      file = "Client\NewPlayerExperience";
+      class initNewPlayerExperience {};
+      class newToFNF {};
+      class newToFourDotZero {};
+    };
 	};
 	class FNF_ServerSide
 	{

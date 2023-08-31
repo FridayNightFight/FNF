@@ -42,6 +42,9 @@ if (typeOf player == "ace_spectator_virtual") exitWith
   _modules call FNF_ClientSide_fnc_initSpectatorSlot;
 };
 
+//check how often player has played and do new player experience
+call FNF_ClientSide_fnc_initNewPlayerExperience;
+
 //setup fortify options
 [_initModule] call FNF_ClientSide_fnc_initFortify;
 
