@@ -2,7 +2,7 @@ class CfgPatches
 {
   class fnf_eden
   {
-    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_teleportPoles", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_terminalObj", "fnf_module_sectorHoldObj"};
+    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_teleportPoles", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_kitInformation", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_terminalObj", "fnf_module_sectorHoldObj"};
     weapons[] = {};
     requiredVersion = 0.1;
     requiredAddons[] = {"A3_Modules_F", "cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
@@ -297,6 +297,32 @@ class CfgVehicles
     category = "fnf_standardCategory";
     displayName = "FNF Breifing Assets";
     scope = 2;
+	};
+  class fnf_module_kitInformation: Module_F
+	{
+		author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "FNF Kit Information";
+    scope = 2;
+    class Attributes: AttributesBase
+    {
+      class KitName: Edit
+      {
+        property = "fnf_kitName";
+        expression = "_this setVariable ['fnf_kitName',_value, true];";
+        displayName = "Name";
+        typeName = "STRING";
+				defaultValue = "Unknown Kit";
+      };
+      class KitAuthor: Edit
+      {
+        property = "fnf_kitAuthor";
+        expression = "_this setVariable ['fnf_kitAuthor',_value, true];";
+        displayName = "Author";
+        typeName = "STRING";
+				defaultValue = "Unknown Author";
+      };
+    };
 	};
   class fnf_module_objective: Module_F {};
   class fnf_module_destroyObj: fnf_module_objective

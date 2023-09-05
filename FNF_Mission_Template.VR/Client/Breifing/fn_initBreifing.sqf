@@ -12,7 +12,7 @@
 		None
 */
 
-params["_modules", "_initModule"];
+params["_assetModules", "_kitInfoModules", "_initModule"];
 
 _bluforPresent = false;
 _opforPresent = false;
@@ -76,13 +76,72 @@ _objectsToAddToDiary = [];
       (_objectsToAddToDiary select _alreadyAdding select 1) pushBack _x;
     } forEach _objectsToDisplay;
   };
-} forEach _modules;
+} forEach _assetModules;
 
 _loadoutCreation = {
-  params["_side"];
+  params["_side", "_kitInfoModules"];
   _helmets = [];
   _uniforms = [];
   _vests = [];
+  _kitName = "Unknown Kit";
+  _kitAuthor = "Unknown Author";
+
+  {
+    _module = _x;
+    _syncedObjects = synchronizedObjects _x;
+    _modSide = sideEmpty;
+    _sideCounter = 0;
+    {
+      _objectType = typeOf _x;
+      _modSide = sideEmpty;
+
+      switch (_objectType) do
+      {
+        case "SideBLUFOR_F":
+        {
+          _modSide = west;
+        };
+        case "SideOPFOR_F":
+        {
+          _modSide = east;
+        };
+        case "SideResistance_F":
+        {
+          _modSide = independent;
+        };
+        default
+        {
+          continue;
+        };
+      };
+
+      _sideCounter = _sideCounter + 1;
+
+      if (_modSide == _side) then
+      {
+        _kitName = _module getVariable ["fnf_kitName", "Unknown Kit"];
+        _kitAuthor = _module getVariable ["fnf_kitAuthor", "Unknown Author"];
+      };
+    } forEach _syncedObjects;
+
+    if (_sideCounter == 0) then
+    {
+      if (fnf_debug) then
+      {
+        systemChat "WARNING: Kit information has no valid side synced to it, Kit information will not be displayed";
+      };
+      continue;
+    };
+    if (_sideCounter > 1) then
+    {
+      if (fnf_debug) then
+      {
+        systemChat "WARNING: Kit information has more than one side synced to it, Kit information may be inaccurate on all kits";
+      };
+      continue;
+    };
+
+  } forEach _kitInfoModules;
 
   _playersToRead = [];
 
@@ -155,7 +214,7 @@ _loadoutCreation = {
     _weaponPics pushBack _weaponPic
   } forEach _weaponsFound;
 
-  _string = "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Uniform</font><br/>";
+  _string = "<font size='20' shadow='1' face='PuristaBold'>" + _kitName + "</font><br/><font size='18' shadow='1' face='PuristaBold'>" + _kitAuthor + "</font><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Uniform:</font><br/>";
   {
     _string = _string + "<img width='110' image='" + _x + "'/>"
   } forEach _helmets;
@@ -169,7 +228,7 @@ _loadoutCreation = {
   } forEach _uniforms;
   _string = _string + "<br/>";
 
-  _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font><br/>";
+  _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons:</font><br/>";
   {
     _string = _string + "<img width='220' image='" + _x + "'/><br/>"
   } forEach _weaponPics;
@@ -297,14 +356,14 @@ if (playableSlotsNumber blufor > 0) then
   {
     player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
     [west, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{blufor countSide (allPlayers select {alive _x}) > 0},{
-      [west] call (_this select 0);
-    }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
+    [{blufor countSide (allPlayers select {alive _x}) > ((playersNumber blufor) / 2)},{
+      [west, (_this select 1)] call (_this select 0);
+    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{blufor countSide (allPlayers select {alive _x}) > 0},{
+    [{blufor countSide (allPlayers select {alive _x}) > ((playersNumber blufor) / 2)},{
       player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
-      [west] call (_this select 0);
-    }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
+      [west, (_this select 1)] call (_this select 0);
+    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   };
 };
 
@@ -322,14 +381,14 @@ if (playableSlotsNumber opfor > 0) then
   {
     player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
     [east, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{east countSide (allPlayers select {alive _x}) > 0},{
-      [east] call (_this select 0);
-    }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
+    [{east countSide (allPlayers select {alive _x}) > ((playersNumber opfor) / 2)},{
+      [east, (_this select 1)] call (_this select 0);
+    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{east countSide (allPlayers select {alive _x}) > 0},{
+    [{east countSide (allPlayers select {alive _x}) > ((playersNumber opfor) / 2)},{
       player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
-      [east] call (_this select 0);
-    }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
+      [east, (_this select 1)] call (_this select 0);
+    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   };
 };
 
@@ -347,14 +406,14 @@ if (playableSlotsNumber independent > 0) then
   {
     player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
     [independent, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{independent countSide (allPlayers select {alive _x}) > 0},{
-      [independent] call (_this select 0);
-    }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
+    [{independent countSide (allPlayers select {alive _x}) > ((playersNumber independent) / 2)},{
+      [independent, (_this select 1)] call (_this select 0);
+    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{independent countSide (allPlayers select {alive _x}) > 0},{
+    [{independent countSide (allPlayers select {alive _x}) > ((playersNumber independent) / 2)},{
       player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
-      [independent] call (_this select 0);
-    }, [_loadoutCreation]] call CBA_fnc_waitUntilAndExecute
+      [independent, (_this select 1)] call (_this select 0);
+    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   };
 };
 
