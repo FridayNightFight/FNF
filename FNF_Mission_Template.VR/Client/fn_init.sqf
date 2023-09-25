@@ -35,7 +35,7 @@ _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpec
 //if player is in a spectator slot get them out of here
 if (typeOf player == "ace_spectator_virtual") exitWith
 {
-  _modules call FNF_ClientSide_fnc_initSpectatorSlot;
+  [_modules, _initModule] call FNF_ClientSide_fnc_initSpectatorSlot;
 };
 
 //check how often player has played and do new player experience
@@ -97,6 +97,12 @@ _hidingZoneModules = [_modules, "hidingZone"] call FNF_ClientSide_fnc_findSpecif
 if (count _hidingZoneModules != 0) then
 {
   [_hidingZoneModules] call FNF_ClientSide_fnc_cleanUpSpareHidingZones;
+};
+
+//check if player is on the early server, if they are give them a GPS
+if (serverName == "Friday Night Fight #Early | www.fridaynightfight.org") then
+{
+  player linkItem "itemGPS";
 };
 
 //if there are objectives start watching them
