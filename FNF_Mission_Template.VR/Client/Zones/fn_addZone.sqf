@@ -86,7 +86,10 @@ if (_shaded) then
   [_markerPosArray, _zonePrefix, _inverted, _markerColor] call FNF_ClientSide_fnc_shadeZone;
 };
 
+//find visual center point
+_visualCenter = [_markerPosArray] call FNF_ClientSide_fnc_calculateVisualCenter;
+
 //add to zone list
-fnf_zoneList pushBack [_zonePrefix, _markerPosArray, _markerPolyline, _markerDisplayName];
+fnf_zoneList pushBack [_zonePrefix, _markerPosArray, _markerPolyline, _markerDisplayName, _visualCenter];
 
 true;

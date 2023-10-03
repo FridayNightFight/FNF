@@ -50,10 +50,10 @@ if (_groupIndex != -1 and _zoneIndex != -1) then
 		_posToTPTo = [0,0,0];
 		if (_zoneIndex == 0) then
 		{
-			_posToTPTo = (fnf_zoneRestrictionGroupsList select _groupIndex select 1 select (_zoneIndex + 1) select 0) call FNF_ClientSide_fnc_findValidPointWithinZone;
+			_posToTPTo = (fnf_zoneRestrictionGroupsList select _groupIndex select 1 select (_zoneIndex + 1) select 0) call FNF_ClientSide_fnc_getVisualCenter;
 		} else
 		{
-			_posToTPTo = (fnf_zoneRestrictionGroupsList select _groupIndex select 1 select (_zoneIndex - 1) select 0) call FNF_ClientSide_fnc_findValidPointWithinZone;
+			_posToTPTo = (fnf_zoneRestrictionGroupsList select _groupIndex select 1 select (_zoneIndex - 1) select 0) call FNF_ClientSide_fnc_getVisualCenter;
 		};
 		player setPos _posToTPTo;
 	};

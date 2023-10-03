@@ -20,7 +20,8 @@ class CfgFunctions
 			class addZoneToRestrictionGroup {};
 			class removeZoneFromRestrictionGroup {};
 			class isObjectInZone {};
-			class findValidPointWithinZone {};
+			class getVisualCenter {};
+      class calculateVisualCenter {};
       class verifyZone {};
       class areAnyZonesInRestrictionGroup {};
       class shadeZone {};
@@ -67,6 +68,7 @@ class CfgFunctions
       class initSafeZones {};
       class startSafeZoneTimer {};
       class anyNonExpiredSafeZones {};
+      class manuallyEndSafeZones {};
     };
     class teleportPoles
     {

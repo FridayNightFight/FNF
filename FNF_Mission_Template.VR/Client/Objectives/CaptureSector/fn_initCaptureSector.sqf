@@ -75,7 +75,7 @@ if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
   fnf_allyTasksParentTask setSimpleTaskType "documents";
 };
 
-_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_findValidPointWithinZone;
+_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
 
 _task = "";
 

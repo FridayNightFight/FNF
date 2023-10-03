@@ -28,7 +28,7 @@ _sectorOwner = _objectiveModule getVariable ["fnf_sector_owner", sideUnknown];
 _text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _secNum];
 _colour = [_sectorOwner, false] call BIS_fnc_sideColor;
 
-_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_findValidPointWithinZone;
+_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
 
 _taskType = taskType _task;
 

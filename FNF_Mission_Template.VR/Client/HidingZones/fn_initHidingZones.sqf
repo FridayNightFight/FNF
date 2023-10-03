@@ -42,7 +42,7 @@ fnf_objectsToHide = [];
     //if the zone the objective is in is known, make sure that is shown correctly
     if (_zoneKnown) then
     {
-      _validPoint =[ _zoneHiddenInside] call FNF_ClientSide_fnc_findValidPointWithinZone;
+      _validPoint = [_zoneHiddenInside] call FNF_ClientSide_fnc_getVisualCenter;
       _task setSimpleTaskDestination _validPoint;
     } else {
       cancelSimpleTaskDestination _task;
