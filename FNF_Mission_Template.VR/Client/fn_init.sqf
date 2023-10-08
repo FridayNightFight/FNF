@@ -180,6 +180,6 @@ if (count _safeZoneModules != 0 and didJIP) then
       {
         player setDamage 1;
       };
-    }, _safeZoneModules] call CBA_fnc_waitUntilAndExecute;
+    }, [_safeZoneModules]] call CBA_fnc_waitUntilAndExecute;
   };
 };

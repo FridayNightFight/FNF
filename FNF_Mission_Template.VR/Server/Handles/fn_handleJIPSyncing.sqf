@@ -51,5 +51,5 @@ _playerObject synchronizeObjectsAdd _syncedObjects;
 },{
   [[(_this select 1)], FNF_ClientSide_fnc_multiplayerInitCall] remoteExec ['call', owner (_this select 0)];
 }, [_playerObject, _syncedObjects], 5,{
-  diag_log ['DANGER: Player was not JIP synced correctly after 5 seconds', leader (_this select 0), (_this select 0)];
+  diag_log ['FNF_DEBUG: Player was not JIP synced correctly after 5 seconds', leader (_this select 0), (_this select 0)];
 }] call CBA_fnc_waitUntilAndExecute
