@@ -19,7 +19,7 @@
       hintC_EH2 = findDisplay 72 displayAddEventHandler ["Unload", {
 	      _this spawn {
 		      hintSilent "";
-          "Radios" hintC "Another major change is how your radios are setup, from now on if you have a LR and SR radio your left ear will be your squad or team radio that you can access on your short range radio (Usually CAPS), and command net or the higher level radio will always be in your right ear and exclusivly on your long range radio (Usually CTRL + CAPS), if you only have one radio this will come through both ears and not be set to one side";
+          "Radios" hintC "Another major change is how your radios are setup, from now on if you have a LR and SR radio your left ear will be your squad or team radio that you can access on your short range radio (Usually CAPS), and command net or the higher level radio will always be in your right ear and if you have a long range radio it will be on there (Usually CTRL + CAPS), if you only have a short range radio this will be on the alternate channel (Usually T)";
           hintC_EH3 = findDisplay 72 displayAddEventHandler ["Unload", {
 	          _this spawn {
 		          hintSilent "";
