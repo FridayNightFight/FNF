@@ -87,6 +87,33 @@ class CfgVehicles
           class Tan { name = "Tan"; value = "Tan";};
         };
       };
+      class DisableFortifyBlufor: Checkbox
+      {
+        property = "fnf_disableFortifyBlufor";
+        expression = "_this setVariable ['fnf_disableFortifyBlufor',_value, true];";
+        displayName = "Disable Fortify Blufor";
+        tooltip = "If checked, fortify will be disabled for Blufor";
+        typeName = "BOOL";
+        defaultValue = "false";
+      };
+      class DisableFortifyBlufor: Checkbox
+      {
+        property = "fnf_disableFortifyOpfor";
+        expression = "_this setVariable ['fnf_disableFortifyOpfor',_value, true];";
+        displayName = "Disable Fortify Opfor";
+        tooltip = "If checked, fortify will be disabled for Opfor";
+        typeName = "BOOL";
+        defaultValue = "false";
+      };
+      class DisableFortifyBlufor: Checkbox
+      {
+        property = "fnf_disableFortifyIndfor";
+        expression = "_this setVariable ['fnf_disableFortifyIndfor',_value, true];";
+        displayName = "Disable Fortify Independent";
+        tooltip = "If checked, fortify will be disabled for Independent";
+        typeName = "BOOL";
+        defaultValue = "false";
+      };
       class BreifingNotes
       {
         control = "EditMulti5";

@@ -15,7 +15,7 @@ params["_module"];
 
 _fortifyEnabled = true;
 
-fnf_fortifyPoints = _module getVariable "fnf_fortifyPoints";
+fnf_fortifyPoints = _module getVariable ["fnf_fortifyPoints", 0];
 
 //if player does not spawn with a fortify tool, they cannot fortify, and therefor should have it disabled
 if !([player, "ACE_Fortify"] call BIS_fnc_hasItem) exitWith
@@ -117,3 +117,17 @@ KK_fnc_inHouse = {
   missionNamespace setVariable ["ace_fortify_budget_guer", fnf_fortifyPoints, false];
 
 }] call CBA_fnc_addEventHandler;
+
+
+if (_module getVariable ["fnf_disableFortifyBlufor", 0] and playerSide == blufor) then
+{
+  call FNF_ClientSide_fnc_disableFortify;
+};
+if (_module getVariable ["fnf_disableFortifyOpfor", 0] and playerSide == opfor) then
+{
+  call FNF_ClientSide_fnc_disableFortify;
+};
+if (_module getVariable ["fnf_disableFortifyIndfor", 0] and playerSide == independent) then
+{
+  call FNF_ClientSide_fnc_disableFortify;
+};
