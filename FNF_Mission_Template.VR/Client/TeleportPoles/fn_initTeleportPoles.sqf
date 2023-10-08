@@ -97,7 +97,11 @@ _tpCounter = 1;
     //statement to tp player
     _statement = {
       params ["_target", "_player", "_params"];
-      _posToTPTo = [_params, 0, 10] call BIS_fnc_findSafePos;
+
+      //_posToTPTo = [_params, 0, 5] call BIS_fnc_findSafePos;
+      //this function was not working as intended for my functionailty
+
+      _posToTPTo = getPos _params;
       player setPos _posToTPTo;
     };
 
