@@ -40,7 +40,7 @@ call BIS_fnc_showMissionStatus;
 
       _marker = createMarkerLocal ["destroy_obj_marker_" + str(_objNum), getPos (_x select 2)];
       _marker setMarkerTypeLocal "mil_objective";
-      _marker setMarkerText "Destroy " + str(_objNum);
+      _marker setMarkerText "Destroy " + _objNum;
 
       [{
         params["_marker", "_object"];

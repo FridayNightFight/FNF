@@ -108,9 +108,9 @@ if (count _hidingZones != 0) then
 if (not _isObjDuplicate) then
 {
   fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _objNum];
-  _marker = createMarkerLocal ["destroy_obj_marker_" + str(_objNum), getPos _objectiveObject];
+  _marker = createMarkerLocal ["destroy_obj_marker_" + _objNum, getPos _objectiveObject];
   _marker setMarkerTypeLocal "mil_objective";
-  _marker setMarkerText "Destroy " + str(_objNum);
+  _marker setMarkerText "Destroy " + _objNum;
 
   [{
     params["_marker", "_object"];
