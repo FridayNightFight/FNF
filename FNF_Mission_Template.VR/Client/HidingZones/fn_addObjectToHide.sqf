@@ -26,7 +26,17 @@ _zonePrefixs = [];
 
 //for each hiding zone, make sure it exists, if it doesnt create it and add the zone for the object to be hidden in
 {
-  _prefix = _x getVariable "fnf_prefix";
+  _prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+  if (_prefix == "FAILED") then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+    };
+    continue;
+  };
+
   _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
   _resultaddZone = true;
   if (not _result) then

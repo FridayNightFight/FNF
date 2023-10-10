@@ -17,7 +17,7 @@ _maxTimeZoneIsDeleted = -1;
 
 {
   _syncedObjects = synchronizedObjects _x;
-  _timeZoneIsDeleted = _x getVariable "fnf_timeZoneIsDeleted";
+  _timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
 
   _forPlayer = false;
   {

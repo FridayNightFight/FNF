@@ -96,7 +96,7 @@ if (_objectiveType == "des") then
   } else {
     _task = player createSimpleTask [(_objNum + ": Destroy the " + _targetName), fnf_allyTasksParentTask];
   };
-  _zoneKnown = _objective getVariable "fnf_zoneKnown";
+  _zoneKnown = _objective getVariable ["fnf_zoneKnown", true];
 
   if (_forPlayer) then
   {
@@ -149,7 +149,17 @@ if (_objectiveType == "des") then
   if (count _hidingZones != 0) then
   {
     {
-      _prefix = _x getVariable "fnf_prefix";
+      _prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+      if (_prefix == "FAILED") then
+      {
+        if (fnf_debug) then
+        {
+          systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+        };
+        continue;
+      };
+
       _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
       if (not _result) then
       {

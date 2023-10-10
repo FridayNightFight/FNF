@@ -30,7 +30,7 @@ _sectorObjCleanup = [];
 
 {
   _syncedObjects = synchronizedObjects _x;
-  _visibleToAllies = _x getVariable "fnf_visibleToAllies";
+  _visibleToAllies = _x getVariable ["fnf_visibleToAllies", true];
 
   //check if objective module is for player or player's allys
   _showObj = false;

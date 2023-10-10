@@ -18,7 +18,7 @@ _trueHostSelectorSet = false;
 
 {
   _syncedObjects = synchronizedObjects _x;
-  _selectorName = _x getVariable "fnf_selectorName";
+  _selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
   _selectorType = _x getVariable ["fnf_selectorType", "FAILED"];
 
   if (_selectorType == "FAILED") exitWith
@@ -45,8 +45,8 @@ _trueHostSelectorSet = false;
     {
       _optionSyncedObjects = synchronizedObjects _x;
 
-      _optionName = _x getVariable "fnf_optionName";
-      _default = _x getVariable "fnf_defaultSelection";
+      _optionName = _x getVariable ["fnf_optionName", "Default Name"];
+      _default = _x getVariable ["fnf_defaultSelection", false];
 
       {
         //check if object is not the host it should be attached to

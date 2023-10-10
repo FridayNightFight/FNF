@@ -21,7 +21,7 @@ addMissionEventHandler ["HandleDisconnect", {
   _longestSafeZoneTimer = 0;
 
   {
-    _timeZoneIsDeleted = _x getVariable "fnf_timeZoneIsDeleted";
+    _timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
     if (_timeZoneIsDeleted > _longestSafeZoneTimer) then
     {
       _longestSafeZoneTimer = _timeZoneIsDeleted;

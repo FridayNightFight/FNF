@@ -15,7 +15,16 @@ params["_modules"];
 
 //check if zone has been created, if it hasnt remove all the markers that would make up other zones
 {
-  _prefix = _x getVariable "fnf_prefix";
+  _prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+  if (_prefix == "FAILED") then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+    };
+    continue;
+  };
   _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
   if (not _result) then
   {

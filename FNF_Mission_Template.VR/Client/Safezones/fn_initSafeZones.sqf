@@ -22,10 +22,10 @@ _maxTimeZoneIsDeleted = 0;
 
 {
   _syncedObjects = synchronizedObjects _x;
-  _visibleToAllies = _x getVariable "fnf_visibleToAllies";
-  _visibleToEnemies = _x getVariable "fnf_visibleToEnemies";
+  _visibleToAllies = _x getVariable ["fnf_visibleToAllies", true];
+  _visibleToEnemies = _x getVariable ["fnf_visibleToEnemies", true];
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
-  _timeZoneIsDeleted = _x getVariable "fnf_timeZoneIsDeleted";
+  _timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
 
   if (_zonePrefix == "FAILED") then
   {

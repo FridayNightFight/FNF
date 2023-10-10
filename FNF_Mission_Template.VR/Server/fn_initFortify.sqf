@@ -16,7 +16,7 @@ params["_module"];
 if (!isServer) exitWith {};
 
 _fortifyColour = _module getVariable ["fnf_fortifyColour", "Green"];
-_fortifyPoints = _module getVariable "fnf_fortifyPoints";
+_fortifyPoints = _module getVariable ["fnf_fortifyPoints", 100];
 
 _ModernGreen = [
   ["Land_BagFence_01_short_green_F",3],

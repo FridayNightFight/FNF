@@ -15,7 +15,9 @@ params["_objEntry"];
 
 _objEntry params["_objType","_objectiveModule","_task","_forPlayer","_statusSlotID"];
 
-_zonePrefix = _objectiveModule getVariable "fnf_prefix";
+_zonePrefix = _objectiveModule getVariable ["fnf_prefix", "FAILED"];
+
+if (_zonePrefix == "FAILED") exitWith {true;};
 
 _displayName = [_zonePrefix] call FNF_ClientSide_fnc_getDisplayName;
 _displayNameArray = _displayName splitString " ";

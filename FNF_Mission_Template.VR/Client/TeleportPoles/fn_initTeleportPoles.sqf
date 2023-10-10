@@ -26,7 +26,7 @@ _tpCounter = 1;
 
 {
   _syncedObjects = synchronizedObjects _x;
-  _timePolesAreDeleted = _x getVariable "fnf_timePolesAreDeleted";
+  _timePolesAreDeleted = _x getVariable ["fnf_timePolesAreDeleted", 15];
   //get side TP poles are wanted for
   _objSide = sideEmpty;
 
