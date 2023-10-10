@@ -30,10 +30,17 @@ _objective = objNull;
 
 if (_objective isEqualTo objNull) exitWith {};
 
-_desc = taskDescription (_objective select 3);
-_splitString = (_desc select 1) splitString " ";
-_objNumWithColon = _splitString select 0;
-_objNum = (_objNumWithColon splitString "") select 0;
+_objNum = -1;
+
+if (ace_spectator_isset) then
+{
+  _objNum = _objective select 4;
+} else {
+  _desc = taskDescription (_objective select 3);
+  _splitString = (_desc select 1) splitString " ";
+  _objNumWithColon = _splitString select 0;
+  _objNum = (_objNumWithColon splitString "") select 0;
+};
 
 _sideText = "Unknown";
 switch (_side) do {

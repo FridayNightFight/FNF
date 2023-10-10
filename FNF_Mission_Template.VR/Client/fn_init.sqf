@@ -12,14 +12,20 @@ fnf_debug = _initModule getVariable ["fnf_debug", true];
 //restrict players vanilla actions
 [_initModule] call FNF_ClientSide_fnc_restrictPlayer;
 
+//mark custom things
+call FNF_ClientSide_fnc_markEditorPlacedObjects;
+
+//if player is in a spectator slot get them out of here
+if (typeOf player == "ace_spectator_virtual") exitWith
+{
+  [_modules, _initModule] call FNF_ClientSide_fnc_initSpectatorSlot;
+};
+
 //setup player radio stereo settings
 call FNF_ClientSide_fnc_initRadios;
 
 //init zones
 call FNF_ClientSide_fnc_initZones;
-
-//mark custom things
-call FNF_ClientSide_fnc_markEditorPlacedObjects;
 
 //init Overall Timer
 [_initModule] call FNF_ClientSide_fnc_initOverallTimer;
@@ -31,12 +37,6 @@ call FNF_ClientSide_fnc_initOrbat;
 _kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 [_breifingModules, _kitInfoModules, _initModule] call FNF_ClientSide_fnc_initBreifing;
-
-//if player is in a spectator slot get them out of here
-if (typeOf player == "ace_spectator_virtual") exitWith
-{
-  [_modules, _initModule] call FNF_ClientSide_fnc_initSpectatorSlot;
-};
 
 //check how often player has played and do new player experience
 call FNF_ClientSide_fnc_initNewPlayerExperience;

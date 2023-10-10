@@ -110,7 +110,32 @@ class CfgFunctions
       file = "Client\Spectator";
       class startSpectator {};
       class initSpectatorSlot {};
+      class initSpectatorPlayzones {};
+      class initSpectatorSafeZones {};
     };
+    class spectatorObj
+    {
+      file = "Client\Spectator\Objectives";
+      class initSpectatorObjectives {};
+    }
+    class spectatorObjDestroy
+    {
+      file = "Client\Spectator\Objectives\Destroy";
+      class initSpectatorDestroy {};
+      class watchSpectatorDestroy {};
+    }
+    class spectatorObjCaptureSector
+    {
+      file = "Client\Spectator\Objectives\CaptureSector";
+      class initSpectatorCaptureSector {};
+      class watchSpectatorCaptureSector {};
+    }
+    class spectatorObjTerminal
+    {
+      file = "Client\Spectator\Objectives\Terminal";
+      class initSpectatorTerminal {};
+      class watchSpectatorTerminal {};
+    }
     class hidingZones
     {
       file = "Client\HidingZones";

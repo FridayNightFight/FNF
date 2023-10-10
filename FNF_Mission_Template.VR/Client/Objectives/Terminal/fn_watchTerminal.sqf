@@ -33,19 +33,24 @@ if (time < 1) then
 {
   _result = false;
 };
+
+_desc = taskDescription _task;
+_splitString = (_desc select 1) splitString " ";
+_objNumWithColon = _splitString select 0;
+_objNum = (_objNumWithColon splitString "") select 0;
+
 if (_timeOfCompletion == -1) then
 {
   _result = false;
   _marker setMarkerTextLocal "[Idle]";
+  if (ace_spectator_isset) then
+  {
+    _marker setMarkerTextLocal "Terminal " + _objNum + " [Idle]";
+  };
 };
 
 if (_result) then
 {
-  _desc = taskDescription _task;
-  _splitString = (_desc select 1) splitString " ";
-  _objNumWithColon = _splitString select 0;
-  _objNum = (_objNumWithColon splitString "") select 0;
-
   _taskType = taskType _task;
   if (_taskType == "upload" and _currentlyHackingSide == playerSide) then
   {
@@ -101,6 +106,10 @@ if (_result) then
     };
     _timeText = [_resultTime, "MM:SS"] call BIS_fnc_secondsToString;
     _marker setMarkerTextLocal "[" + _timeText + "]";
+    if (ace_spectator_isset) then
+    {
+      _marker setMarkerTextLocal "Terminal " + _objNum + " [" + _timeText + "]";
+    };
     if (markerColor _marker == "ColorBlack") then
     {
       _markerColour = [_previouslyHackingSide, true] call BIS_fnc_sideColor;

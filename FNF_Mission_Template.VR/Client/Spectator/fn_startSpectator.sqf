@@ -31,6 +31,26 @@ call BIS_fnc_showMissionStatus;
       continue;
     };
 
+    if (_x select 0 == "DESTROY") then
+    {
+      _desc = taskDescription (_x select 3);
+      _splitString = (_desc select 1) splitString " ";
+      _objNumWithColon = _splitString select 0;
+      _objNum = (_objNumWithColon splitString "") select 0;
+
+      _marker = createMarkerLocal ["destroy_obj_marker_" + str(_objNum), getPos (_x select 2)];
+      _marker setMarkerTypeLocal "mil_objective";
+      _marker setMarkerText "Destroy " + str(_objNum);
+
+      [{
+        params["_marker", "_object"];
+        not alive _object;
+      }, {
+        params["_marker", "_object"];
+        deleteMarkerLocal _marker;
+      }, [_marker, (_x select 2)]] call CBA_fnc_waitUntilAndExecute;
+    };
+
     [{
       params ["_objectiveEntry"];
 
