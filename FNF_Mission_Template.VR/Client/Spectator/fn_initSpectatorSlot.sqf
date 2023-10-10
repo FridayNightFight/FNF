@@ -107,5 +107,31 @@ if (not isNil "fnf_objectives") then
         fnf_objectives deleteAt (_x - _forEachIndex);
       } forEach _indexesToDeleteIfCompleted;
     },1] call CBA_fnc_addPerFrameHandler;
+
+    {
+      //if OBJ is one without a physical object then move to next OBJ
+      if (_x select 0 == "CAPTURESECTOR") then
+      {
+        continue;
+      };
+
+      [{
+        params ["_objectiveEntry"];
+
+        _obj = (_objectiveEntry select 2);
+
+        if (isNull _obj) exitWith {
+          [_handle] call CBA_fnc_removePerFrameHandler;
+        };
+
+        if (!alive _obj) exitWith {
+          [_handle] call CBA_fnc_removePerFrameHandler;
+        };
+
+        drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
+
+      } , 0, _x] call CBA_fnc_addPerFrameHandler;
+
+    } forEach fnf_objectives;
   };
 };
