@@ -32,7 +32,7 @@ if (_objective isEqualTo objNull) exitWith {};
 
 _objNum = -1;
 
-if (ace_spectator_isset) then
+if (typeOf player == "ace_spectator_virtual") then
 {
   _objNum = _objective select 4;
 } else {
