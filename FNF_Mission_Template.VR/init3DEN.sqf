@@ -97,4 +97,17 @@ _addJIPitems = {
   fnf_handelingSave = false;
 };
 
+_incrementNumberOnPaste = {
+  _selectedItems = get3DENSelected "marker";
+  {
+    _splitText = _x splitString "_";
+    if (count _splitText > 1) then
+    {
+      _number = parseNumber (_splitText select ((count _splitText) - 1));
+      _x set3DENAttribute ["text", str(_number)];
+    };
+  } forEach _selectedItems;
+};
+
 add3DENEventHandler ["OnMessage", _addJIPitems];
+add3DENEventHandler ["OnPaste", _incrementNumberOnPaste];
