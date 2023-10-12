@@ -119,15 +119,15 @@ KK_fnc_inHouse = {
 }] call CBA_fnc_addEventHandler;
 
 
-if (_module getVariable ["fnf_disableFortifyBlufor", 0] and playerSide == blufor) then
+if (_module getVariable ["fnf_disableFortifyBlufor", false] and playerSide == blufor) then
 {
   call FNF_ClientSide_fnc_disableFortify;
 };
-if (_module getVariable ["fnf_disableFortifyOpfor", 0] and playerSide == opfor) then
+if (_module getVariable ["fnf_disableFortifyOpfor", false] and playerSide == opfor) then
 {
   call FNF_ClientSide_fnc_disableFortify;
 };
-if (_module getVariable ["fnf_disableFortifyIndfor", 0] and playerSide == independent) then
+if (_module getVariable ["fnf_disableFortifyIndfor", false] and playerSide == independent) then
 {
   call FNF_ClientSide_fnc_disableFortify;
 };
