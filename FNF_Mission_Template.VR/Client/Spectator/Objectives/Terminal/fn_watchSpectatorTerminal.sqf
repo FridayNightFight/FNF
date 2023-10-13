@@ -34,11 +34,6 @@ if (time < 1) then
   _result = false;
 };
 
-_desc = taskDescription _task;
-_splitString = (_desc select 1) splitString " ";
-_objNumWithColon = _splitString select 0;
-_objNum = (_objNumWithColon splitString "") select 0;
-
 if (_timeOfCompletion == -1) then
 {
   _result = false;
