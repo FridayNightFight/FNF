@@ -109,5 +109,19 @@ _incrementNumberOnPaste = {
   } forEach _selectedItems;
 };
 
+_removeEmptyLayers = {
+  _currentItems = all3DENEntities;
+  _layers = _currentItems select 6;
+
+  {
+    _entities = get3DENLayerEntities _x;
+    if (count _entities == 0) then
+    {
+      remove3DENLayer _x;
+    };
+  } forEach _layers;
+};
+
 add3DENEventHandler ["OnMessage", _addJIPitems];
 add3DENEventHandler ["OnPaste", _incrementNumberOnPaste];
+add3DENEventHandler ["OnDeleteUnits", _removeEmptyLayers];
