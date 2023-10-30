@@ -22,7 +22,13 @@
     params["_currentGroup"];
     _roleDescription = roleDescription (leader _currentGroup);
     _splitString = _roleDescription splitString "@";
-    _groupName = (_splitString select 1);
-    _currentGroup setGroupIdGlobal [_groupName];
+    if (count _splitString != 2) then
+    {
+      _groupName = "Unknown Group: " + str(_currentGroup);
+      _currentGroup setGroupIdGlobal [_groupName];
+    } else {
+      _groupName = (_splitString select 1);
+      _currentGroup setGroupIdGlobal [_groupName];
+    };
   }, [_currentGroup]] call CBA_fnc_waitUntilAndExecute;
 } forEach allGroups;
