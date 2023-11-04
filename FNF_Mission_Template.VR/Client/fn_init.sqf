@@ -1,5 +1,4 @@
 if (isDedicated) exitWith {};
-//Sike made you look for no reason didnt i? now go look at all the coding i did, it took me a long time :(
 
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 

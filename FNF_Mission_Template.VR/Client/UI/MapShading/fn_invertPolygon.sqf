@@ -2,10 +2,10 @@
 	Author: Mallen
 
 	Description:
-		Takes a list of positions forming a regular polygon and trinagulates it
+		Takes a list of positions forming a regular polygon and adds additional points outside standard map view to effectivly invert the polygon for shading purposes
 
 	Parameter(s):
-	  1: ARRAY -  An array of positions forming a regular polygon
+	  1: ARRAY -  An array of positions forming an inverted regular polygon
 
 	Returns:
 		Array of positions in the format [pos1,pos2,pos3]
