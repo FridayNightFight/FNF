@@ -93,6 +93,12 @@ class CfgFunctions
       class adminGameEndButton {};
       class contactStaffButton {};
     };
+    class spectatorUI
+    {
+      file = "Client\UI\Spectator";
+      class missionDetailsButton {};
+      class missionDetailsScreen {};
+    };
     class admin
     {
       file = "Client\Admin";

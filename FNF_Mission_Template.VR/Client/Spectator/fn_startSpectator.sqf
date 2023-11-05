@@ -21,6 +21,9 @@ if (!isNull _lastDamage) then {
   [2, player] call ace_spectator_fnc_setCameraAttributes;
 };
 
+//show Mission Details button
+call FNF_ClientSide_fnc_missionDetailsButton;
+
 call BIS_fnc_showMissionStatus;
 
 [{!isNil "fnf_objectives"}, {

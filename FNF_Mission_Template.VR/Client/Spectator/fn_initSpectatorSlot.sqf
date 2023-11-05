@@ -32,6 +32,9 @@ if (count _objModules == 0) then
   [_objModules] call FNF_ClientSide_fnc_initSpectatorObjectives;
 };
 
+//show Mission Details button
+call FNF_ClientSide_fnc_missionDetailsButton;
+
 //check if there is a playzone
 _playZoneModules = [_modules, "playZone"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _playZoneModules == 0) then
