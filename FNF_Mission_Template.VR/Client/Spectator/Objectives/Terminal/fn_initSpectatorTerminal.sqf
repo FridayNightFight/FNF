@@ -27,7 +27,7 @@ if (_objectiveType == "FAILED") exitWith
 
 _syncedObjects = synchronizedObjects _objective;
 
-//find the object thats supposed to be killed or protected
+//find the object thats supposed to be hacked
 _hidingZones = [];
 _objectiveObject = "";
 {
@@ -43,7 +43,7 @@ _objectiveObject = "";
     continue;
   };
 
-  if (_typeOfObject == "Land_DataTerminal_01_F") then
+  if (_typeOfObject == "Land_DataTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_communications_F" or _typeOfObject == "RuggedTerminal_02_communications_F" or _typeOfObject == "RuggedTerminal_01_communications_hub_F") then
   {
     if (_objectiveObject isEqualTo "") then
     {
@@ -73,6 +73,7 @@ if (_objectiveObject isEqualTo "") exitWith
 
 _objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDUPE" and _x select 0 != "TERMINALDUPE"} count fnf_objectives) + 1);
 
+//check if obj is duplicate
 _isObjDuplicate = false;
 {
   if (_x select 0 == "TERMINAL") then
@@ -119,7 +120,7 @@ if (_hackingTime > 299) then
 };
 
 _targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
-_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Land_DataTerminal_01_F.jpg"] call CBA_fnc_getConfigEntry;
+_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\" + (typeOf _objectiveObject) + ".jpg"] call CBA_fnc_getConfigEntry;
 
 
 if (count _hidingZones != 0) then
@@ -217,8 +218,10 @@ if (not _isObjDuplicate) then
   _marker setMarkerTypeLocal "mil_dot";
   _marker setMarkerColorLocal "ColorUNKNOWN";
 
-  [_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
-
+  if (typeOf _objectiveObject == "Land_DataTerminal_01_F") then
+  {
+    [_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
+  };
   //add objective to objective stack
   fnf_objectives pushBack ["TERMINAL", _objective, _objectiveObject, _marker, _objNum, _task];
 } else {

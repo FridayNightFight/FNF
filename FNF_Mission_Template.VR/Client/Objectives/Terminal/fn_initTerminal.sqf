@@ -44,7 +44,7 @@ _objectiveObject = "";
     continue;
   };
 
-  if (_typeOfObject == "Land_DataTerminal_01_F") then
+  if (_typeOfObject == "Land_DataTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_communications_F" or _typeOfObject == "RuggedTerminal_02_communications_F" or _typeOfObject == "RuggedTerminal_01_communications_hub_F") then
   {
     if (_objectiveObject isEqualTo "") then
     {
@@ -120,12 +120,13 @@ if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
 };
 
 _targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
-_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Land_DataTerminal_01_F.jpg"] call CBA_fnc_getConfigEntry;
+_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\" + (typeOf _objectiveObject) + ".jpg"] call CBA_fnc_getConfigEntry;
 
 _task = "";
 
 _objNum = str((count fnf_objectives) + 1);
 
+//setup marker for on map timer
 _marker = createMarkerLocal ["terminal_timer_" + _objNum, [0,0,0]];
 _marker setMarkerShapeLocal "ICON";
 _marker setMarkerTextLocal "[Idle]";
@@ -133,24 +134,30 @@ _marker setMarkerTypeLocal "mil_dot";
 _markerColour = [playerSide, true] call BIS_fnc_sideColor;
 _marker setMarkerColorLocal _markerColour;
 
-switch (playerSide) do {
-  case west:
-  {
-    [_objectiveObject, "blue", "blue", "blue"] call BIS_fnc_dataTerminalColor;
+//set terminal starting colour (overridden if attacking)
+if (typeOf _objectiveObject == "Land_DataTerminal_01_F") then
+{
+  switch (playerSide) do {
+    case west:
+    {
+      [_objectiveObject, "blue", "blue", "blue"] call BIS_fnc_dataTerminalColor;
+    };
+    case east:
+    {
+      [_objectiveObject, "red", "red", "red"] call BIS_fnc_dataTerminalColor;
+    };
+    case independent:
+    {
+      [_objectiveObject, "green", "green", "green"] call BIS_fnc_dataTerminalColor;
+    };
+    default {};
   };
-  case east:
-  {
-    [_objectiveObject, "red", "red", "red"] call BIS_fnc_dataTerminalColor;
-  };
-  case independent:
-  {
-    [_objectiveObject, "green", "green", "green"] call BIS_fnc_dataTerminalColor;
-  };
-  default {};
 };
 
+//check if player needs to hack or needs to defend
 if (_objectiveType == "hck") then
 {
+  //setup task
   if (_forPlayer) then
   {
     _task = player createSimpleTask [(_objNum + ": Hack the Terminal"), fnf_myTasksParentTask];
@@ -183,26 +190,53 @@ if (_objectiveType == "hck") then
 
     _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
 
-    [
-      _objectiveObject,
-      "Start Hack",
-      "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-      "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-      "(_this distance _target < 3) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) != playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
-      "_caller distance _target < 3",
-      {},
-      {},
-      {
-        params ["_target", "_caller", "_actionId", "_arguments"];
-        [[(_arguments select 0), (_arguments select 1), playerSide, false], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
-      },
-      {},
-      [_objectiveObject, _hackingTime],
-      2,
-      0,
-      false,
-      false
-    ] call BIS_fnc_holdActionAdd;
+    //setup hold action if player is destined to be able to interact with terminal
+    if (typeOf _objectiveObject == "RuggedTerminal_01_communications_hub_F") then
+    {
+      [
+        _objectiveObject,
+        "Start Hack",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        //do not allow hack if currently hacking or hacking side is considered friendly
+        "(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) != playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
+        "_caller distance _target < 10",
+        {},
+        {},
+        {
+          params ["_target", "_caller", "_actionId", "_arguments"];
+          [[(_arguments select 0), (_arguments select 1), playerSide, false], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
+        },
+        {},
+        [_objectiveObject, _hackingTime],
+        2,
+        0,
+        false,
+        false
+      ] call BIS_fnc_holdActionAdd;
+    } else {
+      [
+        _objectiveObject,
+        "Start Hack",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        //do not allow hack if currently hacking or hacking side is considered friendly
+        "(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) != playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
+        "_caller distance _target < 4",
+        {},
+        {},
+        {
+          params ["_target", "_caller", "_actionId", "_arguments"];
+          [[(_arguments select 0), (_arguments select 1), playerSide, false], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
+        },
+        {},
+        [_objectiveObject, _hackingTime],
+        2,
+        0,
+        false,
+        false
+      ] call BIS_fnc_holdActionAdd;
+    };
 
   } else {
     _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
@@ -219,8 +253,12 @@ if (_objectiveType == "hck") then
     _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
   };
 
+  //overide terminal colours
   _marker setMarkerColorLocal "ColorUNKNOWN";
-  [_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
+  if (typeOf _objectiveObject == "Land_DataTerminal_01_F") then
+  {
+    [_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
+  };
 
   _task setSimpleTaskType "upload";
   if (count _hidingZones == 0) then
@@ -231,7 +269,7 @@ if (_objectiveType == "hck") then
   };
 
 } else {
-
+  //setup task
   if (_forPlayer) then
   {
     _task = player createSimpleTask [(_objNum + ": Defend the Terminal"), fnf_myTasksParentTask];
@@ -268,32 +306,59 @@ if (_objectiveType == "hck") then
   if (_forPlayer) then
   {
     _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
-
-    [
-      _objectiveObject,
-      "Cancel Hack",
-      "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-      "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-      "(_this distance _target < 3) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) != -1)",
-      "_caller distance _target < 3",
-      {},
-      {},
-      {
-        params ["_target", "_caller", "_actionId", "_arguments"];
-        [[(_arguments select 0), (_arguments select 1), playerSide, true], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
-      },
-      {},
-      [_objectiveObject, _hackingTime],
-      2,
-      0,
-      false,
-      false
-    ] call BIS_fnc_holdActionAdd;
+    //setup hold action if player is destined to be able to interact with terminal
+    if (typeOf _objectiveObject == "RuggedTerminal_01_communications_hub_F") then
+    {
+      [
+        _objectiveObject,
+        "Cancel Hack",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        //allow cancel if any side is hacking the OBJ
+        "(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) != -1)",
+        "_caller distance _target < 10",
+        {},
+        {},
+        {
+          params ["_target", "_caller", "_actionId", "_arguments"];
+          [[(_arguments select 0), (_arguments select 1), playerSide, true], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
+        },
+        {},
+        [_objectiveObject, _hackingTime],
+        2,
+        0,
+        false,
+        false
+      ] call BIS_fnc_holdActionAdd;
+    } else {
+      [
+        _objectiveObject,
+        "Cancel Hack",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+        //allow cancel if any side is hacking the OBJ
+        "(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) != -1)",
+        "_caller distance _target < 4",
+        {},
+        {},
+        {
+          params ["_target", "_caller", "_actionId", "_arguments"];
+          [[(_arguments select 0), (_arguments select 1), playerSide, true], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
+        },
+        {},
+        [_objectiveObject, _hackingTime],
+        2,
+        0,
+        false,
+        false
+      ] call BIS_fnc_holdActionAdd;
+    };
   } else {
     _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
   };
 };
 
+//used to keep marker on the objective
 [{
   _objLoc = taskDestination ((_this select 0) select 1);
   if (_objLoc isEqualTo [0,0,0]) then
