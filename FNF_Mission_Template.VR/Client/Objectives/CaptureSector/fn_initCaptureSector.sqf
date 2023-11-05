@@ -110,6 +110,7 @@ if (_objectiveType == "cap") then
   _task setSimpleTaskDestination _taskPos;
 };
 
+//setup right side graphic for a sector being captured
 _text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _secNum];
 
 _texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";

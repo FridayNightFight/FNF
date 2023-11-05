@@ -18,6 +18,7 @@ params["_objectiveObject", "_hackingTime", "_side", "_resetTimer"];
 
 _objective = objNull;
 
+//find objective
 {
   if ((_x select 0) == "TERMINAL") then
   {
@@ -28,36 +29,25 @@ _objective = objNull;
   }
 } forEach fnf_objectives;
 
+//if obj not found not for us, pass on
 if (_objective isEqualTo objNull) exitWith {};
 
 _objNum = -1;
 
+//if player is a spectator slot grab _objnum from objective
 if (typeOf player == "ace_spectator_virtual") then
 {
   _objNum = _objective select 4;
 } else {
+  //otherwise grab from task description (this can technically be done for both now but will need testing)
+  //TODO: see if this can be reduced to a single statement now spectators have task infrastructure
   _desc = taskDescription (_objective select 3);
   _splitString = (_desc select 1) splitString " ";
   _objNumWithColon = _splitString select 0;
   _objNum = (_objNumWithColon splitString "") select 0;
 };
 
-_sideText = "Unknown";
-switch (_side) do {
-  case west:
-  {
-    _sideText = "Blufor";
-  };
-  case east:
-  {
-    _sideText = "Opfor";
-  };
-  case independent:
-  {
-    _sideText = "Independent";
-  };
-  default {};
-};
+_sideText = [_side] call BIS_fnc_sideName;
 
 if (_resetTimer) then
 {

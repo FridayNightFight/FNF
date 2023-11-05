@@ -13,6 +13,8 @@
 
 params ["_modules"];
 
+//sort by X,Y and Z, leading zeros added for expected behaviour near 0,0 coords
+//could concievabley be an issue if map is more than 999999 meters wide (unlikely)
 _modules = [_modules, [], {
   _loc = getPos _x;
   _locX = str(_loc select 0);
@@ -108,7 +110,8 @@ _tpCounter = 1;
 
   //[position, action]
   _positionsAndActions = [];
-
+  //sort by X,Y and Z, leading zeros added for expected behaviour near 0,0 coords
+  //could concievabley be an issue if map is more than 999999 meters wide (unlikely)
   _syncedObjects = [_syncedObjects, [], {
     _loc = getPos _x;
   _locX = str(_loc select 0);

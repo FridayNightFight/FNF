@@ -65,6 +65,7 @@ if (_objectiveObject isEqualTo "") exitWith
 
 _objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDUPE" and _x select 0 != "TERMINALDUPE"} count fnf_objectives) + 1);
 
+//check if OBJ is a dupe, if so inform code and update OBJ number
 _isObjDuplicate = false;
 {
   if (_x select 0 == "DESTROY") then
@@ -82,7 +83,7 @@ _targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
 _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
 _targetName = getText (_targetConfig >> "DisplayName");
 
-//create and setup objective task
+//setup hiding zones if they are wanted
 if (count _hidingZones != 0) then
 {
   {
@@ -167,10 +168,10 @@ if (_objectiveType == "des") then
 };
 
 //add objective to objective stack
-// [type, objective, objectiveObject, task, for Player?]
 if (not _isObjDuplicate) then
 {
   fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _objNum, _task];
+  //if obj not dupe setup destroy marker so easier to view in map
   _marker = createMarkerLocal ["destroy_obj_marker_" + _objNum, getPos _objectiveObject];
   _marker setMarkerTypeLocal "mil_objective";
   _marker setMarkerText "Destroy " + _objNum;

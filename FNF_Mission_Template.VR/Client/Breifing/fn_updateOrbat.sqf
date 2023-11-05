@@ -69,8 +69,10 @@ _validGroups = [];
   };
   _leaderName = name _leader;
 
+  //create group string
   _stringToAdd = "<font size='20' face='RobotoCondensedBold'>" + _groupName + "<font face='RobotoCondensed'> (" + str((count _units) + 1) + ")  -  SR:" + _mainSRFreq + "  -  LR:" + _mainLRFreq + "</font></font><br/><font size='14' face='RobotoCondensed'>    " + _leaderRole + ": " + _leaderName + "</font><br/>";
 
+  //add all units to group string
   {
     _unitRole = "AI";
 
@@ -86,6 +88,7 @@ _validGroups = [];
 
   _stringToAdd = _stringToAdd + "<br/>";
 
+  //add group string to running diary string
   _orbatContent = _orbatContent + _stringToAdd;
 } forEach _validGroups;
 

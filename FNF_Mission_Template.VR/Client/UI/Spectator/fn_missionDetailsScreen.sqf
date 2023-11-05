@@ -15,27 +15,36 @@ disableSerialization;
 
 _display = findDisplay 60000 createDisplay "RscDisplayEmpty";
 
+//create background
 _background = _display ctrlCreate ["RscBackgroundGUI", 4251];
 _background ctrlSetPosition [0,0,1,1];
 _background ctrlCommit 0;
 
 _allSubjects = allDiarySubjects player;
 
+//setup this as essentially a makeshift hashmap as i dont know hashmaps
 _indexForTree = 1;
 _recordDataStorage = ["NONE FOUND"];
 
+//create tree
 _tree = _display ctrlCreate ["RscTree", 4252];
 _tree ctrlSetPosition [0,0,0.3,1];
+//for each diary subject
 {
   _name = _x select 0;
   _displayName = _x select 1;
   _picture = _x select 2;
+
+  //if the subject is not useless ones we dont want
   if (_name != "Units" and _name != "Players" and _name != "Statistics" and _name != "radio" and _name != "cba_help_docs" and _name != "Tasks") then
   {
+    //add it to the root of the tree
     _tree tvAdd [[], _displayName];
 
+    //get records of the subject
     _allRecords = player allDiaryRecords _name;
 
+    //figure out where we just added the subject in the tree
     _currentSubjectCount = _tree tvCount [];
     _correctTreePath = [0];
     for "_i" from 0 to _currentSubjectCount do
@@ -47,15 +56,20 @@ _tree ctrlSetPosition [0,0,0.3,1];
       };
     };
 
+    //set picture and the info for the tree entry
     _tree tvSetPicture [_correctTreePath, _picture];
     _tree tvSetPictureColorSelected [_correctTreePath, [1,1,1,0.9]];
     _tree tvSetValue [_correctTreePath, _indexForTree];
     _recordDataStorage pushBack "NONE FOUND";
     _indexForTree = _indexForTree + 1;
 
+    //for each record in the subject
     {
+      //add record entryy to tree
       _recordName = (_x select 1);
       _tree tvAdd [_correctTreePath, _recordName];
+
+      //find where we just inputted the tree entry
       _currentSubjectCount = _tree tvCount _correctTreePath;
       _correctTreePathRecord = [(_correctTreePath select 0),0];
 
@@ -68,14 +82,17 @@ _tree ctrlSetPosition [0,0,0.3,1];
         };
       };
 
+      //set record data to be exact copy
       _tree tvSetValue [_correctTreePathRecord, _indexForTree];
       _recordDataStorage pushBack (_x select 2);
       _indexForTree = _indexForTree + 1;
     } forEach _allRecords;
   };
 
+  //if the subject is tasks we cannot rely on the diary record infrastructure as it is unreliable for tasks
   if (_name == "Tasks") then
   {
+
     _tree tvAdd [[], _displayName];
 
     _currentSubjectCount = _tree tvCount [];
@@ -93,12 +110,15 @@ _tree ctrlSetPosition [0,0,0.3,1];
     _recordDataStorage pushBack "NONE FOUND";
     _indexForTree = _indexForTree + 1;
 
+    //get all tasks
     _allTasks = simpleTasks player;
 
     _curatedTasks = [];
     _sidesWithTasks = [];
 
+    //for each task
     {
+      //get the task name and exit if task is a filler one
       _taskName = taskName _x;
       _task = _x;
       if (_taskName == "My Tasks" or _taskName == "Ally Tasks") then
@@ -115,6 +135,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
         };
       } forEach fnf_objectives;
 
+      //figure out what side the task is for
       _syncedObjects = synchronizedObjects _objModule;
 
       _objSide = sideEmpty;
@@ -149,11 +170,12 @@ _tree ctrlSetPosition [0,0,0.3,1];
       _curatedTasks pushBack [_x, _objSide];
     } forEach _allTasks;
 
-
+    //setup infrastructure to recieve treepaths of multiple sides
     _bluObjTreePath = [];
     _opfObjTreePath = [];
     _indObjTreePath = [];
 
+    //if there are tasks for blufor create a tree entryy for them and find tree path for it
     if (_sidesWithTasks find west != -1) then
     {
       _tree tvAdd [_correctTreePath, "Blufor"];
@@ -173,6 +195,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       _indexForTree = _indexForTree + 1;
     };
 
+    //if there are tasks for opfor create a tree entryy for them and find tree path for it
     if (_sidesWithTasks find east != -1) then
     {
       _tree tvAdd [_correctTreePath, "Opfor"];
@@ -192,6 +215,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       _indexForTree = _indexForTree + 1;
     };
 
+    //if there are tasks for indfor create a tree entryy for them and find tree path for it
     if (_sidesWithTasks find independent != -1) then
     {
       _tree tvAdd [_correctTreePath, "Indfor"];
@@ -211,11 +235,13 @@ _tree ctrlSetPosition [0,0,0.3,1];
       _indexForTree = _indexForTree + 1;
     };
 
+    //for each curated tasks with side attached
     {
       _task = _x select 0;
       _side = _x select 1;
 
       _name = taskName _task;
+      //figure out what side it is meant to be and assign tree path based on that and add entry
       _currentTaskCorrectPath = [];
       switch (_side) do
       {
@@ -240,6 +266,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
         };
       };
 
+      //find the entry we just made above
       _currentSubjectCount = _tree tvCount _currentTaskCorrectPath;
       _correctTreePathCurrentTask = [];
       for "_i" from 0 to _currentSubjectCount do
@@ -252,12 +279,15 @@ _tree ctrlSetPosition [0,0,0.3,1];
       };
 
       _tree tvSetValue [_correctTreePathCurrentTask, _indexForTree];
+      //add filler around task description to make it nicer to look at in the UI
       _recordDataStorage pushBack ("<t size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + (taskName _task) + "</t><br/><br/>" + ((taskDescription _task) select 0));
       _indexForTree = _indexForTree + 1;
     } forEach _curatedTasks;
   };
 } forEach _allSubjects;
 _tree ctrlCommit 0;
+
+//add structured text and control group for text
 _controlGroup = _display ctrlCreate ["RscControlsGroup", 4253];
 _controlGroup ctrlSetPosition [0.3,0,0.7,1];
 _controlGroup ctrlCommit 0;
@@ -269,13 +299,19 @@ _structuredText ctrlCommit 0;
 _handle = [{
   (_this select 0) params ["_tree","_structuredText","_recordDataStorage"];
 
+  //get selection
   _selection = tvSelection _tree;
 
+  //get value assigned to selection
   _value = _tree tvValue (_selection select 0);
 
+  //get the data for the value
   _currentText = _recordDataStorage select _value;
+  //if data is not empty
   if (_currentText != "NONE FOUND") then
   {
+
+    //use complicated find replace algorithm to replace "font" with "t" due to different standards for structured text between GUI elements and diary records
     _splitString = [_currentText, "font", true] call BIS_fnc_splitString;
     _editedStringFontChanged = _splitString select 0;
     _splitString deleteAt 0;
@@ -283,6 +319,7 @@ _handle = [{
       _editedStringFontChanged = _editedStringFontChanged + "t" + _x;
     } forEach _splitString;
 
+    //similarly edit values to properly scale text size and image sizes
     _splitString = [_editedStringFontChanged, "'"] call BIS_fnc_splitString;
     _editedStringSizeFixed = _splitString select 0;
     _prevText = _splitString select 0;
@@ -314,6 +351,7 @@ _handle = [{
       _prevText = _x;
     } forEach _splitString;
 
+    //edit the word width and replace with size due to more differences
     _splitString = [_editedStringSizeFixed, "width=", true] call BIS_fnc_splitString;
     _editedStringWidthChanged = _splitString select 0;
     _splitString deleteAt 0;
@@ -321,18 +359,16 @@ _handle = [{
       _editedStringWidthChanged = _editedStringWidthChanged + "size=" + _x;
     } forEach _splitString;
 
+    //set text and update size
     _structuredText ctrlSetStructuredText (parseText _editedStringWidthChanged);
     _structuredText ctrlSetPosition [0,0,0.7,ctrlTextHeight _structuredText];
     _structuredText ctrlCommit 0;
   };
 },0,[_tree, _structuredText, _recordDataStorage]] call CBA_fnc_addPerFrameHandler;
 
+//add EH to delete PFH when menu is closed
 fnf_missionDetailsPFH = _handle;
 
 _display displayAddEventHandler ["Unload", {
   [fnf_missionDetailsPFH] call CBA_fnc_removePerFrameHandler;
 }];
-
-//Take those and put them through some automation to directly simulate the map screen
-
-//display to player

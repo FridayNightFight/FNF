@@ -39,6 +39,7 @@ if (_lastPlayedVersion == "FAILED TO FIND") then
 } else {
   _lastPlayedVersionSplit = _lastPlayedVersion splitString ".";
 
+  //check in x.x.x format if frmaework version is more up to date than last played
   if (parseNumber (_frameworkVersionSplit select 0) > parseNumber (_lastPlayedVersionSplit select 0)) then
   {
     profileNamespace setVariable ["fnf_latestVersionPlayed", _frameworkVersion];

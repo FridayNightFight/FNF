@@ -21,6 +21,7 @@ _currentlyHackingSide = _objectiveObject getVariable ['fnf_currentlyHackingSide'
 
 _previouslyHackingSide = _objectiveObject getVariable ['fnf_previouslyHackingSide', sideUnknown];
 
+//check if terminal should've finished hacking
 _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
 _result = objNull;
 if (isServer and hasInterface) then
@@ -34,11 +35,13 @@ if (time < 1) then
   _result = false;
 };
 
+//grab OBJ number
 _desc = taskDescription _task;
 _splitString = (_desc select 1) splitString " ";
 _objNumWithColon = _splitString select 0;
 _objNum = (_objNumWithColon splitString "") select 0;
 
+//if time of completion is never then set marker to idle
 if (_timeOfCompletion == -1) then
 {
   _result = false;
@@ -49,6 +52,7 @@ if (_timeOfCompletion == -1) then
   };
 };
 
+//if terminal hacked
 if (_result) then
 {
   _taskType = taskType _task;
@@ -95,8 +99,10 @@ if (_result) then
   deleteMarkerLocal _marker;
 } else {
   //OBJ has not been completed
+  //if someone is hacking
   if (_timeOfCompletion != -1) then
   {
+    //get time left on the hack
     _resultTime = objNull;
     if (isServer and hasInterface) then
     {
@@ -105,11 +111,14 @@ if (_result) then
       _resultTime = _timeOfCompletion - (serverTime - _timeServerStarted);
     };
     _timeText = [_resultTime, "MM:SS"] call BIS_fnc_secondsToString;
+    //set the marker to this value of time left
     _marker setMarkerTextLocal "[" + _timeText + "]";
     if (ace_spectator_isset) then
     {
       _marker setMarkerTextLocal "Terminal " + _objNum + " [" + _timeText + "]";
     };
+
+    //blink marker colour because it looks pretty on the map and says whos hacking at a glance
     if (markerColor _marker == "ColorBlack") then
     {
       _markerColour = [_previouslyHackingSide, true] call BIS_fnc_sideColor;

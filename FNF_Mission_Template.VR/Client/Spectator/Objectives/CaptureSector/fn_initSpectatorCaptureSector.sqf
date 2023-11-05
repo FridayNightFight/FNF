@@ -68,8 +68,8 @@ if (not _result) then
 
   _statusSlotID = [-1, _text, _texture, _colour, 1, _taskPos, 0] call BIS_fnc_setMissionStatusSlot;
 
-  //add objective to objective stack
 } else {
+  //if zone does exist update sec number and obj number
   _displayName = [_zonePrefix] call FNF_ClientSide_fnc_getDisplayName;
   _displayNameArray = _displayName splitString " ";
   _secNum = _displayNameArray select 1;

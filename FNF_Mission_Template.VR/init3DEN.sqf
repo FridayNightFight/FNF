@@ -88,6 +88,7 @@ _addJIPitems = {
 
   delete3DENEntities _unitsToDelete;
 
+  //reconnect syncs so it is seamless for player
   {
     add3DENConnection ["Sync", _x select 1, _x select 0];
   } forEach _unitsToConnect;
@@ -97,6 +98,7 @@ _addJIPitems = {
   fnf_handelingSave = false;
 };
 
+//used to increment marker numbers on copy and paste, useful for mission making
 _incrementNumberOnPaste = {
   _selectedItems = get3DENSelected "marker";
   {
@@ -109,6 +111,7 @@ _incrementNumberOnPaste = {
   } forEach _selectedItems;
 };
 
+//remove any layers that are empty to keep mission file size down
 _removeEmptyLayers = {
   _currentItems = all3DENEntities;
   _layers = _currentItems select 6;
