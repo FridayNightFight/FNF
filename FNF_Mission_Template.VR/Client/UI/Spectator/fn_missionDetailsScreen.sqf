@@ -89,6 +89,172 @@ _tree ctrlSetPosition [0,0,0.3,1];
       };
     };
 
+    _tree tvSetValue [_correctTreePath, _indexForTree];
+    _recordDataStorage pushBack "NONE FOUND";
+    _indexForTree = _indexForTree + 1;
+
+    _allTasks = simpleTasks player;
+
+    _curatedTasks = [];
+    _sidesWithTasks = [];
+
+    {
+      _taskName = taskName _x;
+      _task = _x;
+      if (_taskName == "My Tasks" or _taskName == "Ally Tasks") then
+      {
+        continue;
+      };
+
+      //find obj module from task
+      _objModule = objNull;
+      {
+        if (_x find _task != -1) then
+        {
+          _objModule = (_x select 1);
+        };
+      } forEach fnf_objectives;
+
+      _syncedObjects = synchronizedObjects _objModule;
+
+      _objSide = sideEmpty;
+      {
+        _objectType = typeOf _x;
+        switch (_objectType) do
+        {
+          case "SideBLUFOR_F":
+          {
+            _objSide = west;
+          };
+          case "SideOPFOR_F":
+          {
+            _objSide = east;
+          };
+          case "SideResistance_F":
+          {
+            _objSide = independent;
+          };
+          default
+          {
+            continue;
+          };
+        };
+      } forEach _syncedObjects;
+
+      if (_sidesWithTasks find _objSide == -1) then
+      {
+        _sidesWithTasks pushBack _objSide;
+      };
+
+      _curatedTasks pushBack [_x, _objSide];
+    } forEach _allTasks;
+
+
+    _bluObjTreePath = [];
+    _opfObjTreePath = [];
+    _indObjTreePath = [];
+
+    if (_sidesWithTasks find west != -1) then
+    {
+      _tree tvAdd [_correctTreePath, "Blufor"];
+
+      _currentSubjectCount = _tree tvCount _correctTreePath;
+      for "_i" from 0 to _currentSubjectCount do
+      {
+        _text = _tree tvText [(_correctTreePath select 0),_i];
+        if (_text == "Blufor") then
+        {
+          _bluObjTreePath = [(_correctTreePath select 0),_i];
+        };
+      };
+
+      _tree tvSetValue [_bluObjTreePath, _indexForTree];
+      _recordDataStorage pushBack "NONE FOUND";
+      _indexForTree = _indexForTree + 1;
+    };
+
+    if (_sidesWithTasks find east != -1) then
+    {
+      _tree tvAdd [_correctTreePath, "Opfor"];
+
+      _currentSubjectCount = _tree tvCount _correctTreePath;
+      for "_i" from 0 to _currentSubjectCount do
+      {
+        _text = _tree tvText [(_correctTreePath select 0),_i];
+        if (_text == "Opfor") then
+        {
+          _opfObjTreePath = [(_correctTreePath select 0),_i];
+        };
+      };
+
+      _tree tvSetValue [_opfObjTreePath, _indexForTree];
+      _recordDataStorage pushBack "NONE FOUND";
+      _indexForTree = _indexForTree + 1;
+    };
+
+    if (_sidesWithTasks find independent != -1) then
+    {
+      _tree tvAdd [_correctTreePath, "Indfor"];
+
+      _currentSubjectCount = _tree tvCount _correctTreePath;
+      for "_i" from 0 to _currentSubjectCount do
+      {
+        _text = _tree tvText [(_correctTreePath select 0),_i];
+        if (_text == "Indfor") then
+        {
+          _indObjTreePath = [(_correctTreePath select 0),_i];
+        };
+      };
+
+      _tree tvSetValue [_indObjTreePath, _indexForTree];
+      _recordDataStorage pushBack "NONE FOUND";
+      _indexForTree = _indexForTree + 1;
+    };
+
+    {
+      _task = _x select 0;
+      _side = _x select 1;
+
+      _name = taskName _task;
+      _currentTaskCorrectPath = [];
+      switch (_side) do
+      {
+        case west:
+        {
+          _tree tvAdd [_bluObjTreePath , _name];
+          _currentTaskCorrectPath = _bluObjTreePath;
+        };
+        case east:
+        {
+          _tree tvAdd [_opfObjTreePath , _name];
+          _currentTaskCorrectPath = _opfObjTreePath;
+        };
+        case independent:
+        {
+          _tree tvAdd [_opfObjTreePath , _name];
+          _currentTaskCorrectPath = _opfObjTreePath;
+        };
+        default
+        {
+          continue;
+        };
+      };
+
+      _currentSubjectCount = _tree tvCount _currentTaskCorrectPath;
+      _correctTreePathCurrentTask = [];
+      for "_i" from 0 to _currentSubjectCount do
+      {
+        _text = _tree tvText [(_currentTaskCorrectPath select 0),(_currentTaskCorrectPath select 1),_i];
+        if (_text == _name) then
+        {
+          _correctTreePathCurrentTask = [(_currentTaskCorrectPath select 0),(_currentTaskCorrectPath select 1),_i];
+        };
+      };
+
+      _tree tvSetValue [_correctTreePathCurrentTask, _indexForTree];
+      _recordDataStorage pushBack ("<t size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + (taskName _task) + "</t><br/><br/>" + ((taskDescription _task) select 0));
+      _indexForTree = _indexForTree + 1;
+    } forEach _curatedTasks;
   };
 } forEach _allSubjects;
 _tree ctrlCommit 0;

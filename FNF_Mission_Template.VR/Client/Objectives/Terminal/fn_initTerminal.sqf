@@ -181,7 +181,7 @@ if (_objectiveType == "hck") then
       };
     };
 
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>To complete this objective you must hack the objective for %2 seconds<br/><br/>%3", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
 
     [
       _objectiveObject,
@@ -216,7 +216,7 @@ if (_objectiveType == "hck") then
       };
     };
 
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>For your allies to complete this objective they must hack the objective for %2 seconds<br/><br/>%3", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
   };
 
   _marker setMarkerColorLocal "ColorUNKNOWN";
@@ -267,7 +267,7 @@ if (_objectiveType == "hck") then
   };
   if (_forPlayer) then
   {
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>To complete this objective you must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
 
     [
       _objectiveObject,
@@ -290,7 +290,7 @@ if (_objectiveType == "hck") then
       false
     ] call BIS_fnc_holdActionAdd;
   } else {
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>For your allies to complete this objective they must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
   };
 };
 

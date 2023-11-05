@@ -66,10 +66,11 @@ _sectorObjCleanup = [];
   _showObj = true;
   _forPlayer = false;
 
+  _objSide = sideEmpty;
+
   _sideCounter = 0;
   {
     _objectType = typeOf _x;
-    _objSide = sideEmpty;
 
     switch (_objectType) do
     {
@@ -119,7 +120,7 @@ _sectorObjCleanup = [];
     {
       case "fnf_module_destroyObj":
       {
-        [_x] call FNF_ClientSide_fnc_initSpectatorDestroy;
+        [_x,_objSide] call FNF_ClientSide_fnc_initSpectatorDestroy;
       };
 
       case "fnf_module_sectorCaptureObj":
@@ -129,12 +130,12 @@ _sectorObjCleanup = [];
           addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
           call BIS_fnc_showMissionStatus;
         };
-        [_x] call FNF_ClientSide_fnc_initSpectatorCaptureSector;
+        [_x,_objSide] call FNF_ClientSide_fnc_initSpectatorCaptureSector;
       };
 
       case "fnf_module_terminalObj":
       {
-        [_x] call FNF_ClientSide_fnc_initSpectatorTerminal;
+        [_x,_objSide] call FNF_ClientSide_fnc_initSpectatorTerminal;
       };
 
       //if no type found then objective must be part of a new mod update that framework isnt equipped to handle

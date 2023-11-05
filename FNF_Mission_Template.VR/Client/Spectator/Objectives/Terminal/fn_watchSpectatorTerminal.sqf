@@ -13,7 +13,7 @@
 
 params["_objEntry"];
 
-_objEntry params["_objType","_objectiveModule","_objectiveObject","_marker","_objNum"];
+_objEntry params["_objType","_objectiveModule","_objectiveObject","_marker","_objNum","_task"];
 
 _timeOfCompletion = _objectiveObject getVariable ['fnf_currentlyHackingCompletionTime', -1];
 

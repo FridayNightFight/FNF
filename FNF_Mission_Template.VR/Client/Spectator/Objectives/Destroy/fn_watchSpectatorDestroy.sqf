@@ -13,7 +13,7 @@
 
 params["_objEntry"];
 
-_objEntry params["_objType","_objectiveModule","_objectiveObject","_objNum"];
+_objEntry params["_objType","_objectiveModule","_objectiveObject","_objNum","_task"];
 
 if (alive _objectiveObject) exitWith
 {

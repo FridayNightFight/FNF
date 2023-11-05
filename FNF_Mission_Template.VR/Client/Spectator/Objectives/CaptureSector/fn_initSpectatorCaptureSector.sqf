@@ -11,7 +11,7 @@
 		None
 */
 
-params ["_objective"];
+params ["_objective","_side"];
 
 //get the objective type
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
@@ -37,10 +37,13 @@ if (_zonePrefix == "FAILED") exitWith
 };
 
 //get objective number
-_objNum = str((count fnf_objectives) + 1);
+_objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDUPE" and _x select 0 != "TERMINALDUPE"} count fnf_objectives) + 1);
+
 
 //get sector number
 _secNum = _objNum;
+
+_statusSlotID = "NOT SET";
 
 //check if zone already exists, if not create it
 _result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
@@ -66,9 +69,35 @@ if (not _result) then
   _statusSlotID = [-1, _text, _texture, _colour, 1, _taskPos, 0] call BIS_fnc_setMissionStatusSlot;
 
   //add objective to objective stack
-  fnf_objectives pushBack ["CAPTURESECTOR", _objective, _statusSlotID, _objNum];
 } else {
   _displayName = [_zonePrefix] call FNF_ClientSide_fnc_getDisplayName;
   _displayNameArray = _displayName splitString " ";
   _secNum = _displayNameArray select 1;
+  _objNum = _secNum;
 };
+
+_task = "";
+
+//create and setup objective task
+if (_objectiveType == "cap") then
+{
+
+  _task = player createSimpleTask [(_objNum + ": Capture Sector " + _secNum)];
+  _task setSimpleTaskDescription ["To complete this objective " + ([_side] call BIS_fnc_sideName) + " must have more players on their side or their allies side than any enemies to capture the sector", _objNum + ": Capture sector " + _secNum, _objNum + ": Capture sector " + _secNum];
+
+  _task setSimpleTaskType "meet";
+} else {
+
+  _task = player createSimpleTask [(_objNum + ": Defend Sector " + _secNum)];
+  _task setSimpleTaskDescription ["To complete this objective " + ([_side] call BIS_fnc_sideName) + " must have more players on their side or their allies side than any enemies to defend the sector", _objNum + ": Defend sector " + _secNum, _objNum + ": Defend sector " + _secNum];
+
+  _task setSimpleTaskType "defend";
+};
+
+if (_statusSlotID isEqualTo "NOT SET") then
+{
+  fnf_objectives pushBack ["CAPTURESECTORDUPE", _objective, _task];
+} else {
+  fnf_objectives pushBack ["CAPTURESECTOR", _objective, _statusSlotID, _objNum, _task];
+};
+

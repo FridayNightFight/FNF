@@ -11,7 +11,7 @@
 		None
 */
 
-params ["_objective"];
+params ["_objective","_side"];
 
 //get the objective type
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
@@ -71,6 +71,8 @@ if (_objectiveObject isEqualTo "") exitWith
   };
 };
 
+_objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDUPE" and _x select 0 != "TERMINALDUPE"} count fnf_objectives) + 1);
+
 _isObjDuplicate = false;
 {
   if (_x select 0 == "TERMINAL") then
@@ -78,6 +80,7 @@ _isObjDuplicate = false;
     if  (_x select 2 isEqualTo _objectiveObject) then
     {
       _isObjDuplicate = true;
+      _objNum = _x select 4;
     };
   };
 } forEach fnf_objectives;
@@ -118,7 +121,6 @@ if (_hackingTime > 299) then
 _targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
 _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Land_DataTerminal_01_F.jpg"] call CBA_fnc_getConfigEntry;
 
-_objNum = str((count fnf_objectives) + 1);
 
 if (count _hidingZones != 0) then
 {
@@ -140,6 +142,73 @@ if (count _hidingZones != 0) then
   } forEach _hidingZones;
 };
 
+_task = "";
+
+if (_objectiveType == "hck") then
+{
+  _task = player createSimpleTask [(_objNum + ": Hack the Terminal")];
+
+  _zoneKnown = _objective getVariable ["fnf_zoneKnown", true];
+
+  if (not _zoneKnown) then
+  {
+    if (fnf_debug) then
+    {
+      systemChat "WARNING: Terminal objective is not known which hiding zone it is in, currently this disables the in-map timer, please reconsider this option";
+    };
+  };
+
+  _helperString = "The location of the objective is marked on " + ([_side] call BIS_fnc_sideName) + "s map";
+
+  if (count _hidingZones != 0) then
+  {
+    _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on " + ([_side] call BIS_fnc_sideName) + "s map, if it isn't, the objectives exact location is marked instead";
+    if (not _zoneKnown) then
+    {
+      _helperString = "The location of the objective may be in a hiding zone, if it is, " + ([_side] call BIS_fnc_sideName) + " will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on " + ([_side] call BIS_fnc_sideName) + "s map";
+    };
+  };
+
+  _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective " + ([_side] call BIS_fnc_sideName) + " must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
+
+  _task setSimpleTaskType "upload";
+  _task setSimpleTaskTarget [_objectiveObject, true];
+
+} else {
+  _task = player createSimpleTask [(_objNum + ": Defend the Terminal")];
+
+  _task setSimpleTaskType "defend";
+  _task setSimpleTaskTarget [_objectiveObject, true];
+
+  _helperString = "";
+
+  if (count _hidingZones != 0) then
+  {
+    {
+      _prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+      if (_prefix == "FAILED") then
+      {
+        if (fnf_debug) then
+        {
+          systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+        };
+        continue;
+      };
+      _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+      if (not _result) then
+      {
+        [_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+      };
+    } forEach _hidingZones;
+
+    _helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
+  };
+
+  _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective " + ([_side] call BIS_fnc_sideName) + " must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
+
+};
+
 if (not _isObjDuplicate) then
 {
   _marker = createMarkerLocal ["terminal_timer_" + _objNum, getPos _objectiveObject];
@@ -151,5 +220,7 @@ if (not _isObjDuplicate) then
   [_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
 
   //add objective to objective stack
-  fnf_objectives pushBack ["TERMINAL", _objective, _objectiveObject, _marker];
+  fnf_objectives pushBack ["TERMINAL", _objective, _objectiveObject, _marker, _objNum, _task];
+} else {
+  fnf_objectives pushBack ["TERMINALDUPE", _objective, _objectiveObject, _task];
 };

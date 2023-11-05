@@ -103,6 +103,9 @@ if (not isNil "fnf_objectives") then
               _indexesToDeleteIfCompleted pushBack _forEachIndex;
             };
           };
+          case "DESTROYDUPE": {};
+          case "CAPTURESECTORDUPE": {};
+          case "TERMINALDUPE": {};
           default
           {
             if (fnf_debug) then
@@ -119,7 +122,7 @@ if (not isNil "fnf_objectives") then
 
     {
       //if OBJ is one without a physical object then move to next OBJ
-      if (_x select 0 == "CAPTURESECTOR") then
+      if (_x select 0 == "CAPTURESECTOR" or _x select 0 == "CAPTURESECTORDUPE" or _x select 0 == "DESTROYDUPE" or _x select 0 == "TERMINALDUPE") then
       {
         continue;
       };

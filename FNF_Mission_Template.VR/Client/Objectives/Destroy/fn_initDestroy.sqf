@@ -111,7 +111,7 @@ if (_objectiveType == "des") then
       };
     };
 
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>To complete this objective you must destroy the %2<br/><br/>%3", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must destroy the %2<br/><br/>%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
   } else {
     _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 
@@ -124,7 +124,7 @@ if (_objectiveType == "des") then
       };
     };
 
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>For your allies to complete this objective they must destroy the %2<br/><br/>%3", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must destroy the %2<br/><br/>%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
   };
 
   _task setSimpleTaskType "destroy";
@@ -171,9 +171,9 @@ if (_objectiveType == "des") then
   };
   if (_forPlayer) then
   {
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>To complete this objective you must prevent the %2 from being destroyed for the duration of the game%3", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must prevent the %2 from being destroyed for the duration of the game%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
   } else {
-    _task setSimpleTaskDescription [format["<img image='%1' width='300'><br/><br/><t>For your allies to complete this objective they must prevent the %2 from being destroyed for the duration of the game%3", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
+    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must prevent the %2 from being destroyed for the duration of the game%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
   };
 };
 

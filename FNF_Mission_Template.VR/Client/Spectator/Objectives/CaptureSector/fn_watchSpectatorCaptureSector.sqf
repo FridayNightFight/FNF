@@ -13,7 +13,7 @@
 
 params["_objEntry"];
 
-_objEntry params["_objType","_objectiveModule","_statusSlotID","_objNum"];
+_objEntry params["_objType","_objectiveModule","_statusSlotID","_objNum","_task"];
 
 _zonePrefix = _objectiveModule getVariable ["fnf_prefix", "FAILED"];
 
