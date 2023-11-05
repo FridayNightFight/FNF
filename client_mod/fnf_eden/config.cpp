@@ -96,7 +96,7 @@ class CfgVehicles
         typeName = "BOOL";
         defaultValue = "false";
       };
-      class DisableFortifyBlufor: Checkbox
+      class DisableFortifyOpfor: Checkbox
       {
         property = "fnf_disableFortifyOpfor";
         expression = "_this setVariable ['fnf_disableFortifyOpfor',_value, true];";
@@ -105,7 +105,7 @@ class CfgVehicles
         typeName = "BOOL";
         defaultValue = "false";
       };
-      class DisableFortifyBlufor: Checkbox
+      class DisableFortifyIndfor: Checkbox
       {
         property = "fnf_disableFortifyIndfor";
         expression = "_this setVariable ['fnf_disableFortifyIndfor',_value, true];";
@@ -546,6 +546,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Teleport Poles";
 	};
+  class fnf_BreifingAssets
+	{
+		displayName = "Breifing Assets";
+	};
 };
 
 class Cfg3DEN
@@ -728,6 +732,36 @@ class Cfg3DEN
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
 
+    //breifing assets
+
+    class fnf_BluforBreifingAssets // one class per composition
+		{
+			path = "fnf_eden\systems\(Blufor)BreifingAssetsPreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_BreifingAssets";				// link to CfgEditorSubcategories
+			displayName = "(Blufor) Breifing Assets Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_OpforBreifingAssets // one class per composition
+		{
+			path = "fnf_eden\systems\(Opfor)BreifingAssetsPreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_BreifingAssets";				// link to CfgEditorSubcategories
+			displayName = "(Opfor) Breifing Assets Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_IndforBreifingAssets // one class per composition
+		{
+			path = "fnf_eden\systems\(Indfor)BreifingAssetsPreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Systems";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_BreifingAssets";				// link to CfgEditorSubcategories
+			displayName = "(Indfor) Breifing Assets Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+
     //objectives
 
     class fnf_DestroyObjective // one class per composition
@@ -791,6 +825,15 @@ class Cfg3DEN
 			displayName = "[NATO] US Army (2020)";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
+    class fnf_USMarinesWoodland2020 // one class per composition
+		{
+			path = "fnf_eden\kits_blufor\USMarinesWoodland[2020]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Blufor";				// link to CfgEditorSubcategories
+			displayName = "US Marines Woodland [2020]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
     class fnf_RURussianMSV2020 // one class per composition
 		{
 			path = "fnf_eden\kits_opfor\[RU]RussianMSV(2020)";	// pbo path to a folder containing header.sqe/composition.sqe files
@@ -798,6 +841,15 @@ class Cfg3DEN
 			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
 			editorSubcategory = "fnf_Opfor";				// link to CfgEditorSubcategories
 			displayName = "[RU] Russian MSV (2020)";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_RussianRatnikWoodland2020 // one class per composition
+		{
+			path = "fnf_eden\kits_opfor\RussianRatnikWoodland2020";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
+			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Opfor";				// link to CfgEditorSubcategories
+			displayName = "Russian Ratnik Woodland [2020]";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
     class fnf_INDFORSyrianArmy2020_indfor // one class per composition
