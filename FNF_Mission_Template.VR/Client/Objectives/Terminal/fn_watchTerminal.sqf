@@ -13,7 +13,7 @@
 
 params["_objEntry"];
 
-_objEntry params["_objType","_objectiveModule","_objectiveObject", "_task", "_forPlayer", "_marker"];
+_objEntry params["_objType","_objectiveModule","_objectiveObject", "_task", "_forPlayer", "_marker", "_markerSetLocationPFH"];
 
 _timeOfCompletion = _objectiveObject getVariable ['fnf_currentlyHackingCompletionTime', -1];
 
@@ -96,6 +96,7 @@ if (_result) then
       ["<t size='1.5' align='center'>Objective " + _objNum + " Failed<br/>(Ally Objective)</t><br/><br/><t align='center'>The Terminal has been hacked and is rigged to explode in 12 seconds</t>", "failure", 10] call FNF_ClientSide_fnc_notificationSystem;
     };
   };
+  [_markerSetLocationPFH] call CBA_fnc_removePerFrameHandler;
   deleteMarkerLocal _marker;
 } else {
   //OBJ has not been completed

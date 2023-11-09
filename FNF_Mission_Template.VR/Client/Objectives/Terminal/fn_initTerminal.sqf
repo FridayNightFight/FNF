@@ -359,14 +359,18 @@ if (_objectiveType == "hck") then
 };
 
 //used to keep marker on the objective
-[{
+_markerSetLocationPFH = [{
   _objLoc = taskDestination ((_this select 0) select 1);
+  if (ace_spectator_isset) then
+  {
+    _objLoc = getPos ((_this select 0) select 2);
+  };
   if (_objLoc isEqualTo [0,0,0]) then
   {
     _objLoc = [-50000, -50000, -50000];
   };
   ((_this select 0) select 0) setMarkerPosLocal _objLoc;
-},0.1,[_marker, _task]] call CBA_fnc_addPerFrameHandler;
+},0.1,[_marker, _task, _objectiveObject]] call CBA_fnc_addPerFrameHandler;
 
 //add objective to objective stack
-fnf_objectives pushBack ["TERMINAL", _objective, _objectiveObject, _task, _forPlayer, _marker];
+fnf_objectives pushBack ["TERMINAL", _objective, _objectiveObject, _task, _forPlayer, _marker, _markerSetLocationPFH];
