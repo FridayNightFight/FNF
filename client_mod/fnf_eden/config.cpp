@@ -845,7 +845,7 @@ class Cfg3DEN
 		};
     class fnf_RussianRatnikWoodland2020 // one class per composition
 		{
-			path = "fnf_eden\kits_opfor\RussianRatnikWoodland2020";	// pbo path to a folder containing header.sqe/composition.sqe files
+			path = "fnf_eden\kits_opfor\RussianRatnikWoodland[2020]";	// pbo path to a folder containing header.sqe/composition.sqe files
 			side = 8;											// 0 opfor, 1 blufor, 2 indfor, 3 civ, 8 Empty/Props
 			editorCategory = "fnf_Kits";						// link to CfgEditorCategories
 			editorSubcategory = "fnf_Opfor";				// link to CfgEditorSubcategories
