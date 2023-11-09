@@ -32,6 +32,8 @@ if (_taskType == "destroy") then
   _splitString deleteRange [0, 3];
   _item = _splitString joinString " ";
   _image = _desc select 0;
+  _splitImage = _image splitString ">";
+  _image = (_splitImage select 0) + ">";
   _image = _image regexReplace ["width='300'", "size='6' align='center'"];
   if (_forPlayer) then
   {
@@ -48,6 +50,8 @@ if (_taskType == "destroy") then
   _splitString deleteRange [0, 3];
   _item = _splitString joinString " ";
   _image = _desc select 0;
+  _splitImage = _image splitString ">";
+  _image = (_splitImage select 0) + ">";
   _image = _image regexReplace ["width='300'", "size='6' align='center'"];
   if (_forPlayer) then
   {
