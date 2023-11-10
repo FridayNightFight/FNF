@@ -174,7 +174,7 @@ if (not _isObjDuplicate) then
   //if obj not dupe setup destroy marker so easier to view in map
   _marker = createMarkerLocal ["destroy_obj_marker_" + _objNum, getPos _objectiveObject];
   _marker setMarkerTypeLocal "mil_objective";
-  _marker setMarkerText "Destroy " + _objNum;
+  _marker setMarkerTextLocal "Destroy " + _objNum;
 
   [{
     params["_marker", "_object"];
