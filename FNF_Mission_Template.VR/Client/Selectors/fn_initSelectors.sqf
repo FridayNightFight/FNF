@@ -81,7 +81,8 @@ _trueHostSelectorSet = false;
   //if the host action has not been created yet for all selectors, create it
   if (not _trueHostSelectorSet) then
   {
-    _action = ["trueHost", "FNF Selectors", "", {}, {true}] call ace_interact_menu_fnc_createAction;
+    fnf_showSelectors = true;
+    _action = ["trueHost", "FNF Selectors", "", {}, {fnf_showSelectors}] call ace_interact_menu_fnc_createAction;
     [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 
     //[items, ID, Type]
