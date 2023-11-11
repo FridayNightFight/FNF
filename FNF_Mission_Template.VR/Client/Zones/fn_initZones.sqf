@@ -26,6 +26,15 @@ call FNF_ClientSide_fnc_initMapShading;
 fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 [{
 	_playerPos = getPosASL player;
+  _playerInVehicle = false;
+  if (not isNull objectParent player) then
+  {
+    _playerInVehicle = true;
+    _playerPos = getPosASL (objectParent player);
+  };
+
+  _anyRestrictionFailedWithTP = false;
+
 	{
 		_restrictionSatisfied = false;
 		{
@@ -39,7 +48,16 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 		{
 			if (_x select 3) then
 			{
-				player setPosASL fnf_zoneRestrictionsLastKnownPosition;
+        _anyRestrictionFailedWithTP = true;
+        if (_playerInVehicle) then {
+          if (local (objectParent player)) then
+          {
+            _goodPos = fnf_zoneRestrictionsLastKnownPosition findEmptyPosition [0, 50, typeOf objectParent player];
+            (objectParent player) setVehiclePosition [_goodPos, [] , 0, "CAN_COLLIDE"];
+          };
+        } else {
+          player setPosASL fnf_zoneRestrictionsLastKnownPosition;
+        };
 			} else {
 				if ((_x select 0) call FNF_ClientSide_fnc_getRequestWeaponDisable) then
 				{
@@ -56,5 +74,9 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 			};
 		};
 	} forEach fnf_zoneRestrictionGroupsList;
-	fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
+
+  if (not _anyRestrictionFailedWithTP) then
+  {
+    fnf_zoneRestrictionsLastKnownPosition = _playerPos;
+  };
 }, 1] call CBA_fnc_addPerFrameHandler;
