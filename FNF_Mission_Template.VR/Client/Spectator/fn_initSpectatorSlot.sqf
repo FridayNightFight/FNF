@@ -16,6 +16,23 @@ params["_modules", "_initModule"];
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
+//setup map shading
+[{!isNull findDisplay 60000},{
+findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
+{
+  _map = _this select 0;
+  {
+    _rgbaValues = _x select 2;
+    {
+      _pos1 = _x select 0;
+      _pos2 = _x select 1;
+      _pos3 = _x select 2;
+	    _map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, "#(rgb,1,1,1)color(1,1,1,1)"];
+    } forEach (_x select 1);
+  } forEach fnf_trianglesToDraw;
+}];
+}] call CBA_fnc_waitUntilAndExecute;
+
 //init breifing
 _kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;

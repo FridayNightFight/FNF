@@ -11,5 +11,6 @@ respawnOnStart = -1;
 
 onPauseScript[] = {
   FNF_ClientSide_fnc_adminGameEndButton,
-  FNF_ClientSide_fnc_contactStaffButton
+  FNF_ClientSide_fnc_contactStaffButton,
+  FNF_ClientSide_fnc_adminMenuButton
 };

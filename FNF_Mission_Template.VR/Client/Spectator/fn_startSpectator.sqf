@@ -21,6 +21,23 @@ if (!isNull _lastDamage) then {
   [2, player] call ace_spectator_fnc_setCameraAttributes;
 };
 
+//setup map shading
+[{!isNull findDisplay 60000},{
+findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
+{
+  _map = _this select 0;
+  {
+    _rgbaValues = _x select 2;
+    {
+      _pos1 = _x select 0;
+      _pos2 = _x select 1;
+      _pos3 = _x select 2;
+	    _map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, "#(rgb,1,1,1)color(1,1,1,1)"];
+    } forEach (_x select 1);
+  } forEach fnf_trianglesToDraw;
+}];
+}] call CBA_fnc_waitUntilAndExecute;
+
 //show Mission Details button
 call FNF_ClientSide_fnc_missionDetailsButton;
 
@@ -47,7 +64,7 @@ call BIS_fnc_showMissionStatus;
 
       [{
         params["_marker", "_object"];
-        not alive _object;
+        not alive _object or not ace_spectator_isset;
       }, {
         params["_marker", "_object"];
         deleteMarkerLocal _marker;

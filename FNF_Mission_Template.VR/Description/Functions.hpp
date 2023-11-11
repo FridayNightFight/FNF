@@ -93,6 +93,7 @@ class CfgFunctions
       file = "Client\UI\PauseMenu";
       class adminGameEndButton {};
       class contactStaffButton {};
+      class adminMenuButton {};
     };
     class spectatorUI
     {
@@ -105,6 +106,8 @@ class CfgFunctions
       file = "Client\Admin";
       class contactStaff {};
       class recieveContactStaffRequest {};
+      class adminMenu {};
+      class respawnPlayer {};
     };
     class timer
     {
