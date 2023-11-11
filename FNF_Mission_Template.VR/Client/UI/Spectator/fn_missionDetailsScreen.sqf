@@ -36,7 +36,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
   _picture = _x select 2;
 
   //if the subject is not useless ones we dont want
-  if (_name != "Units" and _name != "Players" and _name != "Statistics" and _name != "radio" and _name != "cba_help_docs" and _name != "Tasks") then
+  if (_name != "Units" and _name != "Players" and _name != "Statistics" and _name != "radio" and _name != "cba_help_docs" and _name != "Tasks" and _name != "OCAP2Info") then
   {
     //add it to the root of the tree
     _tree tvAdd [[], _displayName];
