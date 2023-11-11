@@ -86,6 +86,7 @@ class CfgFunctions
       file = "Client\UI";
       class notificationSystem {};
       class markEditorPlacedObjects {};
+      class initGPSUnitMarkers {};
     };
     class pauseMenu
     {

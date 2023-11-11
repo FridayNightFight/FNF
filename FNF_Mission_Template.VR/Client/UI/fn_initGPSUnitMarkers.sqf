@@ -1,0 +1,67 @@
+/*
+	Author: Mallen
+
+	Description:
+    Shows the units on players side in the GPS screen
+
+	Parameter(s):
+		None
+
+	Returns:
+		None
+*/
+
+fnf_unitsToDraw = [];
+
+_iconStyle = missionNamespace getVariable "diwako_dui_icon_style";
+_iconNamespace = missionNamespace getVariable ("diwako_dui_main_icon_" + _iconStyle);
+
+[{
+  fnf_unitsToDraw = [];
+  _allUnits = units playerSide;
+  {
+    if (_x isEqualTo player) then {continue;};
+
+    _colour = [playerSide] call BIS_fnc_sideColor;
+    if ((group _x) isEqualTo (group player)) then
+    {
+      _colour = _x getVariable ["diwako_dui_main_compass_color", [1, 1, 1]];
+    };
+    _colour = _colour + [1];
+
+    _dir = getDir _x;
+
+    _pos = getPos _x;
+
+    _tex = [_x, (_this select 0 select 0), player] call diwako_dui_radar_fnc_getIcon;
+
+    fnf_unitsToDraw pushBack [_tex,_colour,_pos,_dir];
+  } forEach _allUnits;
+}, 1, [_iconNamespace]] call CBA_fnc_addPerFrameHandler;
+
+[{
+  _gps = controlNull;
+  {
+	if (['311',(str _x),FALSE] call BIS_fnc_inString) then {
+		if (!isNull (_x displayCtrl 101)) then {
+			_gps = (_x displayCtrl 101);
+		  };
+	  };
+  } forEach (uiNamespace getVariable 'IGUI_displays');
+  not (_gps isEqualTo controlNull);
+},{
+  {
+	  if (['311',(str _x),FALSE] call BIS_fnc_inString) then {
+		  if (!isNull (_x displayCtrl 101)) exitWith {
+			  _gps = (_x displayCtrl 101);
+			  _gps ctrlAddEventHandler ['Draw',{
+          _map = _this select 0;
+          {
+            _x params ["_texture","_colour","_position","_angle"];
+            _map drawIcon [_texture, _colour, _position, 20, 20, _angle]
+          } forEach fnf_unitsToDraw;
+        }];
+		  };
+	  };
+  } forEach (uiNamespace getVariable 'IGUI_displays');
+}] call CBA_fnc_waitUntilAndExecute;

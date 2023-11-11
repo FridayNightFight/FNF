@@ -103,6 +103,7 @@ if (count _hidingZoneModules != 0) then
 if (serverName == "Friday Night Fight #Early | www.fridaynightfight.org") then
 {
   player linkItem "itemGPS";
+  [] call FNF_ClientSide_fnc_initGPSUnitMarkers;
 };
 
 //if there are objectives start watching them
