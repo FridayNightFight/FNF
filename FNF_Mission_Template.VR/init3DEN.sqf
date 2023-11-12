@@ -13,6 +13,98 @@
 
 fnf_handelingSave = false;
 
+_currentEntities = all3DENEntities;
+_currentObjects = _currentEntities select 0;
+
+_allLogic = [];
+{
+  if (typeOf _x == "Logic") then
+  {
+    _allLogic pushBack _x;
+  };
+} forEach _currentObjects;
+
+_allUnits = [];
+{
+  if (_x isKindOf "Man") then
+  {
+    _allUnits pushBack _x;
+  };
+} forEach _currentObjects;
+
+//high likelyhood that mission has been exported before, time to reverse that
+if (count _allLogic >= count _allUnits) then
+{
+  _unitsToDelete = [];
+  {
+    //get unit ID
+    _unit = _x;
+    _initField = (_unit get3DENAttribute "init") select 0;
+    _splitString = [_initField, "[this, fnf_handleJIPLogic_", true] call BIS_fnc_splitString;
+    if (count _splitString != 2) then
+    {
+      continue;
+    };
+    _text = _splitString select 1;
+    _splitString = [_text, "] call FNF_ServerSide_fnc_handleJIPSyncing;", true] call BIS_fnc_splitString;
+    if (count _splitString != 2) then
+    {
+      continue;
+    };
+    _unitID = _splitString select 0;
+
+    //find logic with same ID
+    _foundLogic = objNull;
+    {
+      _variableName = (_x get3DENAttribute "name") select 0;
+      _splitString = [_variableName, "fnf_handleJIPLogic_", true] call BIS_fnc_splitString;
+      if (count _splitString != 2) then
+      {
+        continue;
+      };
+      _logicID = _splitString select 1;
+
+      if (_unitID == _logicID) then
+      {
+        _foundLogic = _x;
+        break;
+      };
+    } forEach _allLogic;
+
+    //if none found exit this unit
+    if (isNull _foundLogic) then
+    {
+      continue;
+    };
+
+    _connections = get3DENConnections _foundLogic;
+    _connectionItems = [];
+
+    //make sure connection is a sync and not group
+    {
+      if (typeName _x == "ARRAY" ) then
+      {
+        if (_x select 0 == "Sync") then
+        {
+          _connectionItems pushBack (_x select 1);
+        };
+      };
+    } forEach _connections;
+
+    //fix connections, send logic for deletion
+    add3DENConnection ["Sync", _connectionItems, _unit];
+
+    _unit set3DENAttribute ["init", ""];
+
+    _unitsToDelete pushBack _foundLogic;
+  } forEach _allUnits;
+
+  delete3DENEntities _unitsToDelete;
+
+  do3DENAction "MissionSave";
+};
+
+//used to add JIP handelers when mission is exported
 _addJIPitems = {
   params ["_messageID"];
 
@@ -91,6 +183,7 @@ _addJIPitems = {
   //reconnect syncs so it is seamless for player
   {
     add3DENConnection ["Sync", _x select 1, _x select 0];
+    (_x select 0) set3DENAttribute ["init", ""];
   } forEach _unitsToConnect;
 
   do3DENAction "MissionSave";
