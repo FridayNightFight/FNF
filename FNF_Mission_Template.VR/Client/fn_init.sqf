@@ -106,6 +106,9 @@ if (serverName == "Friday Night Fight #Early | www.fridaynightfight.org") then
   [] call FNF_ClientSide_fnc_initGPSUnitMarkers;
 };
 
+//add zues ace options
+[] call FNF_ClientSide_fnc_zuesAceOptions;
+
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {

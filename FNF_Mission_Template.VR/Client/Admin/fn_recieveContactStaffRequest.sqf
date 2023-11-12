@@ -35,7 +35,7 @@ player createDiaryRecord [
 [
   ([time, "MM:SS"] call BIS_fnc_secondsToString) + " " + _playerName,
     format [
-      "<font face=""PuristaMedium""><font size=""14"" color=""#22FF22"">%1</font><br/><marker name=""%2"">Go to position of report</marker><br/><br/>MESSAGE:</font><br/><font face=""RobotoCondensed"">%3</font>",
+      "<font face='PuristaMedium'><font size='14' color='#22FF22'>%1</font><br/><marker name='%2'>Go to position of report</marker><br/><br/>MESSAGE:</font><br/><font face='RobotoCondensed'>%3</font>",
       _playerName,
       _mark,
       (_message + '<br/>')

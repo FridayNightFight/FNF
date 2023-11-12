@@ -108,6 +108,7 @@ class CfgFunctions
       class recieveContactStaffRequest {};
       class adminMenu {};
       class respawnPlayer {};
+      class zuesAceOptions {};
     };
     class timer
     {

@@ -37,7 +37,12 @@ private "_display";
 if (ace_spectator_isSet) then {
 	_display = findDisplay 60000;
 } else {
-	_display = findDisplay 46;
+  if (!isNull findDisplay 312) then
+  {
+    _display = findDisplay 312;
+  } else {
+	  _display = findDisplay 46;
+  };
 };
 _TitleColour = "";
 _alpha = 1;
