@@ -31,6 +31,7 @@ _iconNamespace = missionNamespace getVariable ("diwako_dui_main_icon_" + _iconSt
 
     {
       if (_x isEqualTo player) then {continue;};
+      if (not alive _x) then {continue;};
 
       _colour = [playerSide] call BIS_fnc_sideColor;
       if (_playersGroup) then
