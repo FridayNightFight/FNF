@@ -12,6 +12,9 @@ fnf_debug = _initModule getVariable ["fnf_debug", true];
 //restrict players vanilla actions
 [_initModule] call FNF_ClientSide_fnc_restrictPlayer;
 
+//get player loadout and store for future use
+fnf_playerLoadout = getUnitLoadout player;
+
 //mark custom things
 call FNF_ClientSide_fnc_markEditorPlacedObjects;
 
@@ -137,6 +140,14 @@ if (not isNil "fnf_objectives") then
           case "TERMINAL":
           {
             _result = [_x] call FNF_ClientSide_fnc_watchTerminal;
+            if (_result) then
+            {
+              _indexesToDeleteIfCompleted pushBack _forEachIndex;
+            };
+          };
+          case "ASSASSIN":
+          {
+            _result = [_x] call FNF_ClientSide_fnc_watchAssassin;
             if (_result) then
             {
               _indexesToDeleteIfCompleted pushBack _forEachIndex;

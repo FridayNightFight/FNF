@@ -11,6 +11,8 @@
 		None
 */
 
+if (alive player) exitWith {};
+
 setPlayerRespawnTime -1;
 
 player allowDamage false;
@@ -19,6 +21,7 @@ player allowDamage false;
 ["<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><t align='center'><br/><br/>You have been respawned, you are currently hidden and set to invincible until an admin teleports you to a safe location near to your death spot, please wait...</t>", "deep-purple", 10] call FNF_ClientSide_fnc_notificationSystem;
 
 [{
+  player setUnitLoadout [fnf_playerLoadout, false];
   player enableSimulation false;
   setPlayerRespawnTime 9999;
   _playerPos = getPos player;
