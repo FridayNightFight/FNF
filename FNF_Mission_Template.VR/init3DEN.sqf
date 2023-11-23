@@ -33,7 +33,7 @@ _allUnits = [];
 } forEach _currentObjects;
 
 //high likelyhood that mission has been exported before, time to reverse that
-if (count _allLogic >= count _allUnits) then
+if (count _allLogic >= count _allUnits and count _allUnits != 0) then
 {
   _unitsToDelete = [];
   {
