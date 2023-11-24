@@ -22,6 +22,12 @@ player allowDamage false;
 
 [{
   player setUnitLoadout [fnf_playerLoadout, false];
+
+  if (serverName == "Friday Night Fight #Early | www.fridaynightfight.org") then
+  {
+    player linkItem "itemGPS";
+  };
+
   player enableSimulation false;
   setPlayerRespawnTime 9999;
   _playerPos = getPos player;
