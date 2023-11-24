@@ -64,6 +64,7 @@ call BIS_fnc_showMissionStatus;
 
       [{
         params["_marker", "_object"];
+        _marker setMarkerPosLocal (getPos _object);
         not alive _object or not ace_spectator_isset;
       }, {
         params["_marker", "_object"];

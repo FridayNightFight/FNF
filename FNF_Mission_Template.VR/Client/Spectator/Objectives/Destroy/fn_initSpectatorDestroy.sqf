@@ -178,6 +178,7 @@ if (not _isObjDuplicate) then
 
   [{
     params["_marker", "_object"];
+    _marker setMarkerPosLocal (getPos _object);
     not alive _object;
   }, {
     params["_marker", "_object"];
