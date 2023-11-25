@@ -120,9 +120,18 @@ if (not isNil "fnf_objectives") then
               _indexesToDeleteIfCompleted pushBack _forEachIndex;
             };
           };
+          case "ASSASSIN":
+          {
+            _result = [_x] call FNF_ClientSide_fnc_watchSpectatorAssassin;
+            if (_result) then
+            {
+              _indexesToDeleteIfCompleted pushBack _forEachIndex;
+            };
+          };
           case "DESTROYDUPE": {};
           case "CAPTURESECTORDUPE": {};
           case "TERMINALDUPE": {};
+          case "ASSASSINDUPE": {};
           default
           {
             if (fnf_debug) then
@@ -145,10 +154,26 @@ if (not isNil "fnf_objectives") then
       };
 
       [{
-        params ["_objectiveEntry"];
+      params ["_objectiveEntry"];
 
-        _obj = (_objectiveEntry select 2);
+      _obj = (_objectiveEntry select 2);
 
+      if (_objectiveEntry select 0 == "ASSASSIN") then
+      {
+        _syncedObjects = synchronizedObjects (_objectiveEntry select 1);
+        _obj = objNull;
+        {
+          if (isPlayer _x) then
+          {
+            _obj = _x;
+          };
+        } forEach _syncedObjects;
+
+        _objComplete = (_objectiveEntry select 1) getVariable ["fnf_objComplete", false];
+        if (_objComplete) exitWith {
+          [_handle] call CBA_fnc_removePerFrameHandler;
+        };
+      } else {
         if (isNull _obj) exitWith {
           [_handle] call CBA_fnc_removePerFrameHandler;
         };
@@ -156,10 +181,11 @@ if (not isNil "fnf_objectives") then
         if (!alive _obj) exitWith {
           [_handle] call CBA_fnc_removePerFrameHandler;
         };
+      };
 
-        drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
+      drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
 
-      } , 0, _x] call CBA_fnc_addPerFrameHandler;
+    } , 0, _x] call CBA_fnc_addPerFrameHandler;
 
     } forEach fnf_objectives;
   };

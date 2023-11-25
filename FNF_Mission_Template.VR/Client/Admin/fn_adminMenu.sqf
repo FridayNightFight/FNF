@@ -104,18 +104,73 @@ _banPlayerButton ctrlSetText "Ban Player";
 _banPlayerButton ctrlSetTextColor [1,0,0,1];
 
 _playerMessageBox = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlEdit", 10011 ];
-_playerMessageBox ctrlSetPosition[ 0.5125, 0.1, 0.475, 0.05 ];
+_playerMessageBox ctrlSetPosition[ 0.5125, 0.0125, 0.475, 0.05 ];
 _playerMessageBox ctrlCommit 0;
 
 _playerMessageButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10012 ];
-_playerMessageButton ctrlSetPosition[ 0.5125, 0.1625, 0.475, 0.05 ];
+_playerMessageButton ctrlSetPosition[ 0.5125, 0.075, 0.475, 0.05 ];
 _playerMessageButton ctrlCommit 0;
 _playerMessageButton ctrlSetText "Send Message to Player or Side";
 
 _playerMessageAllButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10013 ];
-_playerMessageAllButton ctrlSetPosition[ 0.5125, 0.225, 0.475, 0.05 ];
+_playerMessageAllButton ctrlSetPosition[ 0.5125, 0.1375, 0.475, 0.05 ];
 _playerMessageAllButton ctrlCommit 0;
 _playerMessageAllButton ctrlSetText "Send Message to All Players";
+
+_objConfirmList = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlListbox", 10014 ];
+_objConfirmList ctrlSetPosition[ 0.5125, 0.2, 0.48125, 0.43125 ];
+_objConfirmList ctrlCommit 0;
+
+//get objectives to put on list
+_modules = call FNF_ClientSide_fnc_findFNFModules;
+_objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
+_objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
+
+{
+  _moduleType = typeOf _x;
+  switch (_moduleType) do
+  {
+    case "fnf_module_assassinObj":
+    {
+      if (_x getVariable ["fnf_objComplete", false]) then
+      {
+        continue;
+      };
+
+      _syncedObjects = synchronizedObjects _x;
+
+      //find the target thats supposed to be killed or protected
+      _playerObject = objNull;
+      {
+        if (isPlayer _x) then
+        {
+          _playerObject = _x;
+        };
+      } forEach _syncedObjects;
+
+      _status = "Null";
+      _targetName = _x getVariable ["fnf_targetName", "Unknown Name"];
+
+      if (not isNull _playerObject) then
+      {
+        _status = "DEAD";
+        _targetName = name _playerObject;
+        if (alive _playerObject) then
+        {
+          _status = "Alive";
+        };
+      };
+      _objectiveType = _x getVariable ["fnf_objectiveType", "FAILED"];
+      _objTempIndex = _objConfirmList lbAdd ("Assassin Obj " + _objectiveType + " - Status: " + _status + " Target: " + _targetName);
+      _playerList lbSetValue [_objTempIndex, _forEachIndex];
+    };
+  };
+} forEach _objModules;
+
+_objConfirmButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10015 ];
+_objConfirmButton ctrlSetPosition[ 0.5125, 0.64375, 0.475, 0.05 ];
+_objConfirmButton ctrlCommit 0;
+_objConfirmButton ctrlSetText "Confirm Objective Complete";
 
 fnf_adminMenu_searchPFH = [{
   _playerList = (fnf_adminDisplay select 0) displayCtrl 10000;
@@ -347,4 +402,27 @@ _playerMessageAllButton ctrlAddEventHandler[ "ButtonClick", {
   _adminName = name player;
 
   [format["<t align='center' size='1.4' color='#FFFF00'>ADMIN MESSAGE</t><t align='center'><br/><br/>%1<br/><br/>Sent by %2</t>", _messageText, _adminName], "deep-purple", 20] remoteExec ["FNF_ClientSide_fnc_notificationSystem", -2, false];
+}];
+
+_objConfirmButton ctrlAddEventHandler[ "ButtonClick", {
+  params[ "_objConfirmButton" ];
+
+	_objConfirmList = ctrlParent _objConfirmButton displayCtrl 10014;
+  _selectedIndex = lbCurSel _objConfirmList;
+	_selectedData = _objConfirmList lbValue _selectedIndex;
+
+  _modules = call FNF_ClientSide_fnc_findFNFModules;
+  _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
+  _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
+
+  _selectedObjModule = (_objModules select _selectedData);
+  _moduleType = typeOf _selectedObjModule;
+
+  switch (_moduleType) do
+  {
+    case "fnf_module_assassinObj":
+    {
+      _selectedObjModule setVariable ["fnf_objComplete", true, true];
+    };
+  };
 }];

@@ -141,25 +141,6 @@ if (_objectiveType == "des") then
 
   if (count _hidingZones != 0) then
   {
-    {
-      _prefix = _x getVariable ["fnf_prefix", "FAILED"];
-
-      if (_prefix == "FAILED") then
-      {
-        if (fnf_debug) then
-        {
-          systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
-        };
-        continue;
-      };
-
-      _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
-      if (not _result) then
-      {
-        [_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
-      };
-    } forEach _hidingZones;
-
     _helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
   };
 
@@ -172,13 +153,13 @@ if (not _isObjDuplicate) then
 {
   fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _objNum, _task];
   //if obj not dupe setup destroy marker so easier to view in map
-  _marker = createMarkerLocal ["destroy_obj_marker_" + _objNum, getPos _objectiveObject];
+  _marker = createMarkerLocal ["destroy_obj_marker_" + _objNum, _objectiveObject];
   _marker setMarkerTypeLocal "mil_objective";
   _marker setMarkerTextLocal "Destroy " + _objNum;
 
   [{
     params["_marker", "_object"];
-    _marker setMarkerPosLocal (getPos _object);
+    _marker setMarkerPosLocal _object;
     not alive _object;
   }, {
     params["_marker", "_object"];

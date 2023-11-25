@@ -56,15 +56,15 @@ call BIS_fnc_showMissionStatus;
       _desc = taskDescription (_x select 3);
       _splitString = (_desc select 1) splitString " ";
       _objNumWithColon = _splitString select 0;
-      _objNum = (_objNumWithColon splitString "") select 0;
+      _objNum = _objNumWithColon trim [":", 2];
 
-      _marker = createMarkerLocal ["destroy_obj_marker_" + str(_objNum), getPos (_x select 2)];
+      _marker = createMarkerLocal ["destroy_obj_marker_" + str(_objNum), (_x select 2)];
       _marker setMarkerTypeLocal "mil_objective";
       _marker setMarkerTextLocal "Destroy " + _objNum;
 
       [{
         params["_marker", "_object"];
-        _marker setMarkerPosLocal (getPos _object);
+        _marker setMarkerPosLocal _object;
         not alive _object or not ace_spectator_isset;
       }, {
         params["_marker", "_object"];
@@ -72,16 +72,70 @@ call BIS_fnc_showMissionStatus;
       }, [_marker, (_x select 2)]] call CBA_fnc_waitUntilAndExecute;
     };
 
+    if (_x select 0 == "ASSASSIN") then
+    {
+      _desc = taskDescription (_x select 3);
+      _splitString = (_desc select 1) splitString " ";
+      _objNumWithColon = _splitString select 0;
+      _objNum = _objNumWithColon trim [":", 2];
+
+      _marker = createMarkerLocal ["assassin_obj_marker_" + str(_objNum), (_x select 1)];
+      _marker setMarkerTypeLocal "mil_objective";
+      _marker setMarkerTextLocal "Assassin " + _objNum;
+
+      [{
+        params["_marker", "_object"];
+        _objComplete = _object getVariable ["fnf_objComplete", false];
+
+        _syncedObjects = synchronizedObjects _object;
+
+        {
+          if (isPlayer _x) then
+          {
+            _object = _x;
+          };
+        } forEach _syncedObjects;
+
+        _marker setMarkerPosLocal _object;
+
+        _objComplete or not ace_spectator_isset;
+      }, {
+        params["_marker", "_object"];
+        deleteMarkerLocal _marker;
+      }, [_marker, (_x select 1)]] call CBA_fnc_waitUntilAndExecute;
+    };
+
     [{
       params ["_objectiveEntry"];
 
       _obj = (_objectiveEntry select 2);
 
-      if (isNull _obj) exitWith {
-        [_handle] call CBA_fnc_removePerFrameHandler;
+      if (_objectiveEntry select 0 == "ASSASSIN") then
+      {
+        _syncedObjects = synchronizedObjects (_objectiveEntry select 1);
+        _obj = objNull;
+        {
+          if (isPlayer _x) then
+          {
+            _obj = _x;
+          };
+        } forEach _syncedObjects;
+
+        _objComplete = (_objectiveEntry select 1) getVariable ["fnf_objComplete", false];
+        if (_objComplete) exitWith {
+          [_handle] call CBA_fnc_removePerFrameHandler;
+        };
+      } else {
+        if (isNull _obj) exitWith {
+          [_handle] call CBA_fnc_removePerFrameHandler;
+        };
+
+        if (!alive _obj) exitWith {
+          [_handle] call CBA_fnc_removePerFrameHandler;
+        };
       };
 
-      if (!alive _obj or !ace_spectator_isSet) exitWith {
+      if (!ace_spectator_isSet) exitWith {
         [_handle] call CBA_fnc_removePerFrameHandler;
       };
 

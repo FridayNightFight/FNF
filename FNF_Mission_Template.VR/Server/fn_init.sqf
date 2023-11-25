@@ -73,8 +73,17 @@ if (not isNil "fnf_serverObjectives") then
               _indexesToChangeIfCompleted pushBack _forEachIndex;
             };
           };
+          case "ASSASSIN":
+          {
+            _result = [(_x select 3)] call FNF_ServerSide_fnc_watchAssassin;
+            if (_result) then
+            {
+              _indexesToChangeIfCompleted pushBack _forEachIndex;
+            };
+          };
           default {};
         };
+
         {
           fnf_serverObjectives select _x set [0, true];
         } forEach _indexesToChangeIfCompleted;

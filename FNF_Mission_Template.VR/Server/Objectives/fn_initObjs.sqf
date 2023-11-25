@@ -61,6 +61,10 @@ call FNF_ClientSide_fnc_initZones;
     {
       [_x, _objSide] call FNF_ServerSide_fnc_initTerminal;
     };
+    case "fnf_module_assassinObj":
+    {
+      [_x, _objSide] call FNF_ServerSide_fnc_initAssassin;
+    };
     default {};
   };
 } forEach _modules;
