@@ -212,7 +212,7 @@ if (_objectiveType == "hck") then
 
 if (not _isObjDuplicate) then
 {
-  _marker = createMarkerLocal ["terminal_timer_" + _objNum, getPos _objectiveObject];
+  _marker = createMarkerLocal ["terminal_timer_" + _objNum, _objectiveObject];
   _marker setMarkerShapeLocal "ICON";
   _marker setMarkerTextLocal "Terminal " + _objNum + " [Idle]";
   _marker setMarkerTypeLocal "mil_dot";

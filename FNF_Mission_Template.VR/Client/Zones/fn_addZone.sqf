@@ -65,7 +65,7 @@ _polylineInputs = [];
 } forEach _markerPosArray;
 
 //create polyline
-_markerPolyline = createMarkerLocal [(_zonePrefix + "polyline"), position player];
+_markerPolyline = createMarkerLocal [(_zonePrefix + "polyline"), player];
 _markerPolyline setMarkerShapeLocal "POLYLINE";
 _markerPolyline setMarkerPolylineLocal _polylineInputs;
 _markerPolyline setMarkerColorLocal _markerColor;

@@ -36,7 +36,7 @@ _createMarker = {
   params["_obj","_markerNum"];
 
   // Create marker locally to save network bandwidth
-  _marker = createMarkerlocal ["fnf_ObjectMarker" + str _markerNum, getPos _obj];
+  _marker = createMarkerlocal ["fnf_ObjectMarker" + str _markerNum, _obj];
 
   // format marker and set direction
   _marker setMarkerShapeLocal "Rectangle";
