@@ -1,0 +1,252 @@
+version=54;
+center[]={1663.8334,5.5,5504};
+class items
+{
+	items=6;
+	class Item0
+	{
+		dataType="Group";
+		side="West";
+		class Entities
+		{
+			items=1;
+			class Item0
+			{
+				dataType="Object";
+				class PositionInfo
+				{
+					position[]={-5.833374,0.0014390945,0.049804688};
+				};
+				side="West";
+				flags=7;
+				class Attributes
+				{
+					description="DELETE THIS AND SYNC TO TARGET";
+				};
+				id=7;
+				type="B_Soldier_VR_F";
+				class CustomAttributes
+				{
+					class Attribute0
+					{
+						property="speaker";
+						expression="_this setspeaker _value;";
+						class Value
+						{
+							class data
+							{
+								singleType="STRING";
+								value="Male01ENGVR";
+							};
+						};
+					};
+					class Attribute1
+					{
+						property="pitch";
+						expression="_this setpitch _value;";
+						class Value
+						{
+							class data
+							{
+								singleType="SCALAR";
+								value=0.99000001;
+							};
+						};
+					};
+					nAttributes=2;
+				};
+			};
+		};
+		class Attributes
+		{
+		};
+		id=6;
+	};
+	class Item1
+	{
+		dataType="Logic";
+		class PositionInfo
+		{
+			position[]={-0.83337402,0,-5};
+		};
+		id=14;
+		type="fnf_module_assassinObj";
+		class CustomAttributes
+		{
+			class Attribute0
+			{
+				property="fnf_objectiveType";
+				expression="_this setVariable ['fnf_objectiveType',_value, true];";
+				class Value
+				{
+					class data
+					{
+						singleType="STRING";
+						value="pro";
+					};
+				};
+			};
+			class Attribute1
+			{
+				property="fnf_zoneKnown";
+				expression="_this setVariable ['fnf_zoneKnown',_value, true];";
+				class Value
+				{
+					class data
+					{
+						singleType="BOOL";
+						value=1;
+					};
+				};
+			};
+			class Attribute2
+			{
+				property="fnf_targetName";
+				expression="_this setVariable ['fnf_targetName',_value, true];";
+				class Value
+				{
+					class data
+					{
+						singleType="STRING";
+						value="the VIP";
+					};
+				};
+			};
+			nAttributes=3;
+		};
+	};
+	class Item2
+	{
+		dataType="Logic";
+		class PositionInfo
+		{
+			position[]={-0.83337402,0,5};
+		};
+		id=15;
+		type="fnf_module_assassinObj";
+		class CustomAttributes
+		{
+			class Attribute0
+			{
+				property="fnf_objectiveType";
+				expression="_this setVariable ['fnf_objectiveType',_value, true];";
+				class Value
+				{
+					class data
+					{
+						singleType="STRING";
+						value="elm";
+					};
+				};
+			};
+			class Attribute1
+			{
+				property="fnf_zoneKnown";
+				expression="_this setVariable ['fnf_zoneKnown',_value, true];";
+				class Value
+				{
+					class data
+					{
+						singleType="BOOL";
+						value=1;
+					};
+				};
+			};
+			class Attribute2
+			{
+				property="fnf_targetName";
+				expression="_this setVariable ['fnf_targetName',_value, true];";
+				class Value
+				{
+					class data
+					{
+						singleType="STRING";
+						value="the VIP";
+					};
+				};
+			};
+			nAttributes=3;
+		};
+	};
+	class Item3
+	{
+		dataType="Logic";
+		class PositionInfo
+		{
+			position[]={4.166626,0,5};
+		};
+		id=11;
+		type="SideOPFOR_F";
+	};
+	class Item4
+	{
+		dataType="Logic";
+		class PositionInfo
+		{
+			position[]={4.166626,0,-5};
+		};
+		id=10;
+		type="SideBLUFOR_F";
+	};
+	class Item5
+	{
+		dataType="Comment";
+		class PositionInfo
+		{
+			position[]={-0.83337402,0,0};
+		};
+		title="Delete dummy and sync to target";
+		id=29;
+	};
+};
+class connections
+{
+	class LinkIDProvider
+	{
+		nextID=4;
+	};
+	class Links
+	{
+		items=4;
+		class Item0
+		{
+			linkID=0;
+			item0=15;
+			item1=11;
+			class CustomData
+			{
+				type="Sync";
+			};
+		};
+		class Item1
+		{
+			linkID=1;
+			item0=14;
+			item1=10;
+			class CustomData
+			{
+				type="Sync";
+			};
+		};
+		class Item2
+		{
+			linkID=2;
+			item0=15;
+			item1=7;
+			class CustomData
+			{
+				type="Sync";
+			};
+		};
+		class Item3
+		{
+			linkID=3;
+			item0=14;
+			item1=7;
+			class CustomData
+			{
+				type="Sync";
+			};
+		};
+	};
+};

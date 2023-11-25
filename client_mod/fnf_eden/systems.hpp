@@ -40,6 +40,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Hack Terminal";
 	};
+  class fnf_Assassin
+	{
+		displayName = "Assassinate Target";
+	};
   class fnf_SafeZones
 	{
 		displayName = "Safe Zones";
@@ -319,5 +323,14 @@ class Cfg3DEN
 			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
 			editorSubcategory = "fnf_CaptureSector";				// link to CfgEditorSubcategories
 			displayName = "Capture Sector Objective Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+    class fnf_AssassinObjective // one class per composition
+		{
+			path = "fnf_eden\objectives\AssassinObjectivePreset";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Assassin";				// link to CfgEditorSubcategories
+			displayName = "Assassin Objective Preset";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
