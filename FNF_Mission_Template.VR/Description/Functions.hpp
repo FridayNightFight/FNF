@@ -9,6 +9,11 @@ class CfgFunctions
       class singleplayerInitCall { postInit = 1; };
       class multiplayerInitCall {};
 		};
+    class codeUtilities
+    {
+      file = "Client\CodeUtilities";
+      class sortByLocation {};
+    }
 		class zones
 		{
 			file = "Client\Zones";
@@ -61,6 +66,13 @@ class CfgFunctions
       class initTerminal {};
       class watchTerminal {};
       class notifyTerminal {};
+    };
+    class objAssassin
+    {
+      file = "Client\Objectives\Assassin";
+      class initAssassin {};
+      class watchAssassin {};
+      class notifyAdminAssassin {};
     };
     class safeZones
     {
@@ -147,12 +159,19 @@ class CfgFunctions
       class initSpectatorTerminal {};
       class watchSpectatorTerminal {};
     }
+    class spectatorObjAssassin
+    {
+      file = "Client\Spectator\Objectives\Assassin";
+      class initSpectatorAssassin {};
+      class watchSpectatorAssassin {};
+    }
     class hidingZones
     {
       file = "Client\HidingZones";
       class initHidingZones {};
       class addObjectToHide {};
       class cleanUpSpareHidingZones {};
+      class removeObjectToHide {};
     };
     class selectors
     {
@@ -236,6 +255,12 @@ class CfgFunctions
       class switchTerminal {};
       class initTerminal {};
       class watchTerminal {};
+    };
+    class objAssassin
+    {
+      file = "Server\Objectives\Assassin";
+      class initAssassin {};
+      class watchAssassin {};
     };
 	};
 };
