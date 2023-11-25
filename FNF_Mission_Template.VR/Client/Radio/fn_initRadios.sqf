@@ -28,8 +28,8 @@
       //if a player has a SR set up encryption codes and put it in left ear
       if (call TFAR_fnc_haveSWRadio) then
       {
-        [(call TFAR_fnc_ActiveSWRadio), 1] call TFAR_fnc_setSwStereo;
-        [(call TFAR_fnc_activeSwRadio), _encryptionCode] call TFAR_fnc_setSwRadioCode;
+        [(call TFAR_fnc_activeSWRadio), 1] call TFAR_fnc_setSwStereo;
+        [(call TFAR_fnc_activeSWRadio), _encryptionCode] call TFAR_fnc_setSwRadioCode;
       };
 
       //if player has an LR set encryp codes and set to right ear
