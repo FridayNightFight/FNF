@@ -465,4 +465,44 @@ class CfgVehicles
       };
     };
 	};
+  class fnf_module_assassinObj: fnf_module_objective
+	{
+		author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "FNF Assassin Objective";
+    scope = 2;
+    class Attributes: AttributesBase
+    {
+      class ObjectiveType: Combo
+      {
+        property = "fnf_objectiveType";
+        expression = "_this setVariable ['fnf_objectiveType',_value, true];";
+        displayName = "Objective Type";
+        typeName = "STRING";
+				defaultValue = "elm";
+        class Values
+        {
+          class Eliminate { name = "Eliminate Target"; value = "elm";};
+          class Protect { name = "Protect Target"; value = "pro";};
+        };
+      };
+      class TargetName: Edit
+      {
+        property = "fnf_targetName";
+        expression = "_this setVariable ['fnf_targetName',_value, true];";
+        displayName = "Target Name";
+        typeName = "STRING";
+				defaultValue = "the VIP";
+      };
+      class ZoneKnown: Checkbox
+      {
+        property = "fnf_zoneKnown";
+        expression = "_this setVariable ['fnf_zoneKnown',_value, true];";
+        displayName = "Is hiding zone known";
+        tooltip = "If checked, when object is in a linked hiding zone the zone it is in will have the task attached to it";
+        typeName = "BOOL";
+        defaultValue = "true";
+      };
+    };
+	};
 };
