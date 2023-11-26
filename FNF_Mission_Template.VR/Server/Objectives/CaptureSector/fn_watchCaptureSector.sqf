@@ -29,15 +29,15 @@ _indiCount = 0;
   if ([_x, _zonePrefix] call FNF_ClientSide_fnc_isObjectInZone) then
   {
     _testSide = side _x;
-    if (_testSide == west) then
+    if (_testSide isEqualTo west) then
     {
       _westCount = _westCount + 1;
     };
-    if (_testSide == independent) then
+    if (_testSide isEqualTo independent) then
     {
       _indiCount = _indiCount + 1;
     };
-    if (_testSide == east) then
+    if (_testSide isEqualTo east) then
     {
       _eastCount = _eastCount + 1;
     };
@@ -63,30 +63,30 @@ _indiDefend = false;
 
   _objectiveType = (_x select 3) getVariable ["fnf_objectiveType", "FAILED"];
 
-  if (_objectiveType == "cap") then
+  if (_objectiveType isEqualTo "cap") then
   {
-    if (_objSide == west) then
+    if (_objSide isEqualTo west) then
     {
       _westAttack = true;
     };
-    if (_objSide == east) then
+    if (_objSide isEqualTo east) then
     {
       _eastAttack = true;
     };
-    if (_objSide == independent) then
+    if (_objSide isEqualTo independent) then
     {
       _indiAttack = true;
     };
   } else {
-    if (_objSide == west) then
+    if (_objSide isEqualTo west) then
     {
       _westDefend = true;
     };
-    if (_objSide == east) then
+    if (_objSide isEqualTo east) then
     {
       _eastDefend = true;
     };
-    if (_objSide == independent) then
+    if (_objSide isEqualTo independent) then
     {
       _indiDefend = true;
     };
@@ -112,9 +112,9 @@ _currentOwner = _objective getVariable ["fnf_sector_owner", sideUnknown];
 
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 
-if (_objectiveType == "def") then
+if (_objectiveType isEqualTo "def") then
 {
-  if (_currentOwner == sideUnknown) then
+  if (_currentOwner isEqualTo sideUnknown) then
   {
     _objective setVariable ["fnf_sector_owner", _side, true];
     _currentOwner = _side;
@@ -122,7 +122,7 @@ if (_objectiveType == "def") then
 };
 
 //if no one in the sector dont do anything
-if (_westCount == 0 and _eastCount == 0 and _indiCount == 0) exitWith {false};
+if (_westCount isEqualTo 0 and _eastCount isEqualTo 0 and _indiCount isEqualTo 0) exitWith {false};
 
 
 //start making changes now data is gathered
@@ -152,21 +152,21 @@ _newTime = _currentTime;
 
 //check if the owner is attacking the objective
 _attacking = false;
-if (_newOwner == west) then
+if (_newOwner isEqualTo west) then
 {
   if (_westAttack) then
   {
     _attacking = true;
   };
 };
-if (_newOwner == east) then
+if (_newOwner isEqualTo east) then
 {
   if (_eastAttack) then
   {
     _attacking = true;
   };
 };
-if (_newOwner == independent) then
+if (_newOwner isEqualTo independent) then
 {
   if (_indiAttack) then
   {
@@ -177,7 +177,7 @@ if (_newOwner == independent) then
 //if theyy are attacking and there is still time left before full capture is acheived add a second
 if (_attacking) then
 {
-  if (_newOwner == _currentOwner and _currentTime != _timeToCapture) then
+  if (_newOwner isEqualTo _currentOwner and _currentTime != _timeToCapture) then
   {
     _newTime = _currentTime + 1;
   };
@@ -194,7 +194,7 @@ if (_newOwner != sideUnknown and _newOwner != _currentOwner and _currentTime != 
   _newOwner = _currentOwner;
 };
 
-if (_newOwner == sideUnknown) then
+if (_newOwner isEqualTo sideUnknown) then
 {
   _newOwner = _currentOwner;
 };
@@ -204,7 +204,7 @@ if (_newOwner != _currentOwner) then
   _objective setVariable ["fnf_sector_owner", _newOwner, true];
 };
 
-if (_newTime == _timeToCapture) exitWith
+if (_newTime isEqualTo _timeToCapture) exitWith
 {
   _objective setVariable ["fnf_sector_percentage", 1, true];
   true;

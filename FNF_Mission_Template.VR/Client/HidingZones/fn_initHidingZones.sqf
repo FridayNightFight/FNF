@@ -33,7 +33,7 @@ fnf_objectsToHide = [];
     } forEach _hidingZonesPrefixs;
 
     //if it is not in any hiding zone simpley set the OBJ on the object
-    if (_zoneHiddenInside == "") then
+    if (_zoneHiddenInside isEqualTo "") then
     {
       _task setSimpleTaskDestination (getPos _object);
       continue;

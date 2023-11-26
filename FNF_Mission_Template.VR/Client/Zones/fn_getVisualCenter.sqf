@@ -15,7 +15,7 @@ _output = [0,0,0];
 
 //find zone described above
 {
-	if (_x select 0 == _zonePrefix) then
+	if (_x select 0 isEqualTo _zonePrefix) then
 	{
 		_output = _x select 4;
 		break;

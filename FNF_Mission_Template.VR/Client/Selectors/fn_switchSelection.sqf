@@ -21,7 +21,7 @@ _currentID = -1;
 
 //if there is a selection made grab that info
 {
-  if ((_x select 1) == _id) then
+  if ((_x select 1) isEqualTo _id) then
   {
     _currentItems = (_x select 0);
     _currentID = _forEachIndex;
@@ -85,7 +85,7 @@ if (_currentItems isEqualTo "") then
     switch (_selectorType) do {
       case "opt":
       {
-        if ((primaryWeaponItems player) select 2 == _x) then
+        if ((primaryWeaponItems player) select 2 isEqualTo _x) then
         {
           player removePrimaryWeaponItem _x;
           //track which items have been removed so if things fail we can re-add them
@@ -98,13 +98,13 @@ if (_currentItems isEqualTo "") then
       {
         if (_x isKindOf ["Rifle", configFile >> "CfgWeapons"]) then
         {
-          if (primaryWeapon player == _x) then
+          if (primaryWeapon player isEqualTo _x) then
           {
             player removeWeapon _x;
             _itemsToAdd pushBack _x;
             _opticSelectors = [];
             {
-              if ((_x select 2) == "opt") then
+              if ((_x select 2) isEqualTo "opt") then
               {
                 _opticSelectors pushBack _forEachIndex;
               };
@@ -130,7 +130,7 @@ if (_currentItems isEqualTo "") then
       {
         if (_x isKindOf ["Launcher", configFile >> "CfgWeapons"]) then
         {
-          if (primaryWeapon player == _x) then
+          if (primaryWeapon player isEqualTo _x) then
           {
             player removeWeapon _x;
             _itemsToAdd pushBack _x;
@@ -151,7 +151,7 @@ if (_currentItems isEqualTo "") then
       {
         if (_x isKindOf ["Pistol", configFile >> "CfgWeapons"]) then
         {
-          if (primaryWeapon player == _x) then
+          if (primaryWeapon player isEqualTo _x) then
           {
             player removeWeapon _x;
             _itemsToAdd pushBack _x;

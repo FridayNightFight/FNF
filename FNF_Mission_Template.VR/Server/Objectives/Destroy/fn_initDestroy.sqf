@@ -20,7 +20,7 @@ _syncedObjects = synchronizedObjects _objective;
 _objectiveObject = "";
 {
   _typeOfObject = typeOf _x;
-  if (_typeOfObject == "SideBLUFOR_F" or _typeOfObject == "SideOPFOR_F" or _typeOfObject == "SideResistance_F" or _typeOfObject == "fnf_module_hidingZone") then
+  if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F" or _typeOfObject isEqualTo "fnf_module_hidingZone") then
   {
     continue;
   };

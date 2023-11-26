@@ -17,7 +17,7 @@ params ["_objective","_side"];
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker
-if (_objectiveType == "FAILED") exitWith
+if (_objectiveType isEqualTo "FAILED") exitWith
 {
   if (fnf_debug) then
   {
@@ -28,7 +28,7 @@ if (_objectiveType == "FAILED") exitWith
 _zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker
-if (_zonePrefix == "FAILED") exitWith
+if (_zonePrefix isEqualTo "FAILED") exitWith
 {
   if (fnf_debug) then
   {
@@ -79,7 +79,7 @@ if (not _result) then
 _task = "";
 
 //create and setup objective task
-if (_objectiveType == "cap") then
+if (_objectiveType isEqualTo "cap") then
 {
 
   _task = player createSimpleTask [(_objNum + ": Capture Sector " + _secNum)];

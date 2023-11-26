@@ -14,7 +14,7 @@ params ["_zonePrefix"];
 
 _zoneToBeDeletedIndex = -1;
 {
-	if (_x select 0 == _zonePrefix) then
+	if (_x select 0 isEqualTo _zonePrefix) then
 	{
 		_zoneToBeDeletedIndex = _forEachIndex;
 		deleteMarkerLocal (_x select 2);

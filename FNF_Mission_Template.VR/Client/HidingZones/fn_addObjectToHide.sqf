@@ -28,7 +28,7 @@ _zonePrefixs = [];
 {
   _prefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-  if (_prefix == "FAILED") then
+  if (_prefix isEqualTo "FAILED") then
   {
     if (fnf_debug) then
     {

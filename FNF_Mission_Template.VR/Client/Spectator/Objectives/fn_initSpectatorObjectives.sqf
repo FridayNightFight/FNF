@@ -58,7 +58,7 @@ _sectorObjCleanup = [];
     _sideCounter = _sideCounter + 1;
   } forEach _syncedObjects;
 
-  if (_sideCounter == 0) then
+  if (_sideCounter isEqualTo 0) then
   {
     if (fnf_debug) then
     {

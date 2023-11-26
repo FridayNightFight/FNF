@@ -34,7 +34,7 @@ if (time < 1) then
   _result = false;
 };
 
-if (_timeOfCompletion == -1) then
+if (_timeOfCompletion isEqualTo -1) then
 {
   _result = false;
   _marker setMarkerTextLocal "Terminal " + _objNum + " [Idle]";
@@ -57,7 +57,7 @@ if (_result) then
     };
     _timeText = [_resultTime, "MM:SS"] call BIS_fnc_secondsToString;
     _marker setMarkerTextLocal "Terminal " + _objNum + " [" + _timeText + "]";
-    if (markerColor _marker == "ColorBlack") then
+    if (markerColor _marker isEqualTo "ColorBlack") then
     {
       _markerColour = [_previouslyHackingSide, true] call BIS_fnc_sideColor;
       _marker setMarkerColorLocal _markerColour;
@@ -66,7 +66,7 @@ if (_result) then
     };
   };
 
-  if (_currentlyHackingSide == _previouslyHackingSide) exitWith
+  if (_currentlyHackingSide isEqualTo _previouslyHackingSide) exitWith
   {
     false;
   };

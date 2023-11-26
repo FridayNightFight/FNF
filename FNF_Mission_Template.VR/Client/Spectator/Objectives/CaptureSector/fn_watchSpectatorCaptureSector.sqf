@@ -17,7 +17,7 @@ _objEntry params["_objType","_objectiveModule","_statusSlotID","_objNum","_task"
 
 _zonePrefix = _objectiveModule getVariable ["fnf_prefix", "FAILED"];
 
-if (_zonePrefix == "FAILED") exitWith {true;};
+if (_zonePrefix isEqualTo "FAILED") exitWith {true;};
 
 _displayName = [_zonePrefix] call FNF_ClientSide_fnc_getDisplayName;
 _displayNameArray = _displayName splitString " ";
@@ -36,7 +36,7 @@ _texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 _shownPercent = _sectorPercentage;
 
 //if the sector is fully captured, show the percentage as 0
-if (_sectorPercentage == 1) then
+if (_sectorPercentage isEqualTo 1) then
 {
   _shownPercent = 0;
 };
@@ -47,7 +47,7 @@ _statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPer
 _output = false;
 
 //if percentage is 1 (ie captured by someone)
-if (_sectorPercentage == 1) then
+if (_sectorPercentage isEqualTo 1) then
 {
   _output = true;
 

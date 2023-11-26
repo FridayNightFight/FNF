@@ -46,12 +46,12 @@ call BIS_fnc_showMissionStatus;
 [{!isNil "fnf_objectives"}, {
   {
     //if OBJ is one without a physical object then move to next OBJ
-    if (_x select 0 == "CAPTURESECTOR") then
+    if (_x select 0 isEqualTo "CAPTURESECTOR") then
     {
       continue;
     };
 
-    if (_x select 0 == "DESTROY") then
+    if (_x select 0 isEqualTo "DESTROY") then
     {
       _desc = taskDescription (_x select 3);
       _splitString = (_desc select 1) splitString " ";
@@ -72,7 +72,7 @@ call BIS_fnc_showMissionStatus;
       }, [_marker, (_x select 2)]] call CBA_fnc_waitUntilAndExecute;
     };
 
-    if (_x select 0 == "ASSASSIN") then
+    if (_x select 0 isEqualTo "ASSASSIN") then
     {
       _desc = taskDescription (_x select 3);
       _splitString = (_desc select 1) splitString " ";
@@ -110,7 +110,7 @@ call BIS_fnc_showMissionStatus;
 
       _obj = (_objectiveEntry select 2);
 
-      if (_objectiveEntry select 0 == "ASSASSIN") then
+      if (_objectiveEntry select 0 isEqualTo "ASSASSIN") then
       {
         _syncedObjects = synchronizedObjects (_objectiveEntry select 1);
         _obj = objNull;

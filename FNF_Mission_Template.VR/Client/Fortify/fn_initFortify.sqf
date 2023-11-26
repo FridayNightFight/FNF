@@ -73,7 +73,7 @@ KK_fnc_inHouse = {
 
 //when fortify object is deleted update custom fortify points
 ["acex_fortify_objectDeleted", {
-  if !((_this select 0) == player) exitWith {};
+  if !((_this select 0) isEqualTo player) exitWith {};
   _type = typeOf (_this select 2);
   _fortifyObjsArr = [];
   _fortifyVarStr = "";
@@ -110,7 +110,7 @@ KK_fnc_inHouse = {
 
 //when player starts fortify tool add the points they should have so its all accurate in native UI
 ["ace_interactMenuOpened", {
-  if ((_this select 0) == 0) exitWith {};
+  if ((_this select 0) isEqualTo 0) exitWith {};
 
   missionNamespace setVariable ["ace_fortify_budget_west", fnf_fortifyPoints, false];
   missionNamespace setVariable ["ace_fortify_budget_east", fnf_fortifyPoints, false];
@@ -119,15 +119,15 @@ KK_fnc_inHouse = {
 }] call CBA_fnc_addEventHandler;
 
 
-if (_module getVariable ["fnf_disableFortifyBlufor", false] and playerSide == blufor) then
+if (_module getVariable ["fnf_disableFortifyBlufor", false] and playerSide isEqualTo blufor) then
 {
   call FNF_ClientSide_fnc_disableFortify;
 };
-if (_module getVariable ["fnf_disableFortifyOpfor", false] and playerSide == opfor) then
+if (_module getVariable ["fnf_disableFortifyOpfor", false] and playerSide isEqualTo opfor) then
 {
   call FNF_ClientSide_fnc_disableFortify;
 };
-if (_module getVariable ["fnf_disableFortifyIndfor", false] and playerSide == independent) then
+if (_module getVariable ["fnf_disableFortifyIndfor", false] and playerSide isEqualTo independent) then
 {
   call FNF_ClientSide_fnc_disableFortify;
 };

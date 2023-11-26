@@ -27,7 +27,7 @@ if (_objComplete) exitWith
   _objNum = (_objNumWithColon splitString "") select 0;
 
   _taskType = taskType _task;
-  if (_taskType == "kill") then
+  if (_taskType isEqualTo "kill") then
   {
     _task setTaskState "Succeeded";
     if (_forPlayer) then
@@ -79,7 +79,7 @@ if (not isNull _playerObject) then
 
   _actualName = name _playerObject;
 
-  if (_objType == "kill") then
+  if (_objType isEqualTo "kill") then
   {
     _task setSimpleTaskDescription [_description, _objNum + ": Eliminate " + _targetName + " (" + _actualName + ")", _objNum + ": Eliminate " + _targetName + " (" + _actualName + ")"];
   } else {
@@ -87,7 +87,7 @@ if (not isNull _playerObject) then
   };
 } else {
   cancelSimpleTaskDestination _task;
-  if (_objType == "kill") then
+  if (_objType isEqualTo "kill") then
   {
     _task setSimpleTaskDescription [_description, _objNum + ": Eliminate " + _targetName, _objNum + ": Eliminate " + _targetName];
   } else {

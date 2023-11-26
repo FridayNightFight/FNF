@@ -20,9 +20,9 @@ _objective = objNull;
 
 //find objective
 {
-  if ((_x select 0) == "TERMINAL") then
+  if ((_x select 0) isEqualTo "TERMINAL") then
   {
-    if ((_x select 2) == _objectiveObject) then
+    if ((_x select 2) isEqualTo _objectiveObject) then
     {
       _objective = _x;
     }
@@ -35,7 +35,7 @@ if (_objective isEqualTo objNull) exitWith {};
 _objNum = -1;
 
 //if player is a spectator slot grab _objnum from objective
-if (typeOf player == "ace_spectator_virtual") then
+if (typeOf player isEqualTo "ace_spectator_virtual") then
 {
   _objNum = _objective select 4;
 } else {

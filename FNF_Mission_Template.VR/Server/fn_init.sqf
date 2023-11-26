@@ -4,7 +4,7 @@ _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found
 _initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _initModule == 0) exitWith {};
+if (count _initModule isEqualTo 0) exitWith {};
 if (count _initModule > 1) exitWith {};
 
 //start syncing timer for all players, important this is set up ASAP
@@ -119,7 +119,7 @@ if (not isNil "fnf_serverObjectives") then
 
       {
         _id = owner _x;
-        if (admin _id == 2 or _x == player) then
+        if (admin _id isEqualTo 2 or _x isEqualTo player) then
         {
           _objectiveString = "Blufor Completed " + str(_completedBlufor) + " / " + str(_totalBlufor) + "\nOpfor Completed " + str(_completedOpfor) + " / " + str(_totalOpfor) + "\nIndependent Completed " + str(_completedIndi) + " / " + str(_totalIndi);
           _alivePlayers = allPlayers select {alive _x};

@@ -70,7 +70,7 @@ _goodPosIndexToAnchorTo = -1;
   {
     if (_currentPoint isEqualTo _x) then {continue;};
     _nextPoint = [];
-    if (_forEachIndex == (count _posList) - 1) then
+    if (_forEachIndex isEqualTo (count _posList) - 1) then
     {
       _nextPoint = _posList select 0;
     } else {
@@ -119,7 +119,7 @@ _anchorPositionDown = [_newX, _newY, 0];
 _willOrderBeCW = false;
 _nextAfterAnchor = [];
 
-if (_goodPosIndexToAnchorTo == (count _posList) - 1) then
+if (_goodPosIndexToAnchorTo isEqualTo (count _posList) - 1) then
 {
   _nextAfterAnchor = _posList select 0;
 } else {

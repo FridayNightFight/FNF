@@ -17,7 +17,7 @@ params ["_objective", "_side"];
 _zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
 
 //if no type found exit obj settup
-if (_zonePrefix == "FAILED") exitWith
+if (_zonePrefix isEqualTo "FAILED") exitWith
 {testing = true;};
 
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];

@@ -27,7 +27,7 @@ _maxTimeZoneIsDeleted = 0;
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
   _timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
 
-  if (_zonePrefix == "FAILED") then
+  if (_zonePrefix isEqualTo "FAILED") then
   {
     if (fnf_debug) then
     {
@@ -40,7 +40,7 @@ _maxTimeZoneIsDeleted = 0;
   _forPlayer = false;
   {
     //check if safezone is for player
-    if (_x == player) then
+    if (_x isEqualTo player) then
     {
       _forPlayer = true;
       break;

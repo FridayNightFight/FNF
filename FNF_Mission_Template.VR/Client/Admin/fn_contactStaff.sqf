@@ -47,7 +47,7 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 	_display = ctrlParent _ctrl;
 	_text = ctrlText (_display displayCtrl 123);
 
-	if (_text == "") then {
+	if (_text isEqualTo "") then {
 		_display closeDisplay 1;
 	} else {
     _playerName = name player;

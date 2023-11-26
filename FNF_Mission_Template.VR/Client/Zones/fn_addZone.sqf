@@ -22,7 +22,7 @@ _markerColor = getMarkerColor (_zonePrefix + "1");
 
 _markerCounter = 1;
 //get all marker positions by seeing if i can create the marker, if i cant it exists
-while {createMarkerLocal [(_zonePrefix + (str _markerCounter)), player] == ""} do
+while {createMarkerLocal [(_zonePrefix + (str _markerCounter)), player] isEqualTo ""} do
 {
 	_markerPos = getMarkerPos (_zonePrefix + (str _markerCounter));
 	deleteMarkerLocal (_zonePrefix + (str _markerCounter));
@@ -50,7 +50,7 @@ _furthestXValue = [0,0,0];
 //set up the positions needed for polyline
 _polylineInputs = [];
 {
-	if (_forEachIndex == ((count _markerPosArray) - 1)) then
+	if (_forEachIndex isEqualTo ((count _markerPosArray) - 1)) then
 	{
 		_polylineInputs append [_x select 0, _x select 1, (_markerPosArray select 0) select 0, (_markerPosArray select 0) select 1];
 	} else

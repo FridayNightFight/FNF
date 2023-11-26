@@ -39,7 +39,7 @@ if (_objComplete) exitWith
   true;
 };
 
-if (_objType == "ASSASSINDUPE") exitWith {false;};
+if (_objType isEqualTo "ASSASSINDUPE") exitWith {false;};
 
 _syncedObjects = synchronizedObjects _objectiveModule;
 

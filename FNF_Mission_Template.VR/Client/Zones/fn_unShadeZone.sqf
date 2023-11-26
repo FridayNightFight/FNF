@@ -16,7 +16,7 @@ params["_zonePrefix"];
 _indexToDelete = -1;
 
 {
-  if (_x select 0 == _zonePrefix) then
+  if (_x select 0 isEqualTo _zonePrefix) then
   {
     _indexToDelete = _forEachIndex;
   }

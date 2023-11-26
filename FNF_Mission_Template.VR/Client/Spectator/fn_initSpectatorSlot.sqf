@@ -40,7 +40,7 @@ _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpec
 
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _objModules == 0) then
+if (count _objModules isEqualTo 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No objectives present"
@@ -54,7 +54,7 @@ call FNF_ClientSide_fnc_missionDetailsButton;
 
 //check if there is a playzone
 _playZoneModules = [_modules, "playZone"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _playZoneModules == 0) then
+if (count _playZoneModules isEqualTo 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No playzone present"
@@ -65,7 +65,7 @@ if (count _playZoneModules == 0) then
 
 //check there are safe zones
 _safeZoneModules = [_modules, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _safeZoneModules == 0) then
+if (count _safeZoneModules isEqualTo 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No safe zones present";
@@ -148,7 +148,7 @@ if (not isNil "fnf_objectives") then
 
     {
       //if OBJ is one without a physical object then move to next OBJ
-      if (_x select 0 == "CAPTURESECTOR" or _x select 0 == "CAPTURESECTORDUPE" or _x select 0 == "DESTROYDUPE" or _x select 0 == "TERMINALDUPE") then
+      if (_x select 0 isEqualTo "CAPTURESECTOR" or _x select 0 isEqualTo "CAPTURESECTORDUPE" or _x select 0 isEqualTo "DESTROYDUPE" or _x select 0 isEqualTo "TERMINALDUPE") then
       {
         continue;
       };
@@ -158,7 +158,7 @@ if (not isNil "fnf_objectives") then
 
       _obj = (_objectiveEntry select 2);
 
-      if (_objectiveEntry select 0 == "ASSASSIN") then
+      if (_objectiveEntry select 0 isEqualTo "ASSASSIN") then
       {
         _syncedObjects = synchronizedObjects (_objectiveEntry select 1);
         _obj = objNull;

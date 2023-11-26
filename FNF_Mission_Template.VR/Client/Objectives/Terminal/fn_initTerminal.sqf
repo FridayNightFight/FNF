@@ -18,7 +18,7 @@ params ["_objective", "_forPlayer"];
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker
-if (_objectiveType == "FAILED") exitWith
+if (_objectiveType isEqualTo "FAILED") exitWith
 {
   if (fnf_debug) then
   {
@@ -33,18 +33,18 @@ _hidingZones = [];
 _objectiveObject = "";
 {
   _typeOfObject = typeOf _x;
-  if (_typeOfObject == "SideBLUFOR_F" or _typeOfObject == "SideOPFOR_F" or _typeOfObject == "SideResistance_F") then
+  if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
   {
     continue;
   };
 
-  if (_typeOfObject == "fnf_module_hidingZone") then
+  if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
   {
     _hidingZones pushBack _x;
     continue;
   };
 
-  if (_typeOfObject == "Land_DataTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_communications_F" or _typeOfObject == "RuggedTerminal_02_communications_F" or _typeOfObject == "RuggedTerminal_01_communications_hub_F") then
+  if (_typeOfObject isEqualTo "Land_DataTerminal_01_F" or _typeOfObject isEqualTo "RuggedTerminal_01_F" or _typeOfObject isEqualTo "RuggedTerminal_01_communications_F" or _typeOfObject isEqualTo "RuggedTerminal_02_communications_F" or _typeOfObject isEqualTo "RuggedTerminal_01_communications_hub_F") then
   {
     if (_objectiveObject isEqualTo "") then
     {
@@ -81,7 +81,7 @@ if (_hackingTime isEqualTo "FAILED") exitWith
   };
 };
 
-if (_hackingTime == 0) exitWith
+if (_hackingTime isEqualTo 0) exitWith
 {
   if (fnf_debug) then
   {
@@ -135,7 +135,7 @@ _markerColour = [playerSide, true] call BIS_fnc_sideColor;
 _marker setMarkerColorLocal _markerColour;
 
 //set terminal starting colour (overridden if attacking)
-if (typeOf _objectiveObject == "Land_DataTerminal_01_F") then
+if (typeOf _objectiveObject isEqualTo "Land_DataTerminal_01_F") then
 {
   switch (playerSide) do {
     case west:
@@ -155,7 +155,7 @@ if (typeOf _objectiveObject == "Land_DataTerminal_01_F") then
 };
 
 //check if player needs to hack or needs to defend
-if (_objectiveType == "hck") then
+if (_objectiveType isEqualTo "hck") then
 {
   //setup task
   if (_forPlayer) then
@@ -191,7 +191,7 @@ if (_objectiveType == "hck") then
     _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
 
     //setup hold action if player is destined to be able to interact with terminal
-    if (typeOf _objectiveObject == "RuggedTerminal_01_communications_hub_F") then
+    if (typeOf _objectiveObject isEqualTo "RuggedTerminal_01_communications_hub_F") then
     {
       [
         _objectiveObject,
@@ -255,13 +255,13 @@ if (_objectiveType == "hck") then
 
   //overide terminal colours
   _marker setMarkerColorLocal "ColorUNKNOWN";
-  if (typeOf _objectiveObject == "Land_DataTerminal_01_F") then
+  if (typeOf _objectiveObject isEqualTo "Land_DataTerminal_01_F") then
   {
     [_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
   };
 
   _task setSimpleTaskType "upload";
-  if (count _hidingZones == 0) then
+  if (count _hidingZones isEqualTo 0) then
   {
     _task setSimpleTaskTarget [_objectiveObject, true];
   } else {
@@ -286,7 +286,7 @@ if (_objectiveType == "hck") then
     {
       _prefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-      if (_prefix == "FAILED") then
+      if (_prefix isEqualTo "FAILED") then
       {
         if (fnf_debug) then
         {
@@ -307,7 +307,7 @@ if (_objectiveType == "hck") then
   {
     _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
     //setup hold action if player is destined to be able to interact with terminal
-    if (typeOf _objectiveObject == "RuggedTerminal_01_communications_hub_F") then
+    if (typeOf _objectiveObject isEqualTo "RuggedTerminal_01_communications_hub_F") then
     {
       [
         _objectiveObject,

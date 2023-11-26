@@ -30,7 +30,7 @@ fnf_disableFiring = -1;
     };
 
     //if player can throw grenades stop them
-    if (fnf_disableGrenades == -1) then {
+    if (fnf_disableGrenades isEqualTo -1) then {
 			fnf_disableGrenades = player addEventHandler ["FiredMan",
 			{
 				params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
@@ -45,13 +45,13 @@ fnf_disableFiring = -1;
       missionNamespace setVariable ["ace_advanced_throwing_enabled", false];
     };
 
-    if (fnf_acePlacingPFH == -1) then
+    if (fnf_acePlacingPFH isEqualTo -1) then
     {
       //Allow ACE placing and other actions that rely on left mouse button
       fnf_acePlacingPFH = [{
         if (
-          (missionNamespace getVariable ["ace_explosives_placeaction",0] == -1) ||
-          (missionNamespace getVariable ["ace_fortify_isPlacing",0] == -1) ||
+          (missionNamespace getVariable ["ace_explosives_placeaction",0] isEqualTo -1) ||
+          (missionNamespace getVariable ["ace_fortify_isPlacing",0] isEqualTo -1) ||
           (player getVariable ["ace_dragging_iscarrying",false]) ||
           (player getVariable ["ace_dragging_isdragging",false]) ||
           (player getVariable ["ace_trenches_isplacing",false]) ||
@@ -62,7 +62,7 @@ fnf_disableFiring = -1;
             fnf_disableFiring = -1;
           };
         } else {
-          if (fnf_disableFiring == -1) then {
+          if (fnf_disableFiring isEqualTo -1) then {
             fnf_disableFiring = player addAction ["", {}, nil, 0, false, true, "defaultAction"];
           };
         };

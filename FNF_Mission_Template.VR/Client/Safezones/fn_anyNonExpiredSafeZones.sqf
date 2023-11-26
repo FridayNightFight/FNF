@@ -22,7 +22,7 @@ _maxTimeZoneIsDeleted = -1;
   _forPlayer = false;
   {
     //check if safezone is for player
-    if (_x == player) then
+    if (_x isEqualTo player) then
     {
       _forPlayer = true;
       break;
@@ -40,7 +40,7 @@ _maxTimeZoneIsDeleted = -1;
 } forEach _modules;
 
 //if no safezones applied to player, they can always JIP
-if (_maxTimeZoneIsDeleted == -1) exitWith {true;};
+if (_maxTimeZoneIsDeleted isEqualTo -1) exitWith {true;};
 
 _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
 

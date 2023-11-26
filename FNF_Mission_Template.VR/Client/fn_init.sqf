@@ -4,7 +4,7 @@ _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found
 _initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _initModule == 0) exitWith {systemChat "DANGER: No FNF Init found, exiting mission prep"};
+if (count _initModule isEqualTo 0) exitWith {systemChat "DANGER: No FNF Init found, exiting mission prep"};
 if (count _initModule > 1) exitWith {systemChat "DANGER: Multiple FNF Init found, exiting mission prep"};
 _initModule = _initModule select 0;
 fnf_debug = _initModule getVariable ["fnf_debug", true];
@@ -19,7 +19,7 @@ fnf_playerLoadout = getUnitLoadout player;
 call FNF_ClientSide_fnc_markEditorPlacedObjects;
 
 //if player is in a spectator slot get them out of here
-if (typeOf player == "ace_spectator_virtual") exitWith
+if (typeOf player isEqualTo "ace_spectator_virtual") exitWith
 {
   [_modules, _initModule] call FNF_ClientSide_fnc_initSpectatorSlot;
 };
@@ -49,7 +49,7 @@ call FNF_ClientSide_fnc_initNewPlayerExperience;
 
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _objModules == 0) then
+if (count _objModules isEqualTo 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No objectives present"
@@ -61,7 +61,7 @@ if (count _objModules == 0) then
 
 //check if there is a playzone
 _playZoneModules = [_modules, "playZone"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _playZoneModules == 0) then
+if (count _playZoneModules isEqualTo 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No playzone present"
@@ -72,7 +72,7 @@ if (count _playZoneModules == 0) then
 
 //check there are safe zones
 _safeZoneModules = [_modules, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _safeZoneModules == 0) then
+if (count _safeZoneModules isEqualTo 0) then
 {
   if (fnf_debug) then {
     systemChat "WARNING: No safe zones present";
@@ -104,7 +104,7 @@ if (count _hidingZoneModules != 0) then
 };
 
 //check if player is on the early server, if they are give them a GPS
-if (serverName == "Friday Night Fight #Early | www.fridaynightfight.org") then
+if (serverName isEqualTo "Friday Night Fight #Early | www.fridaynightfight.org") then
 {
   player linkItem "itemGPS";
   [] call FNF_ClientSide_fnc_initGPSUnitMarkers;

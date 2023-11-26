@@ -15,7 +15,7 @@ params ["_groupName"];
 _requestIndex = -1;
 
 {
-	if (_x == _groupName) then
+	if (_x isEqualTo _groupName) then
 	{
 		_requestIndex = _forEachIndex;
 		break;

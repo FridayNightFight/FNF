@@ -14,7 +14,7 @@
 params ["_groupName"];
 _index = -1;
 {
-	if (_x select 0 == _groupName) then
+	if (_x select 0 isEqualTo _groupName) then
 	{
 		_index = _forEachIndex;
 		break;

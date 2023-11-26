@@ -101,7 +101,7 @@ if (_resetTimer) then
 
 [[_objectiveObject, _hackingTime, _side, _resetTimer], FNF_ClientSide_fnc_notifyTerminal] remoteExec ['call', 0, false];
 
-if (_terminalType == "Land_DataTerminal_01_F") then
+if (_terminalType isEqualTo "Land_DataTerminal_01_F") then
 {
   switch (_side) do {
     case west:

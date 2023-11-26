@@ -18,7 +18,7 @@ _validGroups = [];
 
 //get all groups with players in them and on players side
 {
-  if (count (units _x) == 0) then
+  if (count (units _x) isEqualTo 0) then
   {
     continue;
   };

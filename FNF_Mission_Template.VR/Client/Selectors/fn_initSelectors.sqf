@@ -21,7 +21,7 @@ _trueHostSelectorSet = false;
   _selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
   _selectorType = _x getVariable ["fnf_selectorType", "FAILED"];
 
-  if (_selectorType == "FAILED") exitWith
+  if (_selectorType isEqualTo "FAILED") exitWith
   {
     if (fnf_debug) then
     {
@@ -34,14 +34,14 @@ _trueHostSelectorSet = false;
   _options = [];
   {
     //check if selector is for player
-    if (_x == player) then
+    if (_x isEqualTo player) then
     {
       _forPlayer = true;
       continue;
     };
 
     //check if object is a selector option
-    if (typeOf _x == "fnf_module_selectorOption") then
+    if (typeOf _x isEqualTo "fnf_module_selectorOption") then
     {
       _optionSyncedObjects = synchronizedObjects _x;
 
@@ -63,7 +63,7 @@ _trueHostSelectorSet = false;
           _options pushBack [_toAdd, _optionName, _default];
 
           //check if object is already marked for deletion, if not mark it
-          if (_objectsToDelete find _x == -1) then
+          if (_objectsToDelete find _x isEqualTo -1) then
           {
             _objectsToDelete pushBack _x;
           };

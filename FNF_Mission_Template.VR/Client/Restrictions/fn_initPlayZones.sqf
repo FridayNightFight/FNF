@@ -22,7 +22,7 @@ _mainPlayZones = [];
   _syncedObjects = synchronizedObjects _x;
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-  if (_zonePrefix == "FAILED") then
+  if (_zonePrefix isEqualTo "FAILED") then
   {
     if (fnf_debug) then
     {
@@ -34,7 +34,7 @@ _mainPlayZones = [];
   //check if this playzone module applies to the player
   _forPlayer = false;
   {
-    if (_x == player) then
+    if (_x isEqualTo player) then
     {
       _forPlayer = true;
       break;

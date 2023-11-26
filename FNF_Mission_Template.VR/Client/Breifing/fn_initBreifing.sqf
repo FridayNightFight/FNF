@@ -58,13 +58,13 @@ _objectsToAddToDiary = [];
   //TODO: comment rest of this / redo it as some things not working
   _alreadyAdding = -1;
   {
-    if (_x select 0 == _moduleSide) then
+    if (_x select 0 isEqualTo _moduleSide) then
     {
       _alreadyAdding = _forEachIndex;
     }
   } forEach _objectsToAddToDiary;
 
-  if (_alreadyAdding == -1) then
+  if (_alreadyAdding isEqualTo -1) then
   {
     _toAdd = [_moduleSide, []];
     {
@@ -117,14 +117,14 @@ _loadoutCreation = {
 
       _sideCounter = _sideCounter + 1;
 
-      if (_modSide == _side) then
+      if (_modSide isEqualTo _side) then
       {
         _kitName = _module getVariable ["fnf_kitName", "Unknown Kit"];
         _kitAuthor = _module getVariable ["fnf_kitAuthor", "Unknown Author"];
       };
     } forEach _syncedObjects;
 
-    if (_sideCounter == 0) then
+    if (_sideCounter isEqualTo 0) then
     {
       if (fnf_debug) then
       {
@@ -152,12 +152,12 @@ _loadoutCreation = {
     _ran1 = round (random (_sidePlayerCount - 1));
     _ran2 = round (random (_sidePlayerCount - 1));
     _ran3 = round (random (_sidePlayerCount - 1));
-    _playersToRead pushBack ((allPlayers select {(side _x == _side)}) select _ran1);
-    _playersToRead pushBack ((allPlayers select {(side _x == _side)}) select _ran2);
-    _playersToRead pushBack ((allPlayers select {(side _x == _side)}) select _ran3);
+    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran1);
+    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran2);
+    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran3);
   } else {
     _ran1 = round (random (_sidePlayerCount - 1));
-    _playersToRead pushBack ((allPlayers select {(side _x == _side)}) select _ran1);
+    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran1);
   };
 
   {
@@ -194,7 +194,7 @@ _loadoutCreation = {
     _primary = primaryWeapon _x;
     _weaponFound = false;
     {
-      if (_x == _primary) then
+      if (_x isEqualTo _primary) then
       {
         _weaponFound = true;
         break;
@@ -205,7 +205,7 @@ _loadoutCreation = {
     {
       _weaponsFound pushBack _primary;
     };
-  } forEach (allPlayers select {(side _x == _side)});
+  } forEach (allPlayers select {(side _x isEqualTo _side)});
 
   _weaponPics = [];
   {
@@ -259,14 +259,14 @@ _assetCreation = {
     _objectType = typeOf _x;
     _alreadyAdded = -1;
     {
-      if (_objectType == _x select 1) then
+      if (_x select 1 isEqualTo _objectType) then
       {
         _alreadyAdded = _forEachIndex;
         break;
       };
     } forEach _compactedObjects;
 
-    if (_alreadyAdded == -1) then
+    if (_alreadyAdded isEqualTo -1) then
     {
       _compactedObjects pushBack [1, _objectType, _x];
     } else {
@@ -346,7 +346,7 @@ if (playableSlotsNumber blufor > 0) then
 {
   _objectsToAdd = -1;
   {
-    if (_x select 0 == west) then
+    if (_x select 0 isEqualTo west) then
     {
       _objectsToAdd = _forEachIndex;
     }
@@ -371,7 +371,7 @@ if (playableSlotsNumber opfor > 0) then
 {
   _objectsToAdd = -1;
   {
-    if (_x select 0 == east) then
+    if (_x select 0 isEqualTo east) then
     {
       _objectsToAdd = _forEachIndex;
     }
@@ -396,7 +396,7 @@ if (playableSlotsNumber independent > 0) then
 {
   _objectsToAdd = -1;
   {
-    if (_x select 0 == independent) then
+    if (_x select 0 isEqualTo independent) then
     {
       _objectsToAdd = _forEachIndex;
     }

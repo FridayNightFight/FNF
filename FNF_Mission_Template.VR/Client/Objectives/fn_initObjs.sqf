@@ -58,7 +58,7 @@ _sectorObjCleanup = [];
 
     _sideCounter = _sideCounter + 1;
 
-    if (_objSide == playerSide) then
+    if (_objSide isEqualTo playerSide) then
     {
       _forPlayer = true;
     };
@@ -69,7 +69,7 @@ _sectorObjCleanup = [];
     };
   } forEach _syncedObjects;
 
-  if (_sideCounter == 0) then
+  if (_sideCounter isEqualTo 0) then
   {
     if (fnf_debug) then
     {
@@ -160,7 +160,7 @@ _prefixesToCleanUp = [];
 //clean up sector objectives that aren't being used
 {
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
-  if (_zonePrefix == "FAILED") then
+  if (_zonePrefix isEqualTo "FAILED") then
   {
     continue;
   };

@@ -21,7 +21,7 @@ if (count _posList < 3) exitWith
   };
 };
 
-if (count _posList == 3) exitWith
+if (count _posList isEqualTo 3) exitWith
 {
   _output pushBack _posList;
   _output;
@@ -31,13 +31,13 @@ if (count _posList == 3) exitWith
   _prevPos = "";
   _nextPos = "";
   _currentPos = _x;
-  if (_forEachIndex == 0) then
+  if (_forEachIndex isEqualTo 0) then
   {
     _prevPos = _posList select ((count _posList) - 1);
   } else {
     _prevPos = _posList select (_forEachIndex - 1);
   };
-  if (_forEachIndex == (count _posList) - 1) then
+  if (_forEachIndex isEqualTo (count _posList) - 1) then
   {
     _nextPos = _posList select 0;
   } else {
@@ -65,7 +65,7 @@ if (count _posList == 3) exitWith
     {
       _output pushBack [_prevPos, _currentPos, _nextPos];
       _posList deleteAt _forEachIndex;
-      if (count _posList == 3) then
+      if (count _posList isEqualTo 3) then
       {
         _output pushBack _posList;
       } else {

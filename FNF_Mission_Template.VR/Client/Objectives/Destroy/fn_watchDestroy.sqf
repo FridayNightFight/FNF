@@ -22,7 +22,7 @@ if (alive _objectiveObject) exitWith
 
 //if objective is dead fail or succeed task
 _taskType = taskType _task;
-if (_taskType == "destroy") then
+if (_taskType isEqualTo "destroy") then
 {
   _task setTaskState "Succeeded";
   _desc = taskDescription _task;

@@ -21,7 +21,7 @@ params["_input"];
     _locXSplit set [0, ("0" + (_locXSplit select 0))];
   };
   _locX = (_locXSplit select 0);
-  if ((count _locXSplit) == 2) then
+  if ((count _locXSplit) isEqualTo 2) then
   {
     _locX = (_locXSplit select 0) + (_locXSplit select 1);
   };
@@ -32,7 +32,7 @@ params["_input"];
     _locYSplit set [0, ("0" + (_locYSplit select 0))];
   };
   _locY = (_locYSplit select 0);
-  if ((count _locYSplit) == 2) then
+  if ((count _locYSplit) isEqualTo 2) then
   {
     _locY = (_locYSplit select 0) + (_locYSplit select 1);
   };
@@ -43,7 +43,7 @@ params["_input"];
     _locZSplit set [0, ("0" + (_locZSplit select 0))];
   };
   _locZ = (_locZSplit select 0);
-  if ((count _locZSplit) == 2) then
+  if ((count _locZSplit) isEqualTo 2) then
   {
     _locZ = (_locZSplit select 0) + (_locZSplit select 1);
   };

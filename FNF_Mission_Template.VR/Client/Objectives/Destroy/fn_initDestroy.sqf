@@ -18,7 +18,7 @@ params ["_objective", "_forPlayer"];
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker
-if (_objectiveType == "FAILED") exitWith
+if (_objectiveType isEqualTo "FAILED") exitWith
 {
   if (fnf_debug) then
   {
@@ -33,12 +33,12 @@ _hidingZones = [];
 _objectiveObject = "";
 {
   _typeOfObject = typeOf _x;
-  if (_typeOfObject == "SideBLUFOR_F" or _typeOfObject == "SideOPFOR_F" or _typeOfObject == "SideResistance_F") then
+  if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
   {
     continue;
   };
 
-  if (_typeOfObject == "fnf_module_hidingZone") then
+  if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
   {
     _hidingZones pushBack _x;
     continue;
@@ -88,7 +88,7 @@ _task = "";
 _objNum = str((count fnf_objectives) + 1);
 
 //create and setup objective task
-if (_objectiveType == "des") then
+if (_objectiveType isEqualTo "des") then
 {
   if (_forPlayer) then
   {
@@ -128,7 +128,7 @@ if (_objectiveType == "des") then
   };
 
   _task setSimpleTaskType "destroy";
-  if (count _hidingZones == 0) then
+  if (count _hidingZones isEqualTo 0) then
   {
     _task setSimpleTaskTarget [_objectiveObject, true];
   } else {
@@ -151,7 +151,7 @@ if (_objectiveType == "des") then
     {
       _prefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-      if (_prefix == "FAILED") then
+      if (_prefix isEqualTo "FAILED") then
       {
         if (fnf_debug) then
         {

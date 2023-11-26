@@ -18,7 +18,7 @@ _currentObjects = _currentEntities select 0;
 
 _allLogic = [];
 {
-  if (typeOf _x == "Logic") then
+  if (typeOf _x isEqualTo "Logic") then
   {
     _allLogic pushBack _x;
   };
@@ -64,7 +64,7 @@ if (count _allLogic >= count _allUnits and count _allUnits != 0) then
       };
       _logicID = _splitString select 1;
 
-      if (_unitID == _logicID) then
+      if (_unitID isEqualTo _logicID) then
       {
         _foundLogic = _x;
         break;
@@ -82,9 +82,9 @@ if (count _allLogic >= count _allUnits and count _allUnits != 0) then
 
     //make sure connection is a sync and not group
     {
-      if (typeName _x == "ARRAY" ) then
+      if (typeName _x isEqualTo "ARRAY" ) then
       {
-        if (_x select 0 == "Sync") then
+        if (_x select 0 isEqualTo "Sync") then
         {
           _connectionItems pushBack (_x select 1);
         };
@@ -155,9 +155,9 @@ _addJIPitems = {
 
     //make sure connection is a sync and not group
     {
-      if (typeName _x == "ARRAY" ) then
+      if (typeName _x isEqualTo "ARRAY" ) then
       {
-        if (_x select 0 == "Sync") then
+        if (_x select 0 isEqualTo "Sync") then
         {
           _connectionItems pushBack (_x select 1);
         };
@@ -211,7 +211,7 @@ _removeEmptyLayers = {
 
   {
     _entities = get3DENLayerEntities _x;
-    if (count _entities == 0) then
+    if (count _entities isEqualTo 0) then
     {
       remove3DENLayer _x;
     };

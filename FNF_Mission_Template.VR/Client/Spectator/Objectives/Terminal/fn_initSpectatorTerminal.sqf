@@ -17,7 +17,7 @@ params ["_objective","_side"];
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker
-if (_objectiveType == "FAILED") exitWith
+if (_objectiveType isEqualTo "FAILED") exitWith
 {
   if (fnf_debug) then
   {
@@ -32,18 +32,18 @@ _hidingZones = [];
 _objectiveObject = "";
 {
   _typeOfObject = typeOf _x;
-  if (_typeOfObject == "SideBLUFOR_F" or _typeOfObject == "SideOPFOR_F" or _typeOfObject == "SideResistance_F") then
+  if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
   {
     continue;
   };
 
-  if (_typeOfObject == "fnf_module_hidingZone") then
+  if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
   {
     _hidingZones pushBack _x;
     continue;
   };
 
-  if (_typeOfObject == "Land_DataTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_F" or _typeOfObject == "RuggedTerminal_01_communications_F" or _typeOfObject == "RuggedTerminal_02_communications_F" or _typeOfObject == "RuggedTerminal_01_communications_hub_F") then
+  if (_typeOfObject isEqualTo "Land_DataTerminal_01_F" or _typeOfObject isEqualTo "RuggedTerminal_01_F" or _typeOfObject isEqualTo "RuggedTerminal_01_communications_F" or _typeOfObject isEqualTo "RuggedTerminal_02_communications_F" or _typeOfObject isEqualTo "RuggedTerminal_01_communications_hub_F") then
   {
     if (_objectiveObject isEqualTo "") then
     {
@@ -76,7 +76,7 @@ _objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDU
 //check if obj is duplicate
 _isObjDuplicate = false;
 {
-  if (_x select 0 == "TERMINAL") then
+  if (_x select 0 isEqualTo "TERMINAL") then
   {
     if  (_x select 2 isEqualTo _objectiveObject) then
     {
@@ -95,7 +95,7 @@ if (_hackingTime isEqualTo "FAILED") exitWith
   };
 };
 
-if (_hackingTime == 0) exitWith
+if (_hackingTime isEqualTo 0) exitWith
 {
   if (fnf_debug) then
   {
@@ -127,7 +127,7 @@ if (count _hidingZones != 0) then
 {
   {
     _prefix = _x getVariable ["fnf_prefix", "FAILED"];
-    if (_prefix == "FAILED") then
+    if (_prefix isEqualTo "FAILED") then
     {
       if (fnf_debug) then
       {
@@ -145,7 +145,7 @@ if (count _hidingZones != 0) then
 
 _task = "";
 
-if (_objectiveType == "hck") then
+if (_objectiveType isEqualTo "hck") then
 {
   _task = player createSimpleTask [(_objNum + ": Hack the Terminal")];
 
@@ -188,7 +188,7 @@ if (_objectiveType == "hck") then
     {
       _prefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-      if (_prefix == "FAILED") then
+      if (_prefix isEqualTo "FAILED") then
       {
         if (fnf_debug) then
         {
@@ -218,7 +218,7 @@ if (not _isObjDuplicate) then
   _marker setMarkerTypeLocal "mil_dot";
   _marker setMarkerColorLocal "ColorUNKNOWN";
 
-  if (typeOf _objectiveObject == "Land_DataTerminal_01_F") then
+  if (typeOf _objectiveObject isEqualTo "Land_DataTerminal_01_F") then
   {
     [_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
   };

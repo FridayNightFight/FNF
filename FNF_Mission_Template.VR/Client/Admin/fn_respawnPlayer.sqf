@@ -23,7 +23,7 @@ player allowDamage false;
 [{
   player setUnitLoadout [fnf_playerLoadout, false];
 
-  if (serverName == "Friday Night Fight #Early | www.fridaynightfight.org") then
+  if (serverName isEqualTo "Friday Night Fight #Early | www.fridaynightfight.org") then
   {
     player linkItem "itemGPS";
   };

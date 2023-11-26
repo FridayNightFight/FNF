@@ -14,7 +14,7 @@ params ["_zonePrefix"];
 
 _displayName = "";
 {
-	if (_x select 0 == _zonePrefix) then
+	if (_x select 0 isEqualTo _zonePrefix) then
 	{
 		_displayName = markerText (_x select 3);
 		break;

@@ -55,7 +55,7 @@ _ModernTan = [
   ["Land_Bunker_01_tall_F",130,"fnf_fortify_bunkersCNSRT"]
 ];
 
-if (_fortifyColour == "Green") then
+if (_fortifyColour isEqualTo "Green") then
 {
   [west, _fortifyPoints, _ModernGreen] call ace_fortify_fnc_registerObjects;
   [east, _fortifyPoints, _ModernGreen] call ace_fortify_fnc_registerObjects;

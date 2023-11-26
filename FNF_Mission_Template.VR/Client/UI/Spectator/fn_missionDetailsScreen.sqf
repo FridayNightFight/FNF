@@ -50,7 +50,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
     for "_i" from 0 to _currentSubjectCount do
     {
       _text = _tree tvText [_i];
-      if (_text == _displayName) then
+      if (_text isEqualTo _displayName) then
       {
         _correctTreePath = [_i];
       };
@@ -76,7 +76,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       for "_i" from 0 to _currentSubjectCount do
       {
         _text = _tree tvText [(_correctTreePath select 0),_i];
-        if (_text == _recordName) then
+        if (_text isEqualTo _recordName) then
         {
           _correctTreePathRecord = [(_correctTreePath select 0),_i];
         };
@@ -90,7 +90,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
   };
 
   //if the subject is tasks we cannot rely on the diary record infrastructure as it is unreliable for tasks
-  if (_name == "Tasks") then
+  if (_name isEqualTo "Tasks") then
   {
 
     _tree tvAdd [[], _displayName];
@@ -100,7 +100,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
     for "_i" from 0 to _currentSubjectCount do
     {
       _text = _tree tvText [_i];
-      if (_text == _displayName) then
+      if (_text isEqualTo _displayName) then
       {
         _correctTreePath = [_i];
       };
@@ -121,7 +121,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       //get the task name and exit if task is a filler one
       _taskName = taskName _x;
       _task = _x;
-      if (_taskName == "My Tasks" or _taskName == "Ally Tasks") then
+      if (_taskName isEqualTo "My Tasks" or _taskName isEqualTo "Ally Tasks") then
       {
         continue;
       };
@@ -162,7 +162,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
         };
       } forEach _syncedObjects;
 
-      if (_sidesWithTasks find _objSide == -1) then
+      if (_sidesWithTasks find _objSide isEqualTo -1) then
       {
         _sidesWithTasks pushBack _objSide;
       };
@@ -184,7 +184,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       for "_i" from 0 to _currentSubjectCount do
       {
         _text = _tree tvText [(_correctTreePath select 0),_i];
-        if (_text == "Blufor") then
+        if (_text isEqualTo "Blufor") then
         {
           _bluObjTreePath = [(_correctTreePath select 0),_i];
         };
@@ -204,7 +204,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       for "_i" from 0 to _currentSubjectCount do
       {
         _text = _tree tvText [(_correctTreePath select 0),_i];
-        if (_text == "Opfor") then
+        if (_text isEqualTo "Opfor") then
         {
           _opfObjTreePath = [(_correctTreePath select 0),_i];
         };
@@ -224,7 +224,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       for "_i" from 0 to _currentSubjectCount do
       {
         _text = _tree tvText [(_correctTreePath select 0),_i];
-        if (_text == "Indfor") then
+        if (_text isEqualTo "Indfor") then
         {
           _indObjTreePath = [(_correctTreePath select 0),_i];
         };
@@ -272,7 +272,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       for "_i" from 0 to _currentSubjectCount do
       {
         _text = _tree tvText [(_currentTaskCorrectPath select 0),(_currentTaskCorrectPath select 1),_i];
-        if (_text == _name) then
+        if (_text isEqualTo _name) then
         {
           _correctTreePathCurrentTask = [(_currentTaskCorrectPath select 0),(_currentTaskCorrectPath select 1),_i];
         };

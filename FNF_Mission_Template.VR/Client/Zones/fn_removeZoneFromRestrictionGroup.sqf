@@ -19,11 +19,11 @@ _zoneIndex = -1;
 
 //gets restriction group and zone mentioned
 {
-	if (_x select 0 == _groupName) then
+	if (_x select 0 isEqualTo _groupName) then
 	{
 		_groupIndex = _forEachIndex;
 		{
-			if (_x select 0 == _zonePrefix) then
+			if (_x select 0 isEqualTo _zonePrefix) then
 			{
 				_zoneIndex = _forEachIndex;
 				break;

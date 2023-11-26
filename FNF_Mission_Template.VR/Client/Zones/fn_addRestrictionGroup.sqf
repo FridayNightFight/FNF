@@ -16,7 +16,7 @@
 params ["_groupName", "_restrictWeapons", "_teleportBack"];
 _duplicate = false;
 {
-	if (_x select 0 == _groupName) then
+	if (_x select 0 isEqualTo _groupName) then
 	{
 		_duplicate = true;
 		break;

@@ -16,7 +16,7 @@ params["_object", "_zonePrefix"];
 _result = false;
 
 {
-	if (_x select 0 == _zonePrefix) then
+	if (_x select 0 isEqualTo _zonePrefix) then
 	{
 		if ((getPos _object) inPolygon (_x select 1)) then
 		{

@@ -38,25 +38,25 @@ _getWeaponDetails = {
 	];
 
   if (
-    _result select 0 == "" and
-    _result select 1 == "" and
-    _result select 2 == "" and
-    _result select 3 == "" and
-    (_result select 4 select 0) == "" and
-    (_result select 4 select 1) == 0 and
-    (_result select 5 select 0) == "" and
-    (_result select 5 select 1) == 0 and
-    _result select 6 == ""
+    _result select 0 isEqualTo "" and
+    _result select 1 isEqualTo "" and
+    _result select 2 isEqualTo "" and
+    _result select 3 isEqualTo "" and
+    (_result select 4 select 0) isEqualTo "" and
+    (_result select 4 select 1) isEqualTo 0 and
+    (_result select 5 select 0) isEqualTo "" and
+    (_result select 5 select 1) isEqualTo 0 and
+    _result select 6 isEqualTo ""
   ) exitWith
   {
     [];
   };
 
-  if ((_result select 4 select 0) == "" and (_result select 4 select 1) == 0) then
+  if ((_result select 4 select 0) isEqualTo "" and (_result select 4 select 1) isEqualTo 0) then
   {
     _result set [4,[]];
   };
-  if ((_result select 5 select 0) == "" and (_result select 5 select 1) == 0) then
+  if ((_result select 5 select 0) isEqualTo "" and (_result select 5 select 1) isEqualTo 0) then
   {
     _result set [5,[]];
   };
@@ -89,7 +89,7 @@ _getContainerDetails = {
 
 _possibleLoadouts = [];
 
-_bluforConfigs = "getText (_x >> 'editorSubcategory') == 'fnf_Blufor'" configClasses (_cfg >> "Cfg3DEN" >> "Compositions");
+_bluforConfigs = "getText (_x >> 'editorSubcategory') isEqualTo 'fnf_Blufor'" configClasses (_cfg >> "Cfg3DEN" >> "Compositions");
 {
   _name = getText (_x >> "displayName");
   _pathToComp = getText (_x >> "path");
@@ -97,7 +97,7 @@ _bluforConfigs = "getText (_x >> 'editorSubcategory') == 'fnf_Blufor'" configCla
   _possibleLoadouts pushBack [_name, _pathToComp];
 } forEach _bluforConfigs;
 
-_opforConfigs = "getText (_x >> 'editorSubcategory') == 'fnf_Opfor'" configClasses (_cfg >> "Cfg3DEN" >> "Compositions");
+_opforConfigs = "getText (_x >> 'editorSubcategory') isEqualTo 'fnf_Opfor'" configClasses (_cfg >> "Cfg3DEN" >> "Compositions");
 {
   _name = getText (_x >> "displayName");
   _pathToComp = getText (_x >> "path");
@@ -105,7 +105,7 @@ _opforConfigs = "getText (_x >> 'editorSubcategory') == 'fnf_Opfor'" configClass
   _possibleLoadouts pushBack [_name, _pathToComp];
 } forEach _opforConfigs;
 
-_indforConfigs = "getText (_x >> 'editorSubcategory') == 'fnf_Indfor'" configClasses (_cfg >> "Cfg3DEN" >> "Compositions");
+_indforConfigs = "getText (_x >> 'editorSubcategory') isEqualTo 'fnf_Indfor'" configClasses (_cfg >> "Cfg3DEN" >> "Compositions");
 {
   _name = getText (_x >> "displayName");
   _pathToComp = getText (_x >> "path");
@@ -118,7 +118,7 @@ _allLogic = _allItems select 3;
 
 _kitInformationPointers = [];
 {
-  if ((typeOf _x) == "fnf_module_kitInformation") then
+  if ((typeOf _x) isEqualTo "fnf_module_kitInformation") then
   {
     _kitInformationPointers pushBack _x;
   };
@@ -130,8 +130,8 @@ _allGroups = _allItems select 1;
   _currentKitInformationPointer = _x;
   _kitName = (_currentKitInformationPointer get3DENAttribute "fnf_kitName") select 0;
 
-  _loadoutIndex = _possibleLoadouts findIf {_x select 0 == _kitName};
-  if (_loadoutIndex == -1) then
+  _loadoutIndex = _possibleLoadouts findIf {_x select 0 isEqualTo _kitName};
+  if (_loadoutIndex isEqualTo -1) then
   {
     //inform user that loadout cannot be found
     _pos = [0,0,3] vectorAdd (getPos _x);
@@ -147,7 +147,7 @@ _allGroups = _allItems select 1;
   _loadoutPath = _loadoutPath + "\composition.sqe";
 
   _cfgLoadout = loadConfig _loadoutPath;
-  _unitsConfig = ("getText (_x >> 'name') == 'Units'" configClasses (_cfgLoadout >> "items")) select 0;
+  _unitsConfig = ("getText (_x >> 'name') isEqualTo 'Units'" configClasses (_cfgLoadout >> "items")) select 0;
   _configGroups = "true" configClasses (_unitsConfig >> "Entities");
 
   _sidePlainText = getText (_unitsConfig >> "Entities" >> "Item0" >> "side");
@@ -194,7 +194,7 @@ _allGroups = _allItems select 1;
 
     _allUnits = units _x;
 
-    if (count _configUnits != count _allUnits) then
+    if (count _configUnits  count _allUnits) then
     {
       //inform user that group has incorrect number of people
       _pos = [0,0,3] vectorAdd (getPos _leader);

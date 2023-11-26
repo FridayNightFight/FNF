@@ -39,7 +39,7 @@ _getNearestLineDistance = {
 
     _l2 = _l2 * _l2;
 
-    if (_l2 == 0) then
+    if (_l2 isEqualTo 0) then
     {
       _distance = _v distance2D _p;
       _distancesFound pushBack _distance;

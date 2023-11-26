@@ -27,11 +27,11 @@ _playerObject synchronizeObjectsAdd _syncedObjects;
 
 [{
   _result = true;
-  if (owner (_this select 0) == clientOwner) then
+  if (owner (_this select 0) isEqualTo clientOwner) then
   {
     _result = false;
   };
-  if (owner (_this select 0) == 0) then
+  if (owner (_this select 0) isEqualTo 0) then
   {
     _result = false;
   };
@@ -41,7 +41,7 @@ _playerObject synchronizeObjectsAdd _syncedObjects;
     {
       continue;
     };
-    if (owner (_this select 0) == owner _x) then
+    if (owner (_this select 0) isEqualTo owner _x) then
     {
       _result = false;
       break;

@@ -13,7 +13,7 @@
 
 params["_task"];
 
-_index = fnf_taskControlStack findIf (_task == (_x select 0));
+_index = fnf_taskControlStack findIf {_task isEqualTo (_x select 0)};
 if (_index isNotEqualTo -1) then
 {
   fnf_taskControlStack deleteAt _index;

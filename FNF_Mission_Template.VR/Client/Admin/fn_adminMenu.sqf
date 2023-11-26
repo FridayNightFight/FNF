@@ -43,31 +43,31 @@ _playerList lbSetData [_sideTempIndex, "west"];
 {
 	_index = _playerList lbAdd name _x;
   _playerList lbSetData [_index, getPlayerUID _x];
-} forEach (allPlayers select {side (group _x) == west});
+} forEach (allPlayers select {side (group _x) isEqualTo west});
 _sideTempIndex = _playerList lbAdd "===OPFOR===";
 _playerList lbSetData [_sideTempIndex, "east"];
 {
 	_index = _playerList lbAdd name _x;
   _playerList lbSetData [_index, getPlayerUID _x];
-} forEach (allPlayers select {side (group _x) == east});
+} forEach (allPlayers select {side (group _x) isEqualTo east});
 _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
 _playerList lbSetData [_sideTempIndex, "independent"];
 {
 	_index = _playerList lbAdd name _x;
   _playerList lbSetData [_index, _x];
-} forEach (allPlayers select {side (group _x) == independent});
+} forEach (allPlayers select {side (group _x) isEqualTo independent});
 _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
 _playerList lbSetData [_sideTempIndex, "civilian"];
 {
 	_index = _playerList lbAdd name _x;
   _playerList lbSetData [_index, getPlayerUID _x];
-} forEach (allPlayers select {side (group _x) == civilian});
+} forEach (allPlayers select {side (group _x) isEqualTo civilian});
 _sideTempIndex = _playerList lbAdd "===LOGIC===";
 _playerList lbSetData [_sideTempIndex, "sideLogic"];
 {
 	_index = _playerList lbAdd name _x;
   _playerList lbSetData [_index, getPlayerUID _x];
-} forEach (allPlayers select {side (group _x) == sideLogic});
+} forEach (allPlayers select {side (group _x) isEqualTo sideLogic});
 _playerList lbSetCurSel 0;
 
 _resetAnimButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10003 ];
@@ -179,37 +179,37 @@ fnf_adminMenu_searchPFH = [{
 
   lbClear _playerList;
 
-  if (_searchTerm == "") exitWith {
+  if (_searchTerm isEqualTo "") exitWith {
     _sideTempIndex = _playerList lbAdd "===BLUFOR===";
     _playerList lbSetData [_sideTempIndex, "west"];
     {
 	    _index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerUID _x];
-    } forEach (allPlayers select {side (group _x) == west});
+    } forEach (allPlayers select {side (group _x) isEqualTo west});
     _sideTempIndex = _playerList lbAdd "===OPFOR===";
     _playerList lbSetData [_sideTempIndex, "east"];
     {
     	_index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerUID _x];
-    } forEach (allPlayers select {side (group _x) == east});
+    } forEach (allPlayers select {side (group _x) isEqualTo east});
     _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
     _playerList lbSetData [_sideTempIndex, "independent"];
     {
     	_index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerUID _x];
-    } forEach (allPlayers select {side (group _x) == independent});
+    } forEach (allPlayers select {side (group _x) isEqualTo independent});
     _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
     _playerList lbSetData [_sideTempIndex, "civilian"];
     {
     	_index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerUID _x];
-    } forEach (allPlayers select {side (group _x) == civilian});
+    } forEach (allPlayers select {side (group _x) isEqualTo civilian});
     _sideTempIndex = _playerList lbAdd "===LOGIC===";
     _playerList lbSetData [_sideTempIndex, "sideLogic"];
     {
     	_index = _playerList lbAdd name _x;
       _playerList lbSetData [_index, getPlayerUID _x];
-    } forEach (allPlayers select {side (group _x) == sideLogic});
+    } forEach (allPlayers select {side (group _x) isEqualTo sideLogic});
   };
 
   _sideTempIndex = _playerList lbAdd "===BLUFOR===";
@@ -217,31 +217,31 @@ fnf_adminMenu_searchPFH = [{
   {
 	  _index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerUID _x];
-  } forEach (allPlayers select {side (group _x) == west} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  } forEach (allPlayers select {side (group _x) isEqualTo west} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===OPFOR===";
   _playerList lbSetData [_sideTempIndex, "east"];
   {
 	  _index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerUID _x];
-  } forEach (allPlayers select {side (group _x) == east} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  } forEach (allPlayers select {side (group _x) isEqualTo east} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
   _playerList lbSetData [_sideTempIndex, "independent"];
   {
   	_index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerUID _x];
-  } forEach (allPlayers select {side (group _x) == independent} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  } forEach (allPlayers select {side (group _x) isEqualTo independent} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
   _playerList lbSetData [_sideTempIndex, "civilian"];
   {
   	_index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerUID _x];
-  } forEach (allPlayers select {side (group _x) == civilian} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  } forEach (allPlayers select {side (group _x) isEqualTo civilian} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===LOGIC===";
   _playerList lbSetData [_sideTempIndex, "sideLogic"];
   {
   	_index = _playerList lbAdd name _x;
     _playerList lbSetData [_index, getPlayerUID _x];
-  } forEach (allPlayers select {side (group _x) == sideLogic} select {[_searchTerm, name _x] call BIS_fnc_inString});
+  } forEach (allPlayers select {side (group _x) isEqualTo sideLogic} select {[_searchTerm, name _x] call BIS_fnc_inString});
 
 }, 0.5] call CBA_fnc_addPerFrameHandler;
 
@@ -378,7 +378,7 @@ _playerMessageButton ctrlAddEventHandler[ "ButtonClick", {
 
   _selected = _sideToMessage;
 
-  if (_sideToMessage == sideEmpty) then
+  if (_sideToMessage isEqualTo sideEmpty) then
   {
     _playerData = _selectedData call BIS_fnc_getUnitByUID;
     _selected = _playerData;

@@ -17,7 +17,7 @@ _result = false;
 
 //gets restriction group and zone mentioned
 {
-	if (_x select 0 == _groupName) then
+	if (_x select 0 isEqualTo _groupName) then
 	{
 		if (count (_x select 1) != 0) then
     {

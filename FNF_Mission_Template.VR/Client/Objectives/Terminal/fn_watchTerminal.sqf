@@ -42,7 +42,7 @@ _objNumWithColon = _splitString select 0;
 _objNum = (_objNumWithColon splitString "") select 0;
 
 //if time of completion is never then set marker to idle
-if (_timeOfCompletion == -1) then
+if (_timeOfCompletion isEqualTo -1) then
 {
   _result = false;
   _marker setMarkerTextLocal "[Idle]";
@@ -56,7 +56,7 @@ if (_timeOfCompletion == -1) then
 if (_result) then
 {
   _taskType = taskType _task;
-  if (_taskType == "upload" and _currentlyHackingSide == playerSide) then
+  if (_taskType isEqualTo "upload" and _currentlyHackingSide isEqualTo playerSide) then
   {
     _task setTaskState "Succeeded";
     if (_forPlayer) then
@@ -66,7 +66,7 @@ if (_result) then
       ["<t size='1.5' align='center'>Objective " + _objNum + " Complete<br/>(Ally Objective)</t><br/><br/><t align='center'>The Terminal has been hacked and is rigged to explode in 12 seconds</t>", "success", 10, 20] call FNF_ClientSide_fnc_notificationSystem;
     };
   };
-  if (_taskType == "upload" and _currentlyHackingSide != playerSide) then
+  if (_taskType isEqualTo "upload" and _currentlyHackingSide != playerSide) then
   {
     if ([playerSide, _currentlyHackingSide] call BIS_fnc_sideIsFriendly) then
     {
@@ -87,7 +87,7 @@ if (_result) then
       };
     };
   };
-  if (_taskType == "defend") then {
+  if (_taskType isEqualTo "defend") then {
     _task setTaskState "Failed";
     if (_forPlayer) then
     {
@@ -121,7 +121,7 @@ if (_result) then
     };
 
     //blink marker colour because it looks pretty on the map and says whos hacking at a glance
-    if (markerColor _marker == "ColorBlack") then
+    if (markerColor _marker isEqualTo "ColorBlack") then
     {
       _markerColour = [_previouslyHackingSide, true] call BIS_fnc_sideColor;
       _marker setMarkerColorLocal _markerColour;
@@ -130,7 +130,7 @@ if (_result) then
     };
   };
 
-  if (_currentlyHackingSide == _previouslyHackingSide) exitWith
+  if (_currentlyHackingSide isEqualTo _previouslyHackingSide) exitWith
   {
     false;
   };

@@ -51,7 +51,7 @@ _tpCounter = 1;
     _sideCounter = _sideCounter + 1;
   } forEach _syncedObjects;
 
-  if (_sideCounter == 0) then
+  if (_sideCounter isEqualTo 0) then
   {
     if (fnf_debug) then
     {
@@ -79,7 +79,7 @@ _tpCounter = 1;
 
   {
     _objectType = typeOf _x;
-    if (_objectType == "SideBLUFOR_F" or _objectType == "SideOPFOR_F" or _objectType == "SideResistance_F") then {continue;};
+    if (_objectType isEqualTo "SideBLUFOR_F" or _objectType isEqualTo "SideOPFOR_F" or _objectType isEqualTo "SideResistance_F") then {continue;};
 
     _pos = getPos _x;
 
@@ -106,7 +106,7 @@ _tpCounter = 1;
     _positionsAndActions pushBack [_pos, _action, _markerstr];
   } forEach _syncedObjects;
 
-  if (count _positionsAndActions == 0) then
+  if (count _positionsAndActions isEqualTo 0) then
   {
     if (fnf_debug) then
     {
@@ -115,7 +115,7 @@ _tpCounter = 1;
     continue;
   };
 
-  if (count _positionsAndActions == 1) then
+  if (count _positionsAndActions isEqualTo 1) then
   {
     if (fnf_debug) then
     {
@@ -125,7 +125,7 @@ _tpCounter = 1;
 
   {
     _objectType = typeOf _x;
-    if (_objectType == "SideBLUFOR_F" or _objectType == "SideOPFOR_F" or _objectType == "SideResistance_F") then {continue;};
+    if (_objectType isEqualTo "SideBLUFOR_F" or _objectType isEqualTo "SideOPFOR_F" or _objectType isEqualTo "SideResistance_F") then {continue;};
 
     _pos = getPos _x;
     _object = _x;

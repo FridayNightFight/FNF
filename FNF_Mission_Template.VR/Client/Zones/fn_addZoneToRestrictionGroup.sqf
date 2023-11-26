@@ -18,7 +18,7 @@ _groupIndex = -1;
 _zoneData = [];
 
 {
-	if (_x select 0 == _zonePrefix) then
+	if (_x select 0 isEqualTo _zonePrefix) then
 	{
 		_zoneData = _x;
 		break;
@@ -26,7 +26,7 @@ _zoneData = [];
 } forEach fnf_zoneList;
 
 {
-	if (_x select 0 == _groupName) then
+	if (_x select 0 isEqualTo _groupName) then
 	{
 		_groupIndex = _forEachIndex;
 		break;

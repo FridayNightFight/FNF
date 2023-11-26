@@ -15,7 +15,7 @@ params ["_groupName"];
 _duplicate = false;
 
 {
-	if (_x == _groupName) then
+	if (_x isEqualTo _groupName) then
 	{
 		_duplicate = true;
 		break;

@@ -16,7 +16,7 @@ params ["_objective","_side"];
 //get the objective type
 _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 
-if (_objectiveType == "FAILED") exitWith
+if (_objectiveType isEqualTo "FAILED") exitWith
 {
   if (fnf_debug) then
   {
@@ -32,12 +32,12 @@ _playerObject = objNull;
 _dupeLogicCheck = objNull;
 {
   _typeOfObject = typeOf _x;
-  if (_typeOfObject == "SideBLUFOR_F" or _typeOfObject == "SideOPFOR_F" or _typeOfObject == "SideResistance_F") then
+  if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
   {
     continue;
   };
 
-  if (_typeOfObject == "fnf_module_hidingZone") then
+  if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
   {
     _hidingZones pushBack _x;
     continue;
@@ -49,7 +49,7 @@ _dupeLogicCheck = objNull;
     continue;
   };
 
-  if (_typeOfObject == "Logic") then
+  if (_typeOfObject isEqualTo "Logic") then
   {
     _dupeLogicCheck = _x;
     continue;
@@ -73,7 +73,7 @@ _objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDU
 //check if OBJ is a dupe, if so inform code and update OBJ number
 _isObjDuplicate = false;
 {
-  if (_x select 0 == "ASSASSIN") then
+  if (_x select 0 isEqualTo "ASSASSIN") then
   {
     if  (_x select 2 isEqualTo _dupeLogicCheck) then
     {
@@ -89,7 +89,7 @@ if (count _hidingZones != 0) then
   {
     _prefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-    if (_prefix == "FAILED") then
+    if (_prefix isEqualTo "FAILED") then
     {
       if (fnf_debug) then
       {
@@ -110,7 +110,7 @@ _task = "";
 _targetName = _objective getVariable ["fnf_targetName", "Unknown Name"];
 
 //create and setup objective task
-if (_objectiveType == "elm") then
+if (_objectiveType isEqualTo "elm") then
 {
   _task = player createSimpleTask [(_objNum + ": Eliminate " + _targetName)];
   _zoneKnown = _objective getVariable ["fnf_zoneKnown", true];

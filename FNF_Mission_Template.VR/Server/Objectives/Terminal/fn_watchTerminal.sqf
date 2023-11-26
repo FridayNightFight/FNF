@@ -27,7 +27,7 @@ if (time < 1) then
 {
   _result = false;
 };
-if (_timeOfCompletion == -1) then
+if (_timeOfCompletion isEqualTo -1) then
 {
   _result = false;
 };
@@ -38,7 +38,7 @@ if (_result) then
 
   _completedExplosion = _objectiveObject getVariable ['fnf_explosionHandeled', false];
 
-  if (_completedExplosion == false) then
+  if (_completedExplosion isEqualTo false) then
   {
     _objectiveObject setVariable ['fnf_explosionHandeled', true, false];
     playSound3D ["fnf_sounds\sounds\bomb_alarm.ogg", _objectiveObject];

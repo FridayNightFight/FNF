@@ -17,7 +17,7 @@ _actionGoToLastReport = [
   "\A3\ui_f\data\igui\cfg\simpleTasks\types\heal_ca.paa",
   {
     _records = player allDiaryRecords "adminMessages";
-    if (count _records == 0) exitWith {};
+    if (count _records isEqualTo 0) exitWith {};
     _newestRecord = _records select 0;
     _text = _newestRecord select 2;
     systemChat _text;
