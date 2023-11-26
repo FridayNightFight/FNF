@@ -57,7 +57,7 @@ fnf_disableFiring = -1;
           (player getVariable ["ace_trenches_isplacing",false]) ||
           (player getVariable ["ace_tripod_adjusting",false])
         ) then {
-          if (fnf_disableFiring != -1) then {
+          if (fnf_disableFiring isNotEqualTo -1) then {
             player removeAction fnf_disableFiring;
             fnf_disableFiring = -1;
           };
@@ -80,21 +80,21 @@ fnf_disableFiring = -1;
     };
 
     //if player cannot fire gun allow them to
-    if (fnf_disableFiring != -1) then
+    if (fnf_disableFiring isNotEqualTo -1) then
     {
       player removeAction fnf_disableFiring;
       fnf_disableFiring = -1;
     };
 
     //if player cannot throw graenades allow them to
-    if (fnf_disableGrenades != -1) then
+    if (fnf_disableGrenades isNotEqualTo -1) then
     {
 			player removeEventHandler ["FiredMan", fnf_disableGrenades];
       fnf_disableGrenades = -1;
     };
 
     //if player is placing something in ace remove the PFH because no need for it
-    if (fnf_acePlacingPFH != -1) then
+    if (fnf_acePlacingPFH isNotEqualTo -1) then
     {
       [fnf_acePlacingPFH] call CBA_fnc_removePerFrameHandler;
       fnf_acePlacingPFH = -1;

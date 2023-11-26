@@ -27,7 +27,7 @@ call FNF_ServerSide_fnc_handleVehicleInventory;
 
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _objModules != 0) then
+if (count _objModules isNotEqualTo 0) then
 {
   [_objModules] call FNF_ServerSide_fnc_initObjs;
 };
@@ -35,7 +35,7 @@ if (count _objModules != 0) then
 //if there are objectives start watching them
 if (not isNil "fnf_serverObjectives") then
 {
-  if (count fnf_serverObjectives != 0) then
+  if (count fnf_serverObjectives isNotEqualTo 0) then
   {
     [{
       _indexesToChangeIfCompleted = [];

@@ -33,7 +33,7 @@ _allUnits = [];
 } forEach _currentObjects;
 
 //high likelyhood that mission has been exported before, time to reverse that
-if (count _allLogic >= count _allUnits and count _allUnits != 0) then
+if (count _allLogic >= count _allUnits and count _allUnits isNotEqualTo 0) then
 {
   _unitsToDelete = [];
   {
@@ -41,13 +41,13 @@ if (count _allLogic >= count _allUnits and count _allUnits != 0) then
     _unit = _x;
     _initField = (_unit get3DENAttribute "init") select 0;
     _splitString = [_initField, "[this, fnf_handleJIPLogic_", true] call BIS_fnc_splitString;
-    if (count _splitString != 2) then
+    if (count _splitString isNotEqualTo 2) then
     {
       continue;
     };
     _text = _splitString select 1;
     _splitString = [_text, "] call FNF_ServerSide_fnc_handleJIPSyncing;", true] call BIS_fnc_splitString;
-    if (count _splitString != 2) then
+    if (count _splitString isNotEqualTo 2) then
     {
       continue;
     };
@@ -58,7 +58,7 @@ if (count _allLogic >= count _allUnits and count _allUnits != 0) then
     {
       _variableName = (_x get3DENAttribute "name") select 0;
       _splitString = [_variableName, "fnf_handleJIPLogic_", true] call BIS_fnc_splitString;
-      if (count _splitString != 2) then
+      if (count _splitString isNotEqualTo 2) then
       {
         continue;
       };
@@ -109,7 +109,7 @@ _addJIPitems = {
   params ["_messageID"];
 
   //if message is not mission exported exit
-  if (_messageID != 6) exitWith {};
+  if (_messageID isNotEqualTo 6) exitWith {};
 
   //if code is already running exit
   if (fnf_handelingSave) exitWith {};

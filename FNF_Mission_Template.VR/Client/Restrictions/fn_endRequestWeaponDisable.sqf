@@ -23,7 +23,7 @@ _requestIndex = -1;
 }
 foreach fnf_weaponDisableRequestList;
 
-if (_requestIndex != -1) then
+if (_requestIndex isNotEqualTo -1) then
 {
 	fnf_weaponDisableRequestList deleteAt _requestIndex;
 };

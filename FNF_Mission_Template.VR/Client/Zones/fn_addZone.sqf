@@ -72,7 +72,7 @@ _markerPolyline setMarkerColorLocal _markerColor;
 
 //create display name marker
 _markerDisplayName = createMarkerLocal [(_zonePrefix + "displayName"),_furthestXValue];
-if (_displayName != "") then
+if (_displayName isNotEqualTo "") then
 {
   _markerDisplayName setMarkerShapeLocal "ICON";
   _markerDisplayName setMarkerTextLocal _displayName;

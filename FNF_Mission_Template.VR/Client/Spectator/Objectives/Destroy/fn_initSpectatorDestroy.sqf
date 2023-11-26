@@ -63,7 +63,7 @@ if (_objectiveObject isEqualTo "") exitWith
   };
 };
 
-_objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDUPE" and _x select 0 != "TERMINALDUPE"} count fnf_objectives) + 1);
+_objNum = str(({_x select 0 isNotEqualTo "DESTROYDUPE" and _x select 0 isNotEqualTo "CAPTURESECTORDUPE" and _x select 0 isNotEqualTo "TERMINALDUPE"} count fnf_objectives) + 1);
 
 //check if OBJ is a dupe, if so inform code and update OBJ number
 _isObjDuplicate = false;
@@ -84,7 +84,7 @@ _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\
 _targetName = getText (_targetConfig >> "DisplayName");
 
 //setup hiding zones if they are wanted
-if (count _hidingZones != 0) then
+if (count _hidingZones isNotEqualTo 0) then
 {
   {
     _prefix = _x getVariable ["fnf_prefix", "FAILED"];
@@ -115,7 +115,7 @@ if (_objectiveType isEqualTo "des") then
 
   _helperString = "The location of the objective is marked on " + ([_side] call BIS_fnc_sideName) + "s map";
 
-  if (count _hidingZones != 0) then
+  if (count _hidingZones isNotEqualTo 0) then
   {
     _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on " + ([_side] call BIS_fnc_sideName) + "s map, if it isn't, the objectives exact location is marked instead";
     if (not _zoneKnown) then
@@ -139,7 +139,7 @@ if (_objectiveType isEqualTo "des") then
 
   _helperString = "";
 
-  if (count _hidingZones != 0) then
+  if (count _hidingZones isNotEqualTo 0) then
   {
     _helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
   };

@@ -20,7 +20,7 @@ _index = -1;
 		break;
 	};
 } forEach fnf_zoneRestrictionGroupsList;
-if (_index != -1) then
+if (_index isNotEqualTo -1) then
 {
 	if (fnf_zoneRestrictionGroupsList select _index select 2) then
 	{

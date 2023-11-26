@@ -22,7 +22,7 @@ _indexToDelete = -1;
   }
 } forEach fnf_trianglesToDraw;
 
-if (_indexToDelete != -1) then
+if (_indexToDelete isNotEqualTo -1) then
 {
   fnf_trianglesToDraw deleteAt _indexToDelete;
 };

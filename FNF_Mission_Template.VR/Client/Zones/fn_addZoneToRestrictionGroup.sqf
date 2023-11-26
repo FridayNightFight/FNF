@@ -33,7 +33,7 @@ _zoneData = [];
 	};
 } forEach fnf_zoneRestrictionGroupsList;
 
-if (_groupIndex != -1) then
+if (_groupIndex isNotEqualTo -1) then
 {
 	fnf_zoneRestrictionGroupsList select _groupIndex select 1 pushBack _zoneData;
 };

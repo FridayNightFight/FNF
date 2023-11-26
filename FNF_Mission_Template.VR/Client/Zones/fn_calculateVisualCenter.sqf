@@ -30,7 +30,7 @@ _getNearestLineDistance = {
     _w set [2,0];
     _p set [2,0];
 
-    if (_forEachIndex != ((count _polygonPoints) - 1)) then
+    if (_forEachIndex isNotEqualTo ((count _polygonPoints) - 1)) then
     {
       _w = _polygonPoints select (_forEachIndex + 1);
     };
@@ -107,7 +107,7 @@ while {_tempX < _maxX} do {
 };
 
 //go through all cells in cell queue
-while {count _cellQueue != 0} do {
+while {count _cellQueue isNotEqualTo 0} do {
   //grab latest cell and pop it from array
   _currentCell = _cellQueue select ((count _cellQueue) - 1);
   _cellQueue deleteAt ((count _cellQueue) - 1);

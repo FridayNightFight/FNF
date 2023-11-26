@@ -22,7 +22,7 @@ _validGroups = [];
   {
     continue;
   };
-  if (side _x != playerSide) then
+  if (side _x isNotEqualTo playerSide) then
   {
     continue;
   };

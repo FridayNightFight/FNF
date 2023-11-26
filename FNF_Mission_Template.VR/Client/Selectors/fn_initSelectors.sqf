@@ -50,7 +50,7 @@ _trueHostSelectorSet = false;
 
       {
         //check if object is not the host it should be attached to
-        if (typeOf _x != "fnf_module_selectorHost") then
+        if (typeOf _x isNotEqualTo "fnf_module_selectorHost") then
         {
           //get the cargo etc in object and add it to the options player has for the selector
           _items = itemCargo _x;

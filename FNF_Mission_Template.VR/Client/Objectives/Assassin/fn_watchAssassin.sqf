@@ -69,7 +69,7 @@ _objType = taskType _task;
 
 if (not isNull _playerObject) then
 {
-  if (count _hidingZones != 0) then
+  if (count _hidingZones isNotEqualTo 0) then
   {
     _zoneKnown = _objectiveModule getVariable ["fnf_zoneKnown", true];
     [_playerObject, _task, _zoneKnown, _hidingZones] call FNF_ClientSide_fnc_addObjectToHide;

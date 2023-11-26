@@ -168,7 +168,7 @@ _prefixesToCleanUp = [];
   {
     continue;
   };
-  if (_prefixesToCleanUp find _zonePrefix != -1) then
+  if (_prefixesToCleanUp find _zonePrefix isNotEqualTo -1) then
   {
     continue;
   };

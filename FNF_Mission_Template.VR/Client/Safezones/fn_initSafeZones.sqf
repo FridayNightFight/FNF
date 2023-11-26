@@ -119,7 +119,7 @@ _maxTimeZoneIsDeleted = 0;
 } forEach _spareSafeZones;
 
 //if safe zones have a time limit to them
-if (_maxTimeZoneIsDeleted != 0) then
+if (_maxTimeZoneIsDeleted isNotEqualTo 0) then
 {
   fnf_timerMessage = "Safe Start Remaining: %1";
   fnf_timerEndTime = _maxTimeZoneIsDeleted * 60;

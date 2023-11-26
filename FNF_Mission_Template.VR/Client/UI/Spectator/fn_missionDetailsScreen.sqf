@@ -36,7 +36,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
   _picture = _x select 2;
 
   //if the subject is not useless ones we dont want
-  if (_name != "Units" and _name != "Players" and _name != "Statistics" and _name != "radio" and _name != "cba_help_docs" and _name != "Tasks" and _name != "OCAP2Info") then
+  if (_name isNotEqualTo "Units" and _name isNotEqualTo "Players" and _name isNotEqualTo "Statistics" and _name isNotEqualTo "radio" and _name isNotEqualTo "cba_help_docs" and _name isNotEqualTo "Tasks" and _name isNotEqualTo "OCAP2Info") then
   {
     //add it to the root of the tree
     _tree tvAdd [[], _displayName];
@@ -129,7 +129,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
       //find obj module from task
       _objModule = objNull;
       {
-        if (_x find _task != -1) then
+        if (_x find _task isNotEqualTo -1) then
         {
           _objModule = (_x select 1);
         };
@@ -176,7 +176,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
     _indObjTreePath = [];
 
     //if there are tasks for blufor create a tree entryy for them and find tree path for it
-    if (_sidesWithTasks find west != -1) then
+    if (_sidesWithTasks find west isNotEqualTo -1) then
     {
       _tree tvAdd [_correctTreePath, "Blufor"];
 
@@ -196,7 +196,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
     };
 
     //if there are tasks for opfor create a tree entryy for them and find tree path for it
-    if (_sidesWithTasks find east != -1) then
+    if (_sidesWithTasks find east isNotEqualTo -1) then
     {
       _tree tvAdd [_correctTreePath, "Opfor"];
 
@@ -216,7 +216,7 @@ _tree ctrlSetPosition [0,0,0.3,1];
     };
 
     //if there are tasks for indfor create a tree entryy for them and find tree path for it
-    if (_sidesWithTasks find independent != -1) then
+    if (_sidesWithTasks find independent isNotEqualTo -1) then
     {
       _tree tvAdd [_correctTreePath, "Indfor"];
 
@@ -308,7 +308,7 @@ _handle = [{
   //get the data for the value
   _currentText = _recordDataStorage select _value;
   //if data is not empty
-  if (_currentText != "NONE FOUND") then
+  if (_currentText isNotEqualTo "NONE FOUND") then
   {
 
     //use complicated find replace algorithm to replace "font" with "t" due to different standards for structured text between GUI elements and diary records
@@ -328,7 +328,7 @@ _handle = [{
       if (["size=", _prevText] call BIS_fnc_inString) then
       {
         _num = parseNumber _x;
-        if (_num != 0) then
+        if (_num isNotEqualTo 0) then
         {
           _num = _num * 0.1;
           _editedStringSizeFixed = _editedStringSizeFixed + "'" + str(_num);
@@ -339,7 +339,7 @@ _handle = [{
       if (["width=", _prevText] call BIS_fnc_inString) then
       {
         _num = parseNumber _x;
-        if (_num != 0) then
+        if (_num isNotEqualTo 0) then
         {
           _num = _num * 0.025;
           _editedStringSizeFixed = _editedStringSizeFixed + "'" + str(_num);

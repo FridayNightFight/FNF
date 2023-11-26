@@ -22,7 +22,7 @@
     params["_currentGroup"];
     _roleDescription = roleDescription (leader _currentGroup);
     _splitString = _roleDescription splitString "@";
-    if (count _splitString != 2) then
+    if (count _splitString isNotEqualTo 2) then
     {
       _groupName = "Unknown Group: " + str(_currentGroup);
       _currentGroup setGroupIdGlobal [_groupName];

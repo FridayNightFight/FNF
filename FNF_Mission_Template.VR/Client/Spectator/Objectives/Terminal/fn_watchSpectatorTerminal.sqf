@@ -46,7 +46,7 @@ if (_result) then
   deleteMarkerLocal _marker;
 } else {
   //OBJ has not been completed
-  if (_timeOfCompletion != -1) then
+  if (_timeOfCompletion isNotEqualTo -1) then
   {
     _resultTime = objNull;
     if (isServer and hasInterface) then

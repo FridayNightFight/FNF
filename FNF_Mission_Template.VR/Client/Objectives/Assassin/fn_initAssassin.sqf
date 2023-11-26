@@ -100,7 +100,7 @@ if (_objectiveType isEqualTo "elm") then
   {
     _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 
-    if (count _hidingZones != 0) then
+    if (count _hidingZones isNotEqualTo 0) then
     {
       _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
       if (not _zoneKnown) then
@@ -113,7 +113,7 @@ if (_objectiveType isEqualTo "elm") then
   } else {
     _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 
-    if (count _hidingZones != 0) then
+    if (count _hidingZones isNotEqualTo 0) then
     {
       _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
       if (not _zoneKnown) then
@@ -144,7 +144,7 @@ if (_objectiveType isEqualTo "elm") then
 
   _helperString = "";
 
-  if (count _hidingZones != 0) then
+  if (count _hidingZones isNotEqualTo 0) then
   {
     {
       _prefix = _x getVariable ["fnf_prefix", "FAILED"];

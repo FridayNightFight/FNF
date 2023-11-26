@@ -19,7 +19,7 @@ _result = false;
 {
 	if (_x select 0 isEqualTo _groupName) then
 	{
-		if (count (_x select 1) != 0) then
+		if (count (_x select 1) isNotEqualTo 0) then
     {
       _result = true;
     };

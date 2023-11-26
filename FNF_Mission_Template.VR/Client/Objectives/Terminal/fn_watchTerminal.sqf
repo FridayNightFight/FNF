@@ -66,7 +66,7 @@ if (_result) then
       ["<t size='1.5' align='center'>Objective " + _objNum + " Complete<br/>(Ally Objective)</t><br/><br/><t align='center'>The Terminal has been hacked and is rigged to explode in 12 seconds</t>", "success", 10, 20] call FNF_ClientSide_fnc_notificationSystem;
     };
   };
-  if (_taskType isEqualTo "upload" and _currentlyHackingSide != playerSide) then
+  if (_taskType isEqualTo "upload" and _currentlyHackingSide isNotEqualTo playerSide) then
   {
     if ([playerSide, _currentlyHackingSide] call BIS_fnc_sideIsFriendly) then
     {
@@ -102,7 +102,7 @@ if (_result) then
 } else {
   //OBJ has not been completed
   //if someone is hacking
-  if (_timeOfCompletion != -1) then
+  if (_timeOfCompletion isNotEqualTo -1) then
   {
     //get time left on the hack
     _resultTime = objNull;

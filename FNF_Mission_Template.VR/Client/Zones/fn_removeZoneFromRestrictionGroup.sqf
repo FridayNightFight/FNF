@@ -34,7 +34,7 @@ _zoneIndex = -1;
 } forEach fnf_zoneRestrictionGroupsList;
 
 
-if (_groupIndex != -1 and _zoneIndex != -1) then
+if (_groupIndex isNotEqualTo -1 and _zoneIndex isNotEqualTo -1) then
 {
   //if zone currently has a weapondisable request end that request
 	if (fnf_zoneRestrictionGroupsList select _groupIndex select 2) then

@@ -24,7 +24,7 @@ _indexToRemove = -1;
   };
 } forEach fnf_objectsToHide;
 
-if (_indexToRemove != -1) then
+if (_indexToRemove isNotEqualTo -1) then
 {
   fnf_objectsToHide deleteAt _indexToRemove;
 };

@@ -69,7 +69,7 @@ _tpCounter = 1;
   };
 
   //if side is not player side then pass, not our problem
-  if (_objSide != playerSide) then {continue;};
+  if (_objSide isNotEqualTo playerSide) then {continue;};
 
   //[position, action]
   _positionsAndActions = [];

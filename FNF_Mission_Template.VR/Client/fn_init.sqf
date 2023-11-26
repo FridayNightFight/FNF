@@ -84,21 +84,21 @@ if (count _safeZoneModules isEqualTo 0) then
 
 //check there are teleport poles
 _teleportModules = [_modules, "teleportPoles"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _teleportModules != 0) then
+if (count _teleportModules isNotEqualTo 0) then
 {
   [_teleportModules] call FNF_ClientSide_fnc_initTeleportPoles;
 };
 
 //check there are selectors
 _selectorModules = [_modules, "selectorHost"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _selectorModules != 0) then
+if (count _selectorModules isNotEqualTo 0) then
 {
   [_selectorModules] call FNF_ClientSide_fnc_initSelectors;
 };
 
 //check there are hiding zones and clean up spares
 _hidingZoneModules = [_modules, "hidingZone"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _hidingZoneModules != 0) then
+if (count _hidingZoneModules isNotEqualTo 0) then
 {
   [_hidingZoneModules] call FNF_ClientSide_fnc_cleanUpSpareHidingZones;
 };
@@ -116,7 +116,7 @@ if (serverName isEqualTo "Friday Night Fight #Early | www.fridaynightfight.org")
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {
-  if (count fnf_objectives != 0) then
+  if (count fnf_objectives isNotEqualTo 0) then
   {
     [{
       _indexesToDeleteIfCompleted = [];
@@ -176,9 +176,9 @@ player addEventHandler ["Killed", {
 }];
 
 //handle if some one JIP and theres safezones whether they have expired
-if (count _safeZoneModules != 0 and didJIP) then
+if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
 {
-  if (missionNamespace getVariable ["fnf_startTime", 0] != 0) then
+  if (missionNamespace getVariable ["fnf_startTime", 0] isNotEqualTo 0) then
   {
     _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
     if (not _result) then
@@ -188,7 +188,7 @@ if (count _safeZoneModules != 0 and didJIP) then
   } else {
     [{
       _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
-      _timeServerStarted != 0;
+      _timeServerStarted isNotEqualTo 0;
     },{
       params["_safeZoneModules"];
       _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;

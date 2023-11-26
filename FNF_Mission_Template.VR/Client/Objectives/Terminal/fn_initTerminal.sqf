@@ -179,7 +179,7 @@ if (_objectiveType isEqualTo "hck") then
   {
     _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 
-    if (count _hidingZones != 0) then
+    if (count _hidingZones isNotEqualTo 0) then
     {
       _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
       if (not _zoneKnown) then
@@ -199,7 +199,7 @@ if (_objectiveType isEqualTo "hck") then
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         //do not allow hack if currently hacking or hacking side is considered friendly
-        "(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) != playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
+        "(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
         "_caller distance _target < 10",
         {},
         {},
@@ -221,7 +221,7 @@ if (_objectiveType isEqualTo "hck") then
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         //do not allow hack if currently hacking or hacking side is considered friendly
-        "(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) != playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
+        "(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
         "_caller distance _target < 4",
         {},
         {},
@@ -241,7 +241,7 @@ if (_objectiveType isEqualTo "hck") then
   } else {
     _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 
-    if (count _hidingZones != 0) then
+    if (count _hidingZones isNotEqualTo 0) then
     {
       _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
       if (not _zoneKnown) then
@@ -281,7 +281,7 @@ if (_objectiveType isEqualTo "hck") then
 
   _helperString = "";
 
-  if (count _hidingZones != 0) then
+  if (count _hidingZones isNotEqualTo 0) then
   {
     {
       _prefix = _x getVariable ["fnf_prefix", "FAILED"];
@@ -315,7 +315,7 @@ if (_objectiveType isEqualTo "hck") then
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         //allow cancel if any side is hacking the OBJ
-        "(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) != -1)",
+        "(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)",
         "_caller distance _target < 10",
         {},
         {},
@@ -337,7 +337,7 @@ if (_objectiveType isEqualTo "hck") then
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
         //allow cancel if any side is hacking the OBJ
-        "(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) != -1)",
+        "(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)",
         "_caller distance _target < 4",
         {},
         {},

@@ -71,7 +71,7 @@ if (_objectiveObject isEqualTo "") exitWith
   };
 };
 
-_objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDUPE" and _x select 0 != "TERMINALDUPE"} count fnf_objectives) + 1);
+_objNum = str(({_x select 0 isNotEqualTo "DESTROYDUPE" and _x select 0 isNotEqualTo "CAPTURESECTORDUPE" and _x select 0 isNotEqualTo "TERMINALDUPE"} count fnf_objectives) + 1);
 
 //check if obj is duplicate
 _isObjDuplicate = false;
@@ -123,7 +123,7 @@ _targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
 _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\" + (typeOf _objectiveObject) + ".jpg"] call CBA_fnc_getConfigEntry;
 
 
-if (count _hidingZones != 0) then
+if (count _hidingZones isNotEqualTo 0) then
 {
   {
     _prefix = _x getVariable ["fnf_prefix", "FAILED"];
@@ -161,7 +161,7 @@ if (_objectiveType isEqualTo "hck") then
 
   _helperString = "The location of the objective is marked on " + ([_side] call BIS_fnc_sideName) + "s map";
 
-  if (count _hidingZones != 0) then
+  if (count _hidingZones isNotEqualTo 0) then
   {
     _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on " + ([_side] call BIS_fnc_sideName) + "s map, if it isn't, the objectives exact location is marked instead";
     if (not _zoneKnown) then
@@ -183,7 +183,7 @@ if (_objectiveType isEqualTo "hck") then
 
   _helperString = "";
 
-  if (count _hidingZones != 0) then
+  if (count _hidingZones isNotEqualTo 0) then
   {
     {
       _prefix = _x getVariable ["fnf_prefix", "FAILED"];

@@ -17,7 +17,7 @@ _fnfModules = [];
 
 {
   _logicName = typeOf _x;
-  if (_logicName find "fnf_module_" != -1) then
+  if (_logicName find "fnf_module_" isNotEqualTo -1) then
   {
     _fnfModules pushBack _x;
   };

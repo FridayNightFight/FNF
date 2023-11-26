@@ -75,7 +75,7 @@ if (_sectorPercentage isEqualTo 1) then
       _task setTaskState "Succeeded";
       ["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your allies</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
     } else {
-      if (_sectorOwner != playerSide and _forPlayer) then
+      if (_sectorOwner isNotEqualTo playerSide and _forPlayer) then
       {
         _task setTaskState "Failed";
         ["<t size='1.5' align='center'>Objective " + _objNum + " Failed</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;

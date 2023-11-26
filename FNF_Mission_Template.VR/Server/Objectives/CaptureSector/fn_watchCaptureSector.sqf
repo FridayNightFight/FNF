@@ -57,7 +57,7 @@ _indiDefend = false;
   if ((_x select 1) isNotEqualTo "CAPTURESECTOR") then {continue;};
 
   _checkingZonePrefix = (_x select 3) getVariable ["fnf_prefix", "FAILED"];
-  if (_checkingZonePrefix != _zonePrefix) then {continue;};
+  if (_checkingZonePrefix isNotEqualTo _zonePrefix) then {continue;};
 
   _objSide = (_x select 2);
 
@@ -177,18 +177,18 @@ if (_newOwner isEqualTo independent) then
 //if theyy are attacking and there is still time left before full capture is acheived add a second
 if (_attacking) then
 {
-  if (_newOwner isEqualTo _currentOwner and _currentTime != _timeToCapture) then
+  if (_newOwner isEqualTo _currentOwner and _currentTime isNotEqualTo _timeToCapture) then
   {
     _newTime = _currentTime + 1;
   };
-  if ([_newOwner, _currentOwner] call BIS_fnc_sideIsFriendly and _currentTime != _timeToCapture) then
+  if ([_newOwner, _currentOwner] call BIS_fnc_sideIsFriendly and _currentTime isNotEqualTo _timeToCapture) then
   {
     _newTime = _currentTime + 1;
   };
 };
 
 //if new owner is not the same as previous owner and the time isnt 0 detract time and keep owner
-if (_newOwner != sideUnknown and _newOwner != _currentOwner and _currentTime != 0) then
+if (_newOwner isNotEqualTo sideUnknown and _newOwner isNotEqualTo _currentOwner and _currentTime isNotEqualTo 0) then
 {
   _newTime = _currentTime - 1;
   _newOwner = _currentOwner;
@@ -199,7 +199,7 @@ if (_newOwner isEqualTo sideUnknown) then
   _newOwner = _currentOwner;
 };
 
-if (_newOwner != _currentOwner) then
+if (_newOwner isNotEqualTo _currentOwner) then
 {
   _objective setVariable ["fnf_sector_owner", _newOwner, true];
 };
@@ -211,7 +211,7 @@ if (_newTime isEqualTo _timeToCapture) exitWith
 };
 
 _newPercent = _newTime / _timeToCapture;
-if (_newPercent != _currentPercent) then
+if (_newPercent isNotEqualTo _currentPercent) then
 {
   _objective setVariable ["fnf_sector_percentage", _newPercent, true];
 };

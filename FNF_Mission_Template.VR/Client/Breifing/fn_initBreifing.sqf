@@ -161,7 +161,7 @@ _loadoutCreation = {
   };
 
   {
-    if (headgear _x != "") then
+    if (headgear _x isNotEqualTo "") then
     {
       _helmetCfg = (headgear _x) call CBA_fnc_getItemConfig;
       _helmetpic = (_helmetCfg >> "picture") call BIS_fnc_getCfgData;
@@ -170,7 +170,7 @@ _loadoutCreation = {
       _helmets pushBack "";
     };
 
-    if (uniform _x != "") then
+    if (uniform _x isNotEqualTo "") then
     {
       _uniformCfg = (uniform _x) call CBA_fnc_getItemConfig;
       _uniformpic = (_uniformCfg >> "picture") call BIS_fnc_getCfgData;
@@ -179,7 +179,7 @@ _loadoutCreation = {
       _uniforms pushBack "";
     };
 
-    if (vest _x != "") then
+    if (vest _x isNotEqualTo "") then
     {
       _vestCfg = (vest _x) call CBA_fnc_getItemConfig;
       _vestpic = (_vestCfg >> "picture") call BIS_fnc_getCfgData;
@@ -300,7 +300,7 @@ _assetCreation = {
 
     _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
 
-    if (count _driverWeaponTurrets != 0) then
+    if (count _driverWeaponTurrets isNotEqualTo 0) then
     {
       _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>Driver Weapons</font><br/>";
       {
@@ -308,7 +308,7 @@ _assetCreation = {
       } forEach _driverWeaponTurrets;
     };
 
-    if (count _gunnerWeaponTurrets != 0) then
+    if (count _gunnerWeaponTurrets isNotEqualTo 0) then
     {
       _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>Gunner Weapons</font><br/>";
       {
@@ -316,7 +316,7 @@ _assetCreation = {
       } forEach _gunnerWeaponTurrets;
     };
 
-    if (count _commanderWeaponTurrets != 0) then
+    if (count _commanderWeaponTurrets isNotEqualTo 0) then
     {
       _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>Commander Weapons</font><br/>";
       {
@@ -352,7 +352,7 @@ if (playableSlotsNumber blufor > 0) then
     }
   } forEach _objectsToAddToDiary;
 
-  if (_objectsToAdd != -1) then
+  if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
     [west, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
@@ -377,7 +377,7 @@ if (playableSlotsNumber opfor > 0) then
     }
   } forEach _objectsToAddToDiary;
 
-  if (_objectsToAdd != -1) then
+  if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
     [east, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
@@ -402,7 +402,7 @@ if (playableSlotsNumber independent > 0) then
     }
   } forEach _objectsToAddToDiary;
 
-  if (_objectsToAdd != -1) then
+  if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
     [independent, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
@@ -427,19 +427,19 @@ _fortifyPoints = _initModule getVariable ["fnf_fortifyPoints", 0];
 _fortifyColour = _initModule getVariable ["fnf_fortifyColour", "Green"];
 _timeLimit = _initModule getVariable ["fnf_timeLimit", 50];
 
-if (_rules != "") then
+if (_rules isNotEqualTo "") then
 {
   player createDiaryRecord ["Diary", ["Mission Rules",_rules], taskNull, "", True];
 };
-if (_ao != "") then
+if (_ao isNotEqualTo "") then
 {
   player createDiaryRecord ["Diary", ["Area of Operations",_ao], taskNull, "", True];
 };
-if (_background != "") then
+if (_background isNotEqualTo "") then
 {
   player createDiaryRecord ["Diary", ["Background",_background], taskNull, "", True];
 };
-if (_notes != "") then
+if (_notes isNotEqualTo "") then
 {
   player createDiaryRecord ["Diary", ["Notes",_notes], taskNull, "", True];
 };

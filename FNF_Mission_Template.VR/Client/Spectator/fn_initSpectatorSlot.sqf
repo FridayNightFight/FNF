@@ -75,14 +75,14 @@ if (count _safeZoneModules isEqualTo 0) then
 };
 
 _selectorModules = [_modules, "selectorHost"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _selectorModules != 0) then
+if (count _selectorModules isNotEqualTo 0) then
 {
   [_selectorModules] call FNF_ClientSide_fnc_initSelectors;
 };
 
 //check there are hiding zones and clean up spares
 _hidingZoneModules = [_modules, "hidingZone"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _hidingZoneModules != 0) then
+if (count _hidingZoneModules isNotEqualTo 0) then
 {
   [_hidingZoneModules] call FNF_ClientSide_fnc_cleanUpSpareHidingZones;
 };
@@ -90,7 +90,7 @@ if (count _hidingZoneModules != 0) then
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {
-  if (count fnf_objectives != 0) then
+  if (count fnf_objectives isNotEqualTo 0) then
   {
     [{
       _indexesToDeleteIfCompleted = [];

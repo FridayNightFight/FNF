@@ -37,7 +37,7 @@ if (_zonePrefix isEqualTo "FAILED") exitWith
 };
 
 //get objective number
-_objNum = str(({_x select 0 != "DESTROYDUPE" and _x select 0 != "CAPTURESECTORDUPE" and _x select 0 != "TERMINALDUPE"} count fnf_objectives) + 1);
+_objNum = str(({_x select 0 isNotEqualTo "DESTROYDUPE" and _x select 0 isNotEqualTo "CAPTURESECTORDUPE" and _x select 0 isNotEqualTo "TERMINALDUPE"} count fnf_objectives) + 1);
 
 
 //get sector number
