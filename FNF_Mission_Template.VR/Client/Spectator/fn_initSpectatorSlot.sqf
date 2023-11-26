@@ -148,7 +148,7 @@ if (not isNil "fnf_objectives") then
 
     {
       //if OBJ is one without a physical object then move to next OBJ
-      if (_x select 0 isEqualTo "CAPTURESECTOR" or _x select 0 isEqualTo "CAPTURESECTORDUPE" or _x select 0 isEqualTo "DESTROYDUPE" or _x select 0 isEqualTo "TERMINALDUPE") then
+      if (_x select 0 isEqualTo "CAPTURESECTOR" or _x select 0 isEqualTo "CAPTURESECTORDUPE" or _x select 0 isEqualTo "DESTROYDUPE" or _x select 0 isEqualTo "TERMINALDUPE" or _x select 0 isEqualTo "ASSASSINDUPE") then
       {
         continue;
       };

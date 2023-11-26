@@ -71,7 +71,7 @@ if (_objectiveObject isEqualTo "") exitWith
   };
 };
 
-_objNum = str(({_x select 0 isNotEqualTo "DESTROYDUPE" and _x select 0 isNotEqualTo "CAPTURESECTORDUPE" and _x select 0 isNotEqualTo "TERMINALDUPE"} count fnf_objectives) + 1);
+_objNum = str(({_x select 0 isNotEqualTo "DESTROYDUPE" and _x select 0 isNotEqualTo "CAPTURESECTORDUPE" and _x select 0 isNotEqualTo "TERMINALDUPE" and _x select 0 isNotEqualTo "ASSASSINDUPE"} count fnf_objectives) + 1);
 
 //check if obj is duplicate
 _isObjDuplicate = false;
