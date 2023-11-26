@@ -32,3 +32,22 @@
     };
   }, [_currentGroup]] call CBA_fnc_waitUntilAndExecute;
 } forEach allGroups;
+
+[{
+  {
+    _currentGroup = _x;
+    if (isNull (leader _currentGroup)) then {continue;};
+
+    _roleDescription = roleDescription (leader _currentGroup);
+    _splitString = _roleDescription splitString "@";
+
+    if (count _splitString isEqualTo 2) then
+    {
+      _groupName = (_splitString select 1);
+      if (groupId _currentGroup isNotEqualTo _groupName) then
+      {
+        _currentGroup setGroupIdGlobal [_groupName];
+      };
+    };
+  } forEach allGroups;
+}, 30] call CBA_fnc_addPerFrameHandler;
