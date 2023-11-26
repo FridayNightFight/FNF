@@ -177,6 +177,8 @@ if (_objectiveType == "des") then
   };
 };
 
+[_task, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
+
 //add objective to objective stack
 // [type, objective, objectiveObject, task, for Player?]
 fnf_objectives pushBack ["DESTROY", _objective, _objectiveObject, _task, _forPlayer];

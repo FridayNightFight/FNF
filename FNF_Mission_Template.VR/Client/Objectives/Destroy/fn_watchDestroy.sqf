@@ -61,4 +61,6 @@ if (_taskType == "destroy") then
   };
 };
 
+[_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
+
 true;

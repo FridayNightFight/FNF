@@ -46,6 +46,8 @@ if (_objComplete) exitWith
     };
   };
 
+  [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
+
   true;
 };
 
@@ -62,7 +64,7 @@ _playerObject = objNull;
 
 [_task] call FNF_ClientSide_fnc_removeObjectToHide;
 
-_description = (taskDescription select 0);
+_description = ((taskDescription _task) select 0);
 _objType = taskType _task;
 
 if (not isNull _playerObject) then

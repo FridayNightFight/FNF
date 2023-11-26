@@ -175,5 +175,7 @@ if (_objectiveType == "elm") then
   };
 };
 
+[_task, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
+
 //add objective to objective stack
 fnf_objectives pushBack ["ASSASSIN", _objective, _hidingZones, _task, _forPlayer];

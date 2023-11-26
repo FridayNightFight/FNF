@@ -358,6 +358,8 @@ if (_objectiveType == "hck") then
   };
 };
 
+[_task, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
+
 //used to keep marker on the objective
 _markerSetLocationPFH = [{
   _objLoc = taskDestination ((_this select 0) select 1);

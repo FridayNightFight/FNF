@@ -52,7 +52,7 @@ _playerObject = objNull;
   };
 } forEach _syncedObjects;
 
-_description = (taskDescription select 0);
+_description = ((taskDescription _task) select 0);
 _objType = taskType _task;
 
 if (not isNull _playerObject) then

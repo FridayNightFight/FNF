@@ -212,6 +212,14 @@ class CfgFunctions
       class newToFNF {};
       class newToFourDotZero {};
     };
+    class taskControl
+    {
+      file = "Client\TaskControl";
+      class initTaskControl {};
+      class addTaskToTaskControl {};
+      class removeTaskfromTaskControl {};
+      class editTaskInTaskControl {};
+    };
 	};
 	class FNF_ServerSide
 	{

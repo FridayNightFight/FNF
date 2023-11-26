@@ -96,6 +96,7 @@ if (_result) then
       ["<t size='1.5' align='center'>Objective " + _objNum + " Failed<br/>(Ally Objective)</t><br/><br/><t align='center'>The Terminal has been hacked and is rigged to explode in 12 seconds</t>", "failure", 10] call FNF_ClientSide_fnc_notificationSystem;
     };
   };
+  [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
   [_markerSetLocationPFH] call CBA_fnc_removePerFrameHandler;
   deleteMarkerLocal _marker;
 } else {

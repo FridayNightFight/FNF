@@ -111,6 +111,7 @@ if (_sectorPercentage == 1) then
       ["<t size='1.5' align='center'>Objective " + _objNum + " Failed<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;
     };
   };
+  [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
 };
 
 _output;

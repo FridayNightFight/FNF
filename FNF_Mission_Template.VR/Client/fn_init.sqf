@@ -55,6 +55,7 @@ if (count _objModules == 0) then
     systemChat "WARNING: No objectives present"
   };
 } else {
+  call FNF_ClientSide_fnc_initTaskControl;
   [_objModules] call FNF_ClientSide_fnc_initObjs;
 };
 
