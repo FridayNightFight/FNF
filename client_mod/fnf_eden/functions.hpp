@@ -6,6 +6,7 @@ class CfgFunctions
     {
       file = "fnf_eden\functions";
       class startKitCheck {};
+      class generateLobbyDescription {};
     };
   };
 };

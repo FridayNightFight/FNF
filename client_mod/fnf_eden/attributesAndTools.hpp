@@ -59,7 +59,7 @@ class display3DEN
 			{
 				class Tools
 				{
-					items[] += { "fnf_checkKitsToComposition" };
+					items[] += {"fnf_checkKitsToComposition", "fnf_generateLobbyDescription"};
 				};
 
 				class fnf_checkKitsToComposition
@@ -67,6 +67,13 @@ class display3DEN
 					text = "Check Kits To Composition";
 					picture = "";
 					action = "[] call FNF_ModFunctions_fnc_startKitCheck;";
+					opensNewWindow = 0;
+				};
+        class fnf_generateLobbyDescription
+				{
+					text = "Generate Lobby Description";
+					picture = "";
+					action = "[] call FNF_ModFunctions_fnc_generateLobbyDescription;";
 					opensNewWindow = 0;
 				};
 			};
