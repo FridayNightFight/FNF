@@ -15,6 +15,11 @@ if (not isNil "fnf_playerLoadout") exitWith {};
 
 if (isServer) exitWith {};
 
+if (not isNull player) then
+{
+  if (typeOf player isEqualTo "ace_spectator_virtual") exitWith {};
+};
+
 params["_hostObject"];
 
 [_hostObject] remoteExec ["FNF_ServerSide_fnc_handleJIPSyncing", 2, false];
