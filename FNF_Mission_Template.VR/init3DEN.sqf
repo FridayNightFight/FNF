@@ -147,7 +147,7 @@ _addJIPitems = {
 
     //set init via this:
     _x set3DENAttribute ["init",
-"[this, fnf_handleJIPLogic_" + str(_counter) + "] call FNF_ServerSide_fnc_handleJIPSyncing;"
+"[fnf_handleJIPLogic_" + str(_counter) + "] call FNF_ClientSide_fnc_requestJIPObjects;"
     ];
 
     _connections = get3DENConnections _x;

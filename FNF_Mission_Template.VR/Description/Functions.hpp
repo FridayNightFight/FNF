@@ -8,6 +8,7 @@ class CfgFunctions
 			class init {};
       class singleplayerInitCall { postInit = 1; };
       class multiplayerInitCall {};
+      class requestJIPObjects {};
 		};
     class codeUtilities
     {
