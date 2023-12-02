@@ -39,7 +39,10 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
     //if there are not this is the last safe zone and therefor the notification can be sent to player that they can play
     ["<t size='1.5' align='center'>Safe Zones Dropped</t><br/><br/><t align='center'>The safe zones have been dropped and the mission is now starting</t><br/>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 
-    fnf_playerLoadout = getUnitLoadout player;
+    if (not ace_spectator_isset) then
+    {
+      fnf_playerLoadout = getUnitLoadout player;
+    };
 
     fnf_timerMessage = nil;
     fnf_timerEndTime = nil;
