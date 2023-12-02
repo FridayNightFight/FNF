@@ -30,32 +30,35 @@ _iconNamespace = missionNamespace getVariable ("diwako_dui_main_icon_" + _iconSt
     _playersGroup = _x isEqualTo (group player);
 
     {
-      if (_x isEqualTo player) then {continue;};
       if (not alive _x) then {continue;};
-
-      _colour = [playerSide] call BIS_fnc_sideColor;
-      if (_playersGroup) then
-      {
-        _colour = _x getVariable ["diwako_dui_main_compass_color", [1, 1, 1]];
-      };
-      _colour = _colour + [1];
 
       _dir = getDir _x;
 
       _pos = getPos _x;
 
-      _tex = [_x, (_this select 0 select 0), player] call diwako_dui_radar_fnc_getIcon;
-
-      fnf_unitsToDraw pushBack [_tex,_colour,_pos,_dir];
-      if (_leader isNotEqualTo _x) then
+      _colour = [playerSide] call BIS_fnc_sideColor;
+      if (_playersGroup) then
       {
-        if (_leader isEqualTo player) then
+        _colour = _x getVariable ["diwako_dui_main_compass_color", [1, 1, 1]];
+        if (_leader isNotEqualTo _x) then
         {
-          fnf_linesToDraw pushBack [_pos, 0, true];
-        } else {
-          fnf_linesToDraw pushBack [_pos, _leaderPos, false];
+          if (_leader isEqualTo player) then
+          {
+            fnf_linesToDraw pushBack [_pos, 0, true];
+          } else {
+            fnf_linesToDraw pushBack [_pos, _leaderPos, false];
+          };
         };
       };
+      _colour = _colour + [1];
+
+      _tex = [_x, (_this select 0 select 0), player] call diwako_dui_radar_fnc_getIcon;
+      _playerIcon = false;
+      if (_x isEqualTo player) then
+      {
+        _playerIcon = true;
+      };
+      fnf_unitsToDraw pushBack [_tex,_colour,_pos,_dir,_playerIcon];
     } forEach units _x;
   } forEach _allGroups;
 
@@ -82,12 +85,19 @@ _iconNamespace = missionNamespace getVariable ("diwako_dui_main_icon_" + _iconSt
 			  _gps = (_x displayCtrl 101);
 			  _gps ctrlAddEventHandler ['Draw',{
           _map = _this select 0;
-          {
-            _x params ["_texture","_colour","_position","_angle"];
-            _map drawIcon [_texture, _colour, _position, 20, 20, _angle]
-          } forEach fnf_unitsToDraw;
 
           _playerPos = getPos player;
+          _playerDir = getDir player;
+
+          {
+            _x params ["_texture","_colour","_position","_angle","_playerIcon"];
+            if (_playerIcon) then
+            {
+              _map drawIcon [_texture, _colour, _playerPos, 24, 24, _playerDir];
+            } else {
+              _map drawIcon [_texture, _colour, _position, 24, 24, _angle];
+            }
+          } forEach fnf_unitsToDraw;
 
           {
             _x params ["_pos1","_pos2","_playerLine"];
