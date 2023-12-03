@@ -59,7 +59,19 @@ class display3DEN
 			{
 				class Tools
 				{
-					items[] += {"fnf_checkKitsToComposition", "fnf_generateLobbyDescription"};
+					items[] += {"fnf_mmFolder", "fnf_staffFolder"};
+				};
+
+        class fnf_mmFolder
+				{
+					text = "FNF Mission Maker Tools...";
+					items[] = {"fnf_generateLobbyDescription"};
+				};
+
+        class fnf_staffFolder
+				{
+					text = "FNF Staff Tools...";
+					items[] = {"fnf_checkKitsToComposition", "fnf_exportToCompositions", "fnf_importOldFrameworkKits"};
 				};
 
 				class fnf_checkKitsToComposition
@@ -69,12 +81,29 @@ class display3DEN
 					action = "[] call FNF_ModFunctions_fnc_startKitCheck;";
 					opensNewWindow = 0;
 				};
+
         class fnf_generateLobbyDescription
 				{
 					text = "Generate Lobby Description";
 					picture = "";
 					action = "[] call FNF_ModFunctions_fnc_generateLobbyDescription;";
 					opensNewWindow = 0;
+				};
+
+        class fnf_exportToCompositions
+				{
+					text = "Export to Compositions";
+					picture = "";
+					action = "[] call FNF_ModFunctions_fnc_exportToCompositions;";
+					opensNewWindow = 0;
+				};
+
+        class fnf_importOldFrameworkKits
+				{
+					text = "Import Old Framework Loadouts";
+					picture = "";
+					action = "[] call FNF_ModFunctions_fnc_importOldFrameworkKits;";
+					opensNewWindow = 1;
 				};
 			};
 		};

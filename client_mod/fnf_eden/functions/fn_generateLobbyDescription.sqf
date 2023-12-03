@@ -2,7 +2,7 @@
 	Author: Mallen
 
 	Description:
-		Generates lobbyy description based on modules and assets placed
+		Generates lobby description based on modules and assets placed
 
 	Parameter(s):
 	  None
