@@ -194,7 +194,7 @@ _allGroups = _allItems select 1;
 
     _allUnits = units _x;
 
-    if (count _configUnits  count _allUnits) then
+    if ((count _configUnits) isNotEqualTo (count _allUnits)) then
     {
       //inform user that group has incorrect number of people
       _pos = [0,0,3] vectorAdd (getPos _leader);
