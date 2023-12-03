@@ -103,12 +103,8 @@ if (count _hidingZoneModules isNotEqualTo 0) then
   [_hidingZoneModules] call FNF_ClientSide_fnc_cleanUpSpareHidingZones;
 };
 
-//check if player is on the early server, if they are give them a GPS
-if (serverName isEqualTo "Friday Night Fight #Early | www.fridaynightfight.org") then
-{
-  player linkItem "itemGPS";
-  [] call FNF_ClientSide_fnc_initGPSUnitMarkers;
-};
+//start gps icons
+call FNF_ClientSide_fnc_initGPSUnitMarkers;
 
 //add zues ace options
 [] call FNF_ClientSide_fnc_zuesAceOptions;
