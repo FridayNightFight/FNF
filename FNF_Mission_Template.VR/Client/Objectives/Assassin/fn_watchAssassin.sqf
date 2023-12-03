@@ -17,15 +17,14 @@ _objEntry params["_objType","_objectiveModule","_hidingZones", "_task", "_forPla
 
 _objComplete = _objectiveModule getVariable ["fnf_objComplete", false];
 
+_targetName = _objectiveModule getVariable ["fnf_targetName", "Unknown Name"];
+_desc = taskDescription _task;
+_splitString = (_desc select 1) splitString " ";
+_objNumWithColon = _splitString select 0;
+_objNum = (_objNumWithColon splitString "") select 0;
+
 if (_objComplete) exitWith
 {
-
-  _targetName = _objectiveModule getVariable ["fnf_targetName", "Unknown Name"];
-  _desc = taskDescription _task;
-  _splitString = (_desc select 1) splitString " ";
-  _objNumWithColon = _splitString select 0;
-  _objNum = (_objNumWithColon splitString "") select 0;
-
   _taskType = taskType _task;
   if (_taskType isEqualTo "kill") then
   {

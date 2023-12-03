@@ -143,6 +143,10 @@ _sectorObjCleanup = [];
       {
       };
 
+      case "fnf_module_assassinObj":
+      {
+      };
+
       //if no type found then objective must be part of a new mod update that framework isnt equipped to handle
       default
       {
