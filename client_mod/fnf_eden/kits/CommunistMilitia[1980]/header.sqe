@@ -1,0 +1,47 @@
+version=54;
+name="CommunistMilitia[1980]";
+author="Mazz";
+category="EdSubcat_GO_Highway";
+requiredAddons[]=
+{
+	"A3_Modules_F",
+	"fnf_eden",
+	"Desert",
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging",
+	"A3_Characters_F",
+	"UK3CB_Factions_Weapons_SKS",
+	"rhs_c_weapons",
+	"ace_compat_rhs_afrf3",
+	"ace_vector",
+	"A3_Weapons_F",
+	"tfar_handhelds",
+	"UK3CB_Factions_TKP_I",
+	"UK3CB_Factions_CW_SOV_O_LATE",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_microdagr",
+	"ace_vehiclelock",
+	"rhs_c_troops",
+	"rhsusf_c_weapons",
+	"ace_realisticnames",
+	"UK3CB_Factions_CHC_C",
+	"UK3CB_Factions_Weapons_SVD_OLD",
+	"ace_compat_rhs_afrf3_scopes",
+	"ace_optics",
+	"UK3CB_Factions_Equipment_Vests",
+	"ace_explosives",
+	"UK3CB_Factions_LNM_B",
+	"A3_Weapons_F_Explosives",
+	"ace_grenades",
+	"A3_Weapons_F_Orange",
+	"ace_arsenal",
+	"ace_fortify",
+	"ace_trenches",
+	"A3_Characters_F_Mark",
+	"ace_tripod",
+	"UK3CB_Factions_Weapons_PPSH",
+	"UK3CB_Factions_CW_SOV_O_EARLY",
+	"rhsgref_c_troops"
+};

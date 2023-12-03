@@ -1,0 +1,41 @@
+version=54;
+name="RussianRatnikDesert[2020]";
+author="Mazz";
+category="EdSubcat_GO_Highway";
+requiredAddons[]=
+{
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging",
+	"fnf_eden",
+	"A3_Characters_F",
+	"rhs_c_weapons",
+	"rhs_sounds",
+	"ace_compat_rhs_afrf3",
+	"ace_vector",
+	"A3_Weapons_F",
+	"tfar_handhelds",
+	"rhs_c_troops",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_microdagr",
+	"ace_vehiclelock",
+	"rhsusf_c_weapons",
+	"ace_realisticnames",
+	"ace_huntir",
+	"ace_compat_rhs_afrf3_scopes",
+	"fnf_rpk",
+	"ace_optics",
+	"ace_explosives",
+	"A3_Weapons_F_Explosives",
+	"ace_grenades",
+	"A3_Weapons_F_Orange",
+	"ace_arsenal",
+	"ace_fortify",
+	"ace_trenches",
+	"A3_Characters_F_Mark",
+	"ace_tripod",
+	"A3_Weapons_F_Enoch_Launchers_RPG32",
+	"A3_Modules_F",
+	"Desert"
+};

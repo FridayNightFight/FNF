@@ -1,0 +1,42 @@
+version=54;
+name="DutchArmy[2000]";
+author="Mazz";
+category="EdSubcat_GO_Highway";
+requiredAddons[]=
+{
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging",
+	"fnf_eden",
+	"A3_Characters_F",
+	"UK3CB_Factions_Weapons_M16",
+	"rhsusf_c_weapons",
+	"ace_compat_rhs_usf3",
+	"ace_vector",
+	"A3_Weapons_F",
+	"tfar_handhelds",
+	"rhsusf_c_troops",
+	"UK3CB_Factions_ADM_B",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_microdagr",
+	"ace_vehiclelock",
+	"rhssaf_c_gear",
+	"ace_realisticnames",
+	"ace_huntir",
+	"rhssaf_c_weapons",
+	"ace_optics",
+	"rhsusf_sounds",
+	"ace_explosives",
+	"A3_Weapons_F_Explosives",
+	"ace_grenades",
+	"A3_Weapons_F_Orange",
+	"ace_arsenal",
+	"ace_fortify",
+	"ace_trenches",
+	"A3_Characters_F_Mark",
+	"rhsgref_c_weapons",
+	"ace_tripod",
+	"A3_Modules_F",
+	"Desert"
+};
