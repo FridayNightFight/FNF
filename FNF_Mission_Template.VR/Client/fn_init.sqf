@@ -1,5 +1,10 @@
 if (isDedicated) exitWith {};
 
+if (not isNil "fnf_playerLoadout") exitWith {};
+
+//get player loadout and store for future use
+fnf_playerLoadout = getUnitLoadout player;
+
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found
@@ -11,9 +16,6 @@ fnf_debug = _initModule getVariable ["fnf_debug", true];
 
 //restrict players vanilla actions
 [_initModule] call FNF_ClientSide_fnc_restrictPlayer;
-
-//get player loadout and store for future use
-fnf_playerLoadout = getUnitLoadout player;
 
 //mark custom things
 call FNF_ClientSide_fnc_markEditorPlacedObjects;

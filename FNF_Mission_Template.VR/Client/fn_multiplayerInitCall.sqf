@@ -11,31 +11,16 @@
 		None
 */
 
-params["_hostObjects"];
+if (not isNil "fnf_playerLoadout") exitWith {};
 
 if (isServer) exitWith {};
 
-if (not isNil "fnf_playerLoadout") exitWith {};
+params["_hostObjects"];
 
-[{
-  params["_hostObjects"];
-  not isNull player;
-},{
-  params["_hostObjects"];
+player synchronizeObjectsAdd _hostObjects;
 
-  player synchronizeObjectsAdd _hostObjects;
+{
+  _x synchronizeObjectsAdd [player];
+} forEach _hostObjects;
 
-  {
-    _x synchronizeObjectsAdd [player];
-  } forEach _hostObjects;
-
-  call FNF_ClientSide_fnc_init;
-},[_hostObjects],1,{
-  params["_hostObjects"];
-
-  if (isNil "fnf_playerLoadout") then
-  {
-    [_hostObjects] call FNF_ClientSide_fnc_multiplayerInitCall;
-  };
-
-}] call CBA_fnc_waitUntilAndExecute;
+call FNF_ClientSide_fnc_init;
