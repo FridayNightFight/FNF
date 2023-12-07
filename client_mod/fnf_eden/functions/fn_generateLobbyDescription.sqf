@@ -90,7 +90,7 @@ if (_assassinCount isNotEqualTo 0) then
 
 _outputText = _outputText trim [", ", 2];
 
-_outputText = _outputText + " // Atk: ";
+_outputText = _outputText + " // ATK: ";
 _atkSide = [sideUnknown, "NONE"];
 _defSide = [sideUnknown, "NONE"];
 
