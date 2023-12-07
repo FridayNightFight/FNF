@@ -292,37 +292,61 @@ _assetCreation = {
     _string = _string + "  Crew: " + str(_crewSeats) + "<br/>";
     _string = _string + "  Can it float: " + str(_canFloat) + "<br/><br/>";
 
-
-
-    _driverWeaponTurrets = _objectToBaseOffOf weaponsTurret [-1];
-    _gunnerWeaponTurrets = _objectToBaseOffOf weaponsTurret [0];
-    _commanderWeaponTurrets = _objectToBaseOffOf weaponsTurret [0,0];
+    _allTurrets = allTurrets _objectToBaseOffOf;
+    _turretNameAndPaths = [[[-1], "Driver"]];
+    {
+      _currentConfig = (_thisCfg);
+      {
+        _currentConfig = (_currentConfig >> "Turrets") select _x;
+      } forEach _x;
+      _name = getText(_currentConfig >> "gunnerName");
+      _turretNameAndPaths pushBack [_x, _name];
+    } forEach _allTurrets;
 
     _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
+    _cfgMagazineWells = configFile >> "CfgMagazineWells";
 
-    if (count _driverWeaponTurrets isNotEqualTo 0) then
     {
-      _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>Driver Weapons</font><br/>";
-      {
-        _string = _string + "  " + ([[_x] call CBA_fnc_getItemConfig] call BIS_fnc_displayName) + "<br/>";
-      } forEach _driverWeaponTurrets;
-    };
+      _turretPath = _x select 0;
+      _currentTurretWeaponTurrets = _objectToBaseOffOf weaponsTurret _turretPath;
+      _magNames = _objectToBaseOffOf magazinesTurret [_turretPath, false];
+      _magNamesAndAmounts = [];
 
-    if (count _gunnerWeaponTurrets isNotEqualTo 0) then
-    {
-      _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>Gunner Weapons</font><br/>";
-      {
-        _string = _string + "  " + ([[_x] call CBA_fnc_getItemConfig] call BIS_fnc_displayName) + "<br/>";
-      } forEach _gunnerWeaponTurrets;
-    };
 
-    if (count _commanderWeaponTurrets isNotEqualTo 0) then
-    {
-      _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>Commander Weapons</font><br/>";
       {
-        _string = _string + "  " + ([[_x] call CBA_fnc_getItemConfig] call BIS_fnc_displayName) + "<br/>";
-      } forEach _commanderWeaponTurrets;
-    };
+        _mag = _x;
+        _index = _magNamesAndAmounts findIf {_x select 0 isEqualTo _mag;};
+        if (_index isNotEqualTo -1) then
+        {
+          (_magNamesAndAmounts select _index) set [1, (_magNamesAndAmounts select _index select 1) + 1];
+        } else {
+          _magNamesAndAmounts pushBack [_x, 1];
+        };
+      } forEach _magNames;
+
+
+
+      if (count _currentTurretWeaponTurrets isNotEqualTo 0) then
+      {
+        _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>";
+        {
+          _weaponConfig = [_x] call CBA_fnc_getItemConfig;
+          _string = _string + "  " + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>";
+          _possibleMagazines = [_weaponConfig] call CBA_fnc_compatibleMagazines;
+
+          {
+            _magName = _x select 0;
+            _amount = _x select 1;
+            if (_magName in _possibleMagazines) then{
+              _magConfig = [_magName] call CBA_fnc_getItemConfig;
+              _string = _string + "    " + ([_magConfig] call BIS_fnc_displayName) + " ( " + str(_amount) + "x " + str(_objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]) + " Rounds )" + "<br/>";
+            };
+          } forEach _magNamesAndAmounts;
+
+          _string = _string + "<br/>";
+        } forEach _currentTurretWeaponTurrets;
+      };
+    } forEach _turretNameAndPaths;
 
     switch (_side) do {
       case west:
