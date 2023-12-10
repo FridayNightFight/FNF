@@ -11,6 +11,13 @@
 		None
 */
 
+diag_log "FNF_DEBUG: Recieved objects from server, starting init";
+
+if (not isNil "fnf_playerLoadout") then
+{
+  diag_log "FNF_DEBUG: Recieved objects when not asked for it, THIS IS AN ISSUE";
+};
+
 if (not isNil "fnf_playerLoadout") exitWith {};
 
 if (isServer) exitWith {};
