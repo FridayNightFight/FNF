@@ -145,19 +145,19 @@ _loadoutCreation = {
 
   _playersToRead = [];
 
-  _sidePlayerCount = _side countSide allPlayers;
+  _sidePlayerCount = _side countSide (call BIS_fnc_listPlayers);
 
   if (_sidePlayerCount > 2) then
   {
     _ran1 = round (random (_sidePlayerCount - 1));
     _ran2 = round (random (_sidePlayerCount - 1));
     _ran3 = round (random (_sidePlayerCount - 1));
-    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran1);
-    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran2);
-    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran3);
+    _playersToRead pushBack (((call BIS_fnc_listPlayers) select {(side _x isEqualTo _side)}) select _ran1);
+    _playersToRead pushBack (((call BIS_fnc_listPlayers) select {(side _x isEqualTo _side)}) select _ran2);
+    _playersToRead pushBack (((call BIS_fnc_listPlayers) select {(side _x isEqualTo _side)}) select _ran3);
   } else {
     _ran1 = round (random (_sidePlayerCount - 1));
-    _playersToRead pushBack ((allPlayers select {(side _x isEqualTo _side)}) select _ran1);
+    _playersToRead pushBack (((call BIS_fnc_listPlayers) select {(side _x isEqualTo _side)}) select _ran1);
   };
 
   {
@@ -205,7 +205,7 @@ _loadoutCreation = {
     {
       _weaponsFound pushBack _primary;
     };
-  } forEach (allPlayers select {(side _x isEqualTo _side)});
+  } forEach ((call BIS_fnc_listPlayers) select {(side _x isEqualTo _side)});
 
   _weaponPics = [];
   {
@@ -380,11 +380,11 @@ if (playableSlotsNumber blufor > 0) then
   {
     player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
     [west, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{blufor countSide (allPlayers select {alive _x}) > ((playersNumber blufor) / 2)},{
+    [{blufor countSide (call BIS_fnc_listPlayers) > ((playersNumber blufor) / 2)},{
       [west, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{blufor countSide (allPlayers select {alive _x}) > ((playersNumber blufor) / 2)},{
+    [{blufor countSide (call BIS_fnc_listPlayers) > ((playersNumber blufor) / 2)},{
       player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
       [west, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
@@ -405,11 +405,11 @@ if (playableSlotsNumber opfor > 0) then
   {
     player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
     [east, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{east countSide (allPlayers select {alive _x}) > ((playersNumber opfor) / 2)},{
+    [{east countSide (call BIS_fnc_listPlayers) > ((playersNumber opfor) / 2)},{
       [east, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{east countSide (allPlayers select {alive _x}) > ((playersNumber opfor) / 2)},{
+    [{east countSide (call BIS_fnc_listPlayers) > ((playersNumber opfor) / 2)},{
       player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
       [east, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
@@ -430,11 +430,11 @@ if (playableSlotsNumber independent > 0) then
   {
     player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
     [independent, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
-    [{independent countSide (allPlayers select {alive _x}) > ((playersNumber independent) / 2)},{
+    [{independent countSide (call BIS_fnc_listPlayers) > ((playersNumber independent) / 2)},{
       [independent, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
-    [{independent countSide (allPlayers select {alive _x}) > ((playersNumber independent) / 2)},{
+    [{independent countSide (call BIS_fnc_listPlayers) > ((playersNumber independent) / 2)},{
       player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
       [independent, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
