@@ -52,8 +52,13 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
         if (_playerInVehicle) then {
           if (local (objectParent player)) then
           {
-            _goodPos = fnf_zoneRestrictionsLastKnownPosition findEmptyPosition [0, 50, typeOf objectParent player];
-            (objectParent player) setVehiclePosition [_goodPos, [] , 0, "CAN_COLLIDE"];
+            if (objectParent player isKindOf "Air") then
+            {
+              (objectParent player) setVehiclePosition [fnf_zoneRestrictionsLastKnownPosition, [] , 0, "FLY"];
+            } else {
+              _goodPos = fnf_zoneRestrictionsLastKnownPosition findEmptyPosition [0, 50, typeOf objectParent player];
+              (objectParent player) setVehiclePosition [_goodPos, [] , 0, "CAN_COLLIDE"];
+            }
           };
         } else {
           player setPosASL fnf_zoneRestrictionsLastKnownPosition;
