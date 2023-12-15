@@ -126,6 +126,8 @@ _kitInformationPointers = [];
 
 _allGroups = _allItems select 1;
 
+_allLayers = _allItems select 6;
+
 {
   _currentKitInformationPointer = _x;
   _kitName = (_currentKitInformationPointer get3DENAttribute "fnf_kitName") select 0;
@@ -150,19 +152,36 @@ _allGroups = _allItems select 1;
   _unitsConfig = ("getText (_x >> 'name') isEqualTo 'Units'" configClasses (_cfgLoadout >> "items")) select 0;
   _configGroups = "true" configClasses (_unitsConfig >> "Entities");
 
-  _sidePlainText = getText (_unitsConfig >> "Entities" >> "Item0" >> "side");
-  _sidesText = ["West","East","Independent"];
-  _sidesSideType = [west,east,independent];
-
-  _side = _sidesSideType select (_sidesText find _sidePlainText);
-
   _groupsForMySide = [];
   {
-    if (side _x isEqualTo _side) then
+    _name = ((_x get3DENAttribute "name") select 0);
+    if (_name isEqualTo _kitName) then
     {
-      _groupsForMySide pushBack _x;
+      _entities = get3DENLayerEntities _x;
+      _infoFound = false;
+      _selectorsFound = false;
+      _unitsFound = false;
+
+      _unitsLayer = 0;
+      {
+        if (typeName _x isEqualTo "SCALAR") then
+        {
+          _name = ((_x get3DENAttribute "name") select 0);
+          switch (_name) do {
+            case "Info": {_infoFound = true;};
+            case "Selectors": {_selectorsFound = true;};
+            case "Units": {_unitsFound = true; _unitsLayer = _x;};
+          };
+        };
+      } forEach _entities;
+
+      if (_infoFound and _selectorsFound and _unitsFound) then
+      {
+        _groupsForMySide = get3DENLayerEntities _unitsLayer;
+        break;
+      };
     };
-  } forEach _allGroups;
+  } forEach _allLayers;
 
   {
     _leader = leader _x;
