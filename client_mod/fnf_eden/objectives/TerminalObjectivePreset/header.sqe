@@ -1,0 +1,10 @@
+version=54;
+name="Terminal Objective Preset";
+author="Mallen";
+category="EdSubcat_Default";
+requiredAddons[]=
+{
+	"A3_Modules_F",
+	"A3_Props_F_Exp_A_Military_Equipment",
+	"fnf_eden"
+};

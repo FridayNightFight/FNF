@@ -2,60 +2,24 @@ class CfgPatches
 {
   class fnf_eden
   {
-    units[] = {};
+    units[] = {"fnf_module_init", "fnf_module_playZone", "fnf_module_safeZone", "fnf_module_teleportPoles", "fnf_module_hidingZone", "fnf_module_selectorHost", "fnf_module_selectorOption", "fnf_module_breifingAssets", "fnf_module_kitInformation", "fnf_module_destroyObj", "fnf_module_sectorCaptureObj", "fnf_module_terminalObj", "fnf_module_sectorHoldObj", "fnf_module_assassinObj"};
     weapons[] = {};
     requiredVersion = 0.1;
-    requiredAddons[] = {"cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
+    requiredAddons[] = {"A3_Modules_F", "cba_main", "ace_arsenal"}; //This is just to get the FNF section to the bottom of the attributes list
   };
 };
 
-class Cfg3DEN
+class CfgFactionClasses
 {
-  class Object
-  {
-    class AttributeCategories
-    {
-      class fnf_properties
-      {
-        displayName = "FNF Properties";
-        collapsed = 1;
-        class Attributes
-        {
-          class fnf_autoMarkExclude
-          {
-            property = "FNF_MarkingExclude";
-            control = "Checkbox";
-            displayName = "Exclude from Map Auto-Mark";
-            tooltip = "If checked, this object will be excluded from the FNF custom object marking script.";
-            expression = "_this setVariable ['%s',_value];";
-            typeName = "BOOL";
-            condition = "1 - objectControllable - objectVehicle";
-            defaultValue = "false";
-          };
-          class fnf_clearInventory
-          {
-            property = "FNF_InventoryAutoClear";
-            control = "Checkbox";
-            displayName = "Clear Inventory";
-            tooltip = "If checked, the vehicle's inventory will be cleared.";
-            expression = "_this setVariable ['%s',_value];";
-            typeName = "BOOL";
-            condition = "objectVehicle";
-            defaultValue = "true";
-          };
-          class fnf_vehicleLoadouts_useDefault
-          {
-            property = "FNF_vehicleLoadouts_useDefault";
-            control = "Checkbox";
-            displayName = "Use Default Loadout";
-            tooltip = "If checked, the vehicle will be given a standardized FNF weapon set (if one is defined).";
-            expression = "_this setVariable ['%s',_value];";
-            typeName = "BOOL";
-            condition = "objectVehicle";
-            defaultValue = "true";
-          };
-        };
-      };
-    };
-  };
+	class NO_CATEGORY;
+	class fnf_standardCategory: NO_CATEGORY
+	{
+		displayName = "FNF";
+	};
 };
+
+#include "modules.hpp"
+#include "systems.hpp"
+#include "loadouts.hpp"
+#include "attributesAndTools.hpp"
+#include "functions.hpp"

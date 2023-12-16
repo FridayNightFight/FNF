@@ -1,0 +1,68 @@
+version=54;
+center[]={750.95435,5,268.87595};
+class items
+{
+	items=3;
+	class Item0
+	{
+		dataType="Logic";
+		id=401;
+		type="fnf_module_breifingAssets";
+	};
+	class Item1
+	{
+		dataType="Logic";
+		class PositionInfo
+		{
+			position[]={-2,0,0};
+		};
+		id=400;
+		type="SideOPFOR_F";
+	};
+	class Item2
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={2,2.3817577,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=402;
+		type="O_Truck_02_covered_F";
+	};
+};
+class connections
+{
+	class LinkIDProvider
+	{
+		nextID=2;
+	};
+	class Links
+	{
+		items=2;
+		class Item0
+		{
+			linkID=0;
+			item0=401;
+			item1=400;
+			class CustomData
+			{
+				type="Sync";
+			};
+		};
+		class Item1
+		{
+			linkID=1;
+			item0=401;
+			item1=402;
+			class CustomData
+			{
+				type="Sync";
+			};
+		};
+	};
+};

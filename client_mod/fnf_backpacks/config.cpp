@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Characters_F","A3_Weapons_F","rhs_main","rhs_c_troops","rhsusf_c_troops","rhsgref_c_troops","rhssaf_c_troops","rhssaf_backpacks","tfar_backpacks","uk3cb_factions_Common","uk3cb_factions_Vehicles_common","uk3cb_factions_Equipment","uk3cb_factions_TKA","uk3cb_factions_ANA"};
+		requiredAddons[] = {"A3_Characters_F","A3_Weapons_F","rhs_main","rhs_c_troops","rhsusf_c_troops","rhsgref_c_troops","rhssaf_c_troops","rhssaf_backpacks","tfar_backpacks","uk3cb_factions_Common","uk3cb_factions_Vehicles_common","uk3cb_factions_Equipment","uk3cb_factions_TKA","uk3cb_factions_ANA","uk3cb_factions_gaf"};
 	};
 };
 class cfgVehicles
@@ -326,6 +326,14 @@ class cfgVehicles
 	};
 	class UK3CB_B_TacticalPack_Med_Oli: B_Bergen_Base
 	{
+		maximumLoad = 1000;
+	};
+  class UK3CB_GAF_B_B_ENG_OLI: B_Carryall_Base
+	{
+		maximumLoad = 1000;
+	};
+  class UK3CB_GAF_B_B_ENG_DIGI: B_Carryall_Base
+  {
 		maximumLoad = 1000;
 	};
 

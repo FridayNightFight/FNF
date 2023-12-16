@@ -64,6 +64,7 @@ class RscDisplayNotFreeze: RscStandardDisplay {
 };
 
 /*extern*/ class RscActivePicture;
+/*extern*/ class RscButton;
 
 class RscDisplayMain: RscStandardDisplay {
 
@@ -79,38 +80,28 @@ class RscDisplayMain: RscStandardDisplay {
 			text = "\fnf_logos\data\fnflogowide.paa";
 		};
 
-        class FnfServerEarly : RscActivePicture {
-            idc = 12000;
-            text="\fnf_logos\data\early.paa";
-            tooltip="Connect to early segment server";
-			color[]={0.89999998,0.89999998,0.89999998,1};
-			colorActive[]={1,1,1,1};
-            shadow=1;
-			onSetFocus="(_this select 0) ctrlsettextcolor [1,1,1,1];";
-			onKillFocus="(_this select 0) ctrlsettextcolor [0.9,0.9,0.9,1];";
+		class FnfServerEarly: RscButton {
+			x = safezoneX + safezoneW * 0.415;
+			y = safezoneY + safezoneH * 0.2;
+			w = safezoneW * 0.08;
+			h = safezoneH * 0.05;
+			colorBackground[] = {0.051,0.325,0.9,1};
+			colorActive[] = {0.051,0.325,0.9,0.75};
+			style = 0x2;
+			text = "EARLY SERVER";
 			onButtonClick="connectToServer ['51.89.64.149', 2302, ''];";
-			url="";
-			x="0.418625 * safezoneW + safezoneX";
-			y="0.1556 * safezoneH + safezoneY";
-			w="0.07875 * safezoneW";
-			h="0.042 * safezoneH";
-        };
+		};
 
-        class FnfServerLate : RscActivePicture {
-            idc = 12001;
-            text = "\fnf_logos\data\late.paa";
-            tooltip="Connect to late segment server";
-			color[] = {0.89999998,0.89999998,0.89999998,1};
-			colorActive[] = {1,1,1,1};
-            shadow = 1;
-			onSetFocus = "(_this select 0) ctrlsettextcolor [1,1,1,1];";
-			onKillFocus = "(_this select 0) ctrlsettextcolor [0.9,0.9,0.9,1];";
-			onButtonClick = "connectToServer ['3.210.166.73', 2302, ''];";
-			url = "";
-			x = "0.501969 * safezoneW + safezoneX";
-			y = "0.1556 * safezoneH + safezoneY";
-			w = "0.07875 * safezoneW";
-			h = "0.042 * safezoneH";
-        };
+		class FnfServerLate: RscButton {
+			x = safezoneX + safezoneW * 0.505;
+			y = safezoneY + safezoneH * 0.2;
+			w = safezoneW * 0.08;
+			h = safezoneH * 0.05;
+			colorBackground[] = {1,0,0,1};
+			colorActive[] = {1,0,0,0.75};
+			style = 0x2;
+			text = "LATE SERVER";
+			onButtonClick="connectToServer ['3.210.166.73', 2302, ''];";
+		};
 	};
 };
