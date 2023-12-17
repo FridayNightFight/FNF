@@ -34,6 +34,7 @@ class CfgVehicles
         property = "fnf_gameTime";
         expression = "_this setVariable ['fnf_gameTime',_value, true];";
         displayName = "Time Limit";
+        tooltip = "How long the game should last in minutes";
         typeName = "NUMBER";
 				defaultValue = "65";
       };
@@ -42,6 +43,7 @@ class CfgVehicles
         property = "fnf_viewDistance";
         expression = "_this setVariable ['fnf_viewDistance',_value, true];";
         displayName = "View Distance";
+        tooltip = "How far players can see in meters";
         typeName = "NUMBER";
 				defaultValue = "1000";
       };
@@ -50,6 +52,7 @@ class CfgVehicles
         property = "fnf_fortifyPoints";
         expression = "_this setVariable ['fnf_fortifyPoints',_value, true];";
         displayName = "Fortify Points";
+        tooltip = "How many fortify points each combat engineer has to fortify";
         typeName = "NUMBER";
 				defaultValue = "100";
       };
@@ -58,6 +61,7 @@ class CfgVehicles
         property = "fnf_fortifyColour";
         expression = "_this setVariable ['fnf_fortifyColour',_value, true];";
         displayName = "Fortify Colour";
+        tooltip = "The colour of the fortify objects placed by combat engineers";
         typeName = "STRING";
 				defaultValue = Green;
         class Values
@@ -99,6 +103,7 @@ class CfgVehicles
 				property = "fnf_breifingNotes";
         expression = "_this setVariable ['fnf_breifingNotes',_value, true];";
 				displayName = "Notes";
+        tooltip = "General notes about the mission";
 				typeName = "STRING";
 				defaultValue = "";
       };
@@ -108,6 +113,7 @@ class CfgVehicles
 				property = "fnf_breifingAO";
         expression = "_this setVariable ['fnf_breifingAO',_value, true];";
 				displayName = "Area of Operations";
+        tooltip = "A description of terrain or specific features of the terrain to look out for";
 				typeName = "STRING";
 				defaultValue = "";
       };
@@ -117,6 +123,7 @@ class CfgVehicles
 				property = "fnf_breifingBackground";
         expression = "_this setVariable ['fnf_breifingBackground',_value, true];";
 				displayName = "Background";
+        tooltip = "Lore or the background of the battle and why its happening";
 				typeName = "STRING";
 				defaultValue = "";
       };
@@ -126,6 +133,7 @@ class CfgVehicles
 				property = "fnf_breifingRules";
         expression = "_this setVariable ['fnf_breifingRules',_value, true];";
 				displayName = "Mission Rules";
+        tooltip = "Any custom rules that must be followed in the mission";
 				typeName = "STRING";
 				defaultValue = "";
       };
@@ -134,7 +142,7 @@ class CfgVehicles
         property = "fnf_debug";
         expression = "_this setVariable ['fnf_debug',_value, true];";
         displayName = "Debug";
-        tooltip = "If checked, debug data will be shown";
+        tooltip = "If checked, debug errors will be shown";
         typeName = "BOOL";
         defaultValue = "false";
       };
@@ -153,6 +161,7 @@ class CfgVehicles
         property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
+        tooltip = "The prefix for the marker the play zone will look for when creating the play zone";
         typeName = "STRING";
 				defaultValue = "fnf_marker_playzone_";
       };
@@ -171,6 +180,7 @@ class CfgVehicles
         property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
+        tooltip = "The prefix for the marker the safe zone will look for when creating the safe zone";
         typeName = "STRING";
 				defaultValue = "fnf_marker_safezone_";
       };
@@ -179,6 +189,7 @@ class CfgVehicles
         property = "fnf_timeZoneIsDeleted";
         expression = "_this setVariable ['fnf_timeZoneIsDeleted',_value, true];";
         displayName = "Time until Zone is Deleted";
+        tooltip = "How long in minutes until the zone is deleted";
         typeName = "NUMBER";
 				defaultValue = "15";
       };
@@ -187,6 +198,7 @@ class CfgVehicles
         property = "fnf_visibleToAllies";
         expression = "_this setVariable ['fnf_visibleToAllies',_value, true];";
         displayName = "Visible to Allies";
+        tooltip = "Whether the zone is visible to allies not assigned to it";
         typeName = "BOOL";
         defaultValue = "true";
       };
@@ -195,6 +207,7 @@ class CfgVehicles
         property = "fnf_visibleToEnemies";
         expression = "_this setVariable ['fnf_visibleToEnemies',_value, true];";
         displayName = "Visible to Enemies";
+        tooltip = "Whether the zone is visible to enemies";
         typeName = "BOOL";
         defaultValue = "true";
       };
@@ -213,6 +226,7 @@ class CfgVehicles
         property = "fnf_timePolesAreDeleted";
         expression = "_this setVariable ['fnf_timePolesAreDeleted',_value, true];";
         displayName = "Time until Poles is Deleted";
+        tooltip = "How long in minutes util the teleport poles are deleted";
         typeName = "NUMBER";
 				defaultValue = "15";
       };
@@ -231,6 +245,7 @@ class CfgVehicles
         property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
+        tooltip = "The prefix for the marker the hiding zone will look for when creating the hiding zone";
         typeName = "STRING";
 				defaultValue = "fnf_marker_hidingzone_";
       };
@@ -249,6 +264,7 @@ class CfgVehicles
         property = "fnf_selectorName";
         expression = "_this setVariable ['fnf_selectorName',_value, true];";
         displayName = "Selector Name";
+        tooltip = "The name the slector is called in players ace menu";
         typeName = "STRING";
 				defaultValue = "";
       };
@@ -257,6 +273,7 @@ class CfgVehicles
         property = "fnf_selectorType";
         expression = "_this setVariable ['fnf_selectorType',_value, true];";
         displayName = "Selector Type";
+        tooltip = "The type of selector being described";
         typeName = "STRING";
 				defaultValue = Item;
         class Values
@@ -283,6 +300,7 @@ class CfgVehicles
         property = "fnf_optionName";
         expression = "_this setVariable ['fnf_optionName',_value, true];";
         displayName = "Option Name";
+        tooltip = "The name of the option in the players ace menu";
         typeName = "STRING";
 				defaultValue = "";
       };
@@ -291,7 +309,7 @@ class CfgVehicles
         property = "fnf_defaultSelection";
         expression = "_this setVariable ['fnf_defaultSelection',_value, true];";
         displayName = "Default?";
-        tooltip = "If checked, this option will be treated as already selected";
+        tooltip = "If checked, this option will be treated as already selected on mission start";
         typeName = "BOOL";
         defaultValue = "false";
       };
@@ -317,6 +335,7 @@ class CfgVehicles
         property = "fnf_kitName";
         expression = "_this setVariable ['fnf_kitName',_value, true];";
         displayName = "Name";
+        tooltip = "The name associated with the kit";
         typeName = "STRING";
 				defaultValue = "Unknown Kit";
       };
@@ -325,6 +344,7 @@ class CfgVehicles
         property = "fnf_kitAuthor";
         expression = "_this setVariable ['fnf_kitAuthor',_value, true];";
         displayName = "Author";
+        tooltip = "The author of the kit";
         typeName = "STRING";
 				defaultValue = "Unknown Author";
       };
@@ -344,6 +364,7 @@ class CfgVehicles
         property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
+        tooltip = "What the side is supposed to do with the objective";
         typeName = "STRING";
 				defaultValue = Destroy;
         class Values
@@ -376,6 +397,7 @@ class CfgVehicles
         property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
+        tooltip = "What the side is supposed to do with the objective";
         typeName = "STRING";
 				defaultValue = "cap";
         class Values
@@ -389,6 +411,7 @@ class CfgVehicles
         property = "fnf_prefix";
         expression = "_this setVariable ['fnf_prefix',_value, true];";
         displayName = "Marker Prefix";
+        tooltip = "The prefix for the marker the sector will look for when creating the sector";
         typeName = "STRING";
 				defaultValue = "fnf_marker_sector_";
       };
@@ -397,6 +420,7 @@ class CfgVehicles
         property = "fnf_TimeToCapture";
         expression = "_this setVariable ['fnf_TimeToCapture',_value, true];";
         displayName = "Time to Capture";
+        tooltip = "How long in seconds it takes for a side to completely capture the sector";
         typeName = "NUMBER";
 				defaultValue = "60";
       };
@@ -415,6 +439,7 @@ class CfgVehicles
         property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
+        tooltip = "What the side is supposed to do with the objective";
         typeName = "STRING";
 				defaultValue = Capture;
         class Values
@@ -428,6 +453,7 @@ class CfgVehicles
         property = "fnf_hackingTime";
         expression = "_this setVariable ['fnf_hackingTime',_value, true];";
         displayName = "Time to Hack";
+        tooltip = "How long in seconds it takes for a side to hack the terminal";
         typeName = "NUMBER";
 				defaultValue = "90";
       };
@@ -455,6 +481,7 @@ class CfgVehicles
         property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
+        tooltip = "What the side is supposed to do with the objective";
         typeName = "STRING";
 				defaultValue = "cap";
         class Values
@@ -478,6 +505,7 @@ class CfgVehicles
         property = "fnf_objectiveType";
         expression = "_this setVariable ['fnf_objectiveType',_value, true];";
         displayName = "Objective Type";
+        tooltip = "What the side is supposed to do with the objective";
         typeName = "STRING";
 				defaultValue = "elm";
         class Values
@@ -491,6 +519,7 @@ class CfgVehicles
         property = "fnf_targetName";
         expression = "_this setVariable ['fnf_targetName',_value, true];";
         displayName = "Target Name";
+        tooltip = "The name assigned to the target in the task description";
         typeName = "STRING";
 				defaultValue = "the VIP";
       };
