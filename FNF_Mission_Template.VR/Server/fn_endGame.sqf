@@ -92,7 +92,12 @@ switch (count _winningSides) do
 
 if (isClass (configFile >> "CfgPatches" >> "OCAP")) then
 {
-  [_winningOCAP] call ocap_fnc_exportData;
+  if (count _winningSides isEqualTo 1) then
+  {
+    [(_winningSides select 0),_winningOCAP] call ocap_fnc_exportData;
+  } else {
+    [_winningOCAP] call ocap_fnc_exportData;
+  };
 };
 
 [_winningEnding, true] remoteExecCall ["BIS_fnc_endMission"];
