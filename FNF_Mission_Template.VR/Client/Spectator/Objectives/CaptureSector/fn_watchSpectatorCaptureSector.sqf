@@ -54,7 +54,7 @@ if (_sectorPercentage isEqualTo 1) then
   //remove the sector zone
   [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
 
-  ["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by " + _sectorOwner + "</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
+  ["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by " + ([_sectorOwner] call BIS_fnc_sideName) + "</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
 };
 
 _output;
