@@ -40,13 +40,13 @@ if (count _allLogic >= count _allUnits and count _allUnits isNotEqualTo 0) then
     //get unit ID
     _unit = _x;
     _initField = (_unit get3DENAttribute "init") select 0;
-    _splitString = [_initField, "[this, fnf_handleJIPLogic_", true] call BIS_fnc_splitString;
+    _splitString = [_initField, "[fnf_handleJIPLogic_", true] call BIS_fnc_splitString;
     if (count _splitString isNotEqualTo 2) then
     {
       continue;
     };
     _text = _splitString select 1;
-    _splitString = [_text, "] call FNF_ServerSide_fnc_handleJIPSyncing;", true] call BIS_fnc_splitString;
+    _splitString = [_text, ", this] call FNF_ClientSide_fnc_requestJIPObjects;", true] call BIS_fnc_splitString;
     if (count _splitString isNotEqualTo 2) then
     {
       continue;
