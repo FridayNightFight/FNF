@@ -421,3 +421,111 @@
 			displayName = "African Police [2010] (APEX Items Used)";
 			useSideColorOnIcon = 1;
 		};
+    class fnf_CanadianArmy1980
+		{
+			path = "fnf_eden\kits\CanadianArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "Canadian Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_CzechArmy1980
+		{
+			path = "fnf_eden\kits\CzechArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Opfor";
+			displayName = "Czech Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_PolishArmy1980
+		{
+			path = "fnf_eden\kits\PolishArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Opfor";
+			displayName = "Polish Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_RhodesianArmy1970
+		{
+			path = "fnf_eden\kits\RhodesianArmy[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Indfor";
+			displayName = "Rhodesian Army [1970]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_RomainianArmy1980
+		{
+			path = "fnf_eden\kits\RomainianArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Opfor";
+			displayName = "Romainian Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_RussianArmy1980
+		{
+			path = "fnf_eden\kits\RussianArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Opfor";
+			displayName = "Russian Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_RussianVDV1980
+		{
+			path = "fnf_eden\kits\RussianVDV[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Opfor";
+			displayName = "Russian VDV [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_SwissArmy1980
+		{
+			path = "fnf_eden\kits\SwissArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "Swiss Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_TaiwaneseArmy1980
+		{
+			path = "fnf_eden\kits\TaiwaneseArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "Taiwanese Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_UKParatroopers1980
+		{
+			path = "fnf_eden\kits\UKParatroopers[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "UK Paratroopers [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_WestGermanArmy1980
+		{
+			path = "fnf_eden\kits\WestGermanArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "West German Army [1980]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_IrishRepublicanArmy1980
+		{
+			path = "fnf_eden\kits\IrishRepublicanArmy[1980]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Indfor";
+			displayName = "Irish Republican Army [1980]";
+			useSideColorOnIcon = 1;
+		};

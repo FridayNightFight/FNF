@@ -18412,6 +18412,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18447,7 +18456,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -18614,6 +18623,15 @@ class items
 								{
 									typeName="UK3CB_B_Backpack_Pocket";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18649,7 +18667,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -18816,6 +18834,15 @@ class items
 								{
 									typeName="UK3CB_B_Backpack_Pocket";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18851,7 +18878,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19031,6 +19058,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19066,7 +19102,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19233,6 +19269,15 @@ class items
 								{
 									typeName="UK3CB_B_Backpack_Pocket";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19268,7 +19313,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19435,6 +19480,15 @@ class items
 								{
 									typeName="UK3CB_B_Backpack_Pocket";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19470,7 +19524,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19646,6 +19700,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19681,7 +19744,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19844,6 +19907,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19879,7 +19951,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20042,6 +20114,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20077,7 +20158,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20253,6 +20334,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20288,7 +20378,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20451,6 +20541,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20486,7 +20585,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20649,6 +20748,15 @@ class items
 								{
 									typeName="UK3CB_B_B_Backpack_Radio_Chem";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20684,7 +20792,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};

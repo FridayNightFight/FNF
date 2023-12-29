@@ -1,7 +1,7 @@
 version=54;
-name="AAF [2020]";
+name="AAF[2020]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -39,6 +39,7 @@ requiredAddons[]=
 	"UK3CB_Factions_Weapons_MG3",
 	"ace_tripod",
 	"tfar_external_intercom",
+	"A3_Weapons_F_Items",
 	"A3_Modules_F",
 	"Desert"
 };

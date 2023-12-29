@@ -1,7 +1,7 @@
 version=54;
-name="Serbian Forces [2010]";
+name="SerbianForces[2010]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -41,6 +41,7 @@ requiredAddons[]=
 	"A3_Characters_F_Mark",
 	"ace_tripod",
 	"rhs_c_troops",
+	"A3_Weapons_F_Items",
 	"rhsusf_c_troops",
 	"A3_Modules_F",
 	"Desert"

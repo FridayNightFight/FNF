@@ -71,12 +71,15 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
         case "Asst. Missile Specialist": {_loadoutToSet = _input get "MATA1"};
         case "Ammo Bearer": {_loadoutToSet = _input get "AB"};
         case "Marksman": {_loadoutToSet = _input get "DM"};
-        case "Vehicle Commander": {_loadoutToSet = _input get "CRL"};
+        case "Vehicle Commander": {_loadoutToSet = _input get "CRL";
+        _x set3DENAttribute ["ace_isEngineer", 1];};
         case "Vehicle Gunner";
-        case "Vehicle Driver": {_loadoutToSet = _input get "CR"};
+        case "Vehicle Driver": {_loadoutToSet = _input get "CR";
+        _x set3DENAttribute ["ace_isEngineer", 1];};
         case "Pilot";
         case "Co-Pilot/Gunner";
-        case "Gunner": {_loadoutToSet = _input get "PI"};
+        case "Gunner": {_loadoutToSet = _input get "PI";
+        _x set3DENAttribute ["ace_isEngineer", 1];};
         case "Medic": {_loadoutToSet = _input get "MED"};
       };
       _x setUnitLoadout _loadoutToSet;
@@ -90,3 +93,19 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 ctrlSetFocus _ctrlEdit;
 _ctrlGroup ctrlSetPosition [0.25, 0.25, 0.5, 0.5];
 _ctrlGroup ctrlCommit 0.1;
+
+
+
+
+
+
+
+
+
+
+_players = get3DENSelected "object";
+    {
+      _x addGoggles "G_Balaclava_blk";
+    } forEach _players;
+
+    save3DENInventory _players;

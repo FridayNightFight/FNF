@@ -18828,6 +18828,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18863,7 +18872,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19030,6 +19039,15 @@ class items
 								{
 									typeName="UK3CB_B_Alice_Medic_Bedroll_2_K";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19065,7 +19083,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19232,6 +19250,15 @@ class items
 								{
 									typeName="UK3CB_B_Alice_Medic_Bedroll_2_K";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19267,7 +19294,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19447,6 +19474,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19482,7 +19518,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19649,6 +19685,15 @@ class items
 								{
 									typeName="UK3CB_B_Alice_Medic_Bedroll_2_K";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19684,7 +19729,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19851,6 +19896,15 @@ class items
 								{
 									typeName="UK3CB_B_Alice_Medic_Bedroll_2_K";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19886,7 +19940,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20062,6 +20116,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20097,7 +20160,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20260,6 +20323,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20295,7 +20367,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20458,6 +20530,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20493,7 +20574,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20669,6 +20750,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20704,7 +20794,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20867,6 +20957,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20902,7 +21001,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -21065,6 +21164,15 @@ class items
 								{
 									typeName="TFAR_anprc155_coyote";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -21100,7 +21208,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};

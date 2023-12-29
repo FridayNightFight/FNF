@@ -1,7 +1,7 @@
 version=54;
-name="Australian Army [2020]";
+name="AustralianArmy[2020]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -37,6 +37,7 @@ requiredAddons[]=
 	"ace_tripod",
 	"A3_Weapons_F_Mod_SMGs_SMG_03",
 	"A3_Weapons_F_Mod",
+	"A3_Weapons_F_Items",
 	"UK3CB_Factions_Equipment_Vests",
 	"A3_Modules_F",
 	"Desert"

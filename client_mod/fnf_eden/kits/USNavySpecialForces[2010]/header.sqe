@@ -1,7 +1,7 @@
 version=54;
-name="US Navy Special Forces [2010]";
+name="USNavySpecialForces[2010]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -32,6 +32,7 @@ requiredAddons[]=
 	"ace_trenches",
 	"A3_Characters_F_Mark",
 	"ace_tripod",
+	"A3_Weapons_F_Items",
 	"A3_Modules_F",
 	"Desert"
 };

@@ -13,6 +13,10 @@ switch (playerSide) do {
   {
     (_unitLoudout select 5 select 1) pushBack ["ACE_M14",2,1];
   };
+  if (_x select 0 == "CRL" or _x select 0 == "CR" or _x select 0 == "PI") then
+  {
+    (_unitLoudout select 5 select 1) pushBack ["ToolKit",1];
+  };
   if (_x select 0 == "DM") then
   {
     if (_unitLoudout select 0 select 0 isEqualTo "rhs_weap_svdp_wd_npz") then

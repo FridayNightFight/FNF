@@ -1,0 +1,47 @@
+version=54;
+name="CanadianArmy[1980]";
+author="Mazz";
+category="EdSubcat_GO_Rocks";
+requiredAddons[]=
+{
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging",
+	"fnf_eden",
+	"A3_Characters_F",
+	"UK3CB_Factions_Weapons_FNFAL",
+	"rhsgref_c_weapons",
+	"rhsusf_c_weapons",
+	"rhsusf_sounds",
+	"ace_compat_rhs_usf3",
+	"ace_vector",
+	"A3_Weapons_F",
+	"tfar_handhelds",
+	"rhsgref_c_troops",
+	"UK3CB_Factions_CW_US_B_EARLY",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_microdagr",
+	"ace_vehiclelock",
+	"ace_realisticnames",
+	"UK3CB_Factions_Weapons_M16",
+	"ace_compat_rhs_usf3_scopes",
+	"ace_optics",
+	"ace_explosives",
+	"A3_Weapons_F_Explosives",
+	"ace_grenades",
+	"A3_Weapons_F_Orange",
+	"ace_arsenal",
+	"ace_fortify",
+	"ace_trenches",
+	"A3_Characters_F_Mark",
+	"ace_tripod",
+	"UK3CB_Factions_Weapons_MP5",
+	"rhsusf_c_troops",
+	"A3_Weapons_F_Items",
+	"UK3CB_Factions_Headgear",
+	"UK3CB_Factions_CW_US_B_LATE",
+	"UK3CB_Factions_Equipment_Vests",
+	"A3_Modules_F",
+	"Desert"
+};

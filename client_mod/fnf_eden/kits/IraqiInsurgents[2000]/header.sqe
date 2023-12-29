@@ -1,7 +1,7 @@
 version=54;
-name="Iraqi Insurgents [2000]";
+name="IraqiInsurgents[2000]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -40,6 +40,7 @@ requiredAddons[]=
 	"ace_trenches",
 	"ace_tripod",
 	"rhs_c_troops",
+	"A3_Weapons_F_Items",
 	"ace_hearing",
 	"A3_Modules_F",
 	"Desert"

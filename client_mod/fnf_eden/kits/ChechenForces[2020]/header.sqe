@@ -1,7 +1,7 @@
 version=54;
-name="Chechen Forces [2020]";
+name="ChechenForces[2020]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -41,6 +41,7 @@ requiredAddons[]=
 	"ace_tripod",
 	"A3_Weapons_F_Enoch_Launchers_RPG32",
 	"UK3CB_Factions_Headgear",
+	"A3_Weapons_F_Items",
 	"A3_Modules_F",
 	"Desert"
 };

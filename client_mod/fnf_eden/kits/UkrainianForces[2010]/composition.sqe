@@ -18374,6 +18374,15 @@ class items
 								{
 									typeName="TFAR_mr3000_multicam";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18409,7 +18418,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -18576,6 +18585,15 @@ class items
 								{
 									typeName="B_Kitbag_mcamo";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18611,7 +18629,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -18778,6 +18796,15 @@ class items
 								{
 									typeName="B_Kitbag_mcamo";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18813,7 +18840,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -18993,6 +19020,15 @@ class items
 								{
 									typeName="TFAR_mr3000_multicam";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19028,7 +19064,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19195,6 +19231,15 @@ class items
 								{
 									typeName="B_Kitbag_mcamo";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19230,7 +19275,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19397,6 +19442,15 @@ class items
 								{
 									typeName="B_Kitbag_mcamo";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19432,7 +19486,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19806,6 +19860,15 @@ class items
 								{
 									typeName="TFAR_mr3000_multicam";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19841,7 +19904,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20004,6 +20067,15 @@ class items
 								{
 									typeName="TFAR_mr3000_multicam";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20039,7 +20111,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20413,6 +20485,15 @@ class items
 								{
 									typeName="TFAR_mr3000_multicam";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20448,7 +20529,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20611,6 +20692,15 @@ class items
 								{
 									typeName="TFAR_mr3000_multicam";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20646,7 +20736,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};

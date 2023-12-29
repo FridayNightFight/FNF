@@ -1,7 +1,7 @@
 version=54;
-name="Vietnamese Army [2010]";
+name="VietnameseArmy[2010]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -37,6 +37,7 @@ requiredAddons[]=
 	"ace_trenches",
 	"ace_tripod",
 	"UK3CB_Factions_Weapons_PPSH",
+	"A3_Weapons_F_Items",
 	"A3_Modules_F",
 	"Desert"
 };

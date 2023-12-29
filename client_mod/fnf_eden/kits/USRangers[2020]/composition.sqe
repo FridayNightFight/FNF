@@ -18762,6 +18762,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18797,7 +18806,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -18964,6 +18973,15 @@ class items
 								{
 									typeName="rhsusf_assault_eagleaiii_ocp";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -18999,7 +19017,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19166,6 +19184,15 @@ class items
 								{
 									typeName="rhsusf_assault_eagleaiii_ocp";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19201,7 +19228,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19381,6 +19408,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19416,7 +19452,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19583,6 +19619,15 @@ class items
 								{
 									typeName="rhsusf_assault_eagleaiii_ocp";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19618,7 +19663,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19785,6 +19830,15 @@ class items
 								{
 									typeName="rhsusf_assault_eagleaiii_ocp";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -19820,7 +19874,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -19996,6 +20050,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20031,7 +20094,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20194,6 +20257,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20229,7 +20301,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20392,6 +20464,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20427,7 +20508,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20603,6 +20684,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20638,7 +20728,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20801,6 +20891,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -20836,7 +20935,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};
@@ -20999,6 +21098,15 @@ class items
 								{
 									typeName="TFAR_rt1523g";
 									isBackpack=1;
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ToolKit";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -21034,7 +21142,7 @@ class items
 									class data
 									{
 										singleType="SCALAR";
-										value=-1;
+										value=1;
 									};
 								};
 							};

@@ -1,7 +1,7 @@
 version=54;
-name="Croatian Forces [2010]";
+name="CroatianForces[2010]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -37,6 +37,7 @@ requiredAddons[]=
 	"A3_Characters_F_Mark",
 	"ace_tripod",
 	"rhs_c_troops",
+	"A3_Weapons_F_Items",
 	"ace_compat_rhs_afrf3",
 	"A3_Modules_F",
 	"Desert"

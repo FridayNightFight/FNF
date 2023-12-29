@@ -1,7 +1,7 @@
 version=54;
-name="Balkan League Forces [2010]";
+name="BalkanLeagueForces[2010]";
 author="Mazz";
-category="EdSubcat_GO_Highway";
+category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -38,6 +38,7 @@ requiredAddons[]=
 	"ace_trenches",
 	"ace_tripod",
 	"rhs_c_troops",
+	"A3_Weapons_F_Items",
 	"UK3CB_Factions_Headgear",
 	"A3_Modules_F",
 	"Desert"
