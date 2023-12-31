@@ -15,6 +15,8 @@ params ["_modules"];
 
 _maxTimeZoneIsDeleted = 0;
 
+["safeZoneGroup", true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
+
 {
   _syncedObjects = synchronizedObjects _x;
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
@@ -38,6 +40,7 @@ _maxTimeZoneIsDeleted = 0;
   _result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
   if (_result) then
   {
+    ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
     [_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
   } else {
     if (fnf_debug) then
