@@ -13,6 +13,11 @@
 
 params["_shouldShowInHUD"];
 
+if (ace_spectator_isSet) then
+{
+  _shouldShowInHUD = true;
+};
+
 removeAllMissionEventHandlers "Map";
 
 _layerId = "timeRsc" call BIS_fnc_rscLayer;

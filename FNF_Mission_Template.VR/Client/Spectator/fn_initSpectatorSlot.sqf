@@ -49,6 +49,9 @@ if (count _objModules isEqualTo 0) then
   [_objModules] call FNF_ClientSide_fnc_initSpectatorObjectives;
 };
 
+//start overall timer
+[_initModule] call FNF_ClientSide_fnc_initOverallTimer;
+
 //show Mission Details button
 call FNF_ClientSide_fnc_missionDetailsButton;
 

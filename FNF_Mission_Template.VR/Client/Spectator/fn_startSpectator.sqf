@@ -21,6 +21,8 @@ if (!isNull _lastDamage) then {
   [2, player] call ace_spectator_fnc_setCameraAttributes;
 };
 
+true call FNF_ClientSide_fnc_showTimerInHUD;
+
 //setup map shading
 [{!isNull findDisplay 60000},{
 findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
