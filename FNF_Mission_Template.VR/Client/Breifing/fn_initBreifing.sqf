@@ -192,18 +192,28 @@ _loadoutCreation = {
   _weaponsFound = [];
   {
     _primary = primaryWeapon _x;
-    _weaponFound = false;
+    _launcher = secondaryWeapon _x;
+    _primaryWeaponFound = false;
+    _launcherWeaponFound = false;
     {
       if (_x isEqualTo _primary) then
       {
-        _weaponFound = true;
-        break;
-      }
+        _primaryWeaponFound = true;
+        continue;
+      };
+      if (_x isEqualTo _launcher) then
+      {
+        _launcherWeaponFound = true;
+      };
     } foreach _weaponsFound;
 
-    if (not _weaponFound) then
+    if (not _primaryWeaponFound) then
     {
       _weaponsFound pushBack _primary;
+    };
+    if (not _launcherWeaponFound) then
+    {
+      _weaponsFound pushBack _launcher;
     };
   } forEach ((call BIS_fnc_listPlayers) select {(side _x isEqualTo _side)});
 
