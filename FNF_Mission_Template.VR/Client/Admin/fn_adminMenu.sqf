@@ -54,7 +54,7 @@ _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
 _playerList lbSetData [_sideTempIndex, "independent"];
 {
 	_index = _playerList lbAdd name _x;
-  _playerList lbSetData [_index, _x];
+  _playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo independent});
 _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
 _playerList lbSetData [_sideTempIndex, "civilian"];
