@@ -38,7 +38,7 @@ player allowDamage false;
     player allowDamage true;
     [player, false] remoteExec ["hideObject"];
     player enableSimulation true;
-    ["<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><t align='center'><br/><br/>You have been teleported to a reletivly safe space, take in your surroundings and play on!</t>", "deep-purple"] call FNF_ClientSide_fnc_notificationSystem;
+    ["<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><t align='center'><br/><br/>You have been teleported to a reletivly safe space, if you have joined mid game the admin may enable selectors for you to choose your optics, take in your surroundings and play on!</t>", "deep-purple"] call FNF_ClientSide_fnc_notificationSystem;
   },[_playerPos], 30, {
     player allowDamage true;
     [player, false] remoteExec ["hideObject"];

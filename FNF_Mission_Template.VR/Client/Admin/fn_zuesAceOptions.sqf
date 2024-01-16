@@ -36,3 +36,34 @@ _actionGoToLastReport = [
   {true}
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _actionGoToLastReport] call ace_interact_menu_fnc_addActionToZeus;
+
+_actionSwitchSelectors = [
+  "Zeus_SwitchSelectors",
+  "Switch selectors for selected players",
+  "\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",
+  {
+    curatorSelected params ["_objects","_groups","_waypoints","_markers"];
+    _players = _objects select {isPlayer _x};
+    {
+      _status = _x getVariable ["fnf_selectorIcon", "FAILED"];
+      if (_status isEqualTo "FAILED") then
+      {
+        [{fnf_showSelectors = true;}] remoteExec ["call", _x, false];
+        _icon = addMissionEventHandler ["Draw3D", {
+	        drawIcon3D ["", [1,1,1,1], getPos (_thisArgs select 0), 0, 0, 0, "SELECTOR ON", 1, 0.1, "PuristaMedium", "center", true];
+        }, [_x]];
+        _x setVariable ["fnf_selectorIcon", _icon, false];
+      } else {
+        [{fnf_showSelectors = false;}] remoteExec ["call", _x, false];
+        removeMissionEventHandler ["Draw3D", _status];
+        _x setVariable ["fnf_selectorIcon", nil, false];
+      };
+    } forEach _players;
+  },
+  {
+    curatorSelected params ["_objects","_groups","_waypoints","_markers"];
+    _players = _objects select {isPlayer _x};
+    count _players > 0;
+  }
+] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions"], _actionSwitchSelectors] call ace_interact_menu_fnc_addActionToZeus;
