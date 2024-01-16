@@ -250,6 +250,7 @@ _background ctrlAddEventHandler[ "Destroy", {
   if (!isNil "fnf_admin_searchPFH") then {
     [fnf_adminMenu_searchPFH] call CBA_fnc_removePerFrameHandler;
   };
+  showChat true;
 }];
 
 _kickPlayerButton ctrlAddEventHandler[ "ButtonClick", {
