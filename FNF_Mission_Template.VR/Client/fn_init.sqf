@@ -181,6 +181,7 @@ if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
     _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
     if (not _result) then
     {
+      [true, true, true] call ace_spectator_fnc_setSpectator;
       player setDamage 1;
     };
   } else {
@@ -192,6 +193,7 @@ if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
       _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
       if (not _result) then
       {
+        [true, true, true] call ace_spectator_fnc_setSpectator;
         player setDamage 1;
       };
     }, [_safeZoneModules]] call CBA_fnc_waitUntilAndExecute;
