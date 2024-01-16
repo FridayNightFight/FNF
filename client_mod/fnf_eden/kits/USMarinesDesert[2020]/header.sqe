@@ -4,10 +4,12 @@ author="Mazz";
 category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
+	"fnf_eden",
+	"A3_Modules_F",
+	"Desert",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging",
-	"fnf_eden",
 	"A3_Characters_F",
 	"rhsusf_c_weapons",
 	"ace_compat_rhs_usf3",
@@ -30,9 +32,8 @@ requiredAddons[]=
 	"ace_arsenal",
 	"ace_fortify",
 	"ace_trenches",
+	"ace_logistics_wirecutter",
 	"A3_Characters_F_Mark",
 	"ace_tripod",
-	"A3_Weapons_F_Items",
-	"A3_Modules_F",
-	"Desert"
+	"A3_Weapons_F_Items"
 };

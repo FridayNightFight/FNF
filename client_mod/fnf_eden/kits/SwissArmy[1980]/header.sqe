@@ -4,10 +4,6 @@ author="Mazz";
 category="EdSubcat_GO_Rocks";
 requiredAddons[]=
 {
-	"A3_Structures_F_Civ_Constructions",
-	"ace_cargo",
-	"ace_dragging",
-	"fnf_eden",
 	"A3_Characters_F",
 	"UK3CB_Factions_Weapons_STGW",
 	"UK3CB_Factions_Weapons_BHP",
@@ -36,6 +32,7 @@ requiredAddons[]=
 	"ace_arsenal",
 	"ace_fortify",
 	"ace_trenches",
+	"ace_logistics_wirecutter",
 	"A3_Characters_F_Mark",
 	"UK3CB_Factions_Weapons_MG3",
 	"ace_tripod",
@@ -45,6 +42,10 @@ requiredAddons[]=
 	"UK3CB_Factions_Headgear",
 	"UK3CB_Factions_CW_US_B_LATE",
 	"UK3CB_Factions_Equipment_Vests",
+	"fnf_eden",
 	"A3_Modules_F",
-	"Desert"
+	"Desert",
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging"
 };
