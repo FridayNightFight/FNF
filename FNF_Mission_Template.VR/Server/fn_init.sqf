@@ -130,3 +130,11 @@ if (not isNil "fnf_serverObjectives") then
     },1] call CBA_fnc_addPerFrameHandler;
   };
 };
+
+[{
+  time > 0;
+}, {
+  {
+    deleteVehicle _x;
+  } forEach allDeadMen;
+}] call CBA_fnc_waitUntilAndExecute;
