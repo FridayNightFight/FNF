@@ -52,10 +52,19 @@ _validGroups = [];
   };
 
   //get TFAR frequencies if they are set
-  _allSRFreq = _leader getVariable ["TFAR_freq_sr", ["N/A"]];
-  _mainSRFreq = _allSRFreq select 0;
-  _allLRFreq = _leader getVariable ["TFAR_freq_lr", ["N/A"]];
-  _mainLRFreq = _allLRFreq select 0;
+  _mainSRFreq = _leader getVariable ["fnf_freq_sr", "NONE FOUND"];
+  if (_mainSRFreq isEqualTo "NONE FOUND") then
+  {
+    _allSRFreq = _leader getVariable ["TFAR_freq_sr", ["N/A"]];
+    _mainSRFreq = _allSRFreq select 0;
+  };
+
+  _mainLRFreq = _leader getVariable ["fnf_freq_lr", "NONE FOUND"];
+  if (_mainLRFreq isEqualTo "NONE FOUND") then
+  {
+    _allLRFreq = _leader getVariable ["TFAR_freq_lr", ["N/A"]];
+    _mainLRFreq = _allLRFreq select 0;
+  };
 
   _units = _units - [_leader];
 
