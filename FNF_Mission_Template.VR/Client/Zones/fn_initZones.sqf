@@ -54,7 +54,9 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
           {
             if (objectParent player isKindOf "Air") then
             {
-              (objectParent player) setVehiclePosition [fnf_zoneRestrictionsLastKnownPosition, [] , 0, "FLY"];
+              if (_x select 4) then {
+                (objectParent player) setVehiclePosition [fnf_zoneRestrictionsLastKnownPosition, [] , 0, "FLY"];
+              };
             } else {
               _goodPos = fnf_zoneRestrictionsLastKnownPosition findEmptyPosition [0, 50, typeOf objectParent player];
               (objectParent player) setVehiclePosition [_goodPos, [] , 0, "CAN_COLLIDE"];

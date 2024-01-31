@@ -75,7 +75,7 @@ _maxTimeZoneIsDeleted = 0;
     //check if the safezone group has been created, if not create it
     if (not _safeZoneRestrictionGroupSet) then
     {
-      ["safeZoneGroup", true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
+      ["safeZoneGroup", true, true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
       _safeZoneRestrictionGroupSet = true;
     };
     _result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;

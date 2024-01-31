@@ -15,7 +15,7 @@ params ["_modules"];
 
 _maxTimeZoneIsDeleted = 0;
 
-["safeZoneGroup", true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
+["safeZoneGroup", true, true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
 
 {
   _syncedObjects = synchronizedObjects _x;

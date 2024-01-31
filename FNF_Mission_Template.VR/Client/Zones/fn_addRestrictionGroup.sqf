@@ -13,7 +13,7 @@
 		None
 */
 
-params ["_groupName", "_restrictWeapons", "_teleportBack"];
+params ["_groupName", "_restrictWeapons", "_teleportBack", "_restrictHelicopters"];
 _duplicate = false;
 {
 	if (_x select 0 isEqualTo _groupName) then
@@ -24,5 +24,5 @@ _duplicate = false;
 } forEach fnf_zoneRestrictionGroupsList;
 if (!_duplicate) then
 {
-	fnf_zoneRestrictionGroupsList pushBack [_groupName, [], _restrictWeapons, _teleportBack];
+	fnf_zoneRestrictionGroupsList pushBack [_groupName, [], _restrictWeapons, _teleportBack, _restrictHelicopters];
 };
