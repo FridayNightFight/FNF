@@ -34,20 +34,23 @@ if (getTerrainGrid > 25) then
 //restrict view distance
 _viewDistance = _initModule getVariable ["fnf_viewDistance", 800];
 
-[{
-  params["_viewDistance"];
+if (typeOf player isNotEqualTo "ace_spectator_virtual") then
+{
+  [{
+    params["_viewDistance"];
 
-  if (!alive player) exitWith {};
+    if (!alive player) exitWith {};
 
-  if (viewDistance > _viewDistance) then
-  {
-    setViewDistance _viewDistance;
-  };
+    if (viewDistance > _viewDistance) then
+    {
+      setViewDistance _viewDistance;
+    };
 
-  if (getTerrainGrid > 25) then
-  {
-    setTerrainGrid 25;
-  };
+    if (getTerrainGrid > 25) then
+    {
+      setTerrainGrid 25;
+    };
 
-  if !(commandingMenu isEqualTo "") then {showCommandingMenu ""};
-} , 0.5, _viewDistance] call CBA_fnc_addPerFrameHandler;
+    if !(commandingMenu isEqualTo "") then {showCommandingMenu ""};
+  } , 0.5, _viewDistance] call CBA_fnc_addPerFrameHandler;
+};
