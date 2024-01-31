@@ -257,8 +257,8 @@ _tree ctrlSetPosition [0,0,0.3,1];
         };
         case independent:
         {
-          _tree tvAdd [_opfObjTreePath , _name];
-          _currentTaskCorrectPath = _opfObjTreePath;
+          _tree tvAdd [_indObjTreePath , _name];
+          _currentTaskCorrectPath = _indObjTreePath;
         };
         default
         {
