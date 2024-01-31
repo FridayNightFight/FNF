@@ -33,6 +33,7 @@ class items
 		name="PlayZone_1_1";
 		text="1";
 		type="mil_marker";
+		alpha=0.99;
 		id=1;
 	};
 	class Item2
@@ -42,6 +43,7 @@ class items
 		name="PlayZone_1_2";
 		text="2";
 		type="mil_marker";
+		alpha=0.99;
 		id=7;
 	};
 	class Item3
@@ -51,6 +53,7 @@ class items
 		name="PlayZone_1_3";
 		text="3";
 		type="mil_marker";
+		alpha=0.99;
 		id=8;
 	};
 	class Item4
@@ -60,6 +63,7 @@ class items
 		name="PlayZone_1_4";
 		text="4";
 		type="mil_marker";
+		alpha=0.99;
 		id=9;
 	};
 	class Item5
@@ -69,6 +73,7 @@ class items
 		name="PlayZone_1_5";
 		text="5";
 		type="mil_marker";
+		alpha=0.99;
 		id=10;
 	};
 	class Item6
@@ -78,6 +83,7 @@ class items
 		name="PlayZone_1_6";
 		text="6";
 		type="mil_marker";
+		alpha=0.99;
 		id=11;
 	};
 	class Item7
@@ -87,6 +93,7 @@ class items
 		name="PlayZone_1_7";
 		text="7";
 		type="mil_marker";
+		alpha=0.99;
 		id=12;
 	};
 	class Item8
@@ -96,6 +103,7 @@ class items
 		name="PlayZone_1_8";
 		text="8";
 		type="mil_marker";
+		alpha=0.99;
 		id=13;
 	};
 };

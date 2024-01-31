@@ -137,6 +137,7 @@ class items
 		text="1";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=26;
 	};
 	class Item5
@@ -147,6 +148,7 @@ class items
 		text="2";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=27;
 	};
 	class Item6
@@ -157,6 +159,7 @@ class items
 		text="3";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=28;
 	};
 	class Item7
@@ -167,6 +170,7 @@ class items
 		text="4";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=29;
 	};
 	class Item8
@@ -177,6 +181,7 @@ class items
 		text="5";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=30;
 	};
 	class Item9
@@ -187,6 +192,7 @@ class items
 		text="6";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=31;
 	};
 	class Item10
@@ -197,6 +203,7 @@ class items
 		text="7";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=32;
 	};
 	class Item11
@@ -207,6 +214,7 @@ class items
 		text="8";
 		type="mil_triangle";
 		colorName="ColorBlue";
+		alpha=0.99;
 		id=33;
 	};
 };

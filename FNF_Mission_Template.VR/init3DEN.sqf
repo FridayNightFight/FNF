@@ -15,6 +15,7 @@ fnf_handelingSave = false;
 
 _currentEntities = all3DENEntities;
 _currentObjects = _currentEntities select 0;
+_currentMarkers = _currentEntities select 5;
 
 _allLogic = [];
 {
@@ -99,6 +100,14 @@ if (count _allLogic >= count _allUnits and count _allUnits isNotEqualTo 0) then
     _unitsToDelete pushBack _foundLogic;
   } forEach _allUnits;
 
+  {
+    _alpha = (_x get3DENAttribute "alpha") select 0;
+    if (_alpha isEqualTo 0.000001) then
+    {
+      _x set3DENAttribute ["alpha", 0.99];
+    };
+  } forEach _currentMarkers;
+
   delete3DENEntities _unitsToDelete;
 
   do3DENAction "MissionSave";
@@ -119,6 +128,7 @@ _addJIPitems = {
 
   _currentItems = all3DENEntities;
   _objectsToLookAt = _currentItems select 0;
+  _markersToLookAt = _currentItems select 5;
 
   _unitsToProcess = [];
 
@@ -175,6 +185,14 @@ _addJIPitems = {
 
     _counter = _counter + 1;
   } forEach _unitsToProcess;
+
+  {
+    _alpha = (_x get3DENAttribute "alpha") select 0;
+    if (_alpha isEqualTo 0.99) then
+    {
+      _x set3DENAttribute ["alpha", 0.000001];
+    };
+  } forEach _markersToLookAt;
 
   do3DENAction "MissionExportMP";
 
