@@ -49,12 +49,14 @@ _actionSwitchSelectors = [
       if (_status isEqualTo "FAILED") then
       {
         [{fnf_showSelectors = true;}] remoteExec ["call", _x, false];
+        ["<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><t align='center'><br/><br/>Your ace selectors have been enabled, please pick the selections you want and inform an admin when you are finished!</t>", "deep-purple", 20] remoteExec ["FNF_ClientSide_fnc_notificationSystem", _x, false];
         _icon = addMissionEventHandler ["Draw3D", {
 	        drawIcon3D ["", [1,1,1,1], getPos (_thisArgs select 0), 0, 0, 0, "SELECTOR ON", 1, 0.1, "PuristaMedium", "center", true];
         }, [_x]];
         _x setVariable ["fnf_selectorIcon", _icon, false];
       } else {
         [{fnf_showSelectors = false;}] remoteExec ["call", _x, false];
+        ["<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><t align='center'><br/><br/>Your ace selectors have now been disabled</t>", "deep-purple", 20] remoteExec ["FNF_ClientSide_fnc_notificationSystem", _x, false];
         removeMissionEventHandler ["Draw3D", _status];
         _x setVariable ["fnf_selectorIcon", nil, false];
       };
