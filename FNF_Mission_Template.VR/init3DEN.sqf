@@ -102,7 +102,7 @@ if (count _allLogic >= count _allUnits and count _allUnits isNotEqualTo 0) then
 
   {
     _alpha = (_x get3DENAttribute "alpha") select 0;
-    if (_alpha isEqualTo 0.000001) then
+    if (_alpha isEqualTo 0) then
     {
       _x set3DENAttribute ["alpha", 0.99];
     };
@@ -190,7 +190,7 @@ _addJIPitems = {
     _alpha = (_x get3DENAttribute "alpha") select 0;
     if (_alpha isEqualTo 0.99) then
     {
-      _x set3DENAttribute ["alpha", 0.000001];
+      _x set3DENAttribute ["alpha", 0];
     };
   } forEach _markersToLookAt;
 
