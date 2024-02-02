@@ -98,13 +98,6 @@ if (count _selectorModules isNotEqualTo 0) then
   [_selectorModules] call FNF_ClientSide_fnc_initSelectors;
 };
 
-//check there are hiding zones and clean up spares
-_hidingZoneModules = [_modules, "hidingZone"] call FNF_ClientSide_fnc_findSpecificModules;
-if (count _hidingZoneModules isNotEqualTo 0) then
-{
-  [_hidingZoneModules] call FNF_ClientSide_fnc_cleanUpSpareHidingZones;
-};
-
 //start gps icons
 call FNF_ClientSide_fnc_initGPSUnitMarkers;
 

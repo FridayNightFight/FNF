@@ -171,7 +171,6 @@ class CfgFunctions
       file = "Client\HidingZones";
       class initHidingZones {};
       class addObjectToHide {};
-      class cleanUpSpareHidingZones {};
       class removeObjectToHide {};
     };
     class selectors
