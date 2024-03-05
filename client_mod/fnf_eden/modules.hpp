@@ -350,6 +350,26 @@ class CfgVehicles
       };
     };
 	};
+  class fnf_module_sequentialObjectivePlanner: Module_F
+  {
+		author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "FNF Sequential Objective Planner";
+    scope = 2;
+    class Attributes: AttributesBase
+    {
+      class NextObjectiveKnown: Checkbox
+      {
+        property = "fnf_nextObjectiveKnown";
+        //currently next objective known does not function (shits hard)
+        expression = "_this setVariable ['fnf_nextObjectiveKnown', false, true];";
+        displayName = "Is next Objective shown";
+        tooltip = "If checked, the next objective will be visible before it is active, otherwise it will stay hidden";
+        typeName = "BOOL";
+        defaultValue = "false";
+      };
+    };
+	};
   class fnf_module_objective: Module_F {};
   class fnf_module_destroyObj: fnf_module_objective
 	{

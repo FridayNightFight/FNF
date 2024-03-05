@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"characters_f_vietnam_c","weapons_f_vietnam_c"};
+		requiredAddons[] = {"weapons_f_vietnam_c","characters_f_vietnam_c","ace_compat_sog","characters_f_vietnam_03_c","characters_f_vietnam_04_c"};
 	};
 };
 

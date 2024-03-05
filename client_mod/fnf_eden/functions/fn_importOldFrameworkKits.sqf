@@ -93,19 +93,3 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 ctrlSetFocus _ctrlEdit;
 _ctrlGroup ctrlSetPosition [0.25, 0.25, 0.5, 0.5];
 _ctrlGroup ctrlCommit 0.1;
-
-
-
-
-
-
-
-
-
-
-_players = get3DENSelected "object";
-    {
-      _x addGoggles "G_Balaclava_blk";
-    } forEach _players;
-
-    save3DENInventory _players;

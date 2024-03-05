@@ -529,3 +529,98 @@
 			displayName = "Irish Republican Army [1980]";
 			useSideColorOnIcon = 1;
 		};
+
+    //*************************************************************************************************************************
+    // VIETNAM AFTER THIS
+    //*************************************************************************************************************************
+
+    class fnf_ARVN1970
+		{
+			path = "fnf_eden\kits\ARVN[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "ARVN [1970]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_AustrallianANZAC1970
+		{
+			path = "fnf_eden\kits\AustrallianANZAC[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "Australlian ANZAC [1970]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_FrenchArmy1960
+		{
+			path = "fnf_eden\kits\FrenchArmy[1960]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "French Army [1960]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_NorthVietnemeseArmy1970
+		{
+			path = "fnf_eden\kits\NorthVietnemeseArmy[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "North VietnemeseArmy [1970]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_PathetLao1960
+		{
+			path = "fnf_eden\kits\PathetLao[1960]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "Pathet Lao [1960]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_RepublicofKorea1970
+		{
+			path = "fnf_eden\kits\RepublicofKorea[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "Republic of Korea [1970]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_RoyalLaoArmy1960
+		{
+			path = "fnf_eden\kits\RoyalLaoArmy[1960]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "Royal Lao Army [1960]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_USArmyMACV1970
+		{
+			path = "fnf_eden\kits\USArmy(MACV)[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "US Army (MACV) [1970]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_USSOG1970
+		{
+			path = "fnf_eden\kits\USSOG[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "US SOG [1970]";
+			useSideColorOnIcon = 1;
+		};
+    class fnf_Vietcong1970
+		{
+			path = "fnf_eden\kits\Vietcong[1970]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Vietnam";
+			displayName = "Vietcong[1970]";
+			useSideColorOnIcon = 1;
+		};
