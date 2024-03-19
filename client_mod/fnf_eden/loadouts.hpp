@@ -534,7 +534,7 @@
     // VIETNAM AFTER THIS
     //*************************************************************************************************************************
 
-    class fnf_ARVN1970
+    /*class fnf_ARVN1970
 		{
 			path = "fnf_eden\kits\ARVN[1970]";
 			side = 8;
@@ -623,4 +623,4 @@
 			editorSubcategory = "fnf_Vietnam";
 			displayName = "Vietcong[1970]";
 			useSideColorOnIcon = 1;
-		};
+		};*/

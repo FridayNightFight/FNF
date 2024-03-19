@@ -20,10 +20,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Blufor";
 	};
-  class fnf_Vietnam
+  /*class fnf_Vietnam
 	{
 		displayName = "Vietnam";
-	};
+	};*/
   class fnf_Opfor
 	{
 		displayName = "Opfor";
