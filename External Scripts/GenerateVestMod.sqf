@@ -13,6 +13,11 @@ fnf_searchVest = {
     _hitpointsChanged = true;
   };
 
+  if ((configName (inheritsFrom _vest)) isEqualTo "Vest_Camo_Base" or (configName (inheritsFrom _vest)) isEqualTo "Vest_NoCamo_Base") then
+  {
+    _hitpointsChanged = true;
+  };
+
   if (_hitpointsChanged isEqualTo false and not _forcedToAdd) exitWith {};
 
   _vestEntry = fnf_problemVests findif {_x select 0 isEqualTo (configName (inheritsFrom _vest))};
