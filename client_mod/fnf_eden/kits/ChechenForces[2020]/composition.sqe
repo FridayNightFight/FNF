@@ -3834,9 +3834,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_rpk74m";
+									name="rhs_weap_rpk74m_npz";
 									muzzle="rhs_acc_dtkrpk";
-									firemode="rhs_weap_rpk74m:Single";
+									firemode="rhs_weap_rpk74m_npz:Single";
 									class primaryMuzzleMag
 									{
 										name="fnf_45rnd_rpk_7N10";
@@ -6379,9 +6379,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_rpk74m";
+									name="rhs_weap_rpk74m_npz";
 									muzzle="rhs_acc_dtkrpk";
-									firemode="rhs_weap_rpk74m:Single";
+									firemode="rhs_weap_rpk74m_npz:Single";
 									class primaryMuzzleMag
 									{
 										name="fnf_45rnd_rpk_7N10";
@@ -7957,9 +7957,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_rpk74m";
+									name="rhs_weap_rpk74m_npz";
 									muzzle="rhs_acc_dtkrpk";
-									firemode="rhs_weap_rpk74m:Single";
+									firemode="rhs_weap_rpk74m_npz:Single";
 									class primaryMuzzleMag
 									{
 										name="fnf_45rnd_rpk_7N10";
@@ -10502,9 +10502,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_rpk74m";
+									name="rhs_weap_rpk74m_npz";
 									muzzle="rhs_acc_dtkrpk";
-									firemode="rhs_weap_rpk74m:Single";
+									firemode="rhs_weap_rpk74m_npz:Single";
 									class primaryMuzzleMag
 									{
 										name="fnf_45rnd_rpk_7N10";
@@ -12080,9 +12080,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_rpk74m";
+									name="rhs_weap_rpk74m_npz";
 									muzzle="rhs_acc_dtkrpk";
-									firemode="rhs_weap_rpk74m:Single";
+									firemode="rhs_weap_rpk74m_npz:Single";
 									class primaryMuzzleMag
 									{
 										name="fnf_45rnd_rpk_7N10";
