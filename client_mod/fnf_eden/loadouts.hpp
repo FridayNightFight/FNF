@@ -567,7 +567,7 @@
 			side = 8;
 			editorCategory = "fnf_Kits";
 			editorSubcategory = "fnf_Vietnam";
-			displayName = "North VietnemeseArmy [1970]";
+			displayName = "North Vietnemese Army [1970]";
 			useSideColorOnIcon = 1;
 		};
     class fnf_PathetLao1960
@@ -621,6 +621,6 @@
 			side = 8;
 			editorCategory = "fnf_Kits";
 			editorSubcategory = "fnf_Vietnam";
-			displayName = "Vietcong[1970]";
+			displayName = "Vietcong [1970]";
 			useSideColorOnIcon = 1;
 		};*/

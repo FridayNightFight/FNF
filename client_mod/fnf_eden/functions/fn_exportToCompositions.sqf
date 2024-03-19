@@ -70,7 +70,7 @@
 		// Set the layer name as composition name in the dialog
 		findDisplay 317 displayCtrl 95 ctrlSetText _finalName;
 
-    findDisplay 317 displayCtrl 96 ctrlSetText "Mazz";
+    findDisplay 317 displayCtrl 96 ctrlSetText "FNF";
 
 		// Close the dialog by activating the OK button
 		ctrlActivate (findDisplay 317 displayCtrl 1);
