@@ -414,11 +414,11 @@
 		};
     class fnf_AfricanPolice2010APEXItemsUsed
 		{
-			path = "fnf_eden\kits\AfricanPolice[2010](APEXItemsUsed)";
+			path = "fnf_eden\kits\AfricanPolice[2010]";
 			side = 8;
 			editorCategory = "fnf_Kits";
 			editorSubcategory = "fnf_Indfor";
-			displayName = "African Police [2010] (APEX Items Used)";
+			displayName = "African Police [2010]";
 			useSideColorOnIcon = 1;
 		};
     class fnf_CanadianArmy1980
