@@ -14,6 +14,7 @@ class CfgFunctions
     {
       file = "Client\CodeUtilities";
       class sortByLocation {};
+      class getBottomLeft {};
     }
 		class zones
 		{
@@ -220,6 +221,12 @@ class CfgFunctions
       class removeTaskfromTaskControl {};
       class editTaskInTaskControl {};
     };
+    class sequentialHandeler
+    {
+      file = "Client\SequentialHandeler";
+      class addSequentialHandle {};
+      class initSequentialHandler {};
+    }
 	};
 	class FNF_ServerSide
 	{

@@ -11,6 +11,8 @@
 		None
 */
 
+//call FNF_ClientSide_fnc_manuallyEndSafeZones
+
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 _safeZoneModules = [_modules, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;

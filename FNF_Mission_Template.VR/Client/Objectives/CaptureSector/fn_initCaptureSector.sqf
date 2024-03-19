@@ -26,6 +26,87 @@ if (_objectiveType isEqualTo "FAILED") exitWith
   };
 };
 
+_syncedObjects = synchronizedObjects _objective;
+
+//find any sequential planners
+_sequentialObjPlanners = [];
+{
+  _typeOfObject = typeOf _x;
+  if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
+  {
+    continue;
+  };
+
+  if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+  {
+    _sequentialObjPlanners pushBack _x;
+    continue;
+  };
+
+  if (fnf_debug) then
+  {
+    systemChat "WARNING: Capture Sector objective has something that is not a Sequential Objective Planner synced to it";
+  };
+
+} forEach _syncedObjects;
+
+_topRightCount = 0;
+_topRightCandidate = objNull;
+
+if (count _sequentialObjPlanners isNotEqualTo 0) then
+{
+  {
+    _result = [_objective, _x] call FNF_ClientSide_fnc_getBottomLeft;
+    if (not _result) then
+    {
+      _topRightCount = _topRightCount + 1;
+      _topRightCandidate = _x;
+    };
+  } forEach _sequentialObjPlanners;
+};
+
+if (_topRightCount > 1) exitWith
+{
+  if (fnf_debug) then
+  {
+    systemChat "DANGER: Capture Sector objective has more than one prerequisite sequential planners, objective will NOT function";
+  };
+};
+
+_sequentialInit = false;
+_addSequentialHandle = false;
+
+if (not isNull _topRightCandidate) then
+{
+  //check if we're initing this from the sequential planner, if we are we don't need to re-add it
+  _alreadyCompletedSequentialPlanning = _topRightCandidate getVariable ["fnf_sequentialObjCompleted", false];
+  if (_alreadyCompletedSequentialPlanning) then
+  {
+    _objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
+    if (_objKnown) then
+    {
+      //obj is already known and 90% of setup is completed, lets just handle task description and task control
+      //find correct task via fnf_objectives
+      //edit Task Control
+      //edit task description
+      //this task can be completed before available as i dont wanna make someone invincible, maybe remove tracking?
+    };
+  } else {
+    //sequential planner before we do stuff, lets figure out what needs doing....
+    _objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
+    if (not _objKnown) then
+    {
+      //obj is not known yet, lets exit Init and come back later
+      _addSequentialHandle = true;
+    };
+  };
+};
+
+if (_addSequentialHandle) exitWith
+{
+  [_objective, _forPlayer, _topRightCandidate] call FNF_ClientSide_fnc_addSequentialHandle;
+};
+
 _zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
 
 //if no type found exit obj settup and inform mission maker

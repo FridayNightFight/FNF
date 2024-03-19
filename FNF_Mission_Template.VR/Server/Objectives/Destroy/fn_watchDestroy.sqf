@@ -11,11 +11,13 @@
 		Boolean
 */
 
-params["_objectiveObject"];
+params["_objectiveObject", "_objectiveModule"];
 
 if (alive _objectiveObject) exitWith
 {
   false;
 };
+
+_objectiveModule setVariable ["fnf_objComplete", true, true];
 
 true;

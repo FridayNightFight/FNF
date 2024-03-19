@@ -11,7 +11,7 @@
 		Boolean
 */
 
-params["_objectiveObject"];
+params["_objectiveObject", "_objectiveModule"];
 
 _timeOfCompletion = _objectiveObject getVariable ['fnf_currentlyHackingCompletionTime', -1];
 
@@ -34,6 +34,8 @@ if (_timeOfCompletion isEqualTo -1) then
 
 if (_result) then
 {
+  _objectiveModule setVariable ["fnf_objComplete", true, true];
+
   _objectiveObject setVariable ['fnf_currentlyHackingCompletionTime', 2, true];
 
   _completedExplosion = _objectiveObject getVariable ['fnf_explosionHandeled', false];

@@ -107,58 +107,56 @@ call FNF_ClientSide_fnc_initGPSUnitMarkers;
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {
-  if (count fnf_objectives isNotEqualTo 0) then
-  {
-    [{
-      _indexesToDeleteIfCompleted = [];
-      {
-        switch (_x select 0) do {
-          case "DESTROY":
+  [{
+    _indexesToDeleteIfCompleted = [];
+    {
+      switch (_x select 0) do {
+        case "COMPLETED": {};
+        case "DESTROY":
+        {
+          _result = [_x] call FNF_ClientSide_fnc_watchDestroy;
+          if (_result) then
           {
-            _result = [_x] call FNF_ClientSide_fnc_watchDestroy;
-            if (_result) then
-            {
-              _indexesToDeleteIfCompleted pushBack _forEachIndex;
-            };
-          };
-          case "CAPTURESECTOR":
-          {
-            _result = [_x] call FNF_ClientSide_fnc_watchCaptureSector;
-            if (_result) then
-            {
-              _indexesToDeleteIfCompleted pushBack _forEachIndex;
-            };
-          };
-          case "TERMINAL":
-          {
-            _result = [_x] call FNF_ClientSide_fnc_watchTerminal;
-            if (_result) then
-            {
-              _indexesToDeleteIfCompleted pushBack _forEachIndex;
-            };
-          };
-          case "ASSASSIN":
-          {
-            _result = [_x] call FNF_ClientSide_fnc_watchAssassin;
-            if (_result) then
-            {
-              _indexesToDeleteIfCompleted pushBack _forEachIndex;
-            };
-          };
-          default
-          {
-            if (fnf_debug) then
-            {
-              systemChat "DANGER: Objective has no valid type code, contact FNF staff";
-            };
+            _indexesToDeleteIfCompleted pushBack _forEachIndex;
           };
         };
-      } forEach fnf_objectives;
-      {
-        fnf_objectives deleteAt (_x - _forEachIndex);
-      } forEach _indexesToDeleteIfCompleted;
-    },1] call CBA_fnc_addPerFrameHandler;
-  };
+        case "CAPTURESECTOR":
+        {
+          _result = [_x] call FNF_ClientSide_fnc_watchCaptureSector;
+          if (_result) then
+          {
+            _indexesToDeleteIfCompleted pushBack _forEachIndex;
+          };
+        };
+        case "TERMINAL":
+        {
+          _result = [_x] call FNF_ClientSide_fnc_watchTerminal;
+          if (_result) then
+          {
+            _indexesToDeleteIfCompleted pushBack _forEachIndex;
+          };
+        };
+        case "ASSASSIN":
+        {
+          _result = [_x] call FNF_ClientSide_fnc_watchAssassin;
+          if (_result) then
+          {
+            _indexesToDeleteIfCompleted pushBack _forEachIndex;
+          };
+        };
+        default
+        {
+          if (fnf_debug) then
+          {
+            systemChat "DANGER: Objective has no valid type code, contact FNF staff";
+          };
+        };
+      };
+    } forEach fnf_objectives;
+    {
+      fnf_objectives select _x set [0, "COMPLETED"];
+    } forEach _indexesToDeleteIfCompleted;
+  },1] call CBA_fnc_addPerFrameHandler;
 };
 
 //handle if a player dies, put them into spectator
