@@ -126,15 +126,3 @@ _missionStatusSet = false;
     };
   };
 } forEach _modules;
-
-
-[{
-  if (gunner term_vic isEqualTo player) then
-  {
-    _state = getTurretOpticsMode player;
-    if (_state isNotEqualTo 0) then
-    {
-      player setTurretOpticsMode 0;
-    };
-  };
-}, 0.1] call CBA_fnc_addPerFrameHandler;
