@@ -186,15 +186,21 @@ _addJIPitems = {
     _counter = _counter + 1;
   } forEach _unitsToProcess;
 
+  _markersToReset = [];
   {
     _alpha = (_x get3DENAttribute "alpha") select 0;
     if (_alpha isEqualTo 0.99) then
     {
       _x set3DENAttribute ["alpha", 0];
+      _markersToReset pushBack _x;
     };
   } forEach _markersToLookAt;
 
   do3DENAction "MissionExportMP";
+
+  {
+    _x set3DENAttribute ["alpha", 0.99];
+  } forEach _markersToReset;
 
   delete3DENEntities _unitsToDelete;
 
