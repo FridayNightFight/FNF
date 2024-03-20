@@ -247,6 +247,12 @@ class CfgFunctions
       class handleJIPSyncing {};
       class handleVehicleInventory {};
     };
+    class sequentialHandeler
+    {
+      file = "Server\SequentialHandeler";
+      class addSequentialHandle {};
+      class initSequentialHandler {};
+    };
     class objectives
     {
       file = "Server\Objectives";
