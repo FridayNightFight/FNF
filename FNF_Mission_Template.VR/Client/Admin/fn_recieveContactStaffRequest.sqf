@@ -14,7 +14,7 @@
 params["_playerName", "_pos", "_message"];
 
 //if player is not logged in admin, kick them
-if !(serverCommandAvailable "#kick") exitWith {};
+if (not ((getPlayerUID player) in fnf_staffInfo)) exitWith {};
 
 //if the admin messages section in the map doesnt exist, create it
 if !(player diarySubjectExists "adminMessages") then

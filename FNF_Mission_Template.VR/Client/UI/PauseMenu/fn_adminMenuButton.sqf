@@ -15,7 +15,7 @@ disableSerialization;
 
 params ["_display"];
 
-if (not serverCommandAvailable "#kick") exitWith {};
+if (not ((getPlayerUID player) in fnf_staffInfo)) exitWith {};
 
 _button = _display ctrlCreate ["RscShortcutButton", 7045];
 _button ctrlSetPosition [

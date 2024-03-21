@@ -1,5 +1,18 @@
 if (!isServer) exitWith {};
 
+fnf_staffInfo = [
+  76561198004582151,
+  76561198089279362,
+  76561198106536334,
+  76561198045877943,
+  76561197963359463,
+  76561198077070073,
+  76561197972754614,
+  76561198111741251
+];
+
+publicVariable "fnf_staffInfo";
+
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found

@@ -14,7 +14,7 @@
 params ["_display"];
 
 //Don't show display if not admin
-if !(serverCommandAvailable "#kick") exitWith {};
+if (not ((getPlayerUID player) in fnf_staffInfo)) exitWith {};
 
 _resolution = getResolution;
 _aspectRatio = (_resolution select 0) / (_resolution select 1);
