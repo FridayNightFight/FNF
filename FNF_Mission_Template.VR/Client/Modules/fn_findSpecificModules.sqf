@@ -17,7 +17,7 @@ params["_modules", "_searchTerm"];
 _output = [];
 
 {
-  if ((typeOf _x) find _searchTerm isNotEqualTo -1) then
+  if ((typeOf _x) regexMatch (".+" + _searchTerm)) then
   {
     _output pushBack _x;
   };
