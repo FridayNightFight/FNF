@@ -101,6 +101,7 @@ class CfgFunctions
       class notificationSystem {};
       class markEditorPlacedObjects {};
       class initGPSUnitMarkers {};
+      class initBFT {};
     };
     class pauseMenu
     {
@@ -205,13 +206,6 @@ class CfgFunctions
     {
       file = "Client\Radio";
       class initRadios {};
-    };
-    class newPlayerExperience
-    {
-      file = "Client\NewPlayerExperience";
-      class initNewPlayerExperience {};
-      class newToFNF {};
-      class newToFourDotZero {};
     };
     class taskControl
     {

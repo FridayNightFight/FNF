@@ -29,6 +29,9 @@ if (typeOf player isEqualTo "ace_spectator_virtual") exitWith
 //setup player radio stereo settings
 call FNF_ClientSide_fnc_initRadios;
 
+//setup BFT
+call FNF_ClientSide_fnc_initBFT;
+
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
@@ -42,9 +45,6 @@ call FNF_ClientSide_fnc_initOrbat;
 _kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 [_breifingModules, _kitInfoModules, _initModule] call FNF_ClientSide_fnc_initBreifing;
-
-//check how often player has played and do new player experience
-call FNF_ClientSide_fnc_initNewPlayerExperience;
 
 //setup fortify options
 [_initModule] call FNF_ClientSide_fnc_initFortify;
