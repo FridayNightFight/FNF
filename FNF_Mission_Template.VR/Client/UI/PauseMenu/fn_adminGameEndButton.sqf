@@ -13,6 +13,17 @@
 
 params ["_display"];
 
+fnf_staffInfo = [
+  "76561198004582151",
+  "76561198089279362",
+  "76561198106536334",
+  "76561198045877943",
+  "76561197963359463",
+  "76561198077070073",
+  "76561197972754614",
+  "76561198111741251"
+];
+
 //Don't show display if not admin
 if (not ((getPlayerUID player) in fnf_staffInfo)) exitWith {};
 
