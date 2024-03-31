@@ -14,12 +14,11 @@ class CfgFactionClasses
 	class NO_CATEGORY;
 	class fnf_standardCategory: NO_CATEGORY
 	{
-		displayName = "FNF";
+		displayName = "HK";
 	};
 };
 
 #include "modules.hpp"
 #include "systems.hpp"
-#include "loadouts.hpp"
 #include "attributesAndTools.hpp"
 #include "functions.hpp"

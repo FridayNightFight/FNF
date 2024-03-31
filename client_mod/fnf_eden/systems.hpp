@@ -1,37 +1,17 @@
 class CfgEditorCategories
 {
-	class fnf_Kits
-	{
-		displayName = "FNF - Kits";
-	};
   class fnf_Objectives
 	{
-		displayName = "FNF - Objectives";
+		displayName = "HK - Objectives";
 	};
   class fnf_Systems
 	{
-		displayName = "FNF - Systems";
+		displayName = "HK - Systems";
 	};
 };
 
 class CfgEditorSubcategories
 {
-	class fnf_Blufor
-	{
-		displayName = "Blufor";
-	};
-  /*class fnf_Vietnam
-	{
-		displayName = "Vietnam";
-	};*/
-  class fnf_Opfor
-	{
-		displayName = "Opfor";
-	};
-  class fnf_Indfor
-	{
-		displayName = "Independant";
-	};
   class fnf_CaptureSector
 	{
 		displayName = "Capture Sector";

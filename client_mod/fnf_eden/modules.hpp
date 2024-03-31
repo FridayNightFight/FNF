@@ -24,7 +24,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Init";
+    displayName = "HK Init";
     scope = 2;
 
     class Attributes: AttributesBase
@@ -152,7 +152,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Play Zone";
+    displayName = "HK Play Zone";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -171,7 +171,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Safe Zone";
+    displayName = "HK Safe Zone";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -217,7 +217,7 @@ class CfgVehicles
   {
     author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Teleport Poles";
+    displayName = "HK Teleport Poles";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -236,7 +236,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Hiding Zone";
+    displayName = "HK Hiding Zone";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -255,7 +255,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Selector";
+    displayName = "HK Selector";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -291,7 +291,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Selector Option";
+    displayName = "HK Selector Option";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -319,14 +319,14 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Breifing Assets";
+    displayName = "HK Breifing Assets";
     scope = 2;
 	};
   class fnf_module_kitInformation: Module_F
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Kit Information";
+    displayName = "HK Kit Information";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -354,7 +354,7 @@ class CfgVehicles
   {
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Sequential Objective Planner";
+    displayName = "HK Sequential Objective Planner";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -375,7 +375,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Destroy Objective";
+    displayName = "HK Destroy Objective";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -408,7 +408,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Capture Sector Objective";
+    displayName = "HK Capture Sector Objective";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -450,7 +450,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Terminal Objective";
+    displayName = "HK Terminal Objective";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -492,7 +492,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Hold Sector Objective";
+    displayName = "HK Hold Sector Objective";
     scope = 2;
     class Attributes: AttributesBase
     {
@@ -516,7 +516,7 @@ class CfgVehicles
 	{
 		author = "Mallen";
     category = "fnf_standardCategory";
-    displayName = "FNF Assassin Objective";
+    displayName = "HK Assassin Objective";
     scope = 2;
     class Attributes: AttributesBase
     {
