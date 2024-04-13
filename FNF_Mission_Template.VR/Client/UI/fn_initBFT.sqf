@@ -39,6 +39,6 @@ switch (playerSide) do {
     _marker setMarkerShapeLocal "ICON";
     _marker setMarkerTypeLocal (_this select 0);
 
-    _marker setMarkerText ((groupId (group _x)) + " (" + _playerName + ")");
+    _marker setMarkerTextLocal ((groupId (group _x)) + " (" + _playerName + ")");
   } forEach _allPlayers;
 }, 1, _markerType] call CBA_fnc_addPerFrameHandler;

@@ -178,6 +178,7 @@ class CfgFunctions
     class selectors
     {
       file = "Client\Selectors";
+      class initAssetSelectors {};
       class initSelectors {};
       class switchSelection {};
     };
@@ -246,6 +247,12 @@ class CfgFunctions
       file = "Server\SequentialHandeler";
       class addSequentialHandle {};
       class initSequentialHandler {};
+    };
+    class AssetSelectors
+    {
+      file = "Server\AssetSelectors";
+      class initAssetSelectors {};
+      class switchAssetSelection {};
     };
     class objectives
     {

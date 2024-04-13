@@ -97,6 +97,13 @@ if (count _selectorModules isNotEqualTo 0) then
   [_selectorModules] call FNF_ClientSide_fnc_initSelectors;
 };
 
+//check there are asset selectors
+_assetSelectorModules = [_modules, "selectorAssetHost"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _assetSelectorModules isNotEqualTo 0) then
+{
+  [_assetSelectorModules] call FNF_ClientSide_fnc_initAssetSelectors;
+};
+
 //start gps icons
 call FNF_ClientSide_fnc_initGPSUnitMarkers;
 

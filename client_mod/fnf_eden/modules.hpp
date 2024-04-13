@@ -370,6 +370,25 @@ class CfgVehicles
       };
     };
 	};
+  class fnf_module_selectorAssetHost: Module_F
+	{
+		author = "Mallen";
+    category = "fnf_standardCategory";
+    displayName = "HK Asset Selector";
+    scope = 2;
+    class Attributes: AttributesBase
+    {
+      class SelectorName: Edit
+      {
+        property = "fnf_selectorName";
+        expression = "_this setVariable ['fnf_selectorName',_value, true];";
+        displayName = "Selector Name";
+        tooltip = "The name the selector is called in players ace menu";
+        typeName = "STRING";
+				defaultValue = "";
+      };
+    };
+	};
   class fnf_module_objective: Module_F {};
   class fnf_module_destroyObj: fnf_module_objective
 	{
