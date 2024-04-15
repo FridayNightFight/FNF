@@ -14,7 +14,6 @@
 params ["_modules"];
 
 _objectsToDelete = [];
-_trueHostSelectorSet = false;
 
 {
   _syncedObjects = synchronizedObjects _x;
@@ -79,7 +78,7 @@ _trueHostSelectorSet = false;
   };
 
   //if the host action has not been created yet for all selectors, create it
-  if (not _trueHostSelectorSet) then
+  if (isNil "fnf_showSelectors") then
   {
     fnf_showSelectors = true;
     _action = ["trueHost", "FNF Selectors", "", {}, {fnf_showSelectors}] call ace_interact_menu_fnc_createAction;
@@ -87,8 +86,6 @@ _trueHostSelectorSet = false;
 
     //[items, ID, Type]
     fnf_selections = [];
-
-    _trueHostSelectorSet = true;
   };
 
   //create the host for the current selector
