@@ -211,7 +211,6 @@ class CfgFunctions
       file = "Client\NewPlayerExperience";
       class initNewPlayerExperience {};
       class newToFNF {};
-      class newToFourDotZero {};
     };
     class taskControl
     {

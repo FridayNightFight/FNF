@@ -18,16 +18,6 @@ _frameworkVersionSplit = _frameworkVersion splitString ".";
 //if version is a dev version simply dont do anything and leave
 if (count _frameworkVersionSplit > 3) exitWith {};
 
-//Code to handle legacy systems
-_timesPlayed = profileNamespace getVariable ["fnf_isNewPlayer", "FAILED TO FIND"];
-
-if (_timesPlayed isNotEqualTo "FAILED TO FIND") then
-{
-  profileNamespace setVariable ["fnf_isNewPlayer", nil];
-  call FNF_ClientSide_fnc_newToFourDotZero;
-  profileNamespace setVariable ["fnf_latestVersionPlayed", _frameworkVersion];
-};
-
 //check what version has been played last
 _lastPlayedVersion = profileNamespace getVariable ["fnf_latestVersionPlayed", "FAILED TO FIND"];
 
