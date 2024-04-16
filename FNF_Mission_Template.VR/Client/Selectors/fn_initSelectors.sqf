@@ -55,9 +55,11 @@ _objectsToDelete = [];
           _items = itemCargo _x;
           _magazines = magazineCargo _x;
           _weapons = weaponCargo _x;
+          _backpacks = backpackCargo _x;
           _toAdd = _items;
           _toAdd append _magazines;
           _toAdd append _weapons;
+          _toAdd append _backpacks;
 
           _options pushBack [_toAdd, _optionName, _default];
 
