@@ -18,6 +18,7 @@ fnf_assetSelectorSelections = [];
 {
   _syncedObjects = synchronizedObjects _x;
   _selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
+  _timeToDelete = _x getVariable ["fnf_timeVicsAreDeleted", "15"];
   _module = _x;
 
   _forPlayer = false;
@@ -35,6 +36,8 @@ fnf_assetSelectorSelections = [];
         if (typeOf _x isNotEqualTo "fnf_module_selectorAssetHost") then
         {
           _toAdd pushBack _x;
+          [_x, true] remoteExec ["lockInventory", 0, true];
+          _x allowDamage false;
         };
       } forEach _optionSyncedObjects;
       _options pushBack [_toAdd, _x, _default];
@@ -54,4 +57,40 @@ fnf_assetSelectorSelections = [];
   } forEach _syncedObjects;
 
   fnf_assetSelectorSelections pushBack [_module, _options];
+
+  [{
+    params["_options", "_timeToDelete"];
+    _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+    _result = objNull;
+    if (isServer and hasInterface) then
+    {
+      _result = time > (_timeToDelete * 60);
+    } else {
+      _result = (serverTime - _timeServerStarted) > (_timeToDelete * 60);
+    };
+    if (time < 1) then
+    {
+      _result = false;
+    };
+    _result;
+  },{
+    params["_options", "_timeToDelete"];
+    {
+      if (not simulationEnabled (_x select 0 select 0)) then
+      {
+        {
+          _attachedObjects = attachedObjects _x;
+          {
+            deleteVehicle _x;
+          } forEach _attachedObjects;
+          hideObjectGlobal _x;
+        } forEach (_x select 0);
+      } else {
+        {
+          [_x, false] remoteExec ["lockInventory", 0, true];
+          [_x, true] remoteExec ["allowDamage", _x, false];
+        } forEach (_x select 0);
+      };
+    } forEach _options;
+  }, [_options, _timeToDelete]] call CBA_fnc_waitUntilAndExecute;
 } forEach _modules;

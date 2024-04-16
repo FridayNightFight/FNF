@@ -387,6 +387,15 @@ class CfgVehicles
         typeName = "STRING";
 				defaultValue = "";
       };
+      class TimeToBeDeleted: Edit
+      {
+        property = "fnf_timeVicsAreDeleted";
+        expression = "_this setVariable ['fnf_timeVicsAreDeleted',_value, true];";
+        displayName = "Time until Vics are Deleted";
+        tooltip = "How long in minutes util the left over vics are deleted";
+        typeName = "NUMBER";
+				defaultValue = "15";
+      };
     };
 	};
   class fnf_module_objective: Module_F {};
