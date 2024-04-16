@@ -51,6 +51,7 @@ _objectsToAddToDiary = [];
         //if not a side object its hopefully an object to show in the breifing assets
         //TODO: check if object is a vehicle and should be shown or if its just a random object
         _objectsToDisplay pushBack _x;
+
       };
     };
   } forEach _syncedObjects;
@@ -323,71 +324,143 @@ _assetString = {
   _desc = getText(_thisCfg >> "descriptionShort");
   _pic = [_thisCfg >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
 
-  _string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
+  _string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/>";
 
   _totalSeats = [_objType, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
   _crewSeats = [_objType, false] call BIS_fnc_crewCount; // Number of crew seats only
   _canFloat = (_thisCfg >> "canFloat") call BIS_fnc_getCfgDataBool;
-
-  _string = _string + "  Capacity: " + str(_totalSeats) + "<br/>";
-  _string = _string + "  Crew: " + str(_crewSeats) + "<br/>";
-  _string = _string + "  Can it float: " + str(_canFloat) + "<br/><br/>";
+  if (_totalSeats isNotEqualTo 0) then
+  {
+    _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
+    _string = _string + "  Capacity: " + str(_totalSeats) + "<br/>";
+    _string = _string + "  Crew: " + str(_crewSeats) + "<br/>";
+    _string = _string + "  Can it float: " + str(_canFloat) + "<br/><br/>";
+  };
 
   _allTurrets = allTurrets _objectToBaseOffOf;
-  _turretNameAndPaths = [[[-1], "Driver"]];
+
+  if (_allTurrets isNotEqualTo []) then
   {
-    _currentConfig = (_thisCfg);
+    _turretNameAndPaths = [[[-1], "Driver"]];
     {
-      _currentConfig = (_currentConfig >> "Turrets") select _x;
-    } forEach _x;
-    _name = getText(_currentConfig >> "gunnerName");
-    _turretNameAndPaths pushBack [_x, _name];
-  } forEach _allTurrets;
+      _currentConfig = (_thisCfg);
+      {
+        _currentConfig = (_currentConfig >> "Turrets") select _x;
+      } forEach _x;
+      _name = getText(_currentConfig >> "gunnerName");
+      _turretNameAndPaths pushBack [_x, _name];
+    } forEach _allTurrets;
 
-  _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
-  _cfgMagazineWells = configFile >> "CfgMagazineWells";
-
-  {
-    _turretPath = _x select 0;
-    _currentTurretWeaponTurrets = _objectToBaseOffOf weaponsTurret _turretPath;
-    _magNames = _objectToBaseOffOf magazinesTurret [_turretPath, false];
-    _magNamesAndAmounts = [];
-
+    _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
+    _cfgMagazineWells = configFile >> "CfgMagazineWells";
 
     {
-      _mag = _x;
-      _index = _magNamesAndAmounts findIf {_x select 0 isEqualTo _mag;};
+      _turretPath = _x select 0;
+      _currentTurretWeaponTurrets = _objectToBaseOffOf weaponsTurret _turretPath;
+      _magNames = _objectToBaseOffOf magazinesTurret [_turretPath, false];
+      _magNamesAndAmounts = [];
+
+
+      {
+        _mag = _x;
+        _index = _magNamesAndAmounts findIf {_x select 0 isEqualTo _mag;};
+        if (_index isNotEqualTo -1) then
+        {
+          (_magNamesAndAmounts select _index) set [1, (_magNamesAndAmounts select _index select 1) + 1];
+        } else {
+          _magNamesAndAmounts pushBack [_x, 1];
+        };
+      } forEach _magNames;
+
+
+
+      if (count _currentTurretWeaponTurrets isNotEqualTo 0) then
+      {
+        _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>";
+        {
+          _weaponConfig = [_x] call CBA_fnc_getItemConfig;
+          _string = _string + "  " + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>";
+          _possibleMagazines = [_weaponConfig] call CBA_fnc_compatibleMagazines;
+
+          {
+            _magName = _x select 0;
+            _amount = _x select 1;
+            if (_magName in _possibleMagazines) then{
+              _magConfig = [_magName] call CBA_fnc_getItemConfig;
+              _string = _string + "    " + ([_magConfig] call BIS_fnc_displayName) + " ( " + str(_amount) + "x " + str(_objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]) + " Rounds )" + "<br/>";
+            };
+          } forEach _magNamesAndAmounts;
+
+          _string = _string + "<br/>";
+        } forEach _currentTurretWeaponTurrets;
+      };
+    } forEach _turretNameAndPaths;
+  };
+
+  _items = itemCargo _x;
+  _magazines = magazineCargo _x;
+  _weapons = weaponCargo _x;
+  _backpacks = backpackCargo _x;
+  _cargo = _items;
+  _cargo append _magazines;
+  _cargo append _weapons;
+  _cargo append _backpacks;
+
+  if (_cargo isNotEqualTo []) then
+  {
+    //["",0]
+    _shortenedCargo = [];
+    {
+      _itemToFind = _x;
+      _index = _shortenedCargo findif {_x select 1 isEqualTo _itemToFind};
       if (_index isNotEqualTo -1) then
       {
-        (_magNamesAndAmounts select _index) set [1, (_magNamesAndAmounts select _index select 1) + 1];
+        (_shortenedCargo select _index) set [0, (_shortenedCargo select _index select 0) + 1]
       } else {
-        _magNamesAndAmounts pushBack [_x, 1];
+        _shortenedCargo pushBack [1, _x];
       };
-    } forEach _magNames;
+    } forEach _cargo;
 
+    _shortenedCargo sort true;
 
-
-    if (count _currentTurretWeaponTurrets isNotEqualTo 0) then
+    _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Inventory</font><br/>";
+    _justBreaked = false;
     {
-      _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>";
+      _justBreaked = false;
+      _displayName = getText (configFile >> "CfgMagazines" >> (_x select 1) >> "displayName");
+      _tempPic = getText (configFile >> "CfgMagazines" >> (_x select 1) >> "picture");
+      if (_tempPic isEqualTo "") then
       {
-        _weaponConfig = [_x] call CBA_fnc_getItemConfig;
-        _string = _string + "  " + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>";
-        _possibleMagazines = [_weaponConfig] call CBA_fnc_compatibleMagazines;
-
+        _displayName = getText (configFile >> "CfgWeapons" >> (_x select 1) >> "displayName");
+        _tempPic = getText (configFile >> "CfgWeapons" >> (_x select 1) >> "picture");
+        if (_tempPic isEqualTo "") then
         {
-          _magName = _x select 0;
-          _amount = _x select 1;
-          if (_magName in _possibleMagazines) then{
-            _magConfig = [_magName] call CBA_fnc_getItemConfig;
-            _string = _string + "    " + ([_magConfig] call BIS_fnc_displayName) + " ( " + str(_amount) + "x " + str(_objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]) + " Rounds )" + "<br/>";
+          _displayName = getText (configFile >> "CfgVehicles" >> (_x select 1) >> "displayName");
+          _tempPic = getText (configFile >> "CfgVehicles" >> (_x select 1) >> "picture");
+          if (_tempPic isEqualTo "") then
+          {
+            _displayName = getText (configFile >> "CfgAmmo" >> (_x select 1) >> "displayName");
+            _tempPic = getText (configFile >> "CfgAmmo" >> (_x select 1) >> "picture");
           };
-        } forEach _magNamesAndAmounts;
+        };
+      };
 
+      _string = _string + "<font size='32'>[</font>" + str(_x select 0) + "x<img src='" + _tempPic + "' width='32' height='32' title='" + _displayName + "' /><font size='32'>]</font>";
+
+      if (((_forEachIndex + 1) % 5) isEqualTo 0) then
+      {
         _string = _string + "<br/>";
-      } forEach _currentTurretWeaponTurrets;
+        _justBreaked = true;
+      };
+    } forEach _shortenedCargo;
+    if (_justBreaked) then
+    {
+      _string = _string + "<br/>";
+    } else {
+      _string = _string + "<br/><br/>";
     };
-  } forEach _turretNameAndPaths;
+  };
+
   _string;
 };
 
