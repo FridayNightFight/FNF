@@ -100,4 +100,28 @@ if (isClass (configFile >> "CfgPatches" >> "OCAP")) then
   };
 };
 
-[_winningEnding, true] remoteExecCall ["BIS_fnc_endMission"];
+_mvpScores = [];
+{
+  _scores = getPlayerScores _x;
+  _name = name _x;
+  _mvpScores pushBack [_scores select 0, _name];
+} forEach allPlayers;
+
+_mvpScores sort false;
+
+//Done to ensure always 3 people for leaderboard
+_mvpScores pushBack [0, "N/A"];
+_mvpScores pushBack [0, "N/A"];
+_mvpScores pushBack [0, "N/A"];
+
+_string = "<t align='center' size='1.4' color='#FFFFFF'>MVP Scores:</t><t align='center'><br/><br/>1st: " + (_mvpScores select 0 select 1) + " - " + str(_mvpScores select 0 select 0) + " Kills<br/>2nd: " + (_mvpScores select 1 select 1) + " - " + str(_mvpScores select 1 select 0) + " Kills<br/>3rd: " + (_mvpScores select 2 select 1) + " - " + str(_mvpScores select 2 select 0) + " Kills</t>";
+
+["<t align='center' size='2' color='#FFFFFF'>GAME ENDED</t><t align='center' size='1.5'><br/><br/>" + _winningOCAP + "</t>", "info", 22] remoteExec ["FNF_ClientSide_fnc_notificationSystem", 0, false];
+
+[{
+  [_this, "info", 19] remoteExec ["FNF_ClientSide_fnc_notificationSystem", 0, false];
+}, _string, 3] call CBA_fnc_waitAndExecute;
+
+[{
+  [_this, true] remoteExecCall ["BIS_fnc_endMission"];
+}, _winningEnding, 13] call CBA_fnc_waitAndExecute;
