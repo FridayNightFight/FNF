@@ -12,7 +12,7 @@
 		None
 */
 
-params["_assetModules", "_kitInfoModules", "_initModule"];
+params["_assetModules", "_kitInfoModules", "_initModule", "_assetSelectorModules"];
 
 _bluforPresent = false;
 _opforPresent = false;
@@ -77,6 +77,59 @@ _objectsToAddToDiary = [];
     } forEach _objectsToDisplay;
   };
 } forEach _assetModules;
+
+_selectorsToAddToDiary = [];
+
+{
+  _syncedObjects = synchronizedObjects _x;
+  _selectorOptions = [];
+
+  _moduleSide = sideEmpty;
+
+  {
+    _objectType = typeOf _x;
+    switch (_objectType) do
+    {
+      case "SideBLUFOR_F":
+      {
+        _moduleSide = west;
+      };
+      case "SideOPFOR_F":
+      {
+        _moduleSide = east;
+      };
+      case "SideResistance_F":
+      {
+        _moduleSide = independent;
+      };
+      case "fnf_module_selectorOption":
+      {
+        _selectorOptions pushBack _x;
+      };
+      default {};
+    };
+  } forEach _syncedObjects;
+  _optionAssetPucks = [];
+
+  {
+    _syncedObjectsOption = synchronizedObjects _x;
+    _optionAssets = [];
+    {
+      _objectType = typeOf _x;
+      if (_objectType isEqualTo "fnf_module_selectorAssetHost") then
+      {
+        continue;
+      };
+      _optionAssets pushBack _x;
+    } forEach _syncedObjectsOption;
+    _optionAssetPucks pushBack _optionAssets;
+  } forEach _selectorOptions;
+
+  _selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
+
+  //sel Name, options[[optionAmounts],[],[]]
+  _selectorsToAddToDiary pushBack [_moduleSide, _selectorName, _optionAssetPucks];
+} forEach _assetSelectorModules;
 
 _loadoutCreation = {
   params["_side", "_kitInfoModules"];
@@ -260,8 +313,86 @@ _loadoutCreation = {
   };
 };
 
+_assetString = {
+  //amount, object type, object itself
+  params["_objectToBaseOffOf"];
+  _objType = typeOf _objectToBaseOffOf;
+
+  _thisCfg = _objType call CBA_fnc_getObjectConfig;
+  _dispName = [_thisCfg] call BIS_fnc_displayName;
+  _desc = getText(_thisCfg >> "descriptionShort");
+  _pic = [_thisCfg >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+
+  _string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
+
+  _totalSeats = [_objType, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
+  _crewSeats = [_objType, false] call BIS_fnc_crewCount; // Number of crew seats only
+  _canFloat = (_thisCfg >> "canFloat") call BIS_fnc_getCfgDataBool;
+
+  _string = _string + "  Capacity: " + str(_totalSeats) + "<br/>";
+  _string = _string + "  Crew: " + str(_crewSeats) + "<br/>";
+  _string = _string + "  Can it float: " + str(_canFloat) + "<br/><br/>";
+
+  _allTurrets = allTurrets _objectToBaseOffOf;
+  _turretNameAndPaths = [[[-1], "Driver"]];
+  {
+    _currentConfig = (_thisCfg);
+    {
+      _currentConfig = (_currentConfig >> "Turrets") select _x;
+    } forEach _x;
+    _name = getText(_currentConfig >> "gunnerName");
+    _turretNameAndPaths pushBack [_x, _name];
+  } forEach _allTurrets;
+
+  _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
+  _cfgMagazineWells = configFile >> "CfgMagazineWells";
+
+  {
+    _turretPath = _x select 0;
+    _currentTurretWeaponTurrets = _objectToBaseOffOf weaponsTurret _turretPath;
+    _magNames = _objectToBaseOffOf magazinesTurret [_turretPath, false];
+    _magNamesAndAmounts = [];
+
+
+    {
+      _mag = _x;
+      _index = _magNamesAndAmounts findIf {_x select 0 isEqualTo _mag;};
+      if (_index isNotEqualTo -1) then
+      {
+        (_magNamesAndAmounts select _index) set [1, (_magNamesAndAmounts select _index select 1) + 1];
+      } else {
+        _magNamesAndAmounts pushBack [_x, 1];
+      };
+    } forEach _magNames;
+
+
+
+    if (count _currentTurretWeaponTurrets isNotEqualTo 0) then
+    {
+      _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>";
+      {
+        _weaponConfig = [_x] call CBA_fnc_getItemConfig;
+        _string = _string + "  " + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>";
+        _possibleMagazines = [_weaponConfig] call CBA_fnc_compatibleMagazines;
+
+        {
+          _magName = _x select 0;
+          _amount = _x select 1;
+          if (_magName in _possibleMagazines) then{
+            _magConfig = [_magName] call CBA_fnc_getItemConfig;
+            _string = _string + "    " + ([_magConfig] call BIS_fnc_displayName) + " ( " + str(_amount) + "x " + str(_objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]) + " Rounds )" + "<br/>";
+          };
+        } forEach _magNamesAndAmounts;
+
+        _string = _string + "<br/>";
+      } forEach _currentTurretWeaponTurrets;
+    };
+  } forEach _turretNameAndPaths;
+  _string;
+};
+
 _assetCreation = {
-  params["_side","_objectsToAdd","_index"];
+  params["_side","_objectsToAdd","_index","_assetString"];
   _itemsToAdd = _objectsToAdd select _index select 1;
 
   _compactedObjects = [];
@@ -286,77 +417,10 @@ _assetCreation = {
   } forEach _itemsToAdd;
 
   {
+    _string = [_x select 2] call _assetString;
+    fnf_test = _string;
     _thisCfg = (_x select 1) call CBA_fnc_getObjectConfig;
-    _objectToBaseOffOf = _x select 2;
     _dispName = [_thisCfg] call BIS_fnc_displayName;
-    _desc = getText(_thisCfg >> "descriptionShort");
-    _pic = [_thisCfg >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
-
-    _string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
-
-    _totalSeats = [_x select 1, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
-    _crewSeats = [_x select 1, false] call BIS_fnc_crewCount; // Number of crew seats only
-    _canFloat = (_thisCfg >> "canFloat") call BIS_fnc_getCfgDataBool;
-
-    _string = _string + "  Capacity: " + str(_totalSeats) + "<br/>";
-    _string = _string + "  Crew: " + str(_crewSeats) + "<br/>";
-    _string = _string + "  Can it float: " + str(_canFloat) + "<br/><br/>";
-
-    _allTurrets = allTurrets _objectToBaseOffOf;
-    _turretNameAndPaths = [[[-1], "Driver"]];
-    {
-      _currentConfig = (_thisCfg);
-      {
-        _currentConfig = (_currentConfig >> "Turrets") select _x;
-      } forEach _x;
-      _name = getText(_currentConfig >> "gunnerName");
-      _turretNameAndPaths pushBack [_x, _name];
-    } forEach _allTurrets;
-
-    _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
-    _cfgMagazineWells = configFile >> "CfgMagazineWells";
-
-    {
-      _turretPath = _x select 0;
-      _currentTurretWeaponTurrets = _objectToBaseOffOf weaponsTurret _turretPath;
-      _magNames = _objectToBaseOffOf magazinesTurret [_turretPath, false];
-      _magNamesAndAmounts = [];
-
-
-      {
-        _mag = _x;
-        _index = _magNamesAndAmounts findIf {_x select 0 isEqualTo _mag;};
-        if (_index isNotEqualTo -1) then
-        {
-          (_magNamesAndAmounts select _index) set [1, (_magNamesAndAmounts select _index select 1) + 1];
-        } else {
-          _magNamesAndAmounts pushBack [_x, 1];
-        };
-      } forEach _magNames;
-
-
-
-      if (count _currentTurretWeaponTurrets isNotEqualTo 0) then
-      {
-        _string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>";
-        {
-          _weaponConfig = [_x] call CBA_fnc_getItemConfig;
-          _string = _string + "  " + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>";
-          _possibleMagazines = [_weaponConfig] call CBA_fnc_compatibleMagazines;
-
-          {
-            _magName = _x select 0;
-            _amount = _x select 1;
-            if (_magName in _possibleMagazines) then{
-              _magConfig = [_magName] call CBA_fnc_getItemConfig;
-              _string = _string + "    " + ([_magConfig] call BIS_fnc_displayName) + " ( " + str(_amount) + "x " + str(_objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]) + " Rounds )" + "<br/>";
-            };
-          } forEach _magNamesAndAmounts;
-
-          _string = _string + "<br/>";
-        } forEach _currentTurretWeaponTurrets;
-      };
-    } forEach _turretNameAndPaths;
 
     switch (_side) do {
       case west:
@@ -376,6 +440,81 @@ _assetCreation = {
   } forEach _compactedObjects;
 };
 
+_selectorCreation = {
+  params["_selectors", "_side", "_assetString"];
+  _selectorsToUse = _selectors select {(_x select 0) isEqualTo _side};
+  {
+    _x params ["_side", "_selectorName", "_optionAssetPucks"];
+    _optionAssetPucksAndStrings = [];
+    //[[[],""],[]]
+
+    {
+      _tempString = "";
+      {
+        _string = [_x] call _assetString;
+        _tempString = _tempString + _string;
+      } forEach _x;
+      _optionAssetPucksAndStrings pushBack [_x, _tempString];
+    } forEach _optionAssetPucks;
+
+    _diaryEntry = "";
+    _subject = "";
+
+    switch (_side) do {
+      case west:
+      {
+        _diaryEntry = player createDiaryRecord ["blufor", ["Selector: " + _selectorName,""], taskNull, "", True];
+        _subject = "blufor";
+      };
+      case east:
+      {
+        _diaryEntry = player createDiaryRecord ["opfor", ["Selector: " + _selectorName,""], taskNull, "", True];
+        _subject = "opfor";
+      };
+      case independent:
+      {
+        _diaryEntry = player createDiaryRecord ["indfor", ["Selector: " + _selectorName,""], taskNull, "", True];
+        _subject = "indfor";
+      };
+      default { };
+    };
+
+    if (playerSide isEqualTo _side or playerSide isEqualTo sideLogic) then
+    {
+      [{
+        (_this select 0) params ["_diaryEntry", "_subject", "_optionAssetPucksAndStrings", "_selectorName"];
+        _optionNumber = 0;
+        _optionText = "";
+        {
+          if (simulationEnabled (_x select 0 select 0)) then
+          {
+            _optionNumber = _forEachIndex + 1;
+            _optionText = (_x select 1);
+          };
+        } forEach _optionAssetPucksAndStrings;
+
+        _finalString = "<font size='25' shadow='1' color='#FFFFFF' face='PuristaBold'>Selection: Option " + str(_optionNumber) + "</font><br/>" + _optionText + "<font size='25' shadow='1' color='#FFFFFF' face='PuristaBold'>Other Options:</font><br/>";
+
+        {
+          if ((_forEachIndex + 1) isEqualTo _optionNumber) then
+          {
+            continue;
+          };
+          _finalString = _finalString + "<font size='22' shadow='1' color='#FFFFFF' face='PuristaBold'>Option " + str(_forEachIndex + 1) + ":</font><br/>" + (_x select 1);
+        } forEach _optionAssetPucksAndStrings;
+        player setDiaryRecordText [[_subject,_diaryEntry],["Selector: " + _selectorName,_finalString,""]];
+      },1,[_diaryEntry, _subject, _optionAssetPucksAndStrings, _selectorName]] call CBA_fnc_addPerFrameHandler;
+    } else {
+      //create entry and leave it
+      _finalString = "<font size='25' shadow='1' color='#FFFFFF' face='PuristaBold'>Unknown Selection</font><br/>";
+      {
+        _finalString = _finalString + "<font size='22' shadow='1' color='#FFFFFF' face='PuristaBold'>Option " + str(_forEachIndex + 1) + ":</font><br/>" + (_x select 1);
+      } forEach _optionAssetPucksAndStrings;
+      player setDiaryRecordText [[_subject,_diaryEntry],["Selector: " + _selectorName,_finalString,""]];
+    };
+  } forEach _selectorsToUse;
+};
+
 if (playableSlotsNumber blufor > 0) then
 {
   _objectsToAdd = -1;
@@ -389,15 +528,17 @@ if (playableSlotsNumber blufor > 0) then
   if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
-    [west, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
+    [west, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
+    [_selectorsToAddToDiary, west, _assetString] call _selectorCreation;
     [{blufor countSide (call BIS_fnc_listPlayers) > ((playersNumber blufor) / 2)},{
       [west, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
     [{blufor countSide (call BIS_fnc_listPlayers) > ((playersNumber blufor) / 2)},{
       player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
+      [(_this select 2), west, (_this select 3)] call (_this select 4);
       [west, (_this select 1)] call (_this select 0);
-    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
+    }, [_loadoutCreation, _kitInfoModules, _selectorsToAddToDiary, _assetString, _selectorCreation]] call CBA_fnc_waitUntilAndExecute
   };
 };
 
@@ -414,15 +555,17 @@ if (playableSlotsNumber opfor > 0) then
   if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
-    [east, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
+    [east, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
+    [_selectorsToAddToDiary, east, _assetString] call _selectorCreation;
     [{east countSide (call BIS_fnc_listPlayers) > ((playersNumber opfor) / 2)},{
       [east, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
     [{east countSide (call BIS_fnc_listPlayers) > ((playersNumber opfor) / 2)},{
       player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
+      [(_this select 2), east, (_this select 3)] call (_this select 4);
       [east, (_this select 1)] call (_this select 0);
-    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
+    }, [_loadoutCreation, _kitInfoModules, _selectorsToAddToDiary, _assetString, _selectorCreation]] call CBA_fnc_waitUntilAndExecute
   };
 };
 
@@ -439,15 +582,17 @@ if (playableSlotsNumber independent > 0) then
   if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
-    [independent, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
+    [independent, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
+    [_selectorsToAddToDiary, independent, _assetString] call _selectorCreation;
     [{independent countSide (call BIS_fnc_listPlayers) > ((playersNumber independent) / 2)},{
       [independent, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
   } else {
     [{independent countSide (call BIS_fnc_listPlayers) > ((playersNumber independent) / 2)},{
       player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
+      [(_this select 2), independent, (_this select 3)] call (_this select 4);
       [independent, (_this select 1)] call (_this select 0);
-    }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
+    }, [_loadoutCreation, _kitInfoModules, _selectorsToAddToDiary, _assetString, _selectorCreation]] call CBA_fnc_waitUntilAndExecute
   };
 };
 

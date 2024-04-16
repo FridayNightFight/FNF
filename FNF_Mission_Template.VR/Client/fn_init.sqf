@@ -41,11 +41,6 @@ call FNF_ClientSide_fnc_initZones;
 //init ORBAT
 call FNF_ClientSide_fnc_initOrbat;
 
-//init breifing
-_kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
-_breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
-[_breifingModules, _kitInfoModules, _initModule] call FNF_ClientSide_fnc_initBreifing;
-
 //setup fortify options
 [_initModule] call FNF_ClientSide_fnc_initFortify;
 
@@ -104,11 +99,16 @@ if (count _assetSelectorModules isNotEqualTo 0) then
   [_assetSelectorModules] call FNF_ClientSide_fnc_initAssetSelectors;
 };
 
+//init breifing
+_kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
+_breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
+[_breifingModules, _kitInfoModules, _initModule, _assetSelectorModules] call FNF_ClientSide_fnc_initBreifing;
+
 //start gps icons
 call FNF_ClientSide_fnc_initGPSUnitMarkers;
 
 //add zues ace options
-[] call FNF_ClientSide_fnc_zuesAceOptions;
+call FNF_ClientSide_fnc_zuesAceOptions;
 
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
