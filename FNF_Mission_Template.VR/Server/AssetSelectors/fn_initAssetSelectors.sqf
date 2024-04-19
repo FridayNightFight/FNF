@@ -37,7 +37,7 @@ fnf_assetSelectorSelections = [];
         {
           _toAdd pushBack _x;
           [_x, true] remoteExec ["lockInventory", 0, true];
-          _x allowDamage false;
+          [_x, false] remoteExec ["allowDamage", 0, true];
         };
       } forEach _optionSyncedObjects;
       _options pushBack [_toAdd, _x, _default];
@@ -88,7 +88,7 @@ fnf_assetSelectorSelections = [];
       } else {
         {
           [_x, false] remoteExec ["lockInventory", 0, true];
-          [_x, true] remoteExec ["allowDamage", _x, false];
+          [_x, true] remoteExec ["allowDamage", 0, true];
         } forEach (_x select 0);
       };
     } forEach _options;

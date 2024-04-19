@@ -241,6 +241,7 @@ class CfgFunctions
       class handleGroupIds {};
       class handleJIPSyncing {};
       class handleVehicleInventory {};
+      class handleVicInvincibility {};
     };
     class sequentialHandeler
     {

@@ -321,6 +321,18 @@ class CfgVehicles
     category = "fnf_standardCategory";
     displayName = "HK Breifing Assets";
     scope = 2;
+    class Attributes: AttributesBase
+    {
+      class TimeToBeVincible: Edit
+      {
+        property = "fnf_timeToBeVincible";
+        expression = "_this setVariable ['fnf_timeToBeVincible',_value, true];";
+        displayName = "Time until connected vics are vincible";
+        tooltip = "How long in minutes until the vics are vincible";
+        typeName = "NUMBER";
+				defaultValue = "15";
+      };
+    };
 	};
   class fnf_module_kitInformation: Module_F
 	{
