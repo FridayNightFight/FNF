@@ -123,48 +123,39 @@ _objConfirmList ctrlCommit 0;
 
 //get objectives to put on list
 _modules = call FNF_ClientSide_fnc_findFNFModules;
-_objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
+_objModules = [_modules, "assassinObj"] call FNF_ClientSide_fnc_findSpecificModules;
 _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 
 {
-  _moduleType = typeOf _x;
-  switch (_moduleType) do
+  _syncedObjects = synchronizedObjects _x;
+
+  //find the target thats supposed to be killed or protected
+  _playerObject = objNull;
   {
-    case "fnf_module_assassinObj":
+    if (isPlayer _x) then
     {
-      if (_x getVariable ["fnf_objComplete", false]) then
-      {
-        continue;
-      };
+      _playerObject = _x;
+    };
+  } forEach _syncedObjects;
 
-      _syncedObjects = synchronizedObjects _x;
+  _status = "Null";
+  _targetName = _x getVariable ["fnf_targetName", "Unknown Name"];
 
-      //find the target thats supposed to be killed or protected
-      _playerObject = objNull;
-      {
-        if (isPlayer _x) then
-        {
-          _playerObject = _x;
-        };
-      } forEach _syncedObjects;
-
-      _status = "Null";
-      _targetName = _x getVariable ["fnf_targetName", "Unknown Name"];
-
-      if (not isNull _playerObject) then
-      {
-        _status = "DEAD";
-        _targetName = name _playerObject;
-        if (alive _playerObject) then
-        {
-          _status = "Alive";
-        };
-      };
-      _objectiveType = _x getVariable ["fnf_objectiveType", "FAILED"];
-      _objTempIndex = _objConfirmList lbAdd ("Assassin Obj " + _objectiveType + " - Status: " + _status + " Target: " + _targetName);
-      _playerList lbSetValue [_objTempIndex, _forEachIndex];
+  if (not isNull _playerObject) then
+  {
+    _status = "DEAD";
+    _targetName = name _playerObject;
+    if (alive _playerObject) then
+    {
+      _status = "Alive";
     };
   };
+  if (_x getVariable ["fnf_objComplete", false]) then
+  {
+    _status = "COMPLETED";
+  };
+  _objectiveType = _x getVariable ["fnf_objectiveType", "FAILED"];
+  _objTempIndex = _objConfirmList lbAdd ("Assassin Obj " + _objectiveType + " - Status: " + _status + " Target: " + _targetName);
 } forEach _objModules;
 
 _objConfirmButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10015 ];
@@ -410,20 +401,11 @@ _objConfirmButton ctrlAddEventHandler[ "ButtonClick", {
 
 	_objConfirmList = ctrlParent _objConfirmButton displayCtrl 10014;
   _selectedIndex = lbCurSel _objConfirmList;
-	_selectedData = _objConfirmList lbValue _selectedIndex;
 
   _modules = call FNF_ClientSide_fnc_findFNFModules;
-  _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
+  _objModules = [_modules, "assassinObj"] call FNF_ClientSide_fnc_findSpecificModules;
   _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 
-  _selectedObjModule = (_objModules select _selectedData);
-  _moduleType = typeOf _selectedObjModule;
-
-  switch (_moduleType) do
-  {
-    case "fnf_module_assassinObj":
-    {
-      _selectedObjModule setVariable ["fnf_objComplete", true, true];
-    };
-  };
+  _selectedObjModule = (_objModules select _selectedIndex);
+  _selectedObjModule setVariable ["fnf_objComplete", true, true];
 }];
