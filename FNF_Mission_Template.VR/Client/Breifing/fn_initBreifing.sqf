@@ -260,49 +260,33 @@ _loadoutCreation = {
   };
 };
 
-_assetCreation = {
-  params["_side","_objectsToAdd","_index"];
-  _itemsToAdd = _objectsToAdd select _index select 1;
+_assetString = {
+  //amount, object type, object itself
+  params["_objectToBaseOffOf"];
+  _objType = typeOf _objectToBaseOffOf;
 
-  _compactedObjects = [];
+  _thisCfg = _objType call CBA_fnc_getObjectConfig;
+  _dispName = [_thisCfg] call BIS_fnc_displayName;
+  _desc = getText(_thisCfg >> "descriptionShort");
+  _pic = [_thisCfg >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
+
+  _string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/>";
+
+  _totalSeats = [_objType, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
+  _crewSeats = [_objType, false] call BIS_fnc_crewCount; // Number of crew seats only
+  _canFloat = (_thisCfg >> "canFloat") call BIS_fnc_getCfgDataBool;
+  if (_totalSeats isNotEqualTo 0) then
   {
-    _objectType = typeOf _x;
-    _alreadyAdded = -1;
-    {
-      if (_x select 1 isEqualTo _objectType) then
-      {
-        _alreadyAdded = _forEachIndex;
-        break;
-      };
-    } forEach _compactedObjects;
-
-    if (_alreadyAdded isEqualTo -1) then
-    {
-      _compactedObjects pushBack [1, _objectType, _x];
-    } else {
-      _currentAmount = _compactedObjects select _alreadyAdded select 0;
-      _compactedObjects select _alreadyAdded set [0, _currentAmount + 1];
-    };
-  } forEach _itemsToAdd;
-
-  {
-    _thisCfg = (_x select 1) call CBA_fnc_getObjectConfig;
-    _objectToBaseOffOf = _x select 2;
-    _dispName = [_thisCfg] call BIS_fnc_displayName;
-    _desc = getText(_thisCfg >> "descriptionShort");
-    _pic = [_thisCfg >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
-
-    _string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
-
-    _totalSeats = [_x select 1, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
-    _crewSeats = [_x select 1, false] call BIS_fnc_crewCount; // Number of crew seats only
-    _canFloat = (_thisCfg >> "canFloat") call BIS_fnc_getCfgDataBool;
-
+    _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
     _string = _string + "  Capacity: " + str(_totalSeats) + "<br/>";
     _string = _string + "  Crew: " + str(_crewSeats) + "<br/>";
     _string = _string + "  Can it float: " + str(_canFloat) + "<br/><br/>";
+  };
 
-    _allTurrets = allTurrets _objectToBaseOffOf;
+  _allTurrets = allTurrets _objectToBaseOffOf;
+
+  if (_allTurrets isNotEqualTo []) then
+  {
     _turretNameAndPaths = [[[-1], "Driver"]];
     {
       _currentConfig = (_thisCfg);
@@ -357,6 +341,104 @@ _assetCreation = {
         } forEach _currentTurretWeaponTurrets;
       };
     } forEach _turretNameAndPaths;
+  };
+
+  _items = itemCargo _x;
+  _magazines = magazineCargo _x;
+  _weapons = weaponCargo _x;
+  _backpacks = backpackCargo _x;
+  _cargo = _items;
+  _cargo append _magazines;
+  _cargo append _weapons;
+  _cargo append _backpacks;
+
+  if (_cargo isNotEqualTo []) then
+  {
+    //["",0]
+    _shortenedCargo = [];
+    {
+      _itemToFind = _x;
+      _index = _shortenedCargo findif {_x select 1 isEqualTo _itemToFind};
+      if (_index isNotEqualTo -1) then
+      {
+        (_shortenedCargo select _index) set [0, (_shortenedCargo select _index select 0) + 1]
+      } else {
+        _shortenedCargo pushBack [1, _x];
+      };
+    } forEach _cargo;
+
+    _shortenedCargo sort true;
+
+    _string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Inventory</font><br/>";
+    _justBreaked = false;
+    {
+      _justBreaked = false;
+      _displayName = getText (configFile >> "CfgMagazines" >> (_x select 1) >> "displayName");
+      _tempPic = getText (configFile >> "CfgMagazines" >> (_x select 1) >> "picture");
+      if (_tempPic isEqualTo "") then
+      {
+        _displayName = getText (configFile >> "CfgWeapons" >> (_x select 1) >> "displayName");
+        _tempPic = getText (configFile >> "CfgWeapons" >> (_x select 1) >> "picture");
+        if (_tempPic isEqualTo "") then
+        {
+          _displayName = getText (configFile >> "CfgVehicles" >> (_x select 1) >> "displayName");
+          _tempPic = getText (configFile >> "CfgVehicles" >> (_x select 1) >> "picture");
+          if (_tempPic isEqualTo "") then
+          {
+            _displayName = getText (configFile >> "CfgAmmo" >> (_x select 1) >> "displayName");
+            _tempPic = getText (configFile >> "CfgAmmo" >> (_x select 1) >> "picture");
+          };
+        };
+      };
+
+      _string = _string + "<font size='32'>[</font>" + str(_x select 0) + "x<img src='" + _tempPic + "' width='32' height='32' title='" + _displayName + "' /><font size='32'>]</font>";
+
+      if (((_forEachIndex + 1) % 5) isEqualTo 0) then
+      {
+        _string = _string + "<br/>";
+        _justBreaked = true;
+      };
+    } forEach _shortenedCargo;
+    if (_justBreaked) then
+    {
+      _string = _string + "<br/>";
+    } else {
+      _string = _string + "<br/><br/>";
+    };
+  };
+
+  _string;
+};
+
+_assetCreation = {
+  params["_side","_objectsToAdd","_index","_assetString"];
+  _itemsToAdd = _objectsToAdd select _index select 1;
+
+  _compactedObjects = [];
+  {
+    _objectType = typeOf _x;
+    _alreadyAdded = -1;
+    {
+      if (_x select 1 isEqualTo _objectType) then
+      {
+        _alreadyAdded = _forEachIndex;
+        break;
+      };
+    } forEach _compactedObjects;
+
+    if (_alreadyAdded isEqualTo -1) then
+    {
+      _compactedObjects pushBack [1, _objectType, _x];
+    } else {
+      _currentAmount = _compactedObjects select _alreadyAdded select 0;
+      _compactedObjects select _alreadyAdded set [0, _currentAmount + 1];
+    };
+  } forEach _itemsToAdd;
+
+  {
+    _string = [_x select 2] call _assetString;
+    _thisCfg = (_x select 1) call CBA_fnc_getObjectConfig;
+    _dispName = [_thisCfg] call BIS_fnc_displayName;
 
     switch (_side) do {
       case west:
@@ -389,7 +471,7 @@ if (playableSlotsNumber blufor > 0) then
   if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
-    [west, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
+    [west, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
     [{blufor countSide (call BIS_fnc_listPlayers) > ((playersNumber blufor) / 2)},{
       [west, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
@@ -414,7 +496,7 @@ if (playableSlotsNumber opfor > 0) then
   if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
-    [east, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
+    [east, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
     [{east countSide (call BIS_fnc_listPlayers) > ((playersNumber opfor) / 2)},{
       [east, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
@@ -439,7 +521,7 @@ if (playableSlotsNumber independent > 0) then
   if (_objectsToAdd isNotEqualTo -1) then
   {
     player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
-    [independent, _objectsToAddToDiary, _objectsToAdd] call _assetCreation;
+    [independent, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
     [{independent countSide (call BIS_fnc_listPlayers) > ((playersNumber independent) / 2)},{
       [independent, (_this select 1)] call (_this select 0);
     }, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
