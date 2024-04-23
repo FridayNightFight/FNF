@@ -491,7 +491,6 @@ _assetCreation = {
 
   {
     _string = [_x select 2] call _assetString;
-    fnf_test = _string;
     _thisCfg = (_x select 1) call CBA_fnc_getObjectConfig;
     _dispName = [_thisCfg] call BIS_fnc_displayName;
 
