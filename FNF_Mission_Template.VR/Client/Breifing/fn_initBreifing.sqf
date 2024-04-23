@@ -343,14 +343,19 @@ _assetString = {
     } forEach _turretNameAndPaths;
   };
 
-  _items = itemCargo _x;
-  _magazines = magazineCargo _x;
-  _weapons = weaponCargo _x;
-  _backpacks = backpackCargo _x;
+  _items = itemCargo _objectToBaseOffOf;
+  _magazines = magazineCargo _objectToBaseOffOf;
+  _weapons = weaponCargo _objectToBaseOffOf;
+  _backpacks = backpackCargo _objectToBaseOffOf;
   _cargo = _items;
   _cargo append _magazines;
   _cargo append _weapons;
   _cargo append _backpacks;
+
+  if (_objectToBaseOffOf getVariable ["fnf_clearInventory", true]) then
+  {
+    _cargo = [];
+  };
 
   if (_cargo isNotEqualTo []) then
   {
