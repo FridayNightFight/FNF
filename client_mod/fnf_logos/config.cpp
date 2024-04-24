@@ -89,7 +89,7 @@ class RscDisplayMain: RscStandardDisplay {
 			colorActive[] = {0.051,0.325,0.9,0.75};
 			style = 0x2;
 			text = "EARLY SERVER";
-			onButtonClick="connectToServer ['51.89.64.149', 2302, ''];";
+			onButtonClick="connectToServer ['198.244.179.185', 2302, ''];";
 		};
 
 		class FnfServerLate: RscButton {
