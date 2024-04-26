@@ -20,11 +20,8 @@ _actionGoToLastReport = [
     if (count _records isEqualTo 0) exitWith {};
     _newestRecord = _records select 0;
     _text = _newestRecord select 2;
-    systemChat _text;
     _splitString = [_text, "</font><br/><marker name='AdminReportMrk_", true] call BIS_fnc_splitString;
-    systemChat str(_splitString);
     _text = _splitString select 1;
-    systemChat _text;
     _splitString = [_text, "'>Go to position of report</marker><br/><br/>MESSAGE:</font><br/><font face='RobotoCondensed'>", true] call BIS_fnc_splitString;
     _marker = "AdminReportMrk_" + (_splitString select 0);
     [
