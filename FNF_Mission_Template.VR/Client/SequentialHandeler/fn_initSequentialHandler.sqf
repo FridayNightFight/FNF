@@ -41,7 +41,7 @@ fnf_seqeuntialObjectiveItemsToCheck = [];
 
     _singleObjType = "";
     {
-      (fnf_seqeuntialObjectiveItemsToCheck select _x) params ["_objModule", "_forPlayer", "_seqPlanModule", "_modulesThatMustBeComplete", "_objKnown"];
+      (fnf_seqeuntialObjectiveItemsToCheck select (_x - _forEachIndex)) params ["_objModule", "_forPlayer", "_seqPlanModule", "_modulesThatMustBeComplete", "_objKnown"];
       if (_objKnown) then
       {
         _knownObjRevealed = _knownObjRevealed + 1;

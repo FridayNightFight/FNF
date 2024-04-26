@@ -37,7 +37,7 @@ fnf_seqeuntialObjectiveItemsToCheckServer = [];
   if (count _indexsComplete isNotEqualTo 0) then
   {
     {
-      (fnf_seqeuntialObjectiveItemsToCheckServer select _x) params ["_objModule", "_side", "_seqPlanModule", "_modulesThatMustBeComplete"];
+      (fnf_seqeuntialObjectiveItemsToCheckServer select (_x - _forEachIndex)) params ["_objModule", "_side", "_seqPlanModule", "_modulesThatMustBeComplete"];
 
       _seqPlanModule setVariable ["fnf_sequentialObjCompleted", true, false];
 

@@ -204,7 +204,7 @@ if (_newOwner isNotEqualTo _currentOwner) then
   _objective setVariable ["fnf_sector_owner", _newOwner, true];
 };
 
-if (_newTime isEqualTo _timeToCapture) exitWith
+if (_newTime >= _timeToCapture) exitWith
 {
   _objective setVariable ["fnf_sector_percentage", 1, true];
   _objective setVariable ["fnf_objComplete", true, true];
