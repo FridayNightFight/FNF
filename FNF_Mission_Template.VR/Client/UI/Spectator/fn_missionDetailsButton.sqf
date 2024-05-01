@@ -41,7 +41,7 @@ _moduleno = 1;
 _buttons = [];
 _objectiveno = 1;
 _activeside = sideEmpty;
- 
+
 {
 	switch (_moduleno) do {
 		case 1: {button1mod = _x};
@@ -51,6 +51,7 @@ _activeside = sideEmpty;
 		case 5: {button5mod = _x};
 		case 6: {button6mod = _x};
 		case 7: {button7mod = _x};
+    case 8: {button8mod = _x};
 		};
 
  
@@ -85,7 +86,7 @@ _activeside = sideEmpty;
 
     } forEach _syncedObjects;	
 
-_buttons pushback [_moduleno, _buttonpos, _buttonname, _buttoncolour];
+_buttons pushback [_moduleno, _buttonpos, _buttonname, _buttoncolour, 0, 0];
 
 
 _buttonpos = _buttonpos + 0.05;
@@ -93,53 +94,73 @@ _moduleno = _moduleno + 1;
 
 } forEach _kitInfoModules;
 
-{   
 
-	If ((_x select 2) == _activeside) then
-	{
-			switch (_moduleno) do {
-			case 1: {button1mod = _x};
-			case 2: {button2mod = _x};
-			case 3: {button3mod = _x};
-			case 4: {button4mod = _x};
-			case 5: {button5mod = _x};
-			case 6: {button6mod = _x};
-			case 7: {button7mod = _x};
-			};
-			
-			_buttonname = "";
-			_buttoncolour = [0.5, 0.5, 0.5, 0.9];
+{   
 		
-			switch (_x select 1) do {
-				case "DESTROY":
-				{
-				_buttonname = "DESTROY";
-				};
-				case "CAPTURESECTOR":
-				{
-				_buttonname = "SECTOR";
-				};
-				case "TERMINAL":
-				{
-				_buttonname = "TERMINAL";
-				};
-				case "ASSASSIN":
-				{
-				_buttonname = "ASSASSIN";
-				};
-				};
-			
-		_buttonname = "OBJ." + str(_objectiveno);
-		_buttons pushback [_moduleno, _buttonpos, _buttonname, _buttoncolour];
+		_syncedObjects = synchronizedObjects _x;
+    _buttonname = "";
+    _buttoncolour = [0.5, 0.5, 0.5, 0.9];
+    _useThis = False;
+    _objectType = typeOf _x;
+    _buttonname = "Unknown";
+
+    switch (_objectType) do {
+          case "fnf_module_sectorCaptureObj": {_buttonname  = "  SECTOR"};
+          case "fnf_module_assassinObj": {_buttonname = "      VIP"};
+          case "fnf_module_terminalObj": {_buttonname = " TERMINAL"};
+          case "fnf_module_destroyObj": {_buttonname = " DESTROY"};
+		};
+    
+
+    If (_objectType == "fnf_module_sectorCaptureObj" ||_objectType == "fnf_module_assassinObj") then {
+      switch (_moduleno) do {
+          case 1: {button1mod = _x};
+          case 2: {button2mod = _x};
+          case 3: {button3mod = _x};
+          case 4: {button4mod = _x};
+          case 5: {button5mod = _x};
+          case 6: {button6mod = _x};
+          case 7: {button7mod = _x};
+          case 8: {button8mod = _x};
+          };
+
+    };
+
+    {
+      
+      _objectType = typeOf _x;
+
+      If (_objectType == "SideBLUFOR_F" && _activeside == WEST) then {_useThis = True;};
+      If (_objectType == "SideOPFOR_F" && _activeside == EAST) then {_useThis = True;};
+      If (_objectType != "SideBLUFOR_F" && _objectType != "SideOPFOR_F" && _objectType != "SideResistance_F" && _objectType != "fnf_module_hidingZone") then 
+      {switch (_moduleno) do {
+          case 1: {button1mod = _x};
+          case 2: {button2mod = _x};
+          case 3: {button3mod = _x};
+          case 4: {button4mod = _x};
+          case 5: {button5mod = _x};
+          case 6: {button6mod = _x};
+          case 7: {button7mod = _x};
+          case 8: {button8mod = _x};
+		   };
+      };
+   
+ 
+
+    } forEach _syncedObjects;	
+
+		If (_useThis == True) Then 
+    {	
+    
+		_buttons pushback [_moduleno, _buttonpos, _buttonname, _buttoncolour, _objectiveno];
 
 
 		_buttonpos = _buttonpos + 0.05;
 		_moduleno = _moduleno + 1;
 		_objectiveno = _objectiveno + 1;
-	}
+    };
 
-} forEach fnf_serverObjectives;
-
+} forEach _objModules;
 
 
 
@@ -148,9 +169,10 @@ _moduleno = _x select 0;
 _buttonpos = _x select 1;
 _buttonname = _x select 2;
 _buttoncolour = _x select 3;
+_objectiveno = _x select 4;
 
 [{!isNull findDisplay 60000}, {
-	    params["_moduleno", "_buttonpos", "_buttonname", "_buttoncolour"];
+	    params["_moduleno", "_buttonpos", "_buttonname", "_buttoncolour", "_objectiveno"];
 	    
 		disableSerialization;
 		_display = findDisplay 60000;
@@ -162,33 +184,40 @@ _buttoncolour = _x select 3;
 		0.05 * safeZoneW,
 		0.03 * safeZoneH
 		];
-		_button ctrlSetText _buttonname;
+		
+    if (_objectiveno == 0) then {
+    _button ctrlSetText _buttonname;
+    } else {
+    _button ctrlSetStructuredText parseText format ["<t size='0.6'>%1</t><br></br><t size='0.6'>%2</t>","Objective " + str(_objectiveno), _buttonname];
+    };
 		_button ctrlSetBackgroundColor _buttoncolour;
 		switch (_moduleno) do {
         case 1: {_button ctrlAddEventHandler ["ButtonClick", {				
-			[0, button1mod,-2, [((getposATL button1mod) select 0) + 50, (getposATL button1mod) select 1, ((getposATL button1mod) select 2)+ 50]] call ace_spectator_fnc_setCameraAttributes;
+			[0, button1mod,-2, [((getposATL button1mod) select 0), ((getposATL button1mod) select 1) - random [10, 30, 60], ((getposATL button1mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 		}]};
 		case 2: {_button ctrlAddEventHandler ["ButtonClick", {		
-			[0, button2mod,-2, [((getposATL button2mod) select 0) + 50, (getposATL button2mod) select 1, ((getposATL button2mod) select 2)+ 50]] call ace_spectator_fnc_setCameraAttributes;
+			[0, button2mod,-2, [((getposATL button2mod) select 0), ((getposATL button2mod) select 1) - random [25, 40, 60], ((getposATL button2mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 		}]};
 		case 3: {_button ctrlAddEventHandler ["ButtonClick", {				
-			[0, button3mod,-2, [((getposATL button3mod) select 0) + 50, (getposATL button3mod) select 1, ((getposATL button3mod) select 2)+ 50]] call ace_spectator_fnc_setCameraAttributes;
+			[0, button3mod,-2, [((getposATL button3mod) select 0), ((getposATL button3mod) select 1) - random [25, 40, 60], ((getposATL button3mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 		}]};
 		case 4: {_button ctrlAddEventHandler ["ButtonClick", {		
-			[0, button4mod,-2, [((getposATL button4mod) select 0) + 50, (getposATL button4mod) select 1, ((getposATL button4mod) select 2)+ 50]] call ace_spectator_fnc_setCameraAttributes;
+			[0, button4mod,-2, [((getposATL button4mod) select 0), ((getposATL button4mod) select 1) - random [25, 40, 60], ((getposATL button4mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 		}]};
 		case 5: {_button ctrlAddEventHandler ["ButtonClick", {				
-			[0, button5mod,-2, [((getposATL button5mod) select 0) + 50, (getposATL button5mod) select 1, ((getposATL button5mod) select 2)+ 50]] call ace_spectator_fnc_setCameraAttributes;
+			[0, button5mod,-2, [((getposATL button5mod) select 0), ((getposATL button5mod) select 1) - random [25, 40, 60], ((getposATL button5mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 		}]};
 		case 6: {_button ctrlAddEventHandler ["ButtonClick", {		
-			[0, button6mod,-2, [((getposATL button6mod) select 0) + 50, (getposATL button6mod) select 1, ((getposATL button6mod) select 2)+ 50]] call ace_spectator_fnc_setCameraAttributes;
+			[0, button6mod,-2, [((getposATL button6mod) select 0), ((getposATL button6mod) select 1) - random [25, 40, 60], ((getposATL button6mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 		}]};
 		case 7: {_button ctrlAddEventHandler ["ButtonClick", {				
-			[0, button7mod,-2, [((getposATL button7mod) select 0) + 50, (getposATL button7mod) select 1, ((getposATL button7mod) select 2)+ 50]] call ace_spectator_fnc_setCameraAttributes;
+			[0, button7mod,-2, [((getposATL button7mod) select 0), ((getposATL button7mod) select 1) - random [25, 40, 60], ((getposATL button7mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 		}]};
-
+		case 8: {_button ctrlAddEventHandler ["ButtonClick", {				
+			[0, button8mod,-2, [((getposATL button8mod) select 0), ((getposATL button8mod) select 1) - random [25, 40, 60], ((getposATL button8mod) select 2)+ random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
+		}]};
         
       	};
 		_button ctrlCommit 0;		
-},[_moduleno, _buttonpos, _buttonname, _buttoncolour]] call CBA_fnc_waitUntilAndExecute;
+},[_moduleno, _buttonpos, _buttonname, _buttoncolour, _objectiveno]] call CBA_fnc_waitUntilAndExecute;
 } forEach _buttons;
