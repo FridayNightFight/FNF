@@ -1,7 +1,7 @@
 version=54;
 name="Czech Army [1980]";
-author="Mazz";
-category="EdSubcat_GO_Rocks";
+author="FNF";
+category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
 	"A3_Modules_F",
@@ -22,7 +22,6 @@ requiredAddons[]=
 	"ace_maptools",
 	"ace_medical_treatment",
 	"ace_microdagr",
-	"ace_vehiclelock",
 	"rhsusf_c_weapons",
 	"ace_realisticnames",
 	"UK3CB_Factions_Weapons_SVD_OLD",

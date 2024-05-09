@@ -1,7 +1,7 @@
 version=54;
 name="Italian Army [2020]";
-author="Mazz";
-category="EdSubcat_GO_Rocks";
+author="FNF";
+category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -20,11 +20,11 @@ requiredAddons[]=
 	"ace_maptools",
 	"ace_medical_treatment",
 	"ace_microdagr",
-	"ace_vehiclelock",
 	"UK3CB_Factions_GAF_B",
 	"ace_realisticnames",
 	"rhsusf_c_troops",
 	"ace_huntir",
+	"UK3CB_Factions_Weapons_AR10",
 	"rhssaf_c_weapons",
 	"ace_optics",
 	"rhsusf_sounds",

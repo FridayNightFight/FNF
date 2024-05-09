@@ -1,7 +1,7 @@
 version=54;
 name="French Army [2010]";
-author="Mazz";
-category="EdSubcat_GO_Rocks";
+author="FNF";
+category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
 	"A3_Structures_F_Civ_Constructions",
@@ -9,9 +9,35 @@ requiredAddons[]=
 	"ace_dragging",
 	"fnf_eden",
 	"A3_Characters_F",
+	"UK3CB_Factions_Weapons_FAMAS",
+	"rhsusf_c_weapons",
+	"ace_compat_rhs_usf3",
+	"ace_vector",
 	"A3_Weapons_F",
+	"tfar_handhelds",
+	"UK3CB_Factions_MDF_B",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_microdagr",
+	"ace_realisticnames",
+	"ace_hearing",
+	"ace_huntir",
+	"rhssaf_c_weapons",
+	"ace_optics",
+	"rhsusf_sounds",
 	"ace_explosives",
+	"A3_Weapons_F_Explosives",
+	"ace_grenades",
+	"A3_Weapons_F_Orange",
+	"ace_arsenal",
+	"ace_fortify",
+	"ace_trenches",
 	"A3_Characters_F_Mark",
+	"rhsgref_c_weapons",
+	"ace_tripod",
+	"UK3CB_Factions_Weapons_MP5",
+	"rhsusf_c_troops",
+	"A3_Weapons_F_Items",
 	"A3_Modules_F",
 	"Desert"
 };

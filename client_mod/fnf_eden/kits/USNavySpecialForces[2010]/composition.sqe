@@ -227,7 +227,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230_mrds""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a_mrds""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -259,7 +259,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -902,7 +902,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS MRDS (6x)";
+								value="SU-230A/PVS MRDS (6x)";
 							};
 						};
 					};
@@ -942,7 +942,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS (6x)";
+								value="SU-230A/PVS (6x)";
 							};
 						};
 					};
@@ -1759,7 +1759,7 @@ class items
 						class PositionInfo
 						{
 							position[]={5.4977913,0.0014390945,14.211273};
-							angles[]={-0,3.1415927,0};
+							angles[]={0,3.1415927,0};
 						};
 						side="West";
 						flags=4;

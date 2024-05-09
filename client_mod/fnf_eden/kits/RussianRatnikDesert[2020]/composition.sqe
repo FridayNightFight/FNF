@@ -74,7 +74,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -93,11 +93,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -312,7 +307,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -331,11 +326,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -499,7 +489,7 @@ class items
 						class PositionInfo
 						{
 							position[]={5.0137711,0.0014390945,14.662598};
-							angles[]={-0,3.1415927,0};
+							angles[]={0,3.1415927,0};
 						};
 						side="East";
 						flags=4;
@@ -545,7 +535,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -569,11 +559,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -1099,7 +1084,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1118,11 +1103,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -1331,7 +1311,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1355,11 +1335,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -2077,7 +2052,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2096,11 +2071,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -3679,7 +3649,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -3698,11 +3668,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -5280,7 +5245,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -5299,11 +5264,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -5512,7 +5472,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -5536,11 +5496,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -6258,7 +6213,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6277,11 +6232,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -7860,7 +7810,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -7879,11 +7829,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -9461,7 +9406,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -9480,11 +9425,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -9693,7 +9633,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -9717,11 +9657,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -10439,7 +10374,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10458,11 +10393,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -12041,7 +11971,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -12060,11 +11990,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -13642,7 +13567,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13661,11 +13586,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -13874,7 +13794,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13898,11 +13818,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -14426,7 +14341,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -14445,11 +14360,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -15540,7 +15450,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -15559,11 +15469,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -16654,7 +16559,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -16673,11 +16578,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_east";
 											count=1;
 										};
 									};
@@ -17568,7 +17468,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -17583,11 +17483,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -17779,7 +17674,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -17794,11 +17689,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -17990,7 +17880,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18005,11 +17895,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -18214,7 +18099,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18229,11 +18114,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -18425,7 +18305,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18440,11 +18320,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -18636,7 +18511,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18651,11 +18526,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -18856,7 +18726,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18871,11 +18741,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -19063,7 +18928,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19078,11 +18943,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -19270,7 +19130,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19285,11 +19145,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -19490,7 +19345,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19505,11 +19360,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -19697,7 +19547,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19712,11 +19562,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};
@@ -19904,7 +19749,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19919,11 +19764,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_east";
-											count=1;
 										};
 									};
 								};

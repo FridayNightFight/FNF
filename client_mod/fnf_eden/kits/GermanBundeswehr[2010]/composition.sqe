@@ -207,7 +207,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-12.489506,0,2.1637421};
+					position[]={-12.489523,0,2.1637421};
 				};
 				side="Empty";
 				flags=4;
@@ -227,7 +227,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230_mrds""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a_mrds""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -239,7 +239,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-12.489506,0,0.16374207};
+					position[]={-12.489523,0,0.16374207};
 				};
 				side="Empty";
 				flags=4;
@@ -259,7 +259,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -902,7 +902,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS MRDS (6x)";
+								value="SU-230A/PVS MRDS (6x)";
 							};
 						};
 					};
@@ -942,7 +942,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS (6x)";
+								value="SU-230A/PVS (6x)";
 							};
 						};
 					};
@@ -1355,7 +1355,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1374,11 +1374,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -1582,7 +1577,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1601,11 +1596,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -1759,7 +1749,7 @@ class items
 						class PositionInfo
 						{
 							position[]={5.4990234,0.0014390945,14.212082};
-							angles[]={-0,3.1415927,0};
+							angles[]={0,3.1415927,0};
 						};
 						side="West";
 						flags=4;
@@ -1804,7 +1794,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1828,11 +1818,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -2346,7 +2331,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2365,11 +2350,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -2567,7 +2547,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2591,11 +2571,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -2812,12 +2787,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_hk416d145";
-									firemode="rhs_weap_hk416d145:Single";
+									name="rhs_weap_sr25_ec";
+									firemode="rhs_weap_sr25_ec:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
-										ammoLeft=30;
+										name="rhsusf_20Rnd_762x51_SR25_m118_special_Mag";
+										ammoLeft=20;
 									};
 								};
 								class handgun
@@ -2884,9 +2859,9 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
-											count=10;
-											ammoLeft=30;
+											name="rhsusf_20Rnd_762x51_SR25_m118_special_Mag";
+											count=7;
+											ammoLeft=20;
 										};
 									};
 								};
@@ -2894,6 +2869,16 @@ class items
 								{
 									typeName="B_TacticalPack_blk";
 									isBackpack=1;
+									class MagazineCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="rhsusf_20Rnd_762x51_SR25_m62_Mag";
+											count=4;
+											ammoLeft=20;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -3300,7 +3285,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -3319,11 +3304,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -4856,7 +4836,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -4875,11 +4855,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -6411,7 +6386,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6430,11 +6405,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -6632,7 +6602,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6656,11 +6626,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -6877,12 +6842,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_hk416d145";
-									firemode="rhs_weap_hk416d145:Single";
+									name="rhs_weap_sr25_ec";
+									firemode="rhs_weap_sr25_ec:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
-										ammoLeft=30;
+										name="rhsusf_20Rnd_762x51_SR25_m118_special_Mag";
+										ammoLeft=20;
 									};
 								};
 								class handgun
@@ -6949,9 +6914,9 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
-											count=10;
-											ammoLeft=30;
+											name="rhsusf_20Rnd_762x51_SR25_m118_special_Mag";
+											count=7;
+											ammoLeft=20;
 										};
 									};
 								};
@@ -6959,6 +6924,16 @@ class items
 								{
 									typeName="B_TacticalPack_blk";
 									isBackpack=1;
+									class MagazineCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="rhsusf_20Rnd_762x51_SR25_m62_Mag";
+											count=4;
+											ammoLeft=20;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -7365,7 +7340,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -7384,11 +7359,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -8921,7 +8891,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -8940,11 +8910,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -10476,7 +10441,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10495,11 +10460,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -10697,7 +10657,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10721,11 +10681,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -10942,12 +10897,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_hk416d145";
-									firemode="rhs_weap_hk416d145:Single";
+									name="rhs_weap_sr25_ec";
+									firemode="rhs_weap_sr25_ec:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
-										ammoLeft=30;
+										name="rhsusf_20Rnd_762x51_SR25_m118_special_Mag";
+										ammoLeft=20;
 									};
 								};
 								class handgun
@@ -11014,9 +10969,9 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
-											count=10;
-											ammoLeft=30;
+											name="rhsusf_20Rnd_762x51_SR25_m118_special_Mag";
+											count=7;
+											ammoLeft=20;
 										};
 									};
 								};
@@ -11024,6 +10979,16 @@ class items
 								{
 									typeName="B_TacticalPack_blk";
 									isBackpack=1;
+									class MagazineCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="rhsusf_20Rnd_762x51_SR25_m62_Mag";
+											count=4;
+											ammoLeft=20;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -11430,7 +11395,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -11449,11 +11414,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -12986,7 +12946,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13005,11 +12965,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -14541,7 +14496,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -14560,11 +14515,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -14762,7 +14712,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -14786,11 +14736,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -15302,7 +15247,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -15321,11 +15266,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -16403,7 +16343,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -16422,11 +16362,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -17504,7 +17439,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -17523,11 +17458,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -18388,7 +18318,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18403,11 +18333,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -18599,7 +18524,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18614,11 +18539,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -18810,7 +18730,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18825,11 +18745,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19034,7 +18949,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19049,11 +18964,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19245,7 +19155,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19260,11 +19170,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19456,7 +19361,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19471,11 +19376,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19676,7 +19576,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19691,11 +19591,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19883,7 +19778,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19898,11 +19793,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20090,7 +19980,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20105,11 +19995,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20310,7 +20195,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20325,11 +20210,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20517,7 +20397,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20532,11 +20412,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20724,7 +20599,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20739,11 +20614,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};

@@ -227,7 +227,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230_mrds""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a_mrds""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -259,7 +259,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -902,7 +902,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS MRDS (6x)";
+								value="SU-230A/PVS MRDS (6x)";
 							};
 						};
 					};
@@ -942,7 +942,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS (6x)";
+								value="SU-230A/PVS (6x)";
 							};
 						};
 					};
@@ -1322,7 +1322,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -1355,7 +1355,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1374,11 +1374,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -1416,13 +1411,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -1437,7 +1432,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -1559,7 +1554,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -1592,7 +1587,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1611,11 +1606,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -1653,13 +1643,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -1674,7 +1664,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -1779,7 +1769,7 @@ class items
 						class PositionInfo
 						{
 							position[]={5.4977913,0.0014390945,14.211288};
-							angles[]={-0,3.1415927,0};
+							angles[]={0,3.1415927,0};
 						};
 						side="West";
 						flags=4;
@@ -1796,7 +1786,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -1824,7 +1814,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1848,11 +1838,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -1890,13 +1875,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -1911,7 +1896,7 @@ class items
 										items=8;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -2075,7 +2060,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -2149,13 +2134,13 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -2333,7 +2318,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -2366,7 +2351,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2385,11 +2370,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -2427,13 +2407,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -2448,7 +2428,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -2569,7 +2549,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -2597,7 +2577,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2621,11 +2601,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -2663,13 +2638,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -2684,7 +2659,7 @@ class items
 										items=8;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -3049,7 +3024,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -3123,13 +3098,13 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -3307,7 +3282,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -3340,7 +3315,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -3359,11 +3334,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -3401,13 +3371,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -3422,7 +3392,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -3747,7 +3717,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -3819,13 +3789,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -3961,7 +3931,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -4033,13 +4003,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -4164,7 +4134,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -4237,13 +4207,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -4408,7 +4378,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -4480,13 +4450,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -4670,7 +4640,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -4738,13 +4708,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -4759,7 +4729,7 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=12;
 											ammoLeft=30;
 										};
@@ -4873,7 +4843,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -4906,7 +4876,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -4925,11 +4895,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -4967,13 +4932,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -4988,7 +4953,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -5313,7 +5278,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -5385,13 +5350,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -5526,7 +5491,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -5598,13 +5563,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -5729,7 +5694,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -5802,13 +5767,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -5973,7 +5938,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -6045,13 +6010,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -6235,7 +6200,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -6303,13 +6268,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -6324,7 +6289,7 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=12;
 											ammoLeft=30;
 										};
@@ -6438,7 +6403,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -6471,7 +6436,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6490,11 +6455,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -6532,13 +6492,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -6553,7 +6513,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -6674,7 +6634,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -6702,7 +6662,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6726,11 +6686,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -6768,13 +6723,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -6789,7 +6744,7 @@ class items
 										items=8;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -7154,7 +7109,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -7228,13 +7183,13 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -7412,7 +7367,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -7445,7 +7400,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -7464,11 +7419,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -7506,13 +7456,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -7527,7 +7477,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -7852,7 +7802,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -7924,13 +7874,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -8066,7 +8016,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -8138,13 +8088,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -8269,7 +8219,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -8342,13 +8292,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -8513,7 +8463,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -8585,13 +8535,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -8775,7 +8725,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -8843,13 +8793,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -8864,7 +8814,7 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=12;
 											ammoLeft=30;
 										};
@@ -8978,7 +8928,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -9011,7 +8961,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -9030,11 +8980,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -9072,13 +9017,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -9093,7 +9038,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -9418,7 +9363,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -9490,13 +9435,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -9631,7 +9576,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -9703,13 +9648,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -9834,7 +9779,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -9907,13 +9852,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -10078,7 +10023,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -10150,13 +10095,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -10340,7 +10285,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -10408,13 +10353,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -10429,7 +10374,7 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=12;
 											ammoLeft=30;
 										};
@@ -10543,7 +10488,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -10576,7 +10521,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10595,11 +10540,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -10637,13 +10577,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -10658,7 +10598,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -10779,7 +10719,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -10807,7 +10747,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10831,11 +10771,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -10873,13 +10808,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -10894,7 +10829,7 @@ class items
 										items=8;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -11259,7 +11194,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -11333,13 +11268,13 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -11517,7 +11452,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -11550,7 +11485,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -11569,11 +11504,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -11611,13 +11541,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -11632,7 +11562,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -11957,7 +11887,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -12029,13 +11959,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -12171,7 +12101,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -12243,13 +12173,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -12374,7 +12304,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -12447,13 +12377,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -12618,7 +12548,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -12690,13 +12620,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -12880,7 +12810,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -12948,13 +12878,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -12969,7 +12899,7 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=12;
 											ammoLeft=30;
 										};
@@ -13083,7 +13013,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -13116,7 +13046,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13135,11 +13065,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -13177,13 +13102,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -13198,7 +13123,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -13523,7 +13448,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -13595,13 +13520,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -13736,7 +13661,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -13808,13 +13733,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -13939,7 +13864,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -14012,13 +13937,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -14183,7 +14108,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -14255,13 +14180,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -14445,7 +14370,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -14513,13 +14438,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -14534,7 +14459,7 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=12;
 											ammoLeft=30;
 										};
@@ -14648,7 +14573,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -14681,7 +14606,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -14700,11 +14625,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -14742,13 +14662,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -14763,7 +14683,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -14884,7 +14804,7 @@ class items
 									firemode="uk3cb_auga3_gl:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -14912,7 +14832,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -14936,11 +14856,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -14978,13 +14893,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -14999,7 +14914,7 @@ class items
 										items=8;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -15161,7 +15076,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -15235,13 +15150,13 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -15419,7 +15334,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -15452,7 +15367,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -15471,11 +15386,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -15513,13 +15423,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -15534,7 +15444,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -15858,7 +15768,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -15930,13 +15840,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -16289,7 +16199,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -16361,13 +16271,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -16530,7 +16440,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -16563,7 +16473,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -16582,11 +16492,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -16624,13 +16529,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -16645,7 +16550,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -16969,7 +16874,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -17041,13 +16946,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -17400,7 +17305,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -17472,13 +17377,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -17641,7 +17546,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -17674,7 +17579,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -17693,11 +17598,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_indp";
 											count=1;
 										};
 									};
@@ -17735,13 +17635,13 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item5
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=3;
 											ammoLeft=30;
 										};
@@ -17756,7 +17656,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=1;
 											ammoLeft=30;
 										};
@@ -17877,7 +17777,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -17955,13 +17855,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -18096,7 +17996,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -18168,13 +18068,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -18309,7 +18209,7 @@ class items
 									firemode="uk3cb_auga2:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										name="UK3CB_AUG_30Rnd_556x45_Magazine";
 										ammoLeft=30;
 									};
 								};
@@ -18381,13 +18281,13 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855_PMAG_Tracer_Red";
+											name="UK3CB_AUG_30Rnd_556x45_Magazine_YT";
 											count=4;
 											ammoLeft=30;
 										};
@@ -18568,7 +18468,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18583,11 +18483,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -18779,7 +18674,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18794,11 +18689,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -18990,7 +18880,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19005,11 +18895,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -19214,7 +19099,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19229,11 +19114,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -19425,7 +19305,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19440,11 +19320,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -19636,7 +19511,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19651,11 +19526,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -19856,7 +19726,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19871,11 +19741,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -20054,7 +19919,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20069,11 +19934,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -20261,7 +20121,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20276,11 +20136,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -20481,7 +20336,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20496,11 +20351,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -20679,7 +20529,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20694,11 +20544,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};
@@ -20886,7 +20731,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20901,11 +20746,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_indp";
-											count=1;
 										};
 									};
 								};

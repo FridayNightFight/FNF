@@ -277,7 +277,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-12.49073,0,2.1629257};
+					position[]={-12.490749,0,2.162941};
 				};
 				side="Empty";
 				flags=4;
@@ -297,7 +297,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230_mrds""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a_mrds""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -309,7 +309,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-12.49073,0,0.16292572};
+					position[]={-12.490749,0,0.16294098};
 				};
 				side="Empty";
 				flags=4;
@@ -329,7 +329,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230""],[1]],[[],[]]],false]";
+								value="[[[[],[]],[[],[]],[[""rhsusf_acc_su230a_c""],[1]],[[],[]]],false]";
 							};
 						};
 					};
@@ -957,7 +957,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-10.502205,0,2.1612778};
+					position[]={-10.502205,0,2.161293};
 				};
 				id=7982;
 				type="fnf_module_selectorOption";
@@ -972,7 +972,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS MRDS (6x)";
+								value="SU-230A/PVS MRDS (6x)";
 							};
 						};
 					};
@@ -997,7 +997,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-10.502205,0,0.16127777};
+					position[]={-10.502205,0,0.16129303};
 				};
 				id=7983;
 				type="fnf_module_selectorOption";
@@ -1012,7 +1012,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="SU-230/PVS (6x)";
+								value="SU-230A/PVS (6x)";
 							};
 						};
 					};
@@ -1388,8 +1388,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -1425,7 +1425,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1444,11 +1444,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -1625,8 +1620,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -1662,7 +1657,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1681,11 +1676,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -1849,7 +1839,7 @@ class items
 						class PositionInfo
 						{
 							position[]={5.4977951,0.0014390945,14.211266};
-							angles[]={-0,3.1415927,0};
+							angles[]={0,3.1415927,0};
 						};
 						side="West";
 						flags=4;
@@ -1862,8 +1852,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -1894,7 +1884,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1918,11 +1908,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -1981,51 +1966,51 @@ class items
 										items=8;
 										class Item0
 										{
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
+										};
+										class Item1
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=1;
 											ammoLeft=30;
 										};
-										class Item1
+										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item2
+										class Item3
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item4
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item5
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item6
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item7
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
-										};
-										class Item7
-										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
 										};
 									};
 								};
@@ -2141,8 +2126,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -2399,8 +2384,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -2436,7 +2421,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2455,11 +2440,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -2635,8 +2615,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -2667,7 +2647,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2691,11 +2671,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -2754,51 +2729,51 @@ class items
 										items=8;
 										class Item0
 										{
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
+										};
+										class Item1
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=1;
 											ammoLeft=30;
 										};
-										class Item1
+										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item2
+										class Item3
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item4
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item5
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item6
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item7
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
-										};
-										class Item7
-										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
 										};
 									};
 								};
@@ -3121,8 +3096,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -3379,8 +3354,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -3416,7 +3391,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -3435,11 +3410,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -3813,8 +3783,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -4027,8 +3997,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -4230,8 +4200,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -4474,8 +4444,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -4550,21 +4520,21 @@ class items
 										};
 										class Item1
 										{
+											name="rhs_mag_m67";
+											count=2;
+											ammoLeft=1;
+										};
+										class Item2
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
 											count=6;
 											ammoLeft=30;
 										};
-										class Item2
+										class Item3
 										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
-										};
-										class Item3
-										{
-											name="rhs_mag_m67";
-											count=2;
-											ammoLeft=1;
 										};
 									};
 								};
@@ -4736,8 +4706,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -4829,15 +4799,15 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
-											count=12;
-											ammoLeft=30;
-										};
-										class Item1
-										{
 											name="rhsusf_200rnd_556x45_mixed_box";
 											count=2;
 											ammoLeft=200;
+										};
+										class Item1
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
+											count=12;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -4939,8 +4909,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -4976,7 +4946,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -4995,11 +4965,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -5373,8 +5338,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -5586,8 +5551,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -5789,8 +5754,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -6033,8 +5998,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -6109,21 +6074,21 @@ class items
 										};
 										class Item1
 										{
+											name="rhs_mag_m67";
+											count=2;
+											ammoLeft=1;
+										};
+										class Item2
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
 											count=6;
 											ammoLeft=30;
 										};
-										class Item2
+										class Item3
 										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
-										};
-										class Item3
-										{
-											name="rhs_mag_m67";
-											count=2;
-											ammoLeft=1;
 										};
 									};
 								};
@@ -6295,8 +6260,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -6388,15 +6353,15 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
-											count=12;
-											ammoLeft=30;
-										};
-										class Item1
-										{
 											name="rhsusf_200rnd_556x45_mixed_box";
 											count=2;
 											ammoLeft=200;
+										};
+										class Item1
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
+											count=12;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -6498,8 +6463,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -6535,7 +6500,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6554,11 +6519,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -6734,8 +6694,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -6766,7 +6726,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6790,11 +6750,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -6853,51 +6808,51 @@ class items
 										items=8;
 										class Item0
 										{
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
+										};
+										class Item1
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=1;
 											ammoLeft=30;
 										};
-										class Item1
+										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item2
+										class Item3
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item4
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item5
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item6
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item7
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
-										};
-										class Item7
-										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
 										};
 									};
 								};
@@ -7220,8 +7175,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -7478,8 +7433,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -7515,7 +7470,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -7534,11 +7489,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -7912,8 +7862,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -8126,8 +8076,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -8329,8 +8279,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -8573,8 +8523,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -8649,21 +8599,21 @@ class items
 										};
 										class Item1
 										{
+											name="rhs_mag_m67";
+											count=2;
+											ammoLeft=1;
+										};
+										class Item2
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
 											count=6;
 											ammoLeft=30;
 										};
-										class Item2
+										class Item3
 										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
-										};
-										class Item3
-										{
-											name="rhs_mag_m67";
-											count=2;
-											ammoLeft=1;
 										};
 									};
 								};
@@ -8835,8 +8785,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -8928,15 +8878,15 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
-											count=12;
-											ammoLeft=30;
-										};
-										class Item1
-										{
 											name="rhsusf_200rnd_556x45_mixed_box";
 											count=2;
 											ammoLeft=200;
+										};
+										class Item1
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
+											count=12;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -9038,8 +8988,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -9075,7 +9025,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -9094,11 +9044,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -9472,8 +9417,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -9685,8 +9630,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -9888,8 +9833,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -10132,8 +10077,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -10208,21 +10153,21 @@ class items
 										};
 										class Item1
 										{
+											name="rhs_mag_m67";
+											count=2;
+											ammoLeft=1;
+										};
+										class Item2
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
 											count=6;
 											ammoLeft=30;
 										};
-										class Item2
+										class Item3
 										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
-										};
-										class Item3
-										{
-											name="rhs_mag_m67";
-											count=2;
-											ammoLeft=1;
 										};
 									};
 								};
@@ -10394,8 +10339,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -10487,15 +10432,15 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
-											count=12;
-											ammoLeft=30;
-										};
-										class Item1
-										{
 											name="rhsusf_200rnd_556x45_mixed_box";
 											count=2;
 											ammoLeft=200;
+										};
+										class Item1
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
+											count=12;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -10597,8 +10542,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -10634,7 +10579,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10653,11 +10598,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -10833,8 +10773,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -10865,7 +10805,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10889,11 +10829,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -10952,51 +10887,51 @@ class items
 										items=8;
 										class Item0
 										{
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
+										};
+										class Item1
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=1;
 											ammoLeft=30;
 										};
-										class Item1
+										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item2
+										class Item3
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item4
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item5
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item6
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item7
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
-										};
-										class Item7
-										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
 										};
 									};
 								};
@@ -11319,8 +11254,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -11577,8 +11512,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -11614,7 +11549,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -11633,11 +11568,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -12011,8 +11941,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -12225,8 +12155,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -12428,8 +12358,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -12672,8 +12602,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -12748,21 +12678,21 @@ class items
 										};
 										class Item1
 										{
+											name="rhs_mag_m67";
+											count=2;
+											ammoLeft=1;
+										};
+										class Item2
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
 											count=6;
 											ammoLeft=30;
 										};
-										class Item2
+										class Item3
 										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
-										};
-										class Item3
-										{
-											name="rhs_mag_m67";
-											count=2;
-											ammoLeft=1;
 										};
 									};
 								};
@@ -12934,8 +12864,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -13027,15 +12957,15 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
-											count=12;
-											ammoLeft=30;
-										};
-										class Item1
-										{
 											name="rhsusf_200rnd_556x45_mixed_box";
 											count=2;
 											ammoLeft=200;
+										};
+										class Item1
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
+											count=12;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -13137,8 +13067,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -13174,7 +13104,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13193,11 +13123,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -13571,8 +13496,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -13784,8 +13709,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -13987,8 +13912,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -14231,8 +14156,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -14307,21 +14232,21 @@ class items
 										};
 										class Item1
 										{
+											name="rhs_mag_m67";
+											count=2;
+											ammoLeft=1;
+										};
+										class Item2
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
 											count=6;
 											ammoLeft=30;
 										};
-										class Item2
+										class Item3
 										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
-										};
-										class Item3
-										{
-											name="rhs_mag_m67";
-											count=2;
-											ammoLeft=1;
 										};
 									};
 								};
@@ -14493,8 +14418,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -14586,15 +14511,15 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
-											count=12;
-											ammoLeft=30;
-										};
-										class Item1
-										{
 											name="rhsusf_200rnd_556x45_mixed_box";
 											count=2;
 											ammoLeft=200;
+										};
+										class Item1
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
+											count=12;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -14696,8 +14621,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -14733,7 +14658,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -14752,11 +14677,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -14932,8 +14852,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle_M203";
-									firemode="rhs_weap_m16a4_carryhandle_M203:Single";
+									name="UK3CB_M16A3_UGL";
+									firemode="UK3CB_M16A3_UGL:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -14964,7 +14884,7 @@ class items
 									isBackpack=0;
 									class ItemCargo
 									{
-										items=6;
+										items=5;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -14988,11 +14908,6 @@ class items
 										class Item4
 										{
 											name="ACE_HuntIR_monitor";
-											count=1;
-										};
-										class Item5
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -15051,51 +14966,51 @@ class items
 										items=8;
 										class Item0
 										{
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
+										};
+										class Item1
+										{
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=1;
 											ammoLeft=30;
 										};
-										class Item1
+										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item2
+										class Item3
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item4
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item5
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item6
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item7
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
-										};
-										class Item7
-										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
 										};
 									};
 								};
@@ -15209,8 +15124,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -15467,8 +15382,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -15504,7 +15419,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -15523,11 +15438,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -15906,8 +15816,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -16337,8 +16247,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -16578,8 +16488,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -16615,7 +16525,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -16634,11 +16544,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -17017,8 +16922,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -17448,8 +17353,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -17689,8 +17594,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -17726,7 +17631,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -17745,11 +17650,6 @@ class items
 										class Item3
 										{
 											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
-										{
-											name="ACE_key_west";
 											count=1;
 										};
 									};
@@ -17925,8 +17825,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -18144,8 +18044,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -18357,8 +18257,8 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m16a4_carryhandle";
-									firemode="rhs_weap_m16a4_carryhandle:Single";
+									name="UK3CB_M16A3";
+									firemode="UK3CB_M16A3:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_30Rnd_556x45_M855A1_Stanag";
@@ -18620,7 +18520,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18635,11 +18535,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -18831,7 +18726,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -18846,11 +18741,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19042,7 +18932,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19057,11 +18947,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19266,7 +19151,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19281,11 +19166,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19477,7 +19357,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19492,11 +19372,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19688,7 +19563,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19703,11 +19578,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -19908,7 +19778,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -19923,11 +19793,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20106,7 +19971,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20121,11 +19986,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20313,7 +20173,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20328,11 +20188,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20533,7 +20388,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20548,11 +20403,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20731,7 +20581,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20746,11 +20596,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
@@ -20938,7 +20783,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -20953,11 +20798,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_key_west";
-											count=1;
 										};
 									};
 								};
