@@ -31,6 +31,7 @@ _iconNamespace = missionNamespace getVariable ("diwako_dui_main_icon_" + _iconSt
 
     {
       if (not alive _x) then {continue;};
+      if (isObjectHidden _x) then {continue;};
 
       _dir = getDir _x;
 

@@ -1,8 +1,9 @@
 respawn = 3;
-respawnDialog = 0;
-respawnButton = 0;
-respawndelay = 99999;
+respawnDialog = 1;
+respawnButton = 1;
+respawndelay = 10;
 respawnOnStart = -1;
+respawnTemplates[] = { "MenuPosition" };
 
 #include "Description\Functions.hpp"
 #include "Description\Endings.hpp"

@@ -5,6 +5,12 @@ if (not isNil "fnf_playerLoadout") exitWith {};
 //get player loadout and store for future use
 fnf_playerLoadout = getUnitLoadout player;
 
+_lives = profileNamespace getVariable ["fnf_missionToTrack", "NONAME"];
+if (_lives isNotEqualTo missionName) then
+{
+  profileNamespace setVariable ["fnf_livesLeft", 2, false];
+};
+
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 //check if init module is found
@@ -161,7 +167,14 @@ if (not isNil "fnf_objectives") then
 
 //handle if a player dies, put them into spectator
 player addEventHandler ["Killed", {
-  [{call FNF_ClientSide_fnc_startSpectator;}, [], 3] call CBA_fnc_waitAndExecute;
+  _playerLives = profileNamespace getVariable ["fnf_livesLeft", 0];
+  if (_playerLives isEqualTo 0) then
+  {
+    setPlayerRespawnTime 0;
+    [{call FNF_ClientSide_fnc_startSpectator;}, [], 0.1] call CBA_fnc_waitAndExecute;
+  } else {
+    profileNamespace setVariable ["fnf_livesLeft", (_playerLives - 1)];
+  };
 }];
 
 //handle if some one JIP and theres safezones whether they have expired
