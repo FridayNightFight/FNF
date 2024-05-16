@@ -5,10 +5,10 @@ if (not isNil "fnf_playerLoadout") exitWith {};
 //get player loadout and store for future use
 fnf_playerLoadout = getUnitLoadout player;
 
-_lives = profileNamespace getVariable ["fnf_missionToTrack", "NONAME"];
-if (_lives isNotEqualTo missionName) then
+_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID player), -1];
+if (_lives isEqualTo -1) then
 {
-  profileNamespace setVariable ["fnf_livesLeft", 2, false];
+  missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), 2, true];
 };
 
 _modules = call FNF_ClientSide_fnc_findFNFModules;
@@ -167,13 +167,13 @@ if (not isNil "fnf_objectives") then
 
 //handle if a player dies, put them into spectator
 player addEventHandler ["Killed", {
-  _playerLives = profileNamespace getVariable ["fnf_livesLeft", 0];
+  _playerLives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID player), 0];
   if (_playerLives isEqualTo 0) then
   {
     setPlayerRespawnTime 0;
     [{call FNF_ClientSide_fnc_startSpectator;}, [], 0.1] call CBA_fnc_waitAndExecute;
   } else {
-    profileNamespace setVariable ["fnf_livesLeft", (_playerLives - 1)];
+    missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), (_playerLives - 1), true];
   };
 }];
 
