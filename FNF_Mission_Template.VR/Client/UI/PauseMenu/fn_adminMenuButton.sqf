@@ -17,7 +17,7 @@ params ["_display"];
 
 if (not serverCommandAvailable "#kick") exitWith {};
 
-_button = _display ctrlCreate ["RscShortcutButton", 7045];
+_button = _display ctrlCreate ["RscShortcutButton", 7050];
 _button ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX,
 0.1 * safeZoneH + safeZoneY,

@@ -41,34 +41,48 @@ _playerList ctrlCommit 0;
 _sideTempIndex = _playerList lbAdd "===BLUFOR===";
 _playerList lbSetData [_sideTempIndex, "west"];
 {
-	_index = _playerList lbAdd name _x;
+  _lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
   _playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo west});
 _sideTempIndex = _playerList lbAdd "===OPFOR===";
 _playerList lbSetData [_sideTempIndex, "east"];
 {
-	_index = _playerList lbAdd name _x;
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
   _playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo east});
 _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
 _playerList lbSetData [_sideTempIndex, "independent"];
 {
-	_index = _playerList lbAdd name _x;
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
   _playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo independent});
 _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
 _playerList lbSetData [_sideTempIndex, "civilian"];
 {
-	_index = _playerList lbAdd name _x;
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
   _playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo civilian});
 _sideTempIndex = _playerList lbAdd "===LOGIC===";
 _playerList lbSetData [_sideTempIndex, "sideLogic"];
 {
-	_index = _playerList lbAdd name _x;
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
   _playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo sideLogic});
 _playerList lbSetCurSel 0;
+
+_playerLiveSetInput = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlEdit", 10016 ];
+_playerLiveSetInput ctrlSetPosition[ 0.0125, 0.5, 0.28125, 0.05 ];
+_playerLiveSetInput ctrlCommit 0;
+
+_playerLiveSetButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10017 ];
+_playerLiveSetButton ctrlSetPosition[ 0.3125, 0.5, 0.18125, 0.05 ];
+_playerLiveSetButton ctrlCommit 0;
+_playerLiveSetButton ctrlSetText "Set Lives";
 
 _resetAnimButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10003 ];
 _resetAnimButton ctrlSetPosition[ 0.0125, 0.58, 0.2, 0.05 ];
@@ -118,7 +132,7 @@ _playerMessageAllButton ctrlCommit 0;
 _playerMessageAllButton ctrlSetText "Send Message to All Players";
 
 _objConfirmList = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlListbox", 10014 ];
-_objConfirmList ctrlSetPosition[ 0.5125, 0.2, 0.48125, 0.43125 ];
+_objConfirmList ctrlSetPosition[ 0.5125, 0.2, 0.475, 0.51 ];
 _objConfirmList ctrlCommit 0;
 
 //get objectives to put on list
@@ -159,7 +173,7 @@ _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 } forEach _objModules;
 
 _objConfirmButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10015 ];
-_objConfirmButton ctrlSetPosition[ 0.5125, 0.64375, 0.475, 0.05 ];
+_objConfirmButton ctrlSetPosition[ 0.5125, 0.74, 0.475, 0.05 ];
 _objConfirmButton ctrlCommit 0;
 _objConfirmButton ctrlSetText "Confirm Objective Complete";
 
@@ -174,31 +188,36 @@ fnf_adminMenu_searchPFH = [{
     _sideTempIndex = _playerList lbAdd "===BLUFOR===";
     _playerList lbSetData [_sideTempIndex, "west"];
     {
-	    _index = _playerList lbAdd name _x;
+	    _lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	    _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
       _playerList lbSetData [_index, getPlayerUID _x];
     } forEach (allPlayers select {side (group _x) isEqualTo west});
     _sideTempIndex = _playerList lbAdd "===OPFOR===";
     _playerList lbSetData [_sideTempIndex, "east"];
     {
-    	_index = _playerList lbAdd name _x;
+    	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	    _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
       _playerList lbSetData [_index, getPlayerUID _x];
     } forEach (allPlayers select {side (group _x) isEqualTo east});
     _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
     _playerList lbSetData [_sideTempIndex, "independent"];
     {
-    	_index = _playerList lbAdd name _x;
+    	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	    _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
       _playerList lbSetData [_index, getPlayerUID _x];
     } forEach (allPlayers select {side (group _x) isEqualTo independent});
     _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
     _playerList lbSetData [_sideTempIndex, "civilian"];
     {
-    	_index = _playerList lbAdd name _x;
+    	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	    _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
       _playerList lbSetData [_index, getPlayerUID _x];
     } forEach (allPlayers select {side (group _x) isEqualTo civilian});
     _sideTempIndex = _playerList lbAdd "===LOGIC===";
     _playerList lbSetData [_sideTempIndex, "sideLogic"];
     {
-    	_index = _playerList lbAdd name _x;
+    	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	    _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
       _playerList lbSetData [_index, getPlayerUID _x];
     } forEach (allPlayers select {side (group _x) isEqualTo sideLogic});
   };
@@ -206,31 +225,36 @@ fnf_adminMenu_searchPFH = [{
   _sideTempIndex = _playerList lbAdd "===BLUFOR===";
   _playerList lbSetData [_sideTempIndex, "west"];
   {
-	  _index = _playerList lbAdd name _x;
+	  _lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	  _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
     _playerList lbSetData [_index, getPlayerUID _x];
   } forEach (allPlayers select {side (group _x) isEqualTo west} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===OPFOR===";
   _playerList lbSetData [_sideTempIndex, "east"];
   {
-	  _index = _playerList lbAdd name _x;
+	  _lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	  _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
     _playerList lbSetData [_index, getPlayerUID _x];
   } forEach (allPlayers select {side (group _x) isEqualTo east} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
   _playerList lbSetData [_sideTempIndex, "independent"];
   {
-  	_index = _playerList lbAdd name _x;
+  	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	  _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
     _playerList lbSetData [_index, getPlayerUID _x];
   } forEach (allPlayers select {side (group _x) isEqualTo independent} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
   _playerList lbSetData [_sideTempIndex, "civilian"];
   {
-  	_index = _playerList lbAdd name _x;
+  	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	  _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
     _playerList lbSetData [_index, getPlayerUID _x];
   } forEach (allPlayers select {side (group _x) isEqualTo civilian} select {[_searchTerm, name _x] call BIS_fnc_inString});
   _sideTempIndex = _playerList lbAdd "===LOGIC===";
   _playerList lbSetData [_sideTempIndex, "sideLogic"];
   {
-  	_index = _playerList lbAdd name _x;
+  	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), -1];
+	  _index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
     _playerList lbSetData [_index, getPlayerUID _x];
   } forEach (allPlayers select {side (group _x) isEqualTo sideLogic} select {[_searchTerm, name _x] call BIS_fnc_inString});
 
@@ -408,4 +432,23 @@ _objConfirmButton ctrlAddEventHandler[ "ButtonClick", {
 
   _selectedObjModule = (_objModules select _selectedIndex);
   _selectedObjModule setVariable ["fnf_objComplete", true, true];
+}];
+
+_playerLiveSetButton ctrlAddEventHandler[ "ButtonClick", {
+  params[ "_playerLiveSetButton" ];
+
+	_livesInput = ctrlParent _playerLiveSetButton displayCtrl 10016;
+  _livesText = ctrlText _livesInput;
+  _number = _livesText call BIS_fnc_parseNumber;
+  if (_number isEqualTo -1) exitWith {};
+  _number = round (_number);
+
+  _playerList = ctrlParent _playerLiveSetButton displayCtrl 10000;
+	_selectedIndex = lbCurSel _playerList;
+  _selectedData = _playerList lbData _selectedIndex;
+
+  _invalidSelections = ["west","east","independent","civilian","sideLogic"];
+  if (_selectedData in _invalidSelections) exitWith {};
+
+  missionNamespace setVariable [("fnf_livesLeft_" + _selectedData), _number, true];
 }];

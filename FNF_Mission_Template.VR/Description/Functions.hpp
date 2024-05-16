@@ -108,6 +108,7 @@ class CfgFunctions
       class adminGameEndButton {};
       class contactStaffButton {};
       class adminMenuButton {};
+      class livesLeftDisplay {};
     };
     class spectatorUI
     {
