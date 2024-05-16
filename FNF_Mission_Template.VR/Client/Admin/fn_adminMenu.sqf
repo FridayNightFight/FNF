@@ -118,7 +118,7 @@ _playerMessageAllButton ctrlCommit 0;
 _playerMessageAllButton ctrlSetText "Send Message to All Players";
 
 _objConfirmList = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlListbox", 10014 ];
-_objConfirmList ctrlSetPosition[ 0.5125, 0.2, 0.48125, 0.43125 ];
+_objConfirmList ctrlSetPosition[ 0.5125, 0.2, 0.475, 0.51 ];
 _objConfirmList ctrlCommit 0;
 
 //get objectives to put on list
@@ -159,7 +159,7 @@ _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 } forEach _objModules;
 
 _objConfirmButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10015 ];
-_objConfirmButton ctrlSetPosition[ 0.5125, 0.64375, 0.475, 0.05 ];
+_objConfirmButton ctrlSetPosition[ 0.5125, 0.74, 0.475, 0.05 ];
 _objConfirmButton ctrlCommit 0;
 _objConfirmButton ctrlSetText "Confirm Objective Complete";
 
