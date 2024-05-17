@@ -110,15 +110,17 @@ _objNumber = 1;
   if (_objectType isEqualTo "fnf_module_sectorCaptureObj") then
   {
     //set button name
-    _buttonName = "Obj " + str(_objNumber) + ": SECTOR";
+    _buttonName = "Objective " + str(_objNumber) + ": SECTOR";
 
     //check whether the nearest area marker is on the sector, if it is, this is a duplicate and should be skipped
     _zonePrefix = _module getVariable ['fnf_prefix', 'FAILED'];
     _validPoint = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
     _object = nearestObject [_validPoint, 'AreaMarker_01_F'];
-    if (_object distance2D _validPoint > 3) then
-    {
-      continue;
+    if (not isNull _object) then {
+      if (_object distance2D _validPoint < 3) then
+      {
+        continue;
+      };
     };
 
     //if not a duplicate create new area marker and hide it
@@ -138,7 +140,7 @@ _objNumber = 1;
   if (_objectType isEqualTo "fnf_module_destroyObj") then
   {
     //set button name
-    _buttonName = "Obj " + str(_objNumber) + ": DESTROY";
+    _buttonName = "Objective " + str(_objNumber) + ": DESTROY";
 
     //find object to destroy
     _object = objNull;
@@ -183,7 +185,7 @@ _objNumber = 1;
   if (_objectType isEqualTo "fnf_module_terminalObj") then
   {
     //set button name
-    _buttonName = "Obj " + str(_objNumber) + ": TERMINAL";
+    _buttonName = "Objective " + str(_objNumber) + ": TERMINAL";
 
     //find terminal to hack
     //no error checking needs to be done here, if object is not a terminal other errors will catch elsewhere
@@ -229,24 +231,29 @@ _objNumber = 1;
   if (_objectType isEqualTo "fnf_module_assassinObj") then
   {
     //set button name
-    _buttonName = "Obj " + str(_objNumber) + ": ASSASSIN";
+    _buttonName = "Objective " + str(_objNumber) + ": ASSASSIN";
 
     //find assassin target, if target cannot be found, set target as module itself
     _object = objNull;
 
     _syncedObjects = synchronizedObjects _module;
     {
+      _typeOfObject = typeOf _x;
+
       if (isPlayer _x) then
       {
         _object = _x;
         break;
       };
-    } forEach _syncedObjects;
 
-    if (isNull _object) then
-    {
-      _object = _module;
-    };
+      if (_typeOfObject isEqualTo "Logic") then
+      {
+        if (isNull _object) then
+        {
+          _object = _x;
+        };
+      };
+    } forEach _syncedObjects;
 
     //check if obj has already been added, if yes this is a duplicate
     if (_object in _usedObjs) then
@@ -286,7 +293,7 @@ _objNumber = 1;
 	if (isNull _display) exitWith {};
 
   //Master variable to control how many columns to use
-  _columnsPerRow = 6;
+  _columnsPerRow = 8;
 
   //button positions are predefined here, buttons then grab these values at creation
   _buttonPositions = [];
@@ -296,7 +303,7 @@ _objNumber = 1;
   if (_rows isNotEqualTo 0) then {
     for "_i" from 1 to _rows do
     {
-      _h = 0.05 + ((_i - 1) * 0.03);
+      _h = 0.05 + ((_i - 1) * 0.04);
       for "_i" from 1 to _columnsPerRow do
       {
         _buttonPositions pushBack [0.3 + ((_i - 1) * (0.4 / _columnsPerRow)),_h];
@@ -310,7 +317,7 @@ _objNumber = 1;
     _startingNum = 0.3 + ((0.4 - (_columns * (0.4 / _columnsPerRow))) / 2);
     for "_i" from 1 to _columns do
     {
-      _h = 0.05 + (_rows * 0.03);
+      _h = 0.05 + (_rows * 0.04);
       _buttonPositions pushBack [_startingNum + ((_i - 1) * (0.4 / _columnsPerRow)),_h];
     };
   };
@@ -327,10 +334,15 @@ _objNumber = 1;
 		(_buttonPositions select _forEachIndex select 0) * safeZoneW + safeZoneX,
 		(_buttonPositions select _forEachIndex select 1) * safeZoneH + safeZoneY,
 		(0.4 / _columnsPerRow) * safeZoneW,
-		0.03 * safeZoneH
+		0.04 * safeZoneH
 		];
     //attempt to center the text (it never works)
     _button ctrlSetStructuredText (parseText ("<t align='left'>" + _buttonName + "</t>"));
+    _textWidth = (ctrlTextWidth _button) + (2 * 0.008);
+    if (_textWidth > ((0.4 / _columnsPerRow) * safeZoneW)) then
+    {
+      _button ctrlSetStructuredText (parseText ("<t align='left' size='0.75'>" + _buttonName + "</t>"));
+    };
     _button ctrlSetBackgroundColor _buttonColour;
     _button ctrlAddEventHandler ["ButtonClick", _code];
     _button ctrlCommit 0;
