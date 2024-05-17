@@ -13,6 +13,7 @@
 
 disableSerialization;
 
+//Create Mission Details button
 [{!isNull findDisplay 60000}, {
   disableSerialization;
   _display = findDisplay 60000;
@@ -32,14 +33,16 @@ disableSerialization;
   _button ctrlCommit 0;
 }] call CBA_fnc_waitUntilAndExecute;
 
-
+//get all modules for other buttons
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 _kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 
+//sort modules to make them predictable
 _kitInfoModules = [_kitInfoModules] call FNF_ClientSide_fnc_sortByLocation;
 _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 
+//put kit modules first so kit buttons come before objectives
 _modulesComplete = _kitInfoModules + _objModules;
 
 _buttons = [];
@@ -49,11 +52,16 @@ _usedObjs = [];
 _objNumber = 1;
 
 {
+  //setup basic variables
   _module = _x;
   _syncedObjects = synchronizedObjects _x;
   _buttonName = "UNKNOWN";
   _buttonColour = [0.5, 0.5, 0.5, 0.9];
   _objectType = typeOf _module;
+
+  //setup basic code for EH to get the modules and set spectator camera to module selected
+  //data is stored as a splitString to allow easy editing further on
+  //this code is eventually compiled into the EH to be run on button push
   _code = ["_modules = call FNF_ClientSide_fnc_findFNFModules;
   _kitInfoModules = [_modules, 'kitInformation'] call FNF_ClientSide_fnc_findSpecificModules;
   _objModules = [_modules, 'Obj'] call FNF_ClientSide_fnc_findSpecificModules;
@@ -70,8 +78,10 @@ _objNumber = 1;
     [0, _object, -2, [((getposATL _object) select 0), ((getposATL _object) select 1) - random [10, 30, 60], ((getposATL _object) select 2) + random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
   };"];
 
+  //if module is for a kit no code changes need to be done from above
   if (_objectType isEqualTo "fnf_module_kitInformation") then
   {
+    //check which side the module is for, set button name and colour as needed
     {
       _objectType = typeOf _x;
 
@@ -96,22 +106,26 @@ _objNumber = 1;
     } forEach _syncedObjects;
   };
 
+  //if module is a sector
   if (_objectType isEqualTo "fnf_module_sectorCaptureObj") then
   {
+    //set button name
     _buttonName = "Obj " + str(_objNumber) + ": SECTOR";
 
+    //check whether the nearest area marker is on the sector, if it is, this is a duplicate and should be skipped
     _zonePrefix = _module getVariable ['fnf_prefix', 'FAILED'];
     _validPoint = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
     _object = nearestObject [_validPoint, 'AreaMarker_01_F'];
-    if (_object in _usedObjs) then
+    if (_object distance2D _validPoint > 3) then
     {
       continue;
     };
 
+    //if not a duplicate create new area marker and hide it
     _object = 'AreaMarker_01_F' createVehicleLocal _validPoint;
-    _usedObjs pushBack _object;
     _object hideObject true;
 
+    //edit code to find area marker to set camera to
     _code set [3, "
     _zonePrefix = _module getVariable ['fnf_prefix', 'FAILED'];
     _validPoint = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
@@ -120,10 +134,13 @@ _objNumber = 1;
     _objNumber = _objNumber + 1;
   };
 
+  //if module is destroy obj
   if (_objectType isEqualTo "fnf_module_destroyObj") then
   {
+    //set button name
     _buttonName = "Obj " + str(_objNumber) + ": DESTROY";
 
+    //find object to destroy
     _object = objNull;
 
     _syncedObjects = synchronizedObjects _module;
@@ -138,12 +155,14 @@ _objNumber = 1;
       break;
     } forEach _syncedObjects;
 
+    //check if obj has already been added, if yes this is a duplicate
     if (_object in _usedObjs) then
     {
       continue;
     };
     _usedObjs pushBack _object;
 
+    //edit code to look for object attached to module as the object to point camera at
     _code set [3, "
     _syncedObjects = synchronizedObjects _module;
     {
@@ -160,10 +179,14 @@ _objNumber = 1;
     _objNumber = _objNumber + 1;
   };
 
+  //if module is terminal obj
   if (_objectType isEqualTo "fnf_module_terminalObj") then
   {
+    //set button name
     _buttonName = "Obj " + str(_objNumber) + ": TERMINAL";
 
+    //find terminal to hack
+    //no error checking needs to be done here, if object is not a terminal other errors will catch elsewhere
     _object = objNull;
 
     _syncedObjects = synchronizedObjects _module;
@@ -178,12 +201,14 @@ _objNumber = 1;
       break;
     } forEach _syncedObjects;
 
+    //check if obj has already been added, if yes this is a duplicate
     if (_object in _usedObjs) then
     {
       continue;
     };
     _usedObjs pushBack _object;
 
+    //edit code to look for object attached to module as the object to point camera at
     _code set [3, "
     _syncedObjects = synchronizedObjects _module;
     {
@@ -200,10 +225,13 @@ _objNumber = 1;
     _objNumber = _objNumber + 1;
   };
 
+  //if module is assassin obj
   if (_objectType isEqualTo "fnf_module_assassinObj") then
   {
+    //set button name
     _buttonName = "Obj " + str(_objNumber) + ": ASSASSIN";
 
+    //find assassin target, if target cannot be found, set target as module itself
     _object = objNull;
 
     _syncedObjects = synchronizedObjects _module;
@@ -220,12 +248,14 @@ _objNumber = 1;
       _object = _module;
     };
 
+    //check if obj has already been added, if yes this is a duplicate
     if (_object in _usedObjs) then
     {
       continue;
     };
     _usedObjs pushBack _object;
 
+    //edit code to look for player attached to module as the object to point camera at, if no player is found, point camera at module
     _code set [3, "
     _syncedObjects = synchronizedObjects _module;
     {
@@ -246,6 +276,7 @@ _objNumber = 1;
   _buttons pushback [_code, _buttonName, _buttonColour];
 } forEach _modulesComplete;
 
+//wait until spectator display is created
 [{!isNull findDisplay 60000},{
   params ["_buttons"];
 
@@ -254,9 +285,13 @@ _objNumber = 1;
 	_display = findDisplay 60000;
 	if (isNull _display) exitWith {};
 
+  //Master variable to control how many columns to use
   _columnsPerRow = 6;
 
+  //button positions are predefined here, buttons then grab these values at creation
   _buttonPositions = [];
+
+  //check how many rows are completely full, fill button positions with appropriate number of pre-defined positions
   _rows = floor((count _buttons) / _columnsPerRow);
   if (_rows isNotEqualTo 0) then {
     for "_i" from 1 to _rows do
@@ -268,6 +303,8 @@ _objNumber = 1;
       };
     };
   };
+
+  //if there are leftover buttons, center these depending on how many there are
   _columns = (count _buttons) - (_rows * _columnsPerRow);
   if (_columns isNotEqualTo 0) then {
     _startingNum = 0.3 + ((0.4 - (_columns * (0.4 / _columnsPerRow))) / 2);
@@ -280,9 +317,11 @@ _objNumber = 1;
 
   {
     _x params ["_code", "_buttonName", "_buttonColour"];
+    //compile code created earlier
     _code = _code joinString "";
     _code = compile _code;
 
+    //create button and assign relevant values
     _button = _display ctrlCreate ["RscShortcutButton", -1];
 		_button ctrlSetPosition [
 		(_buttonPositions select _forEachIndex select 0) * safeZoneW + safeZoneX,
@@ -290,7 +329,8 @@ _objNumber = 1;
 		(0.4 / _columnsPerRow) * safeZoneW,
 		0.03 * safeZoneH
 		];
-    _button ctrlSetStructuredText (parseText ("<t align='center'>" + _buttonName + "</t>"));
+    //attempt to center the text (it never works)
+    _button ctrlSetStructuredText (parseText ("<t align='left'>" + _buttonName + "</t>"));
     _button ctrlSetBackgroundColor _buttonColour;
     _button ctrlAddEventHandler ["ButtonClick", _code];
     _button ctrlCommit 0;
