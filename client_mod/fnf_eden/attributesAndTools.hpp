@@ -5,7 +5,7 @@
     {
       class fnf_properties
       {
-        displayName = "FNF Properties";
+        displayName = "HK Properties";
         collapsed = 1;
         class Attributes
         {
@@ -64,13 +64,13 @@ class display3DEN
 
         class fnf_mmFolder
 				{
-					text = "FNF Mission Maker Tools...";
+					text = "HK Mission Maker Tools...";
 					items[] = {"fnf_generateLobbyDescription"};
 				};
 
         class fnf_staffFolder
 				{
-					text = "FNF Staff Tools...";
+					text = "HK Staff Tools...";
 					items[] = {"fnf_checkKitsToComposition", "fnf_exportToCompositions", "fnf_importOldFrameworkKits"};
 				};
 
