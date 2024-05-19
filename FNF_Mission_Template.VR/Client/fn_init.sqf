@@ -182,30 +182,3 @@ player addEventHandler ["Respawn", {
   player setUnitLoadout fnf_playerLoadout;
   fnf_selections = [];
 }];
-
-//handle if some one JIP and theres safezones whether they have expired
-if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
-{
-  if (missionNamespace getVariable ["fnf_startTime", 0] isNotEqualTo 0) then
-  {
-    _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
-    if (not _result) then
-    {
-      [true, true, true] call ace_spectator_fnc_setSpectator;
-      player setDamage 1;
-    };
-  } else {
-    [{
-      _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
-      _timeServerStarted isNotEqualTo 0;
-    },{
-      params["_safeZoneModules"];
-      _result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
-      if (not _result) then
-      {
-        [true, true, true] call ace_spectator_fnc_setSpectator;
-        player setDamage 1;
-      };
-    }, [_safeZoneModules]] call CBA_fnc_waitUntilAndExecute;
-  };
-};
