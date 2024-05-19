@@ -42,12 +42,17 @@ fnf_assetSelectorSelections = [];
       } forEach _optionSyncedObjects;
       _options pushBack [_toAdd, _x, _default];
 
-      if (not _default) then
+      _boundingBox = boundingBoxReal [_x, "Geometry"];
+      _height = (_boundingBox select 1 select 2) + 1;
+      if (_default) then
       {
         {
+          _marker = createVehicle ["Sign_Arrow_Large_Green_F", [0,0,0], [], 0, "CAN_COLLIDE"];
+          _marker attachTo [_x, [0,0,_height]];
+        } forEach _toAdd;
+      } else {
+        {
           _x lock 2;
-          _boundingBox = boundingBoxReal [_x, "Geometry"];
-          _height = (_boundingBox select 1 select 2) + 1;
           _marker = createVehicle ["Sign_Arrow_Large_F", [0,0,0], [], 0, "CAN_COLLIDE"];
           _marker attachTo [_x, [0,0,_height]];
           _x enableSimulationGlobal false;
@@ -89,6 +94,10 @@ fnf_assetSelectorSelections = [];
         {
           [_x, false] remoteExec ["lockInventory", 0, true];
           [_x, true] remoteExec ["allowDamage", 0, true];
+          _attachedObjects = attachedObjects _x;
+          {
+            deleteVehicle _x;
+          } forEach _attachedObjects;
         } forEach (_x select 0);
       };
     } forEach _options;

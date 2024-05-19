@@ -49,6 +49,10 @@ _options = fnf_assetSelectorSelections select _selectorIndex select 1;
       } forEach _crew;
       _x setVelocity [0, 0, 0];
       _x lock 2;
+      _attachedObjects = attachedObjects _x;
+      {
+        deleteVehicle _x;
+      } forEach _attachedObjects;
       _boundingBox = boundingBoxReal [_x, "Geometry"];
       _height = (_boundingBox select 1 select 2) + 1;
       _marker = createVehicle ["Sign_Arrow_Large_F", [0,0,0], [], 0, "CAN_COLLIDE"];
@@ -67,4 +71,8 @@ _options select _optionIndex set [2, true];
   {
     deleteVehicle _x;
   } forEach _attachedObjects;
+  _boundingBox = boundingBoxReal [_x, "Geometry"];
+  _height = (_boundingBox select 1 select 2) + 1;
+  _marker = createVehicle ["Sign_Arrow_Large_Green_F", [0,0,0], [], 0, "CAN_COLLIDE"];
+  _marker attachTo [_x, [0,0,_height]];
 } forEach (_options select _optionIndex select 0);
