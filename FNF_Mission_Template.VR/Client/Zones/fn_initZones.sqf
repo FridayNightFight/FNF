@@ -17,6 +17,7 @@ if (not isNil "fnf_zoneList") exitWith {};
 fnf_zoneList = [];
 
 //set up a list of restriction zone groups (if in one, satisfy's condition of all others)
+//_groupName, [], _restrictWeapons, _teleportBack, _restrictHelicopters, _allowSelectors
 fnf_zoneRestrictionGroupsList = [];
 
 //sets up map shading
@@ -46,6 +47,13 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 		} forEach (_x select 1);
 		if (!_restrictionSatisfied) then
 		{
+      if (_x select 5) then
+      {
+        if (fnf_showSelectors) then
+        {
+          fnf_showSelectors = false;
+        };
+      };
 			if (_x select 3) then
 			{
         _anyRestrictionFailedWithTP = true;
@@ -72,6 +80,13 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 				};
 			};
 		} else {
+      if (_x select 5) then
+      {
+        if (!fnf_showSelectors) then
+        {
+          fnf_showSelectors = true;
+        };
+      };
 			if (_x select 2) then
 			{
 				if (!((_x select 0) call FNF_ClientSide_fnc_getRequestWeaponDisable)) then

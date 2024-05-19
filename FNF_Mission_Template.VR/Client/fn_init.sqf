@@ -173,8 +173,14 @@ player addEventHandler ["Killed", {
     setPlayerRespawnTime 0;
     [{call FNF_ClientSide_fnc_startSpectator;}, [], 0.1] call CBA_fnc_waitAndExecute;
   } else {
+    [false, false, false] call ace_spectator_fnc_setSpectator;
     missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), (_playerLives - 1), true];
   };
+}];
+
+player addEventHandler ["Respawn", {
+  player setUnitLoadout fnf_playerLoadout;
+  fnf_selections = [];
 }];
 
 //handle if some one JIP and theres safezones whether they have expired

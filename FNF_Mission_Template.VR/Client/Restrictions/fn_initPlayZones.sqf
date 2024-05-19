@@ -68,7 +68,7 @@ _mainPlayZones = [];
   //check if the playzone group has been created, if not create it
   if (not _playZoneRestrictionGroupSet) then
   {
-    ["playZoneGroup", false, true, false] call FNF_ClientSide_fnc_addRestrictionGroup;
+    ["playZoneGroup", false, true, false, false] call FNF_ClientSide_fnc_addRestrictionGroup;
     _playZoneRestrictionGroupSet = true;
   };
   _shadePlayZone = true;

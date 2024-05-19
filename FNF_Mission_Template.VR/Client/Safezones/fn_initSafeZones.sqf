@@ -25,6 +25,12 @@ _maxTimeZoneIsDeleted = 0;
   _visibleToAllies = _x getVariable ["fnf_visibleToAllies", true];
   _visibleToEnemies = _x getVariable ["fnf_visibleToEnemies", true];
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
+  _timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
+  _switchToNonRestrictive = _x getVariable ["fnf_switchToNonRestrictive", false];
+  if (_x isEqualTo fnf_test_1) then
+  {
+    _switchToNonRestrictive = true;
+  };
 
   if (_zonePrefix isEqualTo "FAILED") then
   {
@@ -66,25 +72,45 @@ _maxTimeZoneIsDeleted = 0;
   //if for the player setup the safe zone
   if (_forPlayer) then
   {
-    //check if the safezone group has been created, if not create it
+    if (_timeZoneIsDeleted > _maxTimeZoneIsDeleted) then
+    {
+      _maxTimeZoneIsDeleted = _timeZoneIsDeleted;
+    };
+
     if (not _safeZoneRestrictionGroupSet) then
     {
-      ["safeZoneGroup", true, false, true] call FNF_ClientSide_fnc_addRestrictionGroup;
+      ["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
+      ["safeZoneSwitchingGroup", true, false, false, true] call FNF_ClientSide_fnc_addRestrictionGroup;
       _safeZoneRestrictionGroupSet = true;
     };
     _result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
     if (_result) then
     {
       ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+      ["safeZoneSwitchingGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+      if (_switchToNonRestrictive) then
+      {
+        [_zonePrefix, _timeZoneIsDeleted, true] call FNF_ClientSide_fnc_startSafeZoneTimer;
+      } else {
+        [_zonePrefix, _timeZoneIsDeleted, false] call FNF_ClientSide_fnc_startSafeZoneTimer;
+      };
     };
+
     continue;
   };
 
   if (_showZone) then
   {
     _result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
-    if (!_result) then
+    if (_result) then
     {
+      if (_switchToNonRestrictive) then
+      {
+        [_zonePrefix, _timeZoneIsDeleted, true] call FNF_ClientSide_fnc_startSafeZoneTimer;
+      } else {
+        [_zonePrefix, _timeZoneIsDeleted, false] call FNF_ClientSide_fnc_startSafeZoneTimer;
+      };
+    } else {
       if (fnf_debug) then
       {
         systemChat "DANGER: Safe zone failed to be initialised, safe zone will NOT function"
@@ -98,13 +124,40 @@ _maxTimeZoneIsDeleted = 0;
 
 } forEach _modules;
 
-//remove all spare safe zones
+//if safe zones have a time limit to them
+if (_maxTimeZoneIsDeleted isNotEqualTo 0) then
 {
-  _zonePrefix = _x;
-  _result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
-  if (not _result) then
+  fnf_timerMessage = "Safe Start Remaining: %1";
+  fnf_timerEndTime = _maxTimeZoneIsDeleted * 60;
+
+  _timeToNotify = (_maxTimeZoneIsDeleted * 60) - 300;
+
+  //if time to notify player of 5 minutes remaining has yet to come
+  if (_timeToNotify > 0) then
   {
-    [_zonePrefix, "", false, false] call FNF_ClientSide_fnc_addZone;
-    [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+    //set timer to notify when time is reached
+    [{
+      params["_timeToNotify"];
+      _timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+      _result = objNull;
+      if (isServer and hasInterface) then
+      {
+        _result = time > _timeToNotify;
+      } else {
+        _result = (serverTime - _timeServerStarted) > _timeToNotify;
+      };
+      if (time < 1) then
+      {
+        _result = false;
+      };
+      _result;
+    },{
+      true call FNF_ClientSide_fnc_showTimerInHUD;
+      ["<t size='1.5' align='center'>Safe Zones Drop in 5 Minutes</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
+    }, _timeToNotify] call CBA_fnc_waitUntilAndExecute;
+
+  } else {
+    //otherwise just keep the timer showing in HUD
+    true call FNF_ClientSide_fnc_showTimerInHUD;
   };
-} forEach _spareSafeZones;
+};
