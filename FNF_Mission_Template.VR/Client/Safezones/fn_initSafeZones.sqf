@@ -27,10 +27,6 @@ _maxTimeZoneIsDeleted = 0;
   _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
   _timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
   _switchToNonRestrictive = _x getVariable ["fnf_switchToNonRestrictive", false];
-  if (_x isEqualTo fnf_test_1) then
-  {
-    _switchToNonRestrictive = true;
-  };
 
   if (_zonePrefix isEqualTo "FAILED") then
   {

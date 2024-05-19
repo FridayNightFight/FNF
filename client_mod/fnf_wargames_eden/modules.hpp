@@ -24,7 +24,6 @@ class CfgVehicles
 	{
     class Attributes: AttributesBase
     {
-      _switchToNonRestrictive = _x getVariable ["fnf_switchToNonRestrictive", false];
       class SwitchToNonRestrictive: Checkbox
       {
         property = "fnf_switchToNonRestrictive";
