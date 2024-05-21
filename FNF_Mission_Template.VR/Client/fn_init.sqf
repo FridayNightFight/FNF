@@ -223,6 +223,14 @@ inGameUISetEventHandler ["Action", "
   _return;
 "];
 
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+  if (not (equipmentDisabled _vehicle select 1)) then
+  {
+    _vehicle disableTIEquipment true;
+  };
+}];
+
 //handle if a player dies, put them into spectator
 player addEventHandler ["Killed", {
   _playerLives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID player), 0];
