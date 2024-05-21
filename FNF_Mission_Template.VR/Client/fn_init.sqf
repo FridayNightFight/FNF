@@ -172,6 +172,57 @@ if (not isNil "fnf_objectives") then
   },1] call CBA_fnc_addPerFrameHandler;
 };
 
+inGameUISetEventHandler ["Action", "
+  params ['_target', '_caller', '_index', '_engineName', '_text', '_priority', '_showWindow', '_hideOnUse', '_shortcut', '_visibleMenu', '_eventName'];
+  _actionList = ['MoveToCommander', 'MoveToDriver', 'MoveToGunner', 'MoveToPilot', 'MoveToTurret', 'GetInCommander', 'GetInDriver', 'GetInGunner', 'GetInPilot', 'GetInTurret'];
+  if (!(_engineName in _actionList)) exitWith {false;};
+  _return = false;
+
+  _ffvSeats = (allTurrets [_target, true] - allTurrets [_target, false]);
+  _ffvSeatFound = false;
+  {
+    _config = [_target, _x] call BIS_fnc_turretConfig;
+    _ffvName = getText (_config >> 'gunnerName');
+    _isGunner = getNumber (_config >> 'primaryGunner');
+    _isCommander = getNumber (_config >> 'primaryObserver');
+
+    if (_isGunner isEqualTo 1 or _isCommander isEqualTo 1) then
+    {
+      continue;
+    };
+
+    if (_ffvName in _text) then
+    {
+      _ffvSeatFound = true;
+      break;
+    };
+  } forEach _ffvSeats;
+
+  if (_ffvSeatFound) exitWith {false;};
+
+  if (_target getVariable ['fnf_golfAsset', false]) then
+  {
+    _return = true;
+    if ('Golf' in (roleDescription player)) then
+    {
+      _return = false;
+    } else {
+      ['<t align=""center"">Cannot operate this vehicle, you must be a golf unit to do this</t>', 'error'] call FNF_ClientSide_fnc_notificationSystem;
+    };
+  };
+  if (_target getVariable ['fnf_hotelAsset', false]) then
+  {
+    _return = true;
+    if ('Hotel' in (roleDescription player)) then
+    {
+      _return = false;
+    } else {
+      ['<t align=""center"">Cannot operate this vehicle, you must be a hotel unit to do this</t>', 'error'] call FNF_ClientSide_fnc_notificationSystem;
+    };
+  };
+  _return;
+"];
+
 //handle if a player dies, put them into spectator
 player addEventHandler ["Killed", {
   _playerLives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID player), 0];
