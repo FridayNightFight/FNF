@@ -231,6 +231,8 @@ player addEventHandler ["GetInMan", {
   };
 }];
 
+call FNF_ClientSide_fnc_initVicRearmReplacement;
+
 //handle if a player dies, put them into spectator
 player addEventHandler ["Killed", {
   _playerLives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID player), 0];

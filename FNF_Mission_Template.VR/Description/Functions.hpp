@@ -229,6 +229,13 @@ class CfgFunctions
       class addSequentialHandle {};
       class initSequentialHandler {};
     }
+    class vehicles
+    {
+      file = "Client\Vehicles";
+      class initVicRearmReplacement {};
+      class addRearmActions {};
+      class rearmVic {};
+    }
 	};
 	class FNF_ServerSide
 	{
@@ -240,6 +247,7 @@ class CfgFunctions
       class syncTimer {};
       class initFortify {};
       class initAdmin {};
+      class rearmVic {};
 		};
     class handles
     {
