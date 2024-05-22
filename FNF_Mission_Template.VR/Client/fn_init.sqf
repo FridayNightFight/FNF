@@ -239,8 +239,8 @@ player addEventHandler ["Killed", {
   if (_playerLives isEqualTo 0) then
   {
     setPlayerRespawnTime 0;
-    [{call FNF_ClientSide_fnc_startSpectator;}, [], 0.1] call CBA_fnc_waitAndExecute;
-    player enableSimulation false;
+    [{call FNF_ClientSide_fnc_startSpectator;}, [], 0.5] call CBA_fnc_waitAndExecute;
+    [{player enableSimulation false;}, [], 1] call CBA_fnc_waitAndExecute;
   } else {
     [false, false, false] call ace_spectator_fnc_setSpectator;
     player enableSimulation true;

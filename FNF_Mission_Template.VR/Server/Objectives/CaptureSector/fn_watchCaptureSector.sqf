@@ -21,7 +21,7 @@ _indiCount = 0;
 
 //get which players are in the zone and what side they are on
 {
-  if (not alive _x) then
+  if (not alive _x or isObjectHidden _x) then
   {
     continue;
   };

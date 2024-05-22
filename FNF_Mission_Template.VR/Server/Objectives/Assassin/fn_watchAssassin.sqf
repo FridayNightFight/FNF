@@ -39,7 +39,7 @@ _playerObject = objNull;
 
 if (not isNull _playerObject) then
 {
-  if (not alive _playerObject) then
+  if (not alive _playerObject or isObjectHidden _playerObject) then
   {
     _name = name _playerObject;
     [[true, _name], FNF_ClientSide_fnc_notifyAdminAssassin] remoteExec ['call', -2];
