@@ -240,8 +240,10 @@ player addEventHandler ["Killed", {
   {
     setPlayerRespawnTime 0;
     [{call FNF_ClientSide_fnc_startSpectator;}, [], 0.1] call CBA_fnc_waitAndExecute;
+    player enableSimulation false;
   } else {
     [false, false, false] call ace_spectator_fnc_setSpectator;
+    player enableSimulation true;
     missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), (_playerLives - 1), true];
   };
 }];
