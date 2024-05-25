@@ -34,9 +34,10 @@ findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
 }] call CBA_fnc_waitUntilAndExecute;
 
 //init breifing
+_assetSelectorModules = [_modules, "selectorAssetHost"] call FNF_ClientSide_fnc_findSpecificModules;
 _kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
-[_breifingModules, _kitInfoModules, _initModule] call FNF_ClientSide_fnc_initBreifing;
+[_breifingModules, _kitInfoModules, _initModule, _assetSelectorModules] call FNF_ClientSide_fnc_initBreifing;
 
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
