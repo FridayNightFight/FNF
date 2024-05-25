@@ -47,13 +47,14 @@ call BIS_fnc_showMissionStatus;
 
 [{!isNil "fnf_objectives"}, {
   {
+    _type = typeOf (_x select 1);
     //if OBJ is one without a physical object then move to next OBJ
-    if (_x select 0 isEqualTo "CAPTURESECTOR") then
+    if (_type isEqualTo "fnf_module_sectorCaptureObj") then
     {
       continue;
     };
 
-    if (_x select 0 isEqualTo "DESTROY") then
+    if (_type isEqualTo "fnf_module_destroyObj") then
     {
       _desc = taskDescription (_x select 3);
       _splitString = (_desc select 1) splitString " ";
@@ -74,7 +75,7 @@ call BIS_fnc_showMissionStatus;
       }, [_marker, (_x select 2)]] call CBA_fnc_waitUntilAndExecute;
     };
 
-    if (_x select 0 isEqualTo "ASSASSIN") then
+    if (_type isEqualTo "fnf_module_assassinObj") then
     {
       _desc = taskDescription (_x select 3);
       _splitString = (_desc select 1) splitString " ";
