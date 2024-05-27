@@ -22,13 +22,14 @@ _tpCounter = 1;
 {
   _syncedObjects = synchronizedObjects _x;
   _timePolesAreDeleted = _x getVariable ["fnf_timePolesAreDeleted", 15];
+  _hideFromOthers = _x getVariable ["fnf_hideFromOthers", true];
   //get side TP poles are wanted for
-  _objSide = sideEmpty;
-
-  _sideCounter = 0;
+  _forPlayer = false;
+  _tpObjects = [];
 
   {
     _objectType = typeOf _x;
+    _objSide = sideUnknown;
     switch (_objectType) do
     {
       case "SideBLUFOR_F":
@@ -45,31 +46,33 @@ _tpCounter = 1;
       };
       default
       {
-        continue;
+        if (_x isEqualTo player) then
+        {
+          _forPlayer = true;
+          continue;
+        };
+        if ((not isPlayer _x) and (not (_objectType isEqualTo "Logic"))) then
+        {
+          _tpObjects pushBack _x;
+        };
       };
     };
-    _sideCounter = _sideCounter + 1;
+
+    if (_objSide isEqualTo playerSide) then
+    {
+      _forPlayer = true;
+    };
   } forEach _syncedObjects;
 
-  if (_sideCounter isEqualTo 0) then
+  if (_hideFromOthers and not _forPlayer) then
   {
-    if (fnf_debug) then
     {
-      systemChat "DANGER: Teleport pole module has no valid side synced to it, teleport poles will NOT function";
-    };
-    continue;
-  };
-  if (_sideCounter > 1) then
-  {
-    if (fnf_debug) then
-    {
-      systemChat "DANGER: Teleport pole module has more than one side synced to it, teleport poles will NOT function";
-    };
-    continue;
+      hideObject _x;
+    } forEach _tpObjects;
   };
 
   //if side is not player side then pass, not our problem
-  if (_objSide isNotEqualTo playerSide) then {continue;};
+  if (not _forPlayer) then {continue;};
 
   //[position, action]
   _positionsAndActions = [];
@@ -78,9 +81,6 @@ _tpCounter = 1;
   _syncedObjects = [_syncedObjects] call FNF_ClientSide_fnc_sortByLocation;
 
   {
-    _objectType = typeOf _x;
-    if (_objectType isEqualTo "SideBLUFOR_F" or _objectType isEqualTo "SideOPFOR_F" or _objectType isEqualTo "SideResistance_F") then {continue;};
-
     _pos = getPos _x;
 
     //statement to tp player
@@ -104,7 +104,7 @@ _tpCounter = 1;
     _tpCounter = _tpCounter + 1;
 
     _positionsAndActions pushBack [_pos, _action, _markerstr];
-  } forEach _syncedObjects;
+  } forEach _tpObjects;
 
   if (count _positionsAndActions isEqualTo 0) then
   {
@@ -124,9 +124,6 @@ _tpCounter = 1;
   };
 
   {
-    _objectType = typeOf _x;
-    if (_objectType isEqualTo "SideBLUFOR_F" or _objectType isEqualTo "SideOPFOR_F" or _objectType isEqualTo "SideResistance_F") then {continue;};
-
     _pos = getPos _x;
     _object = _x;
     _markerstr = "";
@@ -159,13 +156,10 @@ _tpCounter = 1;
       _result;
     },{
       params["_timePolesAreDeleted", "_object", "_markerstr"];
-      if (not isNull _object) then
-      {
-        deleteVehicle _object;
-      };
+      hideObject _object;
       deleteMarkerLocal _markerstr;
     }, [_timePolesAreDeleted, _object, _markerstr]] call CBA_fnc_waitUntilAndExecute;
 
-  } forEach _syncedObjects;
+  } forEach _tpObjects;
 
 } forEach _modules;
