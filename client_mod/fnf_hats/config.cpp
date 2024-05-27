@@ -285,27 +285,7 @@ class cfgWeapons
    };
   };
  };
- class H_HelmetB:
- {
-  class ItemInfo: ItemInfo
-  {
-   class HitpointsProtectionInfo
-   {
-    class Head
-     {
-      hitpointName = "HitHead";
-      armor = 4;
-      passThrough = 0.5;
-     };
-        class Face
-     {
-      hitpointName = "HitFace";
-      armor = 4;
-      passThrough = 0.5;
-     };
-   };
-  };
- };
+ class H_HelmetB;
  class H_HelmetB_camo: H_HelmetB
  {
   class ItemInfo: ItemInfo
