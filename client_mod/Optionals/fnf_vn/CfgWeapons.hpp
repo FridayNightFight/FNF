@@ -1,7 +1,7 @@
 class ItemInfo;
 class CfgWeapons
 {
-  //Vests
+	//Vests
 	class vn_o_vest_base;
 	class vn_o_vest_01: vn_o_vest_base
 	{

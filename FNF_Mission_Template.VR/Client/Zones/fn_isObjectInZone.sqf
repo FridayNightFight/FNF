@@ -5,8 +5,8 @@
 		Checks if an object is within a zone
 
 	Parameter(s):
-		0: OBJECT -  The object being checked
-		1: STRING -  The zone prefix used by the zone
+		0: OBJECT -	The object being checked
+		1: STRING -	The zone prefix used by the zone
 
 	Returns:
 		Boolean

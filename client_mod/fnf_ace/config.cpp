@@ -10,14 +10,14 @@ class CfgPatches
 };
 
 class CfgVehicles {
-  class Man;
-  class CAManBase: Man {
-    class ACE_SelfActions {
-      class ACE_TeamManagement {
-        class ACE_LeaveGroup {
-          condition = "false";
-        };
-      };
-    };
-  };
+	class Man;
+	class CAManBase: Man {
+		class ACE_SelfActions {
+			class ACE_TeamManagement {
+				class ACE_LeaveGroup {
+					condition = "false";
+				};
+			};
+		};
+	};
 };

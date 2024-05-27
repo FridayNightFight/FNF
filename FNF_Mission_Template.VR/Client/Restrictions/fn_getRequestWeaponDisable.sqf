@@ -5,7 +5,7 @@
 		gets whether a restriction group has requested for weapons to be disabled
 
 	Parameter(s):
-		0: STRING -  The group name
+		0: STRING -	The group name
 
 	Returns:
 		Boolean

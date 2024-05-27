@@ -5,7 +5,7 @@
 		Shows the further text box for contacting staff with the message
 
 	Parameter(s):
-	  None
+		None
 
 	Returns:
 		None
@@ -50,11 +50,11 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 	if (_text isEqualTo "") then {
 		_display closeDisplay 1;
 	} else {
-    _playerName = name player;
-    _pos = getPos player;
+		_playerName = name player;
+		_pos = getPos player;
 
 		// send global event -- staff will have a handler to deal with it
-    [_playerName, _pos, _text] remoteExec ["FNF_ClientSide_fnc_recieveContactStaffRequest", 0, false];
+		[_playerName, _pos, _text] remoteExec ["FNF_ClientSide_fnc_recieveContactStaffRequest", 0, false];
 
 		_display closeDisplay 1;
 	};

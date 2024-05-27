@@ -5,7 +5,7 @@
 		Removes a restriction group, does not delete the zones in that group
 
 	Parameter(s):
-		0: STRING -  The group name
+		0: STRING -	The group name
 
 	Returns:
 		None

@@ -2,7 +2,7 @@
 	Author: Mallen
 
 	Description:
-    watch a destroy objective for spectators
+		watch a destroy objective for spectators
 
 	Parameter(s):
 		1: ARRAY - Array that objective is stored in
@@ -17,7 +17,7 @@ _objEntry params["_objType","_objectiveModule","_objectiveObject","_objNum","_ta
 
 if (alive _objectiveObject) exitWith
 {
-  false;
+	false;
 };
 
 _desc = taskDescription _task;

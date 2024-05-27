@@ -5,10 +5,10 @@
 		Adds a zone based on markers on the map
 
 	Parameter(s):
-		0: STRING -  The prefix used in the marker, should be followed by numbers starting from 1 (Example: testing_marker_)
-    1: String -  The name to be displayed on the zone
-    1: BOOLEAN -  Whether the zone should be shaded or not
-    2: BOOLEAN -  Whether the zone should be inverted
+		0: STRING -	The prefix used in the marker, should be followed by numbers starting from 1 (Example: testing_marker_)
+		1: String -	The name to be displayed on the zone
+		1: BOOLEAN -	Whether the zone should be shaded or not
+		2: BOOLEAN -	Whether the zone should be inverted
 
 	Returns:
 		Boolean
@@ -38,11 +38,11 @@ deleteMarkerLocal (_zonePrefix + (str _markerCounter));
 //check if enough markers for a zone have been found
 if (count _markerPosArray < 3) exitWith
 {
-  if (fnf_debug) then
-  {
-    systemChat "WARNING: Zone with prefix '" + _zonePrefix + "' has less than 3 markers, zone has not generated";
-  };
-  false;
+	if (fnf_debug) then
+	{
+		systemChat "WARNING: Zone with prefix '" + _zonePrefix + "' has less than 3 markers, zone has not generated";
+	};
+	false;
 };
 
 _furthestXValue = [0,0,0];
@@ -58,10 +58,10 @@ _polylineInputs = [];
 		_polylineInputs append [_x select 0, _x select 1, (_markerPosArray select (_forEachIndex + 1)) select 0, (_markerPosArray select (_forEachIndex + 1)) select 1];
 	};
 
-  if ((_x select 0) > (_furthestXValue select 0)) then
-  {
-    _furthestXValue = _x;
-  };
+	if ((_x select 0) > (_furthestXValue select 0)) then
+	{
+		_furthestXValue = _x;
+	};
 } forEach _markerPosArray;
 
 //create polyline
@@ -74,16 +74,16 @@ _markerPolyline setMarkerColorLocal _markerColor;
 _markerDisplayName = createMarkerLocal [(_zonePrefix + "displayName"),_furthestXValue];
 if (_displayName isNotEqualTo "") then
 {
-  _markerDisplayName setMarkerShapeLocal "ICON";
-  _markerDisplayName setMarkerTextLocal _displayName;
-  _markerDisplayName setMarkerTypeLocal "mil_dot";
-  _markerDisplayName setMarkerColorLocal "ColorBlack";
+	_markerDisplayName setMarkerShapeLocal "ICON";
+	_markerDisplayName setMarkerTextLocal _displayName;
+	_markerDisplayName setMarkerTypeLocal "mil_dot";
+	_markerDisplayName setMarkerColorLocal "ColorBlack";
 };
 
 //shade area
 if (_shaded) then
 {
-  [_markerPosArray, _zonePrefix, _inverted, _markerColor] call FNF_ClientSide_fnc_shadeZone;
+	[_markerPosArray, _zonePrefix, _inverted, _markerColor] call FNF_ClientSide_fnc_shadeZone;
 };
 
 //find visual center point

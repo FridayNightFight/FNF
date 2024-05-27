@@ -1,5 +1,5 @@
 /*
-  Weapon configs
+	Weapon configs
 */
 
 class CfgPatches

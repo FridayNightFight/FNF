@@ -5,7 +5,7 @@
 		Shows a button to open the admin Menu
 
 	Parameter(s):
-	  1: DISPLAY -  The display object of the pause screen
+		1: DISPLAY -	The display object of the pause screen
 
 	Returns:
 		None
@@ -27,6 +27,6 @@ _button ctrlSetPosition [
 _button ctrlSetText "Admin Menu";
 _button ctrlSetBackgroundColor [0, 0.5, 0, 0.9];
 _button ctrlAddEventHandler ["ButtonClick", {
-  [] spawn FNF_ClientSide_fnc_adminMenu;
+	[] spawn FNF_ClientSide_fnc_adminMenu;
 }];
 _button ctrlCommit 0;

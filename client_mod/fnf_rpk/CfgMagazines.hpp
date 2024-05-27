@@ -1,5 +1,5 @@
 class CfgMagazines {
-  class rhs_45Rnd_545X39_7N10_AK;
+	class rhs_45Rnd_545X39_7N10_AK;
 	class fnf_45rnd_rpk_7N10: rhs_45Rnd_545X39_7N10_AK {
 		scope = 1;
 		author = "tanaKa";

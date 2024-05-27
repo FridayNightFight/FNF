@@ -5,7 +5,7 @@
 		Returns the display name of a zone
 
 	Parameter(s):
-		0: STRING -  The zone prefix used by the zone
+		0: STRING -	The zone prefix used by the zone
 
 	Returns:
 		String
