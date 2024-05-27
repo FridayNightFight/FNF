@@ -234,10 +234,10 @@ class CfgVehicles
       {
         property = "fnf_visibleToOthers";
         expression = "_this setVariable ['fnf_visibleToOthers',_value, true];";
-        displayName = "Visible to Others";
+        displayName = "Visible To Others";
         tooltip = "Whether the teleport poles are visible to those not assigned to the teleport pole";
         typeName = "BOOL";
-        defaultValue = "true";
+        defaultValue = "false";
       };
     };
   };

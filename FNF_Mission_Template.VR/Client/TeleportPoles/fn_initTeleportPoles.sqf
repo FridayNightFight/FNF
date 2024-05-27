@@ -22,7 +22,7 @@ _tpCounter = 1;
 {
   _syncedObjects = synchronizedObjects _x;
   _timePolesAreDeleted = _x getVariable ["fnf_timePolesAreDeleted", 15];
-  _hideFromOthers = _x getVariable ["fnf_hideFromOthers", true];
+  _visibleToOthers = _x getVariable ["fnf_visibleToOthers", false];
   //get side TP poles are wanted for
   _forPlayer = false;
   _tpObjects = [];
@@ -64,7 +64,7 @@ _tpCounter = 1;
     };
   } forEach _syncedObjects;
 
-  if (_hideFromOthers and not _forPlayer) then
+  if (not _visibleToOthers and not _forPlayer) then
   {
     {
       hideObject _x;
