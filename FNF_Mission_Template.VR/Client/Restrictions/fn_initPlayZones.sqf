@@ -34,7 +34,32 @@ _mainPlayZones = [];
   //check if this playzone module applies to the player
   _forPlayer = false;
   {
-    if (_x isEqualTo player) then
+    _objType = typeOf _x;
+    _zoneSide = sideUnknown;
+    switch (_objType) do {
+      case "SideBLUFOR_F":
+      {
+        _zoneSide = west;
+      };
+      case "SideOPFOR_F":
+      {
+        _zoneSide = east;
+      };
+      case "SideResistance_F":
+      {
+        _zoneSide = independent;
+      };
+      default
+      {
+        if (_x isEqualTo player) then
+        {
+          _forPlayer = true;
+          break;
+        };
+      };
+    };
+
+    if (_zoneSide isEqualTo playerSide) then
     {
       _forPlayer = true;
       break;
