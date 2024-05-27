@@ -230,6 +230,15 @@ class CfgVehicles
         typeName = "NUMBER";
 				defaultValue = "15";
       };
+      class VisibleToOthers: Checkbox
+      {
+        property = "fnf_visibleToOthers";
+        expression = "_this setVariable ['fnf_visibleToOthers',_value, true];";
+        displayName = "Visible to Others";
+        tooltip = "Whether the teleport poles are visible to those not assigned to the teleport pole";
+        typeName = "BOOL";
+        defaultValue = "true";
+      };
     };
   };
   class fnf_module_hidingZone: Module_F
