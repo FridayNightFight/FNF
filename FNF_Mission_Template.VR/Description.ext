@@ -1,7 +1,7 @@
 respawn = 3;
 respawnDialog = 1;
 respawnButton = 1;
-respawndelay = 10;
+respawndelay = 150;
 respawnOnStart = -1;
 respawnTemplates[] = { "MenuPosition" };
 
