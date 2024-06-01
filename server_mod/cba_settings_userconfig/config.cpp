@@ -8,6 +8,6 @@ class CfgPatches {
 				requiredVersion = 1.0;
 				requiredAddons[] = {"cba_settings"};
 				version = 1.0;
-				authors[] = {"mart"};
+				authors[] = {"FNF"};
 		};
 };
