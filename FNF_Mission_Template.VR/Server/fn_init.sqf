@@ -20,7 +20,7 @@ call FNF_ServerSide_fnc_initAdmin;
 call FNF_ServerSide_fnc_handleGroupIds;
 
 //start handeleing disconnects
-call FNF_ServerSide_fnc_handleDisconnect;
+[_modules] call FNF_ServerSide_fnc_handleDisconnect;
 
 //start handeleing vehicle inventories
 call FNF_ServerSide_fnc_handleVehicleInventory;

@@ -10,21 +10,58 @@
 	Returns:
 		None
 */
+params["_modules"];
+
+_safeZones = [_modules, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
 
 addMissionEventHandler ["HandleDisconnect", {
 	params ["_unit", "_id", "_uid", "_name"];
-
-	_syncedObjects = synchronizedObjects _unit;
-
-	_safeZones = [_syncedObjects, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
+	_thisArgs params ["_safeZones"];
 
 	_longestSafeZoneTimer = 0;
 
 	{
-		_timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
-		if (_timeZoneIsDeleted > _longestSafeZoneTimer) then
+		_syncedObjects = synchronizedObjects _x;
+		_forPlayer = false;
 		{
-			_longestSafeZoneTimer = _timeZoneIsDeleted;
+			_objType = typeOf _x;
+			_zoneSide = sideUnknown;
+			switch (_objType) do {
+				case "SideBLUFOR_F":
+				{
+					_zoneSide = west;
+				};
+				case "SideOPFOR_F":
+				{
+					_zoneSide = east;
+				};
+				case "SideResistance_F":
+				{
+					_zoneSide = independent;
+				};
+				default
+				{
+					if (_x isEqualTo _unit) then
+					{
+						_forPlayer = true;
+						break;
+					};
+				};
+			};
+
+			if (_zoneSide isEqualTo ([_unit, false] call BIS_fnc_objectSide)) then
+			{
+				_forPlayer = true;
+				break;
+			};
+		} forEach _syncedObjects;
+
+		if (_forPlayer) then {
+			_timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
+			if (_timeZoneIsDeleted > _longestSafeZoneTimer) then
+			{
+				_longestSafeZoneTimer = _timeZoneIsDeleted;
+			};
 		};
 	} forEach _safeZones;
 
@@ -37,4 +74,4 @@ addMissionEventHandler ["HandleDisconnect", {
 	};
 
 	false;
-}];
+}, [_safeZones]];
