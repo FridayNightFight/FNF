@@ -16,6 +16,7 @@ params ["_modules"];
 {
 	_syncedObjects = synchronizedObjects _x;
 	_selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
+	_timeToDelete = _x getVariable ["fnf_timeVicsAreDeleted", 15];
 	_module = _x;
 
 	_forPlayer = false;
@@ -57,7 +58,22 @@ params ["_modules"];
 
 	//create the host for the current selector
 	_objID = getObjectID _x;
-	_action = ["host_" + str(_objID), _selectorName, "", {}, {true}] call ace_interact_menu_fnc_createAction;
+	_action = ["host_" + str(_objID), _selectorName, "", {}, {
+		(_this select 2) params ["_timeToDelete"];
+		_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+		_result = objNull;
+		if (isServer and hasInterface) then
+		{
+			_result = time > (_timeToDelete * 60);
+		} else {
+			_result = (serverTime - _timeServerStarted) > (_timeToDelete * 60);
+		};
+		if (time < 1) then
+		{
+			_result = false;
+		};
+		(not _result);
+	}, {}, [_timeToDelete]] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "trueHost"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 	{

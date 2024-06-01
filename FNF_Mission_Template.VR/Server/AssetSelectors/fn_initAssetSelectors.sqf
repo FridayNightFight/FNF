@@ -18,7 +18,7 @@ fnf_assetSelectorSelections = [];
 {
 	_syncedObjects = synchronizedObjects _x;
 	_selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
-	_timeToDelete = _x getVariable ["fnf_timeVicsAreDeleted", "15"];
+	_timeToDelete = _x getVariable ["fnf_timeVicsAreDeleted", 15];
 	_module = _x;
 
 	_forPlayer = false;
