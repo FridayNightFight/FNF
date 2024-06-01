@@ -41,26 +41,52 @@ _maxTimeZoneIsDeleted = 0;
 	_forPlayer = false;
 	{
 		//check if safezone is for player
-		if (_x isEqualTo player) then
+		_objType = typeOf _x;
+		_zoneSide = sideUnknown;
+		switch (_objType) do {
+			case "SideBLUFOR_F":
+			{
+				_zoneSide = west;
+			};
+			case "SideOPFOR_F":
+			{
+				_zoneSide = east;
+			};
+			case "SideResistance_F":
+			{
+				_zoneSide = independent;
+			};
+			default
+			{
+				if (_x isEqualTo player) then
+				{
+					_forPlayer = true;
+					break;
+				};
+			};
+		};
+
+		if (_zoneSide isEqualTo playerSide) then
 		{
 			_forPlayer = true;
 			break;
 		};
-		//check if player should see safezone for other reasons
-		if (isPlayer _x and not _showZone) then
+
+		if (isPlayer _x) then
 		{
 			_zoneSide = side _x;
-			if ([playerSide, _zoneSide] call BIS_fnc_sideIsFriendly) then
+		};
+
+		if ([playerSide, _zoneSide] call BIS_fnc_sideIsFriendly) then
+		{
+			if (_visibleToAllies) then
 			{
-				if (_visibleToAllies) then
-				{
-					_showZone = true;
-				};
-			} else {
-				if (_visibleToEnemies) then
-				{
-					_showZone = true;
-				};
+				_showZone = true;
+			};
+		} else {
+			if (_visibleToEnemies) then
+			{
+				_showZone = true;
 			};
 		};
 	} forEach _syncedObjects;
