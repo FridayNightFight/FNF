@@ -11,8 +11,8 @@ respawnTemplates[] = { "MenuPosition" };
 #include "Description\FortifyCategories.hpp"
 
 onPauseScript[] = {
-  FNF_ClientSide_fnc_adminGameEndButton,
-  FNF_ClientSide_fnc_contactStaffButton,
-  FNF_ClientSide_fnc_adminMenuButton,
-  FNF_ClientSide_fnc_livesLeftDisplay
+	FNF_ClientSide_fnc_adminGameEndButton,
+	FNF_ClientSide_fnc_contactStaffButton,
+	FNF_ClientSide_fnc_adminMenuButton,
+	FNF_ClientSide_fnc_livesLeftDisplay
 };
