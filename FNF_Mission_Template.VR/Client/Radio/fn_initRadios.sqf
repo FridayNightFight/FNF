@@ -16,21 +16,45 @@
 	[{
 		//choose what Encryption Code is required
 		_encryptionCode = "fnf_default_code";
+
 		switch (playerSide) do {
 			case west: {_encryptionCode = "fnf_blufor_code";};
-			case east: {_encryptionCode = "fnf_opfor_code";};
-			case independent: {_encryptionCode = "fnf_indfor_code";};
+			case east:
+			{
+				if ([east, west] call BIS_fnc_sideIsFriendly) then
+				{
+					_encryptionCode = "fnf_blufor_code";
+				} else {
+					_encryptionCode = "fnf_opfor_code";
+				};
+			};
+			case independent:
+			{
+				_encryptionCode = "fnf_indfor_code";
+				if ([independent, west] call BIS_fnc_sideIsFriendly) then
+				{
+					_encryptionCode = "fnf_blufor_code";
+				};
+				if ([independent, east] call BIS_fnc_sideIsFriendly) then
+				{
+					_encryptionCode = "fnf_opfor_code";
+				};
+				if ([east, west] call BIS_fnc_sideIsFriendly) then
+				{
+					_encryptionCode = "fnf_indfor_code";
+				};
+			};
 			default { };
 		};
 
-		//if a player has a SR set up encryption codes and put it in left ear
+		//if player has SR set up encryption codes and put it in left ear
 		if (call TFAR_fnc_haveSWRadio) then
 		{
 			[(call TFAR_fnc_activeSWRadio), 1] call TFAR_fnc_setSwStereo;
 			[(call TFAR_fnc_activeSWRadio), _encryptionCode] call TFAR_fnc_setSwRadioCode;
 		};
 
-		//if player has an LR set encryp codes and set to right ear
+		//if player has an LR set encryption codes and put it in right ear
 		if (call TFAR_fnc_haveLRRadio) then
 		{
 			[call TFAR_fnc_activeLrRadio, 2] call TFAR_fnc_setLrStereo;
@@ -45,9 +69,57 @@
 				[(call TFAR_fnc_activeSwRadio), _settings] call TFAR_fnc_setSwSettings;
 			};
 		};
-	}, [], 3] call CBA_fnc_waitAndExecute;
+	}, [], 5] call CBA_fnc_waitAndExecute;
 }] call CBA_fnc_addEventHandler;
 
+//backup encryption assignment in case above fails (and it does often)
+[{
+	_encryptionCode = "fnf_default_code";
+
+	switch (playerSide) do {
+		case west: {_encryptionCode = "fnf_blufor_code";};
+		case east:
+		{
+			if ([east, west] call BIS_fnc_sideIsFriendly) then
+			{
+				_encryptionCode = "fnf_blufor_code";
+			} else {
+				_encryptionCode = "fnf_opfor_code";
+			};
+		};
+		case independent:
+		{
+			_encryptionCode = "fnf_indfor_code";
+			if ([independent, west] call BIS_fnc_sideIsFriendly) then
+			{
+				_encryptionCode = "fnf_blufor_code";
+			};
+			if ([independent, east] call BIS_fnc_sideIsFriendly) then
+			{
+				_encryptionCode = "fnf_opfor_code";
+			};
+			if ([east, west] call BIS_fnc_sideIsFriendly) then
+			{
+				_encryptionCode = "fnf_indfor_code";
+			};
+		};
+		default { };
+	};
+
+	//if player has SR set up encryption codes
+	if (call TFAR_fnc_haveSWRadio) then
+	{
+		[(call TFAR_fnc_activeSWRadio), _encryptionCode] call TFAR_fnc_setSwRadioCode;
+	};
+
+	//if player has an LR set encryption codes
+	if (call TFAR_fnc_haveLRRadio) then
+	{
+		[(call TFAR_fnc_activeLrRadio), _encryptionCode] call TFAR_fnc_setLrRadioCode;
+	};
+}, [], 60] call CBA_fnc_waitAndExecute;
+
+//used to setup ORBAT SR and LR values
 [{
 	if (call TFAR_fnc_haveSWRadio) then
 	{
