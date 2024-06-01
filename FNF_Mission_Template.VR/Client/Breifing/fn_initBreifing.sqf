@@ -352,7 +352,7 @@ _assetString = {
 	_cargo append _weapons;
 	_cargo append _backpacks;
 
-	if (_objectToBaseOffOf getVariable ["fnf_clearInventory", true]) then
+	if (_objectToBaseOffOf isKindOf "AllVehicles" and _objectToBaseOffOf getVariable ["fnf_clearInventory", true]) then
 	{
 		_cargo = [];
 	};
