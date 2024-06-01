@@ -5,7 +5,7 @@
 		Shows a Peice of text telling the player how many lives they have left
 
 	Parameter(s):
-	  1: DISPLAY -  The display object of the pause screen
+		1: DISPLAY -	The display object of the pause screen
 
 	Returns:
 		None

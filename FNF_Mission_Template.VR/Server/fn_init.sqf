@@ -38,7 +38,7 @@ if (count _objModules isNotEqualTo 0) then
 _assetSelectorModules = [_modules, "selectorAssetHost"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _assetSelectorModules isNotEqualTo 0) then
 {
-  [_assetSelectorModules] call FNF_ServerSide_fnc_initAssetSelectors;
+	[_assetSelectorModules] call FNF_ServerSide_fnc_initAssetSelectors;
 };
 
 //if there are objectives start watching them

@@ -47,13 +47,13 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 		} forEach (_x select 1);
 		if (!_restrictionSatisfied) then
 		{
-      if (_x select 5) then
-      {
-        if (fnf_showSelectors) then
-        {
-          fnf_showSelectors = false;
-        };
-      };
+			if (_x select 5) then
+			{
+				if (fnf_showSelectors) then
+				{
+					fnf_showSelectors = false;
+				};
+			};
 			if (_x select 3) then
 			{
 				_anyRestrictionFailedWithTP = true;
@@ -80,13 +80,13 @@ fnf_zoneRestrictionsLastKnownPosition = getPosASL player;
 				};
 			};
 		} else {
-      if (_x select 5) then
-      {
-        if (!fnf_showSelectors) then
-        {
-          fnf_showSelectors = true;
-        };
-      };
+			if (_x select 5) then
+			{
+				if (!fnf_showSelectors) then
+				{
+					fnf_showSelectors = true;
+				};
+			};
 			if (_x select 2) then
 			{
 				if (!((_x select 0) call FNF_ClientSide_fnc_getRequestWeaponDisable)) then

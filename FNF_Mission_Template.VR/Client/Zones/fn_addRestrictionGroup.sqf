@@ -5,11 +5,11 @@
 		Adds a Restriction group that is used by initZones
 
 	Parameter(s):
-		0: STRING -  The name of the group to be created
-		1: BOOLEAN -  whether the group should restrict the use of weapons in their zones
-		2: BOOLEAN -  whether the group should teleport back the player if it loses one of their zones
-    3: BOOLEAN -  whether the group should teleport back the player if it loses one of their zones while in a helicopter
-    4: BOOLEAN -  whether the group should allow selectors only in its zones
+		0: STRING -	The name of the group to be created
+		1: BOOLEAN -	whether the group should restrict the use of weapons in their zones
+		2: BOOLEAN -	whether the group should teleport back the player if it loses one of their zones
+		3: BOOLEAN -	whether the group should teleport back the player if it loses one of their zones while in a helicopter
+		4: BOOLEAN -	whether the group should allow selectors only in its zones
 
 	Returns:
 		None
