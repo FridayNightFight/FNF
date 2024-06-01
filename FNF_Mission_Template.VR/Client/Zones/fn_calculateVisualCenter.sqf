@@ -5,7 +5,7 @@
 		Finds the visual center of the polygon
 
 	Parameter(s):
-		0: STRING -  The zone prefix used by the zone
+		0: STRING -	The zone prefix used by the zone
 
 	Returns:
 		Position Array in format [x,y,z]
@@ -19,47 +19,47 @@ _output = [0,0,0];
 // https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
 //i do not fully understand it but it is explained better there than i ever could here, only difference is porting to SQF which creates...... challenges......
 _getNearestLineDistance = {
-  params["_polygonPoints", "_pointToMeasure"];
-  _distancesFound = [];
+	params["_polygonPoints", "_pointToMeasure"];
+	_distancesFound = [];
 
-  {
-    _v = _x;
-    _w = _polygonPoints select 0;
-    _p = _pointToMeasure;
-    _v set [2,0];
-    _w set [2,0];
-    _p set [2,0];
+	{
+		_v = _x;
+		_w = _polygonPoints select 0;
+		_p = _pointToMeasure;
+		_v set [2,0];
+		_w set [2,0];
+		_p set [2,0];
 
-    if (_forEachIndex isNotEqualTo ((count _polygonPoints) - 1)) then
-    {
-      _w = _polygonPoints select (_forEachIndex + 1);
-    };
+		if (_forEachIndex isNotEqualTo ((count _polygonPoints) - 1)) then
+		{
+			_w = _polygonPoints select (_forEachIndex + 1);
+		};
 
-    _l2 = _v distance2D _w;
+		_l2 = _v distance2D _w;
 
-    _l2 = _l2 * _l2;
+		_l2 = _l2 * _l2;
 
-    if (_l2 isEqualTo 0) then
-    {
-      _distance = _v distance2D _p;
-      _distancesFound pushBack _distance;
-      continue;
-    };
+		if (_l2 isEqualTo 0) then
+		{
+			_distance = _v distance2D _p;
+			_distancesFound pushBack _distance;
+			continue;
+		};
 
-    _t = 0 max ( 1 min (((_p vectorAdd (_v vectorMultiply -1)) vectorDotProduct (_w vectorAdd (_v vectorMultiply -1))) / _l2));
-    _projection = _v vectorAdd ((_w vectorAdd (_v vectorMultiply -1)) vectorMultiply _t);
-    _distance = _p distance2D _projection;
-    _distancesFound pushBack _distance;
-  } forEach _polygonPoints;
+		_t = 0 max ( 1 min (((_p vectorAdd (_v vectorMultiply -1)) vectorDotProduct (_w vectorAdd (_v vectorMultiply -1))) / _l2));
+		_projection = _v vectorAdd ((_w vectorAdd (_v vectorMultiply -1)) vectorMultiply _t);
+		_distance = _p distance2D _projection;
+		_distancesFound pushBack _distance;
+	} forEach _polygonPoints;
 
-  _lowestDistance = selectMin _distancesFound;
+	_lowestDistance = selectMin _distancesFound;
 
-  if (not (_pointToMeasure inPolygon _polygonPoints)) then
-  {
-    _lowestDistance = _lowestDistance * -1;
-  };
+	if (not (_pointToMeasure inPolygon _polygonPoints)) then
+	{
+		_lowestDistance = _lowestDistance * -1;
+	};
 
-  _lowestDistance;
+	_lowestDistance;
 };
 
 //setup min, max, width, cellsize, and half cellsize (_h)
@@ -67,8 +67,8 @@ _xOptions = [];
 _yOptions = [];
 
 {
-  _xOptions pushBack (_x select 0);
-  _yOptions pushBack (_x select 1);
+	_xOptions pushBack (_x select 0);
+	_yOptions pushBack (_x select 1);
 } forEach _pointList;
 
 _maxX = selectMax _xOptions;
@@ -98,45 +98,45 @@ _distanceBestCell = [_pointList, [_starterX, _starterY,0]] call _getNearestLineD
 //populate cell queue with initial cells (overkill only one cell is even added)
 _tempX = _minX;
 while {_tempX < _maxX} do {
-  _tempY = _minY;
-  while {_tempY < _maxY} do {
-    _cellQueue pushBack [_tempX + _h, _tempY + _h, _h];
-    _tempY = _tempY + _cellSize;
-  };
-  _tempX = _tempX + _cellSize;
+	_tempY = _minY;
+	while {_tempY < _maxY} do {
+		_cellQueue pushBack [_tempX + _h, _tempY + _h, _h];
+		_tempY = _tempY + _cellSize;
+	};
+	_tempX = _tempX + _cellSize;
 };
 
 //go through all cells in cell queue
 while {count _cellQueue isNotEqualTo 0} do {
-  //grab latest cell and pop it from array
-  _currentCell = _cellQueue select ((count _cellQueue) - 1);
-  _cellQueue deleteAt ((count _cellQueue) - 1);
+	//grab latest cell and pop it from array
+	_currentCell = _cellQueue select ((count _cellQueue) - 1);
+	_cellQueue deleteAt ((count _cellQueue) - 1);
 
-  //get distance to closest line
-  _distanceCurrentCell = [_pointList, [(_currentCell select 0),(_currentCell select 1),0]] call _getNearestLineDistance;
+	//get distance to closest line
+	_distanceCurrentCell = [_pointList, [(_currentCell select 0),(_currentCell select 1),0]] call _getNearestLineDistance;
 
-  //if this distance is better than the current best replace the current best
-  if (_distanceCurrentCell > _distanceBestCell) then
-  {
-    _bestCell = _currentCell;
-    _distanceBestCell = _distanceCurrentCell;
-  };
+	//if this distance is better than the current best replace the current best
+	if (_distanceCurrentCell > _distanceBestCell) then
+	{
+		_bestCell = _currentCell;
+		_distanceBestCell = _distanceCurrentCell;
+	};
 
-  _currentCellMaxDistance = _distanceCurrentCell + ((_currentCell select 2) * (sqrt 2));
+	_currentCellMaxDistance = _distanceCurrentCell + ((_currentCell select 2) * (sqrt 2));
 
-  //go to next cell if his one isnt good enough      \/ this is currently the best to 25m accuracy, can be changed but lower values are more resource intense
-  if (_currentCellMaxDistance - _distanceBestCell <= 25) then
-  {
-    continue;
-  };
-  //from rough testing with 10 point polygon 0.1m is most accurate without frame drop called every second (this should be one and doned wherever possible)
+	//go to next cell if his one isnt good enough			\/ this is currently the best to 25m accuracy, can be changed but lower values are more resource intense
+	if (_currentCellMaxDistance - _distanceBestCell <= 25) then
+	{
+		continue;
+	};
+	//from rough testing with 10 point polygon 0.1m is most accurate without frame drop called every second (this should be one and doned wherever possible)
 
-  //populate new cells to go through
-  _h = (_currentCell select 2) / 2;
-  _cellQueue pushBack [(_currentCell select 0) - _h, (_currentCell select 1) - _h, _h];
-  _cellQueue pushBack [(_currentCell select 0) + _h, (_currentCell select 1) - _h, _h];
-  _cellQueue pushBack [(_currentCell select 0) - _h, (_currentCell select 1) + _h, _h];
-  _cellQueue pushBack [(_currentCell select 0) + _h, (_currentCell select 1) + _h, _h];
+	//populate new cells to go through
+	_h = (_currentCell select 2) / 2;
+	_cellQueue pushBack [(_currentCell select 0) - _h, (_currentCell select 1) - _h, _h];
+	_cellQueue pushBack [(_currentCell select 0) + _h, (_currentCell select 1) - _h, _h];
+	_cellQueue pushBack [(_currentCell select 0) - _h, (_currentCell select 1) + _h, _h];
+	_cellQueue pushBack [(_currentCell select 0) + _h, (_currentCell select 1) + _h, _h];
 };
 
 _output = _bestCell;

@@ -5,7 +5,7 @@
 		Shows a button to end the game in the pause screen
 
 	Parameter(s):
-	  1: DISPLAY -  The display object of the pause screen
+		1: DISPLAY -	The display object of the pause screen
 
 	Returns:
 		None
@@ -93,36 +93,36 @@ _buttonCtrl ctrlSetText "End Game";
 //Add script to button selection
 _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
 
-  _bluforCtrl = (findDisplay 49) displayCtrl 34768;
-  _opforCtrl = (findDisplay 49) displayCtrl 34770;
-  _indiCtrl = (findDisplay 49) displayCtrl 34772; //Get side-selection control
+	_bluforCtrl = (findDisplay 49) displayCtrl 34768;
+	_opforCtrl = (findDisplay 49) displayCtrl 34770;
+	_indiCtrl = (findDisplay 49) displayCtrl 34772; //Get side-selection control
 
-  _sidesWon = [];
-  if (cbChecked _bluforCtrl) then
-  {
-    _sidesWon pushBack west;
-  };
-  if (cbChecked _opforCtrl) then
-  {
-    _sidesWon pushBack east;
-  };
-  if (cbChecked _indiCtrl) then
-  {
-    _sidesWon pushBack independent;
-  };
+	_sidesWon = [];
+	if (cbChecked _bluforCtrl) then
+	{
+		_sidesWon pushBack west;
+	};
+	if (cbChecked _opforCtrl) then
+	{
+		_sidesWon pushBack east;
+	};
+	if (cbChecked _indiCtrl) then
+	{
+		_sidesWon pushBack independent;
+	};
 
-  //Display confirmation message and call elimination function on server
-  _sidesWon spawn {
-    private _sidesWon = _this;
-    private _parentDisplay = findDisplay 46; //Mission display
-    private _spectatorDisplay = findDisplay 60000; //ACE spectator display
+	//Display confirmation message and call elimination function on server
+	_sidesWon spawn {
+		private _sidesWon = _this;
+		private _parentDisplay = findDisplay 46; //Mission display
+		private _spectatorDisplay = findDisplay 60000; //ACE spectator display
 
-    if (!isNull _spectatorDisplay) then {_parentDisplay = _spectatorDisplay}; //If ACE spectator display is active, use it for GUI message parent display
+		if (!isNull _spectatorDisplay) then {_parentDisplay = _spectatorDisplay}; //If ACE spectator display is active, use it for GUI message parent display
 
-    private _result = ["Are you sure you want " + str(_sidesWon) + " to win?", "Confirm", true, true, _parentDisplay] call BIS_fnc_guiMessage;
+		private _result = ["Are you sure you want " + str(_sidesWon) + " to win?", "Confirm", true, true, _parentDisplay] call BIS_fnc_guiMessage;
 
-    if (_result) then {
-      [_sidesWon] remoteExec ["FNF_ServerSide_fnc_endGame",2];
-    };
-  };
+		if (_result) then {
+			[_sidesWon] remoteExec ["FNF_ServerSide_fnc_endGame",2];
+		};
+	};
 }];

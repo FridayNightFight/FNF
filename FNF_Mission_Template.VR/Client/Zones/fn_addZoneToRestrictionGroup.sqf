@@ -5,8 +5,8 @@
 		Adds a Zone to a Restriction group
 
 	Parameter(s):
-		0: STRING -  The name of the group the zone should be put into
-		1: STRING -  The zone prefix used by the zone
+		0: STRING -	The name of the group the zone should be put into
+		1: STRING -	The zone prefix used by the zone
 
 	Returns:
 		None

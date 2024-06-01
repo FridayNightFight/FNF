@@ -16,11 +16,11 @@ _allLogic = entities [["Logic"], []];
 _fnfModules = [];
 
 {
-  _logicName = typeOf _x;
-  if (_logicName find "fnf_module_" isNotEqualTo -1) then
-  {
-    _fnfModules pushBack _x;
-  };
+	_logicName = typeOf _x;
+	if (_logicName find "fnf_module_" isNotEqualTo -1) then
+	{
+		_fnfModules pushBack _x;
+	};
 } forEach _allLogic;
 
 _fnfModules;

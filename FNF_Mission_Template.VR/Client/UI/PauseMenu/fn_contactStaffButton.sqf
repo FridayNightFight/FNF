@@ -5,7 +5,7 @@
 		Shows a button to contact staff
 
 	Parameter(s):
-	  1: DISPLAY -  The display object of the pause screen
+		1: DISPLAY -	The display object of the pause screen
 
 	Returns:
 		None
@@ -25,6 +25,6 @@ _button ctrlSetPosition [
 _button ctrlSetText "Contact Staff";
 _button ctrlSetBackgroundColor [0, 0.5, 0, 0.9];
 _button ctrlAddEventHandler ["ButtonClick", {
-  [] spawn FNF_ClientSide_fnc_contactStaff;
+	[] spawn FNF_ClientSide_fnc_contactStaff;
 }];
 _button ctrlCommit 0;

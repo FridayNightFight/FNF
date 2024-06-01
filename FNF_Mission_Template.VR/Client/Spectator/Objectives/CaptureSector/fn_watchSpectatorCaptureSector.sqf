@@ -2,7 +2,7 @@
 	Author: Mallen
 
 	Description:
-    watch a capture sector objective for spectators
+		watch a capture sector objective for spectators
 
 	Parameter(s):
 		1: ARRAY - Array that objective is stored in
@@ -38,7 +38,7 @@ _shownPercent = _sectorPercentage;
 //if the sector is fully captured, show the percentage as 0
 if (_sectorPercentage isEqualTo 1) then
 {
-  _shownPercent = 0;
+	_shownPercent = 0;
 };
 
 //update the status slots
@@ -49,12 +49,12 @@ _output = false;
 //if percentage is 1 (ie captured by someone)
 if (_sectorPercentage isEqualTo 1) then
 {
-  _output = true;
+	_output = true;
 
-  //remove the sector zone
-  [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+	//remove the sector zone
+	[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
 
-  ["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by " + ([_sectorOwner] call BIS_fnc_sideName) + "</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
+	["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by " + ([_sectorOwner] call BIS_fnc_sideName) + "</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
 };
 
 _output;

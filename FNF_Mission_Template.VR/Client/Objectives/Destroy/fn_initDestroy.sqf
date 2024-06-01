@@ -2,11 +2,11 @@
 	Author: Mallen
 
 	Description:
-    init a destroy objective including setting up local watch, local task control, local ordering enforcement, and breifing data
+		init a destroy objective including setting up local watch, local task control, local ordering enforcement, and breifing data
 
 	Parameter(s):
-		0: OBJECT -  The destroy objective module to be processed
-    1: BOOLEAN -  Whether the objective is for the player, if not treat breifing and task control differently
+		0: OBJECT -	The destroy objective module to be processed
+		1: BOOLEAN -	Whether the objective is for the player, if not treat breifing and task control differently
 
 	Returns:
 		None
@@ -20,10 +20,10 @@ _objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
 //if no type found exit obj settup and inform mission maker
 if (_objectiveType isEqualTo "FAILED") exitWith
 {
-  if (fnf_debug) then
-  {
-    systemChat "DANGER: Destroy objective does not have objective type set, objective will NOT function";
-  };
+	if (fnf_debug) then
+	{
+		systemChat "DANGER: Destroy objective does not have objective type set, objective will NOT function";
+	};
 };
 
 _syncedObjects = synchronizedObjects _objective;
@@ -33,33 +33,33 @@ _hidingZones = [];
 _sequentialObjPlanners = [];
 _objectiveObject = "";
 {
-  _typeOfObject = typeOf _x;
-  if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
-  {
-    continue;
-  };
+	_typeOfObject = typeOf _x;
+	if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
+	{
+		continue;
+	};
 
-  if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
-  {
-    _hidingZones pushBack _x;
-    continue;
-  };
+	if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
+	{
+		_hidingZones pushBack _x;
+		continue;
+	};
 
-  if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
-  {
-    _sequentialObjPlanners pushBack _x;
-    continue;
-  };
+	if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+	{
+		_sequentialObjPlanners pushBack _x;
+		continue;
+	};
 
-  if (_objectiveObject isEqualTo "") then
-  {
-    _objectiveObject = _x;
-  } else {
-    if (fnf_debug) then
-    {
-      systemChat "WARNING: Destroy objective has more than one possible objects as target";
-    };
-  };
+	if (_objectiveObject isEqualTo "") then
+	{
+		_objectiveObject = _x;
+	} else {
+		if (fnf_debug) then
+		{
+			systemChat "WARNING: Destroy objective has more than one possible objects as target";
+		};
+	};
 } forEach _syncedObjects;
 
 _topRightCount = 0;
@@ -67,22 +67,22 @@ _topRightCandidate = objNull;
 
 if (count _sequentialObjPlanners isNotEqualTo 0) then
 {
-  {
-    _result = [_objective, _x] call FNF_ClientSide_fnc_getBottomLeft;
-    if (not _result) then
-    {
-      _topRightCount = _topRightCount + 1;
-      _topRightCandidate = _x;
-    };
-  } forEach _sequentialObjPlanners;
+	{
+		_result = [_objective, _x] call FNF_ClientSide_fnc_getBottomLeft;
+		if (not _result) then
+		{
+			_topRightCount = _topRightCount + 1;
+			_topRightCandidate = _x;
+		};
+	} forEach _sequentialObjPlanners;
 };
 
 if (_topRightCount > 1) exitWith
 {
-  if (fnf_debug) then
-  {
-    systemChat "DANGER: Destroy objective has more than one prerequisite sequential planners, objective will NOT function";
-  };
+	if (fnf_debug) then
+	{
+		systemChat "DANGER: Destroy objective has more than one prerequisite sequential planners, objective will NOT function";
+	};
 };
 
 _sequentialInit = false;
@@ -90,42 +90,42 @@ _addSequentialHandle = false;
 
 if (not isNull _topRightCandidate) then
 {
-  //check if we're initing this from the sequential planner, if we are we don't need to re-add it
-  _alreadyCompletedSequentialPlanning = _topRightCandidate getVariable ["fnf_sequentialObjCompleted", false];
-  if (_alreadyCompletedSequentialPlanning) then
-  {
-    _objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
-    if (_objKnown) then
-    {
-      //obj is already known and 90% of setup is completed, lets just handle task description and task control
-      //find correct task via fnf_objectives
-      //edit Task Control
-      //edit task description
-      //this task can be completed before available as i dont wanna make someone invincible, maybe remove tracking?
-    };
-  } else {
-    //sequential planner before we do stuff, lets figure out what needs doing....
-    _objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
-    if (not _objKnown) then
-    {
-      //obj is not known yet, lets exit Init and come back later
-      _addSequentialHandle = true;
-    };
-  };
+	//check if we're initing this from the sequential planner, if we are we don't need to re-add it
+	_alreadyCompletedSequentialPlanning = _topRightCandidate getVariable ["fnf_sequentialObjCompleted", false];
+	if (_alreadyCompletedSequentialPlanning) then
+	{
+		_objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
+		if (_objKnown) then
+		{
+			//obj is already known and 90% of setup is completed, lets just handle task description and task control
+			//find correct task via fnf_objectives
+			//edit Task Control
+			//edit task description
+			//this task can be completed before available as i dont wanna make someone invincible, maybe remove tracking?
+		};
+	} else {
+		//sequential planner before we do stuff, lets figure out what needs doing....
+		_objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
+		if (not _objKnown) then
+		{
+			//obj is not known yet, lets exit Init and come back later
+			_addSequentialHandle = true;
+		};
+	};
 };
 
 if (_addSequentialHandle) exitWith
 {
-  [_objective, _forPlayer, _topRightCandidate] call FNF_ClientSide_fnc_addSequentialHandle;
+	[_objective, _forPlayer, _topRightCandidate] call FNF_ClientSide_fnc_addSequentialHandle;
 };
 
 //check if there is an object to do anything with
 if (_objectiveObject isEqualTo "") exitWith
 {
-  if (fnf_debug) then
-  {
-    systemChat "DANGER: Destroy objective does not have object synced, objective will NOT function";
-  };
+	if (fnf_debug) then
+	{
+		systemChat "DANGER: Destroy objective does not have object synced, objective will NOT function";
+	};
 };
 
 //get objects name and picture
@@ -136,15 +136,15 @@ _targetName = getText (_targetConfig >> "DisplayName");
 //if parent task for my tasks doesnt exist create it
 if (isNil "fnf_myTasksParentTask") then
 {
-  fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
-  fnf_myTasksParentTask setSimpleTaskType "documents";
+	fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
+	fnf_myTasksParentTask setSimpleTaskType "documents";
 };
 
 //if parent task for ally tasks doesnt exist and its needed create it
 if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
 {
-  fnf_allyTasksParentTask = player createSimpleTask ["Ally Tasks"];
-  fnf_allyTasksParentTask setSimpleTaskType "documents";
+	fnf_allyTasksParentTask = player createSimpleTask ["Ally Tasks"];
+	fnf_allyTasksParentTask setSimpleTaskType "documents";
 };
 
 _task = "";
@@ -154,91 +154,91 @@ _objNum = str((count fnf_objectives) + 1);
 //create and setup objective task
 if (_objectiveType isEqualTo "des") then
 {
-  if (_forPlayer) then
-  {
-    _task = player createSimpleTask [(_objNum + ": Destroy the " + _targetName), fnf_myTasksParentTask];
-  } else {
-    _task = player createSimpleTask [(_objNum + ": Destroy the " + _targetName), fnf_allyTasksParentTask];
-  };
-  _zoneKnown = _objective getVariable ["fnf_zoneKnown", true];
+	if (_forPlayer) then
+	{
+		_task = player createSimpleTask [(_objNum + ": Destroy the " + _targetName), fnf_myTasksParentTask];
+	} else {
+		_task = player createSimpleTask [(_objNum + ": Destroy the " + _targetName), fnf_allyTasksParentTask];
+	};
+	_zoneKnown = _objective getVariable ["fnf_zoneKnown", true];
 
-  if (_forPlayer) then
-  {
-    _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+	if (_forPlayer) then
+	{
+		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 
-    if (count _hidingZones isNotEqualTo 0) then
-    {
-      _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
-      if (not _zoneKnown) then
-      {
-        _helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
-      };
-    };
+		if (count _hidingZones isNotEqualTo 0) then
+		{
+			_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
+			if (not _zoneKnown) then
+			{
+				_helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
+			};
+		};
 
-    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must destroy the %2<br/><br/>%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
-  } else {
-    _helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must destroy the %2<br/><br/>%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
+	} else {
+		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 
-    if (count _hidingZones isNotEqualTo 0) then
-    {
-      _helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
-      if (not _zoneKnown) then
-      {
-        _helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
-      };
-    };
+		if (count _hidingZones isNotEqualTo 0) then
+		{
+			_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
+			if (not _zoneKnown) then
+			{
+				_helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
+			};
+		};
 
-    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must destroy the %2<br/><br/>%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
-  };
+		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must destroy the %2<br/><br/>%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Destroy the " + _targetName, _objNum + ": Destroy the " + _targetName];
+	};
 
-  _task setSimpleTaskType "destroy";
-  if (count _hidingZones isEqualTo 0) then
-  {
-    _task setSimpleTaskTarget [_objectiveObject, true];
-  } else {
-    [_objectiveObject, _task, _zoneKnown, _hidingZones] call FNF_ClientSide_fnc_addObjectToHide;
-  };
+	_task setSimpleTaskType "destroy";
+	if (count _hidingZones isEqualTo 0) then
+	{
+		_task setSimpleTaskTarget [_objectiveObject, true];
+	} else {
+		[_objectiveObject, _task, _zoneKnown, _hidingZones] call FNF_ClientSide_fnc_addObjectToHide;
+	};
 } else {
-  if (_forPlayer) then
-  {
-    _task = player createSimpleTask [(_objNum + ": Defend the " + _targetName), fnf_myTasksParentTask];
-  } else {
-    _task = player createSimpleTask [(_objNum + ": Defend the " + _targetName), fnf_allyTasksParentTask];
-  };
-  _task setSimpleTaskType "defend";
-  _task setSimpleTaskTarget [_objectiveObject, true];
+	if (_forPlayer) then
+	{
+		_task = player createSimpleTask [(_objNum + ": Defend the " + _targetName), fnf_myTasksParentTask];
+	} else {
+		_task = player createSimpleTask [(_objNum + ": Defend the " + _targetName), fnf_allyTasksParentTask];
+	};
+	_task setSimpleTaskType "defend";
+	_task setSimpleTaskTarget [_objectiveObject, true];
 
-  _helperString = "";
+	_helperString = "";
 
-  if (count _hidingZones isNotEqualTo 0) then
-  {
-    {
-      _prefix = _x getVariable ["fnf_prefix", "FAILED"];
+	if (count _hidingZones isNotEqualTo 0) then
+	{
+		{
+			_prefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-      if (_prefix isEqualTo "FAILED") then
-      {
-        if (fnf_debug) then
-        {
-          systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
-        };
-        continue;
-      };
+			if (_prefix isEqualTo "FAILED") then
+			{
+				if (fnf_debug) then
+				{
+					systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+				};
+				continue;
+			};
 
-      _result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
-      if (not _result) then
-      {
-        [_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
-      };
-    } forEach _hidingZones;
+			_result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+			if (not _result) then
+			{
+				[_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+			};
+		} forEach _hidingZones;
 
-    _helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
-  };
-  if (_forPlayer) then
-  {
-    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must prevent the %2 from being destroyed for the duration of the game%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
-  } else {
-    _task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must prevent the %2 from being destroyed for the duration of the game%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
-  };
+		_helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
+	};
+	if (_forPlayer) then
+	{
+		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must prevent the %2 from being destroyed for the duration of the game%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
+	} else {
+		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must prevent the %2 from being destroyed for the duration of the game%3</t>", _targetPic, _targetName, _helperString], _objNum + ": Defend the " + _targetName, _objNum + ": Defend the " + _targetName];
+	};
 };
 
 [_task, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
