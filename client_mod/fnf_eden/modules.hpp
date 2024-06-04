@@ -25,6 +25,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Init";
+		icon = "A3\Modules_F_Tacops\Data\CivilianPresence\icon32_ca.paa";
 		scope = 2;
 
 		class Attributes: AttributesBase
@@ -153,6 +154,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Play Zone";
+		icon = "\A3\modules_f\data\portraitStrategicMapOpen_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -172,6 +174,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Safe Zone";
+		icon = "\a3\Missions_F_Beta\data\img\portraitMPTypeDefense_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -218,6 +221,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Teleport Poles";
+		icon = "\A3\modules_f\data\portraitStrategicMapMission_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -246,6 +250,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Hiding Zone";
+		icon = "\a3\Modules_f\data\portraitSectorDummy_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -329,6 +334,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Breifing Assets";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\car_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -348,6 +354,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Kit Information";
+		icon = "\a3\Modules_F_Curator\Data\portraitMissionName_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -376,6 +383,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Sequential Objective Planner";
+		icon = "\a3\Modules_F_Curator\Data\portraitEndMission_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -397,6 +405,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Destroy Objective";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\destroy_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -430,6 +439,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Capture Sector Objective";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\meet_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -472,6 +482,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Terminal Objective";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\upload_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
@@ -538,6 +549,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Assassin Objective";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\kill_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{

@@ -529,7 +529,7 @@
 			displayName = "Irish Republican Army [1980]";
 			useSideColorOnIcon = 1;
 		};
-		class fnf_ChinesePLA2020
+		/*class fnf_ChinesePLA2020
 		{
 			path = "fnf_eden\kits\ChinesePLA[2020]";
 			side = 8;
@@ -546,7 +546,7 @@
 			editorSubcategory = "fnf_Opfor";
 			displayName = "Chinese PLA SOF [2020]";
 			useSideColorOnIcon = 1;
-		};
+		};*/
 
 		//*************************************************************************************************************************
 		// VIETNAM AFTER THIS
