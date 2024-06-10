@@ -21,4 +21,3 @@ class CfgFactionClasses
 #include "modules.hpp"
 #include "systems.hpp"
 #include "attributesAndTools.hpp"
-#include "functions.hpp"
