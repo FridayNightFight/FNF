@@ -21,7 +21,7 @@ _currentlyHackingSide = _objectiveObject getVariable ['fnf_currentlyHackingSide'
 
 _previouslyHackingSide = _objectiveObject getVariable ['fnf_previouslyHackingSide', sideUnknown];
 
-_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 _result = objNull;
 if (isServer and hasInterface) then
 {
@@ -29,7 +29,7 @@ if (isServer and hasInterface) then
 } else {
 	_result = (serverTime - _timeServerStarted) > _timeOfCompletion;
 };
-if (time < 1) then
+if (_timeServerStarted isEqualTo -1) then
 {
 	_result = false;
 };

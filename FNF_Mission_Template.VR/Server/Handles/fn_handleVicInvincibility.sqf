@@ -52,7 +52,7 @@ _vincibleList = [];
 {
 	[{
 		params["_vics", "_timeToBeVincible"];
-		_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+		_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 		_result = objNull;
 		if (isServer and hasInterface) then
 		{
@@ -60,7 +60,7 @@ _vincibleList = [];
 		} else {
 			_result = (serverTime - _timeServerStarted) > (_timeToBeVincible * 60);
 		};
-		if (time < 1) then
+		if (_timeServerStarted isEqualTo -1) then
 		{
 			_result = false;
 		};

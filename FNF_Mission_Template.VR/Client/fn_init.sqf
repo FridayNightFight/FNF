@@ -177,8 +177,8 @@ if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
 		};
 	} else {
 		[{
-			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
-			_timeServerStarted isNotEqualTo 0;
+			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
+			_timeServerStarted isNotEqualTo -1;
 		},{
 			params["_safeZoneModules"];
 			_result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;

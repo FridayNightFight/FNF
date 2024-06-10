@@ -17,7 +17,7 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 //wait until the zone is said to be deleted
 [{
 	params["_zonePrefix", "_timeZoneIsDeleted"];
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 	_result = objNull;
 	if (isServer and hasInterface) then
 	{
@@ -25,7 +25,7 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 	} else {
 		_result = (serverTime - _timeServerStarted) > (_timeZoneIsDeleted * 60);
 	};
-	if (time < 1) then
+	if (_timeServerStarted isEqualTo -1) then
 	{
 		_result = false;
 	};

@@ -141,7 +141,7 @@ _tpCounter = 1;
 		//add timer to delete when poles say they should
 		[{
 			params["_timePolesAreDeleted", "_object", "_markerstr"];
-			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 			_result = objNull;
 			if (isServer and hasInterface) then
 			{
@@ -149,7 +149,7 @@ _tpCounter = 1;
 			} else {
 				_result = (serverTime - _timeServerStarted) > (_timePolesAreDeleted * 60);
 			};
-			if (time < 1) then
+			if (_timeServerStarted isEqualTo -1) then
 			{
 				_result = false;
 			};

@@ -65,7 +65,7 @@ addMissionEventHandler ["HandleDisconnect", {
 		};
 	} forEach _safeZones;
 
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 	_timeToCheck = (_longestSafeZoneTimer * 60) + _timeServerStarted;
 
 	if (serverTime < _timeToCheck) then

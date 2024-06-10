@@ -65,7 +65,7 @@ if (_maxTimeZoneIsDeleted isNotEqualTo 0) then
 		//set timer to notify when time is reached
 		[{
 			params["_timeToNotify"];
-			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 			_result = objNull;
 			if (isServer and hasInterface) then
 			{
@@ -73,7 +73,7 @@ if (_maxTimeZoneIsDeleted isNotEqualTo 0) then
 			} else {
 				_result = (serverTime - _timeServerStarted) > _timeToNotify;
 			};
-			if (time < 1) then
+			if (_timeServerStarted isEqualTo -1) then
 			{
 				_result = false;
 			};

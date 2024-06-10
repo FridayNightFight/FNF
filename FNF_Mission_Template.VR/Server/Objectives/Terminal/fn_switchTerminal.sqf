@@ -53,7 +53,7 @@ if (_resetTimer) then
 	};
 } else {
 
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 	_result = objNull;
 	if (isServer and hasInterface) then
 	{
