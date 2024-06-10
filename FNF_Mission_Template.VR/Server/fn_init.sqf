@@ -28,6 +28,8 @@ call FNF_ServerSide_fnc_handleVehicleInventory;
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 [_breifingModules] call FNF_ServerSide_fnc_handleVicInvincibility;
 
+[_breifingModules] call FNF_ServerSide_fnc_handleVicRadios;
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules isNotEqualTo 0) then

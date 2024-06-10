@@ -23,8 +23,6 @@ _vincibleList = [];
 	_objectsToInvinciblise = [];
 	_timeToBeVincible = _x getVariable ['fnf_timeToBeVincible', 15];
 
-	_moduleSide = sideEmpty;
-
 	{
 		_objectType = typeOf _x;
 		switch (_objectType) do
