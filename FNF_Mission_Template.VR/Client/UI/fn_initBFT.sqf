@@ -29,7 +29,13 @@ switch (playerSide) do {
   } forEach _markers;
 
   _allPlayers = allPlayers;
-  _allPlayers = _allPlayers select {(backpack _x) call TFAR_fnc_isBackpackRadio;};
+  _allPlayers = _allPlayers select {(backpack _x) in [
+  "TFAR_mr3000_rhs",
+  "UK3CB_LSM_B_B_CARRYALL_RADIO_OLI",
+  "UK3CB_BAF_B_Bergen_MTP_Radio_H_B",
+  "UK3CB_LNM_O_B_CARRYALL_RADIO_WDL_02",
+  "TFAR_mr3000",
+  "UK3CB_LSM_B_B_CARRYALL_RADIO_OLI"]};
   _allPlayers = _allPlayers select {(side _x) isEqualTo playerSide};
 
   {
