@@ -68,10 +68,10 @@ false call FNF_ClientSide_fnc_showTimerInHUD;
 		_result = time > (_defaultEndTime - 900);
 	} else {
 		_result = (serverTime - _timeServerStarted) > (_defaultEndTime - 900);
-	};
-	if (_timeServerStarted isEqualTo -1) then
-	{
-		_result = false;
+		if (_timeServerStarted isEqualTo -1) then
+		{
+			_result = false;
+		};
 	};
 	_result;
 },{

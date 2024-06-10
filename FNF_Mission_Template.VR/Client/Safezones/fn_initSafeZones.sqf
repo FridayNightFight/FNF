@@ -165,10 +165,10 @@ if (_maxTimeZoneIsDeleted isNotEqualTo 0) then
 				_result = time > _timeToNotify;
 			} else {
 				_result = (serverTime - _timeServerStarted) > _timeToNotify;
-			};
-			if (_timeServerStarted isEqualTo -1) then
-			{
-				_result = false;
+				if (_timeServerStarted isEqualTo -1) then
+				{
+					_result = false;
+				};
 			};
 			_result;
 		},{

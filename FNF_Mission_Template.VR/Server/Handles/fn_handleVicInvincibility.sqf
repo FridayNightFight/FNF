@@ -59,10 +59,10 @@ _vincibleList = [];
 			_result = time > (_timeToBeVincible * 60);
 		} else {
 			_result = (serverTime - _timeServerStarted) > (_timeToBeVincible * 60);
-		};
-		if (_timeServerStarted isEqualTo -1) then
-		{
-			_result = false;
+			if (_timeServerStarted isEqualTo -1) then
+			{
+				_result = false;
+			};
 		};
 		_result;
 	},{

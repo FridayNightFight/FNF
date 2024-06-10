@@ -29,10 +29,10 @@ if (isServer and hasInterface) then
 	_result = time > _timeOfCompletion;
 } else {
 	_result = (serverTime - _timeServerStarted) > _timeOfCompletion;
-};
-if (_timeServerStarted isEqualTo -1) then
-{
-	_result = false;
+	if (_timeServerStarted isEqualTo -1) then
+	{
+		_result = false;
+	};
 };
 
 //grab OBJ number

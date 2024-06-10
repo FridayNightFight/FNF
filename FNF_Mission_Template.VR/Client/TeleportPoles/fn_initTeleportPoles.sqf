@@ -148,10 +148,10 @@ _tpCounter = 1;
 				_result = time > (_timePolesAreDeleted * 60);
 			} else {
 				_result = (serverTime - _timeServerStarted) > (_timePolesAreDeleted * 60);
-			};
-			if (_timeServerStarted isEqualTo -1) then
-			{
-				_result = false;
+				if (_timeServerStarted isEqualTo -1) then
+				{
+					_result = false;
+				};
 			};
 			_result;
 		},{
