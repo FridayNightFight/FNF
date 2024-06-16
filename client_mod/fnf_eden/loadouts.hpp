@@ -642,3 +642,44 @@
 			displayName = "Vietcong [1970]";
 			useSideColorOnIcon = 1;
 		};*/
+
+		//*************************************************************************************************************************
+		// WW2 AFTER THIS
+		//*************************************************************************************************************************
+
+		class fnf_GermanArmySummer1945
+		{
+			path = "fnf_eden\kits\GermanArmySummer[1945]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "German Army Summer [1945]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_GermanArmyWinter1945
+		{
+			path = "fnf_eden\kits\GermanArmyWinter[1945]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "German Army Winter [1945]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_SovietUnionSummer1945
+		{
+			path = "fnf_eden\kits\SovietUnionSummer[1945]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "Soviet Union Summer [1945]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_SovietUnionWinter1945
+		{
+			path = "fnf_eden\kits\SovietUnionWinter[1945]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "Soviet Union Winter [1945]";
+			useSideColorOnIcon = 1;
+		};

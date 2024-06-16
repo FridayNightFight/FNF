@@ -1,0 +1,41 @@
+version=54;
+name="Soviet Union Summer [1945]";
+author="FNF";
+category="EdSubcat_Default";
+requiredAddons[]=
+{
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging",
+	"fnf_eden",
+	"A3_Characters_F",
+	"NORTH_weapons_cfg",
+	"ace_vector",
+	"A3_Weapons_F",
+	"WW2_Assets_c_Weapons_InfantryWeapons_c",
+	"tfar_handhelds",
+	"H_NORTH_SOV_helmets",
+	"NF_SOV_Uniforms",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_microdagr",
+	"NORTH_Soviet_Gear",
+	"NF_explosives_cfg",
+	"ace_realisticnames",
+	"ace_huntir",
+	"ace_optics",
+	"ace_explosives",
+	"A3_Weapons_F_Explosives",
+	"ace_grenades",
+	"A3_Weapons_F_Orange",
+	"ace_arsenal",
+	"ace_fortify",
+	"ace_trenches",
+	"ace_logistics_wirecutter",
+	"A3_Characters_F_Mark",
+	"ace_tripod",
+	"NORTH_SOV_caps",
+	"A3_Weapons_F_Items",
+	"A3_Modules_F",
+	"Desert"
+};

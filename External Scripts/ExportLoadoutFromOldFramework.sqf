@@ -12,6 +12,7 @@ switch (playerSide) do {
 	if (_x select 0 == "CE") then
 	{
 		(_unitLoudout select 5 select 1) pushBack ["ACE_M14",2,1];
+		(_unitLoudout select 5 select 1) pushBack ["ACE_wirecutter",1];
 	};
 	if (_x select 0 == "CRL" or _x select 0 == "CR" or _x select 0 == "PI") then
 	{
