@@ -13,7 +13,7 @@ fnf_searchVest = {
 		_hitpointsChanged = true;
 	};
 
-	if ((configName (inheritsFrom _vest)) isEqualTo "Vest_Camo_Base" or (configName (inheritsFrom _vest)) isEqualTo "Vest_NoCamo_Base") then
+	if ((configName (inheritsFrom _vest)) isEqualTo "Vest_Camo_Base" or (configName (inheritsFrom _vest)) isEqualTo "Vest_NoCamo_Base" or (configName (inheritsFrom _vest)) isEqualTo "V_LIB_Vest_Camo_Base") then
 	{
 		_hitpointsChanged = true;
 	};
@@ -22,7 +22,7 @@ fnf_searchVest = {
 
 	_vestEntry = fnf_problemVests findif {_x select 0 isEqualTo (configName (inheritsFrom _vest))};
 
-	if ((configName _vest isEqualTo "Vest_Camo_Base") or (configName _vest isEqualTo "Vest_NoCamo_Base")) then
+	if ((configName _vest isEqualTo "Vest_Camo_Base") or (configName _vest isEqualTo "Vest_NoCamo_Base") or (configName _vest isEqualTo "V_LIB_Vest_Camo_Base")) then
 	{
 		fnf_problemVests pushBackUnique [configName _vest, ""];
 		continue;
