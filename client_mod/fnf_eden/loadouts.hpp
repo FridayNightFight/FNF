@@ -683,3 +683,39 @@
 			displayName = "Soviet Union Winter [1945]";
 			useSideColorOnIcon = 1;
 		};
+		class fnf_GermanFallschimjager1945
+		{
+			path = "fnf_eden\kits\GermanFallschimjager[1945]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "German Fallschimjager [1945]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_GermanSS1940
+		{
+			path = "fnf_eden\kits\GermanSS[1940]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "German SS [1940]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_UKParatroopers1940
+		{
+			path = "fnf_eden\kits\UKParatroopers[1940]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "UK Paratroopers [1940]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_USArmy1945
+		{
+			path = "fnf_eden\kits\USArmy[1945]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "US Army [1945]";
+			useSideColorOnIcon = 1;
+		};
