@@ -1,5 +1,5 @@
 version=54;
-center[]={108.94435,5,143.10376};
+center[]={108.94435,5,143.0928};
 class items
 {
 	items=3;
@@ -15,7 +15,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-14.932892,0,-9.1020966};
+					position[]={-14.932892,0,-9.0911407};
 				};
 				side="Empty";
 				flags=4;
@@ -47,7 +47,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-14.932892,0,-11.102097};
+					position[]={-14.932892,0,-11.091141};
 				};
 				side="Empty";
 				flags=4;
@@ -79,7 +79,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-14.932892,0,-13.102097};
+					position[]={-14.932892,0,-13.091141};
 				};
 				side="Empty";
 				flags=4;
@@ -111,7 +111,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-14.932892,0,-15.102097};
+					position[]={-14.932892,0,-15.091141};
 				};
 				side="Empty";
 				flags=4;
@@ -143,7 +143,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-10.944366,0,-9.1037445};
+					position[]={-10.944366,0,-9.0927887};
 				};
 				id=11278;
 				type="fnf_module_selectorHost";
@@ -183,7 +183,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-12.944366,0,-9.1037445};
+					position[]={-12.944366,0,-9.0927887};
 				};
 				id=11291;
 				type="fnf_module_selectorOption";
@@ -223,7 +223,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-12.944366,0,-11.103745};
+					position[]={-12.944366,0,-11.092789};
 				};
 				id=11292;
 				type="fnf_module_selectorOption";
@@ -263,7 +263,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-12.944366,0,-13.103745};
+					position[]={-12.944366,0,-13.092789};
 				};
 				id=11293;
 				type="fnf_module_selectorOption";
@@ -303,7 +303,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-12.944366,0,-15.103745};
+					position[]={-12.944366,0,-15.092789};
 				};
 				id=11294;
 				type="fnf_module_selectorOption";
@@ -360,7 +360,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,12.946243};
+							position[]={5.0556488,0.0014390945,12.957199};
 							angles[]={0,3.1415927,0};
 						};
 						side="East";
@@ -411,7 +411,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -426,11 +426,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -594,7 +589,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,12.946243};
+							position[]={3.0556488,0.0014390945,12.957199};
 							angles[]={0,3.1415927,0};
 						};
 						side="East";
@@ -645,7 +640,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -660,11 +655,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -828,7 +818,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,14.946243};
+							position[]={3.0556488,0.0014390945,14.957199};
 							angles[]={-0,3.1415927,0};
 						};
 						side="East";
@@ -879,7 +869,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -896,11 +886,6 @@ class items
 											count=2;
 										};
 										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
 										{
 											name="ACE_HuntIR_monitor";
 											count=1;
@@ -1067,7 +1052,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,14.946243};
+							position[]={5.0556488,0.0014390945,14.957199};
 							angles[]={0,3.1415927,0};
 						};
 						side="East";
@@ -1329,7 +1314,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,8.9462433};
+							position[]={-8.9443512,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=7;
@@ -1379,7 +1364,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1394,11 +1379,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -1562,7 +1542,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,6.9462433};
+							position[]={-8.9443512,0.0014390945,6.9571991};
 						};
 						side="East";
 						flags=5;
@@ -1612,7 +1592,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -1629,11 +1609,6 @@ class items
 											count=2;
 										};
 										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
 										{
 											name="ACE_HuntIR_monitor";
 											count=1;
@@ -1800,7 +1775,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,6.9462433};
+							position[]={-6.9443512,0.0014390945,6.9571991};
 						};
 						side="East";
 						flags=5;
@@ -2008,7 +1983,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,8.9462433};
+							position[]={-6.9443512,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=4;
@@ -2268,7 +2243,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,4.9462433};
+							position[]={-8.9443512,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -2318,7 +2293,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -2333,11 +2308,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -2501,7 +2471,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,2.9462433};
+							position[]={-8.9443512,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -2704,7 +2674,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,0.94624329};
+							position[]={-8.9443512,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=5;
@@ -2916,7 +2886,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,-1.0537567};
+							position[]={-8.9443512,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=4;
@@ -3125,7 +3095,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,-3.0537567};
+							position[]={-8.9443512,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -3327,7 +3297,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,-5.0537567};
+							position[]={-8.9443512,0.0014390945,-5.0428009};
 						};
 						side="East";
 						flags=4;
@@ -3582,7 +3552,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,-7.0537567};
+							position[]={-8.9443512,0.0014390945,-7.0428009};
 						};
 						side="East";
 						flags=5;
@@ -3777,7 +3747,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,4.9462433};
+							position[]={-6.9443512,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -3827,7 +3797,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -3842,11 +3812,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -4010,7 +3975,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,2.9462433};
+							position[]={-6.9443512,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -4213,7 +4178,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,0.94624329};
+							position[]={-6.9443512,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=5;
@@ -4425,7 +4390,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,-1.0537567};
+							position[]={-6.9443512,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=4;
@@ -4633,7 +4598,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,-3.0537567};
+							position[]={-6.9443512,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -4835,7 +4800,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,-5.0537567};
+							position[]={-6.9443512,0.0014390945,-5.0428009};
 						};
 						side="East";
 						flags=4;
@@ -5090,7 +5055,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.9443512,0.0014390945,-7.0537567};
+							position[]={-6.9443512,0.0014390945,-7.0428009};
 						};
 						side="East";
 						flags=5;
@@ -5285,7 +5250,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,8.9462433};
+							position[]={-2.9443512,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=7;
@@ -5335,7 +5300,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -5350,11 +5315,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -5518,7 +5478,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,6.9462433};
+							position[]={-2.9443512,0.0014390945,6.9571991};
 						};
 						side="East";
 						flags=5;
@@ -5568,7 +5528,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -5585,11 +5545,6 @@ class items
 											count=2;
 										};
 										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
 										{
 											name="ACE_HuntIR_monitor";
 											count=1;
@@ -5756,7 +5711,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,6.9462433};
+							position[]={-0.9443512,0.0014390945,6.9571991};
 						};
 						side="East";
 						flags=5;
@@ -5964,7 +5919,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,8.9462433};
+							position[]={-0.9443512,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=4;
@@ -6224,7 +6179,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,4.9462433};
+							position[]={-2.9443512,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -6274,7 +6229,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -6289,11 +6244,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -6457,7 +6407,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,2.9462433};
+							position[]={-2.9443512,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -6660,7 +6610,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,0.94624329};
+							position[]={-2.9443512,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=5;
@@ -6872,7 +6822,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,-1.0537567};
+							position[]={-2.9443512,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=4;
@@ -7081,7 +7031,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,-3.0537567};
+							position[]={-2.9443512,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -7283,7 +7233,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,-5.0537567};
+							position[]={-2.9443512,0.0014390945,-5.0428009};
 						};
 						side="East";
 						flags=4;
@@ -7538,7 +7488,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,-7.0537567};
+							position[]={-2.9443512,0.0014390945,-7.0428009};
 						};
 						side="East";
 						flags=5;
@@ -7733,7 +7683,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,4.9462433};
+							position[]={-0.9443512,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -7783,7 +7733,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -7798,11 +7748,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -7966,7 +7911,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,2.9462433};
+							position[]={-0.9443512,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -8169,7 +8114,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,0.94624329};
+							position[]={-0.9443512,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=5;
@@ -8381,7 +8326,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,-1.0537567};
+							position[]={-0.9443512,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=4;
@@ -8589,7 +8534,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,-3.0537567};
+							position[]={-0.9443512,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -8791,7 +8736,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,-5.0537567};
+							position[]={-0.9443512,0.0014390945,-5.0428009};
 						};
 						side="East";
 						flags=4;
@@ -9046,7 +8991,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.9443512,0.0014390945,-7.0537567};
+							position[]={-0.9443512,0.0014390945,-7.0428009};
 						};
 						side="East";
 						flags=5;
@@ -9241,7 +9186,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,8.9462433};
+							position[]={3.0556488,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=7;
@@ -9291,7 +9236,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -9306,11 +9251,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -9474,7 +9414,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,6.9462433};
+							position[]={3.0556488,0.0014390945,6.9571991};
 						};
 						side="East";
 						flags=5;
@@ -9524,7 +9464,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -9541,11 +9481,6 @@ class items
 											count=2;
 										};
 										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
 										{
 											name="ACE_HuntIR_monitor";
 											count=1;
@@ -9712,7 +9647,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,6.9462433};
+							position[]={5.0556488,0.0014390945,6.9571991};
 						};
 						side="East";
 						flags=5;
@@ -9920,7 +9855,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,8.9462433};
+							position[]={5.0556488,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=4;
@@ -10180,7 +10115,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,4.9462433};
+							position[]={3.0556488,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -10230,7 +10165,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -10245,11 +10180,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -10413,7 +10343,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,2.9462433};
+							position[]={3.0556488,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -10616,7 +10546,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,0.94624329};
+							position[]={3.0556488,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=5;
@@ -10828,7 +10758,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,-1.0537567};
+							position[]={3.0556488,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=4;
@@ -11037,7 +10967,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,-3.0537567};
+							position[]={3.0556488,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -11239,7 +11169,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,-5.0537567};
+							position[]={3.0556488,0.0014390945,-5.0428009};
 						};
 						side="East";
 						flags=4;
@@ -11494,7 +11424,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,-7.0537567};
+							position[]={3.0556488,0.0014390945,-7.0428009};
 						};
 						side="East";
 						flags=5;
@@ -11689,7 +11619,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,4.9462433};
+							position[]={5.0556488,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -11739,7 +11669,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -11754,11 +11684,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -11922,7 +11847,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,2.9462433};
+							position[]={5.0556488,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -12125,7 +12050,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,0.94624329};
+							position[]={5.0556488,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=5;
@@ -12337,7 +12262,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,-1.0537567};
+							position[]={5.0556488,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=4;
@@ -12545,7 +12470,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,-3.0537567};
+							position[]={5.0556488,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -12747,7 +12672,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,-5.0537567};
+							position[]={5.0556488,0.0014390945,-5.0428009};
 						};
 						side="East";
 						flags=4;
@@ -13002,7 +12927,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,-7.0537567};
+							position[]={5.0556488,0.0014390945,-7.0428009};
 						};
 						side="East";
 						flags=5;
@@ -13197,7 +13122,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,8.9462433};
+							position[]={9.0556488,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=7;
@@ -13247,7 +13172,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13262,11 +13187,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -13430,7 +13350,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,6.9462433};
+							position[]={9.0556488,0.0014390945,6.9571991};
 						};
 						side="East";
 						flags=5;
@@ -13480,7 +13400,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=5;
+										items=4;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13497,11 +13417,6 @@ class items
 											count=2;
 										};
 										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
-										};
-										class Item4
 										{
 											name="ACE_HuntIR_monitor";
 											count=1;
@@ -13668,7 +13583,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.055649,0.0014390945,8.9462433};
+							position[]={11.055649,0.0014390945,8.9571991};
 						};
 						side="East";
 						flags=4;
@@ -13928,7 +13843,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,4.9462433};
+							position[]={9.0556488,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -13978,7 +13893,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -13993,11 +13908,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -14161,7 +14071,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,2.9462433};
+							position[]={9.0556488,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -14364,7 +14274,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,0.94624329};
+							position[]={9.0556488,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=4;
@@ -14590,7 +14500,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,-1.0537567};
+							position[]={9.0556488,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=5;
@@ -14793,7 +14703,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,-3.0537567};
+							position[]={9.0556488,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -15032,7 +14942,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.055649,0.0014390945,4.9462433};
+							position[]={11.055649,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -15082,7 +14992,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -15097,11 +15007,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -15265,7 +15170,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.055649,0.0014390945,2.9462433};
+							position[]={11.055649,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=5;
@@ -15468,7 +15373,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.055649,0.0014390945,0.94624329};
+							position[]={11.055649,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=4;
@@ -15694,7 +15599,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.055649,0.0014390945,-1.0537567};
+							position[]={11.055649,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=5;
@@ -15897,7 +15802,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.055649,0.0014390945,-3.0537567};
+							position[]={11.055649,0.0014390945,-3.0428009};
 						};
 						side="East";
 						flags=4;
@@ -16136,7 +16041,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.055649,0.0014390945,4.9462433};
+							position[]={15.055649,0.0014390945,4.9571991};
 						};
 						side="East";
 						flags=7;
@@ -16186,7 +16091,7 @@ class items
 									};
 									class ItemCargo
 									{
-										items=4;
+										items=3;
 										class Item0
 										{
 											name="ACE_MapTools";
@@ -16201,11 +16106,6 @@ class items
 										{
 											name="ACE_morphine";
 											count=2;
-										};
-										class Item3
-										{
-											name="ACE_microDAGR";
-											count=1;
 										};
 									};
 								};
@@ -16369,7 +16269,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.055649,0.0014390945,2.9462433};
+							position[]={15.055649,0.0014390945,2.9571991};
 						};
 						side="East";
 						flags=4;
@@ -16587,7 +16487,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.055649,0.0014390945,0.94624329};
+							position[]={15.055649,0.0014390945,0.9571991};
 						};
 						side="East";
 						flags=4;
@@ -16799,7 +16699,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.055649,0.0014390945,-1.0537567};
+							position[]={15.055649,0.0014390945,-1.0428009};
 						};
 						side="East";
 						flags=4;
@@ -17024,7 +16924,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,-11.053757};
+							position[]={3.0556488,0.0014390945,-11.042801};
 						};
 						side="East";
 						flags=7;
@@ -17234,7 +17134,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.0556488,0.0014390945,-11.053757};
+							position[]={5.0556488,0.0014390945,-11.042801};
 						};
 						side="East";
 						flags=5;
@@ -17439,7 +17339,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.0556488,0.0014390945,-13.053757};
+							position[]={3.0556488,0.0014390945,-13.042801};
 						};
 						side="East";
 						flags=5;
@@ -17657,7 +17557,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,-11.053757};
+							position[]={9.0556488,0.0014390945,-11.042801};
 						};
 						side="East";
 						flags=7;
@@ -17867,7 +17767,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.055649,0.0014390945,-11.053757};
+							position[]={11.055649,0.0014390945,-11.042801};
 						};
 						side="East";
 						flags=5;
@@ -18072,7 +17972,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.0556488,0.0014390945,-13.053757};
+							position[]={9.0556488,0.0014390945,-13.042801};
 						};
 						side="East";
 						flags=5;
@@ -18290,7 +18190,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,-11.053757};
+							position[]={-8.9443512,0.0014390945,-11.042801};
 						};
 						side="East";
 						flags=6;
@@ -18496,7 +18396,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,-13.053757};
+							position[]={-8.9443512,0.0014390945,-13.042801};
 						};
 						side="East";
 						flags=4;
@@ -18702,7 +18602,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-8.9443512,0.0014390945,-15.053757};
+							position[]={-8.9443512,0.0014390945,-15.042801};
 						};
 						side="East";
 						flags=4;
@@ -18921,7 +18821,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,-11.053757};
+							position[]={-2.9443512,0.0014390945,-11.042801};
 						};
 						side="East";
 						flags=6;
@@ -19127,7 +19027,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,-13.053757};
+							position[]={-2.9443512,0.0014390945,-13.042801};
 						};
 						side="East";
 						flags=4;
@@ -19333,7 +19233,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.9443512,0.0014390945,-15.053757};
+							position[]={-2.9443512,0.0014390945,-15.042801};
 						};
 						side="East";
 						flags=4;
@@ -19555,7 +19455,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-0.9443512,0,12.89624};
+					position[]={-0.9443512,0,12.907196};
 				};
 				id=11402;
 				type="SideOPFOR_F";
@@ -19565,7 +19465,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-0.9443512,0,14.89624};
+					position[]={-0.9443512,0,14.907196};
 				};
 				id=11403;
 				type="fnf_module_kitInformation";
@@ -19605,7 +19505,7 @@ class items
 				dataType="Comment";
 				class PositionInfo
 				{
-					position[]={3.0556488,0,32.89624};
+					position[]={3.0556488,0,32.907196};
 				};
 				title="Soviet Union Summer [1945]";
 				id=11404;
