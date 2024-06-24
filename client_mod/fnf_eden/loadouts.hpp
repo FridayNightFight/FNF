@@ -719,3 +719,21 @@
 			displayName = "US Army [1945]";
 			useSideColorOnIcon = 1;
 		};
+		class fnf_USArmy1940
+		{
+			path = "fnf_eden\kits\USArmy[1940]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "US Army [1940]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_Japan1940
+		{
+			path = "fnf_eden\kits\Japan[1940]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_WW2";
+			displayName = "Japan [1940]";
+			useSideColorOnIcon = 1;
+		};
