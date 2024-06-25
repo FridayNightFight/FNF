@@ -14,7 +14,21 @@
 
 params ["_playerDead", "_playerName"];
 
-if (not serverCommandAvailable "#kick") exitWith {};
+fnf_staffInfo = [
+  "76561198004582151",
+  "76561198089279362",
+  "76561198106536334",
+  "76561198045877943",
+  "76561197963359463",
+  "76561198077070073",
+  "76561197972754614",
+  "76561198111741251",
+  //Mallen, For testing:
+  "76561198061743924"
+];
+
+//if player is not logged in admin, kick them
+if (not ((getPlayerUID player) in fnf_staffInfo)) exitWith {};
 
 if (_playerDead) then
 {

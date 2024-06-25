@@ -38,13 +38,8 @@ call FNF_ClientSide_fnc_initZones;
 //init ORBAT
 call FNF_ClientSide_fnc_initOrbat;
 
-//init breifing
-_kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
-_breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
-[_breifingModules, _kitInfoModules, _initModule] call FNF_ClientSide_fnc_initBreifing;
-
-//check how often player has played and do new player experience
-call FNF_ClientSide_fnc_initNewPlayerExperience;
+//init BFT
+call FNF_ClientSide_fnc_initBFT;
 
 //setup fortify options
 [_initModule] call FNF_ClientSide_fnc_initFortify;
@@ -97,6 +92,18 @@ if (count _selectorModules isNotEqualTo 0) then
 {
 	[_selectorModules] call FNF_ClientSide_fnc_initSelectors;
 };
+
+//check there are asset selectors
+_assetSelectorModules = [_modules, "selectorHost"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _assetSelectorModules isNotEqualTo 0) then
+{
+	[_assetSelectorModules] call FNF_ClientSide_fnc_initSelectors;
+};
+
+//init breifing
+_kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
+_breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
+[_breifingModules, _kitInfoModules, _initModule, _assetSelectorModules] call FNF_ClientSide_fnc_initBreifing;
 
 //start gps icons
 call FNF_ClientSide_fnc_initGPSUnitMarkers;

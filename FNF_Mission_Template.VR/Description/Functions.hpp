@@ -101,6 +101,7 @@ class CfgFunctions
 			class notificationSystem {};
 			class markEditorPlacedObjects {};
 			class initGPSUnitMarkers {};
+			class initBFT {};
 		};
 		class pauseMenu
 		{
@@ -179,6 +180,7 @@ class CfgFunctions
 			file = "Client\Selectors";
 			class initSelectors {};
 			class switchSelection {};
+			class initAssetSelectors {};
 		};
 		class fortify
 		{
@@ -205,12 +207,6 @@ class CfgFunctions
 		{
 			file = "Client\Radio";
 			class initRadios {};
-		};
-		class newPlayerExperience
-		{
-			file = "Client\NewPlayerExperience";
-			class initNewPlayerExperience {};
-			class newToFNF {};
 		};
 		class taskControl
 		{
@@ -244,7 +240,6 @@ class CfgFunctions
 			class handleDisconnect {};
 			class handleJIPSyncing {};
 			class handleVicInvincibility {};
-			class handleVicRadios {};
 		};
 		class sequentialHandeler
 		{
@@ -281,6 +276,12 @@ class CfgFunctions
 			file = "Server\Objectives\Assassin";
 			class initAssassin {};
 			class watchAssassin {};
+		};
+		class assetSelectors
+		{
+			file = "Server\AssetSelectors";
+			class initAssetSelectors {};
+			class switchAssetSelection {};
 		};
 	};
 };

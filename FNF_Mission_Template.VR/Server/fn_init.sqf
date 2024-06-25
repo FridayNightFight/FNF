@@ -22,13 +22,17 @@ call FNF_ServerSide_fnc_initAdmin;
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 [_breifingModules] call FNF_ServerSide_fnc_handleVicInvincibility;
 
-[_breifingModules] call FNF_ServerSide_fnc_handleVicRadios;
-
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules isNotEqualTo 0) then
 {
 	[_objModules] call FNF_ServerSide_fnc_initObjs;
+};
+
+_assetSelectorModules = [_modules, "selectorAssetHost"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _assetSelectorModules isNotEqualTo 0) then
+{
+	[_assetSelectorModules] call FNF_ServerSide_fnc_initAssetSelectors;
 };
 
 //if there are objectives start watching them
