@@ -242,7 +242,6 @@ class CfgFunctions
 		{
 			file = "Server\Handles";
 			class handleDisconnect {};
-			class handleGroupIds {};
 			class handleJIPSyncing {};
 			class handleVehicleInventory {};
 			class handleVicInvincibility {};
