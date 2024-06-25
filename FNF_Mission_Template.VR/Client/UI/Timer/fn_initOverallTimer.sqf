@@ -35,7 +35,7 @@ _defaultMessage = "Mission Time Remaining: %1";
 		_message = fnf_timerMessage;
 	};
 
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 
 	_timeToEnd = _timeToEnd + _timeServerStarted;
 
@@ -61,17 +61,17 @@ false call FNF_ClientSide_fnc_showTimerInHUD;
 //give notification when 15 mins of game time left
 [{
 	params["_defaultEndTime"];
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];;
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];;
 	_result = objNull;
 	if (isServer and hasInterface) then
 	{
 		_result = time > (_defaultEndTime - 900);
 	} else {
 		_result = (serverTime - _timeServerStarted) > (_defaultEndTime - 900);
-	};
-	if (time < 1) then
-	{
-		_result = false;
+		if (_timeServerStarted isEqualTo -1) then
+		{
+			_result = false;
+		};
 	};
 	_result;
 },{

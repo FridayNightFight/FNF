@@ -126,11 +126,15 @@ _addJIPitems = {
 	//restrict further code form handeling save
 	fnf_handelingSave = true;
 
+	["Export Operations", "Various operations conducted on export, don't worry about this!"] collect3DENHistory
+	{
 	_currentItems = all3DENEntities;
 	_objectsToLookAt = _currentItems select 0;
 	_markersToLookAt = _currentItems select 5;
+	_groupsToLookAt = _currentItems select 1;
 
 	_unitsToProcess = [];
+	_allOtherObjects = [];
 
 	//get all objects considered a man
 	{
@@ -140,8 +144,38 @@ _addJIPitems = {
 			{
 				_unitsToProcess pushBack _x;
 			};
+		} else {
+			_allOtherObjects pushBack _x;
 		};
 	} forEach _objectsToLookAt;
+
+	//set group ids from role descriptions given
+	_groupsSet = createHashMapFromArray [[west, []],[east, []],[independent,[]]];
+	_groupPrefixs = createHashMapFromArray [[west, ""],[east, " "],[independent,"  "]];
+
+	{
+		_leader = leader _x;
+		_side = side _leader;
+		_roleDescription = (_leader get3DENAttribute "description") select 0;
+		_splitString = _roleDescription splitString "@";
+		if (count _splitString isEqualTo 2) then
+		{
+			_groupName = (_splitString select 1);
+			_groupsAlreadySet = _groupsSet get _side;
+			if (_groupName in _groupsAlreadySet) then
+			{
+				_groupID = (_x get3DENAttribute "groupID") select 0;
+				systemChat ("WARNING: Group " + _groupID + " has a duplicate group name");
+			} else {
+				_x set3DENAttribute ["groupID", (_groupName + (_groupPrefixs get _side))];
+				_groupsAlreadySet pushBack _groupName;
+				_groupsSet set [_side, _groupsAlreadySet];
+			};
+		} else {
+			_groupID = (_x get3DENAttribute "groupID") select 0;
+			systemChat ("WARNING: Group " + _groupID + " leader does not have its role description set properly");
+		};
+	} forEach _groupsToLookAt;
 
 	_counter = 0;
 	_unitsToDelete = [];
@@ -186,6 +220,7 @@ _addJIPitems = {
 		_counter = _counter + 1;
 	} forEach _unitsToProcess;
 
+	//make markers invisible that have an alpha of 0.99
 	_markersToReset = [];
 	{
 		_alpha = (_x get3DENAttribute "alpha") select 0;
@@ -196,7 +231,27 @@ _addJIPitems = {
 		};
 	} forEach _markersToLookAt;
 
+	_vicInventorys = [];
+
+	{
+		_objectType = _x call BIS_fnc_objectType;
+		_objectType = _objectType select 0;
+
+		if (((_x get3DENAttribute "FNF_InventoryAutoClear") select 0) && !(_objectType isEqualTo "Object")) then
+		{
+			_inventory = ((_x get3DENAttribute "ammoBox") select 0);
+
+			_vicInventorys pushBack [_x, _inventory];
+			_x set3DENAttribute ["ammoBox","[[[[],[]],[[],[]],[[],[]],[[],[]]],false]"];
+		};
+	} forEach _allOtherObjects;
+
 	do3DENAction "MissionExportMP";
+
+	{
+		_x params ["_vic", "_inventory"];
+		_vic set3DENAttribute ["ammoBox", _inventory];
+	} forEach _vicInventorys;
 
 	{
 		_x set3DENAttribute ["alpha", 0.99];
@@ -213,6 +268,7 @@ _addJIPitems = {
 	do3DENAction "MissionSave";
 
 	fnf_handelingSave = false;
+	};
 };
 
 //used to increment marker numbers on copy and paste, useful for mission making
@@ -230,16 +286,29 @@ _incrementNumberOnPaste = {
 
 //remove any layers that are empty to keep mission file size down
 _removeEmptyLayers = {
+	_amountDeleted = 0;
 	_currentItems = all3DENEntities;
 	_layers = _currentItems select 6;
-
 	{
 		_entities = get3DENLayerEntities _x;
 		if (count _entities isEqualTo 0) then
 		{
-			remove3DENLayer _x;
+			_amountDeleted = _amountDeleted + 1;
 		};
 	} forEach _layers;
+	if (_amountDeleted isNotEqualTo 0) then {
+		["Removed Empty Layers", "Removed " + str(_amountDeleted) + " empty layers"] collect3DENHistory {
+			_currentItems = all3DENEntities;
+			_layers = _currentItems select 6;
+			{
+				_entities = get3DENLayerEntities _x;
+				if (count _entities isEqualTo 0) then
+				{
+					remove3DENLayer _x;
+				};
+			} forEach _layers;
+		};
+	};
 };
 
 add3DENEventHandler ["OnMessage", _addJIPitems];

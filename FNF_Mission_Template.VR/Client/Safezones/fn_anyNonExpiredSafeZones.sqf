@@ -67,7 +67,7 @@ _maxTimeZoneIsDeleted = -1;
 //if no safezones applied to player, they can always JIP
 if (_maxTimeZoneIsDeleted isEqualTo -1) exitWith {true;};
 
-_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 
 _result = objNull;
 if (isServer and hasInterface) then

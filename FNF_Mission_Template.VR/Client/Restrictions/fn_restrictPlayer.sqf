@@ -31,6 +31,9 @@ if (getTerrainGrid > 25) then
 		setTerrainGrid 25;
 };
 
+//disable raycasts on non-local (not needed in PvP)
+disableRemoteSensors true;
+
 //restrict view distance
 _viewDistance = _initModule getVariable ["fnf_viewDistance", 800];
 

@@ -16,17 +16,13 @@ if (count _initModule > 1) exitWith {};
 //start admin channel
 call FNF_ServerSide_fnc_initAdmin;
 
-//handel group Ids
-call FNF_ServerSide_fnc_handleGroupIds;
-
 //start handeleing disconnects
 [_modules] call FNF_ServerSide_fnc_handleDisconnect;
 
-//start handeleing vehicle inventories
-call FNF_ServerSide_fnc_handleVehicleInventory;
-
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 [_breifingModules] call FNF_ServerSide_fnc_handleVicInvincibility;
+
+[_breifingModules] call FNF_ServerSide_fnc_handleVicRadios;
 
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;

@@ -23,8 +23,6 @@ _vincibleList = [];
 	_objectsToInvinciblise = [];
 	_timeToBeVincible = _x getVariable ['fnf_timeToBeVincible', 15];
 
-	_moduleSide = sideEmpty;
-
 	{
 		_objectType = typeOf _x;
 		switch (_objectType) do
@@ -52,17 +50,17 @@ _vincibleList = [];
 {
 	[{
 		params["_vics", "_timeToBeVincible"];
-		_timeServerStarted = missionNamespace getVariable ["fnf_startTime", 0];
+		_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 		_result = objNull;
 		if (isServer and hasInterface) then
 		{
 			_result = time > (_timeToBeVincible * 60);
 		} else {
 			_result = (serverTime - _timeServerStarted) > (_timeToBeVincible * 60);
-		};
-		if (time < 1) then
-		{
-			_result = false;
+			if (_timeServerStarted isEqualTo -1) then
+			{
+				_result = false;
+			};
 		};
 		_result;
 	},{
