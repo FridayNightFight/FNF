@@ -134,6 +134,7 @@ _addJIPitems = {
 	_groupsToLookAt = _currentItems select 1;
 
 	_unitsToProcess = [];
+	_allOtherObjects = [];
 
 	//get all objects considered a man
 	{
@@ -143,9 +144,12 @@ _addJIPitems = {
 			{
 				_unitsToProcess pushBack _x;
 			};
+		} else {
+			_allOtherObjects pushBack _x;
 		};
 	} forEach _objectsToLookAt;
 
+	//set group ids from role descriptions given
 	_groupsSet = createHashMapFromArray [[west, []],[east, []],[independent,[]]];
 	_groupPrefixs = createHashMapFromArray [[west, ""],[east, " "],[independent,"  "]];
 
@@ -216,6 +220,7 @@ _addJIPitems = {
 		_counter = _counter + 1;
 	} forEach _unitsToProcess;
 
+	//make markers invisible that have an alpha of 0.99
 	_markersToReset = [];
 	{
 		_alpha = (_x get3DENAttribute "alpha") select 0;
@@ -226,7 +231,27 @@ _addJIPitems = {
 		};
 	} forEach _markersToLookAt;
 
+	_vicInventorys = [];
+
+	{
+		_objectType = _x call BIS_fnc_objectType;
+		_objectType = _objectType select 0;
+
+		if (((_x get3DENAttribute "FNF_InventoryAutoClear") select 0) && !(_objectType isEqualTo "Object")) then
+		{
+			_inventory = ((_x get3DENAttribute "ammoBox") select 0);
+
+			_vicInventorys pushBack [_x, _inventory];
+			_x set3DENAttribute ["ammoBox","[[[[],[]],[[],[]],[[],[]],[[],[]]],false]"];
+		};
+	} forEach _allOtherObjects;
+
 	do3DENAction "MissionExportMP";
+
+	{
+		_x params ["_vic", "_inventory"];
+		_vic set3DENAttribute ["ammoBox", _inventory];
+	} forEach _vicInventorys;
 
 	{
 		_x set3DENAttribute ["alpha", 0.99];

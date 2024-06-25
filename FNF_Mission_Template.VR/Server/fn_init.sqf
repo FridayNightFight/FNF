@@ -19,9 +19,6 @@ call FNF_ServerSide_fnc_initAdmin;
 //start handeleing disconnects
 [_modules] call FNF_ServerSide_fnc_handleDisconnect;
 
-//start handeleing vehicle inventories
-call FNF_ServerSide_fnc_handleVehicleInventory;
-
 _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpecificModules;
 [_breifingModules] call FNF_ServerSide_fnc_handleVicInvincibility;
 
