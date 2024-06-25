@@ -18,11 +18,11 @@ _modules = call FNF_ClientSide_fnc_findFNFModules;
 _safeZoneModules = [_modules, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
 
 {
-  _zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
+	_zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
 
-  ["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
+	["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 
-  [_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+	[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
 } forEach _safeZoneModules;
 
 fnf_showSelectors = false;

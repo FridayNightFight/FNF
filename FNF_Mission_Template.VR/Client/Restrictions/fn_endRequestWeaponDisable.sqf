@@ -5,7 +5,7 @@
 		ends any request by the restriction group to disable weapons
 
 	Parameter(s):
-		0: STRING -  The group name
+		0: STRING -	The group name
 
 	Returns:
 		None

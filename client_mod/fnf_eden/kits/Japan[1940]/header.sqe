@@ -1,0 +1,39 @@
+version=54;
+name="Japan [1940]";
+author="FNF";
+category="EdSubcat_Default";
+requiredAddons[]=
+{
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging",
+	"fnf_eden",
+	"A3_Characters_F",
+	"EAW_Chinese_Weapons",
+	"EAW_WeaponConfig",
+	"ace_vector",
+	"A3_Weapons_F",
+	"WW2_Assets_c_Weapons_InfantryWeapons_c",
+	"tfar_handhelds",
+	"EAW_Japanese_Infantry",
+	"ace_maptools",
+	"ace_medical_treatment",
+	"ace_realisticnames",
+	"ace_huntir",
+	"ace_optics",
+	"ace_explosives",
+	"A3_Weapons_F_Explosives",
+	"ace_grenades",
+	"A3_Weapons_F_Orange",
+	"ace_arsenal",
+	"ace_fortify",
+	"ace_trenches",
+	"ace_logistics_wirecutter",
+	"A3_Characters_F_Mark",
+	"ace_tripod",
+	"fow_weapons_c",
+	"IFA3_FOW_Compat",
+	"A3_Weapons_F_Items",
+	"A3_Modules_F",
+	"Desert"
+};

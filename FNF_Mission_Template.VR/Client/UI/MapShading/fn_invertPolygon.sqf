@@ -5,7 +5,7 @@
 		Takes a list of positions forming a regular polygon and adds additional points outside standard map view to effectivly invert the polygon for shading purposes
 
 	Parameter(s):
-	  1: ARRAY -  An array of positions forming an inverted regular polygon
+		1: ARRAY -	An array of positions forming an inverted regular polygon
 
 	Returns:
 		Array of positions in the format [pos1,pos2,pos3]
@@ -23,74 +23,74 @@ _outerPositionTR = [_worldSize * 3, _worldSize * 3, 0];
 _displacementDistance = 0.1;
 
 _lineIntersect = {
-  params["_lineA1","_lineA2","_lineB1","_lineB2"];
+	params["_lineA1","_lineA2","_lineB1","_lineB2"];
 
-  _lineA1 params ["_x1", "_y1"];
-  _lineA2 params ["_x2", "_y2"];
+	_lineA1 params ["_x1", "_y1"];
+	_lineA2 params ["_x2", "_y2"];
 
-  _lineB1 params ["_x3", "_y3"];
-  _lineB2 params ["_x4", "_y4"];
+	_lineB1 params ["_x3", "_y3"];
+	_lineB2 params ["_x4", "_y4"];
 
-  // Calculate the differences
-  _dx1 = _x2 - _x1;
-  _dy1 = _y2 - _y1;
-  _dx2 = _x4 - _x3;
-  _dy2 = _y4 - _y3;
+	// Calculate the differences
+	_dx1 = _x2 - _x1;
+	_dy1 = _y2 - _y1;
+	_dx2 = _x4 - _x3;
+	_dy2 = _y4 - _y3;
 
-  // Calculate the denominator
-  _denominator = (_dx1 * _dy2 - _dy1 * _dx2);
+	// Calculate the denominator
+	_denominator = (_dx1 * _dy2 - _dy1 * _dx2);
 
-  // If the denominator is zero, lines are parallel and non-intersecting
-  if (_denominator isEqualTo 0) exitWith {false};
+	// If the denominator is zero, lines are parallel and non-intersecting
+	if (_denominator isEqualTo 0) exitWith {false};
 
-  // Calculate the intersection point
-  _a = _y1 - _y3;
-  _b = _x1 - _x3;
+	// Calculate the intersection point
+	_a = _y1 - _y3;
+	_b = _x1 - _x3;
 
-  _n1 = (_dx2 * _a - _dy2 * _b) / _denominator;
-  _n2 = (_dx1 * _a - _dy1 * _b) / _denominator;
+	_n1 = (_dx2 * _a - _dy2 * _b) / _denominator;
+	_n2 = (_dx1 * _a - _dy1 * _b) / _denominator;
 
-  _result = false;
+	_result = false;
 
-  if ((_n1 >= 0) && (_n1 <= 1) && (_n2 >= 0) && (_n2 <= 1)) then
-  {
-    _result = true;
-  };
+	if ((_n1 >= 0) && (_n1 <= 1) && (_n2 >= 0) && (_n2 <= 1)) then
+	{
+		_result = true;
+	};
 
-  _result;
+	_result;
 };
 
 _goodPosIndexToAnchorTo = -1;
 
 //find a point in the posList that has line of sight to bottom left outer position
 {
-  _currentPoint = _x;
-  _intersected = false;
+	_currentPoint = _x;
+	_intersected = false;
 
-  {
-    if (_currentPoint isEqualTo _x) then {continue;};
-    _nextPoint = [];
-    if (_forEachIndex isEqualTo (count _posList) - 1) then
-    {
-      _nextPoint = _posList select 0;
-    } else {
-      _nextPoint = _posList select (_forEachIndex + 1);
-    };
+	{
+		if (_currentPoint isEqualTo _x) then {continue;};
+		_nextPoint = [];
+		if (_forEachIndex isEqualTo (count _posList) - 1) then
+		{
+			_nextPoint = _posList select 0;
+		} else {
+			_nextPoint = _posList select (_forEachIndex + 1);
+		};
 
-    if (_currentPoint isEqualTo _nextPoint) then {continue;};
+		if (_currentPoint isEqualTo _nextPoint) then {continue;};
 
-    if ([_currentPoint, _outerPositionBL, _x, _nextPoint] call _lineIntersect) then
-    {
-      _intersected = true;
-      break;
-    }
-  } forEach _posList;
+		if ([_currentPoint, _outerPositionBL, _x, _nextPoint] call _lineIntersect) then
+		{
+			_intersected = true;
+			break;
+		}
+	} forEach _posList;
 
-  if (not _intersected) then
-  {
-    _goodPosIndexToAnchorTo = _forEachIndex;
-    break;
-  };
+	if (not _intersected) then
+	{
+		_goodPosIndexToAnchorTo = _forEachIndex;
+		break;
+	};
 } forEach _posList;
 
 _goodPosToAnchorTo = _posList select _goodPosIndexToAnchorTo;
@@ -121,14 +121,14 @@ _nextAfterAnchor = [];
 
 if (_goodPosIndexToAnchorTo isEqualTo (count _posList) - 1) then
 {
-  _nextAfterAnchor = _posList select 0;
+	_nextAfterAnchor = _posList select 0;
 } else {
-  _nextAfterAnchor = _posList select (_goodPosIndexToAnchorTo + 1);
+	_nextAfterAnchor = _posList select (_goodPosIndexToAnchorTo + 1);
 };
 
 if ((_goodPosToAnchorTo select 1) > (_nextAfterAnchor select 1)) then
 {
-  _willOrderBeCW = true;
+	_willOrderBeCW = true;
 };
 
 _output = +_posList;
@@ -137,9 +137,9 @@ _output deleteAt _goodPosIndexToAnchorTo;
 
 if (_willOrderBeCW) then
 {
-  _output insert [_goodPosIndexToAnchorTo, [_anchorPositionUp, _outerPositionBLUp, _outerPositionTL, _outerPositionTR, _outerPositionBR, _outerPositionBLDown, _anchorPositionDown]];
+	_output insert [_goodPosIndexToAnchorTo, [_anchorPositionUp, _outerPositionBLUp, _outerPositionTL, _outerPositionTR, _outerPositionBR, _outerPositionBLDown, _anchorPositionDown]];
 } else {
-  _output insert [_goodPosIndexToAnchorTo, [_anchorPositionDown, _outerPositionBLDown, _outerPositionBR, _outerPositionTR, _outerPositionTL, _outerPositionBLUp, _anchorPositionUp]];
+	_output insert [_goodPosIndexToAnchorTo, [_anchorPositionDown, _outerPositionBLDown, _outerPositionBR, _outerPositionTR, _outerPositionTL, _outerPositionBLUp, _anchorPositionUp]];
 };
 
 [_output, [[_goodPosToAnchorTo, [_anchorPositionUp, _anchorPositionDown]], [_outerPositionBL, [_outerPositionBLUp, _outerPositionBLDown]]]];

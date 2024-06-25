@@ -18,5 +18,5 @@ _orbatRecord = player createDiaryRecord ["orbat", ["My Orbat", ""]];
 [_orbatRecord] call FNF_ClientSide_fnc_updateOrbat;
 
 [{
-  [(_this select 0 select 0)] call FNF_ClientSide_fnc_updateOrbat;
+	[(_this select 0 select 0)] call FNF_ClientSide_fnc_updateOrbat;
 }, 2, [_orbatRecord]] call CBA_fnc_addPerFrameHandler

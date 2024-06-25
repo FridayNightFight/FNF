@@ -5,7 +5,7 @@
 		Imports the kits from the old framework into the new one on selected units
 
 	Parameter(s):
-	  None
+		None
 
 	Returns:
 		None
@@ -44,48 +44,48 @@ _ctrlButton ctrlAddEventHandler ["ButtonClick",
 	if (_text isEqualTo "") then {
 		_display closeDisplay 1;
 	} else {
-    _input = createHashMapFromArray (parseSimpleArray _text);
+		_input = createHashMapFromArray (parseSimpleArray _text);
 
-    _players = get3DENSelected "object";
+		_players = get3DENSelected "object";
 
-    {
-      _description = (_x get3DENAttribute "description") select 0;
-      _role = (_description splitString "@") select 0;
-      _loadoutToSet = getUnitLoadout _x;
-      switch (_role) do {
-        case "Company Commander": {_loadoutToSet = _input get "CC"};
-        case "Executive Officer": {_loadoutToSet = _input get "EO"};
-        case "Section Leader";
-        case "Platoon Leader": {_loadoutToSet = _input get "PL"};
-        case "Company Sergeant";
-        case "Platoon Sergeant": {_loadoutToSet = _input get "SGT"};
-        case "Squad Leader": {_loadoutToSet = _input get "SL"};
-        case "Automatic Rifleman": {_loadoutToSet = _input get "AR"};
-        case "Asst. Automatic Rifleman": {_loadoutToSet = _input get "ARA"};
-        case "Grenadier": {_loadoutToSet = _input get "GR"};
-        case "Machine Gunner": {_loadoutToSet = _input get "MG"};
-        case "Asst. Machine Gunner": {_loadoutToSet = _input get "MGA"};
-        case "Combat Engineer": {_loadoutToSet = _input get "CE"};
-        case "Rifleman (LAT)": {_loadoutToSet = _input get "LAT"};
-        case "Missile Specialist": {_loadoutToSet = _input get "MAT1"};
-        case "Asst. Missile Specialist": {_loadoutToSet = _input get "MATA1"};
-        case "Ammo Bearer": {_loadoutToSet = _input get "AB"};
-        case "Marksman": {_loadoutToSet = _input get "DM"};
-        case "Vehicle Commander": {_loadoutToSet = _input get "CRL";
-        _x set3DENAttribute ["ace_isEngineer", 1];};
-        case "Vehicle Gunner";
-        case "Vehicle Driver": {_loadoutToSet = _input get "CR";
-        _x set3DENAttribute ["ace_isEngineer", 1];};
-        case "Pilot";
-        case "Co-Pilot/Gunner";
-        case "Gunner": {_loadoutToSet = _input get "PI";
-        _x set3DENAttribute ["ace_isEngineer", 1];};
-        case "Medic": {_loadoutToSet = _input get "MED"};
-      };
-      _x setUnitLoadout _loadoutToSet;
-    } forEach _players;
+		{
+			_description = (_x get3DENAttribute "description") select 0;
+			_role = (_description splitString "@") select 0;
+			_loadoutToSet = getUnitLoadout _x;
+			switch (_role) do {
+				case "Company Commander": {_loadoutToSet = _input get "CC"};
+				case "Executive Officer": {_loadoutToSet = _input get "EO"};
+				case "Section Leader";
+				case "Platoon Leader": {_loadoutToSet = _input get "PL"};
+				case "Company Sergeant";
+				case "Platoon Sergeant": {_loadoutToSet = _input get "SGT"};
+				case "Squad Leader": {_loadoutToSet = _input get "SL"};
+				case "Automatic Rifleman": {_loadoutToSet = _input get "AR"};
+				case "Asst. Automatic Rifleman": {_loadoutToSet = _input get "ARA"};
+				case "Grenadier": {_loadoutToSet = _input get "GR"};
+				case "Machine Gunner": {_loadoutToSet = _input get "MG"};
+				case "Asst. Machine Gunner": {_loadoutToSet = _input get "MGA"};
+				case "Combat Engineer": {_loadoutToSet = _input get "CE"};
+				case "Rifleman (LAT)": {_loadoutToSet = _input get "LAT"};
+				case "Missile Specialist": {_loadoutToSet = _input get "MAT1"};
+				case "Asst. Missile Specialist": {_loadoutToSet = _input get "MATA1"};
+				case "Ammo Bearer": {_loadoutToSet = _input get "AB"};
+				case "Marksman": {_loadoutToSet = _input get "DM"};
+				case "Vehicle Commander": {_loadoutToSet = _input get "CRL";
+				_x set3DENAttribute ["ace_isEngineer", 1];};
+				case "Vehicle Gunner";
+				case "Vehicle Driver": {_loadoutToSet = _input get "CR";
+				_x set3DENAttribute ["ace_isEngineer", 1];};
+				case "Pilot";
+				case "Co-Pilot/Gunner";
+				case "Gunner": {_loadoutToSet = _input get "PI";
+				_x set3DENAttribute ["ace_isEngineer", 1];};
+				case "Medic": {_loadoutToSet = _input get "MED"};
+			};
+			_x setUnitLoadout _loadoutToSet;
+		} forEach _players;
 
-    save3DENInventory _players;
+		save3DENInventory _players;
 
 		_display closeDisplay 1;
 	};

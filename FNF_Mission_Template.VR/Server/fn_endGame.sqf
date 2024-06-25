@@ -5,7 +5,7 @@
 		Ends the game depending on which winning sides are passed
 
 	Parameter(s):
-		0: ARRAY -  An array of all winning sides (Example: [west, independent])
+		0: ARRAY -	An array of all winning sides (Example: [west, independent])
 
 	Returns:
 		None
@@ -23,17 +23,17 @@ switch (count _winningSides) do
 		switch (_winningSides select 0) do
 		{
 			case west: {
-        _winningOCAP = "Blufor have Won!";
-        _winningEnding = "bluforWin";
-      };
+				_winningOCAP = "Blufor have Won!";
+				_winningEnding = "bluforWin";
+			};
 			case east: {
-        _winningOCAP = "Opfor have Won!";
-        _winningEnding = "opforWin";
-      };
+				_winningOCAP = "Opfor have Won!";
+				_winningEnding = "opforWin";
+			};
 			case independent: {
-        _winningOCAP = "Independent have Won!";
-        _winningEnding = "independentWin";
-      };
+				_winningOCAP = "Independent have Won!";
+				_winningEnding = "independentWin";
+			};
 		}
 	};
 	case 2: {
@@ -43,61 +43,61 @@ switch (count _winningSides) do
 				switch (_winningSides select 1) do
 				{
 					case east: {
-            _winningOCAP = "Blufor and Opfor have Won!";
-            _winningEnding = "bluforAndOpforWin";
-          };
+						_winningOCAP = "Blufor and Opfor have Won!";
+						_winningEnding = "bluforAndOpforWin";
+					};
 					case independent: {
-            _winningOCAP = "Blufor and Independent have Won!";
-            _winningEnding = "bluforAndIndependentWin";
-          };
+						_winningOCAP = "Blufor and Independent have Won!";
+						_winningEnding = "bluforAndIndependentWin";
+					};
 				}
 			};
 			case east: {
 				switch (_winningSides select 1) do
 				{
 					case west: {
-            _winningOCAP = "Blufor and Opfor have Won!";
-            _winningEnding = "bluforAndOpforWin";
-          };
+						_winningOCAP = "Blufor and Opfor have Won!";
+						_winningEnding = "bluforAndOpforWin";
+					};
 					case independent: {
-            _winningOCAP = "Opfor and Independent have Won!";
-            _winningEnding = "opforAndIndependentWin";
-          };
+						_winningOCAP = "Opfor and Independent have Won!";
+						_winningEnding = "opforAndIndependentWin";
+					};
 				}
 			};
 			case independent: {
 				switch (_winningSides select 1) do
 				{
 					case west: {
-            _winningOCAP = "Blufor and Independent have Won!";
-            _winningEnding = "bluforAndIndependentWin";
-          };
+						_winningOCAP = "Blufor and Independent have Won!";
+						_winningEnding = "bluforAndIndependentWin";
+					};
 					case east: {
-            _winningOCAP = "Opfor and Independent have Won!";
-            _winningEnding = "opforAndIndependentWin";
-          };
+						_winningOCAP = "Opfor and Independent have Won!";
+						_winningEnding = "opforAndIndependentWin";
+					};
 				}
 			};
 		}
 	};
 	case 3: {
-    _winningOCAP = "Blufor, Opfor, and Independent have Won!";
-    _winningEnding = "allWin";
-  };
+		_winningOCAP = "Blufor, Opfor, and Independent have Won!";
+		_winningEnding = "allWin";
+	};
 	default {
-    _winningOCAP = "No side have Won!";
-    _winningEnding = "draw";
-  };
+		_winningOCAP = "No side have Won!";
+		_winningEnding = "draw";
+	};
 };
 
 if (isClass (configFile >> "CfgPatches" >> "OCAP")) then
 {
-  if (count _winningSides isEqualTo 1) then
-  {
-    [(_winningSides select 0),_winningOCAP] call ocap_fnc_exportData;
-  } else {
-    [_winningOCAP] call ocap_fnc_exportData;
-  };
+	if (count _winningSides isEqualTo 1) then
+	{
+		[(_winningSides select 0),_winningOCAP] call ocap_fnc_exportData;
+	} else {
+		[_winningOCAP] call ocap_fnc_exportData;
+	};
 };
 
 _mvpScores = [];
