@@ -25,6 +25,8 @@ _safeZoneModules = [_modules, "safeZone"] call FNF_ClientSide_fnc_findSpecificMo
 	[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
 } forEach _safeZoneModules;
 
+call FNF_ClientSide_fnc_disableFortify;
+
 fnf_showSelectors = false;
 
 fnf_timerMessage = nil;
