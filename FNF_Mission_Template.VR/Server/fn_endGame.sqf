@@ -98,6 +98,7 @@ if (isClass (configFile >> "CfgPatches" >> "OCAP")) then
   } else {
     [_winningOCAP] call ocap_fnc_exportData;
   };
+	call statslogger_fnc_export;
 };
 
 _mvpScores = [];
