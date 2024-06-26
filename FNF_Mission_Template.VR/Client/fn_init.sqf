@@ -94,7 +94,7 @@ if (count _selectorModules isNotEqualTo 0) then
 };
 
 //check there are asset selectors
-_assetSelectorModules = [_modules, "selectorHost"] call FNF_ClientSide_fnc_findSpecificModules;
+_assetSelectorModules = [_modules, "selectorAssetHost"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _assetSelectorModules isNotEqualTo 0) then
 {
 	[_assetSelectorModules] call FNF_ClientSide_fnc_initSelectors;
