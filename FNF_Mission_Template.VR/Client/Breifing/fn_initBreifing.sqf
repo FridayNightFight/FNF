@@ -680,7 +680,7 @@ _notes = _initModule getVariable ["fnf_breifingNotes", ""];
 _viewDistance = _initModule getVariable ["fnf_viewDistance", 800];
 _fortifyPoints = _initModule getVariable ["fnf_fortifyPoints", 0];
 _fortifyColour = _initModule getVariable ["fnf_fortifyColour", "Green"];
-_timeLimit = _initModule getVariable ["fnf_timeLimit", 120];
+_timeLimit = _initModule getVariable ["fnf_timeLimit", 55];
 
 if (_rules isNotEqualTo "") then
 {
