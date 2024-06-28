@@ -97,7 +97,7 @@ if (count _selectorModules isNotEqualTo 0) then
 _assetSelectorModules = [_modules, "selectorAssetHost"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _assetSelectorModules isNotEqualTo 0) then
 {
-	[_assetSelectorModules] call FNF_ClientSide_fnc_initSelectors;
+	[_assetSelectorModules] call FNF_ClientSide_fnc_initAssetSelectors;
 };
 
 //init breifing
