@@ -647,7 +647,7 @@
 		// WW2 AFTER THIS
 		//*************************************************************************************************************************
 
-		class fnf_GermanArmySummer1945
+		/*class fnf_GermanArmySummer1945
 		{
 			path = "fnf_eden\kits\GermanArmySummer[1945]";
 			side = 8;
@@ -736,4 +736,4 @@
 			editorSubcategory = "fnf_WW2";
 			displayName = "Japan [1940]";
 			useSideColorOnIcon = 1;
-		};
+		};*/

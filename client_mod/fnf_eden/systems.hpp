@@ -23,11 +23,11 @@ class CfgEditorSubcategories
 	/*class fnf_Vietnam
 	{
 		displayName = "Vietnam";
-	};*/
+	};
 	class fnf_WW2
 	{
 		displayName = "WW2";
-	};
+	};*/
 	class fnf_Opfor
 	{
 		displayName = "Opfor";
