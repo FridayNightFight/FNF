@@ -15,7 +15,7 @@ params["_initModule"];
 
 //disable global, and typing in side
 0 enableChannel false;
-1 enableChannel [false, true];
+1 enableChannel [true, true];
 6 enableChannel false;
 
 // disable AI contact reports
