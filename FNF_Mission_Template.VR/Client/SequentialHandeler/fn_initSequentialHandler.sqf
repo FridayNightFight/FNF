@@ -11,126 +11,102 @@
 		None
 */
 
-fnf_seqeuntialObjectiveItemsToCheck = [];
-//[_objModule, _forPlayer, _seqPlanModule, [_modules that must be complete], _objKnown]
+fnf_seqObjHandelerQueue = [];
 
 [{
-	_indexsComplete = [];
-
+	_indexsToInit = [];
+	_indexsToremoveFromHandeler = [];
 	{
-		_result = true;
+		_x params ["_preRequisiteIndexs", "_resultIndexs"];
+		_allPreRequisitesHit = true;
 		{
-			_objComplete = _x getVariable ["fnf_objComplete", false];
-			if (not _objComplete) then
+			_state = fnf_objectives select _x select 0;
+			if (_state < 4) then
 			{
-				_result = false;
+				_allPreRequisitesHit = false;
 				break;
 			};
-		} forEach (_x select 3);
+		} forEach _preRequisiteIndexs;
 
-		if (_result) then
+		if (_allPreRequisitesHit) then
 		{
-			_indexsComplete pushBack _forEachIndex;
+			_indexsToremoveFromHandeler pushBack _forEachIndex;
+			_indexsToInit append _resultIndexs;
 		};
-	} forEach fnf_seqeuntialObjectiveItemsToCheck;
+	} forEach fnf_seqObjHandelerQueue;
 
-	if (count _indexsComplete isNotEqualTo 0) then
+	_count = count _indexsToInit;
+
+	if (_count > 0) then
 	{
-		_knownObjRevealed = 0;
-		_unknownObjRevealed = 0;
-
-		_singleObjType = "";
 		{
-			(fnf_seqeuntialObjectiveItemsToCheck select (_x - _forEachIndex)) params ["_objModule", "_forPlayer", "_seqPlanModule", "_modulesThatMustBeComplete", "_objKnown"];
-			if (_objKnown) then
-			{
-				_knownObjRevealed = _knownObjRevealed + 1;
-			} else {
-				_unknownObjRevealed = _unknownObjRevealed + 1;
-			};
+			fnf_seqObjHandelerQueue deleteAt (_x - _forEachIndex);
+		} forEach _indexsToremoveFromHandeler;
 
-			_seqPlanModule setVariable ["fnf_sequentialObjCompleted", true, false];
+		_indexsToInit = _indexsToInit arrayIntersect _indexsToInit;
+		_indexsToInit sort true;
 
-			_moduleType = typeOf _objModule;
-
-			switch (_moduleType) do
-			{
+		{
+			_module = fnf_objectives select _x select 1;
+			_type = typeOf _module;
+			switch (_type) do {
 				case "fnf_module_destroyObj":
 				{
-					[{
-						params["_objModule", "_forPlayer"];
-						[_objModule, _forPlayer] call FNF_ClientSide_fnc_initDestroy;
-					}, [_objModule, _forPlayer], 6] call CBA_fnc_waitAndExecute;
-					_singleObjType = "Destroy";
+					[_x] call FNF_ClientSide_fnc_initDestroy;
 				};
 
 				case "fnf_module_sectorCaptureObj":
 				{
-					[{
-						params["_objModule", "_forPlayer"];
-						[_objModule, _forPlayer] call FNF_ClientSide_fnc_initCaptureSector;
-					}, [_objModule, _forPlayer], 6] call CBA_fnc_waitAndExecute;
-					_singleObjType = "Capture Sector";
+					[_x] call FNF_ClientSide_fnc_initCaptureSector;
 				};
 
 				case "fnf_module_terminalObj":
 				{
-					[{
-						params["_objModule", "_forPlayer"];
-						[_objModule, _forPlayer] call FNF_ClientSide_fnc_initTerminal;
-					}, [_objModule, _forPlayer], 6] call CBA_fnc_waitAndExecute;
-					_singleObjType = "Terminal";
+					[_x] call FNF_ClientSide_fnc_initTerminal;
 				};
 
 				case "fnf_module_assassinObj":
 				{
-					[{
-						params["_objModule", "_forPlayer"];
-						[_objModule, _forPlayer] call FNF_ClientSide_fnc_initAssassin;
-					}, [_objModule, _forPlayer], 6] call CBA_fnc_waitAndExecute;
-					_singleObjType = "Assassin";
-				};
-
-				//if no type found then objective must be part of a new mod update that framework isnt equipped to handle
-				default
-				{
-					if (fnf_debug) then
-					{
-						systemChat ("DANGER: FNF Obj module " + _moduleType + " is of unknown type, make sure template is up to date");
-					};
+					[_x] call FNF_ClientSide_fnc_initAssassin;
 				};
 			};
+		} forEach _indexsToInit;
 
-			fnf_seqeuntialObjectiveItemsToCheck deleteAt (_x - _forEachIndex);
-		} forEach _indexsComplete;
+		_stringArray = ["<t size='1.5' align='center'>New Objective"];
 
-
-
-		_stringToSend = "";
-		if (_knownObjRevealed isEqualTo 1 and _unknownObjRevealed isEqualTo 0) then
+		if (_count > 1) then
 		{
-			_stringToSend = "<t size='1.5' align='center'>Objective Now Active</t><br/><br/><t align='center'>Objective (OBJ NUM) is now active and can now be completed, please check the Tasks tab on your map!</t>";
-		};
-		if (_knownObjRevealed > 1 and _unknownObjRevealed isEqualTo 0) then
-		{
-			_stringToSend = "<t size='1.5' align='center'>Objectives Now Active</t><br/><br/><t align='center'>Multiple objectives are now active and can be completed, please check the Tasks tab on your map!</t>";
-		};
-		if (_knownObjRevealed isEqualTo 0 and _unknownObjRevealed isEqualTo 1) then
-		{
-			_stringToSend = "<t size='1.5' align='center'>New Objective Created</t><br/><br/><t align='center'>New " + _singleObjType + " objective has been created for you to complete, please check the Tasks tab on your map!</t>";
-		};
-		if (_knownObjRevealed isEqualTo 0 and _unknownObjRevealed > 1) then
-		{
-			_stringToSend = "<t size='1.5' align='center'>New Objectives Created</t><br/><br/><t align='center'>Multiple new objectives have been created for you to complete, please check the Tasks tab on your map!</t>";
-		};
-		if (_knownObjRevealed > 0 and _unknownObjRevealed > 0) then
-		{
-			_stringToSend = "<t size='1.5' align='center'>Objectives Now Active And Created</t><br/><br/><t align='center'>Multiple new objectives have been created for you to complete, in addition multiple objectives are now active and can be completed, please check the Tasks tab on your map!</t>";
+			_stringArray pushBack "s"
 		};
 
-		[{
-			params["_stringToSend"];
-			[_stringToSend, "info"] call FNF_ClientSide_fnc_notificationSystem;
-		}, [_stringToSend], 5] call CBA_fnc_waitAndExecute;
+		_stringArray pushBack " Available</t><br/><br/><t align='center'>Objective";
+
+		if (_count > 1) then
+		{
+			_stringArray pushBack "s"
+		};
+
+		if (_count isEqualTo 1) then
+		{
+			_stringArray pushBack format[" %1 is ", ((_indexsToInit select 0) + 1)];
+		};
+		if (_count isEqualTo 2) then
+		{
+			_stringArray pushBack format[" %1 and %2 are ", ((_indexsToInit select 0) + 1), ((_indexsToInit select 1) + 1)];
+		};
+		if (_count > 2) then
+		{
+			_stringArray pushBack " ";
+			{
+				_stringArray pushBack format["%1, ", _x];
+			} forEach _indexsToInit;
+			_stringArray set [-1, format["and %1 are ", ((_indexsToInit select -1) + 1)]];
+		};
+
+		_stringArray pushBack "now available and can be completed, please check the Tasks tab on your map!</t>";
+
+		_string = _stringArray joinString "";
+
+		[{[_this, "info", 10] call FNF_ClientSide_fnc_notificationSystem;}, _string, 3] call CBA_fnc_waitAndExecute;
 	};
 }, 1] call CBA_fnc_addPerFrameHandler;

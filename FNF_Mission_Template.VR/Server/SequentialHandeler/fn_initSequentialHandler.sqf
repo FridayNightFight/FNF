@@ -11,78 +11,65 @@
 		None
 */
 
-fnf_seqeuntialObjectiveItemsToCheckServer = [];
-//[_objModule, _side, _seqPlanModule, [_modules that must be complete]]
+fnf_seqObjHandelerQueueServer = [];
 
 [{
-	_indexsComplete = [];
-
+	_indexsToInit = [];
+	_indexsToremoveFromHandeler = [];
 	{
-		_result = true;
+		_x params ["_preRequisiteIndexs", "_resultIndexs"];
+		_allPreRequisitesHit = true;
 		{
-			_objComplete = _x getVariable ["fnf_objComplete", false];
-			if (not _objComplete) then
+			_state = fnf_serverObjectives select _x select 0;
+			if (_state < 4) then
 			{
-				_result = false;
+				_allPreRequisitesHit = false;
 				break;
 			};
-		} forEach (_x select 3);
+		} forEach _preRequisiteIndexs;
 
-		if (_result) then
+		if (_allPreRequisitesHit) then
 		{
-			_indexsComplete pushBack _forEachIndex;
+			_indexsToremoveFromHandeler pushBack _forEachIndex;
+			_indexsToInit append _resultIndexs;
 		};
-	} forEach fnf_seqeuntialObjectiveItemsToCheckServer;
+	} forEach fnf_seqObjHandelerQueueServer;
 
-	if (count _indexsComplete isNotEqualTo 0) then
+	_count = count _indexsToInit;
+
+	if (_count > 0) then
 	{
 		{
-			(fnf_seqeuntialObjectiveItemsToCheckServer select (_x - _forEachIndex)) params ["_objModule", "_side", "_seqPlanModule", "_modulesThatMustBeComplete"];
+			fnf_seqObjHandelerQueueServer deleteAt (_x - _forEachIndex);
+		} forEach _indexsToremoveFromHandeler;
 
-			_seqPlanModule setVariable ["fnf_sequentialObjCompleted", true, false];
+		_indexsToInit = _indexsToInit arrayIntersect _indexsToInit;
+		_indexsToInit sort true;
 
-			_moduleType = typeOf _objModule;
-
-			switch (_moduleType) do
-			{
+		{
+			_module = fnf_serverObjectives select _x select 1;
+			_type = typeOf _module;
+			switch (_type) do {
 				case "fnf_module_destroyObj":
 				{
-					[{
-						params["_objModule", "_side"];
-						[_objModule, _side] call FNF_ServerSide_fnc_initDestroy;
-					}, [_objModule, _side], 1] call CBA_fnc_waitAndExecute;
+					[_x] call FNF_ServerSide_fnc_initDestroy;
 				};
 
 				case "fnf_module_sectorCaptureObj":
 				{
-					[{
-						params["_objModule", "_side"];
-						[_objModule, _side] call FNF_ServerSide_fnc_initCaptureSector;
-					}, [_objModule, _side], 1] call CBA_fnc_waitAndExecute;
+					[_x] call FNF_ServerSide_fnc_initCaptureSector;
 				};
 
 				case "fnf_module_terminalObj":
 				{
-					[{
-						params["_objModule", "_side"];
-						[_objModule, _side] call FNF_ServerSide_fnc_initTerminal;
-					}, [_objModule, _side], 1] call CBA_fnc_waitAndExecute;
+					[_x] call FNF_ServerSide_fnc_initTerminal;
 				};
 
 				case "fnf_module_assassinObj":
 				{
-					[{
-						params["_objModule", "_side"];
-						[_objModule, _side] call FNF_ServerSide_fnc_initAssassin;
-					}, [_objModule, _side], 1] call CBA_fnc_waitAndExecute;
+					[_x] call FNF_ServerSide_fnc_initAssassin;
 				};
-
-				//if no type found then objective must be part of a new mod update that framework isnt equipped to handle
-				default
-				{};
 			};
-
-			fnf_seqeuntialObjectiveItemsToCheckServer deleteAt (_x - _forEachIndex);
-		} forEach _indexsComplete;
+		} forEach _indexsToInit;
 	};
 }, 1] call CBA_fnc_addPerFrameHandler;

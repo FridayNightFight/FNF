@@ -46,8 +46,12 @@ call FNF_ClientSide_fnc_missionDetailsButton;
 call BIS_fnc_showMissionStatus;
 
 [{!isNil "fnf_objectives"}, {
+
+	_indexsToDrawIcon = [];
+
 	{
-		_type = typeOf (_x select 1);
+		_x params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+		_type = typeOf _module;
 		//if OBJ is one without a physical object then move to next OBJ
 		if (_type isEqualTo "fnf_module_sectorCaptureObj") then
 		{
@@ -56,23 +60,9 @@ call BIS_fnc_showMissionStatus;
 
 		if (_type isEqualTo "fnf_module_destroyObj") then
 		{
-			_desc = taskDescription (_x select 3);
-			_splitString = (_desc select 1) splitString " ";
-			_objNumWithColon = _splitString select 0;
-			_objNum = _objNumWithColon trim [":", 2];
-
-			_marker = createMarkerLocal ["destroy_obj_marker_" + str(_objNum), (_x select 2)];
-			_marker setMarkerTypeLocal "mil_objective";
-			_marker setMarkerTextLocal "Destroy " + _objNum;
-
-			[{
-				params["_marker", "_object"];
-				_marker setMarkerPosLocal _object;
-				not alive _object or not ace_spectator_isset;
-			}, {
-				params["_marker", "_object"];
-				deleteMarkerLocal _marker;
-			}, [_marker, (_x select 2)]] call CBA_fnc_waitUntilAndExecute;
+			_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+			_marker setMarkerAlphaLocal 1;
+			_indexsToDrawIcon pushBack _forEachIndex;
 		};
 
 		if (_type isEqualTo "fnf_module_assassinObj") then
@@ -108,7 +98,7 @@ call BIS_fnc_showMissionStatus;
 			}, [_marker, (_x select 1)]] call CBA_fnc_waitUntilAndExecute;
 		};
 
-		[{
+		/*[{
 			params ["_objectiveEntry"];
 
 			_obj = (_objectiveEntry select 2);
@@ -144,8 +134,35 @@ call BIS_fnc_showMissionStatus;
 
 			drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
 
-		} , 0, _x] call CBA_fnc_addPerFrameHandler;
+		} , 0, _x] call CBA_fnc_addPerFrameHandler;*/
 
 	} forEach fnf_objectives;
+
+	[{
+		params ["_objectiveIndexs"];
+		{
+			_objEntry = fnf_objectives select _x;
+
+			_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+			if (_objState > 3) then
+			{
+				continue;
+			};
+
+			_type = typeOf _module;
+			//if OBJ is one without a physical object then move to next OBJ
+			if (_type isEqualTo "fnf_module_sectorCaptureObj") then
+			{
+				continue;
+			};
+
+			if (_type isEqualTo "fnf_module_destroyObj") then
+			{
+				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+				drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
+			};
+		} forEach _objectiveIndexs;
+ 	}, 0, _indexsToDrawIcon] call CBA_fnc_addPerFrameHandler;
 
 }, [], 60] call CBA_fnc_waitUntilAndExecute;

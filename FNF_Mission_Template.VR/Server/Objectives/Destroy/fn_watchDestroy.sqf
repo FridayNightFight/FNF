@@ -2,22 +2,44 @@
 	Author: Mallen
 
 	Description:
-		watch a destroy objective including updating task, returns if objective has been completed (failed for protection objectives)
+		watch a destroy objective server side
 
 	Parameter(s):
-		1: OBJECT -	The destroy objective object to be processed
+		1: INTEGER -	The index of the objective to watch
 
 	Returns:
 		Boolean
 */
 
-params["_objectiveObject", "_objectiveModule"];
+params ["_objectiveIndex"];
 
-if (alive _objectiveObject) exitWith
+_objEntry = fnf_serverObjectives select _objectiveIndex;
+
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+_objType = _module getVariable ["fnf_objectiveType", "des"];
+
+_params params ["_targetObject", "_marker"];
+_markerPos = getMarkerPos _marker;
+_targetPos = getPos _targetObject;
+
+if (_markerPos distance2D _targetPos > 1) then
 {
-	false;
+	_marker setMarkerPosLocal _targetPos;
 };
 
-_objectiveModule setVariable ["fnf_objComplete", true, true];
+if (alive _targetObject) exitWith {};
 
-true;
+_marker setMarkerTextLocal "(Complete) Destroy OBJ";
+
+_newObjState = 5;
+if (_objType isEqualTo "des") then
+{
+	_newObjState = 4;
+};
+
+_module setVariable ["fnf_objServerState", _newObjState, true];
+
+fnf_serverObjectives set [_objectiveIndex, [_newObjState, _module, _task, _alliedTask, _codeOnCompletion, _params]];
+
+call _codeOnCompletion;

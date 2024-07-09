@@ -46,7 +46,7 @@ if (count _objModules isEqualTo 0) then
 		systemChat "WARNING: No objectives present"
 	};
 } else {
-	[_objModules] call FNF_ClientSide_fnc_initSpectatorObjectives;
+	[_objModules] call FNF_ClientSide_fnc_initSpectatorObjs;
 };
 
 //start overall timer
@@ -88,101 +88,85 @@ if (not isNil "fnf_objectives") then
 {
 	if (count fnf_objectives isNotEqualTo 0) then
 	{
-		[{
-			_indexesToDeleteIfCompleted = [];
-			{
-				switch (_x select 0) do {
-					case "DESTROY":
-					{
-						_result = [_x] call FNF_ClientSide_fnc_watchSpectatorDestroy;
-						if (_result) then
-						{
-							_indexesToDeleteIfCompleted pushBack _forEachIndex;
-						};
-					};
-					case "CAPTURESECTOR":
-					{
-						_result = [_x] call FNF_ClientSide_fnc_watchSpectatorCaptureSector;
-						if (_result) then
-						{
-							_indexesToDeleteIfCompleted pushBack _forEachIndex;
-						};
-					};
-					case "TERMINAL":
-					{
-						_result = [_x] call FNF_ClientSide_fnc_watchSpectatorTerminal;
-						if (_result) then
-						{
-							_indexesToDeleteIfCompleted pushBack _forEachIndex;
-						};
-					};
-					case "ASSASSIN":
-					{
-						_result = [_x] call FNF_ClientSide_fnc_watchSpectatorAssassin;
-						if (_result) then
-						{
-							_indexesToDeleteIfCompleted pushBack _forEachIndex;
-						};
-					};
-					case "DESTROYDUPE": {};
-					case "CAPTURESECTORDUPE": {};
-					case "TERMINALDUPE": {};
-					case "ASSASSINDUPE": {};
-					default
-					{
-						if (fnf_debug) then
-						{
-							systemChat "DANGER: Objective has no valid type code, contact FNF staff";
-						};
-					};
-				};
-			} forEach fnf_objectives;
-			{
-				fnf_objectives deleteAt (_x - _forEachIndex);
-			} forEach _indexesToDeleteIfCompleted;
-		},1] call CBA_fnc_addPerFrameHandler;
+		[{call FNF_ClientSide_fnc_watchSpectatorObjs;}, 1] call CBA_fnc_addPerFrameHandler;
+
+		_indexsToDrawIcon = [];
 
 		{
+			_x params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+			_type = typeOf _module;
 			//if OBJ is one without a physical object then move to next OBJ
-			if (_x select 0 isEqualTo "CAPTURESECTOR" or _x select 0 isEqualTo "CAPTURESECTORDUPE" or _x select 0 isEqualTo "DESTROYDUPE" or _x select 0 isEqualTo "TERMINALDUPE" or _x select 0 isEqualTo "ASSASSINDUPE") then
+			if (_type isEqualTo "fnf_module_sectorCaptureObj") then
 			{
 				continue;
 			};
 
-			[{
-			params ["_objectiveEntry"];
-
-			_obj = (_objectiveEntry select 2);
-
-			if (_objectiveEntry select 0 isEqualTo "ASSASSIN") then
+			if (_type isEqualTo "fnf_module_destroyObj") then
 			{
-				_syncedObjects = synchronizedObjects (_objectiveEntry select 1);
-				_obj = objNull;
-				{
-					if (isPlayer _x) then
-					{
-						_obj = _x;
-					};
-				} forEach _syncedObjects;
-
-				_objComplete = (_objectiveEntry select 1) getVariable ["fnf_objComplete", false];
-				if (_objComplete) exitWith {
-					[_handle] call CBA_fnc_removePerFrameHandler;
-				};
-			} else {
-				if (isNull _obj) exitWith {
-					[_handle] call CBA_fnc_removePerFrameHandler;
-				};
-
-				if (!alive _obj) exitWith {
-					[_handle] call CBA_fnc_removePerFrameHandler;
-				};
+				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+				_marker setMarkerAlphaLocal 1;
+				_indexsToDrawIcon pushBack _forEachIndex;
 			};
 
-			drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _obj, 0.6, 0.6, 45];
+			if (_type isEqualTo "fnf_module_assassinObj") then
+			{
+				_desc = taskDescription (_x select 3);
+				_splitString = (_desc select 1) splitString " ";
+				_objNumWithColon = _splitString select 0;
+				_objNum = _objNumWithColon trim [":", 2];
 
-		} , 0, _x] call CBA_fnc_addPerFrameHandler;
+				_marker = createMarkerLocal ["assassin_obj_marker_" + str(_objNum), (_x select 1)];
+				_marker setMarkerTypeLocal "mil_objective";
+				_marker setMarkerTextLocal "Assassin " + _objNum;
 
+				[{
+					params["_marker", "_object"];
+					_objComplete = _object getVariable ["fnf_objComplete", false];
+
+					_syncedObjects = synchronizedObjects _object;
+
+					{
+						if (isPlayer _x) then
+						{
+							_object = _x;
+						};
+					} forEach _syncedObjects;
+
+					_marker setMarkerPosLocal _object;
+
+					_objComplete or not ace_spectator_isset;
+				}, {
+					params["_marker", "_object"];
+					deleteMarkerLocal _marker;
+				}, [_marker, (_x select 1)]] call CBA_fnc_waitUntilAndExecute;
+			};
 		} forEach fnf_objectives;
+
+		[{
+			params ["_objectiveIndexs"];
+			{
+				_objEntry = fnf_objectives select _x;
+
+				_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+				if (_objState > 3) then
+				{
+					continue;
+				};
+
+				_type = typeOf _module;
+				//if OBJ is one without a physical object then move to next OBJ
+				if (_type isEqualTo "fnf_module_sectorCaptureObj") then
+				{
+					continue;
+				};
+
+				if (_type isEqualTo "fnf_module_destroyObj") then
+				{
+					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+					drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
+				};
+			} forEach _objectiveIndexs;
+ 		}, 0, _indexsToDrawIcon] call CBA_fnc_addPerFrameHandler;
 	};
 };

@@ -10,8 +10,6 @@
 	Returns:
 		None
 */
-if (!isServer) exitWith {};
-
 params ["_modules"];
 
 _modules = [_modules] call FNF_ClientSide_fnc_sortByLocation;
@@ -25,26 +23,32 @@ _modules = [_modules] call FNF_ClientSide_fnc_sortByLocation;
 4 - Completed
 5 - Failed
 */
-if (isNil "fnf_serverObjectives") then
+if (isNil "fnf_objectives") then
 {
-	fnf_serverObjectives = [];
+	fnf_objectives = [];
 };
 
-call FNF_ClientSide_fnc_initZones;
+_missionStatusSet = false;
 
 {
 	_moduleType = typeOf _x;
-	_newTaskIndex = fnf_serverObjectives pushBack [0, _x, taskNull, false, {}, []];
+	_newTaskIndex = fnf_objectives pushBack [0, _x, taskNull, false, {}, []];
 
 	switch (_moduleType) do
 	{
 		case "fnf_module_destroyObj":
 		{
-			[_newTaskIndex] call FNF_ServerSide_fnc_initDestroy;
+			[_newTaskIndex] call FNF_ClientSide_fnc_initSpectatorDestroy;
 		};
 
 		case "fnf_module_sectorCaptureObj":
 		{
+			if (not _missionStatusSet) then
+			{
+				_missionStatusSet = true;
+				addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
+				call BIS_fnc_showMissionStatus;
+			};
 			[_newTaskIndex] call FNF_ServerSide_fnc_initCaptureSector;
 		};
 

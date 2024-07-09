@@ -224,37 +224,39 @@ _loadoutCreation = {
 		_weaponPics pushBack _weaponPic
 	} forEach _weaponsFound;
 
-	_string = "<font size='20' shadow='1' face='PuristaBold'>" + _kitName + "</font><br/><font size='18' shadow='1' face='PuristaBold'>" + _kitAuthor + "</font><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Uniform:</font><br/>";
+	_string = [format["<font size='20' shadow='1' face='PuristaBold'>%1</font><br/><font size='18' shadow='1' face='PuristaBold'>%2</font><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Uniform:</font><br/>", _kitName, _kitAuthor]];
 	{
-		_string = _string + "<img width='110' image='" + _x + "'/>"
+		_string pushBack ("<img width='110' image='" + _x + "'/>");
 	} forEach _helmets;
-	_string = _string + "<br/>";
+	_string pushBack "<br/>";
 	{
-		_string = _string + "<img width='110' image='" + _x + "'/>"
+		_string pushBack ("<img width='110' image='" + _x + "'/>");
 	} forEach _vests;
-	_string = _string + "<br/>";
+	_string pushBack "<br/>";
 	{
-		_string = _string + "<img width='110' image='" + _x + "'/>"
+		_string pushBack ("<img width='110' image='" + _x + "'/>");
 	} forEach _uniforms;
-	_string = _string + "<br/>";
+	_string pushBack "<br/>";
 
-	_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons:</font><br/>";
+	_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons:</font><br/>";
 	{
-		_string = _string + "<img width='220' image='" + _x + "'/><br/>"
+		_string pushBack ("<img width='220' image='" + _x + "'/><br/>");
 	} forEach _weaponPics;
+
+	_stringJoined = _string joinString "";
 
 	switch (_side) do {
 		case west:
 		{
-			player createDiaryRecord ["blufor", ["Loadout",_string], taskNull, "", True];
+			player createDiaryRecord ["blufor", ["Loadout",_stringJoined], taskNull, "", True];
 		};
 		case east:
 		{
-			player createDiaryRecord ["opfor", ["Loadout",_string], taskNull, "", True];
+			player createDiaryRecord ["opfor", ["Loadout",_stringJoined], taskNull, "", True];
 		};
 		case independent:
 		{
-			player createDiaryRecord ["indfor", ["Loadout",_string], taskNull, "", True];
+			player createDiaryRecord ["indfor", ["Loadout",_stringJoined], taskNull, "", True];
 		};
 		default { };
 	};
@@ -270,17 +272,17 @@ _assetString = {
 	_desc = getText(_thisCfg >> "descriptionShort");
 	_pic = [_thisCfg >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
 
-	_string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/>";
+	_string = [(format["<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>%1</font><br/><img width='330' image='%2'/><br/><br/>", _dispName, _pic])];
 
 	_totalSeats = [_objType, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
 	_crewSeats = [_objType, false] call BIS_fnc_crewCount; // Number of crew seats only
 	_canFloat = (_thisCfg >> "canFloat") call BIS_fnc_getCfgDataBool;
 	if (_totalSeats isNotEqualTo 0) then
 	{
-		_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
-		_string = _string + "	Capacity: " + str(_totalSeats) + "<br/>";
-		_string = _string + "	Crew: " + str(_crewSeats) + "<br/>";
-		_string = _string + "	Can it float: " + str(_canFloat) + "<br/><br/>";
+		_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
+		_string pushBack ("	Capacity: " + str(_totalSeats) + "<br/>");
+		_string pushBack ("	Crew: " + str(_crewSeats) + "<br/>");
+		_string pushBack ("	Can it float: " + str(_canFloat) + "<br/><br/>");
 	};
 
 	_allTurrets = allTurrets _objectToBaseOffOf;
@@ -297,7 +299,7 @@ _assetString = {
 			_turretNameAndPaths pushBack [_x, _name];
 		} forEach _allTurrets;
 
-		_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
+		_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
 		_cfgMagazineWells = configFile >> "CfgMagazineWells";
 
 		{
@@ -322,10 +324,10 @@ _assetString = {
 
 			if (count _currentTurretWeaponTurrets isNotEqualTo 0) then
 			{
-				_string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>";
+				_string pushBack ("<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>");
 				{
 					_weaponConfig = [_x] call CBA_fnc_getItemConfig;
-					_string = _string + "	" + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>";
+					_string pushBack ("	" + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>");
 					_possibleMagazines = [_weaponConfig] call CBA_fnc_compatibleMagazines;
 
 					{
@@ -333,11 +335,11 @@ _assetString = {
 						_amount = _x select 1;
 						if (_magName in _possibleMagazines) then{
 							_magConfig = [_magName] call CBA_fnc_getItemConfig;
-							_string = _string + "		" + ([_magConfig] call BIS_fnc_displayName) + " ( " + str(_amount) + "x " + str(_objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]) + " Rounds )" + "<br/>";
+							_string pushBack (format["		%1 (%2x %3 Rounds )<br/>", [_magConfig] call BIS_fnc_displayName, _amount, _objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]]);
 						};
 					} forEach _magNamesAndAmounts;
 
-					_string = _string + "<br/>";
+					_string pushBack "<br/>";
 				} forEach _currentTurretWeaponTurrets;
 			};
 		} forEach _turretNameAndPaths;
@@ -374,7 +376,7 @@ _assetString = {
 
 		_shortenedCargo sort true;
 
-		_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Inventory</font><br/>";
+		_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Inventory</font><br/>";
 		_justBreaked = false;
 		{
 			_justBreaked = false;
@@ -396,23 +398,23 @@ _assetString = {
 				};
 			};
 
-			_string = _string + "<font size='32'>[</font>" + str(_x select 0) + "x<img src='" + _tempPic + "' width='32' height='32' title='" + _displayName + "' /><font size='32'>]</font>";
+			_string pushBack (format["<font size='32'>[</font>%1x<img src='%2' width='32' height='32' title='%3' /><font size='32'>]</font>", _x select 0, _tempPic, _displayName]);
 
 			if (((_forEachIndex + 1) % 5) isEqualTo 0) then
 			{
-				_string = _string + "<br/>";
+				_string pushBack "<br/>";
 				_justBreaked = true;
 			};
 		} forEach _shortenedCargo;
 		if (_justBreaked) then
 		{
-			_string = _string + "<br/>";
+			_string pushBack "<br/>";
 		} else {
-			_string = _string + "<br/><br/>";
+			_string pushBack "<br/><br/>";
 		};
 	};
 
-	_string;
+	_string joinString "";
 };
 
 _assetCreation = {
@@ -546,7 +548,7 @@ _notes = _initModule getVariable ["fnf_breifingNotes", ""];
 _viewDistance = _initModule getVariable ["fnf_viewDistance", 800];
 _fortifyPoints = _initModule getVariable ["fnf_fortifyPoints", 0];
 _fortifyColour = _initModule getVariable ["fnf_fortifyColour", "Green"];
-_timeLimit = _initModule getVariable ["fnf_timeLimit", 50];
+_timeLimit = _initModule getVariable ["fnf_gameTime", 65];
 
 if (_rules isNotEqualTo "") then
 {

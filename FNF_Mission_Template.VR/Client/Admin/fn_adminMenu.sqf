@@ -155,7 +155,7 @@ _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 		_status = "COMPLETED";
 	};
 	_objectiveType = _x getVariable ["fnf_objectiveType", "FAILED"];
-	_objTempIndex = _objConfirmList lbAdd ("Assassin Obj " + _objectiveType + " - Status: " + _status + " Target: " + _targetName);
+	_objTempIndex = _objConfirmList lbAdd (format["Assassin Obj %1 - Status: %2 Target: %3", _objectiveType, _status, _targetName]);
 } forEach _objModules;
 
 _objConfirmButton = (fnf_adminDisplay select 0) ctrlCreate[ "ctrlButton", 10015 ];

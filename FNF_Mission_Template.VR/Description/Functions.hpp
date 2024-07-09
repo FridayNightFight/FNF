@@ -49,6 +49,7 @@ class CfgFunctions
 		{
 			file = "Client\Objectives";
 			class initObjs {};
+			class watchObjs {};
 		};
 		class objDestroy
 		{
@@ -141,7 +142,8 @@ class CfgFunctions
 		class spectatorObj
 		{
 			file = "Client\Spectator\Objectives";
-			class initSpectatorObjectives {};
+			class initSpectatorObjs {};
+			class watchSpectatorObjs {};
 		}
 		class spectatorObjDestroy
 		{
@@ -223,7 +225,7 @@ class CfgFunctions
 		class sequentialHandeler
 		{
 			file = "Client\SequentialHandeler";
-			class addSequentialHandle {};
+			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
 		}
 	};
@@ -249,13 +251,14 @@ class CfgFunctions
 		class sequentialHandeler
 		{
 			file = "Server\SequentialHandeler";
-			class addSequentialHandle {};
+			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
 		};
 		class objectives
 		{
 			file = "Server\Objectives";
 			class initObjs {};
+			class watchObjs {};
 		};
 		class objDestroy
 		{

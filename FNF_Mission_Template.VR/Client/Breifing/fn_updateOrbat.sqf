@@ -79,7 +79,7 @@ _validGroups = [];
 	_leaderName = name _leader;
 
 	//create group string
-	_stringToAdd = "<font size='20' face='RobotoCondensedBold'>" + _groupName + "<font face='RobotoCondensed'> (" + str((count _units) + 1) + ")	-	SR:" + _mainSRFreq + "	-	LR:" + _mainLRFreq + "</font></font><br/><font size='14' face='RobotoCondensed'>		" + _leaderRole + ": " + _leaderName + "</font><br/>";
+	_stringToAdd = [(format["<font size='20' face='RobotoCondensedBold'>%1<font face='RobotoCondensed'> (%2)	-	SR:%3	-	LR:%4</font></font><br/><font size='14' face='RobotoCondensed'>		%5: %6</font><br/>", _groupName, ((count _units) + 1), _mainSRFreq, _mainLRFreq, _leaderRole, _leaderName])];
 
 	//add all units to group string
 	{
@@ -92,13 +92,15 @@ _validGroups = [];
 		};
 
 		_unitName = name _x;
-		_stringToAdd = _stringToAdd + "<font size='14' face='RobotoCondensed'>		" + _unitRole + ": " + _unitName + "</font><br/>";
+		_stringToAdd pushBack (format["<font size='14' face='RobotoCondensed'>		%1: %2</font><br/>", _unitRole, _unitName]);
 	} forEach _units;
 
-	_stringToAdd = _stringToAdd + "<br/>";
+	_stringToAdd pushBack "<br/>";
+
+	_stringToAddJoined = _stringToAdd joinString "";
 
 	//add group string to running diary string
-	_orbatContent = _orbatContent + _stringToAdd;
+	_orbatContent = _orbatContent + _stringToAddJoined;
 } forEach _validGroups;
 
 //trims the ending breaks to keep tab size to a minimum
