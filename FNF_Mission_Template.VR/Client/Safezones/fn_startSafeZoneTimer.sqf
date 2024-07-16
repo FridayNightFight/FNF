@@ -50,7 +50,7 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 
 		fnf_showSelectors = false;
 
-		call FNF_ClientSide_fnc_disableFortify;
+		//call FNF_ClientSide_fnc_disableFortify;
 
 		["safeZoneGroup"] call FNF_ClientSide_fnc_removeRestrictionGroup;
 	};
