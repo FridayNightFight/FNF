@@ -3,6 +3,7 @@ respawnDialog = 0;
 respawnButton = 0;
 respawndelay = 99999;
 respawnOnStart = -1;
+respawnTemplates[] = {};
 
 #include "Description\Functions.hpp"
 #include "Description\Endings.hpp"
