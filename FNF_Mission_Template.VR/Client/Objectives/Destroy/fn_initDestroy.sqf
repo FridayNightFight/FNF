@@ -160,7 +160,7 @@ switch (_objState) do {
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
-		_markerPrefix = "(Inactive) Destroy OBJ";
+		_markerPrefix = format["(Inactive) Destroy %1", _objectiveIndex + 1];
 
 		_task = taskNull;
 
@@ -240,14 +240,14 @@ switch (_objState) do {
 					};
 				};
 
-				_markerPrefix = "Destroy OBJ";
+				_markerPrefix = format["Destroy %1", _objectiveIndex + 1];;
 
 				_task = _futureTask;
 			};
 			default { };
 		};
 
-		_marker = createMarkerLocal [format["FNF_LOCAL%1:DestroyOBJ", _objectiveIndex], _targetObject];
+		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _targetObject];
 		_marker setMarkerShapeLocal "ICON";
 		_marker setMarkerTypeLocal "mil_objective";
 		_marker setMarkerTextLocal _markerPrefix;
@@ -256,6 +256,8 @@ switch (_objState) do {
 		{
 			_marker setMarkerAlphaLocal 1;
 		};
+
+		fnf_updateMarkerList pushBack _objectiveIndex;
 
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
@@ -270,7 +272,7 @@ switch (_objState) do {
 		_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, [], _alliedTask] call _createTask;
 		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
-		_marker setMarkerTextLocal "(Active) Destroy OBJ";
+		_marker setMarkerTextLocal format["(Active) Destroy %1", _objectiveIndex + 1];
 
 		//hide object
 		if (count _hidingZonesAssigned isEqualTo 0) then
@@ -311,7 +313,7 @@ switch (_objState) do {
 	case 2: {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-		_marker setMarkerTextLocal "(Active) Destroy OBJ";
+		_marker setMarkerTextLocal format["(Active) Destroy %1", _objectiveIndex + 1];
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};
 	default { };

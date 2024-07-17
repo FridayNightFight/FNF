@@ -5,7 +5,7 @@
 		watch a destroy objective server side
 
 	Parameter(s):
-		1: INTEGER -	The index of the objective to watch
+		0: INTEGER -	The index of the objective to watch
 
 	Returns:
 		Boolean
@@ -20,13 +20,6 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 _objType = _module getVariable ["fnf_objectiveType", "des"];
 
 _params params ["_targetObject", "_marker"];
-_markerPos = getMarkerPos _marker;
-_targetPos = getPos _targetObject;
-
-if (_markerPos distance2D _targetPos > 1) then
-{
-	_marker setMarkerPosLocal _targetPos;
-};
 
 if (alive _targetObject) exitWith {};
 

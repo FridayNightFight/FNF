@@ -31,6 +31,8 @@ if (isNil "fnf_objectives") then
 	fnf_objectives = [];
 };
 
+call FNF_ClientSide_fnc_initMarkerFollow;
+
 _missionStatusSet = false;
 
 {

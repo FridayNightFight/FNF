@@ -65,6 +65,11 @@ call BIS_fnc_showMissionStatus;
 			_indexsToDrawIcon pushBack _forEachIndex;
 		};
 
+		if (_type isEqualTo "fnf_module_terminalObj") then
+		{
+			_indexsToDrawIcon pushBack _forEachIndex;
+		};
+
 		if (_type isEqualTo "fnf_module_assassinObj") then
 		{
 			_desc = taskDescription (_x select 3);
@@ -162,7 +167,19 @@ call BIS_fnc_showMissionStatus;
 				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 				drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
 			};
+
+			if (_type isEqualTo "fnf_module_terminalObj") then
+			{
+				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+				drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
+			};
+
 		} forEach _objectiveIndexs;
+
+		if (!ace_spectator_isSet) then
+		{
+			[_handle] call CBA_fnc_removePerFrameHandler;
+		};
  	}, 0, _indexsToDrawIcon] call CBA_fnc_addPerFrameHandler;
 
 }, [], 60] call CBA_fnc_waitUntilAndExecute;

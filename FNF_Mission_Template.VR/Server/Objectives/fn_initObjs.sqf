@@ -32,6 +32,8 @@ if (isNil "fnf_serverObjectives") then
 
 call FNF_ClientSide_fnc_initZones;
 
+call FNF_ClientSide_fnc_initGPSUnitMarkers;
+
 {
 	_moduleType = typeOf _x;
 	_newTaskIndex = fnf_serverObjectives pushBack [0, _x, taskNull, false, {}, []];

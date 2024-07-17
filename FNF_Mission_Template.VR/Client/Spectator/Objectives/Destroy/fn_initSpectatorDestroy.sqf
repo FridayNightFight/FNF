@@ -149,16 +149,7 @@ switch (_objState) do {
 		if (_objStateToUse isEqualTo 1) then {_objStateToUse = 2;};
 
 		//programatically check if objective is secondary OBJ module and first should be watched
-		_targetObjectSyncedObjects = synchronizedObjects _targetObject;
-		_targetObjectSyncedObjects = [_targetObjectSyncedObjects] call FNF_ClientSide_fnc_sortByLocation;
-		_indexOfThisObj = _targetObjectSyncedObjects find _module;
-		_indexOfFirstObj = _targetObjectSyncedObjects findIf {typeOf _x isEqualTo "fnf_module_destroyObj"};
-		_isSecondaryObj = false;
-		if (_indexOfFirstObj isNotEqualTo _indexOfThisObj) then
-		{
-			_isSecondaryObj = true;
-		};
-
+		_isSecondaryObj = [_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective;
 
 		_markerPrefix = "(Inactive) Destroy OBJ";
 
@@ -206,6 +197,8 @@ switch (_objState) do {
 		{
 			_marker setMarkerAlphaLocal 1;
 		};
+
+		fnf_updateMarkerList pushBack _objectiveIndex;
 
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 

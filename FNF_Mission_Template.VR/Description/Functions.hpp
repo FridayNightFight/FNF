@@ -15,6 +15,7 @@ class CfgFunctions
 			file = "Client\CodeUtilities";
 			class sortByLocation {};
 			class getBottomLeft {};
+			class checkSecondaryObjective {};
 		}
 		class zones
 		{
@@ -50,6 +51,7 @@ class CfgFunctions
 			file = "Client\Objectives";
 			class initObjs {};
 			class watchObjs {};
+			class initMarkerFollow {};
 		};
 		class objDestroy
 		{

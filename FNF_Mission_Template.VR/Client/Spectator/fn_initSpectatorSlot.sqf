@@ -104,7 +104,12 @@ if (not isNil "fnf_objectives") then
 			if (_type isEqualTo "fnf_module_destroyObj") then
 			{
 				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-				_marker setMarkerAlphaLocal 1;
+				_indexsToDrawIcon pushBack _forEachIndex;
+			};
+
+			if (_type isEqualTo "fnf_module_terminalObj") then
+			{
+				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 				_indexsToDrawIcon pushBack _forEachIndex;
 			};
 
@@ -162,6 +167,12 @@ if (not isNil "fnf_objectives") then
 				};
 
 				if (_type isEqualTo "fnf_module_destroyObj") then
+				{
+					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+					drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
+				};
+
+				if (_type isEqualTo "fnf_module_terminalObj") then
 				{
 					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 					drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];

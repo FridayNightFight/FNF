@@ -20,7 +20,6 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 switch (_objState) do {
 	//Obj has in no way been created
 	case 0: {
-		_objType = _module getVariable ["fnf_objectiveType", "des"];
 		_syncedObjects = synchronizedObjects _module;
 
 		_sequentialPlannersAssigned = [];
@@ -63,10 +62,11 @@ switch (_objState) do {
 			default { };
 		};
 
-		_marker = createMarkerLocal [format["FNF_SERVER%1:DestroyOBJ", _objectiveIndex], _targetObject];
+		_marker = createMarkerLocal [format["FNF_SERVER%1:OBJ", _objectiveIndex], _targetObject];
 		_marker setMarkerShapeLocal "ICON";
 		_marker setMarkerTypeLocal "mil_objective";
 		_marker setMarkerTextLocal _markerPrefix;
+		fnf_updateMarkerList pushBack _objectiveIndex;
 
 		if (not isDedicated) then {_marker setMarkerAlphaLocal 0};
 

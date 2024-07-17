@@ -5,7 +5,7 @@
 		watch a destroy objective including updating task, returns if objective has been completed (failed for protection objectives)
 
 	Parameter(s):
-		1: INTEGER -	The index of the objective to watch
+		0: INTEGER -	The index of the objective to watch
 
 	Returns:
 		Boolean
@@ -21,26 +21,10 @@ _serverState = _module getVariable ["fnf_objServerState", 3];
 
 _params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 
-_markerPos = getMarkerPos _marker;
-_targetPos = getPos _targetObject;
-
-if (_markerPos distance2D _targetPos > 1) then
-{
-	_marker setMarkerPosLocal _targetPos;
-};
-
 if (_serverState isEqualTo 3) exitWith {};
 
 //programatically check if objective is secondary OBJ module and first should be watched
-_targetObjectSyncedObjects = synchronizedObjects _targetObject;
-_targetObjectSyncedObjects = [_targetObjectSyncedObjects] call FNF_ClientSide_fnc_sortByLocation;
-_indexOfThisObj = _targetObjectSyncedObjects find _module;
-_indexOfFirstObj = _targetObjectSyncedObjects findIf {typeOf _x isEqualTo "fnf_module_destroyObj"};
-_isSecondaryObj = false;
-if (_indexOfFirstObj isNotEqualTo _indexOfThisObj) then
-{
-	_isSecondaryObj = true;
-};
+_isSecondaryObj = [_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective;
 
 //get objects name and picture
 _targetConfig = _targetObject call CBA_fnc_getObjectConfig;

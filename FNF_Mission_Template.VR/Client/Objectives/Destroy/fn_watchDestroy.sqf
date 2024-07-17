@@ -21,14 +21,6 @@ _serverState = _module getVariable ["fnf_objServerState", 3];
 
 _params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 
-_markerPos = getMarkerPos _marker;
-_targetPos = getPos _targetObject;
-
-if (_markerPos distance2D _targetPos > 1) then
-{
-	_marker setMarkerPosLocal _targetPos;
-};
-
 if (_serverState isEqualTo 3) exitWith {};
 
 [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
@@ -47,14 +39,14 @@ if (_serverState isEqualTo 4) then
 	_task setTaskState "Succeeded";
 	_stringArray pushBack "Complete";
 	_notificationType = "success";
-	_marker setMarkerTextLocal "(Complete) Destroy OBJ";
+	_marker setMarkerTextLocal format["(Complete) Destroy %1", (_objectiveIndex + 1)];
 };
 if (_serverState isEqualTo 5) then
 {
 	_task setTaskState "Failed";
 	_stringArray pushBack "Failed";
 	_notificationType = "failure";
-	_marker setMarkerTextLocal "(Failed) Destroy OBJ";
+	_marker setMarkerTextLocal format["(Failed) Destroy %1", (_objectiveIndex + 1)];
 };
 
 if (_alliedTask) then

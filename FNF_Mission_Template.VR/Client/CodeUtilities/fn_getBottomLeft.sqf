@@ -6,7 +6,7 @@
 
 	Parameter(s):
 		0: OBJECT - Object to check position of reletive to...
-		0: OBJECT - Object to base bottom leftness from
+		1: OBJECT - Object to base bottom leftness from
 
 	Returns:
 		boolean

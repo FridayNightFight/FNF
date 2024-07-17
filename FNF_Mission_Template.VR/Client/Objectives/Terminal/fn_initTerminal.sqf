@@ -2,441 +2,406 @@
 	Author: Mallen
 
 	Description:
-		init a destroy objective including setting up local watch, local task control, local ordering enforcement, and breifing data
+		init a terminal objective including setting up local watch, local task control, local ordering enforcement, and breifing data
 
 	Parameter(s):
-		0: OBJECT -	The destroy objective module to be processed
-		1: BOOLEAN -	Whether the objective is for the player, if not treat breifing and task control differently
+		0: INTEGER -	The index of the objective to intialise
 
 	Returns:
 		None
 */
 
-params ["_objective", "_forPlayer"];
+params ["_objectiveIndex"];
 
-//get the objective type
-_objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
+_objEntry = fnf_objectives select _objectiveIndex;
 
-//if no type found exit obj settup and inform mission maker
-if (_objectiveType isEqualTo "FAILED") exitWith
-{
-	if (fnf_debug) then
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+_createTask = {
+	params["_objType", "_module", "_objectiveIndex", "_targetObject", "_hidingZonesAssigned", "_preRequisiteIndexs", "_alliedTask"];
+
+	//get objects name and picture
+	_targetConfig = _targetObject call CBA_fnc_getObjectConfig;
+	_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Land_DataTerminal_01_F.jpg"] call CBA_fnc_getConfigEntry;
+
+	//if parent task for my tasks doesnt exist create it
+	if (isNil "fnf_myTasksParentTask") then
 	{
-		systemChat "DANGER: Terminal objective does not have objective type set, objective will NOT function";
-	};
-};
-
-_syncedObjects = synchronizedObjects _objective;
-
-//find the object thats supposed to be killed or protected
-_hidingZones = [];
-_sequentialObjPlanners = [];
-_objectiveObject = "";
-{
-	_typeOfObject = typeOf _x;
-	if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
-	{
-		continue;
+		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
+		fnf_myTasksParentTask setSimpleTaskType "documents";
 	};
 
-	if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
+	//if parent task for ally tasks doesnt exist and its needed create it
+	if (isNil "fnf_allyTasksParentTask" and _alliedTask) then
 	{
-		_hidingZones pushBack _x;
-		continue;
+		fnf_allyTasksParentTask = player createSimpleTask ["Ally Tasks"];
+		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
-	if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+	_parentTask = fnf_myTasksParentTask;
+	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
+	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
+	_descriptionPointOne = "<t>To complete this objective, ";
+	if (_alliedTask) then
 	{
-		_sequentialObjPlanners pushBack _x;
-		continue;
+		_parentTask = fnf_allyTasksParentTask;
+		_customTitle = _module getVariable ["fnf_customObjectiveAlliedTitle", ""];
+		_customTaskDescription = _module getVariable ["fnf_customObjectiveAlliedDescription", ""];
+		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
-	if (_typeOfObject isEqualTo "Land_DataTerminal_01_F" or _typeOfObject isEqualTo "RuggedTerminal_01_F" or _typeOfObject isEqualTo "RuggedTerminal_01_communications_F" or _typeOfObject isEqualTo "RuggedTerminal_02_communications_F" or _typeOfObject isEqualTo "RuggedTerminal_01_communications_hub_F") then
+	_taskTitle = format["%1: Defend the Terminal", (_objectiveIndex + 1)];
+	if (_objType isEqualTo "des") then
 	{
-		if (_objectiveObject isEqualTo "") then
+		_taskTitle = format["%1: Hack the Terminal", (_objectiveIndex + 1)];
+	};
+	if (_customTitle isNotEqualTo "") then
+	{
+		_taskTitle = _customTitle;
+	};
+
+	_futureTask = player createSimpleTask [_taskTitle, _parentTask];
+
+	_hackingTime = _module getVariable ["fnf_hackingTime", 120];
+
+	_futureTask setSimpleTaskType "defend";
+	_descriptionPointTwo = format["the terminal cannot be hacked by enemy forces, a hack will take %1 seconds<br/><br/>", _hackingTime];
+	_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+	if (count _hidingZonesAssigned isNotEqualTo 0) then
+	{
+		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above, the objective can be hidden in one of the hiding zones provided";
+	};
+	if (_objType isEqualTo "hck") then
+	{
+		_futureTask setSimpleTaskType "upload";
+		_descriptionPointTwo = format["the terminal must be hacked, a hack will take %1 seconds<br/><br/>", _hackingTime];;
+
+		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+		if (count _hidingZonesAssigned isNotEqualTo 0) then
 		{
-			_objectiveObject = _x;
-			continue;
-		} else {
-			if (fnf_debug) then
+			_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
+			_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
+			if (not _zoneKnown) then
 			{
-				systemChat "WARNING: Terminal objective has more than one possible objects as target";
+				_helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
 			};
 		};
 	};
 
-	if (fnf_debug) then
+	_preRequisiteText = "";
+	if (count _preRequisiteIndexs isNotEqualTo 0) then
 	{
-		systemChat "WARNING: Terminal objective has an object that is not a Terminal synced to it";
-	};
-} forEach _syncedObjects;
-
-_topRightCount = 0;
-_topRightCandidate = objNull;
-
-if (count _sequentialObjPlanners isNotEqualTo 0) then
-{
-	{
-		_result = [_objective, _x] call FNF_ClientSide_fnc_getBottomLeft;
-		if (not _result) then
+		_preRequisiteText = format["<br/><br/>This objective will be activated after objective %1 has been completed", ((_preRequisiteIndexs select 0) + 1)];
+		if (count _preRequisiteIndexs isEqualTo 2) then
 		{
-			_topRightCount = _topRightCount + 1;
-			_topRightCandidate = _x;
+			_preRequisiteText = format["<br/><br/>This objective will be activated after objectives %1 and %2 have been completed", ((_preRequisiteIndexs select 0) + 1), ((_preRequisiteIndexs select 1) + 1)];
 		};
-	} forEach _sequentialObjPlanners;
-};
-
-if (_topRightCount > 1) exitWith
-{
-	if (fnf_debug) then
-	{
-		systemChat "DANGER: Terminal objective has more than one prerequisite sequential planners, objective will NOT function";
-	};
-};
-
-_sequentialInit = false;
-_addSequentialHandle = false;
-
-if (not isNull _topRightCandidate) then
-{
-	//check if we're initing this from the sequential planner, if we are we don't need to re-add it
-	_alreadyCompletedSequentialPlanning = _topRightCandidate getVariable ["fnf_sequentialObjCompleted", false];
-	if (_alreadyCompletedSequentialPlanning) then
-	{
-		_objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
-		if (_objKnown) then
+		if (count _preRequisiteIndexs > 2) then
 		{
-			//obj is already known and 90% of setup is completed, lets just handle task description and task control
-			//find correct task via fnf_objectives
-			//edit Task Control
-			//edit task description
-			//this task can be completed before available as i dont wanna make someone invincible, maybe remove tracking?
-		};
-	} else {
-		//sequential planner before we do stuff, lets figure out what needs doing....
-		_objKnown = _topRightCandidate getVariable ["fnf_nextObjectiveKnown", false];
-		if (not _objKnown) then
-		{
-			//obj is not known yet, lets exit Init and come back later
-			_addSequentialHandle = true;
+			_preRequisiteArray = ["<br/><br/>This objective will be activated after objectives "];
+			{
+				_preRequisiteArray pushBack (format["%1, ", _x + 1]);
+			} forEach _preRequisiteIndexs;
+			_preRequisiteArray set [-1, (format["and %1 ", ((_preRequisiteIndexs select -1) + 1)])];
+			_preRequisiteArray pushBack "have been completed";
+			_preRequisiteText = _preRequisiteArray joinString "";
 		};
 	};
-};
 
-if (_addSequentialHandle) exitWith
-{
-	[_objective, _forPlayer, _topRightCandidate] call FNF_ClientSide_fnc_addSequentialHandle;
-};
-
-if (_objectiveObject isEqualTo "") exitWith
-{
-	if (fnf_debug) then
+	_taskDescription = [(format["<img width='300' image='%1'/><br/><br/>", _targetPic]), _descriptionPointOne, _descriptionPointTwo, _helperString, _preRequisiteText] joinString "";
+	if (_customTaskDescription isNotEqualTo "") then
 	{
-		systemChat "DANGER: Terminal objective does not have terminal synced, objective will NOT function";
+		_taskDescription = _customTaskDescription;
 	};
+
+	_futureTask setSimpleTaskDescription [_taskDescription, _taskTitle, _taskTitle];
+	_futureTask;
 };
 
-_hackingTime = _objective getVariable ["fnf_hackingTime", "FAILED"];
-if (_hackingTime isEqualTo "FAILED") exitWith
-{
-	if (fnf_debug) then
+_initActions = {
+	params["_targetObject", "_module", "_objType"];
+
+	_hackingTime = _module getVariable ["fnf_hackingTime", 120];
+
+	_objectType = typeOf _targetObject;
+	_actionRange = "4";
+	if (_objectType isEqualTo "RuggedTerminal_01_communications_hub_F") then
 	{
-		systemChat "DANGER: Terminal objective does not have time to complete hack set, objective will NOT function";
+		_actionRange = "10";
 	};
-};
 
-if (_hackingTime isEqualTo 0) exitWith
-{
-	if (fnf_debug) then
+	_actionStayCondition = format["_caller distance _target < %1", _actionRange];
+
+	_actionTitle = "Cancel Hack";
+	_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)", _actionRange];
+
+	if (_objType isEqualTo "hck") then
 	{
-		systemChat "DANGER: Terminal objective time to complete hack is set to zero, objective will NOT function";
+		_actionTitle = "Start Hack";
+		_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)", _actionRange];
 	};
+
+	[
+		_targetObject,
+		_actionTitle,
+		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
+		_actionCondition,
+		_actionStayCondition,
+		{},
+		{},
+		{
+			params ["_target", "_caller", "_actionId", "_arguments"];
+			[[(_arguments select 0), (_arguments select 1), playerSide, false], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
+		},
+		{},
+		[_targetObject, _hackingTime],
+		2,
+		0,
+		false,
+		false
+	] call BIS_fnc_holdActionAdd;
 };
 
-if (_hackingTime < 0) exitWith
-{
-	if (fnf_debug) then
-	{
-		systemChat "DANGER: Terminal objective time to complete hack is set to a negative number, objective will NOT function";
-	};
-};
+_initColors = {
+	params["_targetObject", "_objType"];
 
-if (_hackingTime > 299) then
-{
-	if (fnf_debug) then
-	{
-		systemChat "WARNING: Terminal objective time to complete hack is set to 5 minutes or longer, this is very long for a terminal objective";
-	};
-};
+	_objectType = typeOf _targetObject;
+	if (_objectType isNotEqualTo "Land_DataTerminal_01_F") exitWith {};
 
-//if parent task for my tasks doesnt exist create it
-if (isNil "fnf_myTasksParentTask") then
-{
-	fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
-	fnf_myTasksParentTask setSimpleTaskType "documents";
-};
-
-//if parent task for ally tasks doesnt exist and its needed create it
-if (isNil "fnf_allyTasksParentTask" and not _forPlayer) then
-{
-	fnf_allyTasksParentTask = player createSimpleTask ["Ally Tasks"];
-	fnf_allyTasksParentTask setSimpleTaskType "documents";
-};
-
-_targetConfig = _objectiveObject call CBA_fnc_getObjectConfig;
-_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\" + (typeOf _objectiveObject) + ".jpg"] call CBA_fnc_getConfigEntry;
-
-_task = "";
-
-_objNum = str((count fnf_objectives) + 1);
-
-//setup marker for on map timer
-_marker = createMarkerLocal ["terminal_timer_" + _objNum, [0,0,0]];
-_marker setMarkerShapeLocal "ICON";
-_marker setMarkerTextLocal "[Idle]";
-_marker setMarkerTypeLocal "mil_dot";
-_markerColour = [playerSide, true] call BIS_fnc_sideColor;
-_marker setMarkerColorLocal _markerColour;
-
-//set terminal starting colour (overridden if attacking)
-if (typeOf _objectiveObject isEqualTo "Land_DataTerminal_01_F") then
-{
 	switch (playerSide) do {
 		case west:
 		{
-			[_objectiveObject, "blue", "blue", "blue"] call BIS_fnc_dataTerminalColor;
+			[_targetObject, "blue", "blue", "blue"] call BIS_fnc_dataTerminalColor;
 		};
 		case east:
 		{
-			[_objectiveObject, "red", "red", "red"] call BIS_fnc_dataTerminalColor;
+			[_targetObject, "red", "red", "red"] call BIS_fnc_dataTerminalColor;
 		};
 		case independent:
 		{
-			[_objectiveObject, "green", "green", "green"] call BIS_fnc_dataTerminalColor;
+			[_targetObject, "green", "green", "green"] call BIS_fnc_dataTerminalColor;
 		};
 		default {};
 	};
+
+	if (_objType isEqualTo "hck") then
+	{
+		[_targetObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
+	};
 };
 
-//check if player needs to hack or needs to defend
-if (_objectiveType isEqualTo "hck") then
-{
-	//setup task
-	if (_forPlayer) then
-	{
-		_task = player createSimpleTask [(_objNum + ": Hack the Terminal"), fnf_myTasksParentTask];
-	} else {
-		_task = player createSimpleTask [(_objNum + ": Hack the Terminal"), fnf_allyTasksParentTask];
-	};
+switch (_objState) do {
+	//Obj has in no way been created
+	case 0: {
+		_objType = _module getVariable ["fnf_objectiveType", "hck"];
+		_syncedObjects = synchronizedObjects _module;
 
-	_zoneKnown = _objective getVariable ["fnf_zoneKnown", true];
-
-	if (not _zoneKnown) then
-	{
-		if (fnf_debug) then
+		_hidingZonesAssigned = [];
+		_sequentialPlannersAssigned = [];
+		_targetObject = objNull;
 		{
-			systemChat "WARNING: Terminal objective is not known which hiding zone it is in, currently this disables the in-map timer, please reconsider this option";
-		};
-	};
-
-	if (_forPlayer) then
-	{
-		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
-
-		if (count _hidingZones isNotEqualTo 0) then
-		{
-			_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
-			if (not _zoneKnown) then
+			_typeOfObject = typeOf _x;
+			if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
 			{
-				_helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
-			};
-		};
-
-		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
-
-		//setup hold action if player is destined to be able to interact with terminal
-		if (typeOf _objectiveObject isEqualTo "RuggedTerminal_01_communications_hub_F") then
-		{
-			[
-				_objectiveObject,
-				"Start Hack",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				//do not allow hack if currently hacking or hacking side is considered friendly
-				"(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
-				"_caller distance _target < 10",
-				{},
-				{},
-				{
-					params ["_target", "_caller", "_actionId", "_arguments"];
-					[[(_arguments select 0), (_arguments select 1), playerSide, false], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
-				},
-				{},
-				[_objectiveObject, _hackingTime],
-				2,
-				0,
-				false,
-				false
-			] call BIS_fnc_holdActionAdd;
-		} else {
-			[
-				_objectiveObject,
-				"Start Hack",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				//do not allow hack if currently hacking or hacking side is considered friendly
-				"(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)",
-				"_caller distance _target < 4",
-				{},
-				{},
-				{
-					params ["_target", "_caller", "_actionId", "_arguments"];
-					[[(_arguments select 0), (_arguments select 1), playerSide, false], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
-				},
-				{},
-				[_objectiveObject, _hackingTime],
-				2,
-				0,
-				false,
-				false
-			] call BIS_fnc_holdActionAdd;
-		};
-
-	} else {
-		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
-
-		if (count _hidingZones isNotEqualTo 0) then
-		{
-			_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
-			if (not _zoneKnown) then
-			{
-				_helperString = "The location of the objective may be in a hiding zone, if it is, you will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on your map, or you can find it by hitting the 'Locate' button above";
-			};
-		};
-
-		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must hack the objective for %2 seconds<br/><br/>%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Hack the Terminal", _objNum + ": Hack the Terminal"];
-	};
-
-	//overide terminal colours
-	_marker setMarkerColorLocal "ColorUNKNOWN";
-	if (typeOf _objectiveObject isEqualTo "Land_DataTerminal_01_F") then
-	{
-		[_objectiveObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
-	};
-
-	_task setSimpleTaskType "upload";
-	if (count _hidingZones isEqualTo 0) then
-	{
-		_task setSimpleTaskTarget [_objectiveObject, true];
-	} else {
-		[_objectiveObject, _task, _zoneKnown, _hidingZones] call FNF_ClientSide_fnc_addObjectToHide;
-	};
-
-} else {
-	//setup task
-	if (_forPlayer) then
-	{
-		_task = player createSimpleTask [(_objNum + ": Defend the Terminal"), fnf_myTasksParentTask];
-	} else {
-		_task = player createSimpleTask [(_objNum + ": Defend the Terminal"), fnf_allyTasksParentTask];
-	};
-	_task setSimpleTaskType "defend";
-	_task setSimpleTaskTarget [_objectiveObject, true];
-
-	_helperString = "";
-
-	if (count _hidingZones isNotEqualTo 0) then
-	{
-		{
-			_prefix = _x getVariable ["fnf_prefix", "FAILED"];
-
-			if (_prefix isEqualTo "FAILED") then
-			{
-				if (fnf_debug) then
-				{
-					systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
-				};
 				continue;
 			};
-			_result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
-			if (not _result) then
+
+			if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
 			{
-				[_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+				_hidingZonesAssigned pushBack _x;
+				continue;
 			};
-		} forEach _hidingZones;
 
-		_helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
-	};
-	if (_forPlayer) then
-	{
-		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>To complete this objective you must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
-		//setup hold action if player is destined to be able to interact with terminal
-		if (typeOf _objectiveObject isEqualTo "RuggedTerminal_01_communications_hub_F") then
-		{
-			[
-				_objectiveObject,
-				"Cancel Hack",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				//allow cancel if any side is hacking the OBJ
-				"(_this distance _target < 10) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)",
-				"_caller distance _target < 10",
-				{},
-				{},
+			if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+			{
+				_sequentialPlannersAssigned pushBack _x;
+				continue;
+			};
+
+			if (_targetObject isEqualTo objNull) then
+			{
+				_targetObject = _x;
+			} else {
+				if (fnf_debug) then
 				{
-					params ["_target", "_caller", "_actionId", "_arguments"];
-					[[(_arguments select 0), (_arguments select 1), playerSide, true], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
-				},
-				{},
-				[_objectiveObject, _hackingTime],
-				2,
-				0,
-				false,
-				false
-			] call BIS_fnc_holdActionAdd;
-		} else {
-			[
-				_objectiveObject,
-				"Cancel Hack",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",
-				//allow cancel if any side is hacking the OBJ
-				"(_this distance _target < 4) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)",
-				"_caller distance _target < 4",
-				{},
-				{},
+					systemChat "WARNING: Terminal objective has more than one possible objects as target";
+				};
+			};
+		} forEach _syncedObjects;
+
+		//[objStateToUse, [PreRequisuteIndexs]]
+		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
+		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
+
+		_showMarker = false;
+		[_targetObject, _objType] call _initColors;
+
+		_task = taskNull;
+
+		switch (_objStateToUse) do {
+			case 2: {
+				_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, _preRequisiteIndexs, _alliedTask] call _createTask;
+				[_futureTask, false] call FNF_ClientSide_fnc_addTaskToTaskControl;
+
+				//hide object
+				if (count _hidingZonesAssigned isEqualTo 0) then
 				{
-					params ["_target", "_caller", "_actionId", "_arguments"];
-					[[(_arguments select 0), (_arguments select 1), playerSide, true], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
-				},
-				{},
-				[_objectiveObject, _hackingTime],
-				2,
-				0,
-				false,
-				false
-			] call BIS_fnc_holdActionAdd;
+					_futureTask setSimpleTaskTarget [_targetObject, true];
+				} else {
+					if (_objType isEqualTo "hck") then
+					{
+						_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
+						[_targetObject, _futureTask, _zoneKnown, _hidingZonesAssigned] call FNF_ClientSide_fnc_addObjectToHide;
+					} else {
+						_futureTask setSimpleTaskTarget [_targetObject, true];
+
+						{
+							_prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+							if (_prefix isEqualTo "FAILED") then
+							{
+								if (fnf_debug) then
+								{
+									systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+								};
+								continue;
+							};
+
+							_result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+							if (not _result) then
+							{
+								[_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+							};
+						} forEach _hidingZonesAssigned;
+					};
+				};
+				_task = _futureTask;
+				_showMarker = true;
+			};
+			case 3: {
+				_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, _preRequisiteIndexs, _alliedTask] call _createTask;
+				[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
+
+				[_targetObject, _module, _objType] call _initActions;
+
+				//hide object
+				if (count _hidingZonesAssigned isEqualTo 0) then
+				{
+					_futureTask setSimpleTaskTarget [_targetObject, true];
+				} else {
+					if (_objType isEqualTo "hck") then
+					{
+						_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
+						[_targetObject, _futureTask, _zoneKnown, _hidingZonesAssigned] call FNF_ClientSide_fnc_addObjectToHide;
+					} else {
+						_futureTask setSimpleTaskTarget [_targetObject, true];
+
+						{
+							_prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+							if (_prefix isEqualTo "FAILED") then
+							{
+								if (fnf_debug) then
+								{
+									systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+								};
+								continue;
+							};
+
+							_result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+							if (not _result) then
+							{
+								[_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+							};
+						} forEach _hidingZonesAssigned;
+					};
+				};
+
+				_task = _futureTask;
+				_showMarker = true;
+			};
+			default { };
 		};
-	} else {
-		_task setSimpleTaskDescription [format["<img width='300' image='%1'/><br/><br/><t>For your allies to complete this objective they must prevent the objective from being hacked, it will take the hackers %2 seconds to complete the hack%3</t>", _targetPic, _hackingTime, _helperString], _objNum + ": Defend the Terminal", _objNum + ": Defend the Terminal"];
+
+		_targetLocation = _targetObject;
+
+		if (not isNull _task) then
+		{
+			_targetLocation = taskDestination _task;
+		};
+
+		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _targetLocation];
+		_marker setMarkerShapeLocal "ICON";
+		_marker setMarkerTypeLocal "mil_dot";
+		_marker setMarkerTextLocal format["(Inactive) Terminal %1", _objectiveIndex + 1];;
+		if (not _showMarker) then
+		{
+			_marker setMarkerAlphaLocal 0;
+		};
+
+		fnf_updateMarkerList pushBack _objectiveIndex;
+
+		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
+
+		_codeOnCompletion = compile _codeOnCompletion;
+
+		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker]]];
 	};
+	//Obj has been created but is not known
+	case 1: {
+		_objType = _module getVariable ["fnf_objectiveType", "hck"];
+		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+		_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, [], _alliedTask] call _createTask;
+		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
+
+		[_targetObject, _module, _objType] call _initActions;
+
+		//hide object
+		if (count _hidingZonesAssigned isEqualTo 0) then
+		{
+			_futureTask setSimpleTaskTarget [_targetObject, true];
+		} else {
+			if (_objType isEqualTo "hck") then
+			{
+				_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
+				[_targetObject, _futureTask, _zoneKnown, _hidingZonesAssigned] call FNF_ClientSide_fnc_addObjectToHide;
+			} else {
+				_futureTask setSimpleTaskTarget [_targetObject, true];
+
+				{
+					_prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+					if (_prefix isEqualTo "FAILED") then
+					{
+						if (fnf_debug) then
+						{
+							systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+						};
+						continue;
+					};
+
+					_result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+					if (not _result) then
+					{
+						[_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+					};
+				} forEach _hidingZonesAssigned;
+			};
+		};
+
+		_marker setMarkerAlphaLocal 1;
+
+		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker]]];
+	};
+	//Obj has been created and is known
+	case 2: {
+		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
+		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+
+		[_targetObject, _module, _objType] call _initActions;
+
+		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
+	};
+	default { };
 };
-
-[_task, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
-
-//used to keep marker on the objective
-_markerSetLocationPFH = [{
-	_objLoc = taskDestination ((_this select 0) select 1);
-	if (ace_spectator_isset) then
-	{
-		_objLoc = getPos ((_this select 0) select 2);
-	};
-	if (_objLoc isEqualTo [0,0,0]) then
-	{
-		_objLoc = [-50000, -50000, -50000];
-	};
-	((_this select 0) select 0) setMarkerPosLocal _objLoc;
-},0.1,[_marker, _task, _objectiveObject]] call CBA_fnc_addPerFrameHandler;
-
-//add objective to objective stack
-fnf_objectives pushBack ["TERMINAL", _objective, _objectiveObject, _task, _forPlayer, _marker, _markerSetLocationPFH];
