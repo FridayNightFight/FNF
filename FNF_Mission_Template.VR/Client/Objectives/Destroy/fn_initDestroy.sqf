@@ -39,6 +39,7 @@ _createTask = {
 		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
+	//change pre-set items based on ally or normal OBJ
 	_parentTask = fnf_myTasksParentTask;
 	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
 	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
@@ -51,6 +52,7 @@ _createTask = {
 		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
+	//get task title
 	_taskTitle = format["%1: Defend the %2", (_objectiveIndex + 1), _targetName];
 	if (_objType isEqualTo "des") then
 	{
@@ -61,8 +63,10 @@ _createTask = {
 		_taskTitle = _customTitle;
 	};
 
+	//create task
 	_futureTask = player createSimpleTask [_taskTitle, _parentTask];
 
+	//set descriptions and task type based on defend OBJ
 	_futureTask setSimpleTaskType "defend";
 	_descriptionPointTwo = format["the %1 cannot be allowed to be destroyed<br/><br/>", _targetName];
 	_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
@@ -70,6 +74,8 @@ _createTask = {
 	{
 		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above, the objective can be hidden in one of the hiding zones provided";
 	};
+
+	//if obj is actually attack re-write above for attack
 	if (_objType isEqualTo "des") then
 	{
 		_futureTask setSimpleTaskType "destroy";
@@ -87,6 +93,7 @@ _createTask = {
 		};
 	};
 
+	//if there are any prerequisites then collect and put them in nice words
 	_preRequisiteText = "";
 	if (count _preRequisiteIndexs isNotEqualTo 0) then
 	{
@@ -107,6 +114,7 @@ _createTask = {
 		};
 	};
 
+	//final description joining and overwriting
 	_taskDescription = [(format["<img width='300' image='%1'/><br/><br/>", _targetPic]), _descriptionPointOne, _descriptionPointTwo, _helperString, _preRequisiteText] joinString "";
 	if (_customTaskDescription isNotEqualTo "") then
 	{
@@ -123,6 +131,7 @@ switch (_objState) do {
 		_objType = _module getVariable ["fnf_objectiveType", "des"];
 		_syncedObjects = synchronizedObjects _module;
 
+		//get relevant objects synced to module
 		_hidingZonesAssigned = [];
 		_sequentialPlannersAssigned = [];
 		_targetObject = objNull;
@@ -156,20 +165,22 @@ switch (_objState) do {
 			};
 		} forEach _syncedObjects;
 
-		//[objStateToUse, [PreRequisuteIndexs]]
+		//check status of sequential planners and what must be done
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
+		//set marker prefix now to be overwritten later
 		_markerPrefix = format["(Inactive) Destroy %1", _objectiveIndex + 1];
 
 		_task = taskNull;
 
 		switch (_objStateToUse) do {
 			case 2: {
+				//create task
 				_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, _preRequisiteIndexs, _alliedTask] call _createTask;
 				[_futureTask, false] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
-				//hide object
+				//hide object if it must be hidden
 				if (count _hidingZonesAssigned isEqualTo 0) then
 				{
 					_futureTask setSimpleTaskTarget [_targetObject, true];
@@ -201,13 +212,16 @@ switch (_objState) do {
 						} forEach _hidingZonesAssigned;
 					};
 				};
+
+				//set task to the new task
 				_task = _futureTask;
 			};
 			case 3: {
+				//create task
 				_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, _preRequisiteIndexs, _alliedTask] call _createTask;
 				[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
-				//hide object
+				//hide object if it must be hidden
 				if (count _hidingZonesAssigned isEqualTo 0) then
 				{
 					_futureTask setSimpleTaskTarget [_targetObject, true];
@@ -240,13 +254,16 @@ switch (_objState) do {
 					};
 				};
 
+				//change marker prefix as not a seq OBJ
 				_markerPrefix = format["Destroy %1", _objectiveIndex + 1];;
 
+				//set task to the new task
 				_task = _futureTask;
 			};
 			default { };
 		};
 
+		//create spectator marker and hide it if not in spectator
 		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _targetObject];
 		_marker setMarkerShapeLocal "ICON";
 		_marker setMarkerTypeLocal "mil_objective";
@@ -257,8 +274,10 @@ switch (_objState) do {
 			_marker setMarkerAlphaLocal 1;
 		};
 
+		//add objective to be watched by update marker list system
 		fnf_updateMarkerList pushBack _objectiveIndex;
 
+		//compile code to run on completion
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
 		_codeOnCompletion = compile _codeOnCompletion;
@@ -269,12 +288,15 @@ switch (_objState) do {
 	case 1: {
 		_objType = _module getVariable ["fnf_objectiveType", "des"];
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+
+		//create task
 		_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, [], _alliedTask] call _createTask;
 		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
+		//change marker text to show active
 		_marker setMarkerTextLocal format["(Active) Destroy %1", _objectiveIndex + 1];
 
-		//hide object
+		//hide object if it must be hidden
 		if (count _hidingZonesAssigned isEqualTo 0) then
 		{
 			_futureTask setSimpleTaskTarget [_targetObject, true];
@@ -313,7 +335,10 @@ switch (_objState) do {
 	case 2: {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+
+		//change marker text to show active
 		_marker setMarkerTextLocal format["(Active) Destroy %1", _objectiveIndex + 1];
+
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};
 	default { };

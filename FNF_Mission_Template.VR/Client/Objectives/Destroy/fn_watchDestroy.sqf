@@ -21,6 +21,7 @@ _serverState = _module getVariable ["fnf_objServerState", 3];
 
 _params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 
+//if server does not say the obj is done, don't continue
 if (_serverState isEqualTo 3) exitWith {};
 
 [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
@@ -30,10 +31,12 @@ _targetConfig = _targetObject call CBA_fnc_getObjectConfig;
 _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
 _targetName = getText (_targetConfig >> "DisplayName");
 
+//start notification creation
 _stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", (_objectiveIndex + 1)])];
 
 _notificationType = "info";
 
+//set values based on a succed or fail
 if (_serverState isEqualTo 4) then
 {
 	_task setTaskState "Succeeded";
@@ -56,6 +59,7 @@ if (_alliedTask) then
 
 _stringArray pushBack format["</t><br/><br/><t align='center'>%1 has ", _targetName];
 
+//this is irrespective of obj outcome and therefor is based on status of vic
 if (alive _targetObject) then
 {
 	_stringArray pushBack "not been destroyed in time</t><br/><br/>";

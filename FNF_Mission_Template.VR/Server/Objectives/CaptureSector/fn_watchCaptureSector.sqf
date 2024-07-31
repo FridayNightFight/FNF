@@ -11,9 +11,15 @@
 		Boolean
 */
 
-params["_objective", "_side"];
+params ["_objectiveIndex"];
 
-_zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
+_objEntry = fnf_serverObjectives select _objectiveIndex;
+
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+_objType = _module getVariable ["fnf_objectiveType", "des"];
+
+_params params ["_zonePrefix", "_marker", "_offendingSides"];
 
 _westCount = 0;
 _eastCount = 0;
@@ -22,6 +28,11 @@ _indiCount = 0;
 //get which players are in the zone and what side they are on
 {
 	if (not alive _x) then
+	{
+		continue;
+	};
+
+	if (_x getVariable ["ACE_isUnconscious", false]) then
 	{
 		continue;
 	};
@@ -54,45 +65,38 @@ _indiDefend = false;
 
 //figure out what sides are supposed to be attacking and defending the zone
 {
-	if ((_x select 1) isNotEqualTo "CAPTURESECTOR") then {continue;};
+	_x params ["_side", "_attacking"];
 
-	_checkingZonePrefix = (_x select 3) getVariable ["fnf_prefix", "FAILED"];
-	if (_checkingZonePrefix isNotEqualTo _zonePrefix) then {continue;};
-
-	_objSide = (_x select 2);
-
-	_objectiveType = (_x select 3) getVariable ["fnf_objectiveType", "FAILED"];
-
-	if (_objectiveType isEqualTo "cap") then
+	if (_attacking) then
 	{
-		if (_objSide isEqualTo west) then
+		if (_side isEqualTo west) then
 		{
 			_westAttack = true;
 		};
-		if (_objSide isEqualTo east) then
+		if (_side isEqualTo east) then
 		{
 			_eastAttack = true;
 		};
-		if (_objSide isEqualTo independent) then
+		if (_side isEqualTo independent) then
 		{
 			_indiAttack = true;
 		};
 	} else {
-		if (_objSide isEqualTo west) then
+		if (_side isEqualTo west) then
 		{
 			_westDefend = true;
 		};
-		if (_objSide isEqualTo east) then
+		if (_side isEqualTo east) then
 		{
 			_eastDefend = true;
 		};
-		if (_objSide isEqualTo independent) then
+		if (_side isEqualTo independent) then
 		{
 			_indiDefend = true;
 		};
 	};
 
-} foreach fnf_serverObjectives;
+} foreach _offendingSides;
 
 //zero out sides who do not have a stake in the objective
 if (not _westAttack and not _westDefend) then
@@ -108,27 +112,18 @@ if (not _indiAttack and not _indiDefend) then
 	_indiCount = 0;
 };
 
-_currentOwner = _objective getVariable ["fnf_sector_owner", sideUnknown];
+_currentOwner = _module getVariable ["fnf_sector_owner", sideUnknown];
 
-_objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
-
-if (_objectiveType isEqualTo "def") then
-{
-	if (_currentOwner isEqualTo sideUnknown) then
-	{
-		_objective setVariable ["fnf_sector_owner", _side, true];
-		_currentOwner = _side;
-	};
-};
+_objectiveType = _module getVariable ["fnf_objectiveType", "FAILED"];
 
 //if no one in the sector dont do anything
-if (_westCount isEqualTo 0 and _eastCount isEqualTo 0 and _indiCount isEqualTo 0) exitWith {false};
+if (_westCount isEqualTo 0 and _eastCount isEqualTo 0 and _indiCount isEqualTo 0) exitWith {};
 
 
 //start making changes now data is gathered
-_timeToCapture = _objective getVariable ["fnf_TimeToCapture", 60];
+_timeToCapture = _module getVariable ["fnf_TimeToCapture", 60];
 
-_currentPercent = _objective getVariable ["fnf_sector_percentage", 0];
+_currentPercent = _module getVariable ["fnf_sector_percentage", 0];
 
 _currentTime = _timeToCapture * _currentPercent;
 
@@ -201,21 +196,28 @@ if (_newOwner isEqualTo sideUnknown) then
 
 if (_newOwner isNotEqualTo _currentOwner) then
 {
-	_objective setVariable ["fnf_sector_owner", _newOwner, true];
+	_module setVariable ["fnf_sector_owner", _newOwner, true];
 };
 
-if (_newTime >= _timeToCapture) exitWith
+if (_newTime >= _timeToCapture) then
 {
-	_objective setVariable ["fnf_sector_percentage", 1, true];
-	_objective setVariable ["fnf_objComplete", true, true];
-	true;
+	_module setVariable ["fnf_sector_percentage", 1, true];
+	_module setVariable ["fnf_objComplete", true, true];
+	_newObjState = 5;
+	if (_objType isEqualTo "cap") then
+	{
+		_newObjState = 4;
+	};
+
+	_module setVariable ["fnf_objServerState", _newObjState, true];
+
+	fnf_serverObjectives set [_objectiveIndex, [_newObjState, _module, _task, _alliedTask, _codeOnCompletion, _params]];
+
+	call _codeOnCompletion;
 };
 
 _newPercent = _newTime / _timeToCapture;
 if (_newPercent isNotEqualTo _currentPercent) then
 {
-	_objective setVariable ["fnf_sector_percentage", _newPercent, true];
+	_module setVariable ["fnf_sector_percentage", _newPercent, true];
 };
-
-
-false;

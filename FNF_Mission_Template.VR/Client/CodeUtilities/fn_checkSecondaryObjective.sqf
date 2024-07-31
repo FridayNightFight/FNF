@@ -33,8 +33,8 @@ if (typeName _target isEqualTo "OBJECT") then
 	_targetObjectSyncedObjects = [];
 
 	{
-		_checkingPredex = _x getVariable ["fnf_prefix", "FAILED"];
-		if (_target isEqualTo _checkingPredex) then
+		_checkingPrefix = _x getVariable ["fnf_prefix", "FAILED"];
+		if (_target isEqualTo _checkingPrefix) then
 		{
 			_targetObjectSyncedObjects pushBack _x;
 		};

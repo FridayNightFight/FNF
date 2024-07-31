@@ -21,18 +21,21 @@ _serverState = _module getVariable ["fnf_objServerState", 3];
 
 _params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 
-//marker coping here
+//get current timer values
 _timeOfCompletion = _targetObject getVariable ['fnf_currentlyHackingCompletionTime', -1];
 _timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 
+//if timer not active
 if (_timeOfCompletion isEqualTo -1 or _timeServerStarted isEqualTo -1) then
 {
+	//set marker text to idle
 	_marker setMarkerTextLocal "[Idle]";
 	if (ace_spectator_isset) then
 	{
 		_marker setMarkerTextLocal format["Terminal %1 [Idle]", _objectiveIndex + 1];
 	};
 } else {
+	//get in seconds how much is left on the timer
 	_resultTime = objNull;
 	if (isServer and hasInterface) then
 	{
@@ -42,12 +45,14 @@ if (_timeOfCompletion isEqualTo -1 or _timeServerStarted isEqualTo -1) then
 	};
 	_timeText = [_resultTime, "MM:SS"] call BIS_fnc_secondsToString;
 
+	//set marker time
 	_marker setMarkerTextLocal format["[%1]", _timeText];
 	if (ace_spectator_isset) then
 	{
 		_marker setMarkerTextLocal format["Terminal %1 [%2]", _objectiveIndex + 1, _timeText];
 	};
 
+	//toggle marker colour
 	_previouslyHackingSide = _targetObject getVariable ['fnf_previouslyHackingSide', sideUnknown];
 
 	if (markerColor _marker isEqualTo "ColorBlack") then
@@ -68,10 +73,12 @@ if (_serverState isEqualTo 3) exitWith {};
 _targetConfig = _targetObject call CBA_fnc_getObjectConfig;
 _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Land_DataTerminal_01_F.jpg"] call CBA_fnc_getConfigEntry;
 
+//start notification creation
 _stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", (_objectiveIndex + 1)])];
 
 _notificationType = "info";
 
+//set values based on a succed or fail
 if (_serverState isEqualTo 4) then
 {
 	_task setTaskState "Succeeded";
@@ -96,6 +103,7 @@ if (_alliedTask) then
 
 _stringArray pushBack "</t><br/><br/><t align='center'>Terminal has ";
 
+//this is irrespective of obj outcome and therefor is based on status of vic
 if (not _targetObject getVariable ['fnf_explosionHandeled', false]) then
 {
 	_stringArray pushBack "not been hacked in time</t><br/><br/>";

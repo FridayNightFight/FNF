@@ -38,6 +38,7 @@ _createTask = {
 		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
+	//change pre-set items based on ally or normal OBJ
 	_parentTask = fnf_myTasksParentTask;
 	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
 	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
@@ -50,6 +51,7 @@ _createTask = {
 		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
+	//get task title
 	_taskTitle = format["%1: Defend the Terminal", (_objectiveIndex + 1)];
 	if (_objType isEqualTo "des") then
 	{
@@ -60,10 +62,12 @@ _createTask = {
 		_taskTitle = _customTitle;
 	};
 
+	//create task
 	_futureTask = player createSimpleTask [_taskTitle, _parentTask];
 
 	_hackingTime = _module getVariable ["fnf_hackingTime", 120];
 
+	//set descriptions and task type based on defend OBJ
 	_futureTask setSimpleTaskType "defend";
 	_descriptionPointTwo = format["the terminal cannot be hacked by enemy forces, a hack will take %1 seconds<br/><br/>", _hackingTime];
 	_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
@@ -71,6 +75,8 @@ _createTask = {
 	{
 		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above, the objective can be hidden in one of the hiding zones provided";
 	};
+
+	//if obj is actually attack re-write above for attack
 	if (_objType isEqualTo "hck") then
 	{
 		_futureTask setSimpleTaskType "upload";
@@ -88,6 +94,7 @@ _createTask = {
 		};
 	};
 
+	//if there are any prerequisites then collect and put them in nice words
 	_preRequisiteText = "";
 	if (count _preRequisiteIndexs isNotEqualTo 0) then
 	{
@@ -108,6 +115,7 @@ _createTask = {
 		};
 	};
 
+	//final description joining and overwriting
 	_taskDescription = [(format["<img width='300' image='%1'/><br/><br/>", _targetPic]), _descriptionPointOne, _descriptionPointTwo, _helperString, _preRequisiteText] joinString "";
 	if (_customTaskDescription isNotEqualTo "") then
 	{
@@ -123,6 +131,7 @@ _initActions = {
 
 	_hackingTime = _module getVariable ["fnf_hackingTime", 120];
 
+	//change distance of action based on object type
 	_objectType = typeOf _targetObject;
 	_actionRange = "4";
 	if (_objectType isEqualTo "RuggedTerminal_01_communications_hub_F") then
@@ -132,15 +141,18 @@ _initActions = {
 
 	_actionStayCondition = format["_caller distance _target < %1", _actionRange];
 
+	//set action title and condition to show based on defend
 	_actionTitle = "Cancel Hack";
 	_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)", _actionRange];
 
+	//edit if on attack
 	if (_objType isEqualTo "hck") then
 	{
 		_actionTitle = "Start Hack";
 		_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)", _actionRange];
 	};
 
+	//add action to object
 	[
 		_targetObject,
 		_actionTitle,
@@ -166,9 +178,11 @@ _initActions = {
 _initColors = {
 	params["_targetObject", "_objType"];
 
+	//check object type is one where colours can change
 	_objectType = typeOf _targetObject;
 	if (_objectType isNotEqualTo "Land_DataTerminal_01_F") exitWith {};
 
+	//if on defend set terminal colours to your colours
 	switch (playerSide) do {
 		case west:
 		{
@@ -185,6 +199,7 @@ _initColors = {
 		default {};
 	};
 
+	//if attacking set to unknown
 	if (_objType isEqualTo "hck") then
 	{
 		[_targetObject, "orange", "orange", "orange"] call BIS_fnc_dataTerminalColor;
@@ -197,6 +212,7 @@ switch (_objState) do {
 		_objType = _module getVariable ["fnf_objectiveType", "hck"];
 		_syncedObjects = synchronizedObjects _module;
 
+		//get relevant objects synced to module
 		_hidingZonesAssigned = [];
 		_sequentialPlannersAssigned = [];
 		_targetObject = objNull;
@@ -230,10 +246,11 @@ switch (_objState) do {
 			};
 		} forEach _syncedObjects;
 
-		//[objStateToUse, [PreRequisuteIndexs]]
+		//check status of sequential planners and what must be done
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
+		//set whether marker to be shown (overwritten later)
 		_showMarker = false;
 		[_targetObject, _objType] call _initColors;
 
@@ -241,10 +258,11 @@ switch (_objState) do {
 
 		switch (_objStateToUse) do {
 			case 2: {
+				//create task
 				_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, _preRequisiteIndexs, _alliedTask] call _createTask;
 				[_futureTask, false] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
-				//hide object
+				//hide object if it must be hidden
 				if (count _hidingZonesAssigned isEqualTo 0) then
 				{
 					_futureTask setSimpleTaskTarget [_targetObject, true];
@@ -276,16 +294,20 @@ switch (_objState) do {
 						} forEach _hidingZonesAssigned;
 					};
 				};
+
+				//set task to the new task
 				_task = _futureTask;
 				_showMarker = true;
 			};
 			case 3: {
+				//create task
 				_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, _preRequisiteIndexs, _alliedTask] call _createTask;
 				[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
+				//add actions to the object to allow hacking
 				[_targetObject, _module, _objType] call _initActions;
 
-				//hide object
+				//hide object if it must be hidden
 				if (count _hidingZonesAssigned isEqualTo 0) then
 				{
 					_futureTask setSimpleTaskTarget [_targetObject, true];
@@ -318,12 +340,14 @@ switch (_objState) do {
 					};
 				};
 
+				//set task to the new task
 				_task = _futureTask;
 				_showMarker = true;
 			};
 			default { };
 		};
 
+		//get where the objective is, preferabley based on task
 		_targetLocation = _targetObject;
 
 		if (not isNull _task) then
@@ -331,6 +355,7 @@ switch (_objState) do {
 			_targetLocation = taskDestination _task;
 		};
 
+		//create timer marker and hide it if told to (will be overwritten in watch)
 		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _targetLocation];
 		_marker setMarkerShapeLocal "ICON";
 		_marker setMarkerTypeLocal "mil_dot";
@@ -340,8 +365,10 @@ switch (_objState) do {
 			_marker setMarkerAlphaLocal 0;
 		};
 
+		//add objective to be watched by update marker list system
 		fnf_updateMarkerList pushBack _objectiveIndex;
 
+		//compile code to run on completion
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
 		_codeOnCompletion = compile _codeOnCompletion;
@@ -352,12 +379,15 @@ switch (_objState) do {
 	case 1: {
 		_objType = _module getVariable ["fnf_objectiveType", "hck"];
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+
+		//create task
 		_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, [], _alliedTask] call _createTask;
 		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
+		//add actions to the object to allow hacking
 		[_targetObject, _module, _objType] call _initActions;
 
-		//hide object
+		//hide object if it must be hidden
 		if (count _hidingZonesAssigned isEqualTo 0) then
 		{
 			_futureTask setSimpleTaskTarget [_targetObject, true];
@@ -390,6 +420,7 @@ switch (_objState) do {
 			};
 		};
 
+		//make sure timer marker is shown
 		_marker setMarkerAlphaLocal 1;
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker]]];
@@ -399,6 +430,7 @@ switch (_objState) do {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 
+		//add actions to the object to allow hacking
 		[_targetObject, _module, _objType] call _initActions;
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];

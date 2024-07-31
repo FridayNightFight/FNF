@@ -5,29 +5,27 @@
 		watch a capture sector objective including updating task, returns if objective has been completed (failed for protection objectives)
 
 	Parameter(s):
-		1: ARRAY - Array that objective is stored in
+		1: INTEGER -	The index of the objective to watch
 
 	Returns:
 		Boolean
 */
 
-params["_objEntry"];
+params ["_objectiveIndex"];
 
-_objEntry params["_objType","_objectiveModule","_task","_forPlayer","_statusSlotID"];
+_objEntry = fnf_objectives select _objectiveIndex;
 
-_zonePrefix = _objectiveModule getVariable ["fnf_prefix", "FAILED"];
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
 
-if (_zonePrefix isEqualTo "FAILED") exitWith {true;};
+_serverState = _module getVariable ["fnf_objServerState", 3];
 
-_displayName = [_zonePrefix] call FNF_ClientSide_fnc_getDisplayName;
-_displayNameArray = _displayName splitString " ";
-_secNum = _displayNameArray select 1;
+_params params ["_zonePrefix", "_centerObject", "_marker", "_statusSlotID"];
 
 //get server controlled values
-_sectorPercentage = _objectiveModule getVariable ["fnf_sector_percentage", 0];
-_sectorOwner = _objectiveModule getVariable ["fnf_sector_owner", sideUnknown];
+_sectorPercentage = _module getVariable ["fnf_sector_percentage", 0];
+_sectorOwner = _module getVariable ["fnf_sector_owner", sideUnknown];
 
-_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _secNum];
+_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
 _colour = [_sectorOwner, false] call BIS_fnc_sideColor;
 
 _taskPos = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
@@ -38,7 +36,7 @@ _texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 _shownPercent = _sectorPercentage;
 
 //if the sector is fully captured, show the percentage as 0
-if (_sectorPercentage isEqualTo 1) then
+if (_sectorPercentage => 1) then
 {
 	_shownPercent = 0;
 };
@@ -46,72 +44,53 @@ if (_sectorPercentage isEqualTo 1) then
 //update the status slots
 _statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
 
-_output = false;
+if (_serverState isEqualTo 3) exitWith {};
 
-//if percentage is 1 (ie captured by someone)
-if (_sectorPercentage isEqualTo 1) then
+//remove capture zone
+[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+
+[_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
+
+//start notification creation
+_stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", (_objectiveIndex + 1)])];
+
+_notificationType = "info";
+
+//set values based on a succed or fail
+if (_serverState isEqualTo 4) then
 {
-	_output = true;
-
-	_desc = taskDescription _task;
-	_splitString = (_desc select 1) splitString " ";
-	_objNumWithColon = _splitString select 0;
-	_objNum = (_objNumWithColon splitString "") select 0;
-
-	//remove the sector zone
-	[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
-
-	//if task is to attack the objective
-	if (_taskType isEqualTo "meet") then
-	{
-		//pick relevent notification depending on whether the player has captured, ally has, or enemy has
-		if (_sectorOwner isEqualTo playerSide and _forPlayer) then
-		{
-			_task setTaskState "Succeeded";
-			["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your team</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
-		};
-		if ([playerSide, _sectorOwner] call BIS_fnc_sideIsFriendly and _sectorOwner isNotEqualTo playerSide and _forPlayer) then
-		{
-			_task setTaskState "Succeeded";
-			["<t size='1.5' align='center'>Objective " + _objNum + " Complete</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your allies</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
-		} else {
-			if (_sectorOwner isNotEqualTo playerSide and _forPlayer) then
-			{
-				_task setTaskState "Failed";
-				["<t size='1.5' align='center'>Objective " + _objNum + " Failed</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;
-			};
-		};
-		if ([playerSide, _sectorOwner] call BIS_fnc_sideIsFriendly and _sectorOwner isNotEqualTo playerSide and not _forPlayer) then
-		{
-			_task setTaskState "Succeeded";
-			["<t size='1.5' align='center'>Objective " + _objNum + " Complete<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your allies</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
-		};
-		if (_sectorOwner isEqualTo playerSide and not _forPlayer) then
-		{
-			_task setTaskState "Succeeded";
-			["<t size='1.5' align='center'>Objective " + _objNum + " Complete<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by your team</t>", "success"] call FNF_ClientSide_fnc_notificationSystem;
-		} else {
-			if (not ([playerSide, _sectorOwner] call BIS_fnc_sideIsFriendly) and not _forPlayer) then
-			{
-				_task setTaskState "Failed";
-				["<t size='1.5' align='center'>Objective " + _objNum + " Failed<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;
-			};
-		};
-	};
-
-	//if defending the sector
-	if (_taskType isEqualTo "defend") then
-	{
-		//check whether objective is for player or for ally and show notification
-		_task setTaskState "Failed";
-		if (_forPlayer) then
-		{
-			["<t size='1.5' align='center'>Objective " + _objNum + " Failed</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;
-		} else {
-			["<t size='1.5' align='center'>Objective " + _objNum + " Failed<br/>(Ally Objective)</t><br/><br/><t align='center'>Sector " + _secNum + " has been taken by the enemy</t>", "failure"] call FNF_ClientSide_fnc_notificationSystem;
-		};
-	};
-	[_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
+	_task setTaskState "Succeeded";
+	_stringArray pushBack "Complete";
+	_notificationType = "success";
+	_marker setMarkerTextLocal format["(Complete) Sector %1", (_objectiveIndex + 1)];
+};
+if (_serverState isEqualTo 5) then
+{
+	_task setTaskState "Failed";
+	_stringArray pushBack "Failed";
+	_notificationType = "failure";
+	_marker setMarkerTextLocal format["(Failed) Sector %1", (_objectiveIndex + 1)];
 };
 
-_output;
+if (_alliedTask) then
+{
+	_stringArray pushBack "<br/>(Ally Objective)";
+};
+
+_stringArray pushBack "</t><br/><br/><t align='center'>Sector has ";
+
+//this is irrespective of obj outcome and therefor is based on status of vic
+if (_sectorPercentage => 1) then
+{
+	_stringArray pushBack "been captured</t><br/><br/>";
+} else {
+	_stringArray pushBack "not been captured in time</t><br/><br/>";
+};
+
+_string = _stringArray joinString "";
+
+[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+
+fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, _params]];
+
+call _codeOnCompletion;

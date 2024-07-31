@@ -2,102 +2,214 @@
 	Author: Mallen
 
 	Description:
-		init a capture sector objective for spectator
+		init a destroy objective including setting up local watch, local task control, local ordering enforcement, and breifing data
 
 	Parameter(s):
-		0: OBJECT -	The capture sector objective module to be processed
+		0: INTEGER -	The index of the objective to intialise
 
 	Returns:
 		None
 */
 
-params ["_objective","_side"];
+params ["_objectiveIndex"];
 
-//get the objective type
-_objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
+_objEntry = fnf_objectives select _objectiveIndex;
 
-//if no type found exit obj settup and inform mission maker
-if (_objectiveType isEqualTo "FAILED") exitWith
-{
-	if (fnf_debug) then
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+_createTask = {
+	params["_objType", "_module", "_objectiveIndex", "_preRequisiteIndexs", "_alliedTask"];
+
+	//if parent task for my tasks doesnt exist create it
+	if (isNil "fnf_myTasksParentTask") then
 	{
-		systemChat "DANGER: Capture Sector objective does not have objective type set, objective will NOT function";
+		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
+		fnf_myTasksParentTask setSimpleTaskType "documents";
 	};
-};
 
-_zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
-
-//if no type found exit obj settup and inform mission maker
-if (_zonePrefix isEqualTo "FAILED") exitWith
-{
-	if (fnf_debug) then
+	//if parent task for ally tasks doesnt exist and its needed create it
+	if (isNil "fnf_allyTasksParentTask" and _alliedTask) then
 	{
-		systemChat "DANGER: Capture Sector objective does not have marker prefix set, objective will NOT function";
+		fnf_allyTasksParentTask = player createSimpleTask ["Ally Tasks"];
+		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
-};
 
-//get objective number
-_objNum = str(({_x select 0 isNotEqualTo "DESTROYDUPE" and _x select 0 isNotEqualTo "CAPTURESECTORDUPE" and _x select 0 isNotEqualTo "TERMINALDUPE" and _x select 0 isNotEqualTo "ASSASSINDUPE"} count fnf_objectives) + 1);
-
-
-//get sector number
-_secNum = _objNum;
-
-_statusSlotID = "NOT SET";
-
-//check if zone already exists, if not create it
-_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
-if (not _result) then
-{
-	_resultAddZone = [_zonePrefix, "Sector " + _secNum, true, false] call FNF_ClientSide_fnc_addZone;
-	if (not _resultAddZone) exitWith
+	_parentTask = fnf_myTasksParentTask;
+	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
+	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
+	_descriptionPointOne = "<t>To complete this objective, ";
+	if (_alliedTask) then
 	{
-		if (fnf_debug) then
+		_parentTask = fnf_allyTasksParentTask;
+		_customTitle = _module getVariable ["fnf_customObjectiveAlliedTitle", ""];
+		_customTaskDescription = _module getVariable ["fnf_customObjectiveAlliedDescription", ""];
+		_descriptionPointOne = "<t>For your allies to complete this objective, ";
+	};
+
+	_taskTitle = format["%1: Defend the Sector", (_objectiveIndex + 1)];
+	if (_objType isEqualTo "cap") then
+	{
+		_taskTitle = format["%1: Capture the Sector", (_objectiveIndex + 1)];
+	};
+	if (_customTitle isNotEqualTo "") then
+	{
+		_taskTitle = _customTitle;
+	};
+
+	_futureTask = player createSimpleTask [_taskTitle, _parentTask];
+
+	_futureTask setSimpleTaskType "defend";
+	_descriptionPointTwo = "the Sector cannot be allowed to be captured<br/><br/>";
+	_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+	if (_objType isEqualTo "cap") then
+	{
+		_futureTask setSimpleTaskType "meet";
+		_descriptionPointTwo = "the Sector must be captured<br/><br/>";
+
+		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
+	};
+
+	_preRequisiteText = "";
+	if (count _preRequisiteIndexs isNotEqualTo 0) then
+	{
+		_preRequisiteText = format["<br/><br/>This objective will be activated after objective %1 has been completed", ((_preRequisiteIndexs select 0) + 1)];
+		if (count _preRequisiteIndexs isEqualTo 2) then
 		{
-			systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function";
+			_preRequisiteText = format["<br/><br/>This objective will be activated after objectives %1 and %2 have been completed", ((_preRequisiteIndexs select 0) + 1), ((_preRequisiteIndexs select 1) + 1)];
+		};
+		if (count _preRequisiteIndexs > 2) then
+		{
+			_preRequisiteArray = ["<br/><br/>This objective will be activated after objectives "];
+			{
+				_preRequisiteArray pushBack (format["%1, ", _x + 1]);
+			} forEach _preRequisiteIndexs;
+			_preRequisiteArray set [-1, (format["and %1 ", ((_preRequisiteIndexs select -1) + 1)])];
+			_preRequisiteArray pushBack "have been completed";
+			_preRequisiteText = _preRequisiteArray joinString "";
 		};
 	};
 
-	_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
+	_taskDescription = [_descriptionPointOne, _descriptionPointTwo, _helperString, _preRequisiteText] joinString "";
+	if (_customTaskDescription isNotEqualTo "") then
+	{
+		_taskDescription = _customTaskDescription;
+	};
 
-	_colour = [playerSide, false] call BIS_fnc_sideColor;
-
-	_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _secNum];
-
-	_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
-
-	_statusSlotID = [-1, _text, _texture, _colour, 1, _taskPos, 0] call BIS_fnc_setMissionStatusSlot;
-
-} else {
-	//if zone does exist update sec number and obj number
-	_displayName = [_zonePrefix] call FNF_ClientSide_fnc_getDisplayName;
-	_displayNameArray = _displayName splitString " ";
-	_secNum = _displayNameArray select 1;
-	_objNum = _secNum;
+	_futureTask setSimpleTaskDescription [_taskDescription, _taskTitle, _taskTitle];
+	_futureTask;
 };
 
-_task = "";
+switch (_objState) do {
+	//Obj has in no way been created
+	case 0: {
+		_objType = _module getVariable ["fnf_objectiveType", "cap"];
+		_syncedObjects = synchronizedObjects _module;
 
-//create and setup objective task
-if (_objectiveType isEqualTo "cap") then
-{
+		_sequentialPlannersAssigned = [];
+		{
+			_typeOfObject = typeOf _x;
 
-	_task = player createSimpleTask [(_objNum + ": Capture Sector " + _secNum)];
-	_task setSimpleTaskDescription ["To complete this objective " + ([_side] call BIS_fnc_sideName) + " must have more players on their side or their allies side than any enemies to capture the sector", _objNum + ": Capture sector " + _secNum, _objNum + ": Capture sector " + _secNum];
+			if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+			{
+				_sequentialPlannersAssigned pushBack _x;
+			};
+		} forEach _syncedObjects;
 
-	_task setSimpleTaskType "meet";
-} else {
+		//[objStateToUse, [PreRequisuteIndexs]]
+		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned, false] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
+		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
-	_task = player createSimpleTask [(_objNum + ": Defend Sector " + _secNum)];
-	_task setSimpleTaskDescription ["To complete this objective " + ([_side] call BIS_fnc_sideName) + " must have more players on their side or their allies side than any enemies to defend the sector", _objNum + ": Defend sector " + _secNum, _objNum + ": Defend sector " + _secNum];
+		if (_objStateToUse isEqualTo 1) then {_objStateToUse = 2;};
 
-	_task setSimpleTaskType "defend";
+		_zonePrefix = _module getVariable ["fnf_prefix", "FAILED"];
+
+		//programatically check if objective is secondary OBJ module and first should be watched
+		_isSecondaryObj = [_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective;
+
+		_markerPrefix = "(Inactive) Sector OBJ";
+
+		_task = taskNull;
+
+		_sectorCenter = [0,0,0];
+
+		_statusSlotID = -1;
+
+		_futureTask = [_objType, _module, _objectiveIndex, _preRequisiteIndexs, _alliedTask] call _createTask;
+
+		//create Zone
+		if (not _isSecondaryObj) then {
+			_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
+			if (not _result) then
+			{
+				_resultAddZone = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+				if (not _resultAddZone) exitWith
+				{
+					if (fnf_debug) then
+					{
+						systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function";
+					};
+				};
+			};
+
+			_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
+
+			_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+
+			_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
+
+			_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+		} else {
+			//get all markers with _zonePrefix
+			_markerPosArray = [];
+
+			_markerCounter = 1;
+			//get all marker positions by seeing if i can create the marker, if i cant it exists
+			while {createMarkerLocal [(_zonePrefix + (str _markerCounter)), player] isEqualTo ""} do
+			{
+				_markerPos = getMarkerPos (_zonePrefix + (str _markerCounter));
+
+				_markerPosArray pushBack _markerPos;
+
+				_markerCounter = _markerCounter + 1;
+			};
+
+			//remove the last marker that is created while checking
+			deleteMarkerLocal (_zonePrefix + (str _markerCounter));
+
+			_sectorCenter = [_markerPosArray] call FNF_ClientSide_fnc_calculateVisualCenter;
+		};
+
+		_task = _futureTask;
+
+		if (_objStateToUse isEqualTo 3) then
+		{
+			_markerPrefix = "Sector OBJ";
+		};
+
+		_centerObject = 'AreaMarker_01_F' createVehicleLocal _sectorCenter;
+		_centerObject hideObject true;
+
+		_marker = createMarkerLocal [format["FNF_LOCAL%1:SectorOBJ", _objectiveIndex], _sectorCenter];
+		_marker setMarkerShapeLocal "ICON";
+		_marker setMarkerTypeLocal "mil_objective";
+		_marker setMarkerTextLocal _markerPrefix;
+		_marker setMarkerAlphaLocal 0;
+		if (_isSecondaryObj) then
+		{
+			_marker setMarkerAlphaLocal 1;
+		};
+
+		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
+
+		_codeOnCompletion = compile _codeOnCompletion;
+
+		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _marker, _statusSlotID]]];
+	};
+	//Obj has been created and is known
+	case 2: {
+		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+		_marker setMarkerTextLocal "(Active) Sector OBJ";
+		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
+	};
+	default { };
 };
-
-if (_statusSlotID isEqualTo "NOT SET") then
-{
-	fnf_objectives pushBack ["CAPTURESECTORDUPE", _objective, _task];
-} else {
-	fnf_objectives pushBack ["CAPTURESECTOR", _objective, _statusSlotID, _objNum, _task];
-};
-

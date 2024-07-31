@@ -2,76 +2,130 @@
 	Author: Mallen
 
 	Description:
-		init a capture sector objective including setting up server watch
+		init a sector objective on server side
 
 	Parameter(s):
-		0: OBJECT -	The capture sector objective module to be processed
-		1: SIDE -	The side that the objective is assigned to
+		0: INTEGER -	The index of the objective to intialise
 
 	Returns:
 		None
 */
 
-params ["_objective", "_side"];
+params ["_objectiveIndex"];
 
-_zonePrefix = _objective getVariable ["fnf_prefix", "FAILED"];
+_objEntry = fnf_serverObjectives select _objectiveIndex;
 
-//if no type found exit obj settup
-if (_zonePrefix isEqualTo "FAILED") exitWith {};
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
 
-_syncedObjects = synchronizedObjects _objective;
-_sequentialObjPlanners = [];
-{
-	_typeOfObject = typeOf _x;
+switch (_objState) do {
+	//Obj has in no way been created
+	case 0: {
+		_syncedObjects = synchronizedObjects _module;
 
-	if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
-	{
-		_sequentialObjPlanners pushBack _x;
-	};
-} forEach _syncedObjects;
-
-_topRightCount = 0;
-_topRightCandidate = objNull;
-
-if (count _sequentialObjPlanners isNotEqualTo 0) then
-{
-	{
-		_result = [_objective, _x] call FNF_ClientSide_fnc_getBottomLeft;
-		if (not _result) then
+		_sequentialPlannersAssigned = [];
 		{
-			_topRightCount = _topRightCount + 1;
-			_topRightCandidate = _x;
+			_typeOfObject = typeOf _x;
+
+			if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+			{
+				_sequentialPlannersAssigned pushBack _x;
+			};
+		} forEach _syncedObjects;
+
+		//[objStateToUse, [PreRequisuteIndexs]]
+		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ServerSide_fnc_checkAndAddSequentialHandle;
+		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
+
+		_markerPrefix = "(Inactive) Sector OBJ";
+
+		if (_objStateToUse isEqualTo 3) then
+		{
+			_markerPrefix = "Sector OBJ";
 		};
-	} forEach _sequentialObjPlanners;
-};
 
-if (_topRightCount > 1) exitWith {};
+		//get offending sides and if they are attacking
+		_offendingSides = [];
+		_modules = call FNF_ClientSide_fnc_findFNFModules;
+		_objModules = [_modules, "sectorCaptureObj"] call FNF_ClientSide_fnc_findSpecificModules;
+		_targetObjectSyncedObjects = [];
 
-_sequentialInit = false;
-_addSequentialHandle = false;
+		_zonePrefix = _module getVariable ["fnf_prefix", "FAILED"];
 
-if (not isNull _topRightCandidate) then
-{
-	//check if we're initing this from the sequential planner, if we are we don't need to re-add it
-	_alreadyCompletedSequentialPlanning = _topRightCandidate getVariable ["fnf_sequentialObjCompleted", false];
-	if (not _alreadyCompletedSequentialPlanning) then
-	{
-		_addSequentialHandle = true;
+		{
+			_checkingPrefix = _x getVariable ["fnf_prefix", "FAILED"];
+			if (_zonePrefix isEqualTo _checkingPrefix) then
+			{
+				_syncedObjectsChecking = synchronizedObjects _x;
+				_attacking = false;
+				if (_module getVariable ["fnf_objectiveType", "cap"] isEqualTo "cap") then
+				{
+					_attacking = true;
+				};
+				_objSide = sideEmpty;
+				{
+					_objectType = typeOf _x;
+					switch (_objectType) do
+					{
+						case "SideBLUFOR_F":
+						{
+							_objSide = west;
+						};
+						case "SideOPFOR_F":
+						{
+							_objSide = east;
+						};
+						case "SideResistance_F":
+						{
+							_objSide = independent;
+						};
+						default
+						{
+							continue;
+						};
+					};
+				} forEach _syncedObjectsChecking;
+
+				_offendingSides pushBack [_objSide, _attacking];
+			};
+		} forEach _objModules;
+
+		//check if zone already exists, if not create it
+		_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
+		if (not _result and isDedicated) then
+		{
+			_resultAddZone = [_zonePrefix, "", false, false] call FNF_ClientSide_fnc_addZone;
+		};
+
+		_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
+
+		_marker = createMarkerLocal [format["FNF_SERVER%1:OBJ", _objectiveIndex], _sectorCenter];
+		_marker setMarkerShapeLocal "ICON";
+		_marker setMarkerTypeLocal "mil_objective";
+		_marker setMarkerTextLocal _markerPrefix;
+
+		if (not isDedicated) then {_marker setMarkerAlphaLocal 0};
+
+		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
+
+		_codeOnCompletion = compile _codeOnCompletion;
+
+		fnf_serverObjectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _marker, _offendingSides]]];
 	};
-};
+	//Obj has been created but is not known
+	case 1: {
+		_params params ["_zonePrefix", "_marker", "_offendingSides"];
 
-if (_addSequentialHandle) exitWith
-{
-	[_objective, _side, _topRightCandidate] call FNF_ServerSide_fnc_addSequentialHandle;
-};
+		_marker setMarkerTextLocal "(Active) Sector OBJ";
 
-//check if zone already exists, if not create it
-_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
-if (not _result and isDedicated) then
-{
-	_resultAddZone = [_zonePrefix, "", false, false] call FNF_ClientSide_fnc_addZone;
-	if (not _resultAddZone) exitWith {};
-};
+		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _marker, _offendingSides]]];
+	};
+	//Obj has been created and is known
+	case 2: {
+		_params params ["_zonePrefix", "_marker", "_offendingSides"];
 
-//add objective to objective stack
-fnf_serverObjectives pushBack [false, "CAPTURESECTOR", _side, _objective];
+		_marker setMarkerTextLocal "(Active) Sector OBJ";
+
+		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _marker, _offendingSides]]];
+	};
+	default { };
+};
