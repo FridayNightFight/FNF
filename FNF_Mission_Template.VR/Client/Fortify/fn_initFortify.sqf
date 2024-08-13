@@ -71,6 +71,15 @@ KK_fnc_inHouse = {
 		_canPlace
 }] call acex_fortify_fnc_addDeployHandler;
 
+["ace_fortify_deployCanceled", {
+  if !((_this select 0 select 0) isEqualTo player) exitWith {};
+  _cost = (_this select 0 select 6);
+
+  fnf_fortifyPoints = fnf_fortifyPoints + _cost;
+
+  ["<t align='center'>Fortify Budget: " + str(fnf_fortifyPoints) + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
+}] call CBA_fnc_addEventHandler;
+
 //when fortify object is deleted update custom fortify points
 ["acex_fortify_objectDeleted", {
 	if !((_this select 0) isEqualTo player) exitWith {};
