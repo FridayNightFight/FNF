@@ -115,35 +115,7 @@ if (not isNil "fnf_objectives") then
 
 			if (_type isEqualTo "fnf_module_assassinObj") then
 			{
-				_desc = taskDescription (_x select 3);
-				_splitString = (_desc select 1) splitString " ";
-				_objNumWithColon = _splitString select 0;
-				_objNum = _objNumWithColon trim [":", 2];
-
-				_marker = createMarkerLocal ["assassin_obj_marker_" + str(_objNum), (_x select 1)];
-				_marker setMarkerTypeLocal "mil_objective";
-				_marker setMarkerTextLocal "Assassin " + _objNum;
-
-				[{
-					params["_marker", "_object"];
-					_objComplete = _object getVariable ["fnf_objComplete", false];
-
-					_syncedObjects = synchronizedObjects _object;
-
-					{
-						if (isPlayer _x) then
-						{
-							_object = _x;
-						};
-					} forEach _syncedObjects;
-
-					_marker setMarkerPosLocal _object;
-
-					_objComplete or not ace_spectator_isset;
-				}, {
-					params["_marker", "_object"];
-					deleteMarkerLocal _marker;
-				}, [_marker, (_x select 1)]] call CBA_fnc_waitUntilAndExecute;
+				_indexsToDrawIcon pushBack _forEachIndex;
 			};
 		} forEach fnf_objectives;
 
@@ -176,6 +148,15 @@ if (not isNil "fnf_objectives") then
 				{
 					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 					drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
+				};
+
+				if (_type isEqualTo "fnf_module_assassinObj") then
+				{
+					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+					if (_targetObject isNotEqualTo objNull) then
+					{
+						drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
+					};
 				};
 			} forEach _objectiveIndexs;
  		}, 0, _indexsToDrawIcon] call CBA_fnc_addPerFrameHandler;

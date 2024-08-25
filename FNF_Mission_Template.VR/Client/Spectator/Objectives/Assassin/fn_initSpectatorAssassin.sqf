@@ -2,155 +2,228 @@
 	Author: Mallen
 
 	Description:
-		init a assassin objective for spectator
+		init an Assassin objective including setting up local watch, local task control, local ordering enforcement, and breifing data
 
 	Parameter(s):
-		0: OBJECT -	The assassin objective module to be processed
+		0: INTEGER -	The index of the objective to intialise
 
 	Returns:
 		None
 */
 
-params ["_objective","_side"];
+params ["_objectiveIndex"];
 
-//get the objective type
-_objectiveType = _objective getVariable ["fnf_objectiveType", "FAILED"];
+_objEntry = fnf_objectives select _objectiveIndex;
 
-if (_objectiveType isEqualTo "FAILED") exitWith
-{
-	if (fnf_debug) then
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+_createTask = {
+	params["_objType", "_module", "_objectiveIndex", "_hidingZonesAssigned", "_preRequisiteIndexs", "_alliedTask"];
+
+	//if parent task for my tasks doesnt exist create it
+	if (isNil "fnf_myTasksParentTask") then
 	{
-		systemChat "DANGER: Assassin objective does not have objective type set, objective will NOT function";
-	};
-};
-
-_syncedObjects = synchronizedObjects _objective;
-
-//find the target thats supposed to be killed or protected
-_hidingZones = [];
-_playerObject = objNull;
-_dupeLogicCheck = objNull;
-{
-	_typeOfObject = typeOf _x;
-	if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
-	{
-		continue;
+		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
+		fnf_myTasksParentTask setSimpleTaskType "documents";
 	};
 
-	if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
+	//change pre-set items based on ally or normal OBJ
+	_parentTask = fnf_myTasksParentTask;
+	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
+	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
+	_descriptionPointOne = "<t>To complete this objective, ";
+
+	//get task title
+	_targetName = _module getVariable ["fnf_targetName", "the VIP"];
+	_taskTitle = format["%1: Defend %2", (_objectiveIndex + 1), _targetName];
+	if (_objType isEqualTo "elm") then
 	{
-		_hidingZones pushBack _x;
-		continue;
+		_taskTitle = format["%1: Assassinate %2", (_objectiveIndex + 1), _targetName];
+	};
+	if (_customTitle isNotEqualTo "") then
+	{
+		_taskTitle = _customTitle;
 	};
 
-	if (isPlayer _x) then
+	//create task
+	_futureTask = player createSimpleTask [_taskTitle, _parentTask];
+
+	//set descriptions and task type based on defend OBJ
+	_futureTask setSimpleTaskType "defend";
+	_descriptionPointTwo = format["%1 cannot be assassinated<br/><br/>", _targetName];
+	_helperString = format["The location of %1 is marked on your map, or you can find it by hitting the 'Locate' button above", _targetName];
+	if (count _hidingZonesAssigned isNotEqualTo 0) then
 	{
-		_playerObject = _x;
-		continue;
+		_helperString = format["The location of %1 is marked on your map, or you can find it by hitting the 'Locate' button above, %1 can be hidden in one of the hiding zones provided", _targetName];
 	};
 
-	if (_typeOfObject isEqualTo "Logic") then
+	//if obj is actually attack re-write above for attack
+	if (_objType isEqualTo "elm") then
 	{
-		_dupeLogicCheck = _x;
-		continue;
-	};
+		_futureTask setSimpleTaskType "kill";
+		_descriptionPointTwo = format["%1 must be assassinated<br/><br/>", _targetName];
 
-	if (fnf_debug) then
-	{
-		systemChat "WARNING: Assassin objective has an object that is not a hiding zone, side, or player synced to it, objective will still function";
-	};
-} forEach _syncedObjects;
-
-_objectiveObject = _objective;
-
-if (not isNull _playerObject) then
-{
-	_objectiveObject = _playerObject;
-};
-
-_objNum = str(({_x select 0 isNotEqualTo "DESTROYDUPE" and _x select 0 isNotEqualTo "CAPTURESECTORDUPE" and _x select 0 isNotEqualTo "TERMINALDUPE" and _x select 0 isNotEqualTo "ASSASSINDUPE"} count fnf_objectives) + 1);
-
-//check if OBJ is a dupe, if so inform code and update OBJ number
-_isObjDuplicate = false;
-{
-	if (_x select 0 isEqualTo "ASSASSIN") then
-	{
-		if	(_x select 2 isEqualTo _dupeLogicCheck) then
+		_helperString = format["The location of %1 is marked on your map, or you can find it by hitting the 'Locate' button above", _targetName];
+		if (count _hidingZonesAssigned isNotEqualTo 0) then
 		{
-			_isObjDuplicate = true;
-			_objNum = _x select 3;
-		};
-	};
-} forEach fnf_objectives;
-
-//setup hiding zones if they are wanted
-if (count _hidingZones isNotEqualTo 0) then
-{
-	{
-		_prefix = _x getVariable ["fnf_prefix", "FAILED"];
-
-		if (_prefix isEqualTo "FAILED") then
-		{
-			if (fnf_debug) then
+			_helperString = format["The location of %1 may be in a hiding zone, if they are, the zone they are hidden in is marked on your map, if they aren't, %1s exact location is marked instead, in either case you can find it by hitting the 'Locate' button above", _targetName];
+			_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
+			if (not _zoneKnown) then
 			{
-				systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+				_helperString = format["The location of %1 may be in a hiding zone, if they are, you will have to search all hiding zones to find them, if they aren't, %1s exact location is marked on your map, or you can find it by hitting the 'Locate' button above", _targetName];
 			};
-			continue;
-		};
-		_result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
-		if (not _result) then
-		{
-			[_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
-		};
-	} forEach _hidingZones;
-};
-
-_task = "";
-
-_targetName = _objective getVariable ["fnf_targetName", "Unknown Name"];
-
-//create and setup objective task
-if (_objectiveType isEqualTo "elm") then
-{
-	_task = player createSimpleTask [(_objNum + ": Eliminate " + _targetName)];
-	_zoneKnown = _objective getVariable ["fnf_zoneKnown", true];
-
-	_helperString = "The location of the objective is marked on " + ([_side] call BIS_fnc_sideName) + "s map";
-
-	if (count _hidingZones isNotEqualTo 0) then
-	{
-		_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on " + ([_side] call BIS_fnc_sideName) + "s map, if it isn't, the objectives exact location is marked instead";
-		if (not _zoneKnown) then
-		{
-			_helperString = "The location of the objective may be in a hiding zone, if it is, " + ([_side] call BIS_fnc_sideName) + " will have to search all hiding zones to find the objective, if it isn't, the objectives exact location is marked on " + ([_side] call BIS_fnc_sideName) + "s map";
 		};
 	};
 
-	_task setSimpleTaskDescription [format["<t>To complete this objective " + ([_side] call BIS_fnc_sideName) + " must eliminate %1<br/><br/>%2</t>", _targetName, _helperString], _objNum + ": Eliminate " + _targetName, _objNum + ": Eliminate " + _targetName];
-
-
-	_task setSimpleTaskType "kill";
-	_task setSimpleTaskTarget [_objectiveObject, true];
-} else {
-	_task = player createSimpleTask [(_objNum + ": Defend " + _targetName)];
-
-	_task setSimpleTaskType "defend";
-	_task setSimpleTaskTarget [_objectiveObject, true];
-
-	_helperString = "";
-
-	if (count _hidingZones isNotEqualTo 0) then
+	//if there are any prerequisites then collect and put them in nice words
+	_preRequisiteText = "";
+	if (count _preRequisiteIndexs isNotEqualTo 0) then
 	{
-		_helperString = "<br/><br/>The objective can be hidden in the hiding zones provided";
+		_preRequisiteText = format["<br/><br/>This objective will be activated after objective %1 has been completed", ((_preRequisiteIndexs select 0) + 1)];
+		if (count _preRequisiteIndexs isEqualTo 2) then
+		{
+			_preRequisiteText = format["<br/><br/>This objective will be activated after objectives %1 and %2 have been completed", ((_preRequisiteIndexs select 0) + 1), ((_preRequisiteIndexs select 1) + 1)];
+		};
+		if (count _preRequisiteIndexs > 2) then
+		{
+			_preRequisiteArray = ["<br/><br/>This objective will be activated after objectives "];
+			{
+				_preRequisiteArray pushBack (format["%1, ", _x + 1]);
+			} forEach _preRequisiteIndexs;
+			_preRequisiteArray set [-1, (format["and %1 ", ((_preRequisiteIndexs select -1) + 1)])];
+			_preRequisiteArray pushBack "have been completed";
+			_preRequisiteText = _preRequisiteArray joinString "";
+		};
 	};
 
-	_task setSimpleTaskDescription [format["<t>To complete this objective " + ([_side] call BIS_fnc_sideName) + " must prevent %1 from being eliminated for the duration of the game%2</t>", _targetName, _helperString], _objNum + ": Defend " + _targetName, _objNum + ": Defend " + _targetName];
+	//final description joining and overwriting
+	_taskDescription = [_descriptionPointOne, _descriptionPointTwo, _helperString, _preRequisiteText] joinString "";
+	if (_customTaskDescription isNotEqualTo "") then
+	{
+		_taskDescription = _customTaskDescription;
+	};
+
+	_futureTask setSimpleTaskDescription [_taskDescription, _taskTitle, _taskTitle];
+	_futureTask;
 };
 
-//add objective to objective stack
-if (not _isObjDuplicate) then
-{
-	fnf_objectives pushBack ["ASSASSIN", _objective, _dupeLogicCheck, _objNum, _task];
-} else {
-	fnf_objectives pushBack ["ASSASSINDUPE", _objective, _dupeLogicCheck, _objNum, _task];
+switch (_objState) do {
+	//Obj has in no way been created
+	case 0: {
+		_objType = _module getVariable ["fnf_objectiveType", "elm"];
+		_syncedObjects = synchronizedObjects _module;
+
+		//get relevant objects synced to module
+		_hidingZonesAssigned = [];
+		_sequentialPlannersAssigned = [];
+		_targetObject = objNull;
+		{
+			_typeOfObject = typeOf _x;
+			if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
+			{
+				continue;
+			};
+
+			if (_typeOfObject isEqualTo "fnf_module_hidingZone") then
+			{
+				_hidingZonesAssigned pushBack _x;
+				continue;
+			};
+
+			if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+			{
+				_sequentialPlannersAssigned pushBack _x;
+				continue;
+			};
+
+			if (_targetObject isEqualTo objNull and not _x isKindOf "Man") then
+			{
+				_targetObject = _x;
+			};
+		} forEach _syncedObjects;
+
+		//check status of sequential planners and what must be done
+		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned, false] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
+		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
+
+		if (_objStateToUse isEqualTo 1) then {_objStateToUse = 2;};
+
+		//programatically check if objective is secondary OBJ module and first should be watched
+		_isSecondaryObj = [_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective;
+
+		//set marker prefix now to be overwritten later
+		_markerPrefix = "(Inactive) Assassin OBJ";
+
+		_standardTitle = "";
+
+		_task = taskNull;
+
+		//create task
+		_futureTask = [_objType, _module, _objectiveIndex, _hidingZonesAssigned, _preRequisiteIndexs, _alliedTask] call _createTask;
+
+		_taskDescArray = taskDescription _futureTask;
+		_standardTitle = _taskDescArray select 1;
+
+		//hide object if it must be hidden
+		if (count _hidingZonesAssigned isNotEqualTo 0 and _objType isNotEqualTo "elm") then
+		{
+			{
+			_prefix = _x getVariable ["fnf_prefix", "FAILED"];
+
+				if (_prefix isEqualTo "FAILED") then
+				{
+					if (fnf_debug) then
+					{
+						systemChat "WARNING: Hiding zone does not have a valid zone prefix and will not function";
+					};
+					continue;
+				};
+
+				_result = [_prefix] call FNF_ClientSide_fnc_verifyZone;
+				if (not _result) then
+				{
+					[_prefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+				};
+			} forEach _hidingZonesAssigned;
+		};
+
+		//set task to the new task
+		_task = _futureTask;
+
+		if (_objStateToUse isEqualTo 3) then
+		{
+			_markerPrefix = "Assassin OBJ";
+		};
+
+		//create spectator marker and hide it if not in spectator
+		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _module];
+		_marker setMarkerShapeLocal "ICON";
+		_marker setMarkerTypeLocal "mil_objective";
+		_marker setMarkerTextLocal _markerPrefix;
+		_marker setMarkerAlphaLocal 0;
+		if (_isSecondaryObj) then
+		{
+			_marker setMarkerAlphaLocal 1;
+		};
+
+		//add objective to be watched by update marker list system
+		fnf_updateMarkerList pushBack _objectiveIndex;
+
+		//compile code to run on completion
+		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
+
+		_codeOnCompletion = compile _codeOnCompletion;
+
+		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [objNull /*represents no assassin target atm (found in watch code)*/, _hidingZonesAssigned, _marker, _standardTitle]]];
+	};
+	//Obj has been created and is known
+	case 2: {
+		_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+
+		//change marker text to show active
+		_marker setMarkerTextLocal "(Active) Assassin OBJ";
+
+		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
+	};
+	default { };
 };

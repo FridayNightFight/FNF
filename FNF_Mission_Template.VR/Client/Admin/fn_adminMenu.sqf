@@ -150,7 +150,8 @@ _objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 			_status = "Alive";
 		};
 	};
-	if (_x getVariable ["fnf_objComplete", false]) then
+	_serverState = _x getVariable ["fnf_objServerState", 3];
+	if (_serverState isEqualTo 4 or _serverState isEqualTo 5) then
 	{
 		_status = "COMPLETED";
 	};
@@ -407,5 +408,11 @@ _objConfirmButton ctrlAddEventHandler[ "ButtonClick", {
 	_objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 
 	_selectedObjModule = (_objModules select _selectedIndex);
-	_selectedObjModule setVariable ["fnf_objComplete", true, true];
+	_objType = _selectedObjModule getVariable ["fnf_objectiveType", "elm"];
+	if (_objType isEqualTo "elm") then
+	{
+		_selectedObjModule setVariable ["fnf_objServerState", 4, true];
+	} else {
+		_selectedObjModule setVariable ["fnf_objServerState", 5, true];
+	};
 }];

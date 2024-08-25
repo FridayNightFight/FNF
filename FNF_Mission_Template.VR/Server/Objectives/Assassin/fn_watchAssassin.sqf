@@ -2,50 +2,58 @@
 	Author: Mallen
 
 	Description:
-		watch a destroy objective including updating task, returns if objective has been completed (failed for protection objectives)
+		watch a assassin objective server side
 
 	Parameter(s):
-		1: OBJECT -	The destroy objective object to be processed
+		0: INTEGER -	The index of the objective to watch
 
 	Returns:
 		Boolean
 */
 
-params["_objectiveModule"];
+params ["_objectiveIndex"];
 
-_notifSent = _objectiveModule getVariable ["fnf_notifSent", false];
+_objEntry = fnf_serverObjectives select _objectiveIndex;
 
-_result = _objectiveModule getVariable ["fnf_objComplete", false];
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
 
-if (_notifSent) exitWith {_result;};
+_serverState = _module getVariable ["fnf_objServerState", 3];
 
-_objectiveModule setVariable ["fnf_notifSent", true, false];
+_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
 
-[{
-	params["_objectiveModule"];
-	_objectiveModule setVariable ["fnf_notifSent", false, false];
-},[_objectiveModule],5] call CBA_fnc_waitAndExecute;
-
-_syncedObjects = synchronizedObjects _objectiveModule;
-
-//find the target thats supposed to be killed or protected
-_playerObject = objNull;
+if (_targetObject isEqualTo objNull) then
 {
-	if (isPlayer _x) then
-	{
-		_playerObject = _x;
-	};
-} forEach _syncedObjects;
+	_newPlayerObject = objNull;
 
-if (not isNull _playerObject) then
-{
-	if (not alive _playerObject) then
+	//get relevant objects synced to module
+	_syncedObjects = synchronizedObjects _module;
 	{
-		_name = name _playerObject;
-		[[true, _name], FNF_ClientSide_fnc_notifyAdminAssassin] remoteExec ['call', -2];
+		_typeOfObject = typeOf _x;
+		if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F" or _typeOfObject isEqualTo "fnf_module_hidingZone" or _typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+		{
+			continue;
+		};
+
+		if (_x isKindOf "Man" and isNull _newPlayerObject) then
+		{
+			_newPlayerObject = _x;
+		}
+	} forEach _syncedObjects;
+
+	if (not isNull _newPlayerObject) then
+	{
+		_targetObject = _newPlayerObject;
+
+		fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _marker, _standardTitle]]];
 	};
-} else {
-	[[false, ""], FNF_ClientSide_fnc_notifyAdminAssassin] remoteExec ['call', -2];
 };
 
-_result;
+//if server does not say the obj is done, don't continue
+if (_serverState isEqualTo 3) exitWith {};
+
+_marker setMarkerTextLocal "(Complete) Assassin OBJ";
+
+fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+
+call _codeOnCompletion;
+

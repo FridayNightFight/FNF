@@ -2,67 +2,82 @@
 	Author: Mallen
 
 	Description:
-		init a destroy objective including setting up server watch
+		init a assassin objective on server side
 
 	Parameter(s):
-		0: OBJECT -	The destroy objective module to be processed
-		1: SIDE -	The side that the objective is assigned to
+		0: INTEGER -	The index of the objective to intialise
 
 	Returns:
 		None
 */
 
-params ["_objective", "_side"];
+params ["_objectiveIndex"];
 
-//nothing to setup serverside, move straight to watching
-_syncedObjects = synchronizedObjects _objective;
+_objEntry = fnf_serverObjectives select _objectiveIndex;
 
-//find the object thats supposed to be hacked
-_sequentialObjPlanners = [];
-{
-	_typeOfObject = typeOf _x;
-	if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
-	{
-		_sequentialObjPlanners pushBack _x;
-		continue;
-	};
-} forEach _syncedObjects;
+_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
 
-_topRightCount = 0;
-_topRightCandidate = objNull;
+switch (_objState) do {
+	//Obj has in no way been created
+	case 0: {
+		_syncedObjects = synchronizedObjects _module;
 
-if (count _sequentialObjPlanners isNotEqualTo 0) then
-{
-	{
-		_result = [_objective, _x] call FNF_ClientSide_fnc_getBottomLeft;
-		if (not _result) then
+		_sequentialPlannersAssigned = [];
 		{
-			_topRightCount = _topRightCount + 1;
-			_topRightCandidate = _x;
+			_typeOfObject = typeOf _x;
+			if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
+			{
+				continue;
+			};
+
+			if (_typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+			{
+				_sequentialPlannersAssigned pushBack _x;
+				continue;
+			};
+		} forEach _syncedObjects;
+
+		//[objStateToUse, [PreRequisuteIndexs]]
+		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ServerSide_fnc_checkAndAddSequentialHandle;
+		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
+
+		_markerPrefix = "(Inactive) Assassin OBJ";
+
+		if (_objStateToUse isEqualTo 3) then
+		{
+			_markerPrefix = "Assassin OBJ";
 		};
-	} forEach _sequentialObjPlanners;
-};
 
-if (_topRightCount > 1) exitWith {};
+		_marker = createMarkerLocal [format["FNF_SERVER%1:OBJ", _objectiveIndex], _module];
+		_marker setMarkerShapeLocal "ICON";
+		_marker setMarkerTypeLocal "mil_objective";
+		_marker setMarkerTextLocal _markerPrefix;
+		fnf_updateMarkerList pushBack _objectiveIndex;
 
-_sequentialInit = false;
-_addSequentialHandle = false;
+		if (not isDedicated) then {_marker setMarkerAlphaLocal 0};
 
-if (not isNull _topRightCandidate) then
-{
-	//check if we're initing this from the sequential planner, if we are we don't need to re-add it
-	_alreadyCompletedSequentialPlanning = _topRightCandidate getVariable ["fnf_sequentialObjCompleted", false];
-	if (not _alreadyCompletedSequentialPlanning) then
-	{
-		_addSequentialHandle = true;
+		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
+
+		_codeOnCompletion = compile _codeOnCompletion;
+
+		fnf_serverObjectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [objNull, _marker]]];
 	};
+	//Obj has been created but is not known
+	case 1: {
+		_params params ["_targetObject", "_marker"];
+
+		_marker setMarkerTextLocal "(Active) Assassin OBJ";
+
+		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _marker]]];
+	};
+	//Obj has been created and is known
+	case 2: {
+		_params params ["_targetObject", "_marker"];
+
+		_marker setMarkerTextLocal "(Active) Assassin OBJ";
+
+		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _marker]]];
+	};
+	default { };
 };
 
-if (_addSequentialHandle) exitWith
-{
-	[_objective, _side, _topRightCandidate] call FNF_ServerSide_fnc_addSequentialHandle;
-};
-
-//add objective to objective stack
-// [type, objective, task]
-fnf_serverObjectives pushBack [false, "ASSASSIN", _side, _objective];

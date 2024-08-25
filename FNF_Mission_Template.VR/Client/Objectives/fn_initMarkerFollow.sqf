@@ -53,7 +53,19 @@ fnf_updateMarkerList = [];
 
 			case "fnf_module_assassinObj":
 			{
-				//none atm
+				_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+
+				_targetPos = _targetObject;
+				if (_targetPos isEqualTo objNull) then
+				{
+					_targetPos = _module;
+				};
+				if (not isNull _task) then
+				{
+					_targetPos = taskDestination _task;
+				};
+
+				_marker setMarkerPosLocal _targetPos;
 			};
 			default { };
 		};

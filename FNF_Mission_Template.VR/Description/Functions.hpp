@@ -77,7 +77,6 @@ class CfgFunctions
 			file = "Client\Objectives\Assassin";
 			class initAssassin {};
 			class watchAssassin {};
-			class notifyAdminAssassin {};
 		};
 		class safeZones
 		{
