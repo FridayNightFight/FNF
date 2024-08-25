@@ -33,6 +33,7 @@ disableSerialization;
 	_button ctrlCommit 0;
 }] call CBA_fnc_waitUntilAndExecute;
 
+/*
 //get all modules for other buttons
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 _kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
@@ -348,3 +349,4 @@ _objNumber = 1;
 		_button ctrlCommit 0;
 	} forEach _buttons;
 },[_buttons]] call CBA_fnc_waitUntilAndExecute;
+*/
