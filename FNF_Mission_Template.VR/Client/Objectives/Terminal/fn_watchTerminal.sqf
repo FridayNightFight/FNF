@@ -26,7 +26,7 @@ _timeOfCompletion = _targetObject getVariable ['fnf_currentlyHackingCompletionTi
 _timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
 
 //if timer not active
-if (_timeOfCompletion isEqualTo -1 or _timeServerStarted isEqualTo -1) then
+if (_timeOfCompletion isEqualTo -1 or (_timeServerStarted isEqualTo -1 and not isServer)) then
 {
 	//set marker text to idle
 	_marker setMarkerTextLocal "[Idle]";
@@ -53,7 +53,7 @@ if (_timeOfCompletion isEqualTo -1 or _timeServerStarted isEqualTo -1) then
 	};
 
 	//toggle marker colour
-	_previouslyHackingSide = _targetObject getVariable ['fnf_previouslyHackingSide', sideUnknown];
+	_previouslyHackingSide = _targetObject getVariable ['fnf_currentlyHackingSide', sideUnknown];
 
 	if (markerColor _marker isEqualTo "ColorBlack") then
 	{

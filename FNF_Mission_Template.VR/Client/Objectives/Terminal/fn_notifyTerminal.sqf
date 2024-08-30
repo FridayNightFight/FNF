@@ -35,8 +35,7 @@ if (_resetTimer) then
 	[format["<t size='1.5' align='center'>Objective %1 Hack Cancelled</t><br/><br/><t align='center'>Terminal %1 hack has been cancelled</t>", (_objectiveIndex + 1)], "info"] call FNF_ClientSide_fnc_notificationSystem;
 } else {
 	_sideText = [_side] call BIS_fnc_sideName;
-	_timeText = [_hackingTime, "MM:SS"] call BIS_fnc_secondsToString;
-	[["<t size='1.5' align='center'>Objective %1 Hack Started</t><br/><br/><t align='center'>Terminal %1 hack has been started by %2, the hack will take: %3 Seconds</t>", (_objectiveIndex + 1), _sideText, _timeText], "info"] call FNF_ClientSide_fnc_notificationSystem;
+	[format["<t size='1.5' align='center'>Objective %1 Hack Started</t><br/><br/><t align='center'>Terminal %1 hack has been started by %2, the hack will take: %3 Seconds</t>", (_objectiveIndex + 1), _sideText, _hackingTime], "info"] call FNF_ClientSide_fnc_notificationSystem;
 };
 
 //if terminal is a data terminal, set its colours
