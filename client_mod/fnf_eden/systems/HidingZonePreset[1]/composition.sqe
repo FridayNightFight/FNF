@@ -10,7 +10,7 @@ class items
 		name="HidingZone_1_1";
 		text="1";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=1;
 	};
@@ -21,7 +21,7 @@ class items
 		name="HidingZone_1_2";
 		text="2";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=7;
 	};
@@ -32,7 +32,7 @@ class items
 		name="HidingZone_1_3";
 		text="3";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=8;
 	};
@@ -43,7 +43,7 @@ class items
 		name="HidingZone_1_4";
 		text="4";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=9;
 	};
@@ -54,7 +54,7 @@ class items
 		name="HidingZone_1_5";
 		text="5";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=10;
 	};
@@ -65,7 +65,7 @@ class items
 		name="HidingZone_1_6";
 		text="6";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=11;
 	};
@@ -76,7 +76,7 @@ class items
 		name="HidingZone_1_7";
 		text="7";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=12;
 	};
@@ -87,7 +87,7 @@ class items
 		name="HidingZone_1_8";
 		text="8";
 		type="mil_destroy";
-		colorName="ColorRed";
+		colorName="ColorUNKNOWN";
 		alpha=0.99;
 		id=13;
 	};
