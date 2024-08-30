@@ -36,7 +36,7 @@ _texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 _shownPercent = _sectorPercentage;
 
 //if the sector is fully captured, show the percentage as 0
-if (_sectorPercentage => 1) then
+if (_sectorPercentage >= 1) then
 {
 	_shownPercent = 0;
 };
@@ -80,7 +80,7 @@ if (_alliedTask) then
 _stringArray pushBack "</t><br/><br/><t align='center'>Sector has ";
 
 //this is irrespective of obj outcome and therefor is based on status of vic
-if (_sectorPercentage => 1) then
+if (_sectorPercentage >= 1) then
 {
 	_stringArray pushBack "been captured</t><br/><br/>";
 } else {

@@ -65,7 +65,7 @@ if (_serverState isEqualTo 5) then
 
 _stringArray pushBack "</t><br/><br/><t align='center'>Sector has ";
 
-if (_sectorPercentage => 1) then
+if (_sectorPercentage >= 1) then
 {
 	_stringArray pushBack "not been captured in time</t><br/><br/>";
 } else {
