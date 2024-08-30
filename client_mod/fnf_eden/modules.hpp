@@ -390,12 +390,11 @@ class CfgVehicles
 			class NextObjectiveKnown: Checkbox
 			{
 				property = "fnf_nextObjectiveKnown";
-				//currently next objective known does not function (shits hard)
-				expression = "_this setVariable ['fnf_nextObjectiveKnown', false, true];";
+				expression = "_this setVariable ['fnf_nextObjectiveKnown', _value, true];";
 				displayName = "Is next Objective shown";
 				tooltip = "If checked, the next objective will be visible before it is active, otherwise it will stay hidden";
 				typeName = "BOOL";
-				defaultValue = "false";
+				defaultValue = "true";
 			};
 		};
 	};
