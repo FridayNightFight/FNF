@@ -69,7 +69,7 @@ _actionGoToLastReport = [
 
 fnf_playerInZues = false;
 
-if (typeOf player isNotEqualTo "ace_spectator_virtual") then
+if (typeOf player isEqualTo "ace_spectator_virtual") then
 {
 	[{
 		if (isNull findDisplay 312) then
@@ -77,7 +77,29 @@ if (typeOf player isNotEqualTo "ace_spectator_virtual") then
 			if (fnf_playerInZues) then
 			{
 				fnf_playerInZues = false;
+				//show Mission Details button
+				call FNF_ClientSide_fnc_missionDetailsButton;
+			};
+		} else {
+			if (!fnf_playerInZues) then
+			{
+				fnf_playerInZues = true;
+			};
+		};
+	}, 1] call CBA_fnc_addPerFrameHandler;
+} else {
+	[{
+		if (isNull findDisplay 312) then
+		{
+			if (fnf_playerInZues) then
+			{
+				fnf_playerInZues = false;
 				[format ["<t size='1.5' align='center'>%1 exited Zeus</t><br/><br/><t align='center'>Staff member %1 has exited zeus as a player ingame</t><br/>", (name player)], "deep-purple", 20] remoteExec ["FNF_ClientSide_fnc_notificationSystem", 0, false];
+				//show Mission Details button
+				if (ace_spectator_isSet) then
+				{
+					call FNF_ClientSide_fnc_missionDetailsButton;
+				};
 			};
 		} else {
 			if (!fnf_playerInZues) then
