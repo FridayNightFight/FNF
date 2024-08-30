@@ -172,7 +172,7 @@ switch (_objState) do {
 				[_futureTask, false] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
 				//hide object if it must be hidden
-				if (count _hidingZonesAssigned isNotEqualTo 0 and _objType isNotEqualTo "elm") then
+				if (count _hidingZonesAssigned isNotEqualTo 0) then
 				{
 					{
 					_prefix = _x getVariable ["fnf_prefix", "FAILED"];
@@ -194,6 +194,55 @@ switch (_objState) do {
 					} forEach _hidingZonesAssigned;
 				};
 
+				if (_objType isNotEqualTo "elm") then
+				{
+					_handle = [{
+						_objectiveIndex = (_this select 0);
+						_objEntry = fnf_objectives select _objectiveIndex;
+
+						_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+						_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+
+						if (_targetObject isEqualTo objNull) then
+						{
+							_taskDescArray = taskDescription _task;
+							_task setSimpleTaskDescription [_taskDescArray select 0, _standardTitle, _standardTitle];
+
+							_newPlayerObject = objNull;
+
+							//get relevant objects synced to module
+							_syncedObjects = synchronizedObjects _module;
+							{
+								_typeOfObject = typeOf _x;
+								if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F" or _typeOfObject isEqualTo "fnf_module_hidingZone" or _typeOfObject isEqualTo "fnf_module_sequentialObjectivePlanner") then
+								{
+									continue;
+								};
+
+								if (_x isKindOf "Man" and isNull _newPlayerObject) then
+								{
+									_newPlayerObject = _x;
+								}
+							} forEach _syncedObjects;
+
+							if (not isNull _newPlayerObject) then
+							{
+								_task setSimpleTaskTarget [_newPlayerObject, true];
+
+								_targetObject = _newPlayerObject;
+
+								_taskDescArray = taskDescription _task;
+								_task setSimpleTaskDescription [_taskDescArray select 0, _standardTitle + " (" + (name _newPlayerObject) + ")", _standardTitle + " (" + (name _newPlayerObject) + ")"];
+
+								fnf_objectives set [_objectiveIndex, [_objState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+							};
+						};
+					}, 1, _objectiveIndex] call CBA_fnc_addPerFrameHandler;
+
+					_module setVariable ["fnf_updateMarkerState2", _handle, false];
+				};
+
 				//set task to the new task
 				_task = _futureTask;
 			};
@@ -206,7 +255,7 @@ switch (_objState) do {
 				_standardTitle = _taskDescArray select 1;
 
 				//hide object if it must be hidden
-				if (count _hidingZonesAssigned isNotEqualTo 0 and _objType isNotEqualTo "elm") then
+				if (count _hidingZonesAssigned isNotEqualTo 0) then
 				{
 					{
 					_prefix = _x getVariable ["fnf_prefix", "FAILED"];
@@ -303,6 +352,13 @@ switch (_objState) do {
 	case 2: {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+
+		_objType = _module getVariable ["fnf_objectiveType", "elm"];
+		if (_objType isNotEqualTo "elm") then
+		{
+			_handle = _module getVariable	"fnf_updateMarkerState2";
+			[_handle] call CBA_fnc_removePerFrameHandler;
+		};
 
 		//change marker text to show active
 		_marker setMarkerTextLocal format["(Active) Assassin %1", _objectiveIndex + 1];

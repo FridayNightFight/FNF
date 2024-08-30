@@ -23,8 +23,13 @@ _params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTi
 
 if (_targetObject isEqualTo objNull) then
 {
+	_objType = _module getVariable ["fnf_objectiveType", "elm"];
+
 	//stop hiding previous object (gone bad)
-	[_task] call FNF_ClientSide_fnc_removeObjectToHide;
+	if (count _hidingZonesAssigned > 0 and _objType isEqualTo "elm") then
+	{
+		[_task] call FNF_ClientSide_fnc_removeObjectToHide;
+	};
 	_taskDescArray = taskDescription _task;
 	_task setSimpleTaskDescription [_taskDescArray select 0, _standardTitle, _standardTitle];
 
@@ -48,7 +53,13 @@ if (_targetObject isEqualTo objNull) then
 	if (not isNull _newPlayerObject) then
 	{
 		_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
-		[_newPlayerObject, _task, _zoneKnown, _hidingZonesAssigned] call FNF_ClientSide_fnc_addObjectToHide;
+		if (count _hidingZonesAssigned > 0 and _objType isEqualTo "elm") then
+		{
+			[_newPlayerObject, _task, _zoneKnown, _hidingZonesAssigned] call FNF_ClientSide_fnc_addObjectToHide;
+		} else {
+			_task setSimpleTaskTarget [_newPlayerObject, true];
+		};
+
 
 		_targetObject = _newPlayerObject;
 
