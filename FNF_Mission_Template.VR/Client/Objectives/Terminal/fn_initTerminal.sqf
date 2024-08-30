@@ -53,7 +53,7 @@ _createTask = {
 
 	//get task title
 	_taskTitle = format["%1: Defend the Terminal", (_objectiveIndex + 1)];
-	if (_objType isEqualTo "des") then
+	if (_objType isEqualTo "hck") then
 	{
 		_taskTitle = format["%1: Hack the Terminal", (_objectiveIndex + 1)];
 	};
