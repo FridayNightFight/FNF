@@ -52,7 +52,7 @@ switch (_objState) do {
 		_marker setMarkerShapeLocal "ICON";
 		_marker setMarkerTypeLocal "mil_objective";
 		_marker setMarkerTextLocal _markerPrefix;
-		fnf_updateMarkerList pushBack _objectiveIndex;
+		//fnf_updateMarkerList pushBack _objectiveIndex;
 
 		if (not isDedicated) then {_marker setMarkerAlphaLocal 0};
 
