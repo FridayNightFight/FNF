@@ -34,7 +34,7 @@ _actionGoToLastReport = [
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _actionGoToLastReport] call ace_interact_menu_fnc_addActionToZeus;
 
-_actionSwitchSelectors = [
+/*_actionSwitchSelectors = [
 	"Zeus_SwitchSelectors",
 	"Switch selectors for selected players",
 	"\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",
@@ -65,4 +65,26 @@ _actionSwitchSelectors = [
 		count _players > 0;
 	}
 ] call ace_interact_menu_fnc_createAction;
-[["ACE_ZeusActions"], _actionSwitchSelectors] call ace_interact_menu_fnc_addActionToZeus;
+[["ACE_ZeusActions"], _actionSwitchSelectors] call ace_interact_menu_fnc_addActionToZeus;*/
+
+fnf_playerInZues = false;
+
+if (typeOf player isNotEqualTo "ace_spectator_virtual") then
+{
+	[{
+		if (isNull findDisplay 312) then
+		{
+			if (fnf_playerInZues) then
+			{
+				fnf_playerInZues = false;
+				[format ["<t size='1.5' align='center'>%1 exited Zeus</t><br/><br/><t align='center'>Staff member %1 has exited zeus as a player ingame</t><br/>", (name player)], "deep-purple", 20] remoteExec ["FNF_ClientSide_fnc_notificationSystem", 0, false];
+			};
+		} else {
+			if (!fnf_playerInZues) then
+			{
+				fnf_playerInZues = true;
+				[format ["<t size='1.5' align='center'>%1 entered Zeus</t><br/><br/><t align='center'>Staff member %1 has entered zeus as a player ingame</t><br/>", (name player)], "deep-purple", 20] remoteExec ["FNF_ClientSide_fnc_notificationSystem", 0, false];
+			};
+		};
+	}, 1] call CBA_fnc_addPerFrameHandler;
+};

@@ -101,8 +101,8 @@ if (count _selectorModules isNotEqualTo 0) then
 //start gps icons
 call FNF_ClientSide_fnc_initGPSUnitMarkers;
 
-//add zues ace options
-[] call FNF_ClientSide_fnc_zuesAceOptions;
+//add zues options
+call FNF_ClientSide_fnc_zuesAceOptions;
 
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
