@@ -44,7 +44,7 @@ if (_targetObject isEqualTo objNull) then
 	{
 		_targetObject = _newPlayerObject;
 
-		fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+		fnf_serverObjectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _marker, _standardTitle]]];
 	};
 };
 
@@ -53,7 +53,7 @@ if (_serverState isEqualTo 3) exitWith {};
 
 _marker setMarkerTextLocal "(Complete) Assassin OBJ";
 
-fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+fnf_serverObjectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker, _standardTitle]]];
 
 call _codeOnCompletion;
 
