@@ -65,10 +65,10 @@ _createTask = {
 	//set descriptions and task type based on defend OBJ
 	_futureTask setSimpleTaskType "defend";
 	_descriptionPointTwo = format["%1 cannot be assassinated<br/><br/>", _targetName];
-	_helperString = format["The location of %1 is marked on your map, or you can find it by hitting the 'Locate' button above", _targetName];
+	_helperString = format["The location of %1 is marked on your map, or you can find them by hitting the 'Locate' button above", _targetName];
 	if (count _hidingZonesAssigned isNotEqualTo 0) then
 	{
-		_helperString = format["The location of %1 is marked on your map, or you can find it by hitting the 'Locate' button above, %1 can be hidden in one of the hiding zones provided", _targetName];
+		_helperString = format["The location of %1 is marked on your map, or you can find them by hitting the 'Locate' button above, %1 can be hidden in one of the hiding zones provided", _targetName];
 	};
 
 	//if obj is actually attack re-write above for attack
@@ -77,14 +77,14 @@ _createTask = {
 		_futureTask setSimpleTaskType "kill";
 		_descriptionPointTwo = format["%1 must be assassinated<br/><br/>", _targetName];
 
-		_helperString = format["The location of %1 is marked on your map, or you can find it by hitting the 'Locate' button above", _targetName];
+		_helperString = format["The location of %1 is marked on your map, or you can find them by hitting the 'Locate' button above", _targetName];
 		if (count _hidingZonesAssigned isNotEqualTo 0) then
 		{
-			_helperString = format["The location of %1 may be in a hiding zone, if they are, the zone they are hidden in is marked on your map, if they aren't, %1s exact location is marked instead, in either case you can find it by hitting the 'Locate' button above", _targetName];
+			_helperString = format["The location of %1 may be in a hiding zone, if they are, the zone they are hidden in is marked on your map, if they aren't, %1s exact location is marked instead, in either case you can find them by hitting the 'Locate' button above", _targetName];
 			_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
 			if (not _zoneKnown) then
 			{
-				_helperString = format["The location of %1 may be in a hiding zone, if they are, you will have to search all hiding zones to find them, if they aren't, %1s exact location is marked on your map, or you can find it by hitting the 'Locate' button above", _targetName];
+				_helperString = format["The location of %1 may be in a hiding zone, if they are, you will have to search all hiding zones to find them, if they aren't, %1s exact location is marked on your map, or you can find them by hitting the 'Locate' button above", _targetName];
 			};
 		};
 	};
