@@ -43,6 +43,12 @@ if (_timeOfCompletion isEqualTo -1 or (_timeServerStarted isEqualTo -1 and not i
 	} else {
 		_resultTime = _timeOfCompletion - (serverTime - _timeServerStarted);
 	};
+
+	if (_resultTime < 0) then
+	{
+		_resultTime = 0;
+	};
+
 	_timeText = [_resultTime, "MM:SS"] call BIS_fnc_secondsToString;
 
 	//set marker time
@@ -104,7 +110,7 @@ if (_alliedTask) then
 _stringArray pushBack "</t><br/><br/><t align='center'>Terminal has ";
 
 //this is irrespective of obj outcome and therefor is based on status of vic
-if (not _targetObject getVariable ['fnf_explosionHandeled', false]) then
+if (not (_targetObject getVariable ['fnf_explosionHandeled', false])) then
 {
 	_stringArray pushBack "not been hacked in time</t><br/><br/>";
 } else {

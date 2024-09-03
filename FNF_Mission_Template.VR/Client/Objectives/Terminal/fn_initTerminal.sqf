@@ -297,7 +297,7 @@ switch (_objState) do {
 
 				//set task to the new task
 				_task = _futureTask;
-				_showMarker = true;
+				_showMarker = false;
 			};
 			case 3: {
 				//create task
@@ -429,6 +429,11 @@ switch (_objState) do {
 	case 2: {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+
+		_objType = _module getVariable ["fnf_objectiveType", "hck"];
+
+		//make sure timer marker is shown
+		_marker setMarkerAlphaLocal 1;
 
 		//add actions to the object to allow hacking
 		[_targetObject, _module, _objType] call _initActions;
