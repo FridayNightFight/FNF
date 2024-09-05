@@ -52,6 +52,8 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 
 		call FNF_ClientSide_fnc_disableFortify;
 
+		player setVariable ["fnf_backpackLocked", 2, true];
+
 		["safeZoneGroup"] call FNF_ClientSide_fnc_removeRestrictionGroup;
 	};
 	[_zonePrefix] call FNF_ClientSide_fnc_removeZone;

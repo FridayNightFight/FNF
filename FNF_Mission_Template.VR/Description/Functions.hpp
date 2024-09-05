@@ -228,7 +228,12 @@ class CfgFunctions
 			file = "Client\SequentialHandeler";
 			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
-		}
+		};
+		class backpackLocking
+		{
+			file = "Client\BackpackLocking";
+			class initBackpackLocking {};
+		};
 	};
 	class FNF_ServerSide
 	{

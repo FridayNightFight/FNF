@@ -104,6 +104,9 @@ call FNF_ClientSide_fnc_initGPSUnitMarkers;
 //add zues options
 call FNF_ClientSide_fnc_zuesAceOptions;
 
+//start backpack locking system
+call FNF_ClientSide_fnc_initBackpackLocking;
+
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {
