@@ -35,7 +35,7 @@ class CfgVehicles
 			};
 		};
 	};
-		class fnf_module_selectorAssetHost: Module_F
+	class fnf_module_selectorAssetHost: Module_F
 	{
 		author = "Mallen";
 		category = "fnf_standardCategory";
@@ -62,5 +62,12 @@ class CfgVehicles
 				defaultValue = "15";
 			};
 		};
+	};
+	class fnf_module_mobileSpawnPointHandeler: Module_F
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Mobile Spawn Point Handeler";
+		scope = 2;
 	};
 };
