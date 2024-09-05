@@ -10,6 +10,7 @@
 	Returns:
 		None
 */
+forceUnicode 0;
 params["_orbatRecord"];
 
 _orbatContent = "";
