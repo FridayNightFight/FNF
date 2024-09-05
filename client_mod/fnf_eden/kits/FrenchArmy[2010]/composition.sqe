@@ -1782,12 +1782,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -1875,15 +1875,15 @@ class items
 										};
 										class Item4
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
-										};
-										class Item5
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -1896,57 +1896,57 @@ class items
 										items=9;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
 										};
 										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item2
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item3
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item4
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item5
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item7
+										class Item6
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
 										};
+										class Item7
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
+										};
 										class Item8
 										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -2561,12 +2561,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -2654,15 +2654,15 @@ class items
 										};
 										class Item4
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
-										};
-										class Item5
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -2675,57 +2675,57 @@ class items
 										items=9;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
 										};
 										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item2
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item3
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item4
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item5
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item7
+										class Item6
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
 										};
+										class Item7
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
+										};
 										class Item8
 										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -4172,12 +4172,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -4249,15 +4249,15 @@ class items
 										};
 										class Item2
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item3
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item3
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -4270,45 +4270,45 @@ class items
 										items=7;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=2;
-											ammoLeft=25;
-										};
-										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=7;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item1
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item2
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item3
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item4
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=2;
+											ammoLeft=30;
+										};
+										class Item6
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -5743,12 +5743,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -5820,15 +5820,15 @@ class items
 										};
 										class Item2
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item3
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item3
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -5841,45 +5841,45 @@ class items
 										items=7;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=2;
-											ammoLeft=25;
-										};
-										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=7;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item1
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item2
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item3
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item4
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=2;
+											ammoLeft=30;
+										};
+										class Item6
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -6684,12 +6684,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -6777,15 +6777,15 @@ class items
 										};
 										class Item4
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
-										};
-										class Item5
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -6798,57 +6798,57 @@ class items
 										items=9;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
 										};
 										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item2
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item3
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item4
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item5
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item7
+										class Item6
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
 										};
+										class Item7
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
+										};
 										class Item8
 										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -8295,12 +8295,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -8372,15 +8372,15 @@ class items
 										};
 										class Item2
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item3
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item3
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -8393,45 +8393,45 @@ class items
 										items=7;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=2;
-											ammoLeft=25;
-										};
-										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=7;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item1
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item2
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item3
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item4
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=2;
+											ammoLeft=30;
+										};
+										class Item6
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -9866,12 +9866,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -9943,15 +9943,15 @@ class items
 										};
 										class Item2
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item3
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item3
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -9964,45 +9964,45 @@ class items
 										items=7;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=2;
-											ammoLeft=25;
-										};
-										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=7;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item1
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item2
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item3
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item4
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=2;
+											ammoLeft=30;
+										};
+										class Item6
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -10807,12 +10807,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -10900,15 +10900,15 @@ class items
 										};
 										class Item4
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
-										};
-										class Item5
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -10921,57 +10921,57 @@ class items
 										items=9;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
 										};
 										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item2
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item3
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item4
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item5
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item7
+										class Item6
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
 										};
+										class Item7
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
+										};
 										class Item8
 										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -12418,12 +12418,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -12495,15 +12495,15 @@ class items
 										};
 										class Item2
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item3
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item3
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -12516,45 +12516,45 @@ class items
 										items=7;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=2;
-											ammoLeft=25;
-										};
-										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=7;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item1
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item2
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item3
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item4
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=2;
+											ammoLeft=30;
+										};
+										class Item6
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -13989,12 +13989,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -14066,15 +14066,15 @@ class items
 										};
 										class Item2
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item3
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item3
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -14087,45 +14087,45 @@ class items
 										items=7;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=2;
-											ammoLeft=25;
-										};
-										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=7;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item1
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item2
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item3
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item4
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=2;
+											ammoLeft=30;
+										};
+										class Item6
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -14930,12 +14930,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="UK3CB_FAMAS_F1_GLM203";
-									firemode="UK3CB_FAMAS_F1_GLM203:Single";
+									name="rhs_weap_hk416d10_m320";
+									firemode="rhs_weap_hk416d10_m320:Single";
 									class primaryMuzzleMag
 									{
-										name="UK3CB_FAMAS_25rnd_556x45";
-										ammoLeft=25;
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
 									{
@@ -15023,15 +15023,15 @@ class items
 										};
 										class Item4
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
-										};
-										class Item5
-										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
+										};
+										class Item5
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
 										};
 									};
 								};
@@ -15044,57 +15044,57 @@ class items
 										items=9;
 										class Item0
 										{
-											name="UK3CB_FAMAS_25rnd_556x45";
-											count=3;
-											ammoLeft=25;
+											name="rhsusf_mag_17Rnd_9x19_JHP";
+											count=1;
+											ammoLeft=17;
 										};
 										class Item1
-										{
-											name="UK3CB_FAMAS_25rnd_556x45_Y";
-											count=4;
-											ammoLeft=25;
-										};
-										class Item2
 										{
 											name="1Rnd_HE_Grenade_shell";
 											count=1;
 											ammoLeft=1;
 										};
-										class Item3
+										class Item2
 										{
 											name="1Rnd_Smoke_Grenade_shell";
 											count=6;
 											ammoLeft=1;
 										};
-										class Item4
+										class Item3
 										{
 											name="rhs_mag_m713_Red";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item5
+										class Item4
 										{
 											name="rhs_mag_m716_yellow";
 											count=2;
 											ammoLeft=1;
 										};
-										class Item6
+										class Item5
 										{
 											name="UGL_FlareWhite_F";
 											count=3;
 											ammoLeft=1;
 										};
-										class Item7
+										class Item6
 										{
 											name="ACE_HuntIR_M203";
 											count=3;
 											ammoLeft=1;
 										};
+										class Item7
+										{
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
+											count=3;
+											ammoLeft=30;
+										};
 										class Item8
 										{
-											name="rhsusf_mag_17Rnd_9x19_JHP";
-											count=1;
-											ammoLeft=17;
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
+											count=4;
+											ammoLeft=30;
 										};
 									};
 								};
