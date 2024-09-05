@@ -507,7 +507,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -734,7 +734,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -966,7 +966,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1214,7 +1214,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1492,7 +1492,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1723,7 +1723,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1969,7 +1969,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2173,7 +2173,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2451,7 +2451,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2668,7 +2668,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2876,7 +2876,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2925,6 +2925,15 @@ class items
 											name="rhs_30Rnd_762x39mm_polymer_tracer";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -3103,7 +3112,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3324,7 +3333,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3580,7 +3589,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3839,7 +3848,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4052,7 +4061,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4269,7 +4278,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4477,7 +4486,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4526,6 +4535,15 @@ class items
 											name="rhs_30Rnd_762x39mm_polymer_tracer";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -4703,7 +4721,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4924,7 +4942,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5180,7 +5198,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5439,7 +5457,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5652,7 +5670,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5883,7 +5901,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6129,7 +6147,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6333,7 +6351,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6611,7 +6629,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6828,7 +6846,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7036,7 +7054,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7085,6 +7103,15 @@ class items
 											name="rhs_30Rnd_762x39mm_polymer_tracer";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -7263,7 +7290,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7484,7 +7511,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7740,7 +7767,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7999,7 +8026,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8212,7 +8239,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8429,7 +8456,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8637,7 +8664,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8686,6 +8713,15 @@ class items
 											name="rhs_30Rnd_762x39mm_polymer_tracer";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -8863,7 +8899,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9084,7 +9120,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9340,7 +9376,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9599,7 +9635,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9812,7 +9848,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10043,7 +10079,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10289,7 +10325,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10493,7 +10529,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10771,7 +10807,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10988,7 +11024,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11196,7 +11232,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11245,6 +11281,15 @@ class items
 											name="rhs_30Rnd_762x39mm_polymer_tracer";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -11423,7 +11468,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11644,7 +11689,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11900,7 +11945,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12159,7 +12204,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12372,7 +12417,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12589,7 +12634,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12797,7 +12842,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12846,6 +12891,15 @@ class items
 											name="rhs_30Rnd_762x39mm_polymer_tracer";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -13023,7 +13077,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13244,7 +13298,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13500,7 +13554,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13759,7 +13813,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13972,7 +14026,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14203,7 +14257,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14449,7 +14503,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14727,7 +14781,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14943,7 +14997,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -15145,7 +15199,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -15375,7 +15429,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -15577,7 +15631,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -15830,7 +15884,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -16046,7 +16100,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -16248,7 +16302,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -16478,7 +16532,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -16680,7 +16734,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -16933,7 +16987,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -17160,7 +17214,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -17386,7 +17440,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -17612,7 +17666,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -17851,7 +17905,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -18068,7 +18122,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -18285,7 +18339,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -18515,7 +18569,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -18732,7 +18786,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -18949,7 +19003,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -19175,7 +19229,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -19388,7 +19442,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -19601,7 +19655,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -19827,7 +19881,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -20040,7 +20094,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -20253,7 +20307,7 @@ class items
 								};
 								class vest
 								{
-									typeName="rhs_suspender_AK";
+									typeName="rhs_suspender_ak";
 									isBackpack=0;
 									class MagazineCargo
 									{

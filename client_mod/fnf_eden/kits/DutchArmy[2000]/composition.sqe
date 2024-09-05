@@ -3835,6 +3835,15 @@ class items
 											ammoLeft=30;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -5404,6 +5413,15 @@ class items
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -7950,6 +7968,15 @@ class items
 											ammoLeft=30;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -9519,6 +9546,15 @@ class items
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -12065,6 +12101,15 @@ class items
 											ammoLeft=30;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -13634,6 +13679,15 @@ class items
 											name="rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";
 											count=4;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};

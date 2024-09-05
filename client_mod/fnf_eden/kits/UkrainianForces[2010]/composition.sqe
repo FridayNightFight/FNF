@@ -3573,6 +3573,15 @@ class items
 											ammoLeft=30;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -5134,6 +5143,15 @@ class items
 											name="rhs_30Rnd_545x39_AK_plum_green";
 											count=2;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -7650,6 +7668,15 @@ class items
 											ammoLeft=30;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -9211,6 +9238,15 @@ class items
 											name="rhs_30Rnd_545x39_AK_plum_green";
 											count=2;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -11727,6 +11763,15 @@ class items
 											ammoLeft=30;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -13288,6 +13333,15 @@ class items
 											name="rhs_30Rnd_545x39_AK_plum_green";
 											count=2;
 											ammoLeft=30;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};

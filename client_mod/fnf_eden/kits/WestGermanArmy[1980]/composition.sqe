@@ -1939,9 +1939,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m14_rail";
-									optics="rhsusf_acc_LEUPOLDMK4";
-									firemode="rhs_weap_m14_rail:Single";
+									name="UK3CB_M14";
+									optics="uk3cb_optic_artel_m14";
+									firemode="UK3CB_M14:Single";
 									class primaryMuzzleMag
 									{
 										name="rhsusf_20Rnd_762x51_m80_Mag";
@@ -2951,6 +2951,15 @@ class items
 											name="UK3CB_G3_20rnd_762x51_R";
 											count=6;
 											ammoLeft=20;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -4529,6 +4538,15 @@ class items
 											ammoLeft=20;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -6064,9 +6082,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m14_rail";
-									optics="rhsusf_acc_LEUPOLDMK4";
-									firemode="rhs_weap_m14_rail:Single";
+									name="UK3CB_M14";
+									optics="uk3cb_optic_artel_m14";
+									firemode="UK3CB_M14:Single";
 									class primaryMuzzleMag
 									{
 										name="rhsusf_20Rnd_762x51_m80_Mag";
@@ -7076,6 +7094,15 @@ class items
 											name="UK3CB_G3_20rnd_762x51_R";
 											count=6;
 											ammoLeft=20;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -8654,6 +8681,15 @@ class items
 											ammoLeft=20;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -10189,9 +10225,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m14_rail";
-									optics="rhsusf_acc_LEUPOLDMK4";
-									firemode="rhs_weap_m14_rail:Single";
+									name="UK3CB_M14";
+									optics="uk3cb_optic_artel_m14";
+									firemode="UK3CB_M14:Single";
 									class primaryMuzzleMag
 									{
 										name="rhsusf_20Rnd_762x51_m80_Mag";
@@ -11201,6 +11237,15 @@ class items
 											name="UK3CB_G3_20rnd_762x51_R";
 											count=6;
 											ammoLeft=20;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -12777,6 +12822,15 @@ class items
 											name="UK3CB_G3_20rnd_762x51_R";
 											count=6;
 											ammoLeft=20;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};

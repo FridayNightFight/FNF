@@ -2847,6 +2847,15 @@ class items
 											ammoLeft=45;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -4412,6 +4421,15 @@ class items
 											name="fnf_45rnd_rpk_7N10";
 											count=12;
 											ammoLeft=45;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -6941,6 +6959,15 @@ class items
 											ammoLeft=45;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -8506,6 +8533,15 @@ class items
 											name="fnf_45rnd_rpk_7N10";
 											count=12;
 											ammoLeft=45;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
@@ -11035,6 +11071,15 @@ class items
 											ammoLeft=45;
 										};
 									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
+										};
+									};
 								};
 								map="ItemMap";
 								compass="ItemCompass";
@@ -12600,6 +12645,15 @@ class items
 											name="fnf_45rnd_rpk_7N10";
 											count=12;
 											ammoLeft=45;
+										};
+									};
+									class ItemCargo
+									{
+										items=1;
+										class Item0
+										{
+											name="ACE_EntrenchingTool";
+											count=1;
 										};
 									};
 								};
