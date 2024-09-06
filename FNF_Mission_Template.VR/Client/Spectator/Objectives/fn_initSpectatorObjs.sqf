@@ -51,17 +51,17 @@ _missionStatusSet = false;
 				addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
 				call BIS_fnc_showMissionStatus;
 			};
-			[_newTaskIndex] call FNF_ServerSide_fnc_initCaptureSector;
+			[_newTaskIndex] call FNF_ClientSide_fnc_initSpectatorCaptureSector;
 		};
 
 		case "fnf_module_terminalObj":
 		{
-			[_newTaskIndex] call FNF_ServerSide_fnc_initTerminal;
+			[_newTaskIndex] call FNF_ClientSide_fnc_initSpectatorTerminal;
 		};
 
 		case "fnf_module_assassinObj":
 		{
-			[_newTaskIndex] call FNF_ServerSide_fnc_initAssassin;
+			[_newTaskIndex] call FNF_ClientSide_fnc_initSpectatorAssassin;
 		};
 	};
 } forEach _modules;
