@@ -78,7 +78,7 @@ _completedExplosion = _targetObject getVariable ['fnf_explosionHandeled', false]
 
 if (not _completedExplosion) then
 {
-	_targetObject setVariable ['fnf_explosionHandeled', true, false];
+	_targetObject setVariable ['fnf_explosionHandeled', true, true];
 	playSound3D ["fnf_sounds\sounds\bomb_alarm.ogg", _targetObject];
 	[{
 		hideObjectGlobal _this;

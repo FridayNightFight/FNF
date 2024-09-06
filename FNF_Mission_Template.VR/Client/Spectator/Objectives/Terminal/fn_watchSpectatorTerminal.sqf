@@ -77,7 +77,7 @@ if (_serverState isEqualTo 5) then
 
 _stringArray pushBack "</t><br/><br/><t align='center'>Terminal has ";
 
-if (not _targetObject getVariable ['fnf_explosionHandeled', false]) then
+if (not (_targetObject getVariable ['fnf_explosionHandeled', false])) then
 {
 	_stringArray pushBack "not been hacked in time</t><br/><br/>";
 } else {
