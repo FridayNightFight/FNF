@@ -57,11 +57,13 @@ switch (_objState) do {
 			{
 				_syncedObjectsChecking = synchronizedObjects _x;
 				_attacking = false;
-				if (_module getVariable ["fnf_objectiveType", "cap"] isEqualTo "cap") then
+				if (_x getVariable ["fnf_objectiveType", "cap"] isEqualTo "cap") then
 				{
 					_attacking = true;
 				};
+
 				_objSide = sideEmpty;
+
 				{
 					_objectType = typeOf _x;
 					switch (_objectType) do

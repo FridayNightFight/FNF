@@ -159,24 +159,29 @@ switch (_objState) do {
 
 			_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
 		} else {
-			//get all markers with _zonePrefix
-			_markerPosArray = [];
+			_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
 
-			_markerCounter = 1;
-			//get all marker positions by seeing if i can create the marker, if i cant it exists
-			while {createMarkerLocal [(_zonePrefix + (str _markerCounter)), player] isEqualTo ""} do
+			if (_sectorCenter isEqualTo [0,0,0]) then
 			{
-				_markerPos = getMarkerPos (_zonePrefix + (str _markerCounter));
+				//get all markers with _zonePrefix
+				_markerPosArray = [];
 
-				_markerPosArray pushBack _markerPos;
+				_markerCounter = 1;
+				//get all marker positions by seeing if i can create the marker, if i cant it exists
+				while {createMarkerLocal [(_zonePrefix + (str _markerCounter)), player] isEqualTo ""} do
+				{
+					_markerPos = getMarkerPos (_zonePrefix + (str _markerCounter));
 
-				_markerCounter = _markerCounter + 1;
+					_markerPosArray pushBack _markerPos;
+
+					_markerCounter = _markerCounter + 1;
+				};
+
+				//remove the last marker that is created while checking
+				deleteMarkerLocal (_zonePrefix + (str _markerCounter));
+
+				_sectorCenter = [_markerPosArray] call FNF_ClientSide_fnc_calculateVisualCenter;
 			};
-
-			//remove the last marker that is created while checking
-			deleteMarkerLocal (_zonePrefix + (str _markerCounter));
-
-			_sectorCenter = [_markerPosArray] call FNF_ClientSide_fnc_calculateVisualCenter;
 		};
 
 		_task = _futureTask;
