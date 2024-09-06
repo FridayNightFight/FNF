@@ -144,12 +144,14 @@ _initActions = {
 	//set action title and condition to show based on defend
 	_actionTitle = "Cancel Hack";
 	_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)", _actionRange];
+	_actionPauseTimer = true;
 
 	//edit if on attack
 	if (_objType isEqualTo "hck") then
 	{
 		_actionTitle = "Start Hack";
 		_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)", _actionRange];
+		_actionPauseTimer = false;
 	};
 
 	//add action to object
@@ -164,10 +166,10 @@ _initActions = {
 		{},
 		{
 			params ["_target", "_caller", "_actionId", "_arguments"];
-			[[(_arguments select 0), (_arguments select 1), playerSide, false], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
+			[[(_arguments select 0), (_arguments select 1), playerSide, (_arguments select 2)], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
 		},
 		{},
-		[_targetObject, _hackingTime],
+		[_targetObject, _hackingTime, _actionPauseTimer],
 		2,
 		0,
 		false,
