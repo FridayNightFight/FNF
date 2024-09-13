@@ -313,7 +313,7 @@ switch (_objState) do {
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
 
 		//create task
-		_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, [], _alliedTask] call _createTask;
+		_futureTask = [_objType, _module, _objectiveIndex, _hidingZonesAssigned, [], _alliedTask] call _createTask;
 
 		_taskDescArray = taskDescription _futureTask;
 		_standardTitle = _taskDescArray select 1;
