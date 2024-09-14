@@ -136,7 +136,7 @@ switch (_objState) do {
 				continue;
 			};
 
-			if (_targetObject isEqualTo objNull and not _x isKindOf "Man") then
+			if (_targetObject isEqualTo objNull and not (_x isKindOf "Man")) then
 			{
 				_targetObject = _x;
 			};
