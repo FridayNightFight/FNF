@@ -9,6 +9,7 @@ respawnTemplates[] = {};
 #include "Description\Endings.hpp"
 #include "Description\UiDescriptions.hpp"
 #include "Description\FortifyCategories.hpp"
+#include "Description\Params.hpp"
 
 onPauseScript[] = {
   FNF_ClientSide_fnc_adminGameEndButton,

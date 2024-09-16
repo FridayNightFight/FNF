@@ -38,7 +38,7 @@ if (not isNil "fnf_serverObjectives") then
 };
 
 [{
-	time > 0;
+	time > 0.1;
 }, {
 	{
 		deleteVehicle _x;
