@@ -21,7 +21,7 @@
 	_triggerFPS = missionNamespace getVariable ["fnf_serverFPSThreshold", 20];
 
 	//Emergency FPS loss, freeze all players and vehicles to retain server stability if allowed
-	if (_fps < _triggerFPS) then
+	if ((_fps < _triggerFPS) and (time > 5)) then
 	{
 		_performanceTweaks = ["PerformanceTweaks", 1] call BIS_fnc_getParamValue;
 		if (_performanceTweaks isEqualTo 3) then
