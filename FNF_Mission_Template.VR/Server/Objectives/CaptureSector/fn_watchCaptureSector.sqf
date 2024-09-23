@@ -32,6 +32,11 @@ _indiCount = 0;
 		continue;
 	};
 
+	if (isObjectHidden  _x) then
+	{
+		continue;
+	};
+
 	if (_x getVariable ["ACE_isUnconscious", false]) then
 	{
 		continue;
