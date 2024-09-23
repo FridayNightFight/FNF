@@ -193,7 +193,7 @@ switch (_objState) do {
 		_marker setMarkerTypeLocal "mil_objective";
 		_marker setMarkerTextLocal _markerPrefix;
 		_marker setMarkerAlphaLocal 0;
-		if (_isSecondaryObj) then
+		if (not _isSecondaryObj) then
 		{
 			_marker setMarkerAlphaLocal 1;
 		};
