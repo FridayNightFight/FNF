@@ -33,25 +33,16 @@ disableSerialization;
 	_button ctrlCommit 0;
 }] call CBA_fnc_waitUntilAndExecute;
 
-/*
 //get all modules for other buttons
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 _kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
-_objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 
 //sort modules to make them predictable
 _kitInfoModules = [_kitInfoModules] call FNF_ClientSide_fnc_sortByLocation;
-_objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
-
-//put kit modules first so kit buttons come before objectives
-_modulesComplete = _kitInfoModules + _objModules;
 
 _buttons = [];
 
-_usedObjs = [];
-
-_objNumber = 1;
-
+//start with side buttons via kit modules
 {
 	//setup basic variables
 	_module = _x;
@@ -65,224 +56,156 @@ _objNumber = 1;
 	//this code is eventually compiled into the EH to be run on button push
 	_code = ["_modules = call FNF_ClientSide_fnc_findFNFModules;
 	_kitInfoModules = [_modules, 'kitInformation'] call FNF_ClientSide_fnc_findSpecificModules;
-	_objModules = [_modules, 'Obj'] call FNF_ClientSide_fnc_findSpecificModules;
-
 	_kitInfoModules = [_kitInfoModules] call FNF_ClientSide_fnc_sortByLocation;
-	_objModules = [_objModules] call FNF_ClientSide_fnc_sortByLocation;
 
-	_modulesComplete = _kitInfoModules + _objModules;
-	_object = objNull;
-	_module = _modulesComplete select ", str(_forEachIndex), ";",
+	_module = _kitInfoModules select ", str(_forEachIndex), ";",
 	"_object = _module;",
 	"if (not isNull _object) then
 	{
 		[0, _object, -2, [((getposATL _object) select 0), ((getposATL _object) select 1) - random [10, 30, 60], ((getposATL _object) select 2) + random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
 	};"];
 
-	//if module is for a kit no code changes need to be done from above
-	if (_objectType isEqualTo "fnf_module_kitInformation") then
+	//check which side the module is for, set button name and colour as needed
 	{
-		//check which side the module is for, set button name and colour as needed
+		_objectType = typeOf _x;
+
+		switch (_objectType) do
 		{
-			_objectType = typeOf _x;
-
-			switch (_objectType) do
+			case "SideBLUFOR_F":
 			{
-				case "SideBLUFOR_F":
-				{
-					_buttonName = "BLUFOR";
-					_buttonColour = [0, 0.3, 0.6, 0.9];
-				};
-				case "SideOPFOR_F":
-				{
-					_buttonName = "OPFOR";
-					_buttonColour = [0.5, 0.0, 0.0, 0.9];
-				};
-				case "SideResistance_F":
-				{
-					_buttonName = "INDFOR";
-					_buttonColour = [0, 0.5, 0, 0.9];
-				};
+				_buttonName = "BLUFOR";
+				_buttonColour = [0, 0.3, 0.6, 0.9];
 			};
-		} forEach _syncedObjects;
-	};
-
-	//if module is a sector
-	if (_objectType isEqualTo "fnf_module_sectorCaptureObj") then
-	{
-		//set button name
-		_buttonName = "Objective " + str(_objNumber) + ": SECTOR";
-
-		//check whether the nearest area marker is on the sector, if it is, this is a duplicate and should be skipped
-		_zonePrefix = _module getVariable ['fnf_prefix', 'FAILED'];
-		_validPoint = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
-		_object = nearestObject [_validPoint, 'AreaMarker_01_F'];
-		if (not isNull _object) then {
-			if (_object distance2D _validPoint < 3) then
+			case "SideOPFOR_F":
 			{
-				continue;
+				_buttonName = "OPFOR";
+				_buttonColour = [0.5, 0.0, 0.0, 0.9];
+			};
+			case "SideResistance_F":
+			{
+				_buttonName = "INDFOR";
+				_buttonColour = [0, 0.5, 0, 0.9];
 			};
 		};
-
-		//if not a duplicate create new area marker and hide it
-		_object = 'AreaMarker_01_F' createVehicleLocal _validPoint;
-		_object hideObject true;
-
-		//edit code to find area marker to set camera to
-		_code set [3, "
-		_zonePrefix = _module getVariable ['fnf_prefix', 'FAILED'];
-		_validPoint = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
-		_object = nearestObject [_validPoint, 'AreaMarker_01_F'];
-		"];
-		_objNumber = _objNumber + 1;
-	};
-
-	//if module is destroy obj
-	if (_objectType isEqualTo "fnf_module_destroyObj") then
-	{
-		//set button name
-		_buttonName = "Objective " + str(_objNumber) + ": DESTROY";
-
-		//find object to destroy
-		_object = objNull;
-
-		_syncedObjects = synchronizedObjects _module;
-		{
-			_typeOfObject = typeOf _x;
-			if (_typeOfObject isEqualTo 'SideBLUFOR_F' or _typeOfObject isEqualTo 'SideOPFOR_F' or _typeOfObject isEqualTo 'SideResistance_F' or _typeOfObject isEqualTo 'fnf_module_hidingZone') then
-			{
-				continue;
-			};
-
-			_object = _x;
-			break;
-		} forEach _syncedObjects;
-
-		//check if obj has already been added, if yes this is a duplicate
-		if (_object in _usedObjs) then
-		{
-			continue;
-		};
-		_usedObjs pushBack _object;
-
-		//edit code to look for object attached to module as the object to point camera at
-		_code set [3, "
-		_syncedObjects = synchronizedObjects _module;
-		{
-			_typeOfObject = typeOf _x;
-			if (_typeOfObject isEqualTo 'SideBLUFOR_F' or _typeOfObject isEqualTo 'SideOPFOR_F' or _typeOfObject isEqualTo 'SideResistance_F' or _typeOfObject isEqualTo 'fnf_module_hidingZone') then
-			{
-				continue;
-			};
-
-			_object = _x;
-			break;
-		} forEach _syncedObjects;
-		"];
-		_objNumber = _objNumber + 1;
-	};
-
-	//if module is terminal obj
-	if (_objectType isEqualTo "fnf_module_terminalObj") then
-	{
-		//set button name
-		_buttonName = "Objective " + str(_objNumber) + ": TERMINAL";
-
-		//find terminal to hack
-		//no error checking needs to be done here, if object is not a terminal other errors will catch elsewhere
-		_object = objNull;
-
-		_syncedObjects = synchronizedObjects _module;
-		{
-			_typeOfObject = typeOf _x;
-			if (_typeOfObject isEqualTo 'SideBLUFOR_F' or _typeOfObject isEqualTo 'SideOPFOR_F' or _typeOfObject isEqualTo 'SideResistance_F' or _typeOfObject isEqualTo 'fnf_module_hidingZone') then
-			{
-				continue;
-			};
-
-			_object = _x;
-			break;
-		} forEach _syncedObjects;
-
-		//check if obj has already been added, if yes this is a duplicate
-		if (_object in _usedObjs) then
-		{
-			continue;
-		};
-		_usedObjs pushBack _object;
-
-		//edit code to look for object attached to module as the object to point camera at
-		_code set [3, "
-		_syncedObjects = synchronizedObjects _module;
-		{
-			_typeOfObject = typeOf _x;
-			if (_typeOfObject isEqualTo 'SideBLUFOR_F' or _typeOfObject isEqualTo 'SideOPFOR_F' or _typeOfObject isEqualTo 'SideResistance_F' or _typeOfObject isEqualTo 'fnf_module_hidingZone') then
-			{
-				continue;
-			};
-
-			_object = _x;
-			break;
-		} forEach _syncedObjects;
-		"];
-		_objNumber = _objNumber + 1;
-	};
-
-	//if module is assassin obj
-	if (_objectType isEqualTo "fnf_module_assassinObj") then
-	{
-		//set button name
-		_buttonName = "Objective " + str(_objNumber) + ": ASSASSIN";
-
-		//find assassin target, if target cannot be found, set target as module itself
-		_object = objNull;
-
-		_syncedObjects = synchronizedObjects _module;
-		{
-			_typeOfObject = typeOf _x;
-
-			if (isPlayer _x) then
-			{
-				_object = _x;
-				break;
-			};
-
-			if (_typeOfObject isEqualTo "Logic") then
-			{
-				if (isNull _object) then
-				{
-					_object = _x;
-				};
-			};
-		} forEach _syncedObjects;
-
-		//check if obj has already been added, if yes this is a duplicate
-		if (_object in _usedObjs) then
-		{
-			continue;
-		};
-		_usedObjs pushBack _object;
-
-		//edit code to look for player attached to module as the object to point camera at, if no player is found, point camera at module
-		_code set [3, "
-		_syncedObjects = synchronizedObjects _module;
-		{
-			if (isPlayer _x) then
-			{
-				_object = _x;
-				break;
-			};
-		} forEach _syncedObjects;
-		if (isNull _object) then
-		{
-			_object = _module;
-		};
-		"];
-		_objNumber = _objNumber + 1;
-	};
+	} forEach _syncedObjects;
 
 	_buttons pushback [_code, _buttonName, _buttonColour];
-} forEach _modulesComplete;
+} forEach _kitInfoModules;
+
+//setup OBJ buttons after side buttons
+{
+	_x params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
+
+	//setup basic variables
+	_moduleType = typeOf _module;
+	_buttonName = "Objective " + str(_forEachIndex) + ": SECTOR";
+	_buttonColour = [0.5, 0.5, 0.5, 0.9];
+	_code = ["_obj = fnf_objectives select ", str(_forEachIndex), ";
+	_x params ['_objState', '_module', '_task', '_alliedTask', '_codeOnCompletion', '_params'];",
+	"_params params ['_zonePrefix', '_centerObject', '_marker', '_statusSlotID'];
+	_object = _centerObject;",
+	"if (not isNull _object) then
+	{
+		[0, _object, -2, [((getposATL _object) select 0), ((getposATL _object) select 1) - random [10, 30, 60], ((getposATL _object) select 2) + random [10, 30, 60]]] call ace_spectator_fnc_setCameraAttributes;
+	};"];
+
+	//whether to show the button (spectator stuff)
+	_showButton = true;
+
+	switch (_moduleType) do {
+		case "fnf_module_sectorCaptureObj":
+		{
+			//sector is the standard, basically just check the obj module is not the secondary
+			_params params ["_zonePrefix", "_centerObject", "_marker", "_statusSlotID"];
+			if (typeOf player isEqualTo "ace_spectator_virtual") then
+			{
+				if ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
+				{
+					_showButton = false;
+				}
+			};
+		};
+
+		case "fnf_module_destroyObj":
+		{
+			//set code and variables for destroy OBJ
+			_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+			_buttonName = "Objective " + str(_forEachIndex) + ": DESTROY";
+			_code set [3, "
+			_params params ['_targetObject', '_hidingZonesAssigned', '_marker'];
+			_object = _targetObject;
+			"];
+
+			//check obj is not secondary
+			if (typeOf player isEqualTo "ace_spectator_virtual") then
+			{
+				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
+				{
+					_showButton = false;
+				}
+			};
+		};
+
+		case "fnf_module_terminalObj":
+		{
+			//set code and variables for terminal OBJ
+			_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+			_buttonName = "Objective " + str(_forEachIndex) + ": TERMINAL";
+			_code set [3, "
+			_params params ['_targetObject', '_hidingZonesAssigned', '_marker'];
+			_object = _targetObject;
+			"];
+
+			//check obj is not secondary
+			if (typeOf player isEqualTo "ace_spectator_virtual") then
+			{
+				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
+				{
+					_showButton = false;
+				}
+			};
+		};
+
+		case "fnf_module_assassinObj":
+		{
+			//set code and variables for assassin OBJ
+			_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+			_buttonName = "Objective " + str(_forEachIndex) + ": ASSASSIN";
+			_code set [3, "
+			_params params ['_targetObject', '_hidingZonesAssigned', '_marker', '_standardTitle'];
+			_object = _targetObject;
+			"];
+
+			//check obj is not secondary
+			if (typeOf player isEqualTo "ace_spectator_virtual") then
+			{
+				//player is not actually the thing we check for secondary objs for assassin, we use the logic of the person instead
+				//this gets the persons logic
+				_syncedObjects = synchronizedObjects _module;
+				{
+					_typeOfObject = typeOf _x;
+
+					if (_typeOfObject isEqualTo "Logic") then
+					{
+						_targetObject = _x;
+					};
+				} forEach _syncedObjects;
+
+				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
+				{
+					_showButton = false;
+				}
+			};
+		};
+
+		default {_showButton = false;};
+	};
+
+	if (_showButton) then
+	{
+		_buttons pushback [_code, _buttonName, _buttonColour];
+	};
+} forEach fnf_objectives;
 
 //wait until spectator display is created
 [{!isNull findDisplay 60000},{
@@ -349,4 +272,3 @@ _objNumber = 1;
 		_button ctrlCommit 0;
 	} forEach _buttons;
 },[_buttons]] call CBA_fnc_waitUntilAndExecute;
-*/
