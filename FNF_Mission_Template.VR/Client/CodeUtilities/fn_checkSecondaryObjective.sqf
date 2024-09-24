@@ -18,7 +18,18 @@ _isSecondaryObj = false;
 
 if (typeName _target isEqualTo "OBJECT") then
 {
-	_targetObjectSyncedObjects = synchronizedObjects _target;
+	_modules = call FNF_ClientSide_fnc_findFNFModules;
+	_objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
+	_targetObjectSyncedObjects = [];
+
+	{
+		_syncedObjects = synchronizedObjects _x;
+		if (_target in _syncedObjects) then
+		{
+			_targetObjectSyncedObjects pushBack _x;
+		};
+	} forEach _objModules;
+
 	_targetObjectSyncedObjects = [_targetObjectSyncedObjects] call FNF_ClientSide_fnc_sortByLocation;
 	_indexOfThisObj = _targetObjectSyncedObjects find _module;
 	_objType = typeOf _module;
