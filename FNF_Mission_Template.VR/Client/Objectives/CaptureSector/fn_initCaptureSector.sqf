@@ -291,7 +291,7 @@ switch (_objState) do {
 		_params params ["_zonePrefix", "_centerObject", "_marker", "_statusSlotID"];
 
 		//change marker text to show active
-		_marker setMarkerTextLocal format["(Active) Destroy %1", _objectiveIndex + 1];
+		_marker setMarkerTextLocal format["(Active) Sector %1", _objectiveIndex + 1];
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};
