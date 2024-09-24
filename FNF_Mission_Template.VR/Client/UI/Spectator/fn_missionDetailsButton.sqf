@@ -98,10 +98,10 @@ _buttons = [];
 
 	//setup basic variables
 	_moduleType = typeOf _module;
-	_buttonName = "Objective " + str(_forEachIndex) + ": SECTOR";
+	_buttonName = "Objective " + str(_forEachIndex + 1) + ": SECTOR";
 	_buttonColour = [0.5, 0.5, 0.5, 0.9];
 	_code = ["_obj = fnf_objectives select ", str(_forEachIndex), ";
-	_x params ['_objState', '_module', '_task', '_alliedTask', '_codeOnCompletion', '_params'];",
+	_obj params ['_objState', '_module', '_task', '_alliedTask', '_codeOnCompletion', '_params'];",
 	"_params params ['_zonePrefix', '_centerObject', '_marker', '_statusSlotID'];
 	_object = _centerObject;",
 	"if (not isNull _object) then
@@ -122,7 +122,7 @@ _buttons = [];
 				if ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
 				{
 					_showButton = false;
-				}
+				};
 			};
 		};
 
@@ -130,7 +130,7 @@ _buttons = [];
 		{
 			//set code and variables for destroy OBJ
 			_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-			_buttonName = "Objective " + str(_forEachIndex) + ": DESTROY";
+			_buttonName = "Objective " + str(_forEachIndex + 1) + ": DESTROY";
 			_code set [3, "
 			_params params ['_targetObject', '_hidingZonesAssigned', '_marker'];
 			_object = _targetObject;
@@ -142,7 +142,7 @@ _buttons = [];
 				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
 				{
 					_showButton = false;
-				}
+				};
 			};
 		};
 
@@ -150,7 +150,7 @@ _buttons = [];
 		{
 			//set code and variables for terminal OBJ
 			_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-			_buttonName = "Objective " + str(_forEachIndex) + ": TERMINAL";
+			_buttonName = "Objective " + str(_forEachIndex + 1) + ": TERMINAL";
 			_code set [3, "
 			_params params ['_targetObject', '_hidingZonesAssigned', '_marker'];
 			_object = _targetObject;
@@ -162,7 +162,7 @@ _buttons = [];
 				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
 				{
 					_showButton = false;
-				}
+				};
 			};
 		};
 
@@ -170,7 +170,7 @@ _buttons = [];
 		{
 			//set code and variables for assassin OBJ
 			_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
-			_buttonName = "Objective " + str(_forEachIndex) + ": ASSASSIN";
+			_buttonName = "Objective " + str(_forEachIndex + 1) + ": ASSASSIN";
 			_code set [3, "
 			_params params ['_targetObject', '_hidingZonesAssigned', '_marker', '_standardTitle'];
 			_object = _targetObject;
@@ -194,7 +194,7 @@ _buttons = [];
 				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
 				{
 					_showButton = false;
-				}
+				};
 			};
 		};
 
