@@ -133,6 +133,17 @@ _missionStatusSet = false;
 				[_newTaskIndex] call FNF_ClientSide_fnc_initAssassin;
 			};
 
+			case "fnf_module_escortObj":
+			{
+				if (not _missionStatusSet) then
+				{
+					_missionStatusSet = true;
+					addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
+					call BIS_fnc_showMissionStatus;
+				};
+				[_newTaskIndex] call FNF_ClientSide_fnc_initEscort;
+			};
+
 			//if no type found then objective must be part of a new mod update that framework isnt equipped to handle
 			default
 			{

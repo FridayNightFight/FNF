@@ -78,6 +78,12 @@ class CfgFunctions
 			class initAssassin {};
 			class watchAssassin {};
 		};
+		class objEscort
+		{
+			file = "Client\Objectives\Escort";
+			class initEscort {};
+			class watchEscort {};
+		};
 		class safeZones
 		{
 			file = "Client\Safezones";
@@ -145,31 +151,31 @@ class CfgFunctions
 			file = "Client\Spectator\Objectives";
 			class initSpectatorObjs {};
 			class watchSpectatorObjs {};
-		}
+		};
 		class spectatorObjDestroy
 		{
 			file = "Client\Spectator\Objectives\Destroy";
 			class initSpectatorDestroy {};
 			class watchSpectatorDestroy {};
-		}
+		};
 		class spectatorObjCaptureSector
 		{
 			file = "Client\Spectator\Objectives\CaptureSector";
 			class initSpectatorCaptureSector {};
 			class watchSpectatorCaptureSector {};
-		}
+		};
 		class spectatorObjTerminal
 		{
 			file = "Client\Spectator\Objectives\Terminal";
 			class initSpectatorTerminal {};
 			class watchSpectatorTerminal {};
-		}
+		};
 		class spectatorObjAssassin
 		{
 			file = "Client\Spectator\Objectives\Assassin";
 			class initSpectatorAssassin {};
 			class watchSpectatorAssassin {};
-		}
+		};
 		class hidingZones
 		{
 			file = "Client\HidingZones";

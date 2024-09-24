@@ -586,4 +586,65 @@ class CfgVehicles
 			};
 		};
 	};
+	class fnf_module_escortObj: fnf_module_objective
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Escort Objective";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\run_ca.paa";
+		scope = 2;
+		class Attributes: AttributesBase
+		{
+			class ObjectiveType: Combo
+			{
+				property = "fnf_objectiveType";
+				expression = "_this setVariable ['fnf_objectiveType',_value, true];";
+				displayName = "Objective Type";
+				tooltip = "What the side is supposed to do with the objective";
+				typeName = "STRING";
+				defaultValue = "esc";
+				class Values
+				{
+					class Prevent { name = "Prevent Escort"; value = "prv";};
+					class Escort { name = "Escort Object"; value = "esc";};
+				};
+			};
+			class Prefix: Edit
+			{
+				property = "fnf_prefix";
+				expression = "_this setVariable ['fnf_prefix',_value, true];";
+				displayName = "Marker Prefix";
+				tooltip = "The prefix for the marker the objective will look for when creating the end zone";
+				typeName = "STRING";
+				defaultValue = "fnf_marker_escortObject_";
+			};
+			class TimeToConfirm: Edit
+			{
+				property = "fnf_timeToConfirm";
+				expression = "_this setVariable ['fnf_timeToConfirm',_value, true];";
+				displayName = "Time to Confirm";
+				tooltip = "How long in seconds it takes for the escort to be considered complete";
+				typeName = "NUMBER";
+				defaultValue = "60";
+			};
+			class TargetName: Edit
+			{
+				property = "fnf_targetName";
+				expression = "_this setVariable ['fnf_targetName',_value, true];";
+				displayName = "Target Name";
+				tooltip = "The name assigned to the target in the task description";
+				typeName = "STRING";
+				defaultValue = "the VIP";
+			};
+			class ZoneKnown: Checkbox
+			{
+				property = "fnf_zoneKnown";
+				expression = "_this setVariable ['fnf_zoneKnown',_value, true];";
+				displayName = "Is hiding zone known";
+				tooltip = "If checked, when object is in a linked hiding zone the zone it is in will have the task attached to it";
+				typeName = "BOOL";
+				defaultValue = "true";
+			};
+		};
+	};
 };

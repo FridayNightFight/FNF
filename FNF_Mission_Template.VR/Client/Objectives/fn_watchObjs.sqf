@@ -34,6 +34,10 @@
 		{
 			[_forEachIndex] call FNF_ClientSide_fnc_watchAssassin;
 		};
+		case "fnf_module_escortObj":
+		{
+			[_forEachIndex] call FNF_ClientSide_fnc_watchEscort;
+		};
 		default
 		{
 			if (fnf_debug) then
