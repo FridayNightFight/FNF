@@ -50,7 +50,7 @@ _createTask = {
 	//get task title
 	_targetName = _module getVariable ["fnf_targetName", "the VIP"];
 	_taskTitle = format["%1: Defend %2", (_objectiveIndex + 1), _targetName];
-	if (_objType isEqualTo "des") then
+	if (_objType isEqualTo "elm") then
 	{
 		_taskTitle = format["%1: Assassinate %2", (_objectiveIndex + 1), _targetName];
 	};
