@@ -283,6 +283,14 @@ switch (_objState) do {
 
 		_futureTask setSimpleTaskDestination (getPos _centerObject);
 
+		//setup right side graphic for a sector being captured
+		_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+
+		_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
+
+		//colour is black as watch should grab it
+		_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+
 		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _marker, _statusSlotID]]];
 	};
 	//Obj has been created and is known
