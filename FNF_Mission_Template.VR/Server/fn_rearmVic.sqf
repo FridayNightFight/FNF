@@ -16,9 +16,20 @@ _currentLoadout = magazinesAllTurrets _vehicle;
 
 _vicLoadout = _vehicle getVariable ["fnf_vehicleCustomLoadout", _currentLoadout];
 
+_pylonLoadout = _vehicle getVariable ["fnf_vehicleCustomPylons", []];
+_magsToIgnore = [];
+
+{
+	[_vehicle, [_x select 0, _x select 1]] remoteExec ["setAmmoOnPylon", 0];
+	_magsToIgnore pushBack (_x select 2);
+} forEach _pylonLoadout;
+
 _magsToRemove = [];
 {
-	_magsToRemove pushBackUnique [(_x select 0), (_x select 1)];
+	if (not ((_x select 0) in _magsToIgnore)) then
+	{
+		_magsToRemove pushBackUnique [(_x select 0), (_x select 1)];
+	};
 } forEach _currentLoadout;
 
 {

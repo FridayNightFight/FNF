@@ -75,13 +75,33 @@ _vincibleList = [];
   _vic = (_this select 0);
   if (_vic isKindOf "Man" || typeOf _vic isEqualTo "WeaponHolderSimulated") exitWith {}; //Exit so the code below doesn't run for infantry units
 
+	_magsToIgnore = [];
+	_pylonHolding = getAllPylonsInfo _vic;
+	if (_pylonHolding isNotEqualTo []) then
+  {
+		_customLoadout = [];
+		{
+			if ((_x select 3) isNotEqualTo "") then
+			{
+				_toAdd = [(_x select 0), (_x select 4), (_x select 3)];
+				_customLoadout pushBack _toAdd;
+				_magsToIgnore pushBack (_x select 3);
+			};
+		} forEach _pylonHolding;
+		_vic setVariable ["fnf_vehicleCustomPylons", _customLoadout, true];
+	};
+
   _magHolding = magazinesAllTurrets _vic;
   if (_magHolding isNotEqualTo []) then
   {
+		_customLoadout = [];
     {
-      (_magHolding select _forEachIndex) deleteRange [3, 4];
+			if (not ((_x select 0) in _magsToIgnore)) then
+			{
+				_customLoadout pushBack [(_x select 0), (_x select 1), (_x select 2)];
+			};
     } forEach _magHolding;
-    _vic setVariable ["fnf_vehicleCustomLoadout", _magHolding, true];
+    _vic setVariable ["fnf_vehicleCustomLoadout", _customLoadout, true];
   };
 
   if (local _vic && {getAmmoCargo _vic > 0}) then {
