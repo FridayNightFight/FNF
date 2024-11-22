@@ -116,6 +116,8 @@ class CfgFunctions
 			file = "Client\UI\Spectator";
 			class missionDetailsButton {};
 			class missionDetailsScreen {};
+			class missionReviewButton {};
+			class missionReviewScreen {};
 		};
 		class admin
 		{

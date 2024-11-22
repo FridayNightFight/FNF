@@ -24,6 +24,9 @@ _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpec
 
 [_breifingModules] call FNF_ServerSide_fnc_handleVicRadios;
 
+_missionReviewHashMap = createHashMap;
+missionNamespace setVariable ["fnf_missionsReviews", _missionReviewHashMap, true];
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules isNotEqualTo 0) then

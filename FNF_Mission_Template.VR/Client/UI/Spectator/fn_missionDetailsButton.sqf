@@ -5,13 +5,15 @@
 		Shows a button to view mission details
 
 	Parameter(s):
-		1: DISPLAY -	The display object of the pause screen
+		None
 
 	Returns:
 		None
 */
 
 disableSerialization;
+
+call FNF_ClientSide_fnc_missionReviewButton;
 
 //Create Mission Details button
 [{!isNull findDisplay 60000}, {
