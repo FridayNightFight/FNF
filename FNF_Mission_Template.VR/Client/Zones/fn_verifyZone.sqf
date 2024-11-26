@@ -13,13 +13,4 @@
 
 params["_zonePrefix"];
 
-_zoneExists = false;
-{
-	if (_x select 0 isEqualTo _zonePrefix) then
-	{
-		_zoneExists = true;
-		break;
-	};
-} forEach fnf_zoneList;
-
-_zoneExists;
+_zonePrefix in fnf_zoneList;

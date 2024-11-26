@@ -11,15 +11,5 @@
 		Position Array in format [x,y,z]
 */
 params["_zonePrefix"];
-_output = [0,0,0];
 
-//find zone described above
-{
-	if (_x select 0 isEqualTo _zonePrefix) then
-	{
-		_output = _x select 4;
-		break;
-	};
-} forEach fnf_zoneList;
-
-_output;
+(fnf_zoneList get _zonePrefix) select 3;

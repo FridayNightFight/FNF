@@ -12,19 +12,10 @@
 */
 params ["_zonePrefix"];
 
-_zoneToBeDeletedIndex = -1;
-{
-	if (_x select 0 isEqualTo _zonePrefix) then
-	{
-		_zoneToBeDeletedIndex = _forEachIndex;
-		deleteMarkerLocal (_x select 2);
-		deleteMarkerLocal (_x select 3);
-		break;
-	};
-} forEach fnf_zoneList;
+_data = fnf_zoneList get _zonePrefix;
 
-if (_zoneToBeDeletedIndex isNotEqualTo -1) then
-{
-	fnf_zoneList deleteAt _zoneToBeDeletedIndex;
-	[_zonePrefix] call FNF_ClientSide_fnc_unShadeZone;
-};
+deleteMarkerLocal (_data select 1);
+deleteMarkerLocal (_data select 2);
+
+[_zonePrefix] call FNF_ClientSide_fnc_unShadeZone;
+fnf_zoneList deleteAt _zonePrefix;
