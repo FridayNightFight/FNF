@@ -116,6 +116,8 @@ class CfgFunctions
 			file = "Client\UI\Spectator";
 			class missionDetailsButton {};
 			class missionDetailsScreen {};
+			class missionReviewButton {};
+			class missionReviewScreen {};
 		};
 		class admin
 		{
@@ -214,6 +216,7 @@ class CfgFunctions
 			file = "Client\NewPlayerExperience";
 			class initNewPlayerExperience {};
 			class newToFNF {};
+			class newToMRS {};
 		};
 		class taskControl
 		{

@@ -90,6 +90,15 @@ switch (count _winningSides) do
 	};
 };
 
+if (isDedicated) then
+{
+	_currentReviews = missionNamespace getVariable "fnf_missionsReviews";
+	_missionName = missionName;
+	_author = getMissionConfigValue "author";
+	_reviewArray = _currentReviews toArray false;
+	["fnf.call_slow_review_submit", [_missionName, _author, _reviewArray]] call py3_fnc_callExtension;
+};
+
 if (isClass (configFile >> "CfgPatches" >> "OCAP")) then
 {
 	if (count _winningSides isEqualTo 1) then
