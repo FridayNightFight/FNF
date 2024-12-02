@@ -38,6 +38,10 @@ if (_lastPlayedVersion isEqualTo "FAILED TO FIND") then
 	{
 		if (parseNumber (_frameworkVersionSplit select 1) > parseNumber (_lastPlayedVersionSplit select 1)) then
 		{
+			if (parseNumber (_frameworkVersionSplit select 1) > 2) then
+			{
+				call FNF_ClientSide_fnc_newToMRS;
+			};
 			profileNamespace setVariable ["fnf_latestVersionPlayed", _frameworkVersion];
 		};
 		if (parseNumber (_frameworkVersionSplit select 1) isEqualTo parseNumber (_lastPlayedVersionSplit select 1)) then
