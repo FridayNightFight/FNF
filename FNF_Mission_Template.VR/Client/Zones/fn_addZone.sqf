@@ -91,15 +91,20 @@ _visualCenter = [_markerPosArray] call FNF_ClientSide_fnc_calculateVisualCenter;
 
 //get max distance of zone from center
 _furthestDistance = 0;
+_closestDistance = 1000000;
 {
 	_distance = _x distance2D _visualCenter;
 	if (_furthestDistance < _distance) then
 	{
 		_furthestDistance = _distance;
 	};
+	if (_closestDistance > _distance) then
+	{
+		_closestDistance = _distance;
+	};
 } forEach _markerPosArray;
 
 //add to zone list
-fnf_zoneList set [_zonePrefix, [_markerPosArray, _markerPolyline, _markerDisplayName, _visualCenter, _furthestDistance]];
+fnf_zoneList set [_zonePrefix, [_markerPosArray, _markerPolyline, _markerDisplayName, _visualCenter, _closestDistance, _furthestDistance]];
 
 true;
