@@ -1,163 +1,41 @@
-from datetime import datetime
-import requests
+from .threading_utils import call_slow_function
+import gspread
+from google.oauth2.service_account import Credentials
 
-def roundStart(missionName, gamemode, staffNum, bluforNum, opforNum, indforNum, spectatorNum, url):
+def time_submit(stage, carNumber, startTime, penalty, adminName, endTime):
+	SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
-	playing = int(bluforNum) + int(opforNum) + int(indforNum)
+	creds = Credentials.from_service_account_file("C:/Program Files (x86)/Steam/steamapps/common/Arma 3/@server_mod/python_files/credentials.json", scopes=SCOPES)
 
-	fields = [{
-		"name": "Mission name",
-		"value": missionName,
-		"inline": "false"
-	},
-	{
-		"name": "Game Mode",
-		"value": gamemode,
-		"inline": "false"
-	},
-	{
-		"name": "Playing",
-		"value": playing,
-		"inline": "true"
-	},
-	{
-		"name": "Spectators",
-		"value": spectatorNum,
-		"inline": "true"
-	},
-	{
-		"name": "Staff",
-		"value": staffNum,
-		"inline": "true"
-	},
-	{
-		"name": "BLUFOR Players",
-		"value": bluforNum,
-		"inline": "true"
-	},
-	{
-		"name": "OPFOR Players",
-		"value": opforNum,
-		"inline": "true"
-	},
-	{
-		"name": "INDFOR Players",
-		"value": indforNum,
-		"inline": "true"
-	}]
+	client = gspread.authorize(creds)
 
-	embed = {
-		"description": "Safe start has ended and the game is underway!",
-		"title": "Round has started!",
-		"fields": fields,
-		"timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z'),
-		"color": "65280"
-		}
+	spreadsheet = client.open("Timing Input")
 
-	payload = {"embeds": [embed]}
+	worksheet = spreadsheet.worksheet("Timings")
 
-	requests.post(url, json=payload)
+	row = [stage, 0, carNumber, startTime, penalty, adminName, endTime]
 
-def roundEnd(missionName, endMessage, gamemode, playersRemaining, missionDuration, bluforNum, opforNum, indforNum, url):
+	worksheet.append_row(row)
 
-	fields = [
-	{
-		"name": endMessage,
-		"value": "Check out the AAR [here](http://aar.fridaynightfight.org/)\n\nMission feedback can be submitted [here](https://forms.gle/R43PA6B21SJNcikC6)",
-		"inline": "false"
-	},
-	{
-		"name": "Mission name",
-		"value": missionName,
-		"inline": "false"
-	},
-	{
-		"name": "Game Mode",
-		"value": gamemode,
-		"inline": "true"
-	},
-	{
-		"name": "Players Connected",
-		"value": playersRemaining,
-		"inline": "true"
-	},
-	{
-		"name": "Mission Duration",
-		"value": missionDuration,
-		"inline": "true"
-	},
-	{
-		"name": "BLUFOR Players",
-		"value": bluforNum,
-		"inline": "true"
-	},
-	{
-		"name": "OPFOR Players",
-		"value": opforNum,
-		"inline": "true"
-	},
-	{
-		"name": "INDFOR Players",
-		"value": indforNum,
-		"inline": "true"
-	}]
+def call_slow_time_submit(stage, carNumber, startTime, penalty, adminName, endTime):
+	return call_slow_function(time_submit, (stage, carNumber, startTime, penalty, adminName, endTime))
 
-	embed = {
-		"title": "Round has ended!",
-		"fields": fields,
-		"timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z'),
-		"color": "16711680"
-		}
+def review_submit(missionName, author, reviewArray):
+	SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
-	payload = {"embeds": [embed]}
+	creds = Credentials.from_service_account_file("C:/Program Files (x86)/Steam/steamapps/common/Arma 3/@server_mod/python_files/credentials.json", scopes=SCOPES)
 
-	requests.post(url, json=payload)
+	client = gspread.authorize(creds)
 
-def adminAction(atID, playerName, description, side, role, missionName, mapName, grid, timeElapsed, url):
-	description = description.split("\\n")
-	stringOut = ""
-	for string in description:
-		stringOut = stringOut + string + "\n"
-	description = stringOut[:-1]
-	fields = [{
-		"name": "Assigned Side",
-		"value": side,
-		"inline": "true"
-	},
-	{
-		"name": "Role",
-		"value": role,
-		"inline": "true"
-	},
-	{
-		"name": "Mission Name",
-		"value": missionName,
-		"inline": "false"
-	},
-	{
-		"name": "Map Name",
-		"value": mapName,
-		"inline": "true"
-	},
-	{
-		"name": "Grid Location",
-		"value": grid,
-		"inline": "true"
-	},
-	{
-		"name": "Mission Time Elapsed",
-		"value": timeElapsed,
-		"inline": "true"
-	}]
+	spreadsheet = client.open("Mission Review Submissions")
 
-	embed = {
-		"description": description,
-		"title": "Message from " + playerName,
-		"fields": fields,
-		"timestamp": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.000Z'),
-		"color": "16776960"
-		}
+	worksheet = spreadsheet.worksheet("Reviews")
 
-	payload = {"embeds": [embed], "content": atID}
+	for x in reviewArray:
 
-	requests.post(url, json=payload)
+		row = [missionName, author, x[0], x[1][0], x[1][1], x[1][2]]
+
+		worksheet.append_row(row)
+
+def call_slow_review_submit(missionName, author, reviewArray):
+	return call_slow_function(review_submit, (missionName, author, reviewArray))
