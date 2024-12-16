@@ -18,13 +18,13 @@ findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw",
 {
 	_map = _this select 0;
 	{
-		_rgbaValues = _x select 2;
+		_rgbaValues = _y select 1;
 		{
 			_pos1 = _x select 0;
 			_pos2 = _x select 1;
 			_pos3 = _x select 2;
 			_map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, "#(rgb,1,1,1)color(1,1,1,1)"];
-		} forEach (_x select 1);
+		} forEach (_y select 0);
 	} forEach fnf_trianglesToDraw;
 }];
 }] call CBA_fnc_waitUntilAndExecute;
@@ -34,13 +34,13 @@ findDisplay 52 displayCtrl 51 ctrlAddEventHandler ["Draw",
 {
 	_map = _this select 0;
 	{
-		_rgbaValues = _x select 2;
+		_rgbaValues = _y select 1;
 		{
 			_pos1 = _x select 0;
 			_pos2 = _x select 1;
 			_pos3 = _x select 2;
 			_map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, "#(rgb,1,1,1)color(1,1,1,1)"];
-		} forEach (_x select 1);
+		} forEach (_y select 0);
 	} forEach fnf_trianglesToDraw;
 }];
 }] call CBA_fnc_waitUntilAndExecute;
@@ -50,13 +50,13 @@ findDisplay 53 displayCtrl 51 ctrlAddEventHandler ["Draw",
 {
 	_map = _this select 0;
 	{
-		_rgbaValues = _x select 2;
+		_rgbaValues = _y select 1;
 		{
 			_pos1 = _x select 0;
 			_pos2 = _x select 1;
 			_pos3 = _x select 2;
 			_map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, "#(rgb,1,1,1)color(1,1,1,1)"];
-		} forEach (_x select 1);
+		} forEach (_y select 0);
 	} forEach fnf_trianglesToDraw;
 }];
 }] call CBA_fnc_waitUntilAndExecute;
@@ -79,13 +79,13 @@ findDisplay 53 displayCtrl 51 ctrlAddEventHandler ["Draw",
 				_gps ctrlAddEventHandler ['Draw',{
 					_map = _this select 0;
 					{
-						_rgbaValues = _x select 2;
+						_rgbaValues = _y select 1;
 						{
 							_pos1 = _x select 0;
 							_pos2 = _x select 1;
 							_pos3 = _x select 2;
 							_map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, "#(rgb,1,1,1)color(1,1,1,1)"];
-						} forEach (_x select 1);
+						} forEach (_y select 0);
 					} forEach fnf_trianglesToDraw;
 				}];
 			};

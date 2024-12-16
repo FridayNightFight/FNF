@@ -35,6 +35,7 @@ class CfgFunctions
 			class shadeZone {};
 			class unShadeZone {};
 			class getDisplayName {};
+			class setZoneColour {};
 		};
 		class restrictions
 		{
