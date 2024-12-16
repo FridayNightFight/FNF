@@ -16,6 +16,8 @@ params ["_modules"];
 //safe zones require weapon disabling
 call FNF_ClientSide_fnc_initWeaponDisable;
 
+fnf_safeZoneFinalZoneSent = false;
+
 _safeZoneRestrictionGroupSet = false;
 _spareSafeZones = [];
 _maxTimeZoneIsDeleted = 0;
