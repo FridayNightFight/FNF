@@ -15,14 +15,19 @@ disableSerialization;
 
 //create Admin GUI Display
 if (ace_spectator_isSet) then {
-	fnf_adminDisplay = [findDisplay 60000 createDisplay "RscDisplayEmpty"];
+	if (!isNull findDisplay 312) then
+	{
+		fnf_adminDisplay = [findDisplay 312 createDisplay "RscDisplayEmpty"];
+	} else {
+		fnf_adminDisplay = [findDisplay 60000 createDisplay "RscDisplayEmpty"];
+	};
 } else {
 	if (!isNull findDisplay 312) then
 	{
 		fnf_adminDisplay = [findDisplay 312 createDisplay "RscDisplayEmpty"];
 	} else {
 		fnf_adminDisplay = [findDisplay 46 createDisplay "RscDisplayEmpty"];
-	}
+	};
 };
 
 //Add pre defined buttons for each admin diary entry to be clicked on
