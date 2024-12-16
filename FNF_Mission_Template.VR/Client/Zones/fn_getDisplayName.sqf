@@ -12,4 +12,4 @@
 */
 params ["_zonePrefix"];
 
-markerText ((fnf_zoneList get _zonePrefix) select 2);
+markerText ((fnf_zoneList getOrDefault [_zonePrefix,""]) select 2);
