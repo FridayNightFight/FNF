@@ -110,6 +110,7 @@ class CfgFunctions
 			class adminGameEndButton {};
 			class contactStaffButton {};
 			class adminMenuButton {};
+			class missionReviewButtonPM {};
 		};
 		class spectatorUI
 		{

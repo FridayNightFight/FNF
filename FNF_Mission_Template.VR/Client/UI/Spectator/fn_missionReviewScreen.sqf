@@ -12,8 +12,13 @@
 */
 
 disableSerialization;
-
-_display = findDisplay 60000 createDisplay "RscDisplayEmpty";
+_display = objNull;
+if (ace_spectator_isSet) then
+{
+	_display = findDisplay 60000 createDisplay "RscDisplayEmpty";
+} else {
+	_display = findDisplay 46 createDisplay "RscDisplayEmpty";
+};
 
 _hashMap = missionNamespace getVariable ["fnf_missionsReviews", createHashMap];
 _currentValues = _hashMap getOrDefault [(getPlayerUID player), [name player,0,""]];
