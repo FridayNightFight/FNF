@@ -11,7 +11,7 @@
 		None
 */
 
-fnf_trianglesToDraw = [];
+fnf_trianglesToDraw = createHashMap;
 
 [{!isNull findDisplay 12},{
 findDisplay 12 displayCtrl 51 ctrlAddEventHandler ["Draw",
