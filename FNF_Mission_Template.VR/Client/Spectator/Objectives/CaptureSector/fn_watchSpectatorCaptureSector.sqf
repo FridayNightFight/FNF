@@ -34,10 +34,10 @@ if (not _isSecondaryObj) then {
 	_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 	_shownPercent = _sectorPercentage;
 
-	//if the sector is fully captured, show the percentage as 0
-	if (_sectorPercentage isEqualTo 1) then
+	//if the sector is fully captured, show the percentage as 1
+	if (_sectorPercentage > 1) then
 	{
-		_shownPercent = 0;
+		_shownPercent = 1;
 	};
 
 	//update the status slots
