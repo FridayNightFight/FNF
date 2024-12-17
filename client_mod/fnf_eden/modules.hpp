@@ -527,19 +527,50 @@ class CfgVehicles
 		scope = 2;
 		class Attributes: AttributesBase
 		{
-			class ObjectiveType: Combo
+			class Prefix: Edit
 			{
-				property = "fnf_objectiveType";
-				expression = "_this setVariable ['fnf_objectiveType',_value, true];";
-				displayName = "Objective Type";
-				tooltip = "What the side is supposed to do with the objective";
+				property = "fnf_prefix";
+				expression = "_this setVariable ['fnf_prefix',_value, true];";
+				displayName = "Marker Prefix";
+				tooltip = "The prefix for the marker the sector will look for when creating the sector";
 				typeName = "STRING";
-				defaultValue = "cap";
-				class Values
-				{
-					class Capture { name = "Capture Sector"; value = "cap";};
-					class Defend { name = "Defend Sector"; value = "def";};
-				};
+				defaultValue = "fnf_marker_sector_";
+			};
+			class TimeToCapture: Edit
+			{
+				property = "fnf_TimeToCapture";
+				expression = "_this setVariable ['fnf_TimeToCapture',_value, true];";
+				displayName = "Time to Capture";
+				tooltip = "How long in seconds it takes for a side to capture the sector";
+				typeName = "NUMBER";
+				defaultValue = "60";
+			};
+			class PointsPerSecond: Edit
+			{
+				property = "fnf_PointsPerSecond";
+				expression = "_this setVariable ['fnf_PointsPerSecond',_value, true];";
+				displayName = "Points per Second";
+				tooltip = "How many points the captured sector gives per second";
+				typeName = "NUMBER";
+				defaultValue = "1";
+			};
+/*			class GlobalPoints: Checkbox
+			{
+				property = "fnf_GlobalPoints";
+				expression = "_this setVariable ['fnf_GlobalPoints',_value, true];";
+				displayName = "Global Sector Points";
+				tooltip = "If checked, points will be added to a global count for the side between all hold sectors";
+				typeName = "BOOL";
+				defaultValue = "true";
+			};*/
+			class PointsForCompletion: Edit
+			{
+				property = "fnf_PointsForCompletion";
+				expression = "_this setVariable ['fnf_PointsForCompletion',_value, true];";
+				displayName = "Points for Completion";
+				tooltip = "How many points are needed to complete this sector";
+				typeName = "NUMBER";
+				defaultValue = "1000";
 			};
 		};
 	};

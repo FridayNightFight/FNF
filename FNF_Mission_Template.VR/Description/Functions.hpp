@@ -66,6 +66,13 @@ class CfgFunctions
 			class initCaptureSector {};
 			class watchCaptureSector {};
 		};
+				class objHoldSector
+		{
+			file = "Client\Objectives\HoldSector";
+			class initHoldSector {};
+			class watchHoldSector {};
+			class notifyHoldSector {};
+		};
 		class objTerminal
 		{
 			file = "Client\Objectives\Terminal";
