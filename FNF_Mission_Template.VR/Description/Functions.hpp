@@ -15,6 +15,7 @@ class CfgFunctions
 			file = "Client\CodeUtilities";
 			class sortByLocation {};
 			class getBottomLeft {};
+			class checkSecondaryObjective {};
 		}
 		class zones
 		{
@@ -35,6 +36,7 @@ class CfgFunctions
 			class unShadeZone {};
 			class getDisplayName {};
 			class editRestrictionGroup {};
+			class setZoneColour {};
 		};
 		class restrictions
 		{
@@ -50,6 +52,8 @@ class CfgFunctions
 		{
 			file = "Client\Objectives";
 			class initObjs {};
+			class watchObjs {};
+			class initMarkerFollow {};
 		};
 		class objDestroy
 		{
@@ -63,6 +67,13 @@ class CfgFunctions
 			class initCaptureSector {};
 			class watchCaptureSector {};
 		};
+				class objHoldSector
+		{
+			file = "Client\Objectives\HoldSector";
+			class initHoldSector {};
+			class watchHoldSector {};
+			class notifyHoldSector {};
+		};
 		class objTerminal
 		{
 			file = "Client\Objectives\Terminal";
@@ -75,7 +86,6 @@ class CfgFunctions
 			file = "Client\Objectives\Assassin";
 			class initAssassin {};
 			class watchAssassin {};
-			class notifyAdminAssassin {};
 		};
 		class safeZones
 		{
@@ -110,12 +120,15 @@ class CfgFunctions
 			class contactStaffButton {};
 			class adminMenuButton {};
 			class livesLeftDisplay {};
+			class missionReviewButtonPM {};
 		};
 		class spectatorUI
 		{
 			file = "Client\UI\Spectator";
 			class missionDetailsButton {};
 			class missionDetailsScreen {};
+			class missionReviewButton {};
+			class missionReviewScreen {};
 		};
 		class admin
 		{
@@ -143,7 +156,8 @@ class CfgFunctions
 		class spectatorObj
 		{
 			file = "Client\Spectator\Objectives";
-			class initSpectatorObjectives {};
+			class initSpectatorObjs {};
+			class watchSpectatorObjs {};
 		}
 		class spectatorObjDestroy
 		{
@@ -156,6 +170,12 @@ class CfgFunctions
 			file = "Client\Spectator\Objectives\CaptureSector";
 			class initSpectatorCaptureSector {};
 			class watchSpectatorCaptureSector {};
+		}
+		class spectatorObjHoldSector
+		{
+			file = "Client\Spectator\Objectives\HoldSector";
+			class initSpectatorHoldSector {};
+			class watchSpectatorHoldSector {};
 		}
 		class spectatorObjTerminal
 		{
@@ -214,6 +234,7 @@ class CfgFunctions
 			file = "Client\NewPlayerExperience";
 			class initNewPlayerExperience {};
 			class newToFNF {};
+			class newToMRS {};
 		};
 		class taskControl
 		{
@@ -226,21 +247,26 @@ class CfgFunctions
 		class sequentialHandeler
 		{
 			file = "Client\SequentialHandeler";
-			class addSequentialHandle {};
+			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
-		}
+		};
 		class vehicles
 		{
 			file = "Client\Vehicles";
 			class initVicRearmReplacement {};
 			class addRearmActions {};
 			class rearmVic {};
-		}
+		};
 		class mobileSpawnPoints
 		{
 			file = "Client\MobileSpawnPoints";
 			class initMobileSpawnPoints {};
-		}
+		};
+		class backpackLocking
+		{
+			file = "Client\BackpackLocking";
+			class initBackpackLocking {};
+		};
 	};
 	class FNF_ServerSide
 	{
@@ -265,7 +291,7 @@ class CfgFunctions
 		class sequentialHandeler
 		{
 			file = "Server\SequentialHandeler";
-			class addSequentialHandle {};
+			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
 		};
 		class AssetSelectors
@@ -278,6 +304,7 @@ class CfgFunctions
 		{
 			file = "Server\Objectives";
 			class initObjs {};
+			class watchObjs {};
 		};
 		class objDestroy
 		{
@@ -290,6 +317,12 @@ class CfgFunctions
 			file = "Server\Objectives\CaptureSector";
 			class initCaptureSector {};
 			class watchCaptureSector {};
+		};
+		class objHoldSector
+		{
+			file = "Server\Objectives\HoldSector";
+			class initHoldSector {};
+			class watchHoldSector {};
 		};
 		class objTerminal
 		{

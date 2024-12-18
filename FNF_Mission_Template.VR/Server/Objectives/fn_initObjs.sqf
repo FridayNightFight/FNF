@@ -14,57 +14,55 @@ if (!isServer) exitWith {};
 
 params ["_modules"];
 
-fnf_serverObjectives = [];
+_modules = [_modules] call FNF_ClientSide_fnc_sortByLocation;
+
+//[ObjState, ObjModule, Task, AlliedTask, CodeOnCompletion, params];
+/*Obj state:
+0 - Not Created
+1 - Not Tracking, Not Known
+2 - Not Tracking, Known
+3 - Active
+4 - Completed
+5 - Failed
+*/
+if (isNil "fnf_serverObjectives") then
+{
+	fnf_serverObjectives = [];
+};
 
 call FNF_ClientSide_fnc_initZones;
 
+call FNF_ClientSide_fnc_initGPSUnitMarkers;
+
 {
-	_syncedObjects = synchronizedObjects _x;
-	_objSide = sideEmpty;
-
-	//check if objective module is for player or player's allys
-	{
-		_objectType = typeOf _x;
-		switch (_objectType) do
-		{
-			case "SideBLUFOR_F":
-			{
-				_objSide = west;
-			};
-			case "SideOPFOR_F":
-			{
-				_objSide = east;
-			};
-			case "SideResistance_F":
-			{
-				_objSide = independent;
-			};
-			default
-			{
-				continue;
-			};
-		};
-	} forEach _syncedObjects;
-
 	_moduleType = typeOf _x;
+	_newTaskIndex = fnf_serverObjectives pushBack [0, _x, taskNull, false, {}, []];
+
 	switch (_moduleType) do
 	{
 		case "fnf_module_destroyObj":
 		{
-			[_x, _objSide] call FNF_ServerSide_fnc_initDestroy;
+			[_newTaskIndex] call FNF_ServerSide_fnc_initDestroy;
 		};
+
 		case "fnf_module_sectorCaptureObj":
 		{
-			[_x, _objSide] call FNF_ServerSide_fnc_initCaptureSector;
+			[_newTaskIndex] call FNF_ServerSide_fnc_initCaptureSector;
 		};
+
+		case "fnf_module_sectorHoldObj":
+		{
+			[_newTaskIndex] call FNF_ServerSide_fnc_initHoldSector;
+		};
+
 		case "fnf_module_terminalObj":
 		{
-			[_x, _objSide] call FNF_ServerSide_fnc_initTerminal;
+			[_newTaskIndex] call FNF_ServerSide_fnc_initTerminal;
 		};
+
 		case "fnf_module_assassinObj":
 		{
-			[_x, _objSide] call FNF_ServerSide_fnc_initAssassin;
+			[_newTaskIndex] call FNF_ServerSide_fnc_initAssassin;
 		};
-		default {};
 	};
 } forEach _modules;

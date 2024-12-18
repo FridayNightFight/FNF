@@ -21,6 +21,11 @@ fnf_objectsToHide = [];
 		_zoneKnown = _x select 2;
 		_hidingZonesPrefixs = _x select 3;
 
+		if (isNull _object) then
+		{
+			continue;
+		};
+
 		//check if object is in any of the hiding zones it is assigned to
 		_zoneHiddenInside = "";
 		{

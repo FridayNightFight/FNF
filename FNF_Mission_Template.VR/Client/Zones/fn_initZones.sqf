@@ -14,7 +14,7 @@
 if (not isNil "fnf_zoneList") exitWith {};
 
 //set up a list of all zones
-fnf_zoneList = [];
+fnf_zoneList = createHashMap;
 
 //set up a list of restriction zone groups (if in one, satisfy's condition of all others)
 //_groupName, [], _restrictWeapons, _teleportBack, _restrictHelicopters, _allowSelectors

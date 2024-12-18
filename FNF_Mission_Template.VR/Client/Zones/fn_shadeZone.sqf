@@ -37,5 +37,5 @@ _colourRGBA = (configfile >> "CfgMarkerColors" >> _colour >> "color") call BIS_f
 
 _colourRGBA set [3, 0.3];
 
-fnf_trianglesToDraw pushBack [_zonePrefix, _output, _colourRGBA];
+fnf_trianglesToDraw set [_zonePrefix, [_output, _colourRGBA]];
 

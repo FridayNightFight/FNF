@@ -17,7 +17,21 @@ params ["_modules"];
 //could concievabley be an issue if map is more than 999999 meters wide (unlikely)
 _modules = [_modules] call FNF_ClientSide_fnc_sortByLocation;
 
-fnf_objectives = [];
+//[ObjState, ObjModule, Task, AlliedTask, CodeOnCompletion, params];
+/*Obj state:
+0 - Not Created
+1 - Not Tracking, Not Known
+2 - Not Tracking, Known
+3 - Active
+4 - Completed
+5 - Failed
+*/
+if (isNil "fnf_objectives") then
+{
+	fnf_objectives = [];
+};
+
+call FNF_ClientSide_fnc_initMarkerFollow;
 
 _missionStatusSet = false;
 
@@ -27,7 +41,7 @@ _missionStatusSet = false;
 
 	//check if objective module is for player or player's allys
 	_showObj = false;
-	_forPlayer = false;
+	_alliedTask = true;
 
 	_sideCounter = 0;
 	{
@@ -58,7 +72,8 @@ _missionStatusSet = false;
 
 		if (_objSide isEqualTo playerSide) then
 		{
-			_forPlayer = true;
+			_showObj = true;
+			_alliedTask = false;
 		};
 
 		if ([playerSide, _objSide] call BIS_fnc_sideIsFriendly) then
@@ -86,33 +101,47 @@ _missionStatusSet = false;
 
 	//if it is check what kind of objective it is and run corresponding init script
 	_moduleType = typeOf _x;
-	if (_forPlayer or _showObj) then
+	if (_showObj) then
 	{
+		_newTaskIndex = fnf_objectives pushBack [0, _x, taskNull, _alliedTask, {}, []];
+
 		switch (_moduleType) do
 		{
 			case "fnf_module_destroyObj":
 			{
-				[_x, _forPlayer] call FNF_ClientSide_fnc_initDestroy;
+				[_newTaskIndex] call FNF_ClientSide_fnc_initDestroy;
 			};
 
 			case "fnf_module_sectorCaptureObj":
 			{
 				if (not _missionStatusSet) then
 				{
+					_missionStatusSet = true;
 					addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
 					call BIS_fnc_showMissionStatus;
 				};
-				[_x, _forPlayer] call FNF_ClientSide_fnc_initCaptureSector;
+				[_newTaskIndex] call FNF_ClientSide_fnc_initCaptureSector;
+			};
+
+			case "fnf_module_sectorHoldObj":
+			{
+				if (not _missionStatusSet) then
+				{
+					_missionStatusSet = true;
+					addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
+					call BIS_fnc_showMissionStatus;
+				};
+				[_newTaskIndex] call FNF_ClientSide_fnc_initHoldSector;
 			};
 
 			case "fnf_module_terminalObj":
 			{
-				[_x, _forPlayer] call FNF_ClientSide_fnc_initTerminal;
+				[_newTaskIndex] call FNF_ClientSide_fnc_initTerminal;
 			};
 
 			case "fnf_module_assassinObj":
 			{
-				[_x, _forPlayer] call FNF_ClientSide_fnc_initAssassin;
+				[_newTaskIndex] call FNF_ClientSide_fnc_initAssassin;
 			};
 
 			//if no type found then objective must be part of a new mod update that framework isnt equipped to handle

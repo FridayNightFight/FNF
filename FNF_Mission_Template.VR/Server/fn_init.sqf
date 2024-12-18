@@ -24,6 +24,9 @@ _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpec
 
 [_breifingModules] call FNF_ServerSide_fnc_handleVicRadios;
 
+_missionReviewHashMap = createHashMap;
+missionNamespace setVariable ["fnf_missionsReviews", _missionReviewHashMap, true];
+
 //check there are objectives
 _objModules = [_modules, "Obj"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _objModules isNotEqualTo 0) then
@@ -40,104 +43,11 @@ if (count _assetSelectorModules isNotEqualTo 0) then
 //if there are objectives start watching them
 if (not isNil "fnf_serverObjectives") then
 {
-	if (count fnf_serverObjectives isNotEqualTo 0) then
-	{
-		[{
-			_indexesToChangeIfCompleted = [];
-
-			_totalBlufor = 0;
-			_totalOpfor = 0;
-			_totalIndi = 0;
-			_completedBlufor = 0;
-			_completedOpfor = 0;
-			_completedindi = 0;
-
-			{
-				switch (_x select 1) do {
-					case "DESTROY":
-					{
-						_result = [(_x select 4), (_x select 3)] call FNF_ServerSide_fnc_watchDestroy;
-						if (_result) then
-						{
-							_indexesToChangeIfCompleted pushBack _forEachIndex;
-						};
-					};
-					case "CAPTURESECTOR":
-					{
-						_result = [(_x select 3), (_x select 2)] call FNF_ServerSide_fnc_watchCaptureSector;
-						if (_result) then
-						{
-							_indexesToChangeIfCompleted pushBack _forEachIndex;
-						};
-					};
-					case "TERMINAL":
-					{
-						_result = [(_x select 4), (_x select 3)] call FNF_ServerSide_fnc_watchTerminal;
-						if (_result) then
-						{
-							_indexesToChangeIfCompleted pushBack _forEachIndex;
-						};
-					};
-					case "ASSASSIN":
-					{
-						_result = [(_x select 3)] call FNF_ServerSide_fnc_watchAssassin;
-						if (_result) then
-						{
-							_indexesToChangeIfCompleted pushBack _forEachIndex;
-						};
-					};
-					default {};
-				};
-
-				{
-					fnf_serverObjectives select _x set [0, true];
-				} forEach _indexesToChangeIfCompleted;
-
-				switch (_x select 2) do {
-					case west:
-					{
-						_totalBlufor = _totalBlufor + 1;
-						if ((_x select 0) isEqualTo true) then
-						{
-							_completedBlufor = _completedBlufor + 1;
-						};
-					};
-					case east:
-					{
-						_totalOpfor = _totalOpfor + 1;
-						if ((_x select 0) isEqualTo true) then
-						{
-							_completedOpfor = _completedOpfor + 1;
-						};
-					};
-					case independent:
-					{
-						_totalIndi = _totalIndi + 1;
-						if ((_x select 0) isEqualTo true) then
-						{
-							_completedIndi = _completedIndi + 1;
-						};
-					};
-					default {};
-				};
-			} forEach fnf_serverObjectives;
-
-			{
-				_id = owner _x;
-				if (admin _id isEqualTo 2 or _x isEqualTo player) then
-				{
-					_objectiveString = "Blufor Completed " + str(_completedBlufor) + " / " + str(_totalBlufor) + "\nOpfor Completed " + str(_completedOpfor) + " / " + str(_totalOpfor) + "\nIndependent Completed " + str(_completedIndi) + " / " + str(_totalIndi);
-					_alivePlayers = allPlayers select {alive _x};
-					_deadSideString = "\nBlufor alive: " + str(west countSide _alivePlayers) + "\nOpfor alive: " + str(east countSide _alivePlayers) + "\nIndependent alive: " + str(independent countSide _alivePlayers);
-					(_objectiveString + _deadSideString) remoteExec ["hintSilent", _id];
-				}
-			} forEach allPlayers;
-		},1] call CBA_fnc_addPerFrameHandler;
-	};
+	[{call FNF_ServerSide_fnc_watchObjs;}, 1] call CBA_fnc_addPerFrameHandler;
 };
 
 [{
-	time > 0;
+	time > 0.1;
 }, {
 	{
 		deleteVehicle _x;

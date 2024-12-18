@@ -15,15 +15,7 @@
 params["_groupName", "_zonePrefix"];
 
 _groupIndex = -1;
-_zoneData = [];
-
-{
-	if (_x select 0 isEqualTo _zonePrefix) then
-	{
-		_zoneData = _x;
-		break;
-	};
-} forEach fnf_zoneList;
+_zoneData = fnf_zoneList get _zonePrefix;
 
 {
 	if (_x select 0 isEqualTo _groupName) then
@@ -35,5 +27,5 @@ _zoneData = [];
 
 if (_groupIndex isNotEqualTo -1) then
 {
-	fnf_zoneRestrictionGroupsList select _groupIndex select 1 pushBack _zoneData;
+	(fnf_zoneRestrictionGroupsList select _groupIndex select 1) pushBack ([_zonePrefix] + _zoneData);
 };

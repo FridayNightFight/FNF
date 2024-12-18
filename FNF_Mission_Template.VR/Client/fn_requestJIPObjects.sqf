@@ -28,12 +28,19 @@ if (isServer) then
 	} forEach _syncedObjects;
 
 } else {
-
+	_performanceTweaks = ["PerformanceTweaks", 1] call BIS_fnc_getParamValue;
 	[{
-		params["_hostObject", "_playerObject"];
+		params["_hostObject", "_playerObject", "_performanceTweaks"];
 
 		//wait until player is the playerObject
-		_playerObject isEqualTo player;
+		_result = _playerObject isEqualTo player;
+
+		if (_performanceTweaks >= 2 and _result) then
+		{
+			_result = (missionNamespace getVariable ["fnf_serverFPS", 0] > 40);
+		};
+
+		_result;
 	},{
 		params["_hostObject", "_playerObject"];
 
@@ -43,8 +50,8 @@ if (isServer) then
 
 		[_hostObject] remoteExec ["FNF_ServerSide_fnc_handleJIPSyncing", 2, false];
 
-	},[_hostObject, _playerObject],1,{
-		params["_hostObject", "_playerObject"];
+	},[_hostObject, _playerObject, _performanceTweaks],1,{
+		params["_hostObject", "_playerObject", "_performanceTweaks"];
 
 		//check if timeout is due to player being null or the condition is actually true now (shouldn't be?) if so restart this function
 		diag_log ("FNF_DEBUG: one second timeout for: " + str(_playerObject));

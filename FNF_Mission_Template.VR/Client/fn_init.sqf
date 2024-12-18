@@ -114,62 +114,16 @@ _breifingModules = [_modules, "breifingAssets"] call FNF_ClientSide_fnc_findSpec
 //start gps icons
 call FNF_ClientSide_fnc_initGPSUnitMarkers;
 
-//add zues ace options
-[] call FNF_ClientSide_fnc_zuesAceOptions;
+//add zues options
+call FNF_ClientSide_fnc_zuesAceOptions;
+
+//start backpack locking system
+call FNF_ClientSide_fnc_initBackpackLocking;
 
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {
-	[{
-		_indexesToDeleteIfCompleted = [];
-		{
-			switch (_x select 0) do {
-				case "COMPLETED": {};
-				case "DESTROY":
-				{
-					_result = [_x] call FNF_ClientSide_fnc_watchDestroy;
-					if (_result) then
-					{
-						_indexesToDeleteIfCompleted pushBack _forEachIndex;
-					};
-				};
-				case "CAPTURESECTOR":
-				{
-					_result = [_x] call FNF_ClientSide_fnc_watchCaptureSector;
-					if (_result) then
-					{
-						_indexesToDeleteIfCompleted pushBack _forEachIndex;
-					};
-				};
-				case "TERMINAL":
-				{
-					_result = [_x] call FNF_ClientSide_fnc_watchTerminal;
-					if (_result) then
-					{
-						_indexesToDeleteIfCompleted pushBack _forEachIndex;
-					};
-				};
-				case "ASSASSIN":
-				{
-					_result = [_x] call FNF_ClientSide_fnc_watchAssassin;
-					if (_result) then
-					{
-						_indexesToDeleteIfCompleted pushBack _forEachIndex;
-					};
-				};
-				default
-				{
-					if (fnf_debug) then
-					{
-						systemChat "DANGER: Objective has no valid type code, contact FNF staff";
-					};
-				};
-			};
-		} forEach fnf_objectives;
-		{
-			fnf_objectives select _x set [0, "COMPLETED"];
-		} forEach _indexesToDeleteIfCompleted;
-	},1] call CBA_fnc_addPerFrameHandler;
+	[{call FNF_ClientSide_fnc_watchObjs;}, 1] call CBA_fnc_addPerFrameHandler;
 };
 
 inGameUISetEventHandler ["Action", "

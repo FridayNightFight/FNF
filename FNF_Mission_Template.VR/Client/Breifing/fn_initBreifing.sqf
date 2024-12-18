@@ -12,7 +12,7 @@
 		None
 */
 
-params["_assetModules", "_kitInfoModules", "_initModule", "_assetSelectorModules"];
+params["_assetModules", "_kitInfoModules", "_initModule"];
 
 _bluforPresent = false;
 _opforPresent = false;
@@ -77,59 +77,6 @@ _objectsToAddToDiary = [];
 		} forEach _objectsToDisplay;
 	};
 } forEach _assetModules;
-
-_selectorsToAddToDiary = [];
-
-{
-	_syncedObjects = synchronizedObjects _x;
-	_selectorOptions = [];
-
-	_moduleSide = sideEmpty;
-
-	{
-		_objectType = typeOf _x;
-		switch (_objectType) do
-		{
-			case "SideBLUFOR_F":
-			{
-				_moduleSide = west;
-			};
-			case "SideOPFOR_F":
-			{
-				_moduleSide = east;
-			};
-			case "SideResistance_F":
-			{
-				_moduleSide = independent;
-			};
-			case "fnf_module_selectorOption":
-			{
-				_selectorOptions pushBack _x;
-			};
-			default {};
-		};
-	} forEach _syncedObjects;
-	_optionAssetPucks = [];
-
-	{
-		_syncedObjectsOption = synchronizedObjects _x;
-		_optionAssets = [];
-		{
-			_objectType = typeOf _x;
-			if (_objectType isEqualTo "fnf_module_selectorAssetHost") then
-			{
-				continue;
-			};
-			_optionAssets pushBack _x;
-		} forEach _syncedObjectsOption;
-		_optionAssetPucks pushBack _optionAssets;
-	} forEach _selectorOptions;
-
-	_selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
-
-	//sel Name, options[[optionAmounts],[],[]]
-	_selectorsToAddToDiary pushBack [_moduleSide, _selectorName, _optionAssetPucks];
-} forEach _assetSelectorModules;
 
 _loadoutCreation = {
 	params["_side", "_kitInfoModules"];
@@ -277,37 +224,39 @@ _loadoutCreation = {
 		_weaponPics pushBack _weaponPic
 	} forEach _weaponsFound;
 
-	_string = "<font size='20' shadow='1' face='PuristaBold'>" + _kitName + "</font><br/><font size='18' shadow='1' face='PuristaBold'>" + _kitAuthor + "</font><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Uniform:</font><br/>";
+	_string = [format["<font size='20' shadow='1' face='PuristaBold'>%1</font><br/><font size='18' shadow='1' face='PuristaBold'>%2</font><br/><font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Uniform:</font><br/>", _kitName, _kitAuthor]];
 	{
-		_string = _string + "<img width='110' image='" + _x + "'/>"
+		_string pushBack ("<img width='110' image='" + _x + "'/>");
 	} forEach _helmets;
-	_string = _string + "<br/>";
+	_string pushBack "<br/>";
 	{
-		_string = _string + "<img width='110' image='" + _x + "'/>"
+		_string pushBack ("<img width='110' image='" + _x + "'/>");
 	} forEach _vests;
-	_string = _string + "<br/>";
+	_string pushBack "<br/>";
 	{
-		_string = _string + "<img width='110' image='" + _x + "'/>"
+		_string pushBack ("<img width='110' image='" + _x + "'/>");
 	} forEach _uniforms;
-	_string = _string + "<br/>";
+	_string pushBack "<br/>";
 
-	_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons:</font><br/>";
+	_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons:</font><br/>";
 	{
-		_string = _string + "<img width='220' image='" + _x + "'/><br/>"
+		_string pushBack ("<img width='220' image='" + _x + "'/><br/>");
 	} forEach _weaponPics;
+
+	_stringJoined = _string joinString "";
 
 	switch (_side) do {
 		case west:
 		{
-			player createDiaryRecord ["blufor", ["Loadout",_string], taskNull, "", True];
+			player createDiaryRecord ["blufor", ["Loadout",_stringJoined], taskNull, "", True];
 		};
 		case east:
 		{
-			player createDiaryRecord ["opfor", ["Loadout",_string], taskNull, "", True];
+			player createDiaryRecord ["opfor", ["Loadout",_stringJoined], taskNull, "", True];
 		};
 		case independent:
 		{
-			player createDiaryRecord ["indfor", ["Loadout",_string], taskNull, "", True];
+			player createDiaryRecord ["indfor", ["Loadout",_stringJoined], taskNull, "", True];
 		};
 		default { };
 	};
@@ -323,17 +272,17 @@ _assetString = {
 	_desc = getText(_thisCfg >> "descriptionShort");
 	_pic = [_thisCfg >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Box_FIA_Ammo_F.jpg"] call CBA_fnc_getConfigEntry;
 
-	_string = "<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>" + _dispName + "</font><br/><img width='330' image='" + _pic + "'/><br/><br/>";
+	_string = [(format["<font size='20' shadow='1' color='#FF8E38' face='PuristaBold'>%1</font><br/><img width='330' image='%2'/><br/><br/>", _dispName, _pic])];
 
 	_totalSeats = [_objType, true] call BIS_fnc_crewCount; // Number of total seats: crew + non-FFV cargo/passengers + FFV cargo/passengers
 	_crewSeats = [_objType, false] call BIS_fnc_crewCount; // Number of crew seats only
 	_canFloat = (_thisCfg >> "canFloat") call BIS_fnc_getCfgDataBool;
 	if (_totalSeats isNotEqualTo 0) then
 	{
-		_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
-		_string = _string + "	Capacity: " + str(_totalSeats) + "<br/>";
-		_string = _string + "	Crew: " + str(_crewSeats) + "<br/>";
-		_string = _string + "	Can it float: " + str(_canFloat) + "<br/><br/>";
+		_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Stats</font><br/>";
+		_string pushBack ("	Capacity: " + str(_totalSeats) + "<br/>");
+		_string pushBack ("	Crew: " + str(_crewSeats) + "<br/>");
+		_string pushBack ("	Can it float: " + str(_canFloat) + "<br/><br/>");
 	};
 
 	_allTurrets = allTurrets _objectToBaseOffOf;
@@ -350,7 +299,7 @@ _assetString = {
 			_turretNameAndPaths pushBack [_x, _name];
 		} forEach _allTurrets;
 
-		_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
+		_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Weapons</font>";
 		_cfgMagazineWells = configFile >> "CfgMagazineWells";
 
 		{
@@ -375,10 +324,10 @@ _assetString = {
 
 			if (count _currentTurretWeaponTurrets isNotEqualTo 0) then
 			{
-				_string = _string + "<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>";
+				_string pushBack ("<br/><font size='14' shadow='1' color='#E0701B' face='PuristaBold'>" + (_x select 1) + "</font><br/>");
 				{
 					_weaponConfig = [_x] call CBA_fnc_getItemConfig;
-					_string = _string + "	" + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>";
+					_string pushBack ("	" + ([_weaponConfig] call BIS_fnc_displayName) + "<br/>");
 					_possibleMagazines = [_weaponConfig] call CBA_fnc_compatibleMagazines;
 
 					{
@@ -386,11 +335,11 @@ _assetString = {
 						_amount = _x select 1;
 						if (_magName in _possibleMagazines) then{
 							_magConfig = [_magName] call CBA_fnc_getItemConfig;
-							_string = _string + "		" + ([_magConfig] call BIS_fnc_displayName) + " ( " + str(_amount) + "x " + str(_objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]) + " Rounds )" + "<br/>";
+							_string pushBack (format["		%1 (%2x %3 Rounds )<br/>", [_magConfig] call BIS_fnc_displayName, _amount, _objectToBaseOffOf magazineTurretAmmo [_magName, _turretPath]]);
 						};
 					} forEach _magNamesAndAmounts;
 
-					_string = _string + "<br/>";
+					_string pushBack "<br/>";
 				} forEach _currentTurretWeaponTurrets;
 			};
 		} forEach _turretNameAndPaths;
@@ -427,7 +376,7 @@ _assetString = {
 
 		_shortenedCargo sort true;
 
-		_string = _string + "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Inventory</font><br/>";
+		_string pushBack "<font size='18' shadow='1' color='#FF8E38' face='PuristaBold'>Inventory</font><br/>";
 		_justBreaked = false;
 		{
 			_justBreaked = false;
@@ -449,23 +398,23 @@ _assetString = {
 				};
 			};
 
-			_string = _string + "<font size='32'>[</font>" + str(_x select 0) + "x<img src='" + _tempPic + "' width='32' height='32' title='" + _displayName + "' /><font size='32'>]</font>";
+			_string pushBack (format["<font size='32'>[</font>%1x<img src='%2' width='32' height='32' title='%3' /><font size='32'>]</font>", _x select 0, _tempPic, _displayName]);
 
 			if (((_forEachIndex + 1) % 5) isEqualTo 0) then
 			{
-				_string = _string + "<br/>";
+				_string pushBack "<br/>";
 				_justBreaked = true;
 			};
 		} forEach _shortenedCargo;
 		if (_justBreaked) then
 		{
-			_string = _string + "<br/>";
+			_string pushBack "<br/>";
 		} else {
-			_string = _string + "<br/><br/>";
+			_string pushBack "<br/><br/>";
 		};
 	};
 
-	_string;
+	_string joinString "";
 };
 
 _assetCreation = {
@@ -516,81 +465,6 @@ _assetCreation = {
 	} forEach _compactedObjects;
 };
 
-_selectorCreation = {
-	params["_selectors", "_side", "_assetString"];
-	_selectorsToUse = _selectors select {(_x select 0) isEqualTo _side};
-	{
-		_x params ["_side", "_selectorName", "_optionAssetPucks"];
-		_optionAssetPucksAndStrings = [];
-		//[[[],""],[]]
-
-		{
-			_tempString = "";
-			{
-				_string = [_x] call _assetString;
-				_tempString = _tempString + _string;
-			} forEach _x;
-			_optionAssetPucksAndStrings pushBack [_x, _tempString];
-		} forEach _optionAssetPucks;
-
-		_diaryEntry = "";
-		_subject = "";
-
-		switch (_side) do {
-			case west:
-			{
-				_diaryEntry = player createDiaryRecord ["blufor", ["Selector: " + _selectorName,""], taskNull, "", True];
-				_subject = "blufor";
-			};
-			case east:
-			{
-				_diaryEntry = player createDiaryRecord ["opfor", ["Selector: " + _selectorName,""], taskNull, "", True];
-				_subject = "opfor";
-			};
-			case independent:
-			{
-				_diaryEntry = player createDiaryRecord ["indfor", ["Selector: " + _selectorName,""], taskNull, "", True];
-				_subject = "indfor";
-			};
-			default { };
-		};
-
-		if (playerSide isEqualTo _side or playerSide isEqualTo sideLogic) then
-		{
-			[{
-				(_this select 0) params ["_diaryEntry", "_subject", "_optionAssetPucksAndStrings", "_selectorName"];
-				_optionNumber = 0;
-				_optionText = "";
-				{
-					if (simulationEnabled (_x select 0 select 0)) then
-					{
-						_optionNumber = _forEachIndex + 1;
-						_optionText = (_x select 1);
-					};
-				} forEach _optionAssetPucksAndStrings;
-
-				_finalString = "<font size='25' shadow='1' color='#FFFFFF' face='PuristaBold'>Selection: Option " + str(_optionNumber) + "</font><br/>" + _optionText + "<font size='25' shadow='1' color='#FFFFFF' face='PuristaBold'>Other Options:</font><br/>";
-
-				{
-					if ((_forEachIndex + 1) isEqualTo _optionNumber) then
-					{
-						continue;
-					};
-					_finalString = _finalString + "<font size='22' shadow='1' color='#FFFFFF' face='PuristaBold'>Option " + str(_forEachIndex + 1) + ":</font><br/>" + (_x select 1);
-				} forEach _optionAssetPucksAndStrings;
-				player setDiaryRecordText [[_subject,_diaryEntry],["Selector: " + _selectorName,_finalString,""]];
-			},1,[_diaryEntry, _subject, _optionAssetPucksAndStrings, _selectorName]] call CBA_fnc_addPerFrameHandler;
-		} else {
-			//create entry and leave it
-			_finalString = "<font size='25' shadow='1' color='#FFFFFF' face='PuristaBold'>Unknown Selection</font><br/>";
-			{
-				_finalString = _finalString + "<font size='22' shadow='1' color='#FFFFFF' face='PuristaBold'>Option " + str(_forEachIndex + 1) + ":</font><br/>" + (_x select 1);
-			} forEach _optionAssetPucksAndStrings;
-			player setDiaryRecordText [[_subject,_diaryEntry],["Selector: " + _selectorName,_finalString,""]];
-		};
-	} forEach _selectorsToUse;
-};
-
 if (playableSlotsNumber blufor > 0) then
 {
 	_objectsToAdd = -1;
@@ -605,16 +479,14 @@ if (playableSlotsNumber blufor > 0) then
 	{
 		player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
 		[west, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
-		[_selectorsToAddToDiary, west, _assetString] call _selectorCreation;
 		[{blufor countSide (call BIS_fnc_listPlayers) > ((playersNumber blufor) / 2)},{
 			[west, (_this select 1)] call (_this select 0);
 		}, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
 	} else {
 		[{blufor countSide (call BIS_fnc_listPlayers) > ((playersNumber blufor) / 2)},{
 			player createDiarySubject ["blufor", "Blufor", "\A3\Data_F\Flags\flag_blue_CO.paa"];
-			[(_this select 2), west, (_this select 3)] call (_this select 4);
 			[west, (_this select 1)] call (_this select 0);
-		}, [_loadoutCreation, _kitInfoModules, _selectorsToAddToDiary, _assetString, _selectorCreation]] call CBA_fnc_waitUntilAndExecute
+		}, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
 	};
 };
 
@@ -632,16 +504,14 @@ if (playableSlotsNumber opfor > 0) then
 	{
 		player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
 		[east, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
-		[_selectorsToAddToDiary, east, _assetString] call _selectorCreation;
 		[{east countSide (call BIS_fnc_listPlayers) > ((playersNumber opfor) / 2)},{
 			[east, (_this select 1)] call (_this select 0);
 		}, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
 	} else {
 		[{east countSide (call BIS_fnc_listPlayers) > ((playersNumber opfor) / 2)},{
 			player createDiarySubject ["opfor", "Opfor", "\A3\Data_F\Flags\flag_red_CO.paa"];
-			[(_this select 2), east, (_this select 3)] call (_this select 4);
 			[east, (_this select 1)] call (_this select 0);
-		}, [_loadoutCreation, _kitInfoModules, _selectorsToAddToDiary, _assetString, _selectorCreation]] call CBA_fnc_waitUntilAndExecute
+		}, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
 	};
 };
 
@@ -659,16 +529,14 @@ if (playableSlotsNumber independent > 0) then
 	{
 		player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
 		[independent, _objectsToAddToDiary, _objectsToAdd, _assetString] call _assetCreation;
-		[_selectorsToAddToDiary, independent, _assetString] call _selectorCreation;
 		[{independent countSide (call BIS_fnc_listPlayers) > ((playersNumber independent) / 2)},{
 			[independent, (_this select 1)] call (_this select 0);
 		}, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
 	} else {
 		[{independent countSide (call BIS_fnc_listPlayers) > ((playersNumber independent) / 2)},{
 			player createDiarySubject ["indfor", "Independent", "\A3\Data_F\Flags\flag_green_CO.paa"];
-			[(_this select 2), independent, (_this select 3)] call (_this select 4);
 			[independent, (_this select 1)] call (_this select 0);
-		}, [_loadoutCreation, _kitInfoModules, _selectorsToAddToDiary, _assetString, _selectorCreation]] call CBA_fnc_waitUntilAndExecute
+		}, [_loadoutCreation, _kitInfoModules]] call CBA_fnc_waitUntilAndExecute
 	};
 };
 
@@ -680,7 +548,7 @@ _notes = _initModule getVariable ["fnf_breifingNotes", ""];
 _viewDistance = _initModule getVariable ["fnf_viewDistance", 800];
 _fortifyPoints = _initModule getVariable ["fnf_fortifyPoints", 0];
 _fortifyColour = _initModule getVariable ["fnf_fortifyColour", "Green"];
-_timeLimit = _initModule getVariable ["fnf_timeLimit", 120];
+_timeLimit = _initModule getVariable ["fnf_gameTime", 65];
 
 if (_rules isNotEqualTo "") then
 {

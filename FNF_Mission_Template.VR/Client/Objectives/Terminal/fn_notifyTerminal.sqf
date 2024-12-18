@@ -14,45 +14,114 @@
 		None
 */
 
-params["_objectiveObject", "_hackingTime", "_side", "_resetTimer"];
+params["_targetObject", "_hackingTime", "_side", "_resetTimer"];
 
-_objective = objNull;
+_objectiveIndex = -1;
 
 //find objective
 {
-	if ((_x select 0) isEqualTo "TERMINAL") then
+	if ((_x select 5 select 0) isEqualTo _targetObject) then
 	{
-		if ((_x select 2) isEqualTo _objectiveObject) then
-		{
-			_objective = _x;
-		}
+		_objectiveIndex = _forEachIndex;
 	}
 } forEach fnf_objectives;
 
 //if obj not found not for us, pass on
-if (_objective isEqualTo objNull) exitWith {};
+if (_objectiveIndex isEqualTo -1) exitWith {};
 
-_objNum = -1;
-
-//if player is a spectator slot grab _objnum from objective
-if (typeOf player isEqualTo "ace_spectator_virtual") then
+//notify player
+if (_resetTimer) then
 {
-	_objNum = _objective select 4;
+	[format["<t size='1.5' align='center'>Objective %1 Hack Cancelled</t><br/><br/><t align='center'>Terminal %1 hack has been cancelled</t>", (_objectiveIndex + 1)], "info"] call FNF_ClientSide_fnc_notificationSystem;
 } else {
-	//otherwise grab from task description (this can technically be done for both now but will need testing)
-	//TODO: see if this can be reduced to a single statement now spectators have task infrastructure
-	_desc = taskDescription (_objective select 3);
-	_splitString = (_desc select 1) splitString " ";
-	_objNumWithColon = _splitString select 0;
-	_objNum = (_objNumWithColon splitString "") select 0;
+	_sideText = [_side] call BIS_fnc_sideName;
+	[format["<t size='1.5' align='center'>Objective %1 Hack Started</t><br/><br/><t align='center'>Terminal %1 hack has been started by %2, the hack will take: %3 Seconds</t>", (_objectiveIndex + 1), _sideText, _hackingTime], "info"] call FNF_ClientSide_fnc_notificationSystem;
 };
 
-_sideText = [_side] call BIS_fnc_sideName;
+//if terminal is a data terminal, set its colours
+_objectType = typeOf _targetObject;
+if (_objectType isEqualTo "Land_DataTerminal_01_F") then
+{
+	switch (_side) do {
+		case west:
+		{
+			[_targetObject, "blue", "blue", "blue"] call BIS_fnc_dataTerminalColor;
+		};
+		case east:
+		{
+			[_targetObject, "red", "red", "red"] call BIS_fnc_dataTerminalColor;
+		};
+		case independent:
+		{
+			[_targetObject, "green", "green", "green"] call BIS_fnc_dataTerminalColor;
+		};
+		default {};
+	};
+};
 
 if (_resetTimer) then
 {
-	["<t size='1.5' align='center'>Objective " + _objNum + " Hack Cancelled</t><br/><br/><t align='center'>Terminal " + _objNum + " hack has been cancelled</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
+	//animate Terminal closing
+	switch (_objectType) do {
+		case "Land_DataTerminal_01_F":
+		{
+			[_targetObject,0] call BIS_fnc_DataTerminalAnimate;
+		};
+		case "RuggedTerminal_01_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			[_targetObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		case "RuggedTerminal_01_communications_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			[_targetObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		case "RuggedTerminal_02_communications_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			[_targetObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		case "RuggedTerminal_01_communications_hub_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			[_targetObject, ['Terminal_source','Terminal_source_sound','Terminal_source_sound_case_01','Terminal_source_sound_case_02'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		default {};
+	};
 } else {
-	_timeText = [_hackingTime, "MM:SS"] call BIS_fnc_secondsToString;
-	["<t size='1.5' align='center'>Objective " + _objNum + " Hack Started</t><br/><br/><t align='center'>Terminal " + _objNum + " hack has been started by " + _sideText + ", the hack will take: " + _timeText + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
+	//animate terminal hacking
+	_hackingMultiplyer = 10 / _hackingTime;
+
+	switch (_objectType) do {
+		case "Land_DataTerminal_01_F":
+		{
+			[_targetObject,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+		};
+		case "RuggedTerminal_01_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_targetObject, ['Terminal_source','Terminal_source_sound'], 40, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		case "RuggedTerminal_01_communications_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_targetObject, ['Terminal_source','Terminal_source_sound'], 40, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		case "RuggedTerminal_02_communications_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_targetObject, ['Terminal_source','Terminal_source_sound'], 100, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		case "RuggedTerminal_01_communications_hub_F":
+		{
+			_targetObject animateSource ["Progress_source", 0, true];
+			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_targetObject, ['Terminal_source','Terminal_source_sound','Terminal_source_sound_case_01','Terminal_source_sound_case_02'], 40, 1] call bis_fnc_LinkTerminal_Animations;
+		};
+		default {};
+	};
 };

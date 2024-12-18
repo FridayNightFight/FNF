@@ -15,15 +15,22 @@
 params["_object", "_zonePrefix"];
 _result = false;
 
+_data = fnf_zoneList get _zonePrefix;
+_center = _data select 3;
+_closeDistance = _data select 4;
+_farDistance = _data select 5;
+_distance = (_center distance2D _object);
+
+if (_distance < _closeDistance) then
 {
-	if (_x select 0 isEqualTo _zonePrefix) then
-	{
-		if ((getPos _object) inPolygon (_x select 1)) then
+	_result = true;
+} else {
+	if (_distance <= _farDistance) then {
+		if ((getPos _object) inPolygon (_data select 0)) then
 		{
 			_result = true;
-			break;
 		};
 	};
-} forEach fnf_zoneList;
+};
 
 _result;
