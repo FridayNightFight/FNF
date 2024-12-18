@@ -236,6 +236,11 @@ class CfgFunctions
 			class addRearmActions {};
 			class rearmVic {};
 		}
+		class mobileSpawnPoints
+		{
+			file = "Client\MobileSpawnPoints";
+			class initMobileSpawnPoints {};
+		}
 	};
 	class FNF_ServerSide
 	{
