@@ -128,7 +128,7 @@ _buttons = [];
 			};
 		};
 
-		case "fnf_module_sectorHoldeObj":
+		case "fnf_module_sectorHoldObj":
 		{
 			//sector is the standard, basically just check the obj module is not the secondary
 			_params params ["_zonePrefix", "_centerObject", "_markerArray", "_statusSlotID", "_activeSides"];
