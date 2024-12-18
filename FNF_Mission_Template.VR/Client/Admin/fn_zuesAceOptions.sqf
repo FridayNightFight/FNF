@@ -110,3 +110,65 @@ if (typeOf player isEqualTo "ace_spectator_virtual") then
 		};
 	}, 1] call CBA_fnc_addPerFrameHandler;
 };
+
+
+fnf_localSimIcons = true;
+fnf_simIconList = [];
+
+addMissionEventHandler ["Draw3D", {
+	if (fnf_localSimIcons) then
+	{
+		{
+			if (curatorCamera distance (_x) < 500) then
+			{
+				_colour = [1,0.5,0.5,1];
+				_text = "Sim Disabled";
+				if (simulationEnabled (_x)) then
+				{
+					_colour = [0.5,1,0.5,1];
+					_text = "Sim Enabled";
+				};
+				drawIcon3D ["", _colour, getPos (_thisArgs select 0), 0, 0, 0, _text, 2, 0.04, "PuristaMedium", "center"];
+			};
+		} forEach fnf_simIconList;
+	};
+}];
+
+{
+	_x addEventHandler ["CuratorObjectSelectionChanged",
+	{
+		params ["_curator", "_entity"];
+		_objects = curatorEditableObjects _curator;
+		fnf_simIconList = _objects;
+	}];
+} forEach allCurators;
+
+_actionToggleSim = [
+	"Zeus_enableSim",
+	"Toggle Sim",
+	"\A3\ui_f\data\igui\cfg\simpleTasks\types\use_ca.paa",
+	{
+		curatorSelected params ["_objects","_groups","_waypoints","_markers"];
+		{
+			if (simulationEnabled _x) then
+			{
+				_crew = crew _x;
+				_crew pushBackUnique _x;
+				{
+					[_x, false] remoteExec ["enableSimulationGlobal", 2, false];
+				} forEach _crew;
+			} else {
+				_crew = crew _x;
+				_crew pushBackUnique _x;
+				{
+					[_x, true] remoteExec ["enableSimulationGlobal", 2, false];
+				} forEach _crew;
+			};
+		} forEach _objects;
+	},
+	{
+		curatorSelected params ["_objects","_groups","_waypoints","_markers"];
+		count _objects > 0;
+	}
+] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions"], _actionToggleSim] call ace_interact_menu_fnc_addActionToZeus;

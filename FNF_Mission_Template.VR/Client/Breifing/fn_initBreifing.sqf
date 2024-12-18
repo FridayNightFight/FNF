@@ -55,6 +55,35 @@ _objectsToAddToDiary = [];
 		};
 	} forEach _syncedObjects;
 
+	{
+		_actionEnableSim = [
+			"fnf_enableSim",
+			"Enable Simulation",
+			"",
+			{
+				params ["_truck", "_unit"];
+				[_truck, true] remoteExec ["enableSimulationGlobal", 2, false];
+				[{
+					params ["_truck", "_unit"];
+					if ((count (crew _truck)) isEqualTo 0) then
+					{
+						[_truck, false] remoteExec ["enableSimulationGlobal", 2, false];
+					};
+				}, [_truck, _unit], 60] call CBA_fnc_waitAndExecute;
+			},
+			{
+				params ["_truck", "_unit"];
+				(alive _unit)
+				&& {alive _truck}
+				&& {(_truck distance _unit) < 9}
+				&& {not simulationEnabled _truck}
+				&& {[_unit, _truck, ["IsNotInside"]] call ace_common_fnc_canInteractWith;}; // manually added actions need this
+			}
+		] call ace_interact_menu_fnc_createAction;
+
+		[_x, 0, ["ACE_MainActions"], _actionEnableSim] call ace_interact_menu_fnc_addActionToObject;
+	} forEach _objectsToDisplay;
+
 	//TODO: comment rest of this / redo it as some things not working
 	_alreadyAdding = -1;
 	{
