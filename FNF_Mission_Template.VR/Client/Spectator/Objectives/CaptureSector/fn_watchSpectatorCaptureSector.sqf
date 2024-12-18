@@ -21,9 +21,11 @@ _serverState = _module getVariable ["fnf_objServerState", 3];
 
 _params params ["_zonePrefix", "_centerObject", "_marker", "_statusSlotID"];
 _isSecondaryObj = [_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective;
+
+_sectorPercentage = _module getVariable ["fnf_sector_percentage", 0];
+
 //get server controlled values
 if (not _isSecondaryObj) then {
-	_sectorPercentage = _module getVariable ["fnf_sector_percentage", 0];
 	_sectorOwner = _module getVariable ["fnf_sector_owner", sideUnknown];
 
 	_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
