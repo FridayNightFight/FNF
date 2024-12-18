@@ -11,7 +11,7 @@
 		None
 */
 
-disableSerialization;
+/*disableSerialization;
 
 params ["_display"];
 
@@ -27,4 +27,4 @@ _button ctrlSetBackgroundColor [0, 0.5, 0, 0.9];
 _button ctrlAddEventHandler ["ButtonClick", {
 	[] spawn FNF_ClientSide_fnc_missionReviewScreen;
 }];
-_button ctrlCommit 0;
+_button ctrlCommit 0;*/

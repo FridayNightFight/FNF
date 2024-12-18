@@ -11,7 +11,7 @@
 		None
 */
 
-[{!isNull findDisplay 60000}, {
+/*[{!isNull findDisplay 60000}, {
 	disableSerialization;
 	_display = findDisplay 60000;
 	if (isNull _display) exitWith {};
@@ -28,4 +28,4 @@
 		[] spawn FNF_ClientSide_fnc_missionReviewScreen;
 	}];
 	_button ctrlCommit 0;
-}] call CBA_fnc_waitUntilAndExecute;
+}] call CBA_fnc_waitUntilAndExecute;*/
