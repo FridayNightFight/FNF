@@ -36,18 +36,10 @@ switch (_objState) do {
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ServerSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
-		_markerPrefix = "(Inactive) Sector OBJ";
-
-		if (_objStateToUse isEqualTo 3) then
-		{
-			_markerPrefix = "Sector OBJ";
-		};
-
 		//get offending sides and if they are attacking
 		_offendingSides = [];
 		_modules = call FNF_ClientSide_fnc_findFNFModules;
 		_objModules = [_modules, "sectorCaptureObj"] call FNF_ClientSide_fnc_findSpecificModules;
-		_targetObjectSyncedObjects = [];
 
 		_zonePrefix = _module getVariable ["fnf_prefix", "FAILED"];
 
@@ -98,36 +90,23 @@ switch (_objState) do {
 			_resultAddZone = [_zonePrefix, "", false, false] call FNF_ClientSide_fnc_addZone;
 		};
 
-		_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
-
-		_marker = createMarkerLocal [format["FNF_SERVER%1:OBJ", _objectiveIndex], _sectorCenter];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerTypeLocal "mil_objective";
-		_marker setMarkerTextLocal _markerPrefix;
-
-		if (not isDedicated) then {_marker setMarkerAlphaLocal 0};
-
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
 		_codeOnCompletion = compile _codeOnCompletion;
 
-		fnf_serverObjectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _marker, _offendingSides]]];
+		fnf_serverObjectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _offendingSides]]];
 	};
 	//Obj has been created but is not known
 	case 1: {
-		_params params ["_zonePrefix", "_marker", "_offendingSides"];
+		_params params ["_zonePrefix", "_offendingSides"];
 
-		_marker setMarkerTextLocal "(Active) Sector OBJ";
-
-		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _marker, _offendingSides]]];
+		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _offendingSides]]];
 	};
 	//Obj has been created and is known
 	case 2: {
-		_params params ["_zonePrefix", "_marker", "_offendingSides"];
+		_params params ["_zonePrefix", "_offendingSides"];
 
-		_marker setMarkerTextLocal "(Active) Sector OBJ";
-
-		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _marker, _offendingSides]]];
+		fnf_serverObjectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _offendingSides]]];
 	};
 	default { };
 };

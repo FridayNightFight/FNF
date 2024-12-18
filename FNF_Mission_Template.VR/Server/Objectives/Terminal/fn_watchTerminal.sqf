@@ -19,36 +19,10 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 
 _objType = _module getVariable ["fnf_objectiveType", "des"];
 
-_params params ["_targetObject", "_marker"];
+_params params ["_targetObject"];
 
 _timeOfCompletion = _targetObject getVariable ['fnf_currentlyHackingCompletionTime', -1];
 _timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
-
-if (_timeOfCompletion isEqualTo -1 or _timeServerStarted isEqualTo -1) then
-{
-	_marker setMarkerTextLocal "Terminal [Idle]";
-} else {
-	_resultTime = objNull;
-	if (isServer and hasInterface) then
-	{
-		_resultTime = _timeOfCompletion - time;
-	} else {
-		_resultTime = _timeOfCompletion - (serverTime - _timeServerStarted);
-	};
-	_timeText = [_resultTime, "MM:SS"] call BIS_fnc_secondsToString;
-
-	_marker setMarkerTextLocal format["Terminal [%1]", _timeText];
-
-	_previouslyHackingSide = _targetObject getVariable ['fnf_previouslyHackingSide', sideUnknown];
-
-	if (markerColor _marker isEqualTo "ColorBlack") then
-	{
-		_markerColour = [_previouslyHackingSide, true] call BIS_fnc_sideColor;
-		_marker setMarkerColorLocal _markerColour;
-	} else {
-		_marker setMarkerColorLocal "ColorBlack";
-	};
-};
 
 _result = objNull;
 if (isServer and hasInterface) then

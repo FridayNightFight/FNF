@@ -47,28 +47,11 @@ switch (_objState) do {
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ServerSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
-		_markerPrefix = "(Inactive) Terminal OBJ";
-
-		switch (_objStateToUse) do {
-			case 3: {
-				_markerPrefix = "Terminal OBJ";
-			};
-			default { };
-		};
-
-		_marker = createMarkerLocal [format["FNF_SERVER%1:lOBJ", _objectiveIndex], _targetObject];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerTypeLocal "mil_objective";
-		_marker setMarkerTextLocal _markerPrefix;
-		//fnf_updateMarkerList pushBack _objectiveIndex;
-
-		if (not isDedicated) then {_marker setMarkerAlphaLocal 0};
-
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
 		_codeOnCompletion = compile _codeOnCompletion;
 
-		fnf_serverObjectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _marker]]];
+		fnf_serverObjectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject]]];
 	};
 	//Obj has been created but is not known
 	case 1: {

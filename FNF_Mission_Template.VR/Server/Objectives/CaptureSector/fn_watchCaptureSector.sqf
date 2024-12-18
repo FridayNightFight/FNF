@@ -17,48 +17,11 @@ _objEntry = fnf_serverObjectives select _objectiveIndex;
 
 _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
 
-_objType = _module getVariable ["fnf_objectiveType", "des"];
+_objType = _module getVariable ["fnf_objectiveType", "cap"];
 
-_params params ["_zonePrefix", "_marker", "_offendingSides"];
+_params params ["_zonePrefix", "_offendingSides"];
 
-_westCount = 0;
-_eastCount = 0;
-_indiCount = 0;
-
-//get which players are in the zone and what side they are on
-{
-	if (not alive _x) then
-	{
-		continue;
-	};
-
-	if (isObjectHidden  _x) then
-	{
-		continue;
-	};
-
-	if (_x getVariable ["ACE_isUnconscious", false]) then
-	{
-		continue;
-	};
-
-	if ([_x, _zonePrefix] call FNF_ClientSide_fnc_isObjectInZone) then
-	{
-		_testSide = side _x;
-		if (_testSide isEqualTo west) then
-		{
-			_westCount = _westCount + 1;
-		};
-		if (_testSide isEqualTo independent) then
-		{
-			_indiCount = _indiCount + 1;
-		};
-		if (_testSide isEqualTo east) then
-		{
-			_eastCount = _eastCount + 1;
-		};
-	};
-} forEach allPlayers;
+_validSides = [];
 
 _westAttack = false;
 _eastAttack = false;
@@ -71,6 +34,7 @@ _indiDefend = false;
 //figure out what sides are supposed to be attacking and defending the zone
 {
 	_x params ["_side", "_attacking"];
+	_validSides pushBackUnique _side;
 
 	if (_attacking) then
 	{
@@ -103,19 +67,49 @@ _indiDefend = false;
 
 } foreach _offendingSides;
 
-//zero out sides who do not have a stake in the objective
-if (not _westAttack and not _westDefend) then
+_westCount = 0;
+_eastCount = 0;
+_indiCount = 0;
+
+//get which players are in the zone and what side they are on
 {
-	_westCount = 0;
-};
-if (not _eastAttack and not _eastDefend) then
-{
-	_eastCount = 0;
-};
-if (not _indiAttack and not _indiDefend) then
-{
-	_indiCount = 0;
-};
+	if (not alive _x) then
+	{
+		continue;
+	};
+
+	if (isObjectHidden  _x) then
+	{
+		continue;
+	};
+
+	if (_x getVariable ["ACE_isUnconscious", false]) then
+	{
+		continue;
+	};
+
+	if (not ((side _x) in _validSides)) then
+	{
+		continue;
+	};
+
+	if ([_x, _zonePrefix] call FNF_ClientSide_fnc_isObjectInZone) then
+	{
+		_testSide = side _x;
+		if (_testSide isEqualTo west) then
+		{
+			_westCount = _westCount + 1;
+		};
+		if (_testSide isEqualTo independent) then
+		{
+			_indiCount = _indiCount + 1;
+		};
+		if (_testSide isEqualTo east) then
+		{
+			_eastCount = _eastCount + 1;
+		};
+	};
+} forEach allPlayers;
 
 _currentOwner = _module getVariable ["fnf_sector_owner", sideUnknown];
 
@@ -177,18 +171,18 @@ if (_newOwner isEqualTo independent) then
 //if theyy are attacking and there is still time left before full capture is acheived add a second
 if (_attacking) then
 {
-	if (_newOwner isEqualTo _currentOwner and _currentTime isNotEqualTo _timeToCapture) then
+	if (_newOwner isEqualTo _currentOwner and _currentTime < _timeToCapture) then
 	{
 		_newTime = _currentTime + 1;
 	};
-	if ([_newOwner, _currentOwner] call BIS_fnc_sideIsFriendly and _currentTime isNotEqualTo _timeToCapture) then
+	if ([_newOwner, _currentOwner] call BIS_fnc_sideIsFriendly and _currentTime < _timeToCapture) then
 	{
 		_newTime = _currentTime + 1;
 	};
 };
 
 //if new owner is not the same as previous owner and the time isnt 0 detract time and keep owner
-if (_newOwner isNotEqualTo sideUnknown and _newOwner isNotEqualTo _currentOwner and _currentTime isNotEqualTo 0) then
+if (_newOwner isNotEqualTo sideUnknown and _newOwner isNotEqualTo _currentOwner and _currentTime > 0) then
 {
 	_newTime = _currentTime - 1;
 	_newOwner = _currentOwner;
@@ -207,7 +201,6 @@ if (_newOwner isNotEqualTo _currentOwner) then
 if (_newTime >= _timeToCapture) then
 {
 	_module setVariable ["fnf_sector_percentage", 1, true];
-	_module setVariable ["fnf_objComplete", true, true];
 	_newObjState = 5;
 	if (_objType isEqualTo "cap") then
 	{

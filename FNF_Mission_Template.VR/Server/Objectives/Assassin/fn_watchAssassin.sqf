@@ -19,7 +19,7 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 
 _serverState = _module getVariable ["fnf_objServerState", 3];
 
-_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+_params params ["_targetObject"];
 
 if (_targetObject isEqualTo objNull) then
 {
@@ -44,16 +44,14 @@ if (_targetObject isEqualTo objNull) then
 	{
 		_targetObject = _newPlayerObject;
 
-		fnf_serverObjectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+		fnf_serverObjectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject]]];
 	};
 };
 
 //if server does not say the obj is done, don't continue
 if (_serverState isEqualTo 3) exitWith {};
 
-_marker setMarkerTextLocal "(Complete) Assassin OBJ";
-
-fnf_serverObjectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+fnf_serverObjectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject]]];
 
 call _codeOnCompletion;
 

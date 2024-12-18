@@ -19,11 +19,9 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 
 _objType = _module getVariable ["fnf_objectiveType", "des"];
 
-_params params ["_targetObject", "_marker"];
+_params params ["_targetObject"];
 
 if (alive _targetObject) exitWith {};
-
-_marker setMarkerTextLocal "(Complete) Destroy OBJ";
 
 _newObjState = 5;
 if (_objType isEqualTo "des") then
