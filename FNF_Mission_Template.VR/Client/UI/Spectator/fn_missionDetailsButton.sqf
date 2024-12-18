@@ -128,6 +128,19 @@ _buttons = [];
 			};
 		};
 
+		case "fnf_module_sectorHoldeObj":
+		{
+			//sector is the standard, basically just check the obj module is not the secondary
+			_params params ["_zonePrefix", "_centerObject", "_markerArray", "_statusSlotID", "_activeSides"];
+			if (typeOf player isEqualTo "ace_spectator_virtual") then
+			{
+				if ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
+				{
+					_showButton = false;
+				};
+			};
+		};
+
 		case "fnf_module_destroyObj":
 		{
 			//set code and variables for destroy OBJ

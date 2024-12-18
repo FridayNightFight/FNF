@@ -20,59 +20,62 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 _serverState = _module getVariable ["fnf_objServerState", 3];
 
 _params params ["_zonePrefix", "_centerObject", "_markerArray", "_statusSlotID", "_activeSides"];
-
-//get server controlled values
-_sectorPercentage = _module getVariable ["fnf_sector_percentage", 0];
-_sectorOwner = _module getVariable ["fnf_sector_owner", sideUnknown];
-_sectorEstablishValues = _module getVariable ["fnf_sector_establish_values", [0,0,0]];
-
-_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
-_colour = [_sectorOwner, false] call BIS_fnc_sideColor;
-
-_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
-
-_taskType = taskType _task;
-
-_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
-_shownPercent = _sectorPercentage;
-
-//if the sector is fully captured, show the percentage as 1
-if (_sectorPercentage > 1) then
-{
-	_shownPercent = 1;
-};
-
-//update the status slots
-_statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
-
-//update zone colour
-if (_sectorOwner isNotEqualTo sideUnknown) then
-{
-	_colour = [_sectorOwner, true] call BIS_fnc_sideColor;
-	[_zonePrefix, _colour] call FNF_ClientSide_fnc_setZoneColour;
-};
-
-//update marker values
-_markerArray params ["_markerBase", "_markerBlufor", "_markerOpfor", "_markerIndfor"];
-if (ace_spectator_isset) then
-{
-	_markerBase setMarkerTextLocal format["Sector %1", _objectiveIndex + 1];
-} else {
-	_markerBase setMarkerTextLocal "";
-};
-
-_markerHashMap = createHashMapFromArray [[west, _markerBlufor], [east, _markerOpfor], [independent, _markerIndfor]];
-_markerPrevHashMap = createHashMapFromArray [[west, _markerBase], [east, _markerBlufor], [independent, _markerOpfor]];
+_isSecondaryObj = [_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective;
 
 _maxValue = _module getVariable ['fnf_PointsForCompletion', 1000];
 
-{
-	_marker = _markerHashMap get _x;
-	_prevMarker = _markerPrevHashMap get _x;
-	_prevMarkerText = markerText _prevMarker;
-	_currentValue = _sectorEstablishValues select _forEachIndex;
-	_marker setMarkerTextLocal format["%1 [%2/%3]", _prevMarkerText, _currentValue, _maxValue];
-} forEach _activeSides;
+//get server controlled values
+if (not _isSecondaryObj) then {
+	_sectorPercentage = _module getVariable ["fnf_sector_percentage", 0];
+	_sectorOwner = _module getVariable ["fnf_sector_owner", sideUnknown];
+	_sectorEstablishValues = _module getVariable ["fnf_sector_establish_values", [0,0,0]];
+
+	_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+	_colour = [_sectorOwner, false] call BIS_fnc_sideColor;
+
+	_taskPos = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
+
+	_taskType = taskType _task;
+
+	_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
+	_shownPercent = _sectorPercentage;
+
+	//if the sector is fully captured, show the percentage as 1
+	if (_sectorPercentage > 1) then
+	{
+		_shownPercent = 1;
+	};
+
+	//update the status slots
+	_statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
+
+	//update zone colour
+	if (_sectorOwner isNotEqualTo sideUnknown) then
+	{
+		_colour = [_sectorOwner, true] call BIS_fnc_sideColor;
+		[_zonePrefix, _colour] call FNF_ClientSide_fnc_setZoneColour;
+	};
+
+	//update marker values
+	_markerArray params ["_markerBase", "_markerBlufor", "_markerOpfor", "_markerIndfor"];
+	if (ace_spectator_isset) then
+	{
+		_markerBase setMarkerTextLocal format["Sector %1", _objectiveIndex + 1];
+	} else {
+		_markerBase setMarkerTextLocal "";
+	};
+
+	_markerHashMap = createHashMapFromArray [[west, _markerBlufor], [east, _markerOpfor], [independent, _markerIndfor]];
+	_markerPrevHashMap = createHashMapFromArray [[west, _markerBase], [east, _markerBlufor], [independent, _markerOpfor]];
+
+	{
+		_marker = _markerHashMap get _x;
+		_prevMarker = _markerPrevHashMap get _x;
+		_prevMarkerText = markerText _prevMarker;
+		_currentValue = _sectorEstablishValues select _forEachIndex;
+		_marker setMarkerTextLocal format["%1 [%2/%3]", _prevMarkerText, _currentValue, _maxValue];
+	} forEach _activeSides;
+};
 
 if (_serverState isEqualTo 3) exitWith {};
 

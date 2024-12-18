@@ -54,6 +54,17 @@ _missionStatusSet = false;
 			[_newTaskIndex] call FNF_ClientSide_fnc_initSpectatorCaptureSector;
 		};
 
+		case "fnf_module_sectorHoldObj":
+		{
+			if (not _missionStatusSet) then
+			{
+				_missionStatusSet = true;
+				addMissionEventHandler ["Map", {call BIS_fnc_showMissionStatus}];
+				call BIS_fnc_showMissionStatus;
+			};
+			[_newTaskIndex] call FNF_ClientSide_fnc_initSpectatorHoldSector;
+		};
+
 		case "fnf_module_terminalObj":
 		{
 			[_newTaskIndex] call FNF_ClientSide_fnc_initSpectatorTerminal;

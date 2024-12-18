@@ -40,7 +40,9 @@ if (typeName _target isEqualTo "OBJECT") then
 	};
 } else {
 	_modules = call FNF_ClientSide_fnc_findFNFModules;
-	_objModules = [_modules, "sectorCaptureObj"] call FNF_ClientSide_fnc_findSpecificModules;
+	_captureObjModules = [_modules, "sectorCaptureObj"] call FNF_ClientSide_fnc_findSpecificModules;
+	_holdObjModules = [_modules, "sectorHoldObj"] call FNF_ClientSide_fnc_findSpecificModules;
+	_objModules = _captureObjModules + _holdObjModules;
 	_targetObjectSyncedObjects = [];
 
 	{

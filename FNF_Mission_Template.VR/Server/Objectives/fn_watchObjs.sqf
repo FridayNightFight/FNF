@@ -26,6 +26,10 @@
 		{
 			[_forEachIndex] call FNF_ServerSide_fnc_watchCaptureSector;
 		};
+		case "fnf_module_sectorHoldObj":
+		{
+			[_forEachIndex] call FNF_ServerSide_fnc_watchHoldSector;
+		};
 		case "fnf_module_terminalObj":
 		{
 			[_forEachIndex] call FNF_ServerSide_fnc_watchTerminal;

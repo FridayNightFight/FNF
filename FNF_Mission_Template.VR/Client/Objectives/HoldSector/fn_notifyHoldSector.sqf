@@ -18,7 +18,7 @@ _objectiveIndex = -1;
 
 //find objective
 {
-	if ((_x select 5 select 0) isEqualTo _targetObject) then
+	if ((_x select 1) isEqualTo _targetObject) then
 	{
 		_objectiveIndex = _forEachIndex;
 	}
@@ -29,7 +29,7 @@ if (_objectiveIndex isEqualTo -1) exitWith {};
 
 //notify player
 _sideText = [_side] call BIS_fnc_sideName;
-[format["<t size='1.5' align='center'>Objective %1 Sector Secured</t><br/><br/><t align='center'>Sector %1 has been captured by %2</t>", (_objectiveIndex + 1), _sideText], "info"] call FNF_ClientSide_fnc_notificationSystem;
+[format["<t size='1.5' align='center'>Objective %1 Sector Secured</t><br/><br/><t align='center'>Sector %1 has been captured by %2, they are now establishing themselves in the sector</t>", (_objectiveIndex + 1), _sideText], "info"] call FNF_ClientSide_fnc_notificationSystem;
 
 //set zone colour to the currently owning side
 _zoneColour = [_side, true] call BIS_fnc_sideColor;

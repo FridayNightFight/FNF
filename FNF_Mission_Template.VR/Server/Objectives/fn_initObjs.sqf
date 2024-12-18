@@ -50,6 +50,11 @@ call FNF_ClientSide_fnc_initGPSUnitMarkers;
 			[_newTaskIndex] call FNF_ServerSide_fnc_initCaptureSector;
 		};
 
+		case "fnf_module_sectorHoldObj":
+		{
+			[_newTaskIndex] call FNF_ServerSide_fnc_initHoldSector;
+		};
+
 		case "fnf_module_terminalObj":
 		{
 			[_newTaskIndex] call FNF_ServerSide_fnc_initTerminal;

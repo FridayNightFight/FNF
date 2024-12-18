@@ -118,17 +118,48 @@ switch (_objState) do {
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
+		if (_objStateToUse isEqualTo 1) then {_objStateToUse = 2;};
+
 		//get zone prefix
 		_zonePrefix = _module getVariable ["fnf_prefix", "FAILED"];
+
+		//programatically check if objective is secondary OBJ module and first should be watched
+		_isSecondaryObj = [_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective;
 
 		//set many variables to be overwritten later
 		_sectorCenter = [0,0,0];
 		_statusSlotID = -1;
 		_task = taskNull;
-		_showMarker = false;
 
-		switch (_objStateToUse) do {
-			case 1: {
+		_futureTask = [_module, _objectiveIndex, _preRequisiteIndexs, _alliedTask] call _createTask;
+
+		if (not _isSecondaryObj) then
+		{
+			_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
+			if (not _result) then
+			{
+				_resultAddZone = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
+				if (not _resultAddZone) exitWith
+				{
+					if (fnf_debug) then
+					{
+						systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function";
+					};
+				};
+			};
+
+			_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
+
+			_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+
+			_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
+
+			_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+		} else {
+			_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
+
+			if (_sectorCenter isEqualTo [0,0,0]) then
+			{
 				//get all markers with _zonePrefix
 				_markerPosArray = [];
 
@@ -146,80 +177,11 @@ switch (_objState) do {
 				//remove the last marker that is created while checking
 				deleteMarkerLocal (_zonePrefix + (str _markerCounter));
 
-				//calculate center of future zone
 				_sectorCenter = [_markerPosArray] call FNF_ClientSide_fnc_calculateVisualCenter;
 			};
-			case 2: {
-				//create task
-				_futureTask = [_module, _objectiveIndex, _preRequisiteIndexs, _alliedTask] call _createTask;
-				[_futureTask, false] call FNF_ClientSide_fnc_addTaskToTaskControl;
-
-				//create Zone
-				_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
-				if (not _result) then
-				{
-					_resultAddZone = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
-					if (not _resultAddZone) exitWith
-					{
-						if (fnf_debug) then
-						{
-							systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function";
-						};
-					};
-				};
-
-				//get sector center and set task location
-				_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
-				_futureTask setSimpleTaskDestination _sectorCenter;
-
-				//setup right side graphic for a sector being captured
-				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
-
-				_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
-
-				_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
-
-				_task = _futureTask;
-
-				_showMarker = true;
-			};
-			case 3: {
-				//create task
-				_futureTask = [_module, _objectiveIndex, _preRequisiteIndexs, _alliedTask] call _createTask;
-				[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
-
-				//create Zone
-				_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
-				if (not _result) then
-				{
-					_resultAddZone = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
-					if (not _resultAddZone) exitWith
-					{
-						if (fnf_debug) then
-						{
-							systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function";
-						};
-					};
-				};
-
-				//get sector center and set task location
-				_sectorCenter = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
-				_futureTask setSimpleTaskDestination _sectorCenter;
-
-				//setup right side graphic for a sector being captured
-				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
-
-				_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
-
-				//colour is black as watch should grab it
-				_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
-
-				_task = _futureTask;
-
-				_showMarker = true;
-			};
-			default { };
 		};
+
+		_task = _futureTask;
 
 		//create center object used in spectator view
 		_centerObject = 'AreaMarker_01_F' createVehicleLocal _sectorCenter;
@@ -249,8 +211,8 @@ switch (_objState) do {
 		_markerBase = createMarkerLocal [format["FNF_LOCAL%1:OBJ_BASE", _objectiveIndex], _sectorCenter];
 		_markerBase setMarkerShapeLocal "ICON";
 		_markerBase setMarkerTypeLocal "mil_dot";
-		//_markerBase setMarkerTextLocal format["(Inactive) Sector %1", _objectiveIndex + 1];
-		if (not _showMarker) then
+		_markerBase setMarkerTextLocal format["(Inactive) Sector %1", _objectiveIndex + 1];
+		if (not _isSecondaryObj) then
 		{
 			_markerBase setMarkerAlphaLocal 1;
 			_markerBlufor setMarkerAlphaLocal 1;
@@ -318,54 +280,9 @@ switch (_objState) do {
 
 		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, [_markerBase, _markerBlufor, _markerOpfor, _markerIndfor], _statusSlotID, _sidesActiveSorted]]];
 	};
-	//Obj has been created but is not known
-	case 1: {
-		_params params ["_zonePrefix", "_centerObject", "_markerArray", "_statusSlotID", "_sidesActive"];
-
-		//create task
-		_futureTask = [_module, _objectiveIndex, [], _alliedTask] call _createTask;
-		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
-
-		//make sure establishing progress markers are shown
-		{
-			_x setMarkerAlphaLocal 0;
-		} forEach _markerArray;
-
-		//create Zone
-		_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
-		if (not _result) then
-		{
-			_resultAddZone = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
-			if (not _resultAddZone) exitWith
-			{
-				if (fnf_debug) then
-				{
-					systemChat "DANGER: Capture Sector objective zone failed to be initialised, objective will NOT function";
-				};
-			};
-		};
-
-		_futureTask setSimpleTaskDestination (getPos _centerObject);
-
-		//setup right side graphic for a sector being captured
-		_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
-
-		_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
-
-		//colour is black as watch should grab it
-		_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
-
-		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _markerArray, _statusSlotID, _sidesActive]]];
-	};
 	//Obj has been created and is known
 	case 2: {
-		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
 		_params params ["_zonePrefix", "_centerObject", "_markerArray", "_statusSlotID", "_sidesActive"];
-
-		//make sure establishing progress markers are shown
-		{
-			_x setMarkerAlphaLocal 0;
-		} forEach _markerArray;
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};

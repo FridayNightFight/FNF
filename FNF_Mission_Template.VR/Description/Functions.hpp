@@ -169,6 +169,12 @@ class CfgFunctions
 			class initSpectatorCaptureSector {};
 			class watchSpectatorCaptureSector {};
 		}
+		class spectatorObjHoldSector
+		{
+			file = "Client\Spectator\Objectives\HoldSector";
+			class initSpectatorHoldSector {};
+			class watchSpectatorHoldSector {};
+		}
 		class spectatorObjTerminal
 		{
 			file = "Client\Spectator\Objectives\Terminal";
@@ -289,6 +295,12 @@ class CfgFunctions
 			file = "Server\Objectives\CaptureSector";
 			class initCaptureSector {};
 			class watchCaptureSector {};
+		};
+		class objHoldSector
+		{
+			file = "Server\Objectives\HoldSector";
+			class initHoldSector {};
+			class watchHoldSector {};
 		};
 		class objTerminal
 		{

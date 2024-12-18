@@ -60,6 +60,11 @@ fnf_seqObjHandelerQueueServer = [];
 					[_x] call FNF_ServerSide_fnc_initCaptureSector;
 				};
 
+				case "fnf_module_sectorHoldObj":
+				{
+					[_x] call FNF_ServerSide_fnc_initHoldSector;
+				};
+
 				case "fnf_module_terminalObj":
 				{
 					[_x] call FNF_ServerSide_fnc_initTerminal;
