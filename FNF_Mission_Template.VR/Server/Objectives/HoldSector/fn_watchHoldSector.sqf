@@ -49,7 +49,7 @@ _validClassnames = ["rhs_bmp2d_msv", "rhs_t90am_tv", "rhsusf_m1a2sep1wd_usarmy",
 		continue;
 	};
 
-	if (not ((vehicle _x) in _validClassnames)) then
+	if (not ((typeOf (vehicle _x)) in _validClassnames)) then
 	{
 		continue;
 	};
