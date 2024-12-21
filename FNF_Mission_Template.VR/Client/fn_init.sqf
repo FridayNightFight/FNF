@@ -156,7 +156,7 @@ inGameUISetEventHandler ["Action", "
 
 	if (_target getVariable ['fnf_golfAsset', false]) then
 	{
-		_listOfKeywords = ['Golf', 'Alpha', 'Bravo', 'Charlie'];
+		_listOfKeywords = ['Golf', 'Alpha', 'Bravo', 'Charlie', 'Company HQ'];
 		_return = true;
 		{
 			if (_x in (roleDescription player)) then
