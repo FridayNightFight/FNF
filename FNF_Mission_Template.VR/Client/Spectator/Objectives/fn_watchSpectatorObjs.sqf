@@ -26,7 +26,7 @@
 		{
 			[_forEachIndex] call FNF_ClientSide_fnc_watchSpectatorCaptureSector;
 		};
-		case "fnf_module_sectorCaptureObj":
+		case "fnf_module_sectorHoldObj":
 		{
 			[_forEachIndex] call FNF_ClientSide_fnc_watchSpectatorHoldSector;
 		};
