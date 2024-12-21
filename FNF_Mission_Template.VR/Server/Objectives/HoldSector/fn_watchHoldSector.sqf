@@ -25,6 +25,8 @@ _westCount = 0;
 _eastCount = 0;
 _indiCount = 0;
 
+_validClassnames = ["rhs_bmp2d_msv", "rhs_t90am_tv", "rhsusf_m1a2sep1wd_usarmy", "RHS_M2A2_wd"];
+
 //get which players are in the zone and what side they are on
 {
 	if (not alive _x) then
@@ -43,6 +45,11 @@ _indiCount = 0;
 	};
 
 	if (not ((side _x) in _sides)) then
+	{
+		continue;
+	};
+
+	if (not ((vehicle _x) in _validClassnames)) then
 	{
 		continue;
 	};
