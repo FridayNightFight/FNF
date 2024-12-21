@@ -156,11 +156,16 @@ inGameUISetEventHandler ["Action", "
 
 	if (_target getVariable ['fnf_golfAsset', false]) then
 	{
+		_listOfKeywords = ['Golf', 'Alpha', 'Bravo', 'Charlie'];
 		_return = true;
-		if ('Golf' in (roleDescription player)) then
 		{
-			_return = false;
-		} else {
+			if (_x in (roleDescription player)) then
+			{
+				_return = false;
+			};
+		} forEach _listOfKeywords;
+		if (_return) then
+		{
 			['<t align=""center"">Cannot operate this vehicle, you must be a golf unit to do this</t>', 'error'] call FNF_ClientSide_fnc_notificationSystem;
 		};
 	};
