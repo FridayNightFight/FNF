@@ -128,7 +128,7 @@ addMissionEventHandler ["Draw3D", {
 					_colour = [0.5,1,0.5,1];
 					_text = "Sim Enabled";
 				};
-				drawIcon3D ["", _colour, getPos (_thisArgs select 0), 0, 0, 0, _text, 2, 0.04, "PuristaMedium", "center"];
+				drawIcon3D ["", _colour, getPos (_x), 0, 0, 0, _text, 2, 0.04, "PuristaMedium", "center"];
 			};
 		} forEach fnf_simIconList;
 	};
