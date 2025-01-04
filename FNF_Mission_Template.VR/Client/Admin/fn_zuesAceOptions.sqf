@@ -34,6 +34,16 @@ _actionGoToLastReport = [
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _actionGoToLastReport] call ace_interact_menu_fnc_addActionToZeus;
 
+[{
+	if (serverCommandAvailable "#logout") then
+	{
+		_bluforNum = allPlayers select {(side _x) isEqualTo west};
+		_opforNum = allPlayers select {(side _x) isEqualTo east};
+		_indforNum = allPlayers select {(side _x) isEqualTo independent};
+		hintSilent format["Blufor: %1\nOpfor: %1\nIndfor: %1", count _bluforNum, count _opforNum, count _indforNum];
+	};
+}, 1] call CBA_fnc_addPerFrameHandler;
+
 /*_actionSwitchSelectors = [
 	"Zeus_SwitchSelectors",
 	"Switch selectors for selected players",
