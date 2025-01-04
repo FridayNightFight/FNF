@@ -15,6 +15,8 @@ params ["_modules"];
 
 _maxTimeZoneIsDeleted = 0;
 
+fnf_safeZoneFinalZoneSent = false;
+
 ["safeZoneGroup", true, true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
 
 {
