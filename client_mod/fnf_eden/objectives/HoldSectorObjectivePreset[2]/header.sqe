@@ -1,0 +1,10 @@
+version=54;
+name="Hold Sector Objective Preset [ 2 ]";
+author="Mallen";
+category="EdSubcat_Default";
+requiredAddons[]=
+{
+	"A3_Modules_F",
+	"fnf_eden",
+	"A3_Ui_F"
+};

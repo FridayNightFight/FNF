@@ -52,6 +52,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Assassinate Target";
 	};
+	class fnf_HoldSector
+	{
+		displayName = "Hold Sector";
+	};
 	class fnf_SafeZones
 	{
 		displayName = "Safe Zones";
@@ -305,7 +309,33 @@ class Cfg3DEN
 			displayName = "Terminal Objective Preset";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
-
+		class fnf_HoldSectorObjective_1 // one class per composition
+		{
+			path = "fnf_eden\objectives\HoldSectorObjectivePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_HoldSector";				// link to CfgEditorSubcategories
+			displayName = "Hold Sector Objective Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+		class fnf_HoldSectorObjective_2 // one class per composition
+		{
+			path = "fnf_eden\objectives\HoldSectorObjectivePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_HoldSector";				// link to CfgEditorSubcategories
+			displayName = "Hold Sector Objective Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+		class fnf_HoldSectorObjective_3 // one class per composition
+		{
+			path = "fnf_eden\objectives\HoldSectorObjectivePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_HoldSector";				// link to CfgEditorSubcategories
+			displayName = "Hold Sector Objective Preset [ 3 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
 		class fnf_CaptureSectorObjective_1 // one class per composition
 		{
 			path = "fnf_eden\objectives\CaptureSectorObjectivePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
