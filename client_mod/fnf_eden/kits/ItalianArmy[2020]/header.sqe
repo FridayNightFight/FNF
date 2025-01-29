@@ -26,7 +26,6 @@ requiredAddons[]=
 	"ace_huntir",
 	"UK3CB_Factions_Weapons_AR10",
 	"rhssaf_c_weapons",
-	"ace_optics",
 	"rhsusf_sounds",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
@@ -36,12 +35,13 @@ requiredAddons[]=
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
-	"A3_Characters_F_Mark",
 	"UK3CB_Factions_Weapons_MG3",
-	"ace_tripod",
 	"UK3CB_Factions_Weapons_MP5",
 	"tfar_external_intercom",
 	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute",
 	"A3_Modules_F",
 	"Desert"
 };

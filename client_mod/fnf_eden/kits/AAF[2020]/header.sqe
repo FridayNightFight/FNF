@@ -26,7 +26,6 @@ requiredAddons[]=
 	"ace_scopes",
 	"ace_ballistics",
 	"ace_huntir",
-	"ace_optics",
 	"rhsusf_sounds",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
@@ -37,9 +36,11 @@ requiredAddons[]=
 	"ace_trenches",
 	"ace_logistics_wirecutter",
 	"UK3CB_Factions_Weapons_MG3",
-	"ace_tripod",
 	"tfar_external_intercom",
 	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute",
 	"A3_Modules_F",
 	"Desert"
 };

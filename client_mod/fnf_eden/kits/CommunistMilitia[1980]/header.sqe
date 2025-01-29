@@ -28,7 +28,6 @@ requiredAddons[]=
 	"UK3CB_Factions_CHC_C",
 	"UK3CB_Factions_Weapons_SVD_OLD",
 	"ace_compat_rhs_afrf3_scopes",
-	"ace_optics",
 	"UK3CB_Factions_Equipment_Vests",
 	"ace_explosives",
 	"UK3CB_Factions_LNM_B",
@@ -39,10 +38,12 @@ requiredAddons[]=
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
-	"A3_Characters_F_Mark",
-	"ace_tripod",
 	"UK3CB_Factions_Weapons_PPSH",
+	"ace_compat_rhs_afrf3_hearing",
 	"UK3CB_Factions_CW_SOV_O_EARLY",
 	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute",
 	"rhsgref_c_troops"
 };

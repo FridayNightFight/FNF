@@ -27,7 +27,6 @@ requiredAddons[]=
 	"UK3CB_Factions_Weapons_SVD_OLD",
 	"ace_compat_rhs_afrf3_scopes",
 	"fnf_rpk",
-	"ace_optics",
 	"ace_compat_rhs_afrf3",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
@@ -38,10 +37,12 @@ requiredAddons[]=
 	"ace_trenches",
 	"ace_logistics_wirecutter",
 	"UK3CB_Factions_Weapons_M60",
-	"ace_tripod",
 	"rhsgref_c_weapons",
 	"tfar_external_intercom",
 	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute",
 	"A3_Modules_F",
 	"Desert"
 };

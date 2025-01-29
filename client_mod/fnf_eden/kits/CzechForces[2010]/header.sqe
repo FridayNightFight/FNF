@@ -26,7 +26,6 @@ requiredAddons[]=
 	"rhs_c_weapons",
 	"ace_compat_rhs_afrf3",
 	"ace_compat_rhs_afrf3_scopes",
-	"ace_optics",
 	"rhsusf_sounds",
 	"ace_compat_rhs_usf3",
 	"ace_explosives",
@@ -37,12 +36,13 @@ requiredAddons[]=
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
-	"A3_Characters_F_Mark",
-	"ace_tripod",
 	"A3_Weapons_F_SMGs_SMG_02",
 	"ace_ballistics",
 	"rhsusf_c_troops",
 	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute",
 	"A3_Modules_F",
 	"Desert"
 };

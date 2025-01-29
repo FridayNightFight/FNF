@@ -30,7 +30,6 @@ requiredAddons[]=
 	"ace_compat_rhs_gref3",
 	"ace_compat_rhs_afrf3_scopes",
 	"ace_compat_rhs_afrf3",
-	"ace_optics",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
 	"ace_grenades",
@@ -39,8 +38,10 @@ requiredAddons[]=
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
-	"ace_tripod",
 	"ace_hearing",
 	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute",
 	"A3_Characters_F_Kart"
 };

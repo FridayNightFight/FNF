@@ -24,7 +24,6 @@ requiredAddons[]=
 	"ace_realisticnames",
 	"ace_huntir",
 	"rhssaf_c_weapons",
-	"ace_optics",
 	"rhsusf_sounds",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
@@ -34,10 +33,11 @@ requiredAddons[]=
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
-	"A3_Characters_F_Mark",
 	"rhsgref_c_weapons",
-	"ace_tripod",
 	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute",
 	"A3_Modules_F",
 	"Desert"
 };

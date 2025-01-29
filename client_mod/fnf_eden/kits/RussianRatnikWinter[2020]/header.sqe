@@ -18,6 +18,7 @@ requiredAddons[]=
 	"A3_Weapons_F",
 	"tfar_handhelds",
 	"rhs_c_troops",
+	"ace_compat_rhs_afrf3_hearing",
 	"UK3CB_Factions_CHD_W_B",
 	"ace_maptools",
 	"ace_medical_treatment",
@@ -27,7 +28,6 @@ requiredAddons[]=
 	"ace_huntir",
 	"ace_compat_rhs_afrf3_scopes",
 	"fnf_rpk",
-	"ace_optics",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
 	"ace_grenades",
@@ -36,8 +36,9 @@ requiredAddons[]=
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
-	"A3_Characters_F_Mark",
-	"ace_tripod",
 	"A3_Weapons_F_Enoch_Launchers_RPG32",
-	"A3_Weapons_F_Items"
+	"A3_Weapons_F_Items",
+	"ace_optics",
+	"ace_gforces",
+	"ace_parachute"
 };
