@@ -189,7 +189,12 @@ if (_currentItems isEqualTo "") then
 			{
 				if ([player, _x] call BIS_fnc_hasItem) then
 				{
-					player removeItem _x;
+					if (binocular player isEqualTo _x) then
+					{
+						player removeWeapon _x;
+					} else {
+						player removeItem _x;
+					};
 					_itemsToAdd pushBack _x;
 				} else {
 					_hasRequiredItems = false;
