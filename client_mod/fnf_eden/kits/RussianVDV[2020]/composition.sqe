@@ -1,5 +1,5 @@
 version=54;
-center[]={100.02657,0,74.975502};
+center[]={106.18484,5,79.495026};
 class items
 {
 	items=3;
@@ -22,7 +22,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,17.074501};
+							position[]={-2.1848373,0.0014390945,12.554977};
 							angles[]={0,3.1415927,0};
 						};
 						side="East";
@@ -219,8 +219,8 @@ class items
 								{
 									class data
 									{
+										nil=1;
 										singleType="STRING";
-										value="31,30";
 									};
 								};
 							};
@@ -245,7 +245,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,17.074501};
+							position[]={1.8151627,0.0014390945,12.554977};
 							angles[]={0,3.1415927,0};
 						};
 						side="East";
@@ -468,8 +468,8 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,17.074501};
-							angles[]={-0,3.1415927,0};
+							position[]={5.8151627,0.0014390945,12.554977};
+							angles[]={0,3.1415927,0};
 						};
 						side="East";
 						flags=4;
@@ -743,7 +743,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,17.074501};
+							position[]={9.8151627,0.0014390945,12.554977};
 							angles[]={0,3.1415927,0};
 						};
 						side="East";
@@ -1003,7 +1003,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,13.074501};
+							position[]={-6.1848373,0.0014390945,8.5549774};
 						};
 						side="East";
 						flags=7;
@@ -1277,7 +1277,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,11.074501};
+							position[]={-6.1848373,0.0014390945,6.5549774};
 						};
 						side="East";
 						flags=5;
@@ -1406,7 +1406,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,9.074501};
+							position[]={-6.1848373,0.0014390945,4.5549774};
 						};
 						side="East";
 						flags=5;
@@ -1535,7 +1535,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,7.074501};
+							position[]={-6.1848373,0.0014390945,2.5549774};
 						};
 						side="East";
 						flags=5;
@@ -1690,7 +1690,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,5.074501};
+							position[]={-6.1848373,0.0014390945,0.55497742};
 						};
 						side="East";
 						flags=5;
@@ -1858,7 +1858,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="40";
 									};
 								};
 							};
@@ -1870,7 +1870,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,3.074501};
+							position[]={-6.1848373,0.0014390945,-1.4450226};
 						};
 						side="East";
 						flags=5;
@@ -2055,7 +2055,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,1.074501};
+							position[]={-6.1848373,0.0014390945,-3.4450226};
 						};
 						side="East";
 						flags=5;
@@ -2187,7 +2187,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,-0.92549896};
+							position[]={-6.1848373,0.0014390945,-5.4450226};
 						};
 						side="East";
 						flags=5;
@@ -2380,7 +2380,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,13.074501};
+							position[]={-2.1848373,0.0014390945,8.5549774};
 						};
 						side="East";
 						flags=6;
@@ -2629,7 +2629,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="50,30";
 									};
 								};
 							};
@@ -2654,7 +2654,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,11.074501};
+							position[]={-2.1848373,0.0014390945,6.5549774};
 						};
 						side="East";
 						flags=5;
@@ -2771,7 +2771,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="50";
 									};
 								};
 							};
@@ -2783,7 +2783,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,9.074501};
+							position[]={-2.1848373,0.0014390945,4.5549774};
 						};
 						side="East";
 						flags=5;
@@ -2900,7 +2900,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="50";
 									};
 								};
 							};
@@ -2912,7 +2912,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,7.074501};
+							position[]={-2.1848373,0.0014390945,2.5549774};
 						};
 						side="East";
 						flags=5;
@@ -3055,7 +3055,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="50";
 									};
 								};
 							};
@@ -3067,7 +3067,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,5.074501};
+							position[]={-2.1848373,0.0014390945,0.55497742};
 						};
 						side="East";
 						flags=5;
@@ -3235,7 +3235,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="50";
 									};
 								};
 							};
@@ -3247,7 +3247,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,3.074501};
+							position[]={-2.1848373,0.0014390945,-1.4450226};
 						};
 						side="East";
 						flags=5;
@@ -3420,7 +3420,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="50";
 									};
 								};
 							};
@@ -3432,7 +3432,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,1.074501};
+							position[]={-2.1848373,0.0014390945,-3.4450226};
 						};
 						side="East";
 						flags=5;
@@ -3552,7 +3552,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="50";
 									};
 								};
 							};
@@ -3564,7 +3564,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,-0.92549896};
+							position[]={-2.1848373,0.0014390945,-5.4450226};
 						};
 						side="East";
 						flags=5;
@@ -3732,7 +3732,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="50";
 									};
 								};
 							};
@@ -3757,7 +3757,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,13.074501};
+							position[]={1.8151627,0.0014390945,8.5549774};
 						};
 						side="East";
 						flags=6;
@@ -4006,7 +4006,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="60,30";
 									};
 								};
 							};
@@ -4031,7 +4031,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,11.074501};
+							position[]={1.8151627,0.0014390945,6.5549774};
 						};
 						side="East";
 						flags=5;
@@ -4148,7 +4148,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="60";
 									};
 								};
 							};
@@ -4160,7 +4160,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,9.074501};
+							position[]={1.8151627,0.0014390945,4.5549774};
 						};
 						side="East";
 						flags=5;
@@ -4277,7 +4277,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="60";
 									};
 								};
 							};
@@ -4289,7 +4289,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,7.074501};
+							position[]={1.8151627,0.0014390945,2.5549774};
 						};
 						side="East";
 						flags=5;
@@ -4432,7 +4432,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="60";
 									};
 								};
 							};
@@ -4444,7 +4444,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,5.074501};
+							position[]={1.8151627,0.0014390945,0.55497742};
 						};
 						side="East";
 						flags=5;
@@ -4612,7 +4612,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="60";
 									};
 								};
 							};
@@ -4624,7 +4624,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,3.074501};
+							position[]={1.8151627,0.0014390945,-1.4450226};
 						};
 						side="East";
 						flags=5;
@@ -4797,7 +4797,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="60";
 									};
 								};
 							};
@@ -4809,7 +4809,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,1.074501};
+							position[]={1.8151627,0.0014390945,-3.4450226};
 						};
 						side="East";
 						flags=5;
@@ -4929,7 +4929,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="60";
 									};
 								};
 							};
@@ -4941,7 +4941,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,-0.92549896};
+							position[]={1.8151627,0.0014390945,-5.4450226};
 						};
 						side="East";
 						flags=5;
@@ -5109,7 +5109,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="60";
 									};
 								};
 							};
@@ -5134,7 +5134,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,13.074501};
+							position[]={5.8151627,0.0014390945,8.5549774};
 						};
 						side="East";
 						flags=7;
@@ -5383,7 +5383,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="70,30";
 									};
 								};
 							};
@@ -5408,7 +5408,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,11.074501};
+							position[]={5.8151627,0.0014390945,6.5549774};
 						};
 						side="East";
 						flags=5;
@@ -5525,7 +5525,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="70";
 									};
 								};
 							};
@@ -5537,7 +5537,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,9.074501};
+							position[]={5.8151627,0.0014390945,4.5549774};
 						};
 						side="East";
 						flags=5;
@@ -5654,7 +5654,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="70";
 									};
 								};
 							};
@@ -5666,7 +5666,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,7.074501};
+							position[]={5.8151627,0.0014390945,2.5549774};
 						};
 						side="East";
 						flags=5;
@@ -5809,7 +5809,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="70";
 									};
 								};
 							};
@@ -5821,7 +5821,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,5.074501};
+							position[]={5.8151627,0.0014390945,0.55497742};
 						};
 						side="East";
 						flags=5;
@@ -5989,7 +5989,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="70";
 									};
 								};
 							};
@@ -6001,7 +6001,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,3.074501};
+							position[]={5.8151627,0.0014390945,-1.4450226};
 						};
 						side="East";
 						flags=5;
@@ -6174,7 +6174,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="70";
 									};
 								};
 							};
@@ -6186,7 +6186,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,1.074501};
+							position[]={5.8151627,0.0014390945,-3.4450226};
 						};
 						side="East";
 						flags=5;
@@ -6306,7 +6306,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="70";
 									};
 								};
 							};
@@ -6318,7 +6318,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,-0.92549896};
+							position[]={5.8151627,0.0014390945,-5.4450226};
 						};
 						side="East";
 						flags=5;
@@ -6486,7 +6486,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="70";
 									};
 								};
 							};
@@ -6511,7 +6511,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,13.074501};
+							position[]={9.8151627,0.0014390945,8.5549774};
 						};
 						side="East";
 						flags=6;
@@ -6760,7 +6760,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="80,30";
 									};
 								};
 							};
@@ -6785,7 +6785,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,11.074501};
+							position[]={9.8151627,0.0014390945,6.5549774};
 						};
 						side="East";
 						flags=5;
@@ -6902,7 +6902,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="80";
 									};
 								};
 							};
@@ -6914,7 +6914,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,9.074501};
+							position[]={9.8151627,0.0014390945,4.5549774};
 						};
 						side="East";
 						flags=5;
@@ -7031,7 +7031,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="80";
 									};
 								};
 							};
@@ -7043,7 +7043,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,7.074501};
+							position[]={9.8151627,0.0014390945,2.5549774};
 						};
 						side="East";
 						flags=5;
@@ -7186,7 +7186,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="80";
 									};
 								};
 							};
@@ -7198,7 +7198,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,5.074501};
+							position[]={9.8151627,0.0014390945,0.55497742};
 						};
 						side="East";
 						flags=5;
@@ -7366,7 +7366,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="80";
 									};
 								};
 							};
@@ -7378,7 +7378,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,3.074501};
+							position[]={9.8151627,0.0014390945,-1.4450226};
 						};
 						side="East";
 						flags=5;
@@ -7551,7 +7551,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="80";
 									};
 								};
 							};
@@ -7563,7 +7563,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,1.074501};
+							position[]={9.8151627,0.0014390945,-3.4450226};
 						};
 						side="East";
 						flags=5;
@@ -7683,7 +7683,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="80";
 									};
 								};
 							};
@@ -7695,7 +7695,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={15.973427,5.0014391,-0.92549896};
+							position[]={9.8151627,0.0014390945,-5.4450226};
 						};
 						side="East";
 						flags=5;
@@ -7863,7 +7863,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="80";
 									};
 								};
 							};
@@ -7888,7 +7888,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,13.074501};
+							position[]={13.815163,0.0014390945,8.5549774};
 						};
 						side="East";
 						flags=6;
@@ -8137,7 +8137,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="90,30";
 									};
 								};
 							};
@@ -8162,7 +8162,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,11.074501};
+							position[]={13.815163,0.0014390945,6.5549774};
 						};
 						side="East";
 						flags=5;
@@ -8279,7 +8279,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="90";
 									};
 								};
 							};
@@ -8291,7 +8291,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,9.074501};
+							position[]={13.815163,0.0014390945,4.5549774};
 						};
 						side="East";
 						flags=5;
@@ -8408,7 +8408,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="90";
 									};
 								};
 							};
@@ -8420,7 +8420,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,7.074501};
+							position[]={13.815163,0.0014390945,2.5549774};
 						};
 						side="East";
 						flags=5;
@@ -8563,7 +8563,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="90";
 									};
 								};
 							};
@@ -8575,7 +8575,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,5.074501};
+							position[]={13.815163,0.0014390945,0.55497742};
 						};
 						side="East";
 						flags=5;
@@ -8743,7 +8743,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="90";
 									};
 								};
 							};
@@ -8755,7 +8755,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,3.074501};
+							position[]={13.815163,0.0014390945,-1.4450226};
 						};
 						side="East";
 						flags=5;
@@ -8928,7 +8928,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="90";
 									};
 								};
 							};
@@ -8940,7 +8940,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,1.074501};
+							position[]={13.815163,0.0014390945,-3.4450226};
 						};
 						side="East";
 						flags=5;
@@ -9060,7 +9060,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="90";
 									};
 								};
 							};
@@ -9072,7 +9072,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={19.973427,5.0014391,-0.92549896};
+							position[]={13.815163,0.0014390945,-5.4450226};
 						};
 						side="East";
 						flags=5;
@@ -9240,7 +9240,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="90";
 									};
 								};
 							};
@@ -9265,7 +9265,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={23.973427,5.0014391,9.074501};
+							position[]={17.815163,0.0014390945,4.5549774};
 						};
 						side="East";
 						flags=7;
@@ -9514,7 +9514,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40,30";
+										value="100,30";
 									};
 								};
 							};
@@ -9539,7 +9539,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={23.973427,5.0014391,7.074501};
+							position[]={17.815163,0.0014390945,2.5549774};
 						};
 						side="East";
 						flags=5;
@@ -9681,7 +9681,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="100";
 									};
 								};
 							};
@@ -9693,7 +9693,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={23.973427,5.0014391,5.074501};
+							position[]={17.815163,0.0014390945,0.55497742};
 						};
 						side="East";
 						flags=5;
@@ -9830,7 +9830,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="100";
 									};
 								};
 							};
@@ -9842,7 +9842,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={23.973427,5.0014391,3.074501};
+							position[]={17.815163,0.0014390945,-1.4450226};
 						};
 						side="East";
 						flags=5;
@@ -9979,7 +9979,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="40";
+										value="100";
 									};
 								};
 							};
@@ -10004,7 +10004,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,-4.925499};
+							position[]={-6.1848373,0.0014390945,-9.4450226};
 						};
 						side="East";
 						flags=6;
@@ -10186,7 +10186,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="32,30";
+										value="33,30";
 									};
 								};
 							};
@@ -10211,7 +10211,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,-6.925499};
+							position[]={-6.1848373,0.0014390945,-11.445023};
 						};
 						side="East";
 						flags=5;
@@ -10340,7 +10340,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="32,30";
+										value="33";
 									};
 								};
 							};
@@ -10365,7 +10365,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-0.026573181,5.0014391,-8.925499};
+							position[]={-6.1848373,0.0014390945,-13.445023};
 						};
 						side="East";
 						flags=5;
@@ -10494,7 +10494,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="32,30";
+										value="33";
 									};
 								};
 							};
@@ -10532,7 +10532,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,-4.925499};
+							position[]={-2.1848373,0.0014390945,-9.4450226};
 						};
 						side="East";
 						flags=6;
@@ -10713,8 +10713,8 @@ class items
 								{
 									class data
 									{
+										nil=1;
 										singleType="STRING";
-										value="33,30";
 									};
 								};
 							};
@@ -10739,7 +10739,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,-6.925499};
+							position[]={-2.1848373,0.0014390945,-11.445023};
 						};
 						side="East";
 						flags=5;
@@ -10893,7 +10893,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={3.9734268,5.0014391,-8.925499};
+							position[]={-2.1848373,0.0014390945,-13.445023};
 						};
 						side="East";
 						flags=5;
@@ -11060,7 +11060,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,-4.925499};
+							position[]={1.8151627,0.0014390945,-9.4450226};
 						};
 						side="East";
 						flags=6;
@@ -11263,7 +11263,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,-6.925499};
+							position[]={1.8151627,0.0014390945,-11.445023};
 						};
 						side="East";
 						flags=5;
@@ -11401,7 +11401,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="34,30";
+										value="34";
 									};
 								};
 							};
@@ -11426,7 +11426,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={7.9734268,5.0014391,-8.925499};
+							position[]={1.8151627,0.0014390945,-13.445023};
 						};
 						side="East";
 						flags=5;
@@ -11564,7 +11564,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="34,30";
+										value="34";
 									};
 								};
 							};
@@ -11602,7 +11602,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,-4.925499};
+							position[]={5.8151627,0.0014390945,-9.4450226};
 						};
 						side="East";
 						flags=6;
@@ -11805,7 +11805,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,-6.925499};
+							position[]={5.8151627,0.0014390945,-11.445023};
 						};
 						side="East";
 						flags=5;
@@ -11943,7 +11943,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="35,30";
+										value="35";
 									};
 								};
 							};
@@ -11968,7 +11968,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={11.973427,5.0014391,-8.925499};
+							position[]={5.8151627,0.0014390945,-13.445023};
 						};
 						side="East";
 						flags=5;
@@ -12106,7 +12106,7 @@ class items
 									class data
 									{
 										singleType="STRING";
-										value="35,30";
+										value="35";
 									};
 								};
 							};
@@ -12134,7 +12134,6 @@ class items
 			};
 		};
 		id=10979;
-		atlOffset=-4.921875;
 	};
 	class Item1
 	{
@@ -12148,7 +12147,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={9.9734268,5,17.024498};
+					position[]={3.8151627,0,12.504974};
 				};
 				id=11086;
 				type="SideOPFOR_F";
@@ -12158,7 +12157,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={9.9734268,5,19.024498};
+					position[]={3.8151627,0,14.504974};
 				};
 				id=11087;
 				type="fnf_module_kitInformation";
@@ -12198,7 +12197,7 @@ class items
 				dataType="Comment";
 				class PositionInfo
 				{
-					position[]={11.973427,5,37.024498};
+					position[]={5.8151627,0,32.504974};
 				};
 				title="Russian VDV [2020]";
 				id=11088;
@@ -12218,7 +12217,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,-4.9738541};
+					position[]={-12.173378,0,-9.4933777};
 				};
 				side="Empty";
 				flags=4;
@@ -12250,7 +12249,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,-6.9738541};
+					position[]={-12.173378,0,-11.493378};
 				};
 				side="Empty";
 				flags=4;
@@ -12282,7 +12281,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,-8.9738541};
+					position[]={-12.173378,0,-13.493378};
 				};
 				side="Empty";
 				flags=4;
@@ -12314,7 +12313,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,-10.973854};
+					position[]={-12.173378,0,-15.493378};
 				};
 				side="Empty";
 				flags=4;
@@ -12346,7 +12345,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-2.0265961,5,-4.975502};
+					position[]={-8.1848602,0,-9.4950256};
 				};
 				id=10954;
 				type="fnf_module_selectorHost";
@@ -12386,7 +12385,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265961,5,-4.975502};
+					position[]={-10.18486,0,-9.4950256};
 				};
 				id=10955;
 				type="fnf_module_selectorOption";
@@ -12426,7 +12425,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265961,5,-6.975502};
+					position[]={-10.18486,0,-11.495026};
 				};
 				id=10956;
 				type="fnf_module_selectorOption";
@@ -12466,7 +12465,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265961,5,-8.975502};
+					position[]={-10.18486,0,-13.495026};
 				};
 				id=10957;
 				type="fnf_module_selectorOption";
@@ -12506,7 +12505,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265961,5,-10.975502};
+					position[]={-10.18486,0,-15.495026};
 				};
 				id=10958;
 				type="fnf_module_selectorOption";
@@ -12546,7 +12545,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0150986,5,13.026207};
+					position[]={-12.173363,0,8.5066833};
 				};
 				side="Empty";
 				flags=4;
@@ -12578,7 +12577,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0150986,5,11.026207};
+					position[]={-12.173363,0,6.5066833};
 				};
 				side="Empty";
 				flags=4;
@@ -12610,7 +12609,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-2.0265656,5,13.024559};
+					position[]={-8.1848297,0,8.5050354};
 				};
 				id=10961;
 				type="fnf_module_selectorHost";
@@ -12650,7 +12649,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265656,5,11.024559};
+					position[]={-10.18483,0,6.5050354};
 				};
 				id=10962;
 				type="fnf_module_selectorOption";
@@ -12690,7 +12689,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265656,5,9.024559};
+					position[]={-10.18483,0,4.5050354};
 				};
 				id=10963;
 				type="fnf_module_selectorOption";
@@ -12730,7 +12729,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265656,5,7.024498};
+					position[]={-10.18483,0,2.5049744};
 				};
 				id=10964;
 				type="fnf_module_selectorOption";
@@ -12770,7 +12769,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265656,5,13.024559};
+					position[]={-10.18483,0,8.5050354};
 				};
 				id=10965;
 				type="fnf_module_selectorOption";
@@ -12810,7 +12809,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0150986,5,5.0261459};
+					position[]={-12.173363,0,0.50662231};
 				};
 				side="Empty";
 				flags=4;
@@ -12842,7 +12841,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265656,5,5.024498};
+					position[]={-10.18483,0,0.50497437};
 				};
 				id=10967;
 				type="fnf_module_selectorOption";
@@ -12882,7 +12881,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0150986,5,9.026207};
+					position[]={-12.173363,0,4.5066833};
 				};
 				side="Empty";
 				flags=4;
@@ -12914,7 +12913,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,-0.97385406};
+					position[]={-12.173378,0,-5.4933777};
 				};
 				side="Empty";
 				flags=4;
@@ -12946,7 +12945,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,-2.9738541};
+					position[]={-12.173378,0,-7.4933777};
 				};
 				side="Empty";
 				flags=4;
@@ -12978,7 +12977,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,3.0261459};
+					position[]={-12.173378,0,-1.4933777};
 				};
 				side="Empty";
 				flags=4;
@@ -13010,7 +13009,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-2.0265732,5,3.024498};
+					position[]={-8.1848373,0,-1.4950256};
 				};
 				id=10972;
 				type="fnf_module_selectorHost";
@@ -13050,7 +13049,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265732,5,3.024498};
+					position[]={-10.184837,0,-1.4950256};
 				};
 				id=10973;
 				type="fnf_module_selectorOption";
@@ -13090,7 +13089,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265732,5,1.024498};
+					position[]={-10.184837,0,-3.4950256};
 				};
 				id=10974;
 				type="fnf_module_selectorOption";
@@ -13130,7 +13129,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265732,5,-0.97550201};
+					position[]={-10.184837,0,-5.4950256};
 				};
 				id=10975;
 				type="fnf_module_selectorOption";
@@ -13170,7 +13169,7 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-4.0265732,5,-2.975502};
+					position[]={-10.184837,0,-7.4950256};
 				};
 				id=10976;
 				type="fnf_module_selectorOption";
@@ -13210,7 +13209,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0151138,5,1.0261459};
+					position[]={-12.173378,0,-3.4933777};
 				};
 				side="Empty";
 				flags=4;
@@ -13242,7 +13241,7 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-6.0150986,5,7.0261459};
+					position[]={-12.173363,0,2.5066223};
 				};
 				side="Empty";
 				flags=4;

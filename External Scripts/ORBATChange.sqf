@@ -85,6 +85,8 @@ _squadNameList = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot"];
 		_yPosition = _yPosition - 2;
 	} forEach _squadList;
 
+	_srTFAR = _srTFAR + 10;
+
 	_xPosition = _xPosition + 4;
 } forEach _allGroups;
 
