@@ -40,7 +40,7 @@ _actionGoToLastReport = [
 		_bluforNum = allPlayers select {(side _x) isEqualTo west};
 		_opforNum = allPlayers select {(side _x) isEqualTo east};
 		_indforNum = allPlayers select {(side _x) isEqualTo independent};
-		hintSilent format["Blufor: %1\nOpfor: %1\nIndfor: %1", count _bluforNum, count _opforNum, count _indforNum];
+		hintSilent format["Blufor: %1\nOpfor: %2\nIndfor: %3", count _bluforNum, count _opforNum, count _indforNum];
 	};
 }, 1] call CBA_fnc_addPerFrameHandler;
 
