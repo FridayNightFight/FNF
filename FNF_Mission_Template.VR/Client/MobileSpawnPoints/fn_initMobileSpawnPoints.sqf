@@ -54,6 +54,21 @@ _globalCounter = 0;
 
 	_sortedVics = [_vics] call FNF_ClientSide_fnc_sortByLocation;
 
+	_preCalced = true;
+	{
+		_preCalcedOrder = _x getVariable ["fnf_mspPrecalculatedOrderNumber", -1];
+		if (_preCalcedOrder isEqualTo -1) then
+		{
+			_preCalced = false;
+			break;
+		};
+	} forEach _sortedVics;
+
+	if (_preCalced) then
+	{
+		_sortedVics = [_sortedVics, [], {_x getVariable ["fnf_mspPrecalculatedOrderNumber", -1];}] call BIS_fnc_sortBy;
+	};
+
 	{
 		_currentPole = _x;
 		{
@@ -64,6 +79,12 @@ _globalCounter = 0;
 			_markerstr setMarkerTypeLocal "respawn_inf";
 			_markerstr setMarkerTextLocal ("MSP " + str(_forEachIndex + 1));
 			_markerstr setMarkerColorLocal _markerColor;
+
+			_preCalcedOrder = _x getVariable ["fnf_mspPrecalculatedOrderNumber", -1];
+			if (_preCalcedOrder isEqualTo -1) then
+			{
+				_x setVariable ["fnf_mspPrecalculatedOrderNumber", _forEachIndex, true];
+			};
 
 			[{
 				(_this select 0) params ["_marker", "_vic"];
