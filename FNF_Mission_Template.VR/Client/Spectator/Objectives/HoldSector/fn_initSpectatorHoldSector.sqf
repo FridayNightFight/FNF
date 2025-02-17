@@ -212,12 +212,12 @@ switch (_objState) do {
 		_markerBase setMarkerShapeLocal "ICON";
 		_markerBase setMarkerTypeLocal "mil_dot";
 		_markerBase setMarkerTextLocal format["(Inactive) Sector %1", _objectiveIndex + 1];
-		if (not _isSecondaryObj) then
+		if (_isSecondaryObj) then
 		{
-			_markerBase setMarkerAlphaLocal 1;
-			_markerBlufor setMarkerAlphaLocal 1;
-			_markerOpfor setMarkerAlphaLocal 1;
-			_markerIndfor setMarkerAlphaLocal 1;
+			_markerBase setMarkerAlphaLocal 0;
+			_markerBlufor setMarkerAlphaLocal 0;
+			_markerOpfor setMarkerAlphaLocal 0;
+			_markerIndfor setMarkerAlphaLocal 0;
 		};
 
 		_modules = call FNF_ClientSide_fnc_findFNFModules;
