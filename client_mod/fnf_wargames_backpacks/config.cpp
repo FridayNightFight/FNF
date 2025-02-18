@@ -9,10 +9,7 @@ class CfgPatches
 };
 class cfgVehicles
 {
-	class Bag_Base
- {
-	maximumLoad = 1000;
- };
+	class Bag_Base;
  class B_Bergen_Base: Bag_Base
  {
 	maximumLoad = 1000;
