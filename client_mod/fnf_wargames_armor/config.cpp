@@ -1,6 +1,6 @@
 class CfgPatches
 {
- class fnf_armor
+ class fnf_wargames_armor
  {
   units[] = {};
   weapons[] = {};
