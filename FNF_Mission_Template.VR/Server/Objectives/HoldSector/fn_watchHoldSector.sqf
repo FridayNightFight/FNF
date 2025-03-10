@@ -47,6 +47,11 @@ _indiCount = 0;
 		continue;
 	};
 
+	if ((objectParent _x) isKindOf "Air") then
+	{
+		continue;
+	};
+
 	if ([_x, _zonePrefix] call FNF_ClientSide_fnc_isObjectInZone) then
 	{
 		_testSide = side _x;
