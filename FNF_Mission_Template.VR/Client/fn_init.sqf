@@ -214,6 +214,7 @@ player addEventHandler ["Killed", {
 	{
 		setPlayerRespawnTime 0;
 		missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), -1, true];
+		[{player setPos [0,0,0]}, [], 1] call CBA_fnc_waitAndExecute;
 		[{call FNF_ClientSide_fnc_startSpectator;}, [], 0.5] call CBA_fnc_waitAndExecute;
 		[{player enableSimulation false;}, [], 1] call CBA_fnc_waitAndExecute;
 	} else {
