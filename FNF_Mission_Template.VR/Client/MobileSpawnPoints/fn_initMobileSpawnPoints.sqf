@@ -105,6 +105,10 @@ _globalCounter = 0;
 				{
 					_result = false;
 				};
+				if (damage _vic isEqualTo 1) then
+				{
+					_result = false;
+				};
 				_closePlayers = allPlayers select {(_x distance2D _vic) < 250 and (side _x) isNotEqualTo playerSide};
 				if ((count _closePlayers) isNotEqualTo 0) then
 				{
