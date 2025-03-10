@@ -5,8 +5,8 @@ if (not isNil "fnf_playerLoadout") exitWith {};
 //get player loadout and store for future use
 fnf_playerLoadout = getUnitLoadout player;
 
-_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID player), -1];
-if (_lives isEqualTo -1) then
+_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID player), -2];
+if (_lives isEqualTo -2) then
 {
 	missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), 2, true];
 };
@@ -190,6 +190,14 @@ player addEventHandler ["GetInMan", {
 	};
 }];
 
+if (_lives isEqualTo -1) then
+{
+	player setDamage 1;
+	setPlayerRespawnTime 0;
+	[{call FNF_ClientSide_fnc_startSpectator;}, [], 0.5] call CBA_fnc_waitAndExecute;
+	[{player enableSimulation false;}, [], 1] call CBA_fnc_waitAndExecute;
+};
+
 call FNF_ClientSide_fnc_initVicRearmReplacement;
 
 //check if there are mobileSpawnPoints
@@ -205,6 +213,7 @@ player addEventHandler ["Killed", {
 	if (_playerLives isEqualTo 0) then
 	{
 		setPlayerRespawnTime 0;
+		missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), -1, true];
 		[{call FNF_ClientSide_fnc_startSpectator;}, [], 0.5] call CBA_fnc_waitAndExecute;
 		[{player enableSimulation false;}, [], 1] call CBA_fnc_waitAndExecute;
 	} else {
