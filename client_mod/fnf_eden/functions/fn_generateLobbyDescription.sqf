@@ -175,7 +175,7 @@ _defMAT = [];
 {
 	_description = (_x get3DENAttribute "description") select 0;
 
-	if (_description isEqualTo "Missile Specialist@Echo") then
+	if (_description isEqualTo "Medium Anti-Tank") then
 	{
 		if (side _x isEqualTo (_atkSide select 0)) then
 		{
