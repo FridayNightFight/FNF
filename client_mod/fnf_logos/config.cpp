@@ -81,7 +81,7 @@ class RscDisplayMain: RscStandardDisplay {
 		};
 
 		class FnfServerEarly: RscButton {
-			x = safezoneX + safezoneW * 0.415;
+			x = safezoneX + safezoneW * 0.46;
 			y = safezoneY + safezoneH * 0.2;
 			w = safezoneW * 0.08;
 			h = safezoneH * 0.05;
@@ -89,19 +89,7 @@ class RscDisplayMain: RscStandardDisplay {
 			colorActive[] = {0.051,0.325,0.9,0.75};
 			style = 0x2;
 			text = "EARLY SERVER";
-			onButtonClick="connectToServer ['198.244.179.185', 2302, ''];";
-		};
-
-		class FnfServerLate: RscButton {
-			x = safezoneX + safezoneW * 0.505;
-			y = safezoneY + safezoneH * 0.2;
-			w = safezoneW * 0.08;
-			h = safezoneH * 0.05;
-			colorBackground[] = {1,0,0,1};
-			colorActive[] = {1,0,0,0.75};
-			style = 0x2;
-			text = "LATE SERVER";
-			onButtonClick="connectToServer ['198.244.179.185', 2302, ''];";
+			onButtonClick="connectToServer ['79.137.98.57', 2302, ''];";
 		};
 	};
 };
