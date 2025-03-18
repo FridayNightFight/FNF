@@ -567,6 +567,27 @@ force force IFX_ACE3WindowBreak_setting_audibleDistance = 5;
 force force IFX_ACE3WindowBreak_setting_enabled = true;
 force force IFX_ACE3WindowBreak_setting_interactionDistance = 2;
 
+// OCAP - Main
+force force OCAP_administratorList = "[]";
+force force OCAP_enabled = true;
+force force OCAP_isDebug = false;
+
+// OCAP - Recorder
+force force OCAP_settings_autoStart = true;
+force force OCAP_settings_excludeClassFromRecord = "['ACE_friesAnchorBar']";
+force force OCAP_settings_excludeKindFromRecord = "['WeaponHolder']";
+force force OCAP_settings_excludeMarkerFromRecord = "['ACE_BFT_']";
+force force OCAP_settings_frameCaptureDelay = 1;
+force force OCAP_settings_minMissionTime = 1;
+force force OCAP_settings_minPlayerCount = 1;
+force force OCAP_settings_preferACEUnconscious = true;
+force force OCAP_settings_saveMissionEnded = true;
+force force OCAP_settings_saveOnEmpty = true;
+force force OCAP_settings_saveTag = "FNF Main";
+force force OCAP_settings_trackTickets = false;
+force force OCAP_settings_trackTimeInterval = 10;
+force force OCAP_settings_trackTimes = false;
+
 // TFAR - Global settings
 force force TFAR_AICanHearPlayer = false;
 force force TFAR_AICanHearSpeaker = false;
