@@ -99,14 +99,11 @@ if (isDedicated) then
 	["fnf.call_slow_review_submit", [_missionName, _author, _reviewArray]] call py3_fnc_callExtension;
 };
 
-if (isClass (configFile >> "CfgPatches" >> "OCAP")) then
+if (count _winningSides isEqualTo 1) then
 {
-	if (count _winningSides isEqualTo 1) then
-	{
-		[(_winningSides select 0),_winningOCAP] call ocap_fnc_exportData;
-	} else {
-		[_winningOCAP] call ocap_fnc_exportData;
-	};
+	["ocap_exportData", [(_winningSides select 0), _winningOCAP]] call CBA_fnc_serverEvent;
+} else {
+	["ocap_exportData", [sideUnknown, _winningOCAP]] call CBA_fnc_serverEvent;
 };
 
 [_winningEnding, true] remoteExecCall ["BIS_fnc_endMission"];
