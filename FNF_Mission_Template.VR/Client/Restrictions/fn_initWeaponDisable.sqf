@@ -33,9 +33,12 @@ fnf_disableFiring = -1;
 		if (fnf_disableGrenades isEqualTo -1) then {
 			fnf_disableGrenades = player addEventHandler ["FiredMan",
 			{
-				params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
-				deleteVehicle _ammo;
-				_unit addMagazine _mode;
+				params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
+				deleteVehicle _projectile;
+				if (_weapon isEqualTo "Throw") then
+				{
+					_unit addMagazine _magazine;
+				};
 			}];
 		};
 
