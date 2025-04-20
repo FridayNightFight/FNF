@@ -123,8 +123,12 @@ if (_currentItems isEqualTo "") then
 				} else {
 					if ([player, _x] call BIS_fnc_hasItem) then
 					{
-						if (((primaryWeaponMagazine player) find _x) isNotEqualTo -1) then
+						if (((primaryWeaponMagazine player) find _x) isNotEqualTo -1 or ((primaryWeaponItems player) find _x) isNotEqualTo -1) then
 						{
+							if (((primaryWeaponItems player) select 2) isEqualTo _x) then
+							{
+								_opticToRetain = "";
+							};
 							player removePrimaryWeaponItem _x;
 						} else {
 							player removeItem _x;
@@ -226,7 +230,7 @@ if (_currentItems isEqualTo "") then
 
 	//add either current items or items previously removed to complete selection
 	_weaponAddAfter = "NONE";
-	_opticAddAfter = "";
+	_weaponOptionsAddAfter = [];
 	{
 		switch (_selectorType) do {
 			case "opt":
@@ -239,9 +243,10 @@ if (_currentItems isEqualTo "") then
 				{
 					_weaponAddAfter = _x;
 				} else {
-					if (getNumber(configFile >> "CfgWeapons" >> _x >> "itemInfo" >> "type") isEqualTo 201) then
+					_itemType = getNumber(configFile >> "CfgWeapons" >> _x >> "itemInfo" >> "type");
+					if (_itemType isEqualTo 201 or _itemType isEqualTo 101) then
 					{
-						_opticAddAfter = _x;
+						_weaponOptionsAddAfter pushBack _x;
 					} else {
 						player addItem _x;
 					};
@@ -282,9 +287,11 @@ if (_currentItems isEqualTo "") then
 	if (_weaponAddAfter isNotEqualTo "NONE") then
 	{
 		player addWeapon _weaponAddAfter;
-		if (_opticToRetain isNotEqualTo "") then
+		if (_weaponOptionsAddAfter isNotEqualTo []) then
 		{
-			player addPrimaryWeaponItem _opticToRetain;
+			{
+				player addPrimaryWeaponItem _x;
+			} forEach _weaponOptionsAddAfter;
 		};
 	};
 };
