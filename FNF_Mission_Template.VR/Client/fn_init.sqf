@@ -118,6 +118,15 @@ player addEventHandler ["Killed", {
 	[{call FNF_ClientSide_fnc_startSpectator;}, [], 3] call CBA_fnc_waitAndExecute;
 }];
 
+//Remove thermals from a vic when a player enters said vic
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+	if (not (equipmentDisabled _vehicle select 1)) then
+	{
+		_vehicle disableTIEquipment true;
+	};
+}];
+
 //handle if some one JIP and theres safezones whether they have expired
 if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
 {
