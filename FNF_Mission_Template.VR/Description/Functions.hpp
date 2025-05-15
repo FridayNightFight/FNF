@@ -205,6 +205,7 @@ class CfgFunctions
 			file = "Client\Fortify";
 			class initFortify {};
 			class disableFortify {};
+			class addDestructionEH {};
 		};
 		class breifing
 		{
