@@ -18,4 +18,7 @@ class ACEX_Fortify_Presets {
 	class fnf_fortify_bunkersCNSRT {
 		displayName = "Bunkers (Constructed)";
 	};
+	class fnf_fortify_miscellaneous {
+		displayName = "Miscellaneous Items";
+	};
 };
