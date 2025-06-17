@@ -23,7 +23,8 @@ params [
 	["_text", "",[""] ],
 	["_notiftype", "success", ["",[],{}]],
 	["_speed", 5, [5]],
-	["_leadingSpaces", 0, [0]]
+	["_leadingSpaces", 0, [0]],
+	["_imgSupplied", false, [true]]
 ];
 
 if (isDedicated || !hasInterface) exitWith {};
@@ -129,11 +130,6 @@ switch (_notiftype) do
 	};
 };
 
-
-if (_text isEqualType "") then {
-		_text = parseText _text;
-};
-
 playSound "HintExpand";
 
 private _Title = _display ctrlCreate ["RscText", -1];
@@ -148,13 +144,29 @@ _Title ctrlCommit 0; //ctrlCommit Updates the Changes i made above
 _Title ctrlSetFade 0;
 _Title ctrlCommit 0.4;
 
-private _Message = _display ctrlCreate ["RscStructuredText", -1];
-//Creating Message Control And Setting Text, Height and width.
-_Message ctrlSetStructuredText _text;
-_Message ctrlSetPosition [0.805 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.185 * safezoneW,	0.015* safezoneH];
-_Message ctrlCommit 0;
-_Message ctrlSetPosition [0.805 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.185 * safezoneW, ((ctrlTextHeight _Message) + (0.005 * safezoneH) + (_leadingSpaces * 0.001))];
-_Message ctrlCommit 0;
+_Message = 0;
+
+if (_imgSupplied) then
+{
+	_Message = _display ctrlCreate ["RscWebBrowser", -1];
+	//Creating Message Control And Setting Text, Height and width.
+	_Message ctrlSetPosition [0.805 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.185 * safezoneW,	0.3 * safezoneH];
+	_imageHTML = ['<html><body style="background-color:rgba(0.129,0.129,0.129,0.9);"><img style="height: 100%; width: 100%; object-fit: contain" src="data:image/png;base64,', _text, '" alt="Random Meme"></body></html>'];
+	_Message ctrlWebBrowserAction ["OpenDataAsURL", _imageHTML joinString ""];
+	_Message ctrlCommit 0;
+} else {
+	if (_text isEqualType "") then {
+		_text = parseText _text;
+	};
+
+	_Message = _display ctrlCreate ["RscStructuredText", -1];
+	//Creating Message Control And Setting Text, Height and width.
+	_Message ctrlSetStructuredText _text;
+	_Message ctrlSetPosition [0.805 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.185 * safezoneW,	0.015* safezoneH];
+	_Message ctrlCommit 0;
+	_Message ctrlSetPosition [0.805 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.185 * safezoneW, ((ctrlTextHeight _Message) + (0.005 * safezoneH) + (_leadingSpaces * 0.001))];
+	_Message ctrlCommit 0;
+};
 
 //Setting Background Colour and Fade
 _Message ctrlSetBackgroundColor [0.129,0.129,0.129, 0.9];
@@ -164,7 +176,11 @@ _Message ctrlSetFade 0;
 _Message ctrlCommit 0.4;
 
 //Updating Title Height to Match The Text Height
-_Title ctrlSetPosition [0.8035 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.002 * safezoneW, ((ctrlTextHeight _Message)+ (0.005 * safezoneH) + (_leadingSpaces * 0.001))];
+_Title ctrlSetPosition [0.8035 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.002 * safezoneW, 0.3 * safezoneH];
+if (not _imgSupplied) then
+{
+	_Title ctrlSetPosition [0.8035 * safezoneW + safezoneX, 0.2 * safezoneH + safezoneY, 0.002 * safezoneW, ((ctrlTextHeight _Message)+ (0.005 * safezoneH) + (_leadingSpaces * 0.001))];
+};
 _Title ctrlCommit 0;
 
 

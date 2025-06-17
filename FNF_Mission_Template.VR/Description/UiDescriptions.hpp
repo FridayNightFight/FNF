@@ -40,3 +40,19 @@ class RscTitles {
 		};
 	};
 };
+
+import RscText;
+
+class RscWebBrowser: RscText
+{
+	type = 106;
+	idc = -1;
+	deletable = 0;
+	style = 0;
+	x = 0;
+	y = 0;
+	w = 0.3;
+	h = 0.3;
+	allowExternalURL = 0;
+	url = "";
+};

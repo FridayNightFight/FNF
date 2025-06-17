@@ -253,6 +253,13 @@ class CfgFunctions
 			file = "Client\BackpackLocking";
 			class initBackpackLocking {};
 		};
+		class base64Image
+		{
+			file = "Client\UI\Base64Image";
+			class recieveBase64Image {};
+			class sendBase64Image {};
+			class showBase64Image {};
+		};
 	};
 	class FNF_ServerSide
 	{
