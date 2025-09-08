@@ -203,6 +203,7 @@ force force ace_map_gestures_onlyShowFriendlys = true;
 force force ace_medical_ai_enabledFor = 0;
 force force ace_medical_ai_requireItems = 0;
 force force ace_medical_AIDamageThreshold = 1;
+force force ace_medical_alternateArmorPenetration = false;
 force force ace_medical_bleedingCoefficient = 0.6;
 force force ace_medical_blood_bloodLifetime = 900;
 force force ace_medical_blood_enabledFor = 1;
