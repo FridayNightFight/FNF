@@ -26,7 +26,7 @@ player setVariable ["fnf_backpackLocked", 1, true];
 			_backpack lockInventory false;
 		};
 	} forEach _playersClose;
-}, 2] call CBA_fnc_addPerFrameHandler;
+}, 1] call CBA_fnc_addPerFrameHandler;
 
 _action = ["UnlockBackpack","Unlock Backpack","\A3\Ui_f\data\GUI\Cfg\KeyframeAnimation\IconKey_CA.paa",{
 	player setVariable ["fnf_backpackLocked", 0, true];
