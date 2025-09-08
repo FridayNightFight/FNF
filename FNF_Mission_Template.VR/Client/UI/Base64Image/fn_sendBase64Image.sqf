@@ -22,6 +22,10 @@ _splitDataArray = [];
 
 _stringLength = count _imageString;
 
+systemChat ("Sending packets of length: " + str(_dataPacketLength));
+systemChat ("Sending packets with delay of: " + str(_dataPacketDelay));
+systemChat ("Splitting data into " + str(_stringLength / _dataPacketLength) + " Packets...");
+
 for [{_i = 0}, {_i < (_stringLength / _dataPacketLength)}, { _i = _i + 1 }] do
 {
 	_dataPacket = _imageString select [(_i * _dataPacketLength), _dataPacketLength];
@@ -55,6 +59,7 @@ if (isNil "fnf_sendBase64ImageCounter") then
 	if (_count isEqualTo (count _splitDataArray)) then
 	{
 		[_id, _count] remoteExec ["FNF_ClientSide_fnc_showBase64Image", _reciever, false];
+		systemChat ("Sending Complete!");
 		[(_this select 1)] call CBA_fnc_removePerFrameHandler;
 	} else {
 		[_id, _count, (_splitDataArray select _count)] remoteExec ["FNF_ClientSide_fnc_recieveBase64Image", _reciever, false];
