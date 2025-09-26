@@ -22,13 +22,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -43,13 +43,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -64,13 +64,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -85,13 +85,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -106,13 +106,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -127,13 +127,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -148,13 +148,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -169,13 +169,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -190,13 +190,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -211,13 +211,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -232,13 +232,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -253,13 +253,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -274,13 +274,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -295,13 +295,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -316,13 +316,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -337,13 +337,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -358,13 +358,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -379,13 +379,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -400,13 +400,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -421,13 +421,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -442,13 +442,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -463,13 +463,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -484,13 +484,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -505,13 +505,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -526,13 +526,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -547,13 +547,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -568,13 +568,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -589,13 +589,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -610,13 +610,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -631,13 +631,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -652,13 +652,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -673,13 +673,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -694,13 +694,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -715,13 +715,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -736,19 +736,19 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
 	};
  };
- class rhs_tsh4: H_HelmetB
+ class rhs_tsh0: H_HelmetB
  {
 	class ItemInfo: ItemInfo
 	{
@@ -757,13 +757,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -778,13 +778,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -799,13 +799,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -820,13 +820,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -841,13 +841,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -862,13 +862,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -883,19 +883,19 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
 	};
  };
- class UK3CB_TKM_O_H_Turban_04_1: HelmetBase
+ class UK3CB_TKM_O_H_Turban_00_1: HelmetBase
  {
 	class ItemInfo: ItemInfo
 	{
@@ -904,13 +904,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -925,13 +925,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -946,13 +946,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -967,13 +967,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -988,19 +988,19 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
 	};
  };
- class UK3CB_TKC_H_Turban_04_1: HelmetBase
+ class UK3CB_TKC_H_Turban_00_1: HelmetBase
  {
 	class ItemInfo: ItemInfo
 	{
@@ -1009,13 +1009,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1030,13 +1030,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1051,13 +1051,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1072,13 +1072,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1093,13 +1093,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1114,13 +1114,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1135,13 +1135,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1156,13 +1156,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1177,13 +1177,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1198,13 +1198,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1219,13 +1219,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1240,13 +1240,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1261,13 +1261,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1282,13 +1282,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1303,13 +1303,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1324,13 +1324,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1345,13 +1345,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1366,13 +1366,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1387,13 +1387,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1408,13 +1408,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1429,13 +1429,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1450,13 +1450,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1471,13 +1471,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1492,13 +1492,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1513,13 +1513,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1534,13 +1534,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1555,13 +1555,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1576,13 +1576,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1597,13 +1597,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1618,13 +1618,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1639,13 +1639,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1660,13 +1660,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1681,13 +1681,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1702,13 +1702,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1723,13 +1723,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1744,13 +1744,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1765,13 +1765,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1786,13 +1786,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1807,13 +1807,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1828,13 +1828,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1849,13 +1849,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1870,13 +1870,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1891,13 +1891,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1912,13 +1912,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1933,13 +1933,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1954,13 +1954,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1975,13 +1975,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -1996,13 +1996,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2017,13 +2017,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2038,13 +2038,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2059,13 +2059,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2080,13 +2080,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2101,13 +2101,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2122,13 +2122,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2143,13 +2143,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2164,13 +2164,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2185,13 +2185,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2206,13 +2206,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2227,13 +2227,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2248,13 +2248,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2269,13 +2269,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2290,13 +2290,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2311,13 +2311,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2332,13 +2332,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2353,13 +2353,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2374,13 +2374,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2395,13 +2395,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2416,13 +2416,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2437,13 +2437,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2458,13 +2458,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2479,13 +2479,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2500,13 +2500,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2521,13 +2521,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2542,13 +2542,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2563,13 +2563,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2584,13 +2584,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2605,13 +2605,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2626,13 +2626,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2647,13 +2647,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2668,13 +2668,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2689,13 +2689,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2710,13 +2710,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2731,13 +2731,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2752,13 +2752,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2773,13 +2773,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2794,13 +2794,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2815,13 +2815,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2836,13 +2836,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2857,13 +2857,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2878,13 +2878,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2899,13 +2899,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2920,13 +2920,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2941,13 +2941,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2962,13 +2962,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -2983,13 +2983,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3004,13 +3004,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3025,13 +3025,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3046,13 +3046,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3067,13 +3067,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3088,13 +3088,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3109,13 +3109,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3130,13 +3130,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3151,13 +3151,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3172,13 +3172,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3193,13 +3193,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3214,13 +3214,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3235,13 +3235,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3256,13 +3256,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
@@ -3277,13 +3277,13 @@ class cfgWeapons
 		class Head
 		 {
 			hitpointName = "HitHead";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 				class Face
 		 {
 			hitpointName = "HitFace";
-			armor = 4;
+			armor = 0;
 			passThrough = 0.5;
 		 };
 	 };
