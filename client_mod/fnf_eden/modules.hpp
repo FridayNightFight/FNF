@@ -517,6 +517,15 @@ class CfgVehicles
 				typeName = "BOOL";
 				defaultValue = "true";
 			};
+			class ExplodeOnComplete: Checkbox
+			{
+				property = "fnf_explodeOnComplete";
+				expression = "_this setVariable ['fnf_explodeOnComplete',_value, true];";
+				displayName = "Explode On Completion";
+				tooltip = "If checked, the terminal explodes when the hack completes.";
+				typeName = "BOOL";
+				defaultValue = "true";
+			};
 		};
 	};
 	class fnf_module_sectorHoldObj: fnf_module_objective
