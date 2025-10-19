@@ -105,7 +105,20 @@ class items
 					};
 				};
 			};
-			nAttributes=3;
+			class Attribute3
+			{
+				property="fnf_explodeOnComplete";
+				expression="_this setVariable ['fnf_explodeOnComplete',_value, true];";
+				class Value
+				{
+					class data
+					{
+						singleType="BOOL";
+						value=1;
+					};
+				};
+			};
+			nAttributes=4;
 		};
 	};
 	class Item4
