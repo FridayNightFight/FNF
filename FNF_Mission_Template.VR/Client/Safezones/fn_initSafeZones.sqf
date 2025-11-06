@@ -174,12 +174,8 @@ if (_maxTimeZoneIsDeleted isNotEqualTo 0) then
 			};
 			_result;
 		},{
-			true call FNF_ClientSide_fnc_showTimerInHUD;
 			["<t size='1.5' align='center'>Safe Zones Drop in 5 Minutes</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 		}, _timeToNotify] call CBA_fnc_waitUntilAndExecute;
 
-	} else {
-		//otherwise just keep the timer showing in HUD
-		true call FNF_ClientSide_fnc_showTimerInHUD;
 	};
 };

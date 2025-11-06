@@ -33,6 +33,5 @@ player setVariable ["fnf_backpackLocked", 2, true];
 
 fnf_timerMessage = nil;
 fnf_timerEndTime = nil;
-false call FNF_ClientSide_fnc_showTimerInHUD;
 
 ["safeZoneGroup"] call FNF_ClientSide_fnc_removeRestrictionGroup;
