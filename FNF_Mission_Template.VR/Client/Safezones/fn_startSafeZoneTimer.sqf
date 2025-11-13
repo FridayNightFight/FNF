@@ -48,8 +48,6 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 
 		fnf_timerMessage = nil;
 		fnf_timerEndTime = nil;
-		false call FNF_ClientSide_fnc_showTimerInHUD;
-
 		fnf_showSelectors = false;
 
 		call FNF_ClientSide_fnc_disableFortify;

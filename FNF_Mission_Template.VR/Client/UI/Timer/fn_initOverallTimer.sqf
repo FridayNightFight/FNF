@@ -17,22 +17,16 @@ disableSerialization;
 _MinutesToEnd = _module getVariable ["fnf_gameTime", 65];
 
 _defaultEndTime = _MinutesToEnd * 60;
-_defaultMessage = "%1";
 
 //set up overall timer
 [{
-	(_this select 0) params["_defaultEndTime", "_defaultMessage"];
+	(_this select 0) params["_defaultEndTime"];
 
 	_timeToEnd = _defaultEndTime;
-	_message = _defaultMessage;
 
 	if !(isNil "fnf_timerEndTime") then
 	{
 		_timeToEnd = fnf_timerEndTime;
-	};
-	if !(isNil "fnf_timerMessage") then
-	{
-		_message = fnf_timerMessage;
 	};
 
 	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
@@ -50,10 +44,19 @@ _defaultMessage = "%1";
 		_time = serverTime;
 	};
 	if (_time <= _timeToEnd) then {
-		_setText ctrlSetStructuredText parseText (format [_message, [(_timeToEnd - _time), "MM:SS"] call BIS_fnc_secondsToString]);
+		_setText ctrlSetStructuredText parseText ([(_timeToEnd - _time), "MM:SS"] call BIS_fnc_secondsToString);
 	} else {
-		_setText ctrlSetStructuredText parseText (format [_message, "+" + ([(_time - _timeToEnd), "MM:SS"] call BIS_fnc_secondsToString)]);
+		_setText ctrlSetStructuredText parseText ("+" + ([(_timeToEnd - _time), "MM:SS"] call BIS_fnc_secondsToString));
 	};
-}, 1, [_defaultEndTime, _defaultMessage]] call CBA_fnc_addPerFrameHandler;
+
+	_opforScoreText = _display displayCtrl 1004;
+	_bluforScoreText = _display displayCtrl 1005;
+
+	_opforScore = missionNamespace getVariable ["fnf_opforScore", "???"];
+	_bluforScore = missionNamespace getVariable ["fnf_bluforScore", "???"];
+
+	_opforScoreText ctrlSetStructuredText parseText str (_opforScore);
+	_bluforScoreText ctrlSetStructuredText parseText str (_bluforScore);
+}, 1, [_defaultEndTime]] call CBA_fnc_addPerFrameHandler;
 
 true call FNF_ClientSide_fnc_showTimerInHUD;

@@ -90,6 +90,12 @@ switch (count _winningSides) do
 	};
 };
 
+_opforScore = missionNamespace getVariable ["fnf_opforScore", 0];
+_bluforScore = missionNamespace getVariable ["fnf_bluforScore", 0];
+
+profileNamespace setVariable ["fnf_opforScore", _opforScore];
+profileNamespace setVariable ["fnf_bluforScore", _bluforScore];
+
 if (isDedicated) then
 {
 	_currentReviews = missionNamespace getVariable "fnf_missionsReviews";

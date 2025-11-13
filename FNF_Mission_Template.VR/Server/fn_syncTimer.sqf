@@ -52,6 +52,12 @@
 	};
 }, 0.25] call CBA_fnc_addPerFrameHandler;
 
+_opforScore = profileNamespace getVariable ["fnf_opforScore", 0];
+_bluforScore = profileNamespace getVariable ["fnf_bluforScore", 0];
+
+missionNamespace setVariable ["fnf_opforScore", _opforScore, true];
+missionNamespace setVariable ["fnf_bluforScore", _bluforScore, true];
+
 if (!isDedicated) exitWith {};
 
 params["_module"];
