@@ -139,18 +139,18 @@ _initActions = {
 		_actionRange = "10";
 	};
 
-	_actionStayCondition = format["_caller distance _target < %1", _actionRange];
+	_actionStayCondition = format["(_caller distance _target < %1) && (_target isEqualTo (missionNamespace getVariable ['fnf_lonelyTerminal', _target]))", _actionRange];
 
 	//set action title and condition to show based on defend
 	_actionTitle = "Cancel Hack";
-	_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1)", _actionRange];
+	_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingCompletionTime', -1]) isNotEqualTo -1) && (_target isEqualTo (missionNamespace getVariable ['fnf_lonelyTerminal', _target]))", _actionRange];
 	_actionPauseTimer = true;
 
 	//edit if on attack
 	if (_objType isEqualTo "hck") then
 	{
 		_actionTitle = "Start Hack";
-		_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly)", _actionRange];
+		_actionCondition = format["(_this distance _target < %1) && ((_target getVariable ['fnf_currentlyHackingSide', sideUnknown]) isNotEqualTo playerSide) && not ([playerSide, (_target getVariable ['fnf_currentlyHackingSide', sideUnknown])] call BIS_fnc_sideIsFriendly) && (_target isEqualTo (missionNamespace getVariable ['fnf_lonelyTerminal', _target]))", _actionRange];
 		_actionPauseTimer = false;
 	};
 
@@ -166,6 +166,7 @@ _initActions = {
 		{},
 		{
 			params ["_target", "_caller", "_actionId", "_arguments"];
+			missionNamespace setVariable ['fnf_lonelyTerminal', _target, true];
 			[[(_arguments select 0), (_arguments select 1), playerSide, (_arguments select 2)], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
 		},
 		{},
