@@ -101,6 +101,14 @@ if (_serverState isEqualTo 5) then
 	_marker setMarkerTextLocal "(Failed) Terminal OBJ";
 	_marker setMarkerColorLocal "ColorBlack";
 };
+if (_serverState isEqualTo 6) then
+{
+	_task setTaskState "Canceled";
+	_stringArray pushBack "Canceled";
+	_notificationType = "info";
+	_marker setMarkerTextLocal "(Canceled) Terminal OBJ";
+	_marker setMarkerColorLocal "ColorBlack";
+};
 
 if (_alliedTask) then
 {
@@ -115,6 +123,12 @@ if (not (_targetObject getVariable ['fnf_explosionHandeled', false])) then
 	_stringArray pushBack "not been hacked in time</t><br/><br/>";
 } else {
 	_stringArray pushBack "been hacked</t><br/><br/>";
+};
+
+if (_serverState isEqualTo 6) then
+{
+	_stringArray deleteAt ((count _stringArray) - 1);
+	_stringArray pushBack "been canceled</t><br/><br/>";
 };
 
 _stringArray pushBack format["<img size='6' align='center' image='%1'/>", _targetPic];

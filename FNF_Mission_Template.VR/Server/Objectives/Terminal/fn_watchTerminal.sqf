@@ -40,12 +40,22 @@ if (_timeOfCompletion isEqualTo -1) then
 	_result = false;
 };
 
+if (_targetObject isNotEqualTo (missionNamespace getVariable ['fnf_lonelyTerminal', _targetObject])) then
+{
+	_result = true;
+};
+
 if (not _result) exitWith {};
 
 _newObjState = 5;
 if (_objType isEqualTo "hck") then
 {
 	_newObjState = 4;
+};
+if (_targetObject isNotEqualTo (missionNamespace getVariable ['fnf_lonelyTerminal', _targetObject])) then
+{
+	_newObjState = 6;
+	_targetObject setVariable ['fnf_explosionHandeled', true, true];
 };
 
 _completedExplosion = _targetObject getVariable ['fnf_explosionHandeled', false];
