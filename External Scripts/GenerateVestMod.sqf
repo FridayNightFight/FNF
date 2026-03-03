@@ -134,7 +134,10 @@ fnf_addVest = {
 		_vestEntry = fnf_problemVests findif {_x select 0 isEqualTo (_vest select 1)};
 		if (_vestEntry != -1) then
 		{
-			[fnf_problemVests select _vestEntry] call fnf_addVest;
+			if ([fnf_problemVests select _vestEntry] isNotEqualTo [["",""]]) then
+			{
+				[fnf_problemVests select _vestEntry] call fnf_addVest;
+			};
 		};
 		fnf_output pushBack ("	class " + (_vest select 0) + ": " + (_vest select 1) + "
 	{
