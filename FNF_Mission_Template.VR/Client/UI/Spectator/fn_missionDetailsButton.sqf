@@ -51,6 +51,7 @@ _buttons = [];
 	_syncedObjects = synchronizedObjects _x;
 	_buttonName = "UNKNOWN";
 	_buttonColour = [0.5, 0.5, 0.5, 0.9];
+	_buttonSide = sideEmpty;
 	_objectType = typeOf _module;
 
 	//setup basic code for EH to get the modules and set spectator camera to module selected
@@ -77,21 +78,24 @@ _buttons = [];
 			{
 				_buttonName = "BLUFOR";
 				_buttonColour = [0, 0.3, 0.6, 0.9];
+				_buttonSide = west;
 			};
 			case "SideOPFOR_F":
 			{
 				_buttonName = "OPFOR";
 				_buttonColour = [0.5, 0.0, 0.0, 0.9];
+				_buttonSide = east;
 			};
 			case "SideResistance_F":
 			{
 				_buttonName = "INDFOR";
 				_buttonColour = [0, 0.5, 0, 0.9];
+				_buttonSide = independent;
 			};
 		};
 	} forEach _syncedObjects;
 
-	_buttons pushback [_code, _buttonName, _buttonColour];
+	_buttons pushback [_code, _buttonName, _buttonColour, _buttonSide];
 } forEach _kitInfoModules;
 
 //setup OBJ buttons after side buttons
@@ -218,7 +222,7 @@ _buttons = [];
 
 	if (_showButton) then
 	{
-		_buttons pushback [_code, _buttonName, _buttonColour];
+		_buttons pushback [_code, _buttonName, _buttonColour, sideEmpty];
 	};
 } forEach fnf_objectives;
 
@@ -261,8 +265,10 @@ _buttons = [];
 		};
 	};
 
+	_buttonsToUpdateNumbers = [];
+
 	{
-		_x params ["_code", "_buttonName", "_buttonColour"];
+		_x params ["_code", "_buttonName", "_buttonColour", "_buttonSide"];
 		//compile code created earlier
 		_code = _code joinString "";
 		_code = compile _code;
@@ -285,5 +291,39 @@ _buttons = [];
 		_button ctrlSetBackgroundColor _buttonColour;
 		_button ctrlAddEventHandler ["ButtonClick", _code];
 		_button ctrlCommit 0;
+
+		if (_buttonSide isNotEqualTo sideEmpty) then
+		{
+			_buttonsToUpdateNumbers pushBack [_x, _button];
+		};
 	} forEach _buttons;
+
+	[{
+		(_this select 0) params ["_buttonsToUpdateNumbers", "_columnsPerRow"];
+
+		disableSerialization;
+
+		{
+			_x params ["_buttonArr", "_buttonCtrl"];
+			_buttonArr params ["_code", "_buttonName", "_buttonColour", "_buttonSide"];
+
+			if (not ctrlEnabled _buttonCtrl) then
+			{
+				[(_this select 1)] call CBA_fnc_removePerFrameHandler;
+			};
+
+			_sideNum = allPlayers select {(side _x) isEqualTo _buttonSide};
+
+			_buttonCtrl ctrlSetStructuredText (parseText ("<t align='left'>" + _buttonName + ": " + str(count _sideNum) + "</t>"));
+			_textWidth = (ctrlTextWidth _buttonCtrl) + (2 * 0.008);
+
+			if (_textWidth > ((0.4 / _columnsPerRow) * safeZoneW)) then
+			{
+				_buttonCtrl ctrlSetStructuredText (parseText ("<t align='left' size='0.75'>" + _buttonName + ": " + str(count _sideNum) + "</t>"));
+			};
+
+			_buttonCtrl ctrlCommit 0;
+
+		} forEach _buttonsToUpdateNumbers;
+	}, 1, [_buttonsToUpdateNumbers, _columnsPerRow]] call CBA_fnc_addPerFrameHandler;
 },[_buttons]] call CBA_fnc_waitUntilAndExecute;
