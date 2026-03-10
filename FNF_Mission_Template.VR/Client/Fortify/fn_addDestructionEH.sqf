@@ -66,28 +66,28 @@ if (isNil "fnf_fortifyDestructionObjectHolder") then
 
 //Master list of hitpoints and sturdiness
 _fortificationHitPointMap = createHashMapFromArray [
-	["Land_BagFence_01_short_green_F", [90, 1]],
-	["Land_BagFence_Short_F", [90, 1]],
-	["Land_BagFence_01_long_green_F", [90, 1]],
-	["Land_BagFence_Long_F", [90, 1]],
-	["Land_BagFence_01_round_green_F", [90, 1]],
-	["Land_BagFence_Round_F", [90, 1]],
-	["Land_Plank_01_4m_F", [50, 1]],
-	["Land_Plank_01_8m_F", [50, 1]],
+	["Land_BagFence_01_short_green_F", [30, 1]],
+	["Land_BagFence_Short_F", [30, 1]],
+	["Land_BagFence_01_long_green_F", [30, 1]],
+	["Land_BagFence_Long_F", [30, 1]],
+	["Land_BagFence_01_round_green_F", [30, 1]],
+	["Land_BagFence_Round_F", [30, 1]],
+	["Land_Plank_01_4m_F", [10, 1]],
+	["Land_Plank_01_8m_F", [10, 1]],
 	["Land_Razorwire_F", [-1, 1]],
-	["Hedgehog", [90, 1]],
-	["Land_BagBunker_01_small_green_F", [180, 1]],
-	["Land_BagBunker_Small_F", [180, 1]],
-	["Land_HBarrier_01_wall_4_green_F", [450, 2]],
-	["Land_HBarrierWall4_F", [450, 2]],
-	["Land_HBarrier_01_wall_corner_green_F", [450, 2]],
-	["Land_HBarrierWall_corner_F", [450, 2]],
-	["Land_HBarrier_01_wall_6_green_F", [450, 2]],
-	["Land_HBarrierWall6_F", [450, 2]],
-	["Land_HBarrier_01_tower_green_F", [600, 2]],
-	["Land_BagBunker_Tower_F", [600, 2]],
-	["Land_BagBunker_01_large_green_F", [600, 2]],
-	["Land_BagBunker_Large_F", [600, 2]],
+	["Hedgehog", [40, 1]],
+	["Land_BagBunker_01_small_green_F", [100, 1]],
+	["Land_BagBunker_Small_F", [100, 1]],
+	["Land_HBarrier_01_wall_4_green_F", [200, 2]],
+	["Land_HBarrierWall4_F", [200, 2]],
+	["Land_HBarrier_01_wall_corner_green_F", [200, 2]],
+	["Land_HBarrierWall_corner_F", [200, 2]],
+	["Land_HBarrier_01_wall_6_green_F", [200, 2]],
+	["Land_HBarrierWall6_F", [200, 2]],
+	["Land_HBarrier_01_tower_green_F", [250, 2]],
+	["Land_BagBunker_Tower_F", [250, 2]],
+	["Land_BagBunker_01_large_green_F", [300, 2]],
+	["Land_BagBunker_Large_F", [300, 2]],
 	["Land_Bunker_01_small_F", [-1, 3]],
 	["Land_Bunker_01_big_F", [-1, 3]],
 	["Land_Bunker_01_HQ_F", [-1, 3]],
@@ -121,13 +121,24 @@ _object addEventHandler ["HitPart", {
 			"_isDirect", "_instigator"
 		];
 
+		_damage = (_ammo select 0);
+
 		//if ammo is not powerful do not count the hit
-		if ((_ammo select 0) <= 30) then
+		if (_damage <= 30) then
 		{
 			continue;
 		};
 
-		_HitPoints = _HitPoints - (_ammo select 0);
+		//Standardise Autocannon and AT damage values
+		if (_damage <= 120) then
+		{
+			_damage = 10;
+		} else {
+			_damage = 150;
+		};
+
+
+		_HitPoints = _HitPoints - _damage;
 
 		//if hitpoints less than or is 0 then its dead, loop can end
 		if (_HitPoints <= 0) then
