@@ -114,6 +114,8 @@ _object addEventHandler ["HitPart", {
 	//if less than zero it does not have hitpoints and can be ignored
 	if (_HitPoints < 0) exitWith {};
 
+	_highestDamage = 0;
+
 	{
 		_x params [
 			"_target", "_shooter", "_projectile", "_position", "_velocity",
@@ -129,6 +131,17 @@ _object addEventHandler ["HitPart", {
 			continue;
 		};
 
+		_objectsHit = _projectile getVariable ["fnf_fortifyDestructionObjectsHit", []];
+
+		//Check if this projectile has hit the object before, if it has it cannot apply more damage
+		if (_target in _objectsHit) then
+		{
+			continue;
+		} else {
+			_objectsHit pushBack _target;
+			_projectile setVariable ["fnf_fortifyDestructionObjectsHit", _objectsHit, false];
+		};
+
 		//Standardise Autocannon and AT damage values
 		if (_damage <= 120) then
 		{
@@ -137,16 +150,15 @@ _object addEventHandler ["HitPart", {
 			_damage = 150;
 		};
 
-
-		_HitPoints = _HitPoints - _damage;
-
-		//if hitpoints less than or is 0 then its dead, loop can end
-		if (_HitPoints <= 0) then
+		//see if damage is more than already highest damage
+		if (_damage > _highestDamage) then
 		{
-			_HitPoints = 0;
-			break;
-		};
+			_highestDamage = _damage;
+		}
 	} forEach _this;
+
+	//resolve damage calculation
+	_HitPoints = _HitPoints - _highestDamage;
 
 	//update hitpoints for other shooters
 	_HitPointValue set [0, _HitPoints];
