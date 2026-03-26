@@ -25,7 +25,7 @@ switch (_objState) do {
 		_sequentialPlannersAssigned = [];
 		{
 			_typeOfObject = typeOf _x;
-			if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F") then
+			if (_typeOfObject isEqualTo "SideBLUFOR_F" or _typeOfObject isEqualTo "SideOPFOR_F" or _typeOfObject isEqualTo "SideResistance_F" or _typeOfObject isEqualTo "fnf_module_hidingZone") then
 			{
 				continue;
 			};
