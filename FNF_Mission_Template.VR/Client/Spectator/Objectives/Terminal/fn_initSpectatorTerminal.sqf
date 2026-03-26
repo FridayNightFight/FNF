@@ -79,7 +79,7 @@ _createTask = {
 		_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 		if (count _hidingZonesAssigned isNotEqualTo 0) then
 		{
-			_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
+			_helperString = "The location of the objective may be in a hiding zone, if it is, the zone it is hidden in is marked on your map, if it isn't, the objectives exact location is marked instead, in either case you can find it by hitting the 'Locate' button above";
 			_zoneKnown = _module getVariable ["fnf_zoneKnown", true];
 			if (not _zoneKnown) then
 			{
