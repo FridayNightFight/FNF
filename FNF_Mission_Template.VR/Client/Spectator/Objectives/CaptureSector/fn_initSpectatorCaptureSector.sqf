@@ -58,7 +58,7 @@ _createTask = {
 
 	_futureTask = player createSimpleTask [_taskTitle, _parentTask];
 
-	_futureTask setSimpleTaskType "defend";
+	_futureTask setSimpleTaskType "danger";
 	_descriptionPointTwo = "the Sector cannot be allowed to be captured<br/><br/>";
 	_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 	if (_objType isEqualTo "cap") then

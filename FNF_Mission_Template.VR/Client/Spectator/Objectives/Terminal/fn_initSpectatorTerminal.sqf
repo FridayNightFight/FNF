@@ -64,7 +64,7 @@ _createTask = {
 
 	_hackingTime = _module getVariable ["fnf_hackingTime", 120];
 
-	_futureTask setSimpleTaskType "defend";
+	_futureTask setSimpleTaskType "intel";
 	_descriptionPointTwo = format["the terminal cannot be hacked by enemy forces, a hack will take %1 seconds<br/><br/>", _hackingTime];
 	_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 	if (count _hidingZonesAssigned isNotEqualTo 0) then

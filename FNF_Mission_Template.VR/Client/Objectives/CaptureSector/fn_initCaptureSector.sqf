@@ -64,7 +64,7 @@ _createTask = {
 	_timeToCapture = _module getVariable ["fnf_TimeToCapture", 60];
 
 	//set descriptions and task type based on defend OBJ
-	_futureTask setSimpleTaskType "defend";
+	_futureTask setSimpleTaskType "danger";
 	_descriptionPointTwo = format["the Sector cannot be allowed to be captured, it takes %1 seconds to capture<br/><br/>", _timeToCapture];
 	_helperString = "The location of the objective is marked on your map, or you can find it by hitting the 'Locate' button above";
 

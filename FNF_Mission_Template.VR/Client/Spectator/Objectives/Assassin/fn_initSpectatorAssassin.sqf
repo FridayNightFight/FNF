@@ -49,7 +49,7 @@ _createTask = {
 	_futureTask = player createSimpleTask [_taskTitle, _parentTask];
 
 	//set descriptions and task type based on defend OBJ
-	_futureTask setSimpleTaskType "defend";
+	_futureTask setSimpleTaskType "target";
 	_descriptionPointTwo = format["%1 cannot be assassinated<br/><br/>", _targetName];
 	_helperString = format["The location of %1 is marked on your map, or you can find it by hitting the 'Locate' button above", _targetName];
 	if (count _hidingZonesAssigned isNotEqualTo 0) then
