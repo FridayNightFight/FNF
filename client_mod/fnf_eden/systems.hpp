@@ -56,6 +56,10 @@ class CfgEditorSubcategories
 	{
 		displayName = "Hold Sector";
 	};
+	class fnf_Steal
+	{
+		displayName = "Steal";
+	};
 	class fnf_SafeZones
 	{
 		displayName = "Safe Zones";
@@ -370,5 +374,29 @@ class Cfg3DEN
 			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
 			editorSubcategory = "fnf_Assassin";				// link to CfgEditorSubcategories
 			displayName = "Assassin Objective Preset";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+		{
+			path = "fnf_eden\objectives\StealObjectivePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Steal";				// link to CfgEditorSubcategories
+			displayName = "Steal Objective Preset [ 1 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+		{
+			path = "fnf_eden\objectives\StealObjectivePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Steal";				// link to CfgEditorSubcategories
+			displayName = "Steal Objective Preset [ 2 ]";
+			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
+		};
+		{
+			path = "fnf_eden\objectives\StealObjectivePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
+			side = 8;
+			editorCategory = "fnf_Objectives";						// link to CfgEditorCategories
+			editorSubcategory = "fnf_Steal";				// link to CfgEditorSubcategories
+			displayName = "Steal Objective Preset [ 3 ]";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
