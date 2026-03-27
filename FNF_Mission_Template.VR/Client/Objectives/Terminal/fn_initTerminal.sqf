@@ -376,7 +376,7 @@ switch (_objState) do {
 		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _targetLocation];
 		_marker setMarkerShapeLocal "ICON";
 		_marker setMarkerTypeLocal "mil_dot";
-		_marker setMarkerTextLocal format["(Inactive) Terminal %1", _objectiveIndex + 1];;
+
 		if (not _showMarker) then
 		{
 			_marker setMarkerAlphaLocal 0;
