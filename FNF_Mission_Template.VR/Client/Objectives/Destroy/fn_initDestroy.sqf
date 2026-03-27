@@ -26,7 +26,7 @@ _createTask = {
 	_targetName = getText (_targetConfig >> "DisplayName");
 
 	//if parent task for my tasks doesnt exist create it
-	if (isNil "fnf_myTasksParentTask") then
+	if ((isNil "fnf_myTasksParentTask") and not fnf_SpectatorSlotUsed) then
 	{
 		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
 		fnf_myTasksParentTask setSimpleTaskType "documents";
@@ -39,8 +39,13 @@ _createTask = {
 		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
+	_parentTask = taskNull;
+
 	//change pre-set items based on ally or normal OBJ
-	_parentTask = fnf_myTasksParentTask;
+	if (not fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = fnf_myTasksParentTask;
+	};
 	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
 	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
 	_descriptionPointOne = "<t>To complete this objective, ";
@@ -52,11 +57,16 @@ _createTask = {
 		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
+	if (fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = [_module] call FNF_ClientSide_fnc_getSpectatorParentTask;
+	};
+
 	//get task title
-	_taskTitle = format["%1: Defend the %2", (_objectiveIndex + 1), _targetName];
+	_taskTitle = format["%1: Defend the %2", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber), _targetName];
 	if (_objType isEqualTo "des") then
 	{
-		_taskTitle = format["%1: Destroy the %2", (_objectiveIndex + 1), _targetName];
+		_taskTitle = format["%1: Destroy the %2", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber), _targetName];
 	};
 	if (_customTitle isNotEqualTo "") then
 	{
@@ -169,9 +179,6 @@ switch (_objState) do {
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
-		//set marker prefix now to be overwritten later
-		_markerPrefix = format["(Inactive) Destroy %1", _objectiveIndex + 1];
-
 		_task = taskNull;
 
 		switch (_objStateToUse) do {
@@ -254,47 +261,27 @@ switch (_objState) do {
 					};
 				};
 
-				//change marker prefix as not a seq OBJ
-				_markerPrefix = format["Destroy %1", _objectiveIndex + 1];;
-
 				//set task to the new task
 				_task = _futureTask;
 			};
 			default { };
 		};
 
-		//create spectator marker and hide it if not in spectator
-		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _targetObject];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerTypeLocal "mil_objective";
-		_marker setMarkerTextLocal _markerPrefix;
-		_marker setMarkerAlphaLocal 0;
-		if (ace_spectator_isSet) then
-		{
-			_marker setMarkerAlphaLocal 1;
-		};
-
-		//add objective to be watched by update marker list system
-		fnf_updateMarkerList pushBack _objectiveIndex;
-
 		//compile code to run on completion
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
 		_codeOnCompletion = compile _codeOnCompletion;
 
-		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker]]];
+		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned]]];
 	};
 	//Obj has been created but is not known
 	case 1: {
 		_objType = _module getVariable ["fnf_objectiveType", "des"];
-		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+		_params params ["_targetObject", "_hidingZonesAssigned"];
 
 		//create task
 		_futureTask = [_objType, _module, _objectiveIndex, _targetObject, _hidingZonesAssigned, [], _alliedTask] call _createTask;
 		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
-
-		//change marker text to show active
-		_marker setMarkerTextLocal format["(Active) Destroy %1", _objectiveIndex + 1];
 
 		//hide object if it must be hidden
 		if (count _hidingZonesAssigned isEqualTo 0) then
@@ -329,15 +316,12 @@ switch (_objState) do {
 			};
 		};
 
-		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker]]];
+		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned]]];
 	};
 	//Obj has been created and is known
 	case 2: {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
-		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-
-		//change marker text to show active
-		_marker setMarkerTextLocal format["(Active) Destroy %1", _objectiveIndex + 1];
+		_params params ["_targetObject", "_hidingZonesAssigned"];
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};

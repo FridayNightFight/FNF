@@ -25,41 +25,11 @@ fnf_updateMarkerList = [];
 
 		_objType = typeOf _module;
 		switch (_objType) do {
-			case "fnf_module_destroyObj":
-			{
-				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-
-				_targetPos = _targetObject;
-				if (not isNull _task) then
-				{
-					_targetPos = taskDestination _task;
-				};
-
-				_marker setMarkerPosLocal _targetPos;
-			};
-
 			case "fnf_module_terminalObj":
 			{
 				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 
 				_targetPos = _targetObject;
-				if (not isNull _task) then
-				{
-					_targetPos = taskDestination _task;
-				};
-
-				_marker setMarkerPosLocal _targetPos;
-			};
-
-			case "fnf_module_assassinObj":
-			{
-				_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
-
-				_targetPos = _targetObject;
-				if (_targetPos isEqualTo objNull) then
-				{
-					_targetPos = _module;
-				};
 				if (not isNull _task) then
 				{
 					_targetPos = taskDestination _task;

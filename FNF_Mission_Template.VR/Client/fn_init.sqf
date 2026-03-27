@@ -21,8 +21,10 @@ fnf_debug = _initModule getVariable ["fnf_debug", true];
 call FNF_ClientSide_fnc_markEditorPlacedObjects;
 
 //if player is in a spectator slot get them out of here
+fnf_spectatorSlotUsed = false;
 if (typeOf player isEqualTo "ace_spectator_virtual") exitWith
 {
+	fnf_spectatorSlotUsed = true;
 	[_modules, _initModule] call FNF_ClientSide_fnc_initSpectatorSlot;
 };
 

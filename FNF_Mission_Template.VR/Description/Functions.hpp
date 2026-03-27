@@ -16,7 +16,8 @@ class CfgFunctions
 			class sortByLocation {};
 			class getBottomLeft {};
 			class checkSecondaryObjective {};
-		}
+			class getDisplayObjNumber {};
+		};
 		class zones
 		{
 			file = "Client\Zones";
@@ -86,6 +87,12 @@ class CfgFunctions
 			class initAssassin {};
 			class watchAssassin {};
 		};
+		class objSteal
+		{
+			file = "Client\Objectives\Steal";
+			class initSteal {};
+			class watchSteal {};
+		};
 		class safeZones
 		{
 			file = "Client\Safezones";
@@ -148,45 +155,8 @@ class CfgFunctions
 			file = "Client\Spectator";
 			class startSpectator {};
 			class initSpectatorSlot {};
-			class initSpectatorPlayzones {};
-			class initSpectatorSafeZones {};
+			class getSpectatorParentTask {};
 		};
-		class spectatorObj
-		{
-			file = "Client\Spectator\Objectives";
-			class initSpectatorObjs {};
-			class watchSpectatorObjs {};
-		}
-		class spectatorObjDestroy
-		{
-			file = "Client\Spectator\Objectives\Destroy";
-			class initSpectatorDestroy {};
-			class watchSpectatorDestroy {};
-		}
-		class spectatorObjCaptureSector
-		{
-			file = "Client\Spectator\Objectives\CaptureSector";
-			class initSpectatorCaptureSector {};
-			class watchSpectatorCaptureSector {};
-		}
-		class spectatorObjHoldSector
-		{
-			file = "Client\Spectator\Objectives\HoldSector";
-			class initSpectatorHoldSector {};
-			class watchSpectatorHoldSector {};
-		}
-		class spectatorObjTerminal
-		{
-			file = "Client\Spectator\Objectives\Terminal";
-			class initSpectatorTerminal {};
-			class watchSpectatorTerminal {};
-		}
-		class spectatorObjAssassin
-		{
-			file = "Client\Spectator\Objectives\Assassin";
-			class initSpectatorAssassin {};
-			class watchSpectatorAssassin {};
-		}
 		class hidingZones
 		{
 			file = "Client\HidingZones";
@@ -322,6 +292,12 @@ class CfgFunctions
 			file = "Server\Objectives\Assassin";
 			class initAssassin {};
 			class watchAssassin {};
+		};
+		class objSteal
+		{
+			file = "Server\Objectives\Steal";
+			class initSteal {};
+			class watchSteal {};
 		};
 	};
 };

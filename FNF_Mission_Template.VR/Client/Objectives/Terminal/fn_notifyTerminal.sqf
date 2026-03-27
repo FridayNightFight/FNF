@@ -17,25 +17,29 @@
 params["_targetObject", "_hackingTime", "_side", "_resetTimer"];
 
 _objectiveIndex = -1;
+_objectiveModule = objNull;
 
 //find objective
 {
 	if ((_x select 5 select 0) isEqualTo _targetObject) then
 	{
 		_objectiveIndex = _forEachIndex;
+		_objectiveModule = _x select 1;
 	}
 } forEach fnf_objectives;
 
 //if obj not found not for us, pass on
 if (_objectiveIndex isEqualTo -1) exitWith {};
 
+if (fnf_SpectatorSlotUsed and ([_targetObject, _objectiveModule] call FNF_ClientSide_fnc_checkSecondaryObjective)) exitWith {};
+
 //notify player
 if (_resetTimer) then
 {
-	[format["<t size='1.5' align='center'>Objective %1 Hack Cancelled</t><br/><br/><t align='center'>Terminal %1 hack has been cancelled</t>", (_objectiveIndex + 1)], "info"] call FNF_ClientSide_fnc_notificationSystem;
+	[format["<t size='1.5' align='center'>Objective %1 Hack Cancelled</t><br/><br/><t align='center'>Terminal %1 hack has been cancelled</t>", ([_targetObject] call FNF_ClientSide_fnc_getDisplayObjNumber)], "info"] call FNF_ClientSide_fnc_notificationSystem;
 } else {
 	_sideText = [_side] call BIS_fnc_sideName;
-	[format["<t size='1.5' align='center'>Objective %1 Hack Started</t><br/><br/><t align='center'>Terminal %1 hack has been started by %2, the hack will take: %3 Seconds</t>", (_objectiveIndex + 1), _sideText, _hackingTime], "info"] call FNF_ClientSide_fnc_notificationSystem;
+	[format["<t size='1.5' align='center'>Objective %1 Hack Started</t><br/><br/><t align='center'>Terminal %1 hack has been started by %2, the hack will take: %3 Seconds</t>", ([_targetObject] call FNF_ClientSide_fnc_getDisplayObjNumber), _sideText, _hackingTime], "info"] call FNF_ClientSide_fnc_notificationSystem;
 };
 
 //if terminal is a data terminal, set its colours

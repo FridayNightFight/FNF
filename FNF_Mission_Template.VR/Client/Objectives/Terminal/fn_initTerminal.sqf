@@ -25,7 +25,7 @@ _createTask = {
 	_targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Land_DataTerminal_01_F.jpg"] call CBA_fnc_getConfigEntry;
 
 	//if parent task for my tasks doesnt exist create it
-	if (isNil "fnf_myTasksParentTask") then
+	if ((isNil "fnf_myTasksParentTask") and not fnf_SpectatorSlotUsed) then
 	{
 		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
 		fnf_myTasksParentTask setSimpleTaskType "documents";
@@ -38,8 +38,13 @@ _createTask = {
 		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
+	_parentTask = taskNull;
+
 	//change pre-set items based on ally or normal OBJ
-	_parentTask = fnf_myTasksParentTask;
+	if (not fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = fnf_myTasksParentTask;
+	};
 	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
 	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
 	_descriptionPointOne = "<t>To complete this objective, ";
@@ -51,11 +56,16 @@ _createTask = {
 		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
+	if (fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = [_module] call FNF_ClientSide_fnc_getSpectatorParentTask;
+	};
+
 	//get task title
-	_taskTitle = format["%1: Defend the Terminal", (_objectiveIndex + 1)];
+	_taskTitle = format["%1: Defend the Terminal", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 	if (_objType isEqualTo "hck") then
 	{
-		_taskTitle = format["%1: Hack the Terminal", (_objectiveIndex + 1)];
+		_taskTitle = format["%1: Hack the Terminal", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 	};
 	if (_customTitle isNotEqualTo "") then
 	{
@@ -357,6 +367,11 @@ switch (_objState) do {
 			_targetLocation = taskDestination _task;
 		};
 
+		if (fnf_SpectatorSlotUsed and ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+		{
+			_showMarker = false;
+		};
+
 		//create timer marker and hide it if told to (will be overwritten in watch)
 		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _targetLocation];
 		_marker setMarkerShapeLocal "ICON";
@@ -423,7 +438,10 @@ switch (_objState) do {
 		};
 
 		//make sure timer marker is shown
-		_marker setMarkerAlphaLocal 1;
+		if (!fnf_SpectatorSlotUsed or !([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+		{
+			_marker setMarkerAlphaLocal 1;
+		};
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker]]];
 	};
@@ -435,7 +453,10 @@ switch (_objState) do {
 		_objType = _module getVariable ["fnf_objectiveType", "hck"];
 
 		//make sure timer marker is shown
-		_marker setMarkerAlphaLocal 1;
+		if (!fnf_SpectatorSlotUsed or !([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+		{
+			_marker setMarkerAlphaLocal 1;
+		};
 
 		//add actions to the object to allow hacking
 		[_targetObject, _module, _objType] call _initActions;

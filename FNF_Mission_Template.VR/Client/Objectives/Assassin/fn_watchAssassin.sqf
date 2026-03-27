@@ -19,7 +19,7 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 
 _serverState = _module getVariable ["fnf_objServerState", 3];
 
-_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+_params params ["_targetObject", "_hidingZonesAssigned", "_standardTitle"];
 
 if (_targetObject isEqualTo objNull) then
 {
@@ -66,7 +66,7 @@ if (_targetObject isEqualTo objNull) then
 		_taskDescArray = taskDescription _task;
 		_task setSimpleTaskDescription [_taskDescArray select 0, _standardTitle + " (" + (name _newPlayerObject) + ")", _standardTitle + " (" + (name _newPlayerObject) + ")"];
 
-		fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+		fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _standardTitle]]];
 	};
 };
 
@@ -89,7 +89,7 @@ if (_serverState isEqualTo 3) exitWith {};
 [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
 
 //start notification creation
-_stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", (_objectiveIndex + 1)])];
+_stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)])];
 
 _notificationType = "info";
 
@@ -99,14 +99,18 @@ if (_serverState isEqualTo 4) then
 	_task setTaskState "Succeeded";
 	_stringArray pushBack "Complete";
 	_notificationType = "success";
-	_marker setMarkerTextLocal format["(Complete) Assassin %1", (_objectiveIndex + 1)];
 };
 if (_serverState isEqualTo 5) then
 {
 	_task setTaskState "Failed";
 	_stringArray pushBack "Failed";
 	_notificationType = "failure";
-	_marker setMarkerTextLocal format["(Failed) Assassin %1", (_objectiveIndex + 1)];
+};
+
+if (fnf_SpectatorSlotUsed) then
+{
+	_notificationType = "info";
+	_stringArray set [-1, "Complete"];
 };
 
 if (_alliedTask) then
@@ -132,9 +136,28 @@ if (not isNull _targetObject) then
 
 _string = _stringArray joinString "";
 
-[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+if (fnf_SpectatorSlotUsed) then
+{
+	_syncedObjects = synchronizedObjects _module;
+	{
+		_typeOfObject = typeOf _x;
 
-fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+		if (_typeOfObject isEqualTo "Logic") then
+		{
+			_targetObjectCheck = _x;
+		};
+	} forEach _syncedObjects;
+
+	if (not ([_targetObjectCheck, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+	{
+		[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+	};
+
+} else {
+	[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+};
+
+fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _standardTitle]]];
 
 call _codeOnCompletion;
 

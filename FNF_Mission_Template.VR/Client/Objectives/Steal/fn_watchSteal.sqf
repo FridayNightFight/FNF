@@ -2,7 +2,7 @@
 	Author: Mallen
 
 	Description:
-		watch a destroy objective including updating task, returns if objective has been completed (failed for protection objectives)
+		watch a steal objective including updating task, returns if objective has been completed (failed for protection objectives)
 
 	Parameter(s):
 		1: INTEGER -	The index of the objective to watch
@@ -19,12 +19,15 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 
 _serverState = _module getVariable ["fnf_objServerState", 3];
 
-_params params ["_targetObject", "_hidingZonesAssigned"];
+_params params ["_targetObject", "_hidingZonesAssigned", "_zonePrefix", "_childTasks"];
+_childTasks params ["_childTaskTarget", "_childTaskDropOff"];
 
 //if server does not say the obj is done, don't continue
 if (_serverState isEqualTo 3) exitWith {};
 
 [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
+[_childTaskTarget] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
+[_childTaskDropOff] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
 
 //get objects name and picture
 _targetConfig = _targetObject call CBA_fnc_getObjectConfig;
@@ -40,12 +43,16 @@ _notificationType = "info";
 if (_serverState isEqualTo 4) then
 {
 	_task setTaskState "Succeeded";
+	_childTaskTarget setTaskState "Succeeded";
+	_childTaskDropOff setTaskState "Succeeded";
 	_stringArray pushBack "Complete";
 	_notificationType = "success";
 };
 if (_serverState isEqualTo 5) then
 {
 	_task setTaskState "Failed";
+	_childTaskTarget setTaskState "Failed";
+	_childTaskDropOff setTaskState "Failed";
 	_stringArray pushBack "Failed";
 	_notificationType = "failure";
 };
@@ -61,15 +68,7 @@ if (_alliedTask) then
 	_stringArray pushBack "<br/>(Ally Objective)";
 };
 
-_stringArray pushBack format["</t><br/><br/><t align='center'>%1 has ", _targetName];
-
-//this is irrespective of obj outcome and therefor is based on status of vic
-if (alive _targetObject) then
-{
-	_stringArray pushBack "not been destroyed in time</t><br/><br/>";
-} else {
-	_stringArray pushBack "been destroyed</t><br/><br/>";
-};
+_stringArray pushBack format["</t><br/><br/><t align='center'>%1 has been stolen</t><br/><br/>", _targetName];
 
 _stringArray pushBack format["<img size='6' align='center' image='%1'/>", _targetPic];
 

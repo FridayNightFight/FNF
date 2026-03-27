@@ -21,7 +21,7 @@ _createTask = {
 	params["_module", "_objectiveIndex", "_preRequisiteIndexs", "_alliedTask"];
 
 	//if parent task for my tasks doesnt exist create it
-	if (isNil "fnf_myTasksParentTask") then
+	if ((isNil "fnf_myTasksParentTask") and not fnf_SpectatorSlotUsed) then
 	{
 		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
 		fnf_myTasksParentTask setSimpleTaskType "documents";
@@ -34,8 +34,13 @@ _createTask = {
 		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
+	_parentTask = taskNull;
+
 	//change pre-set items based on ally or normal OBJ
-	_parentTask = fnf_myTasksParentTask;
+	if (not fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = fnf_myTasksParentTask;
+	};
 	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
 	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
 	_descriptionPointOne = "<t>To complete this objective, ";
@@ -47,8 +52,13 @@ _createTask = {
 		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
+	if (fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = [_module] call FNF_ClientSide_fnc_getSpectatorParentTask;
+	};
+
 	//get task title
-	_taskTitle = format["%1: Hold the Sector", (_objectiveIndex + 1)];
+	_taskTitle = format["%1: Hold the Sector", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 	if (_customTitle isNotEqualTo "") then
 	{
 		_taskTitle = _customTitle;
@@ -173,11 +183,19 @@ switch (_objState) do {
 				_futureTask setSimpleTaskDestination _sectorCenter;
 
 				//setup right side graphic for a sector being captured
-				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 
 				_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
 
-				_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				if (fnf_SpectatorSlotUsed) then
+				{
+					if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+					{
+						_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+					};
+				} else {
+					_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				};
 
 				_task = _futureTask;
 
@@ -207,18 +225,31 @@ switch (_objState) do {
 				_futureTask setSimpleTaskDestination _sectorCenter;
 
 				//setup right side graphic for a sector being captured
-				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 
 				_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
 
 				//colour is black as watch should grab it
-				_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				if (fnf_SpectatorSlotUsed) then
+				{
+					if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+					{
+						_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+					};
+				} else {
+					_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				};
 
 				_task = _futureTask;
 
 				_showMarker = true;
 			};
 			default { };
+		};
+
+		if (fnf_SpectatorSlotUsed and ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+		{
+			_showMarker = false;
 		};
 
 		//create center object used in spectator view
@@ -231,25 +262,21 @@ switch (_objState) do {
 		_markerIndfor = createMarkerLocal [format["FNF_LOCAL%1:OBJ_IND", _objectiveIndex], _sectorCenter];
 		_markerIndfor setMarkerShapeLocal "ICON";
 		_markerIndfor setMarkerTypeLocal "mil_dot";
-		//_markerIndfor setMarkerTextLocal format["(Inactive) Sector %1 [0/%2] [0/%2] [0/%2]", _objectiveIndex + 1, _maximumPoints];
 		_markerIndfor setMarkerColorLocal "ColorIndependent";
 
 		_markerOpfor = createMarkerLocal [format["FNF_LOCAL%1:OBJ_OPF", _objectiveIndex], _sectorCenter];
 		_markerOpfor setMarkerShapeLocal "ICON";
 		_markerOpfor setMarkerTypeLocal "mil_dot";
-		//_markerOpfor setMarkerTextLocal format["(Inactive) Sector %1 [0/%2] [0/%2]", _objectiveIndex + 1, _maximumPoints];
 		_markerOpfor setMarkerColorLocal "ColorEAST";
 
 		_markerBlufor = createMarkerLocal [format["FNF_LOCAL%1:OBJ_BLU", _objectiveIndex], _sectorCenter];
 		_markerBlufor setMarkerShapeLocal "ICON";
 		_markerBlufor setMarkerTypeLocal "mil_dot";
-		//_markerBlufor setMarkerTextLocal format["(Inactive) Sector %1 [0/%2]", _objectiveIndex + 1, _maximumPoints];
 		_markerBlufor setMarkerColorLocal "ColorWEST";
 
 		_markerBase = createMarkerLocal [format["FNF_LOCAL%1:OBJ_BASE", _objectiveIndex], _sectorCenter];
 		_markerBase setMarkerShapeLocal "ICON";
 		_markerBase setMarkerTypeLocal "mil_dot";
-		//_markerBase setMarkerTextLocal format["(Inactive) Sector %1", _objectiveIndex + 1];
 		if (not _showMarker) then
 		{
 			_markerBase setMarkerAlphaLocal 1;
@@ -327,9 +354,12 @@ switch (_objState) do {
 		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
 
 		//make sure establishing progress markers are shown
+		if (!fnf_SpectatorSlotUsed or !([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
 		{
-			_x setMarkerAlphaLocal 0;
-		} forEach _markerArray;
+			{
+				_x setMarkerAlphaLocal 0;
+			} forEach _markerArray;
+		};
 
 		//create Zone
 		_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
@@ -348,12 +378,20 @@ switch (_objState) do {
 		_futureTask setSimpleTaskDestination (getPos _centerObject);
 
 		//setup right side graphic for a sector being captured
-		_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+		_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 
 		_texture = "\A3\ui_f\data\map\markers\nato\u_installation.paa";
 
 		//colour is black as watch should grab it
-		_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+		if (fnf_SpectatorSlotUsed) then
+		{
+			if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+			{
+				_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+			};
+		} else {
+			_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+		};
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _markerArray, _statusSlotID, _sidesActive]]];
 	};
@@ -363,9 +401,12 @@ switch (_objState) do {
 		_params params ["_zonePrefix", "_centerObject", "_markerArray", "_statusSlotID", "_sidesActive"];
 
 		//make sure establishing progress markers are shown
+		if (!fnf_SpectatorSlotUsed or !([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
 		{
-			_x setMarkerAlphaLocal 0;
-		} forEach _markerArray;
+			{
+				_x setMarkerAlphaLocal 0;
+			} forEach _markerArray;
+		};
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};

@@ -38,5 +38,9 @@
 		{
 			[_forEachIndex] call FNF_ServerSide_fnc_watchAssassin;
 		};
+		case "fnf_module_stealObj":
+		{
+			[_forEachIndex] call FNF_ServerSide_fnc_watchSteal;
+		};
 	};
 } forEach fnf_serverObjectives;

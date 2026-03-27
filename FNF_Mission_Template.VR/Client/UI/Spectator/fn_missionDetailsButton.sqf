@@ -104,7 +104,7 @@ _buttons = [];
 
 	//setup basic variables
 	_moduleType = typeOf _module;
-	_buttonName = "Objective " + str(_forEachIndex + 1) + ": SECTOR";
+	_buttonName = "Objective " + ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber) + ": SECTOR";
 	_buttonColour = [0.5, 0.5, 0.5, 0.9];
 	_code = ["_obj = fnf_objectives select ", str(_forEachIndex), ";
 	_obj params ['_objState', '_module', '_task', '_alliedTask', '_codeOnCompletion', '_params'];",
@@ -149,7 +149,7 @@ _buttons = [];
 		{
 			//set code and variables for destroy OBJ
 			_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-			_buttonName = "Objective " + str(_forEachIndex + 1) + ": DESTROY";
+			_buttonName = "Objective " + ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber) + ": DESTROY";
 			_code set [3, "
 			_params params ['_targetObject', '_hidingZonesAssigned', '_marker'];
 			_object = _targetObject;
@@ -169,7 +169,7 @@ _buttons = [];
 		{
 			//set code and variables for terminal OBJ
 			_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
-			_buttonName = "Objective " + str(_forEachIndex + 1) + ": TERMINAL";
+			_buttonName = "Objective " + ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber) + ": TERMINAL";
 			_code set [3, "
 			_params params ['_targetObject', '_hidingZonesAssigned', '_marker'];
 			_object = _targetObject;
@@ -189,7 +189,7 @@ _buttons = [];
 		{
 			//set code and variables for assassin OBJ
 			_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
-			_buttonName = "Objective " + str(_forEachIndex + 1) + ": ASSASSIN";
+			_buttonName = "Objective " + ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber) + ": ASSASSIN";
 			_code set [3, "
 			_params params ['_targetObject', '_hidingZonesAssigned', '_marker', '_standardTitle'];
 			_object = _targetObject;
@@ -210,6 +210,26 @@ _buttons = [];
 					};
 				} forEach _syncedObjects;
 
+				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
+				{
+					_showButton = false;
+				};
+			};
+		};
+
+		case "fnf_module_stealObj":
+		{
+			//set code and variables for steal OBJ
+			_params params ["_targetObject"];
+			_buttonName = "Objective " + ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber) + ": STEAL";
+			_code set [3, "
+			_params params ['_targetObject'];
+			_object = _targetObject;
+			"];
+
+			//check obj is not secondary
+			if (typeOf player isEqualTo "ace_spectator_virtual") then
+			{
 				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
 				{
 					_showButton = false;

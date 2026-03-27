@@ -11,7 +11,7 @@
 		None
 */
 
-_defenceNameTypes = ["def", "pro"];
+_defenceNameTypes = ["def", "pro", "kep"];
 
 _allEntities = all3DENEntities;
 _allObjects = _allEntities select 0;
@@ -42,6 +42,7 @@ _destroyCount = 0;
 _sectorCount = 0;
 _terminalCount = 0;
 _assassinCount = 0;
+_stealCount = 0;
 
 {
 	_objType = (_x get3DENAttribute "fnf_objectiveType") select 0;
@@ -66,6 +67,7 @@ _assassinCount = 0;
 		case "fnf_module_sectorCaptureObj": {_sectorCount = _sectorCount + 1;};
 		case "fnf_module_terminalObj": {_terminalCount = _terminalCount + 1;};
 		case "fnf_module_assassinObj": {_assassinCount = _assassinCount + 1;};
+		case "fnf_module_stealObj": {_stealCount = _stealCount + 1;};
 	};
 
 	_objExtract pushBack [_side, _defenceObj];
@@ -86,6 +88,10 @@ if (_terminalCount isNotEqualTo 0) then
 if (_assassinCount isNotEqualTo 0) then
 {
 	_outputText = _outputText + "Assassin(" + str(_assassinCount / 2) + "), ";
+};
+if (_stealCount isNotEqualTo 0) then
+{
+	_outputText = _outputText + "Steal(" + str(_stealCount / 2) + "), ";
 };
 
 _outputText = _outputText trim [", ", 2];

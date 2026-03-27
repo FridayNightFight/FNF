@@ -21,7 +21,7 @@ _createTask = {
 	params["_objType", "_module", "_objectiveIndex", "_preRequisiteIndexs", "_alliedTask"];
 
 	//if parent task for my tasks doesnt exist create it
-	if (isNil "fnf_myTasksParentTask") then
+	if ((isNil "fnf_myTasksParentTask") and not fnf_SpectatorSlotUsed) then
 	{
 		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
 		fnf_myTasksParentTask setSimpleTaskType "documents";
@@ -34,8 +34,13 @@ _createTask = {
 		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
+	_parentTask = taskNull;
+
 	//change pre-set items based on ally or normal OBJ
-	_parentTask = fnf_myTasksParentTask;
+	if (not fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = fnf_myTasksParentTask;
+	};
 	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
 	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
 	_descriptionPointOne = "<t>To complete this objective, ";
@@ -47,11 +52,16 @@ _createTask = {
 		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
+	if (fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = [_module] call FNF_ClientSide_fnc_getSpectatorParentTask;
+	};
+
 	//get task title
-	_taskTitle = format["%1: Defend the Sector", (_objectiveIndex + 1)];
+	_taskTitle = format["%1: Defend the Sector", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 	if (_objType isEqualTo "cap") then
 	{
-		_taskTitle = format["%1: Capture the Sector", (_objectiveIndex + 1)];
+		_taskTitle = format["%1: Capture the Sector", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 	};
 	if (_customTitle isNotEqualTo "") then
 	{
@@ -130,9 +140,6 @@ switch (_objState) do {
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
-		//set marker prefix now to be overwritten later
-		_markerPrefix = format["(Inactive) Sector %1", _objectiveIndex + 1];
-
 		//get zone prefix
 		_zonePrefix = _module getVariable ["fnf_prefix", "FAILED"];
 
@@ -187,11 +194,19 @@ switch (_objState) do {
 				_futureTask setSimpleTaskDestination _sectorCenter;
 
 				//setup right side graphic for a sector being captured
-				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 
 				_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 
-				_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				if (fnf_SpectatorSlotUsed) then
+				{
+					if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+					{
+						_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+					};
+				} else {
+					_statusSlotID = [-1, _text, _texture, [0.5,0.5,0.5,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				};
 
 				_task = _futureTask;
 			};
@@ -219,16 +234,22 @@ switch (_objState) do {
 				_futureTask setSimpleTaskDestination _sectorCenter;
 
 				//setup right side graphic for a sector being captured
-				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+				_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 
 				_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 
 				//colour is black as watch should grab it
-				_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				if (fnf_SpectatorSlotUsed) then
+				{
+					if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+					{
+						_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+					};
+				} else {
+					_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+				};
 
 				_task = _futureTask;
-
-				_markerPrefix = format["Sector %1", _objectiveIndex + 1];
 			};
 			default { };
 		};
@@ -237,35 +258,21 @@ switch (_objState) do {
 		_centerObject = 'AreaMarker_01_F' createVehicleLocal _sectorCenter;
 		_centerObject hideObject true;
 
-		//create spectator marker and hide it if not in spectator
-		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _sectorCenter];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerTypeLocal "mil_objective";
-		_marker setMarkerTextLocal _markerPrefix;
-		_marker setMarkerAlphaLocal 0;
-		if (ace_spectator_isSet) then
-		{
-			_marker setMarkerAlphaLocal 1;
-		};
-
 		//compile code to run on completion
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
 		_codeOnCompletion = compile _codeOnCompletion;
 
-		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _marker, _statusSlotID]]];
+		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _statusSlotID]]];
 	};
 	//Obj has been created but is not known
 	case 1: {
 		_objType = _module getVariable ["fnf_objectiveType", "des"];
-		_params params ["_zonePrefix", "_centerObject", "_marker", "_statusSlotID"];
+		_params params ["_zonePrefix", "_centerObject", "_statusSlotID"];
 
 		//create task
 		_futureTask = [_objType, _module, _objectiveIndex, [], _alliedTask] call _createTask;
 		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
-
-		//change marker text to show active
-		_marker setMarkerTextLocal format["(Active) Sector %1", _objectiveIndex + 1];
 
 		//create Zone
 		_result = [_zonePrefix] call FNF_ClientSide_fnc_verifyZone;
@@ -284,22 +291,27 @@ switch (_objState) do {
 		_futureTask setSimpleTaskDestination (getPos _centerObject);
 
 		//setup right side graphic for a sector being captured
-		_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+		_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 
 		_texture = "\A3\ui_f\data\map\markers\nato\n_installation.paa";
 
 		//colour is black as watch should grab it
-		_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+		if (fnf_SpectatorSlotUsed) then
+		{
+			if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+			{
+				_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+			};
+		} else {
+			_statusSlotID = [-1, _text, _texture, [0,0,0,1], 1, _sectorCenter, 0] call BIS_fnc_setMissionStatusSlot;
+		};
 
-		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _marker, _statusSlotID]]];
+		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_zonePrefix, _centerObject, _statusSlotID]]];
 	};
 	//Obj has been created and is known
 	case 2: {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
-		_params params ["_zonePrefix", "_centerObject", "_marker", "_statusSlotID"];
-
-		//change marker text to show active
-		_marker setMarkerTextLocal format["(Active) Sector %1", _objectiveIndex + 1];
+		_params params ["_zonePrefix", "_centerObject", "_statusSlotID"];
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};

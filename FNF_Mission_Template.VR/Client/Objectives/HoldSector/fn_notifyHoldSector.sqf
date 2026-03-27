@@ -27,9 +27,11 @@ _objectiveIndex = -1;
 //if obj not found not for us, pass on
 if (_objectiveIndex isEqualTo -1) exitWith {};
 
+if (fnf_SpectatorSlotUsed and ([(_targetObject getVariable ["fnf_prefix", "FAILED"]), _targetObject] call FNF_ClientSide_fnc_checkSecondaryObjective)) exitWith {};
+
 //notify player
 _sideText = [_side] call BIS_fnc_sideName;
-[format["<t size='1.5' align='center'>Objective %1 Sector Secured</t><br/><br/><t align='center'>Sector %1 has been captured by %2, they are now establishing themselves in the sector</t>", (_objectiveIndex + 1), _sideText], "info"] call FNF_ClientSide_fnc_notificationSystem;
+[format["<t size='1.5' align='center'>Objective %1 Sector Secured</t><br/><br/><t align='center'>Sector %1 has been captured by %2, they are now establishing themselves in the sector</t>", ([_targetObject] call FNF_ClientSide_fnc_getDisplayObjNumber), _sideText], "info"] call FNF_ClientSide_fnc_notificationSystem;
 
 //set zone colour to the currently owning side
 _zoneColour = [_side, true] call BIS_fnc_sideColor;

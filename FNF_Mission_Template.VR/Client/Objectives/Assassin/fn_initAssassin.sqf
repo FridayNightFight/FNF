@@ -21,7 +21,7 @@ _createTask = {
 	params["_objType", "_module", "_objectiveIndex", "_hidingZonesAssigned", "_preRequisiteIndexs", "_alliedTask"];
 
 	//if parent task for my tasks doesnt exist create it
-	if (isNil "fnf_myTasksParentTask") then
+	if ((isNil "fnf_myTasksParentTask") and not fnf_SpectatorSlotUsed) then
 	{
 		fnf_myTasksParentTask = player createSimpleTask ["My Tasks"];
 		fnf_myTasksParentTask setSimpleTaskType "documents";
@@ -34,8 +34,13 @@ _createTask = {
 		fnf_allyTasksParentTask setSimpleTaskType "documents";
 	};
 
+	_parentTask = taskNull;
+
 	//change pre-set items based on ally or normal OBJ
-	_parentTask = fnf_myTasksParentTask;
+	if (not fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = fnf_myTasksParentTask;
+	};
 	_customTitle = _module getVariable ["fnf_customObjectiveTitle", ""];
 	_customTaskDescription = _module getVariable ["fnf_customObjectiveDescription", ""];
 	_descriptionPointOne = "<t>To complete this objective, ";
@@ -47,12 +52,17 @@ _createTask = {
 		_descriptionPointOne = "<t>For your allies to complete this objective, ";
 	};
 
+	if (fnf_SpectatorSlotUsed) then
+	{
+		_parentTask = [_module] call FNF_ClientSide_fnc_getSpectatorParentTask;
+	};
+
 	//get task title
 	_targetName = _module getVariable ["fnf_targetName", "the VIP"];
-	_taskTitle = format["%1: Defend %2", (_objectiveIndex + 1), _targetName];
+	_taskTitle = format["%1: Defend %2", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber), _targetName];
 	if (_objType isEqualTo "elm") then
 	{
-		_taskTitle = format["%1: Assassinate %2", (_objectiveIndex + 1), _targetName];
+		_taskTitle = format["%1: Assassinate %2", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber), _targetName];
 	};
 	if (_customTitle isNotEqualTo "") then
 	{
@@ -154,9 +164,6 @@ switch (_objState) do {
 		_sequentialResult = [_module, _objectiveIndex, _sequentialPlannersAssigned] call FNF_ClientSide_fnc_checkAndAddSequentialHandle;
 		_sequentialResult params ["_objStateToUse", "_preRequisiteIndexs"];
 
-		//set marker prefix now to be overwritten later
-		_markerPrefix = format["(Inactive) Assassin %1", _objectiveIndex + 1];
-
 		_standardTitle = "";
 
 		_task = taskNull;
@@ -202,7 +209,7 @@ switch (_objState) do {
 
 						_objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnCompletion", "_params"];
 
-						_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+						_params params ["_targetObject", "_hidingZonesAssigned", "_standardTitle"];
 
 						if (_targetObject isEqualTo objNull) then
 						{
@@ -235,7 +242,7 @@ switch (_objState) do {
 								_taskDescArray = taskDescription _task;
 								_task setSimpleTaskDescription [_taskDescArray select 0, _standardTitle + " (" + (name _newPlayerObject) + ")", _standardTitle + " (" + (name _newPlayerObject) + ")"];
 
-								fnf_objectives set [_objectiveIndex, [_objState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+								fnf_objectives set [_objectiveIndex, [_objState, _module, _task, _alliedTask, _codeOnCompletion, [_newPlayerObject, _hidingZonesAssigned, _standardTitle]]];
 							};
 						};
 					}, 1, _objectiveIndex] call CBA_fnc_addPerFrameHandler;
@@ -277,40 +284,23 @@ switch (_objState) do {
 					} forEach _hidingZonesAssigned;
 				};
 
-				//change marker prefix as not a seq OBJ
-				_markerPrefix = format["Assassin %1", _objectiveIndex + 1];;
-
 				//set task to the new task
 				_task = _futureTask;
 			};
 			default { };
 		};
 
-		//create spectator marker and hide it if not in spectator
-		_marker = createMarkerLocal [format["FNF_LOCAL%1:OBJ", _objectiveIndex], _module];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerTypeLocal "mil_objective";
-		_marker setMarkerTextLocal _markerPrefix;
-		_marker setMarkerAlphaLocal 0;
-		if (ace_spectator_isSet) then
-		{
-			_marker setMarkerAlphaLocal 1;
-		};
-
-		//add objective to be watched by update marker list system
-		fnf_updateMarkerList pushBack _objectiveIndex;
-
 		//compile code to run on completion
 		_codeOnCompletion = _module getVariable ["fnf_codeOnCompletion", ""];
 
 		_codeOnCompletion = compile _codeOnCompletion;
 
-		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [objNull /*represents no assassin target atm (found in watch code)*/, _hidingZonesAssigned, _marker, _standardTitle]]];
+		fnf_objectives set [_objectiveIndex, [_objStateToUse, _module, _task, _alliedTask, _codeOnCompletion, [objNull /*represents no assassin target atm (found in watch code)*/, _hidingZonesAssigned, _standardTitle]]];
 	};
 	//Obj has been created but is not known
 	case 1: {
 		_objType = _module getVariable ["fnf_objectiveType", "elm"];
-		_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+		_params params ["_targetObject", "_hidingZonesAssigned", "_standardTitle"];
 
 		//create task
 		_futureTask = [_objType, _module, _objectiveIndex, _hidingZonesAssigned, [], _alliedTask] call _createTask;
@@ -319,9 +309,6 @@ switch (_objState) do {
 		_standardTitle = _taskDescArray select 1;
 
 		[_futureTask, true] call FNF_ClientSide_fnc_addTaskToTaskControl;
-
-		//change marker text to show active
-		_marker setMarkerTextLocal format["(Active) Assassin %1", _objectiveIndex + 1];
 
 		//hide object if it must be hidden
 		if (count _hidingZonesAssigned isNotEqualTo 0 and _objType isNotEqualTo "elm") then
@@ -346,12 +333,12 @@ switch (_objState) do {
 			} forEach _hidingZonesAssigned;
 		};
 
-		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _marker, _standardTitle]]];
+		fnf_objectives set [_objectiveIndex, [3, _module, _futureTask, _alliedTask, _codeOnCompletion, [_targetObject, _hidingZonesAssigned, _standardTitle]]];
 	};
 	//Obj has been created and is known
 	case 2: {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
-		_params params ["_targetObject", "_hidingZonesAssigned", "_marker", "_standardTitle"];
+		_params params ["_targetObject", "_hidingZonesAssigned", "_standardTitle"];
 
 		_objType = _module getVariable ["fnf_objectiveType", "elm"];
 		if (_objType isNotEqualTo "elm") then
@@ -359,9 +346,6 @@ switch (_objState) do {
 			_handle = _module getVariable	"fnf_updateMarkerState2";
 			[_handle] call CBA_fnc_removePerFrameHandler;
 		};
-
-		//change marker text to show active
-		_marker setMarkerTextLocal format["(Active) Assassin %1", _objectiveIndex + 1];
 
 		fnf_objectives set [_objectiveIndex, [3, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 	};

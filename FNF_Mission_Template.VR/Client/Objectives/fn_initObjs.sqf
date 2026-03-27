@@ -82,6 +82,12 @@ _missionStatusSet = false;
 		};
 	} forEach _syncedObjects;
 
+	if (fnf_SpectatorSlotUsed) then
+	{
+		_showObj = true;
+		_alliedTask = false;
+	};
+
 	if (_sideCounter isEqualTo 0) then
 	{
 		if (fnf_debug) then
@@ -142,6 +148,11 @@ _missionStatusSet = false;
 			case "fnf_module_assassinObj":
 			{
 				[_newTaskIndex] call FNF_ClientSide_fnc_initAssassin;
+			};
+
+			case "fnf_module_stealObj":
+			{
+				[_newTaskIndex] call FNF_ClientSide_fnc_initSteal;
 			};
 
 			//if no type found then objective must be part of a new mod update that framework isnt equipped to handle

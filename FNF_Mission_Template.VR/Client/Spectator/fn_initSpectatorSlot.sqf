@@ -46,7 +46,8 @@ if (count _objModules isEqualTo 0) then
 		systemChat "WARNING: No objectives present"
 	};
 } else {
-	[_objModules] call FNF_ClientSide_fnc_initSpectatorObjs;
+	call FNF_ClientSide_fnc_initTaskControl;
+	[_objModules] call FNF_ClientSide_fnc_initObjs;
 };
 
 //start overall timer
@@ -65,7 +66,7 @@ if (count _playZoneModules isEqualTo 0) then
 		systemChat "WARNING: No playzone present"
 	};
 } else {
-	[_playZoneModules] call FNF_ClientSide_fnc_initSpectatorPlayZones;
+	[_playZoneModules] call FNF_ClientSide_fnc_initPlayZones;
 };
 
 //check there are safe zones
@@ -76,7 +77,7 @@ if (count _safeZoneModules isEqualTo 0) then
 		systemChat "WARNING: No safe zones present";
 	};
 } else {
-	[_safeZoneModules] call FNF_ClientSide_fnc_initSpectatorSafeZones;
+	[_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
 };
 
 _selectorModules = [_modules, "selectorHost"] call FNF_ClientSide_fnc_findSpecificModules;
@@ -90,7 +91,7 @@ if (not isNil "fnf_objectives") then
 {
 	if (count fnf_objectives isNotEqualTo 0) then
 	{
-		[{call FNF_ClientSide_fnc_watchSpectatorObjs;}, 1] call CBA_fnc_addPerFrameHandler;
+		[{call FNF_ClientSide_fnc_watchObjs;}, 1] call CBA_fnc_addPerFrameHandler;
 
 		_indexsToDrawIcon = [];
 
@@ -103,19 +104,27 @@ if (not isNil "fnf_objectives") then
 				continue;
 			};
 
+			if (_type isEqualTo "fnf_module_sectorHoldObj") then
+			{
+				continue;
+			};
+
 			if (_type isEqualTo "fnf_module_destroyObj") then
 			{
-				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 				_indexsToDrawIcon pushBack _forEachIndex;
 			};
 
 			if (_type isEqualTo "fnf_module_terminalObj") then
 			{
-				_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 				_indexsToDrawIcon pushBack _forEachIndex;
 			};
 
 			if (_type isEqualTo "fnf_module_assassinObj") then
+			{
+				_indexsToDrawIcon pushBack _forEachIndex;
+			};
+
+			if (_type isEqualTo "fnf_module_stealObj") then
 			{
 				_indexsToDrawIcon pushBack _forEachIndex;
 			};
@@ -140,25 +149,36 @@ if (not isNil "fnf_objectives") then
 					continue;
 				};
 
+				if (_type isEqualTo "fnf_module_sectorHoldObj") then
+				{
+					continue;
+				};
+
 				if (_type isEqualTo "fnf_module_destroyObj") then
 				{
-					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+					_params params ["_targetObject"];
 					drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
 				};
 
 				if (_type isEqualTo "fnf_module_terminalObj") then
 				{
-					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+					_params params ["_targetObject"];
 					drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
 				};
 
 				if (_type isEqualTo "fnf_module_assassinObj") then
 				{
-					_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
+					_params params ["_targetObject"];
 					if (_targetObject isNotEqualTo objNull) then
 					{
 						drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
 					};
+				};
+
+				if (_type isEqualTo "fnf_module_stealObj") then
+				{
+					_params params ["_targetObject"];
+					drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
 				};
 			} forEach _objectiveIndexs;
  		}, 0, _indexsToDrawIcon] call CBA_fnc_addPerFrameHandler;

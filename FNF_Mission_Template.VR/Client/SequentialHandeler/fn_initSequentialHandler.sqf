@@ -74,6 +74,11 @@ fnf_seqObjHandelerQueue = [];
 				{
 					[_x] call FNF_ClientSide_fnc_initAssassin;
 				};
+
+				case "fnf_module_stealObj":
+				{
+					[_x] call FNF_ClientSide_fnc_initSteal;
+				};
 			};
 		} forEach _indexsToInit;
 

@@ -92,6 +92,11 @@ _maxTimeZoneIsDeleted = 0;
 		};
 	} forEach _syncedObjects;
 
+	if (fnf_spectatorSlotUsed) then
+	{
+		_forPlayer = true;
+	};
+
 	//if for the player setup the safe zone
 	if (_forPlayer) then
 	{

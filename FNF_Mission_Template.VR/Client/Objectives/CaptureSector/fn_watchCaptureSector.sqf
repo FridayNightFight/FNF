@@ -19,13 +19,13 @@ _objEntry params ["_objState", "_module", "_task", "_alliedTask", "_codeOnComple
 
 _serverState = _module getVariable ["fnf_objServerState", 3];
 
-_params params ["_zonePrefix", "_centerObject", "_marker", "_statusSlotID"];
+_params params ["_zonePrefix", "_centerObject", "_statusSlotID"];
 
 //get server controlled values
 _sectorPercentage = _module getVariable ["fnf_sector_percentage", 0];
 _sectorOwner = _module getVariable ["fnf_sector_owner", sideUnknown];
 
-_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", _objectiveIndex + 1];
+_text = format ["<t align='center' size='1.25' font='PuristaBold' color='#FFFFFF' shadow='2'>%1</t>", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)];
 _colour = [_sectorOwner, false] call BIS_fnc_sideColor;
 
 _taskPos = [_zonePrefix] call FNF_ClientSide_fnc_getVisualCenter;
@@ -42,7 +42,15 @@ if (_sectorPercentage > 1) then
 };
 
 //update the status slots
-_statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
+if (fnf_SpectatorSlotUsed) then
+{
+	if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+	{
+		_statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
+	};
+} else {
+	_statusSlotID = [_statusSlotID, _text, _texture, _colour, 1, _taskPos, _shownPercent] call BIS_fnc_setMissionStatusSlot;
+};
 
 if (_serverState isEqualTo 3) exitWith {};
 
@@ -52,7 +60,7 @@ if (_serverState isEqualTo 3) exitWith {};
 [_task] call FNF_ClientSide_fnc_removeTaskfromTaskControl;
 
 //start notification creation
-_stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", (_objectiveIndex + 1)])];
+_stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)])];
 
 _notificationType = "info";
 
@@ -62,14 +70,18 @@ if (_serverState isEqualTo 4) then
 	_task setTaskState "Succeeded";
 	_stringArray pushBack "Complete";
 	_notificationType = "success";
-	_marker setMarkerTextLocal format["(Complete) Sector %1", (_objectiveIndex + 1)];
 };
 if (_serverState isEqualTo 5) then
 {
 	_task setTaskState "Failed";
 	_stringArray pushBack "Failed";
 	_notificationType = "failure";
-	_marker setMarkerTextLocal format["(Failed) Sector %1", (_objectiveIndex + 1)];
+};
+
+if (fnf_SpectatorSlotUsed) then
+{
+	_notificationType = "info";
+	_stringArray set [-1, "Complete"];
 };
 
 if (_alliedTask) then
@@ -89,7 +101,15 @@ if (_sectorPercentage >= 1) then
 
 _string = _stringArray joinString "";
 
-[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+if (fnf_SpectatorSlotUsed) then
+{
+	if (not ([_zonePrefix, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+	{
+		[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+	};
+} else {
+	[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+};
 
 fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 

@@ -66,6 +66,11 @@ _mainPlayZones = [];
 		};
 	} forEach _syncedObjects;
 
+	if (fnf_SpectatorSlotUsed) then
+	{
+		_forPlayer = true;
+	};
+
 	//if it does set playzone to be created
 	if (_forPlayer) then
 	{

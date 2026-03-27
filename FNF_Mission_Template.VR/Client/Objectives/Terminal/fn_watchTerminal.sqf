@@ -30,10 +30,6 @@ if (_timeOfCompletion isEqualTo -1 or (_timeServerStarted isEqualTo -1 and not i
 {
 	//set marker text to idle
 	_marker setMarkerTextLocal "[Idle]";
-	if (ace_spectator_isset) then
-	{
-		_marker setMarkerTextLocal format["Terminal %1 [Idle]", _objectiveIndex + 1];
-	};
 } else {
 	//get in seconds how much is left on the timer
 	_resultTime = objNull;
@@ -53,10 +49,6 @@ if (_timeOfCompletion isEqualTo -1 or (_timeServerStarted isEqualTo -1 and not i
 
 	//set marker time
 	_marker setMarkerTextLocal format["[%1]", _timeText];
-	if (ace_spectator_isset) then
-	{
-		_marker setMarkerTextLocal format["Terminal %1 [%2]", _objectiveIndex + 1, _timeText];
-	};
 
 	//toggle marker colour
 	_previouslyHackingSide = _targetObject getVariable ['fnf_currentlyHackingSide', sideUnknown];
@@ -80,7 +72,7 @@ _targetConfig = _targetObject call CBA_fnc_getObjectConfig;
 _targetPic = [_targetConfig >> "editorPreview", "STRING", "\A3\EditorPreviews_F\Data\CfgVehicles\Land_DataTerminal_01_F.jpg"] call CBA_fnc_getConfigEntry;
 
 //start notification creation
-_stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", (_objectiveIndex + 1)])];
+_stringArray = [(format["<t size='1.5' align='center'>Objective %1 ", ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber)])];
 
 _notificationType = "info";
 

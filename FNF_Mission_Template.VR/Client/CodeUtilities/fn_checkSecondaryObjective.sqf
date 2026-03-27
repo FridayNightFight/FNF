@@ -42,7 +42,8 @@ if (typeName _target isEqualTo "OBJECT") then
 	_modules = call FNF_ClientSide_fnc_findFNFModules;
 	_captureObjModules = [_modules, "sectorCaptureObj"] call FNF_ClientSide_fnc_findSpecificModules;
 	_holdObjModules = [_modules, "sectorHoldObj"] call FNF_ClientSide_fnc_findSpecificModules;
-	_objModules = _captureObjModules + _holdObjModules;
+	_stealObjModules = [_modules, "stealObj"] call FNF_ClientSide_fnc_findSpecificModules;
+	_objModules = _captureObjModules + _holdObjModules + _stealObjModules;
 	_targetObjectSyncedObjects = [];
 
 	{
