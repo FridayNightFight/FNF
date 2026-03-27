@@ -524,6 +524,7 @@ class CfgVehicles
 		author = "Mallen";
 		category = "fnf_standardCategory";
 		displayName = "FNF Hold Sector Objective";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\wait_ca.paa";
 		scope = 2;
 		class Attributes: AttributesBase
 		{
