@@ -376,6 +376,7 @@ class Cfg3DEN
 			displayName = "Assassin Objective Preset";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
+		class fnf_StealObjective_1
 		{
 			path = "fnf_eden\objectives\StealObjectivePreset[1]";	// pbo path to a folder containing header.sqe/composition.sqe files
 			side = 8;
@@ -384,6 +385,7 @@ class Cfg3DEN
 			displayName = "Steal Objective Preset [ 1 ]";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
+		class fnf_StealObjective_2
 		{
 			path = "fnf_eden\objectives\StealObjectivePreset[2]";	// pbo path to a folder containing header.sqe/composition.sqe files
 			side = 8;
@@ -392,6 +394,7 @@ class Cfg3DEN
 			displayName = "Steal Objective Preset [ 2 ]";
 			useSideColorOnIcon = 1;								// 1 == icon is always colored in faction color
 		};
+		class fnf_StealObjective_3
 		{
 			path = "fnf_eden\objectives\StealObjectivePreset[3]";	// pbo path to a folder containing header.sqe/composition.sqe files
 			side = 8;
