@@ -1,12 +1,12 @@
 version=54;
-name="Insurgents [2000]";
+name="Insurgents[2000]";
 author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
 	"fnf_eden",
 	"A3_Modules_F",
-	"Desert",
+	"RSPN_Assets",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging",
@@ -24,24 +24,28 @@ requiredAddons[]=
 	"rhsusf_c_weapons",
 	"ace_realisticnames",
 	"ace_huntir",
-	"rhsgref_sounds",
-	"rhssaf_c_weapons",
-	"ace_compat_rhs_saf3",
-	"ace_compat_rhs_gref3",
-	"ace_compat_rhs_afrf3_scopes",
+	"UK3CB_Factions_Weapons2_Saiga",
+	"ace_grenades",
 	"ace_compat_rhs_afrf3",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
-	"ace_grenades",
 	"A3_Weapons_F_Orange",
 	"ace_arsenal",
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
+	"rhsgref_sounds",
+	"rhssaf_c_weapons",
+	"ace_compat_rhs_saf3",
+	"ace_compat_rhs_gref3",
+	"ace_compat_rhs_afrf3_scopes",
+	"UK3CB_Factions_TNM_B",
 	"ace_hearing",
 	"A3_Weapons_F_Items",
 	"ace_optics",
 	"ace_gforces",
 	"ace_parachute",
-	"A3_Characters_F_Kart"
+	"A3_Characters_F_Kart",
+	"UK3CB_Factions_CW_US_B_EARLY",
+	"ace_compat_rhs_usf3_scopes"
 };

@@ -1,5 +1,5 @@
 version=54;
-name="Swiss Army [1980]";
+name="SwissArmy[1980]";
 author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
@@ -18,20 +18,22 @@ requiredAddons[]=
 	"rhsusf_c_weapons",
 	"ace_realisticnames",
 	"UK3CB_Factions_Weapons_M16",
-	"UK3CB_Factions_Weapons_M14",
-	"UK3CB_Factions_Weapons_Accessories",
-	"rhsgref_c_weapons",
-	"ace_compat_rhs_gref3",
+	"sfp_remington870",
+	"ace_grenades",
 	"rhsusf_sounds",
 	"ace_compat_rhs_usf3",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
-	"ace_grenades",
 	"A3_Weapons_F_Orange",
 	"ace_arsenal",
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
+	"rhsgref_c_weapons",
+	"ace_compat_rhs_gref3",
+	"UK3CB_Factions_Weapons_M14",
+	"UK3CB_Factions_Weapons_Accessories",
+	"UK3CB_Factions_TNM_B",
 	"UK3CB_Factions_Weapons_MG3",
 	"UK3CB_Factions_Weapons_MP5",
 	"tfar_external_intercom",
@@ -42,9 +44,11 @@ requiredAddons[]=
 	"UK3CB_Factions_Headgear",
 	"UK3CB_Factions_CW_US_B_LATE",
 	"UK3CB_Factions_Equipment_Vests",
+	"UK3CB_Factions_Weapons_Enfield",
+	"A3_Static_F_Mortar_01",
 	"fnf_eden",
 	"A3_Modules_F",
-	"Desert",
+	"RSPN_Assets",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging"

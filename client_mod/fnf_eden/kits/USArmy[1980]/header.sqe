@@ -1,12 +1,12 @@
 version=54;
-name="US Army [1980]";
+name="USArmy[1980]";
 author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
 	"A3_Modules_F",
 	"fnf_eden",
-	"Desert",
+	"RSPN_Assets",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging",
@@ -22,17 +22,18 @@ requiredAddons[]=
 	"ace_medical_treatment",
 	"ace_microdagr",
 	"ace_realisticnames",
-	"UK3CB_Factions_Weapons_M14",
-	"UK3CB_Factions_Weapons_Accessories",
+	"ace_grenades",
 	"rhsusf_sounds",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
-	"ace_grenades",
 	"A3_Weapons_F_Orange",
 	"ace_arsenal",
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
+	"UK3CB_Factions_Weapons_M14",
+	"UK3CB_Factions_Weapons_Accessories",
+	"UK3CB_Factions_Headgear2",
 	"UK3CB_Factions_Weapons_M60",
 	"UK3CB_Factions_Weapons_MP5",
 	"rhsusf_c_troops",
@@ -41,5 +42,9 @@ requiredAddons[]=
 	"ace_gforces",
 	"ace_parachute",
 	"UK3CB_Factions_Headgear",
-	"UK3CB_Factions_Equipment_Vests"
+	"UK3CB_Factions_Equipment_Vests",
+	"rhsusf_weapon_sounds",
+	"rhsusf_c_weaponsounds",
+	"ace_compat_rhs_usf3_scopes",
+	"A3_Static_F_Mortar_01"
 };

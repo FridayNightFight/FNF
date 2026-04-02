@@ -1,5 +1,5 @@
 version=54;
-name="US Navy Special Forces [2010]";
+name="USNavySpecialForces[2010]";
 author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
@@ -10,6 +10,7 @@ requiredAddons[]=
 	"fnf_eden",
 	"A3_Characters_F",
 	"rhsusf_c_weapons",
+	"UK3CB_BAF_Weapons_Ammo_RHS",
 	"ace_compat_rhs_usf3",
 	"ace_vector",
 	"A3_Weapons_F",
@@ -21,19 +22,27 @@ requiredAddons[]=
 	"ace_microdagr",
 	"ace_realisticnames",
 	"ace_huntir",
+	"UK3CB_BAF_Weapons_SmallArms",
+	"UK3CB_BAF_Weapons_Ammo",
+	"ace_grenades",
 	"rhsusf_sounds",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
-	"ace_grenades",
 	"A3_Weapons_F_Orange",
 	"ace_arsenal",
 	"ace_fortify",
 	"ace_trenches",
 	"ace_logistics_wirecutter",
+	"UK3CB_Factions_LSM_B",
 	"A3_Weapons_F_Items",
 	"ace_optics",
 	"ace_gforces",
 	"ace_parachute",
+	"A3_Characters_F_Exp",
+	"fnf_weapons",
+	"A3_Drones_F_Weapons_F_Gamma_Items",
+	"BOT_FPV_Enhanced",
+	"A3_Static_F_Mortar_01",
 	"A3_Modules_F",
-	"Desert"
+	"RSPN_Assets"
 };

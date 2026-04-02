@@ -1,5 +1,5 @@
 version=54;
-name="US Army [2020]";
+name="USArmy[2020]";
 author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
@@ -9,7 +9,10 @@ requiredAddons[]=
 	"ace_dragging",
 	"fnf_eden",
 	"A3_Characters_F",
+	"KAR_XM7",
+	"TOTT_Optics_2",
 	"rhsusf_c_weapons",
+	"UK3CB_BAF_Weapons_Ammo_RHS",
 	"ace_compat_rhs_usf3",
 	"ace_vector",
 	"A3_Weapons_F",
@@ -19,12 +22,15 @@ requiredAddons[]=
 	"ace_maptools",
 	"ace_medical_treatment",
 	"ace_microdagr",
-	"ace_realisticnames",
 	"ace_huntir",
+	"ace_realisticnames",
+	"TOTT_Optics",
+	"UK3CB_BAF_Weapons_SmallArms",
+	"UK3CB_BAF_Weapons_Ammo",
+	"ace_grenades",
 	"rhsusf_sounds",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",
-	"ace_grenades",
 	"A3_Weapons_F_Orange",
 	"ace_arsenal",
 	"ace_fortify",
@@ -34,6 +40,13 @@ requiredAddons[]=
 	"ace_optics",
 	"ace_gforces",
 	"ace_parachute",
+	"A3_Weapons_F_LongRangeRifles_M320",
+	"A3_Weapons_F_Mark_LongRangeRifles_M320_Camo",
+	"ace_compat_rhs_usf3_scopes",
+	"ace_ballistics",
+	"A3_Drones_F_Weapons_F_Gamma_Items",
+	"BOT_FPV_Enhanced",
+	"A3_Static_F_Mortar_01",
 	"A3_Modules_F",
-	"Desert"
+	"RSPN_Assets"
 };
