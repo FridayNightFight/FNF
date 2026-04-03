@@ -115,8 +115,13 @@ if (not isNil "fnf_objectives") then
 	[{call FNF_ClientSide_fnc_watchObjs;}, 1] call CBA_fnc_addPerFrameHandler;
 };
 
-//handle if a player dies, put them into spectator
+//handle if a player dies, put them into spectator and add to group death list
 player addEventHandler ["Killed", {
+	_killedPlayer = _this select 0;
+	_playerGroup = group _killedPlayer;
+	_deathQueue = _playerGroup getVariable ["fnf_deathQueue", []];
+	_deathQueue pushBack _killedPlayer;
+	_playerGroup setVariable ["fnf_deathQueue", _deathQueue];
 	[{call FNF_ClientSide_fnc_startSpectator;}, [], 3] call CBA_fnc_waitAndExecute;
 }];
 
@@ -128,6 +133,31 @@ player addEventHandler ["GetInMan", {
 		_vehicle disableTIEquipment true;
 	};
 }];
+
+// Track rhs_weap_rsp30_white flare rounds - 2s after firing, sample the
+// projectile position perform the reinsert
+player addEventHandler ["FiredMan", {
+	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
+
+	if !(_weapon isEqualTo "rhs_weap_rsp30_white") exitWith {};
+
+	if (group _unit getVariable ["reinsertRequested", false]) exitWith {};
+	group _unit setVariable ["reinsertRequested", true];
+
+	private _deathQueue = group _unit getVariable ["fnf_deathQueue", []];
+	private _reinsertUnits = _deathQueue select [0, (count _deathQueue) min 4];
+
+	[{
+		params ["_projectile", "_reinsertUnits"];
+		private _pos = getPosASL _projectile;
+		//diag_log format ["FiredMan flare tracker: pos at 2s — %1", _pos];
+
+		// Debug: spawn crate at flare position
+		//"B_supplyCrate_F" createVehicle (ASLToATL _pos);
+
+	}, [_projectile, _reinsertUnits], 2] call CBA_fnc_waitAndExecute;
+}];
+
 
 //handle if some one JIP and theres safezones whether they have expired
 if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
