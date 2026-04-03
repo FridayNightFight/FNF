@@ -145,6 +145,8 @@ player addEventHandler ["FiredMan", {
 	group _unit setVariable ["reinsertRequested", true];
 
 	private _deathQueue = group _unit getVariable ["fnf_deathQueue", []];
+	if (count _deathQueue isEqualTo 0) exitWith {};
+
 	private _reinsertUnits = _deathQueue select [0, (count _deathQueue) min 4];
 
 	[{
