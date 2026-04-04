@@ -17,6 +17,28 @@ params["_caller", "_reinsertPos", "_reinsertUnits"];
 
 _landingPos = _reinsertPos;
 
+// Prepare each dead unit: exit spectator, restore loadout, hide and disable
+{
+	_x hideObjectGlobal true;
+	_x enableSimulationGlobal false;
+} forEach _reinsertUnits;
+{
+	[{
+		setPlayerRespawnTime -1;
+		[false, false, false] call ace_spectator_fnc_setSpectator;
+		player setUnitLoadout [fnf_playerLoadout, false];
+		player allowDamage false;
+		setPlayerRespawnTime 9999;
+		// Fix spectator rendering bug: briefly re-enter then exit spectator
+		[{
+			[true, true, true] call ace_spectator_fnc_setSpectator;
+			[{
+				[false, false, false] call ace_spectator_fnc_setSpectator;
+			}, [], 1] call CBA_fnc_waitAndExecute;
+		}, [], 1] call CBA_fnc_waitAndExecute;
+	}] remoteExec ["call", _x];
+} forEach _reinsertUnits;
+
 //get a safe direction to spawn helicopter
 _playerSide = side _caller;
 
@@ -68,7 +90,15 @@ _spawned params ["_heli", "_crew", "_group"];
 	} forEach _crew;
 },[_crew],1] call CBA_fnc_waitAndExecute;
 
-//teleport players into vic
+// Move dead units into helicopter and re-enable them
+{
+	_x moveInCargo _heli;
+	_x hideObjectGlobal false;
+	_x enableSimulationGlobal true;
+} forEach _reinsertUnits;
+{
+	[{ player allowDamage true; }] remoteExec ["call", _x];
+} forEach _reinsertUnits;
 
 (driver _heli) doMove _landingPos;
 
