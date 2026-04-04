@@ -146,6 +146,15 @@ class CfgVehicles
 				tooltip = "If checked, debug errors will be shown";
 				typeName = "BOOL";
 				defaultValue = "false";
+			};			
+			class TimeToDisableReinsertsAfterSafeStart: Edit
+			{
+				property = "fnf_timeToDisableReinsertsAfterSafeStart";
+				expression = "_this setVariable ['fnf_timeToDisableReinsertsAfterSafeStart',_value, true];";
+				displayName = "Time to Disable Resinserts";
+				tooltip = "How many minutes after Safe Start ends should the ability to Reinsert end";
+				typeName = "NUMBER";
+				defaultValue = "10";
 			};
 		};
 	};

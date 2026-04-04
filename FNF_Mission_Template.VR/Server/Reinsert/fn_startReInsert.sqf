@@ -106,22 +106,22 @@ _spawned params ["_heli", "_crew", "_group"];
 
 
 [{
-	params ["_heli", "_landingPos", "_reinsertUnits"];
+	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
 	_heliVelocity = velocity _heli;
 	_horizontalVelocity = (abs(_heliVelocity select 0)) + (abs(_heliVelocity select 1));
 	(_horizontalVelocity < 10) and ((_heli distance _landingPos) < 1950);
 },
 {
-	params ["_heli", "_landingPos", "_reinsertUnits"];
+	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
 	_heliPos = getPos _heli;
 	if ((alive _heli) and ((_heliPos select 2) > 5)) then
 	{
 		_heli flyInHeight [9.99, true];
 		[{
-			params ["_heli", "_reinsertUnits"];
+			params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 			((getPos _heli) select 2) < 43;
 		}, {
-			params ["_heli", "_reinsertUnits"];
+			params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 			(driver _heli) disableAI "MOVE";
 			_wiggleDownHandle = [{
 				(_this select 0) params ["_heli"];
@@ -133,19 +133,19 @@ _spawned params ["_heli", "_crew", "_group"];
 				}
 			}, 0.1, [_heli]] call CBA_fnc_addPerFrameHandler;
 			[{
-				params ["_heli", "_reinsertUnits"];
+				params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 				_heliPos = getPos _heli;
 				_heliHeight = _heliPos select 2;
 				_heliHeight < 32;
 			}, {
-				params ["_heli", "_wiggleDownHandle", "_reinsertUnits"];
+				params ["_heli", "_wiggleDownHandle", "_reinsertUnits", "_safeSpawnPos"];
 				[_wiggleDownHandle] call CBA_fnc_removePerFrameHandler;
 				_heli setVelocity [0,0,0];
 
-					[_heli, (_reinsertUnits select 0), "ACE_rope36"] call ace_fastroping_fnc_deployRopes;
+				[_heli, (_reinsertUnits select 0), "ACE_rope36"] call ace_fastroping_fnc_deployRopes;
 
 				[{
-					params ["_heli", "_reinsertUnits"];
+					params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 					// Fast rope each unit 1 second apart
 					{
 						private _unit = _x;
@@ -155,17 +155,25 @@ _spawned params ["_heli", "_crew", "_group"];
 							[_unit, _heli] remoteExec ["ace_fastroping_fnc_fastRope", _unit];
 						}, [_unit, _heli], _delay] call CBA_fnc_waitAndExecute;
 					} forEach _reinsertUnits;
-					// Cut ropes after last unit has had time to rope down
+					// Cut ropes, fly back to spawn position and delete
 					[{
-						params ["_heli"];
+						params ["_heli", "_safeSpawnPos"];
 						[_heli] call ace_fastroping_fnc_cutRopes;
 						_heli flyInHeight [20, true];
 						(driver _heli) enableAI "MOVE";
-						(driver _heli) doMove [0,0,0];
-					}, [_heli], ((count _reinsertUnits) - 1) + 8] call CBA_fnc_waitAndExecute;
-				}, [_heli, _reinsertUnits], 5] call CBA_fnc_waitAndExecute;
+						(driver _heli) doMove _safeSpawnPos;
+						[{
+							params ["_heli", "_safeSpawnPos"];
+							(_heli distance _safeSpawnPos) < 50;
+						}, {
+							params ["_heli"];
+							{ deleteVehicle _x; } forEach (crew _heli);
+							deleteVehicle _heli;
+						}, [_heli, _safeSpawnPos]] call CBA_fnc_waitUntilAndExecute;
+					}, [_heli, _safeSpawnPos], ((count _reinsertUnits) - 1) + 8] call CBA_fnc_waitAndExecute;
+				}, [_heli, _reinsertUnits, _safeSpawnPos], 5] call CBA_fnc_waitAndExecute;
 
-			}, [_heli, _wiggleDownHandle, _reinsertUnits]] call CBA_fnc_waitUntilAndExecute;
-		}, [_heli, _reinsertUnits]] call CBA_fnc_waitUntilAndExecute;
+			}, [_heli, _wiggleDownHandle, _reinsertUnits, _safeSpawnPos]] call CBA_fnc_waitUntilAndExecute;
+		}, [_heli, _reinsertUnits, _safeSpawnPos]] call CBA_fnc_waitUntilAndExecute;
 	};
-}, [_heli, _landingPos, _reinsertUnits]] call CBA_fnc_waitUntilAndExecute;
+}, [_heli, _landingPos, _reinsertUnits, _safeSpawnPos]] call CBA_fnc_waitUntilAndExecute;
