@@ -154,6 +154,8 @@ player addEventHandler ["FiredMan", {
 	if (group _unit getVariable ["fnf_reinsertRequested", false]) exitWith {};
 	group _unit setVariable ["fnf_reinsertRequested", true, true];
 
+	if !(_unit isEqualTo leader group _unit) exitWith {};
+
 	_deathQueue = group _unit getVariable ["fnf_deathQueue", []];
 	if (count _deathQueue isEqualTo 0) exitWith {};
 
