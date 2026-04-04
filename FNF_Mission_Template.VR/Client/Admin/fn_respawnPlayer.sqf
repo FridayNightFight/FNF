@@ -16,7 +16,7 @@ if (alive player) exitWith {};
 _playerGroup = group player;
 _deathQueue = _playerGroup getVariable ["fnf_deathQueue", []];
 _deathQueue = _deathQueue - [player];
-_playerGroup setVariable ["fnf_deathQueue", _deathQueue];
+_playerGroup setVariable ["fnf_deathQueue", _deathQueue, true];
 
 setPlayerRespawnTime -1;
 
