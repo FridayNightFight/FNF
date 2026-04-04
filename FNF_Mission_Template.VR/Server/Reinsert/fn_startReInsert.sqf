@@ -59,6 +59,13 @@ _spawned params ["_heli", "_crew", "_group"];
 	//_x setUnitLoadout [[[],[],[],["U_O_R_Gorka_01_black_F",[]],["UK3CB_V_Pilot_Vest_Black",[]],[],"rhsusf_hgu56p_visor_mask_Empire_black","G_Balaclava_TI_blk_F",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]]
 } forEach _crew;
 
+[{
+	params ["_crew"];
+	{
+		_x setUnitLoadout [[[],[],[],["U_O_R_Gorka_01_black_F",[]],["UK3CB_V_Pilot_Vest_Black",[]],[],"rhsusf_hgu56p_visor_mask_Empire_black","G_Balaclava_TI_blk_F",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]]
+	} forEach _crew;
+},[_crew],1] call CBA_fnc_waitAndExecute;
+
 //teleport players into vic
 
 (driver _heli) doMove _landingPos;
