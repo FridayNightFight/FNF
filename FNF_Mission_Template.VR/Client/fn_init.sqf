@@ -145,25 +145,31 @@ player addEventHandler ["FiredMan", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	if !(_weapon isEqualTo "rhs_weap_rsp30_white") exitWith {};
+	if (fnf_debug) then { systemChat "[fnf_reinsert] Flare fired"; };
+
 // TODO @Mallen-git Do an actual check against SafeStart here, rather than from mission start. Unless you think Mission Start is better, then rename the variables
 // TODO @Mallen-git I also added the ability to adjust this variable in the editor under Init, but need a Mod Build and release for it.
 	_missionElapsed = serverTime - (missionNamespace getVariable ["fnf_startTime", 0]);
 	_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 10]) * 60;
-	if (_missionElapsed <= _disableWindow) exitWith {};
+	if (fnf_debug) then { systemChat format ["[fnf_reinsert] Elapsed: %1s, window: %2s", round _missionElapsed, round _disableWindow]; };
+	if (_missionElapsed <= _disableWindow) exitWith { if (fnf_debug) then { systemChat "[fnf_reinsert] BLOCKED - within disable window"; }; };
 
-	if (group _unit getVariable ["fnf_reinsertRequested", false]) exitWith {};
+	if (group _unit getVariable ["fnf_reinsertRequested", false]) exitWith { if (fnf_debug) then { systemChat "[fnf_reinsert] BLOCKED - reinsert already requested"; }; };
 	group _unit setVariable ["fnf_reinsertRequested", true, true];
 
-	if !(_unit isEqualTo leader group _unit) exitWith {};
+	if !(_unit isEqualTo leader group _unit) exitWith { if (fnf_debug) then { systemChat "[fnf_reinsert] BLOCKED - not group leader"; }; };
 
 	_deathQueue = group _unit getVariable ["fnf_deathQueue", []];
-	if (count _deathQueue isEqualTo 0) exitWith {};
+	if (fnf_debug) then { systemChat format ["[fnf_reinsert] Death queue: %1", count _deathQueue]; };
+	if (count _deathQueue isEqualTo 0) exitWith { if (fnf_debug) then { systemChat "[fnf_reinsert] BLOCKED - death queue empty"; }; };
 
 	_reinsertUnits = _deathQueue select [0, (count _deathQueue) min 4];
+	if (fnf_debug) then { systemChat format ["[fnf_reinsert] Reinserting %1 unit(s), sampling flare pos in 2s...", count _reinsertUnits]; };
 
 	[{
 		params ["_projectile", "_reinsertUnits", "_unit"];
 		_pos = getPosASL _projectile;
+		if (fnf_debug) then { systemChat format ["[fnf_reinsert] Flare pos: %1 - calling server", _pos]; };
 
 		[_unit, (ASLToATL _pos), _reinsertUnits] remoteExec ["FNF_ServerSide_fnc_startReinsert", 2];
 	}, [_projectile, _reinsertUnits, _unit], 2] call CBA_fnc_waitAndExecute;

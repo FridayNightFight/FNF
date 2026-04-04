@@ -14,26 +14,31 @@
 */
 
 params["_caller", "_reinsertPos", "_reinsertUnits"];
+if (fnf_debug) then { systemChat format ["[fnf_reinsert] Called - %1 unit(s) to pos %2", count _reinsertUnits, _reinsertPos]; };
 
 _landingPos = _reinsertPos;
 
 // Prepare each dead unit: exit spectator, restore loadout, hide and disable
+if (fnf_debug) then { systemChat "[fnf_reinsert] Preparing units"; };
 {
 	_x hideObjectGlobal true;
 	_x enableSimulationGlobal false;
 } forEach _reinsertUnits;
 {
 	[{
+		if (fnf_debug) then { systemChat "[fnf_reinsert] Running prepare on local machine"; };
 		setPlayerRespawnTime -1;
 		[false, false, false] call ace_spectator_fnc_setSpectator;
 		player setUnitLoadout [fnf_playerLoadout, false];
 		player allowDamage false;
 		setPlayerRespawnTime 9999;
+		if (fnf_debug) then { systemChat "[fnf_reinsert] Prepare done, fixing spectator bug"; };
 		// Fix spectator rendering bug: briefly re-enter then exit spectator
 		[{
 			[true, true, true] call ace_spectator_fnc_setSpectator;
 			[{
 				[false, false, false] call ace_spectator_fnc_setSpectator;
+				if (fnf_debug) then { systemChat "[fnf_reinsert] Spectator fix complete"; };
 			}, [], 1] call CBA_fnc_waitAndExecute;
 		}, [], 1] call CBA_fnc_waitAndExecute;
 	}] remoteExec ["call", _x];
@@ -74,8 +79,10 @@ if (_enemyDir >= 180) then
 
 _safeSpawnPos = _caller getRelPos [2000, _friendlyDir];
 
+if (fnf_debug) then { systemChat format ["[fnf_reinsert] Spawning heli at %1 facing %2", _safeSpawnPos, _enemyDir]; };
 _spawned = [_safeSpawnPos, _enemyDir, "RHS_MELB_MH6M", _playerSide] call BIS_fnc_spawnVehicle;
 _spawned params ["_heli", "_crew", "_group"];
+if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli spawned: %1", _heli]; };
 
 {
 	_x setBehaviour "CARELESS";
@@ -91,15 +98,17 @@ _spawned params ["_heli", "_crew", "_group"];
 },[_crew],1] call CBA_fnc_waitAndExecute;
 
 // Move dead units into helicopter and re-enable them
+if (fnf_debug) then { systemChat "[fnf_reinsert] Boarding units into heli"; };
 {
 	_x moveInCargo _heli;
 	_x hideObjectGlobal false;
 	_x enableSimulationGlobal true;
 } forEach _reinsertUnits;
 {
-	[{ player allowDamage true; }] remoteExec ["call", _x];
+	[{ player allowDamage true; if (fnf_debug) then { systemChat "[fnf_reinsert] allowDamage restored on local machine"; }; }] remoteExec ["call", _x];
 } forEach _reinsertUnits;
 
+if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli moving to landing pos %1", _landingPos]; };
 (driver _heli) doMove _landingPos;
 
 [_heli] call ace_fastroping_fnc_prepareFRIES;
@@ -113,15 +122,18 @@ _spawned params ["_heli", "_crew", "_group"];
 },
 {
 	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
+	if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli arrived near LZ - height: %1", round ((getPos _heli) select 2)]; };
 	_heliPos = getPos _heli;
 	if ((alive _heli) and ((_heliPos select 2) > 5)) then
 	{
+		if (fnf_debug) then { systemChat "[fnf_reinsert] Beginning descent"; };
 		_heli flyInHeight [9.99, true];
 		[{
 			params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 			((getPos _heli) select 2) < 43;
 		}, {
 			params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
+			if (fnf_debug) then { systemChat "[fnf_reinsert] Below 43m - disabling AI move, wiggling down"; };
 			(driver _heli) disableAI "MOVE";
 			_wiggleDownHandle = [{
 				(_this select 0) params ["_heli"];
@@ -139,6 +151,7 @@ _spawned params ["_heli", "_crew", "_group"];
 				_heliHeight < 32;
 			}, {
 				params ["_heli", "_wiggleDownHandle", "_reinsertUnits", "_safeSpawnPos"];
+				if (fnf_debug) then { systemChat format ["[fnf_reinsert] Below 32m - stopping, deploying ropes. Height: %1", round ((getPos _heli) select 2)]; };
 				[_wiggleDownHandle] call CBA_fnc_removePerFrameHandler;
 				_heli setVelocity [0,0,0];
 
@@ -146,18 +159,23 @@ _spawned params ["_heli", "_crew", "_group"];
 
 				[{
 					params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
+					if (fnf_debug) then { systemChat format ["[fnf_reinsert] Fast roping %1 unit(s)", count _reinsertUnits]; };
 					// Fast rope each unit 1 second apart
 					{
 						private _unit = _x;
 						private _delay = _forEachIndex;
 						[{
 							params ["_unit", "_heli"];
+							if (fnf_debug) then { systemChat format ["[fnf_reinsert] Fast roping unit: %1", _unit]; };
 							[_unit, _heli] remoteExec ["ace_fastroping_fnc_fastRope", _unit];
 						}, [_unit, _heli], _delay] call CBA_fnc_waitAndExecute;
 					} forEach _reinsertUnits;
 					// Cut ropes, fly back to spawn position and delete
+					private _cutDelay = ((count _reinsertUnits) - 1) + 8;
+					if (fnf_debug) then { systemChat format ["[fnf_reinsert] Cutting ropes in %1s", _cutDelay]; };
 					[{
 						params ["_heli", "_safeSpawnPos"];
+						if (fnf_debug) then { systemChat "[fnf_reinsert] Cutting ropes, returning to spawn"; };
 						[_heli] call ace_fastroping_fnc_cutRopes;
 						_heli flyInHeight [20, true];
 						(driver _heli) enableAI "MOVE";
@@ -167,10 +185,11 @@ _spawned params ["_heli", "_crew", "_group"];
 							(_heli distance _safeSpawnPos) < 50;
 						}, {
 							params ["_heli"];
+							if (fnf_debug) then { systemChat "[fnf_reinsert] Back at spawn - deleting heli and crew"; };
 							{ deleteVehicle _x; } forEach (crew _heli);
 							deleteVehicle _heli;
 						}, [_heli, _safeSpawnPos]] call CBA_fnc_waitUntilAndExecute;
-					}, [_heli, _safeSpawnPos], ((count _reinsertUnits) - 1) + 8] call CBA_fnc_waitAndExecute;
+					}, [_heli, _safeSpawnPos], _cutDelay] call CBA_fnc_waitAndExecute;
 				}, [_heli, _reinsertUnits, _safeSpawnPos], 5] call CBA_fnc_waitAndExecute;
 
 			}, [_heli, _wiggleDownHandle, _reinsertUnits, _safeSpawnPos]] call CBA_fnc_waitUntilAndExecute;
