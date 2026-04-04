@@ -150,14 +150,11 @@ player addEventHandler ["FiredMan", {
 	_reinsertUnits = _deathQueue select [0, (count _deathQueue) min 4];
 
 	[{
-		params ["_projectile", "_reinsertUnits"];
-		private _pos = getPosASL _projectile;
-		//diag_log format ["FiredMan flare tracker: pos at 2s — %1", _pos];
+		params ["_projectile", "_reinsertUnits", "_unit"];
+		_pos = getPosASL _projectile;
 
-		// Debug: spawn crate at flare position
-		//"B_supplyCrate_F" createVehicle (ASLToATL _pos);
-
-	}, [_projectile, _reinsertUnits], 2] call CBA_fnc_waitAndExecute;
+		[_unit, (ASLToATL _pos), _reinsertUnits] remoteExec ["FNF_ServerSide_fnc_startReinsert", 2];
+	}, [_projectile, _reinsertUnits, _unit], 2] call CBA_fnc_waitAndExecute;
 }];
 
 

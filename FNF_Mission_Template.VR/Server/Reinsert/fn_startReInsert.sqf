@@ -1,19 +1,21 @@
 /*
-	Author: Mallen
+	Author: Mallen and OrthyOliver
 
 	Description:
 		Spawns helicopter and sends it to fast rope players as a re-insert
 
 	Parameter(s):
-		0: OBJECT -	The player that called the Re-insert
+		0: OBJECT -		The player that called the Re-insert
+		1: POSITION -	The landing position (ATL) sampled from the flare projectile
+		2: ARRAY -		Array of up to 4 dead units to reinsert
 
 	Returns:
 		None
 */
 
-params["_caller"];
+params["_caller", "_reinsertPos", "_reinsertUnits"];
 
-_landingPos = getPos _caller;
+_landingPos = _reinsertPos;
 
 //get a safe direction to spawn helicopter
 _playerSide = side _caller;
@@ -111,19 +113,28 @@ _spawned params ["_heli", "_crew", "_group"];
 				[_wiggleDownHandle] call CBA_fnc_removePerFrameHandler;
 				_heli setVelocity [0,0,0];
 
-				[_heli, player, "ACE_rope36"] call ace_fastroping_fnc_deployRopes;
+				[_heli, (_reinsertUnits select 0), "ACE_rope36"] call ace_fastroping_fnc_deployRopes;
 
 				[{
-					params ["_heli"];
-					[player, _heli] call ace_fastroping_fnc_fastRope;
+					params ["_heli", "_reinsertUnits"];
+					// Fast rope each unit 1 second apart
+					{
+						private _unit = _x;
+						private _delay = _forEachIndex;
+						[{
+							params ["_unit", "_heli"];
+							[_unit, _heli] remoteExec ["ace_fastroping_fnc_fastRope", _unit];
+						}, [_unit, _heli], _delay] call CBA_fnc_waitAndExecute;
+					} forEach _reinsertUnits;
+					// Cut ropes after last unit has had time to rope down
 					[{
 						params ["_heli"];
 						[_heli] call ace_fastroping_fnc_cutRopes;
 						_heli flyInHeight [20, true];
 						(driver _heli) enableAI "MOVE";
 						(driver _heli) doMove [0,0,0];
-					}, [_heli], 8] call CBA_fnc_waitAndExecute;
-				}, [_heli], 5] call CBA_fnc_waitAndExecute;
+					}, [_heli], ((count _reinsertUnits) - 1) + 8] call CBA_fnc_waitAndExecute;
+				}, [_heli, _reinsertUnits], 5] call CBA_fnc_waitAndExecute;
 
 			}, [_heli, _wiggleDownHandle]] call CBA_fnc_waitUntilAndExecute;
 		}, [_heli]] call CBA_fnc_waitUntilAndExecute;
