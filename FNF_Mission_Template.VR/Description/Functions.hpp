@@ -256,6 +256,11 @@ class CfgFunctions
 			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
 		};
+		class reInsert
+		{
+			file = "Server\Reinsert";
+			class startReinsert {};
+		};
 		class objectives
 		{
 			file = "Server\Objectives";
