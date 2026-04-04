@@ -2,6 +2,11 @@ if (isDedicated) exitWith {};
 
 if (not isNil "fnf_playerLoadout") exitWith {};
 
+//give squad leaders an RSP-30 flare gun for reinsertion
+if ((((roleDescription player) splitString "@") select 0) isEqualTo "Squad Leader") then {
+	player addItemToBackpack "rhs_weap_rsp30_white";
+};
+
 //get player loadout and store for future use
 fnf_playerLoadout = getUnitLoadout player;
 
