@@ -109,7 +109,7 @@ _spawned params ["_heli", "_crew", "_group"];
 	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
 	_heliVelocity = velocity _heli;
 	_horizontalVelocity = (abs(_heliVelocity select 0)) + (abs(_heliVelocity select 1));
-	(_horizontalVelocity < 10) and ((_heli distance _landingPos) < 1950);
+	(_horizontalVelocity < 10) and ((_heli distance _landingPos) < 200);
 },
 {
 	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
