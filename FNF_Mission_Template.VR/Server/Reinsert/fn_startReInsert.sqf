@@ -106,23 +106,22 @@ _spawned params ["_heli", "_crew", "_group"];
 
 
 [{
-	params ["_heli", "_landingPos"];
+	params ["_heli", "_landingPos", "_reinsertUnits"];
 	_heliVelocity = velocity _heli;
 	_horizontalVelocity = (abs(_heliVelocity select 0)) + (abs(_heliVelocity select 1));
-	systemChat str(_horizontalVelocity);
 	(_horizontalVelocity < 10) and ((_heli distance _landingPos) < 1950);
 },
 {
-	params ["_heli"];
+	params ["_heli", "_landingPos", "_reinsertUnits"];
 	_heliPos = getPos _heli;
 	if ((alive _heli) and ((_heliPos select 2) > 5)) then
 	{
 		_heli flyInHeight [9.99, true];
 		[{
-			params ["_heli"];
+			params ["_heli", "_reinsertUnits"];
 			((getPos _heli) select 2) < 43;
 		}, {
-			params ["_heli"];
+			params ["_heli", "_reinsertUnits"];
 			(driver _heli) disableAI "MOVE";
 			_wiggleDownHandle = [{
 				(_this select 0) params ["_heli"];
@@ -134,16 +133,16 @@ _spawned params ["_heli", "_crew", "_group"];
 				}
 			}, 0.1, [_heli]] call CBA_fnc_addPerFrameHandler;
 			[{
-				params ["_heli"];
+				params ["_heli", "_reinsertUnits"];
 				_heliPos = getPos _heli;
 				_heliHeight = _heliPos select 2;
 				_heliHeight < 32;
 			}, {
-				params ["_heli", "_wiggleDownHandle"];
+				params ["_heli", "_wiggleDownHandle", "_reinsertUnits"];
 				[_wiggleDownHandle] call CBA_fnc_removePerFrameHandler;
 				_heli setVelocity [0,0,0];
 
-				[_heli, (_reinsertUnits select 0), "ACE_rope36"] call ace_fastroping_fnc_deployRopes;
+					[_heli, (_reinsertUnits select 0), "ACE_rope36"] call ace_fastroping_fnc_deployRopes;
 
 				[{
 					params ["_heli", "_reinsertUnits"];
@@ -166,7 +165,7 @@ _spawned params ["_heli", "_crew", "_group"];
 					}, [_heli], ((count _reinsertUnits) - 1) + 8] call CBA_fnc_waitAndExecute;
 				}, [_heli, _reinsertUnits], 5] call CBA_fnc_waitAndExecute;
 
-			}, [_heli, _wiggleDownHandle]] call CBA_fnc_waitUntilAndExecute;
-		}, [_heli]] call CBA_fnc_waitUntilAndExecute;
+			}, [_heli, _wiggleDownHandle, _reinsertUnits]] call CBA_fnc_waitUntilAndExecute;
+		}, [_heli, _reinsertUnits]] call CBA_fnc_waitUntilAndExecute;
 	};
-}, [_heli, _landingPos]] call CBA_fnc_waitUntilAndExecute;
+}, [_heli, _landingPos, _reinsertUnits]] call CBA_fnc_waitUntilAndExecute;
