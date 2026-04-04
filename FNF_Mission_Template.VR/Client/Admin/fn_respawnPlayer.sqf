@@ -13,6 +13,11 @@
 
 if (alive player) exitWith {};
 
+_playerGroup = group player;
+_deathQueue = _playerGroup getVariable ["fnf_deathQueue", []];
+_deathQueue = _deathQueue - [player];
+_playerGroup setVariable ["fnf_deathQueue", _deathQueue, true];
+
 setPlayerRespawnTime -1;
 
 [false, false, false] call ace_spectator_fnc_setSpectator;
