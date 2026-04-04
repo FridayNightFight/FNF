@@ -147,10 +147,8 @@ player addEventHandler ["FiredMan", {
 	if !(_weapon isEqualTo "rhs_weap_rsp30_white") exitWith {};
 	if (fnf_debug) then { systemChat "[fnf_reinsert] Flare fired"; };
 
-// TODO @Mallen-git Do an actual check against SafeStart here, rather than from mission start. Unless you think Mission Start is better, then rename the variables
-// TODO @Mallen-git I also added the ability to adjust this variable in the editor under Init, but need a Mod Build and release for it.
 	_missionElapsed = serverTime - (missionNamespace getVariable ["fnf_startTime", 0]);
-	_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 10]) * 60;
+	_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]) *60;
 	if (fnf_debug) then { systemChat format ["[fnf_reinsert] Elapsed: %1s, window: %2s", round _missionElapsed, round _disableWindow]; };
 	if (_missionElapsed <= _disableWindow) exitWith { if (fnf_debug) then { systemChat "[fnf_reinsert] BLOCKED - within disable window"; }; };
 

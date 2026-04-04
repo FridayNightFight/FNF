@@ -151,10 +151,10 @@ class CfgVehicles
 			{
 				property = "fnf_timeToDisableReinsertsAfterSafeStart";
 				expression = "_this setVariable ['fnf_timeToDisableReinsertsAfterSafeStart',_value, true];";
-				displayName = "Time to Disable Resinserts";
-				tooltip = "How many minutes after Safe Start ends should the ability to Reinsert end";
+				displayName = "Time to Disable Resinserts (minutes)";
+				tooltip = "How many minutes mission start should the ability to Reinsert end";
 				typeName = "NUMBER";
-				defaultValue = "10";
+				defaultValue = "20";
 			};
 		};
 	};
