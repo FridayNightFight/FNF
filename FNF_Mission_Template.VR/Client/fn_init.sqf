@@ -2,6 +2,11 @@ if (isDedicated) exitWith {};
 
 if (not isNil "fnf_playerLoadout") exitWith {};
 
+//give squad leaders an RSP-30 flare gun for reinsertion
+if ((((roleDescription player) splitString "@") select 0) isEqualTo "Squad Leader") then {
+	player addItemToBackpack "rhs_weap_rsp30_white";
+};
+
 //get player loadout and store for future use
 fnf_playerLoadout = getUnitLoadout player;
 
@@ -140,9 +145,16 @@ player addEventHandler ["FiredMan", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
 	if !(_weapon isEqualTo "rhs_weap_rsp30_white") exitWith {};
+// TODO @Mallen-git Do an actual check against SafeStart here, rather than from mission start. Unless you think Mission Start is better, then rename the variables
+// TODO @Mallen-git I also added the ability to adjust this variable in the editor under Init, but need a Mod Build and release for it.
+	_missionElapsed = serverTime - (missionNamespace getVariable ["fnf_startTime", 0]);
+	_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 10]) * 60;
+	if (_missionElapsed <= _disableWindow) exitWith {};
 
 	if (group _unit getVariable ["fnf_reinsertRequested", false]) exitWith {};
 	group _unit setVariable ["fnf_reinsertRequested", true, true];
+
+	if !(_unit isEqualTo leader group _unit) exitWith {};
 
 	_deathQueue = group _unit getVariable ["fnf_deathQueue", []];
 	if (count _deathQueue isEqualTo 0) exitWith {};
@@ -150,14 +162,11 @@ player addEventHandler ["FiredMan", {
 	_reinsertUnits = _deathQueue select [0, (count _deathQueue) min 4];
 
 	[{
-		params ["_projectile", "_reinsertUnits"];
-		private _pos = getPosASL _projectile;
-		//diag_log format ["FiredMan flare tracker: pos at 2s — %1", _pos];
+		params ["_projectile", "_reinsertUnits", "_unit"];
+		_pos = getPosASL _projectile;
 
-		// Debug: spawn crate at flare position
-		//"B_supplyCrate_F" createVehicle (ASLToATL _pos);
-
-	}, [_projectile, _reinsertUnits], 2] call CBA_fnc_waitAndExecute;
+		[_unit, (ASLToATL _pos), _reinsertUnits] remoteExec ["FNF_ServerSide_fnc_startReinsert", 2];
+	}, [_projectile, _reinsertUnits, _unit], 2] call CBA_fnc_waitAndExecute;
 }];
 
 
