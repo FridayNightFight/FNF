@@ -121,7 +121,7 @@ player addEventHandler ["Killed", {
 	_playerGroup = group _killedPlayer;
 	_deathQueue = _playerGroup getVariable ["fnf_deathQueue", []];
 	_deathQueue pushBack _killedPlayer;
-	_playerGroup setVariable ["fnf_deathQueue", _deathQueue];
+	_playerGroup setVariable ["fnf_deathQueue", _deathQueue, true];
 	[{call FNF_ClientSide_fnc_startSpectator;}, [], 3] call CBA_fnc_waitAndExecute;
 }];
 
@@ -141,13 +141,13 @@ player addEventHandler ["FiredMan", {
 
 	if !(_weapon isEqualTo "rhs_weap_rsp30_white") exitWith {};
 
-	if (group _unit getVariable ["reinsertRequested", false]) exitWith {};
-	group _unit setVariable ["reinsertRequested", true];
+	if (group _unit getVariable ["fnf_reinsertRequested", false]) exitWith {};
+	group _unit setVariable ["fnf_reinsertRequested", true, true];
 
-	private _deathQueue = group _unit getVariable ["fnf_deathQueue", []];
+	_deathQueue = group _unit getVariable ["fnf_deathQueue", []];
 	if (count _deathQueue isEqualTo 0) exitWith {};
 
-	private _reinsertUnits = _deathQueue select [0, (count _deathQueue) min 4];
+	_reinsertUnits = _deathQueue select [0, (count _deathQueue) min 4];
 
 	[{
 		params ["_projectile", "_reinsertUnits"];
