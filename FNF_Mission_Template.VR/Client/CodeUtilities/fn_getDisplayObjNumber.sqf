@@ -59,8 +59,8 @@ if (typeName _target isEqualTo "OBJECT") then
 	} forEach _objModules;
 
 	_targetObjectSyncedObjects = [_targetObjectSyncedObjects] call FNF_ClientSide_fnc_sortByLocation;
-	_objType = typeOf _module;
-	_commonModules = _targetObjectSyncedObjects select {typeOf _x isEqualTo _objType};
+	_moduleType = typeOf _module;
+	_commonModules = _targetObjectSyncedObjects select {typeOf _x isEqualTo _moduleType};
 } else {
 	_modules = call FNF_ClientSide_fnc_findFNFModules;
 	_captureObjModules = [_modules, "sectorCaptureObj"] call FNF_ClientSide_fnc_findSpecificModules;
@@ -78,8 +78,8 @@ if (typeName _target isEqualTo "OBJECT") then
 	} forEach _objModules;
 
 	_targetObjectSyncedObjects = [_targetObjectSyncedObjects] call FNF_ClientSide_fnc_sortByLocation;
-	_objType = typeOf _module;
-	_commonModules = _targetObjectSyncedObjects select {typeOf _x isEqualTo _objType};
+	_moduleType = typeOf _module;
+	_commonModules = _targetObjectSyncedObjects select {typeOf _x isEqualTo _moduleType};
 };
 
 _highestNumber = fnf_objectiveDisplayNumbers getOrDefault ["HighestNumber", 0];

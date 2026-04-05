@@ -156,6 +156,8 @@ class CfgFunctions
 			class startSpectator {};
 			class initSpectatorSlot {};
 			class getSpectatorParentTask {};
+			class startLimitedSpectator {};
+			class upgradeSpectator {};
 		};
 		class hidingZones
 		{
