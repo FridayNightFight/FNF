@@ -208,9 +208,12 @@ _addJIPitems = {
 			};
 		} forEach _connections;
 
-		//add all syncs for dummy logc and remove from player
-		add3DENConnection ["Sync", _connectionItems, _logicAssignedToPlayer];
-		remove3DENConnection ["Sync", _connectionItems, _x];
+		if (_connectionItems isNotEqualTo []) then
+		{
+			//add all syncs for dummy logc and remove from player
+			add3DENConnection ["Sync", _connectionItems, _logicAssignedToPlayer];
+			remove3DENConnection ["Sync", _connectionItems, _x];
+		};
 
 		//track what needs to be deleted (dummy logic), and what connections things should have
 		_unitsToDelete pushBack _logicAssignedToPlayer;
