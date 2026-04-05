@@ -22,7 +22,7 @@ _landingPos = _reinsertPos;
 //get a safe direction to spawn helicopter
 _playerSide = side _caller;
 
-_enemyPlayers = allPlayers select {([_playerSide, (side _x)] call BIS_fnc_sideIsFriendly) and (alive _x)};
+_enemyPlayers = allPlayers select {(not ([_playerSide, (side _x)] call BIS_fnc_sideIsFriendly)) and (alive _x)};
 
 _totalX = 0;
 _totalY = 0;
@@ -52,7 +52,8 @@ if (_enemyDir >= 180) then
 //====================================
 //get safe position to spawn helicopter (in air)
 
-_safeSpawnPos = _caller getRelPos [2000, _friendlyDir];
+_safeSpawnPos = _landingPos getPos [2000, _friendlyDir];
+_landingPos = _safeSpawnPos getPos [2050, _enemyDir];
 
 if (fnf_debug) then { systemChat format ["[fnf_reinsert] Spawning heli at %1 facing %2", _safeSpawnPos, _enemyDir]; };
 
@@ -203,7 +204,7 @@ if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli moving to landing 
 							}, [_heli, _safeSpawnPos], 2] call CBA_fnc_waitAndExecute;
 							[{
 								params ["_heli", "_safeSpawnPos"];
-								(_heli distance2D _safeSpawnPos) < 50;
+								(_heli distance2D _safeSpawnPos) < 200;
 							}, {
 								params ["_heli"];
 								if (fnf_debug) then { systemChat "[fnf_reinsert] Back at spawn - deleting heli and crew"; };
