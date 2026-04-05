@@ -46,8 +46,34 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 			fnf_playerLoadout = getUnitLoadout player;
 		};
 
-		fnf_timerMessage = nil;
-		fnf_timerEndTime = nil;
+		_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+
+		fnf_timerMessage = "Reinsert Window Remaining: %1";
+		fnf_timerEndTime = _disableWindow * 60;
+
+		//wait until the zone is said to be deleted
+		[{
+			_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
+			_result = objNull;
+			if (isServer and hasInterface) then
+			{
+				_result = time > (_disableWindow * 60);
+			} else {
+				_result = (serverTime - _timeServerStarted) > (_disableWindow * 60);
+				if (_timeServerStarted isEqualTo -1) then
+				{
+					_result = false;
+				};
+			};
+			_result;
+		},{
+			["<t align='center' size='1.5'>REINSERT UNAVAILABLE</t><t align='center'><br/><br/>Reinsert window has passed</t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
+			fnf_timerMessage = nil;
+			fnf_timerEndTime = nil;
+		}] call CBA_fnc_waitUntilAndExecute;
+
+
 		false call FNF_ClientSide_fnc_showTimerInHUD;
 
 		fnf_showSelectors = false;

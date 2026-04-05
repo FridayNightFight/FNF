@@ -2,7 +2,7 @@
 	Author: Mallen
 
 	Description:
-		Starts up spectator enviroment for players who have died
+		Upgrades spectator enviroment when a player that could be reinserted cannot be anymore
 
 	Parameter(s):
 		None
@@ -11,42 +11,11 @@
 		None
 */
 
-[true, true, true] call ace_spectator_fnc_setSpectator;
-
 [[west, east, independent, civilian], []] call ace_spectator_fnc_updateSides;
 [[0,1,2], []] call ace_spectator_fnc_updateCameraModes;
 
-_lastDamage = player getVariable ["ace_medical_lastDamageSource",objNull];
-
-if (!isNull _lastDamage) then {
-	[2, _lastDamage] call ace_spectator_fnc_setCameraAttributes;
-} else {
-	[2, player] call ace_spectator_fnc_setCameraAttributes;
-};
-
-true call FNF_ClientSide_fnc_showTimerInHUD;
-
-//setup map shading
-[{!isNull findDisplay 60000},{
-findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
-{
-	_map = _this select 0;
-	{
-		_rgbaValues = _y select 1;
-		{
-			_pos1 = _x select 0;
-			_pos2 = _x select 1;
-			_pos3 = _x select 2;
-			_map drawTriangle [[_pos1, _pos2, _pos3], _rgbaValues, "#(rgb,1,1,1)color(1,1,1,1)"];
-		} forEach (_y select 0);
-	} forEach fnf_trianglesToDraw;
-}];
-}] call CBA_fnc_waitUntilAndExecute;
-
 //show Mission Details button
 call FNF_ClientSide_fnc_missionDetailsButton;
-
-call BIS_fnc_showMissionStatus;
 
 [{!isNil "fnf_objectives"}, {
 
