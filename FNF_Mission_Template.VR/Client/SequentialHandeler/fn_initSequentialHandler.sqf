@@ -82,7 +82,7 @@ fnf_seqObjHandelerQueue = [];
 
 				case "fnf_module_escortObj":
 				{
-					[_x] call FNF_ClientSide_fnc_initeEscort;
+					[_x] call FNF_ClientSide_fnc_initEscort;
 				};
 			};
 		} forEach _indexsToInit;
