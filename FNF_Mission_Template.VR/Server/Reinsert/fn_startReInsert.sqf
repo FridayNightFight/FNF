@@ -39,7 +39,7 @@ if ((count _enemyPlayers) isNotEqualTo 0) then
 	_averageEnemyLocation = [_totalX / (count _enemyPlayers), _totalY / (count _enemyPlayers), 0];
 };
 
-_enemyDir = _caller getDir _averageEnemyLocation;
+_enemyDir = _landingPos getDir _averageEnemyLocation;
 
 _friendlyDir = 0;
 
@@ -65,63 +65,53 @@ if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli spawned: %1", _hel
 {
 	_x setBehaviour "CARELESS";
 	_x allowFleeing 0;
+	_x setUnitLoadout [[],[],[],["U_O_R_Gorka_01_black_F",[]],["UK3CB_V_Pilot_Vest_Black",[]],[],"rhsusf_hgu56p_visor_mask_Empire_black","G_Balaclava_TI_blk_F",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
 } forEach _crew;
 
-[{
-	params ["_crew"];
-	{
-		_x setUnitLoadout [[],[],[],["U_O_R_Gorka_01_black_F",[]],["UK3CB_V_Pilot_Vest_Black",[]],[],"rhsusf_hgu56p_visor_mask_Empire_black","G_Balaclava_TI_blk_F",[],["ItemMap","","","ItemCompass","ItemWatch",""]]
-	} forEach _crew;
-},[_crew],1] call CBA_fnc_waitAndExecute;
-
+_cargoIndexOrder = [1, 2, 5, 6];
 {
+	_cargoIndex = _cargoIndexOrder select _forEachIndex;
 	[{
 		setPlayerRespawnTime -1;
-		[false, false, false] call ace_spectator_fnc_setSpectator;
 		[{
+			alive player
+		}, {
 			player setUnitLoadout [fnf_playerLoadout, false];
 			[player, true] remoteExec ["hideObjectGlobal", 2];
 			player allowDamage false;
-			player enableSimulationGlobal false;
 			setPlayerRespawnTime 9999;
-		},[],0.1] call CBA_fnc_waitAndExecute;
-	}] remoteExec ["call", (_x call BIS_fnc_getUnitByUID)];
-} forEach _reinsertUnits;
+		}] call CBA_fnc_waitUntilAndExecute;
 
-[{
-	params ["_reinsertUnits", "_heli"];
-	[{
-		params ["_reinsertUnits", "_heli"];
-		_cargoIndexOrder = [1, 2, 5, 6];
-		{
-			_cargoIndex = _cargoIndexOrder select _forEachIndex;
-			[(_x call BIS_fnc_getUnitByUID), [_heli, _cargoIndex]] remoteExec ["moveInCargo", (_x call BIS_fnc_getUnitByUID)];
-		} forEach _reinsertUnits;
-
-	},[_reinsertUnits, _heli],0.2] call CBA_fnc_waitAndExecute;
-
-	{
 		[{
+			not (isNull (objectParent player));
+		}, {
+			[false, false, false] call ace_spectator_fnc_setSpectator;
 			player allowDamage true;
-			player enableSimulationGlobal true;
 			[player, false] remoteExec ["hideObjectGlobal", 2];
-			if (fnf_debug) then { systemChat "[fnf_reinsert] allowDamage restored on local machine"; };
 			[{
 				[true, true, true] call ace_spectator_fnc_setSpectator;
 				[{
 					[false, false, false] call ace_spectator_fnc_setSpectator;
 				},[],1] call CBA_fnc_waitAndExecute;
 			},[],1] call CBA_fnc_waitAndExecute;
-		}] remoteExec ["call", (_x call BIS_fnc_getUnitByUID)];
-	} forEach _reinsertUnits;
-},[_reinsertUnits, _heli],0.5] call CBA_fnc_waitAndExecute;
+		}] call CBA_fnc_waitUntilAndExecute;
+	}] remoteExec ["call", (_x call BIS_fnc_getUnitByUID)];
+
+	[{
+		params ["_playerUID"];
+		alive (_playerUID call BIS_fnc_getUnitByUID);
+	}, {
+		params ["_playerUID", "_heli", "_cargoIndex"];
+		[(_playerUID call BIS_fnc_getUnitByUID), [_heli, _cargoIndex]] remoteExec ["moveInCargo", (_playerUID call BIS_fnc_getUnitByUID)];
+	}, [_x, _heli, _cargoIndex]] call CBA_fnc_waitUntilAndExecute;
+} forEach _reinsertUnits;
 
 if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli moving to landing pos %1", _landingPos]; };
 (driver _heli) doMove _landingPos;
 (gunner _heli) doMove _landingPos;
+_heli flyInHeight [20, true];
 
 [_heli] call ace_fastroping_fnc_prepareFRIES;
-
 
 [{
 	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
