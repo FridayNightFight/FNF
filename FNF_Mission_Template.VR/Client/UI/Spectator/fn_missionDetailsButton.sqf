@@ -237,6 +237,26 @@ _buttons = [];
 			};
 		};
 
+		case "fnf_module_escortObj":
+		{
+			//set code and variables for escort OBJ
+			_params params ["_targetObject"];
+			_buttonName = "Objective " + ([_module] call FNF_ClientSide_fnc_getDisplayObjNumber) + ": STEAL";
+			_code set [3, "
+			_params params ['_targetObject'];
+			_object = _targetObject;
+			"];
+
+			//check obj is not secondary
+			if (typeOf player isEqualTo "ace_spectator_virtual") then
+			{
+				if ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective) then
+				{
+					_showButton = false;
+				};
+			};
+		};
+
 		default {_showButton = false;};
 	};
 

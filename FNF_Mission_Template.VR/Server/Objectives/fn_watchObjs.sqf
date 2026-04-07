@@ -42,5 +42,9 @@
 		{
 			[_forEachIndex] call FNF_ServerSide_fnc_watchSteal;
 		};
+		case "fnf_module_escortObj":
+		{
+			[_forEachIndex] call FNF_ServerSide_fnc_watchEscort;
+		};
 	};
 } forEach fnf_serverObjectives;

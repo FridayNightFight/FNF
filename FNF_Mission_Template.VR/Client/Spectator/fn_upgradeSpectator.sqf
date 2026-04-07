@@ -54,6 +54,11 @@ call FNF_ClientSide_fnc_missionDetailsButton;
 		{
 			_indexsToDrawIcon pushBack _forEachIndex;
 		};
+
+		if (_type isEqualTo "fnf_module_escortObj") then
+		{
+			_indexsToDrawIcon pushBack _forEachIndex;
+		};
 	} forEach fnf_objectives;
 
 	[{
@@ -102,6 +107,12 @@ call FNF_ClientSide_fnc_missionDetailsButton;
 			};
 
 			if (_type isEqualTo "fnf_module_stealObj") then
+			{
+				_params params ["_targetObject"];
+				drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];
+			};
+
+			if (_type isEqualTo "fnf_module_escortObj") then
 			{
 				_params params ["_targetObject"];
 				drawIcon3D ["a3\ui_f\data\map\Markers\Military\objective_CA.paa", [1,0,0,0.8], ASLToAGL getPosASL _targetObject, 0.6, 0.6, 45];

@@ -155,6 +155,11 @@ _missionStatusSet = false;
 				[_newTaskIndex] call FNF_ClientSide_fnc_initSteal;
 			};
 
+			case "fnf_module_escortObj":
+			{
+				[_newTaskIndex] call FNF_ClientSide_fnc_initEscort;
+			};
+
 			//if no type found then objective must be part of a new mod update that framework isnt equipped to handle
 			default
 			{

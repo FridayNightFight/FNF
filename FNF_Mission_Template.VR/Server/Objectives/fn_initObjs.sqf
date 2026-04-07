@@ -69,5 +69,10 @@ call FNF_ClientSide_fnc_initGPSUnitMarkers;
 		{
 			[_newTaskIndex] call FNF_ServerSide_fnc_initSteal;
 		};
+
+		case "fnf_module_escortObj":
+		{
+			[_newTaskIndex] call FNF_ServerSide_fnc_initEscort;
+		};
 	};
 } forEach _modules;

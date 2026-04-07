@@ -93,6 +93,12 @@ class CfgFunctions
 			class initSteal {};
 			class watchSteal {};
 		};
+		class objEscort
+		{
+			file = "Client\Objectives\Escort";
+			class initEscort {};
+			class watchEscort {};
+		};
 		class safeZones
 		{
 			file = "Client\Safezones";
@@ -305,6 +311,12 @@ class CfgFunctions
 			file = "Server\Objectives\Steal";
 			class initSteal {};
 			class watchSteal {};
+		};
+		class objEscort
+		{
+			file = "Server\Objectives\Escort";
+			class initEscort {};
+			class watchEscort {};
 		};
 	};
 };

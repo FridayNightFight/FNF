@@ -146,7 +146,7 @@ class CfgVehicles
 				tooltip = "If checked, debug errors will be shown";
 				typeName = "BOOL";
 				defaultValue = "false";
-			};			
+			};
 			class TimeToDisableReinsertsAfterSafeStart: Edit
 			{
 				property = "fnf_timeToDisableReinsertsAfterSafeStart";
@@ -648,6 +648,49 @@ class CfgVehicles
 				{
 					class Steal { name = "Steal Object"; value = "stl";};
 					class Keep { name = "Keep Object"; value = "kep";};
+				};
+			};
+			class Prefix: Edit
+			{
+				property = "fnf_prefix";
+				expression = "_this setVariable ['fnf_prefix',_value, true];";
+				displayName = "Marker Prefix";
+				tooltip = "The prefix for the marker the objective will look for when creating the drop-off zone";
+				typeName = "STRING";
+				defaultValue = "fnf_marker_steal_";
+			};
+			class ZoneKnown: Checkbox
+			{
+				property = "fnf_zoneKnown";
+				expression = "_this setVariable ['fnf_zoneKnown',_value, true];";
+				displayName = "Is hiding zone known";
+				tooltip = "If checked, when object is in a linked hiding zone the zone it is in will have the task attached to it";
+				typeName = "BOOL";
+				defaultValue = "true";
+			};
+		};
+	};
+	class fnf_module_escortObj: fnf_module_objective
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Escort Objective";
+		icon = "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\container_ca.paa";
+		scope = 2;
+		class Attributes: AttributesBase
+		{
+			class ObjectiveType: Combo
+			{
+				property = "fnf_objectiveType";
+				expression = "_this setVariable ['fnf_objectiveType',_value, true];";
+				displayName = "Objective Type";
+				tooltip = "What the side is supposed to do with the objective";
+				typeName = "STRING";
+				defaultValue = "esc";
+				class Values
+				{
+					class Destroy { name = "Destroy Object"; value = "des";};
+					class Escort { name = "Escort Object"; value = "esc";};
 				};
 			};
 			class Prefix: Edit

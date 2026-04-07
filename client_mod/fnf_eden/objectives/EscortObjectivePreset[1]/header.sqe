@@ -1,0 +1,11 @@
+version=54;
+name="Escort Objective Preset [ 1 ]";
+author="Mallen";
+category="EdSubcat_Default";
+requiredAddons[]=
+{
+	"fnf_eden",
+	"A3_Modules_F",
+	"A3_Ui_F",
+	"A3_Supplies_F_Heli_CargoNets"
+};
