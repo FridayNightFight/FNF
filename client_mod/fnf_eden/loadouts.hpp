@@ -547,6 +547,33 @@
 			displayName = "Chinese PLA SOF [2020]";
 			useSideColorOnIcon = 1;
 		};
+		class fnf_BritishArmy2020
+		{
+			path = "fnf_eden\kits\BritishArmy[2020]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "British Army [2020]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_SwedishArmy2020
+		{
+			path = "fnf_eden\kits\SwedishArmy[2020]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "Swedish Army [2020]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_FinnishArmy2020
+		{
+			path = "fnf_eden\kits\FinnishArmy[2020]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "Finnish Army [2020]";
+			useSideColorOnIcon = 1;
+		};
 
 		//*************************************************************************************************************************
 		// VIETNAM AFTER THIS
