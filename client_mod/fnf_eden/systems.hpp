@@ -58,7 +58,11 @@ class CfgEditorSubcategories
 	};
 	class fnf_Steal
 	{
-		displayName = "Steal";
+		displayName = "Steal Object";
+	};
+	class fnf_Escort
+	{
+		displayName = "Escort Object";
 	};
 	class fnf_SafeZones
 	{
