@@ -5,11 +5,51 @@ class CfgPatches
 	units[] = {};
 	weapons[] = {};
 	requiredVersion = 0.1;
-	requiredAddons[] = {"tfar_backpacks","UK3CB_Factions_Equipment_Backpack","UK3CB_Factions_Equipment_CW_Backpack_Soviet","A3_Weapons_F_Ammoboxes","rhsusf_c_troops","A3_Supplies_F_Enoch_Bags","UK3CB_Factions_Equipment_CW_Backpack_US","UK3CB_Factions_Backpack2","A3_Supplies_F_Exp","A3_Supplies_F_Orange_Bags","A3_Supplies_F_AoW_Bags","rhs_c_troops","rhsusf_c_uav","ace_common","rhssaf_c_gear","ace_gunbag","rhsgref_c_troops","UK3CB_Factions_AAF_I","UK3CB_Factions_AAF_O","UK3CB_Factions_ADA_B","UK3CB_Factions_ADA_I","UK3CB_Factions_ADA_O","UK3CB_Factions_ADE_I","UK3CB_Factions_ADE_O","UK3CB_Factions_ADG_B","UK3CB_Factions_ADG_I","UK3CB_Factions_ADG_O","UK3CB_Factions_ADM_B","UK3CB_Factions_ADM_I","UK3CB_Factions_ADM_O","UK3CB_Factions_ADP_B","UK3CB_Factions_ADP_I","UK3CB_Factions_ADP_O","UK3CB_Factions_ADR_B","UK3CB_Factions_ADR_I","UK3CB_Factions_ADR_O","UK3CB_Factions_ANA_B","UK3CB_Factions_ANP_B","UK3CB_Factions_APD_B","UK3CB_Factions_APD_I","UK3CB_Factions_APD_O","UK3CB_Factions_ARD_B","UK3CB_Factions_ARD_I","UK3CB_Factions_ARD_O","UK3CB_Factions_CHD_B","UK3CB_Factions_CHD_I","UK3CB_Factions_CHD_O","UK3CB_Factions_CHD_W_B","UK3CB_Factions_CHD_W_I","UK3CB_Factions_CHD_W_O","UK3CB_Factions_CSAT_A_O","UK3CB_Factions_CSAT_B_O","UK3CB_Factions_CSAT_G_O","UK3CB_Factions_CSAT_F_O","UK3CB_Factions_CSAT_N_O","UK3CB_Factions_CSAT_M_O","UK3CB_Factions_CSAT_U_O","UK3CB_Factions_CSAT_S_O","UK3CB_Factions_CSAT_W_O","ace_compat_rhs_afrf3","UK3CB_Factions_CW_SOV_O_EARLY","UK3CB_Factions_CW_SOV_O_LATE","UK3CB_Factions_FIA_B","UK3CB_Factions_FIA_I","UK3CB_Factions_FIA_O","UK3CB_Factions_GAF_B","UK3CB_Factions_GAF_I","UK3CB_Factions_GAF_O","UK3CB_Factions_ION_B_Desert","UK3CB_Factions_ION_B_Urban","UK3CB_Factions_ION_B_Winter","UK3CB_Factions_ION_B_Woodland","UK3CB_Factions_ION_I_Desert","UK3CB_Factions_ION_I_Urban","UK3CB_Factions_ION_I_Winter","UK3CB_Factions_ION_I_Woodland","UK3CB_Factions_ION_O_Desert","UK3CB_Factions_ION_O_Urban","UK3CB_Factions_ION_O_Winter","UK3CB_Factions_ION_O_Woodland","UK3CB_Factions_KDF_B","UK3CB_Factions_KDF_I","UK3CB_Factions_KDF_O","UK3CB_Factions_KRG_B","UK3CB_Factions_KRG_I","UK3CB_Factions_KRG_O","UK3CB_Factions_LDF_B","UK3CB_Factions_LDF_I","UK3CB_Factions_LDF_O","UK3CB_Factions_LFR_B","UK3CB_Factions_LFR_I","UK3CB_Factions_LFR_O","UK3CB_Factions_LNM_B","UK3CB_Factions_LNM_I","UK3CB_Factions_LNM_O","UK3CB_Factions_LSM_B","UK3CB_Factions_LSM_I","UK3CB_Factions_LSM_O","UK3CB_Factions_MEC_B","UK3CB_Factions_MEC_C","UK3CB_Factions_MEC_I","UK3CB_Factions_MEC_O","UK3CB_Factions_MEE_I","UK3CB_Factions_MEE_O","UK3CB_Factions_MEI_B","UK3CB_Factions_MEI_I","UK3CB_Factions_MEI_O","UK3CB_Factions_NAP_B","UK3CB_Factions_NAP_I","UK3CB_Factions_NAP_O","UK3CB_Factions_NFA_B","UK3CB_Factions_NFA_I","UK3CB_Factions_NFA_O","UK3CB_Factions_TKA_B","UK3CB_Factions_TKA_I","UK3CB_Factions_TKA_O","UK3CB_Factions_TKM_B","UK3CB_Factions_TKM_I","UK3CB_Factions_TKM_O","UK3CB_Factions_TKP_B","UK3CB_Factions_TKP_I","UK3CB_Factions_TKP_O","UK3CB_Factions_UN_B","UK3CB_Factions_UN_I"}; };
+	requiredAddons[] = {"TRF_UKAF","A3_Weapons_F_Ammoboxes","fnf_backpacks","tfar_backpacks","A3_Supplies_F_Enoch_Bags","UK3CB_Factions_Equipment_Backpack","UK3CB_Factions_Equipment_CW_Backpack_Soviet","rhsusf_c_troops","UK3CB_Factions_Equipment_CW_Backpack_US","sfp_task_force_radio","UK3CB_Factions_Backpack2","A3_Static_F","VME_PLA_Weapons_C","A3_VME_PLA_Men","A3_Supplies_F_Exp","min_rf_units","A3_Supplies_F_Orange_Bags","A3_Supplies_F_AoW_Bags","rhs_c_troops","ace_compat_rhs_afrf3","rhsusf_c_uav","UK3CB_BAF_Equipment_Backpacks","Swedish_Forces_Pack","ace_common","bwa3_backpacks","Finnish_Forces_Pack","rhssaf_c_gear","ace_gunbag","rhsgref_c_troops","UK3CB_Factions_WEI_B","UK3CB_Factions_WEI_I","UK3CB_Factions_WEI_O","UK3CB_Factions_AAF_I","UK3CB_Factions_AAF_O","UK3CB_Factions_ADA_B","UK3CB_Factions_ADA_I","UK3CB_Factions_ADA_O","UK3CB_Factions_ADE_I","UK3CB_Factions_ADE_O","UK3CB_Factions_ADG_B","UK3CB_Factions_ADG_I","UK3CB_Factions_ADG_O","UK3CB_Factions_ADM_B","UK3CB_Factions_ADM_I","UK3CB_Factions_ADM_O","UK3CB_Factions_ADP_B","UK3CB_Factions_ADP_I","UK3CB_Factions_ADP_O","UK3CB_Factions_ADR_B","UK3CB_Factions_ADR_I","UK3CB_Factions_ADR_O","UK3CB_Factions_ANA_B","UK3CB_Factions_ANP_B","UK3CB_Factions_APD_B","UK3CB_Factions_APD_I","UK3CB_Factions_APD_O","UK3CB_Factions_ARD_B","UK3CB_Factions_ARD_I","UK3CB_Factions_ARD_O","UK3CB_Factions_CHD_B","UK3CB_Factions_CHD_I","UK3CB_Factions_CHD_O","UK3CB_Factions_CHD_W_B","UK3CB_Factions_CHD_W_I","UK3CB_Factions_CHD_W_O","UK3CB_Factions_CSAT_A_O","UK3CB_Factions_CSAT_B_O","UK3CB_Factions_CSAT_G_O","UK3CB_Factions_CSAT_F_O","UK3CB_Factions_CSAT_N_O","UK3CB_Factions_CSAT_M_O","UK3CB_Factions_CSAT_U_O","UK3CB_Factions_CSAT_S_O","UK3CB_Factions_CSAT_W_O","UK3CB_Factions_CW_SOV_O_EARLY","UK3CB_Factions_CW_SOV_O_LATE","UK3CB_Factions_FIA_B","UK3CB_Factions_FIA_I","UK3CB_Factions_FIA_O","UK3CB_Factions_GAF_B","UK3CB_Factions_GAF_I","UK3CB_Factions_GAF_O","UK3CB_Factions_ION_B_Desert","UK3CB_Factions_ION_B_Urban","UK3CB_Factions_ION_B_Winter","UK3CB_Factions_ION_B_Woodland","UK3CB_Factions_ION_I_Desert","UK3CB_Factions_ION_I_Urban","UK3CB_Factions_ION_I_Winter","UK3CB_Factions_ION_I_Woodland","UK3CB_Factions_ION_O_Desert","UK3CB_Factions_ION_O_Urban","UK3CB_Factions_ION_O_Winter","UK3CB_Factions_ION_O_Woodland","UK3CB_Factions_KDF_B","UK3CB_Factions_KDF_I","UK3CB_Factions_KDF_O","UK3CB_Factions_KRG_B","UK3CB_Factions_KRG_I","UK3CB_Factions_KRG_O","UK3CB_Factions_LDF_B","UK3CB_Factions_LDF_I","UK3CB_Factions_LDF_O","UK3CB_Factions_LFR_B","UK3CB_Factions_LFR_I","UK3CB_Factions_LFR_O","UK3CB_Factions_LNM_B","UK3CB_Factions_LNM_I","UK3CB_Factions_LNM_O","UK3CB_Factions_LSM_B","UK3CB_Factions_LSM_I","UK3CB_Factions_LSM_O","UK3CB_Factions_MEC_B","UK3CB_Factions_MEC_C","UK3CB_Factions_MEC_I","UK3CB_Factions_MEC_O","UK3CB_Factions_MEE_I","UK3CB_Factions_MEE_O","UK3CB_Factions_MEI_B","UK3CB_Factions_MEI_I","UK3CB_Factions_MEI_O","UK3CB_Factions_NAP_B","UK3CB_Factions_NAP_I","UK3CB_Factions_NAP_O","UK3CB_Factions_NFA_B","UK3CB_Factions_NFA_I","UK3CB_Factions_NFA_O","UK3CB_Factions_PLM_B","UK3CB_Factions_PLM_I","UK3CB_Factions_PLM_O","UK3CB_Factions_TKA_B","UK3CB_Factions_TKA_I","UK3CB_Factions_TKA_O","UK3CB_Factions_TKM_B","UK3CB_Factions_TKM_I","UK3CB_Factions_TKM_O","UK3CB_Factions_TKP_B","UK3CB_Factions_TKP_I","UK3CB_Factions_TKP_O","UK3CB_Factions_TNM_B","UK3CB_Factions_TNM_I","UK3CB_Factions_TNM_O","UK3CB_Factions_TPD_B","UK3CB_Factions_TPD_I","UK3CB_Factions_TPD_O","UK3CB_Factions_UN_B","UK3CB_Factions_UN_I"}; };
 };
 class cfgVehicles
 {
  class Bag_Base;
+ class B_AssaultPack_Base: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_AssaultPack_mcamo: B_AssaultPack_Base
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_VIRTUS_ASSAULT_PACK: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_VIRTUS_ASSAULT_PACK_LR: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_CAMELBACK: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_CAMELBACK_LR: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_TRIZIP: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_ZIPON: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_TRIZIP_LR: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
+ class TRF_ZIPON_LR: B_AssaultPack_mcamo
+ {
+	maximumLoad = 1000;
+ };
  class B_Bergen_Base: Bag_Base
  {
 	maximumLoad = 1000;
@@ -35,6 +75,22 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class TFAR_anprc155: TFAR_Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_Carryall_Base: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_Carryall_khk: B_Carryall_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_RadioBag_01_base_F: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_RadioBag_01_black_F: B_RadioBag_01_base_F
  {
 	maximumLoad = 1000;
  };
@@ -214,19 +270,15 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_AssaultPack_Base: Bag_Base
- {
-	maximumLoad = 1000;
- };
  class rhsusf_assault_eagleaiii_ucp: B_AssaultPack_Base
  {
 	maximumLoad = 1000;
  };
- class B_RadioBag_01_base_F: Bag_Base
+ class rhsusf_assault_eagleaiii_coy: rhsusf_assault_eagleaiii_ucp
  {
 	maximumLoad = 1000;
  };
- class B_RadioBag_01_black_F: B_RadioBag_01_base_F
+ class rhsusf_assault_eagleaiii_ocp: rhsusf_assault_eagleaiii_ucp
  {
 	maximumLoad = 1000;
  };
@@ -270,7 +322,19 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
+ class B_AssaultPack_khk: B_AssaultPack_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_AssaultPack_rgr: B_AssaultPack_Base
+ {
+	maximumLoad = 1000;
+ };
  class B_Kitbag_Base: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_Kitbag_cbr: B_Kitbag_Base
  {
 	maximumLoad = 1000;
  };
@@ -278,7 +342,11 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_Carryall_Base: Bag_Base
+ class B_FieldPack_khk: B_FieldPack_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_FieldPack_blk: B_FieldPack_Base
  {
 	maximumLoad = 1000;
  };
@@ -302,7 +370,7 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_AssaultPack_mcamo: B_AssaultPack_Base
+ class B_Carryall_oli: B_Carryall_Base
  {
 	maximumLoad = 1000;
  };
@@ -310,7 +378,15 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_AssaultPack_rgr: B_AssaultPack_Base
+ class sfp_ra180: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_stridssack2000_ra_ksk90: sfp_ra180
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_lk35_ra145: sfp_ra180
  {
 	maximumLoad = 1000;
  };
@@ -370,10 +446,6 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_Kitbag_cbr: B_Kitbag_Base
- {
-	maximumLoad = 1000;
- };
  class UK3CB_B_Kitbag_DPM_68: B_Kitbag_cbr
  {
 	maximumLoad = 1000;
@@ -427,10 +499,6 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class UK3CB_B_Kitbag_WDL_03: B_Kitbag_cbr
- {
-	maximumLoad = 1000;
- };
- class B_Carryall_khk: B_Carryall_Base
  {
 	maximumLoad = 1000;
  };
@@ -490,6 +558,18 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
+ class Weapon_Bag_Base: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class PLA_AssaultPack_Fix: Weapon_Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class PLA_AssaultPack_Base: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
  class B_Bergen_Base_F: Bag_Base
  {
 	maximumLoad = 1000;
@@ -502,7 +582,207 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
+ class I_Fieldpack_oli_Ammo: B_Carryall_oli
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_flora: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_surpat: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_vsr: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_winter: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_green: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_black: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_vsr_recon: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_surpat_recon: min_rf_backpack_vsr_recon
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_flora_recon: min_rf_backpack_vsr_recon
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_winter_recon: min_rf_backpack_vsr_recon
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_vsr_recon_JTAC: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_surpat_recon_JTAC: min_rf_backpack_vsr_recon_JTAC
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_flora_recon_JTAC: min_rf_backpack_vsr_recon_JTAC
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_winter_recon_JTAC: min_rf_backpack_vsr_recon_JTAC
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_vsr_recon_M: I_Fieldpack_oli_Ammo
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_surpat_recon_M: min_rf_backpack_vsr_recon_M
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_flora_recon_M: min_rf_backpack_vsr_recon_M
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_winter_recon_M: min_rf_backpack_vsr_recon_M
+ {
+	maximumLoad = 1000;
+ };
+ class B_AssaultPack_dgtl: B_AssaultPack_Base
+ {
+	maximumLoad = 1000;
+ };
+ class I_Fieldpack_oli_LAT: B_AssaultPack_dgtl
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_vsr_recon_LAT: I_Fieldpack_oli_LAT
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_surpat_recon_LAT: min_rf_backpack_vsr_recon_LAT
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_flora_recon_LAT: min_rf_backpack_vsr_recon_LAT
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_winter_recon_LAT: min_rf_backpack_vsr_recon_LAT
+ {
+	maximumLoad = 1000;
+ };
+ class B_FieldPack_oli: B_FieldPack_Base
+ {
+	maximumLoad = 1000;
+ };
+ class I_Fieldpack_oli_Medic: B_FieldPack_oli
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_vsr_recon_medic: I_Fieldpack_oli_Medic
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_surpat_recon_medic: min_rf_backpack_vsr_recon_medic
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_flora_recon_medic: min_rf_backpack_vsr_recon_medic
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_winter_recon_medic: min_rf_backpack_vsr_recon_medic
+ {
+	maximumLoad = 1000;
+ };
+ class I_Carryall_oli_Exp: B_Carryall_oli
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_vsr_recon_exp: I_Carryall_oli_Exp
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_surpat_recon_exp: min_rf_backpack_vsr_recon_exp
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_flora_recon_exp: min_rf_backpack_vsr_recon_exp
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_winter_recon_exp: min_rf_backpack_vsr_recon_exp
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_green_recon: min_rf_backpack_vsr_recon
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_green_recon_JTAC: min_rf_backpack_vsr_recon_JTAC
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_green_recon_M: min_rf_backpack_vsr_recon_M
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_green_recon_LAT: min_rf_backpack_vsr_recon_LAT
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_green_recon_medic: min_rf_backpack_vsr_recon_medic
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_green_recon_exp: min_rf_backpack_vsr_recon_exp
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_black_recon: min_rf_backpack_vsr_recon
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_black_recon_JTAC: min_rf_backpack_vsr_recon_JTAC
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_black_recon_M: min_rf_backpack_vsr_recon_M
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_black_recon_LAT: min_rf_backpack_vsr_recon_LAT
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_black_recon_medic: min_rf_backpack_vsr_recon_medic
+ {
+	maximumLoad = 1000;
+ };
+ class min_rf_backpack_black_recon_exp: min_rf_backpack_vsr_recon_exp
+ {
+	maximumLoad = 1000;
+ };
  class B_Messenger_Base_F: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_Messenger_Coyote_F: B_Messenger_Base_F
+ {
+	maximumLoad = 1000;
+ };
+ class B_Messenger_Olive_F: B_Messenger_Base_F
  {
 	maximumLoad = 1000;
  };
@@ -510,7 +790,19 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
+ class B_LegStrapBag_black_F: B_LegStrapBag_base_F
+ {
+	maximumLoad = 1000;
+ };
  class B_CombinationUnitRespirator_01_Base_F: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class B_RadioBag_01_tropic_F: B_RadioBag_01_base_F
+ {
+	maximumLoad = 1000;
+ };
+ class B_RadioBag_01_eaf_F: B_RadioBag_01_base_F
  {
 	maximumLoad = 1000;
  };
@@ -522,7 +814,19 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
+ class rhs_assault_umbts_engineer: rhs_assault_umbts
+ {
+	maximumLoad = 1000;
+ };
+ class rhs_assault_umbts_engineer_empty: rhs_assault_umbts_engineer
+ {
+	maximumLoad = 1000;
+ };
  class rhs_rpg: B_AssaultPack_Base
+ {
+	maximumLoad = 1000;
+ };
+ class rhs_rpg_empty: rhs_rpg
  {
 	maximumLoad = 1000;
  };
@@ -542,10 +846,6 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class rhsusf_assault_eagleaiii_ocp: rhsusf_assault_eagleaiii_ucp
- {
-	maximumLoad = 1000;
- };
  class rhsusf_assault_eagleaiii_ocp_engineer: rhsusf_assault_eagleaiii_ocp
  {
 	maximumLoad = 1000;
@@ -555,6 +855,50 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class B_rhsusf_B_BACKPACK: rhsusf_assault_eagleaiii_ocp
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_BAF_B_Bergen_Base: B_Bergen_Base
+ {
+	maximumLoad = 1000;
+ };
+ class tf_rt1523g_big: TFAR_rt1523g_big
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_BAF_B_rt1523g_Base: tf_rt1523g_big
+ {
+	maximumLoad = 1000;
+ };
+ class tf_anarc210: TFAR_anarc210
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_BAF_B_anarc210_Base: tf_anarc210
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_bag_base: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_backpack_lk35: sfp_bag_base
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_backpack_grg_loader: sfp_backpack_lk35
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_backpack_stridssack2000: sfp_bag_base
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_stridssele_backpack: sfp_bag_base
+ {
+	maximumLoad = 1000;
+ };
+ class sfp_stridssele_backpack_grg: sfp_stridssele_backpack
  {
 	maximumLoad = 1000;
  };
@@ -578,6 +922,14 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
+ class BWA3_PatrolPack_Fleck: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
+ class ffp_bag_base: Bag_Base
+ {
+	maximumLoad = 1000;
+ };
  class rhssaf_Kitbag_base: B_Kitbag_Base
  {
 	maximumLoad = 1000;
@@ -598,7 +950,15 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class rhs_rpg_empty: rhs_rpg
+ class UK3CB_WEI_B_B_RPG: rhs_rpg_empty
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_WEI_I_B_RPG: rhs_rpg_empty
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_WEI_O_B_RPG: rhs_rpg_empty
  {
 	maximumLoad = 1000;
  };
@@ -914,10 +1274,6 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_Carryall_oli: B_Carryall_Base
- {
-	maximumLoad = 1000;
- };
  class UK3CB_CSAT_A_O_B_ENG: B_Carryall_oli
  {
 	maximumLoad = 1000;
@@ -967,10 +1323,6 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class UK3CB_CSAT_G_O_B_ENG_GRN: B_Carryall_oli
- {
-	maximumLoad = 1000;
- };
- class B_FieldPack_blk: B_FieldPack_Base
  {
 	maximumLoad = 1000;
  };
@@ -1046,10 +1398,6 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_RadioBag_01_eaf_F: B_RadioBag_01_base_F
- {
-	maximumLoad = 1000;
- };
  class UK3CB_CSAT_A_O_B_RadioBag: B_RadioBag_01_eaf_F
  {
 	maximumLoad = 1000;
@@ -1111,14 +1459,6 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class UK3CB_CSAT_S_O_B_UMBTS: rhs_assault_umbts
- {
-	maximumLoad = 1000;
- };
- class rhs_assault_umbts_engineer: rhs_assault_umbts
- {
-	maximumLoad = 1000;
- };
- class rhs_assault_umbts_engineer_empty: rhs_assault_umbts_engineer
  {
 	maximumLoad = 1000;
  };
@@ -1194,10 +1534,6 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_AssaultPack_khk: B_AssaultPack_Base
- {
-	maximumLoad = 1000;
- };
  class UK3CB_FIA_B_B_ASS_KHK: B_AssaultPack_khk
  {
 	maximumLoad = 1000;
@@ -1227,10 +1563,6 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class UK3CB_FIA_O_B_RPG: rhs_rpg_empty
- {
-	maximumLoad = 1000;
- };
- class rhsusf_assault_eagleaiii_coy: rhsusf_assault_eagleaiii_ucp
  {
 	maximumLoad = 1000;
  };
@@ -1651,10 +1983,6 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class UK3CB_ION_B_B_RadioBag_WIN: B_RadioBag_01_black_F
- {
-	maximumLoad = 1000;
- };
- class B_LegStrapBag_black_F: B_LegStrapBag_base_F
  {
 	maximumLoad = 1000;
  };
@@ -2090,10 +2418,6 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_FieldPack_khk: B_FieldPack_Base
- {
-	maximumLoad = 1000;
- };
  class UK3CB_KRG_B_B_FieldPack_RIF: B_FieldPack_khk
  {
 	maximumLoad = 1000;
@@ -2170,10 +2494,6 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_RadioBag_01_tropic_F: B_RadioBag_01_base_F
- {
-	maximumLoad = 1000;
- };
  class UK3CB_LDF_B_B_RadioBag_OLI: B_RadioBag_01_tropic_F
  {
 	maximumLoad = 1000;
@@ -2194,15 +2514,7 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
- class B_Messenger_Olive_F: B_Messenger_Base_F
- {
-	maximumLoad = 1000;
- };
  class UK3CB_LFR_B_B_MESSENGER_OLI: B_Messenger_Olive_F
- {
-	maximumLoad = 1000;
- };
- class B_Messenger_Coyote_F: B_Messenger_Base_F
  {
 	maximumLoad = 1000;
  };
@@ -2434,6 +2746,150 @@ class cfgVehicles
  {
 	maximumLoad = 1000;
  };
+ class UK3CB_PLM_B_B_RD54_RIF_01: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_RD54_RIF_02: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_RD54_RIF_03: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_FIELDPACK_RIF_01: UK3CB_B_Fieldpack
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_FIELDPACK_RIF_02: UK3CB_B_Fieldpack
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_Sidor_RIF_01: rhs_sidor
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_Sidor_RIF_02: rhs_sidor
+ {
+	maximumLoad = 1000;
+ };
+ class rhs_tortila_grey: B_Carryall_Base
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_CARRYALL_GRN: rhs_tortila_grey
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_CARRYALL_WDL: rhs_tortila_grey
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_R148_RADIO: rhs_r148
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_Radio: UK3CB_B_B_Radio_Backpack
+ {
+	maximumLoad = 1000;
+ };
+ class rhs_rpg_2: rhs_rpg
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_B_B_RPG: rhs_rpg_2
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_RD54_RIF_01: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_RD54_RIF_02: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_RD54_RIF_03: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_FIELDPACK_RIF_01: UK3CB_B_Fieldpack
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_FIELDPACK_RIF_02: UK3CB_B_Fieldpack
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_Sidor_RIF_01: rhs_sidor
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_Sidor_RIF_02: rhs_sidor
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_CARRYALL_GRN: rhs_tortila_grey
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_CARRYALL_WDL: rhs_tortila_grey
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_R148_RADIO: rhs_r148
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_I_B_RPG: rhs_rpg_2
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_RD54_RIF_01: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_RD54_RIF_02: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_RD54_RIF_03: rhs_rd54
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_FIELDPACK_RIF_01: UK3CB_B_Fieldpack
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_FIELDPACK_RIF_02: UK3CB_B_Fieldpack
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_Sidor_RIF_01: rhs_sidor
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_Sidor_RIF_02: rhs_sidor
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_CARRYALL_GRN: rhs_tortila_grey
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_CARRYALL_WDL: rhs_tortila_grey
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_R148_RADIO: rhs_r148
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_PLM_O_B_RPG: rhs_rpg_2
+ {
+	maximumLoad = 1000;
+ };
  class UK3CB_TKA_B_B_RPG: rhs_rpg_empty
  {
 	maximumLoad = 1000;
@@ -2467,6 +2923,198 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class UK3CB_TKP_O_B_RPG: rhs_rpg_empty
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_B_B_ASS_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_B_B_ASS_BLK_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_B_B_RIF_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_B_B_RIF_BLK_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_B_B_CARRYALL_KHK: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_B_B_CARRYALL_BLK: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_B_B_RPG: rhs_rpg_2
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_I_B_ASS_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_I_B_ASS_BLK_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_I_B_RIF_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_I_B_RIF_BLK_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_I_B_CARRYALL_KHK: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_I_B_CARRYALL_BLK: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_I_B_RPG: rhs_rpg_2
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_O_B_ASS_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_O_B_ASS_BLK_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_O_B_RIF_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_O_B_RIF_BLK_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_O_B_CARRYALL_KHK: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_O_B_CARRYALL_BLK: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TNM_O_B_RPG: rhs_rpg_2
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_ASS_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_RIF_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_RIF_MED_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_ENG_01: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_LegStrapBag_01: B_LegStrapBag_black_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_Messengerbag_01: B_Messenger_Coyote_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_FIELDPACK: B_FieldPack_blk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_FIELDPACK_MED: B_FieldPack_blk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_B_B_RadioBag: B_RadioBag_01_black_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_ASS_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_RIF_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_RIF_MED_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_ENG_01: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_LegStrapBag_01: B_LegStrapBag_black_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_Messengerbag_01: B_Messenger_Coyote_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_FIELDPACK: B_FieldPack_blk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_FIELDPACK_MED: B_FieldPack_blk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_I_B_RadioBag: B_RadioBag_01_black_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_ASS_01: B_AssaultPack_rgr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_RIF_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_RIF_MED_01: B_Kitbag_cbr
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_ENG_01: B_Carryall_khk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_LegStrapBag_01: B_LegStrapBag_black_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_Messengerbag_01: B_Messenger_Coyote_F
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_FIELDPACK: B_FieldPack_blk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_FIELDPACK_MED: B_FieldPack_blk
+ {
+	maximumLoad = 1000;
+ };
+ class UK3CB_TPD_O_B_RadioBag: B_RadioBag_01_black_F
  {
 	maximumLoad = 1000;
  };

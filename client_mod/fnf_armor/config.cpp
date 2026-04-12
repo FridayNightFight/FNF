@@ -4,15 +4,679 @@ class CfgPatches
  {
 	units[] = {};
 	weapons[] = {};
-	requiredVersion = 0.1;
-	requiredAddons[] = {"UK3CB_Factions_Equipment_Vests","rhs_c_troops","rhsgref_c_troops","rhsusf_c_troops","A3_Characters_F","A3_Characters_F_Enoch_Vests","UK3CB_Factions_Equipment_CW_SOV_Vests","A3_Characters_F_Mark","tfar_core","A3_Characters_F_Exp_Vests","A3_Characters_F_Jets_Vests","A3_Characters_F_Orange_Vests","rhssaf_c_gear","UK3CB_Factions_ANP_B","UK3CB_Factions_TKA_B","UK3CB_Factions_TKP_B"};
- };
+	requiredVersion = 0.5;
+	requiredAddons[] = {"A3_Weapons_F","A3_Weapons_F_Items","TRF_UKAF","UK3CB_Factions_Equipment_Vests","rhs_c_troops","rhsgref_c_troops","rhsusf_c_troops","A3_Characters_F","A3_Characters_F_Enoch_Vests","UK3CB_Factions_Equipment_CW_SOV_Vests","A3_Characters_F_Mark","tfar_core","ace_medical_vitals","sfp_police","A3_VME_PLA_Men","A3_Characters_F_Exp_Vests","min_rf_units","A3_Characters_F_Jets_Vests","A3_Characters_F_Orange_Vests","fnf_armor","UK3CB_BAF_Equipment_Vests","Swedish_Forces_Pack","Finnish_Forces_Pack","rhssaf_c_gear","sfp_characters","UK3CB_Factions_ANP_B","UK3CB_Factions_TKA_B","UK3CB_Factions_TKP_B","UK3CB_Factions_TPD_B","UK3CB_Factions_TPD_I","UK3CB_Factions_TPD_O"}; };
 };
 class ItemInfo;
 class cfgWeapons
 {
+ class ItemCore;
+ class VestItem;
  class Vest_NoCamo_Base;
  class Vest_Camo_Base;
+ class TRF_STV_Grenadier: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_Medic: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_Gunner: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_Sharpshooter: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_Crew: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_Rifleman: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_Rifleman_2: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_Rifleman_3: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_IC: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_IC_2: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_IC_3: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_SPIRITUS_A: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class TRF_STV_VIRTUS_BB_A: ItemCore
+ {
+	class ItemInfo: VestItem
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
  class V_PlateCarrier1_rgr: Vest_NoCamo_Base
  {
 	class ItemInfo: ItemInfo
@@ -2104,7 +2768,5413 @@ class cfgWeapons
 	 };
 	};
  };
+ class V_TacVest_blk: V_TacVest_khk
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_police_tacVest: V_TacVest_blk
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_kroppsskydd_police: V_PlateCarrier1_rgr
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class PLA_T15Vest: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class PLA_T15Vest_RF: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class PLA_T15Vest_RD: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class PLA_B04_MG: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class PLA_B04_RF: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
  class V_TacChestrig_grn_F: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_GL_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_GL_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_GL_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_GL_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_GL_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_GL_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_AR_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_AR_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_AR_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_AR_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_AR_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_AR_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_M_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_M_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_M_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_M_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_M_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_armor_vest_M_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_GL_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_GL_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_GL_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_GL_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_GL_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_GL_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_AR_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_AR_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_AR_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_AR_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_AR_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_AR_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_M_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_M_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_M_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_M_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_M_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_lite_vest_M_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_GL_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_GL_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_GL_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_GL_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_GL_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_GL_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_AR_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_AR_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_AR_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_AR_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_AR_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_AR_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_M_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_M_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_M_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_M_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_M_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_tactical_vest_M_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_vest_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_vest_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_vest_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_vest_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_vest_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_vest_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_GL_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_GL_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_GL_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_GL_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_GL_green: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_highcapacity_special_GL_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_belt_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_belt_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_combat_belt_flora: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_combat_belt_surpat: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_combat_belt_vsr: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_combat_belt_multicam: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_combat_belt_black: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class min_rf_combat_belt_green: Vest_NoCamo_Base
  {
 	class ItemInfo: ItemInfo
 	{
@@ -2512,6 +8582,57 @@ class cfgWeapons
 	 };
 	};
  };
+ class rhs_6b23_6sh92_radio: rhs_6b23_6sh92
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
  class rhs_6sh46: Vest_Camo_Base
  {
 	class ItemInfo: ItemInfo
@@ -2614,7 +8735,7 @@ class cfgWeapons
 	 };
 	};
  };
- class rhs_6b23_6sh92_radio: rhs_6b23_6sh92
+ class rhs_6b23_digi: rhs_6b23
  {
 	class ItemInfo: ItemInfo
 	{
@@ -2768,57 +8889,6 @@ class cfgWeapons
 	};
  };
  class rhs_6b23_vydra_3m: rhs_6b23_6sh92
- {
-	class ItemInfo: ItemInfo
-	{
-	 class HitpointsProtectionInfo
-	 {
-		class Neck
-		{
-		 hitpointName = "HitNeck";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Chest
-		{
-		 hitpointName = "HitChest";
-		 armor = 15;
-		 passThrough = 0.5;
-		};
-		class Diaphragm
-		{
-		 hitpointName = "HitDiaphragm";
-		 armor = 15;
-		 passThrough = 0.5;
-		};
-		class Abdomen
-		{
-		 hitpointName = "HitAbdomen";
-		 armor = 15;
-		 passThrough = 0.5;
-		};
-		class Pelvis
-		{
-		 hitpointName = "HitPelvis";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Body
-		{
-		 hitpointName = "HitBody";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Arms
-		{
-		 hitpointName = "HitArms";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-	 };
-	};
- };
- class rhs_6b23_digi: rhs_6b23
  {
 	class ItemInfo: ItemInfo
 	{
@@ -4807,6 +10877,567 @@ class cfgWeapons
 	 };
 	};
  };
+ class UK3CB_BAF_V_Osprey_Base: V_PlateCarrier2_rgr
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_BAF_V_Osprey_Light_Base: V_PlateCarrier1_rgr
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_BAF_V_Osprey_Mk2_Base: V_PlateCarrier1_rgr
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_BAF_V_HiVis: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_BAF_Webbing_Base: Vest_NoCamo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_BAF_Webbing_Plate_Base: V_PlateCarrier1_rgr
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_BAF_V_RebreatherB: V_RebreatherB
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_BAF_V_Rebreather_PlateB: UK3CB_BAF_V_RebreatherB
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridsvast08: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_rebreather_old: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class ffp_m05_vest_base: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
  class rhssaf_balistic_vest_base: Vest_Camo_Base
  {
 	class ItemInfo: ItemInfo
@@ -4910,6 +11541,771 @@ class cfgWeapons
 	};
  };
  class rhssaf_vest_otv_md2camo: rhssaf_balistic_vest_base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_kroppsskydd12: V_PlateCarrier1_rgr
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_kroppsskydd12_crew: sfp_kroppsskydd12
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_kroppsskydd12_tl: sfp_kroppsskydd12
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_kroppsskydd12_holster: sfp_kroppsskydd12
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_kroppsskydd94: V_PlateCarrier1_rgr
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridsvast2000: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridsvast2000_light: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridsvast2000_mg: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridsvast2000_gl: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridsvast2000_ar: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridssele: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridsbalte_304k: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_holster: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_old_hv_eq: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class sfp_stridssele_belt: Vest_Camo_Base
  {
 	class ItemInfo: ItemInfo
 	{
@@ -5471,6 +12867,516 @@ class cfgWeapons
 	};
  };
  class UK3CB_TKP_B_V_GA_HEAVY_BLK: V_PlateCarrierIA2_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class Gun_belt_base: Vest_Camo_Base
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_B_V_GIGN_01: V_PlateCarrierIA1_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_B_V_GIGN_02: V_PlateCarrierIA2_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_B_V_GIGN_03: V_PlateCarrierIAGL_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_I_V_GIGN_01: V_PlateCarrierIA1_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_I_V_GIGN_02: V_PlateCarrierIA2_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_I_V_GIGN_03: V_PlateCarrierIAGL_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_O_V_GIGN_01: V_PlateCarrierIA1_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_O_V_GIGN_02: V_PlateCarrierIA2_dgtl
+ {
+	class ItemInfo: ItemInfo
+	{
+	 class HitpointsProtectionInfo
+	 {
+		class Neck
+		{
+		 hitpointName = "HitNeck";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Chest
+		{
+		 hitpointName = "HitChest";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Diaphragm
+		{
+		 hitpointName = "HitDiaphragm";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Abdomen
+		{
+		 hitpointName = "HitAbdomen";
+		 armor = 15;
+		 passThrough = 0.5;
+		};
+		class Pelvis
+		{
+		 hitpointName = "HitPelvis";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Body
+		{
+		 hitpointName = "HitBody";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+		class Arms
+		{
+		 hitpointName = "HitArms";
+		 armor = 0;
+		 passThrough = 0.5;
+		};
+	 };
+	};
+ };
+ class UK3CB_TPD_O_V_GIGN_03: V_PlateCarrierIAGL_dgtl
  {
 	class ItemInfo: ItemInfo
 	{
