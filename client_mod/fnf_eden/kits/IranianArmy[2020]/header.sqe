@@ -4,6 +4,7 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
+	"fnf_weapons",
 	"A3_Characters_F",
 	"UK3CB_Factions_Weapons_Khaybar",
 	"rhsusf_c_weapons",
@@ -19,10 +20,10 @@ requiredAddons[]=
 	"ace_microdagr",
 	"UK3CB_Factions_TKA_B",
 	"ace_realisticnames",
+	"rhs_c_weapons",
 	"ace_huntir",
 	"sfp_remington870",
 	"ace_grenades",
-	"rhs_c_weapons",
 	"ace_compat_rhs_afrf3",
 	"ace_explosives",
 	"A3_Weapons_F_Explosives",

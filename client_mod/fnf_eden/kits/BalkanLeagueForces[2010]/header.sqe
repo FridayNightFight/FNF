@@ -4,6 +4,7 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
+	"fnf_weapons",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging",
@@ -21,6 +22,7 @@ requiredAddons[]=
 	"ace_medical_treatment",
 	"ace_microdagr",
 	"ace_realisticnames",
+	"fnf_armor",
 	"UK3CB_Factions_TKA_I",
 	"ace_huntir",
 	"sfp_remington870",

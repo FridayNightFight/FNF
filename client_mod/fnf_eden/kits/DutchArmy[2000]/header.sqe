@@ -4,6 +4,7 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
+	"fnf_weapons",
 	"fnf_eden",
 	"A3_Modules_F",
 	"RSPN_Assets",
@@ -25,6 +26,7 @@ requiredAddons[]=
 	"ace_microdagr",
 	"rhssaf_c_gear",
 	"ace_realisticnames",
+	"rhs_c_weapons",
 	"rhsusf_sounds",
 	"rhsusf_weapon_sounds",
 	"ace_grenades",

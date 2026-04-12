@@ -4,6 +4,7 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
+	"fnf_weapons",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging",
@@ -20,6 +21,7 @@ requiredAddons[]=
 	"ace_medical_treatment",
 	"ace_microdagr",
 	"ace_realisticnames",
+	"rhs_c_weapons",
 	"ace_huntir",
 	"ace_grenades",
 	"rhsusf_sounds",

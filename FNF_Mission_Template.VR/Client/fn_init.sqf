@@ -2,11 +2,6 @@ if (isDedicated) exitWith {};
 
 if (not isNil "fnf_playerLoadout") exitWith {};
 
-//give squad leaders an RSP-30 flare gun for reinsertion
-if ((((roleDescription player) splitString "@") select 0) isEqualTo "Squad Leader") then {
-	player addItemToBackpack "rhs_weap_rsp30_white";
-};
-
 //get player loadout and store for future use
 fnf_playerLoadout = getUnitLoadout player;
 
@@ -173,12 +168,12 @@ player addEventHandler ["GetInMan", {
 	};
 }];
 
-// Track rhs_weap_rsp30_white flare rounds - 2s after firing, sample the
+// Track fnf_weap_reinsert_flare flare rounds - 2s after firing, sample the
 // projectile position perform the reinsert
 player addEventHandler ["FiredMan", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_vehicle"];
 
-	if !(_weapon isEqualTo "rhs_weap_rsp30_white") exitWith {};
+	if !(_weapon isEqualTo "fnf_weap_reinsert_flare") exitWith {};
 	if (fnf_debug) then { systemChat "[fnf_reinsert] Flare fired"; };
 
 	_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]) * 60;
