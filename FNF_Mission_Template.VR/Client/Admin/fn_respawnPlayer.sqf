@@ -13,6 +13,7 @@
 
 if (alive player) exitWith {};
 
+//if player is respawned remove him from the death queue
 _playerGroup = group player;
 _deathQueue = _playerGroup getVariable ["fnf_deathQueue", []];
 _deathQueue = _deathQueue - [(getplayerUID player)];
@@ -24,6 +25,8 @@ setPlayerRespawnTime -1;
 ["<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><t align='center'><br/><br/>You have been respawned, you are currently hidden and set to invincible until an admin teleports you to a safe location near to your death spot, please wait...</t>", "deep-purple", 10] call FNF_ClientSide_fnc_notificationSystem;
 
 [{
+	alive player
+},{
 	player setUnitLoadout [fnf_playerLoadout, false];
 	[player, true] remoteExec ["hideObjectGlobal", 2];
 	player allowDamage false;
@@ -56,4 +59,4 @@ setPlayerRespawnTime -1;
 			},[],1] call CBA_fnc_waitAndExecute;
 		},[],1] call CBA_fnc_waitAndExecute;
 	}] call CBA_fnc_waitUntilAndExecute
-},[],0.1] call CBA_fnc_waitAndExecute;
+}] call CBA_fnc_waitUntilAndExecute;
