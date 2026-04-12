@@ -117,6 +117,12 @@ player addEventHandler ["FiredMan", {
 		[{["<t align='center' size='1.5'>REINSERT DENIED</t><t align='center'><br/><br/>No dead squad mates to reinsert</t>", "failure", 10] call FNF_ClientSide_fnc_notificationSystem;}, [], 2] call CBA_fnc_waitAndExecute;
 	};
 
+	//clean up death queue of disconnected and alive players
+	_connectedPlayers = _deathQueue select {not isNull (_x call BIS_fnc_getUnitByUID)};
+	_deathQueue = _connectedPlayers;
+	_deadPlayers = _deathQueue select {not alive (_x call BIS_fnc_getUnitByUID)};
+	_deathQueue = _deadPlayers;
+
 	//get up to 4 dead people from the queue
 	_reinsertUnits = _deathQueue select [0, ((count _deathQueue) min 4)];
 
