@@ -567,3 +567,25 @@ if (_notes isNotEqualTo "") then
 	player createDiaryRecord ["Diary", ["Notes",_notes], taskNull, "", True];
 };
 player createDiaryRecord ["Diary", ["Mission Details","View Distance: " + str(_viewDistance) + "m<br/>Fortify Points: " + str(_fortifyPoints) + "<br/>Fortify Colour: " + _fortifyColour + "<br/>Time Limit: " + str(_timeLimit) + " Minutes"], taskNull, "", True];
+
+// Calculate actual reinsert window available after safe start ends
+_reinsertTotal = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+_allMods = call FNF_ClientSide_fnc_findFNFModules;
+_szMods = [_allMods, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
+_maxSafeStart = 0;
+{ _t = _x getVariable ["fnf_timeZoneIsDeleted", 0]; if (_t > _maxSafeStart) then { _maxSafeStart = _t; }; } forEach _szMods;
+_actualReinsertWindow = _reinsertTotal - _maxSafeStart;
+
+player createDiaryRecord ["Diary", ["Reinsert",
+	"The Reinsert mechanic allows dead squad members to return to the fight via helicopter fast-rope.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"The Squad Leader spawns with a white RSP-30 flare in their backpack. To call a reinsert, equip it in your pistol slot and fire it. The flare's landing position (tracked 2 seconds after firing) is where the squad will be inserted - aim carefully. A helicopter will fly in, fast-rope up to 4 dead squad mates to the ground, then depart.<br/><br/>" +
+	"<font face='PuristaBold'>Rules</font><br/>" +	
+	"- Anyone in the squad may use it<br/>" +
+	"- Each squad gets ONE reinsert - use it wisely.<br/>" +
+	"- Up to 4 players are reinserted in the order they died.<br/>" +
+	"- The reinsert window is open for " + str(_actualReinsertWindow) + " minutes after safe zones drop. Once it closes, reinsertion is no longer available for the rest of the mission.<br/>" +
+	"- The RSP-30 must be equipped in the pistol slot before firing.<br/><br/>" +
+	"<font face='PuristaBold'>When You Die</font><br/>" +
+	"You will enter limited spectator mode. Stay alert - your SL may call a reinsert at any time. If the window expires or the reinsert has already been called and you were not among the first 4, you will be moved to full spectator for the rest of the mission."
+], taskNull, "", True];
