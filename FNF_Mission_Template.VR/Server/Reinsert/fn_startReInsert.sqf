@@ -13,81 +13,89 @@
 		None
 */
 
-params["_caller", "_reinsertPos", "_reinsertUnits"];
-
-if (fnf_debug) then { systemChat format ["[fnf_reinsert] Called - %1 unit(s) to pos %2", count _reinsertUnits, _reinsertPos]; };
-
-_landingPos = _reinsertPos;
+params["_caller", "_landingPos", "_reinsertUnits"];
 
 //get a safe direction to spawn helicopter
 _playerSide = side _caller;
 
+//get all enemy players
 _enemyPlayers = allPlayers select {(not ([_playerSide, (side _x)] call BIS_fnc_sideIsFriendly)) and (alive _x)};
 
+//get average enemy player position
 _totalX = 0;
 _totalY = 0;
-
 {
 	_pos = getPosATL _x;
 	_totalX = _totalX + (_pos select 0);
 	_totalY = _totalY + (_pos select 1);
 } forEach _enemyPlayers;
-
 _averageEnemyLocation = [0,0,0];
 if ((count _enemyPlayers) isNotEqualTo 0) then
 {
 	_averageEnemyLocation = [_totalX / (count _enemyPlayers), _totalY / (count _enemyPlayers), 0];
 };
 
+//get the direction to the enemy position from landing pos
 _enemyDir = _landingPos getDir _averageEnemyLocation;
 
+//get friendly direction by rotating 180
 _friendlyDir = 0;
-
 if (_enemyDir >= 180) then
 {
 	_friendlyDir = _enemyDir - 180;
 } else {
 	_friendlyDir = _enemyDir + 180;
 };
-//====================================
-//get safe position to spawn helicopter (in air)
 
+//get safe position to spawn helicopter
 _safeSpawnPos = _landingPos getPos [2000, _friendlyDir];
+
+//place landing pos 50m past flare point to account for AI bullshittery
 _landingPos = _safeSpawnPos getPos [2050, _enemyDir];
 
-if (fnf_debug) then { systemChat format ["[fnf_reinsert] Spawning heli at %1 facing %2", _safeSpawnPos, _enemyDir]; };
-
+//spawn heli
 _spawned = [_safeSpawnPos, _enemyDir, "RHS_MELB_MH6M", _playerSide] call BIS_fnc_spawnVehicle;
 _spawned params ["_heli", "_crew", "_group"];
 
-if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli spawned: %1", _heli]; };
-
+//set crew to be as dumb as possible and set loadout
 {
 	_x setBehaviour "CARELESS";
 	_x allowFleeing 0;
 	_x setUnitLoadout [[],[],[],["U_O_R_Gorka_01_black_F",[]],["UK3CB_V_Pilot_Vest_Black",[]],[],"rhsusf_hgu56p_visor_mask_Empire_black","G_Balaclava_TI_blk_F",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
 } forEach _crew;
 
+//used to determine what seats reinserts are assigned
 _cargoIndexOrder = [1, 2, 5, 6];
+
 {
+	//get current cargo index
 	_cargoIndex = _cargoIndexOrder select _forEachIndex;
+
 	[{
+		//immediately respawn player
 		setPlayerRespawnTime -1;
+
+		//wait until he is alive
 		[{
 			alive player
 		}, {
+			//reset loadout, make him invisible and invincible and disable respawn again
 			player setUnitLoadout [fnf_playerLoadout, false];
 			[player, true] remoteExec ["hideObjectGlobal", 2];
 			player allowDamage false;
 			setPlayerRespawnTime 9999;
 		}] call CBA_fnc_waitUntilAndExecute;
 
+		//wait until player is inside the helicopter
 		[{
 			not (isNull (objectParent player));
 		}, {
+			//disable spectator, allow damage, make visible
 			[false, false, false] call ace_spectator_fnc_setSpectator;
 			player allowDamage true;
 			[player, false] remoteExec ["hideObjectGlobal", 2];
+
+			//do the spectator shuffle to prevent invincibility
 			[{
 				[true, true, true] call ace_spectator_fnc_setSpectator;
 				[{
@@ -97,37 +105,45 @@ _cargoIndexOrder = [1, 2, 5, 6];
 		}] call CBA_fnc_waitUntilAndExecute;
 	}] remoteExec ["call", (_x call BIS_fnc_getUnitByUID)];
 
+	//wait until player is alive
 	[{
 		params ["_playerUID"];
 		alive (_playerUID call BIS_fnc_getUnitByUID);
 	}, {
 		params ["_playerUID", "_heli", "_cargoIndex"];
+
+		//put player in the heli
 		[(_playerUID call BIS_fnc_getUnitByUID), [_heli, _cargoIndex]] remoteExec ["moveInCargo", (_playerUID call BIS_fnc_getUnitByUID)];
 	}, [_x, _heli, _cargoIndex]] call CBA_fnc_waitUntilAndExecute;
 } forEach _reinsertUnits;
 
-if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli moving to landing pos %1", _landingPos]; };
+//tell AI to fly to landing position as low as possible with object avoidance
 (driver _heli) doMove _landingPos;
 (gunner _heli) doMove _landingPos;
 _heli flyInHeight [20, true];
 
+//prep fastroping
 [_heli] call ace_fastroping_fnc_prepareFRIES;
 
+//wait until heli has slowed significantly within 200m of landing position
 [{
 	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
 	_heliVelocity = velocity _heli;
 	_horizontalVelocity = (abs(_heliVelocity select 0)) + (abs(_heliVelocity select 1));
-	(_horizontalVelocity < 10) and ((_heli distance _landingPos) < 200);
+	(_horizontalVelocity < 10) and ((_heli distance2D _landingPos) < 200);
 },
 {
 	params ["_heli", "_landingPos", "_reinsertUnits", "_safeSpawnPos"];
-	if (fnf_debug) then { systemChat format ["[fnf_reinsert] Heli arrived near LZ - height: %1", round ((getPos _heli) select 2)]; };
 
 	_heliPos = getPos _heli;
+
+	//check heli is alive and not landed (means it has been shot down)
 	if ((alive _heli) and ((_heliPos select 2) > 5)) then
 	{
-		if (fnf_debug) then { systemChat "[fnf_reinsert] Beginning descent"; };
+		//tell heli to descend while ignoring obstacle avoidance
 		_heli flyInHeight [9.99, true];
+
+		//wait until helis height is less than 43m
 		[{
 			params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 			((getPos _heli) select 2) < 43;
@@ -135,12 +151,16 @@ _heli flyInHeight [20, true];
 			params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 
 			_heliPos = getPos _heli;
+
+			//check heli is alive and not landed (means it has been shot down)
 			if ((alive _heli) and ((_heliPos select 2) > 5)) then
 			{
 
-				if (fnf_debug) then { systemChat "[fnf_reinsert] Below 43m - disabling AI move, wiggling down"; };
+				//disable AI move behaviour which forces heli into an autohover at current altitude
 				(driver _heli) disableAI "MOVE";
 				(gunner _heli) disableAI "MOVE";
+
+				//start wiggledown manuver to continualy move heli down if it isn't already until required altitude is reached
 				_wiggleDownHandle = [{
 					(_this select 0) params ["_heli"];
 					_velocity = velocity _heli;
@@ -150,6 +170,8 @@ _heli flyInHeight [20, true];
 						_heli setVelocity _velocity;
 					}
 				}, 0.1, [_heli]] call CBA_fnc_addPerFrameHandler;
+
+				//wait until heli altitude is below 32m
 				[{
 					params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
 					_heliPos = getPos _heli;
@@ -157,47 +179,58 @@ _heli flyInHeight [20, true];
 					_heliHeight < 32;
 				}, {
 					params ["_heli", "_wiggleDownHandle", "_reinsertUnits", "_safeSpawnPos"];
-					if (fnf_debug) then { systemChat format ["[fnf_reinsert] Below 32m - stopping, deploying ropes. Height: %1", round ((getPos _heli) select 2)]; };
+
+					//stop wiggling down
 					[_wiggleDownHandle] call CBA_fnc_removePerFrameHandler;
 
+					//stop all heli velocity
 					_heli setVelocity [0,0,0];
 
+					//deploy ropes for fast roping
 					[_heli, ((_reinsertUnits select 0) call BIS_fnc_getUnitByUID), "ACE_rope36"] call ace_fastroping_fnc_deployRopes;
 
+					//wait 5 seconds to allow ropes to fully drop
 					[{
 						params ["_heli", "_reinsertUnits", "_safeSpawnPos"];
-						if (fnf_debug) then { systemChat format ["[fnf_reinsert] Fast roping %1 unit(s)", count _reinsertUnits]; };
+
 						// Fast rope each unit 1 second apart
 						{
 							private _unit = (_x call BIS_fnc_getUnitByUID);
 							private _delay = _forEachIndex;
 							[{
 								params ["_unit", "_heli"];
-								if (fnf_debug) then { systemChat format ["[fnf_reinsert] Fast roping unit: %1", _unit]; };
 								[_unit, _heli] remoteExec ["ace_fastroping_fnc_fastRope", _unit];
 							}, [_unit, _heli], _delay] call CBA_fnc_waitAndExecute;
 						} forEach _reinsertUnits;
-						// Cut ropes, fly back to spawn position and delete
+
+						// Cut ropes 8 seconds after last fastroped unit
 						private _cutDelay = ((count _reinsertUnits) - 1) + 8;
-						if (fnf_debug) then { systemChat format ["[fnf_reinsert] Cutting ropes in %1s", _cutDelay]; };
 						[{
 							params ["_heli", "_safeSpawnPos"];
-							if (fnf_debug) then { systemChat "[fnf_reinsert] Cutting ropes, returning to spawn"; };
+
+							//cut the ropes
 							[_heli] call ace_fastroping_fnc_cutRopes;
+
+							//wait 2 seconds for ropes to clear the heli and it doesn't hit them
 							[{
 								params ["_heli", "_safeSpawnPos"];
+
+								//set heli to move to spawn position
 								_heli flyInHeight [20, true];
 								(driver _heli) enableAI "MOVE";
 								(driver _heli) doMove _safeSpawnPos;
 								(gunner _heli) enableAI "MOVE";
 								(gunner _heli) doMove _safeSpawnPos;
 							}, [_heli, _safeSpawnPos], 2] call CBA_fnc_waitAndExecute;
+
+							//wait until heli is within 200m of spawn position
 							[{
 								params ["_heli", "_safeSpawnPos"];
 								(_heli distance2D _safeSpawnPos) < 200;
 							}, {
 								params ["_heli"];
-								if (fnf_debug) then { systemChat "[fnf_reinsert] Back at spawn - deleting heli and crew"; };
+
+								//delete heli crew and the heli
 								{ deleteVehicle _x; } forEach (crew _heli);
 								deleteVehicle _heli;
 							}, [_heli, _safeSpawnPos]] call CBA_fnc_waitUntilAndExecute;

@@ -37,8 +37,16 @@ findDisplay 60000 displayCtrl 60014 ctrlAddEventHandler ["Draw",
 
 call BIS_fnc_showMissionStatus;
 
-_disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+//get all fnf modules
+_modules = call FNF_ClientSide_fnc_findFNFModules;
 
+//check if init module is found
+_initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
+_initModule = _initModule select 0;
+
+_disableWindow = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+
+//check if player is reinserted or reinsert window runs out
 [{
 	params["_disableWindow"];
 	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
@@ -55,22 +63,22 @@ _disableWindow = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfter
 	};
 	_reinsertRequested = group player getVariable ["fnf_reinsertRequested", false];
 
-	_result or (alive player) or _reinsertRequested;
+	_result or _reinsertRequested;
 },{
 	params["_disableWindow"];
 
 	_reinsertedPlayers = group player getVariable ["fnf_reinsertedPlayers", []];
 	_reinsertRequested = group player getVariable ["fnf_reinsertRequested", false];
 
-	if ((not ((getplayerUID player) in _reinsertedPlayers)) and (_reinsertRequested)) then
+	if (_reinsertRequested) then
 	{
-		call FNF_ClientSide_fnc_upgradeSpectator;
-		["<t align='center' size='1.5'>REINSERT UNAVAILABLE</t><t align='center'><br/><br/>Reinsert has been called for the squad, but 4 other squadmates died before you so you did not make the cut </t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
-	} else {
-		if (not (alive player)) then
+		if (not ((getplayerUID player) in _reinsertedPlayers)) then
 		{
 			call FNF_ClientSide_fnc_upgradeSpectator;
+			["<t align='center' size='1.5'>REINSERT UNAVAILABLE</t><t align='center'><br/><br/>Reinsert has been called for the squad, but 4 other squadmates died before you so you did not make the cut </t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
 		};
+	} else {
+		call FNF_ClientSide_fnc_upgradeSpectator;
 	};
 
 }, [_disableWindow]] call CBA_fnc_waitUntilAndExecute;

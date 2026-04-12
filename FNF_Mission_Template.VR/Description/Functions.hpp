@@ -238,6 +238,11 @@ class CfgFunctions
 			class sendBase64Image {};
 			class showBase64Image {};
 		};
+		class reinsert
+		{
+			file = "Client\Reinsert";
+			class initReinsert {};
+		};
 	};
 	class FNF_ServerSide
 	{
