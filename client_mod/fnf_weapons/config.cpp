@@ -13,54 +13,20 @@ class CfgPatches
 	};
 };
 
-class CfgWeapons {
-
-	// allow NVG passthrough on primary sniper optic
-	class ItemCore;
-
-	class rhsusf_acc_sniper_base: ItemCore {
-		class ItemInfo;
+class CfgWeapons
+{
+	class rhs_weap_rsp30_white;
+	class fnf_weap_reinsert_flare : rhs_weap_rsp30_white
+	{
+		author = "FNF";
+		baseWeapon = "fnf_weap_reinsert_flare";
+		descriptionShort = "Used to reinsert dead squadmates";
+		displayname = "Reinsert Flare";
+		displaynameShort = "Reinsert Flare";
 	};
-
-	class rhsusf_acc_LEUPOLDMK4_2: rhsusf_acc_sniper_base {
-		class ItemInfo: ItemInfo {
-			class OpticsModes;
-		};
-	};
-
-	class rhsusf_acc_premier: rhsusf_acc_LEUPOLDMK4_2 {
-		class ItemInfo: ItemInfo {
-			class OpticsModes: OpticsModes {
-				class Snip;
-			};
-		};
-	};
-
-	class rhsusf_acc_M8541: rhsusf_acc_premier {
-		class ItemInfo: ItemInfo {
-			class OpticsModes: OpticsModes {
-				class Snip: Snip {
-						visionMode[] = {};
-				};
-			};
-		};
-	};
-	class rhsusf_acc_m8541_wd: rhsusf_acc_M8541 {
-		class ItemInfo: ItemInfo {
-			class OpticsModes: OpticsModes {
-				class Snip: Snip {
-						visionMode[] = {};
-				};
-			};
-		};
-	};
-	class rhsusf_acc_m8541_d: rhsusf_acc_M8541 {
-		class ItemInfo: ItemInfo {
-			class OpticsModes: OpticsModes {
-				class Snip: Snip {
-					visionMode[] = {};
-				};
-			};
-		};
+	class fnf_weap_reinsert_flare_used : fnf_weap_reinsert_flare
+	{
+		magazines[] = {};
+		scope = 1;
 	};
 };
