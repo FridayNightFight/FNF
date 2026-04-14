@@ -64,6 +64,17 @@ _spawned params ["_heli", "_crew", "_group"];
 	_x setUnitLoadout [[],[],[],["U_O_R_Gorka_01_black_F",[]],["UK3CB_V_Pilot_Vest_Black",[]],[],"rhsusf_hgu56p_visor_mask_Empire_black","G_Balaclava_TI_blk_F",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
 } forEach _crew;
 
+//pick heli texture
+_heliTexture = "fnf_reSkins\rih_blu_co.paa";
+switch (_playerSide) do {
+	case east: { _heliTexture = "fnf_reSkins\rih_opf_co.paa"; };
+	case independent: { _heliTexture = "fnf_reSkins\rih_ind_co.paa"; };
+	default { };
+};
+
+//put texture on heli
+_heli setObjectTextureGlobal [0, _heliTexture];
+
 //used to determine what seats reinserts are assigned
 _cargoIndexOrder = [1, 2, 5, 6];
 
