@@ -94,6 +94,13 @@ if (_serverState isEqualTo 5) then
 	_marker setMarkerColorLocal "ColorBlack";
 };
 
+if (fnf_SpectatorSlotUsed) then
+{
+	_notificationType = "info";
+	_stringArray set [-1, "Complete"];
+	_marker setMarkerTextLocal "(Complete) Terminal OBJ";
+};
+
 if (_alliedTask) then
 {
 	_stringArray pushBack "<br/>(Ally Objective)";
@@ -113,7 +120,15 @@ _stringArray pushBack format["<img size='6' align='center' image='%1'/>", _targe
 
 _string = _stringArray joinString "";
 
-[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+if (fnf_SpectatorSlotUsed) then
+{
+	if (not ([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
+	{
+		[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+	};
+} else {
+	[_string, _notificationType, 10, 20] call FNF_ClientSide_fnc_notificationSystem;
+};
 
 fnf_objectives set [_objectiveIndex, [_serverState, _module, _task, _alliedTask, _codeOnCompletion, _params]];
 
