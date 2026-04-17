@@ -568,7 +568,36 @@ if (_notes isNotEqualTo "") then
 };
 player createDiaryRecord ["Diary", ["Mission Details","View Distance: " + str(_viewDistance) + "m<br/>Fortify Points: " + str(_fortifyPoints) + "<br/>Fortify Colour: " + _fortifyColour + "<br/>Time Limit: " + str(_timeLimit) + " Minutes"], taskNull, "", True];
 
-// Calculate actual reinsert window available after safe start ends
+player createDiarySubject ["rules", "Rules & Mechanics", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
+
+player createDiaryRecord ["rules", ["General Rules",
+	"<font face='PuristaBold'>General Rules</font><br/><br/>" +
+	"A. Be respectful to everyone.<br/>" +
+	"B. Topics on politics and religion are prohibited.<br/>" +
+	"C. Racial slurs and hate speech are prohibited.<br/>" +
+	"D. Any form of NSFW or risqué content is prohibited.<br/>" +
+	"E. English is required for all public communication.<br/>" +
+	"F. Any form of spam is prohibited (microphone, text, image, soundboard).<br/>" +
+	"G. Use common sense - don't be a jerk, if asked to stop then stop."
+], taskNull, "", True];
+
+player createDiaryRecord ["rules", ["In-Game Rules",
+	"<font face='PuristaBold'>In-Game Rules</font><br/><br/>" +
+	"A. Avoid roles you are not comfortable or familiar with.<br/>" +
+	"B. Ensure your squad has a leader with a long range radio on company frequency.<br/>" +
+	"C. Follow the chain of command - lone-wolfing is prohibited.<br/>" +
+	"D. Using any vehicle as a weapon to ram other vehicles is prohibited.<br/>" +
+	"E. Using any vehicle to ram infantry (except as last resort) is prohibited.<br/>" +
+	"F. VBIEDs and suicide-bombing are prohibited.<br/>" +
+	"G. Intentional team killing is prohibited.<br/>" +
+	"H. Do not pick up enemy Helmets, Vests, Backpacks, or Uniforms.<br/>" +
+	"I. Using fortify/entrenchment to block entrances or paths is prohibited.<br/>" +
+	"J. Using enhanced movement to climb on plant life taller than a person is prohibited.<br/>" +
+	"K. Using any out-of-game platform to send/receive game-related information is prohibited.<br/>" +
+	"L. Use of in-game text chat is prohibited.<br/>" +
+	"M. Hacking or abuse of glitches is prohibited."
+], taskNull, "", True];
+
 _reinsertTotal = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
 _allMods = call FNF_ClientSide_fnc_findFNFModules;
 _szMods = [_allMods, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
@@ -576,12 +605,12 @@ _maxSafeStart = 0;
 { _t = _x getVariable ["fnf_timeZoneIsDeleted", 0]; if (_t > _maxSafeStart) then { _maxSafeStart = _t; }; } forEach _szMods;
 _actualReinsertWindow = _reinsertTotal - _maxSafeStart;
 
-player createDiaryRecord ["Diary", ["Reinsert",
+player createDiaryRecord ["rules", ["Reinsert",
 	"The Reinsert mechanic allows dead squad members to return to the fight via helicopter fast-rope.<br/><br/>" +
 	"<font face='PuristaBold'>How It Works</font><br/>" +
 	"The Squad Leader spawns with a white RSP-30 flare in their backpack. To call a reinsert, equip it in your pistol slot and fire it. The flare's landing position (tracked 2 seconds after firing) is where the squad will be inserted - aim carefully. A helicopter will fly in, fast-rope up to 4 dead squad mates to the ground, then depart.<br/><br/>" +
-	"<font face='PuristaBold'>Rules</font><br/>" +	
-	"- Anyone in the squad may use it<br/>" +
+	"<font face='PuristaBold'>Rules</font><br/>" +
+	"- Anyone in the squad may use it.<br/>" +
 	"- Each squad gets ONE reinsert - use it wisely.<br/>" +
 	"- Up to 4 players are reinserted in the order they died.<br/>" +
 	"- The reinsert window is open for " + str(_actualReinsertWindow) + " minutes after safe zones drop. Once it closes, reinsertion is no longer available for the rest of the mission.<br/>" +
