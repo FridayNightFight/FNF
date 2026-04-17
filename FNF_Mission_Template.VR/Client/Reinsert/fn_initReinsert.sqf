@@ -13,6 +13,76 @@
 
 params["_initModule"];
 
+_disableWindow = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+
+//setup 5 minute warning
+[{
+	params["_disableWindow"];
+	_disableWindow = _disableWindow - 5;
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
+	_result = objNull;
+	if (isServer and hasInterface) then
+	{
+		_result = time > (_disableWindow * 60);
+	} else {
+		_result = (serverTime - _timeServerStarted) > (_disableWindow * 60);
+		if (_timeServerStarted isEqualTo -1) then
+		{
+			_result = false;
+		};
+	};
+	_result;
+},{
+	["<t align='center' size='1.5'>REINSERT AVAILABLE</t><t align='center'><br/><br/>Reinsert window will close in 5 minutes</t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
+}, [_disableWindow]] call CBA_fnc_waitUntilAndExecute;
+
+//setup 1 minute warning
+[{
+	params["_disableWindow"];
+	_disableWindow = _disableWindow - 1;
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
+	_result = objNull;
+	if (isServer and hasInterface) then
+	{
+		_result = time > (_disableWindow * 60);
+	} else {
+		_result = (serverTime - _timeServerStarted) > (_disableWindow * 60);
+		if (_timeServerStarted isEqualTo -1) then
+		{
+			_result = false;
+		};
+	};
+	_result;
+},{
+	["<t align='center' size='1.5'>REINSERT AVAILABLE</t><t align='center'><br/><br/>Reinsert window will close in 1 minute</t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
+}, [_disableWindow]] call CBA_fnc_waitUntilAndExecute;
+
+//setup unavailable notification
+[{
+	params["_disableWindow"];
+	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
+	_result = objNull;
+	if (isServer and hasInterface) then
+	{
+		_result = time > (_disableWindow * 60);
+	} else {
+		_result = (serverTime - _timeServerStarted) > (_disableWindow * 60);
+		if (_timeServerStarted isEqualTo -1) then
+		{
+			_result = false;
+		};
+	};
+	_result;
+},{
+	["<t align='center' size='1.5'>REINSERT UNAVAILABLE</t><t align='center'><br/><br/>Reinsert window has passed</t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
+	//zero these to ensure time remaining of game is shown
+	fnf_timerMessage = nil;
+	fnf_timerEndTime = nil;
+}, [_disableWindow]] call CBA_fnc_waitUntilAndExecute;
+
+
+if (fnf_spectatorSlotUsed) exitWith {};
+
 //handle if a player dies, put them into spectator and add to group death list
 player addEventHandler ["Killed", {
 	_killedPlayer = _this select 0;
@@ -153,70 +223,3 @@ player addEventHandler ["FiredMan", {
 		[_unit, (ASLToATL _pos), _reinsertUnits] remoteExec ["FNF_ServerSide_fnc_startReinsert", 2];
 	}, [_projectile, _reinsertUnits, _unit], 2] call CBA_fnc_waitAndExecute;
 }];
-
-_disableWindow = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
-
-//setup 5 minute warning
-[{
-	params["_disableWindow"];
-	_disableWindow = _disableWindow - 5;
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
-	_result = objNull;
-	if (isServer and hasInterface) then
-	{
-		_result = time > (_disableWindow * 60);
-	} else {
-		_result = (serverTime - _timeServerStarted) > (_disableWindow * 60);
-		if (_timeServerStarted isEqualTo -1) then
-		{
-			_result = false;
-		};
-	};
-	_result;
-},{
-	["<t align='center' size='1.5'>REINSERT AVAILABLE</t><t align='center'><br/><br/>Reinsert window will close in 5 minutes</t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
-}, [_disableWindow]] call CBA_fnc_waitUntilAndExecute;
-
-//setup 1 minute warning
-[{
-	params["_disableWindow"];
-	_disableWindow = _disableWindow - 1;
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
-	_result = objNull;
-	if (isServer and hasInterface) then
-	{
-		_result = time > (_disableWindow * 60);
-	} else {
-		_result = (serverTime - _timeServerStarted) > (_disableWindow * 60);
-		if (_timeServerStarted isEqualTo -1) then
-		{
-			_result = false;
-		};
-	};
-	_result;
-},{
-	["<t align='center' size='1.5'>REINSERT AVAILABLE</t><t align='center'><br/><br/>Reinsert window will close in 1 minute</t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
-}, [_disableWindow]] call CBA_fnc_waitUntilAndExecute;
-
-//setup unavailable notification
-[{
-	params["_disableWindow"];
-	_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
-	_result = objNull;
-	if (isServer and hasInterface) then
-	{
-		_result = time > (_disableWindow * 60);
-	} else {
-		_result = (serverTime - _timeServerStarted) > (_disableWindow * 60);
-		if (_timeServerStarted isEqualTo -1) then
-		{
-			_result = false;
-		};
-	};
-	_result;
-},{
-	["<t align='center' size='1.5'>REINSERT UNAVAILABLE</t><t align='center'><br/><br/>Reinsert window has passed</t>", "info", 10] call FNF_ClientSide_fnc_notificationSystem;
-	//zero these to ensure time remaining of game is shown
-	fnf_timerMessage = nil;
-	fnf_timerEndTime = nil;
-}, [_disableWindow]] call CBA_fnc_waitUntilAndExecute;
