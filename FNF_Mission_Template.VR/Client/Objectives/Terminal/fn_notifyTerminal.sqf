@@ -31,8 +31,6 @@ _objectiveModule = objNull;
 //if obj not found not for us, pass on
 if (_objectiveIndex isEqualTo -1) exitWith {};
 
-if (fnf_SpectatorSlotUsed and ([_targetObject, _objectiveModule] call FNF_ClientSide_fnc_checkSecondaryObjective)) exitWith {};
-
 //notify player
 if (_resetTimer) then
 {
