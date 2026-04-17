@@ -11,7 +11,7 @@
 		None
 */
 
-params["_playerName", "_pos", "_message"];
+params["_playerName", "_pos", "_playerMessage"];
 
 //if player is not logged in admin, kick them
 if !(serverCommandAvailable "#kick") exitWith {};
@@ -27,7 +27,7 @@ if !(player diarySubjectExists "adminMessages") then
 _mark = createMarkerLocal ["AdminReportMrk_" + str(time) + str(_pos), _pos];
 
 //show notification of the message
-["<t size='1.5' align='center'>New Staff Report</t><br/><br/><t align='center'>From " + _playerName + "</t><br/><br/>" + _message, "deep-purple"] call FNF_ClientSide_fnc_notificationSystem;
+["<t size='1.5' align='center'>New Staff Report</t><br/><br/><t align='center'>From " + _playerName + "</t><br/><br/>" + _playerMessage, "deep-purple"] call FNF_ClientSide_fnc_notificationSystem;
 
 //creates the staff report to look at afterwards
 player createDiaryRecord [
@@ -38,7 +38,7 @@ player createDiaryRecord [
 			"<font face='PuristaMedium'><font size='14' color='#22FF22'>%1</font><br/><marker name='%2'>Go to position of report</marker><br/><br/>MESSAGE:</font><br/><font face='RobotoCondensed'>%3</font>",
 			_playerName,
 			_mark,
-			(_message + '<br/>')
+			(_playerMessage + '<br/>')
 		]
 	]
 ];
