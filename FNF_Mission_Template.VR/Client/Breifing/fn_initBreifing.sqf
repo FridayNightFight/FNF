@@ -568,17 +568,78 @@ if (_notes isNotEqualTo "") then
 };
 player createDiaryRecord ["Diary", ["Mission Details","View Distance: " + str(_viewDistance) + "m<br/>Fortify Points: " + str(_fortifyPoints) + "<br/>Fortify Colour: " + _fortifyColour + "<br/>Time Limit: " + str(_timeLimit) + " Minutes"], taskNull, "", True];
 
-player createDiarySubject ["rules", "Rules & Mechanics", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
+player createDiarySubject ["rules", "FNF Info", "\A3\ui_f\data\igui\cfg\simpleTasks\types\documents_ca.paa"];
 
-player createDiaryRecord ["rules", ["General Rules",
-	"<font face='PuristaBold'>General Rules</font><br/><br/>" +
-	"A. Be respectful to everyone.<br/>" +
-	"B. Topics on politics and religion are prohibited.<br/>" +
-	"C. Racial slurs and hate speech are prohibited.<br/>" +
-	"D. Any form of NSFW or risqué content is prohibited.<br/>" +
-	"E. English is required for all public communication.<br/>" +
-	"F. Any form of spam is prohibited (microphone, text, image, soundboard).<br/>" +
-	"G. Use common sense - don't be a jerk, if asked to stop then stop."
+_allMods = call FNF_ClientSide_fnc_findFNFModules;
+_initModule = [_allMods, "init"] call FNF_ClientSide_fnc_findSpecificModules;
+_initModule = _initModule select 0;
+_reinsertTotal = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+_szMods = [_allMods, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
+_maxSafeStart = 0;
+{
+	_t = _x getVariable ["fnf_timeZoneIsDeleted", 0];
+	if (_t > _maxSafeStart) then { _maxSafeStart = _t; };
+} forEach _szMods;
+_actualReinsertWindow = _reinsertTotal - _maxSafeStart;
+
+player createDiaryRecord ["rules", ["Contacting Staff",
+	"If you have an issue that needs to be addressed, whether you've been arma'd, flipped a vehicle, something broke, someone is breaking the rules, or need a rule clarification, Staff are here to help you.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"When you press escape you will see a button which allows you to contact staff, a pop-up box will come up allowing you to write a message for staff to see, please explain your issue as well as you can for a swift response.<br/><br/>" +
+	"Sometimes the staff member on duty may be addressing another issue when you put in your request, please have some patience and we will get to you when we are able to.<br/><br/>" +
+	"If the issue is urgent you can press the Zues button to get our attention quicker, even though there is no notification on your end the staff member on duty has been alerted, however if this is abused for non-urgent issues repeatedly you may be kicked from the current mission, by default this button is bound to 'Y'."
+], taskNull, "", True];
+
+player createDiaryRecord ["rules", ["Reinsert",
+	"The Reinsert mechanic allows dead squad members to return to the fight via helicopter fast-rope.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"The Squad Leader spawns with a reinsert flare in their backpack. To call a reinsert, equip it in your pistol slot and fire it. The flare's landing position (tracked 2 seconds after firing) is where the squad will be inserted - aim carefully. A helicopter will fly in, fast-rope up to 4 dead squad mates to the ground, then depart.<br/><br/>" +
+	"<font face='PuristaBold'>Rules</font><br/>" +
+	"- Anyone in the squad may use it.<br/>" +
+	"- Each squad gets ONE reinsert - use it wisely.<br/>" +
+	"- Up to 4 players are reinserted in the order they died.<br/>" +
+	"- The reinsert window is open for " + str(_actualReinsertWindow) + " minutes after safe zones drop. Once it closes, reinsertion is no longer available for the rest of the mission.<br/>" +
+	"- The reinsert flare must be equipped in the pistol slot before firing.<br/><br/>" +
+	"<font face='PuristaBold'>When You Die</font><br/>" +
+	"You will enter limited spectator mode. Stay alert - your SL may call a reinsert at any time. If the window expires or the reinsert has already been called and you were not among the first 4, you will be moved to full spectator for the rest of the mission."
+], taskNull, "", True];
+
+player createDiaryRecord ["rules", ["Selectors",
+	"Selectors allow you to customise your loadout before the mission.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"if you have a selector in your current role ACE self-interacting will show an option named FNF Selectors, when hovered over this will show all the selectors assigned to you that you can pick between. You can switch between options as much as you like as long as you are still in safe start, once safe start has ended you will no longer be able to chaqnge your selection.<br/><br/>" +
+	"Importantly, to switch your selection you must still have the item you previously selected in your inventory, if you drop the item or give it away your will not be able to change your selection until you get the required items back."
+], taskNull, "", True];
+
+player createDiaryRecord ["rules", ["Teleporters",
+	"During safe start, or throughout the mission, teleporters can help move you between safe zones or around the map.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"Teleporters are generally the bright blue arrows often found during safe start, they are marked on the map so you know where all of them are and can teleport between them as much as you want.<br/><br/>" +
+	"To teleport, approach the teleporter and ACE interact with it, this will show every teleporter this one is connected to, when you have decided which one you want to go to release your interact key while hovering over the option you want and you will be teleported to that teleporter.<br/><br/>" +
+	"Teleporters are only available for a limited time, usually the duration of safe start, once that timer has run out they will dissappear and can no longer be teleported between."
+], taskNull, "", True];
+
+player createDiaryRecord ["rules", ["Backpack Locking",
+	"Backpack locking stops pesky teammates from stealing items in your backpack against your will.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"By default your backpack is automatically locked when you spawn meaning no one can open it, to unlock your backpack ACE self-interact and choose the option named Unlock Backpack, to lock it again choose the Lock Backpack option instead.<br/><br/>" +
+	"Your Backpack is automatically unloacked when safe start ends with no option to lock it again"
+], taskNull, "", True];
+
+player createDiaryRecord ["rules", ["Play Zone",
+	"The play zone restricts where players can move during the mission.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"The play zone is the unshaded area surrounded by the shaded limit of the play zone, players and ground vehicles are not able to exit the play zone and are teleported back in if you try to leave.<br/><br/>" +
+	"The only exception to this is aircraft who are excempt from this and are able to fly outside the play zone at will. However, if players exit the aircraft while outside the play zone they will automatically be teleported to the last point when they were inside the play zone, which may be very far from where the aircraft landed, and will likely be in mid-air."
+], taskNull, "", True];
+
+player createDiaryRecord ["rules", ["Safe Start",
+	"Safe start allows players to create a plan of attack, choose their loadout, and get into position before the game starts.<br/><br/>" +
+	"<font face='PuristaBold'>How It Works</font><br/>" +
+	"At the start of each FNF mission there is a safe start, this usually lasts for 15 minutes but can be lower or higher, you can check the remaining safe start by opening your map and looking at the timer in the bottom left corner.<br/><br/>" +
+	"During safe start you are automatically limited to Safe Zones which are marked on the map, if you try to exit the safe zone you will be teleported back inside whether you are on foot or in a vehicle.<br/><br/>" +
+	"While in safe start you, or any vehicle assigned to your side, are not able to be damaged in any way, cannot fire your gun, and cannot throw grenades. dispite this laid mines or explosive charges can still be set off allowing for tactical building destruction.<br/><br/>" +
+	"A warning is given when there is only 5 minutes left in safe start. once safe start has ended all protections and limitations are lifted and the mission can commence."
 ], taskNull, "", True];
 
 player createDiaryRecord ["rules", ["In-Game Rules",
@@ -598,28 +659,13 @@ player createDiaryRecord ["rules", ["In-Game Rules",
 	"M. Hacking or abuse of glitches is prohibited."
 ], taskNull, "", True];
 
-_allMods = call FNF_ClientSide_fnc_findFNFModules;
-_initModule = [_allMods, "init"] call FNF_ClientSide_fnc_findSpecificModules;
-_initModule = _initModule select 0;
-_reinsertTotal = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
-_szMods = [_allMods, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
-_maxSafeStart = 0;
-{
-	_t = _x getVariable ["fnf_timeZoneIsDeleted", 0];
-	if (_t > _maxSafeStart) then { _maxSafeStart = _t; };
-} forEach _szMods;
-_actualReinsertWindow = _reinsertTotal - _maxSafeStart;
-
-player createDiaryRecord ["rules", ["Reinsert",
-	"The Reinsert mechanic allows dead squad members to return to the fight via helicopter fast-rope.<br/><br/>" +
-	"<font face='PuristaBold'>How It Works</font><br/>" +
-	"The Squad Leader spawns with a white RSP-30 flare in their backpack. To call a reinsert, equip it in your pistol slot and fire it. The flare's landing position (tracked 2 seconds after firing) is where the squad will be inserted - aim carefully. A helicopter will fly in, fast-rope up to 4 dead squad mates to the ground, then depart.<br/><br/>" +
-	"<font face='PuristaBold'>Rules</font><br/>" +
-	"- Anyone in the squad may use it.<br/>" +
-	"- Each squad gets ONE reinsert - use it wisely.<br/>" +
-	"- Up to 4 players are reinserted in the order they died.<br/>" +
-	"- The reinsert window is open for " + str(_actualReinsertWindow) + " minutes after safe zones drop. Once it closes, reinsertion is no longer available for the rest of the mission.<br/>" +
-	"- The RSP-30 must be equipped in the pistol slot before firing.<br/><br/>" +
-	"<font face='PuristaBold'>When You Die</font><br/>" +
-	"You will enter limited spectator mode. Stay alert - your SL may call a reinsert at any time. If the window expires or the reinsert has already been called and you were not among the first 4, you will be moved to full spectator for the rest of the mission."
+player createDiaryRecord ["rules", ["General Rules",
+	"<font face='PuristaBold'>General Rules</font><br/><br/>" +
+	"A. Be respectful to everyone.<br/>" +
+	"B. Topics on politics and religion are prohibited.<br/>" +
+	"C. Racial slurs and hate speech are prohibited.<br/>" +
+	"D. Any form of NSFW or risqué content is prohibited.<br/>" +
+	"E. English is required for all public communication.<br/>" +
+	"F. Any form of spam is prohibited (microphone, text, image, soundboard).<br/>" +
+	"G. Use common sense - don't be a jerk, if asked to stop then stop."
 ], taskNull, "", True];
