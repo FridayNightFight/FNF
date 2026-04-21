@@ -210,7 +210,6 @@ class CfgFunctions
 			file = "Client\NewPlayerExperience";
 			class initNewPlayerExperience {};
 			class newToFNF {};
-			class newToMRS {};
 		};
 		class taskControl
 		{
