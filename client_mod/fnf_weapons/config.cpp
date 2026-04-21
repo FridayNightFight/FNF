@@ -30,3 +30,9 @@ class CfgWeapons
 		scope = 1;
 	};
 };
+
+class CfgOpticsEffect
+{
+	class CBA_OpticsRadBlur3;
+	class CBA_OpticsRadBlur4: CBA_OpticsRadBlur3 {};
+};
