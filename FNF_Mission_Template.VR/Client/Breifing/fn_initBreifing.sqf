@@ -598,11 +598,16 @@ player createDiaryRecord ["rules", ["In-Game Rules",
 	"M. Hacking or abuse of glitches is prohibited."
 ], taskNull, "", True];
 
-_reinsertTotal = (missionNamespace getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
 _allMods = call FNF_ClientSide_fnc_findFNFModules;
+_initModule = [_allMods, "init"] call FNF_ClientSide_fnc_findSpecificModules;
+_initModule = _initModule select 0;
+_reinsertTotal = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
 _szMods = [_allMods, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
 _maxSafeStart = 0;
-{ _t = _x getVariable ["fnf_timeZoneIsDeleted", 0]; if (_t > _maxSafeStart) then { _maxSafeStart = _t; }; } forEach _szMods;
+{
+	_t = _x getVariable ["fnf_timeZoneIsDeleted", 0];
+	if (_t > _maxSafeStart) then { _maxSafeStart = _t; };
+} forEach _szMods;
 _actualReinsertWindow = _reinsertTotal - _maxSafeStart;
 
 player createDiaryRecord ["rules", ["Reinsert",
