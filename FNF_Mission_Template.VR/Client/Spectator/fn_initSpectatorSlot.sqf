@@ -17,7 +17,7 @@ params["_modules", "_initModule"];
 call FNF_ClientSide_fnc_initZones;
 
 //init reinsert reminders
-call FNF_ClientSide_fnc_initReinsert;
+[_initModule] call FNF_ClientSide_fnc_initReinsert;
 
 //setup map shading
 [{!isNull findDisplay 60000},{
