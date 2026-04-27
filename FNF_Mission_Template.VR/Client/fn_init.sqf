@@ -115,12 +115,22 @@ if (not isNil "fnf_objectives") then
 	[{call FNF_ClientSide_fnc_watchObjs;}, 1] call CBA_fnc_addPerFrameHandler;
 };
 
-//Remove thermals from a vic when a player enters said vic
-player addEventHandler ["GetInMan", {
-	params ["_unit", "_role", "_vehicle", "_turret"];
-	if (not (equipmentDisabled _vehicle select 1)) then
+//Remove thermals from a vic/uav when a player controls said vic/uav
+addMissionEventHandler ["PlayerViewChanged", {
+	params ["_oldUnit", "_newUnit", "_vehicleIn", "_oldCameraOn", "_newCameraOn", "_uav"];
+	if (not isNull _uav) then
 	{
-		_vehicle disableTIEquipment true;
+		if (not (equipmentDisabled _uav select 1)) then
+		{
+			_uav disableTIEquipment true;
+		};
+	};
+	if (not isNull _vehicleIn) then
+	{
+		if (not (equipmentDisabled _vehicleIn select 1)) then
+		{
+			_vehicleIn disableTIEquipment true;
+		};
 	};
 }];
 
