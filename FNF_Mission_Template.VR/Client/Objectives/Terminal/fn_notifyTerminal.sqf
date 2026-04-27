@@ -5,23 +5,24 @@
 		Notify the player when a terminal has been hacked
 
 	Parameter(s):
-		0: OBJECT -	The terminal objective module to be processed
+		0: OBJECT -	The terminal objective terminal to be processed
 		1: INTEGER -	The time it takes to completely hack the terminal
 		2: SIDE -	The side to switch the terminal to
 		3: BOOLEAN -	Whether to set the terminal to idle
+		4: OBJECT -	The terminal objective module to be processed
 
 	Returns:
 		None
 */
 
-params["_targetObject", "_hackingTime", "_side", "_resetTimer"];
+params["_objectiveObject", "_hackingTime", "_side", "_resetTimer", "_objectiveModule"];
 
 _objectiveIndex = -1;
 _objectiveModule = objNull;
 
 //find objective
 {
-	if ((_x select 5 select 0) isEqualTo _targetObject) then
+	if ((_x select 5 select 0) isEqualTo _objectiveObject) then
 	{
 		_objectiveIndex = _forEachIndex;
 		_objectiveModule = _x select 1;
@@ -34,28 +35,28 @@ if (_objectiveIndex isEqualTo -1) exitWith {};
 //notify player
 if (_resetTimer) then
 {
-	[format["<t size='1.5' align='center'>Objective %1 Hack Cancelled</t><br/><br/><t align='center'>Terminal %1 hack has been cancelled</t>", ([_targetObject] call FNF_ClientSide_fnc_getDisplayObjNumber)], "info"] call FNF_ClientSide_fnc_notificationSystem;
+	[format["<t size='1.5' align='center'>Objective %1 Hack Cancelled</t><br/><br/><t align='center'>Terminal %1 hack has been cancelled</t>", ([_objectiveModule] call FNF_ClientSide_fnc_getDisplayObjNumber)], "info"] call FNF_ClientSide_fnc_notificationSystem;
 } else {
 	_sideText = [_side] call BIS_fnc_sideName;
-	[format["<t size='1.5' align='center'>Objective %1 Hack Started</t><br/><br/><t align='center'>Terminal %1 hack has been started by %2, the hack will take: %3 Seconds</t>", ([_targetObject] call FNF_ClientSide_fnc_getDisplayObjNumber), _sideText, _hackingTime], "info"] call FNF_ClientSide_fnc_notificationSystem;
+	[format["<t size='1.5' align='center'>Objective %1 Hack Started</t><br/><br/><t align='center'>Terminal %1 hack has been started by %2, the hack will take: %3 Seconds</t>", ([_objectiveModule] call FNF_ClientSide_fnc_getDisplayObjNumber), _sideText, _hackingTime], "info"] call FNF_ClientSide_fnc_notificationSystem;
 };
 
 //if terminal is a data terminal, set its colours
-_objectType = typeOf _targetObject;
+_objectType = typeOf _objectiveObject;
 if (_objectType isEqualTo "Land_DataTerminal_01_F") then
 {
 	switch (_side) do {
 		case west:
 		{
-			[_targetObject, "blue", "blue", "blue"] call BIS_fnc_dataTerminalColor;
+			[_objectiveObject, "blue", "blue", "blue"] call BIS_fnc_dataTerminalColor;
 		};
 		case east:
 		{
-			[_targetObject, "red", "red", "red"] call BIS_fnc_dataTerminalColor;
+			[_objectiveObject, "red", "red", "red"] call BIS_fnc_dataTerminalColor;
 		};
 		case independent:
 		{
-			[_targetObject, "green", "green", "green"] call BIS_fnc_dataTerminalColor;
+			[_objectiveObject, "green", "green", "green"] call BIS_fnc_dataTerminalColor;
 		};
 		default {};
 	};
@@ -67,27 +68,27 @@ if (_resetTimer) then
 	switch (_objectType) do {
 		case "Land_DataTerminal_01_F":
 		{
-			[_targetObject,0] call BIS_fnc_DataTerminalAnimate;
+			[_objectiveObject,0] call BIS_fnc_DataTerminalAnimate;
 		};
 		case "RuggedTerminal_01_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			[_targetObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		case "RuggedTerminal_01_communications_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			[_targetObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		case "RuggedTerminal_02_communications_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			[_targetObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound'], 0, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		case "RuggedTerminal_01_communications_hub_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			[_targetObject, ['Terminal_source','Terminal_source_sound','Terminal_source_sound_case_01','Terminal_source_sound_case_02'], 0, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound','Terminal_source_sound_case_01','Terminal_source_sound_case_02'], 0, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		default {};
 	};
@@ -98,31 +99,31 @@ if (_resetTimer) then
 	switch (_objectType) do {
 		case "Land_DataTerminal_01_F":
 		{
-			[_targetObject,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
+			[_objectiveObject,3] remoteExec ["BIS_fnc_DataTerminalAnimate",0,true];
 		};
 		case "RuggedTerminal_01_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
-			[_targetObject, ['Terminal_source','Terminal_source_sound'], 40, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			_objectiveObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound'], 40, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		case "RuggedTerminal_01_communications_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
-			[_targetObject, ['Terminal_source','Terminal_source_sound'], 40, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			_objectiveObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound'], 40, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		case "RuggedTerminal_02_communications_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
-			[_targetObject, ['Terminal_source','Terminal_source_sound'], 100, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			_objectiveObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound'], 100, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		case "RuggedTerminal_01_communications_hub_F":
 		{
-			_targetObject animateSource ["Progress_source", 0, true];
-			_targetObject animateSource ["Progress_source", 100, _hackingMultiplyer];
-			[_targetObject, ['Terminal_source','Terminal_source_sound','Terminal_source_sound_case_01','Terminal_source_sound_case_02'], 40, 1] call bis_fnc_LinkTerminal_Animations;
+			_objectiveObject animateSource ["Progress_source", 0, true];
+			_objectiveObject animateSource ["Progress_source", 100, _hackingMultiplyer];
+			[_objectiveObject, ['Terminal_source','Terminal_source_sound','Terminal_source_sound_case_01','Terminal_source_sound_case_02'], 40, 1] call bis_fnc_LinkTerminal_Animations;
 		};
 		default {};
 	};

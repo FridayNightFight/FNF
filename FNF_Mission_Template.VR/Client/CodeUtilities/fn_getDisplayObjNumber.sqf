@@ -16,12 +16,12 @@ params["_module"];
 //if variable not created, create it
 if (isNil "fnf_objectiveDisplayNumbers") then
 {
-	fnf_objectiveDisplayNumbers = createHashMap;
+	fnf_objectiveDisplayNumbers = [[0]];
 };
 
 //check if this module has been checked before, if yes exit with result
-_result = fnf_objectiveDisplayNumbers getOrDefault [(hashValue _module), "NOTFOUND"];
-if (_result isNotEqualTo "NOTFOUND") exitWith { str(_result); };
+_result = fnf_objectiveDisplayNumbers findIf { (_x select 0) isEqualTo _module };
+if (_result isNotEqualTo -1) exitWith { str(fnf_objectiveDisplayNumbers select _result select 1); };
 
 //otherwise get common target
 _target = _module getVariable ["fnf_prefix", "FAILED"];
@@ -82,12 +82,12 @@ if (typeName _target isEqualTo "OBJECT") then
 	_commonModules = _targetObjectSyncedObjects select {typeOf _x isEqualTo _moduleType};
 };
 
-_highestNumber = fnf_objectiveDisplayNumbers getOrDefault ["HighestNumber", 0];
+_highestNumber = fnf_objectiveDisplayNumbers select 0 select 0;
 _highestNumber = _highestNumber + 1;
-fnf_objectiveDisplayNumbers set ["HighestNumber", _highestNumber];
+(fnf_objectiveDisplayNumbers select 0) set [0, _highestNumber];
 
 {
-	fnf_objectiveDisplayNumbers set [(hashValue _x), _highestNumber, true];
+	fnf_objectiveDisplayNumbers pushBack [_x, _highestNumber];
 } forEach _commonModules;
 
 str(_highestNumber);

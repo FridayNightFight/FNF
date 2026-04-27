@@ -5,16 +5,17 @@
 		Switch a terminals side and set when it will be completed
 
 	Parameter(s):
-		0: OBJECT -	The terminal objective module to be processed
+		0: OBJECT -	The terminal objective terminal to be processed
 		1: INTEGER -	The time it takes to completely hack the terminal
 		2: SIDE -	The side to switch the terminal to
 		3: BOOLEAN -	Whether to set the terminal to idle
+		4: OBJECT -	The terminal objective module to be processed
 
 	Returns:
 		None
 */
 
-params["_objectiveObject", "_hackingTime", "_side", "_resetTimer"];
+params["_objectiveObject", "_hackingTime", "_side", "_resetTimer", "_objectiveModule"];
 
 _objectiveObject setVariable ['fnf_currentlyHackingSide', _side, true];
 
@@ -37,4 +38,4 @@ if (_resetTimer) then
 	_objectiveObject setVariable ['fnf_currentlyHackingCompletionTime', _result, true];
 };
 
-[[_objectiveObject, _hackingTime, _side, _resetTimer], FNF_ClientSide_fnc_notifyTerminal] remoteExec ['call', 0, false];
+[_this, FNF_ClientSide_fnc_notifyTerminal] remoteExec ['call', 0, false];

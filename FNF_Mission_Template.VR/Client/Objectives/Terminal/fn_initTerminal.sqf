@@ -176,10 +176,10 @@ _initActions = {
 		{},
 		{
 			params ["_target", "_caller", "_actionId", "_arguments"];
-			[[(_arguments select 0), (_arguments select 1), playerSide, (_arguments select 2)], FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
+			[_arguments, FNF_ServerSide_fnc_switchTerminal] remoteExec ['call', 2];
 		},
 		{},
-		[_targetObject, _hackingTime, _actionPauseTimer],
+		[_targetObject, _hackingTime, playerSide, _actionPauseTimer, _module],
 		2,
 		0,
 		false,
