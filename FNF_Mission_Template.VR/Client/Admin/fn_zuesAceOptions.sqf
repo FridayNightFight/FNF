@@ -30,7 +30,38 @@ _actionGoToLastReport = [
 			0
 		] spawn BIS_fnc_setCuratorCamera;
 	},
-	{true}
+	{
+		_records = player allDiaryRecords "adminMessages";
+		count _records > 0;
+	},
+	{},
+	[],
+	[0,0,0],
+	2,
+	[false,false,false,false,false],
+	{
+		params ["_target", "_player", "_params", "_actionData"];
+
+		_records = player allDiaryRecords "adminMessages";
+		if (count _records isEqualTo 0) exitWith {};
+
+		_newestRecord = _records select 0;
+		_text = _newestRecord select 2;
+		_splitString = [_text, "</font><br/><marker name='AdminReportMrk_", true] call BIS_fnc_splitString;
+		_name = _splitString select 0;
+		_text = _splitString select 1;
+		_splitString = [_text, "[", true] call BIS_fnc_splitString;
+		_time = _splitString select 0;
+
+		_splitString = [_name, "color='#22FF22'>", true] call BIS_fnc_splitString;
+		_name = _splitString select 1;
+
+		_time = parseNumber _time;
+		_time = time - _time;
+
+    // Modify the action - index 1 is the display name, 2 is the icon...
+    _actionData set [1, format ["Zoom to Last Admin Report (%1) (%2)", _name, [_time, "MM:SS"] call BIS_fnc_secondsToString]];
+	}
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _actionGoToLastReport] call ace_interact_menu_fnc_addActionToZeus;
 
