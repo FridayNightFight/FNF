@@ -27,7 +27,7 @@ if !(player diarySubjectExists "adminMessages") then
 _mark = createMarkerLocal ["AdminReportMrk_" + str(time) + str(_pos), _pos];
 
 //show notification of the message
-["<t size='1.5' align='center'>New Staff Report</t><br/><br/><t align='center'>From " + _playerName + "</t><br/><br/>" + _playerMessage, "deep-purple"] call FNF_ClientSide_fnc_notificationSystem;
+["<t size='1.5' align='center'>New Staff Report</t><br/><br/><t align='center'>From " + _playerName + "</t><br/><br/>" + _playerMessage, "deep-purple", 10] call FNF_ClientSide_fnc_notificationSystem;
 
 //creates the staff report to look at afterwards
 player createDiaryRecord [
