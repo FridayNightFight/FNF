@@ -34,6 +34,34 @@ _actionGoToLastReport = [
 ] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _actionGoToLastReport] call ace_interact_menu_fnc_addActionToZeus;
 
+_actionKickOutPlayersFromVic = [
+	"Zeus_KickOutPlayersFromVic",
+	"Kick players from vehicle",
+	"\A3\ui_f\data\igui\cfg\simpleTasks\types\exit_ca.paa",
+	{
+		curatorSelected params ["_objects","_groups","_waypoints","_markers"];
+		_vics = _objects select { _x isKindOf "AllVehicles" && (not (_x isKindOf "Man")) };
+		{
+			_vicPlayers = crew _x;
+			{
+				moveOut _x;
+				["<t align='center' size='1.4' color='#FFFF00'>ADMIN ACTION</t><t align='center'><br/><br/>You have been kicked out of your vehicle so the admin can fix something wrong with it, please wait until they are finished before re-entering.</t>", "deep-purple", 20] remoteExec ["FNF_ClientSide_fnc_notificationSystem", _x, false];
+			} forEach _vicPlayers;
+		} forEach _vics;
+	},
+	{
+		curatorSelected params ["_objects","_groups","_waypoints","_markers"];
+		_vics = _objects select { _x isKindOf "AllVehicles" && (not (_x isKindOf "Man")) };
+		_players = [];
+		{
+			_vicPlayers = crew _x;
+			_players append _vicPlayers;
+		} forEach _vics;
+		count _players > 0;
+	}
+] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions"], _actionKickOutPlayersFromVic] call ace_interact_menu_fnc_addActionToZeus;
+
 [{
 	if (serverCommandAvailable "#logout") then
 	{
