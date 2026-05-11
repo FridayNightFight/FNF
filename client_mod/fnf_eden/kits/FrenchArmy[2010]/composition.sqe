@@ -1524,7 +1524,7 @@ class items
 							};
 						};
 						id=1101;
-						type="B_soldier_LAT_F";
+						type="B_Soldier_F";
 						class CustomAttributes
 						{
 							class Attribute0
@@ -3125,7 +3125,7 @@ class items
 							};
 						};
 						id=1111;
-						type="B_soldier_LAT_F";
+						type="B_recon_F";
 						class CustomAttributes
 						{
 							class Attribute0
@@ -4693,7 +4693,7 @@ class items
 							};
 						};
 						id=1121;
-						type="B_soldier_LAT_F";
+						type="B_Soldier_F";
 						class CustomAttributes
 						{
 							class Attribute0
@@ -6294,7 +6294,7 @@ class items
 							};
 						};
 						id=1131;
-						type="B_soldier_LAT_F";
+						type="B_recon_F";
 						class CustomAttributes
 						{
 							class Attribute0
@@ -7862,7 +7862,7 @@ class items
 							};
 						};
 						id=1141;
-						type="B_soldier_LAT_F";
+						type="B_Soldier_F";
 						class CustomAttributes
 						{
 							class Attribute0
