@@ -385,6 +385,15 @@ class CfgVehicles
 				typeName = "STRING";
 				defaultValue = "Unknown Author";
 			};
+			class BareBonesLoadout: Edit
+			{
+				property = "fnf_bareBonesLoadout";
+				expression = "_this setVariable ['fnf_bareBonesLoadout',_value, true];";
+				displayName = "Bare Bones Kit";
+				tooltip = "The loadout array of a stripped down kit for reinsert purposes";
+				typeName = "STRING";
+				defaultValue = "[[[],[],[],[],[],[],"","",[],["","","","","",""]],[]]";
+			};
 		};
 	};
 	class fnf_module_sequentialObjectivePlanner: Module_F

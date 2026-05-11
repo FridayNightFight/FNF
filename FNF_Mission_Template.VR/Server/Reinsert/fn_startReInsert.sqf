@@ -90,8 +90,51 @@ _cargoIndexOrder = [1, 2, 5, 6];
 		[{
 			alive player
 		}, {
+			//get the barebones loadout from kit module
+			_modules = call FNF_ClientSide_fnc_findFNFModules;
+			_kitInfoModules = [_modules, "kitInformation"] call FNF_ClientSide_fnc_findSpecificModules;
+
+			_kitInfoModule = _kitInfoModules select 0;
+
+			{
+				_module = _x;
+				_syncedObjects = synchronizedObjects _x;
+				_modSide = sideEmpty;
+				{
+					_objectType = typeOf _x;
+					_modSide = sideEmpty;
+
+					switch (_objectType) do
+					{
+						case "SideBLUFOR_F":
+						{
+							_modSide = west;
+						};
+						case "SideOPFOR_F":
+						{
+							_modSide = east;
+						};
+						case "SideResistance_F":
+						{
+							_modSide = independent;
+						};
+						default
+						{
+							continue;
+						};
+					};
+
+					if (_modSide isEqualTo playerSide) then
+					{
+						_kitInfoModule = _module;
+					};
+				} forEach _syncedObjects;
+			} forEach _kitInfoModules;
+
+			_bareBonesLoadout = _kitInfoModule getVariable ["fnf_bareBonesLoadout", str(fnf_playerLoadout)];
+
 			//reset loadout, make him invisible and invincible and disable respawn again
-			player setUnitLoadout [fnf_playerLoadout, false];
+			player setUnitLoadout (parseSimpleArray _bareBonesLoadout);
 			[player, true] remoteExec ["hideObjectGlobal", 2];
 			player allowDamage false;
 			setPlayerRespawnTime 9999;
