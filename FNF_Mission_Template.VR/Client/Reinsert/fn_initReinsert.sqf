@@ -220,6 +220,9 @@ player addEventHandler ["FiredMan", {
 		[format["<t align='center' size='1.5'>REINSERT REQUESTED</t><t align='center'><br/><br/>Please stand by for reinsert of squadmates:%1</t>", _nameList], "success", 10] call FNF_ClientSide_fnc_notificationSystem;
 
 		//ask server to reinsert
-		[_unit, (ASLToATL _pos), _reinsertUnits] remoteExec ["FNF_ServerSide_fnc_startReinsert", 2];
+		[{
+			params ["_pos", "_reinsertUnits", "_unit"];
+			[_unit, (ASLToATL _pos), _reinsertUnits] remoteExec ["FNF_ServerSide_fnc_startReinsert", 2];
+		}, [_pos, _reinsertUnits, _unit], 28] call CBA_fnc_waitAndExecute;
 	}, [_projectile, _reinsertUnits, _unit], 2] call CBA_fnc_waitAndExecute;
 }];
