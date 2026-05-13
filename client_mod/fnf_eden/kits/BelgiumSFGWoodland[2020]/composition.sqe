@@ -1044,7 +1044,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Med";
+									typeName="UK3CB_B_Backpack_Med_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -2729,7 +2729,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Med";
+									typeName="UK3CB_B_Backpack_Med_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -4351,7 +4351,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Med";
+									typeName="UK3CB_B_Backpack_Med_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -5971,7 +5971,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Med";
+									typeName="UK3CB_B_Backpack_Med_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -7593,7 +7593,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Med";
+									typeName="UK3CB_B_Backpack_Med_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -9213,7 +9213,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Med";
+									typeName="UK3CB_B_Backpack_Med_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -12623,9 +12623,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_m40a5_d";
-									optics="rhsusf_acc_M8541_low_d";
-									firemode="rhs_weap_m40a5_d:Single";
+									name="rhs_weap_m40a5_wd";
+									optics="rhsusf_acc_M8541_low_wd";
+									firemode="rhs_weap_m40a5_wd:Single";
 									class primaryMuzzleMag
 									{
 										name="rhsusf_10Rnd_762x51_m118_special_Mag";
