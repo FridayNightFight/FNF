@@ -4,7 +4,6 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
-	"fnf_weapons",
 	"A3_Characters_F",
 	"UK3CB_Factions_Weapons_STGW",
 	"UK3CB_Factions_Weapons_BHP",
@@ -18,8 +17,10 @@ requiredAddons[]=
 	"ace_microdagr",
 	"rhsusf_c_weapons",
 	"ace_realisticnames",
+	"fnf_weapons",
 	"rhs_c_weapons",
 	"UK3CB_Factions_Weapons_M16",
+	"VME_magazine_functions",
 	"sfp_remington870",
 	"ace_grenades",
 	"rhsusf_sounds",
@@ -47,6 +48,8 @@ requiredAddons[]=
 	"UK3CB_Factions_CW_US_B_LATE",
 	"UK3CB_Factions_Equipment_Vests",
 	"UK3CB_Factions_Weapons_Enfield",
+	"ace_rangecard",
+	"ace_mk6mortar",
 	"A3_Static_F_Mortar_01",
 	"fnf_eden",
 	"A3_Modules_F",

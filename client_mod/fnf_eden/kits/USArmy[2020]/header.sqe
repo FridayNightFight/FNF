@@ -4,7 +4,6 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
-	"fnf_weapons",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging",
@@ -25,8 +24,10 @@ requiredAddons[]=
 	"ace_microdagr",
 	"ace_huntir",
 	"ace_realisticnames",
+	"fnf_weapons",
 	"rhs_c_weapons",
 	"TOTT_Optics",
+	"VME_magazine_functions",
 	"UK3CB_BAF_Weapons_SmallArms",
 	"UK3CB_BAF_Weapons_Ammo",
 	"ace_grenades",
@@ -46,8 +47,10 @@ requiredAddons[]=
 	"A3_Weapons_F_Mark_LongRangeRifles_M320_Camo",
 	"ace_compat_rhs_usf3_scopes",
 	"ace_ballistics",
+	"ace_rangecard",
 	"A3_Drones_F_Weapons_F_Gamma_Items",
 	"BOT_FPV_Enhanced",
+	"ace_mk6mortar",
 	"A3_Static_F_Mortar_01",
 	"A3_Modules_F",
 	"RSPN_Assets"

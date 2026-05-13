@@ -4,7 +4,6 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
-	"fnf_weapons",
 	"A3_Structures_F_Civ_Constructions",
 	"ace_cargo",
 	"ace_dragging",
@@ -22,6 +21,7 @@ requiredAddons[]=
 	"ace_microdagr",
 	"rhsusf_c_weapons",
 	"ace_realisticnames",
+	"fnf_weapons",
 	"sfp_remington870",
 	"ace_grenades",
 	"ace_explosives",
@@ -43,6 +43,8 @@ requiredAddons[]=
 	"rhsgref_c_troops",
 	"rhsgref_c_weapons",
 	"ace_compat_rhs_usf3_scopes",
+	"ace_rangecard",
+	"ace_mk6mortar",
 	"A3_Static_F_Mortar_01",
 	"A3_Modules_F",
 	"RSPN_Assets"

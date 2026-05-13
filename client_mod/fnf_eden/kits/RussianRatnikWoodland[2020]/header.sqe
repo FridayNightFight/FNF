@@ -4,13 +4,6 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
-	"fnf_weapons",
-	"A3_Modules_F",
-	"fnf_eden",
-	"RSPN_Assets",
-	"A3_Structures_F_Civ_Constructions",
-	"ace_cargo",
-	"ace_dragging",
 	"A3_Characters_F",
 	"rhs_c_weapons",
 	"TOTT_Optics",
@@ -25,6 +18,7 @@ requiredAddons[]=
 	"ace_microdagr",
 	"rhsusf_c_weapons",
 	"ace_realisticnames",
+	"fnf_weapons",
 	"ace_compat_rhs_afrf3_hearing",
 	"RKSL_LDS",
 	"ace_huntir",
@@ -47,6 +41,15 @@ requiredAddons[]=
 	"ace_parachute",
 	"UK3CB_Factions_CW_SOV_O_LATE",
 	"ace_compat_rhs_afrf3_scopes",
+	"ace_rangecard",
 	"A3_Drones_F_Weapons_F_Gamma_Items",
-	"BOT_FPV_Enhanced"
+	"BOT_FPV_Enhanced",
+	"ace_mk6mortar",
+	"A3_Static_F_Mortar_01",
+	"A3_Modules_F",
+	"fnf_eden",
+	"RSPN_Assets",
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging"
 };

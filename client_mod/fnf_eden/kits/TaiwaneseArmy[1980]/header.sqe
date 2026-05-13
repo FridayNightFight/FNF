@@ -4,7 +4,6 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
-	"fnf_weapons",
 	"fnf_eden",
 	"A3_Modules_F",
 	"RSPN_Assets",
@@ -23,8 +22,10 @@ requiredAddons[]=
 	"ace_medical_treatment",
 	"ace_microdagr",
 	"ace_realisticnames",
+	"fnf_weapons",
 	"rhs_c_weapons",
 	"UK3CB_Factions_Weapons_M16",
+	"VME_magazine_functions",
 	"sfp_remington870",
 	"ace_grenades",
 	"ace_explosives",
@@ -47,5 +48,7 @@ requiredAddons[]=
 	"UK3CB_Factions_CW_US_B_LATE",
 	"UK3CB_Factions_Equipment_Vests",
 	"UK3CB_Factions_Weapons_Enfield",
+	"ace_rangecard",
+	"ace_mk6mortar",
 	"A3_Static_F_Mortar_01"
 };

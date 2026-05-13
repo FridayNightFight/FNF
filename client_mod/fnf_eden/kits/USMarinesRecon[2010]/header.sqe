@@ -4,11 +4,6 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
-	"fnf_weapons",
-	"A3_Structures_F_Civ_Constructions",
-	"ace_cargo",
-	"ace_dragging",
-	"fnf_eden",
 	"A3_Characters_F",
 	"rhsusf_c_weapons",
 	"ace_compat_rhs_usf3",
@@ -22,8 +17,10 @@ requiredAddons[]=
 	"ace_medical_treatment",
 	"ace_microdagr",
 	"ace_realisticnames",
+	"fnf_weapons",
 	"rhs_c_weapons",
 	"ace_huntir",
+	"VME_magazine_functions",
 	"rhsusf_sounds",
 	"rhsusf_weapon_sounds",
 	"ace_grenades",
@@ -40,9 +37,15 @@ requiredAddons[]=
 	"ace_gforces",
 	"ace_parachute",
 	"UK3CB_Factions_CW_US_B_EARLY",
+	"ace_rangecard",
 	"A3_Drones_F_Weapons_F_Gamma_Items",
 	"BOT_FPV_Enhanced",
+	"ace_mk6mortar",
 	"A3_Static_F_Mortar_01",
+	"fnf_eden",
 	"A3_Modules_F",
-	"RSPN_Assets"
+	"RSPN_Assets",
+	"A3_Structures_F_Civ_Constructions",
+	"ace_cargo",
+	"ace_dragging"
 };

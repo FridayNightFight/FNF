@@ -4,7 +4,6 @@ author="FNF";
 category="EdSubcat_GO_Cliffs";
 requiredAddons[]=
 {
-	"fnf_weapons",
 	"fnf_eden",
 	"A3_Modules_F",
 	"RSPN_Assets",
@@ -26,9 +25,11 @@ requiredAddons[]=
 	"ace_microdagr",
 	"UK3CB_Factions_LDF_B",
 	"ace_realisticnames",
-	"rhs_c_weapons",
 	"TOTT_Optics",
+	"fnf_weapons",
+	"rhs_c_weapons",
 	"ace_huntir",
+	"VME_magazine_functions",
 	"sfp_remington870",
 	"ace_grenades",
 	"rhsusf_sounds",
@@ -52,9 +53,10 @@ requiredAddons[]=
 	"ace_parachute",
 	"rhsusf_c_troops",
 	"UK3CB_BAF_Weapons_L115",
-	"fnf_weapons",
 	"UK3CB_BAF_Weapons_Ammo",
+	"ace_rangecard",
 	"A3_Drones_F_Weapons_F_Gamma_Items",
 	"BOT_FPV_Enhanced",
+	"ace_mk6mortar",
 	"A3_Static_F_Mortar_01"
 };
