@@ -30,7 +30,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="[[[""arifle_Mk20_plain_F"","""","""",""TOTT_t2_lt660_Tan_G33"",[""rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan"",30],[],""""],[],[""UK3CB_BHP"","""","""","""",[""UK3CB_BHP_9_13Rnd"",13],[],""""],[""U_B_CombatUniform_mcam_tshirt"",[[""ACE_MapTools"",1],[""ACE_fieldDressing"",8],[""ACE_morphine"",2],[""UK3CB_BHP_9_13Rnd"",1,13]]],[""V_TacVest_khk"",[[""rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan"",3,30]]],[""UK3CB_B_Backpack_Pocket"",[[""TOTT_t2_lt660"",1],[""rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red"",2,30]]],""rhsusf_opscore_mc_cover_pelt_nsw"","""",[],[""ItemMap"",""ItemGPS"",""TFAR_anprc152"",""ItemCompass"",""TFAR_microdagr"",""""]],[]]";
+								value="[[[""arifle_Mk20_F"","""","""",""TOTT_t2_lt660_Tan_G33"",[""rhs_mag_30Rnd_556x45_M855A1_PMAG"",30],[],""""],[],[""UK3CB_BHP"","""","""","""",[""UK3CB_BHP_9_13Rnd"",13],[],""""],[""U_B_CTRG_2"",[[""ACE_MapTools"",1],[""ACE_fieldDressing"",8],[""ACE_morphine"",2],[""UK3CB_BHP_9_13Rnd"",1,13]]],[""V_TacVest_oli"",[[""rhs_mag_30Rnd_556x45_M855A1_PMAG"",3,30]]],[""UK3CB_B_Backpack_Pocket_OLI"",[[""TOTT_t2_lt660"",1],[""rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red"",2,30]]],""rhsusf_opscore_fg_pelt"","""",[],[""ItemMap"",""ItemGPS"",""TFAR_anprc152"",""ItemCompass"",""TFAR_microdagr"",""""]],[]]";
 							};
 						};
 					};
@@ -43,7 +43,7 @@ class items
 							class data
 							{
 								singleType="STRING";
-								value="Belgium SFG [2020]";
+								value="Belgium SFG Woodland [2020]";
 							};
 						};
 					};
@@ -80,7 +80,7 @@ class items
 				{
 					position[]={1.9669719,0,33.192917};
 				};
-				title="Belgium SFG [2020]";
+				title="Belgium SFG Woodland [2020]";
 				id=1408;
 				atlOffset=-5;
 			};
@@ -459,12 +459,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_plain_F:Single";
+									name="arifle_Mk20_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -483,7 +483,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -522,7 +522,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -553,7 +553,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -561,7 +561,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -582,13 +582,13 @@ class items
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -608,7 +608,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1421;
@@ -715,12 +715,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_plain_F:Single";
+									name="arifle_Mk20_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -739,7 +739,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -778,7 +778,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -809,7 +809,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -817,20 +817,20 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -850,7 +850,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1422;
@@ -957,12 +957,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -977,7 +977,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1011,7 +1011,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1036,7 +1036,7 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -1051,7 +1051,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -1106,7 +1106,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1423;
@@ -1225,12 +1225,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -1254,7 +1254,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -1288,7 +1288,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1319,7 +1319,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -1327,7 +1327,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -1348,13 +1348,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -1416,7 +1416,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1425;
@@ -1540,7 +1540,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1580,7 +1580,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1613,7 +1613,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -1631,7 +1631,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1426;
@@ -1671,12 +1671,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -1695,7 +1695,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1729,7 +1729,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1748,7 +1748,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -1756,14 +1756,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -1783,7 +1783,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1427;
@@ -1823,12 +1823,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -1843,7 +1843,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1887,7 +1887,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1900,13 +1900,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -1914,14 +1914,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -1979,7 +1979,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1428;
@@ -2019,12 +2019,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -2044,7 +2044,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2078,7 +2078,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2097,7 +2097,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -2111,14 +2111,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=6;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -2168,7 +2168,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1429;
@@ -2229,7 +2229,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2263,7 +2263,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2284,7 +2284,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -2311,7 +2311,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1430;
@@ -2351,9 +2351,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_SCARH_FDE_LB";
-									optics="rhsusf_acc_su230a_mrds_c";
-									firemode="rhs_weap_SCARH_FDE_LB:Single";
+									name="rhs_weap_SCARH_LB";
+									optics="rhsusf_acc_su230a_mrds";
+									firemode="rhs_weap_SCARH_LB:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk";
@@ -2371,7 +2371,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2405,7 +2405,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2432,7 +2432,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -2450,7 +2450,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1431;
@@ -2490,12 +2490,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -2514,7 +2514,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2548,7 +2548,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2567,7 +2567,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -2575,14 +2575,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -2602,7 +2602,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1432;
@@ -2642,12 +2642,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -2662,7 +2662,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2696,7 +2696,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2721,7 +2721,7 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -2736,7 +2736,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -2791,7 +2791,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1433;
@@ -2845,12 +2845,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -2874,7 +2874,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -2908,7 +2908,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2939,7 +2939,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -2947,7 +2947,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -2968,13 +2968,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -3036,7 +3036,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1435;
@@ -3141,12 +3141,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -3161,7 +3161,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3213,7 +3213,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3232,7 +3232,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -3317,7 +3317,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3351,7 +3351,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3378,7 +3378,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -3405,7 +3405,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1437;
@@ -3445,12 +3445,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -3465,7 +3465,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3509,7 +3509,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3522,13 +3522,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -3536,14 +3536,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -3601,7 +3601,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1438;
@@ -3641,12 +3641,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -3666,7 +3666,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3700,7 +3700,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3719,7 +3719,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -3733,14 +3733,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=6;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -3790,7 +3790,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1439;
@@ -3851,7 +3851,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3885,7 +3885,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3906,7 +3906,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -3933,7 +3933,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1440;
@@ -3973,9 +3973,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_SCARH_FDE_LB";
-									optics="rhsusf_acc_su230a_mrds_c";
-									firemode="rhs_weap_SCARH_FDE_LB:Single";
+									name="rhs_weap_SCARH_LB";
+									optics="rhsusf_acc_su230a_mrds";
+									firemode="rhs_weap_SCARH_LB:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk";
@@ -3993,7 +3993,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4027,7 +4027,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4054,7 +4054,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -4072,7 +4072,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1441;
@@ -4112,12 +4112,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -4136,7 +4136,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4170,7 +4170,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4189,7 +4189,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -4197,14 +4197,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -4224,7 +4224,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1442;
@@ -4264,12 +4264,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -4284,7 +4284,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4318,7 +4318,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4343,7 +4343,7 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -4358,7 +4358,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -4413,7 +4413,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1443;
@@ -4467,12 +4467,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -4496,7 +4496,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -4530,7 +4530,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4561,7 +4561,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -4569,7 +4569,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -4590,13 +4590,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -4658,7 +4658,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1445;
@@ -4782,7 +4782,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4822,7 +4822,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4855,7 +4855,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -4873,7 +4873,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1446;
@@ -4913,12 +4913,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -4937,7 +4937,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4971,7 +4971,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4990,7 +4990,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -4998,14 +4998,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -5025,7 +5025,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1447;
@@ -5065,12 +5065,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -5085,7 +5085,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5129,7 +5129,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5142,13 +5142,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -5156,14 +5156,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -5221,7 +5221,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1448;
@@ -5261,12 +5261,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -5286,7 +5286,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5320,7 +5320,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5339,7 +5339,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -5353,14 +5353,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=6;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -5410,7 +5410,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1449;
@@ -5471,7 +5471,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5505,7 +5505,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5526,7 +5526,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -5553,7 +5553,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1450;
@@ -5593,9 +5593,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_SCARH_FDE_LB";
-									optics="rhsusf_acc_su230a_mrds_c";
-									firemode="rhs_weap_SCARH_FDE_LB:Single";
+									name="rhs_weap_SCARH_LB";
+									optics="rhsusf_acc_su230a_mrds";
+									firemode="rhs_weap_SCARH_LB:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk";
@@ -5613,7 +5613,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5647,7 +5647,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5674,7 +5674,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -5692,7 +5692,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1451;
@@ -5732,12 +5732,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -5756,7 +5756,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5790,7 +5790,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5809,7 +5809,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -5817,14 +5817,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -5844,7 +5844,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1452;
@@ -5884,12 +5884,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -5904,7 +5904,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5938,7 +5938,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5963,7 +5963,7 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -5978,7 +5978,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -6033,7 +6033,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1453;
@@ -6087,12 +6087,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -6116,7 +6116,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -6150,7 +6150,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6181,7 +6181,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -6189,7 +6189,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -6210,13 +6210,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -6278,7 +6278,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1455;
@@ -6383,12 +6383,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -6403,7 +6403,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6455,7 +6455,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6474,7 +6474,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -6559,7 +6559,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6593,7 +6593,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6620,7 +6620,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -6647,7 +6647,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1457;
@@ -6687,12 +6687,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -6707,7 +6707,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6751,7 +6751,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6764,13 +6764,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -6778,14 +6778,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -6843,7 +6843,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1458;
@@ -6883,12 +6883,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -6908,7 +6908,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6942,7 +6942,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6961,7 +6961,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -6975,14 +6975,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=6;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -7032,7 +7032,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1459;
@@ -7093,7 +7093,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7127,7 +7127,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7148,7 +7148,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -7175,7 +7175,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1460;
@@ -7215,9 +7215,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_SCARH_FDE_LB";
-									optics="rhsusf_acc_su230a_mrds_c";
-									firemode="rhs_weap_SCARH_FDE_LB:Single";
+									name="rhs_weap_SCARH_LB";
+									optics="rhsusf_acc_su230a_mrds";
+									firemode="rhs_weap_SCARH_LB:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk";
@@ -7235,7 +7235,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7269,7 +7269,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7296,7 +7296,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -7314,7 +7314,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1461;
@@ -7354,12 +7354,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -7378,7 +7378,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7412,7 +7412,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7431,7 +7431,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -7439,14 +7439,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -7466,7 +7466,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1462;
@@ -7506,12 +7506,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -7526,7 +7526,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7560,7 +7560,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7585,7 +7585,7 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -7600,7 +7600,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -7655,7 +7655,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1463;
@@ -7709,12 +7709,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -7738,7 +7738,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -7772,7 +7772,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7803,7 +7803,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -7811,7 +7811,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -7832,13 +7832,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -7900,7 +7900,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1465;
@@ -8024,7 +8024,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8064,7 +8064,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8097,7 +8097,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -8115,7 +8115,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1466;
@@ -8155,12 +8155,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -8179,7 +8179,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8213,7 +8213,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8232,7 +8232,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -8240,14 +8240,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -8267,7 +8267,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1467;
@@ -8307,12 +8307,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -8327,7 +8327,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8371,7 +8371,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8384,13 +8384,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -8398,14 +8398,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -8463,7 +8463,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1468;
@@ -8503,12 +8503,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -8528,7 +8528,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8562,7 +8562,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8581,7 +8581,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -8595,14 +8595,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=6;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -8652,7 +8652,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1469;
@@ -8713,7 +8713,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8747,7 +8747,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8768,7 +8768,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -8795,7 +8795,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1470;
@@ -8835,9 +8835,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="rhs_weap_SCARH_FDE_LB";
-									optics="rhsusf_acc_su230a_mrds_c";
-									firemode="rhs_weap_SCARH_FDE_LB:Single";
+									name="rhs_weap_SCARH_LB";
+									optics="rhsusf_acc_su230a_mrds";
+									firemode="rhs_weap_SCARH_LB:Single";
 									class primaryMuzzleMag
 									{
 										name="rhs_mag_20Rnd_SCAR_762x51_m80_ball_bk";
@@ -8855,7 +8855,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8889,7 +8889,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8916,7 +8916,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -8934,7 +8934,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1471;
@@ -8974,12 +8974,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -8998,7 +8998,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9032,7 +9032,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9051,7 +9051,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -9059,14 +9059,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -9086,7 +9086,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1472;
@@ -9126,12 +9126,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -9146,7 +9146,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9180,7 +9180,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9205,7 +9205,7 @@ class items
 										};
 										class Item3
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -9220,7 +9220,7 @@ class items
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -9275,7 +9275,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1473;
@@ -9329,12 +9329,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -9358,7 +9358,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -9392,7 +9392,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9423,7 +9423,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -9431,7 +9431,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -9452,13 +9452,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -9520,7 +9520,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1475;
@@ -9625,12 +9625,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -9655,7 +9655,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9689,7 +9689,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9708,7 +9708,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -9716,14 +9716,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -9749,7 +9749,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1476;
@@ -9789,12 +9789,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -9813,7 +9813,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9847,7 +9847,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9866,7 +9866,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -9874,14 +9874,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -9907,7 +9907,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1477;
@@ -9947,12 +9947,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -9971,7 +9971,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10005,7 +10005,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10024,7 +10024,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -10032,14 +10032,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="B_Carryall_cbr";
+									typeName="B_Carryall_oli";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=2;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -10065,7 +10065,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1478;
@@ -10119,9 +10119,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -10143,7 +10143,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10177,7 +10177,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10204,7 +10204,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -10340,9 +10340,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -10364,7 +10364,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10398,7 +10398,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10425,7 +10425,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -10495,9 +10495,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -10519,7 +10519,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10553,7 +10553,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10580,7 +10580,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -10664,9 +10664,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -10688,7 +10688,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10722,7 +10722,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10749,7 +10749,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -10885,9 +10885,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -10909,7 +10909,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10943,7 +10943,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10970,7 +10970,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -11040,9 +11040,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -11064,7 +11064,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11098,7 +11098,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11125,7 +11125,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -11209,9 +11209,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -11229,7 +11229,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11263,7 +11263,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11290,7 +11290,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -11426,9 +11426,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -11446,7 +11446,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11480,7 +11480,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11507,7 +11507,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -11590,9 +11590,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -11610,7 +11610,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11644,7 +11644,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11671,7 +11671,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -11768,9 +11768,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -11788,7 +11788,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11822,7 +11822,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -11849,7 +11849,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -11985,9 +11985,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -12005,7 +12005,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12039,7 +12039,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12066,7 +12066,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -12149,9 +12149,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -12169,7 +12169,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12203,7 +12203,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12230,7 +12230,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class ItemCargo
 									{
@@ -12327,12 +12327,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -12356,7 +12356,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_GhillieSuit";
+									typeName="UK3CB_LDF_B_U_CombatUniform_Ghillie_WDL";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -12390,7 +12390,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12421,7 +12421,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -12429,7 +12429,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -12450,13 +12450,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -12518,7 +12518,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1496;
@@ -12643,7 +12643,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_GhillieSuit";
+									typeName="UK3CB_LDF_B_U_CombatUniform_Ghillie_WDL";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12682,7 +12682,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12709,7 +12709,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 								};
 								map="ItemMap";
@@ -12717,7 +12717,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1497;
@@ -12757,12 +12757,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -12781,7 +12781,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_GhillieSuit";
+									typeName="UK3CB_LDF_B_U_CombatUniform_Ghillie_WDL";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12820,7 +12820,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12839,7 +12839,7 @@ class items
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
@@ -12847,14 +12847,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=1;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -12874,7 +12874,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1498;
@@ -12928,12 +12928,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -12957,7 +12957,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -12991,7 +12991,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13022,7 +13022,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -13030,7 +13030,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -13051,13 +13051,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -13119,7 +13119,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1500;
@@ -13224,12 +13224,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -13244,7 +13244,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13288,7 +13288,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13301,13 +13301,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -13315,14 +13315,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -13380,7 +13380,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1501;
@@ -13420,12 +13420,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -13440,7 +13440,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13484,7 +13484,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13497,13 +13497,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -13511,14 +13511,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -13576,7 +13576,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1502;
@@ -13616,12 +13616,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -13636,7 +13636,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13680,7 +13680,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13693,13 +13693,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -13707,14 +13707,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -13772,7 +13772,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1503;
@@ -13826,12 +13826,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_GL_plain_F";
-									optics="RKSL_optic_LDS_C";
-									firemode="arifle_Mk20_GL_plain_F:Single";
+									name="arifle_Mk20_GL_F";
+									optics="RKSL_optic_LDS";
+									firemode="arifle_Mk20_GL_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 									class secondaryMuzzleMag
@@ -13855,7 +13855,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class ItemCargo
 									{
@@ -13889,7 +13889,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13920,7 +13920,7 @@ class items
 										};
 										class Item4
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=5;
 											ammoLeft=30;
 										};
@@ -13928,7 +13928,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -13949,13 +13949,13 @@ class items
 										items=9;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=1;
 											ammoLeft=30;
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=4;
 											ammoLeft=30;
 										};
@@ -14017,7 +14017,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="ItemGPS";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1505;
@@ -14122,12 +14122,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -14142,7 +14142,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14176,7 +14176,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14189,13 +14189,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -14211,7 +14211,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="B_UavTerminal";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1506;
@@ -14251,12 +14251,12 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="arifle_Mk20_plain_F";
+									name="arifle_Mk20_F";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="arifle_Mk20_plain_F:Single";
+									firemode="arifle_Mk20_F:Single";
 									class primaryMuzzleMag
 									{
-										name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+										name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 										ammoLeft=30;
 									};
 								};
@@ -14271,7 +14271,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14305,7 +14305,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14318,13 +14318,13 @@ class items
 										};
 										class Item1
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tan";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG";
 											count=6;
 											ammoLeft=30;
 										};
 										class Item2
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -14332,14 +14332,14 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
 										items=4;
 										class Item0
 										{
-											name="rhs_mag_30Rnd_556x45_M855A1_EPM_Ranger_Tracer_Red";
+											name="rhs_mag_30Rnd_556x45_M855A1_PMAG_Tracer_Red";
 											count=2;
 											ammoLeft=30;
 										};
@@ -14377,7 +14377,7 @@ class items
 								watch="TFAR_microdagr";
 								radio="TFAR_anprc152";
 								gps="B_UavTerminal";
-								headgear="rhsusf_opscore_mc_cover_pelt_nsw";
+								headgear="rhsusf_opscore_fg_pelt";
 							};
 						};
 						id=1507;
@@ -14431,9 +14431,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="TOTT_t2_lt660_Tan_G33";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -14455,7 +14455,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14489,7 +14489,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14516,7 +14516,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_B_Backpack_Radio_Chem";
+									typeName="UK3CB_B_B_Backpack_Radio_Chem_OLI";
 									isBackpack=1;
 									class WeaponCargo
 									{
@@ -14657,9 +14657,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -14681,7 +14681,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14715,7 +14715,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14742,7 +14742,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{
@@ -14828,9 +14828,9 @@ class items
 							{
 								class primaryWeapon
 								{
-									name="SMG_03C_TR_khaki";
+									name="SMG_03C_TR_black";
 									optics="optic_Yorris";
-									firemode="SMG_03C_TR_khaki:Single";
+									firemode="SMG_03C_TR_black:Single";
 									class primaryMuzzleMag
 									{
 										name="50Rnd_570x28_SMG_03";
@@ -14852,7 +14852,7 @@ class items
 								};
 								class uniform
 								{
-									typeName="U_B_CombatUniform_mcam_tshirt";
+									typeName="U_B_CTRG_2";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14886,7 +14886,7 @@ class items
 								};
 								class vest
 								{
-									typeName="V_TacVest_khk";
+									typeName="V_TacVest_oli";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14913,7 +14913,7 @@ class items
 								};
 								class backpack
 								{
-									typeName="UK3CB_B_Backpack_Pocket";
+									typeName="UK3CB_B_Backpack_Pocket_OLI";
 									isBackpack=1;
 									class MagazineCargo
 									{

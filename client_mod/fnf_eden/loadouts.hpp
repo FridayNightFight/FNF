@@ -115,13 +115,22 @@
 			displayName = "US Marines Recon [2010]";
 			useSideColorOnIcon = 1;
 		};
-		class fnf_BelgiumSFG2020
+		class fnf_BelgiumSFGWoodland2020
 		{
-			path = "fnf_eden\kits\BelgiumSFG[2020]";
+			path = "fnf_eden\kits\BelgiumSFGWoodland[2020]";
 			side = 8;
 			editorCategory = "fnf_Kits";
 			editorSubcategory = "fnf_Blufor";
-			displayName = "Belgium SFG [2020]";
+			displayName = "Belgium SFG Woodland [2020]";
+			useSideColorOnIcon = 1;
+		};
+		class fnf_BelgiumSFGDesert2020
+		{
+			path = "fnf_eden\kits\BelgiumSFGDesert[2020]";
+			side = 8;
+			editorCategory = "fnf_Kits";
+			editorSubcategory = "fnf_Blufor";
+			displayName = "Belgium SFG Desert [2020]";
 			useSideColorOnIcon = 1;
 		};
 		class fnf_CroatianForces2010
