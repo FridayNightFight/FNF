@@ -835,7 +835,7 @@ class cfgWeapons
  };
  class sfp_police_hat: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -856,7 +856,7 @@ class cfgWeapons
  };
  class sfp_police_helmet: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4531,7 +4531,7 @@ class cfgWeapons
  };
  class sfp_caps_base: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4552,7 +4552,7 @@ class cfgWeapons
  };
  class ffp_helmet_base: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4573,7 +4573,7 @@ class cfgWeapons
  };
  class ffp_bmp2_crew_helmet: ffp_helmet_base
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4594,7 +4594,7 @@ class cfgWeapons
  };
  class ffp_m05_helmet_base: ffp_helmet_base
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4888,7 +4888,7 @@ class cfgWeapons
  };
  class sfp_helmets_base: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4909,7 +4909,7 @@ class cfgWeapons
  };
  class sfp_berets_base: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4930,7 +4930,7 @@ class cfgWeapons
  };
  class sfp_m59w_cap: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4951,7 +4951,7 @@ class cfgWeapons
  };
  class sfp_m90w_cap: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4972,7 +4972,7 @@ class cfgWeapons
  };
  class sfp_m90w_cap_alt: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4993,7 +4993,7 @@ class cfgWeapons
  };
  class sfp_flighthelmet116: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -5014,7 +5014,7 @@ class cfgWeapons
  };
  class sfp_ollesbrorsa_green: ItemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
