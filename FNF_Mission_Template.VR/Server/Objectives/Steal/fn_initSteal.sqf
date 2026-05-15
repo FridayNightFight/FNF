@@ -60,8 +60,9 @@ switch (_objState) do {
 		if (_targetObject isKindOf "AllVehicles") then
 		{
 			{
-    		if ((_x select [0,8]) isEqualTo "hitglass") then {
-        	_targetObject setHitPointDamage [_x, 1, false];
+    		if ("glass" in _x) then {
+        	//_targetObject setHitPointDamage [_x, 1, false];
+					[_targetObject, [_x, 1, false]] remoteExec ["setHitPointDamage", 0, true];
     		};
 			} forEach ((getAllHitPointsDamage _targetObject) select 0);
 		};
