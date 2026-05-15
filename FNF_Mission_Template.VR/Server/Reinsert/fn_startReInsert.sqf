@@ -72,6 +72,9 @@ switch (_playerSide) do {
 	default { };
 };
 
+//remove items from Heli cargo
+clearItemCargoGlobal _heli;
+
 //put texture on heli
 _heli setObjectTextureGlobal [0, _heliTexture];
 
@@ -134,7 +137,7 @@ _cargoIndexOrder = [1, 2, 5, 6];
 			_bareBonesLoadout = _kitInfoModule getVariable ["fnf_bareBonesLoadout", str(fnf_playerLoadout)];
 
 			//reset loadout, make him invisible and invincible and disable respawn again
-			player setUnitLoadout (parseSimpleArray _bareBonesLoadout);
+			player setUnitLoadout ((parseSimpleArray _bareBonesLoadout) select 0);
 			[player, true] remoteExec ["hideObjectGlobal", 2];
 			player allowDamage false;
 			setPlayerRespawnTime 9999;
@@ -154,6 +157,7 @@ _cargoIndexOrder = [1, 2, 5, 6];
 				[true, true, true] call ace_spectator_fnc_setSpectator;
 				[{
 					[false, false, false] call ace_spectator_fnc_setSpectator;
+					call FNF_ClientSide_fnc_initRadios;
 				},[],1] call CBA_fnc_waitAndExecute;
 			},[],1] call CBA_fnc_waitAndExecute;
 		}] call CBA_fnc_waitUntilAndExecute;
