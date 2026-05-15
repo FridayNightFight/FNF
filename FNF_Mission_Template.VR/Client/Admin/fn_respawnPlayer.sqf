@@ -45,6 +45,7 @@ setPlayerRespawnTime -1;
 			[true, true, true] call ace_spectator_fnc_setSpectator;
 			[{
 				[false, false, false] call ace_spectator_fnc_setSpectator;
+				call FNF_ClientSide_fnc_initRadios;
 			},[],1] call CBA_fnc_waitAndExecute;
 		},[],1] call CBA_fnc_waitAndExecute;
 	},[_playerPos], 30, {
