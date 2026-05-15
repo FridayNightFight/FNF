@@ -565,16 +565,16 @@
 			displayName = "British Army [2020]";
 			useSideColorOnIcon = 1;
 		};
-		/*class fnf_SwedishArmy2020
+		class fnf_SwedishArmedForces2020
 		{
-			path = "fnf_eden\kits\SwedishArmy[2020]";
+			path = "fnf_eden\kits\SwedishArmedForces[2020]";
 			side = 8;
 			editorCategory = "fnf_Kits";
 			editorSubcategory = "fnf_Blufor";
-			displayName = "Swedish Army [2020]";
+			displayName = "Swedish Armed Forces [2020]";
 			useSideColorOnIcon = 1;
 		};
-		class fnf_FinnishArmy2020
+		/*class fnf_FinnishArmy2020
 		{
 			path = "fnf_eden\kits\FinnishArmy[2020]";
 			side = 8;
