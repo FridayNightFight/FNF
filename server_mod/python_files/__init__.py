@@ -5,7 +5,7 @@ from google.oauth2.service_account import Credentials
 def time_submit(stage, carNumber, startTime, penalty, adminName, endTime):
 	SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
-	creds = Credentials.from_service_account_file("C:/Program Files (x86)/Steam/steamapps/common/Arma 3/@server_mod/python_files/credentials.json", scopes=SCOPES)
+	creds = Credentials.from_service_account_file("C:/Program Files (x86)/Steam/steamapps/common/Arma 3/@FNFServerMods/@server_mod/python_files/credentials.json", scopes=SCOPES)
 
 	client = gspread.authorize(creds)
 
@@ -23,7 +23,7 @@ def call_slow_time_submit(stage, carNumber, startTime, penalty, adminName, endTi
 def review_submit(missionName, author, reviewArray):
 	SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
-	creds = Credentials.from_service_account_file("C:/Program Files (x86)/Steam/steamapps/common/Arma 3/@server_mod/python_files/credentials.json", scopes=SCOPES)
+	creds = Credentials.from_service_account_file("C:/Program Files (x86)/Steam/steamapps/common/Arma 3/@FNFServerMods/@server_mod/python_files/credentials.json", scopes=SCOPES)
 
 	client = gspread.authorize(creds)
 
@@ -33,7 +33,7 @@ def review_submit(missionName, author, reviewArray):
 
 	for x in reviewArray:
 
-		row = [missionName, author, x[0], x[1][0], x[1][1], x[1][3], x[1][2]]
+		row = [missionName, author, x[0], x[1][0], x[1][1], x[1][2], x[1][3]]
 
 		worksheet.append_row(row)
 
