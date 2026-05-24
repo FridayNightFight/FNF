@@ -65,7 +65,7 @@ class display3DEN
 				class fnf_mmFolder
 				{
 					text = "FNF Mission Maker Tools...";
-					items[] = {"fnf_generateLobbyDescription"};
+					items[] = {"fnf_generateLobbyDescription", "fnf_spawnCustomSidedKit"};
 				};
 
 				class fnf_generateLobbyDescription
