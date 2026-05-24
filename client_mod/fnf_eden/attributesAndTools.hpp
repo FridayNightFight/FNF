@@ -71,15 +71,7 @@ class display3DEN
 				class fnf_staffFolder
 				{
 					text = "FNF Staff Tools...";
-					items[] = {"fnf_checkKitsToComposition", "fnf_exportToCompositions", "fnf_importOldFrameworkKits"};
-				};
-
-				class fnf_checkKitsToComposition
-				{
-					text = "Check Kits To Composition";
-					picture = "";
-					action = "[] call FNF_ModFunctions_fnc_startKitCheck;";
-					opensNewWindow = 0;
+					items[] = {};
 				};
 
 				class fnf_generateLobbyDescription
@@ -89,20 +81,11 @@ class display3DEN
 					action = "[] call FNF_ModFunctions_fnc_generateLobbyDescription;";
 					opensNewWindow = 0;
 				};
-
-				class fnf_exportToCompositions
+				class fnf_spawnCustomSidedKit
 				{
-					text = "Export to Compositions";
+					text = "Spawn Custom Sided Kit";
 					picture = "";
-					action = "[] call FNF_ModFunctions_fnc_exportToCompositions;";
-					opensNewWindow = 0;
-				};
-
-				class fnf_importOldFrameworkKits
-				{
-					text = "Import Old Framework Loadouts";
-					picture = "";
-					action = "[] call FNF_ModFunctions_fnc_importOldFrameworkKits;";
+					action = "[] call FNF_ModFunctions_fnc_spawnCustomSidedKit;";
 					opensNewWindow = 1;
 				};
 			};

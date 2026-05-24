@@ -5,10 +5,8 @@ class CfgFunctions
 		class functions
 		{
 			file = "fnf_eden\functions";
-			class startKitCheck {};
 			class generateLobbyDescription {};
-			class importOldFrameworkKits {};
-			class exportToCompositions {};
+			class spawnCustomSidedKit {};
 		};
 	};
 };
