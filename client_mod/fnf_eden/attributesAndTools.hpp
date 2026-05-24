@@ -59,19 +59,13 @@ class display3DEN
 			{
 				class Tools
 				{
-					items[] += {"fnf_mmFolder", "fnf_staffFolder"};
+					items[] += {"fnf_mmFolder"};
 				};
 
 				class fnf_mmFolder
 				{
 					text = "FNF Mission Maker Tools...";
 					items[] = {"fnf_generateLobbyDescription"};
-				};
-
-				class fnf_staffFolder
-				{
-					text = "FNF Staff Tools...";
-					items[] = {};
 				};
 
 				class fnf_generateLobbyDescription
