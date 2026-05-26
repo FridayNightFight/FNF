@@ -434,6 +434,25 @@ class CfgVehicles
 			};
 		};
 	};
+	class fnf_module_mobileSpawnPointHandeler: Module_F
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Mobile Spawn Point Handeler";
+		scope = 2;
+		class Attributes: AttributesBase
+		{
+			class DistanceToDisable: Edit
+			{
+				property = "fnf_distanceToDisable";
+				expression = "_this setVariable ['fnf_distanceToDisable',_value, true];";
+				displayName = "Distance To Disable";
+				tooltip = "How close do enemy players need to get before the mobile spawn points are disabled?";
+				typeName = "NUMBER";
+				defaultValue = "250";
+			};
+		};
+	};
 	class fnf_module_sequentialObjectivePlanner: Module_F
 	{
 		author = "Mallen";

@@ -111,6 +111,13 @@ if (count _selectorModules isNotEqualTo 0) then
 	[_selectorModules] call FNF_ClientSide_fnc_initSelectors;
 };
 
+//check if there are mobileSpawnPoints
+_mobileSpawnPoints = [_modules, "mobileSpawnPointHandeler"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _mobileSpawnPoints isNotEqualTo 0) then
+{
+	[_mobileSpawnPoints] call FNF_ClientSide_fnc_initMobileSpawnPoints;
+};
+
 //start gps icons
 call FNF_ClientSide_fnc_initGPSUnitMarkers;
 

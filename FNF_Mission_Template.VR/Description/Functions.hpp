@@ -247,6 +247,11 @@ class CfgFunctions
 			file = "Client\JIP";
 			class handleJIP {};
 		};
+		class mobileSpawnPoints
+		{
+			file = "Client\MobileSpawnPoints";
+			class initMobileSpawnPoints {};
+		};
 	};
 	class FNF_ServerSide
 	{
