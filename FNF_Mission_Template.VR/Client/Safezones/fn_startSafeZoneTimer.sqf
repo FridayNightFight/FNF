@@ -49,14 +49,25 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 		//get all fnf modules
 		_modules = call FNF_ClientSide_fnc_findFNFModules;
 
-		//check if init module is found
-		_initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
-		_initModule = _initModule select 0;
+		_miscOptionsModule = [_modules, "miscOptions"] call FNF_ClientSide_fnc_findSpecificModules;
+		_miscOptionsModule = _miscOptionsModule select 0;
 
-		_disableWindow = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+		_deathMode = (_miscOptionsModule getVariable ["fnf_deathMode", "reinsert"]);
 
-		fnf_timerMessage = "Reinsert Window Remaining: %1";
-		fnf_timerEndTime = _disableWindow * 60;
+		if (_deathMode isEqualTo "reinsert") then
+		{
+			//check if init module is found
+			_initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
+			_initModule = _initModule select 0;
+
+			_disableWindow = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+
+			fnf_timerMessage = "Reinsert Window Remaining: %1";
+			fnf_timerEndTime = _disableWindow * 60;
+		} else {
+			fnf_timerMessage = nil;
+			fnf_timerEndTime = nil;
+		};
 
 		//wait until the zone is said to be deleted
 
