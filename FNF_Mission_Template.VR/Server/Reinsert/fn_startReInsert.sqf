@@ -136,11 +136,15 @@ _cargoIndexOrder = [1, 2, 5, 6];
 
 			_bareBonesLoadout = _kitInfoModule getVariable ["fnf_bareBonesLoadout", str(fnf_playerLoadout)];
 
+			//ensure he can talk
+			player setVariable ["tf_globalVolume", 1];
+			player setVariable ["tf_voiceVolume", 1, true];
+
 			//reset loadout, make him invisible and invincible and disable respawn again
 			player setUnitLoadout ((parseSimpleArray _bareBonesLoadout) select 0);
 			[player, true] remoteExec ["hideObjectGlobal", 2];
 			player allowDamage false;
-			setPlayerRespawnTime 9999;
+			setPlayerRespawnTime 99999;
 		}] call CBA_fnc_waitUntilAndExecute;
 
 		//wait until player is inside the helicopter

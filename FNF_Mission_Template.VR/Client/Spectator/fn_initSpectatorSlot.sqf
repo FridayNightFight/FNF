@@ -11,13 +11,13 @@
 		None
 */
 
-params["_modules", "_initModule"];
+params["_modules", "_initModule", "_miscOptionsModule"];
 
 //init zones
 call FNF_ClientSide_fnc_initZones;
 
 //init reinsert reminders
-[_initModule] call FNF_ClientSide_fnc_initReinsert;
+[_initModule, _miscOptionsModule] call FNF_ClientSide_fnc_initDeath;
 
 //setup map shading
 [{!isNull findDisplay 60000},{

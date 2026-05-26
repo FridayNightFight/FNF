@@ -13,11 +13,34 @@
 
 if (alive player) exitWith {};
 
-//if player is respawned remove him from the death queue
-_playerGroup = group player;
-_deathQueue = _playerGroup getVariable ["fnf_deathQueue", []];
-_deathQueue = _deathQueue - [(getplayerUID player)];
-_playerGroup setVariable ["fnf_deathQueue", _deathQueue, true];
+//get all fnf modules
+_modules = call FNF_ClientSide_fnc_findFNFModules;
+
+//check if there is a misc options module
+_miscOptionsModule = [_modules, "miscOptions"] call FNF_ClientSide_fnc_findSpecificModules;
+_miscOptionsModule = _miscOptionsModule select 0;
+
+//reinsert, onelife, respawn
+_deathMode = (_miscOptionsModule getVariable ["fnf_deathMode", "reinsert"]);
+
+if (_deathMode isEqualTo "respawn") then
+{
+	//if player is already being handeled (denoted by respawn timer being -1) don't touch it
+	_timeToRespawn = missionNamespace getVariable [("fnf_timeToRespawn_" + getPlayerUID player), 0];
+	if (_timeToRespawn isEqualTo -1) exitWith {};
+
+	//set time to respawn to -1 to inform other systems that respawn is being handeled
+	missionNamespace setVariable [("fnf_timeToRespawn_" + getPlayerUID player), -1, true];
+};
+
+if (_deathMode isEqualTo "reinsert") then
+{
+	//if player is respawned remove him from the death queue
+	_playerGroup = group player;
+	_deathQueue = _playerGroup getVariable ["fnf_deathQueue", []];
+	_deathQueue = _deathQueue - [(getplayerUID player)];
+	_playerGroup setVariable ["fnf_deathQueue", _deathQueue, true];
+};
 
 setPlayerRespawnTime -1;
 
@@ -31,7 +54,11 @@ setPlayerRespawnTime -1;
 	[player, true] remoteExec ["hideObjectGlobal", 2];
 	player allowDamage false;
 	player enableSimulationGlobal false;
-	setPlayerRespawnTime 9999;
+	setPlayerRespawnTime 99999;
+
+	player setVariable ["tf_globalVolume", 1];
+	player setVariable ["tf_voiceVolume", 1, true];
+
 	_playerPos = getPos player;
 	[{
 		params["_playerPos"];

@@ -13,7 +13,26 @@
 
 [true, true, true] call ace_spectator_fnc_setSpectator;
 
+//get all fnf modules
+_modules = call FNF_ClientSide_fnc_findFNFModules;
+
+//check if there is a misc options module
+_miscOptionsModule = [_modules, "miscOptions"] call FNF_ClientSide_fnc_findSpecificModules;
+_miscOptionsModule = _miscOptionsModule select 0;
+
+//full, side, squad
+_limitedSpectatorUnits = (_miscOptionsModule getVariable ["fnf_limitedSpectatorUnits", "side"]);
+
+if (_limitedSpectatorUnits isEqualTo "squad") then
+{
+	if (not (isNil "fnf_restrictToSquad")) then
+	{
+		[fnf_restrictToSquad] call CBA_fnc_removePerFrameHandler;
+	};
+};
+
 [[west, east, independent, civilian], []] call ace_spectator_fnc_updateSides;
+[[], [player]] call ace_spectator_fnc_updateUnits;
 [[0,1,2], []] call ace_spectator_fnc_updateCameraModes;
 
 _lastDamage = player getVariable ["ace_medical_lastDamageSource",objNull];

@@ -20,12 +20,23 @@ fnf_debug = _initModule getVariable ["fnf_debug", true];
 //mark custom things
 call FNF_ClientSide_fnc_markEditorPlacedObjects;
 
+//check if there is a misc options module
+_miscOptionsModule = [_modules, "miscOptions"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _miscOptionsModule > 1) then {systemChat "WARNING: Multiple FNF Misc Options found, only one will have values read correctly"};
+if (count _miscOptionsModule < 1) then
+{
+	//if no module found create one with default values ONLY on client
+	_miscOptionsModule = "fnf_module_miscOptions" createVehicleLocal [0,0,0];
+} else {
+	_miscOptionsModule = _miscOptionsModule select 0;
+};
+
 //if player is in a spectator slot get them out of here
 fnf_spectatorSlotUsed = false;
 if (typeOf player isEqualTo "ace_spectator_virtual") exitWith
 {
 	fnf_spectatorSlotUsed = true;
-	[_modules, _initModule] call FNF_ClientSide_fnc_initSpectatorSlot;
+	[_modules, _initModule, _miscOptionsModule] call FNF_ClientSide_fnc_initSpectatorSlot;
 };
 
 //setup player radio stereo settings
@@ -134,32 +145,8 @@ addMissionEventHandler ["PlayerViewChanged", {
 	};
 }];
 
-//Start reinsert event handelers and timers
-[_initModule] call FNF_ClientSide_fnc_initReinsert;
+//Start death event handelers and timers
+[_initModule, _miscOptionsModule] call FNF_ClientSide_fnc_initDeath;
 
-//handle if some one JIP and theres safezones whether they have expired
-if (count _safeZoneModules isNotEqualTo 0 and didJIP) then
-{
-	if (missionNamespace getVariable ["fnf_startTime", 0] isNotEqualTo 0) then
-	{
-		_result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
-		if (not _result) then
-		{
-			[true, true, true] call ace_spectator_fnc_setSpectator;
-			player setDamage 1;
-		};
-	} else {
-		[{
-			_timeServerStarted = missionNamespace getVariable ["fnf_startTime", -1];
-			_timeServerStarted isNotEqualTo -1;
-		},{
-			params["_safeZoneModules"];
-			_result = [_safeZoneModules] call FNF_ClientSide_fnc_anyNonExpiredSafeZones;
-			if (not _result) then
-			{
-				[true, true, true] call ace_spectator_fnc_setSpectator;
-				player setDamage 1;
-			};
-		}, [_safeZoneModules]] call CBA_fnc_waitUntilAndExecute;
-	};
-};
+//handle JIP players
+[_safeZoneModules, _miscOptionsModule] call FNF_ClientSide_fnc_handleJIP;

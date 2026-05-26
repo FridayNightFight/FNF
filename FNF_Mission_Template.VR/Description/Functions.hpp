@@ -237,10 +237,15 @@ class CfgFunctions
 			class sendBase64Image {};
 			class showBase64Image {};
 		};
-		class reinsert
+		class death
 		{
-			file = "Client\Reinsert";
-			class initReinsert {};
+			file = "Client\Death";
+			class initDeath {};
+		};
+		class jip
+		{
+			file = "Client\JIP";
+			class handleJIP {};
 		};
 	};
 	class FNF_ServerSide
