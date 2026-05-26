@@ -396,6 +396,44 @@ class CfgVehicles
 			};
 		};
 	};
+	class fnf_module_miscOptions: Module_F
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Misc options";
+		scope = 2;
+		class Attributes: AttributesBase
+		{
+			class NextObjectiveKnown: Checkbox
+			{
+				property = "fnf_nextObjectiveKnown";
+				expression = "_this setVariable ['fnf_nextObjectiveKnown', _value, true];";
+				displayName = "Is next Objective shown";
+				tooltip = "If checked, the next objective will be visible before it is active, otherwise it will stay hidden";
+				typeName = "BOOL";
+				defaultValue = "true";
+			};
+		};
+	};
+	class fnf_module_respawnPosition: Module_F
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Respawn Position";
+		scope = 2;
+		class Attributes: AttributesBase
+		{
+			class NextObjectiveKnown: Checkbox
+			{
+				property = "fnf_nextObjectiveKnown";
+				expression = "_this setVariable ['fnf_nextObjectiveKnown', _value, true];";
+				displayName = "Is next Objective shown";
+				tooltip = "If checked, the next objective will be visible before it is active, otherwise it will stay hidden";
+				typeName = "BOOL";
+				defaultValue = "true";
+			};
+		};
+	};
 	class fnf_module_sequentialObjectivePlanner: Module_F
 	{
 		author = "Mallen";
