@@ -4067,9 +4067,9 @@ class cfgWeapons
 	 };
 	};
  };
- class UK3CB_BAF_H_Headset_PRR_Base: ItemCore
+ class UK3CB_BAF_H_Headset_PRR_Base: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4088,9 +4088,9 @@ class cfgWeapons
 	 };
 	};
  };
- class UK3CB_BAF_H_Earphone_Base: ItemCore
+ class UK3CB_BAF_H_Earphone_Base: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4151,9 +4151,9 @@ class cfgWeapons
 	 };
 	};
  };
- class BWA3_CrewHelmet_NH90: ItemCore
+ class BWA3_CrewHelmet_NH90: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4172,9 +4172,9 @@ class cfgWeapons
 	 };
 	};
  };
- class BWA3_CrewmanKSK: ItemCore
+ class BWA3_CrewmanKSK: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4193,9 +4193,9 @@ class cfgWeapons
 	 };
 	};
  };
- class BWA3_Knighthelm: ItemCore
+ class BWA3_Knighthelm: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4214,9 +4214,9 @@ class cfgWeapons
 	 };
 	};
  };
- class BWA3_TopOwl: ItemCore
+ class BWA3_TopOwl: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4235,9 +4235,9 @@ class cfgWeapons
 	 };
 	};
  };
- class BWA3_M92_Fleck: ItemCore
+ class BWA3_M92_Fleck: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4256,9 +4256,9 @@ class cfgWeapons
 	 };
 	};
  };
- class BWA3_Beret_PzGren: ItemCore
+ class BWA3_Beret_PzGren: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
@@ -4277,9 +4277,9 @@ class cfgWeapons
 	 };
 	};
  };
- class BWA3_OpsCore_FastMT: ItemCore
+ class BWA3_OpsCore_FastMT: itemCore
  {
-	class ItemInfo: ItemInfo
+	class ItemInfo: HeadgearItem
 	{
 	 class HitpointsProtectionInfo
 	 {
