@@ -134,6 +134,9 @@ call FNF_ClientSide_fnc_zuesAceOptions;
 //start backpack locking system
 call FNF_ClientSide_fnc_initBackpackLocking;
 
+//start custom rearm init
+call FNF_ClientSide_fnc_initVicRearmReplacement;
+
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {

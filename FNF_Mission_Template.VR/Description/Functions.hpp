@@ -253,6 +253,13 @@ class CfgFunctions
 			file = "Client\MobileSpawnPoints";
 			class initMobileSpawnPoints {};
 		};
+		class vehicles
+		{
+			file = "Client\Vehicles";
+			class initVicRearmReplacement {};
+			class addRearmActions {};
+			class rearmVic {};
+		};
 	};
 	class FNF_ServerSide
 	{
@@ -264,6 +271,7 @@ class CfgFunctions
 			class syncTimer {};
 			class initFortify {};
 			class initAdmin {};
+			class rearmVic {};
 		};
 		class handles
 		{
