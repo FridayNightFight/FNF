@@ -18,39 +18,51 @@ _globalCounter = 0;
 	_syncedObjects = synchronizedObjects _x;
 	_vics = [];
 	_telePoles = [];
-	_objSide = sideEmpty;
-	_markerColor = "ColorUNKNOWN";
+	_forPlayer = false;
 
 	{
 		_objectType = typeOf _x;
+		_objSide = sideUnknown;
 		switch (_objectType) do
 		{
 			case "SideBLUFOR_F":
 			{
 				_objSide = west;
-				_markerColor = "ColorBLUFOR";
 			};
 			case "SideOPFOR_F":
 			{
 				_objSide = east;
-				_markerColor = "ColorOPFOR";
 			};
 			case "SideResistance_F":
 			{
 				_objSide = independent;
-				_markerColor = "ColorIndependent";
+			};
+			default
+			{
+				if (_x isEqualTo player) then
+				{
+					_forPlayer = true;
+					continue;
+				};
+				if ((not isPlayer _x) and (not (_objectType isEqualTo "Logic"))) then
+				{
+					if (_x isKindOf "LandVehicle") then
+					{
+						_vics pushBack _x;
+					} else {
+						_telePoles pushBack _x;
+					};
+				};
 			};
 		};
 
-		if (_x isKindOf "LandVehicle") then
+		if (_objSide isEqualTo playerSide) then
 		{
-			_vics pushBack _x;
-		} else {
-			_telePoles pushBack _x;
+			_forPlayer = true;
 		};
 	} forEach _syncedObjects;
 
-	if (playerSide isNotEqualTo _objSide) then {continue;};
+	if (not _forPlayer) then {continue;};
 
 	_distanceForDisable = _x getVariable ["fnf_distanceForDisable", 250];
 
@@ -80,7 +92,7 @@ _globalCounter = 0;
 			_markerstr setMarkerShapeLocal "ICON";
 			_markerstr setMarkerTypeLocal "respawn_inf";
 			_markerstr setMarkerTextLocal ("MSP " + str(_globalCounter));
-			_markerstr setMarkerColorLocal _markerColor;
+			_markerstr setMarkerColorLocal ([playerSide, true] call BIS_fnc_sideColor);
 
 			_preCalcedOrder = _x getVariable ["fnf_mspPrecalculatedOrderNumber", -1];
 			if (_preCalcedOrder isEqualTo -1) then
