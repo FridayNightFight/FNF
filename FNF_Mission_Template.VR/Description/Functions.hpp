@@ -47,6 +47,7 @@ class CfgFunctions
 			class startRequestWeaponDisable {};
 			class endRequestWeaponDisable {};
 			class initPlayZones {};
+			class initAssetRestrictions {};
 		};
 		class objectives
 		{

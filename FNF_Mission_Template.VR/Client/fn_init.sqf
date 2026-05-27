@@ -111,11 +111,18 @@ if (count _selectorModules isNotEqualTo 0) then
 	[_selectorModules] call FNF_ClientSide_fnc_initSelectors;
 };
 
-//check if there are mobileSpawnPoints
+//check if there are mobile Spawn Points
 _mobileSpawnPoints = [_modules, "mobileSpawnPointHandeler"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _mobileSpawnPoints isNotEqualTo 0) then
 {
 	[_mobileSpawnPoints] call FNF_ClientSide_fnc_initMobileSpawnPoints;
+};
+
+//check if there are asset restrictions
+_assetRestrictions = [_modules, "assetRestriction"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _assetRestrictions isNotEqualTo 0) then
+{
+	[_assetRestrictions] call FNF_ClientSide_fnc_initAssetRestrictions;
 };
 
 //start gps icons

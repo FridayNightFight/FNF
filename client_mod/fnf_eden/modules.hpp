@@ -453,6 +453,31 @@ class CfgVehicles
 			};
 		};
 	};
+	class fnf_module_assetRestriction: Module_F
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Asset Restrictions";
+		scope = 2;
+		class Attributes: AttributesBase
+		{
+			class RestrictionLevel: Combo
+			{
+				property = "fnf_restrictionLevel";
+				expression = "_this setVariable ['fnf_restrictionLevel',_value, true];";
+				displayName = "Restriction Level";
+				tooltip = "What level of restriction players not assigned to this module will have";
+				typeName = "NUMBER";
+				defaultValue = Crew;
+				class Values
+				{
+					class All { name = "All Slots"; value = 0;};
+					class Crew { name = "Crew"; value = 1;};
+					class Driving { name = "Driving"; value = 2;};
+				};
+			};
+		};
+	};
 	class fnf_module_sequentialObjectivePlanner: Module_F
 	{
 		author = "Mallen";
