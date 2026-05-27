@@ -14,23 +14,15 @@
 params ["_modules"];
 
 _objectsToDelete = [];
+_globalCounter = 0;
 
 {
-	_syncedObjects = synchronizedObjects _x;
-	_selectorName = _x getVariable ["fnf_selectorName", "Default Name"];
-	_selectorType = _x getVariable ["fnf_selectorType", "FAILED"];
-
-	if (_selectorType isEqualTo "FAILED") exitWith
-	{
-		if (fnf_debug) then
-		{
-			systemChat "DANGER: Selector does not have selector type set, selector will NOT function"
-		};
-		continue;
-	};
+	_hostModule = _x;
+	_syncedObjects = synchronizedObjects _hostModule;
+	_selectorName = _hostModule getVariable ["fnf_selectorName", "Default Name"];
 
 	_forPlayer = false;
-	_options = [];
+	_selectorOptions = [];
 	{
 		//check if selector is for player
 		if (_x isEqualTo player) then
@@ -42,34 +34,7 @@ _objectsToDelete = [];
 		//check if object is a selector option
 		if (typeOf _x isEqualTo "fnf_module_selectorOption") then
 		{
-			_optionSyncedObjects = synchronizedObjects _x;
-
-			_optionName = _x getVariable ["fnf_optionName", "Default Name"];
-			_default = _x getVariable ["fnf_defaultSelection", false];
-
-			{
-				//check if object is not the host it should be attached to
-				if (typeOf _x isNotEqualTo "fnf_module_selectorHost") then
-				{
-					//get the cargo etc in object and add it to the options player has for the selector
-					_items = itemCargo _x;
-					_magazines = magazineCargo _x;
-					_weapons = weaponCargo _x;
-					_backpacks = backpackCargo _x;
-					_toAdd = _items;
-					_toAdd append _magazines;
-					_toAdd append _weapons;
-					_toAdd append _backpacks;
-
-					_options pushBack [_toAdd, _optionName, _default];
-
-					//check if object is already marked for deletion, if not mark it
-					if (_objectsToDelete find _x isEqualTo -1) then
-					{
-						_objectsToDelete pushBack _x;
-					};
-				};
-			} forEach _optionSyncedObjects;
+			_selectorOptions pushBack _x;
 		};
 	} forEach _syncedObjects;
 
@@ -85,31 +50,33 @@ _objectsToDelete = [];
 		fnf_showSelectors = true;
 		_action = ["trueHost", "FNF Selectors", "", {}, {fnf_showSelectors}] call ace_interact_menu_fnc_createAction;
 		[player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
-
-		//[items, ID, Type]
-		fnf_selections = [];
 	};
 
 	//create the host for the current selector
-	_objID = getObjectID _x;
-	_action = ["host_" + str(_objID), _selectorName, "", {}, {true}] call ace_interact_menu_fnc_createAction;
+	_action = ["host_" + str(_globalCounter), _selectorName, "", {}, {true}] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "trueHost"], _action] call ace_interact_menu_fnc_addActionToObject;
 
 	{
+		_optionModule = _x;
+		_optionName = _x getVariable ["fnf_optionName", "Default Name"];
+		_default = _x getVariable ["fnf_defaultSelection", false];
+
 		//for each option add the ace action and add
 		_statement = {
 			params["_target", "_player", "_params"];
-			[_params select 0, _params select 1, _params select 2, _params select 3] call FNF_ClientSide_fnc_switchSelection;
+			[_params select 0, _params select 1] call FNF_ClientSide_fnc_switchSelection;
 		};
-		_action = ["option" + str(_forEachIndex),_x select 1,"",_statement,{true},{},[_x select 0, _objID, _selectorType, _x select 1]] call ace_interact_menu_fnc_createAction;
-		[player, 1, ["ACE_SelfActions", "trueHost", "host_" + str(_objID)], _action] call ace_interact_menu_fnc_addActionToObject;
+		_action = ["option" + str(_forEachIndex),_optionName,"",_statement,{true},{},[_hostModule, _optionModule]] call ace_interact_menu_fnc_createAction;
+		[player, 1, ["ACE_SelfActions", "trueHost", "host_" + str(_globalCounter)], _action] call ace_interact_menu_fnc_addActionToObject;
 
 		//if this selection is the default (like default demo charges etc) then add it to the selections made array
-		if (_x select 2) then
+		if (_default) then
 		{
-			fnf_selections pushBack [_x select 0, _objID, _selectorType];
+			_hostModule setVariable ["fnf_selection_" + (getPlayerUID player), _optionModule, true];
 		};
-	} forEach _options;
+	} forEach _selectorOptions;
+
+	_globalCounter = _globalCounter + 1;
 
 } forEach _modules;
 
