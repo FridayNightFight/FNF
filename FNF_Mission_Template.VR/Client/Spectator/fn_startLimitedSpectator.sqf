@@ -141,12 +141,49 @@ if (_deathMode isEqualTo "respawn") then
 
 	_respawnPosition = (getPos player);
 	{
-		_respawnSide = _x getVariable ["fnf_respawnSide", sideUnknown];
-		if (_respawnSide isEqualTo playerSide) then
+		_respawnModule = _x;
+		_syncedObjects = synchronizedObjects _x;
+		_forPlayer = false;
+
 		{
-			_respawnPosition = (getPos _x);
+			//check if safezone is for player
+			_objType = typeOf _x;
+			_spawnpointSide = sideUnknown;
+			switch (_objType) do {
+				case "SideBLUFOR_F":
+				{
+					_spawnpointSide = west;
+				};
+				case "SideOPFOR_F":
+				{
+					_spawnpointSide = east;
+				};
+				case "SideResistance_F":
+				{
+					_spawnpointSide = independent;
+				};
+				default
+				{
+					if (_x isEqualTo player) then
+					{
+						_forPlayer = true;
+						break;
+					};
+				};
+			};
+
+			if (_spawnpointSide isEqualTo playerSide) then
+			{
+				_forPlayer = true;
+				break;
+			};
+		} forEach _syncedObjects;
+
+		if (_forPlayer) then
+		{
+			_respawnPosition = getPos _respawnModule;
 			break;
-		};
+		}
 	} forEach _respawnModules;
 
 
