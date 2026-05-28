@@ -45,23 +45,32 @@ _rearmBoxs = [];
 			_rearmBoxs pushBack _x;
 		};
 	};
-} forEach _rearmBoxs;
+} forEach _syncedObjects;
 
 if (count _rearmBoxs < 1) exitwith {["<t size='1.5' align='center'>Failed to get rearm items, no source boxs, please let admin know so this can be fixed</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;};
 
-_selectorDependent = false;
+_modules = call FNF_ClientSide_fnc_findFNFModules;
 
-_syncedObjects = synchronizedObjects (_rearmBoxs select 0);
+//check if init module is found
+_selectorModules = [_modules, "selectorOption"] call FNF_ClientSide_fnc_findSpecificModules;
+
+_selectorDependent = false;
 _foundOption = objNull;
 {
-	_objectType = typeOf _x;
-	if (_objectType isEqualTo "fnf_module_selectorOption") then
+	_syncedObjects = synchronizedObjects _x;
+	_selectorModule = _x;
 	{
-		_foundOption = _x;
-		_selectorDependent = true;
-		break;
-	};
-} forEach _syncedObjects;
+		if (_x in _rearmBoxs) then
+		{
+			_foundOption = _selectorModule;
+			_selectorDependent = true;
+		};
+	} forEach _syncedObjects;
+
+	if (_selectorDependent) then {break;};
+} forEach _selectorModules;
+
+_errorGiven = false;
 
 _itemsToAdd = "";
 if (_selectorDependent) then
@@ -94,6 +103,7 @@ if (_selectorDependent) then
 	if (isNull _validPlayer) exitWith
 	{
 		_selectorName = _hostModule getVariable ["fnf_selectorName", "Default Name"];
+		_errorGiven = true;
 		["<t size='1.5' align='center'>Failed to get rearm items, no in-game player has been assigned to selector " + _selectorName + "</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;
 	};
 
@@ -102,6 +112,7 @@ if (_selectorDependent) then
 	if (_currentSelectionModule isEqualTo "NONE") exitWith
 	{
 		_selectorName = _hostModule getVariable ["fnf_selectorName", "Default Name"];
+		_errorGiven = true;
 		["<t size='1.5' align='center'>Failed to get rearm items, " + (name _validPlayer) + " has not made a selection for selector " + _selectorName + "</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;
 	};
 
@@ -110,10 +121,10 @@ if (_selectorDependent) then
 	_verifiedSync = _combinedSync arrayIntersect _rearmBoxs;
 	_currentRearmBox = _verifiedSync select 0;
 
-	_items = itemCargo _x;
-	_magazines = magazineCargo _x;
-	_weapons = weaponCargo _x;
-	_backpacks = backpackCargo _x;
+	_items = itemCargo _currentRearmBox;
+	_magazines = magazineCargo _currentRearmBox;
+	_weapons = weaponCargo _currentRearmBox;
+	_backpacks = backpackCargo _currentRearmBox;
 	_selectionItems = _items;
 	_selectionItems append _magazines;
 	_selectionItems append _weapons;
@@ -146,11 +157,17 @@ if (_selectorDependent) then
 	} forEach _rearmBoxs;
 };
 
-if (_itemsToAdd isEqualTo "") exitWith {["<t size='1.5' align='center'>Failed to get rearm items, one or more source boxs are empty, please let admin know so this can be fixed</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;};
+if (_itemsToAdd isEqualTo "") exitWith
+{
+	if (not _errorGiven) then
+	{
+		["<t size='1.5' align='center'>Failed to get rearm items, one or more source boxs are empty, please let admin know so this can be fixed</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;
+	};
+};
 
 {
-	_outputBox addItemCargoGlobal _x;
-	_outputBox addBackpackCargoGlobal _x;
+	_outputBox addItemCargoGlobal [_x, 1];
+	_outputBox addBackpackCargoGlobal [_x, 1];
 } forEach _itemsToAdd;
 
 _timeBetweenRearms = _rearmModule getVariable ["fnf_timeBetweenRearms", 3600];

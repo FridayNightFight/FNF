@@ -77,13 +77,7 @@ _boxsToHide = [];
 		};
 	} forEach _boxs;
 
-	//if no samplebox, nothing to rearm?
-	if ((count _rearmOptions) isEqualTo 0) then {continue;};
-
 	_boxs = _boxs - _rearmOptions;
-
-	//if no box to rearm from then cannot rearm?
-	if (count _boxs < 1) then {continue;};
 
 	//check if boxes have selector options assigned to them, if none do treat them as an AND statement, otherwise ignore ones without and turn them to boxs
 	_noSelectorOptionBoxs = [];
@@ -99,7 +93,7 @@ _boxsToHide = [];
 				_noSelectorOptionBoxs pushBack _x;
 			};
 		} forEach _syncedObjects;
-	} forEach _rearmOptions
+	} forEach _rearmOptions;
 
 	if (count _selectorOptionBoxs > 0) then
 	{
@@ -115,6 +109,12 @@ _boxsToHide = [];
 	{
 		_boxsToHide pushBackUnique _x;
 	} forEach (_noSelectorOptionBoxs + _selectorOptionBoxs);
+
+	//if no samplebox, nothing to rearm?
+	if ((count _rearmOptions) isEqualTo 0) then {continue;};
+
+	//if no box to rearm from then cannot rearm?
+	if (count _boxs < 1) then {continue;};
 
 	//if rearm is not for player continue
 	if (not _forPlayer) then {continue;};
