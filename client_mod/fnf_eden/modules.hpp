@@ -413,14 +413,71 @@ class CfgVehicles
 		scope = 2;
 		class Attributes: AttributesBase
 		{
-			class NextObjectiveKnown: Checkbox
+			class FortifyAfterSafeStart: Checkbox
 			{
-				property = "fnf_nextObjectiveKnown";
-				expression = "_this setVariable ['fnf_nextObjectiveKnown', _value, true];";
-				displayName = "Is next Objective shown";
-				tooltip = "If checked, the next objective will be visible before it is active, otherwise it will stay hidden";
+				property = "fnf_fortifyAfterSafeStart";
+				expression = "_this setVariable ['fnf_fortifyAfterSafeStart', _value, true];";
+				displayName = "Fortify available after safe start?";
+				tooltip = "If checked, fortify will not be disabled when safe start ends and will not be disabled if no safe zones are present";
 				typeName = "BOOL";
-				defaultValue = "true";
+				defaultValue = "false";
+			};
+			class DeathMode: Combo
+			{
+				property = "fnf_deathMode";
+				expression = "_this setVariable ['fnf_deathMode',_value, true];";
+				displayName = "Death Mode";
+				tooltip = "What style of death is used when players die";
+				typeName = "STRING";
+				defaultValue = Reinsert;
+				class Values
+				{
+					class Reinsert { name = "Reinsert"; value = "reinsert";};
+					class OneLife { name = "One Life"; value = "onelife";};
+					class Respawn { name = "Respawn"; value = "respawn";};
+				};
+			};
+			class DefaultLives: Edit
+			{
+				property = "fnf_defaultLives";
+				expression = "_this setVariable ['fnf_defaultLives', _value, true];";
+				displayName = "Default Respawns";
+				tooltip = "How many respawns should players get in the Respawn death mode?";
+				typeName = "NUMBER";
+				defaultValue = "2";
+			};
+			class RespawnTime: Edit
+			{
+				property = "fnf_respawnTime";
+				expression = "_this setVariable ['fnf_respawnTime', _value, true];";
+				displayName = "Respawn Time";
+				tooltip = "How long should respawn take in the Respawn death mode?";
+				typeName = "NUMBER";
+				defaultValue = "300";
+			};
+			class LimitedSpectatorUnits: Combo
+			{
+				property = "fnf_limitedSpectatorUnits";
+				expression = "_this setVariable ['fnf_limitedSpectatorUnits',_value, true];";
+				displayName = "Lmited Spectator Unit Visability";
+				tooltip = "Who should the player be able to spectate in limited spectator?";
+				typeName = "STRING";
+				defaultValue = Side;
+				class Values
+				{
+					class Full { name = "Everyone"; value = "full";};
+					class Side { name = "Their Side"; value = "side";};
+					class Squad { name = "Their Squad"; value = "squad";};
+				};
+			};
+			class LimitedSpectatorMuteTFAR: Checkbox
+			{
+				property = "fnf_limitedSpectatorMuteTFAR";
+				expression = "_this setVariable ['fnf_limitedSpectatorMuteTFAR', _value, true];";
+				displayName = "Mute TFAR for players in limited spectator?";
+				tooltip = "If checked, players in limited spectator will not be able to talk to other players or hear any in-game or spectator TFAR talk";
+				typeName = "BOOL";
+				defaultValue = "false";
 			};
 		};
 	};
@@ -430,18 +487,6 @@ class CfgVehicles
 		category = "fnf_standardCategory";
 		displayName = "FNF Respawn Position";
 		scope = 2;
-		class Attributes: AttributesBase
-		{
-			class NextObjectiveKnown: Checkbox
-			{
-				property = "fnf_nextObjectiveKnown";
-				expression = "_this setVariable ['fnf_nextObjectiveKnown', _value, true];";
-				displayName = "Is next Objective shown";
-				tooltip = "If checked, the next objective will be visible before it is active, otherwise it will stay hidden";
-				typeName = "BOOL";
-				defaultValue = "true";
-			};
-		};
 	};
 	class fnf_module_mobileSpawnPointHandeler: Module_F
 	{
