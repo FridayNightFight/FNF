@@ -16,6 +16,15 @@ params["_hostModule", "_optionModule"];
 
 _getOptionModuleItems = {
 	params ["_optionModule"];
+	_modules = call FNF_ClientSide_fnc_findFNFModules;
+	_personalRearmModules = [_modules, "personalRearm"] call FNF_ClientSide_fnc_findSpecificModules;
+	_personalRearmBoxs = [];
+
+	{
+		_rearmSyncedObjects = synchronizedObjects _x;
+		_personalRearmBoxs append _rearmSyncedObjects;
+	} forEach _personalRearmModules;
+
 	_optionSyncedObjects = synchronizedObjects _optionModule;
 	_result = [];
 
@@ -23,19 +32,7 @@ _getOptionModuleItems = {
 		//check if object is not the host it should be attached to
 		if (typeOf _x isEqualTo "fnf_module_selectorHost") then {continue;};
 
-		_optionInventorySyncedObjects = synchronizedObjects _x;
-
-		_partOfPersonalRearm = false;
-		{
-			if (typeOf _x isEqualTo "fnf_module_personalRearm") then
-			{
-				_partOfPersonalRearm = true;
-				break;
-			};
-		} forEach _optionInventorySyncedObjects;
-
-		if (_partOfPersonalRearm) then {continue;};
-
+		if (_x in _personalRearmBoxs) then {continue;};
 
 		//get the cargo etc in object and add it to the options player has for the selector
 		_items = itemCargo _x;
@@ -61,7 +58,7 @@ if (_currentSelectionModule isNotEqualTo "NONE") then
 	_currentItems = [_currentSelectionModule] call _getOptionModuleItems;
 };
 
-_allItems = [_currentSelectionModule] call _getOptionModuleItems;
+_allItems = [_optionModule] call _getOptionModuleItems;
 
 _selectorType = _hostModule getVariable ["fnf_selectorType", "FAILED"];
 _displayName = _optionModule getVariable ["fnf_optionName", "Default Name"];
