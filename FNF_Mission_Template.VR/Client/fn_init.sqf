@@ -134,7 +134,7 @@ if (count _assetRestrictions isNotEqualTo 0) then
 _personalRearms = [_modules, "personalRearm"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _personalRearms isNotEqualTo 0) then
 {
-	[_personalRearms] call FNF_ClientSide_fnc_initAssetRestrictions;
+	[_personalRearms] call FNF_ClientSide_fnc_initPersonalRearm;
 };
 
 //start gps icons
