@@ -79,21 +79,17 @@ _boxsToHide = [];
 
 	_boxs = _boxs - _rearmOptions;
 
-	//check if boxes have selector options assigned to them, if none do treat them as an AND statement, otherwise ignore ones without and turn them to boxs
-	_noSelectorOptionBoxs = [];
-	_selectorOptionBoxs = [];
+	_modules = call FNF_ClientSide_fnc_findFNFModules;
+	_selectorModules = [_modules, "selectorOption"] call FNF_ClientSide_fnc_findSpecificModules;
+
+	_allSelectorOptionBoxes = [];
 	{
 		_syncedObjects = synchronizedObjects _x;
-		{
-			_objectType = typeOf _x;
-			if (_objectType isEqualTo "") then
-			{
-				_selectorOptionBoxs pushBack _x;
-			} else {
-				_noSelectorOptionBoxs pushBack _x;
-			};
-		} forEach _syncedObjects;
-	} forEach _rearmOptions;
+		_allSelectorOptionBoxes append _syncedObjects;
+	} forEach _selectorModules;
+
+	_selectorOptionBoxs = _rearmOptions arrayIntersect _allSelectorOptionBoxes;
+	_noSelectorOptionBoxs = _rearmOptions - _selectorOptionBoxs;
 
 	if (count _selectorOptionBoxs > 0) then
 	{
