@@ -64,10 +64,9 @@ class CfgVehicles
 				displayName = "Fortify Colour";
 				tooltip = "The colour of the fortify objects placed by combat engineers";
 				typeName = "STRING";
-				defaultValue = Green;
 				class Values
 				{
-					class Green { name = "Green"; value = "Green";};
+					class Green { name = "Green"; value = "Green"; default = 1;};
 					class Tan { name = "Tan"; value = "Tan";};
 				};
 			};
@@ -307,10 +306,9 @@ class CfgVehicles
 				displayName = "Selector Type";
 				tooltip = "The type of selector being described";
 				typeName = "STRING";
-				defaultValue = Item;
 				class Values
 				{
-					class Item { name = "Item"; value = "itm";};
+					class Item { name = "Item"; value = "itm"; default = 1;};
 					class Optic { name = "Optic"; value = "opt";};
 					class PrimaryWeapon { name = "Primary Weapon"; value = "pri";};
 					class SecondaryWeapon { name = "Launcher"; value = "sec";};
@@ -429,10 +427,9 @@ class CfgVehicles
 				displayName = "Death Mode";
 				tooltip = "What style of death is used when players die";
 				typeName = "STRING";
-				defaultValue = Reinsert;
 				class Values
 				{
-					class Reinsert { name = "Reinsert"; value = "reinsert";};
+					class Reinsert { name = "Reinsert"; value = "reinsert"; default = 1;};
 					class OneLife { name = "One Life"; value = "onelife";};
 					class Respawn { name = "Respawn"; value = "respawn";};
 				};
@@ -459,14 +456,13 @@ class CfgVehicles
 			{
 				property = "fnf_limitedSpectatorUnits";
 				expression = "_this setVariable ['fnf_limitedSpectatorUnits',_value, true];";
-				displayName = "Lmited Spectator Unit Visability";
+				displayName = "Limited Spectator Unit Visability";
 				tooltip = "Who should the player be able to spectate in limited spectator?";
 				typeName = "STRING";
-				defaultValue = Side;
 				class Values
 				{
 					class Full { name = "Everyone"; value = "full";};
-					class Side { name = "Their Side"; value = "side";};
+					class Side { name = "Their Side"; value = "side"; default = 1;};
 					class Squad { name = "Their Squad"; value = "squad";};
 				};
 			};
@@ -522,11 +518,10 @@ class CfgVehicles
 				displayName = "Restriction Level";
 				tooltip = "What level of restriction players not assigned to this module will have";
 				typeName = "NUMBER";
-				defaultValue = Crew;
 				class Values
 				{
 					class All { name = "All Slots"; value = 0;};
-					class Crew { name = "Crew"; value = 1;};
+					class Crew { name = "Crew"; value = 1; default = 1;};
 					class Driving { name = "Driving"; value = 2;};
 				};
 			};
@@ -543,7 +538,7 @@ class CfgVehicles
 			class DistanceToDisable: Edit
 			{
 				property = "fnf_timeBetweenRearms";
-				expression = "_this setVariable [fnf_timeBetweenRearms',_value, true];";
+				expression = "_this setVariable ['fnf_timeBetweenRearms',_value, true];";
 				displayName = "Time between Rearms";
 				tooltip = "How long after a rearm should the players wait before being allowed to recieve another?";
 				typeName = "NUMBER";
@@ -588,10 +583,9 @@ class CfgVehicles
 				displayName = "Objective Type";
 				tooltip = "What the side is supposed to do with the objective";
 				typeName = "STRING";
-				defaultValue = Destroy;
 				class Values
 				{
-					class Destroy { name = "Destroy Object"; value = "des";};
+					class Destroy { name = "Destroy Object"; value = "des"; default = 1;};
 					class Protect { name = "Protect Object"; value = "pro";};
 				};
 			};
@@ -622,10 +616,9 @@ class CfgVehicles
 				displayName = "Objective Type";
 				tooltip = "What the side is supposed to do with the objective";
 				typeName = "STRING";
-				defaultValue = "cap";
 				class Values
 				{
-					class Capture { name = "Capture Sector"; value = "cap";};
+					class Capture { name = "Capture Sector"; value = "cap"; default = 1;};
 					class Defend { name = "Defend Sector"; value = "def";};
 				};
 			};
@@ -665,10 +658,9 @@ class CfgVehicles
 				displayName = "Objective Type";
 				tooltip = "What the side is supposed to do with the objective";
 				typeName = "STRING";
-				defaultValue = Capture;
 				class Values
 				{
-					class Capture { name = "Hack Terminal"; value = "hck";};
+					class Capture { name = "Hack Terminal"; value = "hck"; default = 1;};
 					class Defend { name = "Defend Terminal"; value = "def";};
 				};
 			};
@@ -764,10 +756,9 @@ class CfgVehicles
 				displayName = "Objective Type";
 				tooltip = "What the side is supposed to do with the objective";
 				typeName = "STRING";
-				defaultValue = "elm";
 				class Values
 				{
-					class Eliminate { name = "Eliminate Target"; value = "elm";};
+					class Eliminate { name = "Eliminate Target"; value = "elm"; default = 1;};
 					class Protect { name = "Protect Target"; value = "pro";};
 				};
 			};
@@ -807,10 +798,9 @@ class CfgVehicles
 				displayName = "Objective Type";
 				tooltip = "What the side is supposed to do with the objective";
 				typeName = "STRING";
-				defaultValue = "stl";
 				class Values
 				{
-					class Steal { name = "Steal Object"; value = "stl";};
+					class Steal { name = "Steal Object"; value = "stl"; default = 1;};
 					class Keep { name = "Keep Object"; value = "kep";};
 				};
 			};
@@ -850,11 +840,10 @@ class CfgVehicles
 				displayName = "Objective Type";
 				tooltip = "What the side is supposed to do with the objective";
 				typeName = "STRING";
-				defaultValue = "esc";
 				class Values
 				{
 					class Destroy { name = "Destroy Object"; value = "des";};
-					class Escort { name = "Escort Object"; value = "esc";};
+					class Escort { name = "Escort Object"; value = "esc"; default = 1;};
 				};
 			};
 			class Prefix: Edit
