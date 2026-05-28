@@ -56,6 +56,8 @@ _globalCounter = 0;
 	_action = ["host_" + str(_globalCounter), _selectorName, "", {}, {true}] call ace_interact_menu_fnc_createAction;
 	[player, 1, ["ACE_SelfActions", "trueHost"], _action] call ace_interact_menu_fnc_addActionToObject;
 
+	_hostModule setVariable ["fnf_selection_" + (getPlayerUID player), nil, true];
+
 	{
 		_optionModule = _x;
 		_optionName = _x getVariable ["fnf_optionName", "Default Name"];
