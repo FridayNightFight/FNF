@@ -35,6 +35,15 @@ _globalCounter = 0;
 		if (typeOf _x isEqualTo "fnf_module_selectorOption") then
 		{
 			_selectorOptions pushBack _x;
+			_optionSyncedObjects = synchronizedObjects _x;
+
+			{
+				//check if object is not the host it should be attached to
+				if (typeOf _x isNotEqualTo "fnf_module_selectorHost") then
+				{
+					_objectsToDelete pushBackUnique _x;
+				};
+			} forEach _optionSyncedObjects;
 		};
 	} forEach _syncedObjects;
 
