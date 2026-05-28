@@ -17,22 +17,49 @@ _modules = call FNF_ClientSide_fnc_findFNFModules;
 
 _safeZoneModules = [_modules, "safeZone"] call FNF_ClientSide_fnc_findSpecificModules;
 
+_miscOptionsModule = [_modules, "miscOptions"] call FNF_ClientSide_fnc_findSpecificModules;
+_miscOptionsModule = _miscOptionsModule select 0;
+
+_deathMode = (_miscOptionsModule getVariable ["fnf_deathMode", "reinsert"]);
+
+if (_deathMode isEqualTo "reinsert") then
+{
+	//check if init module is found
+	_initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
+	_initModule = _initModule select 0;
+
+	_disableWindow = (_initModule getVariable ["fnf_timeToDisableReinsertsAfterSafeStart", 20]);
+
+	fnf_timerMessage = "Reinsert Window Remaining: %1";
+	fnf_timerEndTime = _disableWindow * 60;
+} else {
+	fnf_timerMessage = nil;
+	fnf_timerEndTime = nil;
+};
+
 {
 	_zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
 
 	["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 
-	[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+	_switchingZone = _x getVariable ["fnf_switchToNonRestrictive", false];
+
+	if (!_switchingZone) then
+	{
+		["safeZoneSwitchingGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
+		[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+	};
 } forEach _safeZoneModules;
 
-call FNF_ClientSide_fnc_disableFortify;
+_fortifyAfterSafeStart = (_miscOptionsModule getVariable ["fnf_fortifyAfterSafeStart", false]);
 
-fnf_showSelectors = false;
+if (not _fortifyAfterSafeStart) then
+{
+	call FNF_ClientSide_fnc_disableFortify;
+};
 
 player setVariable ["fnf_backpackLocked", 2, true];
 
-fnf_timerMessage = nil;
-fnf_timerEndTime = nil;
 false call FNF_ClientSide_fnc_showTimerInHUD;
 
 ["safeZoneGroup"] call FNF_ClientSide_fnc_removeRestrictionGroup;

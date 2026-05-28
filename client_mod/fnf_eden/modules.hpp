@@ -223,6 +223,15 @@ class CfgVehicles
 				typeName = "BOOL";
 				defaultValue = "true";
 			};
+			class SwitchToNonRestrictive: Checkbox
+			{
+				property = "fnf_switchToNonRestrictive";
+				expression = "_this setVariable ['fnf_switchToNonRestrictive',_value, true];";
+				displayName = "Switch to Non-Restrictive";
+				tooltip = "Whether the zone switches to Non-Restrictive mode on deletion, all standard restrictions apply regarding weapon disables, however player can leave the zone";
+				typeName = "BOOL";
+				defaultValue = "false";
+			};
 		};
 	};
 	class fnf_module_teleportPoles: Module_F

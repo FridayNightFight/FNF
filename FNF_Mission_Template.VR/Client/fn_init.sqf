@@ -92,7 +92,12 @@ if (count _safeZoneModules isEqualTo 0) then
 	if (fnf_debug) then {
 		systemChat "WARNING: No safe zones present";
 	};
-	call FNF_ClientSide_fnc_disableFortify;
+	_fortifyAfterSafeStart = (_miscOptionsModule getVariable ["fnf_fortifyAfterSafeStart", false]);
+
+	if (not _fortifyAfterSafeStart) then
+	{
+		call FNF_ClientSide_fnc_disableFortify;
+	};
 } else {
 	[_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
 };

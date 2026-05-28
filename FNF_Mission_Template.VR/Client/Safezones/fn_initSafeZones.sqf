@@ -28,6 +28,7 @@ _maxTimeZoneIsDeleted = 0;
 	_visibleToEnemies = _x getVariable ["fnf_visibleToEnemies", true];
 	_zonePrefix = _x getVariable ["fnf_prefix", "FAILED"];
 	_timeZoneIsDeleted = _x getVariable ["fnf_timeZoneIsDeleted", 15];
+	_switchToNonRestrictive = _x getVariable ["fnf_switchToNonRestrictive", false];
 
 	if (_zonePrefix isEqualTo "FAILED") then
 	{
@@ -109,13 +110,15 @@ _maxTimeZoneIsDeleted = 0;
 		if (not _safeZoneRestrictionGroupSet) then
 		{
 			["safeZoneGroup", true, true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
+			["safeZoneSwitchingGroup", true, false, false, true] call FNF_ClientSide_fnc_addRestrictionGroup;
 			_safeZoneRestrictionGroupSet = true;
 		};
 		_result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
 		if (_result) then
 		{
 			["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
-			[_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
+			["safeZoneSwitchingGroup", _zonePrefix] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+			[_zonePrefix, _timeZoneIsDeleted, _switchToNonRestrictive] call FNF_ClientSide_fnc_startSafeZoneTimer;
 		};
 		continue;
 	};
@@ -125,7 +128,7 @@ _maxTimeZoneIsDeleted = 0;
 		_result = [_zonePrefix, "", true, false] call FNF_ClientSide_fnc_addZone;
 		if (_result) then
 		{
-			[_zonePrefix, _timeZoneIsDeleted] call FNF_ClientSide_fnc_startSafeZoneTimer;
+			[_zonePrefix, _timeZoneIsDeleted, _switchToNonRestrictive] call FNF_ClientSide_fnc_startSafeZoneTimer;
 		} else {
 			if (fnf_debug) then
 			{

@@ -5,14 +5,15 @@
 		Starts counting down until safezone can be removed
 
 	Parameter(s):
-		0: STRING -	The zone prefix used by the zone
-		1: INTEGER -	The amount of minutes from mission sart until the safe zone is removed
+		0: STRING - The zone prefix used by the zone
+		1: INTEGER - The amount of minutes from mission sart until the safe zone is removed
+		2: BOOL - Whether the zone is a switching zone and should not be deleted
 
 	Returns:
 		None
 */
 
-params["_zonePrefix", "_timeZoneIsDeleted"];
+params["_zonePrefix", "_timeZoneIsDeleted", "_switchingZone"];
 
 //wait until the zone is said to be deleted
 [{
@@ -31,7 +32,7 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 	};
 	_result;
 },{
-	params["_zonePrefix", "_timeZoneIsDeleted"];
+	params["_zonePrefix", "_timeZoneIsDeleted", "_switchingZone"];
 	["safeZoneGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 	//check if any safe zones still in group
 	if ((not (["safeZoneGroup"] call FNF_ClientSide_fnc_areAnyZonesInRestrictionGroup)) and (not fnf_safeZoneFinalZoneSent)) then
@@ -73,13 +74,20 @@ params["_zonePrefix", "_timeZoneIsDeleted"];
 
 		false call FNF_ClientSide_fnc_showTimerInHUD;
 
-		fnf_showSelectors = false;
+		_fortifyAfterSafeStart = (_miscOptionsModule getVariable ["fnf_fortifyAfterSafeStart", false]);
 
-		call FNF_ClientSide_fnc_disableFortify;
+		if (not _fortifyAfterSafeStart) then
+		{
+			call FNF_ClientSide_fnc_disableFortify;
+		};
 
 		player setVariable ["fnf_backpackLocked", 2, true];
 
 		["safeZoneGroup"] call FNF_ClientSide_fnc_removeRestrictionGroup;
 	};
-	[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+	if (!_switchingZone) then
+	{
+		["safeZoneSwitchingGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
+		[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
+	};
 }, [_zonePrefix, _timeZoneIsDeleted]] call CBA_fnc_waitUntilAndExecute;
