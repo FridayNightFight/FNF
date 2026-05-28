@@ -5,28 +5,66 @@
 		Switches a selection from one option to another
 
 	Parameter(s):
-		0: ARRAY -	An array of items to switch to
-		1: STRING -	The identifier of the selector
-		2: STRING -	The type of selector being used
-		3: STRING -	The Display name of the option
+		0: OBJECT -	An array of items to switch to
+		1: OBJECT -	The identifier of the selector
 
 	Returns:
 		None
 */
 
-params["_allItems", "_id", "_selectorType", "_displayName"];
+params["_hostModule", "_optionModule"];
+
+_getOptionModuleItems = {
+	params ["_optionModule"];
+	_optionSyncedObjects = synchronizedObjects _optionModule;
+	_result = [];
+
+	{
+		//check if object is not the host it should be attached to
+		if (typeOf _x isEqualTo "fnf_module_selectorHost") then {continue;};
+
+		_optionInventorySyncedObjects = synchronizedObjects _x;
+
+		_partOfPersonalRearm = false;
+		{
+			if (typeOf _x isEqualTo "fnf_module_personalRearm") then
+			{
+				_partOfPersonalRearm = true;
+				break;
+			};
+		} forEach _optionInventorySyncedObjects;
+
+		if (_partOfPersonalRearm) then {continue;};
+
+
+		//get the cargo etc in object and add it to the options player has for the selector
+		_items = itemCargo _x;
+		_magazines = magazineCargo _x;
+		_weapons = weaponCargo _x;
+		_backpacks = backpackCargo _x;
+		_selectionItems = _items;
+		_selectionItems append _magazines;
+		_selectionItems append _weapons;
+		_selectionItems append _backpacks;
+
+		_result = _selectionItems;
+	} forEach _optionSyncedObjects;
+	_result;
+};
 
 _currentItems = "";
-_currentID = -1;
 
 //if there is a selection made grab that info
+_currentSelectionModule = _hostModule getVariable ["fnf_selection_" + (getPlayerUID player), "NONE"];
+if (_currentSelectionModule isNotEqualTo "NONE") then
 {
-	if ((_x select 1) isEqualTo _id) then
-	{
-		_currentItems = (_x select 0);
-		_currentID = _forEachIndex;
-	};
-} forEach fnf_selections;
+	_currentItems = [_currentSelectionModule] call _getOptionModuleItems;
+};
+
+_allItems = [_currentSelectionModule] call _getOptionModuleItems;
+
+_selectorType = _hostModule getVariable ["fnf_selectorType", "FAILED"];
+_displayName = _optionModule getVariable ["fnf_optionName", "Default Name"];
 
 //if no selection has been made
 if (_currentItems isEqualTo "") then
@@ -87,7 +125,7 @@ if (_currentItems isEqualTo "") then
 	};
 
 	["<t size='1.5' align='center'>Switched to:<br/><br/>" + _displayName + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
-	fnf_selections pushBack [_allItems, _id, _selectorType];
+	_hostModule setVariable ["fnf_selection_" + (getPlayerUID player), _optionModule, true];
 } else {
 
 	_hasRequiredItems = true;
@@ -221,8 +259,7 @@ if (_currentItems isEqualTo "") then
 		{
 			_itemsToAdd pushBack _opticToRetain;
 		};
-		fnf_selections deleteAt _currentID;
-		fnf_selections pushBack [_allItems, _id, _selectorType];
+		_hostModule setVariable ["fnf_selection_" + (getPlayerUID player), _optionModule, true];
 		["<t size='1.5' align='center'>Switched to:<br/><br/>" + _displayName + "</t>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 	} else {
 		["<t size='1.5' align='center'>Failed to switch selection, you do not have the items to switch out</t>", "error"] call FNF_ClientSide_fnc_notificationSystem;
