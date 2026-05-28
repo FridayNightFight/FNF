@@ -123,7 +123,7 @@ if (count fnf_assetRestrictions isNotEqualTo 0) then
 			default { };
 		};
 	}];
-	this addEventHandler ["SeatSwitchedMan", {
+	player addEventHandler ["SeatSwitchedMan", {
 		params ["_unit1", "_unit2", "_vehicle"];
 
 		//all(0), crew(1), driving(2)
