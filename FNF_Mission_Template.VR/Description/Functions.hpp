@@ -260,6 +260,12 @@ class CfgFunctions
 			class addRearmActions {};
 			class rearmVic {};
 		};
+		class personalRearm
+		{
+			file = "Client\PersonalRearm";
+			class initPersonalRearm {};
+			class doPersonalRearm {};
+		};
 	};
 	class FNF_ServerSide
 	{

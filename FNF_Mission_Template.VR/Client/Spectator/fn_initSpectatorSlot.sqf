@@ -83,10 +83,18 @@ if (count _safeZoneModules isEqualTo 0) then
 	[_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
 };
 
+//check there are selectors
 _selectorModules = [_modules, "selectorHost"] call FNF_ClientSide_fnc_findSpecificModules;
 if (count _selectorModules isNotEqualTo 0) then
 {
 	[_selectorModules] call FNF_ClientSide_fnc_initSelectors;
+};
+
+//check if there are personal Rearms
+_personalRearms = [_modules, "personalRearm"] call FNF_ClientSide_fnc_findSpecificModules;
+if (count _personalRearms isNotEqualTo 0) then
+{
+	[_personalRearms] call FNF_ClientSide_fnc_initAssetRestrictions;
 };
 
 //if there are objectives start watching them

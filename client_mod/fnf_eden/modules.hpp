@@ -478,6 +478,25 @@ class CfgVehicles
 			};
 		};
 	};
+	class fnf_module_personalRearm: Module_F
+	{
+		author = "Mallen";
+		category = "fnf_standardCategory";
+		displayName = "FNF Personal Rearm";
+		scope = 2;
+		class Attributes: AttributesBase
+		{
+			class DistanceToDisable: Edit
+			{
+				property = "fnf_timeBetweenRearms";
+				expression = "_this setVariable [fnf_timeBetweenRearms',_value, true];";
+				displayName = "Time between Rearms";
+				tooltip = "How long after a rearm should the players wait before being allowed to recieve another?";
+				typeName = "NUMBER";
+				defaultValue = "3600";
+			};
+		};
+	};
 	class fnf_module_sequentialObjectivePlanner: Module_F
 	{
 		author = "Mallen";
