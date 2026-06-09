@@ -32,7 +32,8 @@ if (_limitedSpectatorUnits isEqualTo "squad") then
 };
 
 [[west, east, independent, civilian], []] call ace_spectator_fnc_updateSides;
-[[], [player]] call ace_spectator_fnc_updateUnits;
+ace_spectator_unitBlacklist = [];
+call FNF_ClientSide_fnc_getUAVsforSpectator;
 [[0,1,2], []] call ace_spectator_fnc_updateCameraModes;
 
 _lastDamage = player getVariable ["ace_medical_lastDamageSource",objNull];

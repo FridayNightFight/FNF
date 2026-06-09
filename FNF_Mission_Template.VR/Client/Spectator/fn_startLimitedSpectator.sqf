@@ -35,15 +35,17 @@ if (_limitedSpectatorUnits isEqualTo "squad") then
 	};
 };
 
+call FNF_ClientSide_fnc_getUAVsforSpectator;
+
 switch (_limitedSpectatorUnits) do {
 	case "full": {
 		[[west, east, independent, civilian], []] call ace_spectator_fnc_updateSides;
-		[[], [player]] call ace_spectator_fnc_updateUnits;
+		ace_spectator_unitBlacklist = [];
 		[[0,1,2], []] call ace_spectator_fnc_updateCameraModes;
 	};
 	case "side": {
 		[[playerSide], ([west, east, independent, civilian] - [playerSide])] call ace_spectator_fnc_updateSides;
-		[[], [player]] call ace_spectator_fnc_updateUnits;
+		ace_spectator_unitBlacklist = [];
 		[[1,2], [0]] call ace_spectator_fnc_updateCameraModes;
 	};
 	case "squad": {
@@ -51,7 +53,7 @@ switch (_limitedSpectatorUnits) do {
 
 		fnf_restrictToSquad = [{
 			_allPlayerBarSquad = (allPlayers - (units (group player)));
-			[[], [_allPlayerBarSquad]] call ace_spectator_fnc_updateUnits;
+			ace_spectator_unitBlacklist = _allPlayerBarSquad;
 		}, 0.5] call CBA_fnc_addPerFrameHandler;
 
 		[[1,2], [0]] call ace_spectator_fnc_updateCameraModes;
@@ -61,7 +63,11 @@ switch (_limitedSpectatorUnits) do {
 
 if (_limitedSpectatorMuteTFAR) then
 {
-	player setVariable ["tf_globalVolume", 0];
+	[{
+		player getVariable ["TFAR_forceSpectator", false];
+	}, {
+		[player, false] call TFAR_fnc_forceSpectator;
+	}, [], 10] call CBA_fnc_waitUntilAndExecute;
 	player setVariable ["tf_voiceVolume", 0, true];
 };
 
@@ -226,7 +232,6 @@ if (_deathMode isEqualTo "respawn") then
 			player enableSimulationGlobal false;
 			setPlayerRespawnTime 99999;
 
-			player setVariable ["tf_globalVolume", 1];
 			player setVariable ["tf_voiceVolume", 1, true];
 
 			player setPos _respawnPosition;

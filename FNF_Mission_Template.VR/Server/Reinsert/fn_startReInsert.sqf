@@ -137,7 +137,6 @@ _cargoIndexOrder = [1, 2, 5, 6];
 			_bareBonesLoadout = _kitInfoModule getVariable ["fnf_bareBonesLoadout", str(fnf_playerLoadout)];
 
 			//ensure he can talk
-			player setVariable ["tf_globalVolume", 1];
 			player setVariable ["tf_voiceVolume", 1, true];
 
 			//reset loadout, make him invisible and invincible and disable respawn again

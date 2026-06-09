@@ -56,7 +56,6 @@ setPlayerRespawnTime -1;
 	player enableSimulationGlobal false;
 	setPlayerRespawnTime 99999;
 
-	player setVariable ["tf_globalVolume", 1];
 	player setVariable ["tf_voiceVolume", 1, true];
 
 	_playerPos = getPos player;

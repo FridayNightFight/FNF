@@ -163,6 +163,7 @@ class CfgFunctions
 			class getSpectatorParentTask {};
 			class startLimitedSpectator {};
 			class upgradeSpectator {};
+			class getUAVsforSpectator {};
 		};
 		class hidingZones
 		{

@@ -30,10 +30,10 @@ if (_limitedSpectatorUnits isEqualTo "squad") then
 };
 
 [[west, east, independent, civilian], []] call ace_spectator_fnc_updateSides;
-[[], [player]] call ace_spectator_fnc_updateUnits;
+ace_spectator_unitBlacklist = [];
 [[0,1,2], []] call ace_spectator_fnc_updateCameraModes;
 
-player setVariable ["tf_globalVolume", 1];
+[player, true] call TFAR_fnc_forceSpectator;
 player setVariable ["tf_voiceVolume", 1, true];
 
 //show Mission Details button

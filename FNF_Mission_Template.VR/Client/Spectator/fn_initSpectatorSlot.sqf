@@ -97,6 +97,8 @@ if (count _personalRearms isNotEqualTo 0) then
 	[_personalRearms] call FNF_ClientSide_fnc_initAssetRestrictions;
 };
 
+call FNF_ClientSide_fnc_getUAVsforSpectator;
+
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {
