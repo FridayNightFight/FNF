@@ -90,4 +90,4 @@ params["_zonePrefix", "_timeZoneIsDeleted", "_switchingZone"];
 		["safeZoneSwitchingGroup", _zonePrefix] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 		[_zonePrefix] call FNF_ClientSide_fnc_removeZone;
 	};
-}, [_zonePrefix, _timeZoneIsDeleted]] call CBA_fnc_waitUntilAndExecute;
+}, [_zonePrefix, _timeZoneIsDeleted, _switchingZone]] call CBA_fnc_waitUntilAndExecute;
