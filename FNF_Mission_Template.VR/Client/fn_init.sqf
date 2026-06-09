@@ -141,7 +141,7 @@ if (count _personalRearms isNotEqualTo 0) then
 call FNF_ClientSide_fnc_initGPSUnitMarkers;
 
 //add zues options
-call FNF_ClientSide_fnc_zuesAceOptions;
+[_miscOptionsModule] call FNF_ClientSide_fnc_zuesAceOptions;
 
 //start backpack locking system
 call FNF_ClientSide_fnc_initBackpackLocking;

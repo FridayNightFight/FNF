@@ -59,7 +59,7 @@ if (count _objModules isEqualTo 0) then
 //show Mission Details button
 call FNF_ClientSide_fnc_missionDetailsButton;
 
-call FNF_ClientSide_fnc_zuesAceOptions;
+[_miscOptionsModule] call FNF_ClientSide_fnc_zuesAceOptions;
 
 //check if there is a playzone
 _playZoneModules = [_modules, "playZone"] call FNF_ClientSide_fnc_findSpecificModules;
