@@ -259,6 +259,7 @@ class CfgFunctions
 			class initVicRearmReplacement {};
 			class addRearmActions {};
 			class rearmVic {};
+			class initSimulationControl {};
 		};
 		class personalRearm
 		{

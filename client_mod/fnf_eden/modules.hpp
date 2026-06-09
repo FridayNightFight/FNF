@@ -475,6 +475,15 @@ class CfgVehicles
 				typeName = "BOOL";
 				defaultValue = "false";
 			};
+			class SimulationControl: Checkbox
+			{
+				property = "fnf_simulationControl";
+				expression = "_this setVariable ['fnf_simulationControl', _value, true];";
+				displayName = "Allow players to enable sim on vehicles?";
+				tooltip = "If checked, players can ace interact with a vehicle to enable its simulation";
+				typeName = "BOOL";
+				defaultValue = "false";
+			};
 		};
 	};
 	class fnf_module_respawnPosition: Module_F

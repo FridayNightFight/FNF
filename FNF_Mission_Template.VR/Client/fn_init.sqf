@@ -149,6 +149,13 @@ call FNF_ClientSide_fnc_initBackpackLocking;
 //start custom rearm init
 call FNF_ClientSide_fnc_initVicRearmReplacement;
 
+//start simulation control
+_simulationControl = (_miscOptionsModule getVariable ["fnf_simulationControl", false]);
+if (_simulationControl) then
+{
+	[_breifingModules] call FNF_ClientSide_fnc_initSimulationControl;
+};
+
 //if there are objectives start watching them
 if (not isNil "fnf_objectives") then
 {
