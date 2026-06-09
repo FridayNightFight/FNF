@@ -129,10 +129,8 @@ class CfgFunctions
 		class pauseMenu
 		{
 			file = "Client\UI\PauseMenu";
-			class adminGameEndButton {};
-			class contactStaffButton {};
-			class adminMenuButton {};
-			class missionReviewButtonPM {};
+			class generalPlayerButtons {};
+			class adminButtons {};
 		};
 		class spectatorUI
 		{

@@ -23,7 +23,7 @@ _aspectRatio = (_resolution select 0) / (_resolution select 1);
 _bluforCtrl = _display ctrlCreate ["RscCheckBox", 34768];
 _bluforCtrl ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX,
-0.335 * safeZoneH + safeZoneY,
+0.385 * safeZoneH + safeZoneY,
 (0.03 * safeZoneW) / _aspectRatio,
 0.03 * safeZoneH
 ];
@@ -32,7 +32,7 @@ _bluforCtrl ctrlCommit 0;
 _bluforTextCtrl = _display ctrlCreate ["RscText", 34769];
 _bluforTextCtrl ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX + ((0.03 * safeZoneW) / _aspectRatio),
-0.335 * safeZoneH + safeZoneY,
+0.385 * safeZoneH + safeZoneY,
 (0.1 * safeZoneW) / _aspectRatio,
 0.03 * safeZoneH
 ];
@@ -42,7 +42,7 @@ _bluforTextCtrl ctrlCommit 0;
 _opforCtrl = _display ctrlCreate ["RscCheckBox", 34770];
 _opforCtrl ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX,
-0.305 * safeZoneH + safeZoneY,
+0.355 * safeZoneH + safeZoneY,
 (0.03 * safeZoneW) / _aspectRatio,
 0.03 * safeZoneH
 ];
@@ -51,7 +51,7 @@ _opforCtrl ctrlCommit 0;
 _opforTextCtrl = _display ctrlCreate ["RscText", 34771];
 _opforTextCtrl ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX + ((0.03 * safeZoneW) / _aspectRatio),
-0.305 * safeZoneH + safeZoneY,
+0.355 * safeZoneH + safeZoneY,
 (0.1 * safeZoneW) / _aspectRatio,
 0.03 * safeZoneH
 ];
@@ -61,7 +61,7 @@ _opforTextCtrl ctrlCommit 0;
 _indiCtrl = _display ctrlCreate ["RscCheckBox", 34772];
 _indiCtrl ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX,
-0.275 * safeZoneH + safeZoneY,
+0.325 * safeZoneH + safeZoneY,
 (0.03 * safeZoneW) / _aspectRatio,
 0.03 * safeZoneH
 ];
@@ -70,7 +70,7 @@ _indiCtrl ctrlCommit 0;
 _indiTextCtrl = _display ctrlCreate ["RscText", 34773];
 _indiTextCtrl ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX + ((0.03 * safeZoneW) / _aspectRatio),
-0.275 * safeZoneH + safeZoneY,
+0.325 * safeZoneH + safeZoneY,
 (0.1 * safeZoneW) / _aspectRatio,
 0.03 * safeZoneH
 ];
@@ -83,7 +83,7 @@ _indiTextCtrl ctrlCommit 0;
 _buttonCtrl = _display ctrlCreate ["RscButton", -1];
 _buttonCtrl ctrlSetPosition [
 0.025 * safeZoneW + safeZoneX,
-0.365 * safeZoneH + safeZoneY,
+0.415 * safeZoneH + safeZoneY,
 0.05 * safeZoneW,
 0.03 * safeZoneH
 ];
@@ -126,3 +126,17 @@ _buttonCtrl ctrlAddEventHandler ["ButtonDown", {
 		};
 	};
 }];
+
+_menuButton = _display ctrlCreate ["RscShortcutButton", 7045];
+_menuButton ctrlSetPosition [
+0.025 * safeZoneW + safeZoneX,
+0.1 * safeZoneH + safeZoneY,
+0.1 * safeZoneW,
+0.03 * safeZoneH
+];
+_menuButton ctrlSetText "Admin Menu";
+_menuButton ctrlSetBackgroundColor [0, 0.5, 0, 0.9];
+_menuButton ctrlAddEventHandler ["ButtonClick", {
+	[] spawn FNF_ClientSide_fnc_adminMenu;
+}];
+_menuButton ctrlCommit 0;

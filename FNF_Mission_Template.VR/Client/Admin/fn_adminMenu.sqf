@@ -46,28 +46,28 @@ _playerList ctrlCommit 0;
 _sideTempIndex = _playerList lbAdd "===BLUFOR===";
 _playerList lbSetData [_sideTempIndex, "west"];
 {
-	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 	_playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo west});
 _sideTempIndex = _playerList lbAdd "===OPFOR===";
 _playerList lbSetData [_sideTempIndex, "east"];
 {
-	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 	_playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo east});
 _sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
 _playerList lbSetData [_sideTempIndex, "independent"];
 {
-	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 	_playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo independent});
 _sideTempIndex = _playerList lbAdd "===CIVILIAN===";
 _playerList lbSetData [_sideTempIndex, "civilian"];
 {
-	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+	_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 	_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 	_playerList lbSetData [_index, getPlayerUID _x];
 } forEach (allPlayers select {side (group _x) isEqualTo civilian});
@@ -193,28 +193,28 @@ fnf_adminMenu_searchPFH = [{
 		_sideTempIndex = _playerList lbAdd "===BLUFOR===";
 		_playerList lbSetData [_sideTempIndex, "west"];
 		{
-			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 			_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 			_playerList lbSetData [_index, getPlayerUID _x];
 		} forEach (allPlayers select {side (group _x) isEqualTo west});
 		_sideTempIndex = _playerList lbAdd "===OPFOR===";
 		_playerList lbSetData [_sideTempIndex, "east"];
 		{
-			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 			_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 			_playerList lbSetData [_index, getPlayerUID _x];
 		} forEach (allPlayers select {side (group _x) isEqualTo east});
 		_sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
 		_playerList lbSetData [_sideTempIndex, "independent"];
 		{
-			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 			_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 			_playerList lbSetData [_index, getPlayerUID _x];
 		} forEach (allPlayers select {side (group _x) isEqualTo independent});
 		_sideTempIndex = _playerList lbAdd "===CIVILIAN===";
 		_playerList lbSetData [_sideTempIndex, "civilian"];
 		{
-			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+			_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 			_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 			_playerList lbSetData [_index, getPlayerUID _x];
 		} forEach (allPlayers select {side (group _x) isEqualTo civilian});
@@ -229,28 +229,28 @@ fnf_adminMenu_searchPFH = [{
 	_sideTempIndex = _playerList lbAdd "===BLUFOR===";
 	_playerList lbSetData [_sideTempIndex, "west"];
 	{
-		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 		_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 		_playerList lbSetData [_index, getPlayerUID _x];
 	} forEach (allPlayers select {side (group _x) isEqualTo west} select {[_searchTerm, name _x] call BIS_fnc_inString});
 	_sideTempIndex = _playerList lbAdd "===OPFOR===";
 	_playerList lbSetData [_sideTempIndex, "east"];
 	{
-		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 		_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 		_playerList lbSetData [_index, getPlayerUID _x];
 	} forEach (allPlayers select {side (group _x) isEqualTo east} select {[_searchTerm, name _x] call BIS_fnc_inString});
 	_sideTempIndex = _playerList lbAdd "===INDEPENDENT===";
 	_playerList lbSetData [_sideTempIndex, "independent"];
 	{
-		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 		_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 		_playerList lbSetData [_index, getPlayerUID _x];
 	} forEach (allPlayers select {side (group _x) isEqualTo independent} select {[_searchTerm, name _x] call BIS_fnc_inString});
 	_sideTempIndex = _playerList lbAdd "===CIVILIAN===";
 	_playerList lbSetData [_sideTempIndex, "civilian"];
 	{
-		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), "NONE FOUND"];
+		_lives = missionNamespace getVariable [("fnf_livesLeft_" + getPlayerUID _x), ""];
 		_index = _playerList lbAdd ((name _x) + " [" + str(_lives) + "]");
 		_playerList lbSetData [_index, getPlayerUID _x];
 	} forEach (allPlayers select {side (group _x) isEqualTo civilian} select {[_searchTerm, name _x] call BIS_fnc_inString});
