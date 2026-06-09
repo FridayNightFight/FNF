@@ -81,6 +81,7 @@ _tpCounter = 1;
 	_syncedObjects = [_syncedObjects] call FNF_ClientSide_fnc_sortByLocation;
 
 	{
+		_customName = _x getVariable ["fnf_customPoleName", ""];
 		_pos = getPos _x;
 
 		//statement to tp player
@@ -93,9 +94,16 @@ _tpCounter = 1;
 			_posToTPTo = getPos _params;
 			player setPos _posToTPTo;
 		};
+		_actionText = ("Teleport to pole " + str(_tpCounter));
+		_markerText = ("Teleport " + str(_tpCounter));
 
 		//create ace action and marker for tp pole
-		_action = ["teleportTo" + str(_pos),"Teleport to pole " + str(_tpCounter),"",_statement,{true},{},_x] call ace_interact_menu_fnc_createAction;
+		if (_customName isNotEqualTo "") then
+		{
+			_actionText = ("Teleport to " + _customName);
+			_markerText = ("Teleport " + _customName);
+		};
+		_action = ["teleportTo" + str(_pos),_actionText,"",_statement,{true},{},_x] call ace_interact_menu_fnc_createAction;
 		_markerstr = createMarkerLocal ["fnf_tpPoleMarker_" + str(_tpCounter),_pos];
 		_markerstr setMarkerShapeLocal "ICON";
 		_markerstr setMarkerTextLocal "Teleport " + str(_tpCounter);
