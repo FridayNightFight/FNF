@@ -107,6 +107,14 @@ if (count fnf_assetRestrictions isNotEqualTo 0) then
 					player moveInAny [_vehicle, ["TURRET", "CARGO"]];
 					*/
 				};
+				if (_vehicle isKindOf "Air") then
+				{
+					if (player isEqualTo (_vehicle turretUnit [0])) then
+					{
+						moveOut player;
+						player moveInCargo _vehicle;
+					};
+				};
 			};
 			case 2: {
 				if (_role isEqualTo "driver") then
@@ -118,6 +126,18 @@ if (count fnf_assetRestrictions isNotEqualTo 0) then
 					/*
 					player moveInAny [_vehicle, ["GUNNER", "COMMANDER", "TURRET", "CARGO"]];
 					*/
+				};
+				if (_vehicle isKindOf "Air") then
+				{
+					if (player isEqualTo (_vehicle turretUnit [0])) then
+					{
+						moveOut player;
+						player moveInCommander _vehicle;
+						player moveInCargo _vehicle;
+						/*
+						player moveInAny [_vehicle, ["COMMANDER", "TURRET", "CARGO"]];
+						*/
+					};
 				};
 			};
 			default { };
@@ -156,6 +176,14 @@ if (count fnf_assetRestrictions isNotEqualTo 0) then
 					player moveInAny [_vehicle, ["TURRET", "CARGO"]];
 					*/
 				};
+				if (_vehicle isKindOf "Air") then
+				{
+					if (player isEqualTo (_vehicle turretUnit [0])) then
+					{
+						moveOut player;
+						player moveInCargo _vehicle;
+					};
+				};
 			};
 			case 2: {
 				if (player isEqualTo (driver _vehicle)) then
@@ -167,6 +195,18 @@ if (count fnf_assetRestrictions isNotEqualTo 0) then
 					/*
 					player moveInAny [_vehicle, ["GUNNER", "COMMANDER", "TURRET", "CARGO"]];
 					*/
+				};
+				if (_vehicle isKindOf "Air") then
+				{
+					if (player isEqualTo (_vehicle turretUnit [0])) then
+					{
+						moveOut player;
+						player moveInCommander _vehicle;
+						player moveInCargo _vehicle;
+						/*
+						player moveInAny [_vehicle, ["COMMANDER", "TURRET", "CARGO"]];
+						*/
+					};
 				};
 			};
 			default { };
