@@ -6,7 +6,8 @@
 
 	Parameter(s):
 		0: ARRAY -	An array of all breifing asset modules
-		1: MODULE -	The init module for use with breifing notes etc
+		1: ARRAY -	An array of all Kit info modules
+		2: MODULE -	The init module for use with breifing notes etc
 
 	Returns:
 		None
