@@ -153,7 +153,7 @@ class CfgVehicles
 				displayName = "Time to Disable Resinserts (minutes)";
 				tooltip = "How many minutes mission start should the ability to Reinsert end";
 				typeName = "NUMBER";
-				defaultValue = "20";
+				defaultValue = "30";
 			};
 		};
 	};
