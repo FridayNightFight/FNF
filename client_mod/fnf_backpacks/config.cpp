@@ -5,7 +5,7 @@ class CfgPatches
 	units[] = {};
 	weapons[] = {};
 	requiredVersion = 0.1;
-	requiredAddons[] = {"TRF_UKAF","A3_Weapons_F_Ammoboxes","fnf_backpacks","tfar_backpacks","A3_Supplies_F_Enoch_Bags","UK3CB_Factions_Equipment_Backpack","UK3CB_Factions_Equipment_CW_Backpack_Soviet","rhsusf_c_troops","UK3CB_Factions_Equipment_CW_Backpack_US","sfp_task_force_radio","UK3CB_Factions_Backpack2","A3_Static_F","VME_PLA_Weapons_C","A3_VME_PLA_Men","A3_Supplies_F_Exp","min_rf_units","A3_Supplies_F_Orange_Bags","A3_Supplies_F_AoW_Bags","rhs_c_troops","ace_compat_rhs_afrf3","rhsusf_c_uav","UK3CB_BAF_Equipment_Backpacks","Swedish_Forces_Pack","ace_common","bwa3_backpacks","Finnish_Forces_Pack","rhssaf_c_gear","ace_gunbag","rhsgref_c_troops","UK3CB_Factions_WEI_B","UK3CB_Factions_WEI_I","UK3CB_Factions_WEI_O","UK3CB_Factions_AAF_I","UK3CB_Factions_AAF_O","UK3CB_Factions_ADA_B","UK3CB_Factions_ADA_I","UK3CB_Factions_ADA_O","UK3CB_Factions_ADE_I","UK3CB_Factions_ADE_O","UK3CB_Factions_ADG_B","UK3CB_Factions_ADG_I","UK3CB_Factions_ADG_O","UK3CB_Factions_ADM_B","UK3CB_Factions_ADM_I","UK3CB_Factions_ADM_O","UK3CB_Factions_ADP_B","UK3CB_Factions_ADP_I","UK3CB_Factions_ADP_O","UK3CB_Factions_ADR_B","UK3CB_Factions_ADR_I","UK3CB_Factions_ADR_O","UK3CB_Factions_ANA_B","UK3CB_Factions_ANP_B","UK3CB_Factions_APD_B","UK3CB_Factions_APD_I","UK3CB_Factions_APD_O","UK3CB_Factions_ARD_B","UK3CB_Factions_ARD_I","UK3CB_Factions_ARD_O","UK3CB_Factions_CHD_B","UK3CB_Factions_CHD_I","UK3CB_Factions_CHD_O","UK3CB_Factions_CHD_W_B","UK3CB_Factions_CHD_W_I","UK3CB_Factions_CHD_W_O","UK3CB_Factions_CSAT_A_O","UK3CB_Factions_CSAT_B_O","UK3CB_Factions_CSAT_G_O","UK3CB_Factions_CSAT_F_O","UK3CB_Factions_CSAT_N_O","UK3CB_Factions_CSAT_M_O","UK3CB_Factions_CSAT_U_O","UK3CB_Factions_CSAT_S_O","UK3CB_Factions_CSAT_W_O","UK3CB_Factions_CW_SOV_O_EARLY","UK3CB_Factions_CW_SOV_O_LATE","UK3CB_Factions_FIA_B","UK3CB_Factions_FIA_I","UK3CB_Factions_FIA_O","UK3CB_Factions_GAF_B","UK3CB_Factions_GAF_I","UK3CB_Factions_GAF_O","UK3CB_Factions_ION_B_Desert","UK3CB_Factions_ION_B_Urban","UK3CB_Factions_ION_B_Winter","UK3CB_Factions_ION_B_Woodland","UK3CB_Factions_ION_I_Desert","UK3CB_Factions_ION_I_Urban","UK3CB_Factions_ION_I_Winter","UK3CB_Factions_ION_I_Woodland","UK3CB_Factions_ION_O_Desert","UK3CB_Factions_ION_O_Urban","UK3CB_Factions_ION_O_Winter","UK3CB_Factions_ION_O_Woodland","UK3CB_Factions_KDF_B","UK3CB_Factions_KDF_I","UK3CB_Factions_KDF_O","UK3CB_Factions_KRG_B","UK3CB_Factions_KRG_I","UK3CB_Factions_KRG_O","UK3CB_Factions_LDF_B","UK3CB_Factions_LDF_I","UK3CB_Factions_LDF_O","UK3CB_Factions_LFR_B","UK3CB_Factions_LFR_I","UK3CB_Factions_LFR_O","UK3CB_Factions_LNM_B","UK3CB_Factions_LNM_I","UK3CB_Factions_LNM_O","UK3CB_Factions_LSM_B","UK3CB_Factions_LSM_I","UK3CB_Factions_LSM_O","UK3CB_Factions_MEC_B","UK3CB_Factions_MEC_C","UK3CB_Factions_MEC_I","UK3CB_Factions_MEC_O","UK3CB_Factions_MEE_I","UK3CB_Factions_MEE_O","UK3CB_Factions_MEI_B","UK3CB_Factions_MEI_I","UK3CB_Factions_MEI_O","UK3CB_Factions_NAP_B","UK3CB_Factions_NAP_I","UK3CB_Factions_NAP_O","UK3CB_Factions_NFA_B","UK3CB_Factions_NFA_I","UK3CB_Factions_NFA_O","UK3CB_Factions_PLM_B","UK3CB_Factions_PLM_I","UK3CB_Factions_PLM_O","UK3CB_Factions_TKA_B","UK3CB_Factions_TKA_I","UK3CB_Factions_TKA_O","UK3CB_Factions_TKM_B","UK3CB_Factions_TKM_I","UK3CB_Factions_TKM_O","UK3CB_Factions_TKP_B","UK3CB_Factions_TKP_I","UK3CB_Factions_TKP_O","UK3CB_Factions_TNM_B","UK3CB_Factions_TNM_I","UK3CB_Factions_TNM_O","UK3CB_Factions_TPD_B","UK3CB_Factions_TPD_I","UK3CB_Factions_TPD_O","UK3CB_Factions_UN_B","UK3CB_Factions_UN_I"}; };
+	requiredAddons[] = {"A3_Weapons_F_Ammoboxes","fnf_backpacks","tfar_backpacks","A3_Supplies_F_Enoch_Bags","UK3CB_Factions_Equipment_Backpack","UK3CB_Factions_Equipment_CW_Backpack_Soviet","rhsusf_c_troops","UK3CB_Factions_Equipment_CW_Backpack_US","sfp_task_force_radio","UK3CB_Factions_Backpack2","A3_Static_F","VME_PLA_Weapons_C","A3_VME_PLA_Men","A3_Supplies_F_Exp","min_rf_units","A3_Supplies_F_Orange_Bags","A3_Supplies_F_AoW_Bags","rhs_c_troops","ace_compat_rhs_afrf3","rhsusf_c_uav","UK3CB_BAF_Equipment_Backpacks","Swedish_Forces_Pack","ace_common","bwa3_backpacks","Finnish_Forces_Pack","rhssaf_c_gear","ace_gunbag","rhsgref_c_troops","UK3CB_Factions_WEI_B","UK3CB_Factions_WEI_I","UK3CB_Factions_WEI_O","UK3CB_Factions_AAF_I","UK3CB_Factions_AAF_O","UK3CB_Factions_ADA_B","UK3CB_Factions_ADA_I","UK3CB_Factions_ADA_O","UK3CB_Factions_ADE_I","UK3CB_Factions_ADE_O","UK3CB_Factions_ADG_B","UK3CB_Factions_ADG_I","UK3CB_Factions_ADG_O","UK3CB_Factions_ADM_B","UK3CB_Factions_ADM_I","UK3CB_Factions_ADM_O","UK3CB_Factions_ADP_B","UK3CB_Factions_ADP_I","UK3CB_Factions_ADP_O","UK3CB_Factions_ADR_B","UK3CB_Factions_ADR_I","UK3CB_Factions_ADR_O","UK3CB_Factions_ANA_B","UK3CB_Factions_ANP_B","UK3CB_Factions_APD_B","UK3CB_Factions_APD_I","UK3CB_Factions_APD_O","UK3CB_Factions_ARD_B","UK3CB_Factions_ARD_I","UK3CB_Factions_ARD_O","UK3CB_Factions_CHD_B","UK3CB_Factions_CHD_I","UK3CB_Factions_CHD_O","UK3CB_Factions_CHD_W_B","UK3CB_Factions_CHD_W_I","UK3CB_Factions_CHD_W_O","UK3CB_Factions_CSAT_A_O","UK3CB_Factions_CSAT_B_O","UK3CB_Factions_CSAT_G_O","UK3CB_Factions_CSAT_F_O","UK3CB_Factions_CSAT_N_O","UK3CB_Factions_CSAT_M_O","UK3CB_Factions_CSAT_U_O","UK3CB_Factions_CSAT_S_O","UK3CB_Factions_CSAT_W_O","UK3CB_Factions_CW_SOV_O_EARLY","UK3CB_Factions_CW_SOV_O_LATE","UK3CB_Factions_FIA_B","UK3CB_Factions_FIA_I","UK3CB_Factions_FIA_O","UK3CB_Factions_GAF_B","UK3CB_Factions_GAF_I","UK3CB_Factions_GAF_O","UK3CB_Factions_ION_B_Desert","UK3CB_Factions_ION_B_Urban","UK3CB_Factions_ION_B_Winter","UK3CB_Factions_ION_B_Woodland","UK3CB_Factions_ION_I_Desert","UK3CB_Factions_ION_I_Urban","UK3CB_Factions_ION_I_Winter","UK3CB_Factions_ION_I_Woodland","UK3CB_Factions_ION_O_Desert","UK3CB_Factions_ION_O_Urban","UK3CB_Factions_ION_O_Winter","UK3CB_Factions_ION_O_Woodland","UK3CB_Factions_KDF_B","UK3CB_Factions_KDF_I","UK3CB_Factions_KDF_O","UK3CB_Factions_KRG_B","UK3CB_Factions_KRG_I","UK3CB_Factions_KRG_O","UK3CB_Factions_LDF_B","UK3CB_Factions_LDF_I","UK3CB_Factions_LDF_O","UK3CB_Factions_LFR_B","UK3CB_Factions_LFR_I","UK3CB_Factions_LFR_O","UK3CB_Factions_LNM_B","UK3CB_Factions_LNM_I","UK3CB_Factions_LNM_O","UK3CB_Factions_LSM_B","UK3CB_Factions_LSM_I","UK3CB_Factions_LSM_O","UK3CB_Factions_MEC_B","UK3CB_Factions_MEC_C","UK3CB_Factions_MEC_I","UK3CB_Factions_MEC_O","UK3CB_Factions_MEE_I","UK3CB_Factions_MEE_O","UK3CB_Factions_MEI_B","UK3CB_Factions_MEI_I","UK3CB_Factions_MEI_O","UK3CB_Factions_NAP_B","UK3CB_Factions_NAP_I","UK3CB_Factions_NAP_O","UK3CB_Factions_NFA_B","UK3CB_Factions_NFA_I","UK3CB_Factions_NFA_O","UK3CB_Factions_PLM_B","UK3CB_Factions_PLM_I","UK3CB_Factions_PLM_O","UK3CB_Factions_TKA_B","UK3CB_Factions_TKA_I","UK3CB_Factions_TKA_O","UK3CB_Factions_TKM_B","UK3CB_Factions_TKM_I","UK3CB_Factions_TKM_O","UK3CB_Factions_TKP_B","UK3CB_Factions_TKP_I","UK3CB_Factions_TKP_O","UK3CB_Factions_TNM_B","UK3CB_Factions_TNM_I","UK3CB_Factions_TNM_O","UK3CB_Factions_TPD_B","UK3CB_Factions_TPD_I","UK3CB_Factions_TPD_O","UK3CB_Factions_UN_B","UK3CB_Factions_UN_I"}; };
 };
 class cfgVehicles
 {
@@ -15,38 +15,6 @@ class cfgVehicles
 	maximumLoad = 1000;
  };
  class B_AssaultPack_mcamo: B_AssaultPack_Base
- {
-	maximumLoad = 1000;
- };
- class TRF_VIRTUS_ASSAULT_PACK: B_AssaultPack_mcamo
- {
-	maximumLoad = 1000;
- };
- class TRF_VIRTUS_ASSAULT_PACK_LR: B_AssaultPack_mcamo
- {
-	maximumLoad = 1000;
- };
- class TRF_CAMELBACK: B_AssaultPack_mcamo
- {
-	maximumLoad = 1000;
- };
- class TRF_CAMELBACK_LR: B_AssaultPack_mcamo
- {
-	maximumLoad = 1000;
- };
- class TRF_TRIZIP: B_AssaultPack_mcamo
- {
-	maximumLoad = 1000;
- };
- class TRF_ZIPON: B_AssaultPack_mcamo
- {
-	maximumLoad = 1000;
- };
- class TRF_TRIZIP_LR: B_AssaultPack_mcamo
- {
-	maximumLoad = 1000;
- };
- class TRF_ZIPON_LR: B_AssaultPack_mcamo
  {
 	maximumLoad = 1000;
  };

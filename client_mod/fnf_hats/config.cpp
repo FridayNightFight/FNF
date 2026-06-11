@@ -5,7 +5,7 @@ class CfgPatches
 	units[] = {};
 	weapons[] = {};
 	requiredVersion = 0.1;
-	requiredAddons[] = {"TRF_UKAF","A3_Characters_F","ace_hearing","fnf_hats","tfar_external_intercom","ace_goggles","ace_medical_vitals","A3_Characters_F_Kart","sfp_police","UK3CB_Factions_Headgear2","UK3CB_Factions_Headgear","rhs_c_troops","ace_compat_rhs_afrf3_hearing","A3_Characters_F_Orange_Headgear","UK3CB_Factions_Equipment_CW_Headgear_Soviet","UK3CB_Factions_Equipment_CW_Headgear_US","A3_VME_PLA_Men","A3_Characters_F_Exp_Headgear","min_rf_units","A3_Characters_F_Tank_Headgear","A3_Characters_F_Enoch_Headgear","A3_Characters_F_AoW_Headgear","rhsusf_c_troops","ace_compat_rhs_usf3","ace_compat_rhs_usf3_hearing","UK3CB_BAF_Equipment_Berets","UK3CB_BAF_Equipment_Boonies","UK3CB_BAF_Equipment_Headset_PRR","UK3CB_BAF_Equipment_Helmets","bwa3_headgear","bwa3_comp_ace","Swedish_Forces_Pack","Finnish_Forces_Pack","rhssaf_c_gear","sfp_characters","rhsgref_c_troops"}; };
+	requiredAddons[] = {"A3_Characters_F","ace_hearing","fnf_hats","tfar_external_intercom","ace_goggles","ace_medical_vitals","A3_Characters_F_Kart","sfp_police","UK3CB_Factions_Headgear2","UK3CB_Factions_Headgear","rhs_c_troops","ace_compat_rhs_afrf3_hearing","A3_Characters_F_Orange_Headgear","UK3CB_Factions_Equipment_CW_Headgear_Soviet","UK3CB_Factions_Equipment_CW_Headgear_US","A3_VME_PLA_Men","A3_Characters_F_Exp_Headgear","min_rf_units","A3_Characters_F_Tank_Headgear","A3_Characters_F_Enoch_Headgear","A3_Characters_F_AoW_Headgear","rhsusf_c_troops","ace_compat_rhs_usf3","ace_compat_rhs_usf3_hearing","UK3CB_BAF_Equipment_Berets","UK3CB_BAF_Equipment_Boonies","UK3CB_BAF_Equipment_Headset_PRR","UK3CB_BAF_Equipment_Helmets","bwa3_headgear","bwa3_comp_ace","Swedish_Forces_Pack","Finnish_Forces_Pack","rhssaf_c_gear","sfp_characters","rhsgref_c_troops"}; };
 };
 class ItemInfo;
 class cfgWeapons
@@ -14,132 +14,6 @@ class cfgWeapons
  class HeadgearItem;
  class HelmetBase;
  class H_HelmetB;
- class TRF_BATLSKIN_REVISION: ItemCore
- {
-	class ItemInfo: HeadgearItem
-	{
-	 class HitpointsProtectionInfo
-	 {
-		class Head
-		{
-		 hitpointName = "HitHead";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Face
-		{
-		 hitpointName = "HitFace";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-	 };
-	};
- };
- class TRF_BATLSKIN_REVISION_IR: ItemCore
- {
-	class ItemInfo: HeadgearItem
-	{
-	 class HitpointsProtectionInfo
-	 {
-		class Head
-		{
-		 hitpointName = "HitHead";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Face
-		{
-		 hitpointName = "HitFace";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-	 };
-	};
- };
- class TRF_BATLSKIN_REVISION_NETTING: ItemCore
- {
-	class ItemInfo: HeadgearItem
-	{
-	 class HitpointsProtectionInfo
-	 {
-		class Head
-		{
-		 hitpointName = "HitHead";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Face
-		{
-		 hitpointName = "HitFace";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-	 };
-	};
- };
- class TRF_BATLSKIN_REVISION_NETTING_IR: ItemCore
- {
-	class ItemInfo: HeadgearItem
-	{
-	 class HitpointsProtectionInfo
-	 {
-		class Head
-		{
-		 hitpointName = "HitHead";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Face
-		{
-		 hitpointName = "HitFace";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-	 };
-	};
- };
- class TRF_BATLSKIN_REVISION_SCRIM_OAK: ItemCore
- {
-	class ItemInfo: HeadgearItem
-	{
-	 class HitpointsProtectionInfo
-	 {
-		class Head
-		{
-		 hitpointName = "HitHead";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Face
-		{
-		 hitpointName = "HitFace";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-	 };
-	};
- };
- class TRF_FAST_SFHC: ItemCore
- {
-	class ItemInfo: HeadgearItem
-	{
-	 class HitpointsProtectionInfo
-	 {
-		class Head
-		{
-		 hitpointName = "HitHead";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-		class Face
-		{
-		 hitpointName = "HitFace";
-		 armor = 0;
-		 passThrough = 0.5;
-		};
-	 };
-	};
- };
  class H_HelmetB_camo: H_HelmetB
  {
 	class ItemInfo: ItemInfo
