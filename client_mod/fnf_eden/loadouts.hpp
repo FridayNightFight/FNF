@@ -556,7 +556,7 @@
 			displayName = "Chinese PLA SOF [2020]";
 			useSideColorOnIcon = 1;
 		};
-		class fnf_BritishArmy2020
+		/*class fnf_BritishArmy2020
 		{
 			path = "fnf_eden\kits\BritishArmy[2020]";
 			side = 8;
@@ -564,7 +564,7 @@
 			editorSubcategory = "fnf_Blufor";
 			displayName = "British Army [2020]";
 			useSideColorOnIcon = 1;
-		};
+		};*/
 		class fnf_SwedishArmedForces2020
 		{
 			path = "fnf_eden\kits\SwedishArmedForces[2020]";
