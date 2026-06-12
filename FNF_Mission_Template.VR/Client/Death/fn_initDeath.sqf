@@ -298,6 +298,8 @@ if (_deathMode isEqualTo "respawn") then
 		} else {
 			[{call FNF_ClientSide_fnc_startLimitedSpectator;}, [], 3] call CBA_fnc_waitAndExecute;
 			missionNamespace setVariable [("fnf_timeToRespawn_" + getPlayerUID player), _timeUntilRespawn, true];
+			fnf_timerEndTime = _timeUntilRespawn;
+			fnf_timerMessage = "Respawn in: %1";
 		};
 
 		missionNamespace setVariable [("fnf_livesLeft_" + getPlayerUID player), _livesLeft, true];

@@ -218,6 +218,9 @@ if (_deathMode isEqualTo "respawn") then
 		//set time to respawn to -1 to inform other systems that respawn is being handeled
 		missionNamespace setVariable [("fnf_timeToRespawn_" + getPlayerUID player), -1, true];
 
+		fnf_timerEndTime = nil;
+		fnf_timerMessage = nil;
+
 		setPlayerRespawnTime -1;
 
 		[false, false, false] call ace_spectator_fnc_setSpectator;
