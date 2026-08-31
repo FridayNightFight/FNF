@@ -12,7 +12,7 @@ class CfgFunctions
 		};
 		class codeUtilities
 		{
-			file = "Client\CodeUtilities";
+			file = "Client/CodeUtilities";
 			class sortByLocation {};
 			class getBottomLeft {};
 			class checkSecondaryObjective {};
@@ -20,7 +20,7 @@ class CfgFunctions
 		};
 		class zones
 		{
-			file = "Client\Zones";
+			file = "Client/Zones";
 			class initZones {};
 			class addZone {};
 			class removeZone {};
@@ -40,7 +40,7 @@ class CfgFunctions
 		};
 		class restrictions
 		{
-			file = "Client\Restrictions";
+			file = "Client/Restrictions";
 			class restrictPlayer {};
 			class initWeaponDisable {};
 			class getRequestWeaponDisable {};
@@ -51,58 +51,58 @@ class CfgFunctions
 		};
 		class objectives
 		{
-			file = "Client\Objectives";
+			file = "Client/Objectives";
 			class initObjs {};
 			class watchObjs {};
 			class initMarkerFollow {};
 		};
 		class objDestroy
 		{
-			file = "Client\Objectives\Destroy";
+			file = "Client/Objectives/Destroy";
 			class initDestroy {};
 			class watchDestroy {};
 		};
 		class objCaptureSector
 		{
-			file = "Client\Objectives\CaptureSector";
+			file = "Client/Objectives/CaptureSector";
 			class initCaptureSector {};
 			class watchCaptureSector {};
 		};
 				class objHoldSector
 		{
-			file = "Client\Objectives\HoldSector";
+			file = "Client/Objectives/HoldSector";
 			class initHoldSector {};
 			class watchHoldSector {};
 			class notifyHoldSector {};
 		};
 		class objTerminal
 		{
-			file = "Client\Objectives\Terminal";
+			file = "Client/Objectives/Terminal";
 			class initTerminal {};
 			class watchTerminal {};
 			class notifyTerminal {};
 		};
 		class objAssassin
 		{
-			file = "Client\Objectives\Assassin";
+			file = "Client/Objectives/Assassin";
 			class initAssassin {};
 			class watchAssassin {};
 		};
 		class objSteal
 		{
-			file = "Client\Objectives\Steal";
+			file = "Client/Objectives/Steal";
 			class initSteal {};
 			class watchSteal {};
 		};
 		class objEscort
 		{
-			file = "Client\Objectives\Escort";
+			file = "Client/Objectives/Escort";
 			class initEscort {};
 			class watchEscort {};
 		};
 		class safeZones
 		{
-			file = "Client\Safezones";
+			file = "Client/Safezones";
 			class initSafeZones {};
 			class startSafeZoneTimer {};
 			class anyNonExpiredSafeZones {};
@@ -110,31 +110,31 @@ class CfgFunctions
 		};
 		class teleportPoles
 		{
-			file = "Client\TeleportPoles";
+			file = "Client/TeleportPoles";
 			class initTeleportPoles {};
 		};
 		class modules
 		{
-			file = "Client\Modules";
+			file = "Client/Modules";
 			class findFNFModules {};
 			class findSpecificModules {};
 		};
 		class ui
 		{
-			file = "Client\UI";
+			file = "Client/UI";
 			class notificationSystem {};
 			class markEditorPlacedObjects {};
 			class initGPSUnitMarkers {};
 		};
 		class pauseMenu
 		{
-			file = "Client\UI\PauseMenu";
+			file = "Client/UI/PauseMenu";
 			class generalPlayerButtons {};
 			class adminButtons {};
 		};
 		class spectatorUI
 		{
-			file = "Client\UI\Spectator";
+			file = "Client/UI/Spectator";
 			class missionDetailsButton {};
 			class missionDetailsScreen {};
 			class missionReviewButton {};
@@ -142,7 +142,7 @@ class CfgFunctions
 		};
 		class admin
 		{
-			file = "Client\Admin";
+			file = "Client/Admin";
 			class contactStaff {};
 			class recieveContactStaffRequest {};
 			class adminMenu {};
@@ -151,13 +151,13 @@ class CfgFunctions
 		};
 		class timer
 		{
-			file = "Client\UI\Timer";
+			file = "Client/UI/Timer";
 			class initOverallTimer {};
 			class showTimerInHUD {};
 		};
 		class spectator
 		{
-			file = "Client\Spectator";
+			file = "Client/Spectator";
 			class startSpectator {};
 			class initSpectatorSlot {};
 			class getSpectatorParentTask {};
@@ -167,34 +167,34 @@ class CfgFunctions
 		};
 		class hidingZones
 		{
-			file = "Client\HidingZones";
+			file = "Client/HidingZones";
 			class initHidingZones {};
 			class addObjectToHide {};
 			class removeObjectToHide {};
 		};
 		class selectors
 		{
-			file = "Client\Selectors";
+			file = "Client/Selectors";
 			class initSelectors {};
 			class switchSelection {};
 		};
 		class fortify
 		{
-			file = "Client\Fortify";
+			file = "Client/Fortify";
 			class initFortify {};
 			class disableFortify {};
 			class addDestructionEH {};
 		};
 		class breifing
 		{
-			file = "Client\Breifing";
+			file = "Client/Breifing";
 			class initBreifing {};
 			class initOrbat {};
 			class updateOrbat {};
 		};
 		class mapShading
 		{
-			file = "Client\UI\MapShading";
+			file = "Client/UI/MapShading";
 			class triangulatePolygon {};
 			class initMapShading {};
 			class invertPolygon {};
@@ -202,59 +202,59 @@ class CfgFunctions
 		};
 		class radio
 		{
-			file = "Client\Radio";
+			file = "Client/Radio";
 			class initRadios {};
 		};
 		class newPlayerExperience
 		{
-			file = "Client\NewPlayerExperience";
+			file = "Client/NewPlayerExperience";
 			class initNewPlayerExperience {};
 			class newToFNF {};
 		};
 		class taskControl
 		{
-			file = "Client\TaskControl";
+			file = "Client/TaskControl";
 			class initTaskControl {};
 			class addTaskToTaskControl {};
-			class removeTaskfromTaskControl {};
+			class removeTaskFromTaskControl {};
 			class editTaskInTaskControl {};
 		};
 		class sequentialHandeler
 		{
-			file = "Client\SequentialHandeler";
+			file = "Client/SequentialHandeler";
 			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
 		};
 		class backpackLocking
 		{
-			file = "Client\BackpackLocking";
+			file = "Client/BackpackLocking";
 			class initBackpackLocking {};
 		};
 		class base64Image
 		{
-			file = "Client\UI\Base64Image";
+			file = "Client/UI/Base64Image";
 			class recieveBase64Image {};
 			class sendBase64Image {};
 			class showBase64Image {};
 		};
 		class death
 		{
-			file = "Client\Death";
+			file = "Client/Death";
 			class initDeath {};
 		};
 		class jip
 		{
-			file = "Client\JIP";
+			file = "Client/JIP";
 			class handleJIP {};
 		};
 		class mobileSpawnPoints
 		{
-			file = "Client\MobileSpawnPoints";
+			file = "Client/MobileSpawnPoints";
 			class initMobileSpawnPoints {};
 		};
 		class vehicles
 		{
-			file = "Client\Vehicles";
+			file = "Client/Vehicles";
 			class initVicRearmReplacement {};
 			class addRearmActions {};
 			class rearmVic {};
@@ -262,7 +262,7 @@ class CfgFunctions
 		};
 		class personalRearm
 		{
-			file = "Client\PersonalRearm";
+			file = "Client/PersonalRearm";
 			class initPersonalRearm {};
 			class doPersonalRearm {};
 		};
@@ -281,7 +281,7 @@ class CfgFunctions
 		};
 		class handles
 		{
-			file = "Server\Handles";
+			file = "Server/Handles";
 			class handleDisconnect {};
 			class handleJIPSyncing {};
 			class handleVicInvincibility {};
@@ -289,61 +289,61 @@ class CfgFunctions
 		};
 		class sequentialHandeler
 		{
-			file = "Server\SequentialHandeler";
+			file = "Server/SequentialHandeler";
 			class checkAndAddSequentialHandle {};
 			class initSequentialHandler {};
 		};
 		class reInsert
 		{
-			file = "Server\Reinsert";
-			class startReinsert {};
+			file = "Server/Reinsert";
+			class startReInsert {};
 		};
 		class objectives
 		{
-			file = "Server\Objectives";
+			file = "Server/Objectives";
 			class initObjs {};
 			class watchObjs {};
 		};
 		class objDestroy
 		{
-			file = "Server\Objectives\Destroy";
+			file = "Server/Objectives/Destroy";
 			class initDestroy {};
 			class watchDestroy {};
 		};
 		class objCaptureSector
 		{
-			file = "Server\Objectives\CaptureSector";
+			file = "Server/Objectives/CaptureSector";
 			class initCaptureSector {};
 			class watchCaptureSector {};
 		};
 		class objHoldSector
 		{
-			file = "Server\Objectives\HoldSector";
+			file = "Server/Objectives/HoldSector";
 			class initHoldSector {};
 			class watchHoldSector {};
 		};
 		class objTerminal
 		{
-			file = "Server\Objectives\Terminal";
+			file = "Server/Objectives/Terminal";
 			class switchTerminal {};
 			class initTerminal {};
 			class watchTerminal {};
 		};
 		class objAssassin
 		{
-			file = "Server\Objectives\Assassin";
+			file = "Server/Objectives/Assassin";
 			class initAssassin {};
 			class watchAssassin {};
 		};
 		class objSteal
 		{
-			file = "Server\Objectives\Steal";
+			file = "Server/Objectives/Steal";
 			class initSteal {};
 			class watchSteal {};
 		};
 		class objEscort
 		{
-			file = "Server\Objectives\Escort";
+			file = "Server/Objectives/Escort";
 			class initEscort {};
 			class watchEscort {};
 		};

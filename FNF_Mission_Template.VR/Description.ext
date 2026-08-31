@@ -5,11 +5,11 @@ respawndelay = 99999;
 respawnOnStart = -1;
 respawnTemplates[] = {};
 
-#include "Description\Functions.hpp"
-#include "Description\Endings.hpp"
-#include "Description\UiDescriptions.hpp"
-#include "Description\FortifyCategories.hpp"
-#include "Description\Params.hpp"
+#include "Description/Functions.hpp"
+#include "Description/Endings.hpp"
+#include "Description/UiDescriptions.hpp"
+#include "Description/FortifyCategories.hpp"
+#include "Description/Params.hpp"
 
 onPauseScript[] = {
 	FNF_ClientSide_fnc_generalPlayerButtons,
