@@ -52,12 +52,19 @@ _completedExplosion = _targetObject getVariable ['fnf_explosionHandeled', false]
 
 if (not _completedExplosion) then
 {
+	//Always mark as handled so client notifications reflect a completed hack
 	_targetObject setVariable ['fnf_explosionHandeled', true, true];
-	playSound3D ["fnf_sounds\sounds\bomb_alarm.ogg", _targetObject];
-	[{
-		hideObjectGlobal _this;
-		"Bo_GBU12_LGB" createVehicle (getposATL _this);
-	},_targetObject,12] call CBA_fnc_waitAndExecute;
+
+	//Only play effects and explode if enabled on the module
+	_explodeOnComplete = _module getVariable ["fnf_explodeOnComplete", true];
+	if (_explodeOnComplete) then
+	{
+		playSound3D ["fnf_sounds\sounds\bomb_alarm.ogg", _targetObject];
+		[{
+			hideObjectGlobal _this;
+			"Bo_GBU12_LGB" createVehicle (getposATL _this);
+		},_targetObject,12] call CBA_fnc_waitAndExecute;
+	};
 };
 
 _module setVariable ["fnf_objServerState", _newObjState, true];
