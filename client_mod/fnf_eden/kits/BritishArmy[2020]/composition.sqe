@@ -1,5 +1,5 @@
 version=54;
-center[]={-6.1492124e-06,0,3.390842e-06};
+center[]={7238.5996,5,2256.3076};
 class items
 {
 	items=3;
@@ -15,14 +15,14 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-16.019974,5,-8.7880945};
+					position[]={-16.012695,0,-8.7866211};
 				};
 				side="Empty";
 				flags=4;
 				class Attributes
 				{
 				};
-				id=6569;
+				id=110;
 				type="Land_WoodenBox_F";
 				class CustomAttributes
 				{
@@ -47,14 +47,14 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-16.019974,5,-10.788095};
+					position[]={-16.012695,0,-10.786621};
 				};
 				side="Empty";
 				flags=4;
 				class Attributes
 				{
 				};
-				id=6570;
+				id=111;
 				type="Land_WoodenBox_F";
 				class CustomAttributes
 				{
@@ -79,14 +79,14 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-16.019974,5,-12.788095};
+					position[]={-16.012695,0,-12.786621};
 				};
 				side="Empty";
 				flags=4;
 				class Attributes
 				{
 				};
-				id=6571;
+				id=112;
 				type="Land_WoodenBox_F";
 				class CustomAttributes
 				{
@@ -111,14 +111,14 @@ class items
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={-16.019974,5,-14.788095};
+					position[]={-16.012695,0,-14.786621};
 				};
 				side="Empty";
 				flags=4;
 				class Attributes
 				{
 				};
-				id=6572;
+				id=113;
 				type="Land_WoodenBox_F";
 				class CustomAttributes
 				{
@@ -143,9 +143,9 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-12.031692,5,-8.7896814};
+					position[]={-12.024414,0,-8.7883301};
 				};
-				id=6573;
+				id=114;
 				type="fnf_module_selectorHost";
 				class CustomAttributes
 				{
@@ -183,9 +183,9 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-14.031692,5,-8.7896814};
+					position[]={-14.024414,0,-8.7883301};
 				};
-				id=6574;
+				id=115;
 				type="fnf_module_selectorOption";
 				class CustomAttributes
 				{
@@ -223,9 +223,9 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-14.031692,5,-10.789681};
+					position[]={-14.024414,0,-10.78833};
 				};
-				id=6575;
+				id=116;
 				type="fnf_module_selectorOption";
 				class CustomAttributes
 				{
@@ -263,9 +263,9 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-14.031692,5,-12.789681};
+					position[]={-14.024414,0,-12.78833};
 				};
-				id=6576;
+				id=117;
 				type="fnf_module_selectorOption";
 				class CustomAttributes
 				{
@@ -303,9 +303,9 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-14.031692,5,-14.789681};
+					position[]={-14.024414,0,-14.78833};
 				};
-				id=6577;
+				id=118;
 				type="fnf_module_selectorOption";
 				class CustomAttributes
 				{
@@ -339,7 +339,7 @@ class items
 				};
 			};
 		};
-		id=6568;
+		id=109;
 	};
 	class Item1
 	{
@@ -360,7 +360,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,13.310294};
+							position[]={-6.0244141,0.0014390945,13.311768};
 							angles[]={0,3.1415927,0};
 						};
 						side="West";
@@ -437,7 +437,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_IC_3";
+									typeName="UK3CB_BAF_V_Osprey_SL_D";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -516,7 +516,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6580;
+						id=121;
 						type="B_officer_F";
 						class CustomAttributes
 						{
@@ -606,7 +606,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,13.310294};
+							position[]={-2.0244141,0.0014390945,13.311768};
 							angles[]={0,3.1415927,0};
 						};
 						side="West";
@@ -683,7 +683,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_IC_3";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -748,7 +748,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6581;
+						id=122;
 						type="B_officer_F";
 						class CustomAttributes
 						{
@@ -838,7 +838,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,13.310294};
+							position[]={1.9755859,0.0014390945,13.311768};
 							angles[]={0,3.1415927,0};
 						};
 						side="West";
@@ -906,7 +906,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Medic";
+									typeName="UK3CB_BAF_V_Osprey_Medic_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1000,7 +1000,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6582;
+						id=123;
 						type="B_medic_F";
 						class CustomAttributes
 						{
@@ -1089,7 +1089,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6579;
+				id=120;
 			};
 			class Item1
 			{
@@ -1103,7 +1103,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,9.3102942};
+							position[]={-10.024414,0.0014390945,9.3117676};
 						};
 						side="West";
 						flags=7;
@@ -1189,7 +1189,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1308,7 +1308,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6584;
+						id=125;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -1398,7 +1398,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,7.3102951};
+							position[]={-10.024414,0.0014390945,7.3117676};
 						};
 						side="West";
 						flags=5;
@@ -1469,7 +1469,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_VIRTUS_BB_A";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1513,7 +1513,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6585;
+						id=126;
 						type="B_Soldier_F";
 						class CustomAttributes
 						{
@@ -1538,7 +1538,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,5.3102951};
+							position[]={-10.024414,0.0014390945,5.3117676};
 						};
 						side="West";
 						flags=5;
@@ -1608,7 +1608,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_Rifleman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1661,7 +1661,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6586;
+						id=127;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -1686,7 +1686,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,3.3102949};
+							position[]={-10.024414,0.0014390945,3.3117676};
 						};
 						side="West";
 						flags=5;
@@ -1762,7 +1762,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Grenadier_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -1851,7 +1851,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6587;
+						id=128;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -1876,7 +1876,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,1.3102949};
+							position[]={-10.024414,0.0014390945,1.3117676};
 						};
 						side="West";
 						flags=5;
@@ -1947,7 +1947,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_D";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2040,7 +2040,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_NETTING_IR";
 							};
 						};
-						id=6588;
+						id=129;
 						type="B_Soldier_TL_F";
 						class CustomAttributes
 						{
@@ -2065,7 +2065,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,-0.68970513};
+							position[]={-10.024414,0.0014390945,-0.68823242};
 						};
 						side="West";
 						flags=5;
@@ -2131,7 +2131,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Gunner";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2188,7 +2188,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6589;
+						id=130;
 						type="B_soldier_AR_F";
 						class CustomAttributes
 						{
@@ -2213,7 +2213,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,-2.6897051};
+							position[]={-10.024414,0.0014390945,-2.6882324};
 						};
 						side="West";
 						flags=5;
@@ -2279,7 +2279,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Sharpshooter";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2317,7 +2317,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_SCRIM_OAK";
 							};
 						};
-						id=6590;
+						id=131;
 						type="B_soldier_M_F";
 						class CustomAttributes
 						{
@@ -2342,7 +2342,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,-4.6897049};
+							position[]={-10.024414,0.0014390945,-4.6882324};
 						};
 						side="West";
 						flags=5;
@@ -2412,7 +2412,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2465,7 +2465,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6591;
+						id=132;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -2490,7 +2490,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,-6.6897049};
+							position[]={-10.024414,0.0014390945,-6.6882324};
 						};
 						side="West";
 						flags=5;
@@ -2556,7 +2556,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Medic";
+									typeName="UK3CB_BAF_V_Osprey_Medic_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2650,7 +2650,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6592;
+						id=133;
 						type="B_medic_F";
 						class CustomAttributes
 						{
@@ -2674,7 +2674,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6583;
+				id=124;
 			};
 			class Item2
 			{
@@ -2688,7 +2688,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,9.3102942};
+							position[]={-6.0244141,0.0014390945,9.3117676};
 						};
 						side="West";
 						flags=6;
@@ -2774,7 +2774,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -2893,7 +2893,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6594;
+						id=135;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -2983,7 +2983,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,7.3102951};
+							position[]={-6.0244141,0.0014390945,7.3117676};
 						};
 						side="West";
 						flags=5;
@@ -3071,7 +3071,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Lite";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3124,7 +3124,7 @@ class items
 								headgear="UK3CB_LNM_B_H_BoonieHat_MULTICAM";
 							};
 						};
-						id=6595;
+						id=136;
 						type="B_recon_F";
 						class CustomAttributes
 						{
@@ -3149,7 +3149,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,5.3102951};
+							position[]={-6.0244141,0.0014390945,5.3117676};
 						};
 						side="West";
 						flags=5;
@@ -3215,7 +3215,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Gunner";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3272,7 +3272,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6596;
+						id=137;
 						type="B_support_MG_F";
 						class CustomAttributes
 						{
@@ -3297,7 +3297,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,3.3102949};
+							position[]={-6.0244141,0.0014390945,3.3117676};
 						};
 						side="West";
 						flags=5;
@@ -3373,7 +3373,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Grenadier_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3462,7 +3462,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6597;
+						id=138;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -3487,7 +3487,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,1.3102949};
+							position[]={-6.0244141,0.0014390945,1.3117676};
 						};
 						side="West";
 						flags=5;
@@ -3558,7 +3558,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_D";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3651,7 +3651,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_NETTING_IR";
 							};
 						};
-						id=6598;
+						id=139;
 						type="B_Soldier_TL_F";
 						class CustomAttributes
 						{
@@ -3676,7 +3676,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,-0.68970513};
+							position[]={-6.0244141,0.0014390945,-0.68823242};
 						};
 						side="West";
 						flags=5;
@@ -3742,7 +3742,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Gunner";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3799,7 +3799,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6599;
+						id=140;
 						type="B_soldier_AR_F";
 						class CustomAttributes
 						{
@@ -3824,7 +3824,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,-2.6897051};
+							position[]={-6.0244141,0.0014390945,-2.6882324};
 						};
 						side="West";
 						flags=5;
@@ -3890,7 +3890,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Sharpshooter";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -3928,7 +3928,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_SCRIM_OAK";
 							};
 						};
-						id=6600;
+						id=141;
 						type="B_soldier_M_F";
 						class CustomAttributes
 						{
@@ -3953,7 +3953,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,-4.6897049};
+							position[]={-6.0244141,0.0014390945,-4.6882324};
 						};
 						side="West";
 						flags=5;
@@ -4023,7 +4023,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4076,7 +4076,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6601;
+						id=142;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -4101,7 +4101,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,-6.6897049};
+							position[]={-6.0244141,0.0014390945,-6.6882324};
 						};
 						side="West";
 						flags=5;
@@ -4167,7 +4167,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Medic";
+									typeName="UK3CB_BAF_V_Osprey_Medic_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4261,7 +4261,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6602;
+						id=143;
 						type="B_medic_F";
 						class CustomAttributes
 						{
@@ -4285,7 +4285,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6593;
+				id=134;
 			};
 			class Item3
 			{
@@ -4299,7 +4299,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,9.3102942};
+							position[]={-2.0244141,0.0014390945,9.3117676};
 						};
 						side="West";
 						flags=6;
@@ -4385,7 +4385,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4504,7 +4504,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6604;
+						id=145;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -4594,7 +4594,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,7.3102951};
+							position[]={-2.0244141,0.0014390945,7.3117676};
 						};
 						side="West";
 						flags=5;
@@ -4665,7 +4665,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_VIRTUS_BB_A";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4709,7 +4709,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6605;
+						id=146;
 						type="B_Soldier_F";
 						class CustomAttributes
 						{
@@ -4734,7 +4734,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,5.3102951};
+							position[]={-2.0244141,0.0014390945,5.3117676};
 						};
 						side="West";
 						flags=5;
@@ -4804,7 +4804,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_Rifleman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -4857,7 +4857,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6606;
+						id=147;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -4882,7 +4882,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,3.3102949};
+							position[]={-2.0244141,0.0014390945,3.3117676};
 						};
 						side="West";
 						flags=5;
@@ -4958,7 +4958,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Grenadier_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5047,7 +5047,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6607;
+						id=148;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -5072,7 +5072,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,1.3102949};
+							position[]={-2.0244141,0.0014390945,1.3117676};
 						};
 						side="West";
 						flags=5;
@@ -5143,7 +5143,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_D";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5236,7 +5236,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_NETTING_IR";
 							};
 						};
-						id=6608;
+						id=149;
 						type="B_Soldier_TL_F";
 						class CustomAttributes
 						{
@@ -5261,7 +5261,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,-0.68970513};
+							position[]={-2.0244141,0.0014390945,-0.68823242};
 						};
 						side="West";
 						flags=5;
@@ -5327,7 +5327,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Gunner";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5384,7 +5384,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6609;
+						id=150;
 						type="B_soldier_AR_F";
 						class CustomAttributes
 						{
@@ -5409,7 +5409,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,-2.6897051};
+							position[]={-2.0244141,0.0014390945,-2.6882324};
 						};
 						side="West";
 						flags=5;
@@ -5475,7 +5475,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Sharpshooter";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5513,7 +5513,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_SCRIM_OAK";
 							};
 						};
-						id=6610;
+						id=151;
 						type="B_soldier_M_F";
 						class CustomAttributes
 						{
@@ -5538,7 +5538,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,-4.6897049};
+							position[]={-2.0244141,0.0014390945,-4.6882324};
 						};
 						side="West";
 						flags=5;
@@ -5608,7 +5608,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5661,7 +5661,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6611;
+						id=152;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -5686,7 +5686,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,-6.6897049};
+							position[]={-2.0244141,0.0014390945,-6.6882324};
 						};
 						side="West";
 						flags=5;
@@ -5752,7 +5752,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Medic";
+									typeName="UK3CB_BAF_V_Osprey_Medic_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -5846,7 +5846,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6612;
+						id=153;
 						type="B_medic_F";
 						class CustomAttributes
 						{
@@ -5870,7 +5870,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6603;
+				id=144;
 			};
 			class Item4
 			{
@@ -5884,7 +5884,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,9.3102942};
+							position[]={1.9755859,0.0014390945,9.3117676};
 						};
 						side="West";
 						flags=7;
@@ -5970,7 +5970,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6089,7 +6089,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6614;
+						id=155;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -6179,7 +6179,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,7.3102951};
+							position[]={1.9755859,0.0014390945,7.3117676};
 						};
 						side="West";
 						flags=5;
@@ -6267,7 +6267,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Lite";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6320,7 +6320,7 @@ class items
 								headgear="UK3CB_LNM_B_H_BoonieHat_MULTICAM";
 							};
 						};
-						id=6615;
+						id=156;
 						type="B_recon_F";
 						class CustomAttributes
 						{
@@ -6345,7 +6345,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,5.3102951};
+							position[]={1.9755859,0.0014390945,5.3117676};
 						};
 						side="West";
 						flags=5;
@@ -6411,7 +6411,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Gunner";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6468,7 +6468,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6616;
+						id=157;
 						type="B_support_MG_F";
 						class CustomAttributes
 						{
@@ -6493,7 +6493,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,3.3102949};
+							position[]={1.9755859,0.0014390945,3.3117676};
 						};
 						side="West";
 						flags=5;
@@ -6569,7 +6569,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Grenadier_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6658,7 +6658,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6617;
+						id=158;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -6683,7 +6683,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,1.3102949};
+							position[]={1.9755859,0.0014390945,1.3117676};
 						};
 						side="West";
 						flags=5;
@@ -6754,7 +6754,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_D";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6847,7 +6847,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_NETTING_IR";
 							};
 						};
-						id=6618;
+						id=159;
 						type="B_Soldier_TL_F";
 						class CustomAttributes
 						{
@@ -6872,7 +6872,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,-0.68970513};
+							position[]={1.9755859,0.0014390945,-0.68823242};
 						};
 						side="West";
 						flags=5;
@@ -6938,7 +6938,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Gunner";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -6995,7 +6995,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6619;
+						id=160;
 						type="B_soldier_AR_F";
 						class CustomAttributes
 						{
@@ -7020,7 +7020,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,-2.6897051};
+							position[]={1.9755859,0.0014390945,-2.6882324};
 						};
 						side="West";
 						flags=5;
@@ -7086,7 +7086,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Sharpshooter";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7124,7 +7124,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_SCRIM_OAK";
 							};
 						};
-						id=6620;
+						id=161;
 						type="B_soldier_M_F";
 						class CustomAttributes
 						{
@@ -7149,7 +7149,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,-4.6897049};
+							position[]={1.9755859,0.0014390945,-4.6882324};
 						};
 						side="West";
 						flags=5;
@@ -7219,7 +7219,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7272,7 +7272,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6621;
+						id=162;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -7297,7 +7297,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,-6.6897049};
+							position[]={1.9755859,0.0014390945,-6.6882324};
 						};
 						side="West";
 						flags=5;
@@ -7363,7 +7363,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Medic";
+									typeName="UK3CB_BAF_V_Osprey_Medic_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7457,7 +7457,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6622;
+						id=163;
 						type="B_medic_F";
 						class CustomAttributes
 						{
@@ -7481,7 +7481,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6613;
+				id=154;
 			};
 			class Item5
 			{
@@ -7495,7 +7495,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,9.3102942};
+							position[]={5.9755859,0.0014390945,9.3117676};
 						};
 						side="West";
 						flags=6;
@@ -7581,7 +7581,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7700,7 +7700,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6624;
+						id=165;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -7790,7 +7790,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,7.3102951};
+							position[]={5.9755859,0.0014390945,7.3117676};
 						};
 						side="West";
 						flags=5;
@@ -7861,7 +7861,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_VIRTUS_BB_A";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -7905,7 +7905,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6625;
+						id=166;
 						type="B_Soldier_F";
 						class CustomAttributes
 						{
@@ -7930,7 +7930,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,5.3102951};
+							position[]={5.9755859,0.0014390945,5.3117676};
 						};
 						side="West";
 						flags=5;
@@ -8000,7 +8000,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_Rifleman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8053,7 +8053,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6626;
+						id=167;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -8078,7 +8078,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,3.3102949};
+							position[]={5.9755859,0.0014390945,3.3117676};
 						};
 						side="West";
 						flags=5;
@@ -8154,7 +8154,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Grenadier_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8243,7 +8243,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6627;
+						id=168;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -8268,7 +8268,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,1.3102949};
+							position[]={5.9755859,0.0014390945,1.3117676};
 						};
 						side="West";
 						flags=5;
@@ -8339,7 +8339,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_D";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8432,7 +8432,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_NETTING_IR";
 							};
 						};
-						id=6628;
+						id=169;
 						type="B_Soldier_TL_F";
 						class CustomAttributes
 						{
@@ -8457,7 +8457,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,-0.68970513};
+							position[]={5.9755859,0.0014390945,-0.68823242};
 						};
 						side="West";
 						flags=5;
@@ -8523,7 +8523,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Gunner";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8580,7 +8580,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6629;
+						id=170;
 						type="B_soldier_AR_F";
 						class CustomAttributes
 						{
@@ -8605,7 +8605,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,-2.6897051};
+							position[]={5.9755859,0.0014390945,-2.6882324};
 						};
 						side="West";
 						flags=5;
@@ -8671,7 +8671,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Sharpshooter";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8709,7 +8709,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_SCRIM_OAK";
 							};
 						};
-						id=6630;
+						id=171;
 						type="B_soldier_M_F";
 						class CustomAttributes
 						{
@@ -8734,7 +8734,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,-4.6897049};
+							position[]={5.9755859,0.0014390945,-4.6882324};
 						};
 						side="West";
 						flags=5;
@@ -8804,7 +8804,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_2";
+									typeName="UK3CB_BAF_V_Osprey_MG_B";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -8857,7 +8857,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6631;
+						id=172;
 						type="B_soldier_LAT_F";
 						class CustomAttributes
 						{
@@ -8882,7 +8882,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={5.9683089,5.0014391,-6.6897049};
+							position[]={5.9755859,0.0014390945,-6.6882324};
 						};
 						side="West";
 						flags=5;
@@ -8948,7 +8948,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Medic";
+									typeName="UK3CB_BAF_V_Osprey_Medic_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9042,7 +9042,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6632;
+						id=173;
 						type="B_medic_F";
 						class CustomAttributes
 						{
@@ -9066,7 +9066,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6623;
+				id=164;
 			};
 			class Item6
 			{
@@ -9080,7 +9080,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.9683084,5.0014391,9.2602453};
+							position[]={9.9755859,0.0014390945,9.2617188};
 						};
 						side="West";
 						flags=7;
@@ -9166,7 +9166,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9285,7 +9285,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6634;
+						id=175;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -9375,7 +9375,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.9683084,5.0014391,7.2602463};
+							position[]={9.9755859,0.0014390945,7.2617188};
 						};
 						side="West";
 						flags=5;
@@ -9450,7 +9450,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Rifleman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9513,7 +9513,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6635;
+						id=176;
 						type="B_soldier_AT_F";
 						class CustomAttributes
 						{
@@ -9538,7 +9538,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.9683084,5.0014391,5.2602463};
+							position[]={9.9755859,0.0014390945,5.2617188};
 						};
 						side="West";
 						flags=5;
@@ -9608,7 +9608,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Rifleman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9671,7 +9671,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6636;
+						id=177;
 						type="B_soldier_AAT_F";
 						class CustomAttributes
 						{
@@ -9696,7 +9696,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.9683084,5.0014391,3.260246};
+							position[]={9.9755859,0.0014390945,3.2617188};
 						};
 						side="West";
 						flags=5;
@@ -9766,7 +9766,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Rifleman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9829,7 +9829,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6637;
+						id=178;
 						type="B_soldier_AAT_F";
 						class CustomAttributes
 						{
@@ -9853,7 +9853,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6633;
+				id=174;
 			};
 			class Item7
 			{
@@ -9867,7 +9867,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,-10.739755};
+							position[]={-10.024414,0.0014390945,-10.738281};
 						};
 						side="West";
 						flags=6;
@@ -9938,7 +9938,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -9999,7 +9999,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6639;
+						id=180;
 						type="B_crew_F";
 						class CustomAttributes
 						{
@@ -10089,7 +10089,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,-12.739755};
+							position[]={-10.024414,0.0014390945,-12.738281};
 						};
 						side="West";
 						flags=5;
@@ -10159,7 +10159,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10206,7 +10206,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6640;
+						id=181;
 						type="B_crew_F";
 						class CustomAttributes
 						{
@@ -10244,7 +10244,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-10.031692,5.0014391,-14.739755};
+							position[]={-10.024414,0.0014390945,-14.738281};
 						};
 						side="West";
 						flags=5;
@@ -10314,7 +10314,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10361,7 +10361,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6641;
+						id=182;
 						type="B_crew_F";
 						class CustomAttributes
 						{
@@ -10398,7 +10398,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6638;
+				id=179;
 			};
 			class Item8
 			{
@@ -10412,7 +10412,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,-10.739755};
+							position[]={-6.0244141,0.0014390945,-10.738281};
 						};
 						side="West";
 						flags=6;
@@ -10483,7 +10483,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10544,7 +10544,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6643;
+						id=184;
 						type="B_crew_F";
 						class CustomAttributes
 						{
@@ -10634,7 +10634,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,-12.739755};
+							position[]={-6.0244141,0.0014390945,-12.738281};
 						};
 						side="West";
 						flags=5;
@@ -10704,7 +10704,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10751,7 +10751,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6644;
+						id=185;
 						type="B_crew_F";
 						class CustomAttributes
 						{
@@ -10789,7 +10789,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-6.0316911,5.0014391,-14.739755};
+							position[]={-6.0244141,0.0014390945,-14.738281};
 						};
 						side="West";
 						flags=5;
@@ -10859,7 +10859,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -10906,7 +10906,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6645;
+						id=186;
 						type="B_crew_F";
 						class CustomAttributes
 						{
@@ -10943,7 +10943,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6642;
+				id=183;
 			};
 			class Item9
 			{
@@ -10957,7 +10957,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,-10.739755};
+							position[]={-2.0244141,0.0014390945,-10.738281};
 						};
 						side="West";
 						flags=6;
@@ -11085,7 +11085,7 @@ class items
 								headgear="UK3CB_BAF_H_PilotHelmetHeli_A";
 							};
 						};
-						id=6647;
+						id=188;
 						type="B_Pilot_F";
 						class CustomAttributes
 						{
@@ -11175,7 +11175,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,-12.739755};
+							position[]={-2.0244141,0.0014390945,-12.738281};
 						};
 						side="West";
 						flags=5;
@@ -11288,7 +11288,7 @@ class items
 								headgear="UK3CB_BAF_H_PilotHelmetHeli_A";
 							};
 						};
-						id=6648;
+						id=189;
 						type="B_Pilot_F";
 						class CustomAttributes
 						{
@@ -11339,7 +11339,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={-2.0316911,5.0014391,-14.739755};
+							position[]={-2.0244141,0.0014390945,-14.738281};
 						};
 						side="West";
 						flags=5;
@@ -11452,7 +11452,7 @@ class items
 								headgear="UK3CB_BAF_H_PilotHelmetHeli_A";
 							};
 						};
-						id=6649;
+						id=190;
 						type="B_Pilot_F";
 						class CustomAttributes
 						{
@@ -11502,7 +11502,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6646;
+				id=187;
 			};
 			class Item10
 			{
@@ -11516,7 +11516,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,-10.739755};
+							position[]={1.9755859,0.0014390945,-10.738281};
 						};
 						side="West";
 						flags=6;
@@ -11644,7 +11644,7 @@ class items
 								headgear="UK3CB_BAF_H_PilotHelmetHeli_A";
 							};
 						};
-						id=6651;
+						id=192;
 						type="B_Pilot_F";
 						class CustomAttributes
 						{
@@ -11734,7 +11734,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,-12.739755};
+							position[]={1.9755859,0.0014390945,-12.738281};
 						};
 						side="West";
 						flags=5;
@@ -11847,7 +11847,7 @@ class items
 								headgear="UK3CB_BAF_H_PilotHelmetHeli_A";
 							};
 						};
-						id=6652;
+						id=193;
 						type="B_Pilot_F";
 						class CustomAttributes
 						{
@@ -11898,7 +11898,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={1.9683089,5.0014391,-14.739755};
+							position[]={1.9755859,0.0014390945,-14.738281};
 						};
 						side="West";
 						flags=5;
@@ -12011,7 +12011,7 @@ class items
 								headgear="UK3CB_BAF_H_PilotHelmetHeli_A";
 							};
 						};
-						id=6653;
+						id=194;
 						type="B_Pilot_F";
 						class CustomAttributes
 						{
@@ -12061,7 +12061,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6650;
+				id=191;
 			};
 			class Item11
 			{
@@ -12075,7 +12075,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.9683084,5.0014391,-2.739754};
+							position[]={9.9755859,0.0014390945,-2.7382812};
 						};
 						side="West";
 						flags=7;
@@ -12161,7 +12161,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12280,7 +12280,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6655;
+						id=196;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -12383,7 +12383,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.9683084,5.0014391,-4.7397537};
+							position[]={9.9755859,0.0014390945,-4.7382812};
 						};
 						side="West";
 						flags=5;
@@ -12454,7 +12454,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Sharpshooter";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12502,7 +12502,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6656;
+						id=197;
 						type="B_sniper_F";
 						class CustomAttributes
 						{
@@ -12553,7 +12553,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={9.9683084,5.0014391,-6.8051834};
+							position[]={9.9755859,0.0014390945,-6.8037109};
 						};
 						side="West";
 						flags=5;
@@ -12628,7 +12628,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey_Marksman_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12681,7 +12681,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6657;
+						id=198;
 						type="B_spotter_F";
 						class CustomAttributes
 						{
@@ -12731,7 +12731,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6654;
+				id=195;
 			};
 			class Item12
 			{
@@ -12745,7 +12745,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={13.968308,5.0014391,9.2602453};
+							position[]={13.975586,0.0014390945,9.2617188};
 						};
 						side="West";
 						flags=7;
@@ -12831,7 +12831,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -12950,7 +12950,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6659;
+						id=200;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -13053,7 +13053,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={13.968308,5.0014391,7.2602463};
+							position[]={13.975586,0.0014390945,7.2617188};
 						};
 						side="West";
 						flags=5;
@@ -13129,7 +13129,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13218,7 +13218,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6660;
+						id=201;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -13256,7 +13256,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={13.968308,5.0014391,5.2602463};
+							position[]={13.975586,0.0014390945,5.2617188};
 						};
 						side="West";
 						flags=5;
@@ -13332,7 +13332,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13421,7 +13421,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6661;
+						id=202;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -13459,7 +13459,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={13.968308,5.0014391,3.260246};
+							position[]={13.975586,0.0014390945,3.2617188};
 						};
 						side="West";
 						flags=5;
@@ -13535,7 +13535,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13624,7 +13624,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6662;
+						id=203;
 						type="B_soldier_exp_F";
 						class CustomAttributes
 						{
@@ -13661,7 +13661,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6658;
+				id=199;
 			};
 			class Item13
 			{
@@ -13675,7 +13675,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={13.968308,5.0014391,-2.739754};
+							position[]={13.975586,0.0014390945,-2.7382812};
 						};
 						side="West";
 						flags=7;
@@ -13761,7 +13761,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Grenadier";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -13880,7 +13880,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION_IR";
 							};
 						};
-						id=6664;
+						id=205;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -13983,7 +13983,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={13.968308,5.0014391,-4.7397537};
+							position[]={13.975586,0.0014390945,-4.7382812};
 						};
 						side="West";
 						flags=5;
@@ -14049,7 +14049,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14093,7 +14093,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6665;
+						id=206;
 						type="B_soldier_UAV_F";
 						class CustomAttributes
 						{
@@ -14157,7 +14157,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={13.968308,5.0014391,-6.7397537};
+							position[]={13.975586,0.0014390945,-6.7382812};
 						};
 						side="West";
 						flags=5;
@@ -14223,7 +14223,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Rifleman_3";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14292,7 +14292,7 @@ class items
 								headgear="TRF_BATLSKIN_REVISION";
 							};
 						};
-						id=6666;
+						id=207;
 						type="B_soldier_UAV_F";
 						class CustomAttributes
 						{
@@ -14355,7 +14355,7 @@ class items
 				class Attributes
 				{
 				};
-				id=6663;
+				id=204;
 			};
 			class Item14
 			{
@@ -14369,7 +14369,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={17.968307,5.0014391,9.2602453};
+							position[]={17.975586,0.0014390945,9.2617188};
 						};
 						side="West";
 						flags=6;
@@ -14440,7 +14440,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey_SL_A";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14506,7 +14506,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6668;
+						id=209;
 						type="B_Soldier_SL_F";
 						class CustomAttributes
 						{
@@ -14609,7 +14609,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={17.968307,5.0014391,7.2602463};
+							position[]={17.975586,0.0014390945,7.2617188};
 						};
 						side="West";
 						flags=5;
@@ -14679,7 +14679,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14742,7 +14742,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6669;
+						id=210;
 						type="B_support_Mort_F";
 						class CustomAttributes
 						{
@@ -14793,7 +14793,7 @@ class items
 						dataType="Object";
 						class PositionInfo
 						{
-							position[]={17.968307,5.0014391,5.2602463};
+							position[]={17.975586,0.0014390945,5.2617188};
 						};
 						side="West";
 						flags=5;
@@ -14863,7 +14863,7 @@ class items
 								};
 								class vest
 								{
-									typeName="TRF_STV_Crew";
+									typeName="UK3CB_BAF_V_Osprey";
 									isBackpack=0;
 									class MagazineCargo
 									{
@@ -14926,7 +14926,7 @@ class items
 								headgear="UK3CB_BAF_H_CrewHelmet_B";
 							};
 						};
-						id=6670;
+						id=211;
 						type="B_support_AMort_F";
 						class CustomAttributes
 						{
@@ -14976,25 +14976,25 @@ class items
 				class Attributes
 				{
 				};
-				id=6667;
+				id=208;
 			};
 			class Item15
 			{
 				dataType="Object";
 				class PositionInfo
 				{
-					position[]={17.968307,5.7216258,3.2099531};
+					position[]={17.975586,0.7216258,3.2114258};
 				};
 				side="Empty";
 				flags=4;
 				class Attributes
 				{
 				};
-				id=6671;
+				id=212;
 				type="B_Mortar_01_F";
 			};
 		};
-		id=6578;
+		id=119;
 	};
 	class Item2
 	{
@@ -15008,9 +15008,9 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-0.031993851,5,15.209996};
+					position[]={-0.024902344,0,15.211426};
 				};
-				id=6673;
+				id=214;
 				type="fnf_module_kitInformation";
 				class CustomAttributes
 				{
@@ -15061,9 +15061,9 @@ class items
 				dataType="Logic";
 				class PositionInfo
 				{
-					position[]={-0.03169116,5,13.210319};
+					position[]={-0.024414062,0,13.21167};
 				};
-				id=6674;
+				id=215;
 				type="SideBLUFOR_F";
 			};
 			class Item2
@@ -15071,15 +15071,13 @@ class items
 				dataType="Comment";
 				class PositionInfo
 				{
-					position[]={1.9683089,0,33.209831};
+					position[]={1.9755859,0,33.211182};
 				};
 				title="British Army [2020]";
-				id=6675;
-				atlOffset=-5;
+				id=216;
 			};
 		};
-		id=6672;
-		atlOffset=-2.5;
+		id=213;
 	};
 };
 class connections
@@ -15094,8 +15092,8 @@ class connections
 		class Item0
 		{
 			linkID=0;
-			item0=6569;
-			item1=6574;
+			item0=110;
+			item1=115;
 			class CustomData
 			{
 				type="Sync";
@@ -15104,8 +15102,8 @@ class connections
 		class Item1
 		{
 			linkID=1;
-			item0=6570;
-			item1=6575;
+			item0=111;
+			item1=116;
 			class CustomData
 			{
 				type="Sync";
@@ -15114,8 +15112,8 @@ class connections
 		class Item2
 		{
 			linkID=2;
-			item0=6571;
-			item1=6576;
+			item0=112;
+			item1=117;
 			class CustomData
 			{
 				type="Sync";
@@ -15124,8 +15122,8 @@ class connections
 		class Item3
 		{
 			linkID=3;
-			item0=6572;
-			item1=6577;
+			item0=113;
+			item1=118;
 			class CustomData
 			{
 				type="Sync";
@@ -15134,8 +15132,8 @@ class connections
 		class Item4
 		{
 			linkID=4;
-			item0=6574;
-			item1=6573;
+			item0=115;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15144,8 +15142,8 @@ class connections
 		class Item5
 		{
 			linkID=5;
-			item0=6575;
-			item1=6573;
+			item0=116;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15154,8 +15152,8 @@ class connections
 		class Item6
 		{
 			linkID=6;
-			item0=6576;
-			item1=6573;
+			item0=117;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15164,8 +15162,8 @@ class connections
 		class Item7
 		{
 			linkID=7;
-			item0=6577;
-			item1=6573;
+			item0=118;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15174,8 +15172,8 @@ class connections
 		class Item8
 		{
 			linkID=8;
-			item0=6673;
-			item1=6674;
+			item0=214;
+			item1=215;
 			class CustomData
 			{
 				type="Sync";
@@ -15184,8 +15182,8 @@ class connections
 		class Item9
 		{
 			linkID=9;
-			item0=6587;
-			item1=6573;
+			item0=128;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15194,8 +15192,8 @@ class connections
 		class Item10
 		{
 			linkID=10;
-			item0=6597;
-			item1=6573;
+			item0=138;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15204,8 +15202,8 @@ class connections
 		class Item11
 		{
 			linkID=11;
-			item0=6607;
-			item1=6573;
+			item0=148;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15214,8 +15212,8 @@ class connections
 		class Item12
 		{
 			linkID=12;
-			item0=6617;
-			item1=6573;
+			item0=158;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15224,8 +15222,8 @@ class connections
 		class Item13
 		{
 			linkID=13;
-			item0=6627;
-			item1=6573;
+			item0=168;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15234,8 +15232,8 @@ class connections
 		class Item14
 		{
 			linkID=14;
-			item0=6660;
-			item1=6573;
+			item0=201;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15244,8 +15242,8 @@ class connections
 		class Item15
 		{
 			linkID=15;
-			item0=6661;
-			item1=6573;
+			item0=202;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
@@ -15254,8 +15252,8 @@ class connections
 		class Item16
 		{
 			linkID=16;
-			item0=6662;
-			item1=6573;
+			item0=203;
+			item1=114;
 			class CustomData
 			{
 				type="Sync";
