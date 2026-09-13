@@ -19,7 +19,4 @@ class CfgFactionClasses
 };
 
 #include "modules.hpp"
-#include "systems.hpp"
-#include "loadouts.hpp"
-#include "attributesAndTools.hpp"
-#include "functions.hpp"
+#include "attributes.hpp"

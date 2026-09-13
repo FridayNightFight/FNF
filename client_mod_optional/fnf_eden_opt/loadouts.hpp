@@ -773,3 +773,5 @@
 			displayName = "Japan [1940]";
 			useSideColorOnIcon = 1;
 		};*/
+	};
+};
