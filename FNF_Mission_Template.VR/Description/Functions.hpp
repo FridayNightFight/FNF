@@ -38,6 +38,7 @@ class CfgFunctions
 			class getDisplayName {};
 			class setZoneColour {};
 			class hideZone {};
+			class editRestrictionGroup {};
 		};
 		class restrictions
 		{
