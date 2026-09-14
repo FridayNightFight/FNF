@@ -55,7 +55,7 @@ _fortifyAfterSafeStart = (_miscOptionsModule getVariable ["fnf_fortifyAfterSafeS
 
 if (not _fortifyAfterSafeStart) then
 {
-	call FNF_ClientSide_fnc_disableFortify;
+	fnf_fortifyDisabled = true;
 };
 
 player setVariable ["fnf_backpackLocked", 2, true];

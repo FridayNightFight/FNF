@@ -19,6 +19,38 @@ fnf_fortifyPoints = _module getVariable ["fnf_fortifyPoints", 0];
 
 _allServerFortifyObjects = missionNamespace getVariable ["fnf_globalFortifyObjectsList", []];
 
+fnf_fortifyDisabled = false;
+
+_hasFortifyItem = false;
+if ([player, "ACE_Fortify"] call BIS_fnc_hasItem) exitWith
+{
+	_hasFortifyItem = true;
+	fnf_fortifyDisabled = true;
+};
+
+//setup fortify disabling script
+[{
+	if !(_this select 0 select 0) then {fnf_fortifyDisabled = true;};
+
+	if (fnf_fortifyDisabled) then
+	{
+		//if player can drop a fortify tool that means he has one and will drop it
+		_result = [player, "ACE_Fortify"] call CBA_fnc_dropItem;
+
+		//check if player has multiple fortify tools (unlikely but possible) and force player to drop all of them on the floor
+		while {_result} do
+		{
+			_result = [player, "ACE_Fortify"] call CBA_fnc_dropItem;
+		};
+	} else {
+		if !([player, "ACE_Fortify"] call BIS_fnc_hasItem) then
+		{
+			[player, "ACE_Fortify"] call CBA_fnc_addItem;
+		};
+	};
+
+}, 1, [_hasFortifyItem]] call CBA_fnc_addPerFrameHandler;
+
 {
 	[_x] call FNF_ClientSide_fnc_addDestructionEH;
 } forEach _allServerFortifyObjects;
@@ -38,12 +70,6 @@ _allServerFortifyObjects = missionNamespace getVariable ["fnf_globalFortifyObjec
 	[_objectPlaced] call FNF_ClientSide_fnc_addDestructionEH;
 
 }] call CBA_fnc_addEventHandler;
-
-//if player does not spawn with a fortify tool, they cannot fortify, and therefor should have it disabled
-if !([player, "ACE_Fortify"] call BIS_fnc_hasItem) exitWith
-{
-	call FNF_ClientSide_fnc_disableFortify;
-};
 
 //Function made by Killzone_Kid. From A3 Wiki.
 //TODO: make this local, reduce global space objects
@@ -153,13 +179,13 @@ KK_fnc_inHouse = {
 
 if (_module getVariable ["fnf_disableFortifyBlufor", false] and playerSide isEqualTo blufor) then
 {
-	call FNF_ClientSide_fnc_disableFortify;
+	fnf_fortifyDisabled = true;
 };
 if (_module getVariable ["fnf_disableFortifyOpfor", false] and playerSide isEqualTo opfor) then
 {
-	call FNF_ClientSide_fnc_disableFortify;
+	fnf_fortifyDisabled = true;
 };
 if (_module getVariable ["fnf_disableFortifyIndfor", false] and playerSide isEqualTo independent) then
 {
-	call FNF_ClientSide_fnc_disableFortify;
+	fnf_fortifyDisabled = true;
 };

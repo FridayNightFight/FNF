@@ -96,7 +96,7 @@ if (count _safeZoneModules isEqualTo 0) then
 
 	if (not _fortifyAfterSafeStart) then
 	{
-		call FNF_ClientSide_fnc_disableFortify;
+		fnf_fortifyDisabled = true;
 	};
 } else {
 	[_safeZoneModules] call FNF_ClientSide_fnc_initSafeZones;
