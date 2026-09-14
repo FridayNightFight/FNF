@@ -484,6 +484,15 @@ class CfgVehicles
 				typeName = "BOOL";
 				defaultValue = "false";
 			};
+			class FortifyAfterSafeStart: Checkbox
+			{
+				property = "fnf_customJIPHandle";
+				expression = "_this setVariable ['fnf_customJIPHandle', _value, true];";
+				displayName = "Custom JIP Handle?";
+				tooltip = "If checked, standard JIP handle will not be used, instead it is expected other code will handle JIP";
+				typeName = "BOOL";
+				defaultValue = "false";
+			};
 		};
 	};
 	class fnf_module_respawnPosition: Module_F
