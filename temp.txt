@@ -1,0 +1,56 @@
+Handle Safe zone as normal, init safe zones: opforSafezone_1_, objSafezone_1_
+Start playzone as normal: playzone_small_1_
+
+on safe start end, remove opforSafezone_1_, hide objSafezone_1_ and remove from the restriction group
+
+on OBJ capture
+change objSafezone_1_ to OPFOR colours
+unhide objSafezone_1_
+init objSafezone_2_
+start 5 min timer
+
+for Attackers:
+	if Dead
+		add objSafezone_1_ to safezone restriction group
+		remove playzone_small_1_
+		init playzone_small_2_
+		respawn on set point Obj1
+	if ALIVE
+		Wait until inside objSafezone_1_
+			add objSafezone_1_ to safezone restriction group
+			remove playzone_small_1_
+			init playzone_small_2_
+		if not in objSafezone_1_ by 3 min remaining
+			kill them
+			add objSafezone_1_ to safezone restriction group anyway
+			remove playzone_small_1_
+			init playzone_small_2_
+
+for Defenders:
+	if Dead
+		add objSafezone_2_ to safezone restriction group
+		remove playzone_small_1_
+		init playzone_small_2_
+		respawn on set point Obj2
+	if ALIVE
+		remove playzone_small_1_
+		init playzone_big_1_
+		Wait until inside objSafezone_2_
+			add objSafezone_2_ to safezone restriction group
+			remove playzone_big_1_
+			init playzone_small_2_
+		if not in objSafezone_2_ by 3 min remaining
+			kill them
+			add objSafezone_2_ to safezone restriction group anyway
+			remove playzone_big_1_
+			init playzone_small_2_
+
+on 5 minutes up
+remove opforSafezone_2_, hide objSafezone_2_ and remove from the restriction group
+
+"1 Safe"
+"1 Play"
+"2 Safe"
+"2 Play"
+"3 Safe"
+"3 Play"

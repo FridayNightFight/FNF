@@ -18,7 +18,7 @@ if (not didJIP) exitWith {};
 //reinsert, onelife, respawn
 _deathMode = (_miscOptionsModule getVariable ["fnf_deathMode", "reinsert"]);
 
-_customJIPHandle = (_miscOptionsModule getVariable ["fnf_customJIPHandle", false]);
+_customJIPHandle = (_miscOptionsModule getVariable ["fnf_customJIPHandle", true]);
 if (_customJIPHandle) exitWith {};
 
 if (_deathMode isEqualTo "respawn") then
