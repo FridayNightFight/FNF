@@ -33,4 +33,8 @@ if (_groupIndex isNotEqualTo -1) then
 	fnf_zoneRestrictionGroupsList select _groupIndex set [3, _teleportBack];
 	fnf_zoneRestrictionGroupsList select _groupIndex set [4, _restrictHelicopters];
 	fnf_zoneRestrictionGroupsList select _groupIndex set [5, _showSelectors];
+	if (not _restrictWeapons) then
+	{
+		[_groupName] call FNF_ClientSide_fnc_endRequestWeaponDisable;
+	};
 };
