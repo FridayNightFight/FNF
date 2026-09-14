@@ -450,13 +450,13 @@ switch (_objState) do {
 		[_task, true] call FNF_ClientSide_fnc_editTaskInTaskControl;
 		_params params ["_targetObject", "_hidingZonesAssigned", "_marker"];
 
-		_objType = _module getVariable ["fnf_objectiveType", "hck"];
-
 		//make sure timer marker is shown
 		if (!fnf_SpectatorSlotUsed or !([_targetObject, _module] call FNF_ClientSide_fnc_checkSecondaryObjective)) then
 		{
 			_marker setMarkerAlphaLocal 1;
 		};
+
+		_objType = _module getVariable ["fnf_objectiveType", "hck"];
 
 		//add actions to the object to allow hacking
 		[_targetObject, _module, _objType] call _initActions;
