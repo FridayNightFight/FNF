@@ -69,6 +69,11 @@ if (isServer) then
 
 if (not hasInterface) exitWith {};
 
+_modules = call FNF_ClientSide_fnc_findFNFModules;
+
+//check if init module is found
+fnf_initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
+
 [{not isNil "fnf_playerLoadout"}, {
 call FNF_ClientSide_fnc_initWeaponDisable;
 _initialSafestartTime = 1;
@@ -115,6 +120,7 @@ _startStageSafe2 =
 	};
 
 	fnf_fortifyDisabled = false;
+	fnf_fortifyPoints = fnf_initModule getVariable ["fnf_fortifyPoints", 0];
 
 	["safeZoneGroup", "objSafezone_2_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 	["playZoneGroup", true, true, false, false] call FNF_ClientSide_fnc_editRestrictionGroup;
@@ -224,6 +230,7 @@ _startStageSafe3 =
 	};
 
 	fnf_fortifyDisabled = false;
+	fnf_fortifyPoints = fnf_initModule getVariable ["fnf_fortifyPoints", 0];
 
 	["safeZoneGroup", "objSafezone_3_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 	["playZoneGroup", true, true, false, false] call FNF_ClientSide_fnc_editRestrictionGroup;
