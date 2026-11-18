@@ -81,6 +81,11 @@ _initialSafestartTime = 1;
 ["playzone_visual_", "", false, false] call FNF_ClientSide_fnc_addZone;
 _currentStage = missionNamespace getVariable ["rush_currentStage", "1 Safe"];
 
+rush_obj0RespawnMark hideObject true;
+rush_obj1RespawnMark hideObject true;
+rush_obj2RespawnMark hideObject true;
+rush_obj3RespawnMark hideObject true;
+
 rush_respawnPlayer =
 {
 	params["_respawnObject"];
@@ -121,6 +126,9 @@ _startStageSafe2 =
 
 	fnf_fortifyDisabled = false;
 	fnf_fortifyPoints = fnf_initModule getVariable ["fnf_fortifyPoints", 0];
+
+	rush_obj0RespawnMark hideObject false;
+	rush_obj1RespawnMark hideObject false;
 
 	["safeZoneGroup", "objSafezone_2_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 	["playZoneGroup", true, true, false, false] call FNF_ClientSide_fnc_editRestrictionGroup;
@@ -213,6 +221,9 @@ _startStageSafe2 =
 		fnf_fortifyDisabled = true;
 		fnf_timerMessage = nil;
 		fnf_timerEndTime = nil;
+
+		rush_obj0RespawnMark hideObject true;
+		rush_obj1RespawnMark hideObject true;
 	}] call CBA_fnc_waitUntilAndExecute;
 };
 
@@ -231,6 +242,9 @@ _startStageSafe3 =
 
 	fnf_fortifyDisabled = false;
 	fnf_fortifyPoints = fnf_initModule getVariable ["fnf_fortifyPoints", 0];
+	rush_obj0RespawnMark hideObject false;
+	rush_obj1RespawnMark hideObject false;
+	rush_obj2RespawnMark hideObject false;
 
 	["safeZoneGroup", "objSafezone_3_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 	["playZoneGroup", true, true, false, false] call FNF_ClientSide_fnc_editRestrictionGroup;
@@ -323,6 +337,10 @@ _startStageSafe3 =
 		fnf_fortifyDisabled = true;
 		fnf_timerMessage = nil;
 		fnf_timerEndTime = nil;
+
+		rush_obj0RespawnMark hideObject true;
+		rush_obj1RespawnMark hideObject true;
+		rush_obj2RespawnMark hideObject true;
 	}] call CBA_fnc_waitUntilAndExecute;
 };
 
