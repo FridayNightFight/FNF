@@ -22,7 +22,7 @@ _allServerFortifyObjects = missionNamespace getVariable ["fnf_globalFortifyObjec
 fnf_fortifyDisabled = false;
 
 _hasFortifyItem = false;
-if ([player, "ACE_Fortify"] call BIS_fnc_hasItem) exitWith
+if ([player, "ACE_Fortify"] call BIS_fnc_hasItem) then
 {
 	_hasFortifyItem = true;
 	fnf_fortifyDisabled = true;

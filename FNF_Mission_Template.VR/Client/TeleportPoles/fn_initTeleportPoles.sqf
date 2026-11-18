@@ -82,6 +82,7 @@ _tpCounter = 1;
 
 	{
 		_customName = _x getVariable ["fnf_customPoleName", ""];
+		_disableMarker = _x getVariable ["fnf_disableMarker", false];
 		_pos = getPos _x;
 
 		//statement to tp player
@@ -103,11 +104,16 @@ _tpCounter = 1;
 			_actionText = ("Teleport to " + _customName);
 			_markerText = ("Teleport " + _customName);
 		};
-		_action = ["teleportTo" + str(_pos),_actionText,"",_statement,{true},{},_x] call ace_interact_menu_fnc_createAction;
+		_action = ["teleportTo" + str(_pos),_actionText,"",_statement,{params ["_target", "_player", "_params"]; not isObjectHidden _params;},{},_x] call ace_interact_menu_fnc_createAction;
 		_markerstr = createMarkerLocal ["fnf_tpPoleMarker_" + str(_tpCounter),_pos];
 		_markerstr setMarkerShapeLocal "ICON";
 		_markerstr setMarkerTextLocal "Teleport " + str(_tpCounter);
 		_markerstr setMarkerTypeLocal "mil_dot";
+
+		if (_disableMarker) then
+		{
+			_markerstr setMarkerAlphaLocal 1;
+		};
 
 		_tpCounter = _tpCounter + 1;
 
