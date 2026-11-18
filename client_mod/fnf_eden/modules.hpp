@@ -484,7 +484,7 @@ class CfgVehicles
 				typeName = "BOOL";
 				defaultValue = "false";
 			};
-			class FortifyAfterSafeStart: Checkbox
+			class CustomJIPHandle: Checkbox
 			{
 				property = "fnf_customJIPHandle";
 				expression = "_this setVariable ['fnf_customJIPHandle', _value, true];";
