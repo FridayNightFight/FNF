@@ -2,6 +2,9 @@
 this setVariable ["fnf_codeOnCompletion", "if (isServer) then {missionNamespace setVariable ['rush_currentStage', '2 Safe', true]; _timeServerStarted = missionNamespace getVariable ['fnf_startTime', -1];_result = 99999999;if (isServer and hasInterface) then{	_result = time + (5*60);} else {	_result = (serverTime - _timeServerStarted) + (5*60);};missionNamespace setVariable ['rush_breakEnd', _result, true];};"];
 
 //on init:
+rush_breakTime = 5*60;
+rush_safeStartTime = 5*60;
+
 if (isServer) then
 {
 	missionNamespace setVariable ['rush_currentStage', '1 Safe', true];
@@ -10,9 +13,9 @@ if (isServer) then
 		_result = objNull;
 		if (isServer and hasInterface) then
 		{
-			_result = time > (1*60);
+			_result = time > rush_safeStartTime;
 		} else {
-			_result = (serverTime - _timeServerStarted) > (1*60);
+			_result = (serverTime - _timeServerStarted) > rush_safeStartTime;
 			if (_timeServerStarted isEqualTo -1) then
 			{
 				_result = false;
@@ -71,10 +74,10 @@ if (not hasInterface) exitWith {};
 
 _modules = call FNF_ClientSide_fnc_findFNFModules;
 
-//check if init module is found
 fnf_initModule = [_modules, "init"] call FNF_ClientSide_fnc_findSpecificModules;
+fnf_initModule = fnf_initModule select 0;
 
-[{not isNil "fnf_playerLoadout"}, {
+[{not isNil "fnf_objectives"}, {
 call FNF_ClientSide_fnc_initWeaponDisable;
 _initialSafestartTime = 1;
 
@@ -137,26 +140,31 @@ _startStageSafe2 =
 	{
 		if (alive player) then
 		{
-			[{[player, "objSafezone_1_"] call FNF_ClientSide_fnc_isObjectInZone;}, {
+			[{
+
+				_result1 = [player, "objSafezone_1_"] call FNF_ClientSide_fnc_isObjectInZone;
+				_result2 = [player, "objSafezone_0_"] call FNF_ClientSide_fnc_isObjectInZone;
+				_result1 or _result2;
+				}, {
 				["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_editRestrictionGroup;
 				["playZoneGroup", "playzone_small_1_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 				["playzone_small_1_"] call FNF_ClientSide_fnc_removeZone;
-				["playzone_small_2_", "", true, true] call FNF_ClientSide_fnc_addZone;
-				["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+				["playzone_big_1_", "", true, true] call FNF_ClientSide_fnc_addZone;
+				["playZoneGroup", "playzone_big_1_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 			}, [], 120, {
 				player setDamage 1;
 				["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_editRestrictionGroup;
 				["playZoneGroup", "playzone_small_1_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 				["playzone_small_1_"] call FNF_ClientSide_fnc_removeZone;
-				["playzone_small_2_", "", true, true] call FNF_ClientSide_fnc_addZone;
-				["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+				["playzone_big_1_", "", true, true] call FNF_ClientSide_fnc_addZone;
+				["playZoneGroup", "playzone_big_1_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 			}] call CBA_fnc_waitUntilAndExecute;
 		} else {
 			["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_editRestrictionGroup;
 			["playZoneGroup", "playzone_small_1_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 			["playzone_small_1_"] call FNF_ClientSide_fnc_removeZone;
-			["playzone_small_2_", "", true, true] call FNF_ClientSide_fnc_addZone;
-			["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+			["playzone_big_1_", "", true, true] call FNF_ClientSide_fnc_addZone;
+			["playZoneGroup", "playzone_big_1_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 			[rush_obj1RespawnMark] call rush_respawnPlayer;
 		};
 	} else {
@@ -233,17 +241,9 @@ _startStageSafe3 =
 
 	player setVariable ["fnf_backpackLocked", 2, true];
 
-	_result = ["playzone_small_2_"] call FNF_ClientSide_fnc_verifyZone;
-	if (not _result) then
-	{
-		["playzone_small_2_", "", true, true] call FNF_ClientSide_fnc_addZone;
-		["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
-	};
-
 	fnf_fortifyDisabled = false;
 	fnf_fortifyPoints = fnf_initModule getVariable ["fnf_fortifyPoints", 0];
 	rush_obj0RespawnMark hideObject false;
-	rush_obj1RespawnMark hideObject false;
 	rush_obj2RespawnMark hideObject false;
 
 	["safeZoneGroup", "objSafezone_3_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
@@ -251,31 +251,47 @@ _startStageSafe3 =
 
 	if (playerSide isEqualTo east) then
 	{
+		_result = ["playzone_big_1_"] call FNF_ClientSide_fnc_verifyZone;
+		if (not _result) then
+		{
+			["playzone_big_1_", "", true, true] call FNF_ClientSide_fnc_addZone;
+			["playZoneGroup", "playzone_big_1_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+		};
 		if (alive player) then
 		{
-			[{[player, "objSafezone_2_"] call FNF_ClientSide_fnc_isObjectInZone;}, {
+			[{
+				_result1 = [player, "objSafezone_2_"] call FNF_ClientSide_fnc_isObjectInZone;
+				_result2 = [player, "objSafezone_0_"] call FNF_ClientSide_fnc_isObjectInZone;
+				_result1 or _result2;
+			}, {
 				["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_editRestrictionGroup;
-				["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
-				["playzone_small_2_"] call FNF_ClientSide_fnc_removeZone;
-				["playzone_small_3_", "", true, true] call FNF_ClientSide_fnc_addZone;
-				["playZoneGroup", "playzone_small_3_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+				["playZoneGroup", "playzone_big_1_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
+				["playzone_big_1_"] call FNF_ClientSide_fnc_removeZone;
+				["playZoneGroup", "playzone_visual_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+				[(fnf_zoneList get "playzone_visual_") select 0, "playzone_visual_", true, "Default"] call FNF_ClientSide_fnc_shadeZone;
 			}, [], 120, {
 				player setDamage 1;
 				["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_editRestrictionGroup;
-				["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
-				["playzone_small_2_"] call FNF_ClientSide_fnc_removeZone;
-				["playzone_small_3_", "", true, true] call FNF_ClientSide_fnc_addZone;
-				["playZoneGroup", "playzone_small_3_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+				["playZoneGroup", "playzone_big_1_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
+				["playzone_big_1_"] call FNF_ClientSide_fnc_removeZone;
+				["playZoneGroup", "playzone_visual_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+				[(fnf_zoneList get "playzone_visual_") select 0, "playzone_visual_", true, "Default"] call FNF_ClientSide_fnc_shadeZone;
 			}] call CBA_fnc_waitUntilAndExecute;
 		} else {
 			["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_editRestrictionGroup;
-			["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
-			["playzone_small_2_"] call FNF_ClientSide_fnc_removeZone;
-			["playzone_small_3_", "", true, true] call FNF_ClientSide_fnc_addZone;
-			["playZoneGroup", "playzone_small_3_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+			["playZoneGroup", "playzone_big_1_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
+			["playzone_big_1_"] call FNF_ClientSide_fnc_removeZone;
+			["playZoneGroup", "playzone_visual_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+			[(fnf_zoneList get "playzone_visual_") select 0, "playzone_visual_", true, "Default"] call FNF_ClientSide_fnc_shadeZone;
 			[rush_obj2RespawnMark] call rush_respawnPlayer;
 		};
 	} else {
+		_result = ["playzone_small_2_"] call FNF_ClientSide_fnc_verifyZone;
+		if (not _result) then
+		{
+			["playzone_small_2_", "", true, true] call FNF_ClientSide_fnc_addZone;
+			["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+		};
 		if (alive player) then
 		{
 			["playZoneGroup", "playzone_small_2_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
@@ -339,7 +355,6 @@ _startStageSafe3 =
 		fnf_timerEndTime = nil;
 
 		rush_obj0RespawnMark hideObject true;
-		rush_obj1RespawnMark hideObject true;
 		rush_obj2RespawnMark hideObject true;
 	}] call CBA_fnc_waitUntilAndExecute;
 };
@@ -352,9 +367,9 @@ if (_currentStage isEqualTo "1 Safe") then
 	fnf_timerEndTime = _initialSafestartTime * 60;
 
 	["safeZoneGroup", true, true, true, true] call FNF_ClientSide_fnc_addRestrictionGroup;
-	["opforSafezone_1_", "", true, false] call FNF_ClientSide_fnc_addZone;
+	["objSafezone_0_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_1_", "", true, false] call FNF_ClientSide_fnc_addZone;
-	["safeZoneGroup", "opforSafezone_1_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
+	["safeZoneGroup", "objSafezone_0_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 	["safeZoneGroup", "objSafezone_1_"] call FNF_ClientSide_fnc_addZoneToRestrictionGroup;
 
 	["objSafezone_2_", "", true, false] call FNF_ClientSide_fnc_addZone;
@@ -392,9 +407,9 @@ if (_currentStage isEqualTo "1 Safe") then
 		_result = objNull;
 		if (isServer and hasInterface) then
 		{
-			_result = time > (1*60);
+			_result = time > rush_safeStartTime;
 		} else {
-			_result = (serverTime - _timeServerStarted) > (1*60);
+			_result = (serverTime - _timeServerStarted) > rush_safeStartTime;
 			if (_timeServerStarted isEqualTo -1) then
 			{
 				_result = false;
@@ -402,9 +417,7 @@ if (_currentStage isEqualTo "1 Safe") then
 		};
 		_result;
 	},{
-		["safeZoneGroup", "opforSafezone_1_"] call FNF_ClientSide_fnc_removeZoneFromRestrictionGroup;
 		["safeZoneGroup", false, false, false, false] call FNF_ClientSide_fnc_editRestrictionGroup;
-		["opforSafezone_1_"] call FNF_ClientSide_fnc_removeZone;
 		["<t size='1.5' align='center'>Safe Zones Dropped</t><br/><br/><t align='center'>The safe zones have been dropped and the mission is now starting</t><br/>", "info"] call FNF_ClientSide_fnc_notificationSystem;
 		false call FNF_ClientSide_fnc_showTimerInHUD;
 		fnf_fortifyDisabled = true;
@@ -422,6 +435,7 @@ if (_currentStage isEqualTo "1 Play") then
 	[true, true, true] call ace_spectator_fnc_setSpectator;
 	player setDamage 1;
 	["safeZoneGroup", false, false, false, false] call FNF_ClientSide_fnc_addRestrictionGroup;
+	["objSafezone_0_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_1_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_2_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_3_", "", true, false] call FNF_ClientSide_fnc_addZone;
@@ -442,6 +456,7 @@ if (_currentStage isEqualTo "2 Play") then
 	[true, true, true] call ace_spectator_fnc_setSpectator;
 	player setDamage 1;
 	["safeZoneGroup", false, false, false, false] call FNF_ClientSide_fnc_addRestrictionGroup;
+	["objSafezone_0_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_2_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_3_", "", true, false] call FNF_ClientSide_fnc_addZone;
 
@@ -460,6 +475,7 @@ if (_currentStage isEqualTo "3 Play") then
 	[true, true, true] call ace_spectator_fnc_setSpectator;
 	player setDamage 1;
 	["safeZoneGroup", false, false, false, false] call FNF_ClientSide_fnc_addRestrictionGroup;
+	["objSafezone_0_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_3_", "", true, false] call FNF_ClientSide_fnc_addZone;
 
 	["playZoneGroup", false, true, false, false] call FNF_ClientSide_fnc_addRestrictionGroup;
@@ -473,6 +489,7 @@ if (_currentStage isEqualTo "3 Play") then
 
 if (_currentStage isEqualTo "2 Safe") then
 {
+	["objSafezone_0_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_1_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_2_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_3_", "", true, false] call FNF_ClientSide_fnc_addZone;
@@ -488,6 +505,7 @@ if (_currentStage isEqualTo "2 Safe") then
 
 if (_currentStage isEqualTo "3 Safe") then
 {
+	["objSafezone_0_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_2_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	["objSafezone_3_", "", true, false] call FNF_ClientSide_fnc_addZone;
 	call _startStageSafe3;
