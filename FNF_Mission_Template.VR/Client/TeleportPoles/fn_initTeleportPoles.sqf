@@ -112,7 +112,7 @@ _tpCounter = 1;
 
 		if (_disableMarker) then
 		{
-			_markerstr setMarkerAlphaLocal 1;
+			_markerstr setMarkerAlphaLocal 0;
 		};
 
 		_tpCounter = _tpCounter + 1;
